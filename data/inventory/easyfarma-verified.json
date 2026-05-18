@@ -1,0 +1,247 @@
+{
+  "version": "1.0",
+  "store_slug": "easyfarma",
+  "store_name": "Easyfarma",
+  "store_url": "https://easyfarma.pt",
+  "verified_at": "2026-05-18T19:11:57.268Z",
+  "method": "playwright-headless (refresh 2026-05-18)",
+  "stats": {
+    "total": 13,
+    "verified": 3,
+    "variant": 0,
+    "not_found": 2,
+    "low_confidence": 8
+  },
+  "items": [
+    {
+      "ean": "3337875585132",
+      "name": "Vichy Minéral 89 Sérum Hidratante 50 ml",
+      "brand": "Vichy",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://easyfarma.pt/products/vichy-mineral-89-concentrado-rosto-50ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Vichy Mineral 89 Sérum Facial Concentrado 50ml",
+      "observed_brand": "Vichy",
+      "observed_volume_ml": 50,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "URL slug confirma 50ml. Brand+volume match exacto. Scrape 2026-05-17: 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-17: 12.54€ → 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-17: 12.54€ → 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-18: 12.54€ → 12.54€ Refresh 2026-05-18: 12.54€ → 12.54€",
+      "verified_at": "2026-05-18T18:32:45.587Z",
+      "observed_price": 12.54,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 12.54,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 11.04,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 250,
+          "unit": "ml",
+          "price": 31.9,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 500,
+          "unit": "ml",
+          "price": 25.83,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3337875585026",
+      "name": "La Roche-Posay Effaclar Duo+ 40 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 40,
+      "resolved_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche-Posay Effaclar Duo +M 40ml",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 40,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Easyfarma vende variante Duo+M (slug confirma). 40ml bate. Scrape 2026-05-17: 10.21€ Refresh 2026-05-17: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€",
+      "verified_at": "2026-05-18T18:32:45.723Z",
+      "observed_price": 10.21,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 16.42,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 10.21,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Água Micelar 500 ml",
+      "brand": "Bioderma",
+      "expected_volume_ml": 500,
+      "resolved_url": "https://easyfarma.pt/products/bioderma-sensibio-h2o-agua-micelar-500ml-edicao-especial",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Bioderma Sensibio H2O Agua Micelar 500ml (Edição Especial)",
+      "observed_brand": "Bioderma",
+      "observed_volume_ml": 500,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante edição especial 30 anos (Victoria Beckham). Mesma fórmula. Scrape 2026-05-18: 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€",
+      "verified_at": "2026-05-18T18:32:51.998Z",
+      "observed_price": 25.83,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 12.54,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 11.04,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 250,
+          "unit": "ml",
+          "price": 31.9,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 500,
+          "unit": "ml",
+          "price": 25.83,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3264680004605",
+      "name": "Nuxe Huile Prodigieuse 100 ml",
+      "brand": "Nuxe",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Sem resultado SERP. Pode existir mas não indexado.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "3522930003151",
+      "name": "Caudalie Vinoperfect Sérum Luminosidade 30 ml",
+      "brand": "Caudalie",
+      "expected_volume_ml": 30,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Sem resultado SERP em easyfarma.pt.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "3337875597196",
+      "name": "CeraVe Creme Hidratante 250 ml",
+      "brand": "CeraVe",
+      "expected_volume_ml": 250,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Easyfarma vende CeraVe genericamente — não pesquisei nesta corrida.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "3614271326072",
+      "name": "Lancôme Génifique Sérum Avançado 50 ml",
+      "brand": "Lancôme",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Possivelmente vendido (Easyfarma é tier 3 com prestige). Não confirmado.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "0887167491625",
+      "name": "Estée Lauder Advanced Night Repair Sérum 50 ml",
+      "brand": "Estée Lauder",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado nesta corrida.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "8719134109924",
+      "name": "Rituals The Ritual of Sakura Body Cream 220 ml",
+      "brand": "Rituals",
+      "expected_volume_ml": 220,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Rituals tipicamente D2C — provável not-found mas não confirmado.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "3600523432059",
+      "name": "L'Oréal Paris Elvive Óleo Extraordinário 100 ml",
+      "brand": "L'Oréal Paris",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "3474630639785",
+      "name": "Kérastase Elixir Ultime Óleo Original 100 ml",
+      "brand": "Kérastase",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado. Kérastase tipicamente profissional.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "0884486373601",
+      "name": "Redken All Soft Shampoo 300 ml",
+      "brand": "Redken",
+      "expected_volume_ml": 300,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    },
+    {
+      "ean": "3600524025632",
+      "name": "Maybelline Fit Me Foundation 30 ml (120 Classic Ivory)",
+      "brand": "Maybelline",
+      "expected_volume_ml": 30,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Easyfarma é farmácia, não verifica maquilhagem mass.",
+      "verified_at": "2026-05-13T22:00:00.000Z"
+    }
+  ]
+}

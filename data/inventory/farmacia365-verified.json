@@ -1,0 +1,427 @@
+{
+  "version": "1.0",
+  "store_slug": "farmacia365",
+  "store_name": "Farmácia 365",
+  "store_url": "https://www.farmacia365.pt",
+  "verified_at": "2026-05-18T19:11:57.269Z",
+  "method": "playwright-headless (refresh 2026-05-18)",
+  "stats": {
+    "total": 17,
+    "verified": 6,
+    "variant": 0,
+    "not_found": 5,
+    "low_confidence": 6
+  },
+  "items": [
+    {
+      "ean": "3145891264100",
+      "name": "Chanel No. 5 Eau de Parfum 50 ml",
+      "brand": "Chanel",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Farmácia — não vende Chanel.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3365440787858",
+      "name": "YSL Black Opium Eau de Parfum 50 ml",
+      "brand": "Yves Saint Laurent",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Não vende YSL.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3348901250146",
+      "name": "Dior Sauvage Eau de Toilette 100 ml",
+      "brand": "Dior",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Não vende Dior.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "8011003845460",
+      "name": "Versace Bright Crystal Eau de Toilette 90 ml",
+      "brand": "Versace",
+      "expected_volume_ml": 90,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Não vende Versace.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3614271326072",
+      "name": "Lancôme Génifique Sérum Avançado 50 ml",
+      "brand": "Lancôme",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "0887167491625",
+      "name": "Estée Lauder Advanced Night Repair Sérum 50 ml",
+      "brand": "Estée Lauder",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3337875585132",
+      "name": "Vichy Minéral 89 Sérum Hidratante 50 ml",
+      "brand": "Vichy",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://www.farmacia365.pt/vichy-mineral-89-concentrado-rosto-50ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Vichy Mineral 89 Concentrado Rosto 50mL",
+      "observed_brand": "Vichy",
+      "observed_volume_ml": 50,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "URL slug 50ml exacto. Scrape 2026-05-17: 16.75€ Refresh 2026-05-17: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€",
+      "verified_at": "2026-05-18T18:32:59.273Z",
+      "observed_price": 16.75,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 30.65,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 14.2,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 14,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 23.6,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 18.5,
+          "in_stock": true,
+          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
+        }
+      ]
+    },
+    {
+      "ean": "3337875585026",
+      "name": "La Roche-Posay Effaclar Duo+ 40 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 40,
+      "resolved_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-40ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche Posay Effaclar Duo (+ M) 40mL",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 40,
+      "observed_price": 22.6,
+      "observed_previous_price": 22.6,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante Duo+M, €12.43 (era €22.60, -45%). Preço extraído da SERP. Refresh 2026-05-17: 12.43€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€",
+      "verified_at": "2026-05-18T18:32:59.274Z",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 30.65,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 12.43,
+          "in_stock": true,
+          "url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-40ml"
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 14,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 23.6,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 18.5,
+          "in_stock": true,
+          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
+        }
+      ]
+    },
+    {
+      "ean": "3264680004605",
+      "name": "Nuxe Huile Prodigieuse 100 ml",
+      "brand": "Nuxe",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Não encontrado na SERP de farmacia365.pt.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3522930003151",
+      "name": "Caudalie Vinoperfect Sérum Luminosidade 30 ml",
+      "brand": "Caudalie",
+      "expected_volume_ml": 30,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado nesta corrida.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3337875597196",
+      "name": "CeraVe Creme Hidratante 250 ml",
+      "brand": "CeraVe",
+      "expected_volume_ml": 250,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Água Micelar 500 ml",
+      "brand": "Bioderma",
+      "expected_volume_ml": 500,
+      "resolved_url": "https://www.farmacia365.pt/bioderma-sensibio-h2o-agua-micelar-500ml-x-2-preco-especial",
+      "resolution_method": "google-site-search",
+      "observed_name": "Bioderma Sensibio H2O Água Micelar 500mL X 2 Preço Especial",
+      "observed_brand": "Bioderma",
+      "observed_volume_ml": 500,
+      "confidence": 0.85,
+      "status": "verified",
+      "notes": "Vende em pack 2x500ml. Preço especial. Unitário ~€10.78.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3600523432059",
+      "name": "L'Oréal Paris Elvive Óleo Extraordinário 100 ml",
+      "brand": "L'Oréal Paris",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3600524025632",
+      "name": "Maybelline Fit Me Foundation 30 ml (120 Classic Ivory)",
+      "brand": "Maybelline",
+      "expected_volume_ml": 30,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-14T00:00:00.000Z"
+    },
+    {
+      "ean": "3337875585668",
+      "name": "La Roche-Posay Hyalu B5 Sérum 30 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 30,
+      "resolved_url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-serum-30ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche Posay Hyalu B5 Serum 30mL",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 30,
+      "observed_price": 39.55,
+      "observed_previous_price": 55.45,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Preço directo via fetch da PDP: €33.27 (era €55.45, -40%, promo até 2026-05-31). Refresh 2026-05-17: 33.27€ → 39.55€ Refresh 2026-05-17: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€",
+      "verified_at": "2026-05-18T18:33:07.902Z",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 30.65,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 14.2,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 14,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 23.6,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 18.5,
+          "in_stock": true,
+          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
+        }
+      ]
+    },
+    {
+      "ean": "8470001763440",
+      "name": "ISDIN Fotoprotector Fusion Water Magic SPF50 50 ml",
+      "brand": "ISDIN",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://www.farmacia365.pt/isdin-fotoprotector-fusion-water-rosto-spf50-50ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "ISDIN Fotoprotector FusionWater Magic SPF50 50mL - Protetor solar facial ultraligeiro",
+      "observed_brand": "ISDIN",
+      "observed_volume_ml": 50,
+      "observed_price": 29.6,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Preço directo via fetch da PDP: €29.60. Refresh 2026-05-17: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€",
+      "verified_at": "2026-05-18T18:33:15.184Z",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 30.65,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 14.2,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 14,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 23.6,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 18.5,
+          "in_stock": true,
+          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
+        },
+        {
+          "volume_ml": 250,
+          "unit": "ml",
+          "price": 30.65,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3337875797436",
+      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+ 50 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://www.farmacia365.pt/la-roche-posay-anthelios-uvmune-400-creme-s-perfume-spf50-50ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche Posay Anthelios UVMUNE 400 Creme S/ Perfume SPF50+ 50mL",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 50,
+      "observed_price": 32.05,
+      "observed_previous_price": 32.05,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Preço directo via fetch da PDP: €16.03 (era €32.05, -50%). Refresh 2026-05-17: 16.03€ → 32.05€ Refresh 2026-05-17: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€",
+      "verified_at": "2026-05-18T18:33:17.073Z",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 30.65,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 14.2,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 14,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 23.6,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 18.5,
+          "in_stock": true,
+          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
+        }
+      ]
+    }
+  ]
+}

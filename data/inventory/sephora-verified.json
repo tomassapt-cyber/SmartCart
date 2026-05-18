@@ -1,0 +1,391 @@
+{
+  "version": "2.0",
+  "store_slug": "sephora",
+  "store_name": "Sephora PT",
+  "store_url": "https://www.sephora.pt",
+  "verified_at": "2026-05-18T19:11:57.274Z",
+  "method": "playwright-headless (refresh 2026-05-18)",
+  "items": [
+    {
+      "ean": "3145891264100",
+      "name": "Chanel No. 5 Eau de Parfum 50 ml",
+      "brand": "Chanel",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Sephora.pt nao comercializa Chanel"
+    },
+    {
+      "ean": "3365440787858",
+      "name": "YSL Black Opium Eau de Parfum 50 ml",
+      "brand": "Yves Saint Laurent",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:30:39.049Z",
+      "resolved_url": "https://www.sephora.pt/p/black-opium-eau-de-parfum-P1920022.html",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Black Opium Eau de Parfum - Yves Saint Laurent ≡ Sephora",
+      "observed_brand": "Yves Saint Laurent",
+      "observed_volume_ml": 50,
+      "observed_price": 75,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 75.00€ → 75.00€ Refresh 2026-05-18: 75.00€ → 75.00€ Refresh 2026-05-18: 75.00€ → 75.00€",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 47,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/black-opium-eau-de-parfum-P1920022.html"
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 75,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/black-opium-eau-de-parfum-P1920022.html"
+        },
+        {
+          "volume_ml": 90,
+          "unit": "ml",
+          "price": 83,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/black-opium-eau-de-parfum-P1920022.html"
+        }
+      ]
+    },
+    {
+      "ean": "3348901250146",
+      "name": "Dior Sauvage Eau de Toilette 100 ml",
+      "brand": "Dior",
+      "expected_volume_ml": 100,
+      "verified_at": "2026-05-18T18:30:38.316Z",
+      "resolved_url": "https://www.sephora.pt/p/sauvage---eau-de-toilette-para-homem---notas-condimentadas-e-madeira-%C3%A2mbar-P2266017.html",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Sauvage - Eau toilette para homem - Notas condimentadas, amadeiradas, ambaradas | Dior ≡ SEPHORA",
+      "observed_brand": "Dior",
+      "observed_volume_ml": 100,
+      "observed_price": 101,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 101.00€ → 101.00€ Refresh 2026-05-18: 101.00€ → 101.00€ Refresh 2026-05-18: 101.00€ → 101.00€",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 63,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/sauvage---eau-de-toilette-para-homem---notas-condimentadas-e-madeira-%C3%A2mbar-P2266017.html"
+        },
+        {
+          "volume_ml": 60,
+          "unit": "ml",
+          "price": 75,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/sauvage---eau-de-toilette-para-homem---notas-condimentadas-e-madeira-%C3%A2mbar-P2266017.html"
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 101,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/sauvage---eau-de-toilette-para-homem---notas-condimentadas-e-madeira-%C3%A2mbar-P2266017.html"
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 201,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/sauvage---eau-de-toilette-para-homem---notas-condimentadas-e-madeira-%C3%A2mbar-P2266017.html"
+        },
+        {
+          "volume_ml": 300,
+          "unit": "ml",
+          "price": 269,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/sauvage---eau-de-toilette-para-homem---notas-condimentadas-e-madeira-%C3%A2mbar-P2266017.html"
+        }
+      ]
+    },
+    {
+      "ean": "3360372059707",
+      "name": "Giorgio Armani Code Homme Eau de Toilette 75 ml",
+      "brand": "Giorgio Armani",
+      "expected_volume_ml": 75,
+      "verified_at": "2026-05-18T18:31:02.435Z",
+      "resolved_url": "https://www.sephora.pt/p/armani-code---eau-de-toilette-recarregavel-P10047820.html",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Armani Code - Eau de Toilette | Armani ≡ SEPHORA",
+      "observed_brand": "Giorgio Armani",
+      "observed_volume_ml": 75,
+      "observed_price": 131,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante: Versao recarregavel Refresh 2026-05-18: 131.00€ → 131.00€ Refresh 2026-05-18: 131.00€ → 131.00€ Refresh 2026-05-18: 131.00€ → 131.00€",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 95,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/armani-code---eau-de-toilette-recarregavel-P10047820.html"
+        },
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 131,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/armani-code---eau-de-toilette-recarregavel-P10047820.html"
+        },
+        {
+          "volume_ml": 125,
+          "unit": "ml",
+          "price": 151,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/armani-code---eau-de-toilette-recarregavel-P10047820.html"
+        },
+        {
+          "volume_ml": 150,
+          "unit": "ml",
+          "price": 154,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/armani-code---eau-de-toilette-recarregavel-P10047820.html"
+        }
+      ]
+    },
+    {
+      "ean": "8011003845460",
+      "name": "Versace Bright Crystal Eau de Toilette 90 ml",
+      "brand": "Versace",
+      "expected_volume_ml": 90,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Versace existe em Sephora mas Bright Crystal nao"
+    },
+    {
+      "ean": "3614271326072",
+      "name": "Lancome Genifique Serum Avancado 50 ml",
+      "brand": "Lancome",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:30:59.338Z",
+      "resolved_url": "https://www.sephora.pt/p/genifique---ultimate-serum-P1000203444.html",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Génifique - Ultimate Serum | Lancôme ≡ SEPHORA",
+      "observed_brand": "Lancome",
+      "observed_volume_ml": 50,
+      "observed_price": 141,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante: Relancamento 2024 'Genifique Ultimate Serum' Refresh 2026-05-18: 141.00€ → 141.00€ Refresh 2026-05-18: 141.00€ → 141.00€ Refresh 2026-05-18: 141.00€ → 141.00€",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 99,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/genifique---ultimate-serum-P1000203444.html"
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 141,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/genifique---ultimate-serum-P1000203444.html"
+        }
+      ]
+    },
+    {
+      "ean": "0887167491625",
+      "name": "Estee Lauder Advanced Night Repair Serum 50 ml",
+      "brand": "Estee Lauder",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:31:21.252Z",
+      "resolved_url": "https://www.sephora.pt/p/advanced-night-repair---serum-multi-reparador-P10010128.html",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Advanced Night Repair - Sérum Multi-Reparador | Estée Lauder ≡ SEPHORA",
+      "observed_brand": "Estee Lauder",
+      "observed_volume_ml": 50,
+      "observed_price": 83,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 83.00€ → 83.00€ Refresh 2026-05-18: 83.00€ → 83.00€ Refresh 2026-05-18: 83.00€ → 83.00€",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 79,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/advanced-night-repair---serum-multi-reparador-P10010128.html"
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 83,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/advanced-night-repair---serum-multi-reparador-P10010128.html"
+        }
+      ]
+    },
+    {
+      "ean": "3337875585132",
+      "name": "Vichy Mineral 89 Serum Hidratante 50 ml",
+      "brand": "Vichy",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Vichy nao distribui em Sephora.pt"
+    },
+    {
+      "ean": "3337875585026",
+      "name": "La Roche-Posay Effaclar Duo+ 40 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 40,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "La Roche-Posay nao distribui em Sephora.pt (canal farmacia)"
+    },
+    {
+      "ean": "3264680004605",
+      "name": "Nuxe Huile Prodigieuse 100 ml",
+      "brand": "Nuxe",
+      "expected_volume_ml": 100,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": "https://www.sephora.pt/p/huile-prodigieuse---or-373111.html",
+      "resolution_method": "json-ld-realtime",
+      "observed_name": "Nuxe Huile Prodigieuse 100 ml (Apenas versao Or (shimmer); classica matte nao em Sephora)",
+      "observed_brand": "Nuxe",
+      "observed_volume_ml": 100,
+      "observed_price": 21,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.8,
+      "status": "variant",
+      "notes": "Variante: Apenas versao Or (shimmer); classica matte nao em Sephora"
+    },
+    {
+      "ean": "3522930003151",
+      "name": "Caudalie Vinoperfect Serum Luminosidade 30 ml",
+      "brand": "Caudalie",
+      "expected_volume_ml": 30,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": "https://www.sephora.pt/p/vinoperfect---serum-luminosidade-antimanchas-721956.html",
+      "resolution_method": "json-ld-realtime",
+      "observed_name": "Caudalie Vinoperfect Serum Luminosidade 30 ml",
+      "observed_brand": "Caudalie",
+      "observed_volume_ml": 30,
+      "observed_price": 48,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.95,
+      "status": "verified",
+      "notes": ""
+    },
+    {
+      "ean": "3337875597196",
+      "name": "CeraVe Creme Hidratante 250 ml",
+      "brand": "CeraVe",
+      "expected_volume_ml": 250,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "CeraVe nao distribui em Sephora.pt"
+    },
+    {
+      "ean": "3600523432059",
+      "name": "L'Oreal Paris Elvive Oleo Extraordinario 100 ml",
+      "brand": "L'Oreal Paris",
+      "expected_volume_ml": 100,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "L'Oreal Paris/Elvive mass-market nao em Sephora; so L'Oreal Professionnel"
+    },
+    {
+      "ean": "3474630639785",
+      "name": "Kerastase Elixir Ultime Oleo Original 100 ml",
+      "brand": "Kerastase",
+      "expected_volume_ml": 100,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": "https://www.sephora.pt/p/elixir-ultime---lhuile-originale-oleo-para-todos-os-tipos-de-cabelo-P10058043.html",
+      "resolution_method": "json-ld-realtime",
+      "observed_name": "Kerastase Elixir Ultime Oleo Original 100 ml (100ml nao em Sephora; vendem 75ml Recarregavel + 30ml in-store + 75ml Recarga)",
+      "observed_brand": "Kerastase",
+      "observed_volume_ml": 100,
+      "observed_price": 23,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.8,
+      "status": "variant",
+      "notes": "Variante: 100ml nao em Sephora; vendem 75ml Recarregavel + 30ml in-store + 75ml Recarga"
+    },
+    {
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Agua Micelar 500 ml",
+      "brand": "Bioderma",
+      "expected_volume_ml": 500,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Bioderma nao distribui em Sephora.pt"
+    },
+    {
+      "ean": "3600524025632",
+      "name": "Maybelline Fit Me Foundation 30 ml (120 Classic Ivory)",
+      "brand": "Maybelline",
+      "expected_volume_ml": 30,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Sephora.pt nao tem Maybelline (mass-market)"
+    },
+    {
+      "ean": "3337875585668",
+      "name": "La Roche-Posay Hyalu B5 Serum 30 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 30,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "La Roche-Posay nao distribui em Sephora.pt (canal farmacia)"
+    },
+    {
+      "ean": "3337875797436",
+      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+ 50 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-14T13:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "La Roche-Posay nao distribui em Sephora.pt (canal farmacia)"
+    }
+  ],
+  "stats": {
+    "total": 18,
+    "verified": 6,
+    "variant": 2,
+    "not_found": 10,
+    "low_confidence": 0
+  }
+}

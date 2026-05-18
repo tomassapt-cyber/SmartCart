@@ -1,0 +1,22 @@
+{
+  "name": "smartcart-cosmetics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SmartCartCosmetics — comparador de preços de cosmética PT (demo + pipeline de scraping)",
+  "scripts": {
+    "scrape": "node scripts/scrape-prices.js",
+    "scrape:diff": "node scripts/scrape-prices.js --max-age=24h",
+    "scrape:wells": "node scripts/scrape-prices.js --store=wells",
+    "ingest": "node scripts/ingest-scraped.js",
+    "build": "node scripts/build-catalog.js",
+    "refresh": "npm run scrape:diff && npm run ingest && npm run build",
+    "full-refresh": "node scripts/scrape-prices.js && npm run ingest && npm run build"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0",
+    "jsdom": "^25.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

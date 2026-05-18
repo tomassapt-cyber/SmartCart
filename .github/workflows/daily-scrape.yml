@@ -1,0 +1,86 @@
+# SmartCart — Daily diff scrape
+# ============================================================
+# Refresca apenas produtos com verified_at >24h.
+# Corre todos os dias às 04h00 Lisboa (03h00 UTC, 04h00 BST).
+# Tipicamente termina em <60min.
+#
+# Lojas funcionais (Playwright directo): Wells, Druni, Sweetcare,
+# Farmácia365, Bairro-saude, Easyfarma, Pharma2you, Rituals
+#
+# Lojas com WAF (via ScrapingBee): Notino, Sephora, Douglas, Atida
+#
+# Trigger manual: Actions tab → "Daily price scrape" → Run workflow
+
+name: Daily price scrape
+
+on:
+  schedule:
+    - cron: '0 3 * * *'    # 03h00 UTC = 04h00 Lisboa (winter) / 04h00 (summer)
+  workflow_dispatch:        # permite trigger manual no UI
+
+# Permissões mínimas: só queremos escrever no repo (commit de dados)
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    name: Scrape stale prices & rebuild demo
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install npm dependencies
+        run: |
+          npm install playwright jsdom
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Configure ScrapingBee API key
+        run: |
+          mkdir -p data
+          echo "${{ secrets.SCRAPINGBEE_KEY }}" > data/.scrapingbee.key
+
+      - name: Run scrape (diff mode, >24h stale only)
+        run: |
+          node scripts/scrape-prices.js \
+            --use-scrapingbee \
+            --max-age=24h \
+            --concurrency=3 \
+            --delay=2000
+        env:
+          SCRAPINGBEE_KEY: ${{ secrets.SCRAPINGBEE_KEY }}
+
+      - name: Ingest scraped data into inventories
+        run: node scripts/ingest-scraped.js
+
+      - name: Rebuild catalog + demo.html
+        run: node scripts/build-catalog.js
+
+      - name: Inspect summary
+        run: |
+          if [ -f "data/scraped/$(date -u +%Y-%m-%d)/_summary.json" ]; then
+            echo "=== Scrape summary ==="
+            cat "data/scraped/$(date -u +%Y-%m-%d)/_summary.json"
+          fi
+
+      - name: Commit refreshed data
+        run: |
+          rm -f data/.scrapingbee.key
+          git config user.name "smartcart-bot"
+          git config user.email "bot@smartcart.local"
+          git add data/inventory demo.html data/seed-bundle.json data/products-master.json data/prices-snapshot.json data/scraped 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "chore: daily price refresh ($(date -u +%Y-%m-%d))"
+            git push
+          fi

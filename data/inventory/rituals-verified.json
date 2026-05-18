@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "store_slug": "rituals",
+  "store_name": "Rituals PT",
+  "store_url": "https://www.rituals.com/pt-pt",
+  "verified_at": "2026-05-18T19:11:57.273Z",
+  "method": "playwright-headless (refresh 2026-05-18)",
+  "stats": {
+    "total": 1,
+    "verified": 1,
+    "variant": 0,
+    "not_found": 0,
+    "low_confidence": 0
+  },
+  "items": [
+    {
+      "ean": "8719134109924",
+      "name": "Rituals The Ritual of Sakura Body Cream 220 ml",
+      "brand": "Rituals",
+      "expected_volume_ml": 220,
+      "resolved_url": "https://www.rituals.com/pt-pt/the-ritual-of-sakura-body-cream-220ml-1118773.html",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "The Ritual of Sakura Body Cream 220ml",
+      "observed_brand": "Rituals",
+      "observed_volume_ml": 220,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "PDP canónica oficial Rituals PT. 220ml exacto. URL canónica padrão internacional Rituals (mesmo SKU 1118773 em todos os mercados). Scrape 2026-05-17: 24.90€ Refresh 2026-05-17: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€",
+      "verified_at": "2026-05-18T18:33:33.125Z",
+      "observed_price": 24.9,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 220,
+          "unit": "ml",
+          "price": 24.9,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    }
+  ]
+}

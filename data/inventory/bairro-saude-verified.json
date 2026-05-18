@@ -1,0 +1,407 @@
+{
+  "version": "1.0",
+  "store_slug": "bairro-saude",
+  "store_name": "Bairro da Saúde",
+  "store_url": "https://bairrodasaude.pt",
+  "verified_at": "2026-05-18T19:11:57.261Z",
+  "method": "playwright-headless (refresh 2026-05-18)",
+  "stats": {
+    "total": 17,
+    "verified": 7,
+    "variant": 0,
+    "not_found": 4,
+    "low_confidence": 6
+  },
+  "items": [
+    {
+      "ean": "3145891264100",
+      "name": "Chanel No. 5 Eau de Parfum 50 ml",
+      "brand": "Chanel",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Farmácia — não vende Chanel.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3365440787858",
+      "name": "YSL Black Opium Eau de Parfum 50 ml",
+      "brand": "Yves Saint Laurent",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Não vende YSL.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3348901250146",
+      "name": "Dior Sauvage Eau de Toilette 100 ml",
+      "brand": "Dior",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Não vende Dior.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "8011003845460",
+      "name": "Versace Bright Crystal Eau de Toilette 90 ml",
+      "brand": "Versace",
+      "expected_volume_ml": 90,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Não vende Versace.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3614271326072",
+      "name": "Lancôme Génifique Sérum Avançado 50 ml",
+      "brand": "Lancôme",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não pesquisado nesta corrida.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "0887167491625",
+      "name": "Estée Lauder Advanced Night Repair Sérum 50 ml",
+      "brand": "Estée Lauder",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3337875585132",
+      "name": "Vichy Minéral 89 Sérum Hidratante 50 ml",
+      "brand": "Vichy",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://bairrodasaude.pt/products/vichy-mineral-89-concentrado-rosto-50ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Vichy Minéral 89 Sérum Rosto 50ml",
+      "observed_brand": "Vichy",
+      "observed_volume_ml": 50,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "URL slug confirma 50ml. Brand+volume exacto. Scrape 2026-05-17: 24.10€ Refresh 2026-05-17: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€",
+      "verified_at": "2026-05-18T18:31:32.851Z",
+      "observed_price": 24.1,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 15,
+          "unit": "ml",
+          "price": 18.8,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 12.1,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 12.9,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 21.69,
+          "in_stock": true,
+          "url": "https://bairrodasaude.pt/products/vichy-mineral-89-concentrado-rosto-50ml"
+        },
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 31.1,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3337875585026",
+      "name": "La Roche-Posay Effaclar Duo+ 40 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 40,
+      "resolved_url": "https://bairrodasaude.pt/products/la-roche-posay-effaclar-duo-m-40ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche-Posay Effaclar Duo+ M 40ml",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 40,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante Duo+M (com niacinamida). 40ml bate. Scrape 2026-05-17: 16.10€ Refresh 2026-05-17: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€",
+      "verified_at": "2026-05-18T18:31:32.853Z",
+      "observed_price": 16.1,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 33.6,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 16.1,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 19.2,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3264680004605",
+      "name": "Nuxe Huile Prodigieuse 100 ml",
+      "brand": "Nuxe",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não confirmado nesta SERP.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3522930003151",
+      "name": "Caudalie Vinoperfect Sérum Luminosidade 30 ml",
+      "brand": "Caudalie",
+      "expected_volume_ml": 30,
+      "resolved_url": "https://bairrodasaude.pt/products/caudalie-vinoperfect-serum-luminosidade-antimanchas-30-ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Caudalie Vinoperfect Sérum Antimanchas 30ml",
+      "observed_brand": "Caudalie",
+      "observed_volume_ml": 30,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "URL slug confirma 30ml. Scrape 2026-05-17: 47.90€ Refresh 2026-05-17: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€",
+      "verified_at": "2026-05-18T18:31:39.354Z",
+      "observed_price": 47.9,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 4.5,
+          "unit": "g",
+          "price": 7.9,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 43.11,
+          "in_stock": true,
+          "url": "https://bairrodasaude.pt/products/caudalie-vinoperfect-serum-luminosidade-antimanchas-30-ml"
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 39.9,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 35.9,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 25.5,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3337875597196",
+      "name": "CeraVe Creme Hidratante 250 ml",
+      "brand": "CeraVe",
+      "expected_volume_ml": 250,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Bairro da Saúde provavelmente vende; não verificado.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Água Micelar 500 ml",
+      "brand": "Bioderma",
+      "expected_volume_ml": 500,
+      "resolved_url": "https://bairrodasaude.pt/products/bioderma-sensibio-h2o-agua-micelar-500-ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Bioderma Sensibio H2O Água Micelar 500ml",
+      "observed_brand": "Bioderma",
+      "observed_volume_ml": 500,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "URL slug confirma 500ml exacto. Scrape 2026-05-17: 19.95€ Refresh 2026-05-17: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€",
+      "verified_at": "2026-05-18T18:31:39.430Z",
+      "observed_price": 19.95,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 5.8,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 7.5,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 250,
+          "unit": "ml",
+          "price": 16.5,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 500,
+          "unit": "ml",
+          "price": 13.74,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 850,
+          "unit": "ml",
+          "price": 29.95,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3600523432059",
+      "name": "L'Oréal Paris Elvive Óleo Extraordinário 100 ml",
+      "brand": "L'Oréal Paris",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3600524025632",
+      "name": "Maybelline Fit Me Foundation 30 ml (120 Classic Ivory)",
+      "brand": "Maybelline",
+      "expected_volume_ml": 30,
+      "resolved_url": null,
+      "status": "low-confidence",
+      "notes": "Não verificado.",
+      "verified_at": "2026-05-13T23:30:00.000Z"
+    },
+    {
+      "ean": "3337875585668",
+      "name": "La Roche-Posay Hyalu B5 Sérum 30 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 30,
+      "resolved_url": "https://bairrodasaude.pt/products/la-roche-posay-hyalu-b5-serum-30ml",
+      "resolution_method": "google-site-search",
+      "observed_name": "La Roche-Posay Hyalu B5 Sérum de Rosto Antienvelhecimento 30ml",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 30,
+      "confidence": 0.95,
+      "status": "verified",
+      "notes": "URL canónica confirmada. Preço a obter via fetch.",
+      "verified_at": "2026-05-14T11:00:00.000Z"
+    },
+    {
+      "ean": "8470001763440",
+      "name": "ISDIN Fotoprotector Fusion Water Magic SPF50 50 ml",
+      "brand": "ISDIN",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-spf50-50ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "ISDIN Fotoprotector Fusion Water Magic Solar Spf50 50ml",
+      "observed_brand": "ISDIN",
+      "observed_volume_ml": 50,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "URL canónica confirmada. Múltiplas variantes (Magic, Repair, Color, Glow). Scrape 2026-05-17: 29.90€ Refresh 2026-05-17: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€",
+      "verified_at": "2026-05-18T18:31:46.698Z",
+      "observed_price": 29.9,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 19.9,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 20.93,
+          "in_stock": true,
+          "url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-spf50-50ml"
+        }
+      ]
+    },
+    {
+      "ean": "3337875797436",
+      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+ 50 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://bairrodasaude.pt/products/la-roche-posay-anthelios-uvmune-400-creme-hidratante-spf50-50ml",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche-Posay Anthelios UVMune 400 Creme Hidratante SPF50+ 50ml",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 50,
+      "observed_price": 50.95,
+      "observed_previous_price": 22.53,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Preço €18.02 (era €22.53, -20%). Em stock. Refresh 2026-05-17: 18.02€ → 50.95€ Refresh 2026-05-17: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€",
+      "verified_at": "2026-05-18T18:31:52.941Z",
+      "observed_variants": [
+        {
+          "volume_ml": 15,
+          "unit": "g",
+          "price": 7.58,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 16.24,
+          "in_stock": true,
+          "url": "https://bairrodasaude.pt/products/la-roche-posay-anthelios-uvmune-400-creme-hidratante-spf50-50ml"
+        }
+      ]
+    }
+  ]
+}

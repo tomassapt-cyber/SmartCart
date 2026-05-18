@@ -1,0 +1,553 @@
+{
+  "version": "2.0",
+  "store_slug": "notino",
+  "store_name": "Notino PT",
+  "store_url": "https://www.notino.pt",
+  "verified_at": "2026-05-18T19:11:57.271Z",
+  "method": "playwright-headless (refresh 2026-05-18)",
+  "items": [
+    {
+      "ean": "3145891264100",
+      "name": "Chanel No. 5 Eau de Parfum 50 ml",
+      "brand": "Chanel",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-14T12:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "https://www.notino.pt/chanel/ -> 404 (Notino nao distribui Chanel)"
+    },
+    {
+      "ean": "3365440787858",
+      "name": "YSL Black Opium Eau de Parfum 50 ml",
+      "brand": "Yves Saint Laurent",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:29:12.676Z",
+      "resolved_url": "https://www.notino.pt/yves-saint-laurent/black-opium-eau-de-parfum-para-mulheres/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Yves Saint Laurent Black Opium",
+      "observed_brand": "Yves Saint Laurent",
+      "observed_volume_ml": 50,
+      "observed_price": 80,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-17: 54.70€ → 83.89€ Refresh 2026-05-18: 83.89€ → 80.00€ Refresh 2026-05-17: 80.00€ → 83.89€ Refresh 2026-05-18: 83.89€ → 80.00€ Refresh 2026-05-17: 80.00€ → 83.89€ Refresh 2026-05-18: 83.89€ → 80.00€ Refresh 2026-05-18: 80.00€ → 80.00€ Refresh 2026-05-18: 80.00€ → 80.00€",
+      "gtin_observed": "3365440787919",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 61,
+          "in_stock": true,
+          "url": "https://www.notino.pt/yves-saint-laurent/black-opium-eau-de-parfum-para-mulheres/"
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 80,
+          "in_stock": true,
+          "url": "https://www.notino.pt/yves-saint-laurent/black-opium-eau-de-parfum-para-mulheres/"
+        },
+        {
+          "volume_ml": 90,
+          "unit": "ml",
+          "price": 111,
+          "in_stock": true,
+          "url": "https://www.notino.pt/yves-saint-laurent/black-opium-eau-de-parfum-para-mulheres/"
+        }
+      ]
+    },
+    {
+      "ean": "3348901250146",
+      "name": "Dior Sauvage Eau de Toilette 100 ml",
+      "brand": "Dior",
+      "expected_volume_ml": 100,
+      "verified_at": "2026-05-14T12:00:00.000Z",
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "https://www.notino.pt/dior/ -> 404; PDP individual carrega mas vazia (sem ofertas)"
+    },
+    {
+      "ean": "8011003845460",
+      "name": "Versace Bright Crystal Eau de Toilette 90 ml",
+      "brand": "Versace",
+      "expected_volume_ml": 90,
+      "verified_at": "2026-05-18T18:29:17.294Z",
+      "resolved_url": "https://www.notino.pt/versace/bright-crystal-eau-de-toilette-para-mulheres/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Versace Bright Crystal",
+      "observed_brand": "Versace",
+      "observed_volume_ml": 90,
+      "observed_price": 74.8,
+      "observed_previous_price": 86.5,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-17: 73.52€ → 86.50€ Refresh 2026-05-18: 86.50€ → 74.80€ Refresh 2026-05-17: 74.80€ → 86.50€ Refresh 2026-05-18: 86.50€ → 74.80€ Refresh 2026-05-17: 74.80€ → 86.50€ Refresh 2026-05-18: 86.50€ → 74.80€ Refresh 2026-05-18: 74.80€ → 74.80€ Refresh 2026-05-18: 74.80€ → 74.80€",
+      "gtin_observed": "8011003993826",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 46.4,
+          "in_stock": true,
+          "url": "https://www.notino.pt/versace/bright-crystal-eau-de-toilette-para-mulheres/"
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 62.8,
+          "in_stock": true,
+          "url": "https://www.notino.pt/versace/bright-crystal-eau-de-toilette-para-mulheres/"
+        },
+        {
+          "volume_ml": 90,
+          "unit": "ml",
+          "price": 74.8,
+          "in_stock": true,
+          "url": "https://www.notino.pt/versace/bright-crystal-eau-de-toilette-para-mulheres/"
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 98.1,
+          "in_stock": true,
+          "url": "https://www.notino.pt/versace/bright-crystal-eau-de-toilette-para-mulheres/"
+        }
+      ]
+    },
+    {
+      "ean": "3614271326072",
+      "name": "Lancome Genifique Serum Avancado 50 ml",
+      "brand": "Lancome",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-14T10:00:00.000Z",
+      "resolved_url": "https://www.notino.pt/lancome/advanced-genifique-serum-de-juventude/p-2066427/",
+      "resolution_method": "json-ld-realtime",
+      "observed_name": "Lancome Genifique Serum Avancado 50 ml",
+      "observed_brand": "Lancome",
+      "observed_volume_ml": 50,
+      "observed_price": 155,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.8,
+      "status": "variant",
+      "notes": "75ml em ruptura; 50ml nao exposto em JSON-LD (verificar variante)"
+    },
+    {
+      "ean": "0887167491625",
+      "name": "Estee Lauder Advanced Night Repair Serum 50 ml",
+      "brand": "Estee Lauder",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:29:25.006Z",
+      "resolved_url": "https://www.notino.pt/estee-lauder/advanced-night-repair-synchronized-multi-recovery-complex-serum-de-noite-anti-idade/p-16049725/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Estée Lauder Advanced Night Repair Serum Synchronized Multi-Recovery Complex",
+      "observed_brand": "Estee Lauder",
+      "observed_volume_ml": 50,
+      "observed_price": 104,
+      "observed_previous_price": 118.7,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 100.89€ → 104.00€ Refresh 2026-05-18: 104.00€ → 104.00€ Refresh 2026-05-18: 104.00€ → 104.00€ Refresh 2026-05-18: 104.00€ → 104.00€",
+      "gtin_observed": "887167485488",
+      "observed_variants": [
+        {
+          "volume_ml": 7,
+          "unit": "ml",
+          "price": 17.4,
+          "in_stock": true,
+          "url": "https://www.notino.pt/estee-lauder/advanced-night-repair-synchronized-multi-recovery-complex-serum-de-noite-anti-idade/p-16049725/"
+        },
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 64.7,
+          "in_stock": true,
+          "url": "https://www.notino.pt/estee-lauder/advanced-night-repair-synchronized-multi-recovery-complex-serum-de-noite-anti-idade/p-16049725/"
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 104,
+          "in_stock": true,
+          "url": "https://www.notino.pt/estee-lauder/advanced-night-repair-synchronized-multi-recovery-complex-serum-de-noite-anti-idade/p-16049725/"
+        },
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 123,
+          "in_stock": true,
+          "url": "https://www.notino.pt/estee-lauder/advanced-night-repair-synchronized-multi-recovery-complex-serum-de-noite-anti-idade/p-16049725/"
+        }
+      ]
+    },
+    {
+      "ean": "3337875585132",
+      "name": "Vichy Mineral 89 Serum Hidratante 50 ml",
+      "brand": "Vichy",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:29:33.238Z",
+      "resolved_url": "https://www.notino.pt/vichy/mineral-89-hyaluron-booster-com-efeito-revitalizante-e-fortificante/p-632197/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Vichy Minéral 89",
+      "observed_brand": "Vichy",
+      "observed_volume_ml": 50,
+      "observed_price": 19.9,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 19.90€ → 19.90€ Refresh 2026-05-18: 19.90€ → 19.90€ Refresh 2026-05-18: 19.90€ → 19.90€",
+      "gtin_observed": "3337875543248",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 19.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/vichy/mineral-89-hyaluron-booster-com-efeito-revitalizante-e-fortificante/p-632197/"
+        },
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 25.8,
+          "in_stock": true,
+          "url": "https://www.notino.pt/vichy/mineral-89-hyaluron-booster-com-efeito-revitalizante-e-fortificante/p-632197/"
+        }
+      ]
+    },
+    {
+      "ean": "3337875585026",
+      "name": "La Roche-Posay Effaclar Duo+ 40 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 40,
+      "verified_at": "2026-05-18T18:29:33.062Z",
+      "resolved_url": "https://www.notino.pt/la-roche-posay/effaclar-duom-cuidado-de-desobstrucao-corretivo-anti-imperfeicoes-e-anti-marcas/p-16196282/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche-Posay Effaclar DUO (+M)",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 40,
+      "observed_price": 22.9,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante: Effaclar Duo+M (com niacinamida) Refresh 2026-05-18: 20.90€ → 22.90€ Refresh 2026-05-18: 22.90€ → 22.90€ Refresh 2026-05-18: 22.90€ → 22.90€ Refresh 2026-05-18: 22.90€ → 22.90€",
+      "gtin_observed": "3337875863377",
+      "observed_variants": [
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 22.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/la-roche-posay/effaclar-duom-cuidado-de-desobstrucao-corretivo-anti-imperfeicoes-e-anti-marcas/p-16196282/"
+        }
+      ]
+    },
+    {
+      "ean": "3264680004605",
+      "name": "Nuxe Huile Prodigieuse 100 ml",
+      "brand": "Nuxe",
+      "expected_volume_ml": 100,
+      "verified_at": "2026-05-18T18:29:44.073Z",
+      "resolved_url": "https://www.notino.pt/nuxe/huile-prodigieuse-oleo-seco-multifuncional-para-rosto-corpo-e-cabelo/p-618384/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Nuxe Huile Prodigieuse",
+      "observed_brand": "Nuxe",
+      "observed_volume_ml": 100,
+      "observed_price": 26.7,
+      "observed_previous_price": 33.3,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 28.30€ → 26.70€ Refresh 2026-05-18: 26.70€ → 26.70€ Refresh 2026-05-18: 26.70€ → 26.70€ Refresh 2026-05-18: 26.70€ → 26.70€",
+      "gtin_observed": "3264680009754",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 13.8,
+          "in_stock": true,
+          "url": "https://www.notino.pt/nuxe/huile-prodigieuse-oleo-seco-multifuncional-para-rosto-corpo-e-cabelo/p-618384/"
+        },
+        {
+          "volume_ml": 60,
+          "unit": "ml",
+          "price": 21.4,
+          "in_stock": true,
+          "url": "https://www.notino.pt/nuxe/huile-prodigieuse-oleo-seco-multifuncional-para-rosto-corpo-e-cabelo/p-618384/"
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 26.7,
+          "in_stock": true,
+          "url": "https://www.notino.pt/nuxe/huile-prodigieuse-oleo-seco-multifuncional-para-rosto-corpo-e-cabelo/p-618384/"
+        }
+      ]
+    },
+    {
+      "ean": "3522930003151",
+      "name": "Caudalie Vinoperfect Serum Luminosidade 30 ml",
+      "brand": "Caudalie",
+      "expected_volume_ml": 30,
+      "verified_at": "2026-05-14T10:00:00.000Z",
+      "resolved_url": "https://www.notino.pt/caudalie/vinoperfect-serum-radiancia-manchas/p-1626614/",
+      "resolution_method": "json-ld-realtime",
+      "observed_name": "Caudalie Vinoperfect Serum Luminosidade 30 ml",
+      "observed_brand": "Caudalie",
+      "observed_volume_ml": 30,
+      "observed_price": 46.9,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": false,
+      "confidence": 0.95,
+      "status": "verified",
+      "notes": ""
+    },
+    {
+      "ean": "3337875597196",
+      "name": "CeraVe Creme Hidratante 250 ml",
+      "brand": "CeraVe",
+      "expected_volume_ml": 250,
+      "verified_at": "2026-05-18T18:29:47.648Z",
+      "resolved_url": "https://www.notino.pt/cerave/moisturizers-creme-hidratante-de-rosto-e-corpo-para-pele-seca-a-muito-seca/p-15692403/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "CeraVe Moisturizers",
+      "observed_brand": "CeraVe",
+      "observed_volume_ml": 250,
+      "observed_price": 6.5,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante: Notino so vende 340g (tubo) e 454g (frasco/recarga); seed pede 250ml Refresh 2026-05-18: 12.30€ → 6.50€ Refresh 2026-05-18: 6.50€ → 6.50€ Refresh 2026-05-18: 6.50€ → 6.50€ Refresh 2026-05-18: 6.50€ → 6.50€",
+      "gtin_observed": "3337875597388",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 6.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/cerave/moisturizers-creme-hidratante-de-rosto-e-corpo-para-pele-seca-a-muito-seca/p-15692403/"
+        },
+        {
+          "volume_ml": 177,
+          "unit": "ml",
+          "price": 12.3,
+          "in_stock": true,
+          "url": "https://www.notino.pt/cerave/moisturizers-creme-hidratante-de-rosto-e-corpo-para-pele-seca-a-muito-seca/p-15692403/"
+        },
+        {
+          "volume_ml": 340,
+          "unit": "ml",
+          "price": 15.6,
+          "in_stock": true,
+          "url": "https://www.notino.pt/cerave/moisturizers-creme-hidratante-de-rosto-e-corpo-para-pele-seca-a-muito-seca/p-15692403/"
+        },
+        {
+          "volume_ml": 454,
+          "unit": "ml",
+          "price": 12.3,
+          "in_stock": true,
+          "url": "https://www.notino.pt/cerave/moisturizers-creme-hidratante-de-rosto-e-corpo-para-pele-seca-a-muito-seca/p-15692403/"
+        }
+      ]
+    },
+    {
+      "ean": "3600523432059",
+      "name": "L'Oreal Paris Elvive Oleo Extraordinario 100 ml",
+      "brand": "L'Oreal Paris",
+      "expected_volume_ml": 100,
+      "verified_at": "2026-05-18T18:29:50.490Z",
+      "resolved_url": "https://www.notino.pt/loreal-paris/elseve-oleo-para-cabelo-danificado/p-474424/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "L’Oréal Paris Elseve Extraordinary Oil",
+      "observed_brand": "L'Oreal Paris",
+      "observed_volume_ml": 100,
+      "observed_price": 6.4,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 8.00€ → 6.40€ Refresh 2026-05-18: 6.40€ → 6.40€ Refresh 2026-05-18: 6.40€ → 6.40€ Refresh 2026-05-18: 6.40€ → 6.40€",
+      "gtin_observed": "3600522510307",
+      "observed_variants": [
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 6.4,
+          "in_stock": true,
+          "url": "https://www.notino.pt/loreal-paris/elseve-oleo-para-cabelo-danificado/p-474424/"
+        }
+      ]
+    },
+    {
+      "ean": "8719134109924",
+      "name": "Rituals The Ritual of Sakura Body Cream 220 ml",
+      "brand": "Rituals",
+      "expected_volume_ml": 220,
+      "verified_at": "2026-05-15T11:00:00.000Z",
+      "resolved_url": "https://www.notino.pt/rituals/the-ritual-of-sakura-renewing-body-cream-creme-corporal/",
+      "resolution_method": "sidepanel-or-mcp",
+      "observed_name": null,
+      "confidence": 0.6,
+      "status": "low-confidence",
+      "notes": "URL canonica conhecida (separador aberto desde sessao anterior). Confirmar preco em proxima sessao."
+    },
+    {
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Agua Micelar 500 ml",
+      "brand": "Bioderma",
+      "expected_volume_ml": 500,
+      "verified_at": "2026-05-14T10:00:00.000Z",
+      "resolved_url": null,
+      "resolution_method": "json-ld-realtime",
+      "observed_name": "Bioderma Sensibio H2O Agua Micelar 500 ml (Notino vende 850ml (pack maior); 500ml em variantes do mesmo PDP)",
+      "observed_brand": "Bioderma",
+      "observed_volume_ml": 500,
+      "observed_price": 21.84,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.8,
+      "status": "variant",
+      "notes": "Variante: Notino vende 850ml (pack maior); 500ml em variantes do mesmo PDP"
+    },
+    {
+      "ean": "3600524025632",
+      "name": "Maybelline Fit Me Foundation 30 ml (120 Classic Ivory)",
+      "brand": "Maybelline",
+      "expected_volume_ml": 30,
+      "verified_at": "2026-05-18T18:29:59.741Z",
+      "resolved_url": "https://www.notino.pt/maybelline/fit-me-matteporeless-base/p-624722/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "MAYBELLINE NEW YORK Fit Me! Matte+Poreless",
+      "observed_brand": "Maybelline",
+      "observed_volume_ml": 30,
+      "observed_price": 7.76,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante: Fit Me Matte+Poreless (diferente do seed que e Fit Me Foundation normal) Refresh 2026-05-18: 8.92€ → 7.76€ Refresh 2026-05-18: 7.76€ → 7.76€ Refresh 2026-05-18: 7.76€ → 7.76€ Refresh 2026-05-18: 7.76€ → 7.76€",
+      "gtin_observed": "3600531324483",
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 6.72,
+          "in_stock": true,
+          "url": "https://www.notino.pt/maybelline/fit-me-matteporeless-base/p-624722/"
+        }
+      ]
+    },
+    {
+      "ean": "3337875585668",
+      "name": "La Roche-Posay Hyalu B5 Serum 30 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 30,
+      "verified_at": "2026-05-18T18:30:03.455Z",
+      "resolved_url": "https://www.notino.pt/la-roche-posay/hyalu-b5-suractivated-cream-creme-concentrado-com-acido-hialuronico/p-16328096/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche-Posay Hyalu B5 Suractivated Cream",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 30,
+      "observed_price": 37.1,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante: Notino so vende Hyalu B5 Suractivated CREAM (50ml), nao o serum (30ml) que esta em farmacias Refresh 2026-05-18: 33.70€ → 37.10€ Refresh 2026-05-18: 37.10€ → 37.10€ Refresh 2026-05-18: 37.10€ → 37.10€ Refresh 2026-05-18: 37.10€ → 37.10€",
+      "gtin_observed": "3337875920698",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 37.1,
+          "in_stock": true,
+          "url": "https://www.notino.pt/la-roche-posay/hyalu-b5-suractivated-cream-creme-concentrado-com-acido-hialuronico/p-16328096/"
+        }
+      ]
+    },
+    {
+      "ean": "8470001763440",
+      "name": "ISDIN Fotoprotector Fusion Water Magic SPF50 50 ml",
+      "brand": "ISDIN",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:30:07.071Z",
+      "resolved_url": "https://www.notino.pt/isdin/fusion-water-creme-solar-facial-spf-50/p-16123139/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "ISDIN Fusion Water",
+      "observed_brand": "ISDIN",
+      "observed_volume_ml": 50,
+      "observed_price": 18.6,
+      "observed_previous_price": null,
+      "observed_currency": "EUR",
+      "observed_in_stock": false,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Variante: Notino vende Fusion Water base (nao Magic); existem Glow/Sport/Hydrolotion noutros PDPs Refresh 2026-05-18: 18.60€ → 18.60€ Refresh 2026-05-18: 18.60€ → 18.60€ Refresh 2026-05-18: 18.60€ → 18.60€",
+      "gtin_observed": "8470001748577",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 18.6,
+          "in_stock": false,
+          "url": "https://www.notino.pt/isdin/fusion-water-creme-solar-facial-spf-50/p-16123139/"
+        }
+      ]
+    },
+    {
+      "ean": "3337875797436",
+      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+ 50 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 50,
+      "verified_at": "2026-05-18T18:30:14.815Z",
+      "resolved_url": "https://www.notino.pt/la-roche-posay/anthelios-creme-protetor-de-dia-spf-50/p-16123059/",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "La Roche-Posay Anthelios UVMUNE 400",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 50,
+      "observed_price": 17.5,
+      "observed_previous_price": 25,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": " Refresh 2026-05-18: 21.25€ → 17.50€ Refresh 2026-05-18: 17.50€ → 17.50€ Refresh 2026-05-18: 17.50€ → 17.50€ Refresh 2026-05-18: 17.50€ → 17.50€",
+      "gtin_observed": "3337875797719",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 17.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/la-roche-posay/anthelios-creme-protetor-de-dia-spf-50/p-16123059/"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total": 18,
+    "verified": 13,
+    "variant": 2,
+    "not_found": 2,
+    "low_confidence": 1
+  }
+}

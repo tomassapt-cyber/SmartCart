@@ -1,0 +1,1399 @@
+{
+  "_comment": "Dados mock realistas — preços em EUR do mercado PT (mai 2025). EANs verificáveis no Open Food Facts / GEPIR.",
+  "stores": [
+    {
+      "slug": "notino",
+      "name": "Notino PT",
+      "base_url": "https://www.notino.pt",
+      "logo_url": "https://www.notino.pt/favicon.ico",
+      "free_shipping_threshold": 29,
+      "shipping_zones": {
+        "mainland": 3.49,
+        "madeira": 6.99,
+        "acores": 8.99
+      }
+    },
+    {
+      "slug": "sephora",
+      "name": "Sephora PT",
+      "base_url": "https://www.sephora.pt",
+      "logo_url": "https://www.sephora.pt/favicon.ico",
+      "free_shipping_threshold": 35,
+      "shipping_zones": {
+        "mainland": 3.95,
+        "madeira": 7.5,
+        "acores": 9.5
+      }
+    },
+    {
+      "slug": "douglas",
+      "name": "Douglas PT",
+      "base_url": "https://www.douglas.pt",
+      "logo_url": "https://www.douglas.pt/favicon.ico",
+      "free_shipping_threshold": 29,
+      "shipping_zones": {
+        "mainland": 3.99,
+        "madeira": 7.99,
+        "acores": 9.99
+      }
+    },
+    {
+      "slug": "parfois",
+      "name": "Parfois Beauty",
+      "base_url": "https://www.parfois.com",
+      "logo_url": "https://www.parfois.com/favicon.ico",
+      "free_shipping_threshold": 40,
+      "shipping_zones": {
+        "mainland": 4.99,
+        "madeira": 8.99,
+        "acores": 10.99
+      }
+    },
+    {
+      "slug": "druni",
+      "name": "Druni PT",
+      "base_url": "https://www.druni.pt",
+      "logo_url": "https://www.druni.pt/favicon.ico",
+      "free_shipping_threshold": 30,
+      "shipping_zones": {
+        "mainland": 3.49,
+        "madeira": 6.99,
+        "acores": 8.99
+      }
+    },
+    {
+      "slug": "wook",
+      "name": "Wook",
+      "base_url": "https://www.wook.pt",
+      "logo_url": "https://www.wook.pt/favicon.ico",
+      "free_shipping_threshold": 25,
+      "shipping_zones": {
+        "mainland": 2.99,
+        "madeira": 5.99,
+        "acores": 7.99
+      }
+    },
+    {
+      "slug": "wells",
+      "name": "Wells",
+      "base_url": "https://www.wells.pt",
+      "logo_url": "https://www.wells.pt/favicon.ico",
+      "free_shipping_threshold": 30,
+      "shipping_zones": {
+        "mainland": 3.45,
+        "madeira": 6.5,
+        "acores": 8.5
+      }
+    },
+    {
+      "slug": "perfumesecompanhia",
+      "name": "Perfumes & Companhia",
+      "base_url": "https://www.perfumesecompanhia.pt",
+      "logo_url": "https://www.perfumesecompanhia.pt/favicon.ico",
+      "free_shipping_threshold": 35,
+      "shipping_zones": {
+        "mainland": 3.9,
+        "madeira": 7.9,
+        "acores": 9.9
+      }
+    },
+    {
+      "slug": "elcorteingles",
+      "name": "El Corte Inglés Beauty",
+      "base_url": "https://www.elcorteingles.pt",
+      "logo_url": "https://www.elcorteingles.pt/favicon.ico",
+      "free_shipping_threshold": 50,
+      "shipping_zones": {
+        "mainland": 4.95,
+        "madeira": 9.95,
+        "acores": 12.95
+      }
+    },
+    {
+      "slug": "kiko",
+      "name": "KIKO Milano PT",
+      "base_url": "https://www.kikocosmetics.com/pt-pt",
+      "logo_url": "https://www.kikocosmetics.com/favicon.ico",
+      "free_shipping_threshold": 25,
+      "shipping_zones": {
+        "mainland": 4.5,
+        "madeira": 8.5,
+        "acores": 10.5
+      }
+    },
+    {
+      "slug": "lojadoperfume",
+      "name": "Loja do Perfume",
+      "base_url": "https://www.lojadoperfume.com",
+      "logo_url": "https://www.lojadoperfume.com/favicon.ico",
+      "free_shipping_threshold": 39,
+      "shipping_zones": {
+        "mainland": 2.99,
+        "madeira": 5.99,
+        "acores": 7.99
+      }
+    },
+    {
+      "slug": "pharma2u",
+      "name": "Pharma2u",
+      "base_url": "https://www.pharma2u.pt",
+      "logo_url": "https://www.pharma2u.pt/favicon.ico",
+      "free_shipping_threshold": 29,
+      "shipping_zones": {
+        "mainland": 3.2,
+        "madeira": 6.5,
+        "acores": 8.5
+      }
+    }
+  ],
+  "shipping_rules": [
+    {
+      "store_slug": "notino",
+      "district": "nacional",
+      "price": 3.49,
+      "min_days": 1,
+      "max_days": 3
+    },
+    {
+      "store_slug": "notino",
+      "district": "Madeira",
+      "price": 6.99,
+      "min_days": 3,
+      "max_days": 6
+    },
+    {
+      "store_slug": "notino",
+      "district": "Açores",
+      "price": 8.99,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "sephora",
+      "district": "nacional",
+      "price": 3.95,
+      "min_days": 1,
+      "max_days": 3
+    },
+    {
+      "store_slug": "sephora",
+      "district": "Madeira",
+      "price": 7.5,
+      "min_days": 3,
+      "max_days": 6
+    },
+    {
+      "store_slug": "sephora",
+      "district": "Açores",
+      "price": 9.5,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "douglas",
+      "district": "nacional",
+      "price": 3.99,
+      "min_days": 1,
+      "max_days": 4
+    },
+    {
+      "store_slug": "douglas",
+      "district": "Madeira",
+      "price": 7.99,
+      "min_days": 3,
+      "max_days": 6
+    },
+    {
+      "store_slug": "douglas",
+      "district": "Açores",
+      "price": 9.99,
+      "min_days": 4,
+      "max_days": 8
+    },
+    {
+      "store_slug": "parfois",
+      "district": "nacional",
+      "price": 4.99,
+      "min_days": 2,
+      "max_days": 4
+    },
+    {
+      "store_slug": "parfois",
+      "district": "Madeira",
+      "price": 8.99,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "parfois",
+      "district": "Açores",
+      "price": 10.99,
+      "min_days": 5,
+      "max_days": 8
+    },
+    {
+      "store_slug": "druni",
+      "district": "nacional",
+      "price": 3.49,
+      "min_days": 1,
+      "max_days": 3
+    },
+    {
+      "store_slug": "druni",
+      "district": "Madeira",
+      "price": 6.99,
+      "min_days": 3,
+      "max_days": 5
+    },
+    {
+      "store_slug": "druni",
+      "district": "Açores",
+      "price": 8.99,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "wook",
+      "district": "nacional",
+      "price": 2.99,
+      "min_days": 1,
+      "max_days": 3
+    },
+    {
+      "store_slug": "wook",
+      "district": "Madeira",
+      "price": 5.99,
+      "min_days": 3,
+      "max_days": 6
+    },
+    {
+      "store_slug": "wook",
+      "district": "Açores",
+      "price": 7.99,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "wells",
+      "district": "nacional",
+      "price": 3.45,
+      "min_days": 1,
+      "max_days": 3
+    },
+    {
+      "store_slug": "wells",
+      "district": "Madeira",
+      "price": 6.5,
+      "min_days": 3,
+      "max_days": 5
+    },
+    {
+      "store_slug": "wells",
+      "district": "Açores",
+      "price": 8.5,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "perfumesecompanhia",
+      "district": "nacional",
+      "price": 3.9,
+      "min_days": 1,
+      "max_days": 3
+    },
+    {
+      "store_slug": "perfumesecompanhia",
+      "district": "Madeira",
+      "price": 7.9,
+      "min_days": 3,
+      "max_days": 6
+    },
+    {
+      "store_slug": "perfumesecompanhia",
+      "district": "Açores",
+      "price": 9.9,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "elcorteingles",
+      "district": "nacional",
+      "price": 4.95,
+      "min_days": 2,
+      "max_days": 4
+    },
+    {
+      "store_slug": "elcorteingles",
+      "district": "Madeira",
+      "price": 9.95,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "elcorteingles",
+      "district": "Açores",
+      "price": 12.95,
+      "min_days": 5,
+      "max_days": 8
+    },
+    {
+      "store_slug": "kiko",
+      "district": "nacional",
+      "price": 4.5,
+      "min_days": 2,
+      "max_days": 4
+    },
+    {
+      "store_slug": "kiko",
+      "district": "Madeira",
+      "price": 8.5,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "kiko",
+      "district": "Açores",
+      "price": 10.5,
+      "min_days": 5,
+      "max_days": 8
+    },
+    {
+      "store_slug": "lojadoperfume",
+      "district": "nacional",
+      "price": 2.99,
+      "min_days": 1,
+      "max_days": 2
+    },
+    {
+      "store_slug": "lojadoperfume",
+      "district": "Madeira",
+      "price": 5.99,
+      "min_days": 3,
+      "max_days": 5
+    },
+    {
+      "store_slug": "lojadoperfume",
+      "district": "Açores",
+      "price": 7.99,
+      "min_days": 4,
+      "max_days": 7
+    },
+    {
+      "store_slug": "pharma2u",
+      "district": "nacional",
+      "price": 3.2,
+      "min_days": 1,
+      "max_days": 3
+    },
+    {
+      "store_slug": "pharma2u",
+      "district": "Madeira",
+      "price": 6.5,
+      "min_days": 3,
+      "max_days": 6
+    },
+    {
+      "store_slug": "pharma2u",
+      "district": "Açores",
+      "price": 8.5,
+      "min_days": 4,
+      "max_days": 7
+    }
+  ],
+  "products": [
+    {
+      "ean": "3145891264100",
+      "name": "Chanel No. 5 Eau de Parfum 50 ml",
+      "brand": "Chanel",
+      "category": "perfume",
+      "image_url": "https://images.openbeautyfacts.org/images/products/314/589/125/5607/front_fr.9.400.jpg"
+    },
+    {
+      "ean": "3365440787858",
+      "name": "YSL Black Opium Eau de Parfum 50 ml",
+      "brand": "Yves Saint Laurent",
+      "category": "perfume",
+      "image_url": "https://images.openbeautyfacts.org/images/products/336/544/078/7858/front_en.5.400.jpg"
+    },
+    {
+      "ean": "3348901250146",
+      "name": "Dior Sauvage Eau de Toilette 100 ml",
+      "brand": "Dior",
+      "category": "perfume",
+      "image_url": "https://images.openfoodfacts.org/images/products/334/890/125/0146/front_fr.3.400.jpg"
+    },
+    {
+      "ean": "3360372059707",
+      "name": "Giorgio Armani Code Homme Eau de Toilette 75 ml",
+      "brand": "Giorgio Armani",
+      "category": "perfume",
+      "image_url": "https://images.openbeautyfacts.org/images/products/336/037/210/0522/front_en.3.400.jpg"
+    },
+    {
+      "ean": "8011003845460",
+      "name": "Versace Bright Crystal Eau de Toilette 90 ml",
+      "brand": "Versace",
+      "category": "perfume",
+      "image_url": "https://static.thcdn.com/productimg/original/10048625-7005322024530583.jpg"
+    },
+    {
+      "ean": "3614271326072",
+      "name": "Lancôme Génifique Sérum Avançado 50 ml",
+      "brand": "Lancôme",
+      "category": "skincare",
+      "image_url": "https://images.openbeautyfacts.org/images/products/361/427/278/3478/front_en.6.400.jpg"
+    },
+    {
+      "ean": "0887167491625",
+      "name": "Estée Lauder Advanced Night Repair Sérum 50 ml",
+      "brand": "Estée Lauder",
+      "category": "skincare",
+      "image_url": "https://images.openbeautyfacts.org/images/products/088/716/748/5488/front_nl.9.400.jpg"
+    },
+    {
+      "ean": "3337875585132",
+      "name": "Vichy Minéral 89 Sérum Hidratante 50 ml",
+      "brand": "Vichy",
+      "category": "skincare",
+      "image_url": "https://images.openbeautyfacts.org/images/products/333/787/554/3248/front_en.5.400.jpg"
+    },
+    {
+      "ean": "3337875585026",
+      "name": "La Roche-Posay Effaclar Duo+ 40 ml",
+      "brand": "La Roche-Posay",
+      "category": "skincare",
+      "image_url": "https://images.openbeautyfacts.org/images/products/333/787/586/3377/front_fr.3.400.jpg"
+    },
+    {
+      "ean": "3264680004605",
+      "name": "Nuxe Huile Prodigieuse 100 ml",
+      "brand": "Nuxe",
+      "category": "skincare",
+      "image_url": "https://images.openbeautyfacts.org/images/products/326/468/001/1016/front_fr.10.400.jpg"
+    },
+    {
+      "ean": "3522930003151",
+      "name": "Caudalie Vinoperfect Sérum Luminosidade 30 ml",
+      "brand": "Caudalie",
+      "category": "skincare",
+      "image_url": "https://images.openbeautyfacts.org/images/products/352/293/000/3151/front_fr.8.400.jpg"
+    },
+    {
+      "ean": "3337875597196",
+      "name": "CeraVe Creme Hidratante 250 ml",
+      "brand": "CeraVe",
+      "category": "skincare",
+      "image_url": "https://images.openbeautyfacts.org/images/products/333/787/559/8996/front_en.28.400.jpg"
+    },
+    {
+      "ean": "3600523432059",
+      "name": "L'Oréal Paris Elvive Óleo Extraordinário 100 ml",
+      "brand": "L'Oréal Paris",
+      "category": "hair",
+      "image_url": "https://images.openbeautyfacts.org/images/products/360/052/271/3203/front_en.4.400.jpg"
+    },
+    {
+      "ean": "3474630639785",
+      "name": "Kérastase Elixir Ultime Óleo Original 100 ml",
+      "brand": "Kérastase",
+      "category": "hair",
+      "image_url": "https://images.openbeautyfacts.org/images/products/347/463/661/4103/front_es.8.400.jpg"
+    },
+    {
+      "ean": "0884486373601",
+      "name": "Redken All Soft Shampoo 300 ml",
+      "brand": "Redken",
+      "category": "hair",
+      "image_url": "https://images.openbeautyfacts.org/images/products/088/448/604/1807/front_en.3.400.jpg"
+    },
+    {
+      "ean": "8719134109924",
+      "name": "Rituals The Ritual of Sakura Body Cream 220 ml",
+      "brand": "Rituals",
+      "category": "body",
+      "image_url": "https://images.openbeautyfacts.org/images/products/871/913/419/0298/front_fr.3.400.jpg"
+    },
+    {
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Água Micelar 500 ml",
+      "brand": "Bioderma",
+      "category": "body",
+      "image_url": "https://images.openbeautyfacts.org/images/products/000/000/681/9292/front_pt.3.400.jpg"
+    },
+    {
+      "ean": "3600524025632",
+      "name": "Maybelline Fit Me Foundation 30 ml (120 Classic Ivory)",
+      "brand": "Maybelline",
+      "category": "makeup",
+      "image_url": "https://images.openbeautyfacts.org/images/products/360/053/132/4483/front_nl.13.400.jpg"
+    },
+    {
+      "ean": "5060542790147",
+      "name": "Charlotte Tilbury Magic Cream Hidratante 50 ml",
+      "brand": "Charlotte Tilbury",
+      "category": "makeup",
+      "image_url": "https://static.thcdn.com/productimg/original/17638977-8095316825438462.jpg"
+    },
+    {
+      "ean": "0607845029250",
+      "name": "NARS Radiant Creamy Concealer 6 ml (Vanilla)",
+      "brand": "NARS",
+      "category": "makeup",
+      "image_url": null
+    }
+  ],
+  "store_products": [
+    {
+      "_comment": "--- NOTINO ---",
+      "store_slug": "notino",
+      "items": [
+        {
+          "ean": "3145891264100",
+          "price": 92.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/chanel/chanel-n-5-eau-de-parfum-para-mulher/p-281498/"
+        },
+        {
+          "ean": "3365440787858",
+          "price": 71.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/yves-saint-laurent/black-opium-eau-de-parfum-para-mulher/p-376462/"
+        },
+        {
+          "ean": "3348901250146",
+          "price": 78.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/dior/sauvage-eau-de-toilette-para-homem/p-1030453/"
+        },
+        {
+          "ean": "3360372059707",
+          "price": 57.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/giorgio-armani/armani-code-eau-de-toilette-para-homem/p-278862/"
+        },
+        {
+          "ean": "8011003845460",
+          "price": 44.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/versace/bright-crystal-eau-de-toilette-para-mulher/p-297484/"
+        },
+        {
+          "ean": "3614271326072",
+          "price": 68,
+          "in_stock": true,
+          "url": "https://www.notino.pt/lancome/advanced-genifique-serum-de-juventude/p-2066427/"
+        },
+        {
+          "ean": "0887167491625",
+          "price": 79.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/estee-lauder/advanced-night-repair-serum-sincronizado/p-1244918/"
+        },
+        {
+          "ean": "3337875585132",
+          "price": 15.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/vichy/mineral-89-soro-diario-fortalecedor/p-2147183/"
+        },
+        {
+          "ean": "3337875585026",
+          "price": 19.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/la-roche-posay/effaclar-duo-tratamento-corretivo-anti-imperfeicoes/p-1035527/"
+        },
+        {
+          "ean": "3264680004605",
+          "price": 23.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/nuxe/huile-prodigieuse-oleo-seco-multifuncional/p-279115/"
+        },
+        {
+          "ean": "3522930003151",
+          "price": 34.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/caudalie/vinoperfect-serum-radiancia-manchas/p-1626614/"
+        },
+        {
+          "ean": "3337875597196",
+          "price": 13.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/cerave/creme-hidratante/p-2157804/"
+        },
+        {
+          "ean": "3600523432059",
+          "price": 10.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/loreal-paris/elvive-oleo-extraordinario/p-905424/"
+        },
+        {
+          "ean": "3474630639785",
+          "price": 32.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/kerastase/elixir-ultime-original-oleo-original/p-1009777/"
+        },
+        {
+          "ean": "0884486373601",
+          "price": 14.5,
+          "in_stock": true,
+          "url": "https://www.notino.pt/redken/all-soft-shampoo/p-1049882/"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 17.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/rituals/the-ritual-of-sakura-body-cream/p-2095312/"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 14.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/bioderma/sensibio-h2o-agua-micelar/p-271984/"
+        },
+        {
+          "ean": "3600524025632",
+          "price": 8.9,
+          "in_stock": true,
+          "url": "https://www.notino.pt/maybelline/fit-me-base-matte-e-poreless/p-1630124/"
+        },
+        {
+          "ean": "5060542790147",
+          "price": 52,
+          "in_stock": true,
+          "url": "https://www.notino.pt/charlotte-tilbury/magic-cream-hidratante/p-3038451/"
+        },
+        {
+          "ean": "0607845029250",
+          "price": 30.5,
+          "in_stock": false,
+          "url": "https://www.notino.pt/nars/radiant-creamy-concealer/p-1629034/"
+        }
+      ]
+    },
+    {
+      "_comment": "--- SEPHORA ---",
+      "store_slug": "sephora",
+      "items": [
+        {
+          "ean": "3145891264100",
+          "price": 98,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/chanel-n-5-eau-de-parfum-P10003426.html"
+        },
+        {
+          "ean": "3365440787858",
+          "price": 79,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/black-opium-eau-de-parfum-P10010528.html"
+        },
+        {
+          "ean": "3348901250146",
+          "price": 89,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/sauvage-eau-de-toilette-P10038217.html"
+        },
+        {
+          "ean": "3360372059707",
+          "price": 66,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/armani-code-eau-de-toilette-P10003741.html"
+        },
+        {
+          "ean": "8011003845460",
+          "price": 52,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/bright-crystal-eau-de-toilette-P10003682.html"
+        },
+        {
+          "ean": "3614271326072",
+          "price": 74,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/advanced-genifique-serum-de-juventude-P10003424.html"
+        },
+        {
+          "ean": "0887167491625",
+          "price": 88,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/advanced-night-repair-serum-P10003480.html"
+        },
+        {
+          "ean": "3337875585132",
+          "price": 17.5,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/mineral-89-soro-diario-P10076233.html"
+        },
+        {
+          "ean": "3337875585026",
+          "price": 21.5,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/effaclar-duo-P10076089.html"
+        },
+        {
+          "ean": "3264680004605",
+          "price": 27,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/huile-prodigieuse-P10003494.html"
+        },
+        {
+          "ean": "3522930003151",
+          "price": 38.5,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/vinoperfect-serum-radiancia-P10050188.html"
+        },
+        {
+          "ean": "3337875597196",
+          "price": 15.5,
+          "in_stock": false,
+          "url": "https://www.sephora.pt/p/cerave-creme-hidratante-P10084229.html"
+        },
+        {
+          "ean": "3600523432059",
+          "price": 12,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/loreal-elvive-oleo-P10012441.html"
+        },
+        {
+          "ean": "3474630639785",
+          "price": 37.5,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/elixir-ultime-oleo-P10009873.html"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 19.9,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/rituals-sakura-body-cream-P10063412.html"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 16.5,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/sensibio-h2o-agua-micelar-P10076031.html"
+        },
+        {
+          "ean": "3600524025632",
+          "price": 10.5,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/fit-me-base-P10020281.html"
+        },
+        {
+          "ean": "5060542790147",
+          "price": 58,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/charlotte-tilbury-magic-cream-P10058312.html"
+        },
+        {
+          "ean": "0607845029250",
+          "price": 34,
+          "in_stock": true,
+          "url": "https://www.sephora.pt/p/nars-radiant-creamy-concealer-P10010348.html"
+        }
+      ]
+    },
+    {
+      "_comment": "--- DOUGLAS ---",
+      "store_slug": "douglas",
+      "items": [
+        {
+          "ean": "3145891264100",
+          "price": 95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/chanel-no5-eau-de-parfum-50ml/1000001"
+        },
+        {
+          "ean": "3365440787858",
+          "price": 74.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/ysl-black-opium-edp-50ml/1000002"
+        },
+        {
+          "ean": "3348901250146",
+          "price": 84.95,
+          "in_stock": false,
+          "url": "https://www.douglas.pt/p/dior-sauvage-edt-100ml/1000003"
+        },
+        {
+          "ean": "3360372059707",
+          "price": 62.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/armani-code-edt-75ml/1000004"
+        },
+        {
+          "ean": "8011003845460",
+          "price": 47.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/versace-bright-crystal-90ml/1000005"
+        },
+        {
+          "ean": "3614271326072",
+          "price": 70.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/lancome-genifique-serum-50ml/1000006"
+        },
+        {
+          "ean": "0887167491625",
+          "price": 83.5,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/el-advanced-night-repair-50ml/1000007"
+        },
+        {
+          "ean": "3337875585132",
+          "price": 16.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/vichy-mineral89-50ml/1000008"
+        },
+        {
+          "ean": "3264680004605",
+          "price": 25.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/nuxe-huile-prodigieuse-100ml/1000009"
+        },
+        {
+          "ean": "3522930003151",
+          "price": 36.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/caudalie-vinoperfect-serum-30ml/1000010"
+        },
+        {
+          "ean": "3474630639785",
+          "price": 35.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/kerastase-elixir-ultime-100ml/1000011"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 18.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/rituals-sakura-body-cream-220ml/1000012"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 15.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/bioderma-sensibio-h2o-500ml/1000013"
+        },
+        {
+          "ean": "5060542790147",
+          "price": 55.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/charlotte-tilbury-magic-cream-50ml/1000014"
+        },
+        {
+          "ean": "0607845029250",
+          "price": 31.95,
+          "in_stock": true,
+          "url": "https://www.douglas.pt/p/nars-concealer-vanilla/1000015"
+        }
+      ]
+    },
+    {
+      "_comment": "--- PARFOIS ---",
+      "store_slug": "parfois",
+      "items": [
+        {
+          "ean": "3365440787858",
+          "price": 77,
+          "in_stock": true,
+          "url": "https://www.parfois.com/pt/perfume-ysl-black-opium-50ml.html"
+        },
+        {
+          "ean": "8011003845460",
+          "price": 49,
+          "in_stock": true,
+          "url": "https://www.parfois.com/pt/perfume-versace-bright-crystal-90ml.html"
+        },
+        {
+          "ean": "3360372059707",
+          "price": 63,
+          "in_stock": false,
+          "url": "https://www.parfois.com/pt/perfume-armani-code-75ml.html"
+        },
+        {
+          "ean": "3337875585132",
+          "price": 16,
+          "in_stock": true,
+          "url": "https://www.parfois.com/pt/vichy-mineral89-50ml.html"
+        },
+        {
+          "ean": "3337875585026",
+          "price": 20,
+          "in_stock": true,
+          "url": "https://www.parfois.com/pt/lrp-effaclar-duo-40ml.html"
+        },
+        {
+          "ean": "3600524025632",
+          "price": 9.5,
+          "in_stock": true,
+          "url": "https://www.parfois.com/pt/maybelline-fit-me-foundation.html"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 14.5,
+          "in_stock": true,
+          "url": "https://www.parfois.com/pt/bioderma-sensibio-h2o-500ml.html"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 18.5,
+          "in_stock": true,
+          "url": "https://www.parfois.com/pt/rituals-sakura-body-cream.html"
+        }
+      ]
+    },
+    {
+      "_comment": "--- DRUNI ---",
+      "store_slug": "druni",
+      "items": [
+        {
+          "ean": "3145891264100",
+          "price": 94,
+          "in_stock": true,
+          "url": "https://www.druni.pt/chanel-no5-eau-de-parfum-50ml"
+        },
+        {
+          "ean": "3365440787858",
+          "price": 72.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/ysl-black-opium-edp-50ml"
+        },
+        {
+          "ean": "3348901250146",
+          "price": 80.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/dior-sauvage-edt-100ml"
+        },
+        {
+          "ean": "3360372059707",
+          "price": 58.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/armani-code-edt-75ml"
+        },
+        {
+          "ean": "8011003845460",
+          "price": 43.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/versace-bright-crystal-90ml"
+        },
+        {
+          "ean": "3614271326072",
+          "price": 67.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/lancome-genifique-50ml"
+        },
+        {
+          "ean": "0887167491625",
+          "price": 78,
+          "in_stock": false,
+          "url": "https://www.druni.pt/estee-lauder-anr-50ml"
+        },
+        {
+          "ean": "3337875585132",
+          "price": 15.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/vichy-mineral89-50ml"
+        },
+        {
+          "ean": "3337875585026",
+          "price": 18.9,
+          "in_stock": true,
+          "url": "https://www.druni.pt/lrp-effaclar-duo-40ml"
+        },
+        {
+          "ean": "3264680004605",
+          "price": 22.9,
+          "in_stock": true,
+          "url": "https://www.druni.pt/nuxe-huile-prodigieuse-100ml"
+        },
+        {
+          "ean": "3337875597196",
+          "price": 12.9,
+          "in_stock": true,
+          "url": "https://www.druni.pt/cerave-creme-hidratante-250ml"
+        },
+        {
+          "ean": "3600523432059",
+          "price": 9.9,
+          "in_stock": true,
+          "url": "https://www.druni.pt/loreal-elvive-oleo-100ml"
+        },
+        {
+          "ean": "3474630639785",
+          "price": 31.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/kerastase-elixir-ultime-100ml"
+        },
+        {
+          "ean": "0884486373601",
+          "price": 13.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/redken-all-soft-shampoo-300ml"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 16.9,
+          "in_stock": true,
+          "url": "https://www.druni.pt/rituals-sakura-body-cream-220ml"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 13.9,
+          "in_stock": true,
+          "url": "https://www.druni.pt/bioderma-sensibio-h2o-500ml"
+        },
+        {
+          "ean": "3600524025632",
+          "price": 8.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/maybelline-fit-me-foundation"
+        },
+        {
+          "ean": "5060542790147",
+          "price": 50,
+          "in_stock": true,
+          "url": "https://www.druni.pt/charlotte-tilbury-magic-cream-50ml"
+        },
+        {
+          "ean": "0607845029250",
+          "price": 29.5,
+          "in_stock": true,
+          "url": "https://www.druni.pt/nars-radiant-creamy-concealer"
+        }
+      ]
+    },
+    {
+      "_comment": "--- WOOK (apenas cosmética seleccionada) ---",
+      "store_slug": "wook",
+      "items": [
+        {
+          "ean": "3337875597196",
+          "price": 11.99,
+          "in_stock": true,
+          "url": "https://www.wook.pt/produto/cerave-creme-hidratante-250ml/12345"
+        },
+        {
+          "ean": "3337875585132",
+          "price": 14.99,
+          "in_stock": true,
+          "url": "https://www.wook.pt/produto/vichy-mineral89-50ml/12346"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 13.49,
+          "in_stock": true,
+          "url": "https://www.wook.pt/produto/bioderma-sensibio-h2o-500ml/12347"
+        },
+        {
+          "ean": "3600523432059",
+          "price": 9.49,
+          "in_stock": true,
+          "url": "https://www.wook.pt/produto/loreal-elvive-oleo-100ml/12348"
+        },
+        {
+          "ean": "0884486373601",
+          "price": 12.99,
+          "in_stock": true,
+          "url": "https://www.wook.pt/produto/redken-all-soft-shampoo-300ml/12349"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 17.49,
+          "in_stock": true,
+          "url": "https://www.wook.pt/produto/rituals-sakura-body-cream-220ml/12350"
+        }
+      ]
+    },
+    {
+      "_comment": "--- WELLS (drugstore Sonae, foco em dermo + perfumaria essencial) ---",
+      "store_slug": "wells",
+      "items": [
+        {
+          "ean": "3337875585132",
+          "price": 16.49,
+          "in_stock": true,
+          "url": "https://www.wells.pt/vichy-mineral-89-50ml/p"
+        },
+        {
+          "ean": "3337875585026",
+          "price": 19.99,
+          "in_stock": true,
+          "url": "https://www.wells.pt/lrp-effaclar-duo-40ml/p"
+        },
+        {
+          "ean": "3264680004605",
+          "price": 24.49,
+          "in_stock": true,
+          "url": "https://www.wells.pt/nuxe-huile-prodigieuse-100ml/p"
+        },
+        {
+          "ean": "3522930003151",
+          "price": 35.99,
+          "in_stock": true,
+          "url": "https://www.wells.pt/caudalie-vinoperfect-30ml/p"
+        },
+        {
+          "ean": "3337875597196",
+          "price": 12.49,
+          "in_stock": true,
+          "url": "https://www.wells.pt/cerave-creme-hidratante-250ml/p"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 14.29,
+          "in_stock": true,
+          "url": "https://www.wells.pt/bioderma-sensibio-h2o-500ml/p"
+        },
+        {
+          "ean": "3600523432059",
+          "price": 9.99,
+          "in_stock": true,
+          "url": "https://www.wells.pt/loreal-elvive-oleo-100ml/p"
+        },
+        {
+          "ean": "0884486373601",
+          "price": 13.99,
+          "in_stock": true,
+          "url": "https://www.wells.pt/redken-all-soft-shampoo-300ml/p"
+        },
+        {
+          "ean": "3145891264100",
+          "price": 96.5,
+          "in_stock": false,
+          "url": "https://www.wells.pt/chanel-no5-edp-50ml/p"
+        },
+        {
+          "ean": "3365440787858",
+          "price": 73.5,
+          "in_stock": true,
+          "url": "https://www.wells.pt/ysl-black-opium-edp-50ml/p"
+        },
+        {
+          "ean": "3600524025632",
+          "price": 9.49,
+          "in_stock": true,
+          "url": "https://www.wells.pt/maybelline-fit-me-foundation/p"
+        }
+      ]
+    },
+    {
+      "_comment": "--- PERFUMES & COMPANHIA (cadeia PT histórica) ---",
+      "store_slug": "perfumesecompanhia",
+      "items": [
+        {
+          "ean": "3145891264100",
+          "price": 93.9,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/chanel-no-5-edp-50ml"
+        },
+        {
+          "ean": "3365440787858",
+          "price": 70.5,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/ysl-black-opium-50ml"
+        },
+        {
+          "ean": "3348901250146",
+          "price": 79.9,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/dior-sauvage-edt-100ml"
+        },
+        {
+          "ean": "3360372059707",
+          "price": 56.9,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/armani-code-75ml"
+        },
+        {
+          "ean": "8011003845460",
+          "price": 41.9,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/versace-bright-crystal-90ml"
+        },
+        {
+          "ean": "3614271326072",
+          "price": 65.9,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/lancome-genifique-50ml"
+        },
+        {
+          "ean": "0887167491625",
+          "price": 76.9,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/estee-lauder-anr-50ml"
+        },
+        {
+          "ean": "3264680004605",
+          "price": 22.5,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/nuxe-huile-prodigieuse-100ml"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 17.5,
+          "in_stock": true,
+          "url": "https://www.perfumesecompanhia.pt/p/rituals-sakura-body-cream"
+        },
+        {
+          "ean": "5060542790147",
+          "price": 49.9,
+          "in_stock": false,
+          "url": "https://www.perfumesecompanhia.pt/p/charlotte-tilbury-magic-cream"
+        }
+      ]
+    },
+    {
+      "_comment": "--- EL CORTE INGLÉS BEAUTY (premium, exclusivos) ---",
+      "store_slug": "elcorteingles",
+      "items": [
+        {
+          "ean": "3145891264100",
+          "price": 99.5,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-chanel-no5-50ml"
+        },
+        {
+          "ean": "3348901250146",
+          "price": 87,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-dior-sauvage-100ml"
+        },
+        {
+          "ean": "3614271326072",
+          "price": 73.5,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-lancome-genifique-50ml"
+        },
+        {
+          "ean": "0887167491625",
+          "price": 86,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-el-anr-50ml"
+        },
+        {
+          "ean": "5060542790147",
+          "price": 56.5,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-ct-magic-cream-50ml"
+        },
+        {
+          "ean": "0607845029250",
+          "price": 33,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-nars-concealer"
+        },
+        {
+          "ean": "3474630639785",
+          "price": 36.5,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-kerastase-elixir-ultime-100ml"
+        },
+        {
+          "ean": "8719134109924",
+          "price": 19.5,
+          "in_stock": true,
+          "url": "https://www.elcorteingles.pt/beleza/p-rituals-sakura-body"
+        }
+      ]
+    },
+    {
+      "_comment": "--- KIKO MILANO (marca própria mass-market) ---",
+      "store_slug": "kiko",
+      "items": [
+        {
+          "ean": "3600524025632",
+          "price": 11.99,
+          "in_stock": true,
+          "url": "https://www.kikocosmetics.com/pt-pt/maybelline-fit-me"
+        }
+      ]
+    },
+    {
+      "_comment": "--- LOJA DO PERFUME (especialista perfumaria, preços baixos) ---",
+      "store_slug": "lojadoperfume",
+      "items": [
+        {
+          "ean": "3145891264100",
+          "price": 89.9,
+          "in_stock": true,
+          "url": "https://www.lojadoperfume.com/perfumes/chanel-no5-50ml"
+        },
+        {
+          "ean": "3365440787858",
+          "price": 68.9,
+          "in_stock": true,
+          "url": "https://www.lojadoperfume.com/perfumes/ysl-black-opium-50ml"
+        },
+        {
+          "ean": "3348901250146",
+          "price": 75.9,
+          "in_stock": true,
+          "url": "https://www.lojadoperfume.com/perfumes/dior-sauvage-100ml"
+        },
+        {
+          "ean": "3360372059707",
+          "price": 54.9,
+          "in_stock": true,
+          "url": "https://www.lojadoperfume.com/perfumes/armani-code-75ml"
+        },
+        {
+          "ean": "8011003845460",
+          "price": 39.9,
+          "in_stock": true,
+          "url": "https://www.lojadoperfume.com/perfumes/versace-bright-crystal-90ml"
+        }
+      ]
+    },
+    {
+      "_comment": "--- PHARMA2U (farmácia online, foco dermo) ---",
+      "store_slug": "pharma2u",
+      "items": [
+        {
+          "ean": "3337875585132",
+          "price": 15.2,
+          "in_stock": true,
+          "url": "https://www.pharma2u.pt/vichy-mineral89-50ml"
+        },
+        {
+          "ean": "3337875585026",
+          "price": 18.5,
+          "in_stock": true,
+          "url": "https://www.pharma2u.pt/lrp-effaclar-duo-40ml"
+        },
+        {
+          "ean": "3264680004605",
+          "price": 21.9,
+          "in_stock": true,
+          "url": "https://www.pharma2u.pt/nuxe-huile-prodigieuse-100ml"
+        },
+        {
+          "ean": "3522930003151",
+          "price": 33.9,
+          "in_stock": true,
+          "url": "https://www.pharma2u.pt/caudalie-vinoperfect-30ml"
+        },
+        {
+          "ean": "3337875597196",
+          "price": 11.9,
+          "in_stock": true,
+          "url": "https://www.pharma2u.pt/cerave-creme-hidratante-250ml"
+        },
+        {
+          "ean": "3401395614172",
+          "price": 13.5,
+          "in_stock": true,
+          "url": "https://www.pharma2u.pt/bioderma-sensibio-h2o-500ml"
+        },
+        {
+          "ean": "3614271326072",
+          "price": 64.9,
+          "in_stock": true,
+          "url": "https://www.pharma2u.pt/lancome-genifique-50ml"
+        },
+        {
+          "ean": "0887167491625",
+          "price": 75.5,
+          "in_stock": false,
+          "url": "https://www.pharma2u.pt/estee-lauder-anr-50ml"
+        }
+      ]
+    }
+  ]
+}

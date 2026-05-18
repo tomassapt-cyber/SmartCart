@@ -1,0 +1,905 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-05-12",
+  "source": "db/stores-catalog.md — análise de mercado PT cosmética online",
+  "notes": "Lista canónica de lojas alvo do tracker SmartCartCosmetics. Sincronizar com tabela `lojas` via /scripts/sync-stores.js.",
+  "stores": [
+    {
+      "id": "notino",
+      "nome": "Notino PT",
+      "url": "https://www.notino.pt",
+      "tipo": "especializada",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/notino",
+      "metodo_coleta": "playwright",
+      "freq_atualizacao": "06h00 diária",
+      "tier": 1,
+      "anti_bot": "Tolera 1 req/2s; >1 req/s leva a 429",
+      "robots_compliant": true,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.notino.pt/?q={q}",
+        "result_link_selector": "a[data-testid=\"product-tile-link\"], a.product-detail-link, .product-tile a",
+        "title_selector": "h1[itemprop=\"name\"]",
+        "supports_ean": true,
+        "needs_playwright": true
+      }
+    },
+    {
+      "id": "sephora",
+      "nome": "Sephora PT",
+      "url": "https://www.sephora.pt",
+      "tipo": "especializada",
+      "tem_api": true,
+      "tem_afiliados": true,
+      "url_afiliados": "https://partners.sephora.com/pt",
+      "metodo_coleta": "api-interna",
+      "freq_atualizacao": "06h00 diária",
+      "tier": 1,
+      "api_endpoint": "/api/v3/products/{id}",
+      "anti_bot": "Cloudflare; UA + Accept-Language realistas",
+      "robots_compliant": true,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.sephora.pt/search?q={q}",
+        "result_link_selector": "a[data-comp=\"ProductTile\"], a.product-tile",
+        "title_selector": "h1.product-meta__product-name",
+        "supports_ean": true,
+        "needs_playwright": true
+      }
+    },
+    {
+      "id": "douglas",
+      "nome": "Douglas PT",
+      "url": "https://www.douglas.pt",
+      "tipo": "especializada",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/douglas",
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "06h00 diária",
+      "tier": 1,
+      "anti_bot": "DataDome; rotation IP acima de 100 produtos",
+      "robots_compliant": true,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.douglas.pt/pt/search?q={q}",
+        "result_link_selector": "a[data-testid=\"product-tile-link\"]",
+        "title_selector": "h1[data-testid=\"product-name\"]",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "druni",
+      "nome": "Druni PT",
+      "url": "https://www.druni.pt",
+      "tipo": "especializada",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "08h00 diária",
+      "tier": 1,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.druni.pt/catalogsearch/result/?q={q}",
+        "result_link_selector": "a.product-item-link",
+        "title_selector": "h1.page-title span",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "perfumes-companhia",
+      "nome": "Perfumes & Companhia",
+      "url": "https://www.perfumesecompanhia.pt",
+      "tipo": "especializada",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/perfumesecompanhia",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "08h00 diária",
+      "tier": 1,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.perfumesecompanhia.pt/search?q={q}",
+        "result_link_selector": "a.product-link, .product-item a",
+        "title_selector": "h1.product-title",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "kiko",
+      "nome": "KIKO Milano PT",
+      "url": "https://www.kikocosmetics.com/pt-pt",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/kiko",
+      "metodo_coleta": "playwright",
+      "freq_atualizacao": "10h00 diária",
+      "tier": 1,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.kikocosmetics.com/pt-pt/search?q={q}",
+        "result_link_selector": "a.product-tile-link",
+        "title_selector": "h1.product-name",
+        "supports_ean": false,
+        "needs_playwright": true
+      }
+    },
+    {
+      "id": "parfois-beauty",
+      "nome": "Parfois Beauty",
+      "url": "https://www.parfois.com/pt",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "12h00 diária",
+      "tier": 1,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "elcorteingles",
+      "nome": "El Corte Inglés Beauty",
+      "url": "https://www.elcorteingles.pt/beleza",
+      "tipo": "generalista",
+      "tem_api": true,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/elcorteingles",
+      "metodo_coleta": "api-interna",
+      "freq_atualizacao": "06h00 diária",
+      "tier": 2,
+      "api_endpoint": "/api/sgfm/services/",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.elcorteingles.pt/beleza/search/?term={q}",
+        "result_link_selector": "a.product_link",
+        "title_selector": "h1.product_detail-name",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "worten",
+      "nome": "Worten",
+      "url": "https://www.worten.pt/beleza-saude",
+      "tipo": "generalista",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/worten",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "08h00 diária",
+      "tier": 2,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.worten.pt/search?query={q}",
+        "result_link_selector": "a.product__card__link",
+        "title_selector": "h1.product-detail__name",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "continente",
+      "nome": "Continente Online",
+      "url": "https://www.continente.pt",
+      "tipo": "generalista",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "10h00 diária",
+      "tier": 2,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "auchan",
+      "nome": "Auchan",
+      "url": "https://www.auchan.pt",
+      "tipo": "generalista",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "10h00 diária",
+      "tier": 2,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "wook",
+      "nome": "Wook",
+      "url": "https://www.wook.pt",
+      "tipo": "generalista",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "12h00 diária",
+      "tier": 2,
+      "notes": "~200 SKUs cosmética; foco principal: livros",
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "wells",
+      "nome": "Wells",
+      "url": "https://www.wells.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "07h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.wells.pt/search?q={q}",
+        "result_link_selector": "a.product-card__link, a.product-tile",
+        "title_selector": "h1.product-title, h1[itemprop=\"name\"]",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "farmaciaonline",
+      "nome": "Farmácia Online",
+      "url": "https://www.farmaciaonline.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/farmaciaonline",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "07h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.farmaciaonline.pt/?s={q}&post_type=product",
+        "result_link_selector": "a.woocommerce-LoopProduct-link",
+        "title_selector": "h1.product_title",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "pharma2you",
+      "nome": "Pharma2you",
+      "url": "https://pharma2you.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "07h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.pharma2u.pt/search?q={q}",
+        "result_link_selector": "a.product-card__link",
+        "title_selector": "h1[itemprop=\"name\"]",
+        "supports_ean": true,
+        "needs_playwright": false
+      },
+      "notes": "Renomeado de pharma2u → pharma2you (nome real verificado 2026-05-12)"
+    },
+    {
+      "id": "farmaciasholon",
+      "nome": "Farmácias Holon",
+      "url": "https://www.farmaciasholon.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "10h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "thebodyshop",
+      "nome": "The Body Shop PT",
+      "url": "https://www.thebodyshop.pt",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/thebodyshop",
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "11h00 diária",
+      "tier": 4,
+      "search_strategy": {
+        "type": "manual",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Catálogo finito, URLs estáticos pré-mapeados"
+      },
+      "notes": "URL corrigido 2026-05-12 (era /pt-pt → www.thebodyshop.pt)"
+    },
+    {
+      "id": "lush",
+      "nome": "Lush PT",
+      "url": "https://www.lush.com/pt",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "11h00 diária",
+      "tier": 4,
+      "search_strategy": {
+        "type": "manual",
+        "supports_ean": false,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "yvesrocher",
+      "nome": "Yves Rocher PT",
+      "url": "https://www.yves-rocher.pt",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/yvesrocher",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "12h00 diária",
+      "tier": 4,
+      "search_strategy": {
+        "type": "manual",
+        "supports_ean": false,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "loccitane",
+      "nome": "L'Occitane PT",
+      "url": "https://pt.loccitane.com",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/loccitane",
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "12h00 diária",
+      "tier": 4,
+      "search_strategy": {
+        "type": "manual",
+        "supports_ean": false,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "rituals",
+      "nome": "Rituals PT",
+      "url": "https://www.rituals.com/pt-pt",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/rituals",
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "11h00 diária",
+      "tier": 4,
+      "search_strategy": {
+        "type": "manual",
+        "supports_ean": false,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "mac",
+      "nome": "MAC Cosmetics PT",
+      "url": "https://www.maccosmetics.pt",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "playwright",
+      "freq_atualizacao": "13h00 diária",
+      "tier": 4,
+      "search_strategy": {
+        "type": "manual",
+        "supports_ean": false,
+        "needs_playwright": true
+      }
+    },
+    {
+      "id": "nivea",
+      "nome": "Nivea Shop PT",
+      "url": "https://www.nivea.pt/produtos",
+      "tipo": "marca-propria",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "13h00 diária",
+      "tier": 4,
+      "search_strategy": {
+        "type": "manual",
+        "supports_ean": false,
+        "needs_playwright": false
+      },
+      "notes": "URL corrigido 2026-05-12 (path /loja não existe, agora /produtos)"
+    },
+    {
+      "id": "brasty",
+      "nome": "Brasty",
+      "url": "https://www.brasty.com",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/brasty",
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "09h00 diária",
+      "tier": 5,
+      "notes": "Preços baixos pan-europeus; validar autenticidade via revisões · URL corrigido 2026-05-12 (não existe brasty.pt; sede CZ, brasty.com envia PT)",
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "perfumesclub",
+      "nome": "Perfumes Club PT",
+      "url": "https://www.perfumesclub.pt",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/perfumesclub",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "09h00 diária",
+      "tier": 5,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "lookfantastic",
+      "nome": "Lookfantastic PT",
+      "url": "https://www.lookfantastic.pt",
+      "tipo": "especializada",
+      "tem_api": true,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/lookfantastic",
+      "metodo_coleta": "graphql",
+      "freq_atualizacao": "06h00 diária",
+      "tier": 6,
+      "api_endpoint": "/graphql",
+      "search_strategy": {
+        "type": "graphql",
+        "template": "https://www.lookfantastic.pt/elysium-api/graphql",
+        "supports_ean": true,
+        "needs_playwright": false,
+        "notes": "GraphQL endpoint público"
+      }
+    },
+    {
+      "id": "cultbeauty",
+      "nome": "Cult Beauty",
+      "url": "https://www.cultbeauty.co.uk",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/cultbeauty",
+      "metodo_coleta": "playwright",
+      "freq_atualizacao": "14h00 diária",
+      "tier": 6,
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.cultbeauty.co.uk/search?search={q}",
+        "result_link_selector": "a.productBlock_link",
+        "title_selector": "h1.productName_title",
+        "supports_ean": true,
+        "needs_playwright": true
+      }
+    },
+    {
+      "id": "primor",
+      "nome": "Primor PT",
+      "url": "https://pt.primor.eu/pt_pt/",
+      "tipo": "especializada",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "10h00 diária",
+      "tier": 7,
+      "notes": "Cadeia espanhola; entrou no mercado PT em 2024 · URL corrigido 2026-05-12 (subdomínio pt.primor.eu)",
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "maquillalia",
+      "nome": "Maquillalia",
+      "url": "https://www.maquillalia.com",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/maquillalia",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "14h00 diária",
+      "tier": 6,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "atida",
+      "nome": "Atida | Mifarma PT",
+      "url": "https://www.atida.com/pt-pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/atida",
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "06h00 diária",
+      "tier": 1,
+      "notes": "Maior parafarmácia online PT/ES. >30k SKUs. €49 free shipping.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.atida.com/pt-pt/search?q={q}",
+        "result_link_selector": "a.product-card-link, a[data-testid=\"product-link\"]",
+        "title_selector": "h1.product-name, h1[itemprop=\"name\"]",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "fnac",
+      "nome": "Fnac PT — Beauty",
+      "url": "https://www.fnac.pt",
+      "tipo": "generalista",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/fnac",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "08h00 diária",
+      "tier": 2,
+      "notes": "Marketplace generalista com forte secção perfumaria.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.fnac.pt/SearchResult/ResultList.aspx?Search={q}",
+        "result_link_selector": "a.Article-title",
+        "title_selector": "h1.f-productHeader-Title",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "miin",
+      "nome": "MiiN Cosmetics PT",
+      "url": "https://miin-cosmetics.pt",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "10h00 diária",
+      "tier": 5,
+      "notes": "K-beauty multimarca (80+). Exclusivos: COSRX, Anua, Beauty of Joseon.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://miin-cosmetics.pt/search?controller=search&s={q}",
+        "result_link_selector": "a.product-thumbnail",
+        "title_selector": "h1.product-name",
+        "supports_ean": false,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "farmacia365",
+      "nome": "Farmácia 365",
+      "url": "https://www.farmacia365.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/farmacia365",
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "07h00 diária",
+      "tier": 3,
+      "notes": "Magento. 24-48h delivery, €49.90 free shipping.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.farmacia365.pt/catalogsearch/result/?q={q}",
+        "result_link_selector": "a.product-item-link",
+        "title_selector": "h1.page-title span",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "loja-farmacia",
+      "nome": "Loja da Farmácia",
+      "url": "https://www.lojadafarmacia.com",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "07h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "afarmaciaonline",
+      "nome": "A Farmácia Online",
+      "url": "https://www.afarmaciaonline.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "08h00 diária",
+      "tier": 3,
+      "notes": "WooCommerce, JSON-LD bem estruturado.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.afarmaciaonline.pt/?s={q}",
+        "result_link_selector": "a.woocommerce-LoopProduct-link",
+        "title_selector": "h1.product_title",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "easyfarma",
+      "nome": "Easyfarma",
+      "url": "https://easyfarma.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "08h00 diária",
+      "tier": 3,
+      "notes": "Shopify, fácil de fazer scrape.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://easyfarma.pt/search?q={q}",
+        "result_link_selector": "a.product-item__link, a[href*=\"/products/\"]",
+        "title_selector": "h1.product-meta__title",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "bairro-saude",
+      "nome": "Bairro da Saúde",
+      "url": "https://bairrodasaude.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "09h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "haemiskin",
+      "nome": "HaemiSkin",
+      "url": "https://www.haemiskin.pt",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "11h00 diária",
+      "tier": 5,
+      "notes": "K-beauty boutique. COSRX, Anua, Heimish, Beauty of Joseon.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.haemiskin.pt/search?q={q}",
+        "result_link_selector": "a.product-card__link",
+        "title_selector": "h1.product-meta__title",
+        "supports_ean": false,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "farmacia-saude",
+      "nome": "Farmácia Saúde",
+      "url": "https://www.farmaciasaude.com.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "09h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "farmaciasdirect",
+      "nome": "Farmácias Direct",
+      "url": "https://www.farmaciasdirect.eu",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "10h00 diária",
+      "tier": 3,
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "korean-queens",
+      "nome": "Korean Queens",
+      "url": "https://www.koreanqueens.com/pt",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "12h00 diária",
+      "tier": 5,
+      "notes": "K-beauty, envio 24h PT.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://www.koreanqueens.com/pt/search?controller=search&s={q}",
+        "result_link_selector": "a.thumbnail",
+        "title_selector": "h1[itemprop=\"name\"]",
+        "supports_ean": false,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "cacau-chic",
+      "nome": "Cacau Chic Shop",
+      "url": "https://www.cacauchicshop.pt",
+      "tipo": "nicho",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "13h00 diária",
+      "tier": 6,
+      "notes": "K-beauty + estética profissional.",
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "sa-da-bandeira",
+      "nome": "Farmácia Sá da Bandeira",
+      "url": "https://www.sadabandeira.com",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "13h00 diária",
+      "tier": 3,
+      "notes": "Regional Porto. Entregas domiciliárias até meia-noite.",
+      "search_strategy": {
+        "type": "auto-discover",
+        "supports_ean": false,
+        "needs_playwright": false,
+        "notes": "Estratégia por investigar"
+      }
+    },
+    {
+      "id": "sweetcare",
+      "nome": "SweetCare",
+      "url": "https://sweetcare.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": true,
+      "url_afiliados": "https://www.awin.com/merchant/sweetcare",
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "06h00 diária",
+      "tier": 1,
+      "notes": "Maior parafarmácia PT digital. 25k+ SKUs, 600+ marcas. Foco derma + beleza. Verificado 2026-05-12.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://sweetcare.pt/search?q={q}",
+        "result_link_selector": "a.product-tile, a[data-testid=\"product-link\"]",
+        "title_selector": "h1.product-name, h1[itemprop=\"name\"]",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "byfarma",
+      "nome": "byFarma",
+      "url": "https://byfarma.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "08h00 diária",
+      "tier": 3,
+      "notes": "Farmácia online INFARMED Alvará 5260. Beleza + bem-estar. Verificado 2026-05-12.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://byfarma.pt/search?q={q}",
+        "result_link_selector": "a.product-item-link, a.product-tile",
+        "title_selector": "h1[itemprop=\"name\"]",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
+      "id": "farmaciapt",
+      "nome": "Farmácia.pt",
+      "url": "https://farmacia.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "09h00 diária",
+      "tier": 3,
+      "notes": "Farmácia online generalista, free shipping €40, entrega 24h. Verificado 2026-05-12.",
+      "search_strategy": {
+        "type": "url-template",
+        "template": "https://farmacia.pt/search?q={q}",
+        "result_link_selector": "a.product-item-link",
+        "title_selector": "h1.page-title span, h1[itemprop=\"name\"]",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    }
+  ]
+}

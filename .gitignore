@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+design-handoff/
+.vercel/
+data/.scrapingbee.key
+data/.*.key
+data/scraped/
+data/inspect/
+data/inventory/.backup/

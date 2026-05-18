@@ -1,0 +1,74 @@
+# SmartCart — Weekly FULL scrape
+# ============================================================
+# Refresca TODOS os produtos (ignora --max-age).
+# Corre domingos às 03h00 Lisboa (02h00 UTC).
+# Tipicamente termina em 2-4h.
+#
+# Justifica-se semanal porque:
+#  - Garante drift correction (preços não refrescados há semanas)
+#  - Apanha produtos novos / variantes alteradas
+#  - Re-verifica URLs canónicas
+
+name: Weekly full scrape
+
+on:
+  schedule:
+    - cron: '0 2 * * 0'    # Domingo 02h00 UTC = 03h00 Lisboa
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    name: Full catalog refresh
+    runs-on: ubuntu-latest
+    timeout-minutes: 300    # 5h hard cap
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install npm dependencies
+        run: npm install playwright jsdom
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Configure ScrapingBee API key
+        run: |
+          mkdir -p data
+          echo "${{ secrets.SCRAPINGBEE_KEY }}" > data/.scrapingbee.key
+
+      - name: Run FULL scrape (all products, all stores)
+        run: |
+          node scripts/scrape-prices.js \
+            --use-scrapingbee \
+            --concurrency=3 \
+            --delay=2000
+        env:
+          SCRAPINGBEE_KEY: ${{ secrets.SCRAPINGBEE_KEY }}
+
+      - name: Ingest scraped data
+        run: node scripts/ingest-scraped.js
+
+      - name: Rebuild catalog + demo.html
+        run: node scripts/build-catalog.js
+
+      - name: Commit refreshed data
+        run: |
+          rm -f data/.scrapingbee.key
+          git config user.name "smartcart-bot"
+          git config user.email "bot@smartcart.local"
+          git add data/inventory demo.html data/seed-bundle.json data/products-master.json data/prices-snapshot.json data/scraped 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "chore: weekly full refresh ($(date -u +%Y-%m-%d))"
+            git push
+          fi

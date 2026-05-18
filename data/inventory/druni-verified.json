@@ -1,0 +1,488 @@
+{
+  "version": "1.0",
+  "store_slug": "druni",
+  "store_name": "Druni PT",
+  "store_url": "https://www.druni.pt",
+  "verified_at": "2026-05-18T19:11:57.265Z",
+  "method": "playwright-headless (refresh 2026-05-18)",
+  "limitation": "URLs identificadas via Google index. Preço/stock real ainda não foi extraído (PDP fetch bloqueado por 406). Volume confirmado por nome no slug + descrição da SERP.",
+  "stats": {
+    "total": 20,
+    "verified": 13,
+    "variant": 0,
+    "not_found": 7,
+    "low_confidence": 0
+  },
+  "items": [
+    {
+      "ean": "3145891264100",
+      "name": "Chanel No. 5 Eau de Parfum 50 ml",
+      "brand": "Chanel",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Druni não vende Chanel (não distribui exclusivos LVMH/Wertheimer)",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "3365440787858",
+      "name": "YSL Black Opium Eau de Parfum 50 ml",
+      "brand": "Yves Saint Laurent",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://www.druni.pt/black-opium-yves-saint-laurent-eau-parfum-mulher",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Black Opium",
+      "observed_brand": "Yves Saint Laurent",
+      "observed_volume_ml": null,
+      "observed_price": 62.95,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "PDP confirmado; volume não extraído do título mas variante 50ml existe (Druni oferece múltiplos tamanhos na PDP) Scrape 2026-05-17: 119.00€ Refresh 2026-05-17: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 62.95€",
+      "verified_at": "2026-05-18T19:11:17.932Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 41.95,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 62.95,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 90,
+          "unit": "ml",
+          "price": 74.95,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 150,
+          "unit": "ml",
+          "price": 96.95,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3348901250146",
+      "name": "Dior Sauvage Eau de Toilette 100 ml",
+      "brand": "Dior",
+      "expected_volume_ml": 100,
+      "resolved_url": "https://www.druni.pt/sauvage-eau-toilette-dior-eau-toilette-homem",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Sauvage Eau De Toilette",
+      "observed_brand": "Dior",
+      "observed_volume_ml": null,
+      "observed_price": 99.95,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "PDP confirmado; PDP suporta variantes 30/60/100/200ml (refill marcado para 30/100ml) Scrape 2026-05-17: 61.50€ Refresh 2026-05-17: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 99.95€",
+      "verified_at": "2026-05-18T19:11:17.933Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 61.5,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 60,
+          "unit": "ml",
+          "price": 72.95,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 99.95,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 149.95,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3360372059707",
+      "name": "Giorgio Armani Code Homme Eau de Toilette 75 ml",
+      "brand": "Giorgio Armani",
+      "expected_volume_ml": 75,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Druni não vende Armani Code Homme (Armani Beauty é L'Oréal Luxe, distribuição selectiva)",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "8011003845460",
+      "name": "Versace Bright Crystal Eau de Toilette 90 ml",
+      "brand": "Versace",
+      "expected_volume_ml": 90,
+      "resolved_url": "https://www.druni.pt/bright-crystal-versace-eau-toilette-mulher",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Bright Crystal",
+      "observed_brand": "Versace",
+      "observed_volume_ml": null,
+      "observed_price": 59.95,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "PDP canónica EDT; PDP oferece variantes 30/60/90ml Scrape 2026-05-17: 132.00€ Refresh 2026-05-17: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 59.95€",
+      "verified_at": "2026-05-18T19:11:23.744Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 43.95,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 90,
+          "unit": "ml",
+          "price": 43.95,
+          "in_stock": true,
+          "url": "https://www.druni.pt/bright-crystal-versace-eau-toilette-mulher"
+        }
+      ]
+    },
+    {
+      "ean": "3614271326072",
+      "name": "Lancôme Génifique Sérum Avançado 50 ml",
+      "brand": "Lancôme",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://www.druni.pt/advanced-genifique-lancome-seacuterum-antienvelhecimento-ativador-juventude-e-luminosidade",
+      "resolution_method": "name-search",
+      "observed_name": "Advanced Génifique LANCOME Sérum antienvelhecimento ativador da juventude",
+      "observed_brand": "Lancôme",
+      "observed_volume_ml": null,
+      "observed_price": null,
+      "confidence": 0.87,
+      "status": "verified",
+      "notes": "PDP da família Génifique (Advanced Génifique = produto canónico); variantes 30/50/75/115ml seleccionáveis",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "0887167491625",
+      "name": "Estée Lauder Advanced Night Repair Sérum 50 ml",
+      "brand": "Estée Lauder",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://www.druni.pt/advanced-night-repair-synchronized-multi-recovery-complex-estee-lauder-serum-antienvelhecimento",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Advanced Night Repair Synchronized Multi-Recovery Complex",
+      "observed_brand": "Estée Lauder",
+      "observed_volume_ml": null,
+      "observed_price": 79.95,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "PDP canónico do sérum ANR; variantes 30/50/75/100ml Scrape 2026-05-17: 143.00€ Refresh 2026-05-17: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 79.95€",
+      "verified_at": "2026-05-18T19:11:30.047Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 53.4,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 79.95,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 93.95,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3337875585132",
+      "name": "Vichy Minéral 89 Sérum Hidratante 50 ml",
+      "brand": "Vichy",
+      "expected_volume_ml": 50,
+      "resolved_url": "https://www.druni.pt/crema-facial-vichy-mineral-89-hidratante-leve",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Crema Facial",
+      "observed_brand": "Vichy",
+      "observed_volume_ml": null,
+      "observed_price": 19.08,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Druni vende a linha Minéral 89, mas o resultado primário é o creme leve, não o sérum 50ml. Marca como variant — investigar com PDP fetch real Scrape 2026-05-17: 19.08€ Refresh 2026-05-17: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€",
+      "verified_at": "2026-05-18T19:11:30.423Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "gtin_observed": "3337875831888",
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 19.08,
+          "in_stock": true,
+          "url": "https://www.druni.pt/crema-facial-vichy-mineral-89-hidratante-leve"
+        }
+      ]
+    },
+    {
+      "ean": "3337875585026",
+      "name": "La Roche-Posay Effaclar Duo+ 40 ml",
+      "brand": "La Roche-Posay",
+      "expected_volume_ml": 40,
+      "resolved_url": "https://www.druni.pt/effaclar-duo-m-roche-posay-creme-corretor-anti-imperfeicoes",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Effaclar Duo +M",
+      "observed_brand": "La Roche-Posay",
+      "observed_volume_ml": 40,
+      "observed_price": 16.95,
+      "observed_previous_price": 22.1,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Druni vende Effaclar Duo +M (não Duo+ original). 40ml · €16.95 (era €22.10, -23%). Variante M tem niacinamida + zinco PCA, ligeiramente diferente do Duo+ canónico. Refresh 2026-05-17: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€",
+      "verified_at": "2026-05-18T19:11:36.344Z",
+      "gtin_observed": "3337875863377",
+      "observed_variants": [
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 16.95,
+          "in_stock": true,
+          "url": "https://www.druni.pt/effaclar-duo-m-roche-posay-creme-corretor-anti-imperfeicoes"
+        }
+      ]
+    },
+    {
+      "ean": "3264680004605",
+      "name": "Nuxe Huile Prodigieuse 100 ml",
+      "brand": "Nuxe",
+      "expected_volume_ml": 100,
+      "resolved_url": "https://www.druni.pt/aceite-huile-prodigieuse-nuxe-oleo-seco-multifuncoes",
+      "resolution_method": "name-search",
+      "observed_name": "Aceite Huile Prodigieuse NUXE Óleo seco multifunções",
+      "observed_brand": "Nuxe",
+      "observed_volume_ml": null,
+      "observed_price": null,
+      "confidence": 0.88,
+      "status": "verified",
+      "notes": "PDP canónico do óleo prodigieuse; variantes 30/50/100/200ml",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "3522930003151",
+      "name": "Caudalie Vinoperfect Sérum Luminosidade 30 ml",
+      "brand": "Caudalie",
+      "expected_volume_ml": 30,
+      "resolved_url": "https://www.druni.pt/vinoperfect-caudalie-serum-resplendor-antimanchas",
+      "resolution_method": "name-search",
+      "observed_name": "Vinoperfect CAUDALIE Sérum resplandor antimanchas",
+      "observed_brand": "Caudalie",
+      "observed_volume_ml": null,
+      "observed_price": null,
+      "confidence": 0.93,
+      "status": "verified",
+      "notes": "PDP canónico do sérum Vinoperfect",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "3337875597196",
+      "name": "CeraVe Creme Hidratante 250 ml",
+      "brand": "CeraVe",
+      "expected_volume_ml": 250,
+      "resolved_url": "https://www.druni.pt/locion-hidratante-cerave-pele-seca-e-muito-seca",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Loción Hidratante",
+      "observed_brand": "CeraVe",
+      "observed_volume_ml": null,
+      "observed_price": 9.49,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Druni vende loção hidratante CeraVe (corpo+rosto, 236ml ou 473ml) — formato diferente do creme 250ml canónico (Moisturising Cream). Variante. Scrape 2026-05-17: 12.10€ Refresh 2026-05-17: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 9.49€",
+      "verified_at": "2026-05-18T19:11:43.468Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 236,
+          "unit": "ml",
+          "price": 9.49,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 473,
+          "unit": "ml",
+          "price": 11.75,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 1000,
+          "unit": "ml",
+          "price": 21.49,
+          "in_stock": true,
+          "url": null
+        }
+      ]
+    },
+    {
+      "ean": "3600523432059",
+      "name": "L'Oréal Paris Elvive Óleo Extraordinário 100 ml",
+      "brand": "L'Oréal Paris",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "L'Oréal Paris Elvive é mass-market (supermercados); Druni foca prestige/derma",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "3474630639785",
+      "name": "Kérastase Elixir Ultime Óleo Original 100 ml",
+      "brand": "Kérastase",
+      "expected_volume_ml": 100,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Kérastase é distribuição selectiva (cabeleireiros + farmácias dedicadas). Druni não comercializa de forma consistente.",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "0884486373601",
+      "name": "Redken All Soft Shampoo 300 ml",
+      "brand": "Redken",
+      "expected_volume_ml": 300,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Redken é distribuição profissional. Não está na Druni.",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "8719134109924",
+      "name": "Rituals The Ritual of Sakura Body Cream 220 ml",
+      "brand": "Rituals",
+      "expected_volume_ml": 220,
+      "resolved_url": "https://www.druni.pt/the-ritual-of-sakura-body-cream-rituals-creme-corporal",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "The Ritual Of Sakura Body Cream",
+      "observed_brand": "Rituals",
+      "observed_volume_ml": 220,
+      "observed_price": 24.9,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "PDP canónico, brand+volume match exacto Scrape 2026-05-17: 24.90€ Refresh 2026-05-17: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€",
+      "verified_at": "2026-05-18T19:11:48.272Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "gtin_observed": "8719134187731",
+      "observed_variants": [
+        {
+          "volume_ml": 220,
+          "unit": "ml",
+          "price": 24.9,
+          "in_stock": true,
+          "url": "https://www.druni.pt/the-ritual-of-sakura-body-cream-rituals-creme-corporal"
+        }
+      ]
+    },
+    {
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Água Micelar 500 ml",
+      "brand": "Bioderma",
+      "expected_volume_ml": 500,
+      "resolved_url": "https://www.druni.pt/sensibio-h2o-pump-bioderma-agua-micelar-dermatologica",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Sensibio H2O Pump",
+      "observed_brand": "Bioderma",
+      "observed_volume_ml": 500,
+      "observed_price": 13.54,
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Druni vende a versão Pump 500ml (€13.54 com desconto de €17.95). Pump é variante do produto canónico (mesma fórmula, embalagem com bomba). Marca como variant. Refresh 2026-05-17: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€",
+      "verified_at": "2026-05-18T19:11:48.917Z",
+      "gtin_observed": "3701129812129",
+      "observed_variants": [
+        {
+          "volume_ml": 500,
+          "unit": "ml",
+          "price": 13.54,
+          "in_stock": true,
+          "url": "https://www.druni.pt/sensibio-h2o-pump-bioderma-agua-micelar-dermatologica"
+        }
+      ]
+    },
+    {
+      "ean": "3600524025632",
+      "name": "Maybelline Fit Me Foundation 30 ml (120 Classic Ivory)",
+      "brand": "Maybelline",
+      "expected_volume_ml": 30,
+      "resolved_url": "https://www.druni.pt/fit-me-matte-poreless-maybelline-new-york-base-maquiagem-liquida",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Fit Me Matte Poreless",
+      "observed_brand": "Maybelline",
+      "observed_volume_ml": null,
+      "observed_price": 5.25,
+      "confidence": 0.97,
+      "status": "verified",
+      "notes": "Druni vende Fit Me Matte Poreless (variante matte do Fit Me normal). PDP suporta múltiplos tons. Scrape 2026-05-17: 5.25€ Refresh 2026-05-17: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€",
+      "verified_at": "2026-05-18T19:11:54.785Z",
+      "observed_currency": "EUR",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 5.25,
+          "in_stock": true,
+          "url": "https://www.druni.pt/fit-me-matte-poreless-maybelline-new-york-base-maquiagem-liquida"
+        }
+      ]
+    },
+    {
+      "ean": "5060542790147",
+      "name": "Charlotte Tilbury Magic Cream Hidratante 50 ml",
+      "brand": "Charlotte Tilbury",
+      "expected_volume_ml": 50,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "Charlotte Tilbury é distribuição selectiva (PT: Sephora, El Corte Inglés, site directo). Druni não comercializa.",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    },
+    {
+      "ean": "0607845029250",
+      "name": "NARS Radiant Creamy Concealer 6 ml (Vanilla)",
+      "brand": "NARS",
+      "expected_volume_ml": 6,
+      "resolved_url": null,
+      "status": "not-found",
+      "notes": "NARS é distribuição selectiva (PT: Sephora, El Corte Inglés). Druni não tem.",
+      "verified_at": "2026-05-13T13:00:00.000Z"
+    }
+  ]
+}
