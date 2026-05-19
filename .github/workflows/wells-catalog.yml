@@ -1,0 +1,95 @@
+# SmartCart — Wells full catalog refresh
+# ============================================================
+# Descobre + scrape todos os produtos da Wells (categoria filtrável).
+# Trigger:
+#  - Manual via UI ("Run workflow"), com input de categoria
+#  - Cron semanal: domingos 05h00 Lisboa (04h UTC, 1h depois do daily)
+#
+# Output:
+#  - data/catalog/wells-urls.json (lista completa de URLs descobertas)
+#  - data/catalog/wells-full.json (produtos com nome/marca/preço/variantes)
+#  - Commit automático para main
+
+name: Wells catalog refresh
+
+on:
+  schedule:
+    - cron: '0 4 * * 0'    # Domingo 04h UTC = 05h Lisboa
+  workflow_dispatch:
+    inputs:
+      category:
+        description: 'Categoria (skincare, haircare, body, makeup, fragrance, all)'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - skincare
+          - haircare
+          - body
+          - makeup
+          - fragrance
+          - supplements
+      limit:
+        description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  catalog:
+    name: Discover & scrape Wells catalog
+    runs-on: ubuntu-latest
+    timeout-minutes: 300    # 5h max
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Step 1 — Discover URLs from sitemap
+        run: node scripts/discover-wells-catalog.js
+
+      - name: Step 2 — Scrape products
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
+            ARGS="--category=${{ github.event.inputs.category }}"
+          fi
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
+          fi
+          echo "Running: node scripts/scrape-wells-catalog.js $ARGS"
+          node scripts/scrape-wells-catalog.js $ARGS --concurrency=3 --delay=1500
+
+      - name: Print summary
+        run: |
+          if [ -f data/catalog/wells-full.json ]; then
+            node -e "const d=require('./data/catalog/wells-full.json'); console.log('=== Wells catalog refresh ==='); console.log('Total products:', d.products.length); console.log('Stats:', JSON.stringify(d.stats, null, 2));"
+          fi
+
+      - name: Commit catalog data
+        run: |
+          git config user.name "smartcart-bot"
+          git config user.email "bot@smartcart.local"
+          # Force-add wells-full.json mesmo que esteja em .gitignore
+          git add -f data/catalog/wells-urls.json data/catalog/wells-full.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "Nothing to commit"
+          else
+            CAT="${{ github.event.inputs.category || 'all' }}"
+            git commit -m "chore: Wells catalog refresh - $CAT ($(date -u +%Y-%m-%d))"
+            git push
+          fi
