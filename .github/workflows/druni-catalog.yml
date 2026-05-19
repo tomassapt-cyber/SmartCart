@@ -1,0 +1,84 @@
+# SmartCart — Druni full catalog refresh
+# ============================================================
+# Descobre + scrape + integra catálogo Druni (skincare, hair, fragrance).
+# Trigger: manual via UI ou cron semanal (segundas-feiras 05h Lisboa).
+
+name: Druni catalog refresh
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'    # Segunda 04h UTC = 05h Lisboa
+  workflow_dispatch:
+    inputs:
+      category:
+        description: 'Categoria (skincare, haircare, fragrance, all)'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - skincare
+          - haircare
+          - fragrance
+      limit:
+        description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  catalog:
+    name: Discover + scrape + integrate Druni
+    runs-on: ubuntu-latest
+    timeout-minutes: 300    # 5h max
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Step 1 — Discover URLs
+        run: node scripts/discover-druni-catalog.js
+
+      - name: Step 2 — Scrape products
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
+            ARGS="--category=${{ github.event.inputs.category }}"
+          fi
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
+          fi
+          echo "Running: node scripts/scrape-druni-catalog.js $ARGS"
+          node scripts/scrape-druni-catalog.js $ARGS --concurrency=3 --delay=1500
+
+      - name: Step 3 — Integrate into seed (fingerprint dedup)
+        run: node scripts/integrate-druni-catalog.js
+
+      - name: Print summary
+        run: |
+          if [ -f data/catalog/druni-full.json ]; then
+            node -e "const d=require('./data/catalog/druni-full.json'); console.log('=== Druni catalog ==='); console.log('Total:', d.products.length); console.log('Stats:', JSON.stringify(d.stats, null, 2));"
+          fi
+
+      - name: Commit catalog data + updated seed
+        run: |
+          git config user.name "smartcart-bot"
+          git config user.email "bot@smartcart.local"
+          git add -f data/catalog/druni-urls.json data/catalog/druni-full.json data/seed-bundle.json demo.html index.html 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "Nothing to commit"
+          else
+            CAT="${{ github.event.inputs.category || 'all' }}"
+            git commit -m "chore: Druni catalog refresh - $CAT ($(date -u +%Y-%m-%d))"
+            git push
+          fi
