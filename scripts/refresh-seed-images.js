@@ -41,6 +41,18 @@ const EAN_FILTER = args.ean || null;
 const DRY_RUN = !!args['dry-run'];
 const FORCE = !!args.force;
 const HEADED = !!args.headed;
+const ONLY_ALLOWLIST = !!args.allowlist;
+
+// Curated EAN → Druni slug map (validated manually após dry-run).
+// Quando ONLY_ALLOWLIST está activo, ignoramos slug-similarity e
+// usamos directamente estas URLs (controlo total).
+const ALLOWLIST = {
+  '3474630639785': 'elixir-ultime-kerastase-oleo-originale-capilar',
+  '0884486373601': 'all-soft-shampoo-redken-shampoo-hidratante-cabelo-seco',
+  '8470001763440': 'fusion-water-magic-isdin-protetor-solar-facial-ultraleve',
+  '3337875585668': 'hyalu-b5-roche-posay-serum-anti-rugas',
+  '3401395614172': 'sensibio-h2o-solucion-micelar-bioderma-agua-micelar',
+};
 
 if (!fs.existsSync(DRUNI_URLS)) {
   console.error('✗ Falta', DRUNI_URLS, '— corre primeiro: node scripts/discover-druni-catalog.js');
@@ -112,14 +124,22 @@ function findBestMatch(product) {
   console.log('═══════ Matches encontrados ═══════');
   const plans = [];
   for (const p of candidates) {
-    const matches = findBestMatch(p);
+    let matches;
+    if (ALLOWLIST[p.ean]) {
+      const allowSlug = ALLOWLIST[p.ean];
+      const found = druniUrls.find(u => u.slug === allowSlug);
+      matches = found ? [{ ...found, score: 999, _allowlisted: true }] : [];
+    } else {
+      if (ONLY_ALLOWLIST) { plans.push({ product: p, matches: [] }); continue; }
+      matches = findBestMatch(p);
+    }
     plans.push({ product: p, matches });
     console.log(`\n${p.ean} | ${p.brand} | ${p.name.slice(0, 50)}`);
     if (matches.length === 0) {
       console.log('  ⚠ sem candidato');
       continue;
     }
-    matches.forEach((m, i) => console.log(`  ${i+1}. [${m.score}] ${m.slug}`));
+    matches.forEach((m, i) => console.log(`  ${i+1}. [${m.score}]${m._allowlisted ? ' ✋' : ''} ${m.slug}`));
   }
 
   if (DRY_RUN) {
