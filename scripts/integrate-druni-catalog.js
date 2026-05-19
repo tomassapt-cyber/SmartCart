@@ -26,6 +26,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
 const DRUNI_FULL = path.join(ROOT, 'data', 'catalog', 'druni-full.json');
@@ -187,41 +188,18 @@ function isRealEan(ean) {
       if (!targetProduct.image_url && dp.image_url) targetProduct.image_url = dp.image_url;
     }
 
-    // ── Construir store_product item Druni ──
+    // ── Upsert store_product item Druni (com merge de variants) ──
+    // CRÍTICO: quando 2 produtos Druni mapeiam para o mesmo EAN canónico
+    // (páginas separadas para 30ml e 50ml do mesmo produto), MERGEAR
+    // como variants — distinção de volume vive DENTRO do item.
     const targetEan = targetProduct.ean;
-    const variants = (dp.variants || [])
-      .filter(v => v.volume_ml > 0 && v.price > 0)
-      .map(v => ({
-        volume_ml: v.volume_ml,
-        unit: v.unit || 'ml',
-        price: Number(v.price.toFixed(2)),
-        in_stock: v.in_stock !== false,
-        url: v.url || null,
-      }));
-
-    const item = {
-      ean: targetEan,
-      price: Number(dp.price.toFixed(2)),
-      previous_price: null,
-      discount_pct: null,
-      in_stock: dp.in_stock !== false,
-      url: dp.url,
-      verified: true,
-      verified_url: true,
-      verified_at: dp.scraped_at || druniData.scraped_at,
-      source: 'scraped',
-      variants: variants.length > 0 ? variants : undefined,
-    };
-
-    if (druniItemByEan[targetEan]) {
-      const idx = druniSp.items.findIndex(it => it.ean === targetEan);
-      druniSp.items[idx] = item;
-      storeProductsUpdated++;
-    } else {
-      druniSp.items.push(item);
-      druniItemByEan[targetEan] = item;
-      storeProductsAdded++;
-    }
+    const added = { value: 0 }, updated = { value: 0 };
+    const result = upsertStoreItem(
+      { storeSp: druniSp, itemByEan: druniItemByEan, addedCounter: added, updatedCounter: updated },
+      targetEan, dp, druniData.scraped_at
+    );
+    if (result.action === 'added') storeProductsAdded++;
+    else storeProductsUpdated++;
   }
 
   console.log('\n══════ Resumo da integração ══════');
@@ -251,6 +229,17 @@ function isRealEan(ean) {
 
   fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
   console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (${(fs.statSync(SEED_BUNDLE).size / 1024).toFixed(0)} KB)`);
+
+  // Pós-processo: dedup-audit em modo --apply para limpar residuais que
+  // o fingerprint não apanhou (e.g., normalização imperfeita entre Wells
+  // e Druni). Garante zero duplicados no seed final.
+  console.log('\n▶ A correr dedup-audit (catch-all residual duplicates)...');
+  const dedup = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-audit.js'), '--apply'], {
+    cwd: ROOT, stdio: 'inherit',
+  });
+  if (dedup.status !== 0) {
+    console.warn('⚠ dedup-audit falhou — continuar mesmo assim.');
+  }
 
   console.log('\n▶ Re-injectando no demo.html + index.html...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], {
