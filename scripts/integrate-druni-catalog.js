@@ -179,8 +179,10 @@ function isRealEan(ean) {
       if (fp) fpIndex[fp] = targetProduct;
       createdNew++;
     } else {
-      // Enriquecer existing: se não tem image, copiar da Druni
-      if (!targetProduct.image_url && dp.image_url) targetProduct.image_url = dp.image_url;
+      // Enriquecer existing: imagem Druni vence sempre se existir
+      // (Druni tem imagens HD oficiais; seed inicial usa openfoodfacts
+      // que costuma ser pior qualidade)
+      if (dp.image_url) targetProduct.image_url = dp.image_url;
     }
 
     // ── Construir store_product item Druni ──
