@@ -179,10 +179,12 @@ function isRealEan(ean) {
       if (fp) fpIndex[fp] = targetProduct;
       createdNew++;
     } else {
-      // Enriquecer existing: imagem Druni vence sempre se existir
-      // (Druni tem imagens HD oficiais; seed inicial usa openfoodfacts
-      // que costuma ser pior qualidade)
-      if (dp.image_url) targetProduct.image_url = dp.image_url;
+      // Enriquecer existing: APENAS preencher imagem se em falta.
+      // Imagens já existentes (de Wells, ou previamente scraped Druni)
+      // ficam sticky — não são sobrescritas em re-scrapes.
+      // Decisão: estabilidade > frescura. Se uma URL de imagem ainda
+      // funciona, mantemos para evitar churn no demo.
+      if (!targetProduct.image_url && dp.image_url) targetProduct.image_url = dp.image_url;
     }
 
     // ── Construir store_product item Druni ──
