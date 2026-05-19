@@ -159,7 +159,19 @@ function generateAll() {
   // Lê inventory/{slug}-verified.json para cada loja, se existir (FASE B do pipeline)
   const verifications = loadVerifications(stores);
 
-  const productsOut = PRODUCTS.map(p => ({ ...p }));
+  // Image overrides: data/image-overrides.json mapeia ean → image_url.
+  // Permite preencher imagens em falta sem editar a array hardcoded.
+  // Apenas preenche se o produto não tem image_url (sticky — não sobrescreve).
+  const overridesPath = path.join(DATA_DIR, 'image-overrides.json');
+  const imageOverrides = fs.existsSync(overridesPath)
+    ? JSON.parse(fs.readFileSync(overridesPath, 'utf8'))
+    : {};
+  const productsOut = PRODUCTS.map(p => ({
+    ...p,
+    image_url: p.image_url || imageOverrides[p.ean] || null,
+  }));
+  const overrideHits = productsOut.filter(p => imageOverrides[p.ean] && !PRODUCTS.find(orig => orig.ean === p.ean && orig.image_url)).length;
+  if (overrideHits > 0) console.log(`  ⓘ image overrides aplicados: ${overrideHits}`);
   const pricesOut = [];
 
   for (const product of PRODUCTS) {
