@@ -31,6 +31,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
+const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const WELLS_FULL = path.join(ROOT, 'data', 'catalog', 'wells-full.json');
@@ -77,21 +78,6 @@ const POPULAR_BRANDS = [
   'dior', 'chanel', 'armani', 'versace',
   'estée lauder', 'estee lauder',
 ];
-
-function normalizeBrand(brand) {
-  if (!brand) return null;
-  const b = brand.trim();
-  // Variantes conhecidas
-  if (/yves saint laurent|^ysl$/i.test(b)) return 'Yves Saint Laurent';
-  if (/^la roche[\s\-]?posay$/i.test(b)) return 'La Roche-Posay';
-  if (/^estée\s*lauder|estee\s*lauder/i.test(b)) return 'Estée Lauder';
-  if (/^l[''’]?or[ée]al/i.test(b)) {
-    if (/professionnel|paris/i.test(b)) return b;
-    return "L'Oréal Paris";
-  }
-  if (/^lanc[oô]me$/i.test(b)) return 'Lancôme';
-  return b;
-}
 
 function loadJSON(file) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return null; }
@@ -146,46 +132,71 @@ function loadJSON(file) {
     console.log(`📋 --max=${MAX_PRODUCTS} aplicado: ${wellsToIntegrate.length} produtos retidos`);
   }
 
-  // 5) Identificar Wells products já no seed (por EAN ou productId-as-EAN)
-  const seedEans = new Set(seed.products.map(p => p.ean));
+  // 5) Construir índice fingerprint → seed product
+  //    Garantia chave: 1 produto físico = 1 entrada no seed,
+  //    independentemente de quantas lojas o vendem.
   const wellsStoreSlug = 'wells';
-
-  // 6) Construir products[] estendido
-  const productsBefore = seed.products.length;
-  const newProducts = [];
-
-  for (const wp of wellsToIntegrate) {
-    // Se Wells deu EAN, usamos esse. Senão usamos prefixo "wells-<productId>"
-    const productId = wp.ean || `wells-${wp.productId}`;
-
-    if (seedEans.has(productId)) continue; // já existe, skip add (mas vamos juntar a oferta abaixo)
-
-    newProducts.push({
-      ean: productId,
-      name: wp.name,
-      brand: normalizeBrand(wp.brand),
-      category: CATEGORY_MAP[wp.category],
-      image_url: wp.image_url || null,
-      _source: 'wells-catalog',
-      _wells_product_id: wp.productId,
-    });
-    seedEans.add(productId);
+  const fpIndex = {};
+  const eanIndex = {};
+  for (const p of seed.products) {
+    const fp = productFingerprint(p);
+    if (fp && !fpIndex[fp]) fpIndex[fp] = p;
+    if (p.ean) eanIndex[p.ean] = p;
   }
 
-  console.log(`✓ Produtos novos a adicionar ao seed: ${newProducts.length}`);
+  const productsBefore = seed.products.length;
 
-  // 7) Construir store_products[] para Wells
+  // 6) Garantir store_products para Wells
   let wellsSp = seed.store_products.find(sp => sp.store_slug === wellsStoreSlug);
   if (!wellsSp) {
     wellsSp = { store_slug: wellsStoreSlug, items: [] };
     seed.store_products.push(wellsSp);
   }
-  const wellsEansInExisting = new Set(wellsSp.items.map(it => it.ean));
+  // Map ean → existing wells store_product item (para update in-place)
+  const wellsItemByEan = {};
+  for (const item of wellsSp.items) wellsItemByEan[item.ean] = item;
 
-  let added = 0;
-  let updated = 0;
+  let mergedExisting = 0;        // matched seed product by fingerprint
+  let createdNew = 0;            // no match → criou produto novo
+  let storeProductsAdded = 0;
+  let storeProductsUpdated = 0;
+
   for (const wp of wellsToIntegrate) {
-    const productId = wp.ean || `wells-${wp.productId}`;
+    // Determinar produto destino: prefer match fingerprint > EAN > criar novo
+    const fp = productFingerprint(wp);
+    let targetProduct = (fp && fpIndex[fp]) ||
+                        (wp.ean && eanIndex[wp.ean]) ||
+                        null;
+
+    if (!targetProduct) {
+      // Criar novo product no seed
+      const productId = wp.ean || `wells-${wp.productId}`;
+      if (eanIndex[productId]) {
+        // já existe com este pseudoEAN (improvável mas defensivo)
+        targetProduct = eanIndex[productId];
+      } else {
+        targetProduct = {
+          ean: productId,
+          name: wp.name,
+          brand: displayBrand(wp.brand) || wp.brand,
+          category: CATEGORY_MAP[wp.category],
+          image_url: wp.image_url || null,
+          _source: 'wells-catalog',
+          _wells_product_id: wp.productId,
+        };
+        seed.products.push(targetProduct);
+        if (fp) fpIndex[fp] = targetProduct;
+        eanIndex[targetProduct.ean] = targetProduct;
+        createdNew++;
+      }
+    } else {
+      mergedExisting++;
+      // Enriquecer existing com data Wells (image se em falta)
+      if (!targetProduct.image_url && wp.image_url) targetProduct.image_url = wp.image_url;
+    }
+
+    // Construir store_product item usando o EAN do targetProduct
+    const targetEan = targetProduct.ean;
     const variants = (wp.variants || [])
       .filter(v => v.volume_ml > 0 && v.price > 0)
       .map(v => ({
@@ -197,7 +208,7 @@ function loadJSON(file) {
       }));
 
     const item = {
-      ean: productId,
+      ean: targetEan,
       price: Number(wp.price.toFixed(2)),
       previous_price: null,
       discount_pct: null,
@@ -210,21 +221,20 @@ function loadJSON(file) {
       variants: variants.length > 0 ? variants : undefined,
     };
 
-    if (wellsEansInExisting.has(productId)) {
-      // Update in place
-      const idx = wellsSp.items.findIndex(it => it.ean === productId);
+    if (wellsItemByEan[targetEan]) {
+      const idx = wellsSp.items.findIndex(it => it.ean === targetEan);
       wellsSp.items[idx] = item;
-      updated++;
+      storeProductsUpdated++;
     } else {
       wellsSp.items.push(item);
-      added++;
+      wellsItemByEan[targetEan] = item;
+      storeProductsAdded++;
     }
   }
 
-  // 8) Merge no seed
-  seed.products.push(...newProducts);
-
-  console.log(`✓ Wells store_products: ${added} novos, ${updated} actualizados`);
+  console.log(`✓ Wells products matched existing (via fingerprint): ${mergedExisting}`);
+  console.log(`✓ Wells products novos criados: ${createdNew}`);
+  console.log(`✓ Wells store_products: ${storeProductsAdded} added, ${storeProductsUpdated} updated`);
 
   // 9) Stats by category
   const byCat = {};
