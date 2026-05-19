@@ -91,5 +91,9 @@ jobs:
           else
             CAT="${{ github.event.inputs.category || 'all' }}"
             git commit -m "chore: Wells catalog refresh - $CAT ($(date -u +%Y-%m-%d))"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              echo "Push falhou (tentativa $i), a aguardar 10s..."
+              sleep 10
+            done
           fi
