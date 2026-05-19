@@ -81,9 +81,19 @@ jobs:
             CAT="${{ github.event.inputs.category || 'all' }}"
             git commit -m "chore: Druni catalog refresh - $CAT ($(date -u +%Y-%m-%d))"
             # Retry com rebase em caso de divergência (main avançou durante a run).
+            # --autostash trata ficheiros modificados mas não commitados (e.g.
+            # artefactos do pipeline que não entram no add -f).
+            pushed=0
             for i in 1 2 3; do
-              git pull --rebase origin main && git push && break
+              if git pull --rebase --autostash origin main && git push; then
+                pushed=1
+                break
+              fi
               echo "Push falhou (tentativa $i), a aguardar 10s..."
               sleep 10
             done
+            if [ "$pushed" != "1" ]; then
+              echo "ERRO: 3 tentativas falharam — abortando step para tornar visível"
+              exit 1
+            fi
           fi
