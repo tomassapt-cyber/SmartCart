@@ -46,6 +46,11 @@ const args = Object.fromEntries(
 );
 const CATEGORY = args.category || null;
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
+// Chunking: --chunk=N/M corre o slice [N-1, N) de M chunks alfabéticos.
+// Ex: --chunk=1/3 corre primeiro terço; --chunk=2/3 segundo terço.
+// Útil para dividir 4h em 3 runs de ~1h20min com checkpoints commitáveis.
+const CHUNK = args.chunk || null;
+const ALPHA_GROUPS = args.alpha || null; // ex: "a-f" ou "g-m"
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 3;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 1500;
 const HEADED = !!args.headed;
@@ -66,6 +71,35 @@ if (CATEGORY) {
   targets = targets.filter(t => t.category === CATEGORY);
   console.log(`🔍 Filtro categoria=${CATEGORY}: ${targets.length} URLs`);
 }
+
+// ── Chunking ──
+// Ordenação por slug (alfabética) → split determinístico
+if (CHUNK || ALPHA_GROUPS) {
+  targets = targets.slice().sort((a, b) => (a.slug || '').localeCompare(b.slug || ''));
+}
+if (CHUNK) {
+  const m = CHUNK.match(/^(\d+)\/(\d+)$/);
+  if (!m) { console.error('✗ --chunk inválido. Usa N/M, ex: 1/3'); process.exit(1); }
+  const n = parseInt(m[1], 10), total = parseInt(m[2], 10);
+  if (n < 1 || n > total) { console.error('✗ chunk fora do intervalo'); process.exit(1); }
+  const size = Math.ceil(targets.length / total);
+  const start = (n - 1) * size;
+  const end = Math.min(start + size, targets.length);
+  console.log(`📦 Chunk ${n}/${total}: ${start}..${end} (${end - start} URLs de ${targets.length} totais)`);
+  targets = targets.slice(start, end);
+}
+if (ALPHA_GROUPS) {
+  // ex: "a-f" → primeira letra do slug entre a e f
+  const m = ALPHA_GROUPS.toLowerCase().match(/^([a-z])-([a-z])$/);
+  if (!m) { console.error('✗ --alpha inválido. Usa formato a-f'); process.exit(1); }
+  const [from, to] = [m[1], m[2]];
+  targets = targets.filter(t => {
+    const first = (t.slug || '').toLowerCase()[0] || 'z';
+    return first >= from && first <= to;
+  });
+  console.log(`🔠 Alpha ${from}-${to}: ${targets.length} URLs`);
+}
+
 if (LIMIT !== Infinity) targets = targets.slice(0, LIMIT);
 
 // Resume
