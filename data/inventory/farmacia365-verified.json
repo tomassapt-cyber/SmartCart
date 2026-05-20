@@ -3,8 +3,8 @@
   "store_slug": "farmacia365",
   "store_name": "Farmácia 365",
   "store_url": "https://www.farmacia365.pt",
-  "verified_at": "2026-05-19T14:08:18.442Z",
-  "method": "playwright-headless (refresh 2026-05-19)",
+  "verified_at": "2026-05-20T12:19:45.409Z",
+  "method": "playwright-headless (refresh 2026-05-20)",
   "stats": {
     "total": 17,
     "verified": 6,
@@ -85,46 +85,32 @@
       "observed_volume_ml": 50,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "URL slug 50ml exacto. Scrape 2026-05-17: 16.75€ Refresh 2026-05-17: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€",
-      "verified_at": "2026-05-18T18:32:59.273Z",
+      "notes": "URL slug 50ml exacto. Scrape 2026-05-17: 16.75€ Refresh 2026-05-17: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-20: 16.75€ → 16.75€",
+      "verified_at": "2026-05-20T12:14:24.278Z",
       "observed_price": 16.75,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
         {
-          "volume_ml": 30,
-          "unit": "ml",
-          "price": 30.65,
-          "in_stock": true,
-          "url": null
-        },
-        {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     },
@@ -138,49 +124,35 @@
       "observed_name": "La Roche Posay Effaclar Duo (+ M) 40mL",
       "observed_brand": "La Roche-Posay",
       "observed_volume_ml": 40,
-      "observed_price": 22.6,
+      "observed_price": 12.43,
       "observed_previous_price": 22.6,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante Duo+M, €12.43 (era €22.60, -45%). Preço extraído da SERP. Refresh 2026-05-17: 12.43€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€",
-      "verified_at": "2026-05-18T18:32:59.274Z",
+      "notes": "Variante Duo+M, €12.43 (era €22.60, -45%). Preço extraído da SERP. Refresh 2026-05-17: 12.43€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-20: 22.60€ → 12.43€",
+      "verified_at": "2026-05-20T12:14:24.683Z",
       "observed_variants": [
         {
-          "volume_ml": 30,
+          "volume_ml": 40,
           "unit": "ml",
-          "price": 30.65,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 40,
-          "unit": "ml",
-          "price": 12.43,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-40ml"
-        },
-        {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     },
@@ -259,49 +231,35 @@
       "observed_name": "La Roche Posay Hyalu B5 Serum 30mL",
       "observed_brand": "La Roche-Posay",
       "observed_volume_ml": 30,
-      "observed_price": 39.55,
+      "observed_price": 30.65,
       "observed_previous_price": 55.45,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço directo via fetch da PDP: €33.27 (era €55.45, -40%, promo até 2026-05-31). Refresh 2026-05-17: 33.27€ → 39.55€ Refresh 2026-05-17: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€",
-      "verified_at": "2026-05-18T18:33:07.902Z",
+      "notes": "Preço directo via fetch da PDP: €33.27 (era €55.45, -40%, promo até 2026-05-31). Refresh 2026-05-17: 33.27€ → 39.55€ Refresh 2026-05-17: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-20: 39.55€ → 30.65€",
+      "verified_at": "2026-05-20T12:14:33.487Z",
       "observed_variants": [
-        {
-          "volume_ml": 30,
-          "unit": "ml",
-          "price": 30.65,
-          "in_stock": true,
-          "url": null
-        },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     },
@@ -315,53 +273,39 @@
       "observed_name": "ISDIN Fotoprotector FusionWater Magic SPF50 50mL - Protetor solar facial ultraligeiro",
       "observed_brand": "ISDIN",
       "observed_volume_ml": 50,
-      "observed_price": 29.6,
+      "observed_price": 16.75,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço directo via fetch da PDP: €29.60. Refresh 2026-05-17: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€",
-      "verified_at": "2026-05-18T18:33:15.184Z",
+      "notes": "Preço directo via fetch da PDP: €29.60. Refresh 2026-05-17: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-20: 29.60€ → 16.75€",
+      "verified_at": "2026-05-20T12:14:33.592Z",
       "observed_variants": [
-        {
-          "volume_ml": 30,
-          "unit": "ml",
-          "price": 30.65,
-          "in_stock": true,
-          "url": null
-        },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
-        },
-        {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 30.65,
+          "price": 19.62,
           "in_stock": true,
           "url": null
         }
@@ -377,14 +321,14 @@
       "observed_name": "La Roche Posay Anthelios UVMUNE 400 Creme S/ Perfume SPF50+ 50mL",
       "observed_brand": "La Roche-Posay",
       "observed_volume_ml": 50,
-      "observed_price": 32.05,
+      "observed_price": 16.03,
       "observed_previous_price": 32.05,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço directo via fetch da PDP: €16.03 (era €32.05, -50%). Refresh 2026-05-17: 16.03€ → 32.05€ Refresh 2026-05-17: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€",
-      "verified_at": "2026-05-18T18:33:17.073Z",
+      "notes": "Preço directo via fetch da PDP: €16.03 (era €32.05, -50%). Refresh 2026-05-17: 16.03€ → 32.05€ Refresh 2026-05-17: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-20: 32.05€ → 16.03€",
+      "verified_at": "2026-05-20T12:14:34.015Z",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -396,30 +340,23 @@
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     }
