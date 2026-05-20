@@ -32,6 +32,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
 const WELLS_FULL = path.join(ROOT, 'data', 'catalog', 'wells-full.json');
@@ -195,41 +196,17 @@ function loadJSON(file) {
       if (!targetProduct.image_url && wp.image_url) targetProduct.image_url = wp.image_url;
     }
 
-    // Construir store_product item usando o EAN do targetProduct
+    // Upsert store_product item Wells (MERGE de variants — sem sobrescrever)
+    // Quando 2 páginas Wells mapeiam para o mesmo EAN canónico (volumes
+    // diferentes do mesmo produto), juntamos como variants.
     const targetEan = targetProduct.ean;
-    const variants = (wp.variants || [])
-      .filter(v => v.volume_ml > 0 && v.price > 0)
-      .map(v => ({
-        volume_ml: v.volume_ml,
-        unit: v.unit || 'ml',
-        price: Number(v.price.toFixed(2)),
-        in_stock: v.in_stock !== false,
-        url: v.url || null,
-      }));
-
-    const item = {
-      ean: targetEan,
-      price: Number(wp.price.toFixed(2)),
-      previous_price: null,
-      discount_pct: null,
-      in_stock: wp.in_stock !== false,
-      url: wp.url,
-      verified: true,
-      verified_url: true,
-      verified_at: wp.scraped_at || wellsData.scraped_at,
-      source: 'scraped',
-      variants: variants.length > 0 ? variants : undefined,
-    };
-
-    if (wellsItemByEan[targetEan]) {
-      const idx = wellsSp.items.findIndex(it => it.ean === targetEan);
-      wellsSp.items[idx] = item;
-      storeProductsUpdated++;
-    } else {
-      wellsSp.items.push(item);
-      wellsItemByEan[targetEan] = item;
-      storeProductsAdded++;
-    }
+    const added = { value: 0 }, updated = { value: 0 };
+    const result = upsertStoreItem(
+      { storeSp: wellsSp, itemByEan: wellsItemByEan, addedCounter: added, updatedCounter: updated },
+      targetEan, wp, wellsData.scraped_at
+    );
+    if (result.action === 'added') storeProductsAdded++;
+    else storeProductsUpdated++;
   }
 
   console.log(`✓ Wells products matched existing (via fingerprint): ${mergedExisting}`);

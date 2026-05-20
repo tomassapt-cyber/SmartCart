@@ -62,8 +62,17 @@ jobs:
       - name: Ingest scraped data into inventories
         run: node scripts/ingest-scraped.js
 
-      - name: Rebuild catalog + demo.html
-        run: node scripts/build-catalog.js
+      # ATENÇÃO: NÃO correr `build-catalog.js` aqui — ele regenera o
+      # seed-bundle.json a partir do array PRODUCTS hardcoded (23 entradas),
+      # apagando os produtos integrados da Wells/Druni (~2000+ extras).
+      # O daily-scrape só refresca preços nas inventories. Para refletir
+      # os novos preços no seed-bundle, corremos um price-refresher leve
+      # que actualiza store_products in-place sem tocar nos produtos.
+      - name: Refresh seed-bundle prices (in-place, preserves integrations)
+        run: node scripts/refresh-seed-prices.js
+
+      - name: Re-inject seed into demo.html + index.html
+        run: node scripts/inject-seed-into-demo.js
 
       - name: Inspect summary
         run: |
@@ -77,10 +86,24 @@ jobs:
           rm -f data/.scrapingbee.key
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          git add data/inventory demo.html data/seed-bundle.json data/products-master.json data/prices-snapshot.json data/scraped 2>/dev/null || true
+          git add data/inventory demo.html index.html data/seed-bundle.json data/scraped 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"
           else
             git commit -m "chore: daily price refresh ($(date -u +%Y-%m-%d))"
-            git push
+            # Push directo; rebase contra mesmo branch se push falhar.
+            BRANCH="${GITHUB_REF_NAME}"
+            pushed=0
+            for i in 1 2 3; do
+              if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
+              git fetch origin "${BRANCH}" || true
+              if git pull --rebase --autostash origin "${BRANCH}" && git push origin "HEAD:${BRANCH}"; then
+                pushed=1; break
+              fi
+              echo "Falhou tentativa $i, a aguardar 10s..."
+              sleep 10
+            done
+            if [ "$pushed" != "1" ]; then
+              echo "ERRO: 3 tentativas falharam"; exit 1
+            fi
           fi

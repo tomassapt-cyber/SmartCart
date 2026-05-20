@@ -9,6 +9,9 @@ data/.scrapingbee.key
 data/.*.key
 data/scraped/
 data/inspect/
+.claude/launch.json
+.claude/settings.local.json
+.pr-body.md
 data/inventory/.backup/
 # Pasta de screenshots/notas pessoais — não commitar
 Docs GITHUB/

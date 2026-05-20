@@ -74,6 +74,16 @@ jobs:
           echo "Running: node scripts/scrape-wells-catalog.js $ARGS"
           node scripts/scrape-wells-catalog.js $ARGS --concurrency=3 --delay=1500
 
+      - name: Upload scraped catalog as artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wells-catalog-data
+          path: |
+            data/catalog/wells-urls.json
+            data/catalog/wells-full.json
+          retention-days: 30
+
       - name: Print summary
         run: |
           if [ -f data/catalog/wells-full.json ]; then
@@ -91,5 +101,30 @@ jobs:
           else
             CAT="${{ github.event.inputs.category || 'all' }}"
             git commit -m "chore: Wells catalog refresh - $CAT ($(date -u +%Y-%m-%d))"
-            git push
+            BRANCH="${GITHUB_REF_NAME}"
+            pushed=0
+            for i in 1 2 3; do
+              if git push origin "HEAD:${BRANCH}"; then
+                pushed=1
+                break
+              fi
+              echo "Push falhou (tentativa $i), a tentar rebase contra origin/${BRANCH}..."
+              git fetch origin "${BRANCH}" || true
+              git rebase --abort 2>/dev/null || true
+              if git pull --rebase --autostash origin "${BRANCH}"; then
+                if git push origin "HEAD:${BRANCH}"; then
+                  pushed=1
+                  break
+                fi
+              else
+                git rebase --abort 2>/dev/null || true
+                git stash pop 2>/dev/null || true
+              fi
+              echo "Falhou tentativa $i, a aguardar 10s..."
+              sleep 10
+            done
+            if [ "$pushed" != "1" ]; then
+              echo "ERRO: 3 tentativas falharam — abortando step para tornar visível"
+              exit 1
+            fi
           fi
