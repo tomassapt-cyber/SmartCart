@@ -1960,5 +1960,67 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 })();
 </script>
 
+<!-- Homepage data — preenchido em build-time por inject-homepage-data.js -->
+<script type="application/json" id="homepage-data">
+{}
+</script>
+
+<script>
+(function(){
+  let data;
+  try { data = JSON.parse(document.getElementById('homepage-data')?.textContent || '{}'); } catch { data = {}; }
+  if (!data.hero_sponsored?.length) return;
+  const fmt = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
+  const ph = (p, tint) => p.image_url
+    ? `<img src="${p.image_url}" alt="${p.brand} ${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:contain;background:#fff;padding:8px" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph tint-'+'${tint}',dataset:{label:'${p.brand}'}}))" />`
+    : `<div class="ph tint-${tint}" data-label="${p.brand}"></div>`;
+  const tints = ['lilac','blue','butter','lilac','butter'];
+
+  document.querySelectorAll('.hero-slide').forEach((slide, i) => {
+    const p = data.hero_sponsored[i]; if (!p) return;
+    const m = slide.querySelector('.ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, tints[i]); m.replaceWith(w.firstElementChild); }
+    const b = slide.querySelector('.brand'); if (b) b.textContent = p.brand;
+    const n = slide.querySelector('.name');  if (n) n.textContent = p.name;
+    const pr = slide.querySelector('.price-now'); if (pr) pr.textContent = fmt(p.best_price);
+    const st = slide.querySelector('.at-store strong'); if (st) st.textContent = p.best_store || '';
+  });
+  const grids = document.querySelectorAll('.section .product-grid-5');
+  [['bestsellers', 0], ['skincare_kits', 1]].forEach(([key, idx]) => {
+    const cards = grids[idx]?.querySelectorAll('.card') || [];
+    cards.forEach((card, i) => {
+      const p = data[key][i]; if (!p) return;
+      const m = card.querySelector('.card-media .ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, tints[i]); m.replaceWith(w.firstElementChild); }
+      const b = card.querySelector('.card-brand'); if (b) b.textContent = p.brand;
+      const n = card.querySelector('.card-name');  if (n) n.textContent = p.name;
+      const pr = card.querySelector('.price-now'); if (pr) pr.textContent = fmt(p.best_price);
+      const o = card.querySelector('.price-old');  if (o) o.style.display = 'none';
+      const s = card.querySelector('.price-save'); if (s) s.textContent = `Em ${p.best_store}`;
+    });
+  });
+  const trendHero = document.querySelector('.trend-hero');
+  if (trendHero && data.em_alta[0]) {
+    const p = data.em_alta[0];
+    const m = trendHero.querySelector('.ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, 'butter'); m.replaceWith(w.firstElementChild); }
+    const b = trendHero.querySelector('.brand'); if (b) b.textContent = p.brand;
+    const n = trendHero.querySelector('.name');  if (n) n.textContent = p.name;
+    const pr = trendHero.querySelector('.price-now'); if (pr) pr.textContent = fmt(p.best_price);
+    const o = trendHero.querySelector('.price-old');  if (o) o.style.display = 'none';
+    const s = trendHero.querySelector('.price-save'); if (s) s.style.display = 'none';
+    const at = trendHero.querySelector('.at strong'); if (at) at.textContent = p.best_store || '';
+  }
+  document.querySelectorAll('.trend-mini .trend-card').forEach((card, i) => {
+    const p = data.em_alta[i+1]; if (!p) return;
+    const m = card.querySelector('.ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, tints[(i+1)%tints.length]); m.replaceWith(w.firstElementChild); }
+    const b = card.querySelector('.brand'); if (b) b.textContent = p.brand;
+    const n = card.querySelector('.name');  if (n) n.textContent = p.name;
+    const pr = card.querySelector('.price');  if (pr) pr.textContent = fmt(p.best_price);
+  });
+  document.querySelectorAll('.hero-slide, .card, .trend-hero, .trend-card').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = '/catalogo.html'; });
+  });
+})();
+</script>
+
 </body>
 </html>
