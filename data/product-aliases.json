@@ -1,0 +1,8 @@
+{
+  "_comment": "Aliases manuais para casos onde fingerprint/imagem falham. Cada entry é canonical_ean -> [aliases]. Aplicado por scripts/apply-product-aliases.js.",
+  "_format": "{ canonical_ean: { aliases: [ean1, ean2, ...], reason: 'human-readable explanation' } }",
+  "3614271326072": {
+    "aliases": ["wells-8109513"],
+    "reason": "Lancome renomeou 'Advanced Genifique Serum' (EAN 3614271326072) para 'Genifique Ultimate Serum' (Wells listing wells-8109513) em 2023. Mesmo produto, marketing rebrand."
+  }
+}
