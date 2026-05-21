@@ -2015,6 +2015,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     const n = card.querySelector('.name');  if (n) n.textContent = p.name;
     const pr = card.querySelector('.price');  if (pr) pr.textContent = fmt(p.best_price);
   });
+  // ── Telegram alerts ──
+  if (data.telegram_alerts?.length) {
+    const feed = document.querySelector('.tg-feed');
+    if (feed) {
+      // Gerar timestamps decrescentes para simular feed live
+      const now = new Date();
+      const hh = (offsetMin) => {
+        const d = new Date(now.getTime() - offsetMin * 60000);
+        return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+      };
+      feed.innerHTML = data.telegram_alerts.map((a, i) => {
+        const ts = hh([14, 41, 67][i] || (i * 30));
+        const eur = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
+        return `<div class="tg-msg"><span class="when">${ts}</span>${a.brand} ${a.name.split(' ').slice(0, 5).join(' ')} — ${a.store} ${eur(a.price)} (era ${eur(a.previous_price)}) · −${a.discount_pct}%</div>`;
+      }).join('');
+    }
+  }
+
   document.querySelectorAll('.hero-slide, .card, .trend-hero, .trend-card').forEach(el => {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = '/catalogo.html'; });

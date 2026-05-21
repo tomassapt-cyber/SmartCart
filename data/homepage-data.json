@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21T15:32:07.726Z",
+  "generated_at": "2026-05-21T15:44:08.539Z",
   "seed_total_products": 18577,
   "hero_sponsored": [
     {
@@ -241,6 +241,35 @@
     {
       "name": "REVUELE",
       "products": 124
+    }
+  ],
+  "telegram_alerts": [
+    {
+      "ean": "3365440787858",
+      "brand": "Yves Saint Laurent",
+      "name": "YSL Black Opium Eau de Parfum",
+      "store": "Douglas PT",
+      "price": 72.99,
+      "previous_price": 132,
+      "discount_pct": 45
+    },
+    {
+      "ean": "3360372059707",
+      "brand": "Giorgio Armani",
+      "name": "Giorgio Armani Code Homme Eau de Toilette",
+      "store": "Douglas PT",
+      "price": 77.99,
+      "previous_price": 124,
+      "discount_pct": 37
+    },
+    {
+      "ean": "3337875797436",
+      "brand": "La Roche-Posay",
+      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+",
+      "store": "Notino PT",
+      "price": 17.5,
+      "previous_price": 25,
+      "discount_pct": 30
     }
   ]
 }

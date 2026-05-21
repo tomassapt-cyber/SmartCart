@@ -1963,7 +1963,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <!-- Homepage data — preenchido em build-time por inject-homepage-data.js -->
 <script type="application/json" id="homepage-data">
 {
-  "generated_at": "2026-05-21T15:32:07.726Z",
+  "generated_at": "2026-05-21T15:44:08.539Z",
   "seed_total_products": 18577,
   "hero_sponsored": [
     {
@@ -2206,6 +2206,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       "name": "REVUELE",
       "products": 124
     }
+  ],
+  "telegram_alerts": [
+    {
+      "ean": "3365440787858",
+      "brand": "Yves Saint Laurent",
+      "name": "YSL Black Opium Eau de Parfum",
+      "store": "Douglas PT",
+      "price": 72.99,
+      "previous_price": 132,
+      "discount_pct": 45
+    },
+    {
+      "ean": "3360372059707",
+      "brand": "Giorgio Armani",
+      "name": "Giorgio Armani Code Homme Eau de Toilette",
+      "store": "Douglas PT",
+      "price": 77.99,
+      "previous_price": 124,
+      "discount_pct": 37
+    },
+    {
+      "ean": "3337875797436",
+      "brand": "La Roche-Posay",
+      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+",
+      "store": "Notino PT",
+      "price": 17.5,
+      "previous_price": 25,
+      "discount_pct": 30
+    }
   ]
 }
 </script>
@@ -2260,6 +2289,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     const n = card.querySelector('.name');  if (n) n.textContent = p.name;
     const pr = card.querySelector('.price');  if (pr) pr.textContent = fmt(p.best_price);
   });
+  // ── Telegram alerts ──
+  if (data.telegram_alerts?.length) {
+    const feed = document.querySelector('.tg-feed');
+    if (feed) {
+      // Gerar timestamps decrescentes para simular feed live
+      const now = new Date();
+      const hh = (offsetMin) => {
+        const d = new Date(now.getTime() - offsetMin * 60000);
+        return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+      };
+      feed.innerHTML = data.telegram_alerts.map((a, i) => {
+        const ts = hh([14, 41, 67][i] || (i * 30));
+        const eur = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
+        return `<div class="tg-msg"><span class="when">${ts}</span>${a.brand} ${a.name.split(' ').slice(0, 5).join(' ')} — ${a.store} ${eur(a.price)} (era ${eur(a.previous_price)}) · −${a.discount_pct}%</div>`;
+      }).join('');
+    }
+  }
+
   document.querySelectorAll('.hero-slide, .card, .trend-hero, .trend-card').forEach(el => {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = '/catalogo.html'; });
