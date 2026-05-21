@@ -150,9 +150,15 @@ async function extract(page) {
     // (Druni mostra strikethrough + current + per-unit; current é o mais baixo)
     const variants = [];
     const seen = new Set();
+    // Variant context markers — produtos com estas palavras na proximidade NÃO
+    // são variants do produto base (são refills, gift sets, etc. com EAN diferente).
+    const VARIANT_EXCLUDE = /\b(recarga|refill|cofre|estuche|estuje|pack|set|kit|gift|conjunto|edicion limitada|limited edition|edição limitada|mini|sample|amostra)\b/i;
+
     function parseVolumePrice(txt) {
       if (/\/\s*\d*\s*(ml|gr|g|kg|l)\b/i.test(txt)) return null;
       if (/\bpor\s+(ml|l|g|kg)\b/i.test(txt)) return null;
+      // Skip se o texto inclui palavras de variante distinta (Recarga, Refill, Cofre, ...)
+      if (VARIANT_EXCLUDE.test(txt)) return null;
       const volM = txt.match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
       if (!volM) return null;
       const vol = parseFloat(volM[1].replace(',', '.'));
@@ -175,6 +181,18 @@ async function extract(page) {
       if (el.children && el.children.length > 4) return;
       const txt = (el.innerText || el.textContent || '').trim();
       if (!txt || txt.length > 120) return;
+      // Verificar também TEXTO DO PAI imediato (até 2 níveis) para apanhar
+      // casos onde "Recarga" está num span vizinho e o preço noutro span.
+      let ctxTxt = txt;
+      try {
+        let p = el.parentElement;
+        for (let depth = 0; depth < 2 && p; depth++) {
+          const ptxt = (p.innerText || p.textContent || '').trim();
+          if (ptxt.length < 240) ctxTxt += ' ' + ptxt;
+          p = p.parentElement;
+        }
+      } catch {}
+      if (VARIANT_EXCLUDE.test(ctxTxt)) return;
       const parsed = parseVolumePrice(txt);
       if (!parsed) return;
       const { volMl, unit, price } = parsed;
