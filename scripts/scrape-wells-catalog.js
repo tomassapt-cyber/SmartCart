@@ -130,6 +130,9 @@ async function extract(page) {
     })).filter(o => o.price !== null);
 
     // DOM variants (Wells expoem 30ml — €X,YY em links a[class*="variation-tile"])
+    // VARIANT_EXCLUDE: textos com estas palavras NÃO são variants do produto base,
+    // são SKUs distintos (refills, gift sets, packs).
+    const VARIANT_EXCLUDE = /\b(recarga|refill|cofre|estuche|estuje|pack|set|kit|gift|conjunto|edicion limitada|limited edition|edição limitada|mini|sample|amostra)\b/i;
     const variants = [];
     const seen = new Set();
     const elements = document.querySelectorAll('a, button, label, li, span, div');
@@ -139,6 +142,19 @@ async function extract(page) {
       if (txt.length === 0 || txt.length > 120) return;
       if (/\/\s*\d*\s*(ml|gr|g|kg|l)\b/i.test(txt)) return; // per-unit
       if (/\bpor\s+(ml|l|g|kg)\b/i.test(txt)) return;
+      if (VARIANT_EXCLUDE.test(txt)) return;
+      // Verificar contexto pai (até 2 níveis) para apanhar casos onde "Recarga"
+      // está num span vizinho e o preço noutro span.
+      let ctxTxt = txt;
+      try {
+        let parent = el.parentElement;
+        for (let depth = 0; depth < 2 && parent; depth++) {
+          const ptxt = (parent.innerText || parent.textContent || '').trim();
+          if (ptxt.length < 240) ctxTxt += ' ' + ptxt;
+          parent = parent.parentElement;
+        }
+      } catch {}
+      if (VARIANT_EXCLUDE.test(ctxTxt)) return;
       const volM = txt.match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
       if (!volM) return;
       const priceMatches = [...txt.matchAll(/€\s*(\d{1,4}(?:[.,]\d{1,2})?)|(\d{1,4}(?:[.,]\d{1,2})?)\s*€/g)];
