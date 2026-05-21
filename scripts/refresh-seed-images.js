@@ -80,10 +80,11 @@ const ALLOWLIST_DIRECT = {
   '8719134109924': 'https://www.rituals.com/pt-pt/the-ritual-of-sakura-body-cream-220ml-1118773.html',         // Rituals Sakura
   '3600524025632': 'https://www.sweetcare.pt/maybelline-fit-me-matte-poreless-foundation-p-016223bl',          // Maybelline Fit Me
 
-  // Sem URL conhecida — manter sem imagem (Chanel No.5, Charlotte Tilbury, NARS)
-  // '3145891264100': '...',  // Chanel No.5 — sem URL directa
-  // '5060542790147': '...',  // Charlotte Tilbury Magic Cream
-  // '0607845029250': '...',  // NARS Concealer
+  // Notino (não tem Wells nem oficial scrapable)
+  '3145891264100': 'https://www.notino.pt/chanel/no-5-eau-de-parfum-para-mulher/',                              // Chanel No.5
+  '3348901250146': 'https://www.druni.pt/sauvage-eau-toilette-dior-eau-toilette-homem',                         // Dior Sauvage (via Druni)
+  '5060542790147': 'https://www.douglas.pt/p/charlotte-tilbury-charlottes-magic-cream-1196812',                  // Charlotte Tilbury Magic Cream
+  '0607845029250': 'https://www.narscosmetics.eu/pt/Maquilhagem/Rosto/Corretor/Radiant-Creamy-Concealer/0607845029250.html', // NARS Concealer (já funcionou)
 };
 
 if (!fs.existsSync(DRUNI_URLS)) {
