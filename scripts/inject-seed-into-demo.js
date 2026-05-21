@@ -32,13 +32,17 @@ const newBlock = '\n' + JSON.stringify(seedJson) + '\n';
 const next = html.slice(0, afterOpen) + newBlock + html.slice(closeIdx);
 fs.writeFileSync(DEMO, next, 'utf8');
 
-// Espelhar para catalogo.html (rota /catalogo). index.html agora é a homepage GirlMath.
+// Mirror para BOTH index.html (homepage) e catalogo.html (alias).
+// O user quer o catálogo dinâmico com todas as features como homepage principal.
+const INDEX = path.join(ROOT, 'index.html');
 const CATALOGO = path.join(ROOT, 'catalogo.html');
+fs.writeFileSync(INDEX, next, 'utf8');
 fs.writeFileSync(CATALOGO, next, 'utf8');
 
 const before = (html.length / 1024).toFixed(1);
 const after = (next.length / 1024).toFixed(1);
 console.log(`✔ ${DEMO}`);
-console.log(`✔ ${CATALOGO} (catálogo dinâmico — acessível em /catalogo.html)`);
+console.log(`✔ ${INDEX} (homepage principal com catálogo)`);
+console.log(`✔ ${CATALOGO} (alias /catalogo.html)`);
 console.log(`  demo.html: ${before} KB → ${after} KB`);
 console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s,sp)=>s+sp.items.length,0)} ofertas`);
