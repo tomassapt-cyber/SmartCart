@@ -141,26 +141,21 @@ function syntheticEan(p) {
       matchedByFp++;
     }
 
-    // ── 2. Match por fuzzy (mesma marca + Jaccard ≥ 0.65) ──
-    // Só procura entre produtos da MESMA marca canónica → barato e seguro
-    if (!targetProduct) {
-      const b = normalizeBrand(ep.brand);
-      const candidates = b ? productsByBrand[b] : null;
-      if (candidates && candidates.length) {
-        const fz = fuzzyMatch(ep, candidates, 0.65);
-        if (fz) {
-          targetProduct = fz.product;
-          matchedByFuzzy++;
-          if (fuzzySamples.length < 20) {
-            fuzzySamples.push({
-              ef: ep.name,
-              seed: fz.product.name,
-              score: fz.score.toFixed(2),
-            });
-          }
-        }
-      }
-    }
+    // ── 2. Match por fuzzy DESLIGADO — causava false positives perigosos ──
+    // Caso 'Effaclar Duo +M' a ser fundido com 'Effaclar Duo+' mostrou que
+    // o fuzzy 0.65 + Jaccard agrupa produtos da mesma linha que NÃO são
+    // o mesmo SKU. Sem barcode/EAN público no Shopify (Easyfarma),
+    // só podemos confiar no fingerprint exacto. Produtos sem match exacto
+    // entram como novos (preferimos catálogo ligeiramente inflado a preços
+    // errados a apresentar ao utilizador).
+    //
+    // (manter o código abaixo comentado para referência caso queiramos
+    //  reactivar com threshold ≥0.90 + signature tokens no futuro)
+    //
+    // if (!targetProduct) {
+    //   const fz = fuzzyMatch(ep, productsByBrand[normalizeBrand(ep.brand)] || [], 0.65);
+    //   if (fz) { targetProduct = fz.product; matchedByFuzzy++; }
+    // }
 
     // ── 3. Não match → criar como novo ──
     if (!targetProduct) {
