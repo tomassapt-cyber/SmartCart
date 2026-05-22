@@ -104,33 +104,29 @@ jobs:
             # (não main — rebasing feature branches contra main causa conflitos
             # add/add em todos os ficheiros gerados que já divergem).
             BRANCH="${GITHUB_REF_NAME}"
+            # Push com backoff exponencial: até 8 tentativas, jitter aleatório
+            # para chunks paralelos não tentarem ao mesmo tempo. Total ~17 min.
+            BACKOFFS=(5 15 30 60 120 180 240 300)
             pushed=0
-            for i in 1 2 3; do
-              if git push origin "HEAD:${BRANCH}"; then
-                pushed=1
-                break
-              fi
-              echo "Push falhou (tentativa $i), a tentar rebase contra origin/${BRANCH}..."
+            for i in "${!BACKOFFS[@]}"; do
+              attempt=$((i + 1))
+              if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
+              echo "Push falhou (tentativa $attempt), a rebasear contra origin/${BRANCH}..."
               git fetch origin "${BRANCH}" || true
-              # Em caso de rebase em progresso de tentativa anterior, abortar.
               git rebase --abort 2>/dev/null || true
               if git pull --rebase --autostash origin "${BRANCH}"; then
-                if git push origin "HEAD:${BRANCH}"; then
-                  pushed=1
-                  break
-                fi
+                if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
               else
-                # Rebase falhou — ABORTAR antes de seguir, senão HEAD fica num estado parcial
-                # que faz `git push` reportar "Everything up-to-date" enganadoramente.
                 git rebase --abort 2>/dev/null || true
-                # Restaurar autostash se houver
                 git stash pop 2>/dev/null || true
               fi
-              echo "Falhou tentativa $i, a aguardar 10s..."
-              sleep 10
+              JITTER=$((RANDOM % 10))
+              WAIT=$((${BACKOFFS[$i]} + JITTER))
+              echo "Falhou tentativa $attempt, a aguardar ${WAIT}s..."
+              sleep "$WAIT"
             done
             if [ "$pushed" != "1" ]; then
-              echo "ERRO: 3 tentativas falharam — abortando step para tornar visível"
+              echo "ERRO: 8 tentativas falharam — abortando step para tornar visível"
               exit 1
             fi
           fi

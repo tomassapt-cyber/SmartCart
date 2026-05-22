@@ -94,16 +94,26 @@ jobs:
       - name: Push to main (with rebase-on-fail retry)
         run: |
           set -e
-          # Tenta push directo; se falhar (alguém deu push entretanto),
-          # rebase contra origin/main e tenta de novo. Limite 3 tentativas.
-          for i in 1 2 3; do
+          # Push com backoff exponencial: até 8 tentativas (~17 min total) com
+          # jitter aleatório. Suporta chunks paralelos a tentar push em
+          # simultâneo sem perderem trabalho.
+          BACKOFFS=(5 15 30 60 120 180 240 300)
+          for i in "${!BACKOFFS[@]}"; do
+            attempt=$((i + 1))
             if git push origin HEAD:main; then
-              echo "Push ok (tentativa $i)"
+              echo "Push ok (tentativa $attempt)"
               exit 0
             fi
-            echo "Push falhou (tentativa $i) — rebase contra origin/main…"
+            echo "Push falhou (tentativa $attempt) — rebase contra origin/main…"
             git fetch origin main
-            git rebase origin/main || { git rebase --abort; exit 1; }
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase falhou — abortado"
+            fi
+            JITTER=$((RANDOM % 10))
+            WAIT=$((${BACKOFFS[$i]} + JITTER))
+            echo "A aguardar ${WAIT}s antes de retentar..."
+            sleep "$WAIT"
           done
-          echo "Push falhou após 3 tentativas. Artifact contém os dados."
+          echo "Push falhou após 8 tentativas. Artifact contém os dados."
           exit 1

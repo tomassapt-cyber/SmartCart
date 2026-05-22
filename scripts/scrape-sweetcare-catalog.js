@@ -135,8 +135,24 @@ async function scrapeProductPage(page, url) {
     const products = allItems.filter(it =>
       it && (it['@type'] === 'Product' || (Array.isArray(it['@type']) && it['@type'].includes('Product')))
     );
-    // Pegar primeiro Product como base; consolidar offers se houver múltiplos
-    let p = products[0] || null;
+    // Quando Sweetcare expõe múltiplos Product (uma por subtype/variante),
+    // escolher o que tem o preço mais baixo das ofertas in-stock — esse é o
+    // "current" promotional price que o utilizador vê. Antes pegávamos
+    // products[0] que era frequentemente a variante mais cara.
+    function getMinOfferPrice(prod) {
+      const raw = prod?.offers;
+      let offers = [];
+      if (Array.isArray(raw)) offers = raw;
+      else if (raw?.['@type'] === 'AggregateOffer' && Array.isArray(raw.offers)) offers = raw.offers;
+      else if (raw && typeof raw === 'object') offers = [raw];
+      const inStock = offers.filter(o => /in[_ ]?stock/i.test(o.availability || '') && o.price);
+      const pool = inStock.length ? inStock : offers.filter(o => o.price);
+      if (!pool.length) return Infinity;
+      return Math.min(...pool.map(o => typeof o.price === 'number' ? o.price : parseFloat(o.price) || Infinity));
+    }
+    let p = products.length > 1
+      ? products.reduce((a, b) => (getMinOfferPrice(b) < getMinOfferPrice(a) ? b : a))
+      : products[0] || null;
 
     if (!p) return { name: null, ean: null, brand: null, offers: [], variants: [], image_url: null };
 
@@ -277,6 +293,21 @@ function saveCheckpoint(allProducts, stats, final = false) {
           stats.no_jsonld++;
           allProducts.push({ url: t.url, slug: t.slug, category: t.category, status: 'no-jsonld', scraped_at: new Date().toISOString() });
         } else {
+          // Sweetcare expõe múltiplas ofertas no JSON-LD para produtos com subtypes
+          // (variantes). Antes pegávamos em offers[0] o que escolhia uma variante
+          // aleatória — preço quase sempre acima do "current" promotional price.
+          // Agora: escolhemos a OFERTA EM STOCK MAIS BARATA. Para produtos sem
+          // variantes, isto degenera para offers[0] mesmo.
+          const inStockOffers = data.offers.filter(o =>
+            /in[_ ]?stock/i.test(o.availability || '') && typeof o.price === 'number' && o.price > 0
+          );
+          const pool = inStockOffers.length > 0 ? inStockOffers : data.offers.filter(o => typeof o.price === 'number' && o.price > 0);
+          const cheapest = pool.length > 0 ? pool.reduce((a, b) => (b.price < a.price ? b : a)) : null;
+          // previous_price: maior preço entre as ofertas (fallback para detectar promo)
+          const allPrices = pool.map(o => o.price);
+          const maxPrice = allPrices.length > 0 ? Math.max(...allPrices) : null;
+          const minPrice = cheapest?.price || null;
+          const prevPrice = (maxPrice && minPrice && maxPrice > minPrice * 1.05) ? maxPrice : null;
           stats.ok++;
           allProducts.push({
             url: t.url,
@@ -287,7 +318,8 @@ function saveCheckpoint(allProducts, stats, final = false) {
             brand: data.brand,
             ean: data.ean,
             description: data.description,
-            price: data.offers[0]?.price || null,
+            price: cheapest?.price || null,
+            previous_price: prevPrice,
             in_stock: data.offers.some(o => /in[_ ]?stock/i.test(o.availability || '')),
             image_url: data.image_url,
             variants: data.variants,

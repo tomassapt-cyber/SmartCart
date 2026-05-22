@@ -107,8 +107,12 @@ jobs:
             fi
             git commit -m "chore: Sweetcare catalog refresh - $CAT$CHUNK_LABEL ($(date -u +%Y-%m-%d))"
             BRANCH="${GITHUB_REF_NAME}"
+            # Push com backoff exponencial: até 8 tentativas, jitter aleatório
+            # para chunks paralelos não tentarem ao mesmo tempo. Total ~17 min.
+            BACKOFFS=(5 15 30 60 120 180 240 300)
             pushed=0
-            for i in 1 2 3; do
+            for i in "${!BACKOFFS[@]}"; do
+              attempt=$((i + 1))
               if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
               git fetch origin "${BRANCH}" || true
               git rebase --abort 2>/dev/null || true
@@ -118,11 +122,13 @@ jobs:
                 git rebase --abort 2>/dev/null || true
                 git stash pop 2>/dev/null || true
               fi
-              echo "Falhou tentativa $i, a aguardar 10s..."
-              sleep 10
+              JITTER=$((RANDOM % 10))
+              WAIT=$((${BACKOFFS[$i]} + JITTER))
+              echo "Falhou tentativa $attempt, a aguardar ${WAIT}s..."
+              sleep "$WAIT"
             done
             if [ "$pushed" != "1" ]; then
-              echo "ERRO: 3 tentativas falharam"
+              echo "ERRO: 8 tentativas falharam — abortando step para tornar visível"
               exit 1
             fi
           fi
