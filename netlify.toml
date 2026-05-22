@@ -1,0 +1,20 @@
+# GirlMath — config Netlify
+# Garante que o service worker e o manifest são servidos sem cache agressiva,
+# senão atualizações ao site demoram horas/dias a aparecer no telemóvel.
+
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/icon.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

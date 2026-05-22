@@ -1,0 +1,21 @@
+{
+  "name": "GirlMath — Compara, combina e poupa",
+  "short_name": "GirlMath",
+  "description": "Comparação de preços em 30+ lojas de cosmética portuguesas e europeias.",
+  "lang": "pt-PT",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f4f5",
+  "theme_color": "#6d84a7",
+  "categories": ["shopping", "lifestyle", "beauty"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
