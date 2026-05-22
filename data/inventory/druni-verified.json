@@ -3,8 +3,8 @@
   "store_slug": "druni",
   "store_name": "Druni PT",
   "store_url": "https://www.druni.pt",
-  "verified_at": "2026-05-21T14:23:31.258Z",
-  "method": "playwright-headless (refresh 2026-05-21)",
+  "verified_at": "2026-05-22T12:10:28.923Z",
+  "method": "playwright-headless (refresh 2026-05-22)",
   "limitation": "URLs identificadas via Google index. Preço/stock real ainda não foi extraído (PDP fetch bloqueado por 406). Volume confirmado por nome no slug + descrição da SERP.",
   "stats": {
     "total": 20,
