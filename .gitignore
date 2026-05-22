@@ -24,3 +24,4 @@ data/catalog/*-full.json
 # data/catalog/*-urls.json
 .tmp-docx-images/
 .tmp-design/
+data/.artifacts/

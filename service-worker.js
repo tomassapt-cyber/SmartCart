@@ -11,7 +11,7 @@
  * Sempre que mexeres no HTML/JS, sobe `CACHE_VERSION` — o sw apaga caches
  * antigas no `activate`.
  */
-const CACHE_VERSION = 'gm-v10';
+const CACHE_VERSION = 'gm-v11';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const IMG_MAX_ENTRIES = 200;
