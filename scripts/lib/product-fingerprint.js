@@ -310,7 +310,39 @@ const PHRASE_NORMALIZATION = [
   // ───── SPF/FPS normalization ─────
   [/\bspf\s*(\d+)\s*\+?/gi, 'spf$1'],
   [/\bfps\s*(\d+)\s*\+?/gi, 'spf$1'],
+
+  // ───── Cross-language qualifier normalisation (Bioderma-style) ─────
+  // PT 'rico' ↔ EN 'rich' ↔ FR 'riche' = same variant descriptor
+  [/\brico\b/gi, 'rich'],
+  [/\briche\b/gi, 'rich'],
+  // PT 'activo'/'ativo' ↔ EN 'active' ↔ FR 'actif' = same descriptor
+  [/\bactivo\b/gi, 'active'],
+  [/\bativo\b/gi, 'active'],
+  [/\bactif\b/gi, 'active'],
+  // Foaming gel / gel moussant — Bioderma écrit os dois lados em alguns SKUs
+  [/\bfoaming\s+gel\b/gi, 'gel-moussant'],
+  // "without color" descriptor — Photoderm s/Cor ↔ Photoderm sin color ↔ tinted-free
+  [/\bs\/?\s*cor\b/gi, 'sem-cor'],
+  [/\bsin\s+color\b/gi, 'sem-cor'],
+  [/\bsans\s+couleur\b/gi, 'sem-cor'],
+  // Pediátrico/pediatric/pediatrics
+  [/\bpediatric(s)?\b/gi, 'pediatrico'],
+  [/\bpediatrique\b/gi, 'pediatrico'],
 ];
+
+// ───── Qualifier noise — palavras que descrevem mas não distinguem ─────
+// Removidas DEPOIS do PHRASE_NORMALIZATION. Lista conservadora: só palavras
+// que claramente são adjectivos descritivos sem valor de matching.
+// NÃO incluir tipos de produto (serum, creme, oleo) — esses são discriminadores.
+const QUALIFIER_NOISE = new Set([
+  'actif', 'active', // já normalizadas mas defensive
+  'foaming', 'foam',
+  'fluid', 'fluide', 'fluido',
+  'mousse', 'mousseux',
+  'doux', 'doce', 'gentle',
+  'puro', 'pure', 'pur',
+  'fresh', 'fresco', 'frais',
+]);
 
 /**
  * Nome canónico: remove marca, volume, palavras genéricas, normaliza separadores.
@@ -361,6 +393,7 @@ function canonicalName(name, brand) {
   // Tokenize
   const tokens = n.split(/\s+/).filter(Boolean).filter(t => {
     if (GENERIC_TOKENS.has(t)) return false;
+    if (QUALIFIER_NOISE.has(t)) return false;
     if (t.length === 1 && !/[a-z+]/i.test(t)) return false;
     return true;
   });
@@ -398,6 +431,65 @@ function productFingerprintWithVolume(product) {
   return vol ? `${base}|${vol}ml` : base;
 }
 
+/**
+ * Token set de um nome (sem brand). Usado em fuzzy match.
+ */
+function nameTokenSet(name, brand) {
+  const canon = canonicalName(name, brand);
+  return new Set(canon.split('-').filter(Boolean));
+}
+
+/**
+ * Jaccard similarity entre dois sets de tokens: |A ∩ B| / |A ∪ B|.
+ * Devolve valor entre 0 e 1.
+ */
+function jaccard(a, b) {
+  if (a.size === 0 || b.size === 0) return 0;
+  let intersect = 0;
+  for (const x of a) if (b.has(x)) intersect++;
+  return intersect / (a.size + b.size - intersect);
+}
+
+/**
+ * Tenta match fuzzy entre um produto candidato e uma lista de produtos.
+ * Critérios:
+ *  - Mesma marca canónica (obrigatório)
+ *  - Pelo menos 1 token "principal" comum (>3 chars) — evita matches
+ *    triviais entre dois produtos que partilham só "creme" ou "spf50"
+ *  - Jaccard similarity >= threshold (default 0.65)
+ *
+ * Devolve o produto com maior similarity acima do threshold, ou null.
+ */
+function fuzzyMatch(candidate, productList, threshold = 0.65) {
+  const candBrand = normalizeBrand(candidate.brand);
+  if (!candBrand) return null;
+  const candTokens = nameTokenSet(candidate.name, candidate.brand);
+  if (candTokens.size === 0) return null;
+
+  let bestMatch = null;
+  let bestScore = threshold;
+  for (const p of productList) {
+    if (normalizeBrand(p.brand) !== candBrand) continue;
+    const pTokens = nameTokenSet(p.name, p.brand);
+    // Verificar overlap de tokens distintivos (length > 3, não SPF/spf)
+    let hasDistinctive = false;
+    for (const t of pTokens) {
+      if (t.length > 3 && candTokens.has(t) && !/^spf\d+$/.test(t)) {
+        hasDistinctive = true;
+        break;
+      }
+    }
+    if (!hasDistinctive) continue;
+
+    const score = jaccard(candTokens, pTokens);
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = p;
+    }
+  }
+  return bestMatch ? { product: bestMatch, score: bestScore } : null;
+}
+
 module.exports = {
   productFingerprint,
   productFingerprintWithVolume,
@@ -406,4 +498,7 @@ module.exports = {
   canonicalName,
   extractVolumeMl,
   stripAccents,
+  fuzzyMatch,
+  nameTokenSet,
+  jaccard,
 };

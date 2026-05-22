@@ -23,6 +23,7 @@ function buildBaseVariants(sp) {
       volume_ml: v.volume_ml,
       unit: v.unit || 'ml',
       price: Number(v.price.toFixed(2)),
+      previous_price: v.previous_price && v.previous_price > v.price ? Number(v.previous_price.toFixed(2)) : null,
       in_stock: v.in_stock !== false,
       url: v.url || null,
     }));
@@ -34,6 +35,7 @@ function buildBaseVariants(sp) {
       volume_ml: mainVolume,
       unit: 'ml',
       price: Number(sp.price.toFixed(2)),
+      previous_price: sp.previous_price && sp.previous_price > sp.price ? Number(sp.previous_price.toFixed(2)) : null,
       in_stock: sp.in_stock !== false,
       url: sp.url || null,
     });
@@ -82,16 +84,31 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
     existingItem.url = headlineUrl;
     existingItem.in_stock = existingItem.in_stock || sp.in_stock !== false;
     existingItem.verified_at = sp.scraped_at || sourceTimestamp;
+    // Re-derivar previous_price/discount_pct para a variante headline (a mais barata)
+    const headlineVariant = mergedVariants.find(v => v.price === headlinePrice);
+    if (headlineVariant && headlineVariant.previous_price) {
+      existingItem.previous_price = headlineVariant.previous_price;
+      existingItem.discount_pct = Math.round((1 - headlinePrice / headlineVariant.previous_price) * 100);
+    } else if (sp.previous_price && sp.previous_price > headlinePrice) {
+      existingItem.previous_price = Number(sp.previous_price.toFixed(2));
+      existingItem.discount_pct = Math.round((1 - headlinePrice / sp.previous_price) * 100);
+    }
     if (state.updatedCounter) state.updatedCounter.value++;
     return { item: existingItem, action: 'merged' };
   }
 
-  // Criar novo store_product item
+  // Criar novo store_product item — preserva previous_price/discount_pct
+  // do scrape (vem das promoções activas da loja). Sem isto, os filtros
+  // Promoções e secção Em Alta perdem 95%+ das ofertas reais.
+  const prev = sp.previous_price && sp.previous_price > sp.price ? Number(sp.previous_price.toFixed(2)) : null;
+  const discount = sp.discount_pct
+    ? Math.round(sp.discount_pct)
+    : (prev ? Math.round((1 - sp.price / prev) * 100) : null);
   const item = {
     ean: targetEan,
     price: Number(sp.price.toFixed(2)),
-    previous_price: null,
-    discount_pct: null,
+    previous_price: prev,
+    discount_pct: discount,
     in_stock: sp.in_stock !== false,
     url: sp.url,
     verified: true,

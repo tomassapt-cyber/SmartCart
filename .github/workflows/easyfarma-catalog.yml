@@ -1,0 +1,109 @@
+# GirlMath — Easyfarma daily price refresh
+# ============================================================
+# Easyfarma é Shopify → /products.json devolve JSON limpo.
+# Scrape inteiro corre em ~30 segundos sem browser automation.
+# Por isso fazemos diariamente (preços de farmácia mudam todos os dias).
+#
+# Pipeline:
+#   1. scrape-easyfarma-catalog.js  → data/catalog/easyfarma-full.json
+#   2. integrate-easyfarma-catalog.js → merge no seed (fuzzy + dedup-audit)
+#   3. inject-seed-into-demo.js → regenera demo.html / index.html / catalogo.html
+#   4. commit + push para main (Netlify redeploya automaticamente)
+
+name: Easyfarma daily refresh
+
+on:
+  schedule:
+    # 04h UTC = 05h Lisboa (verão) / 04h Lisboa (inverno) — antes da maioria das alterações de preço
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write   # precisamos de fazer push do seed + HTML actualizados
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: easyfarma-catalog
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Easyfarma catalog
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-easyfarma-catalog.js --limit=${{ github.event.inputs.limit }}
+          else
+            node scripts/scrape-easyfarma-catalog.js
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        # Garante que mesmo se o integrate falhar / push der conflict,
+        # temos os dados scraped guardados como artifact descarregável.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: easyfarma-catalog-${{ github.run_id }}
+          path: data/catalog/easyfarma-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-easyfarma-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: GirlMath Bot
+          GIT_AUTHOR_EMAIL: bot@girlmath.pt
+          GIT_COMMITTER_NAME: GirlMath Bot
+          GIT_COMMITTER_EMAIL: bot@girlmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json data/catalog/easyfarma-full.json demo.html index.html catalogo.html
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: Easyfarma daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (with rebase-on-fail retry)
+        run: |
+          set -e
+          # Tenta push directo; se falhar (alguém deu push entretanto),
+          # rebase contra origin/main e tenta de novo. Limite 3 tentativas.
+          for i in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Push ok (tentativa $i)"
+              exit 0
+            fi
+            echo "Push falhou (tentativa $i) — rebase contra origin/main…"
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; exit 1; }
+          done
+          echo "Push falhou após 3 tentativas. Artifact contém os dados."
+          exit 1
