@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GirlMath — Homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Tokens
+   ============================================================ */
+:root {
+  --bg:          #ffffff;
+  --bg-soft:     #f4f4f5;     /* neutral surface */
+  --bg-tint:     #fafafb;     /* even softer */
+  --ink:         #2a2f3a;     /* main text */
+  --ink-mute:    #6b7384;     /* secondary text */
+  --ink-faint:   #a0a6b3;     /* tertiary text */
+  --line:        #ececef;     /* hairlines */
+  --line-strong: #d9dce2;
+
+  --blue-ink:    #6d84a7;     /* primary accent */
+  --blue-soft:   #bac5d7;     /* secondary */
+  --lilac:       #d8c9ec;     /* lilac pastel */
+  --butter:      #f2f1bb;     /* butter yellow */
+
+  --pill-active: linear-gradient(135deg, #d8c9ec 0%, #f2f1bb 100%);
+
+  --serif: "Cormorant Garamond", "Times New Roman", serif;
+  --sans:  "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+
+  --container: 1280px;
+  --gutter: 32px;
+
+  --radius-sm: 4px;
+  --radius:    10px;
+  --radius-lg: 18px;
+
+  --shadow-soft: 0 1px 0 rgba(20,24,34,0.04);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; color: inherit; }
+
+.serif    { font-family: var(--serif); font-weight: 400; letter-spacing: 0.005em; }
+.eyebrow  { font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ============================================================
+   Top bar + Nav
+   ============================================================ */
+.announce {
+  background: var(--blue-ink);
+  color: #fff;
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 9px 0;
+  font-weight: 500;
+}
+.announce span { opacity: 0.92; }
+.announce em  { font-style: normal; color: var(--butter); margin: 0 8px; }
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 72px;
+}
+.nav-left, .nav-right { display: flex; align-items: center; gap: 28px; }
+.nav-right { justify-content: flex-end; }
+.nav-left a, .nav-right a { font-size: 13px; color: var(--ink); }
+.nav-left a:hover, .nav-right a:hover { color: var(--blue-ink); }
+.logo {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-align: center;
+}
+.logo em { font-style: italic; color: var(--blue-ink); font-weight: 400; }
+
+.nav-search {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--line-strong);
+  padding: 7px 14px;
+  border-radius: 999px;
+  width: 280px;
+  background: var(--bg-soft);
+  font-size: 12.5px;
+  color: var(--ink-mute);
+}
+.nav-search:hover { border-color: var(--blue-soft); }
+.nav-search input { border: none; outline: none; background: none; flex: 1; font-family: var(--sans); font-size: 12.5px; color: var(--ink); }
+.nav-icon { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; }
+.cart-count {
+  background: var(--ink); color: #fff;
+  font-size: 10px; font-weight: 600;
+  min-width: 17px; height: 17px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 5px;
+  margin-left: 4px;
+}
+.nav-points {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 12px;
+  background: var(--pill-active);
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.nav-points .pt-dot {
+  width: 6px; height: 6px; border-radius: 999px; background: var(--blue-ink);
+}
+
+/* ============================================================
+   Categories pill row
+   ============================================================ */
+.cats {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0 30px;
+  background: #fff;
+  margin: 40px 0;
+}
+.cats-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.cat-pill {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 9px 22px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--bg-soft);
+  border: 1px solid transparent;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.cat-pill:hover { background: #ececef; }
+.cat-pill.is-active {
+  background: var(--pill-active);
+  color: var(--ink);
+  border-color: rgba(109,132,167,0.18);
+  font-weight: 500;
+}
+.cat-pill .count {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  margin-left: 7px;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+.cat-pill.is-active .count { color: rgba(42,47,58,0.55); }
+
+/* ============================================================
+   Hero — sponsored carousel
+   ============================================================ */
+.hero {
+  background: var(--bg-soft);
+  padding: 56px 0 72px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-copy .tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-mute); font-weight: 500;
+  padding: 6px 12px; border: 1px solid var(--line-strong);
+  border-radius: 999px; background: #fff;
+}
+.hero-copy .tag::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--blue-ink); }
+.hero-copy h1 {
+  font-family: var(--serif);
+  font-size: 64px;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  margin: 22px 0 18px;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.hero-copy h1 em { font-style: italic; color: var(--blue-ink); font-weight: 400; }
+.hero-copy p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-mute);
+  max-width: 460px;
+  margin: 0 0 28px;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: 30px; padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.hero-meta .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--blue-ink); display: inline-block; margin-right: 8px; animation: blink 2.6s ease-in-out infinite; }
+@keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: 0.35 } }
+.hero-meta-item { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+
+/* carousel */
+.hero-stage {
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  min-height: 460px;
+}
+.hero-slide {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  height: 100%;
+}
+.hero-slide.is-active { display: grid; animation: fade 700ms ease both; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+.hero-slide .ph {
+  aspect-ratio: 4/5;
+  border-radius: var(--radius);
+}
+.hero-slide .meta-eyebrow {
+  font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--blue-ink); font-weight: 600;
+}
+.hero-slide .brand {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 18px;
+}
+.hero-slide .name {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 6px 0 14px;
+  letter-spacing: -0.005em;
+}
+.hero-slide .vol { color: var(--ink-mute); font-size: 13px; margin-bottom: 22px; }
+.hero-slide .price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.hero-slide .price-now {
+  font-family: var(--serif); font-size: 38px; font-weight: 500; letter-spacing: -0.01em;
+}
+.hero-slide .price-old { color: var(--ink-faint); text-decoration: line-through; font-size: 15px; }
+.hero-slide .save { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-ink); font-weight: 600; }
+.hero-slide .at-store {
+  margin-top: 22px; padding: 12px 16px;
+  background: var(--bg-soft);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12.5px;
+}
+.hero-slide .at-store strong { font-weight: 600; }
+.hero-cta {
+  margin-top: 24px;
+  display: flex; gap: 10px;
+}
+.btn {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 14px 22px;
+  border-radius: 999px;
+  transition: all 180ms ease;
+}
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: #000; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+.hero-dots {
+  position: absolute; left: 36px; bottom: 28px;
+  display: flex; gap: 8px;
+}
+.hero-dot {
+  width: 28px; height: 3px; border-radius: 999px;
+  background: var(--line-strong);
+  transition: background 220ms ease, width 220ms ease;
+}
+.hero-dot.is-active { background: var(--blue-ink); width: 44px; }
+
+.hero-sponsor-tag {
+  position: absolute; top: 24px; right: 28px;
+  font-size: 9.5px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 500;
+}
+
+/* ============================================================
+   Generic placeholder images (subtle stripes)
+   ============================================================ */
+.ph {
+  position: relative;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(109,132,167,0.06) 0 10px,
+      rgba(109,132,167,0.00) 10px 20px),
+    var(--bg-tint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.ph::after {
+  content: attr(data-label);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+.ph.tint-lilac  { background:
+  repeating-linear-gradient(135deg, rgba(216,201,236,0.55) 0 10px, rgba(216,201,236,0.00) 10px 20px),
+  #faf7fe; }
+.ph.tint-blue   { background:
+  repeating-linear-gradient(135deg, rgba(186,197,215,0.5) 0 10px, rgba(186,197,215,0.00) 10px 20px),
+  #f5f8fc; }
+.ph.tint-butter { background:
+  repeating-linear-gradient(135deg, rgba(242,241,187,0.7) 0 10px, rgba(242,241,187,0.00) 10px 20px),
+  #fafadc; }
+
+/* ============================================================
+   Section header
+   ============================================================ */
+.section {
+  padding: 72px 0;
+}
+.section-tight { padding: 56px 0; }
+.section-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 36px;
+  gap: 24px;
+}
+.section-head h2 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  margin: 6px 0 0;
+  line-height: 1.05;
+}
+.section-head .sub { font-size: 13.5px; color: var(--ink-mute); margin-top: 8px; max-width: 480px; }
+.section-link {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+  color: var(--ink); border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+}
+.section-link:hover { color: var(--blue-ink); border-color: var(--blue-ink); }
+
+/* ============================================================
+   Shop by Brand — wordmark row
+   ============================================================ */
+.brands {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.brand-mark {
+  text-align: center;
+  padding: 38px 14px;
+  font-family: var(--serif);
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  font-weight: 400;
+  border-right: 1px solid var(--line);
+  transition: color 160ms ease, background 160ms ease;
+}
+.brand-mark:last-child { border-right: none; }
+.brand-mark:hover { color: var(--blue-ink); background: var(--bg-tint); }
+.brand-mark .em { font-style: italic; }
+.brand-mark .sm { display: block; font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-faint); margin-top: 6px; font-weight: 500; }
+
+/* ============================================================
+   Product card (shared)
+   ============================================================ */
+.product-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; }
+.product-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+
+.card {
+  background: #fff;
+  display: flex; flex-direction: column;
+  gap: 12px;
+}
+.card-media {
+  aspect-ratio: 4/5;
+  position: relative;
+}
+.card-media .ph { width: 100%; height: 100%; border-radius: var(--radius); }
+.card-badges {
+  position: absolute; top: 12px; left: 12px;
+  display: flex; flex-direction: column; gap: 6px;
+  align-items: flex-start;
+}
+.card-badge {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+}
+.card-badge.bg-lilac  { background: var(--lilac);  border-color: transparent; }
+.card-badge.bg-butter { background: var(--butter); border-color: transparent; }
+.card-badge.bg-blue   { background: var(--blue-soft); border-color: transparent; color: var(--ink); }
+.card-badge.bg-ink    { background: var(--ink);    color: #fff; border-color: transparent; }
+.card-badge.bg-sale   { background: #fff; color: var(--blue-ink); border-color: var(--blue-ink); }
+.card-fav {
+  position: absolute; top: 12px; right: 12px;
+  width: 32px; height: 32px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-mute);
+  font-size: 14px;
+}
+.card-fav:hover { color: var(--blue-ink); border-color: var(--blue-ink); }
+.card-out {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.78);
+  border-radius: var(--radius);
+}
+.card-out span {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 600;
+}
+
+.card-brand {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  margin-top: 4px;
+}
+.card-name {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.card-reviews {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11.5px; color: var(--ink-mute);
+}
+.stars { color: var(--blue-ink); letter-spacing: 0.05em; font-size: 12px; }
+.card-price-row {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-top: 2px;
+}
+.price-now {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.price-old {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  font-size: 13px;
+}
+.price-save {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-ink);
+  font-weight: 600;
+}
+.card-promo {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--butter);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+/* ============================================================
+   Skincare Kit cards (bundle)
+   ============================================================ */
+.kit-meta {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-mute); font-weight: 500;
+}
+
+/* ============================================================
+   Brindes (gifts) — partnership cards
+   ============================================================ */
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.gift-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 22px;
+  align-items: center;
+  background: #fff;
+  transition: border-color 180ms ease;
+}
+.gift-card:hover { border-color: var(--blue-soft); }
+.gift-card .ph { aspect-ratio: 1; }
+.gift-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue-ink);
+}
+.gift-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 8px 0 10px;
+  text-wrap: balance;
+}
+.gift-foot {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+  display: flex; align-items: center; gap: 8px;
+}
+.gift-foot strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   Em Alta — 1 hero + 4 mini, butter tint
+   ============================================================ */
+.trend-section {
+  background:
+    linear-gradient(180deg, rgba(242,241,187,0.35) 0%, rgba(242,241,187,0.05) 100%);
+  padding: 80px 0;
+}
+.trend-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 36px;
+}
+.trend-hero {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.trend-hero .ph { aspect-ratio: 1; }
+.trend-hero .brand { font-family: var(--sans); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+.trend-hero .name { font-family: var(--serif); font-size: 28px; font-weight: 500; line-height: 1.15; letter-spacing: -0.005em; margin: 8px 0 12px; }
+.trend-hero .desc { font-size: 13px; color: var(--ink-mute); line-height: 1.55; margin: 0 0 18px; max-width: 320px; }
+.trend-hero .price-now { font-size: 30px; }
+.trend-hero .at { font-size: 11.5px; color: var(--ink-mute); margin-top: 14px; }
+
+.trend-mini {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+}
+.trend-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+.trend-card .ph { aspect-ratio: 1; }
+.trend-card .brand { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+.trend-card .name  { font-family: var(--serif); font-size: 16px; font-weight: 500; line-height: 1.2; margin: 4px 0 6px; }
+.trend-card .price { font-family: var(--serif); font-size: 18px; font-weight: 500; }
+.sponsor-stamp {
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 500;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.sponsor-stamp::before { content: ""; width: 5px; height: 5px; border-radius: 999px; background: var(--blue-ink); }
+
+/* ============================================================
+   Quizzes — 3 cards
+   ============================================================ */
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.quiz-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  background: #fff;
+  display: flex; flex-direction: column;
+  min-height: 280px;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.quiz-card:hover { border-color: var(--blue-ink); transform: translateY(-2px); }
+.quiz-card.tint-lilac  { background: linear-gradient(160deg, rgba(216,201,236,0.45), rgba(216,201,236,0.05)); border-color: transparent; }
+.quiz-card.tint-butter { background: linear-gradient(160deg, rgba(242,241,187,0.55), rgba(242,241,187,0.05)); border-color: transparent; }
+.quiz-card.tint-blue   { background: linear-gradient(160deg, rgba(186,197,215,0.45), rgba(186,197,215,0.05)); border-color: transparent; }
+.quiz-num {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+.quiz-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0 0 12px;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.quiz-desc { font-size: 13px; color: var(--ink-mute); line-height: 1.55; margin: 0; }
+.quiz-foot {
+  margin-top: auto;
+  padding-top: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.quiz-time { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+.quiz-cta {
+  font-family: var(--sans);
+  font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+}
+
+/* ============================================================
+   Pontos cliente — loyalty banner
+   ============================================================ */
+.points {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 44px 48px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.points-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--blue-ink); font-weight: 600;
+}
+.points h2 {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  margin: 14px 0 12px;
+}
+.points h2 em { font-style: italic; color: var(--blue-ink); }
+.points p { font-size: 14px; color: var(--ink-mute); line-height: 1.6; margin: 0 0 22px; max-width: 460px; }
+.points-bar {
+  background: var(--bg-soft);
+  border-radius: 999px;
+  height: 8px;
+  position: relative;
+  overflow: hidden;
+  margin: 18px 0 10px;
+}
+.points-bar-fill {
+  position: absolute; inset: 0 auto 0 0;
+  width: 62%;
+  background: linear-gradient(90deg, var(--lilac), var(--butter));
+  border-radius: 999px;
+}
+.points-meter {
+  display: flex; justify-content: space-between;
+  font-size: 11.5px; color: var(--ink-mute);
+}
+.points-meter strong { color: var(--ink); }
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-left: 1px solid var(--line);
+}
+.tier {
+  padding: 8px 22px;
+  border-right: 1px solid var(--line);
+}
+.tier:last-child { border-right: none; }
+.tier .level {
+  font-family: var(--sans);
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ink-mute); font-weight: 600;
+  margin-bottom: 10px;
+}
+.tier .price {
+  font-family: var(--serif);
+  font-size: 28px; font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.tier .perks { font-size: 12px; color: var(--ink-mute); line-height: 1.5; }
+.tier.is-current .level { color: var(--blue-ink); }
+.tier.is-current .price { color: var(--ink); }
+.tier.is-current { position: relative; }
+.tier.is-current::before {
+  content: "\25CF";
+  position: absolute; top: -2px; left: 22px;
+  color: var(--blue-ink);
+  font-size: 10px;
+}
+
+/* ============================================================
+   Telegram — channel CTA
+   ============================================================ */
+.telegram {
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 44px 48px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.telegram::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 85% 30%, rgba(216,201,236,0.18), transparent 50%),
+    radial-gradient(circle at 15% 80%, rgba(242,241,187,0.10), transparent 55%);
+  pointer-events: none;
+}
+.telegram > * { position: relative; z-index: 1; }
+.telegram .tg-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--butter); font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.telegram .tg-eyebrow::before {
+  content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--butter);
+  animation: blink 2.4s infinite;
+}
+.telegram h2 {
+  font-family: var(--serif);
+  font-size: 42px; font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  margin: 14px 0 12px;
+  color: #fff;
+}
+.telegram h2 em { font-style: italic; color: var(--lilac); font-weight: 400; }
+.telegram p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 0 24px;
+}
+.telegram .tg-handle {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  color: var(--butter);
+  letter-spacing: 0.04em;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 22px;
+}
+.tg-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--butter);
+  color: var(--ink);
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.tg-btn:hover { background: #fff; }
+.tg-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding-left: 32px;
+  border-left: 1px solid rgba(255,255,255,0.14);
+}
+.tg-stat .n {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: #fff;
+}
+.tg-stat .l {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-top: 10px;
+}
+.tg-feed {
+  margin-top: 24px;
+  display: flex; flex-direction: column;
+  gap: 10px;
+}
+.tg-msg {
+  font-size: 12.5px;
+  background: rgba(255,255,255,0.06);
+  border-left: 2px solid var(--butter);
+  padding: 10px 14px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: rgba(255,255,255,0.85);
+}
+.tg-msg .when { color: var(--butter); font-family: ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.04em; margin-right: 10px; }
+
+@media (max-width: 1100px) {
+  .quiz-grid { grid-template-columns: 1fr; }
+  .points, .telegram { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
+  .tg-stats { padding-left: 0; border-left: none; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 24px; }
+  .tiers { grid-template-columns: 1fr; border-left: none; border-top: 1px solid var(--line); }
+  .tier { border-right: none; border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .tier:last-child { border-bottom: none; }
+  .tier.is-current::before { left: 0; }
+}
+
+/* ============================================================
+   Catalog — sidebar filters + grid
+   ============================================================ */
+.catalog {
+  display: grid;
+  grid-template-columns: 244px 1fr;
+  gap: 56px;
+  padding: 56px 0 96px;
+}
+.sidebar { font-size: 13px; }
+.side-block {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+.side-block:first-child { padding-top: 0; }
+.side-toggle {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink); font-weight: 600;
+  padding: 4px 0;
+}
+.side-toggle .chev { color: var(--ink-mute); font-size: 13px; transition: transform 200ms ease; }
+.side-block.is-open .chev { transform: rotate(180deg); }
+.side-list { margin-top: 14px; display: none; flex-direction: column; gap: 11px; }
+.side-block.is-open .side-list { display: flex; }
+.side-list label {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--ink); cursor: pointer;
+}
+.side-list label .count { color: var(--ink-faint); margin-left: auto; font-size: 11px; }
+.side-list input[type="checkbox"] {
+  width: 14px; height: 14px;
+  accent-color: var(--blue-ink);
+}
+.range-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-mute); margin-top: 12px; }
+.range-input { width: 100%; accent-color: var(--blue-ink); }
+
+.catalog-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.catalog-head .count { font-size: 12.5px; color: var(--ink-mute); }
+.catalog-head .sort {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; padding: 8px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.pager {
+  margin-top: 48px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.pager button {
+  width: 36px; height: 36px; border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  font-size: 12px; font-weight: 500;
+  color: var(--ink);
+}
+.pager button:hover { border-color: var(--ink); }
+.pager button.is-active {
+  background: var(--ink); color: #fff; border-color: var(--ink);
+}
+.pager .ellipsis { color: var(--ink-faint); padding: 0 6px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  background: var(--bg-soft);
+  padding: 72px 0 28px;
+  margin-top: 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.footer h4 {
+  font-family: var(--sans);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+.footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer ul a { font-size: 13px; color: var(--ink-mute); }
+.footer ul a:hover { color: var(--blue-ink); }
+.footer p { font-size: 13px; color: var(--ink-mute); line-height: 1.6; }
+.footer .logo { text-align: left; margin-bottom: 14px; font-size: 28px; }
+.foot-mini {
+  padding-top: 22px;
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--ink-faint); letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1100px) {
+  .product-grid-5 { grid-template-columns: repeat(3, 1fr); }
+  .product-grid-4 { grid-template-columns: repeat(3, 1fr); }
+  .brands { grid-template-columns: repeat(3, 1fr); }
+  .brand-mark:nth-child(3n) { border-right: none; }
+  .gifts-grid { grid-template-columns: 1fr 1fr; }
+  .catalog { grid-template-columns: 1fr; }
+  .sidebar { order: 2; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .trend-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .product-grid-5 { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .product-grid-4 { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .brands { grid-template-columns: 1fr 1fr; }
+  .brand-mark { border-right: none; border-bottom: 1px solid var(--line); }
+  .gifts-grid { grid-template-columns: 1fr; }
+  .section-head { flex-direction: column; align-items: flex-start; }
+  .hero-copy h1 { font-size: 44px; }
+  .section-head h2 { font-size: 32px; }
+  .nav-search { display: none; }
+  .nav-left { gap: 16px; }
+  .nav-inner { height: 60px; }
+  .logo { font-size: 24px; }
+  .trend-mini { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ANNOUNCEMENT
+     ============================================================ -->
+<div class="announce">
+  <span>Envio grátis acima de €29</span><em>·</em><span>Comparação de preços em 30+ lojas PT</span><em>·</em><a href="#" style="color:var(--butter); text-decoration: none; font-weight:600;">↗ Telegram t.me/girlmath_pt</a>
+</div>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <a href="/catalogo.html">Catálogo</a>
+      <a href="/catalogo.html#brands">Marcas</a>
+      <a href="/catalogo.html#promo">Promoções</a>
+      <a href="#">Diário</a>
+    </div>
+    <a href="/" class="logo">girl<em>Math</em></a>
+    <div class="nav-right">
+      <div class="nav-search">
+        <span>⌕</span>
+        <input placeholder="Procurar produto, marca ou ingrediente…" />
+      </div>
+      <a class="nav-icon nav-points" href="#points" title="Os teus pontos"><span class="pt-dot"></span>1 240 pts</a>
+      <a class="nav-icon" href="#">Conta</a>
+      <a class="nav-icon" href="/">Carrinho<span class="cart-count">2</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO — sponsored carousel (5 produtos, 4.5s)
+     ============================================================ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="tag">Spring · 26</span>
+      <h1>Descobre o teu <em>ritual</em>, ao melhor preço.</h1>
+      <p>Curadoria diária de cosmética em mais de 30 lojas portuguesas. Compara preços, monitoriza promoções, recebe alertas. Sem fricção, sem ruído.</p>
+      <div class="hero-cta">
+        <a href="/catalogo.html" class="btn btn-primary">Explorar catálogo</a>
+        <a href="#how" class="btn btn-ghost">Como funciona</a>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><span class="dot"></span>Preços actualizados às 06h00</span>
+        <span class="hero-meta-item">2 630 referências</span>
+      </div>
+    </div>
+
+    <div class="hero-stage" id="heroStage">
+      <span class="hero-sponsor-tag">↗ Patrocinado · 1/5</span>
+
+      <!-- 5 sponsored slides -->
+      <div class="hero-slide is-active" data-i="0">
+        <div class="ph tint-lilac" data-label="product · serum 50ml"></div>
+        <div>
+          <div class="meta-eyebrow">Novidade · esta semana</div>
+          <div class="brand">Sol de Janeiro</div>
+          <div class="name">Brazilian Bum Bum Cream</div>
+          <div class="vol">240 ml · creme corporal</div>
+          <div class="price-row">
+            <span class="price-now">€38,90</span>
+            <span class="price-old">€48,00</span>
+            <span class="save">Poupa 19%</span>
+          </div>
+          <div class="at-store">
+            <span>Melhor em <strong>Notino PT</strong></span>
+            <span>4.8 ★ · 2 142 reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" data-i="1">
+        <div class="ph tint-blue" data-label="product · cream 50ml"></div>
+        <div>
+          <div class="meta-eyebrow">Recém-chegado</div>
+          <div class="brand">Beauty of Joseon</div>
+          <div class="name">Glow Deep Serum: Rice + Alpha Arbutin</div>
+          <div class="vol">30 ml · sérum de luminosidade</div>
+          <div class="price-row">
+            <span class="price-now">€16,40</span>
+            <span class="price-old">€19,90</span>
+            <span class="save">Poupa 18%</span>
+          </div>
+          <div class="at-store">
+            <span>Melhor em <strong>YesStyle</strong></span>
+            <span>4.9 ★ · 5 408 reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" data-i="2">
+        <div class="ph tint-butter" data-label="product · perfume 50ml"></div>
+        <div>
+          <div class="meta-eyebrow">Iconic · re-stock</div>
+          <div class="brand">Maison Margiela</div>
+          <div class="name">Replica · Beach Walk</div>
+          <div class="vol">100 ml · eau de toilette</div>
+          <div class="price-row">
+            <span class="price-now">€112,00</span>
+            <span class="price-old">€145,00</span>
+            <span class="save">Poupa 23%</span>
+          </div>
+          <div class="at-store">
+            <span>Melhor em <strong>Sephora PT</strong></span>
+            <span>4.7 ★ · 1 087 reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" data-i="3">
+        <div class="ph tint-lilac" data-label="product · bundle"></div>
+        <div>
+          <div class="meta-eyebrow">Bestseller</div>
+          <div class="brand">La Roche-Posay</div>
+          <div class="name">Toleriane Dermallergo Sérum</div>
+          <div class="vol">20 ml · pele sensível</div>
+          <div class="price-row">
+            <span class="price-now">€24,90</span>
+            <span class="price-old">€31,90</span>
+            <span class="save">Poupa 22%</span>
+          </div>
+          <div class="at-store">
+            <span>Melhor em <strong>Wells</strong></span>
+            <span>4.9 ★ · 3 211 reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" data-i="4">
+        <div class="ph tint-blue" data-label="product · lipstick"></div>
+        <div>
+          <div class="meta-eyebrow">Edição limitada</div>
+          <div class="brand">Rare Beauty</div>
+          <div class="name">Soft Pinch Liquid Blush · Joy</div>
+          <div class="vol">7,5 ml · blush líquido</div>
+          <div class="price-row">
+            <span class="price-now">€22,40</span>
+            <span class="price-old">€26,00</span>
+            <span class="save">Poupa 14%</span>
+          </div>
+          <div class="at-store">
+            <span>Melhor em <strong>Douglas PT</strong></span>
+            <span>4.8 ★ · 6 220 reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-dots" id="heroDots">
+        <span class="hero-dot is-active"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BESTSELLERS — 5 cards · "Buy 2: -10%" + reviews
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Esta semana</span>
+        <h2><span class="serif" style="font-style:italic">Bestsellers</span> em 30 lojas</h2>
+        <p class="sub">Os produtos mais comparados, ordenados pela poupança real esta semana. Aplica-se promoção <strong>Buy 2: −10%</strong>.</p>
+      </div>
+      <a href="#" class="section-link">Ver ranking</a>
+    </div>
+
+    <div class="product-grid-5">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-lilac" data-label="serum 30ml"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-ink">Buy 2: −10%</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">The Ordinary</div>
+        <h3 class="card-name">Niacinamide 10% + Zinc 1%</h3>
+        <div class="card-reviews"><span class="stars">★★★★★</span>4.8 · 12 408</div>
+        <div class="card-price-row">
+          <span class="price-now">€6,90</span>
+          <span class="price-old">€8,40</span>
+        </div>
+        <span class="price-save">Em Notino · poupa 18%</span>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-butter" data-label="cream 50ml"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-ink">Buy 2: −10%</span>
+            <span class="card-badge bg-lilac">Tendência</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">CeraVe</div>
+        <h3 class="card-name">Moisturising Cream 340 ml</h3>
+        <div class="card-reviews"><span class="stars">★★★★★</span>4.9 · 8 712</div>
+        <div class="card-price-row">
+          <span class="price-now">€14,20</span>
+          <span class="price-old">€19,90</span>
+        </div>
+        <span class="price-save">Em Wells · poupa 29%</span>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-blue" data-label="cleanser 200ml"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-ink">Buy 2: −10%</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">Beauty of Joseon</div>
+        <h3 class="card-name">Relief Sun Rice + Probiotic SPF50+</h3>
+        <div class="card-reviews"><span class="stars">★★★★★</span>4.9 · 5 408</div>
+        <div class="card-price-row">
+          <span class="price-now">€13,80</span>
+          <span class="price-old">€16,90</span>
+        </div>
+        <span class="price-save">Em YesStyle · poupa 18%</span>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-lilac" data-label="cleanser 150ml"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-ink">Buy 2: −10%</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">Avène</div>
+        <h3 class="card-name">Cleanance Comedomed Concentrado</h3>
+        <div class="card-reviews"><span class="stars">★★★★☆</span>4.6 · 2 188</div>
+        <div class="card-price-row">
+          <span class="price-now">€16,40</span>
+          <span class="price-old">€20,90</span>
+        </div>
+        <span class="price-save">Em Pharma2u · poupa 21%</span>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-butter" data-label="oil 30ml"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-ink">Buy 2: −10%</span>
+            <span class="card-badge bg-blue">Sem álcool</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">Bioderma</div>
+        <h3 class="card-name">Sensibio H2O Solução Micelar 500 ml</h3>
+        <div class="card-reviews"><span class="stars">★★★★★</span>4.8 · 9 044</div>
+        <div class="card-price-row">
+          <span class="price-now">€11,90</span>
+          <span class="price-old">€15,90</span>
+        </div>
+        <span class="price-save">Em El Corte Inglés · poupa 25%</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKINCARE KIT — 5 bundles · Favorite / Deals / Wow / Esgotado
+     ============================================================ -->
+<section class="section" style="background: var(--bg-tint); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Compra a rotina inteira</span>
+        <h2>Skincare <span class="serif" style="font-style:italic">Kits</span> &amp; rituais</h2>
+        <p class="sub">Bundles curados — pega na rotina inteira numa só compra e poupa até 32%.</p>
+      </div>
+      <a href="#" class="section-link">Ver 22 kits</a>
+    </div>
+
+    <div class="product-grid-5">
+      <!-- Kit 1 — FAVORITO -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-lilac" data-label="kit · 4 pieces"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-lilac">★ Favorito</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">Beauty of Joseon</div>
+        <h3 class="card-name">Ritual Coreano Glow · 4 produtos</h3>
+        <span class="kit-meta">Cleanser · Toner · Sérum · SPF</span>
+        <div class="card-price-row">
+          <span class="price-now">€48,90</span>
+          <span class="price-old">€68,40</span>
+          <span class="price-save">Poupa 28%</span>
+        </div>
+      </article>
+
+      <!-- Kit 2 — DEALS -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-butter" data-label="kit · 3 pieces"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-butter">Deals · 24h</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">La Roche-Posay</div>
+        <h3 class="card-name">Anti-Manchas Pigmentclar · 3 produtos</h3>
+        <span class="kit-meta">Sérum · Creme · Limpeza</span>
+        <div class="card-price-row">
+          <span class="price-now">€56,40</span>
+          <span class="price-old">€82,90</span>
+          <span class="price-save">Poupa 32%</span>
+        </div>
+      </article>
+
+      <!-- Kit 3 — WOW PRICE -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-blue" data-label="kit · 5 pieces"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-blue">Wow-price</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">CeraVe</div>
+        <h3 class="card-name">Hidratação Profunda · 5 produtos</h3>
+        <span class="kit-meta">Gel · Espuma · Loção · Sérum · Olhos</span>
+        <div class="card-price-row">
+          <span class="price-now">€42,00</span>
+          <span class="price-old">€59,80</span>
+          <span class="price-save">Poupa 30%</span>
+        </div>
+      </article>
+
+      <!-- Kit 4 — FAVORITO -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-lilac" data-label="kit · 3 pieces"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-lilac">★ Favorito</span>
+          </div>
+          <button class="card-fav" aria-label="Favorito">♡</button>
+        </div>
+        <div class="card-brand">Summer Fridays</div>
+        <h3 class="card-name">Holiday Glow Trio · viagem</h3>
+        <span class="kit-meta">Lip Butter · Jet Lag Mask · Cloud Dew</span>
+        <div class="card-price-row">
+          <span class="price-now">€64,00</span>
+          <span class="price-old">€84,50</span>
+          <span class="price-save">Poupa 24%</span>
+        </div>
+      </article>
+
+      <!-- Kit 5 — ESGOTADO -->
+      <article class="card">
+        <div class="card-media">
+          <div class="ph tint-butter" data-label="kit · 4 pieces"></div>
+          <div class="card-badges">
+            <span class="card-badge bg-ink">Wow-price</span>
+          </div>
+          <div class="card-out"><span>Esgotado</span></div>
+        </div>
+        <div class="card-brand">Caudalie</div>
+        <h3 class="card-name">Vinoperfect Anti-Manchas · 4 produtos</h3>
+        <span class="kit-meta">Sérum · Creme · Olhos · Sabonete</span>
+        <div class="card-price-row">
+          <span class="price-now">€78,00</span>
+          <span class="price-old">€102,00</span>
+          <span class="price-save">Poupa 23%</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CATEGORIES — pill row (active = lilac→butter gradient)
+     ============================================================ -->
+<div class="cats" id="cats">
+  <div class="container cats-row">
+    <button class="cat-pill is-active" data-cat="novidades">Novidades<span class="count">128</span></button>
+    <button class="cat-pill" data-cat="skincare">Skincare<span class="count">412</span></button>
+    <button class="cat-pill" data-cat="makeup">Makeup<span class="count">287</span></button>
+    <button class="cat-pill" data-cat="perfume">Perfume<span class="count">194</span></button>
+    <button class="cat-pill" data-cat="corpo">Corpo &amp; Banho<span class="count">163</span></button>
+    <button class="cat-pill" data-cat="cabelo">Cabelo<span class="count">141</span></button>
+    <button class="cat-pill" data-cat="kbeauty">K-beauty<span class="count">88</span></button>
+    <button class="cat-pill" data-cat="homem">Homem<span class="count">72</span></button>
+    <button class="cat-pill" data-cat="acessorios">Acessórios<span class="count">54</span></button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CATALOG — sidebar filtros + grid paginado 8/página
+     ============================================================ -->
+<section>
+  <div class="container catalog">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="side-block is-open">
+        <button class="side-toggle">Categoria <span class="chev">∨</span></button>
+        <div class="side-list">
+          <label><input type="checkbox" checked /> Skincare <span class="count">412</span></label>
+          <label><input type="checkbox" /> Makeup <span class="count">287</span></label>
+          <label><input type="checkbox" /> Perfume <span class="count">194</span></label>
+          <label><input type="checkbox" /> Corpo &amp; Banho <span class="count">163</span></label>
+          <label><input type="checkbox" /> Cabelo <span class="count">141</span></label>
+        </div>
+      </div>
+
+      <div class="side-block is-open">
+        <button class="side-toggle">Marca <span class="chev">∨</span></button>
+        <div class="side-list">
+          <label><input type="checkbox" checked /> Beauty of Joseon <span class="count">28</span></label>
+          <label><input type="checkbox" /> CeraVe <span class="count">22</span></label>
+          <label><input type="checkbox" checked /> La Roche-Posay <span class="count">41</span></label>
+          <label><input type="checkbox" /> The Ordinary <span class="count">37</span></label>
+          <label><input type="checkbox" /> Tocobo <span class="count">12</span></label>
+          <label><input type="checkbox" /> Anua <span class="count">9</span></label>
+          <label><input type="checkbox" /> Bioderma <span class="count">19</span></label>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <button class="side-toggle">Preço <span class="chev">∨</span></button>
+        <div class="side-list">
+          <input class="range-input" type="range" min="0" max="200" value="60" />
+          <div class="range-row"><span>€0</span><span>até €60</span></div>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <button class="side-toggle">Loja <span class="chev">∨</span></button>
+        <div class="side-list">
+          <label><input type="checkbox" /> Notino PT <span class="count">2 411</span></label>
+          <label><input type="checkbox" /> Sephora PT <span class="count">1 088</span></label>
+          <label><input type="checkbox" /> Douglas <span class="count">844</span></label>
+          <label><input type="checkbox" /> Wells <span class="count">612</span></label>
+          <label><input type="checkbox" /> YesStyle <span class="count">198</span></label>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <button class="side-toggle">Ingrediente <span class="chev">∨</span></button>
+        <div class="side-list">
+          <label><input type="checkbox" /> Niacinamide</label>
+          <label><input type="checkbox" /> Retinol</label>
+          <label><input type="checkbox" /> Vitamin C</label>
+          <label><input type="checkbox" /> Hyaluronic Acid</label>
+          <label><input type="checkbox" /> Centella Asiatica</label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Grid -->
+    <div>
+      <div class="catalog-head">
+        <span class="count" id="catalogCount">A mostrar 1–8 de 128 produtos · Novidades</span>
+        <span class="sort">Ordenar: <strong>Maior poupança</strong> <span>∨</span></span>
+      </div>
+
+      <div class="product-grid-4" id="catalogGrid">
+        <!-- rendered by JS -->
+      </div>
+
+      <!-- Pagination 8/page -->
+      <nav class="pager" aria-label="Paginação">
+        <button>‹</button>
+        <button class="is-active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <span class="ellipsis">…</span>
+        <button>52</button>
+        <button>›</button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EM ALTA — 1 grande + 4 mini, butter tint, sponsored
+     ============================================================ -->
+<section class="trend-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="sponsor-stamp">Patrocinado · Em Alta</span>
+        <h2 style="margin-top: 12px"><span class="serif" style="font-style:italic">Em alta</span> · trending now</h2>
+        <p class="sub">Em destaque em 8 lojas portuguesas esta semana. Conteúdo patrocinado por Beauty of Joseon.</p>
+      </div>
+    </div>
+
+    <div class="trend-grid">
+      <!-- Big -->
+      <article class="trend-hero">
+        <div class="ph tint-butter" data-label="serum hero · 30ml"></div>
+        <div>
+          <div class="brand">Beauty of Joseon</div>
+          <h3 class="name">Glow Deep Serum · Rice + Alpha Arbutin</h3>
+          <p class="desc">Sérum estrela coreano com 30% de extracto de arroz fermentado e 2% de Alpha Arbutin. Tom uniforme em 8 semanas, comprovado em clínica.</p>
+          <div class="card-price-row">
+            <span class="price-now">€16,40</span>
+            <span class="price-old">€19,90</span>
+            <span class="price-save">Poupa 18%</span>
+          </div>
+          <div class="at">Melhor preço em <strong style="color:var(--ink)">YesStyle</strong> · 4.9 ★ (5 408)</div>
+        </div>
+      </article>
+
+      <!-- 4 minis -->
+      <div class="trend-mini">
+        <article class="trend-card">
+          <div class="ph tint-lilac" data-label="toner"></div>
+          <div>
+            <div class="brand">Anua</div>
+            <div class="name">Heartleaf 77 Soothing Toner</div>
+            <div class="price">€19,40</div>
+          </div>
+        </article>
+
+        <article class="trend-card">
+          <div class="ph tint-blue" data-label="essence"></div>
+          <div>
+            <div class="brand">SKIN1004</div>
+            <div class="name">Madagascar Centella Ampoule</div>
+            <div class="price">€18,90</div>
+          </div>
+        </article>
+
+        <article class="trend-card">
+          <div class="ph tint-butter" data-label="mask"></div>
+          <div>
+            <div class="brand">Numbuzin</div>
+            <div class="name">No.3 Skin Softening Serum</div>
+            <div class="price">€24,20</div>
+          </div>
+        </article>
+
+        <article class="trend-card">
+          <div class="ph tint-lilac" data-label="oil"></div>
+          <div>
+            <div class="brand">Mixsoon</div>
+            <div class="name">Bean Essence Original</div>
+            <div class="price">€22,00</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUIZZES — descoberta guiada
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Descoberta guiada</span>
+        <h2>Quizzes de <span class="serif" style="font-style:italic">recomendação</span></h2>
+        <p class="sub">3 minutos. Respondemos com produtos compatíveis com a tua pele, perfume favorito ou rotina ideal — comparados em 30+ lojas.</p>
+      </div>
+      <a href="#" class="section-link">Todos os quizzes</a>
+    </div>
+
+    <div class="quiz-grid">
+      <article class="quiz-card tint-lilac">
+        <div class="quiz-num">i.</div>
+        <h3 class="quiz-title">Qual é a tua rotina <em class="serif" style="font-style:italic">ideal</em> de skincare?</h3>
+        <p class="quiz-desc">Tipo de pele, preocupações, orçamento. Recebes uma rotina de 4 passos com alternativas em cada gama de preço.</p>
+        <div class="quiz-foot">
+          <span class="quiz-time">8 perguntas · 3 min</span>
+          <a href="#" class="quiz-cta">Começar →</a>
+        </div>
+      </article>
+
+      <article class="quiz-card tint-butter">
+        <div class="quiz-num">ii.</div>
+        <h3 class="quiz-title">Encontra o teu <em class="serif" style="font-style:italic">perfume</em> assinatura</h3>
+        <p class="quiz-desc">Famílias olfativas, intensidade, ocasião. Sugerimos 5 perfumes com amostras e o melhor preço actual.</p>
+        <div class="quiz-foot">
+          <span class="quiz-time">6 perguntas · 2 min</span>
+          <a href="#" class="quiz-cta">Começar →</a>
+        </div>
+      </article>
+
+      <article class="quiz-card tint-blue">
+        <div class="quiz-num">iii.</div>
+        <h3 class="quiz-title">A tua maquilhagem do <em class="serif" style="font-style:italic">dia-a-dia</em></h3>
+        <p class="quiz-desc">Tom de pele, acabamento preferido, intensidade. Selecionamos base, blush e batom em harmonia.</p>
+        <div class="quiz-foot">
+          <span class="quiz-time">10 perguntas · 4 min</span>
+          <a href="#" class="quiz-cta">Começar →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PONTOS CLIENTE — loyalty tiers
+     ============================================================ -->
+<section class="section" id="points" style="padding-top: 32px">
+  <div class="container">
+    <div class="points">
+      <div>
+        <span class="points-eyebrow">★ GirlMath Members</span>
+        <h2>Pontos de <em>cliente</em>, sem letras pequenas.</h2>
+        <p>Ganhas 1 ponto por cada €1 gasto e 10 pontos por cada review com fotografia. Resgata directamente no checkout — não expiram durante 24 meses.</p>
+
+        <div class="points-bar"><div class="points-bar-fill"></div></div>
+        <div class="points-meter">
+          <span>Tens <strong>1 240 pontos</strong></span>
+          <span>Faltam <strong>760</strong> para o tier Petal</span>
+        </div>
+
+        <div style="margin-top: 26px;">
+          <a href="#" class="btn btn-primary" style="font-size: 11px;">Resgatar pontos</a>
+          <a href="#" class="btn btn-ghost" style="font-size: 11px;">Ver histórico</a>
+        </div>
+      </div>
+
+      <div class="tiers">
+        <div class="tier">
+          <div class="level">Bloom</div>
+          <div class="price">0 pts</div>
+          <div class="perks">Acesso · 5% nos aniversários · alertas de preço ilimitados.</div>
+        </div>
+        <div class="tier is-current">
+          <div class="level">Bud · actual</div>
+          <div class="price">1 000 pts</div>
+          <div class="perks">10% off compras a partir de €40 · early access a kits.</div>
+        </div>
+        <div class="tier">
+          <div class="level">Petal</div>
+          <div class="price">2 000 pts</div>
+          <div class="perks">15% off · brindes exclusivos · portes grátis sem mínimo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TELEGRAM — canal @girlmath_pt
+     ============================================================ -->
+<section class="section" style="padding-top: 0; padding-bottom: 56px">
+  <div class="container">
+    <div class="telegram">
+      <div>
+        <span class="tg-eyebrow">Live · Telegram channel</span>
+        <h2>Alertas de descidas de preço, <em>em directo.</em></h2>
+        <p>Subscreve o canal Telegram. Avisamos sempre que um produto que segues desce de preço em qualquer uma das 30+ lojas que acompanhamos. Sem spam.</p>
+
+        <div class="tg-handle">▸ t.me/girlmath_pt</div>
+        <a href="#" class="tg-btn">Abrir canal →</a>
+
+        <div class="tg-feed">
+          <div class="tg-msg"><span class="when">07:14</span>The Ordinary Niacinamide 10% — Notino €5,90 (era €8,40) · −30%</div>
+          <div class="tg-msg"><span class="when">06:41</span>La Roche-Posay Toleriane — Wells €12,60 (era €16,90) · −25%</div>
+          <div class="tg-msg"><span class="when">06:08</span>Beauty of Joseon Glow Serum — YesStyle €16,40 (era €19,90) · −18%</div>
+        </div>
+      </div>
+
+      <div class="tg-stats">
+        <div class="tg-stat">
+          <div class="n">12 408</div>
+          <div class="l">Subscritores</div>
+        </div>
+        <div class="tg-stat">
+          <div class="n">06:00</div>
+          <div class="l">Update diário</div>
+        </div>
+        <div class="tg-stat">
+          <div class="n">2 630</div>
+          <div class="l">Produtos seguidos</div>
+        </div>
+        <div class="tg-stat">
+          <div class="n">€18</div>
+          <div class="l">Poupança média/mês</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">girl<em>Math</em></div>
+        <p>Comparador de cosmética para o mercado português. Mais de 30 lojas, actualizadas diariamente às 06h00.</p>
+        <p style="margin-top: 22px; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.16em; text-transform: uppercase;">Lisboa · PT</p>
+      </div>
+      <div>
+        <h4>Comprar</h4>
+        <ul>
+          <li><a href="#">Novidades</a></li>
+          <li><a href="#">Bestsellers</a></li>
+          <li><a href="#">Kits &amp; bundles</a></li>
+          <li><a href="#">Promoções</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Marcas</h4>
+        <ul>
+          <li><a href="#">Catálogo A–Z</a></li>
+          <li><a href="#">K-beauty</a></li>
+          <li><a href="#">Derma</a></li>
+          <li><a href="#">Niche</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">Como funciona</a></li>
+          <li><a href="#">Envios</a></li>
+          <li><a href="#">Devoluções</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p style="margin-bottom: 14px">Alertas semanais de descidas de preço. Sem spam.</p>
+        <div class="nav-search" style="width:100%; background:#fff;">
+          <input placeholder="email@dominio.pt" />
+          <button class="serif" style="font-size:13px;">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="foot-mini">
+      <span>© 2026 GirlMath · Todos os direitos reservados.</span>
+      <span>Privacidade · Termos · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JS — carrossel 4.5s + sidebar toggles
+     ============================================================ -->
+<script>
+(function(){
+  // ───── Hero carousel ─────
+  var slides = document.querySelectorAll('.hero-slide');
+  var dots   = document.querySelectorAll('#heroDots .hero-dot');
+  var stage  = document.getElementById('heroStage');
+  var sponsorTag = stage.querySelector('.hero-sponsor-tag');
+  var i = 0, len = slides.length;
+  function go(n){
+    slides[i].classList.remove('is-active');
+    dots[i].classList.remove('is-active');
+    i = (n + len) % len;
+    slides[i].classList.add('is-active');
+    dots[i].classList.add('is-active');
+    sponsorTag.textContent = '↗ Patrocinado · ' + (i+1) + '/' + len;
+  }
+  setInterval(function(){ go(i+1); }, 4500);
+  dots.forEach(function(d, idx){ d.addEventListener('click', function(){ go(idx); }); });
+
+  // ───── Sidebar toggles ─────
+  document.querySelectorAll('.side-block .side-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.parentElement.classList.toggle('is-open'); });
+  });
+
+  // ───── Catalog data ─────
+  // tint: lilac | blue | butter — badge: null | 'sale-XX' | 'novo' | 'sem-alcool'
+  var TINTS = ['lilac','blue','butter','lilac','blue','butter','lilac','blue'];
+  var CATALOG = {
+    novidades: { label: 'Novidades', total: 128, items: [
+      ['Glow Recipe',     'Watermelon Glow Niacinamide Drops',  '€33,40', null,       'lilac',  '★★★★★', '4.8', '1 244'],
+      ['Beauty of Joseon','Glow Deep Serum · Rice + Arbutin',   '€16,40', 'sale-18',  'butter', '★★★★★', '4.9', '5 408'],
+      ['Tocobo',          'Vita Glazed Lip Mask',               '€12,90', 'novo',     'lilac',  '★★★★★', '4.7', '482'],
+      ['Numbuzin',        'No.5 Vitamin-Niacinamide Concentr.', '€24,80', null,       'blue',   '★★★★☆', '4.6', '912'],
+      ['Mixsoon',         'Bifida Biome Essence',               '€26,40', 'sale-12',  'butter', '★★★★★', '4.8', '1 077'],
+      ['SKIN1004',        'Madagascar Centella Sun Serum',      '€19,90', 'novo',     'lilac',  '★★★★★', '4.9', '2 411'],
+      ['Anua',            'Heartleaf 77 Soothing Toner',        '€19,40', null,       'blue',   '★★★★★', '4.8', '3 044'],
+      ['Rare Beauty',     'Soft Pinch Liquid Blush · Joy',      '€22,40', 'sale-14',  'butter', '★★★★★', '4.8', '6 220'],
+    ]},
+    skincare: { label: 'Skincare', total: 412, items: [
+      ['Beauty of Joseon','Revive Serum: Ginseng + Snail Mucin','€14,90', 'sale-24',  'lilac',  '★★★★★', '4.8', '3 211'],
+      ['La Roche-Posay',  'Toleriane Caring Wash Cleanser',     '€11,20', null,       'blue',   '★★★★★', '4.7', '1 808'],
+      ['Tocobo',          'Bio Watery Sun Cream SPF50+',        '€18,40', 'novo',     'butter', '★★★★★', '4.9', '2 044'],
+      ['Anua',            'Heartleaf 77 Clear Pad',             '€21,90', null,       'lilac',  '★★★★☆', '4.6', '941'],
+      ['The Ordinary',    'Squalane Cleanser 50 ml',            '€10,40', 'sale-18',  'blue',   '★★★★★', '4.7', '5 822'],
+      ['Summer Fridays',  'Jet Lag Hydrating Mask 45 ml',       '€42,00', null,       'butter', '★★★★★', '4.8', '2 998'],
+      ['Avène',           'Hyaluron Activ B3 Sérum',            '€32,90', 'sem-alcool','lilac', '★★★★☆', '4.6', '1 044'],
+      ['CeraVe',          'PM Facial Moisturising Lotion',      '€13,20', 'sale-12',  'blue',   '★★★★★', '4.8', '4 401'],
+    ]},
+    makeup: { label: 'Makeup', total: 287, items: [
+      ['Rare Beauty',     'Soft Pinch Liquid Blush · Joy',      '€22,40', 'sale-14',  'lilac',  '★★★★★', '4.8', '6 220'],
+      ['Charlotte Tilbury','Pillow Talk Matte Revolution',      '€32,00', null,       'butter', '★★★★★', '4.7', '4 188'],
+      ['NARS',            'Light Reflecting Foundation 30ml',   '€48,90', null,       'blue',   '★★★★☆', '4.6', '2 014'],
+      ['Fenty Beauty',    'Pro Filt\'r Soft Matte Foundation',  '€36,90', 'sale-10',  'lilac',  '★★★★★', '4.7', '8 911'],
+      ['Glossier',        'Cloud Paint · Beam',                 '€18,40', null,       'butter', '★★★★★', '4.8', '3 077'],
+      ['Maybelline',      'Sky High Mascara',                   '€10,20', 'sale-22',  'blue',   '★★★★★', '4.9', '12 044'],
+      ['Tarte',           'Shape Tape Concealer',               '€28,90', null,       'lilac',  '★★★★☆', '4.6', '5 122'],
+      ['Patrick Ta',      'Major Headlines Highlight Crème',    '€42,00', 'novo',     'butter', '★★★★★', '4.7', '988'],
+    ]},
+    perfume: { label: 'Perfume', total: 194, items: [
+      ['Maison Margiela', 'Replica · Beach Walk 100ml',         '€112,00','sale-23',  'butter', '★★★★★', '4.7', '1 087'],
+      ['Le Labo',         'Santal 33 EDP 50ml',                 '€202,00',null,       'lilac',  '★★★★★', '4.9', '2 411'],
+      ['Byredo',          'Mojave Ghost EDP',                   '€185,00',null,       'blue',   '★★★★☆', '4.6', '811'],
+      ['Tom Ford',        'Lost Cherry EDP',                    '€298,00','sale-12',  'lilac',  '★★★★★', '4.8', '1 644'],
+      ['Diptyque',        'Philosykos EDT 75ml',                '€142,00',null,       'butter', '★★★★★', '4.8', '988'],
+      ['Chloé',           'Chloé Eau de Parfum 50ml',           '€88,00', 'sale-18',  'lilac',  '★★★★★', '4.7', '4 188'],
+      ['Jo Malone',       'Wood Sage & Sea Salt',               '€122,00',null,       'blue',   '★★★★☆', '4.6', '2 044'],
+      ['YSL',             'Libre Eau de Parfum',                '€118,00','sale-14',  'butter', '★★★★★', '4.7', '5 408'],
+    ]},
+    corpo: { label: 'Corpo & Banho', total: 163, items: [
+      ['Sol de Janeiro',  'Brazilian Bum Bum Cream 240ml',      '€38,90', 'sale-19',  'lilac',  '★★★★★', '4.8', '2 142'],
+      ['Aesop',           'Resurrection Aromatique Hand Wash',  '€38,00', null,       'butter', '★★★★★', '4.9', '1 088'],
+      ['Rituals',         'Sakura Magic Touch Body Cream',      '€21,90', null,       'lilac',  '★★★★☆', '4.6', '3 011'],
+      ['Nuxe',            'Huile Prodigieuse Florale 100ml',    '€26,40', 'sale-15',  'butter', '★★★★★', '4.8', '4 099'],
+      ['L\'Occitane',     'Almond Shower Oil 250ml',            '€28,00', null,       'blue',   '★★★★★', '4.7', '2 877'],
+      ['Sabon',           'Body Scrub · Patchouli Lavender',    '€36,90', null,       'lilac',  '★★★★☆', '4.5', '988'],
+      ['Diptyque',        'L\'Eau Papier Body Mist',            '€48,00', 'novo',     'butter', '★★★★★', '4.8', '412'],
+      ['The Body Shop',   'Almond Milk Hand Cream 30ml',        '€6,50',  null,       'blue',   '★★★★★', '4.7', '6 044'],
+    ]},
+    cabelo: { label: 'Cabelo', total: 141, items: [
+      ['Olaplex',         'No.3 Hair Perfector 100ml',          '€28,00', null,       'lilac',  '★★★★★', '4.8', '8 211'],
+      ['Kérastase',       'Bain Hydra-Apaisant Shampoo',        '€26,40', 'sale-12',  'blue',   '★★★★☆', '4.6', '2 011'],
+      ['Moroccanoil',     'Treatment Original 100ml',           '€44,90', null,       'butter', '★★★★★', '4.9', '5 622'],
+      ['Davines',         'OI Oil All-in-One 50ml',             '€32,00', null,       'lilac',  '★★★★★', '4.8', '1 877'],
+      ['Living Proof',    'Perfect Hair Day Dry Shampoo',       '€26,90', 'sale-15',  'blue',   '★★★★☆', '4.6', '988'],
+      ['Ouai',            'Detox Shampoo',                      '€32,40', null,       'butter', '★★★★★', '4.7', '2 144'],
+      ['R+Co',            'Death Valley Dry Shampoo',           '€34,00', 'novo',     'lilac',  '★★★★★', '4.7', '622'],
+      ['Briogeo',         'Don\'t Despair, Repair! Mask 168g',  '€38,00', null,       'butter', '★★★★★', '4.8', '3 088'],
+    ]},
+    kbeauty: { label: 'K-beauty', total: 88, items: [
+      ['Beauty of Joseon','Glow Deep Serum · Rice + Arbutin',   '€16,40', 'sale-18',  'lilac',  '★★★★★', '4.9', '5 408'],
+      ['Anua',            'Heartleaf 77% Soothing Cleanser',    '€19,40', null,       'blue',   '★★★★★', '4.8', '3 211'],
+      ['SKIN1004',        'Madagascar Centella Ampoule',        '€18,90', null,       'butter', '★★★★★', '4.8', '2 644'],
+      ['Numbuzin',        'No.3 Skin Softening Serum',          '€24,20', 'sem-alcool','lilac', '★★★★☆', '4.6', '1 088'],
+      ['Mixsoon',         'Bean Essence Original',              '€22,00', null,       'butter', '★★★★★', '4.8', '988'],
+      ['Cosrx',           'Advanced Snail 96 Mucin Essence',    '€18,40', 'sale-14',  'blue',   '★★★★★', '4.9', '14 222'],
+      ['Some By Mi',      'AHA-BHA-PHA 30 Days Toner',          '€16,90', null,       'lilac',  '★★★★☆', '4.6', '4 088'],
+      ['Innisfree',       'Green Tea Seed Hyaluronic Serum',    '€22,90', null,       'butter', '★★★★★', '4.7', '2 988'],
+    ]},
+    homem: { label: 'Homem', total: 72, items: [
+      ['Lab Series',      'Daily Moisture Defence Lotion',      '€38,00', null,       'blue',   '★★★★☆', '4.6', '1 044'],
+      ['Bulldog',         'Original Moisturiser 100ml',         '€10,90', 'sale-15',  'lilac',  '★★★★★', '4.7', '3 088'],
+      ['Kiehl\'s',        'Facial Fuel Energising Moisturizer', '€36,40', null,       'butter', '★★★★★', '4.8', '2 211'],
+      ['Aesop',           'Post-Poo Drops 50ml',                '€32,00', null,       'lilac',  '★★★★★', '4.9', '988'],
+      ['Baxter of Cal.',  'Beard Grooming Oil 30ml',            '€28,90', null,       'butter', '★★★★☆', '4.6', '622'],
+      ['Le Labo',         'Rose 31 EDP 50ml',                   '€212,00','novo',     'blue',   '★★★★★', '4.8', '1 144'],
+      ['Tom Ford',        'Ombré Leather Parfum 50ml',          '€158,00','sale-10',  'lilac',  '★★★★★', '4.7', '2 644'],
+      ['The Ordinary',    '100% L-Ascorbic Acid Powder',        '€7,90',  null,       'butter', '★★★★★', '4.7', '4 088'],
+    ]},
+    acessorios: { label: 'Acessórios', total: 54, items: [
+      ['ICONIC London',   'Sculpting Foundation Brush',         '€34,90', null,       'lilac',  '★★★★☆', '4.5', '411'],
+      ['Real Techniques', 'Everyday Essentials Set · 5 pcs',    '€28,00', 'sale-12',  'blue',   '★★★★★', '4.8', '6 088'],
+      ['Foreo',           'Luna 4 Facial Cleansing Device',     '€279,00','novo',     'butter', '★★★★★', '4.7', '988'],
+      ['Beauty Blender',  'Original Pink Sponge',               '€22,00', null,       'lilac',  '★★★★★', '4.8', '4 411'],
+      ['Dyson',           'Airwrap Multi-Styler Complete',      '€599,00',null,       'blue',   '★★★★★', '4.8', '2 144'],
+      ['T3',              'Whirl Trio Interchangeable Wand',    '€189,00','sale-14',  'butter', '★★★★☆', '4.6', '622'],
+      ['Mount Lai',       'Jade Facial Roller',                 '€38,00', null,       'lilac',  '★★★★☆', '4.5', '988'],
+      ['Wildling',        'Empress Stone Gua Sha',              '€72,00', null,       'butter', '★★★★★', '4.7', '1 411'],
+    ]},
+  };
+
+  // ───── Render catalog grid ─────
+  function badgeHTML(b){
+    if (!b) return '';
+    if (b.indexOf('sale-') === 0) return '<div class="card-badges"><span class="card-badge bg-sale">−'+b.slice(5)+'%</span></div>';
+    if (b === 'novo')       return '<div class="card-badges"><span class="card-badge bg-lilac">Novo</span></div>';
+    if (b === 'sem-alcool') return '<div class="card-badges"><span class="card-badge bg-blue">Sem álcool</span></div>';
+    return '';
+  }
+  function cardHTML(p){
+    var brand=p[0], name=p[1], price=p[2], badge=p[3], tint=p[4], stars=p[5], rating=p[6], reviews=p[7];
+    return ''
+      + '<article class="card">'
+      +   '<div class="card-media">'
+      +     '<div class="ph tint-'+tint+'" data-label="'+brand.toLowerCase().split(' ')[0]+'"></div>'
+      +     badgeHTML(badge)
+      +     '<button class="card-fav" aria-label="Favorito">♡</button>'
+      +   '</div>'
+      +   '<div class="card-brand">'+brand+'</div>'
+      +   '<h3 class="card-name">'+name+'</h3>'
+      +   '<div class="card-reviews"><span class="stars">'+stars+'</span>'+rating+' · '+reviews+'</div>'
+      +   '<div class="card-price-row"><span class="price-now">'+price+'</span></div>'
+      + '</article>';
+  }
+  var grid  = document.getElementById('catalogGrid');
+  var count = document.getElementById('catalogCount');
+  function render(key){
+    var cat = CATALOG[key] || CATALOG.novidades;
+    grid.style.opacity = '0';
+    setTimeout(function(){
+      grid.innerHTML = cat.items.map(cardHTML).join('');
+      count.textContent = 'A mostrar 1–8 de ' + cat.total + ' produtos · ' + cat.label;
+      grid.style.opacity = '1';
+    }, 180);
+  }
+  grid.style.transition = 'opacity 220ms ease';
+  render('novidades');
+
+  // ───── Category pills — slicer behaviour ─────
+  document.querySelectorAll('.cat-pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('.cat-pill').forEach(function(x){ x.classList.remove('is-active'); });
+      p.classList.add('is-active');
+      var key = p.getAttribute('data-cat') || 'novidades';
+      render(key);
+      // Smooth scroll so user sees the catalog update
+      var catalogEl = document.querySelector('.catalog');
+      if (catalogEl) {
+        var top = catalogEl.getBoundingClientRect().top + window.pageYOffset - 120;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+})();
+</script>
+
+<!-- Homepage data — preenchido em build-time por inject-homepage-data.js -->
+<script type="application/json" id="homepage-data">
+{}
+</script>
+
+<script>
+(function(){
+  let data;
+  try { data = JSON.parse(document.getElementById('homepage-data')?.textContent || '{}'); } catch { data = {}; }
+  if (!data.hero_sponsored?.length) return;
+  const fmt = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
+  const ph = (p, tint) => p.image_url
+    ? `<img src="${p.image_url}" alt="${p.brand} ${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:contain;background:#fff;padding:8px" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph tint-'+'${tint}',dataset:{label:'${p.brand}'}}))" />`
+    : `<div class="ph tint-${tint}" data-label="${p.brand}"></div>`;
+  const tints = ['lilac','blue','butter','lilac','butter'];
+
+  document.querySelectorAll('.hero-slide').forEach((slide, i) => {
+    const p = data.hero_sponsored[i]; if (!p) return;
+    const m = slide.querySelector('.ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, tints[i]); m.replaceWith(w.firstElementChild); }
+    const b = slide.querySelector('.brand'); if (b) b.textContent = p.brand;
+    const n = slide.querySelector('.name');  if (n) n.textContent = p.name;
+    const pr = slide.querySelector('.price-now'); if (pr) pr.textContent = fmt(p.best_price);
+    const st = slide.querySelector('.at-store strong'); if (st) st.textContent = p.best_store || '';
+  });
+  const grids = document.querySelectorAll('.section .product-grid-5');
+  [['bestsellers', 0], ['skincare_kits', 1]].forEach(([key, idx]) => {
+    const cards = grids[idx]?.querySelectorAll('.card') || [];
+    cards.forEach((card, i) => {
+      const p = data[key][i]; if (!p) return;
+      const m = card.querySelector('.card-media .ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, tints[i]); m.replaceWith(w.firstElementChild); }
+      const b = card.querySelector('.card-brand'); if (b) b.textContent = p.brand;
+      const n = card.querySelector('.card-name');  if (n) n.textContent = p.name;
+      const pr = card.querySelector('.price-now'); if (pr) pr.textContent = fmt(p.best_price);
+      const o = card.querySelector('.price-old');  if (o) o.style.display = 'none';
+      const s = card.querySelector('.price-save'); if (s) s.textContent = `Em ${p.best_store}`;
+    });
+  });
+  const trendHero = document.querySelector('.trend-hero');
+  if (trendHero && data.em_alta[0]) {
+    const p = data.em_alta[0];
+    const m = trendHero.querySelector('.ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, 'butter'); m.replaceWith(w.firstElementChild); }
+    const b = trendHero.querySelector('.brand'); if (b) b.textContent = p.brand;
+    const n = trendHero.querySelector('.name');  if (n) n.textContent = p.name;
+    const pr = trendHero.querySelector('.price-now'); if (pr) pr.textContent = fmt(p.best_price);
+    const o = trendHero.querySelector('.price-old');  if (o) o.style.display = 'none';
+    const s = trendHero.querySelector('.price-save'); if (s) s.style.display = 'none';
+    const at = trendHero.querySelector('.at strong'); if (at) at.textContent = p.best_store || '';
+  }
+  document.querySelectorAll('.trend-mini .trend-card').forEach((card, i) => {
+    const p = data.em_alta[i+1]; if (!p) return;
+    const m = card.querySelector('.ph'); if (m) { const w = document.createElement('div'); w.innerHTML = ph(p, tints[(i+1)%tints.length]); m.replaceWith(w.firstElementChild); }
+    const b = card.querySelector('.brand'); if (b) b.textContent = p.brand;
+    const n = card.querySelector('.name');  if (n) n.textContent = p.name;
+    const pr = card.querySelector('.price');  if (pr) pr.textContent = fmt(p.best_price);
+  });
+  // ── Telegram alerts ──
+  if (data.telegram_alerts?.length) {
+    const feed = document.querySelector('.tg-feed');
+    if (feed) {
+      // Gerar timestamps decrescentes para simular feed live
+      const now = new Date();
+      const hh = (offsetMin) => {
+        const d = new Date(now.getTime() - offsetMin * 60000);
+        return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+      };
+      feed.innerHTML = data.telegram_alerts.map((a, i) => {
+        const ts = hh([14, 41, 67][i] || (i * 30));
+        const eur = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
+        return `<div class="tg-msg"><span class="when">${ts}</span>${a.brand} ${a.name.split(' ').slice(0, 5).join(' ')} — ${a.store} ${eur(a.price)} (era ${eur(a.previous_price)}) · −${a.discount_pct}%</div>`;
+      }).join('');
+    }
+  }
+
+  document.querySelectorAll('.hero-slide, .card, .trend-hero, .trend-card').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = '/catalogo.html'; });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -194,27 +194,120 @@ function extractVolumeMl(name) {
  * Aplicado ANTES de tokenização para evitar divisões.
  */
 const PHRASE_NORMALIZATION = [
-  // Perfumaria: "Eau de Parfum" → "edp"
+  // ───── Perfumaria ─────
   [/\beau\s+de\s+parfum\b/gi, 'edp'],
   [/\beau\s+de\s+toilette\b/gi, 'edt'],
   [/\beau\s+fraiche\b/gi, 'fraiche'],
   [/\beau\s+de\s+cologne\b/gi, 'cologne'],
+  [/\bcolonia\b/gi, 'cologne'],
 
-  // Skincare comum
+  // ───── Skincare phrases ─────
   [/\bsoin\s+anti[- ]imperfections?\b/gi, 'anti-imperfeicoes'],
   [/\banti[- ]imperfections?\b/gi, 'anti-imperfeicoes'],
   [/\bcreme\s+protetor\s+de\s+dia\b/gi, 'creme-protetor-dia'],
-  [/\bsoin\s+hydratant\b/gi, 'hidratante'],
-  [/\bcreme\s+hidratante\b/gi, 'creme-hidratante'],
+
+  // ───── Micellar water (PT/ES/EN/FR) ─────
+  [/\bsolu[cç][aã]o\s+micelar\b/gi, 'agua-micelar'],
+  [/\bsoluci[oó]n\s+micelar\b/gi, 'agua-micelar'],
   [/\bagua\s+micelar\b/gi, 'agua-micelar'],
   [/\beau\s+micellaire\b/gi, 'agua-micelar'],
+  [/\bmicellar\s+water\b/gi, 'agua-micelar'],
 
-  // Hair
+  // ───── Cream (PT/ES/EN/FR) ─────
+  [/\bcr[eè]me\b/gi, 'creme'],
+  [/\bcrema\b/gi, 'creme'],
+  [/\bcream\b/gi, 'creme'],
+
+  // ───── Soap/bar (PT/ES/EN/FR) — Bioderma Atoderm Pain etc ─────
+  [/\bsabonete\b/gi, 'sabonete'],
+  [/\bjab[oó]n\b/gi, 'sabonete'],
+  [/\bsavon\b/gi, 'sabonete'],
+  [/\bsoap\b/gi, 'sabonete'],
+  [/\bpain\s+(dermatologique|dermatologico|dermatologic)\b/gi, 'sabonete'],
+
+  // ───── Serum (PT/ES/EN/FR all map to 'serum') ─────
+  [/\bs[eé]rum\b/gi, 'serum'],
+  [/\bserum\b/gi, 'serum'],
+
+  // ───── Deodorant (PT/ES/EN/FR) ─────
+  [/\bdesodorizante\b/gi, 'deo'],
+  [/\bdesodorante\b/gi, 'deo'],
+  [/\bdeodorant\b/gi, 'deo'],
+  [/\bd[eé]odorant\b/gi, 'deo'],
+
+  // ───── Moisturizer (PT/ES/EN/FR) ─────
+  [/\bhidratante\b/gi, 'hidratante'],
+  [/\bsoin\s+hydratant\b/gi, 'hidratante'],
+  [/\bhydratant\b/gi, 'hidratante'],
+  [/\bmoisturi[sz]ing\b/gi, 'hidratante'],
+  [/\bmoisturi[sz]er\b/gi, 'hidratante'],
+
+  // ───── Cleansing (PT/ES/EN/FR) ─────
+  [/\blimpeza\b/gi, 'limpeza'],
+  [/\blimpieza\b/gi, 'limpeza'],
+  [/\bcleans(ing|er)\b/gi, 'limpeza'],
+  [/\bnettoyant\b/gi, 'limpeza'],
+
+  // ───── Tonic/Toner (PT/ES/EN/FR) ─────
+  [/\bt[oó]nico\b/gi, 'tonico'],
+  [/\btoner\b/gi, 'tonico'],
+  [/\btonique\b/gi, 'tonico'],
+
+  // ───── Lotion (PT/ES/EN/FR) ─────
+  [/\blo[cç][aã]o\b/gi, 'locao'],
+  [/\bloci[oó]n\b/gi, 'locao'],
+  [/\blotion\b/gi, 'locao'],
+
+  // ───── Shampoo (PT/ES/EN/FR) ─────
   [/\bshampoo?\b/gi, 'shampoo'],
-  [/\bchampo?\b/gi, 'shampoo'],
-  [/\bchampô\b/gi, 'shampoo'],
+  [/\bchamp[oô]?\b/gi, 'shampoo'],
+  [/\bchamp[uú]\b/gi, 'shampoo'],
+  [/\bshampoing\b/gi, 'shampoo'],
 
-  // SPF normalization
+  // ───── Conditioner (PT/ES/EN/FR) ─────
+  [/\bcondicionador\b/gi, 'condicionador'],
+  [/\bconditioner\b/gi, 'condicionador'],
+  [/\bacondicionador\b/gi, 'condicionador'],
+  [/\bapres[- ]shampoo?\b/gi, 'condicionador'],
+
+  // ───── Oil (PT/ES/EN/FR) ─────
+  [/\b[oó]leo\b/gi, 'oleo'],
+  [/\baceite\b/gi, 'oleo'],
+  [/\bhuile\b/gi, 'oleo'],
+  [/\boil\b/gi, 'oleo'],
+
+  // ───── Mask (PT/ES/EN/FR) ─────
+  [/\bm[aá]scara\b/gi, 'mascara'],
+  [/\bmasque\b/gi, 'mascara'],
+  [/\bmask\b/gi, 'mascara'],
+
+  // ───── Mist/Spray ─────
+  [/\bbrume\b/gi, 'mist'],
+  [/\bmist\b/gi, 'mist'],
+  [/\bbruma\b/gi, 'mist'],
+
+  // ───── Sunscreen (vamos manter spf como discriminator) ─────
+  [/\bprotetor\s+solar\b/gi, 'solar'],
+  [/\bprotector\s+solar\b/gi, 'solar'],
+  [/\bsunscreen\b/gi, 'solar'],
+  [/\b[eé]cran\s+solaire\b/gi, 'solar'],
+
+  // ───── Anti-aging/wrinkle ─────
+  [/\banti[- ]?idade\b/gi, 'anti-idade'],
+  [/\banti[- ]?envelhecimento\b/gi, 'anti-idade'],
+  [/\banti[- ]?aging\b/gi, 'anti-idade'],
+  [/\banti[- ]?edad\b/gi, 'anti-idade'],
+  [/\banti[- ]?ageing\b/gi, 'anti-idade'],
+  [/\banti[- ]?[aâà]ge\b/gi, 'anti-idade'],
+  [/\banti[- ]?wrinkle\b/gi, 'anti-rugas'],
+  [/\banti[- ]?ar+ugas\b/gi, 'anti-rugas'],
+  [/\banti[- ]?arrugas\b/gi, 'anti-rugas'],
+
+  // ───── Body parts (remove — context noise) ─────
+  // Manter "rosto" pode causar false negatives (e.g. "creme rosto" vs "creme" puro)
+  // Decisão: remover sufixos genéricos de área quando aparecem isolados.
+
+  // ───── SPF/FPS normalization ─────
   [/\bspf\s*(\d+)\s*\+?/gi, 'spf$1'],
   [/\bfps\s*(\d+)\s*\+?/gi, 'spf$1'],
 ];

@@ -22,3 +22,5 @@ data/catalog/*-full.json
 # Manter wells-urls.json em git é OK (2-3MB, útil para auditoria de drift)
 # Comentar a linha abaixo se preferires não versionar:
 # data/catalog/*-urls.json
+.tmp-docx-images/
+.tmp-design/
