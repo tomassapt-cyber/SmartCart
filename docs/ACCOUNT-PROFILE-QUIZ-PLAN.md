@@ -208,6 +208,46 @@ Actualmente todos os users têm `0 pts` static na nav. Após implementar isto:
 
 ---
 
+## Catalog improvements pendentes (antes da auth)
+
+Foram detectados em 2026-05-22 e precisam de fix antes/durante próxima sessão:
+
+### 1. Scrapers não extraem GTIN-13 EAN
+- **Wells, Sweetcare** devolvem `ean=null` para 100% dos produtos
+- **Druni** apanha EAN só em ~30% dos produtos
+- **Resultado:** os 23 produtos "featured" hardcoded com GTIN-13 não fazem match → ficam órfãos
+- **Fix:** atualizar scrapers para procurar EAN em mais sítios:
+  - `meta[property="product:retailer_item_id"]`
+  - `script[type="application/ld+json"]` profundamente (não só top-level)
+  - DOM data attributes (`data-ean`, `data-gtin`, `data-sku-gtin`)
+  - Description text (`EAN: 1234567890123`)
+- **Workaround actual:** purguei os 22 produtos órfãos do seed + actualizei SPONSORED_EANS/EM_ALTA_EANS para EANs reais dos scrapes
+
+### 2. Sweetcare scraper pega preço errado em produtos com múltiplas ofertas
+- Caso reproduzível: La Mer The Regenerating Serum
+- Sweetcare site mostra €382.37 (data-base-price)
+- Nosso scrape captura €404.97 (provavelmente offers[0] em JSON-LD AggregateOffer)
+- **Fix em `scrape-sweetcare-catalog.js`:**
+  ```js
+  // Em vez de:
+  price: data.offers[0]?.price || null,
+  // Usar:
+  price: Math.min(...data.offers.filter(o => /in.?stock/i.test(o.availability||'')).map(o => o.price)),
+  ```
+- Pode haver casos onde o offers[0] É o correcto (preço actual) e o [1] é o "list price" — testar com 10 produtos antes de assumir min
+
+### 3. Nenhum scraper extrai `previous_price` / `discount_pct`
+- Easyfarma faz porque é Shopify (compare_at_price field nativo)
+- Druni/Wells/Sweetcare: 0 ofertas com desconto no seed (real provavelmente 30-50%)
+- **Fix:** adicionar extração de strike-through price + JSON-LD `priceSpecification.maxPrice` em cada scraper
+
+### 4. Workflow GitHub Actions: concurrent push conflicts
+- 6 chunks em paralelo, todos tentaram push em 30s → 5/6 falharam
+- **Fix:** trocar `concurrency.group: druni-catalog` para `concurrency.group: catalog-push` em TODOS os workflows (Druni + Sweetcare + Easyfarma + Wells), e `cancel-in-progress: false` para serializar
+- OU: aumentar retries de 3 → 8 com exponential backoff (10s, 30s, 60s, 120s, ...)
+
+---
+
 ## Decisões a confirmar ANTES de começar
 
 1. Confirmas o schema da tabela `profiles` em cima? (mais um campo que falta? algum chave a remover?)

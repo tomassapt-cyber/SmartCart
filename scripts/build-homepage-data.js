@@ -24,20 +24,22 @@ const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
 const OUT = path.join(ROOT, 'data', 'homepage-data.json');
 
+// EANs validados — todos têm ofertas scraped reais (verificado 2026-05-22).
+// Quando integrarmos Notino/Sephora (perfumarias), trocar para EANs YSL/Dior reais.
 const SPONSORED_EANS = [
-  '3365440787858', // YSL Black Opium
-  '3337875585026', // LRP Effaclar Duo+
-  '3614271326072', // Lancôme Génifique
-  '0887167491625', // Estée Lauder ANR
-  '8719134109924', // Rituals Sakura
+  '3337875863377', // LRP Effaclar Duo +M (Druni + Easyfarma)
+  '3614274772012', // Lancôme Cofre Génifique Ultimate Serum (Druni)
+  '0887167667501', // Estée Lauder ANR Edición Limitada (Druni)
+  '3337875762908', // Vichy Minéral 89 Probiotic Fractions (Druni)
+  '3401395614172', // Bioderma Sensibio H2O Água Micelar (Druni + Easyfarma + Sweetcare)
 ];
 
 const EM_ALTA_EANS = [
-  '3337875585132', // Vichy Minéral 89 (featured big)
-  '3401395614172', // Bioderma Sensibio
-  '3337875797436', // LRP Anthelios
-  '3264680004605', // Nuxe Huile Prodigieuse
-  '3522930003151', // Caudalie Vinoperfect
+  '3401395614172', // Bioderma Sensibio H2O (featured big)
+  '3337875798181', // LRP Anthelios 100 Ka+Med
+  '8431567644116', // Vichy Cofre Mineral 89
+  '3337875549493', // LRP Effaclar Duo+ SPF30
+  '3337875863377', // LRP Effaclar Duo +M
 ];
 
 const KIT_KEYWORDS = /\b(kit|cofre|set|pack|estuche|conjunto|coffret|bundle|trio|duo)\b/i;

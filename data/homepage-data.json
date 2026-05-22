@@ -1,108 +1,98 @@
 {
-  "generated_at": "2026-05-21T15:44:08.539Z",
-  "seed_total_products": 18577,
+  "generated_at": "2026-05-22T19:02:03.769Z",
+  "seed_total_products": 20319,
   "hero_sponsored": [
     {
-      "ean": "3365440787858",
-      "name": "YSL Black Opium Eau de Parfum",
-      "brand": "Yves Saint Laurent",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw12ebcd3f/images/wells/692/6927085-SENHORA-YVES-SAINT-LAURENT-BLACK-OPIUM-FEMME-EDP-YVES-SAINT-LAURENT-P-02.jpg",
-      "best_price": 62.95,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/black-opium-yves-saint-laurent-eau-parfum-mulher"
-    },
-    {
-      "ean": "3337875585026",
-      "name": "La Roche-Posay Effaclar Duo+",
+      "ean": "3337875863377",
+      "name": "Effaclar Duo +M",
       "brand": "La Roche-Posay",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw4c04cd8f/images/wells/785/7852795-TRATAMENTO-CORRETOR-ANTI-IMPERFEICOES-EFFACLAR-DUOM-LA-ROCHE-POSAY-P-01.jpg",
-      "best_price": 10.21,
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 16.27,
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
       "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
     },
     {
-      "ean": "3614271326072",
-      "name": "Lancôme Génifique Sérum Avançado",
+      "ean": "3614274772012",
+      "name": "Cofre Génifique Ultimate Serum",
       "brand": "Lancôme",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw9a6fbeac/images/wells/714/7146972-ROSTO-GENIFIQUE-ULTIMATE-SERUM-LANCOME-P-01.png",
-      "best_price": 51.99,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/serum-genifique-287971.html"
+      "image_url": "https://www.druni.pt/media/catalog/product/1/7/1726001.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 75.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/estuche-advance-genefique-lancome-cofre-serum-concentrado-ativador-juventude-e-luminosidade"
     },
     {
-      "ean": "0887167491625",
-      "name": "Estée Lauder Advanced Night Repair Sérum",
-      "brand": "Estée Lauder",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw0a0cb3c4/images/wells/714/7146978-ROSTO-SERUM-ANTI-IDADE-ADVANCED-NIGHT-REPAIR-ESTEE-LAUDER-P-01.jpg",
-      "best_price": 53.76,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/advanced-night-repair-serum-multi-recovery-287627.html"
+      "ean": "3337875762908",
+      "name": "Minéral 89 Probiotic Fractions",
+      "brand": "VICHY",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5796439.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 19.33,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/vichy-mineral-89-serum-conc-reg-rep-30ml"
     },
     {
-      "ean": "8719134109924",
-      "name": "Rituals The Ritual of Sakura Body Cream",
-      "brand": "Rituals",
-      "image_url": "https://rituals.scene7.com/is/image/rituals/1118773-rituals-sakura-whipped-body-cream-220ml",
-      "best_price": 21.03,
-      "best_store": "Notino PT",
-      "best_store_slug": "notino",
-      "best_url": "https://www.notino.pt/rituals/the-ritual-of-sakura-renewing-body-cream-creme-corporal/"
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Água Micelar",
+      "brand": "Bioderma",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
+      "best_price": 9.29,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/sensibio-h2o-solucion-micelar-bioderma-agua-micelar"
     }
   ],
   "bestsellers": [
     {
-      "ean": "3600523432059",
-      "name": "L'Oréal Paris Elvive Óleo Extraordinário",
-      "brand": "L'Oréal Paris",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw31169070/images/wells/696/6960160-Elvive-Oleo-ExtraordinArio-Serum-Nutritivo-LOreal-Paris-P-01.jpg",
-      "best_price": 6.4,
-      "best_store": "Notino PT",
-      "best_store_slug": "notino",
-      "best_url": "https://www.notino.pt/loreal-paris/elseve-oleo-para-cabelo-danificado/p-474424/"
+      "ean": "3701129809334",
+      "name": "Hydrabio Hyalu+ Serum",
+      "brand": "Bioderma",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe56bbe21/images/wells/796/7969667-CUIDADOS-SERUM-ROSTO-HYDRABIO-HYALU-ANTI-IDADE-BIODERMA-P-08.png",
+      "best_price": 22.77,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/bioderma-hydrabio-hyalu-serum-30ml"
     },
     {
-      "ean": "3337875597196",
-      "name": "CeraVe Creme Hidratante",
-      "brand": "CeraVe",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw287f19d1/images/wells/812/8122531-ROTINA-CREME-DE-CORPO-HIDRATANTE-CERAVE-P-01.png",
-      "best_price": 6.5,
-      "best_store": "Notino PT",
-      "best_store_slug": "notino",
-      "best_url": "https://www.notino.pt/cerave/moisturizers-creme-hidratante-de-rosto-e-corpo-para-pele-seca-a-muito-seca/p-15692403/"
+      "ean": "3337875821636",
+      "name": "Liftactiv Retinol Specialist Serum",
+      "brand": "Vichy",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw744ca7e4/images/wells/772/7722650-TRATAMENTO-SERUM-ANTIMANCHAS-LIFTACTIV-RETINOL-VICHY-P-01.jpg",
+      "best_price": 24.8,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/vichy-liftactiv-retinol-specialist-serum-rugas-profundas-30ml"
     },
     {
-      "ean": "0884486373601",
-      "name": "Redken All Soft Shampoo",
-      "brand": "Redken",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw96395e67/images/wells/746/7461242-CHAMPO-ALL-SOFT-SHAMPOO-REDKEN-P-01.png",
-      "best_price": 18.43,
-      "best_store": "Douglas PT",
-      "best_store_slug": "douglas",
-      "best_url": "https://www.douglas.pt/p/redken-all-soft-shampoo-148025"
+      "ean": "3337875899550",
+      "name": "Skin Renewing Retinol Serum",
+      "brand": "Cerave",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwa0613064/images/wells/870/8703234-ANTI-ENVELHECIMENTO-SKIN-RENEWING-RETINOL-SERUM-P-01.png",
+      "best_price": 21.67,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/cerave-skin-renewing-serum-retinol-30ml"
     },
     {
-      "ean": "3337875585668",
-      "name": "La Roche-Posay Hyalu B5 Sérum",
-      "brand": "La Roche-Posay",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw47c9ee54/images/wells/644/6447073-ANTI-ENVELHECIMENTO-CREME-PREENCHEDOR-HYALU-B5-LA-ROCHE-POSAY-P-01.jpg",
-      "best_price": 31.99,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/la-roche-posay-hyalu-b5-serum-anti-rugas-30ml"
+      "ean": "8470002160040",
+      "name": "Double Correction Serum",
+      "brand": "Biretix",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw5939e1bb/images/wells/841/8414726-TRATAMENTO-DOUBLE-CORRECTION-SERUM-BIRETIX-P-01.png",
+      "best_price": 23.98,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/biretix-double-correction-serum-30ml"
     },
     {
-      "ean": "3474630639785",
-      "name": "Kérastase Elixir Ultime Óleo Original",
-      "brand": "Kérastase",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw0f4813a7/images/wells/806/8062971-OUTROS-ELIXIR-ULTIME-LHUILE-REFILLABLE-KERASTASE-P-01.jpg",
-      "best_price": 23,
-      "best_store": "Sephora PT",
-      "best_store_slug": "sephora",
-      "best_url": "https://www.sephora.pt/p/elixir-ultime---lhuile-originale-oleo-para-todos-os-tipos-de-cabelo-P10058043.html"
+      "ean": "3701129803721",
+      "name": "Photoderm Mineral Fluide SPF 50+",
+      "brand": "Bioderma",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwee157bde/images/wells/879/8795688-SOLARES-ROSTO-PHOTODERM-MINERAL-FLUIDE-SPF-50-BIODERMA-P-01.png",
+      "best_price": 15.93,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/bioderma-photoderm-mineral-spf50-fluido-75g"
     }
   ],
   "skincare_kits": [
@@ -111,63 +101,53 @@
       "name": "Age Perfect Serum Le Duo",
       "brand": "L'Oréal Paris",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe5134969/images/wells/868/8684546-Age-Perfect-Serum-Le-Duo-LOreal-Paris-01.jpg",
-      "best_price": 20.99,
+      "best_price": 12.59,
       "best_store": "Wells",
       "best_store_slug": "wells",
-      "best_url": "https://wells.pt/serum-le-duo-age-perfect-8110588.html"
+      "best_url": "https://wells.pt/age-perfect-serum-le-duo-8684546.html"
     },
     {
-      "ean": "wells-8793547",
-      "name": "Pack Leite Solar Spray SPF 50 e Gel Duche",
-      "brand": "Nuxe",
-      "image_url": "/on/demandware.static/Sites-Wells-Site/-/default/dw0235d902/images/product-placeholder.svg",
-      "best_price": 23.54,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/pack-leite-solar-spray-spf-50-e-gel-duche-8793547.html"
+      "ean": "8720143124679",
+      "name": "3 Step Facial Mask Kit",
+      "brand": "SENCE",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1459844.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 1.5,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/3-step-facial-mask-kit-sence-beauty-tratamento-facial-hidratante"
     },
     {
-      "ean": "wells-8769502",
-      "name": "Pack Proteção + Hidratação de Viagem SPF 50+",
-      "brand": "Cerave",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw768b992b/images/wells/876/8769502-SOLARES-CORPO-PACK-PROTECAO-HIDRATACAO-DE-VIAGEM-SPF-50-CERAVE-P-01.png",
-      "best_price": 8.47,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/pack-protecao-hidratacao-de-viagem-spf-50-8769502.html"
+      "ean": "3346471000505",
+      "name": "Abeille Royale Access Oil Serum Set",
+      "brand": "GUERLAIN",
+      "image_url": "https://www.druni.pt/media/catalog/product/6/0/6006123.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 61.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/abeille-royale-access-oil-serum-set-guerlain-estojo-do-programa-antienvelhecimento"
     },
     {
-      "ean": "wells-6142936",
-      "name": "Effaclar Duo(+) Anti-Imperfections SPF 30",
-      "brand": "La Roche-Posay",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw221bf8a8/images/wells/614/6142936-TRATAMENTO-EFFACLAR-DUO-ANTI-IMPERFECTIONS-SPF-30-LA-ROCHE-POSAY-P-01.jpg",
-      "best_price": 15.54,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/effaclar-duo-anti-imperfections-spf-30-6142936.html"
+      "ean": "810014324999",
+      "name": "Set Tighten & Sculpt",
+      "brand": "STRIVECTIN",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801072.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 40.7,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/advanced-retinol-strivectin-tratamento-contorno-olhos"
     },
     {
-      "ean": "wells-8769504",
-      "name": "Pack Proteção + Hidratação de Viagem SPF 30",
-      "brand": "Cerave",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw44dc0cb6/images/wells/876/8769504-SOLARES-CORPO-PACK-PROTECAO-HIDRATACAO-DE-VIAGEM-SPF-30-CERAVE-P-01.png",
-      "best_price": 8.47,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/pack-protecao-hidratacao-de-viagem-spf-30-8769504.html"
+      "ean": "3614274550672",
+      "name": "Aquasource Hyalu Plump Gel Estuche",
+      "brand": "BIOTHERM",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5022141.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 31.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/aquasource-hyalu-plump-gel-estuche-biotherm-embalagem"
     }
   ],
   "em_alta": [
-    {
-      "ean": "3337875585132",
-      "name": "Vichy Minéral 89 Sérum Hidratante",
-      "brand": "Vichy",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw07ae2e89/images/wells/692/6921452-ANTI-ENVELHECIMENTO-SERUM-ROSTO-FORTIFICANTE-MINERAL-89-VICHY-P-01.jpg",
-      "best_price": 12.54,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/vichy-mineral-89-concentrado-rosto-50ml"
-    },
     {
       "ean": "3401395614172",
       "name": "Bioderma Sensibio H2O Água Micelar",
@@ -179,97 +159,97 @@
       "best_url": "https://www.druni.pt/sensibio-h2o-solucion-micelar-bioderma-agua-micelar"
     },
     {
-      "ean": "3337875797436",
-      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+",
+      "ean": "3337875798181",
+      "name": "Anthelios 100 Ka+Med",
       "brand": "La Roche-Posay",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe0d6ffb0/images/wells/757/7577494-SOLARES-ROSTO-PROTETOR-SOLAR-UVMUNE400-CREAM-SPF50-LA-ROCHE-POSAY-P-01.jpg",
-      "best_price": 16.99,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/la-roche-posay-anthelios-shaka-spf50-fluido-facial-sem-perfume-50ml"
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797854.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 22.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/anthelios-100-ka-med-roche-posay-creme-hidratante-protecao"
     },
     {
-      "ean": "3264680004605",
-      "name": "Nuxe Huile Prodigieuse",
-      "brand": "Nuxe",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwaad7d269/images/wells/434/4346087-ROTINA-OLEO-HUILE-PRODIGIEUSE-NUXE-P-01.jpg",
-      "best_price": 16.12,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/oleo-huile-prodigieuse-4346087.html"
+      "ean": "3337875549493",
+      "name": "Effaclar Duo+ SPF30",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 14.39,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/effaclar-duo-spf30-la-roche-posay-tratamento-anti-imperfeicoes"
     },
     {
-      "ean": "3522930003151",
-      "name": "Caudalie Vinoperfect Sérum Luminosidade",
-      "brand": "Caudalie",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw3e5383d3/images/wells/815/8153636-TRATAMENTO-SERUM-LUMINOSIDADE-ANTIMANCHAS-VINOPERFECT-CAUDALIE-P-01.jpg",
-      "best_price": 39.51,
-      "best_store": "SweetCare",
-      "best_store_slug": "sweetcare",
-      "best_url": "https://www.sweetcare.pt/us/caudalie-vinoperfect-complexion-correcting-radiance-serum-p-000155cd"
+      "ean": "3337875863377",
+      "name": "Effaclar Duo +M",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 16.27,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
     }
   ],
   "top_brands": [
     {
-      "name": "L'Oréal Paris",
-      "products": 243
-    },
-    {
-      "name": "Kérastase",
-      "products": 226
-    },
-    {
       "name": "La Roche-Posay",
-      "products": 218
-    },
-    {
-      "name": "Garnier",
-      "products": 149
+      "products": 269
     },
     {
       "name": "Avène",
-      "products": 141
+      "products": 262
     },
     {
-      "name": "SVR",
-      "products": 132
+      "name": "L'Oréal Paris",
+      "products": 241
     },
     {
       "name": "Uriage",
-      "products": 127
+      "products": 233
     },
     {
-      "name": "REVUELE",
-      "products": 124
+      "name": "Kérastase",
+      "products": 225
+    },
+    {
+      "name": "Isdin",
+      "products": 206
+    },
+    {
+      "name": "Bioderma",
+      "products": 194
+    },
+    {
+      "name": "Eucerin",
+      "products": 181
     }
   ],
   "telegram_alerts": [
     {
-      "ean": "3365440787858",
-      "brand": "Yves Saint Laurent",
-      "name": "YSL Black Opium Eau de Parfum",
-      "store": "Douglas PT",
-      "price": 72.99,
-      "previous_price": 132,
-      "discount_pct": 45
+      "ean": "easyfarma-bioderma-sebium-gel-moussant-200ml-1",
+      "brand": "Bioderma",
+      "name": "Bioderma Sébium Gel Moussant",
+      "store": "Easyfarma",
+      "price": 10.17,
+      "previous_price": 16.95,
+      "discount_pct": 40
     },
     {
-      "ean": "3360372059707",
-      "brand": "Giorgio Armani",
-      "name": "Giorgio Armani Code Homme Eau de Toilette",
-      "store": "Douglas PT",
-      "price": 77.99,
-      "previous_price": 124,
-      "discount_pct": 37
+      "ean": "easyfarma-bioderma-photoderm-x-defense-ultra-fluido-s-cor-sp",
+      "brand": "Bioderma",
+      "name": "Bioderma Photoderm X Defense Ultra Fluido s/Cor SPF50+ -",
+      "store": "Easyfarma",
+      "price": 15.93,
+      "previous_price": 26.55,
+      "discount_pct": 40
     },
     {
-      "ean": "3337875797436",
-      "brand": "La Roche-Posay",
-      "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+",
-      "store": "Notino PT",
-      "price": 17.5,
-      "previous_price": 25,
-      "discount_pct": 30
+      "ean": "easyfarma-bioderma-photoderm-pediatrics-mineral-spf50-50-g",
+      "brand": "Bioderma",
+      "name": "Bioderma Photoderm Pediatrics Mineral SPF50+ -",
+      "store": "Easyfarma",
+      "price": 13.08,
+      "previous_price": 21.8,
+      "discount_pct": 40
     }
   ]
 }
