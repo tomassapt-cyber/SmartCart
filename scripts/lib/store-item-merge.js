@@ -17,6 +17,11 @@ const { extractVolumeMl } = require('./product-fingerprint');
  * Inclui variants[] da página + a "main" variant (volume extraído do nome).
  */
 function buildBaseVariants(sp) {
+  // CRÍTICO: o scraper só captura URL quando o elemento DOM é <a>. Para tiles
+  // (button/div/li) a URL fica null. Mas a página scraped (sp.url) É a página
+  // dessa variante para muitos sites (Druni/Sweetcare visitam URL por volume).
+  // Por isso fallback v.url → sp.url para que cada variante tenha sempre um
+  // destino útil quando o user clica "Abrir".
   const baseVariants = (sp.variants || [])
     .filter(v => v.volume_ml > 0 && v.price > 0)
     .map(v => ({
@@ -25,7 +30,7 @@ function buildBaseVariants(sp) {
       price: Number(v.price.toFixed(2)),
       previous_price: v.previous_price && v.previous_price > v.price ? Number(v.previous_price.toFixed(2)) : null,
       in_stock: v.in_stock !== false,
-      url: v.url || null,
+      url: v.url || sp.url || null,
     }));
 
   // Garantir que a variant "main" (volume do nome + preço principal) está incluída
@@ -58,19 +63,25 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
   const existingItem = state.itemByEan[targetEan];
 
   if (existingItem) {
-    // MERGE: juntar variants, manter min price como headline
+    // MERGE: juntar variants, manter min price como headline.
+    // Regra de dedup: variantes com MESMO volume colidem (ignorando URL).
+    // Promovemos URL: se a existing for null e a nova tem URL, sobe a URL;
+    // se preço novo é mais baixo, actualiza preço.
     const mergedVariants = [...(existingItem.variants || [])];
     for (const v of baseVariants) {
-      const dup = mergedVariants.find(ev =>
-        ev.volume_ml === v.volume_ml && (ev.url === v.url || (!ev.url && !v.url))
-      );
+      const dup = mergedVariants.find(ev => ev.volume_ml === v.volume_ml);
       if (!dup) {
         mergedVariants.push(v);
-      } else if (v.price < dup.price) {
-        // mesmo volume + mesma URL → manter preço mais baixo
+        continue;
+      }
+      // Preço mais baixo ganha; preserva URL não-null
+      if (v.price < dup.price) {
         dup.price = v.price;
         dup.in_stock = dup.in_stock || v.in_stock;
+        if (v.previous_price) dup.previous_price = v.previous_price;
       }
+      // Promover URL: se existing não tem mas nova tem, copia
+      if (!dup.url && v.url) dup.url = v.url;
     }
     mergedVariants.sort((a, b) => a.volume_ml - b.volume_ml);
     const allPrices = mergedVariants.map(v => v.price).filter(p => p > 0);

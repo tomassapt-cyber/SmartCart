@@ -140,11 +140,15 @@ function median(arr) {
         }
       }
 
-      // C) duplicados (mesmo volume_ml) — manter o mais barato in_stock
+      // C) duplicados (mesmo volume_ml) — manter o melhor candidato:
+      // 1º in_stock (ofertas reais primeiro)
+      // 2º variantes COM URL (sem URL é inútil para o click "Abrir")
+      // 3º preço mais baixo (poupança real ao user)
       cleaned.sort((a, b) => {
         if (a.volume_ml !== b.volume_ml) return a.volume_ml - b.volume_ml;
-        // mesmo volume: in_stock primeiro, depois mais barato
         if (a.in_stock !== b.in_stock) return a.in_stock ? -1 : 1;
+        const aHasUrl = !!a.url, bHasUrl = !!b.url;
+        if (aHasUrl !== bHasUrl) return aHasUrl ? -1 : 1;
         return a.price - b.price;
       });
       const deduped = [];
