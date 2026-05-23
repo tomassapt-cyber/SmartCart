@@ -258,18 +258,14 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
         }
 
         stats.ok = (stats.ok || 0) + 1;
-        // Pickar oferta MAIS BARATA in-stock (era offers[0] antes) + detectar
-        // previous_price quando há uma oferta com preço significativamente mais
-        // alto (strikethrough). Mesma lógica do Druni/Sweetcare scrapers.
+        // Pickar oferta MAIS BARATA in-stock. Sem previous_price auto-inference —
+        // multi-offer no JSON-LD são VARIANTES (volumes), não strikethrough promo.
         const inStockOffers = (data.offers || []).filter(o =>
           o.price && (!o.availability || /InStock/i.test(o.availability))
         );
         const offerPool = inStockOffers.length ? inStockOffers : (data.offers || []).filter(o => o.price);
         const cheapestOffer = offerPool.length ? offerPool.reduce((a, b) => (b.price < a.price ? b : a)) : null;
-        const allOfferPrices = offerPool.map(o => o.price);
-        const maxOfferPrice = allOfferPrices.length ? Math.max(...allOfferPrices) : null;
         const cheapestPrice = cheapestOffer?.price ?? data.variants[0]?.price ?? null;
-        const previousPrice = (maxOfferPrice && cheapestPrice && maxOfferPrice > cheapestPrice * 1.05) ? maxOfferPrice : null;
         allProducts.push({
           ...t,
           status: 'ok',
@@ -280,7 +276,7 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
           description: data.description,
           image_url: data.image_url,
           price: cheapestPrice,
-          previous_price: previousPrice,
+          previous_price: null,
           currency: cheapestOffer?.currency || 'EUR',
           in_stock: cheapestOffer ? true : (data.offers[0]?.availability ? /InStock/i.test(data.offers[0].availability) : true),
           variants: data.variants,

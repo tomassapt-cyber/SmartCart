@@ -286,19 +286,18 @@ function saveCheckpoint(allProducts, stats, final = false) {
 
         stats.ok = (stats.ok||0) + 1;
         // Pickar o preço MAIS BAIXO em stock (era offers[0] antes — escolhia
-        // arbitrariamente uma variante e por vezes apanhava o preço "list"
-        // em vez do "current promotional"). Também extraímos previous_price
-        // como o máximo entre as ofertas — sinal de promoção activa.
+        // arbitrariamente uma variante).
+        // IMPORTANTE: NÃO inferir previous_price do max-vs-min das ofertas.
+        // Druni expõe AggregateOffer com offers diferentes por VOLUME (não por
+        // promoção), por isso max-vs-min é o spread 100ml-vs-500ml — não é
+        // strikethrough. previous_price só vem de priceSpecification.maxPrice
+        // explícito (não disponível em Druni JSON-LD actualmente).
         const inStockOffers = (data.offers || []).filter(o =>
           o.price && (!o.availability || /InStock/i.test(o.availability))
         );
         const offerPool = inStockOffers.length ? inStockOffers : (data.offers || []).filter(o => o.price);
         const cheapestOffer = offerPool.length ? offerPool.reduce((a, b) => (b.price < a.price ? b : a)) : null;
-        const allOfferPrices = offerPool.map(o => o.price);
-        const maxOfferPrice = allOfferPrices.length ? Math.max(...allOfferPrices) : null;
         const cheapestPrice = cheapestOffer?.price ?? data.variants[0]?.price ?? null;
-        // Promo detection: max ≥ 5% acima do mais barato indica list price strikethrough
-        const previousPrice = (maxOfferPrice && cheapestPrice && maxOfferPrice > cheapestPrice * 1.05) ? maxOfferPrice : null;
         allProducts.push({
           ...t,
           status: 'ok',
@@ -309,7 +308,7 @@ function saveCheckpoint(allProducts, stats, final = false) {
           description: data.description,
           image_url: data.image_url,
           price: cheapestPrice,
-          previous_price: previousPrice,
+          previous_price: null, // só populamos via strikethrough DOM (TODO próxima sessão)
           currency: cheapestOffer?.currency || 'EUR',
           in_stock: cheapestOffer ? true : (data.offers[0]?.availability ? /InStock/i.test(data.offers[0].availability) : true),
           variants: data.variants,

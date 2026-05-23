@@ -293,21 +293,15 @@ function saveCheckpoint(allProducts, stats, final = false) {
           stats.no_jsonld++;
           allProducts.push({ url: t.url, slug: t.slug, category: t.category, status: 'no-jsonld', scraped_at: new Date().toISOString() });
         } else {
-          // Sweetcare expõe múltiplas ofertas no JSON-LD para produtos com subtypes
-          // (variantes). Antes pegávamos em offers[0] o que escolhia uma variante
-          // aleatória — preço quase sempre acima do "current" promotional price.
-          // Agora: escolhemos a OFERTA EM STOCK MAIS BARATA. Para produtos sem
-          // variantes, isto degenera para offers[0] mesmo.
+          // Escolher OFERTA EM STOCK MAIS BARATA. Sem inferir previous_price
+          // de max-vs-min — multi-offer em Sweetcare é multi-variant (subtype),
+          // não strikethrough promo. previous_price só vem de strikethrough
+          // explícito (TODO: extrair de data-base-price na próxima sessão).
           const inStockOffers = data.offers.filter(o =>
             /in[_ ]?stock/i.test(o.availability || '') && typeof o.price === 'number' && o.price > 0
           );
           const pool = inStockOffers.length > 0 ? inStockOffers : data.offers.filter(o => typeof o.price === 'number' && o.price > 0);
           const cheapest = pool.length > 0 ? pool.reduce((a, b) => (b.price < a.price ? b : a)) : null;
-          // previous_price: maior preço entre as ofertas (fallback para detectar promo)
-          const allPrices = pool.map(o => o.price);
-          const maxPrice = allPrices.length > 0 ? Math.max(...allPrices) : null;
-          const minPrice = cheapest?.price || null;
-          const prevPrice = (maxPrice && minPrice && maxPrice > minPrice * 1.05) ? maxPrice : null;
           stats.ok++;
           allProducts.push({
             url: t.url,
@@ -319,7 +313,7 @@ function saveCheckpoint(allProducts, stats, final = false) {
             ean: data.ean,
             description: data.description,
             price: cheapest?.price || null,
-            previous_price: prevPrice,
+            previous_price: null,
             in_stock: data.offers.some(o => /in[_ ]?stock/i.test(o.availability || '')),
             image_url: data.image_url,
             variants: data.variants,
