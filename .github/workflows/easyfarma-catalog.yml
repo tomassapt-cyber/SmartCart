@@ -88,7 +88,9 @@ jobs:
             echo "Nenhuma alteração — nada a fazer."
             exit 0
           fi
-          git add data/seed-bundle.json data/catalog/easyfarma-full.json demo.html index.html catalogo.html
+          # -f para forçar o easyfarma-full.json que está gitignored
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/easyfarma-full.json 2>/dev/null || true
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "chore: Easyfarma daily refresh ($DATE)" \
             -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
