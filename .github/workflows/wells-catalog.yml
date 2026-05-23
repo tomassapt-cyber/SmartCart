@@ -38,6 +38,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: catalog-write
+  cancel-in-progress: false
+
 jobs:
   catalog:
     name: Discover & scrape Wells catalog

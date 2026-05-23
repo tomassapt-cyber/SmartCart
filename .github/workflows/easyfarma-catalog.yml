@@ -26,13 +26,15 @@ on:
 permissions:
   contents: write   # precisamos de fazer push do seed + HTML actualizados
 
+# Serializa com Druni/Sweetcare/Wells — group partilhado evita push storm.
+concurrency:
+  group: catalog-write
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    concurrency:
-      group: easyfarma-catalog
-      cancel-in-progress: false
 
     steps:
       - name: Checkout

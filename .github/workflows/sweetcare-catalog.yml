@@ -36,6 +36,14 @@ on:
 permissions:
   contents: write
 
+# Serializa pushes entre todos os workflows do catálogo (Druni/Sweetcare/Wells/
+# Easyfarma) — só um faz commit+push de cada vez. Cada chunk individual continua
+# em parallel para o scrape (são jobs diferentes), mas a fase de push aguarda
+# a vez. Evita o storm de 6+1 pushers que destruiu 5/7 runs ontem.
+concurrency:
+  group: catalog-write
+  cancel-in-progress: false
+
 jobs:
   catalog:
     name: Discover + scrape + integrate Sweetcare

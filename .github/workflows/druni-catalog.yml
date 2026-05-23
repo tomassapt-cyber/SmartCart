@@ -5,6 +5,11 @@
 
 name: Druni catalog refresh
 
+# Serializa com Sweetcare/Wells/Easyfarma — só um workflow do catálogo
+# faz commit+push de cada vez. Slow mas fiável: chunks de stores diferentes
+# correm em série em vez de paralelo (~4-6h total para todos os scrapes em
+# vez de ~1h). Melhor que perder dados por conflitos como ontem (5/7 runs).
+
 on:
   schedule:
     - cron: '0 4 * * 1'    # Segunda 04h UTC = 05h Lisboa
@@ -31,6 +36,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: catalog-write
+  cancel-in-progress: false
 
 jobs:
   catalog:
