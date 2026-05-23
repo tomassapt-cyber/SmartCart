@@ -3,8 +3,8 @@
   "store_slug": "sweetcare",
   "store_name": "SweetCare",
   "store_url": "https://sweetcare.pt",
-  "verified_at": "2026-05-22T12:10:28.927Z",
-  "method": "playwright-headless (refresh 2026-05-22)",
+  "verified_at": "2026-05-23T09:30:10.641Z",
+  "method": "playwright-headless (refresh 2026-05-23)",
   "stats": {
     "total": 20,
     "verified": 10,
@@ -34,16 +34,16 @@
       "observed_brand": "Yves Saint Laurent",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica. Variantes 30/50/90ml seleccionáveis na página. Scrape 2026-05-17: 74.42€ Refresh 2026-05-17: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-20: 74.42€ → 80.16€ Refresh 2026-05-21: 80.16€ → 80.16€",
-      "verified_at": "2026-05-21T14:22:35.787Z",
-      "observed_price": 80.16,
+      "notes": "PDP canónica. Variantes 30/50/90ml seleccionáveis na página. Scrape 2026-05-17: 74.42€ Refresh 2026-05-17: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-20: 74.42€ → 80.16€ Refresh 2026-05-21: 80.16€ → 80.16€ Refresh 2026-05-23: 80.16€ → 78.81€",
+      "verified_at": "2026-05-23T09:29:10.736Z",
+      "observed_price": 78.81,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 80.16,
+          "price": 78.81,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/yves-saint-laurent-black-opium-eau-parfum-mulher-p-005581ys"
         }
@@ -60,16 +60,16 @@
       "observed_brand": "Dior",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica. Variantes 60/100/200ml. Scrape 2026-05-17: 73.02€ Refresh 2026-05-17: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-20: 73.02€ → 111.17€ Refresh 2026-05-21: 111.17€ → 111.17€",
-      "verified_at": "2026-05-21T14:22:35.789Z",
-      "observed_price": 111.17,
+      "notes": "PDP canónica. Variantes 60/100/200ml. Scrape 2026-05-17: 73.02€ Refresh 2026-05-17: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-20: 73.02€ → 111.17€ Refresh 2026-05-21: 111.17€ → 111.17€ Refresh 2026-05-23: 111.17€ → 109.30€",
+      "verified_at": "2026-05-23T09:29:10.737Z",
+      "observed_price": 109.3,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 111.17,
+          "price": 109.3,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/dior-sauvage-eau-toilette-men-p-004957di"
         }
@@ -177,16 +177,16 @@
       "observed_brand": "La Roche-Posay",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante Duo+M (com niacinamida), 40ml. Variante do canónico. Scrape 2026-05-17: 18.95€ Refresh 2026-05-17: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-20: 18.95€ → 19.68€ Refresh 2026-05-21: 19.68€ → 19.86€",
-      "verified_at": "2026-05-21T14:22:40.917Z",
-      "observed_price": 19.86,
+      "notes": "Variante Duo+M (com niacinamida), 40ml. Variante do canónico. Scrape 2026-05-17: 18.95€ Refresh 2026-05-17: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-20: 18.95€ → 19.68€ Refresh 2026-05-21: 19.68€ → 19.86€ Refresh 2026-05-23: 19.86€ → 19.35€",
+      "verified_at": "2026-05-23T09:29:16.491Z",
+      "observed_price": 19.35,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 19.86,
+          "price": 19.35,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/la-roche-posay-effaclar-duo-pele-oleosa-imperfeicoes-severas-marcas-acne-p-001936rp"
         }
@@ -238,16 +238,16 @@
       "observed_brand": "Caudalie",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica do sérum Vinoperfect. Scrape 2026-05-17: 39.51€ Refresh 2026-05-17: 39.51€ → 39.51€ Refresh 2026-05-18: 39.51€ → 39.51€ Refresh 2026-05-18: 39.51€ → 39.51€ Refresh 2026-05-18: 39.51€ → 39.51€ Refresh 2026-05-20: 39.51€ → 47.02€ Refresh 2026-05-21: 47.02€ → 47.02€",
-      "verified_at": "2026-05-21T14:22:46.898Z",
-      "observed_price": 47.02,
+      "notes": "PDP canónica do sérum Vinoperfect. Scrape 2026-05-17: 39.51€ Refresh 2026-05-17: 39.51€ → 39.51€ Refresh 2026-05-18: 39.51€ → 39.51€ Refresh 2026-05-18: 39.51€ → 39.51€ Refresh 2026-05-18: 39.51€ → 39.51€ Refresh 2026-05-20: 39.51€ → 47.02€ Refresh 2026-05-21: 47.02€ → 47.02€ Refresh 2026-05-23: 47.02€ → 46.23€",
+      "verified_at": "2026-05-23T09:29:22.341Z",
+      "observed_price": 46.23,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 47.02,
+          "price": 46.23,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/us/caudalie-vinoperfect-complexion-correcting-radiance-serum-p-000155cd"
         }
@@ -264,16 +264,16 @@
       "observed_brand": "CeraVe",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica do creme hidratante facial+corpo. Múltiplos tamanhos disponíveis na página. Scrape 2026-05-17: 8.81€ Refresh 2026-05-17: 8.81€ → 8.81€ Refresh 2026-05-18: 8.81€ → 8.81€ Refresh 2026-05-18: 8.81€ → 8.81€ Refresh 2026-05-18: 8.81€ → 8.81€ Refresh 2026-05-20: 8.81€ → 10.91€ Refresh 2026-05-21: 10.91€ → 10.91€",
-      "verified_at": "2026-05-21T14:22:47.849Z",
-      "observed_price": 10.91,
+      "notes": "PDP canónica do creme hidratante facial+corpo. Múltiplos tamanhos disponíveis na página. Scrape 2026-05-17: 8.81€ Refresh 2026-05-17: 8.81€ → 8.81€ Refresh 2026-05-18: 8.81€ → 8.81€ Refresh 2026-05-18: 8.81€ → 8.81€ Refresh 2026-05-18: 8.81€ → 8.81€ Refresh 2026-05-20: 8.81€ → 10.91€ Refresh 2026-05-21: 10.91€ → 10.91€ Refresh 2026-05-23: 10.91€ → 10.73€",
+      "verified_at": "2026-05-23T09:29:23.559Z",
+      "observed_price": 10.73,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 10.91,
+          "price": 10.73,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/us/cerave-creme-hidratante-rosto-corpo-pele-seca-muito-seca-p-007777ve"
         }
@@ -331,16 +331,16 @@
       "observed_volume_ml": 500,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica. Variantes 100/250/500ml. Best-seller SweetCare. Scrape 2026-05-17: 12.73€ Refresh 2026-05-17: 12.73€ → 12.73€ Refresh 2026-05-18: 12.73€ → 12.73€ Refresh 2026-05-18: 12.73€ → 12.73€ Refresh 2026-05-18: 12.73€ → 12.73€ Refresh 2026-05-20: 12.73€ → 15.15€ Refresh 2026-05-21: 15.15€ → 15.15€",
-      "verified_at": "2026-05-21T14:22:47.730Z",
-      "observed_price": 15.15,
+      "notes": "PDP canónica. Variantes 100/250/500ml. Best-seller SweetCare. Scrape 2026-05-17: 12.73€ Refresh 2026-05-17: 12.73€ → 12.73€ Refresh 2026-05-18: 12.73€ → 12.73€ Refresh 2026-05-18: 12.73€ → 12.73€ Refresh 2026-05-18: 12.73€ → 12.73€ Refresh 2026-05-20: 12.73€ → 15.15€ Refresh 2026-05-21: 15.15€ → 15.15€ Refresh 2026-05-23: 15.15€ → 14.89€",
+      "verified_at": "2026-05-23T09:29:23.274Z",
+      "observed_price": 14.89,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 500,
           "unit": "ml",
-          "price": 15.15,
+          "price": 14.89,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/bioderma-sensibio-pele-sensivel-intolerante-limpeza-h2o-micelar-p-000221bd"
         }
@@ -357,16 +357,16 @@
       "observed_brand": "Maybelline",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante Matte + Poreless. 30ml padrão. PDP suporta múltiplos tons. Scrape 2026-05-17: 8.89€ Refresh 2026-05-17: 8.89€ → 8.89€ Refresh 2026-05-18: 8.89€ → 8.89€ Refresh 2026-05-18: 8.89€ → 8.89€ Refresh 2026-05-18: 8.89€ → 8.89€ Refresh 2026-05-20: 8.89€ → 10.58€ Refresh 2026-05-21: 10.58€ → 10.58€",
-      "verified_at": "2026-05-21T14:22:51.150Z",
-      "observed_price": 10.58,
+      "notes": "Variante Matte + Poreless. 30ml padrão. PDP suporta múltiplos tons. Scrape 2026-05-17: 8.89€ Refresh 2026-05-17: 8.89€ → 8.89€ Refresh 2026-05-18: 8.89€ → 8.89€ Refresh 2026-05-18: 8.89€ → 8.89€ Refresh 2026-05-18: 8.89€ → 8.89€ Refresh 2026-05-20: 8.89€ → 10.58€ Refresh 2026-05-21: 10.58€ → 10.58€ Refresh 2026-05-23: 10.58€ → 10.40€",
+      "verified_at": "2026-05-23T09:29:27.381Z",
+      "observed_price": 10.4,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 10.58,
+          "price": 10.4,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/maybelline-fit-me-matte-poreless-foundation-p-016223bl"
         }
