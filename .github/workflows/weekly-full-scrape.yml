@@ -9,12 +9,29 @@
 #  - Apanha produtos novos / variantes alteradas
 #  - Re-verifica URLs canónicas
 
-name: Weekly full scrape
+name: Weekly full scrape (DEPRECATED — DO NOT RUN)
+
+# ⚠️ DESACTIVADO em 2026-05-24 após este workflow ter DESTRUÍDO o catálogo
+# (20.343 produtos → 23). O `scripts/build-catalog.js` que este workflow
+# corre regenera o seed-bundle do zero a partir de 23 produtos hardcoded,
+# apagando todo o trabalho de integração Druni/Wells/Sweetcare/Easyfarma.
+#
+# A substituição é o `daily-scrape.yml` (que usa `refresh-seed-prices.js`
+# in-place) + os workflows individuais por loja (druni/sweetcare/wells/
+# easyfarma-catalog.yml).
+#
+# Cron removido. Mantemos workflow_dispatch apenas para emergência futura
+# E SÓ APÓS o build-catalog.js ser reescrito para in-place refresh.
 
 on:
-  schedule:
-    - cron: '0 2 * * 0'    # Domingo 02h00 UTC = 03h00 Lisboa
+  # Cron removido. Workflow só executável manualmente — e mesmo assim
+  # com PROTECÇÃO: aborta se detectar que destruiria mais de 100 produtos.
   workflow_dispatch:
+    inputs:
+      i-understand-this-will-destroy-the-catalog:
+        description: 'Confirmar destruição (escrever "SIM EU SEI")'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -26,6 +43,13 @@ jobs:
     timeout-minutes: 300    # 5h hard cap
 
     steps:
+      - name: Safety check — abort unless user typed exact confirmation
+        if: github.event.inputs.i-understand-this-will-destroy-the-catalog != 'SIM EU SEI'
+        run: |
+          echo "::error::Este workflow está DESACTIVADO. Destruiu 20.343 produtos em 2026-05-24."
+          echo "Se realmente queres destruir o catálogo, escreve 'SIM EU SEI' no input."
+          exit 1
+
       - name: Checkout repo
         uses: actions/checkout@v4
 
