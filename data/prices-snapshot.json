@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-05-19T14:08:18.509Z",
+  "generated_at": "2026-05-24T09:32:57.371Z",
   "count": 696,
   "prices": [
     {
@@ -15,7 +15,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.496Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -29,7 +29,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.496Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -43,7 +43,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.496Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -57,7 +57,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.496Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -71,7 +71,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.496Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -85,7 +85,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.496Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -99,7 +99,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -113,7 +113,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -127,7 +127,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -141,7 +141,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -155,7 +155,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.358Z"
     },
     {
       "ean": "3145891264100",
@@ -169,7 +169,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3145891264100",
@@ -183,7 +183,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -293,8 +293,8 @@
       "url": "https://www.druni.pt/black-opium-yves-saint-laurent-eau-parfum-mulher",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:17.932Z",
-      "verified_at": "2026-05-18T19:11:17.932Z",
+      "scraped_at": "2026-05-24T09:30:17.143Z",
+      "verified_at": "2026-05-24T09:30:17.143Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -338,7 +338,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -352,7 +352,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -366,12 +366,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
       "store_slug": "wells",
-      "price": 67.94,
+      "price": 66.64,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -379,27 +379,27 @@
       "url": "https://wells.pt/black-opium-eau-de-parfum-287941.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:08.207Z",
-      "verified_at": "2026-05-18T18:34:08.207Z",
+      "scraped_at": "2026-05-24T09:32:22.118Z",
+      "verified_at": "2026-05-24T09:32:22.118Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
           "price": 42.21,
           "in_stock": true,
-          "url": "https://wells.pt/on/demandware.store/Sites-Wells-Site/pt_PT/Product-Variation?dwvar_287941_capacity=30%20ml&pid=287941&quantity=1"
+          "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 67.94,
+          "price": 66.64,
           "in_stock": true,
           "url": "https://wells.pt/on/demandware.store/Sites-Wells-Site/pt_PT/Product-Variation?dwvar_287941_capacity=50%20ml&pid=287941&quantity=1"
         },
         {
           "volume_ml": 90,
           "unit": "ml",
-          "price": 81.07,
+          "price": 42.21,
           "in_stock": true,
           "url": null
         }
@@ -417,7 +417,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -431,7 +431,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.497Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -445,7 +445,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -459,7 +459,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -473,7 +473,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -487,7 +487,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -501,7 +501,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -515,7 +515,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -529,7 +529,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.359Z"
     },
     {
       "ean": "3365440787858",
@@ -543,26 +543,26 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3365440787858",
       "store_slug": "sweetcare",
-      "price": 74.42,
+      "price": 78.81,
       "previous_price": null,
       "discount_pct": null,
-      "currency": "EUR",
+      "currency": "USD",
       "in_stock": true,
       "url": "https://www.sweetcare.pt/yves-saint-laurent-black-opium-eau-parfum-mulher-p-005581ys",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:39.458Z",
-      "verified_at": "2026-05-18T18:33:39.458Z",
+      "scraped_at": "2026-05-24T09:31:57.237Z",
+      "verified_at": "2026-05-24T09:31:57.237Z",
       "variants": [
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 74.42,
+          "price": 78.81,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/yves-saint-laurent-black-opium-eau-parfum-mulher-p-005581ys"
         }
@@ -653,8 +653,8 @@
       "url": "https://www.druni.pt/sauvage-eau-toilette-dior-eau-toilette-homem",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:17.933Z",
-      "verified_at": "2026-05-18T19:11:17.933Z",
+      "scraped_at": "2026-05-24T09:30:18.133Z",
+      "verified_at": "2026-05-24T09:30:18.133Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -698,7 +698,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -712,7 +712,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -726,7 +726,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -740,7 +740,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -754,7 +754,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -768,7 +768,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -782,7 +782,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -796,7 +796,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -810,7 +810,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -824,7 +824,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -838,7 +838,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -852,7 +852,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
@@ -866,42 +866,28 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3348901250146",
       "store_slug": "sweetcare",
-      "price": 73.02,
+      "price": 109.3,
       "previous_price": null,
       "discount_pct": null,
-      "currency": "EUR",
+      "currency": "USD",
       "in_stock": true,
       "url": "https://www.sweetcare.pt/dior-sauvage-eau-toilette-men-p-004957di",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:39.458Z",
-      "verified_at": "2026-05-18T18:33:39.458Z",
+      "scraped_at": "2026-05-24T09:31:57.898Z",
+      "verified_at": "2026-05-24T09:31:57.898Z",
       "variants": [
-        {
-          "volume_ml": 75,
-          "unit": "g",
-          "price": 55.24,
-          "in_stock": true,
-          "url": null
-        },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 73.02,
+          "price": 109.3,
           "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 150,
-          "unit": "ml",
-          "price": 52.8,
-          "in_stock": true,
-          "url": null
+          "url": "https://www.sweetcare.pt/dior-sauvage-eau-toilette-men-p-004957di"
         }
       ]
     },
@@ -917,7 +903,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -989,7 +975,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1003,7 +989,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1017,7 +1003,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1030,15 +1016,15 @@
       "url": "https://wells.pt/code-eau-de-toilette-328746.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:08.208Z",
-      "verified_at": "2026-05-18T18:34:08.208Z",
+      "scraped_at": "2026-05-24T09:32:22.272Z",
+      "verified_at": "2026-05-24T09:32:22.272Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
           "price": 47.94,
           "in_stock": true,
-          "url": "https://wells.pt/on/demandware.store/Sites-Wells-Site/pt_PT/Product-Variation?dwvar_328746_capacity=30%20ml&pid=328746&quantity=1"
+          "url": null
         },
         {
           "volume_ml": 50,
@@ -1082,7 +1068,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.498Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1096,7 +1082,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1110,7 +1096,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1124,7 +1110,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1138,7 +1124,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1152,7 +1138,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1166,7 +1152,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1180,7 +1166,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1194,7 +1180,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3360372059707",
@@ -1208,7 +1194,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1279,8 +1265,8 @@
       "url": "https://www.druni.pt/bright-crystal-versace-eau-toilette-mulher",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:23.744Z",
-      "verified_at": "2026-05-18T19:11:23.744Z",
+      "scraped_at": "2026-05-24T09:30:16.943Z",
+      "verified_at": "2026-05-24T09:30:16.943Z",
       "variants": [
         {
           "volume_ml": 50,
@@ -1310,7 +1296,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1324,7 +1310,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1338,12 +1324,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
       "store_slug": "wells",
-      "price": 62.18,
+      "price": 74.37,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -1351,27 +1337,27 @@
       "url": "https://wells.pt/versace-bright-crystal-edt-288332.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:13.624Z",
-      "verified_at": "2026-05-18T18:34:13.624Z",
+      "scraped_at": "2026-05-24T09:32:22.345Z",
+      "verified_at": "2026-05-24T09:32:22.345Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 44.54,
+          "price": 43.83,
           "in_stock": true,
-          "url": "https://wells.pt/on/demandware.store/Sites-Wells-Site/pt_PT/Product-Variation?dwvar_288332_capacity=30%20ml&pid=288332&quantity=1"
+          "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 54.87,
+          "price": 43.83,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 90,
           "unit": "ml",
-          "price": 54.87,
+          "price": 58.72,
           "in_stock": true,
           "url": "https://wells.pt/versace-bright-crystal-edt-288332.html"
         }
@@ -1389,7 +1375,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1403,7 +1389,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1417,7 +1403,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1431,7 +1417,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1445,7 +1431,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1459,7 +1445,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1473,7 +1459,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1487,7 +1473,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1501,7 +1487,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "8011003845460",
@@ -1515,7 +1501,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3614271326072",
@@ -1589,7 +1575,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3614271326072",
@@ -1603,7 +1589,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3614271326072",
@@ -1617,7 +1603,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3614271326072",
@@ -1631,12 +1617,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.360Z"
     },
     {
       "ean": "3614271326072",
       "store_slug": "wells",
-      "price": 76.42,
+      "price": 51.99,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -1644,8 +1630,8 @@
       "url": "https://wells.pt/serum-genifique-287971.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:14.124Z",
-      "verified_at": "2026-05-18T18:34:14.124Z",
+      "scraped_at": "2026-05-24T09:32:28.892Z",
+      "verified_at": "2026-05-24T09:32:28.892Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -1657,7 +1643,7 @@
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 76.42,
+          "price": 51.99,
           "in_stock": true,
           "url": null
         }
@@ -1675,7 +1661,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1689,7 +1675,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1703,7 +1689,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1717,7 +1703,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1731,7 +1717,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1745,7 +1731,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1759,7 +1745,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1773,7 +1759,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1787,7 +1773,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1801,7 +1787,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1815,7 +1801,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1829,7 +1815,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1843,7 +1829,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1857,7 +1843,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1871,7 +1857,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1885,7 +1871,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1899,7 +1885,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1913,7 +1899,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1927,7 +1913,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1941,7 +1927,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1955,7 +1941,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1969,7 +1955,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3614271326072",
@@ -1983,7 +1969,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2071,7 +2057,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2084,8 +2070,8 @@
       "url": "https://www.druni.pt/advanced-night-repair-synchronized-multi-recovery-complex-estee-lauder-serum-antienvelhecimento",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:30.047Z",
-      "verified_at": "2026-05-18T19:11:30.047Z",
+      "scraped_at": "2026-05-24T09:30:24.222Z",
+      "verified_at": "2026-05-24T09:30:24.222Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -2122,7 +2108,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2136,7 +2122,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2150,7 +2136,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2163,8 +2149,8 @@
       "url": "https://wells.pt/advanced-night-repair-serum-multi-recovery-287627.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:19.980Z",
-      "verified_at": "2026-05-18T18:34:19.980Z",
+      "scraped_at": "2026-05-24T09:32:29.145Z",
+      "verified_at": "2026-05-24T09:32:29.145Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -2194,7 +2180,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2208,7 +2194,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2222,7 +2208,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2236,7 +2222,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2250,7 +2236,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2264,7 +2250,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2278,7 +2264,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2292,7 +2278,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2336,7 +2322,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2350,7 +2336,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2364,7 +2350,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2378,7 +2364,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.499Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2392,7 +2378,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2406,7 +2392,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2420,7 +2406,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2434,7 +2420,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2448,7 +2434,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2462,7 +2448,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2476,7 +2462,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2490,7 +2476,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2504,7 +2490,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2518,7 +2504,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "0887167491625",
@@ -2532,7 +2518,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2575,8 +2561,8 @@
       "url": "https://www.druni.pt/crema-facial-vichy-mineral-89-hidratante-leve",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:30.423Z",
-      "verified_at": "2026-05-18T19:11:30.423Z",
+      "scraped_at": "2026-05-24T09:30:25.643Z",
+      "verified_at": "2026-05-24T09:30:25.643Z",
       "variants": [
         {
           "volume_ml": 50,
@@ -2599,7 +2585,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2613,7 +2599,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2627,7 +2613,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2641,7 +2627,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2655,7 +2641,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2669,7 +2655,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2683,7 +2669,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2697,12 +2683,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
       "store_slug": "wells",
-      "price": 31.2,
+      "price": 27.3,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -2710,20 +2696,20 @@
       "url": "https://wells.pt/serum-rosto-fortificante-mineral-89-6921452.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:20.089Z",
-      "verified_at": "2026-05-18T18:34:20.089Z",
+      "scraped_at": "2026-05-24T09:32:30.540Z",
+      "verified_at": "2026-05-24T09:32:30.540Z",
       "variants": [
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 31.2,
+          "price": 27.3,
           "in_stock": true,
           "url": "https://wells.pt/serum-rosto-fortificante-mineral-89-6921452.html"
         },
         {
           "volume_ml": 75,
           "unit": "ml",
-          "price": 31,
+          "price": 27,
           "in_stock": true,
           "url": null
         }
@@ -2741,7 +2727,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2755,7 +2741,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2769,7 +2755,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2783,7 +2769,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2797,7 +2783,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2811,7 +2797,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2825,7 +2811,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2839,7 +2825,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2883,7 +2869,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2897,12 +2883,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
       "store_slug": "farmacia365",
-      "price": 16.75,
+      "price": 8.38,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -2910,43 +2896,36 @@
       "url": "https://www.farmacia365.pt/vichy-mineral-89-concentrado-rosto-50ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:32:59.273Z",
-      "verified_at": "2026-05-18T18:32:59.273Z",
+      "scraped_at": "2026-05-24T09:31:04.947Z",
+      "verified_at": "2026-05-24T09:31:04.947Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 30.65,
+          "price": 15.33,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     },
@@ -2962,7 +2941,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.361Z"
     },
     {
       "ean": "3337875585132",
@@ -2976,7 +2955,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -2989,8 +2968,8 @@
       "url": "https://easyfarma.pt/products/vichy-mineral-89-concentrado-rosto-50ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:32:45.587Z",
-      "verified_at": "2026-05-18T18:32:45.587Z",
+      "scraped_at": "2026-05-24T09:30:54.973Z",
+      "verified_at": "2026-05-24T09:30:54.973Z",
       "variants": [
         {
           "volume_ml": 50,
@@ -3009,7 +2988,7 @@
         {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 31.9,
+          "price": 21.53,
           "in_stock": true,
           "url": null
         },
@@ -3025,7 +3004,7 @@
     {
       "ean": "3337875585132",
       "store_slug": "bairro-saude",
-      "price": 24.1,
+      "price": 21.69,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -3033,41 +3012,41 @@
       "url": "https://bairrodasaude.pt/products/vichy-mineral-89-concentrado-rosto-50ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:31:32.851Z",
-      "verified_at": "2026-05-18T18:31:32.851Z",
+      "scraped_at": "2026-05-24T09:29:45.855Z",
+      "verified_at": "2026-05-24T09:29:45.855Z",
       "variants": [
         {
           "volume_ml": 15,
           "unit": "ml",
-          "price": 18.8,
+          "price": 16.92,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 12.1,
+          "price": 10.29,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 12.9,
+          "price": 10.32,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 21.69,
+          "price": 8.37,
           "in_stock": true,
-          "url": "https://bairrodasaude.pt/products/vichy-mineral-89-concentrado-rosto-50ml"
+          "url": null
         },
         {
           "volume_ml": 75,
           "unit": "ml",
-          "price": 31.1,
+          "price": 27.99,
           "in_stock": true,
           "url": null
         }
@@ -3085,7 +3064,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -3099,7 +3078,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -3113,7 +3092,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -3127,7 +3106,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -3141,7 +3120,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -3155,7 +3134,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -3213,7 +3192,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585132",
@@ -3227,7 +3206,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3263,8 +3242,8 @@
       "url": "https://www.druni.pt/effaclar-duo-m-roche-posay-creme-corretor-anti-imperfeicoes",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:36.344Z",
-      "verified_at": "2026-05-18T19:11:36.344Z",
+      "scraped_at": "2026-05-24T09:30:30.864Z",
+      "verified_at": "2026-05-24T09:30:30.864Z",
       "variants": [
         {
           "volume_ml": 40,
@@ -3287,7 +3266,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3301,7 +3280,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3315,7 +3294,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3329,7 +3308,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3343,7 +3322,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3357,7 +3336,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3371,7 +3350,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3385,27 +3364,27 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
       "store_slug": "wells",
-      "price": 15.07,
+      "price": 14.07,
       "previous_price": 20.1,
-      "discount_pct": 25,
+      "discount_pct": 30,
       "currency": "EUR",
-      "in_stock": true,
+      "in_stock": false,
       "url": "https://wells.pt/effaclar-duom-soin-anti-imperfections-7852795.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:25.521Z",
-      "verified_at": "2026-05-18T18:34:25.521Z",
+      "scraped_at": "2026-05-24T09:32:35.071Z",
+      "verified_at": "2026-05-24T09:32:35.071Z",
       "variants": [
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 15.07,
-          "in_stock": true,
+          "price": 14.07,
+          "in_stock": false,
           "url": "https://wells.pt/effaclar-duom-soin-anti-imperfections-7852795.html"
         }
       ]
@@ -3422,7 +3401,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3436,7 +3415,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3450,7 +3429,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3464,7 +3443,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3478,7 +3457,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3492,7 +3471,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3506,7 +3485,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3520,7 +3499,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3548,7 +3527,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3562,56 +3541,49 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
       "store_slug": "farmacia365",
-      "price": 22.6,
+      "price": 7.1,
       "previous_price": 22.6,
-      "discount_pct": 0,
+      "discount_pct": 68.6,
       "currency": "EUR",
       "in_stock": true,
       "url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-40ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:32:59.274Z",
-      "verified_at": "2026-05-18T18:32:59.274Z",
+      "scraped_at": "2026-05-24T09:31:04.893Z",
+      "verified_at": "2026-05-24T09:31:04.893Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 30.65,
+          "price": 15.33,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 12.43,
+          "price": 7.1,
           "in_stock": true,
-          "url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-40ml"
+          "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     },
@@ -3627,7 +3599,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3641,12 +3613,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
       "store_slug": "easyfarma",
-      "price": 10.21,
+      "price": 12.26,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -3654,8 +3626,8 @@
       "url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:32:45.723Z",
-      "verified_at": "2026-05-18T18:32:45.723Z",
+      "scraped_at": "2026-05-24T09:30:55.037Z",
+      "verified_at": "2026-05-24T09:30:55.037Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -3667,7 +3639,7 @@
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 10.21,
+          "price": 12.26,
           "in_stock": true,
           "url": null
         }
@@ -3676,7 +3648,7 @@
     {
       "ean": "3337875585026",
       "store_slug": "bairro-saude",
-      "price": 16.1,
+      "price": 17.46,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -3684,27 +3656,34 @@
       "url": "https://bairrodasaude.pt/products/la-roche-posay-effaclar-duo-m-40ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:31:32.853Z",
-      "verified_at": "2026-05-18T18:31:32.853Z",
+      "scraped_at": "2026-05-24T09:29:44.820Z",
+      "verified_at": "2026-05-24T09:29:44.820Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 33.6,
+          "price": 28.56,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 16.1,
+          "price": 11.64,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 19.2,
+          "price": 15.36,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 16.65,
           "in_stock": true,
           "url": null
         }
@@ -3722,7 +3701,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3736,7 +3715,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3750,7 +3729,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3764,7 +3743,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3778,7 +3757,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3792,26 +3771,26 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
       "store_slug": "sweetcare",
-      "price": 18.95,
+      "price": 19.35,
       "previous_price": null,
       "discount_pct": null,
-      "currency": "EUR",
+      "currency": "USD",
       "in_stock": true,
       "url": "https://www.sweetcare.pt/la-roche-posay-effaclar-duo-pele-oleosa-imperfeicoes-severas-marcas-acne-p-001936rp",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:49.787Z",
-      "verified_at": "2026-05-18T18:33:49.787Z",
+      "scraped_at": "2026-05-24T09:32:02.973Z",
+      "verified_at": "2026-05-24T09:32:02.973Z",
       "variants": [
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 18.95,
+          "price": 19.35,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/la-roche-posay-effaclar-duo-pele-oleosa-imperfeicoes-severas-marcas-acne-p-001936rp"
         }
@@ -3829,7 +3808,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3337875585026",
@@ -3843,7 +3822,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -3909,7 +3888,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -3923,7 +3902,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.500Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -3937,7 +3916,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -3951,7 +3930,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -3965,7 +3944,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -3979,7 +3958,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -3993,7 +3972,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4007,7 +3986,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4021,7 +4000,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4035,7 +4014,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4048,8 +4027,8 @@
       "url": "https://wells.pt/oleo-huile-prodigieuse-4346087.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:25.638Z",
-      "verified_at": "2026-05-18T18:34:25.638Z",
+      "scraped_at": "2026-05-24T09:32:36.198Z",
+      "verified_at": "2026-05-24T09:32:36.198Z",
       "variants": [
         {
           "volume_ml": 50,
@@ -4079,7 +4058,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4093,7 +4072,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4107,7 +4086,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4121,7 +4100,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4135,7 +4114,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4149,7 +4128,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4163,7 +4142,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4177,7 +4156,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4206,7 +4185,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4220,7 +4199,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4234,7 +4213,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.362Z"
     },
     {
       "ean": "3264680004605",
@@ -4248,7 +4227,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4262,7 +4241,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4276,7 +4255,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4290,7 +4269,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4304,7 +4283,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4318,7 +4297,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4332,7 +4311,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4346,7 +4325,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4390,7 +4369,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3264680004605",
@@ -4404,7 +4383,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4446,7 +4425,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4460,7 +4439,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4474,7 +4453,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.501Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4488,7 +4467,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4502,7 +4481,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4516,7 +4495,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4530,7 +4509,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4544,7 +4523,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4558,7 +4537,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4571,8 +4550,8 @@
       "url": "https://wells.pt/vinoperfect-serum-eclat-anti-taches-368183.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:30.693Z",
-      "verified_at": "2026-05-18T18:34:30.693Z",
+      "scraped_at": "2026-05-24T09:32:36.786Z",
+      "verified_at": "2026-05-24T09:32:36.786Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -4602,7 +4581,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4616,7 +4595,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4630,7 +4609,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4644,7 +4623,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.363Z"
     },
     {
       "ean": "3522930003151",
@@ -4658,7 +4637,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4672,7 +4651,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4686,7 +4665,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4700,7 +4679,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4728,7 +4707,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4742,7 +4721,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4756,7 +4735,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4770,7 +4749,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4784,12 +4763,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
       "store_slug": "bairro-saude",
-      "price": 47.9,
+      "price": 43.11,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -4797,13 +4776,13 @@
       "url": "https://bairrodasaude.pt/products/caudalie-vinoperfect-serum-luminosidade-antimanchas-30-ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:31:39.354Z",
-      "verified_at": "2026-05-18T18:31:39.354Z",
+      "scraped_at": "2026-05-24T09:29:45.724Z",
+      "verified_at": "2026-05-24T09:29:45.724Z",
       "variants": [
         {
           "volume_ml": 4.5,
           "unit": "g",
-          "price": 7.9,
+          "price": 6.72,
           "in_stock": true,
           "url": null
         },
@@ -4817,21 +4796,21 @@
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 39.9,
+          "price": 35.91,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 35.9,
+          "price": 32.31,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 75,
           "unit": "ml",
-          "price": 25.5,
+          "price": 22.95,
           "in_stock": true,
           "url": null
         }
@@ -4849,7 +4828,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4863,7 +4842,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4877,7 +4856,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4891,7 +4870,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4905,7 +4884,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4919,42 +4898,28 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
       "store_slug": "sweetcare",
-      "price": 39.51,
+      "price": 46.23,
       "previous_price": null,
       "discount_pct": null,
-      "currency": "EUR",
+      "currency": "USD",
       "in_stock": true,
       "url": "https://www.sweetcare.pt/us/caudalie-vinoperfect-complexion-correcting-radiance-serum-p-000155cd",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:56.255Z",
-      "verified_at": "2026-05-18T18:33:56.255Z",
+      "scraped_at": "2026-05-24T09:32:09.256Z",
+      "verified_at": "2026-05-24T09:32:09.256Z",
       "variants": [
         {
-          "volume_ml": 50,
+          "volume_ml": 30,
           "unit": "ml",
-          "price": 8.03,
+          "price": 46.23,
           "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 75,
-          "unit": "ml",
-          "price": 21.07,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 100,
-          "unit": "ml",
-          "price": 16.68,
-          "in_stock": true,
-          "url": null
+          "url": "https://www.sweetcare.pt/us/caudalie-vinoperfect-complexion-correcting-radiance-serum-p-000155cd"
         }
       ]
     },
@@ -4970,7 +4935,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3522930003151",
@@ -4984,7 +4949,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5041,8 +5006,8 @@
       "url": "https://www.druni.pt/locion-hidratante-cerave-pele-seca-e-muito-seca",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:43.468Z",
-      "verified_at": "2026-05-18T19:11:43.468Z",
+      "scraped_at": "2026-05-24T09:30:37.952Z",
+      "verified_at": "2026-05-24T09:30:37.952Z",
       "variants": [
         {
           "volume_ml": 236,
@@ -5079,7 +5044,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5093,7 +5058,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5107,7 +5072,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5121,7 +5086,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5135,7 +5100,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5149,7 +5114,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5163,7 +5128,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5177,7 +5142,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5190,8 +5155,8 @@
       "url": "https://wells.pt/moisturising-cream-dry-to-very-dry-skin-8122531.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:31.049Z",
-      "verified_at": "2026-05-18T18:34:31.049Z",
+      "scraped_at": "2026-05-24T09:32:41.724Z",
+      "verified_at": "2026-05-24T09:32:41.724Z",
       "variants": [
         {
           "volume_ml": 250,
@@ -5214,7 +5179,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5228,7 +5193,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5242,7 +5207,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5256,7 +5221,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5270,7 +5235,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5284,7 +5249,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5298,7 +5263,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5312,7 +5277,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5341,7 +5306,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5355,7 +5320,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5369,7 +5334,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5383,7 +5348,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5397,7 +5362,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5411,7 +5376,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5425,7 +5390,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5439,7 +5404,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5453,7 +5418,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5467,7 +5432,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5481,7 +5446,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5495,7 +5460,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5509,49 +5474,28 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
       "store_slug": "sweetcare",
-      "price": 8.81,
+      "price": 10.73,
       "previous_price": null,
       "discount_pct": null,
-      "currency": "EUR",
+      "currency": "USD",
       "in_stock": true,
       "url": "https://www.sweetcare.pt/us/cerave-creme-hidratante-rosto-corpo-pele-seca-muito-seca-p-007777ve",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:57.242Z",
-      "verified_at": "2026-05-18T18:33:57.242Z",
+      "scraped_at": "2026-05-24T09:32:10.491Z",
+      "verified_at": "2026-05-24T09:32:10.491Z",
       "variants": [
-        {
-          "volume_ml": 236,
-          "unit": "ml",
-          "price": 8.81,
-          "in_stock": true,
-          "url": null
-        },
         {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 9.17,
+          "price": 10.73,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/us/cerave-creme-hidratante-rosto-corpo-pele-seca-muito-seca-p-007777ve"
-        },
-        {
-          "volume_ml": 473,
-          "unit": "ml",
-          "price": 15.29,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 976,
-          "unit": "ml",
-          "price": 25.01,
-          "in_stock": true,
-          "url": null
         }
       ]
     },
@@ -5567,7 +5511,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.502Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3337875597196",
@@ -5581,7 +5525,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5618,7 +5562,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5632,7 +5576,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5646,7 +5590,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5660,7 +5604,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5674,7 +5618,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5688,7 +5632,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5702,7 +5646,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5716,7 +5660,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5730,7 +5674,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.364Z"
     },
     {
       "ean": "3600523432059",
@@ -5743,8 +5687,8 @@
       "url": "https://wells.pt/elvive-oleo-extraordinario-serum-nutritivo-6960160.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:36.173Z",
-      "verified_at": "2026-05-18T18:34:36.173Z",
+      "scraped_at": "2026-05-24T09:32:42.992Z",
+      "verified_at": "2026-05-24T09:32:42.992Z",
       "variants": [
         {
           "volume_ml": 100,
@@ -5767,7 +5711,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5781,7 +5725,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5795,7 +5739,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5809,7 +5753,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5823,7 +5767,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5837,7 +5781,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5851,7 +5795,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5865,7 +5809,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5893,7 +5837,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5907,7 +5851,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5921,7 +5865,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5935,7 +5879,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5949,7 +5893,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5963,7 +5907,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5977,7 +5921,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -5991,7 +5935,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6005,7 +5949,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6019,7 +5963,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6033,7 +5977,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6047,7 +5991,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6061,7 +6005,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6075,7 +6019,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6089,7 +6033,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3600523432059",
@@ -6103,7 +6047,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6117,7 +6061,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6161,7 +6105,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6175,7 +6119,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6189,7 +6133,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6202,8 +6146,8 @@
       "url": "https://wells.pt/elixir-ultime-lhuile-refillable-446416.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:36.418Z",
-      "verified_at": "2026-05-18T18:34:36.418Z",
+      "scraped_at": "2026-05-24T09:32:43.225Z",
+      "verified_at": "2026-05-24T09:32:43.225Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -6240,7 +6184,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6254,7 +6198,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6268,7 +6212,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6282,7 +6226,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6296,7 +6240,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6310,7 +6254,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6324,7 +6268,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6338,7 +6282,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6367,7 +6311,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6381,7 +6325,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6395,7 +6339,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6409,7 +6353,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6423,7 +6367,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6437,7 +6381,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6451,7 +6395,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6465,7 +6409,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6479,7 +6423,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6493,7 +6437,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6507,7 +6451,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6521,7 +6465,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6535,7 +6479,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6549,7 +6493,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "3474630639785",
@@ -6563,7 +6507,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6577,7 +6521,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6591,7 +6535,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6605,7 +6549,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6619,7 +6563,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6633,7 +6577,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6647,7 +6591,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6660,8 +6604,8 @@
       "url": "https://wells.pt/all-soft-shampoo-7461242.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:41.795Z",
-      "verified_at": "2026-05-18T18:34:41.795Z",
+      "scraped_at": "2026-05-24T09:32:47.588Z",
+      "verified_at": "2026-05-24T09:32:47.588Z",
       "variants": [
         {
           "volume_ml": 300,
@@ -6691,7 +6635,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6705,7 +6649,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6719,7 +6663,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6733,7 +6677,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6747,7 +6691,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6761,7 +6705,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6775,7 +6719,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.503Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6789,7 +6733,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6818,7 +6762,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6832,7 +6776,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6846,7 +6790,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6860,7 +6804,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6874,7 +6818,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6888,7 +6832,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6902,7 +6846,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.365Z"
     },
     {
       "ean": "0884486373601",
@@ -6916,7 +6860,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "0884486373601",
@@ -6930,7 +6874,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "0884486373601",
@@ -6944,7 +6888,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "0884486373601",
@@ -6958,7 +6902,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "0884486373601",
@@ -6972,7 +6916,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "0884486373601",
@@ -6986,7 +6930,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "0884486373601",
@@ -7000,7 +6944,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "0884486373601",
@@ -7014,7 +6958,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7028,7 +6972,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7042,7 +6986,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7055,8 +6999,8 @@
       "url": "https://www.druni.pt/the-ritual-of-sakura-body-cream-rituals-creme-corporal",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:48.272Z",
-      "verified_at": "2026-05-18T19:11:48.272Z",
+      "scraped_at": "2026-05-24T09:30:39.618Z",
+      "verified_at": "2026-05-24T09:30:39.618Z",
       "variants": [
         {
           "volume_ml": 220,
@@ -7079,7 +7023,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7093,7 +7037,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7107,7 +7051,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7121,7 +7065,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7135,7 +7079,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7149,7 +7093,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7163,7 +7107,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7177,7 +7121,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7191,7 +7135,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7205,7 +7149,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7219,7 +7163,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7232,15 +7176,15 @@
       "url": "https://www.rituals.com/pt-pt/the-ritual-of-sakura-body-cream-220ml-1118773.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:33.125Z",
-      "verified_at": "2026-05-18T18:33:33.125Z",
+      "scraped_at": "2026-05-24T09:31:45.147Z",
+      "verified_at": "2026-05-24T09:31:45.147Z",
       "variants": [
         {
           "volume_ml": 220,
           "unit": "ml",
           "price": 24.9,
           "in_stock": true,
-          "url": null
+          "url": "https://www.rituals.com/pt-pt/the-ritual-of-sakura-body-cream-220ml-1118773.html"
         }
       ]
     },
@@ -7256,7 +7200,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7270,7 +7214,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7284,7 +7228,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7298,7 +7242,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7312,7 +7256,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7326,7 +7270,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7340,7 +7284,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7354,7 +7298,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7368,7 +7312,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7382,7 +7326,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7396,7 +7340,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7410,7 +7354,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7424,7 +7368,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7438,7 +7382,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7452,7 +7396,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7466,7 +7410,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7480,7 +7424,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7494,7 +7438,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7508,7 +7452,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7522,7 +7466,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "8719134109924",
@@ -7536,7 +7480,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7564,8 +7508,8 @@
       "url": "https://www.druni.pt/sensibio-h2o-pump-bioderma-agua-micelar-dermatologica",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:48.917Z",
-      "verified_at": "2026-05-18T19:11:48.917Z",
+      "scraped_at": "2026-05-24T09:30:40.932Z",
+      "verified_at": "2026-05-24T09:30:40.932Z",
       "variants": [
         {
           "volume_ml": 500,
@@ -7588,7 +7532,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7602,7 +7546,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7616,7 +7560,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7630,7 +7574,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7644,7 +7588,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7658,7 +7602,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7672,7 +7616,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7686,26 +7630,26 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
       "store_slug": "wells",
-      "price": 14.96,
+      "price": 13.96,
       "previous_price": 19.95,
-      "discount_pct": 25,
+      "discount_pct": 30,
       "currency": "EUR",
       "in_stock": true,
       "url": "https://wells.pt/sensibio-h2o-peux-sensibles-eau-micellaire-8518622.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:41.915Z",
-      "verified_at": "2026-05-18T18:34:41.915Z",
+      "scraped_at": "2026-05-24T09:32:49.280Z",
+      "verified_at": "2026-05-24T09:32:49.280Z",
       "variants": [
         {
           "volume_ml": 500,
           "unit": "ml",
-          "price": 14.96,
+          "price": 13.96,
           "in_stock": true,
           "url": "https://wells.pt/sensibio-h2o-peux-sensibles-eau-micellaire-8518622.html"
         }
@@ -7723,7 +7667,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7736,8 +7680,8 @@
       "url": "https://pharma2you.pt/marcas/b/bioderma.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:24.431Z",
-      "verified_at": "2026-05-18T18:33:24.431Z",
+      "scraped_at": "2026-05-24T09:31:36.390Z",
+      "verified_at": "2026-05-24T09:31:36.390Z",
       "variants": [
         {
           "volume_ml": 75,
@@ -7788,7 +7732,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7802,7 +7746,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7816,7 +7760,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7830,7 +7774,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7844,7 +7788,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7858,7 +7802,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7886,7 +7830,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7900,7 +7844,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7914,7 +7858,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7928,7 +7872,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7942,7 +7886,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -7955,8 +7899,8 @@
       "url": "https://easyfarma.pt/products/bioderma-sensibio-h2o-agua-micelar-500ml-edicao-especial",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:32:51.998Z",
-      "verified_at": "2026-05-18T18:32:51.998Z",
+      "scraped_at": "2026-05-24T09:30:54.665Z",
+      "verified_at": "2026-05-24T09:30:54.665Z",
       "variants": [
         {
           "volume_ml": 50,
@@ -7975,7 +7919,7 @@
         {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 31.9,
+          "price": 21.53,
           "in_stock": true,
           "url": null
         },
@@ -7991,7 +7935,7 @@
     {
       "ean": "3401395614172",
       "store_slug": "bairro-saude",
-      "price": 19.95,
+      "price": 13.74,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -7999,9 +7943,16 @@
       "url": "https://bairrodasaude.pt/products/bioderma-sensibio-h2o-agua-micelar-500-ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:31:39.430Z",
-      "verified_at": "2026-05-18T18:31:39.430Z",
+      "scraped_at": "2026-05-24T09:29:52.317Z",
+      "verified_at": "2026-05-24T09:29:52.317Z",
       "variants": [
+        {
+          "volume_ml": 52,
+          "unit": "ml",
+          "price": 12.99,
+          "in_stock": true,
+          "url": null
+        },
         {
           "volume_ml": 75,
           "unit": "ml",
@@ -8051,7 +8002,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -8065,7 +8016,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -8079,7 +8030,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -8093,7 +8044,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -8107,7 +8058,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -8121,26 +8072,26 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.504Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
       "store_slug": "sweetcare",
-      "price": 12.73,
+      "price": 14.89,
       "previous_price": null,
       "discount_pct": null,
-      "currency": "EUR",
+      "currency": "USD",
       "in_stock": true,
       "url": "https://www.sweetcare.pt/bioderma-sensibio-pele-sensivel-intolerante-limpeza-h2o-micelar-p-000221bd",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:00.118Z",
-      "verified_at": "2026-05-18T18:34:00.118Z",
+      "scraped_at": "2026-05-24T09:32:09.360Z",
+      "verified_at": "2026-05-24T09:32:09.360Z",
       "variants": [
         {
           "volume_ml": 500,
           "unit": "ml",
-          "price": 12.73,
+          "price": 14.89,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/bioderma-sensibio-pele-sensivel-intolerante-limpeza-h2o-micelar-p-000221bd"
         }
@@ -8158,7 +8109,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3401395614172",
@@ -8172,7 +8123,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3600524025632",
@@ -8209,7 +8160,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.366Z"
     },
     {
       "ean": "3600524025632",
@@ -8222,8 +8173,8 @@
       "url": "https://www.druni.pt/fit-me-matte-poreless-maybelline-new-york-base-maquiagem-liquida",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T19:11:54.785Z",
-      "verified_at": "2026-05-18T19:11:54.785Z",
+      "scraped_at": "2026-05-24T09:30:46.653Z",
+      "verified_at": "2026-05-24T09:30:46.653Z",
       "variants": [
         {
           "volume_ml": 30,
@@ -8246,7 +8197,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8260,7 +8211,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8274,7 +8225,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8288,7 +8239,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8302,7 +8253,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8316,7 +8267,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8330,7 +8281,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8344,7 +8295,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.505Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8358,7 +8309,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8372,7 +8323,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8386,7 +8337,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8400,7 +8351,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8414,7 +8365,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8428,7 +8379,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8442,7 +8393,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8456,7 +8407,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8470,7 +8421,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8484,7 +8435,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8498,7 +8449,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8512,7 +8463,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8526,7 +8477,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8540,7 +8491,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8554,7 +8505,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8568,7 +8519,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8582,7 +8533,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8596,7 +8547,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8610,7 +8561,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8624,7 +8575,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8638,26 +8589,26 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
       "store_slug": "sweetcare",
-      "price": 8.89,
+      "price": 10.4,
       "previous_price": null,
       "discount_pct": null,
-      "currency": "EUR",
+      "currency": "USD",
       "in_stock": true,
       "url": "https://www.sweetcare.pt/maybelline-fit-me-matte-poreless-foundation-p-016223bl",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:01.682Z",
-      "verified_at": "2026-05-18T18:34:01.682Z",
+      "scraped_at": "2026-05-24T09:32:14.836Z",
+      "verified_at": "2026-05-24T09:32:14.836Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 8.89,
+          "price": 10.4,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/maybelline-fit-me-matte-poreless-foundation-p-016223bl"
         }
@@ -8675,7 +8626,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "3600524025632",
@@ -8689,7 +8640,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8703,7 +8654,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8717,7 +8668,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8731,7 +8682,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8745,7 +8696,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8759,7 +8710,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8773,7 +8724,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8787,7 +8738,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.506Z"
+      "scraped_at": "2026-05-24T09:32:57.367Z"
     },
     {
       "ean": "5060542790147",
@@ -8801,7 +8752,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8815,7 +8766,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8829,7 +8780,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8843,7 +8794,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8857,7 +8808,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8871,7 +8822,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8885,7 +8836,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8899,7 +8850,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8913,7 +8864,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8927,7 +8878,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8941,7 +8892,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8955,7 +8906,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8969,7 +8920,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8983,7 +8934,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -8997,7 +8948,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -9011,7 +8962,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -9025,7 +8976,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -9039,7 +8990,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -9053,7 +9004,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -9067,7 +9018,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "5060542790147",
@@ -9081,7 +9032,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9095,7 +9046,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9109,7 +9060,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9123,7 +9074,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9137,7 +9088,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9151,7 +9102,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9165,7 +9116,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9179,7 +9130,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9193,7 +9144,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9207,7 +9158,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9221,7 +9172,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9235,7 +9186,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9249,7 +9200,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9263,7 +9214,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9277,7 +9228,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.368Z"
     },
     {
       "ean": "0607845029250",
@@ -9291,7 +9242,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9305,7 +9256,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9319,7 +9270,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9333,7 +9284,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9347,7 +9298,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9361,7 +9312,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9375,7 +9326,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9389,7 +9340,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9403,7 +9354,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9417,7 +9368,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9431,7 +9382,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9445,7 +9396,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9459,7 +9410,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "0607845029250",
@@ -9473,7 +9424,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9510,7 +9461,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9524,7 +9475,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9538,7 +9489,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9552,7 +9503,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9566,7 +9517,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9580,7 +9531,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9594,7 +9545,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9608,7 +9559,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9622,27 +9573,27 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
       "store_slug": "wells",
-      "price": 33,
+      "price": 30.8,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
-      "in_stock": false,
+      "in_stock": true,
       "url": "https://wells.pt/hyalu-b5-anti-wrinkle-care-6447073.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:47.051Z",
-      "verified_at": "2026-05-18T18:34:47.051Z",
+      "scraped_at": "2026-05-24T09:32:50.147Z",
+      "verified_at": "2026-05-24T09:32:50.147Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 33,
-          "in_stock": false,
+          "price": 30.8,
+          "in_stock": true,
           "url": "https://wells.pt/hyalu-b5-anti-wrinkle-care-6447073.html"
         }
       ]
@@ -9659,7 +9610,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9673,7 +9624,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9687,7 +9638,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9701,7 +9652,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9715,7 +9666,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9729,7 +9680,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9743,7 +9694,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9757,7 +9708,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9785,7 +9736,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.369Z"
     },
     {
       "ean": "3337875585668",
@@ -9799,56 +9750,49 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
       "store_slug": "farmacia365",
-      "price": 39.55,
+      "price": 15.33,
       "previous_price": 55.45,
-      "discount_pct": 28.7,
+      "discount_pct": 72.4,
       "currency": "EUR",
       "in_stock": true,
       "url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-serum-30ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:07.902Z",
-      "verified_at": "2026-05-18T18:33:07.902Z",
+      "scraped_at": "2026-05-24T09:31:13.771Z",
+      "verified_at": "2026-05-24T09:31:13.771Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 30.65,
+          "price": 15.33,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     },
@@ -9864,7 +9808,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9878,7 +9822,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9892,7 +9836,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9906,7 +9850,7 @@
       "verified": false,
       "verified_url": true,
       "source": "estimated-with-canonical-url",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9920,7 +9864,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9934,7 +9878,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.507Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9948,7 +9892,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9962,7 +9906,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9976,7 +9920,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -9990,7 +9934,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -10004,7 +9948,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -10018,7 +9962,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875585668",
@@ -10032,7 +9976,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10069,7 +10013,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10083,7 +10027,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10097,7 +10041,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10111,7 +10055,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10125,7 +10069,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10139,7 +10083,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10153,7 +10097,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10167,7 +10111,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10181,7 +10125,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10195,7 +10139,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10223,7 +10167,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10237,7 +10181,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10251,7 +10195,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10265,7 +10209,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10279,7 +10223,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10293,7 +10237,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10307,7 +10251,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10321,7 +10265,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10349,7 +10293,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10363,12 +10307,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
       "store_slug": "farmacia365",
-      "price": 29.6,
+      "price": 8.38,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -10376,48 +10320,41 @@
       "url": "https://www.farmacia365.pt/isdin-fotoprotector-fusion-water-rosto-spf50-50ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:15.184Z",
-      "verified_at": "2026-05-18T18:33:15.184Z",
+      "scraped_at": "2026-05-24T09:31:13.948Z",
+      "verified_at": "2026-05-24T09:31:13.948Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 30.65,
+          "price": 15.33,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
-        },
-        {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 30.65,
+          "price": 18.39,
           "in_stock": true,
           "url": null
         }
@@ -10435,7 +10372,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10449,7 +10386,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10463,12 +10400,12 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
       "store_slug": "bairro-saude",
-      "price": 29.9,
+      "price": 20.93,
       "previous_price": null,
       "discount_pct": null,
       "currency": "EUR",
@@ -10476,13 +10413,13 @@
       "url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-spf50-50ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:31:46.698Z",
-      "verified_at": "2026-05-18T18:31:46.698Z",
+      "scraped_at": "2026-05-24T09:29:55.198Z",
+      "verified_at": "2026-05-24T09:29:55.198Z",
       "variants": [
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 19.9,
+          "price": 17.91,
           "in_stock": true,
           "url": null
         },
@@ -10491,7 +10428,7 @@
           "unit": "ml",
           "price": 20.93,
           "in_stock": true,
-          "url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-spf50-50ml"
+          "url": null
         }
       ]
     },
@@ -10507,7 +10444,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10521,7 +10458,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10535,7 +10472,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10549,7 +10486,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10563,7 +10500,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10577,7 +10514,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10591,7 +10528,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10605,7 +10542,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "8470001763440",
@@ -10619,7 +10556,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10656,7 +10593,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10670,7 +10607,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10684,7 +10621,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10698,7 +10635,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10712,7 +10649,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10726,7 +10663,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10740,7 +10677,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10754,7 +10691,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10768,7 +10705,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10781,8 +10718,8 @@
       "url": "https://wells.pt/protetor-solar-anthelios-uvmune-400-spf50-7577494.html",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:34:52.648Z",
-      "verified_at": "2026-05-18T18:34:52.648Z",
+      "scraped_at": "2026-05-24T09:32:55.449Z",
+      "verified_at": "2026-05-24T09:32:55.449Z",
       "variants": [
         {
           "volume_ml": 50,
@@ -10805,7 +10742,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10819,7 +10756,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10833,7 +10770,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.370Z"
     },
     {
       "ean": "3337875797436",
@@ -10847,7 +10784,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -10861,7 +10798,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -10875,7 +10812,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -10889,7 +10826,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -10903,7 +10840,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -10931,7 +10868,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -10945,56 +10882,49 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
       "store_slug": "farmacia365",
-      "price": 32.05,
+      "price": 16.03,
       "previous_price": 32.05,
-      "discount_pct": 0,
+      "discount_pct": 50,
       "currency": "EUR",
       "in_stock": true,
       "url": "https://www.farmacia365.pt/la-roche-posay-anthelios-uvmune-400-creme-s-perfume-spf50-50ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:33:17.073Z",
-      "verified_at": "2026-05-18T18:33:17.073Z",
+      "scraped_at": "2026-05-24T09:31:14.943Z",
+      "verified_at": "2026-05-24T09:31:14.943Z",
       "variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 30.65,
+          "price": 15.33,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 14.2,
+          "price": 7.1,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 14,
+          "price": 7,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 23.6,
+          "price": 11.8,
           "in_stock": true,
           "url": null
-        },
-        {
-          "volume_ml": 200,
-          "unit": "ml",
-          "price": 18.5,
-          "in_stock": true,
-          "url": "https://www.farmacia365.pt/bioderma-sebium-locao-200ml"
         }
       ]
     },
@@ -11010,7 +10940,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11024,7 +10954,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11038,21 +10968,21 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
       "store_slug": "bairro-saude",
-      "price": 50.95,
+      "price": 35.67,
       "previous_price": 22.53,
-      "discount_pct": -126.1,
+      "discount_pct": -58.3,
       "currency": "EUR",
       "in_stock": true,
       "url": "https://bairrodasaude.pt/products/la-roche-posay-anthelios-uvmune-400-creme-hidratante-spf50-50ml",
       "verified": true,
       "source": "scraped",
-      "scraped_at": "2026-05-18T18:31:52.941Z",
-      "verified_at": "2026-05-18T18:31:52.941Z",
+      "scraped_at": "2026-05-24T09:30:00.689Z",
+      "verified_at": "2026-05-24T09:30:00.689Z",
       "variants": [
         {
           "volume_ml": 15,
@@ -11064,9 +10994,16 @@
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 16.24,
+          "price": 15,
           "in_stock": true,
-          "url": "https://bairrodasaude.pt/products/la-roche-posay-anthelios-uvmune-400-creme-hidratante-spf50-50ml"
+          "url": null
+        },
+        {
+          "volume_ml": 75,
+          "unit": "ml",
+          "price": 11.52,
+          "in_stock": true,
+          "url": null
         }
       ]
     },
@@ -11082,7 +11019,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11096,7 +11033,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11110,7 +11047,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11124,7 +11061,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11138,7 +11075,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11152,7 +11089,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11166,7 +11103,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11180,7 +11117,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     },
     {
       "ean": "3337875797436",
@@ -11194,7 +11131,7 @@
       "verified": false,
       "verified_url": false,
       "source": "estimated",
-      "scraped_at": "2026-05-19T14:08:18.508Z"
+      "scraped_at": "2026-05-24T09:32:57.371Z"
     }
   ]
 }

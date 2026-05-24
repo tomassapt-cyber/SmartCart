@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-05-19T14:08:18.508Z",
+  "generated_at": "2026-05-24T09:32:57.371Z",
   "count": 23,
   "products": [
     {
@@ -52,7 +52,7 @@
       "base_price": 79,
       "volume_ml": 75,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw3f181018/images/wells/820/8209468-SENHORA-CODE-EAU-DE-TOILETTE-GIORGIO-ARMANI-P-01.jpg",
       "ean_source": "real"
     },
     {
@@ -65,7 +65,7 @@
       "base_price": 75,
       "volume_ml": 90,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw2dd80de6/images/wells/736/7369812-SENHORA-VERSACE-BRIGHT-CRYSTAL-EDT-VERSACE-P-01.jpg",
       "ean_source": "real"
     },
     {
@@ -169,7 +169,7 @@
       "base_price": 9,
       "volume_ml": 100,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw31169070/images/wells/696/6960160-Elvive-Oleo-ExtraordinArio-Serum-Nutritivo-LOreal-Paris-P-01.jpg",
       "ean_source": "real"
     },
     {
@@ -182,7 +182,7 @@
       "base_price": 38,
       "volume_ml": 100,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw0f4813a7/images/wells/806/8062971-OUTROS-ELIXIR-ULTIME-LHUILE-REFILLABLE-KERASTASE-P-01.jpg",
       "ean_source": "real"
     },
     {
@@ -195,7 +195,7 @@
       "base_price": 19,
       "volume_ml": 300,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw96395e67/images/wells/746/7461242-CHAMPO-ALL-SOFT-SHAMPOO-REDKEN-P-01.png",
       "ean_source": "real"
     },
     {
@@ -208,7 +208,7 @@
       "base_price": 22,
       "volume_ml": 220,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://rituals.scene7.com/is/image/rituals/1118773-rituals-sakura-whipped-body-cream-220ml",
       "ean_source": "real"
     },
     {
@@ -221,7 +221,7 @@
       "base_price": 15,
       "volume_ml": 500,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
       "ean_source": "real"
     },
     {
@@ -234,7 +234,7 @@
       "base_price": 11,
       "volume_ml": 30,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638200524235313048/maybelline-016223bl-1.jpg",
       "ean_source": "real"
     },
     {
@@ -260,7 +260,7 @@
       "base_price": 33,
       "volume_ml": 6,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://www.narscosmetics.eu/dw/image/v2/BCMQ_PRD/on/demandware.static/-/Sites-itemmaster_NARS/default/dwd3751a60/hi-res/NARS_FA19_Lipstick_Soldier_LPS_Miarmar_Satin_GLBL_B_square.jpg?sw=1600&sh=1600&sm=fit",
       "ean_source": "real"
     },
     {
@@ -273,7 +273,7 @@
       "base_price": 33.27,
       "volume_ml": 30,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw47c9ee54/images/wells/644/6447073-ANTI-ENVELHECIMENTO-CREME-PREENCHEDOR-HYALU-B5-LA-ROCHE-POSAY-P-01.jpg",
       "ean_source": "pending"
     },
     {
@@ -286,7 +286,7 @@
       "base_price": 29.6,
       "volume_ml": 50,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw1d6ae66a/images/wells/687/6876512-SOLARES-ROSTO-FOTOPROTECTOR-FUSIN-WATER-COLOR-SPF-50-ISDIN-P-01.jpg",
       "ean_source": "pending"
     },
     {
@@ -299,7 +299,7 @@
       "base_price": 18.02,
       "volume_ml": 50,
       "volume_unit": "ml",
-      "image_url": null,
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe0d6ffb0/images/wells/757/7577494-SOLARES-ROSTO-PROTETOR-SOLAR-UVMUNE400-CREAM-SPF50-LA-ROCHE-POSAY-P-01.jpg",
       "ean_source": "pending"
     }
   ]
