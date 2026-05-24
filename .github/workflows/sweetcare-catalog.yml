@@ -9,7 +9,7 @@ name: Sweetcare catalog refresh
 
 on:
   schedule:
-    - cron: '0 4 * * 2'    # Terça 04h UTC = 05h Lisboa
+    - cron: '0 10 * * *'    # Diário às 10h UTC (queues após Druni das 06h)
   workflow_dispatch:
     inputs:
       category:

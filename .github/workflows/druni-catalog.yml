@@ -12,7 +12,7 @@ name: Druni catalog refresh
 
 on:
   schedule:
-    - cron: '0 4 * * 1'    # Segunda 04h UTC = 05h Lisboa
+    - cron: '0 6 * * *'    # Diário às 06h UTC (queues após Easyfarma das 04h)
   workflow_dispatch:
     inputs:
       category:
