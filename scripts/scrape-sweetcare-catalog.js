@@ -233,6 +233,33 @@ async function scrapeProductPage(page, url) {
       filteredVariants = variants.filter(v => v.price >= lo && v.price <= hi);
     }
 
+    // DOM strikethrough detection — Sweetcare expõe:
+    //   .pvp  → preço actual (vendido a)
+    //   .pvpR → preço recomendado (riscado) — só presente quando há promo
+    // EXCLUIR áreas de produtos relacionados (sidebar "Os Mais Desejados"
+    // tem dezenas de .pvp/.pvpR de produtos diferentes).
+    function parseSweetcarePrice(text) {
+      // "€ 42,75" → 42.75
+      const m = (text || '').match(/(\d{1,4}(?:[.,]\d{1,2})?)/);
+      return m ? parseFloat(m[1].replace(',', '.')) : null;
+    }
+    let previousPriceFromDom = null;
+    // Procurar pares .pvp + .pvpR em qualquer .price-container
+    const priceContainers = document.querySelectorAll('.price-container');
+    for (const pc of priceContainers) {
+      // Skip se está numa lista de produtos relacionados
+      if (pc.closest('.productList-container, .glide__slide, ul.glide__slides')) continue;
+      const pvpEl = pc.querySelector('.pvp');
+      const pvpREl = pc.querySelector('.pvpR');
+      if (!pvpEl || !pvpREl) continue;
+      const current = parseSweetcarePrice(pvpEl.textContent);
+      const previous = parseSweetcarePrice(pvpREl.textContent);
+      if (current && previous && previous > current * 1.01) {
+        previousPriceFromDom = previous;
+        break;
+      }
+    }
+
     return {
       name: p?.name || null,
       brand: typeof p?.brand === 'string' ? p.brand : p?.brand?.name || null,
@@ -240,6 +267,7 @@ async function scrapeProductPage(page, url) {
       description: p?.description?.slice(0, 300) || null,
       offers: normOffers,
       variants: filteredVariants,
+      previous_price_dom: previousPriceFromDom,
       image_url: imgUrl,
     };
     } catch (e) {
@@ -313,7 +341,7 @@ function saveCheckpoint(allProducts, stats, final = false) {
             ean: data.ean,
             description: data.description,
             price: cheapest?.price || null,
-            previous_price: null,
+            previous_price: data.previous_price_dom || null,
             in_stock: data.offers.some(o => /in[_ ]?stock/i.test(o.availability || '')),
             image_url: data.image_url,
             variants: data.variants,

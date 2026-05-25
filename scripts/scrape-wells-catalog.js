@@ -179,6 +179,28 @@ async function extract(page) {
       filteredVariants = variants.filter(v => v.price >= lo && v.price <= hi);
     }
 
+    // DOM strikethrough detection — Wells expõe:
+    //   .w-sales-price → preço actual promocional
+    //   .w-price-list  → preço lista/anterior (só visível quando há promo)
+    // Funciona como fallback ao JSON-LD que só tem preço único.
+    function parseWellsPrice(el) {
+      if (!el) return null;
+      const intEl = el.querySelector('.w-price-int');
+      const decEl = el.querySelector('.w-price-dec');
+      if (!intEl) return null;
+      const intVal = parseInt((intEl.textContent || '').replace(/[^\d]/g, ''), 10);
+      const decVal = decEl ? parseInt((decEl.textContent || '').replace(/[^\d]/g, ''), 10) || 0 : 0;
+      if (!isFinite(intVal)) return null;
+      return intVal + (decVal / 100);
+    }
+    const salesPriceEl = document.querySelector('.w-pdp-price-container .w-sales-price, .w-pdp-price .w-sales-price');
+    const listPriceEl = document.querySelector('.w-pdp-price-container .w-price-list, .w-pdp-price .w-price-list');
+    const domSalePrice = parseWellsPrice(salesPriceEl);
+    const domListPrice = parseWellsPrice(listPriceEl);
+    const previousPriceFromDom = (domListPrice && domSalePrice && domListPrice > domSalePrice * 1.01)
+      ? domListPrice
+      : null;
+
     return {
       name: p?.name || null,
       brand: typeof p?.brand === 'string' ? p.brand : p?.brand?.name || null,
@@ -187,6 +209,8 @@ async function extract(page) {
       offers: normOffers,
       variants: filteredVariants,
       image_url: imgUrl,
+      previous_price_dom: previousPriceFromDom,
+      dom_sale_price: domSalePrice,
     };
   });
 }
@@ -275,8 +299,10 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
           ean: data.ean,
           description: data.description,
           image_url: data.image_url,
+          // Se DOM detectou .w-price-list (strikethrough Wells), usar como prev.
+          // Senão null — não inferir de spread de variantes.
           price: cheapestPrice,
-          previous_price: null,
+          previous_price: data.previous_price_dom || null,
           currency: cheapestOffer?.currency || 'EUR',
           in_stock: cheapestOffer ? true : (data.offers[0]?.availability ? /InStock/i.test(data.offers[0].availability) : true),
           variants: data.variants,

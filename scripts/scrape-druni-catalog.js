@@ -213,6 +213,30 @@ async function extract(page) {
       filteredVariants = variants.filter(v => v.price >= lo && v.price <= hi);
     }
 
+    // DOM strikethrough — Druni expõe `.old-price > .price` quando há promo,
+    // e `.special-price > .price` para o preço actual. Quando não há promo,
+    // só existe um `.price` simples.
+    function parseDruniPriceText(text) {
+      // "296,25 €" → 296.25
+      const m = (text || '').match(/([\d.]+,\d{2}|[\d.]+)/);
+      if (!m) return null;
+      const s = m[1].replace(/\./g, '').replace(',', '.');
+      const n = parseFloat(s);
+      return isFinite(n) ? n : null;
+    }
+    let previousPriceFromDom = null;
+    // Procurar o "main product price block" — evita produtos relacionados
+    const productInfo = document.querySelector('.product-info-main, .product-page-info, .product-essential, body');
+    if (productInfo) {
+      const oldPriceEl = productInfo.querySelector('.old-price .price, .old-price .price-wrapper');
+      const specialPriceEl = productInfo.querySelector('.special-price .price, .product-info-price .price');
+      const oldPrice = parseDruniPriceText(oldPriceEl?.textContent);
+      const specialPrice = parseDruniPriceText(specialPriceEl?.textContent);
+      if (oldPrice && specialPrice && oldPrice > specialPrice * 1.01) {
+        previousPriceFromDom = oldPrice;
+      }
+    }
+
     return {
       name: p?.name || null,
       brand: typeof p?.brand === 'string' ? p.brand : p?.brand?.name || null,
@@ -221,6 +245,7 @@ async function extract(page) {
       offers: normOffers,
       variants: filteredVariants,
       image_url: imgUrl,
+      previous_price_dom: previousPriceFromDom,
     };
   });
 }
@@ -308,7 +333,7 @@ function saveCheckpoint(allProducts, stats, final = false) {
           description: data.description,
           image_url: data.image_url,
           price: cheapestPrice,
-          previous_price: null, // só populamos via strikethrough DOM (TODO próxima sessão)
+          previous_price: data.previous_price_dom || null,
           currency: cheapestOffer?.currency || 'EUR',
           in_stock: cheapestOffer ? true : (data.offers[0]?.availability ? /InStock/i.test(data.offers[0].availability) : true),
           variants: data.variants,
