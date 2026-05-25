@@ -22,6 +22,14 @@ on:
         description: 'Limit (vazio = sem limite, útil para teste)'
         required: false
         default: ''
+      resume:
+        description: 'Resume do checkpoint (skip URLs já scraped)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 permissions:
   contents: write   # precisamos de fazer push do seed + HTML actualizados
@@ -57,11 +65,14 @@ jobs:
 
       - name: Scrape Atida catalog
         run: |
+          ARGS=""
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-atida-catalog.js --limit=${{ github.event.inputs.limit }}
-          else
-            node scripts/scrape-atida-catalog.js
+            ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
+          if [ "${{ github.event.inputs.resume }}" = "true" ]; then
+            ARGS="$ARGS --resume"
+          fi
+          node scripts/scrape-atida-catalog.js $ARGS
 
       - name: Upload scrape artifact (safety-net)
         # Garante que mesmo se o integrate falhar / push der conflict,
