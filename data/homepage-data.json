@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-25T14:12:37.792Z",
-  "seed_total_products": 21794,
+  "generated_at": "2026-05-25T15:55:09.506Z",
+  "seed_total_products": 25071,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -47,23 +47,13 @@
       "name": "Bioderma Sensibio H2O Água Micelar",
       "brand": "Bioderma",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 4.5,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/sensibio-h2o-solucion-micelar-bioderma-agua-micelar"
+      "best_price": 3.49,
+      "best_store": "Atida | Mifarma PT",
+      "best_store_slug": "atida",
+      "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
     }
   ],
   "bestsellers": [
-    {
-      "ean": "3337875899550",
-      "name": "Skin Renewing Retinol Serum",
-      "brand": "Cerave",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwa0613064/images/wells/870/8703234-ANTI-ENVELHECIMENTO-SKIN-RENEWING-RETINOL-SERUM-P-01.png",
-      "best_price": 21.67,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/cerave-skin-renewing-serum-retinol-30ml"
-    },
     {
       "ean": "3701129803721",
       "name": "Photoderm Mineral Fluide SPF 50+",
@@ -85,76 +75,86 @@
       "best_url": "https://easyfarma.pt/products/vichy-liftactiv-retinol-specialist-serum-rugas-profundas-30ml"
     },
     {
-      "ean": "8470002160040",
-      "name": "Double Correction Serum",
-      "brand": "Biretix",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw5939e1bb/images/wells/841/8414726-TRATAMENTO-DOUBLE-CORRECTION-SERUM-BIRETIX-P-01.png",
-      "best_price": 23.98,
+      "ean": "3337875899550",
+      "name": "Skin Renewing Retinol Serum",
+      "brand": "Cerave",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwa0613064/images/wells/870/8703234-ANTI-ENVELHECIMENTO-SKIN-RENEWING-RETINOL-SERUM-P-01.png",
+      "best_price": 21.67,
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/biretix-double-correction-serum-30ml"
+      "best_url": "https://easyfarma.pt/products/cerave-skin-renewing-serum-retinol-30ml"
     },
     {
-      "ean": "3337875586269",
-      "name": "Cicaplast Gel B5",
+      "ean": "3337875761031",
+      "name": "Anthelios Age Correct Spf50",
       "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5800173.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 9.36,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/la-roche-posay-cicaplast-gel-b5-40-ml"
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5796248.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 16.55,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/la-roche-posay-anthelios-age-correct-spf50-50-ml"
+    },
+    {
+      "ean": "3701129804995",
+      "name": "Sensibio Defensive Sérum",
+      "brand": "BIODERMA",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799260.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 21.63,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/bioderma-sensibio-defensive-serum-30ml"
     }
   ],
   "skincare_kits": [
     {
-      "ean": "wells-8684546",
-      "name": "Age Perfect Serum Le Duo",
-      "brand": "L'Oréal Paris",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe5134969/images/wells/868/8684546-Age-Perfect-Serum-Le-Duo-LOreal-Paris-01.jpg",
-      "best_price": 12.59,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/age-perfect-serum-le-duo-8684546.html"
-    },
-    {
-      "ean": "easyfarma-piz-buin-tan-protect-locao-intensificadora-de-bron",
-      "name": "Piz Buin Tan & Protect Loção Intensificadora de Bronzeado SPF30 Duo 2x",
-      "brand": "Piz Buin",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/D3WlvD.png?v=1778940713",
-      "best_price": 35.8,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/piz-buin-tan-protect-locao-intensificadora-de-bronzeado-spf30-150ml-duo"
-    },
-    {
-      "ean": "easyfarma-dexeryl-pack-locao-nutritiva-500ml-creme-de-duche-",
-      "name": "Dexeryl Pack Loção Nutritiva + Creme de Duche com 75% Desconto",
-      "brand": "Dexeryl",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/GQOVgg_97385959-925e-4acb-b03c-c3fad7c68fde.jpg?v=1778940630",
-      "best_price": 17.22,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/dexeryl-pack-locao-nutritiva-500ml-creme-de-duche-500ml-com-75-desconto"
-    },
-    {
-      "ean": "easyfarma-neutrogena-hydro-boost-coffret-refresh-hydrate-ofe",
-      "name": "Neutrogena Hydro Boost Coffret Refresh & Hydrate + Oferta de Bolsa",
-      "brand": "Neutrogena",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/PLcoMB.png?v=1778940252",
-      "best_price": 28.9,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/neutrogena-hydro-boost-coffret-refresh-hydrate-oferta-de-bolsa"
-    },
-    {
-      "ean": "8436597418225",
-      "name": "1 Step The Feet Set",
-      "brand": "DRN",
-      "image_url": "https://www.druni.pt/media/catalog/product/1/5/1560723.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 3.99,
+      "ean": "3282770146332",
+      "name": "Pack Con Regalo",
+      "brand": "POLYSIANES PSA",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799768.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 18.95,
       "best_store": "Druni PT",
       "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/1-step-the-feet-set-drn-creme-esfoliante-para-pes"
+      "best_url": "https://www.druni.pt/pack-con-regalo-polysianes-psa-spray-spf-50-shampoo"
+    },
+    {
+      "ean": "3700281702293",
+      "name": "Pack Dúo Leche Ultra-Hidratante",
+      "brand": "TOPICREM",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798477.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 14.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/pack-duo-leche-ultra-hidratante-topicrem-emulsao-hidratante"
+    },
+    {
+      "ean": "3282779382458",
+      "name": "Pack Extrasuave A La Leche De Avena",
+      "brand": "KLORANE",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798692.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 15.25,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/pack-extrasuave-leche-avena-klorane-shampoo-seco"
+    },
+    {
+      "ean": "3574661389202",
+      "name": "Pack Hydro Boost",
+      "brand": "NEUTROGENA",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801088.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 17.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/pack-hydro-boost-neutrogena-creme-gel-hidratante"
+    },
+    {
+      "ean": "3282770146158",
+      "name": "Pack Regalo",
+      "brand": "POLYSIANES PSA",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799767.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 19.99,
+      "best_store": "Atida | Mifarma PT",
+      "best_store_slug": "atida",
+      "best_url": "https://www.atida.com/pt-pt/klorane-spray-de-oleo-solar-spf30-champo-seco-de-hortela-pimenta-50-ml-gift"
     }
   ],
   "em_alta": [
@@ -163,10 +163,10 @@
       "name": "Bioderma Sensibio H2O Água Micelar",
       "brand": "Bioderma",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 4.5,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/sensibio-h2o-solucion-micelar-bioderma-agua-micelar"
+      "best_price": 3.49,
+      "best_store": "Atida | Mifarma PT",
+      "best_store_slug": "atida",
+      "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
     },
     {
       "ean": "3337875798181",
@@ -212,35 +212,35 @@
   "top_brands": [
     {
       "name": "Avène",
-      "products": 420
-    },
-    {
-      "name": "La Roche-Posay",
-      "products": 409
+      "products": 463
     },
     {
       "name": "Uriage",
-      "products": 390
+      "products": 448
     },
     {
       "name": "Isdin",
-      "products": 377
+      "products": 436
+    },
+    {
+      "name": "La Roche-Posay",
+      "products": 431
     },
     {
       "name": "Bioderma",
-      "products": 315
+      "products": 339
     },
     {
       "name": "Vichy",
-      "products": 266
-    },
-    {
-      "name": "SVR",
-      "products": 263
+      "products": 301
     },
     {
       "name": "L'Oréal Paris",
-      "products": 240
+      "products": 291
+    },
+    {
+      "name": "Eucerin",
+      "products": 285
     }
   ],
   "telegram_alerts": [
