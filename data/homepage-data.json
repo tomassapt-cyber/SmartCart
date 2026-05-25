@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-22T19:02:03.769Z",
-  "seed_total_products": 20319,
+  "generated_at": "2026-05-25T10:05:26.805Z",
+  "seed_total_products": 17904,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -23,6 +23,16 @@
       "best_url": "https://www.druni.pt/estuche-advance-genefique-lancome-cofre-serum-concentrado-ativador-juventude-e-luminosidade"
     },
     {
+      "ean": "0887167667501",
+      "name": "Advanced Night Repair Edición Limitada",
+      "brand": "Estée Lauder",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/7/1788203.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 83.4,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/advanced-night-repair-edicion-limitada-estee-lauder-serum-antienvelhecimento"
+    },
+    {
       "ean": "3337875762908",
       "name": "Minéral 89 Probiotic Fractions",
       "brand": "VICHY",
@@ -37,23 +47,13 @@
       "name": "Bioderma Sensibio H2O Água Micelar",
       "brand": "Bioderma",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 9.29,
+      "best_price": 4.5,
       "best_store": "Druni PT",
       "best_store_slug": "druni",
       "best_url": "https://www.druni.pt/sensibio-h2o-solucion-micelar-bioderma-agua-micelar"
     }
   ],
   "bestsellers": [
-    {
-      "ean": "3701129809334",
-      "name": "Hydrabio Hyalu+ Serum",
-      "brand": "Bioderma",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe56bbe21/images/wells/796/7969667-CUIDADOS-SERUM-ROSTO-HYDRABIO-HYALU-ANTI-IDADE-BIODERMA-P-08.png",
-      "best_price": 22.77,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/bioderma-hydrabio-hyalu-serum-30ml"
-    },
     {
       "ean": "3337875821636",
       "name": "Liftactiv Retinol Specialist Serum",
@@ -93,6 +93,16 @@
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
       "best_url": "https://easyfarma.pt/products/bioderma-photoderm-mineral-spf50-fluido-75g"
+    },
+    {
+      "ean": "3701129809334",
+      "name": "Hydrabio Hyalu+ Serum",
+      "brand": "Bioderma",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe56bbe21/images/wells/796/7969667-CUIDADOS-SERUM-ROSTO-HYDRABIO-HYALU-ANTI-IDADE-BIODERMA-P-08.png",
+      "best_price": 22.77,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/bioderma-hydrabio-hyalu-serum-30ml"
     }
   ],
   "skincare_kits": [
@@ -105,6 +115,16 @@
       "best_store": "Wells",
       "best_store_slug": "wells",
       "best_url": "https://wells.pt/age-perfect-serum-le-duo-8684546.html"
+    },
+    {
+      "ean": "8436597418225",
+      "name": "1 Step The Feet Set",
+      "brand": "DRN",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/5/1560723.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 3.99,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/1-step-the-feet-set-drn-creme-esfoliante-para-pes"
     },
     {
       "ean": "8720143124679",
@@ -135,16 +155,6 @@
       "best_store": "Druni PT",
       "best_store_slug": "druni",
       "best_url": "https://www.druni.pt/advanced-retinol-strivectin-tratamento-contorno-olhos"
-    },
-    {
-      "ean": "3614274550672",
-      "name": "Aquasource Hyalu Plump Gel Estuche",
-      "brand": "BIOTHERM",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5022141.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 31.95,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/aquasource-hyalu-plump-gel-estuche-biotherm-embalagem"
     }
   ],
   "em_alta": [
@@ -153,7 +163,7 @@
       "name": "Bioderma Sensibio H2O Água Micelar",
       "brand": "Bioderma",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 9.29,
+      "best_price": 4.5,
       "best_store": "Druni PT",
       "best_store_slug": "druni",
       "best_url": "https://www.druni.pt/sensibio-h2o-solucion-micelar-bioderma-agua-micelar"
@@ -167,6 +177,16 @@
       "best_store": "Druni PT",
       "best_store_slug": "druni",
       "best_url": "https://www.druni.pt/anthelios-100-ka-med-roche-posay-creme-hidratante-protecao"
+    },
+    {
+      "ean": "8431567644116",
+      "name": "Cofre Mineral 89",
+      "brand": "VICHY",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802259.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 19.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/cofre-mineral-89-vichy-hidratacao-profunda"
     },
     {
       "ean": "3337875549493",
@@ -192,31 +212,31 @@
   "top_brands": [
     {
       "name": "La Roche-Posay",
-      "products": 269
+      "products": 265
     },
     {
       "name": "Avène",
-      "products": 262
-    },
-    {
-      "name": "L'Oréal Paris",
-      "products": 241
+      "products": 257
     },
     {
       "name": "Uriage",
-      "products": 233
+      "products": 231
     },
     {
       "name": "Kérastase",
-      "products": 225
+      "products": 227
     },
     {
       "name": "Isdin",
-      "products": 206
+      "products": 205
+    },
+    {
+      "name": "L'Oréal Paris",
+      "products": 205
     },
     {
       "name": "Bioderma",
-      "products": 194
+      "products": 195
     },
     {
       "name": "Eucerin",
