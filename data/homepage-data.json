@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-25T10:31:25.450Z",
-  "seed_total_products": 20560,
+  "generated_at": "2026-05-25T14:12:37.792Z",
+  "seed_total_products": 21794,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -55,16 +55,6 @@
   ],
   "bestsellers": [
     {
-      "ean": "3337875821636",
-      "name": "Liftactiv Retinol Specialist Serum",
-      "brand": "Vichy",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw744ca7e4/images/wells/772/7722650-TRATAMENTO-SERUM-ANTIMANCHAS-LIFTACTIV-RETINOL-VICHY-P-01.jpg",
-      "best_price": 24.8,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/vichy-liftactiv-retinol-specialist-serum-rugas-profundas-30ml"
-    },
-    {
       "ean": "3337875899550",
       "name": "Skin Renewing Retinol Serum",
       "brand": "Cerave",
@@ -79,10 +69,20 @@
       "name": "Photoderm Mineral Fluide SPF 50+",
       "brand": "Bioderma",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwee157bde/images/wells/879/8795688-SOLARES-ROSTO-PHOTODERM-MINERAL-FLUIDE-SPF-50-BIODERMA-P-01.png",
-      "best_price": 15.93,
+      "best_price": 11.75,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/bioderma-photoderm-mineral-spf50-75g"
+    },
+    {
+      "ean": "3337875821636",
+      "name": "Liftactiv Retinol Specialist Serum",
+      "brand": "Vichy",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw744ca7e4/images/wells/772/7722650-TRATAMENTO-SERUM-ANTIMANCHAS-LIFTACTIV-RETINOL-VICHY-P-01.jpg",
+      "best_price": 24.8,
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/bioderma-photoderm-mineral-spf50-fluido-75g"
+      "best_url": "https://easyfarma.pt/products/vichy-liftactiv-retinol-specialist-serum-rugas-profundas-30ml"
     },
     {
       "ean": "8470002160040",
@@ -211,36 +211,36 @@
   ],
   "top_brands": [
     {
-      "name": "La Roche-Posay",
-      "products": 371
-    },
-    {
       "name": "Avène",
-      "products": 371
+      "products": 420
     },
     {
-      "name": "Isdin",
-      "products": 350
+      "name": "La Roche-Posay",
+      "products": 409
     },
     {
       "name": "Uriage",
-      "products": 350
+      "products": 390
+    },
+    {
+      "name": "Isdin",
+      "products": 377
     },
     {
       "name": "Bioderma",
-      "products": 292
-    },
-    {
-      "name": "SVR",
-      "products": 261
+      "products": 315
     },
     {
       "name": "Vichy",
-      "products": 237
+      "products": 266
     },
     {
-      "name": "Kérastase",
-      "products": 227
+      "name": "SVR",
+      "products": 263
+    },
+    {
+      "name": "L'Oréal Paris",
+      "products": 240
     }
   ],
   "telegram_alerts": [

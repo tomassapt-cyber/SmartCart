@@ -59,6 +59,10 @@ function buildBaseVariants(sp) {
  * @returns {object} { item, action: 'added'|'merged' }
  */
 function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
+  // Defensive: skip products sem preço ou preço inválido. Acontece quando
+  // scrape obteve JSON-LD parcial (sem offers) — não-fatal, só ignorar.
+  const spPrice = typeof sp?.price === 'number' && isFinite(sp.price) && sp.price > 0 ? sp.price : null;
+  if (!spPrice) return { item: null, action: 'skipped' };
   const baseVariants = buildBaseVariants(sp);
   const existingItem = state.itemByEan[targetEan];
 

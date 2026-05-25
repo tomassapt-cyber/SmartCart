@@ -228,7 +228,8 @@ function syntheticEan(p) {
       targetProduct.ean, ep, efData.scraped_at
     );
     if (result.action === 'added') storeProductsAdded++;
-    else storeProductsUpdated++;
+    else if (result.action === 'merged') storeProductsUpdated++;
+    // 'skipped' → não conta (produto sem preço scrape)
   }
 
   console.log('══════ Resumo da integração ══════');
