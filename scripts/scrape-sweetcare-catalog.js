@@ -244,11 +244,19 @@ async function scrapeProductPage(page, url) {
       return m ? parseFloat(m[1].replace(',', '.')) : null;
     }
     let previousPriceFromDom = null;
-    // Procurar pares .pvp + .pvpR em qualquer .price-container
-    const priceContainers = document.querySelectorAll('.price-container');
-    for (const pc of priceContainers) {
-      // Skip se está numa lista de produtos relacionados
+    // Sweetcare encapsula o preço do produto principal em .price-product
+    // (NÃO .price-container — esse é dos relacionados). Estrutura:
+    //   <div class="price-product" data-base-price="65.10" data-subtype="01">
+    //     <span class="pvp">€ 65,10</span>
+    //     <span class="pvpR">€ 100,15</span>
+    //     <span class="label-promo">-35%</span>
+    //   </div>
+    // Excluímos os produtos relacionados via .productList-container etc.
+    const priceBlocks = document.querySelectorAll('.price-product');
+    for (const pc of priceBlocks) {
       if (pc.closest('.productList-container, .glide__slide, ul.glide__slides')) continue;
+      // Preferir o subtype não-display:none (variante actualmente selecionada)
+      if (pc.classList.contains('display-none')) continue;
       const pvpEl = pc.querySelector('.pvp');
       const pvpREl = pc.querySelector('.pvpR');
       if (!pvpEl || !pvpREl) continue;
