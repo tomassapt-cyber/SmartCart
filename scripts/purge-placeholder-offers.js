@@ -49,6 +49,7 @@ const SCRAPED_STORES = new Set([
   'bairro-saude',
   'atida',
   'byfarma',
+  'farmacia365',
 ]);
 
 (function main() {
