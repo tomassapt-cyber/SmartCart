@@ -46,6 +46,7 @@ const SCRAPED_STORES = new Set([
   'druni',
   'sweetcare',
   'easyfarma',
+  'bairro-saude',
 ]);
 
 (function main() {
