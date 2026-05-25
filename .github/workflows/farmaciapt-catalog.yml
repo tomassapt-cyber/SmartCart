@@ -1,0 +1,123 @@
+# GirlMath — Farmácia.pt daily price refresh
+# ============================================================
+# Farmácia.pt é Magento. Scraper usa HTTP simples (fetch) + parse JSON-LD
+# do HTML — sem Playwright. ~10k URLs beauty (de 32k totais) × 600ms = ~25 min
+# com concurrency=4. Suporta --chunk=N/M para dividir em runs paralelos.
+#
+# Pipeline:
+#   1. scrape-farmaciapt-catalog.js  → data/catalog/farmaciapt-full.json
+#   2. integrate-farmaciapt-catalog.js → match por EAN-real (GTIN-13) + fingerprint
+#   3. inject-seed-into-demo.js → regenera demo.html / index.html / catalogo.html
+#   4. commit + push para main (concurrency.group catalog-write serializa)
+
+name: Farmácia.pt daily refresh
+
+on:
+  schedule:
+    # 15h UTC — depois de Wells (14h), antes do ciclo recomeçar
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write   # precisamos de fazer push do seed + HTML actualizados
+
+# Serializa com Druni/Sweetcare/Wells — group partilhado evita push storm.
+concurrency:
+  group: catalog-write
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Farmácia.pt catalog
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-farmaciapt-catalog.js --limit=${{ github.event.inputs.limit }}
+          else
+            node scripts/scrape-farmaciapt-catalog.js
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        # Garante que mesmo se o integrate falhar / push der conflict,
+        # temos os dados scraped guardados como artifact descarregável.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: farmaciapt-catalog-${{ github.run_id }}
+          path: data/catalog/farmaciapt-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-farmaciapt-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: GirlMath Bot
+          GIT_AUTHOR_EMAIL: bot@girlmath.pt
+          GIT_COMMITTER_NAME: GirlMath Bot
+          GIT_COMMITTER_EMAIL: bot@girlmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          # -f para forçar o farmaciapt-full.json que está gitignored
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/farmaciapt-full.json 2>/dev/null || true
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: Farmácia.pt daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (with rebase-on-fail retry)
+        run: |
+          set -e
+          # Push com backoff exponencial: até 8 tentativas (~17 min total) com
+          # jitter aleatório. Suporta chunks paralelos a tentar push em
+          # simultâneo sem perderem trabalho.
+          BACKOFFS=(5 15 30 60 120 180 240 300)
+          for i in "${!BACKOFFS[@]}"; do
+            attempt=$((i + 1))
+            if git push origin HEAD:main; then
+              echo "Push ok (tentativa $attempt)"
+              exit 0
+            fi
+            echo "Push falhou (tentativa $attempt) — rebase contra origin/main…"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase falhou — abortado"
+            fi
+            JITTER=$((RANDOM % 10))
+            WAIT=$((${BACKOFFS[$i]} + JITTER))
+            echo "A aguardar ${WAIT}s antes de retentar..."
+            sleep "$WAIT"
+          done
+          echo "Push falhou após 8 tentativas. Artifact contém os dados."
+          exit 1
