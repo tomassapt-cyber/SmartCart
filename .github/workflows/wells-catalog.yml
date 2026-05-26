@@ -37,11 +37,6 @@ on:
 
 permissions:
   contents: write
-
-concurrency:
-  group: catalog-write
-  cancel-in-progress: false
-
 jobs:
   catalog:
     name: Discover & scrape Wells catalog
@@ -106,7 +101,7 @@ jobs:
             CAT="${{ github.event.inputs.category || 'all' }}"
             git commit -m "chore: Wells catalog refresh - $CAT ($(date -u +%Y-%m-%d))"
             BRANCH="${GITHUB_REF_NAME}"
-            BACKOFFS=(5 15 30 60 120 180 240 300)
+            BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
             pushed=0
             for i in "${!BACKOFFS[@]}"; do
               attempt=$((i + 1))
@@ -126,7 +121,7 @@ jobs:
               sleep "$WAIT"
             done
             if [ "$pushed" != "1" ]; then
-              echo "ERRO: 8 tentativas falharam — abortando step para tornar visível"
+              echo "ERRO: 12 tentativas falharam — abortando step para tornar visível"
               exit 1
             fi
           fi

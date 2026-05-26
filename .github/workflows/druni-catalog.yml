@@ -5,10 +5,6 @@
 
 name: Druni catalog refresh
 
-# Serializa com Sweetcare/Wells/Easyfarma — só um workflow do catálogo
-# faz commit+push de cada vez. Slow mas fiável: chunks de stores diferentes
-# correm em série em vez de paralelo (~4-6h total para todos os scrapes em
-# vez de ~1h). Melhor que perder dados por conflitos como ontem (5/7 runs).
 
 on:
   schedule:
@@ -36,11 +32,6 @@ on:
 
 permissions:
   contents: write
-
-concurrency:
-  group: catalog-write
-  cancel-in-progress: false
-
 jobs:
   catalog:
     name: Discover + scrape + integrate Druni
@@ -115,7 +106,7 @@ jobs:
             BRANCH="${GITHUB_REF_NAME}"
             # Push com backoff exponencial: até 8 tentativas, jitter aleatório
             # para chunks paralelos não tentarem ao mesmo tempo. Total ~17 min.
-            BACKOFFS=(5 15 30 60 120 180 240 300)
+            BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
             pushed=0
             for i in "${!BACKOFFS[@]}"; do
               attempt=$((i + 1))
@@ -135,7 +126,7 @@ jobs:
               sleep "$WAIT"
             done
             if [ "$pushed" != "1" ]; then
-              echo "ERRO: 8 tentativas falharam — abortando step para tornar visível"
+              echo "ERRO: 12 tentativas falharam — abortando step para tornar visível"
               exit 1
             fi
           fi

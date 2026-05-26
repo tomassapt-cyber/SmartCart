@@ -8,7 +8,6 @@
 #   1. scrape-byfarma-catalog.js  → data/catalog/byfarma-full.json
 #   2. integrate-byfarma-catalog.js → match por EAN-real (GTIN-13) + fingerprint
 #   3. inject-seed-into-demo.js → regenera demo.html / index.html / catalogo.html
-#   4. commit + push para main (concurrency.group catalog-write serializa)
 
 name: byFarma daily refresh
 
@@ -26,10 +25,6 @@ on:
 permissions:
   contents: write   # precisamos de fazer push do seed + HTML actualizados
 
-# Serializa com Druni/Sweetcare/Wells — group partilhado evita push storm.
-concurrency:
-  group: catalog-write
-  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -101,7 +96,7 @@ jobs:
           # Push com backoff exponencial: até 8 tentativas (~17 min total) com
           # jitter aleatório. Suporta chunks paralelos a tentar push em
           # simultâneo sem perderem trabalho.
-          BACKOFFS=(5 15 30 60 120 180 240 300)
+          BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
           for i in "${!BACKOFFS[@]}"; do
             attempt=$((i + 1))
             if git push origin HEAD:main; then
