@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A minha conta · GirlMath</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%23d8c9ec'/><text x='32' y='40' text-anchor='middle' font-family='serif' font-size='28' fill='%236d84a7'>gM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f4f4f5;
+    --surface: #ffffff;
+    --surface-2: #fafafb;
+    --border: #ececef;
+    --border-strong: #d9dce2;
+    --text: #2a2f3a;
+    --text-soft: #6b7384;
+    --muted: #a0a6b3;
+    --gold: #6d84a7;
+    --gold-soft: #bac5d7;
+    --rose: #d8c9ec;
+    --rose-bg: #f7f2ff;
+    --sand: #f2f1bb;
+    --success: #6d84a7;
+    --danger: #b07060;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --pill-active: linear-gradient(135deg, #d8c9ec 0%, #f2f1bb 100%);
+    --shadow-sm: 0 1px 2px rgba(20,24,34,.04);
+    --shadow-md: 0 4px 14px -4px rgba(20,24,34,.06);
+    --shadow-lg: 0 20px 40px -12px rgba(20,24,34,.08);
+    --radius: 10px;
+    --radius-pill: 999px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-soft);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ===== NAV (minimal) ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 24px; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 28px; color: var(--text); text-decoration: none; font-weight: 500; }
+  .nav-logo em { color: var(--gold); font-style: italic; font-weight: 600; }
+  .nav-actions { display: flex; align-items: center; gap: 18px; }
+  .nav-actions a { color: var(--text-soft); text-decoration: none; font-size: 13px; }
+  .nav-actions a:hover { color: var(--gold); }
+  .nav-points {
+    background: var(--rose-bg);
+    color: var(--gold);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .nav-points .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+
+  /* ===== LAYOUT ===== */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 140px;
+  }
+  .page-head { margin-bottom: 32px; }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 11px;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0 0 6px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .page-sub { color: var(--text-soft); font-size: 15px; margin: 0; }
+
+  /* ===== TABS ===== */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    background: none; border: none;
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-soft);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: color .15s, border-color .15s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--text); border-bottom-color: var(--gold); }
+
+  /* ===== CARD / PANEL ===== */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+  }
+  .panel-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0 0 6px;
+  }
+  .panel-desc {
+    color: var(--text-soft);
+    margin: 0 0 28px;
+    font-size: 14px;
+  }
+  .field-group { margin-bottom: 24px; }
+  .field-group:last-child { margin-bottom: 0; }
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 640px) { .field-grid { grid-template-columns: 1fr; } }
+
+  label.field-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .field-hint {
+    font-size: 12px;
+    color: var(--text-soft);
+    margin-top: 6px;
+  }
+
+  input[type=text], input[type=email], input[type=date], input[type=number], select, textarea {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(109,132,167,.12);
+  }
+  input[disabled], select[disabled] {
+    background: var(--surface-2); color: var(--text-soft); cursor: not-allowed;
+  }
+
+  /* Chips multi-select */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+    transition: all .15s;
+  }
+  .chip:hover { border-color: var(--gold); }
+  .chip.selected {
+    background: var(--pill-active);
+    border-color: transparent;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Radio cards */
+  .radio-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .radio-card {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 14px 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .15s;
+  }
+  .radio-card:hover { border-color: var(--gold); }
+  .radio-card.selected {
+    border-color: var(--gold);
+    background: var(--rose-bg);
+    box-shadow: var(--shadow-sm);
+  }
+  .radio-card-icon { font-size: 24px; margin-bottom: 6px; }
+  .radio-card-label { font-size: 13px; font-weight: 500; }
+
+  /* Slider */
+  .slider-row { display: flex; align-items: center; gap: 16px; }
+  .slider-row input[type=range] {
+    flex: 1; appearance: none; height: 4px;
+    background: var(--border-strong); border-radius: 2px; outline: none;
+  }
+  .slider-row input[type=range]::-webkit-slider-thumb {
+    appearance: none; width: 20px; height: 20px;
+    background: var(--gold); border-radius: 50%; cursor: pointer;
+    border: 2px solid #fff; box-shadow: var(--shadow-sm);
+  }
+  .slider-row input[type=range]::-moz-range-thumb {
+    width: 20px; height: 20px; background: var(--gold); border-radius: 50%;
+    cursor: pointer; border: 2px solid #fff;
+  }
+  .slider-value {
+    min-width: 70px; text-align: right;
+    font-weight: 600; color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Toggle switch */
+  .toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider {
+    position: absolute; cursor: pointer; inset: 0;
+    background: var(--border-strong); border-radius: 24px; transition: .2s;
+  }
+  .toggle-slider::before {
+    content: ''; position: absolute; height: 18px; width: 18px;
+    left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s;
+  }
+  .toggle input:checked + .toggle-slider { background: var(--gold); }
+  .toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+  .toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .toggle-row:last-child { border-bottom: none; }
+  .toggle-row-text { font-weight: 500; }
+  .toggle-row-desc { font-size: 12px; color: var(--text-soft); margin-top: 2px; }
+
+  /* Avatar grid */
+  .avatar-current {
+    display: flex; align-items: center; gap: 18px;
+    background: var(--rose-bg);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+  .avatar-current-img {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: #fff; border: 2px solid var(--gold-soft);
+    overflow: hidden; flex-shrink: 0;
+  }
+  .avatar-current-img img, .avatar-current-img svg { width: 100%; height: 100%; object-fit: cover; }
+  .avatar-current-text strong { display: block; font-size: 15px; }
+  .avatar-current-text small { color: var(--text-soft); font-size: 12px; }
+
+  .avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 640px) { .avatar-grid { grid-template-columns: repeat(4, 1fr); } }
+  .avatar-cell {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: #fff;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .avatar-cell:hover { border-color: var(--gold-soft); transform: scale(1.05); }
+  .avatar-cell.selected {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--rose-bg);
+  }
+  .avatar-cell img, .avatar-cell svg { width: 100%; height: 100%; display: block; }
+
+  .dicebear-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .dicebear-styles { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .dicebear-seed-row { display: flex; gap: 10px; align-items: center; }
+  .dicebear-seed-row input { flex: 1; }
+  .btn-link {
+    background: none; border: none; color: var(--gold); cursor: pointer;
+    font-size: 13px; padding: 8px 12px; font-family: inherit;
+  }
+  .btn-link:hover { text-decoration: underline; }
+
+  /* Save bar (sticky bottom) */
+  .save-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border);
+    padding: 14px 24px;
+    z-index: 40;
+    transform: translateY(100%);
+    transition: transform .2s;
+  }
+  .save-bar.visible { transform: translateY(0); }
+  .save-bar-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .save-bar-text { color: var(--text-soft); font-size: 13px; }
+  .save-bar-actions { display: flex; gap: 10px; }
+
+  .btn {
+    padding: 11px 22px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all .15s;
+  }
+  .btn-primary {
+    background: var(--text);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #1a1f2a; }
+  .btn-primary:disabled { background: var(--muted); cursor: not-allowed; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-soft);
+    border-color: var(--border-strong);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+  /* Loading / auth-needed */
+  .center-state {
+    text-align: center;
+    padding: 80px 20px;
+  }
+  .center-state .icon { font-size: 48px; margin-bottom: 18px; }
+  .center-state h2 { font-family: var(--serif); font-size: 32px; margin: 0 0 10px; }
+  .center-state p { color: var(--text-soft); max-width: 420px; margin: 0 auto 24px; }
+
+  /* Toast */
+  .toast {
+    position: fixed; left: 50%; bottom: 100px;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text); color: #fff;
+    padding: 12px 22px; border-radius: var(--radius-pill);
+    font-size: 13px; font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transition: all .25s;
+    z-index: 100;
+    pointer-events: none;
+  }
+  .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* Tab content fade */
+  .tab-panel { display: none; animation: fadeIn .2s; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">girl<em>Math</em></a>
+    <div class="nav-actions">
+      <span class="nav-points"><span class="dot"></span><span id="points-label">0 pts</span></span>
+      <a href="/">← Voltar ao site</a>
+      <a href="#" id="signout-link">Sair</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<main class="page" id="main-page" style="display:none">
+  <header class="page-head">
+    <div class="eyebrow">A minha conta</div>
+    <h1>Olá, <em><span id="hi-name">tu</span></em></h1>
+    <p class="page-sub">Personaliza o teu perfil para sugestões mais precisas.</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="perfil">Perfil</button>
+    <button class="tab" data-tab="skincare">Skincare</button>
+    <button class="tab" data-tab="preferencias">Preferências</button>
+    <button class="tab" data-tab="avatar">Avatar</button>
+    <button class="tab" data-tab="notificacoes">Notificações</button>
+  </nav>
+
+  <form id="profile-form" onsubmit="return false">
+
+    <!-- ===== PERFIL ===== -->
+    <section class="tab-panel active panel" data-panel="perfil">
+      <h2 class="panel-title">Perfil</h2>
+      <p class="panel-desc">Dados básicos — usados para sugerir lojas próximas e personalizar conteúdo.</p>
+
+      <div class="field-group">
+        <div class="field-grid">
+          <div>
+            <label class="field-label" for="f-display-name">Nome a mostrar</label>
+            <input id="f-display-name" type="text" placeholder="Como queres ser tratada" maxlength="40" />
+          </div>
+          <div>
+            <label class="field-label" for="f-email">Email</label>
+            <input id="f-email" type="email" disabled />
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Sexo</label>
+        <div class="chips" id="f-gender">
+          <div class="chip" data-val="feminino">Feminino</div>
+          <div class="chip" data-val="masculino">Masculino</div>
+          <div class="chip" data-val="outro">Outro</div>
+          <div class="chip" data-val="nao_dizer">Prefiro não dizer</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-grid">
+          <div>
+            <label class="field-label" for="f-birth">Data de nascimento</label>
+            <input id="f-birth" type="date" min="1920-01-01" max="2015-12-31" />
+            <div class="field-hint">Só usamos para campanhas de aniversário.</div>
+          </div>
+          <div>
+            <label class="field-label" for="f-district">Distrito</label>
+            <select id="f-district">
+              <option value="">— Escolhe —</option>
+              <option value="PT-01">Aveiro</option>
+              <option value="PT-02">Beja</option>
+              <option value="PT-03">Braga</option>
+              <option value="PT-04">Bragança</option>
+              <option value="PT-05">Castelo Branco</option>
+              <option value="PT-06">Coimbra</option>
+              <option value="PT-07">Évora</option>
+              <option value="PT-08">Faro</option>
+              <option value="PT-09">Guarda</option>
+              <option value="PT-10">Leiria</option>
+              <option value="PT-11">Lisboa</option>
+              <option value="PT-12">Portalegre</option>
+              <option value="PT-13">Porto</option>
+              <option value="PT-14">Santarém</option>
+              <option value="PT-15">Setúbal</option>
+              <option value="PT-16">Viana do Castelo</option>
+              <option value="PT-17">Vila Real</option>
+              <option value="PT-18">Viseu</option>
+              <option value="PT-20">R. A. Açores</option>
+              <option value="PT-30">R. A. Madeira</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f-budget">Orçamento mensal cosmética</label>
+        <div class="slider-row">
+          <input id="f-budget" type="range" min="0" max="200" step="5" value="40" />
+          <span class="slider-value"><span id="f-budget-val">40</span> €</span>
+        </div>
+        <div class="field-hint">Não te limita — usamos para sugerir produtos no teu nível.</div>
+      </div>
+    </section>
+
+    <!-- ===== SKINCARE ===== -->
+    <section class="tab-panel panel" data-panel="skincare">
+      <h2 class="panel-title">Skincare</h2>
+      <p class="panel-desc">Conta-nos sobre a tua pele para sugestões mais certeiras.</p>
+
+      <div class="field-group">
+        <label class="field-label">Tipo de pele <span style="font-weight:400;color:var(--text-soft);text-transform:none;letter-spacing:0">(seleciona todos os que se aplicam)</span></label>
+        <div class="chips multi" id="f-skin-type" data-multi="1">
+          <div class="chip" data-val="oily">Oleosa</div>
+          <div class="chip" data-val="dry">Seca</div>
+          <div class="chip" data-val="combination">Mista</div>
+          <div class="chip" data-val="normal">Normal</div>
+          <div class="chip" data-val="sensitive">Sensível</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Preocupações principais <span style="font-weight:400;color:var(--text-soft);text-transform:none;letter-spacing:0">(máx. 3)</span></label>
+        <div class="chips multi" id="f-skin-concerns" data-multi="1" data-max="3">
+          <div class="chip" data-val="acne">Acne</div>
+          <div class="chip" data-val="manchas">Manchas</div>
+          <div class="chip" data-val="rugas">Rugas e linhas</div>
+          <div class="chip" data-val="hidratacao">Hidratação</div>
+          <div class="chip" data-val="poros">Poros dilatados</div>
+          <div class="chip" data-val="olheiras">Olheiras</div>
+          <div class="chip" data-val="vermelhidao">Vermelhidão</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Ingredientes a evitar / alergias</label>
+        <div class="chips multi" id="f-allergies" data-multi="1">
+          <div class="chip" data-val="fragrancia">Fragrância</div>
+          <div class="chip" data-val="alcool">Álcool</div>
+          <div class="chip" data-val="retinol">Retinol</div>
+          <div class="chip" data-val="aha">AHA</div>
+          <div class="chip" data-val="bha">BHA</div>
+          <div class="chip" data-val="essencial">Óleos essenciais</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f-routine">Passos da rotina actual</label>
+        <div class="slider-row">
+          <input id="f-routine" type="range" min="0" max="10" step="1" value="3" />
+          <span class="slider-value"><span id="f-routine-val">3</span> passos</span>
+        </div>
+        <div class="field-hint">Desde água fria até serum + creme + protector solar.</div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Objectivo para os próximos 3 meses</label>
+        <div class="radio-cards" id="f-goal">
+          <div class="radio-card" data-val="hidratar"><div class="radio-card-icon">💧</div><div class="radio-card-label">Hidratar</div></div>
+          <div class="radio-card" data-val="anti-idade"><div class="radio-card-icon">✨</div><div class="radio-card-label">Anti-idade</div></div>
+          <div class="radio-card" data-val="acne"><div class="radio-card-icon">🌿</div><div class="radio-card-label">Tratar acne</div></div>
+          <div class="radio-card" data-val="manchas"><div class="radio-card-icon">🪷</div><div class="radio-card-label">Clarear manchas</div></div>
+          <div class="radio-card" data-val="manter"><div class="radio-card-icon">🌸</div><div class="radio-card-label">Só manter</div></div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Tipo de cabelo <span style="font-weight:400;color:var(--text-soft);text-transform:none;letter-spacing:0">(opcional)</span></label>
+        <div class="chips" id="f-hair-type">
+          <div class="chip" data-val="lisos">Lisos</div>
+          <div class="chip" data-val="ondulados">Ondulados</div>
+          <div class="chip" data-val="cacheados">Cacheados</div>
+          <div class="chip" data-val="afro">Afro</div>
+          <div class="chip" data-val="quimico">Quimicamente tratado</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PREFERÊNCIAS ===== -->
+    <section class="tab-panel panel" data-panel="preferencias">
+      <h2 class="panel-title">Preferências éticas</h2>
+      <p class="panel-desc">Valores que importam — vamos priorizar produtos que respeitem o que escolheres.</p>
+
+      <div class="field-group">
+        <div class="chips multi" id="f-prefs" data-multi="1">
+          <div class="chip" data-val="cruelty-free">Cruelty-free</div>
+          <div class="chip" data-val="vegan">Vegan</div>
+          <div class="chip" data-val="sem-fragrancia">Sem fragrância</div>
+          <div class="chip" data-val="embalagem-eco">Embalagem ecológica</div>
+          <div class="chip" data-val="made-in-pt">Fabricado em Portugal</div>
+          <div class="chip" data-val="dermo-tested">Dermo-testado</div>
+          <div class="chip" data-val="hipoalergenico">Hipoalergénico</div>
+          <div class="chip" data-val="sem-sulfatos">Sem sulfatos</div>
+          <div class="chip" data-val="sem-parabenos">Sem parabenos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AVATAR ===== -->
+    <section class="tab-panel panel" data-panel="avatar">
+      <h2 class="panel-title">Avatar</h2>
+      <p class="panel-desc">Escolhe um preset ou personaliza com DiceBear.</p>
+
+      <div class="avatar-current">
+        <div class="avatar-current-img" id="avatar-preview-img"></div>
+        <div class="avatar-current-text">
+          <strong>Avatar actual</strong>
+          <small id="avatar-current-desc">Nenhum escolhido</small>
+        </div>
+      </div>
+
+      <label class="field-label">Pré-definidos</label>
+      <div class="avatar-grid" id="avatar-grid"></div>
+
+      <div class="dicebear-section">
+        <label class="field-label">Personalizar com DiceBear</label>
+        <p class="field-hint" style="margin: 0 0 14px">Escolhe um estilo e uma seed (qualquer texto — o teu nome, por ex.).</p>
+        <div class="dicebear-styles" id="dicebear-styles">
+          <div class="chip" data-val="lorelei">Lorelei</div>
+          <div class="chip" data-val="avataaars">Avataaars</div>
+          <div class="chip" data-val="adventurer">Adventurer</div>
+          <div class="chip" data-val="notionists">Notionists</div>
+          <div class="chip" data-val="personas">Personas</div>
+        </div>
+        <div class="dicebear-seed-row">
+          <input id="dicebear-seed" type="text" placeholder="Seed (ex: tomas-2026)" maxlength="60" />
+          <button type="button" class="btn btn-ghost" id="dicebear-random">🎲 Aleatório</button>
+          <button type="button" class="btn btn-primary" id="dicebear-apply">Aplicar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOTIFICAÇÕES ===== -->
+    <section class="tab-panel panel" data-panel="notificacoes">
+      <h2 class="panel-title">Notificações</h2>
+      <p class="panel-desc">Avisamos-te quando os preços ou stock mudarem nas tuas marcas.</p>
+
+      <div class="field-group">
+        <label class="field-label" for="f-brands">Marcas a seguir</label>
+        <input id="f-brands" type="text" placeholder="Ex: La Roche-Posay, Bioderma, CeraVe" />
+        <div class="field-hint">Separa por vírgulas. Suporte a auto-complete chega numa próxima atualização.</div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f-threshold">Avisar a partir de</label>
+        <div class="slider-row">
+          <input id="f-threshold" type="range" min="5" max="50" step="5" value="20" />
+          <span class="slider-value"><span id="f-threshold-val">20</span> %</span>
+        </div>
+        <div class="field-hint">Só te avisamos quando o desconto cruzar este valor.</div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" style="margin-bottom:12px">Canais</label>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-row-text">Email</div>
+            <div class="toggle-row-desc">Sempre activo — vai para o teu email da conta.</div>
+          </div>
+          <label class="toggle"><input type="checkbox" checked disabled><span class="toggle-slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-row-text">Telegram</div>
+            <div class="toggle-row-desc">Em desenvolvimento — guarda a preferência, ligamos o bot em breve.</div>
+          </div>
+          <label class="toggle"><input type="checkbox" id="f-telegram"><span class="toggle-slider"></span></label>
+        </div>
+      </div>
+    </section>
+
+  </form>
+</main>
+
+<!-- AUTH NEEDED state -->
+<main class="page" id="auth-needed" style="display:none">
+  <div class="center-state">
+    <div class="icon">🔒</div>
+    <h2>Inicia sessão primeiro</h2>
+    <p>A página da conta só está disponível para users autenticados. Volta à home e usa o botão "Conta" para entrar ou criar conta.</p>
+    <a href="/" class="btn btn-primary" style="text-decoration:none;display:inline-block">Voltar à home</a>
+  </div>
+</main>
+
+<!-- LOADING state -->
+<main class="page" id="loading">
+  <div class="center-state">
+    <div class="icon">⏳</div>
+    <p>A carregar o teu perfil…</p>
+  </div>
+</main>
+
+<!-- SAVE BAR (sticky) -->
+<div class="save-bar" id="save-bar">
+  <div class="save-bar-inner">
+    <span class="save-bar-text" id="save-bar-text">Tens alterações por guardar.</span>
+    <div class="save-bar-actions">
+      <button type="button" class="btn btn-ghost" id="btn-discard">Descartar</button>
+      <button type="button" class="btn btn-primary" id="btn-save">Guardar alterações</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+'use strict';
+
+// ============================================================
+// SUPABASE
+// ============================================================
+const SUPABASE_URL = 'https://sqjtkwtoaudmfmexreqk.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxanRrd3RvYXVkbWZtZXhyZXFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NTI4NjcsImV4cCI6MjA5NDQyODg2N30.V6V_qyYXjO39xRM8vuoF8gHq9gvpYRN8u0GNijywr20';
+const SB = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true }
+});
+
+let USER = null;
+let PROFILE = null;       // dados carregados (last saved)
+let DRAFT = {};            // mudanças não guardadas
+let DIRTY = false;
+
+// ============================================================
+// HELPERS
+// ============================================================
+function $(id) { return document.getElementById(id); }
+function toast(msg, ms = 2400) {
+  const t = $('toast');
+  t.textContent = msg; t.classList.add('visible');
+  setTimeout(() => t.classList.remove('visible'), ms);
+}
+
+function setDirty(isDirty) {
+  DIRTY = isDirty;
+  $('save-bar').classList.toggle('visible', isDirty);
+}
+
+function setDraft(key, value) {
+  if (PROFILE && JSON.stringify(PROFILE[key]) === JSON.stringify(value)) {
+    delete DRAFT[key];
+  } else {
+    DRAFT[key] = value;
+  }
+  setDirty(Object.keys(DRAFT).length > 0);
+}
+
+// ============================================================
+// PRESET AVATARS (24) — todas via DiceBear como URL — sem ficheiros locais
+// Escolhemos seeds neutros para criar variedade. style 'lorelei' = ilustrado, paleta suave.
+// ============================================================
+const PRESET_SEEDS = [
+  'flora','luna','iris','sol','rosa','ada','nora','mia','eve','isa',
+  'liv','tess','zoe','sage','wren','clara','jana','noa','vera','elsa',
+  'kira','maya','ines','beatriz'
+];
+const PRESET_STYLES = ['lorelei','adventurer','notionists','personas','avataaars']; // mix de estilos
+
+function presetUrl(idx) {
+  const style = PRESET_STYLES[idx % PRESET_STYLES.length];
+  const seed = PRESET_SEEDS[idx];
+  return `https://api.dicebear.com/9.x/${style}/svg?seed=${encodeURIComponent(seed)}&backgroundColor=f2f1bb,d8c9ec,bac5d7,fafafb`;
+}
+function presetKey(idx) {
+  const style = PRESET_STYLES[idx % PRESET_STYLES.length];
+  const seed = PRESET_SEEDS[idx];
+  return `preset:${style}:${seed}`;
+}
+
+function dicebearUrlFromKey(key) {
+  // 'preset:STYLE:SEED' OR 'dicebear:STYLE:SEED' both produce a url
+  if (!key || typeof key !== 'string') return null;
+  const m = key.match(/^(preset|dicebear):([^:]+):(.+)$/);
+  if (!m) return key.startsWith('http') ? key : null;
+  const [_, , style, seed] = m;
+  return `https://api.dicebear.com/9.x/${style}/svg?seed=${encodeURIComponent(seed)}&backgroundColor=f2f1bb,d8c9ec,bac5d7,fafafb`;
+}
+
+function renderAvatarGrid() {
+  const grid = $('avatar-grid');
+  grid.innerHTML = '';
+  for (let i = 0; i < PRESET_SEEDS.length; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'avatar-cell';
+    cell.dataset.key = presetKey(i);
+    cell.innerHTML = `<img loading="lazy" src="${presetUrl(i)}" alt="Avatar ${i+1}">`;
+    cell.onclick = () => selectAvatar(presetKey(i));
+    grid.appendChild(cell);
+  }
+}
+
+function selectAvatar(key) {
+  setDraft('avatar_url', key);
+  // visual
+  const url = dicebearUrlFromKey(key);
+  $('avatar-preview-img').innerHTML = url ? `<img src="${url}" alt="Avatar">` : '';
+  $('avatar-current-desc').textContent = key.replace(/^(preset|dicebear):/, '').replace(':', ' · ');
+  document.querySelectorAll('.avatar-cell').forEach(c => c.classList.toggle('selected', c.dataset.key === key));
+}
+
+// DiceBear customizer
+let DICEBEAR_STYLE = 'lorelei';
+function setupDicebear() {
+  document.querySelectorAll('#dicebear-styles .chip').forEach(c => {
+    c.onclick = () => {
+      DICEBEAR_STYLE = c.dataset.val;
+      document.querySelectorAll('#dicebear-styles .chip').forEach(x => x.classList.toggle('selected', x === c));
+    };
+  });
+  document.querySelector('#dicebear-styles .chip[data-val="lorelei"]').classList.add('selected');
+  $('dicebear-random').onclick = () => {
+    $('dicebear-seed').value = Math.random().toString(36).slice(2, 10);
+  };
+  $('dicebear-apply').onclick = () => {
+    const seed = ($('dicebear-seed').value || '').trim();
+    if (!seed) { toast('Mete uma seed primeiro'); return; }
+    selectAvatar(`dicebear:${DICEBEAR_STYLE}:${seed}`);
+  };
+}
+
+// ============================================================
+// CHIPS / RADIO LOGIC
+// ============================================================
+function setupChips(containerId, key, isMulti, max) {
+  const container = $(containerId);
+  if (!container) return;
+  container.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    const val = chip.dataset.val;
+    if (isMulti) {
+      const current = new Set(DRAFT[key] || PROFILE?.[key] || []);
+      if (current.has(val)) current.delete(val);
+      else {
+        if (max && current.size >= max) { toast(`Máximo de ${max} opções.`); return; }
+        current.add(val);
+      }
+      setDraft(key, Array.from(current));
+      refreshChips(containerId, key, true);
+    } else {
+      setDraft(key, val);
+      refreshChips(containerId, key, false);
+    }
+  });
+}
+function refreshChips(containerId, key, isMulti) {
+  const val = DRAFT[key] !== undefined ? DRAFT[key] : PROFILE?.[key];
+  const set = isMulti ? new Set(val || []) : null;
+  $(containerId).querySelectorAll('.chip').forEach(c => {
+    if (isMulti) c.classList.toggle('selected', set.has(c.dataset.val));
+    else c.classList.toggle('selected', c.dataset.val === val);
+  });
+}
+function setupRadioCards(containerId, key) {
+  const c = $(containerId);
+  c.addEventListener('click', (e) => {
+    const card = e.target.closest('.radio-card');
+    if (!card) return;
+    setDraft(key, card.dataset.val);
+    c.querySelectorAll('.radio-card').forEach(x => x.classList.toggle('selected', x === card));
+  });
+}
+function refreshRadioCards(containerId, key) {
+  const val = DRAFT[key] !== undefined ? DRAFT[key] : PROFILE?.[key];
+  $(containerId).querySelectorAll('.radio-card').forEach(c => c.classList.toggle('selected', c.dataset.val === val));
+}
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  const { data: { session } } = await SB.auth.getSession();
+  if (!session?.user) {
+    $('loading').style.display = 'none';
+    $('auth-needed').style.display = 'block';
+    return;
+  }
+  USER = session.user;
+  await loadProfile();
+  $('loading').style.display = 'none';
+  $('main-page').style.display = 'block';
+}
+
+async function loadProfile() {
+  const { data, error } = await SB.from('profiles').select('*').eq('id', USER.id).maybeSingle();
+  if (error) { console.error(error); toast('Erro a carregar perfil'); return; }
+  PROFILE = data || {};
+  hydrateForm();
+}
+
+function hydrateForm() {
+  // Identity
+  $('hi-name').textContent = PROFILE.display_name || PROFILE.name || (USER.email || '').split('@')[0] || 'tu';
+  $('points-label').textContent = `${PROFILE.points || 0} pts`;
+  $('f-email').value = USER.email || '';
+  $('f-display-name').value = PROFILE.display_name || PROFILE.name || '';
+  $('f-birth').value = PROFILE.birth_date || '';
+  $('f-district').value = PROFILE.district || '';
+  $('f-budget').value = PROFILE.budget_monthly_eur ?? 40;
+  $('f-budget-val').textContent = $('f-budget').value;
+
+  // Gender + skin chips
+  refreshChips('f-gender', 'gender', false);
+  refreshChips('f-skin-type', 'skin_type_arr', true);
+  refreshChips('f-skin-concerns', 'skin_concerns', true);
+  refreshChips('f-allergies', 'skin_allergies', true);
+  refreshChips('f-prefs', 'preferences', true);
+  refreshChips('f-hair-type', 'hair_type', false);
+  refreshRadioCards('f-goal', 'skincare_goal');
+
+  // Routine slider
+  $('f-routine').value = PROFILE.routine_steps ?? 3;
+  $('f-routine-val').textContent = $('f-routine').value;
+
+  // Notifications
+  $('f-brands').value = (PROFILE.notify_brands || []).join(', ');
+  $('f-threshold').value = PROFILE.notify_discount_threshold_pct ?? 20;
+  $('f-threshold-val').textContent = $('f-threshold').value;
+  $('f-telegram').checked = !!PROFILE.notify_telegram;
+
+  // Avatar
+  if (PROFILE.avatar_url) selectAvatar(PROFILE.avatar_url);
+}
+
+// NOTE: skin_type is currently a CHECK-constrained text column in the OLD schema
+// (oily/dry/combination/normal/sensitive). To support multi-select we treat it as an
+// array client-side but only persist the FIRST value to skin_type to avoid breaking
+// the existing constraint. A future migration will widen this to text[].
+function buildPatch() {
+  const patch = { ...DRAFT };
+  if ('skin_type_arr' in patch) {
+    const arr = patch.skin_type_arr;
+    patch.skin_type = (arr && arr[0]) || null;
+    delete patch.skin_type_arr;
+  }
+  return patch;
+}
+
+async function save() {
+  if (!Object.keys(DRAFT).length) { toast('Nada para guardar.'); return; }
+  $('btn-save').disabled = true;
+  $('btn-save').textContent = 'A guardar…';
+  try {
+    const patch = buildPatch();
+    const { data, error } = await SB.from('profiles')
+      .update(patch)
+      .eq('id', USER.id)
+      .select()
+      .single();
+    if (error) throw error;
+    PROFILE = data;
+    DRAFT = {};
+    setDirty(false);
+    hydrateForm();
+    toast('Guardado ✓');
+  } catch (e) {
+    console.error(e);
+    toast('Erro: ' + (e.message || 'tenta de novo'));
+  } finally {
+    $('btn-save').disabled = false;
+    $('btn-save').textContent = 'Guardar alterações';
+  }
+}
+
+function discard() {
+  DRAFT = {};
+  setDirty(false);
+  hydrateForm();
+  toast('Alterações descartadas');
+}
+
+// ============================================================
+// WIRE UI
+// ============================================================
+// Tabs
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.onclick = () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === tab.dataset.tab));
+  };
+});
+
+// Text inputs (debounced via change)
+$('f-display-name').addEventListener('input', e => setDraft('display_name', e.target.value.trim() || null));
+$('f-birth').addEventListener('change', e => setDraft('birth_date', e.target.value || null));
+$('f-district').addEventListener('change', e => setDraft('district', e.target.value || null));
+
+// Sliders
+$('f-budget').addEventListener('input', e => {
+  $('f-budget-val').textContent = e.target.value;
+  setDraft('budget_monthly_eur', parseInt(e.target.value, 10));
+});
+$('f-routine').addEventListener('input', e => {
+  $('f-routine-val').textContent = e.target.value;
+  setDraft('routine_steps', parseInt(e.target.value, 10));
+});
+$('f-threshold').addEventListener('input', e => {
+  $('f-threshold-val').textContent = e.target.value;
+  setDraft('notify_discount_threshold_pct', parseInt(e.target.value, 10));
+});
+
+// Brands input → array
+$('f-brands').addEventListener('change', e => {
+  const arr = e.target.value.split(',').map(s => s.trim()).filter(Boolean);
+  setDraft('notify_brands', arr);
+});
+
+// Telegram toggle
+$('f-telegram').addEventListener('change', e => setDraft('notify_telegram', e.target.checked));
+
+// Chips
+setupChips('f-gender', 'gender', false);
+setupChips('f-skin-type', 'skin_type_arr', true);
+setupChips('f-skin-concerns', 'skin_concerns', true, 3);
+setupChips('f-allergies', 'skin_allergies', true);
+setupChips('f-prefs', 'preferences', true);
+setupChips('f-hair-type', 'hair_type', false);
+setupRadioCards('f-goal', 'skincare_goal');
+
+// Buttons
+$('btn-save').onclick = save;
+$('btn-discard').onclick = discard;
+$('signout-link').onclick = async (e) => {
+  e.preventDefault();
+  if (DIRTY && !confirm('Tens alterações por guardar. Sair na mesma?')) return;
+  await SB.auth.signOut();
+  window.location.href = '/';
+};
+
+// Warn before leaving with unsaved changes
+window.addEventListener('beforeunload', (e) => {
+  if (DIRTY) { e.preventDefault(); e.returnValue = ''; }
+});
+
+// Bootstrap
+renderAvatarGrid();
+setupDicebear();
+init();
+</script>
+
+</body>
+</html>
