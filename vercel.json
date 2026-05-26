@@ -5,9 +5,6 @@
   "installCommand": "echo 'no install needed'",
   "framework": null,
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/conta", "destination": "/account.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
