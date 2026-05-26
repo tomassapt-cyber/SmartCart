@@ -3,8 +3,8 @@
   "store_slug": "farmacia365",
   "store_name": "Farmácia 365",
   "store_url": "https://www.farmacia365.pt",
-  "verified_at": "2026-05-24T10:15:22.530Z",
-  "method": "playwright-headless (refresh 2026-05-24)",
+  "verified_at": "2026-05-26T12:53:53.048Z",
+  "method": "playwright-headless (refresh 2026-05-26)",
   "stats": {
     "total": 17,
     "verified": 6,
@@ -85,37 +85,16 @@
       "observed_volume_ml": 50,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "URL slug 50ml exacto. Scrape 2026-05-17: 16.75€ Refresh 2026-05-17: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-20: 16.75€ → 16.75€ Refresh 2026-05-21: 16.75€ → 16.75€ Refresh 2026-05-23: 16.75€ → 8.38€ Refresh 2026-05-24: 8.38€ → 8.38€",
-      "verified_at": "2026-05-24T09:31:04.947Z",
-      "observed_price": 8.38,
+      "notes": "URL slug 50ml exacto. Scrape 2026-05-17: 16.75€ Refresh 2026-05-17: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-18: 16.75€ → 16.75€ Refresh 2026-05-20: 16.75€ → 16.75€ Refresh 2026-05-21: 16.75€ → 16.75€ Refresh 2026-05-23: 16.75€ → 8.38€ Refresh 2026-05-24: 8.38€ → 8.38€ Refresh 2026-05-26: 8.38€ → 7.00€",
+      "verified_at": "2026-05-26T12:51:54.073Z",
+      "observed_price": 7,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
         {
-          "volume_ml": 30,
-          "unit": "ml",
-          "price": 15.33,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 40,
-          "unit": "ml",
-          "price": 7.1,
-          "in_stock": true,
-          "url": null
-        },
-        {
           "volume_ml": 50,
           "unit": "ml",
           "price": 7,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 100,
-          "unit": "ml",
-          "price": 11.8,
           "in_stock": true,
           "url": null
         }
@@ -131,26 +110,19 @@
       "observed_name": "La Roche Posay Effaclar Duo (+ M) 40mL",
       "observed_brand": "La Roche-Posay",
       "observed_volume_ml": 40,
-      "observed_price": 7.1,
+      "observed_price": 12.43,
       "observed_previous_price": 22.6,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante Duo+M, €12.43 (era €22.60, -45%). Preço extraído da SERP. Refresh 2026-05-17: 12.43€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-20: 22.60€ → 12.43€ Refresh 2026-05-21: 12.43€ → 7.10€ Refresh 2026-05-23: 7.10€ → 7.10€ Refresh 2026-05-24: 7.10€ → 7.10€",
-      "verified_at": "2026-05-24T09:31:04.893Z",
+      "notes": "Variante Duo+M, €12.43 (era €22.60, -45%). Preço extraído da SERP. Refresh 2026-05-17: 12.43€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-17: 22.60€ → 14.20€ Refresh 2026-05-18: 14.20€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-18: 22.60€ → 22.60€ Refresh 2026-05-20: 22.60€ → 12.43€ Refresh 2026-05-21: 12.43€ → 7.10€ Refresh 2026-05-23: 7.10€ → 7.10€ Refresh 2026-05-24: 7.10€ → 7.10€ Refresh 2026-05-26: 7.10€ → 12.43€",
+      "verified_at": "2026-05-26T12:51:54.197Z",
       "observed_variants": [
-        {
-          "volume_ml": 30,
-          "unit": "ml",
-          "price": 15.33,
-          "in_stock": true,
-          "url": null
-        },
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 7.1,
+          "price": 12.43,
           "in_stock": true,
           "url": null
         },
@@ -158,13 +130,6 @@
           "volume_ml": 50,
           "unit": "ml",
           "price": 7,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 100,
-          "unit": "ml",
-          "price": 11.8,
           "in_stock": true,
           "url": null
         }
@@ -245,40 +210,26 @@
       "observed_name": "La Roche Posay Hyalu B5 Serum 30mL",
       "observed_brand": "La Roche-Posay",
       "observed_volume_ml": 30,
-      "observed_price": 15.33,
+      "observed_price": 33.27,
       "observed_previous_price": 55.45,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço directo via fetch da PDP: €33.27 (era €55.45, -40%, promo até 2026-05-31). Refresh 2026-05-17: 33.27€ → 39.55€ Refresh 2026-05-17: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-20: 39.55€ → 30.65€ Refresh 2026-05-21: 30.65€ → 30.65€ Refresh 2026-05-23: 30.65€ → 15.33€ Refresh 2026-05-24: 15.33€ → 15.33€",
-      "verified_at": "2026-05-24T09:31:13.771Z",
+      "notes": "Preço directo via fetch da PDP: €33.27 (era €55.45, -40%, promo até 2026-05-31). Refresh 2026-05-17: 33.27€ → 39.55€ Refresh 2026-05-17: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-20: 39.55€ → 30.65€ Refresh 2026-05-21: 30.65€ → 30.65€ Refresh 2026-05-23: 30.65€ → 15.33€ Refresh 2026-05-24: 15.33€ → 15.33€ Refresh 2026-05-26: 15.33€ → 33.27€",
+      "verified_at": "2026-05-26T12:52:02.868Z",
       "observed_variants": [
         {
           "volume_ml": 30,
           "unit": "ml",
-          "price": 15.33,
+          "price": 33.27,
           "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 40,
-          "unit": "ml",
-          "price": 7.1,
-          "in_stock": true,
-          "url": null
+          "url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-serum-30ml"
         },
         {
           "volume_ml": 50,
           "unit": "ml",
           "price": 7,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 100,
-          "unit": "ml",
-          "price": 11.8,
           "in_stock": true,
           "url": null
         }
@@ -294,28 +245,14 @@
       "observed_name": "ISDIN Fotoprotector FusionWater Magic SPF50 50mL - Protetor solar facial ultraligeiro",
       "observed_brand": "ISDIN",
       "observed_volume_ml": 50,
-      "observed_price": 8.38,
+      "observed_price": 7,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço directo via fetch da PDP: €29.60. Refresh 2026-05-17: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-20: 29.60€ → 16.75€ Refresh 2026-05-21: 16.75€ → 16.75€ Refresh 2026-05-23: 16.75€ → 8.38€ Refresh 2026-05-24: 8.38€ → 8.38€",
-      "verified_at": "2026-05-24T09:31:13.948Z",
+      "notes": "Preço directo via fetch da PDP: €29.60. Refresh 2026-05-17: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-18: 29.60€ → 29.60€ Refresh 2026-05-20: 29.60€ → 16.75€ Refresh 2026-05-21: 16.75€ → 16.75€ Refresh 2026-05-23: 16.75€ → 8.38€ Refresh 2026-05-24: 8.38€ → 8.38€ Refresh 2026-05-26: 8.38€ → 7.00€",
+      "verified_at": "2026-05-26T12:52:03.060Z",
       "observed_variants": [
-        {
-          "volume_ml": 30,
-          "unit": "ml",
-          "price": 15.33,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 40,
-          "unit": "ml",
-          "price": 7.1,
-          "in_stock": true,
-          "url": null
-        },
         {
           "volume_ml": 50,
           "unit": "ml",
@@ -324,16 +261,9 @@
           "url": null
         },
         {
-          "volume_ml": 100,
-          "unit": "ml",
-          "price": 11.8,
-          "in_stock": true,
-          "url": null
-        },
-        {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 18.39,
+          "price": 21.46,
           "in_stock": true,
           "url": null
         }
@@ -355,23 +285,9 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço directo via fetch da PDP: €16.03 (era €32.05, -50%). Refresh 2026-05-17: 16.03€ → 32.05€ Refresh 2026-05-17: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-20: 32.05€ → 16.03€ Refresh 2026-05-21: 16.03€ → 16.03€ Refresh 2026-05-23: 16.03€ → 16.03€ Refresh 2026-05-24: 16.03€ → 16.03€",
-      "verified_at": "2026-05-24T09:31:14.943Z",
+      "notes": "Preço directo via fetch da PDP: €16.03 (era €32.05, -50%). Refresh 2026-05-17: 16.03€ → 32.05€ Refresh 2026-05-17: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-18: 32.05€ → 32.05€ Refresh 2026-05-20: 32.05€ → 16.03€ Refresh 2026-05-21: 16.03€ → 16.03€ Refresh 2026-05-23: 16.03€ → 16.03€ Refresh 2026-05-24: 16.03€ → 16.03€ Refresh 2026-05-26: 16.03€ → 16.03€",
+      "verified_at": "2026-05-26T12:52:03.345Z",
       "observed_variants": [
-        {
-          "volume_ml": 30,
-          "unit": "ml",
-          "price": 15.33,
-          "in_stock": true,
-          "url": null
-        },
-        {
-          "volume_ml": 40,
-          "unit": "ml",
-          "price": 7.1,
-          "in_stock": true,
-          "url": null
-        },
         {
           "volume_ml": 50,
           "unit": "ml",
@@ -382,7 +298,7 @@
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 11.8,
+          "price": 13.41,
           "in_stock": true,
           "url": null
         }

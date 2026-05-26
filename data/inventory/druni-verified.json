@@ -3,8 +3,8 @@
   "store_slug": "druni",
   "store_name": "Druni PT",
   "store_url": "https://www.druni.pt",
-  "verified_at": "2026-05-24T10:15:22.529Z",
-  "method": "playwright-headless (refresh 2026-05-24)",
+  "verified_at": "2026-05-26T12:53:53.047Z",
+  "method": "playwright-headless (refresh 2026-05-26)",
   "limitation": "URLs identificadas via Google index. Preço/stock real ainda não foi extraído (PDP fetch bloqueado por 406). Volume confirmado por nome no slug + descrição da SERP.",
   "stats": {
     "total": 20,
@@ -37,8 +37,8 @@
       "observed_price": 62.95,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP confirmado; volume não extraído do título mas variante 50ml existe (Druni oferece múltiplos tamanhos na PDP) Scrape 2026-05-17: 119.00€ Refresh 2026-05-17: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 62.95€ Refresh 2026-05-20: 62.95€ → 62.95€ Refresh 2026-05-21: 62.95€ → 62.95€ Refresh 2026-05-23: 62.95€ → 62.95€ Refresh 2026-05-24: 62.95€ → 62.95€",
-      "verified_at": "2026-05-24T09:30:17.143Z",
+      "notes": "PDP confirmado; volume não extraído do título mas variante 50ml existe (Druni oferece múltiplos tamanhos na PDP) Scrape 2026-05-17: 119.00€ Refresh 2026-05-17: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 119.00€ Refresh 2026-05-18: 119.00€ → 62.95€ Refresh 2026-05-20: 62.95€ → 62.95€ Refresh 2026-05-21: 62.95€ → 62.95€ Refresh 2026-05-23: 62.95€ → 62.95€ Refresh 2026-05-24: 62.95€ → 62.95€ Refresh 2026-05-26: 62.95€ → 62.95€",
+      "verified_at": "2026-05-26T12:51:04.233Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -85,8 +85,8 @@
       "observed_price": 99.95,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP confirmado; PDP suporta variantes 30/60/100/200ml (refill marcado para 30/100ml) Scrape 2026-05-17: 61.50€ Refresh 2026-05-17: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 99.95€ Refresh 2026-05-20: 99.95€ → 99.95€ Refresh 2026-05-21: 99.95€ → 99.95€ Refresh 2026-05-23: 99.95€ → 99.95€ Refresh 2026-05-24: 99.95€ → 99.95€",
-      "verified_at": "2026-05-24T09:30:18.133Z",
+      "notes": "PDP confirmado; PDP suporta variantes 30/60/100/200ml (refill marcado para 30/100ml) Scrape 2026-05-17: 61.50€ Refresh 2026-05-17: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 61.50€ Refresh 2026-05-18: 61.50€ → 99.95€ Refresh 2026-05-20: 99.95€ → 99.95€ Refresh 2026-05-21: 99.95€ → 99.95€ Refresh 2026-05-23: 99.95€ → 99.95€ Refresh 2026-05-24: 99.95€ → 99.95€ Refresh 2026-05-26: 99.95€ → 99.95€",
+      "verified_at": "2026-05-26T12:51:05.107Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -143,8 +143,8 @@
       "observed_price": 59.95,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica EDT; PDP oferece variantes 30/60/90ml Scrape 2026-05-17: 132.00€ Refresh 2026-05-17: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 59.95€ Refresh 2026-05-20: 59.95€ → 59.95€ Refresh 2026-05-21: 59.95€ → 59.95€ Refresh 2026-05-23: 59.95€ → 59.95€ Refresh 2026-05-24: 59.95€ → 59.95€",
-      "verified_at": "2026-05-24T09:30:16.943Z",
+      "notes": "PDP canónica EDT; PDP oferece variantes 30/60/90ml Scrape 2026-05-17: 132.00€ Refresh 2026-05-17: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 132.00€ Refresh 2026-05-18: 132.00€ → 59.95€ Refresh 2026-05-20: 59.95€ → 59.95€ Refresh 2026-05-21: 59.95€ → 59.95€ Refresh 2026-05-23: 59.95€ → 59.95€ Refresh 2026-05-24: 59.95€ → 59.95€ Refresh 2026-05-26: 59.95€ → 59.95€",
+      "verified_at": "2026-05-26T12:51:03.947Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -193,8 +193,8 @@
       "observed_price": 79.95,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónico do sérum ANR; variantes 30/50/75/100ml Scrape 2026-05-17: 143.00€ Refresh 2026-05-17: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 79.95€ Refresh 2026-05-20: 79.95€ → 79.95€ Refresh 2026-05-21: 79.95€ → 79.95€ Refresh 2026-05-23: 79.95€ → 79.95€ Refresh 2026-05-24: 79.95€ → 79.95€",
-      "verified_at": "2026-05-24T09:30:24.222Z",
+      "notes": "PDP canónico do sérum ANR; variantes 30/50/75/100ml Scrape 2026-05-17: 143.00€ Refresh 2026-05-17: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 143.00€ Refresh 2026-05-18: 143.00€ → 79.95€ Refresh 2026-05-20: 79.95€ → 79.95€ Refresh 2026-05-21: 79.95€ → 79.95€ Refresh 2026-05-23: 79.95€ → 79.95€ Refresh 2026-05-24: 79.95€ → 79.95€ Refresh 2026-05-26: 79.95€ → 79.95€",
+      "verified_at": "2026-05-26T12:51:12.540Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -218,6 +218,13 @@
           "price": 93.95,
           "in_stock": true,
           "url": null
+        },
+        {
+          "volume_ml": 115,
+          "unit": "ml",
+          "price": 144,
+          "in_stock": true,
+          "url": null
         }
       ]
     },
@@ -234,8 +241,8 @@
       "observed_price": 19.08,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende a linha Minéral 89, mas o resultado primário é o creme leve, não o sérum 50ml. Marca como variant — investigar com PDP fetch real Scrape 2026-05-17: 19.08€ Refresh 2026-05-17: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-20: 19.08€ → 19.08€ Refresh 2026-05-21: 19.08€ → 19.08€ Refresh 2026-05-23: 19.08€ → 19.08€ Refresh 2026-05-24: 19.08€ → 19.08€",
-      "verified_at": "2026-05-24T09:30:25.643Z",
+      "notes": "Druni vende a linha Minéral 89, mas o resultado primário é o creme leve, não o sérum 50ml. Marca como variant — investigar com PDP fetch real Scrape 2026-05-17: 19.08€ Refresh 2026-05-17: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-20: 19.08€ → 19.08€ Refresh 2026-05-21: 19.08€ → 19.08€ Refresh 2026-05-23: 19.08€ → 19.08€ Refresh 2026-05-24: 19.08€ → 19.08€ Refresh 2026-05-26: 19.08€ → 19.08€",
+      "verified_at": "2026-05-26T12:51:13.151Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "gtin_observed": "3337875831888",
@@ -265,8 +272,8 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende Effaclar Duo +M (não Duo+ original). 40ml · €16.95 (era €22.10, -23%). Variante M tem niacinamida + zinco PCA, ligeiramente diferente do Duo+ canónico. Refresh 2026-05-17: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-20: 16.95€ → 16.95€ Refresh 2026-05-21: 16.95€ → 16.95€ Refresh 2026-05-23: 16.95€ → 16.95€ Refresh 2026-05-24: 16.95€ → 16.95€",
-      "verified_at": "2026-05-24T09:30:30.864Z",
+      "notes": "Druni vende Effaclar Duo +M (não Duo+ original). 40ml · €16.95 (era €22.10, -23%). Variante M tem niacinamida + zinco PCA, ligeiramente diferente do Duo+ canónico. Refresh 2026-05-17: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-20: 16.95€ → 16.95€ Refresh 2026-05-21: 16.95€ → 16.95€ Refresh 2026-05-23: 16.95€ → 16.95€ Refresh 2026-05-24: 16.95€ → 16.95€ Refresh 2026-05-26: 16.95€ → 16.95€",
+      "verified_at": "2026-05-26T12:51:19.642Z",
       "gtin_observed": "3337875863377",
       "observed_variants": [
         {
@@ -323,8 +330,8 @@
       "observed_price": 9.49,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende loção hidratante CeraVe (corpo+rosto, 236ml ou 473ml) — formato diferente do creme 250ml canónico (Moisturising Cream). Variante. Scrape 2026-05-17: 12.10€ Refresh 2026-05-17: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 9.49€ Refresh 2026-05-20: 9.49€ → 9.49€ Refresh 2026-05-21: 9.49€ → 9.49€ Refresh 2026-05-23: 9.49€ → 9.49€ Refresh 2026-05-24: 9.49€ → 9.49€",
-      "verified_at": "2026-05-24T09:30:37.952Z",
+      "notes": "Druni vende loção hidratante CeraVe (corpo+rosto, 236ml ou 473ml) — formato diferente do creme 250ml canónico (Moisturising Cream). Variante. Scrape 2026-05-17: 12.10€ Refresh 2026-05-17: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 12.10€ Refresh 2026-05-18: 12.10€ → 9.49€ Refresh 2026-05-20: 9.49€ → 9.49€ Refresh 2026-05-21: 9.49€ → 9.49€ Refresh 2026-05-23: 9.49€ → 9.49€ Refresh 2026-05-24: 9.49€ → 9.49€ Refresh 2026-05-26: 9.49€ → 9.49€",
+      "verified_at": "2026-05-26T12:51:26.153Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -394,8 +401,8 @@
       "observed_price": 24.9,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónico, brand+volume match exacto Scrape 2026-05-17: 24.90€ Refresh 2026-05-17: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-20: 24.90€ → 24.90€ Refresh 2026-05-21: 24.90€ → 24.90€ Refresh 2026-05-23: 24.90€ → 24.90€ Refresh 2026-05-24: 24.90€ → 24.90€",
-      "verified_at": "2026-05-24T09:30:39.618Z",
+      "notes": "PDP canónico, brand+volume match exacto Scrape 2026-05-17: 24.90€ Refresh 2026-05-17: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-20: 24.90€ → 24.90€ Refresh 2026-05-21: 24.90€ → 24.90€ Refresh 2026-05-23: 24.90€ → 24.90€ Refresh 2026-05-24: 24.90€ → 24.90€ Refresh 2026-05-26: 24.90€ → 24.90€",
+      "verified_at": "2026-05-26T12:51:28.249Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "gtin_observed": "8719134187731",
@@ -424,8 +431,8 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende a versão Pump 500ml (€13.54 com desconto de €17.95). Pump é variante do produto canónico (mesma fórmula, embalagem com bomba). Marca como variant. Refresh 2026-05-17: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-20: 13.54€ → 13.54€ Refresh 2026-05-21: 13.54€ → 13.54€ Refresh 2026-05-23: 13.54€ → 13.54€ Refresh 2026-05-24: 13.54€ → 13.54€",
-      "verified_at": "2026-05-24T09:30:40.932Z",
+      "notes": "Druni vende a versão Pump 500ml (€13.54 com desconto de €17.95). Pump é variante do produto canónico (mesma fórmula, embalagem com bomba). Marca como variant. Refresh 2026-05-17: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-20: 13.54€ → 13.54€ Refresh 2026-05-21: 13.54€ → 13.54€ Refresh 2026-05-23: 13.54€ → 13.54€ Refresh 2026-05-24: 13.54€ → 13.54€ Refresh 2026-05-26: 13.54€ → 13.54€",
+      "verified_at": "2026-05-26T12:51:30.949Z",
       "gtin_observed": "3701129812129",
       "observed_variants": [
         {
@@ -450,8 +457,8 @@
       "observed_price": 5.25,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende Fit Me Matte Poreless (variante matte do Fit Me normal). PDP suporta múltiplos tons. Scrape 2026-05-17: 5.25€ Refresh 2026-05-17: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-20: 5.25€ → 5.25€ Refresh 2026-05-21: 5.25€ → 5.25€ Refresh 2026-05-23: 5.25€ → 5.25€ Refresh 2026-05-24: 5.25€ → 5.25€",
-      "verified_at": "2026-05-24T09:30:46.653Z",
+      "notes": "Druni vende Fit Me Matte Poreless (variante matte do Fit Me normal). PDP suporta múltiplos tons. Scrape 2026-05-17: 5.25€ Refresh 2026-05-17: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-18: 5.25€ → 5.25€ Refresh 2026-05-20: 5.25€ → 5.25€ Refresh 2026-05-21: 5.25€ → 5.25€ Refresh 2026-05-23: 5.25€ → 5.25€ Refresh 2026-05-24: 5.25€ → 5.25€ Refresh 2026-05-26: 5.25€ → 5.25€",
+      "verified_at": "2026-05-26T12:51:34.270Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
