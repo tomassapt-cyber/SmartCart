@@ -407,6 +407,16 @@
     <div class="eyebrow">A minha conta</div>
     <h1>Olá, <em><span id="hi-name">tu</span></em></h1>
     <p class="page-sub">Personaliza o teu perfil para sugestões mais precisas.</p>
+
+    <!-- CTA Quiz — só visível se last_quiz_at = null -->
+    <div id="quiz-cta" style="display:none; margin-top:20px; background:linear-gradient(135deg, #f7f2ff 0%, #fffce8 100%); border:1px solid #d8c9ec; border-radius:14px; padding:18px 22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <div style="font-size:36px; color:#6d84a7;">✦</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="font-weight:600; font-size:15px; color:#2a2f3a; margin-bottom:4px;">Ainda não fizeste o quiz de skincare</div>
+        <div style="font-size:13px; color:#6b7384;">6 perguntas rápidas (~1 min) — ganha <strong style="color:#6d84a7;">+100 pontos</strong> e desbloqueamos sugestões personalizadas.</div>
+      </div>
+      <button type="button" id="quiz-cta-start" class="btn btn-primary" style="white-space:nowrap;">Começar quiz →</button>
+    </div>
   </header>
 
   <nav class="tabs">
@@ -882,6 +892,17 @@ function hydrateForm() {
   // Identity
   $('hi-name').textContent = PROFILE.display_name || PROFILE.name || (USER.email || '').split('@')[0] || 'tu';
   $('points-label').textContent = `${PROFILE.points || 0} pts`;
+
+  // CTA Quiz — só mostra se nunca completou o quiz
+  const cta = $('quiz-cta');
+  if (cta) {
+    if (!PROFILE.last_quiz_at) {
+      cta.style.display = 'flex';
+    } else {
+      cta.style.display = 'none';
+    }
+  }
+
   $('f-email').value = USER.email || '';
   $('f-display-name').value = PROFILE.display_name || PROFILE.name || '';
   $('f-birth').value = PROFILE.birth_date || '';
@@ -1010,6 +1031,11 @@ setupRadioCards('f-goal', 'skincare_goal');
 // Buttons
 $('btn-save').onclick = save;
 $('btn-discard').onclick = discard;
+// Quiz CTA — redireciona para home com ?quiz=1 que dispara o modal lá
+$('quiz-cta-start')?.addEventListener('click', () => {
+  if (DIRTY && !confirm('Tens alterações por guardar — descartar para abrir o quiz?')) return;
+  window.location.href = '/?quiz=1';
+});
 $('signout-link').onclick = async (e) => {
   e.preventDefault();
   if (DIRTY && !confirm('Tens alterações por guardar. Sair na mesma?')) return;
