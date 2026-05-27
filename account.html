@@ -406,7 +406,9 @@
   <header class="page-head">
     <div class="eyebrow">A minha conta</div>
     <h1>Olá, <em><span id="hi-name">tu</span></em></h1>
-    <p class="page-sub">Personaliza o teu perfil para sugestões mais precisas.</p>
+    <p class="page-sub">Personaliza o teu perfil para sugestões mais precisas.
+      <button type="button" id="btn-recalc-pts" style="margin-left:10px; background:transparent; border:1px solid #d9dce2; color:#6b7384; padding:4px 10px; border-radius:6px; font-size:11px; cursor:pointer; font-family:inherit;" title="Verifica e atribui pontos pendentes para todos os campos preenchidos">🔧 Recalcular pontos</button>
+    </p>
 
     <!-- CTA Quiz — só visível se last_quiz_at = null -->
     <div id="quiz-cta" style="display:none; margin-top:20px; background:linear-gradient(135deg, #f7f2ff 0%, #fffce8 100%); border:1px solid #d8c9ec; border-radius:14px; padding:18px 22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
@@ -1180,6 +1182,66 @@ setupRadioCards('f-goal', 'skincare_goal');
 // Buttons
 $('btn-save').onclick = save;
 $('btn-discard').onclick = discard;
+
+// Botão "Recalcular pontos" — força backfill manual.
+// Útil quando o quiz auto-save falhou silenciosamente. Faz uma query directa
+// à BD, vê que campos estão preenchidos, e dá pontos pelos que ainda não
+// estavam em quiz_rewarded_steps.
+$('btn-recalc-pts')?.addEventListener('click', async () => {
+  console.log('[recalc] inicio — re-fetch profile fresh da BD');
+  const btn = $('btn-recalc-pts');
+  btn.disabled = true;
+  btn.textContent = '⏳ A calcular...';
+  try {
+    // Re-fetch fresh do BD
+    const { data: fresh, error } = await SB.from('profiles').select('*').eq('id', USER.id).maybeSingle();
+    if (error) throw error;
+    console.log('[recalc] profile actual:', fresh);
+    const currentRewarded = new Set(fresh.quiz_rewarded_steps || []);
+    const filled = [];
+    const newlyRewarded = [];
+    for (const [col, quizKey] of Object.entries(QUIZ_KEYS_FROM_DB)) {
+      const v = fresh[col];
+      if (hasValue(v)) {
+        filled.push(`${quizKey}=${JSON.stringify(v)}`);
+        if (!currentRewarded.has(quizKey)) newlyRewarded.push(quizKey);
+      }
+    }
+    console.log('[recalc] campos preenchidos:', filled);
+    console.log('[recalc] já em rewarded:', [...currentRewarded]);
+    console.log('[recalc] novos para atribuir pts:', newlyRewarded);
+
+    if (newlyRewarded.length === 0) {
+      toast('Tudo OK — não há pontos pendentes.', 3500);
+      return;
+    }
+    const updated = [...currentRewarded, ...newlyRewarded];
+    const earnedSteps = newlyRewarded.length * QUIZ_PTS_PER_STEP;
+    const allFilledFirst = updated.length >= QUIZ_TOTAL_STEPS && !fresh.last_quiz_at;
+    const bonus = allFilledFirst ? QUIZ_PTS_BONUS : 0;
+    const total = earnedSteps + bonus;
+    const patch = {
+      quiz_rewarded_steps: updated,
+      points: (fresh.points || 0) + total,
+      points_lifetime: (fresh.points_lifetime || 0) + total,
+    };
+    if (allFilledFirst) patch.last_quiz_at = new Date().toISOString();
+    console.log('[recalc] patch a enviar:', patch);
+    const { error: upErr } = await SB.from('profiles').update(patch).eq('id', USER.id);
+    if (upErr) throw upErr;
+    console.log('[recalc] ✓ Atualizado com sucesso! +' + total + ' pts.');
+    PROFILE = { ...fresh, ...patch };
+    hydrateForm();
+    toast(`+${total} pontos atribuídos! (${newlyRewarded.length} campos novos${bonus?' + bónus 10/10':''})`, 5000);
+  } catch (e) {
+    console.error('[recalc] erro:', e);
+    toast('Erro: ' + (e.message || 'tenta de novo'));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '🔧 Recalcular pontos';
+  }
+});
+
 // Quiz CTA — redireciona para home com ?quiz=1 que dispara o modal lá
 $('quiz-cta-start')?.addEventListener('click', () => {
   if (DIRTY && !confirm('Tens alterações por guardar — descartar para abrir o quiz?')) return;
