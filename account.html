@@ -893,11 +893,33 @@ function hydrateForm() {
   $('hi-name').textContent = PROFILE.display_name || PROFILE.name || (USER.email || '').split('@')[0] || 'tu';
   $('points-label').textContent = `${PROFILE.points || 0} pts`;
 
-  // CTA Quiz — só mostra se nunca completou o quiz
+  // CTA Quiz — visível se quiz nunca foi feito OU se há perguntas por
+  // responder (que ainda podem dar pontos). Repetir perguntas já contadas
+  // não dá pontos novos.
   const cta = $('quiz-cta');
   if (cta) {
+    const totalSteps = 10;
+    const rewarded = (PROFILE.quiz_rewarded_steps || []).length;
+    const pending = Math.max(0, totalSteps - rewarded);
     if (!PROFILE.last_quiz_at) {
       cta.style.display = 'flex';
+      // Mantém o conteúdo HTML por defeito (define ao gerar)
+    } else if (pending > 0) {
+      cta.style.display = 'flex';
+      // Update do conteúdo: "Há X perguntas por responder"
+      cta.innerHTML = `
+        <div style="font-size:36px; color:#6d84a7;">✦</div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-weight:600; font-size:15px; color:#2a2f3a; margin-bottom:4px;">Completa o teu perfil</div>
+          <div style="font-size:13px; color:#6b7384;">Tens <strong style="color:#6d84a7;">${pending} pergunta${pending===1?'':'s'}</strong> por responder — vale <strong style="color:#6d84a7;">${pending * 10} pts</strong>. Editar respostas já dadas não dá pontos extra.</div>
+        </div>
+        <button type="button" id="quiz-cta-start" class="btn btn-primary" style="white-space:nowrap;">Continuar quiz →</button>
+      `;
+      // Re-wire the button since we replaced innerHTML
+      $('quiz-cta-start')?.addEventListener('click', () => {
+        if (DIRTY && !confirm('Tens alterações por guardar — descartar para abrir o quiz?')) return;
+        window.location.href = '/?quiz=1';
+      });
     } else {
       cta.style.display = 'none';
     }
