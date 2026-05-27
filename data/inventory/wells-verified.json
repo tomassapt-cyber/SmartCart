@@ -3,8 +3,8 @@
   "store_slug": "wells",
   "store_name": "Wells",
   "store_url": "https://wells.pt",
-  "verified_at": "2026-05-26T12:53:53.053Z",
-  "method": "playwright-headless (refresh 2026-05-26)",
+  "verified_at": "2026-05-27T14:46:46.040Z",
+  "method": "playwright-headless (refresh 2026-05-27)",
   "items": [
     {
       "ean": "3145891264100",
@@ -21,7 +21,7 @@
       "name": "YSL Black Opium Eau de Parfum 50 ml",
       "brand": "Yves Saint Laurent",
       "expected_volume_ml": 50,
-      "verified_at": "2026-05-26T12:53:14.633Z",
+      "verified_at": "2026-05-27T14:46:10.570Z",
       "resolved_url": "https://wells.pt/black-opium-eau-de-parfum-287941.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Black Opium Eau de Parfum",
@@ -33,7 +33,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 67.94€ → 67.94€ Refresh 2026-05-18: 67.94€ → 67.94€ Refresh 2026-05-18: 67.94€ → 67.94€ Refresh 2026-05-18: 67.94€ → 67.94€ Refresh 2026-05-20: 67.94€ → 67.94€ Refresh 2026-05-21: 67.94€ → 67.94€ Refresh 2026-05-23: 67.94€ → 66.64€ Refresh 2026-05-24: 66.64€ → 66.64€ Refresh 2026-05-26: 66.64€ → 66.64€",
+      "notes": " Refresh 2026-05-17: 67.94€ → 67.94€ Refresh 2026-05-18: 67.94€ → 67.94€ Refresh 2026-05-18: 67.94€ → 67.94€ Refresh 2026-05-18: 67.94€ → 67.94€ Refresh 2026-05-20: 67.94€ → 67.94€ Refresh 2026-05-21: 67.94€ → 67.94€ Refresh 2026-05-23: 67.94€ → 66.64€ Refresh 2026-05-24: 66.64€ → 66.64€ Refresh 2026-05-26: 66.64€ → 66.64€ Refresh 2026-05-27: 66.64€ → 66.64€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -73,7 +73,7 @@
       "name": "Giorgio Armani Code Homme Eau de Toilette 75 ml",
       "brand": "Giorgio Armani",
       "expected_volume_ml": 75,
-      "verified_at": "2026-05-26T12:53:14.493Z",
+      "verified_at": "2026-05-27T14:46:10.837Z",
       "resolved_url": "https://wells.pt/code-eau-de-toilette-328746.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Code Eau de Toilette",
@@ -85,7 +85,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 78.80€ → 78.80€ Refresh 2026-05-18: 78.80€ → 78.80€ Refresh 2026-05-18: 78.80€ → 78.80€ Refresh 2026-05-18: 78.80€ → 78.80€ Refresh 2026-05-20: 78.80€ → 78.80€ Refresh 2026-05-21: 78.80€ → 78.80€ Refresh 2026-05-23: 78.80€ → 78.80€ Refresh 2026-05-24: 78.80€ → 78.80€ Refresh 2026-05-26: 78.80€ → 78.80€",
+      "notes": " Refresh 2026-05-17: 78.80€ → 78.80€ Refresh 2026-05-18: 78.80€ → 78.80€ Refresh 2026-05-18: 78.80€ → 78.80€ Refresh 2026-05-18: 78.80€ → 78.80€ Refresh 2026-05-20: 78.80€ → 78.80€ Refresh 2026-05-21: 78.80€ → 78.80€ Refresh 2026-05-23: 78.80€ → 78.80€ Refresh 2026-05-24: 78.80€ → 78.80€ Refresh 2026-05-26: 78.80€ → 78.80€ Refresh 2026-05-27: 78.80€ → 78.80€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -129,7 +129,7 @@
       "name": "Versace Bright Crystal Eau de Toilette 90 ml",
       "brand": "Versace",
       "expected_volume_ml": 90,
-      "verified_at": "2026-05-26T12:53:14.732Z",
+      "verified_at": "2026-05-27T14:46:10.829Z",
       "resolved_url": "https://wells.pt/versace-bright-crystal-edt-288332.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Versace Bright Crystal EDT",
@@ -141,7 +141,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 62.18€ → 62.18€ Refresh 2026-05-18: 62.18€ → 62.18€ Refresh 2026-05-18: 62.18€ → 62.18€ Refresh 2026-05-18: 62.18€ → 62.18€ Refresh 2026-05-20: 62.18€ → 62.18€ Refresh 2026-05-21: 62.18€ → 62.18€ Refresh 2026-05-23: 62.18€ → 74.37€ Refresh 2026-05-24: 74.37€ → 74.37€ Refresh 2026-05-26: 74.37€ → 74.37€",
+      "notes": " Refresh 2026-05-17: 62.18€ → 62.18€ Refresh 2026-05-18: 62.18€ → 62.18€ Refresh 2026-05-18: 62.18€ → 62.18€ Refresh 2026-05-18: 62.18€ → 62.18€ Refresh 2026-05-20: 62.18€ → 62.18€ Refresh 2026-05-21: 62.18€ → 62.18€ Refresh 2026-05-23: 62.18€ → 74.37€ Refresh 2026-05-24: 74.37€ → 74.37€ Refresh 2026-05-26: 74.37€ → 74.37€ Refresh 2026-05-27: 74.37€ → 74.37€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -171,7 +171,7 @@
       "name": "Lancome Genifique Serum Avancado 50 ml",
       "brand": "Lancome",
       "expected_volume_ml": 50,
-      "verified_at": "2026-05-26T12:53:23.589Z",
+      "verified_at": "2026-05-27T14:46:18.760Z",
       "resolved_url": "https://wells.pt/serum-genifique-287971.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Sérum Génifique",
@@ -183,7 +183,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 76.42€ → 76.42€ Refresh 2026-05-18: 76.42€ → 76.42€ Refresh 2026-05-18: 76.42€ → 76.42€ Refresh 2026-05-18: 76.42€ → 76.42€ Refresh 2026-05-20: 76.42€ → 51.99€ Refresh 2026-05-21: 51.99€ → 51.99€ Refresh 2026-05-23: 51.99€ → 51.99€ Refresh 2026-05-24: 51.99€ → 51.99€ Refresh 2026-05-26: 51.99€ → 51.99€",
+      "notes": " Refresh 2026-05-17: 76.42€ → 76.42€ Refresh 2026-05-18: 76.42€ → 76.42€ Refresh 2026-05-18: 76.42€ → 76.42€ Refresh 2026-05-18: 76.42€ → 76.42€ Refresh 2026-05-20: 76.42€ → 51.99€ Refresh 2026-05-21: 51.99€ → 51.99€ Refresh 2026-05-23: 51.99€ → 51.99€ Refresh 2026-05-24: 51.99€ → 51.99€ Refresh 2026-05-26: 51.99€ → 51.99€ Refresh 2026-05-27: 51.99€ → 51.99€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -206,7 +206,7 @@
       "name": "Estee Lauder Advanced Night Repair Serum 50 ml",
       "brand": "Estee Lauder",
       "expected_volume_ml": 50,
-      "verified_at": "2026-05-26T12:53:24.057Z",
+      "verified_at": "2026-05-27T14:46:18.625Z",
       "resolved_url": "https://wells.pt/advanced-night-repair-serum-multi-recovery-287627.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Advanced Night Repair Serum Multi-Recovery",
@@ -218,7 +218,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 84.37€ → 84.37€ Refresh 2026-05-18: 84.37€ → 84.37€ Refresh 2026-05-18: 84.37€ → 84.37€ Refresh 2026-05-18: 84.37€ → 84.37€ Refresh 2026-05-20: 84.37€ → 84.37€ Refresh 2026-05-21: 84.37€ → 84.37€ Refresh 2026-05-23: 84.37€ → 84.37€ Refresh 2026-05-24: 84.37€ → 84.37€ Refresh 2026-05-26: 84.37€ → 84.37€",
+      "notes": " Refresh 2026-05-17: 84.37€ → 84.37€ Refresh 2026-05-18: 84.37€ → 84.37€ Refresh 2026-05-18: 84.37€ → 84.37€ Refresh 2026-05-18: 84.37€ → 84.37€ Refresh 2026-05-20: 84.37€ → 84.37€ Refresh 2026-05-21: 84.37€ → 84.37€ Refresh 2026-05-23: 84.37€ → 84.37€ Refresh 2026-05-24: 84.37€ → 84.37€ Refresh 2026-05-26: 84.37€ → 84.37€ Refresh 2026-05-27: 84.37€ → 84.37€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -241,7 +241,7 @@
       "name": "Vichy Mineral 89 Serum Hidratante 50 ml",
       "brand": "Vichy",
       "expected_volume_ml": 50,
-      "verified_at": "2026-05-26T12:53:23.406Z",
+      "verified_at": "2026-05-27T14:46:18.487Z",
       "resolved_url": "https://wells.pt/serum-rosto-fortificante-mineral-89-6921452.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Sérum Rosto Fortificante Minéral 89",
@@ -253,7 +253,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante: Wells so lista 75ml (seed pede 50ml) Refresh 2026-05-17: 31.20€ → 31.20€ Refresh 2026-05-18: 31.20€ → 31.20€ Refresh 2026-05-18: 31.20€ → 31.20€ Refresh 2026-05-18: 31.20€ → 31.20€ Refresh 2026-05-20: 31.20€ → 27.30€ Refresh 2026-05-21: 27.30€ → 27.30€ Refresh 2026-05-23: 27.30€ → 27.30€ Refresh 2026-05-24: 27.30€ → 27.30€ Refresh 2026-05-26: 27.30€ → 27.30€",
+      "notes": "Variante: Wells so lista 75ml (seed pede 50ml) Refresh 2026-05-17: 31.20€ → 31.20€ Refresh 2026-05-18: 31.20€ → 31.20€ Refresh 2026-05-18: 31.20€ → 31.20€ Refresh 2026-05-18: 31.20€ → 31.20€ Refresh 2026-05-20: 31.20€ → 27.30€ Refresh 2026-05-21: 27.30€ → 27.30€ Refresh 2026-05-23: 27.30€ → 27.30€ Refresh 2026-05-24: 27.30€ → 27.30€ Refresh 2026-05-26: 27.30€ → 27.30€ Refresh 2026-05-27: 27.30€ → 27.30€",
       "observed_variants": [
         {
           "volume_ml": 50,
@@ -276,7 +276,7 @@
       "name": "La Roche-Posay Effaclar Duo+ 40 ml",
       "brand": "La Roche-Posay",
       "expected_volume_ml": 40,
-      "verified_at": "2026-05-26T12:53:29.324Z",
+      "verified_at": "2026-05-27T14:46:24.270Z",
       "resolved_url": "https://wells.pt/effaclar-duom-soin-anti-imperfections-7852795.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Effaclar Duo+M Soin Anti-Imperfections",
@@ -288,7 +288,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 15.07€ → 15.07€ Refresh 2026-05-18: 15.07€ → 15.07€ Refresh 2026-05-18: 15.07€ → 15.07€ Refresh 2026-05-18: 15.07€ → 15.07€ Refresh 2026-05-20: 15.07€ → 14.07€ Refresh 2026-05-21: 14.07€ → 14.07€ Refresh 2026-05-23: 14.07€ → 14.07€ Refresh 2026-05-24: 14.07€ → 14.07€ Refresh 2026-05-26: 14.07€ → 14.07€",
+      "notes": " Refresh 2026-05-17: 15.07€ → 15.07€ Refresh 2026-05-18: 15.07€ → 15.07€ Refresh 2026-05-18: 15.07€ → 15.07€ Refresh 2026-05-18: 15.07€ → 15.07€ Refresh 2026-05-20: 15.07€ → 14.07€ Refresh 2026-05-21: 14.07€ → 14.07€ Refresh 2026-05-23: 14.07€ → 14.07€ Refresh 2026-05-24: 14.07€ → 14.07€ Refresh 2026-05-26: 14.07€ → 14.07€ Refresh 2026-05-27: 14.07€ → 14.07€",
       "observed_variants": [
         {
           "volume_ml": 40,
@@ -304,7 +304,7 @@
       "name": "Nuxe Huile Prodigieuse 100 ml",
       "brand": "Nuxe",
       "expected_volume_ml": 100,
-      "verified_at": "2026-05-26T12:53:30.895Z",
+      "verified_at": "2026-05-27T14:46:26.557Z",
       "resolved_url": "https://wells.pt/oleo-huile-prodigieuse-4346087.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Óleo Huile Prodigieuse",
@@ -316,7 +316,7 @@
       "observed_in_stock": false,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante: Wells lista apenas 50ml; seed pede 100ml Refresh 2026-05-17: 16.12€ → 16.12€ Refresh 2026-05-18: 16.12€ → 16.12€ Refresh 2026-05-18: 16.12€ → 16.12€ Refresh 2026-05-18: 16.12€ → 16.12€ Refresh 2026-05-20: 16.12€ → 16.12€ Refresh 2026-05-21: 16.12€ → 16.12€ Refresh 2026-05-23: 16.12€ → 16.12€ Refresh 2026-05-24: 16.12€ → 16.12€ Refresh 2026-05-26: 16.12€ → 16.12€",
+      "notes": "Variante: Wells lista apenas 50ml; seed pede 100ml Refresh 2026-05-17: 16.12€ → 16.12€ Refresh 2026-05-18: 16.12€ → 16.12€ Refresh 2026-05-18: 16.12€ → 16.12€ Refresh 2026-05-18: 16.12€ → 16.12€ Refresh 2026-05-20: 16.12€ → 16.12€ Refresh 2026-05-21: 16.12€ → 16.12€ Refresh 2026-05-23: 16.12€ → 16.12€ Refresh 2026-05-24: 16.12€ → 16.12€ Refresh 2026-05-26: 16.12€ → 16.12€ Refresh 2026-05-27: 16.12€ → 16.12€",
       "observed_variants": [
         {
           "volume_ml": 50,
@@ -339,7 +339,7 @@
       "name": "Caudalie Vinoperfect Serum Luminosidade 30 ml",
       "brand": "Caudalie",
       "expected_volume_ml": 30,
-      "verified_at": "2026-05-26T12:53:31.025Z",
+      "verified_at": "2026-05-27T14:46:25.320Z",
       "resolved_url": "https://wells.pt/vinoperfect-serum-eclat-anti-taches-368183.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Vinoperfect Sérum Éclat Anti-Taches",
@@ -351,7 +351,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 43.11€ → 43.11€ Refresh 2026-05-18: 43.11€ → 43.11€ Refresh 2026-05-18: 43.11€ → 43.11€ Refresh 2026-05-18: 43.11€ → 43.11€ Refresh 2026-05-20: 43.11€ → 43.11€ Refresh 2026-05-21: 43.11€ → 43.11€ Refresh 2026-05-23: 43.11€ → 43.11€ Refresh 2026-05-24: 43.11€ → 43.11€ Refresh 2026-05-26: 43.11€ → 43.11€",
+      "notes": " Refresh 2026-05-17: 43.11€ → 43.11€ Refresh 2026-05-18: 43.11€ → 43.11€ Refresh 2026-05-18: 43.11€ → 43.11€ Refresh 2026-05-18: 43.11€ → 43.11€ Refresh 2026-05-20: 43.11€ → 43.11€ Refresh 2026-05-21: 43.11€ → 43.11€ Refresh 2026-05-23: 43.11€ → 43.11€ Refresh 2026-05-24: 43.11€ → 43.11€ Refresh 2026-05-26: 43.11€ → 43.11€ Refresh 2026-05-27: 43.11€ → 43.11€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -374,7 +374,7 @@
       "name": "CeraVe Creme Hidratante 250 ml",
       "brand": "CeraVe",
       "expected_volume_ml": 250,
-      "verified_at": "2026-05-26T12:53:35.211Z",
+      "verified_at": "2026-05-27T14:46:30.091Z",
       "resolved_url": "https://wells.pt/moisturising-cream-dry-to-very-dry-skin-8122531.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Moisturising Cream Dry to Very Dry Skin",
@@ -386,7 +386,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante: Wells tem 340g/454g/177ml/454g recarga; seed pede 250ml Refresh 2026-05-17: 8.40€ → 11.60€ Refresh 2026-05-17: 11.60€ → 11.60€ Refresh 2026-05-18: 11.60€ → 11.60€ Refresh 2026-05-18: 11.60€ → 11.60€ Refresh 2026-05-18: 11.60€ → 11.60€ Refresh 2026-05-20: 11.60€ → 11.60€ Refresh 2026-05-21: 11.60€ → 11.60€ Refresh 2026-05-23: 11.60€ → 11.60€ Refresh 2026-05-24: 11.60€ → 11.60€ Refresh 2026-05-26: 11.60€ → 11.60€",
+      "notes": "Variante: Wells tem 340g/454g/177ml/454g recarga; seed pede 250ml Refresh 2026-05-17: 8.40€ → 11.60€ Refresh 2026-05-17: 11.60€ → 11.60€ Refresh 2026-05-18: 11.60€ → 11.60€ Refresh 2026-05-18: 11.60€ → 11.60€ Refresh 2026-05-18: 11.60€ → 11.60€ Refresh 2026-05-20: 11.60€ → 11.60€ Refresh 2026-05-21: 11.60€ → 11.60€ Refresh 2026-05-23: 11.60€ → 11.60€ Refresh 2026-05-24: 11.60€ → 11.60€ Refresh 2026-05-26: 11.60€ → 11.60€ Refresh 2026-05-27: 11.60€ → 11.60€",
       "observed_variants": [
         {
           "volume_ml": 250,
@@ -402,26 +402,26 @@
       "name": "L'Oreal Paris Elvive Oleo Extraordinario 100 ml",
       "brand": "L'Oreal Paris",
       "expected_volume_ml": 100,
-      "verified_at": "2026-05-26T12:53:37.626Z",
+      "verified_at": "2026-05-27T14:46:31.138Z",
       "resolved_url": "https://wells.pt/elvive-oleo-extraordinario-serum-nutritivo-6960160.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Elvive Óleo Extraordinário Sérum Nutritivo",
       "observed_brand": "L'Oreal Paris",
       "observed_volume_ml": 100,
-      "observed_price": 9,
+      "observed_price": 9.99,
       "observed_previous_price": null,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 9.99€ → 9.00€ Refresh 2026-05-17: 9.00€ → 9.00€ Refresh 2026-05-18: 9.00€ → 9.00€ Refresh 2026-05-18: 9.00€ → 9.00€ Refresh 2026-05-18: 9.00€ → 9.00€ Refresh 2026-05-20: 9.00€ → 9.00€ Refresh 2026-05-21: 9.00€ → 9.00€ Refresh 2026-05-23: 9.00€ → 9.00€ Refresh 2026-05-24: 9.00€ → 9.00€ Refresh 2026-05-26: 9.00€ → 9.00€",
+      "notes": " Refresh 2026-05-17: 9.99€ → 9.00€ Refresh 2026-05-17: 9.00€ → 9.00€ Refresh 2026-05-18: 9.00€ → 9.00€ Refresh 2026-05-18: 9.00€ → 9.00€ Refresh 2026-05-18: 9.00€ → 9.00€ Refresh 2026-05-20: 9.00€ → 9.00€ Refresh 2026-05-21: 9.00€ → 9.00€ Refresh 2026-05-23: 9.00€ → 9.00€ Refresh 2026-05-24: 9.00€ → 9.00€ Refresh 2026-05-26: 9.00€ → 9.00€ Refresh 2026-05-27: 9.00€ → 9.99€",
       "observed_variants": [
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 9,
+          "price": 9.99,
           "in_stock": true,
-          "url": null
+          "url": "https://wells.pt/elvive-oleo-extraordinario-serum-nutritivo-6960160.html"
         }
       ]
     },
@@ -430,7 +430,7 @@
       "name": "Kerastase Elixir Ultime Oleo Original 100 ml",
       "brand": "Kerastase",
       "expected_volume_ml": 100,
-      "verified_at": "2026-05-26T12:53:37.503Z",
+      "verified_at": "2026-05-27T14:46:32.225Z",
       "resolved_url": "https://wells.pt/elixir-ultime-lhuile-refillable-446416.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Elixir Ultime L'Huile Refillable",
@@ -442,7 +442,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante: Wells tem 30ml e 75ml recarregavel; 100ml seed nao disponivel Refresh 2026-05-17: 25.90€ → 46.11€ Refresh 2026-05-17: 46.11€ → 46.11€ Refresh 2026-05-18: 46.11€ → 46.11€ Refresh 2026-05-18: 46.11€ → 46.11€ Refresh 2026-05-18: 46.11€ → 46.11€ Refresh 2026-05-20: 46.11€ → 46.11€ Refresh 2026-05-21: 46.11€ → 46.11€ Refresh 2026-05-23: 46.11€ → 46.11€ Refresh 2026-05-24: 46.11€ → 46.11€ Refresh 2026-05-26: 46.11€ → 46.11€",
+      "notes": "Variante: Wells tem 30ml e 75ml recarregavel; 100ml seed nao disponivel Refresh 2026-05-17: 25.90€ → 46.11€ Refresh 2026-05-17: 46.11€ → 46.11€ Refresh 2026-05-18: 46.11€ → 46.11€ Refresh 2026-05-18: 46.11€ → 46.11€ Refresh 2026-05-18: 46.11€ → 46.11€ Refresh 2026-05-20: 46.11€ → 46.11€ Refresh 2026-05-21: 46.11€ → 46.11€ Refresh 2026-05-23: 46.11€ → 46.11€ Refresh 2026-05-24: 46.11€ → 46.11€ Refresh 2026-05-26: 46.11€ → 46.11€ Refresh 2026-05-27: 46.11€ → 46.11€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -472,7 +472,7 @@
       "name": "Redken All Soft Shampoo 300 ml",
       "brand": "Redken",
       "expected_volume_ml": 300,
-      "verified_at": "2026-05-26T12:53:41.913Z",
+      "verified_at": "2026-05-27T14:46:36.678Z",
       "resolved_url": "https://wells.pt/all-soft-shampoo-7461242.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "All Soft Shampoo",
@@ -484,7 +484,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante: Wells tem 500ml (seed pede 300ml); URL 7419403 do 300ml existe mas preco nao verificado Refresh 2026-05-17: 26.78€ → 26.78€ Refresh 2026-05-18: 26.78€ → 26.78€ Refresh 2026-05-18: 26.78€ → 26.78€ Refresh 2026-05-18: 26.78€ → 26.78€ Refresh 2026-05-20: 26.78€ → 26.78€ Refresh 2026-05-21: 26.78€ → 26.78€ Refresh 2026-05-23: 26.78€ → 26.78€ Refresh 2026-05-24: 26.78€ → 26.78€ Refresh 2026-05-26: 26.78€ → 26.78€",
+      "notes": "Variante: Wells tem 500ml (seed pede 300ml); URL 7419403 do 300ml existe mas preco nao verificado Refresh 2026-05-17: 26.78€ → 26.78€ Refresh 2026-05-18: 26.78€ → 26.78€ Refresh 2026-05-18: 26.78€ → 26.78€ Refresh 2026-05-18: 26.78€ → 26.78€ Refresh 2026-05-20: 26.78€ → 26.78€ Refresh 2026-05-21: 26.78€ → 26.78€ Refresh 2026-05-23: 26.78€ → 26.78€ Refresh 2026-05-24: 26.78€ → 26.78€ Refresh 2026-05-26: 26.78€ → 26.78€ Refresh 2026-05-27: 26.78€ → 26.78€",
       "observed_variants": [
         {
           "volume_ml": 300,
@@ -517,7 +517,7 @@
       "name": "Bioderma Sensibio H2O Agua Micelar 500 ml",
       "brand": "Bioderma",
       "expected_volume_ml": 500,
-      "verified_at": "2026-05-26T12:53:45.047Z",
+      "verified_at": "2026-05-27T14:46:37.915Z",
       "resolved_url": "https://wells.pt/sensibio-h2o-peux-sensibles-eau-micellaire-8518622.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Sensibio H2O Peux Sensibles Eau Micellaire",
@@ -529,7 +529,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": " Refresh 2026-05-17: 14.96€ → 14.96€ Refresh 2026-05-18: 14.96€ → 14.96€ Refresh 2026-05-18: 14.96€ → 14.96€ Refresh 2026-05-18: 14.96€ → 14.96€ Refresh 2026-05-20: 14.96€ → 13.96€ Refresh 2026-05-21: 13.96€ → 13.96€ Refresh 2026-05-23: 13.96€ → 13.96€ Refresh 2026-05-24: 13.96€ → 13.96€ Refresh 2026-05-26: 13.96€ → 13.96€",
+      "notes": " Refresh 2026-05-17: 14.96€ → 14.96€ Refresh 2026-05-18: 14.96€ → 14.96€ Refresh 2026-05-18: 14.96€ → 14.96€ Refresh 2026-05-18: 14.96€ → 14.96€ Refresh 2026-05-20: 14.96€ → 13.96€ Refresh 2026-05-21: 13.96€ → 13.96€ Refresh 2026-05-23: 13.96€ → 13.96€ Refresh 2026-05-24: 13.96€ → 13.96€ Refresh 2026-05-26: 13.96€ → 13.96€ Refresh 2026-05-27: 13.96€ → 13.96€",
       "observed_variants": [
         {
           "volume_ml": 500,
@@ -575,7 +575,7 @@
       "name": "La Roche-Posay Hyalu B5 Serum 30 ml",
       "brand": "La Roche-Posay",
       "expected_volume_ml": 30,
-      "verified_at": "2026-05-26T12:53:45.167Z",
+      "verified_at": "2026-05-27T14:46:38.455Z",
       "resolved_url": "https://wells.pt/hyalu-b5-anti-wrinkle-care-6447073.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Hyalu B5 Anti-Wrinkle Care",
@@ -587,7 +587,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante: Wells vende Hyalu B5 Anti-Wrinkle Care creme 40ml (nao o serum 30ml do seed) Refresh 2026-05-17: 33.00€ → 33.00€ Refresh 2026-05-18: 33.00€ → 33.00€ Refresh 2026-05-18: 33.00€ → 33.00€ Refresh 2026-05-18: 33.00€ → 33.00€ Refresh 2026-05-20: 33.00€ → 30.80€ Refresh 2026-05-21: 30.80€ → 30.80€ Refresh 2026-05-23: 30.80€ → 30.80€ Refresh 2026-05-24: 30.80€ → 30.80€ Refresh 2026-05-26: 30.80€ → 30.80€",
+      "notes": "Variante: Wells vende Hyalu B5 Anti-Wrinkle Care creme 40ml (nao o serum 30ml do seed) Refresh 2026-05-17: 33.00€ → 33.00€ Refresh 2026-05-18: 33.00€ → 33.00€ Refresh 2026-05-18: 33.00€ → 33.00€ Refresh 2026-05-18: 33.00€ → 33.00€ Refresh 2026-05-20: 33.00€ → 30.80€ Refresh 2026-05-21: 30.80€ → 30.80€ Refresh 2026-05-23: 30.80€ → 30.80€ Refresh 2026-05-24: 30.80€ → 30.80€ Refresh 2026-05-26: 30.80€ → 30.80€ Refresh 2026-05-27: 30.80€ → 30.80€",
       "observed_variants": [
         {
           "volume_ml": 30,
@@ -622,7 +622,7 @@
       "name": "La Roche-Posay Anthelios UVMune 400 Creme SPF50+ 50 ml",
       "brand": "La Roche-Posay",
       "expected_volume_ml": 50,
-      "verified_at": "2026-05-26T12:53:51.121Z",
+      "verified_at": "2026-05-27T14:46:44.552Z",
       "resolved_url": "https://wells.pt/protetor-solar-anthelios-uvmune-400-spf50-7577494.html",
       "resolution_method": "playwright-jsonld",
       "observed_name": "Protetor Solar Anthelios UVMune 400 SPF50",
@@ -634,7 +634,7 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Match exacto: Anthelios UVMune 400 SPF50 50ml Refresh 2026-05-17: 20.02€ → 20.00€ Refresh 2026-05-17: 20.00€ → 20.00€ Refresh 2026-05-18: 20.00€ → 20.00€ Refresh 2026-05-18: 20.00€ → 20.00€ Refresh 2026-05-18: 20.00€ → 20.00€ Refresh 2026-05-20: 20.00€ → 20.00€ Refresh 2026-05-21: 20.00€ → 20.00€ Refresh 2026-05-23: 20.00€ → 20.00€ Refresh 2026-05-24: 20.00€ → 20.00€ Refresh 2026-05-26: 20.00€ → 20.00€",
+      "notes": "Match exacto: Anthelios UVMune 400 SPF50 50ml Refresh 2026-05-17: 20.02€ → 20.00€ Refresh 2026-05-17: 20.00€ → 20.00€ Refresh 2026-05-18: 20.00€ → 20.00€ Refresh 2026-05-18: 20.00€ → 20.00€ Refresh 2026-05-18: 20.00€ → 20.00€ Refresh 2026-05-20: 20.00€ → 20.00€ Refresh 2026-05-21: 20.00€ → 20.00€ Refresh 2026-05-23: 20.00€ → 20.00€ Refresh 2026-05-24: 20.00€ → 20.00€ Refresh 2026-05-26: 20.00€ → 20.00€ Refresh 2026-05-27: 20.00€ → 20.00€",
       "observed_variants": [
         {
           "volume_ml": 50,
