@@ -175,63 +175,65 @@ async function scrapeProductPage(page, url) {
       url: o.url || null,
     })).filter(o => o.price !== null);
 
-    // DOM variants
-    const variants = [];
-    const seen = new Set();
-    function parseVolumePrice(txt) {
-      if (/\/\s*\d*\s*(ml|gr|g|kg|l)\b/i.test(txt)) return null;
-      if (/\bpor\s+(ml|l|g|kg)\b/i.test(txt)) return null;
-      if (VARIANT_EXCLUDE.test(txt)) return null;
-      const volM = txt.match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
-      if (!volM) return null;
-      const vol = parseFloat(volM[1].replace(',', '.'));
-      const unit = volM[2].toLowerCase();
-      if (!isFinite(vol)) return null;
-      const priceMatches = [...txt.matchAll(/€\s*(\d{1,4}(?:[.,]\d{1,2})?)|(\d{1,4}(?:[.,]\d{1,2})?)\s*€/g)];
-      const prices = priceMatches.map(m => parseFloat((m[1]||m[2]).replace(',','.'))).filter(p => isFinite(p) && p > 0.5 && p < 5000);
-      if (prices.length === 0) return null;
-      const close = priceMatches.filter(m => {
-        const d = Math.min(Math.abs(m.index - (volM.index + volM[0].length)), Math.abs(volM.index - (m.index + m[0].length)));
-        return d <= 30;
+    // ── VARIANTES REAIS — só de blocos .price-product do produto principal ──
+    // Cada subtype/variante de volume tem o seu próprio .price-product com:
+    //   data-base-price="X.YZ"
+    //   data-subtype="01"
+    //   data-full-description="Nome do produto 50mL"  (← volume aqui)
+    //   .pvp → preço actual desta variante
+    //   .pvpR → preço riscado (se houver promo)
+    // Single-volume products têm 1 só .price-product. Multi-volume têm N.
+    function parseVolumeFromText(txt) {
+      if (!txt) return null;
+      const m = txt.match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
+      if (!m) return null;
+      const v = parseFloat(m[1].replace(',', '.'));
+      const u = m[2].toLowerCase();
+      if (!isFinite(v) || v <= 0 || v > 5000) return null;
+      return { volume_ml: u === 'l' ? v * 1000 : v, unit: u };
+    }
+    const filteredVariants = [];
+    const seenVariants = new Set();
+    document.querySelectorAll('.price-product').forEach(pc => {
+      // Excluir SÓ produtos relacionados — variantes display-none são reais
+      // (e.g. tamanho 1000mL escondido até user mudar selector). Queremos
+      // todas as variantes de volume disponíveis.
+      if (pc.closest('.productList-container, .glide__slide, ul.glide__slides')) return;
+      // Preço da variante: prefer .pvp (DOM), fallback data-base-price
+      let current = null;
+      const pvpEl = pc.querySelector('.pvp');
+      if (pvpEl) current = parseSweetcarePrice(pvpEl.textContent);
+      if (!current) {
+        const bp = parseFloat(pc.getAttribute('data-base-price') || '');
+        if (isFinite(bp) && bp > 0) current = bp;
+      }
+      if (!current || current < 0.5 || current > 10000) return;
+      // Volume: data-full-description está num elemento separado (p.product-initialDescription)
+      // partilhando o mesmo data-subtype com o .price-product. Correlacionamos pelo subtype.
+      const sub = pc.getAttribute('data-subtype');
+      let fullDesc = pc.getAttribute('data-full-description') || '';
+      if (!fullDesc && sub) {
+        const matchEl = document.querySelector(`[data-subtype="${sub}"][data-full-description]`);
+        if (matchEl) fullDesc = matchEl.getAttribute('data-full-description') || '';
+      }
+      const volInfo = parseVolumeFromText(fullDesc);
+      if (!volInfo) return; // sem volume legível → ignorar (não é variante válida)
+      const pvpREl = pc.querySelector('.pvpR');
+      const prev = pvpREl ? parseSweetcarePrice(pvpREl.textContent) : null;
+      const key = `${volInfo.volume_ml}${volInfo.unit}|${current.toFixed(2)}`;
+      if (seenVariants.has(key)) return;
+      seenVariants.add(key);
+      filteredVariants.push({
+        volume_ml: volInfo.volume_ml,
+        unit: volInfo.unit,
+        price: current,
+        previous_price: (prev && prev > current * 1.01) ? prev : null,
+        subtype: pc.getAttribute('data-subtype') || null,
+        is_default: !pc.classList.contains('display-none'),
       });
-      if (close.length === 0) return null;
-      const price = Math.min(...prices);
-      const volMl = unit === 'l' ? vol * 1000 : vol;
-      return { volMl, unit, price };
-    }
-    document.querySelectorAll('a, button, label, li, span, div').forEach(el => {
-      if (el.children && el.children.length > 4) return;
-      const txt = (el.innerText || el.textContent || '').trim();
-      if (!txt || txt.length > 120) return;
-      let ctxTxt = txt;
-      try {
-        let par = el.parentElement;
-        for (let depth = 0; depth < 2 && par; depth++) {
-          const ptxt = (par.innerText || par.textContent || '').trim();
-          if (ptxt.length < 240) ctxTxt += ' ' + ptxt;
-          par = par.parentElement;
-        }
-      } catch {}
-      if (VARIANT_EXCLUDE.test(ctxTxt)) return;
-      const parsed = parseVolumePrice(txt);
-      if (!parsed) return;
-      const { volMl, unit, price } = parsed;
-      if (price <= 0.5 || price > 10000) return;
-      if (volMl <= 0 || volMl > 5000) return;
-      const key = `${volMl}${unit}|${price.toFixed(2)}`;
-      if (seen.has(key)) return;
-      seen.add(key);
-      variants.push({ volume_ml: volMl, unit, price, url: el.tagName === 'A' ? (el.href||null) : null });
     });
-
-    // Sanity check variants vs JSON-LD range
-    let filteredVariants = variants;
-    if (normOffers.length > 0) {
-      const ldPrices = normOffers.map(o => o.price);
-      const lo = Math.min(...ldPrices) * 0.4;
-      const hi = Math.max(...ldPrices) * 2;
-      filteredVariants = variants.filter(v => v.price >= lo && v.price <= hi);
-    }
+    // Ordenar por volume (ascendente) — melhor UX no front-end
+    filteredVariants.sort((a, b) => (a.volume_ml || 0) - (b.volume_ml || 0));
 
     // DOM strikethrough detection — Sweetcare expõe:
     //   .pvp  → preço actual (vendido a)
@@ -243,28 +245,53 @@ async function scrapeProductPage(page, url) {
       const m = (text || '').match(/(\d{1,4}(?:[.,]\d{1,2})?)/);
       return m ? parseFloat(m[1].replace(',', '.')) : null;
     }
+    // ── PREÇO ACTUAL via DOM (.pvp) — AUTORITATIVO ──
+    // O Sweetcare tem MÚLTIPLOS .price-product (um por variante/subtype).
+    // O JSON-LD price corresponde frequentemente ao da variante principal
+    // (default). Estratégia:
+    //   1. Procurar o .price-product principal — não-related, não-hidden, e
+    //      idealmente com data-base-price ≈ JSON-LD price (variante default)
+    //   2. Dentro desse, .pvp é o preço actual mostrado ao utilizador,
+    //      .pvpR (se existir) é o preço riscado/antigo.
+    let currentPriceFromDom = null;
     let previousPriceFromDom = null;
-    // Sweetcare encapsula o preço do produto principal em .price-product
-    // (NÃO .price-container — esse é dos relacionados). Estrutura:
-    //   <div class="price-product" data-base-price="65.10" data-subtype="01">
-    //     <span class="pvp">€ 65,10</span>
-    //     <span class="pvpR">€ 100,15</span>
-    //     <span class="label-promo">-35%</span>
-    //   </div>
-    // Excluímos os produtos relacionados via .productList-container etc.
-    const priceBlocks = document.querySelectorAll('.price-product');
-    for (const pc of priceBlocks) {
-      if (pc.closest('.productList-container, .glide__slide, ul.glide__slides')) continue;
-      // Preferir o subtype não-display:none (variante actualmente selecionada)
-      if (pc.classList.contains('display-none')) continue;
-      const pvpEl = pc.querySelector('.pvp');
-      const pvpREl = pc.querySelector('.pvpR');
-      if (!pvpEl || !pvpREl) continue;
-      const current = parseSweetcarePrice(pvpEl.textContent);
-      const previous = parseSweetcarePrice(pvpREl.textContent);
-      if (current && previous && previous > current * 1.01) {
-        previousPriceFromDom = previous;
-        break;
+    const jsonldPrice = normOffers.length
+      ? Math.min(...normOffers.map(o => o.price).filter(Boolean))
+      : null;
+
+    function pickMainBlock(blocks) {
+      const valid = [];
+      for (const pc of blocks) {
+        if (pc.closest('.productList-container, .glide__slide, ul.glide__slides')) continue;
+        if (pc.classList.contains('display-none')) continue;
+        if (!pc.querySelector('.pvp')) continue;
+        valid.push(pc);
+      }
+      if (!valid.length) return null;
+      // Se temos jsonldPrice, escolhe o bloco cujo data-base-price está mais próximo
+      if (jsonldPrice && valid.length > 1) {
+        const scored = valid.map(pc => {
+          const bp = parseFloat(pc.getAttribute('data-base-price') || '');
+          const dist = isFinite(bp) ? Math.abs(bp - jsonldPrice) : Infinity;
+          return { pc, dist };
+        }).sort((a, b) => a.dist - b.dist);
+        if (scored[0].dist < jsonldPrice * 0.05) return scored[0].pc; // <5% diff = match
+      }
+      // Fallback: primeiro visível
+      return valid[0];
+    }
+
+    const mainBlock = pickMainBlock(document.querySelectorAll('.price-product'));
+    if (mainBlock) {
+      const pvpEl = mainBlock.querySelector('.pvp');
+      if (pvpEl) {
+        const current = parseSweetcarePrice(pvpEl.textContent);
+        if (current) currentPriceFromDom = current;
+        const pvpREl = mainBlock.querySelector('.pvpR');
+        if (pvpREl) {
+          const previous = parseSweetcarePrice(pvpREl.textContent);
+          if (previous && previous > current * 1.01) previousPriceFromDom = previous;
+        }
       }
     }
 
@@ -275,6 +302,8 @@ async function scrapeProductPage(page, url) {
       description: p?.description?.slice(0, 300) || null,
       offers: normOffers,
       variants: filteredVariants,
+      // DOM prices are AUTHORITATIVE — JSON-LD pode estar desactualizado
+      current_price_dom: currentPriceFromDom,
       previous_price_dom: previousPriceFromDom,
       image_url: imgUrl,
     };
@@ -339,6 +368,12 @@ function saveCheckpoint(allProducts, stats, final = false) {
           const pool = inStockOffers.length > 0 ? inStockOffers : data.offers.filter(o => typeof o.price === 'number' && o.price > 0);
           const cheapest = pool.length > 0 ? pool.reduce((a, b) => (b.price < a.price ? b : a)) : null;
           stats.ok++;
+          // PRIORIDADE de preço (importante!):
+          //   1) DOM .pvp do bloco .price-product principal — é EXACTAMENTE
+          //      o que o utilizador vê. JSON-LD muitas vezes tem o data-base-price
+          //      (sem desconto) que NÃO bate certo com o site.
+          //   2) Fallback: cheapest in-stock offer do JSON-LD
+          const finalPrice = data.current_price_dom ?? (cheapest?.price || null);
           allProducts.push({
             url: t.url,
             slug: t.slug,
@@ -348,8 +383,11 @@ function saveCheckpoint(allProducts, stats, final = false) {
             brand: data.brand,
             ean: data.ean,
             description: data.description,
-            price: cheapest?.price || null,
+            price: finalPrice,
             previous_price: data.previous_price_dom || null,
+            // Debug: ver de onde veio o preço (para validar discrepâncias)
+            _price_source: data.current_price_dom ? 'dom_pvp' : (cheapest ? 'jsonld_offers' : null),
+            _jsonld_price: cheapest?.price || null,
             in_stock: data.offers.some(o => /in[_ ]?stock/i.test(o.availability || '')),
             image_url: data.image_url,
             variants: data.variants,
