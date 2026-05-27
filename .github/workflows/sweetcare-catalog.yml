@@ -9,7 +9,11 @@ name: Sweetcare catalog refresh
 
 on:
   schedule:
-    - cron: '0 10 * * *'    # Diário às 10h UTC (queues após Druni das 06h)
+    # 2x/dia — preços Sweetcare mudam várias vezes ao longo do dia.
+    # 10h UTC (manhã PT) + 22h UTC (noite PT) — para que o site nunca
+    # tenha preços com mais de ~12h.
+    - cron: '0 10 * * *'
+    - cron: '0 22 * * *'
   workflow_dispatch:
     inputs:
       category:
