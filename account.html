@@ -412,8 +412,8 @@
     <div id="quiz-cta" style="display:none; margin-top:20px; background:linear-gradient(135deg, #f7f2ff 0%, #fffce8 100%); border:1px solid #d8c9ec; border-radius:14px; padding:18px 22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
       <div style="font-size:36px; color:#6d84a7;">✦</div>
       <div style="flex:1; min-width:200px;">
-        <div style="font-weight:600; font-size:15px; color:#2a2f3a; margin-bottom:4px;">Ainda não fizeste o quiz de skincare</div>
-        <div style="font-size:13px; color:#6b7384;">6 perguntas rápidas (~1 min) — ganha <strong style="color:#6d84a7;">+100 pontos</strong> e desbloqueamos sugestões personalizadas.</div>
+        <div style="font-weight:600; font-size:15px; color:#2a2f3a; margin-bottom:4px;">Personaliza o teu perfil com o quiz</div>
+        <div style="font-size:13px; color:#6b7384;">10 perguntas rápidas (~2 min) — ganha até <strong style="color:#6d84a7;">+140 pontos</strong>. Cada pergunta só dá pontos uma vez.</div>
       </div>
       <button type="button" id="quiz-cta-start" class="btn btn-primary" style="white-space:nowrap;">Começar quiz →</button>
     </div>
@@ -969,23 +969,95 @@ function buildPatch() {
   return patch;
 }
 
+// Mapeia coluna BD → key do quiz (alguns têm nome diferente)
+const QUIZ_KEYS_FROM_DB = {
+  display_name: 'display_name',
+  gender: 'gender',
+  birth_date: 'birth_year',
+  district: 'district',
+  skin_type: 'skin_type',
+  skin_concerns: 'skin_concerns',
+  skin_allergies: 'skin_allergies',
+  routine_steps: 'routine_steps',
+  skincare_goal: 'skincare_goal',
+  hair_type: 'hair_type',
+};
+const QUIZ_TOTAL_STEPS = 10;
+const QUIZ_PTS_PER_STEP = 10;
+const QUIZ_PTS_BONUS = 40;
+
+function hasValue(v) {
+  if (v == null) return false;
+  if (Array.isArray(v)) return v.length > 0;
+  if (typeof v === 'string') return v.trim() !== '';
+  return true;
+}
+
 async function save() {
   if (!Object.keys(DRAFT).length) { toast('Nada para guardar.'); return; }
   $('btn-save').disabled = true;
   $('btn-save').textContent = 'A guardar…';
   try {
     const patch = buildPatch();
+
+    // ─── Calcular pontos por campos NOVOS preenchidos ───────────
+    // Cada quiz-key que (a) é preenchida agora E (b) ainda não estava em
+    // quiz_rewarded_steps dá +10 pts. Bónus de +40 só na PRIMEIRA vez que
+    // todos os 10 campos ficam preenchidos.
+    const currentRewarded = new Set(PROFILE.quiz_rewarded_steps || []);
+    const newlyRewarded = [];
+
+    for (const [col, quizKey] of Object.entries(QUIZ_KEYS_FROM_DB)) {
+      if (currentRewarded.has(quizKey)) continue;
+      // Valor a ficar guardado: patch tem o novo, senão PROFILE tem o actual
+      const newVal = (col in patch) ? patch[col] : PROFILE[col];
+      if (hasValue(newVal)) newlyRewarded.push(quizKey);
+    }
+
+    let totalPts = 0;
+    if (newlyRewarded.length > 0) {
+      totalPts = newlyRewarded.length * QUIZ_PTS_PER_STEP;
+      const updatedRewardedArr = [...currentRewarded, ...newlyRewarded];
+      patch.quiz_rewarded_steps = updatedRewardedArr;
+
+      // Verifica se ficamos com TODOS os 10 preenchidos pela primeira vez
+      const allFilledNow = updatedRewardedArr.length >= QUIZ_TOTAL_STEPS;
+      const wasNeverCompleted = !PROFILE.last_quiz_at;
+      if (wasNeverCompleted && allFilledNow) {
+        totalPts += QUIZ_PTS_BONUS;
+        patch.last_quiz_at = new Date().toISOString();
+      }
+
+      patch.points = (PROFILE.points || 0) + totalPts;
+      patch.points_lifetime = (PROFILE.points_lifetime || 0) + totalPts;
+    }
+    console.log('[account] save patch:', patch, '| pontos novos:', totalPts, '| keys novas:', newlyRewarded);
+    // ─────────────────────────────────────────────────────────────
+
     const { data, error } = await SB.from('profiles')
       .update(patch)
       .eq('id', USER.id)
       .select()
       .single();
     if (error) throw error;
+
+    // Log de evento se ganhou pontos
+    if (totalPts > 0) {
+      try {
+        await SB.from('profile_events').insert({
+          user_id: USER.id,
+          event_type: 'profile_points_earned',
+          payload: { source: 'account_edit', points_earned: totalPts, keys: newlyRewarded }
+        });
+      } catch (e) {}
+    }
+
     PROFILE = data;
     DRAFT = {};
     setDirty(false);
     hydrateForm();
-    toast('Guardado ✓');
+    if (totalPts > 0) toast(`Guardado ✓ — ganhaste +${totalPts} pontos!`, 4000);
+    else toast('Guardado ✓');
   } catch (e) {
     console.error(e);
     toast('Erro: ' + (e.message || 'tenta de novo'));
