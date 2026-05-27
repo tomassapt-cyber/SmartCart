@@ -87,7 +87,13 @@ console.log(`📊 ${targets.length} URLs · concurrency=${CONCURRENCY} · delay=
 const VARIANT_EXCLUDE = /\b(recarga|refill|cofre|estuche|estuje|pack|set|kit|gift|conjunto|edicion limitada|limited edition|edição limitada|mini|sample|amostra)\b/i;
 
 async function scrapeProductPage(page, url) {
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT_MS });
+  // Forçar /pt/ prefix — Sweetcare serve preços PT quando URL tem /pt/
+  // (URLs sem prefix podem cair em "default international" com markup ~6%).
+  let ptUrl = url;
+  if (!/^https:\/\/www\.sweetcare\.pt\/pt\//.test(url)) {
+    ptUrl = url.replace(/^https:\/\/www\.sweetcare\.pt\//, 'https://www.sweetcare.pt/pt/');
+  }
+  await page.goto(ptUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUT_MS });
   // Esperar até JSON-LD estar presente OU timeout 3s
   try {
     await page.waitForFunction(() => {
@@ -334,8 +340,23 @@ function saveCheckpoint(allProducts, stats, final = false) {
   const context = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
     locale: 'pt-PT',
+    timezoneId: 'Europe/Lisbon',
+    geolocation: { latitude: 38.7223, longitude: -9.1393 }, // Lisboa
+    permissions: ['geolocation'],
     viewport: { width: 1366, height: 768 },
+    extraHTTPHeaders: {
+      // Forçar Accept-Language pt-PT — runners GitHub Actions correm de IPs
+      // dos EUA. Sweetcare aplica markup ~6% se detectar visitante não-PT.
+      // Headers + locale + cookies abaixo evitam esse markup.
+      'Accept-Language': 'pt-PT,pt;q=0.9,en;q=0.8',
+    },
   });
+  // Cookies de localização — força Sweetcare a tratar como visitante PT
+  await context.addCookies([
+    { name: 'country', value: 'PT', domain: '.sweetcare.pt', path: '/' },
+    { name: 'currency', value: 'EUR', domain: '.sweetcare.pt', path: '/' },
+    { name: 'locale', value: 'pt_PT', domain: '.sweetcare.pt', path: '/' },
+  ]);
   // Block images for speed
   await context.route('**/*.{png,jpg,jpeg,gif,webp,svg,ico}', r => r.abort());
 
