@@ -877,6 +877,8 @@ async function init() {
   }
   USER = session.user;
   await loadProfile();
+  // Auto-backfill: se já há campos preenchidos sem terem dado pontos, atribui agora
+  await autoBackfillPoints();
   $('loading').style.display = 'none';
   $('main-page').style.display = 'block';
 }
@@ -886,6 +888,59 @@ async function loadProfile() {
   if (error) { console.error(error); toast('Erro a carregar perfil'); return; }
   PROFILE = data || {};
   hydrateForm();
+}
+
+/**
+ * Auto-backfill de pontos: percorre todos os quiz-keys e, para cada uma que
+ * (a) está preenchida no profile e (b) ainda NÃO está em quiz_rewarded_steps,
+ * atribui +10 pts. Idempotente — só corre uma vez por campo. Útil para users
+ * que preencheram dados antes desta feature existir.
+ */
+async function autoBackfillPoints() {
+  const currentRewarded = new Set(PROFILE.quiz_rewarded_steps || []);
+  const newlyRewarded = [];
+  for (const [col, quizKey] of Object.entries(QUIZ_KEYS_FROM_DB)) {
+    if (currentRewarded.has(quizKey)) continue;
+    if (hasValue(PROFILE[col])) newlyRewarded.push(quizKey);
+  }
+  if (newlyRewarded.length === 0) {
+    console.log('[account] backfill: nada para atribuir');
+    return;
+  }
+  const pts = newlyRewarded.length * QUIZ_PTS_PER_STEP;
+  const updatedRewardedArr = [...currentRewarded, ...newlyRewarded];
+  const patch = {
+    quiz_rewarded_steps: updatedRewardedArr,
+    points: (PROFILE.points || 0) + pts,
+    points_lifetime: (PROFILE.points_lifetime || 0) + pts,
+  };
+  // Se ficamos com 10/10 pela primeira vez → bónus + last_quiz_at
+  if (updatedRewardedArr.length >= QUIZ_TOTAL_STEPS && !PROFILE.last_quiz_at) {
+    patch.points += QUIZ_PTS_BONUS;
+    patch.points_lifetime += QUIZ_PTS_BONUS;
+    patch.last_quiz_at = new Date().toISOString();
+  }
+  const oldPoints = PROFILE.points || 0;
+  console.log('[account] backfill: a atribuir', patch.points - oldPoints, 'pts para keys:', newlyRewarded);
+  try {
+    const { data, error } = await SB.from('profiles').update(patch).eq('id', USER.id).select().single();
+    if (error) throw error;
+    const earnedTotal = (data.points || 0) - oldPoints;
+    PROFILE = data;
+    hydrateForm();
+    setTimeout(() => {
+      toast(`Bem-vinda! Atribuímos +${earnedTotal} pts pelos campos que já tinhas preenchido.`, 5000);
+    }, 600);
+    try {
+      await SB.from('profile_events').insert({
+        user_id: USER.id,
+        event_type: 'auto_backfill_points',
+        payload: { keys: newlyRewarded, points_earned: earnedTotal }
+      });
+    } catch (e) {}
+  } catch (e) {
+    console.error('[account] backfill failed:', e);
+  }
 }
 
 function hydrateForm() {
