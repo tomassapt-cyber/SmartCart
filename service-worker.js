@@ -26,3 +26,4 @@ self.addEventListener('activate', (event) => {
 });
 
 // Sem fetch handler intencionalmente — o browser trata de tudo nativamente.
+// Deploy trigger 1779878899
