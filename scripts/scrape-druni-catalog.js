@@ -213,27 +213,53 @@ async function extract(page) {
       filteredVariants = variants.filter(v => v.price >= lo && v.price <= hi);
     }
 
-    // DOM strikethrough — Druni expõe `.old-price > .price` quando há promo,
-    // e `.special-price > .price` para o preço actual. Quando não há promo,
-    // só existe um `.price` simples.
+    // ── DOM PRICE EXTRACTION — Druni (Vue/React based) ──
+    // Selectores actuais (verificados em Maio 2026):
+    //   .price-box.price-final_price          → wrapper do bloco principal
+    //   .price-wrapper.text-product-price     → preço actual displayed
+    //   .price-wrapper.text-product-price-old → strikethrough (riscado)
+    // JSON-LD price normalmente bate certo, mas o DOM é a referência visual.
     function parseDruniPriceText(text) {
-      // "296,25 €" → 296.25
       const m = (text || '').match(/([\d.]+,\d{2}|[\d.]+)/);
       if (!m) return null;
       const s = m[1].replace(/\./g, '').replace(',', '.');
       const n = parseFloat(s);
       return isFinite(n) ? n : null;
     }
+    let currentPriceFromDom = null;
     let previousPriceFromDom = null;
-    // Procurar o "main product price block" — evita produtos relacionados
-    const productInfo = document.querySelector('.product-info-main, .product-page-info, .product-essential, body');
-    if (productInfo) {
-      const oldPriceEl = productInfo.querySelector('.old-price .price, .old-price .price-wrapper');
-      const specialPriceEl = productInfo.querySelector('.special-price .price, .product-info-price .price');
-      const oldPrice = parseDruniPriceText(oldPriceEl?.textContent);
-      const specialPrice = parseDruniPriceText(specialPriceEl?.textContent);
-      if (oldPrice && specialPrice && oldPrice > specialPrice * 1.01) {
-        previousPriceFromDom = oldPrice;
+    // O bloco principal é o PRIMEIRO .price-box.price-final_price não dentro de
+    // produtos relacionados (.related-products, .upsell, .crosssell, etc.)
+    const allPriceBoxes = document.querySelectorAll('.price-box.price-final_price, .price-box');
+    let mainBox = null;
+    for (const box of allPriceBoxes) {
+      if (box.closest('.related-products, .upsell, .crosssell, .product-items, .product-grid, .swiper-slide, .glide__slide')) continue;
+      // Evitar o sticky-price (duplicado em scroll) — prefere o normal
+      if (box.classList.contains('product-sticky-price')) continue;
+      mainBox = box;
+      break;
+    }
+    if (mainBox) {
+      // Current price: primeiro .text-product-price que NÃO seja old
+      const curEl = mainBox.querySelector(
+        '.price-wrapper.text-product-price, ' +
+        '[class*="text-product-price"]:not([class*="text-product-price-old"]):not([class*="discount"])'
+      );
+      if (curEl) {
+        const txt = curEl.textContent || curEl.innerText || '';
+        currentPriceFromDom = parseDruniPriceText(txt);
+      }
+      // Previous (strikethrough): .text-product-price-old
+      const oldEl = mainBox.querySelector(
+        '.price-wrapper.text-product-price-old, ' +
+        '[class*="text-product-price-old"]'
+      );
+      if (oldEl) {
+        const txt = oldEl.textContent || oldEl.innerText || '';
+        const old = parseDruniPriceText(txt);
+        if (old && currentPriceFromDom && old > currentPriceFromDom * 1.01) {
+          previousPriceFromDom = old;
+        }
       }
     }
 
@@ -245,6 +271,7 @@ async function extract(page) {
       offers: normOffers,
       variants: filteredVariants,
       image_url: imgUrl,
+      current_price_dom: currentPriceFromDom,
       previous_price_dom: previousPriceFromDom,
     };
   });
@@ -323,6 +350,8 @@ function saveCheckpoint(allProducts, stats, final = false) {
         const offerPool = inStockOffers.length ? inStockOffers : (data.offers || []).filter(o => o.price);
         const cheapestOffer = offerPool.length ? offerPool.reduce((a, b) => (b.price < a.price ? b : a)) : null;
         const cheapestPrice = cheapestOffer?.price ?? data.variants[0]?.price ?? null;
+        // PRIORIDADE: DOM .text-product-price (o que utilizador vê) > JSON-LD
+        const finalPrice = data.current_price_dom ?? cheapestPrice;
         allProducts.push({
           ...t,
           status: 'ok',
@@ -332,8 +361,10 @@ function saveCheckpoint(allProducts, stats, final = false) {
           ean: data.ean,
           description: data.description,
           image_url: data.image_url,
-          price: cheapestPrice,
+          price: finalPrice,
           previous_price: data.previous_price_dom || null,
+          _price_source: data.current_price_dom ? 'dom' : 'jsonld',
+          _jsonld_price: cheapestPrice,
           currency: cheapestOffer?.currency || 'EUR',
           in_stock: cheapestOffer ? true : (data.offers[0]?.availability ? /InStock/i.test(data.offers[0].availability) : true),
           variants: data.variants,

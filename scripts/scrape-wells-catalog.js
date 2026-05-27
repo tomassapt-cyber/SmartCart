@@ -290,6 +290,9 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
         const offerPool = inStockOffers.length ? inStockOffers : (data.offers || []).filter(o => o.price);
         const cheapestOffer = offerPool.length ? offerPool.reduce((a, b) => (b.price < a.price ? b : a)) : null;
         const cheapestPrice = cheapestOffer?.price ?? data.variants[0]?.price ?? null;
+        // PRIORIDADE: DOM .w-sales-price (preço promocional displayed) > JSON-LD
+        // — JSON-LD às vezes tem o preço lista, DOM tem o que utilizador vê.
+        const finalPrice = data.dom_sale_price ?? cheapestPrice;
         allProducts.push({
           ...t,
           status: 'ok',
@@ -299,10 +302,10 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
           ean: data.ean,
           description: data.description,
           image_url: data.image_url,
-          // Se DOM detectou .w-price-list (strikethrough Wells), usar como prev.
-          // Senão null — não inferir de spread de variantes.
-          price: cheapestPrice,
+          price: finalPrice,
           previous_price: data.previous_price_dom || null,
+          _price_source: data.dom_sale_price ? 'dom' : 'jsonld',
+          _jsonld_price: cheapestPrice,
           currency: cheapestOffer?.currency || 'EUR',
           in_stock: cheapestOffer ? true : (data.offers[0]?.availability ? /InStock/i.test(data.offers[0].availability) : true),
           variants: data.variants,
