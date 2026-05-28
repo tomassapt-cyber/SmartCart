@@ -72,9 +72,34 @@ function isProductUrl(url) {
 }
 
 async function fetchSitemap() {
-  const resp = await fetch(SITEMAP_URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!resp.ok) throw new Error(`Sitemap fetch failed: HTTP ${resp.status}`);
-  return await resp.text();
+  // Usar Playwright com headers/cookies PT para evitar bloqueio WAF (HTTP 403)
+  // quando runners GitHub Actions acedem de IPs US (Azure eastus).
+  const { chromium } = require('playwright');
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const context = await browser.newContext({
+      locale: 'pt-PT',
+      timezoneId: 'Europe/Lisbon',
+      geolocation: { latitude: 38.7223, longitude: -9.1393 },
+      permissions: ['geolocation'],
+      extraHTTPHeaders: { 'Accept-Language': 'pt-PT,pt;q=0.9,en;q=0.8' },
+    });
+    await context.addCookies([
+      { name: 'country',  value: 'PT',    domain: '.sweetcare.pt', path: '/' },
+      { name: 'currency', value: 'EUR',   domain: '.sweetcare.pt', path: '/' },
+      { name: 'locale',   value: 'pt_PT', domain: '.sweetcare.pt', path: '/' },
+    ]);
+    const page = await context.newPage();
+    const response = await page.goto(SITEMAP_URL, { waitUntil: 'networkidle', timeout: 30000 });
+    if (!response || !response.ok()) {
+      throw new Error(`Sitemap fetch failed: HTTP ${response?.status() ?? 'unknown'}`);
+    }
+    // Sitemap é XML — page.evaluate devolve o conteúdo puro sem wrapper HTML
+    const xml = await page.evaluate(() => document.documentElement.outerHTML);
+    return xml;
+  } finally {
+    await browser.close();
+  }
 }
 
 function parseSitemap(xml) {
