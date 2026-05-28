@@ -160,7 +160,7 @@ async function scrapeProductPage(page, url) {
       ? products.reduce((a, b) => (getMinOfferPrice(b) < getMinOfferPrice(a) ? b : a))
       : products[0] || null;
 
-    if (!p) return { name: null, ean: null, brand: null, offers: [], variants: [], image_url: null };
+    // Se não há JSON-LD Product, continua para extracção DOM — fallback abaixo
 
     // og:image fallback
     const imgEl = document.querySelector('meta[property="og:image"]');
@@ -301,9 +301,26 @@ async function scrapeProductPage(page, url) {
       }
     }
 
+    // ── DOM fallbacks para name + brand quando JSON-LD não está presente ──
+    // Sweetcare não usa JSON-LD Product na maioria das páginas de produto;
+    // extrai name do h1 / og:title e brand de itemprop ou seletores de marca.
+    const ogTitle = document.querySelector('meta[property="og:title"]')
+      ?.getAttribute('content')?.trim()
+      // remove sufixo " | Sweetcare" ou " - Sweetcare" etc.
+      ?.replace(/\s*[-–|]\s*(?:Sweetcare|SweetCare)[^]*$/, '')?.trim() || null;
+    const h1Name = document.querySelector(
+      'h1[itemprop="name"], h1.product-name, h1.productName, .product-detail__name h1, .product__title h1, h1'
+    )?.textContent?.trim() || null;
+    const domBrand = document.querySelector(
+      '[itemprop="brand"] [itemprop="name"], [itemprop="brand"]'
+    )?.textContent?.trim()
+      || document.querySelector(
+        '.product-brand, .brand-name, .product-detail__brand, .product__brand, [data-brand]'
+      )?.textContent?.trim() || null;
+
     return {
-      name: p?.name || null,
-      brand: typeof p?.brand === 'string' ? p.brand : p?.brand?.name || null,
+      name: p?.name || h1Name || ogTitle || null,
+      brand: (typeof p?.brand === 'string' ? p.brand : p?.brand?.name || null) || domBrand || null,
       ean: p?.gtin13 || p?.gtin || p?.gtin12 || null,
       description: p?.description?.slice(0, 300) || null,
       offers: normOffers,

@@ -1,8 +1,9 @@
 # SmartCart — Sweetcare full catalog refresh
 # ============================================================
 # 2x/dia — preços Sweetcare mudam várias vezes ao longo do dia.
-# Cron usa matrix [1/2, 2/2] — dois jobs paralelos, cada ~metade do catálogo.
-# Dispatch com chunk específico → o job "errado" faz skip no step de scrape.
+# Cron usa matrix [1/4..4/4] — 4 jobs paralelos, ~2150 produtos cada (~3h/chunk).
+# --resume por defeito: checkpoint committed mesmo em timeout → run seguinte continua.
+# Commit step usa if:always() → persiste progresso mesmo se scrape falhar/timeout.
 
 name: Sweetcare catalog refresh
 
@@ -29,7 +30,7 @@ on:
         required: false
         default: ''
       chunk:
-        description: 'Chunk N/M (ex: 1/2, 2/2) — vazio = corre ambos em paralelo'
+        description: 'Chunk N/M (ex: 1/4, 2/4) — vazio = corre todos em paralelo'
         required: false
         default: ''
 
@@ -47,8 +48,10 @@ jobs:
       fail-fast: false
       matrix:
         chunk:
-          - '1/2'
-          - '2/2'
+          - '1/4'
+          - '2/4'
+          - '3/4'
+          - '4/4'
 
     steps:
       - uses: actions/checkout@v4
@@ -74,7 +77,9 @@ jobs:
             echo "Skip: dispatch pediu chunk $MANUAL_CHUNK, este job é $MATRIX_CHUNK."
             exit 0
           fi
-          ARGS="--chunk=$MATRIX_CHUNK"
+          # --resume: salta URLs já presentes em sweetcare-full.json (checkpoint)
+          # Essencial para scrapes que excedem o timeout — progresso acumulado entre runs.
+          ARGS="--chunk=$MATRIX_CHUNK --resume"
           if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
             ARGS="$ARGS --category=${{ github.event.inputs.category }}"
           fi
@@ -82,12 +87,14 @@ jobs:
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
           echo "Running: node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500"
-          node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500
+          node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500 || true
 
       - name: Step 3 — Integrate into seed (fingerprint dedup)
-        run: node scripts/integrate-sweetcare-catalog.js
+        if: always()
+        run: node scripts/integrate-sweetcare-catalog.js || true
 
       - name: Set chunk slug for artifact name
+        if: always()
         id: slug
         run: echo "val=$(echo '${{ matrix.chunk }}' | tr '/' '-')" >> "$GITHUB_OUTPUT"
 
@@ -109,6 +116,7 @@ jobs:
           fi
 
       - name: Commit catalog data + updated seed
+        if: always()
         run: |
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
