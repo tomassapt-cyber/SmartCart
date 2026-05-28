@@ -37,7 +37,9 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
     steps:
       - name: Checkout
@@ -48,7 +50,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install deps
         run: |
@@ -60,12 +62,12 @@ jobs:
 
       - name: Scrape Atida catalog
         run: |
-          ARGS=""
+          ARGS="--resume"
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
-          if [ "${{ github.event.inputs.resume }}" = "true" ]; then
-            ARGS="$ARGS --resume"
+          if [ "${{ github.event.inputs.resume }}" = "false" ]; then
+            ARGS="${ARGS/--resume/}"
           fi
           node scripts/scrape-atida-catalog.js $ARGS
 
