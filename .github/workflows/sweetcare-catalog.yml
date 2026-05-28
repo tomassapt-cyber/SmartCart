@@ -1,16 +1,13 @@
 # SmartCart — Sweetcare full catalog refresh
 # ============================================================
-# Descobre + scrape + integra catálogo Sweetcare (skincare, hair, fragrance, body, makeup).
 # 2x/dia — preços Sweetcare mudam várias vezes ao longo do dia.
-#
-# Cron usa matrix [1/2, 2/2] → dois jobs paralelos, cada um ~metade do catálogo.
-# Cada job termina em ~2.5h, bem abaixo do limite de 5h.
+# Cron usa matrix [1/2, 2/2] — dois jobs paralelos, cada ~metade do catálogo.
+# Dispatch com chunk específico → o job "errado" faz skip no step de scrape.
 
 name: Sweetcare catalog refresh
 
 on:
   schedule:
-    # 10h UTC (manhã PT) + 22h UTC (noite PT)
     - cron: '0 10 * * *'
     - cron: '0 22 * * *'
   workflow_dispatch:
@@ -49,10 +46,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        chunk: ['1/2', '2/2']
-    # Schedule/dispatch sem chunk → ambos os jobs correm.
-    # Dispatch com chunk específico → só o job cujo matrix.chunk coincide.
-    if: github.event.inputs.chunk == '' || github.event.inputs.chunk == matrix.chunk
+        chunk:
+          - '1/2'
+          - '2/2'
 
     steps:
       - uses: actions/checkout@v4
@@ -71,30 +67,35 @@ jobs:
 
       - name: Step 2 — Scrape products (chunk ${{ matrix.chunk }})
         run: |
-          ARGS=""
+          # Se dispatch manual especificou um chunk diferente deste job, skip.
+          MANUAL_CHUNK="${{ github.event.inputs.chunk }}"
+          MATRIX_CHUNK="${{ matrix.chunk }}"
+          if [ -n "$MANUAL_CHUNK" ] && [ "$MANUAL_CHUNK" != "$MATRIX_CHUNK" ]; then
+            echo "Skip: dispatch pediu chunk $MANUAL_CHUNK, este job é $MATRIX_CHUNK."
+            exit 0
+          fi
+          ARGS="--chunk=$MATRIX_CHUNK"
           if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
-            ARGS="--category=${{ github.event.inputs.category }}"
+            ARGS="$ARGS --category=${{ github.event.inputs.category }}"
           fi
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
-          # Chunk: usa input manual se fornecido, senão usa matrix.chunk
-          CHUNK="${{ github.event.inputs.chunk }}"
-          if [ -z "$CHUNK" ]; then
-            CHUNK="${{ matrix.chunk }}"
-          fi
-          ARGS="$ARGS --chunk=$CHUNK"
-          echo "Running: node scripts/scrape-sweetcare-catalog.js $ARGS"
+          echo "Running: node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500"
           node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500
 
       - name: Step 3 — Integrate into seed (fingerprint dedup)
         run: node scripts/integrate-sweetcare-catalog.js
 
+      - name: Set chunk slug for artifact name
+        id: slug
+        run: echo "val=$(echo '${{ matrix.chunk }}' | tr '/' '-')" >> "$GITHUB_OUTPUT"
+
       - name: Upload scraped catalog as artifact (safety-net)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sweetcare-catalog-data-${{ strategy.job-index }}
+          name: sweetcare-catalog-data-${{ steps.slug.outputs.val }}
           path: |
             data/catalog/sweetcare-urls.json
             data/catalog/sweetcare-full.json
@@ -116,14 +117,14 @@ jobs:
             echo "Nothing to commit"
           else
             CAT="${{ github.event.inputs.category || 'all' }}"
-            CHUNK="${{ github.event.inputs.chunk || matrix.chunk }}"
-            git commit -m "chore: Sweetcare catalog refresh - $CAT chunk-$CHUNK ($(date -u +%Y-%m-%d))"
+            git commit -m "chore: Sweetcare catalog refresh - $CAT chunk-${{ matrix.chunk }} ($(date -u +%Y-%m-%d))"
             BRANCH="${GITHUB_REF_NAME}"
             BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
             pushed=0
             for i in "${!BACKOFFS[@]}"; do
               attempt=$((i + 1))
               if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
+              echo "Push falhou (tentativa $attempt), a rebasear..."
               git fetch origin "${BRANCH}" || true
               git rebase --abort 2>/dev/null || true
               if git pull --rebase --autostash origin "${BRANCH}"; then
@@ -134,11 +135,11 @@ jobs:
               fi
               JITTER=$((RANDOM % 10))
               WAIT=$((${BACKOFFS[$i]} + JITTER))
-              echo "Falhou tentativa $attempt, a aguardar ${WAIT}s..."
+              echo "A aguardar ${WAIT}s..."
               sleep "$WAIT"
             done
             if [ "$pushed" != "1" ]; then
-              echo "ERRO: 12 tentativas falharam — abortando step para tornar visível"
+              echo "ERRO: 12 tentativas falharam"
               exit 1
             fi
           fi
