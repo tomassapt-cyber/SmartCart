@@ -12,6 +12,9 @@
  *
  * Output: data/catalog/sweetcare-urls.json
  *
+ * Cache-first: se sweetcare-urls.json tem < 48h, reutiliza sem re-fetch.
+ * Razão: WAF da Sweetcare bloqueia IPs do GitHub Actions (Azure eastus).
+ *
  * Uso:
  *   node scripts/discover-sweetcare-catalog.js
  *   node scripts/discover-sweetcare-catalog.js --debug
@@ -71,10 +74,20 @@ function isProductUrl(url) {
   return /-p-[a-z0-9]+$/i.test(url);
 }
 
-async function fetchSitemap() {
-  const resp = await fetch(SITEMAP_URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!resp.ok) throw new Error(`Sitemap fetch failed: HTTP ${resp.status}`);
-  return await resp.text();
+// Cache-first: evita re-fetch do sitemap se já temos URLs recentes.
+// O WAF da Sweetcare bloqueia IPs Azure (GitHub Actions) a nível TCP.
+// sweetcare-urls.json é committed com git add -f, por isso está disponível
+// logo após checkout mesmo sem nunca ter corrido nesta máquina.
+const CACHE_MAX_AGE_H = 96; // 4 dias — WAF bloqueia GitHub Actions, cache é a única fonte fiável
+
+function isCacheFresh() {
+  if (!fs.existsSync(OUT_FILE)) return false;
+  try {
+    const { discovered_at } = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+    if (!discovered_at) return false;
+    const ageH = (Date.now() - new Date(discovered_at).getTime()) / 3_600_000;
+    return ageH < CACHE_MAX_AGE_H;
+  } catch { return false; }
 }
 
 function parseSitemap(xml) {
@@ -89,17 +102,87 @@ function parseSitemap(xml) {
   return entries;
 }
 
+async function fetchSitemapWithPlaywright() {
+  const { chromium } = require('playwright');
+  const browser = await chromium.launch({ headless: true });
+  const ctx = await browser.newContext({
+    locale: 'pt-PT',
+    timezoneId: 'Europe/Lisbon',
+    geolocation: { latitude: 38.7169, longitude: -9.1395 },
+    permissions: ['geolocation'],
+    extraHTTPHeaders: { 'Accept-Language': 'pt-PT,pt;q=0.9,en;q=0.1' },
+  });
+  await ctx.addCookies([
+    { name: 'country',  value: 'PT',    domain: '.sweetcare.pt', path: '/' },
+    { name: 'currency', value: 'EUR',   domain: '.sweetcare.pt', path: '/' },
+    { name: 'locale',   value: 'pt_PT', domain: '.sweetcare.pt', path: '/' },
+  ]);
+  const page = await ctx.newPage();
+  try {
+    await page.goto(SITEMAP_URL, { waitUntil: 'load', timeout: 60_000 });
+    return await page.content();
+  } finally {
+    await browser.close();
+  }
+}
+
 (async () => {
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  console.log(`📥 Fetching ${SITEMAP_URL}...`);
-  const xml = await fetchSitemap();
-  console.log(`✓ Sitemap baixado (${(xml.length / 1024).toFixed(0)} KB)`);
 
-  let entries = parseSitemap(xml);
-  console.log(`✓ ${entries.length} URLs totais\n`);
+  // ── Cache hit: reutiliza sweetcare-urls.json sem tocar no sitemap ──
+  if (isCacheFresh()) {
+    const cached = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+    const ageH = ((Date.now() - new Date(cached.discovered_at).getTime()) / 3_600_000).toFixed(1);
+    console.log(`✓ Cache válido (${ageH}h, max ${CACHE_MAX_AGE_H}h) — discovered_at: ${cached.discovered_at}`);
+    console.log(`  ${cached.total} URLs filtradas. A reutilizar sem re-fetch do sitemap.\n`);
+    console.log('═══════ Sweetcare — categorias (cache) ═══════');
+    Object.entries(cached.by_category).sort((a, b) => b[1] - a[1]).forEach(([cat, n]) => {
+      console.log(` ${cat.padEnd(15)} ${n}`);
+    });
+    console.log(` ${'TOTAL'.padEnd(15)} ${cached.total}\n`);
+    console.log(`💾 Output: ${OUT_FILE.replace(ROOT, '.')} (não modificado)`);
+    console.log(`\nPróximo: node scripts/scrape-sweetcare-catalog.js`);
+    return;
+  }
+
+  // ── Cache miss / stale: tenta fetch via Playwright ────────────────
+  console.log(`📥 Fetching ${SITEMAP_URL} via Playwright...`);
+  let xml;
+  try {
+    xml = await fetchSitemapWithPlaywright();
+    console.log(`✓ Sitemap baixado (${(xml.length / 1024).toFixed(0)} KB)`);
+  } catch (err) {
+    console.error(`Sitemap fetch falhou: ${err.message}`);
+    // Fallback: usa cache stale se existir (melhor que falhar o job inteiro)
+    if (fs.existsSync(OUT_FILE)) {
+      const cached = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+      console.warn(`⚠ A usar cache stale (${cached.discovered_at}) como fallback.`);
+      console.log(`  ${cached.total} URLs.\n`);
+      console.log(`Próximo: node scripts/scrape-sweetcare-catalog.js`);
+      return;
+    }
+    throw err;
+  }
+
+  const allEntries = parseSitemap(xml);
+  console.log(`✓ ${allEntries.length} URLs totais\n`);
+
+  // Sanity check: sitemap real tem milhares de URLs.
+  // Se devolveu <100 provavelmente o WAF bloqueou e devolveu uma página HTML.
+  if (allEntries.length < 100) {
+    console.error(`✗ Sitemap inválido ou WAF bloqueou (${allEntries.length} entradas < 100 mínimo).`);
+    if (fs.existsSync(OUT_FILE)) {
+      const cached = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+      console.warn(`⚠ A usar cache stale (${cached.discovered_at}) como fallback.`);
+      console.log(`  ${cached.total} URLs.\n`);
+      console.log(`Próximo: node scripts/scrape-sweetcare-catalog.js`);
+      return;
+    }
+    throw new Error(`Sitemap devolveu apenas ${allEntries.length} entradas — abortando.`);
+  }
 
   // Filter to products + categorize
-  const products = entries
+  const products = allEntries
     .filter(e => isProductUrl(e.url))
     .map(e => {
       const slug = e.url.replace(/^https?:\/\/[^/]+\//, '');
