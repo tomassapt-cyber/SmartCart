@@ -1,17 +1,16 @@
 # SmartCart — Sweetcare full catalog refresh
 # ============================================================
 # Descobre + scrape + integra catálogo Sweetcare (skincare, hair, fragrance, body, makeup).
-# Trigger manual via UI ou cron quinzenal (terças 04h Lisboa).
+# 2x/dia — preços Sweetcare mudam várias vezes ao longo do dia.
 #
-# Chunking suportado para reduzir risco de perder 4h+ de scrape.
+# Cron usa matrix [1/2, 2/2] → dois jobs paralelos, cada um ~metade do catálogo.
+# Cada job termina em ~2.5h, bem abaixo do limite de 5h.
 
 name: Sweetcare catalog refresh
 
 on:
   schedule:
-    # 2x/dia — preços Sweetcare mudam várias vezes ao longo do dia.
-    # 10h UTC (manhã PT) + 22h UTC (noite PT) — para que o site nunca
-    # tenha preços com mais de ~12h.
+    # 10h UTC (manhã PT) + 22h UTC (noite PT)
     - cron: '0 10 * * *'
     - cron: '0 22 * * *'
   workflow_dispatch:
@@ -33,23 +32,36 @@ on:
         required: false
         default: ''
       chunk:
-        description: 'Chunk N/M (ex: 1/3) — corre só uma fatia'
+        description: 'Chunk N/M (ex: 1/2, 2/2) — vazio = corre ambos em paralelo'
         required: false
         default: ''
 
 permissions:
   contents: write
+
 jobs:
   catalog:
-    name: Discover + scrape + integrate Sweetcare
+    name: Sweetcare chunk ${{ matrix.chunk }}
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        chunk: ['1/2', '2/2']
+    # Quando workflow_dispatch especifica um chunk concreto, só corre o job
+    # cujo matrix.chunk coincide. Schedule e dispatch sem chunk → ambos correm.
+    if: >-
+      github.event_name == 'schedule' ||
+      github.event.inputs.chunk == '' ||
+      github.event.inputs.chunk == matrix.chunk
 
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
@@ -60,7 +72,7 @@ jobs:
       - name: Step 1 — Discover URLs
         run: node scripts/discover-sweetcare-catalog.js
 
-      - name: Step 2 — Scrape products
+      - name: Step 2 — Scrape products (chunk ${{ matrix.chunk }})
         run: |
           ARGS=""
           if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
@@ -69,9 +81,12 @@ jobs:
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
-          if [ -n "${{ github.event.inputs.chunk }}" ]; then
-            ARGS="$ARGS --chunk=${{ github.event.inputs.chunk }}"
+          # Chunk: usa input manual se fornecido, senão usa matrix.chunk
+          CHUNK="${{ github.event.inputs.chunk }}"
+          if [ -z "$CHUNK" ]; then
+            CHUNK="${{ matrix.chunk }}"
           fi
+          ARGS="$ARGS --chunk=$CHUNK"
           echo "Running: node scripts/scrape-sweetcare-catalog.js $ARGS"
           node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500
 
@@ -82,7 +97,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sweetcare-catalog-data
+          name: sweetcare-catalog-data-${{ strategy.job-index }}
           path: |
             data/catalog/sweetcare-urls.json
             data/catalog/sweetcare-full.json
@@ -104,14 +119,9 @@ jobs:
             echo "Nothing to commit"
           else
             CAT="${{ github.event.inputs.category || 'all' }}"
-            CHUNK_LABEL=""
-            if [ -n "${{ github.event.inputs.chunk }}" ]; then
-              CHUNK_LABEL=" chunk-${{ github.event.inputs.chunk }}"
-            fi
-            git commit -m "chore: Sweetcare catalog refresh - $CAT$CHUNK_LABEL ($(date -u +%Y-%m-%d))"
+            CHUNK="${{ github.event.inputs.chunk || matrix.chunk }}"
+            git commit -m "chore: Sweetcare catalog refresh - $CAT chunk-$CHUNK ($(date -u +%Y-%m-%d))"
             BRANCH="${GITHUB_REF_NAME}"
-            # Push com backoff exponencial: até 8 tentativas, jitter aleatório
-            # para chunks paralelos não tentarem ao mesmo tempo. Total ~17 min.
             BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
             pushed=0
             for i in "${!BACKOFFS[@]}"; do
