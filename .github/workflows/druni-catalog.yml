@@ -46,12 +46,9 @@ jobs:
       fail-fast: false
       matrix:
         chunk: ['1/2', '2/2']
-    # Quando workflow_dispatch especifica um chunk concreto, só corre o job
-    # cujo matrix.chunk coincide. Schedule e dispatch sem chunk → ambos correm.
-    if: >-
-      github.event_name == 'schedule' ||
-      github.event.inputs.chunk == '' ||
-      github.event.inputs.chunk == matrix.chunk
+    # Schedule/dispatch sem chunk → ambos os jobs correm.
+    # Dispatch com chunk específico → só o job cujo matrix.chunk coincide.
+    if: github.event.inputs.chunk == '' || github.event.inputs.chunk == matrix.chunk
 
     steps:
       - uses: actions/checkout@v4
