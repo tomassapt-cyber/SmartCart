@@ -3,8 +3,8 @@
   "store_slug": "sweetcare",
   "store_name": "SweetCare",
   "store_url": "https://sweetcare.pt",
-  "verified_at": "2026-05-28T15:01:01.913Z",
-  "method": "playwright-headless (refresh 2026-05-28)",
+  "verified_at": "2026-05-29T14:18:43.149Z",
+  "method": "playwright-headless (refresh 2026-05-29)",
   "stats": {
     "total": 20,
     "verified": 10,
@@ -177,16 +177,16 @@
       "observed_brand": "La Roche-Posay",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante Duo+M (com niacinamida), 40ml. Variante do canónico. Scrape 2026-05-17: 18.95€ Refresh 2026-05-17: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-20: 18.95€ → 19.68€ Refresh 2026-05-21: 19.68€ → 19.86€ Refresh 2026-05-23: 19.86€ → 19.35€ Refresh 2026-05-24: 19.35€ → 19.35€ Refresh 2026-05-26: 19.35€ → 19.35€ Refresh 2026-05-27: 19.35€ → 19.35€",
-      "verified_at": "2026-05-27T14:45:53.387Z",
-      "observed_price": 19.35,
+      "notes": "Variante Duo+M (com niacinamida), 40ml. Variante do canónico. Scrape 2026-05-17: 18.95€ Refresh 2026-05-17: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-20: 18.95€ → 19.68€ Refresh 2026-05-21: 19.68€ → 19.86€ Refresh 2026-05-23: 19.86€ → 19.35€ Refresh 2026-05-24: 19.35€ → 19.35€ Refresh 2026-05-26: 19.35€ → 19.35€ Refresh 2026-05-27: 19.35€ → 19.35€ Refresh 2026-05-29: 19.35€ → 19.52€",
+      "verified_at": "2026-05-29T14:18:05.688Z",
+      "observed_price": 19.52,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 19.35,
+          "price": 19.52,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/la-roche-posay-effaclar-duo-pele-oleosa-imperfeicoes-severas-marcas-acne-p-001936rp"
         }
