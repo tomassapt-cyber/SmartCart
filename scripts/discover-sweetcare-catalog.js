@@ -78,7 +78,7 @@ function isProductUrl(url) {
 // O WAF da Sweetcare bloqueia IPs Azure (GitHub Actions) a nível TCP.
 // sweetcare-urls.json é committed com git add -f, por isso está disponível
 // logo após checkout mesmo sem nunca ter corrido nesta máquina.
-const CACHE_MAX_AGE_H = 48;
+const CACHE_MAX_AGE_H = 96; // 4 dias — WAF bloqueia GitHub Actions, cache é a única fonte fiável
 
 function isCacheFresh() {
   if (!fs.existsSync(OUT_FILE)) return false;
@@ -166,6 +166,20 @@ async function fetchSitemapWithPlaywright() {
 
   const allEntries = parseSitemap(xml);
   console.log(`✓ ${allEntries.length} URLs totais\n`);
+
+  // Sanity check: sitemap real tem milhares de URLs.
+  // Se devolveu <100 provavelmente o WAF bloqueou e devolveu uma página HTML.
+  if (allEntries.length < 100) {
+    console.error(`✗ Sitemap inválido ou WAF bloqueou (${allEntries.length} entradas < 100 mínimo).`);
+    if (fs.existsSync(OUT_FILE)) {
+      const cached = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+      console.warn(`⚠ A usar cache stale (${cached.discovered_at}) como fallback.`);
+      console.log(`  ${cached.total} URLs.\n`);
+      console.log(`Próximo: node scripts/scrape-sweetcare-catalog.js`);
+      return;
+    }
+    throw new Error(`Sitemap devolveu apenas ${allEntries.length} entradas — abortando.`);
+  }
 
   // Filter to products + categorize
   const products = allEntries
