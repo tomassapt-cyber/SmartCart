@@ -206,7 +206,8 @@ jobs:
         run: |
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          git add -f data/catalog/sweetcare-full.json data/seed-bundle.json demo.html index.html 2>/dev/null || true
+          # sweetcare-urls.json: committed aqui para que o discover use cache nas próximas runs
+          git add -f data/catalog/sweetcare-urls.json data/catalog/sweetcare-full.json data/seed-bundle.json demo.html index.html 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"
             exit 0
