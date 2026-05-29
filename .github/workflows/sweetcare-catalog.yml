@@ -1,7 +1,7 @@
 # SmartCart — Sweetcare full catalog refresh
 # ============================================================
 # 2x/dia — preços Sweetcare mudam várias vezes ao longo do dia.
-# Cron usa matrix [1/4..4/4] — 4 jobs paralelos, ~2150 produtos cada (~3h/chunk).
+# Cron usa matrix [1/6..6/6] — 6 jobs paralelos, ~1430 produtos cada (~4.4h/chunk).
 # --resume por defeito: checkpoint committed mesmo em timeout → run seguinte continua.
 # Commit step usa if:always() → persiste progresso mesmo se scrape falhar/timeout.
 
@@ -30,7 +30,7 @@ on:
         required: false
         default: ''
       chunk:
-        description: 'Chunk N/M (ex: 1/4, 2/4) — vazio = corre todos em paralelo'
+        description: 'Chunk N/M (ex: 1/6, 3/6) — vazio = corre todos em paralelo'
         required: false
         default: ''
 
@@ -48,10 +48,12 @@ jobs:
       fail-fast: false
       matrix:
         chunk:
-          - '1/4'
-          - '2/4'
-          - '3/4'
-          - '4/4'
+          - '1/6'
+          - '2/6'
+          - '3/6'
+          - '4/6'
+          - '5/6'
+          - '6/6'
 
     steps:
       - uses: actions/checkout@v4
