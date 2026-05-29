@@ -2,8 +2,14 @@
 # ============================================================
 # 2x/dia — preços Sweetcare mudam várias vezes ao longo do dia.
 # Cron usa matrix [1/6..6/6] — 6 jobs paralelos, ~1430 produtos cada (~4.4h/chunk).
-# --resume por defeito: checkpoint committed mesmo em timeout → run seguinte continua.
-# Commit step usa if:always() → persiste progresso mesmo se scrape falhar/timeout.
+#
+# Arquitectura anti-conflito:
+#  - Cada chunk escreve em sweetcare-chunk-N-6.json (ficheiro único por chunk)
+#  - Chunks commitam apenas o seu próprio ficheiro → zero conflitos git
+#  - Job "finalize" (needs: catalog) faz merge + integrate + commit final
+#
+# --resume por defeito: salta URLs já presentes no chunk file → acumula progresso.
+# if:always() no commit do chunk → persiste checkpoint mesmo em timeout (5h).
 
 name: Sweetcare catalog refresh
 
@@ -38,6 +44,7 @@ permissions:
   contents: write
 
 jobs:
+  # ── Scrape jobs (paralelos, um por chunk) ───────────────────────────────────
   catalog:
     name: Sweetcare chunk ${{ matrix.chunk }}
     runs-on: ubuntu-latest
@@ -67,7 +74,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Step 1 — Discover URLs
+      - name: Step 1 — Discover URLs (cache-first)
         run: node scripts/discover-sweetcare-catalog.js
 
       - name: Step 2 — Scrape products (chunk ${{ matrix.chunk }})
@@ -79,8 +86,7 @@ jobs:
             echo "Skip: dispatch pediu chunk $MANUAL_CHUNK, este job é $MATRIX_CHUNK."
             exit 0
           fi
-          # --resume: salta URLs já presentes em sweetcare-full.json (checkpoint)
-          # Essencial para scrapes que excedem o timeout — progresso acumulado entre runs.
+          # --resume: salta URLs já presentes no chunk file (acumula entre runs)
           ARGS="--chunk=$MATRIX_CHUNK --resume"
           if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
             ARGS="$ARGS --category=${{ github.event.inputs.category }}"
@@ -88,25 +94,99 @@ jobs:
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
+          # Sem --output: o scraper deriva automaticamente sweetcare-chunk-N-6.json
           echo "Running: node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500"
           node scripts/scrape-sweetcare-catalog.js $ARGS --concurrency=3 --delay=1500 || true
 
-      - name: Step 3 — Integrate into seed (fingerprint dedup)
-        if: always()
-        run: node scripts/integrate-sweetcare-catalog.js || true
-
-      - name: Set chunk slug for artifact name
+      - name: Set chunk slug for artifact/commit name
         if: always()
         id: slug
         run: echo "val=$(echo '${{ matrix.chunk }}' | tr '/' '-')" >> "$GITHUB_OUTPUT"
 
-      - name: Upload scraped catalog as artifact (safety-net)
+      - name: Upload chunk as artifact (safety-net)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sweetcare-catalog-data-${{ steps.slug.outputs.val }}
+          name: sweetcare-chunk-${{ steps.slug.outputs.val }}
+          path: data/catalog/sweetcare-chunk-${{ steps.slug.outputs.val }}.json
+          retention-days: 7
+
+      - name: Commit chunk file
+        # Cada chunk commita apenas o SEU ficheiro — zero conflitos entre chunks.
+        if: always()
+        run: |
+          CHUNK_FILE="data/catalog/sweetcare-chunk-${{ steps.slug.outputs.val }}.json"
+          if [ ! -f "$CHUNK_FILE" ]; then
+            echo "Nenhum chunk file produzido — nada a commitar."
+            exit 0
+          fi
+          git config user.name "smartcart-bot"
+          git config user.email "bot@smartcart.local"
+          git add -f "$CHUNK_FILE"
+          if git diff --staged --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "chore: Sweetcare chunk ${{ matrix.chunk }} scrape ($(date -u +%Y-%m-%d))"
+          BRANCH="${GITHUB_REF_NAME}"
+          BACKOFFS=(5 15 30 60 120 180 240 300)
+          pushed=0
+          for i in "${!BACKOFFS[@]}"; do
+            attempt=$((i + 1))
+            if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
+            echo "Push falhou (tentativa $attempt), a rebasear..."
+            git fetch origin "${BRANCH}" || true
+            git rebase --abort 2>/dev/null || true
+            if git pull --rebase --autostash origin "${BRANCH}"; then
+              if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
+            else
+              git rebase --abort 2>/dev/null || true
+              git stash pop 2>/dev/null || true
+            fi
+            JITTER=$((RANDOM % 30))
+            WAIT=$((${BACKOFFS[$i]} + JITTER))
+            echo "A aguardar ${WAIT}s..."
+            sleep "$WAIT"
+          done
+          if [ "$pushed" != "1" ]; then
+            echo "AVISO: push falhou após ${#BACKOFFS[@]} tentativas — dados guardados no artifact."
+          fi
+
+  # ── Finalize: merge + integrate + commit ────────────────────────────────────
+  finalize:
+    name: Sweetcare finalize (merge + integrate)
+    needs: catalog
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Pull HEAD com todos os chunk files já committed pelos jobs acima
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Merge chunk files → sweetcare-full.json
+        run: node scripts/merge-sweetcare-chunks.js
+
+      - name: Integrate into seed (fingerprint dedup)
+        run: node scripts/integrate-sweetcare-catalog.js || true
+
+      - name: Upload merged catalog as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sweetcare-catalog-merged
           path: |
-            data/catalog/sweetcare-urls.json
             data/catalog/sweetcare-full.json
             data/seed-bundle.json
           retention-days: 30
@@ -114,42 +194,46 @@ jobs:
       - name: Print summary
         run: |
           if [ -f data/catalog/sweetcare-full.json ]; then
-            node -e "const d=require('./data/catalog/sweetcare-full.json'); console.log('=== Sweetcare ==='); console.log('Total:', d.products.length); console.log('Stats:', JSON.stringify(d.stats, null, 2));"
+            node -e "
+              const d = require('./data/catalog/sweetcare-full.json');
+              console.log('=== Sweetcare merged ===');
+              console.log('Total:', d.total || d.products?.length);
+              console.log('Stats:', JSON.stringify(d.stats, null, 2));
+            "
           fi
 
-      - name: Commit catalog data + updated seed
-        if: always()
+      - name: Commit merged catalog + updated seed
         run: |
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          git add -f data/catalog/sweetcare-urls.json data/catalog/sweetcare-full.json data/seed-bundle.json demo.html index.html 2>/dev/null || true
+          git add -f data/catalog/sweetcare-full.json data/seed-bundle.json demo.html index.html 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"
-          else
-            CAT="${{ github.event.inputs.category || 'all' }}"
-            git commit -m "chore: Sweetcare catalog refresh - $CAT chunk-${{ matrix.chunk }} ($(date -u +%Y-%m-%d))"
-            BRANCH="${GITHUB_REF_NAME}"
-            BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
-            pushed=0
-            for i in "${!BACKOFFS[@]}"; do
-              attempt=$((i + 1))
+            exit 0
+          fi
+          CAT="${{ github.event.inputs.category || 'all' }}"
+          git commit -m "chore: Sweetcare catalog refresh - $CAT merged ($(date -u +%Y-%m-%d))"
+          BRANCH="${GITHUB_REF_NAME}"
+          BACKOFFS=(5 15 30 60 120 180 240 300 420 600)
+          pushed=0
+          for i in "${!BACKOFFS[@]}"; do
+            attempt=$((i + 1))
+            if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
+            echo "Push falhou (tentativa $attempt), a rebasear..."
+            git fetch origin "${BRANCH}" || true
+            git rebase --abort 2>/dev/null || true
+            if git pull --rebase --autostash origin "${BRANCH}"; then
               if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
-              echo "Push falhou (tentativa $attempt), a rebasear..."
-              git fetch origin "${BRANCH}" || true
+            else
               git rebase --abort 2>/dev/null || true
-              if git pull --rebase --autostash origin "${BRANCH}"; then
-                if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
-              else
-                git rebase --abort 2>/dev/null || true
-                git stash pop 2>/dev/null || true
-              fi
-              JITTER=$((RANDOM % 10))
-              WAIT=$((${BACKOFFS[$i]} + JITTER))
-              echo "A aguardar ${WAIT}s..."
-              sleep "$WAIT"
-            done
-            if [ "$pushed" != "1" ]; then
-              echo "ERRO: 12 tentativas falharam"
-              exit 1
+              git stash pop 2>/dev/null || true
             fi
+            JITTER=$((RANDOM % 15))
+            WAIT=$((${BACKOFFS[$i]} + JITTER))
+            echo "A aguardar ${WAIT}s..."
+            sleep "$WAIT"
+          done
+          if [ "$pushed" != "1" ]; then
+            echo "ERRO: push falhou após ${#BACKOFFS[@]} tentativas"
+            exit 1
           fi

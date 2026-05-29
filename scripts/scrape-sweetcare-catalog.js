@@ -27,7 +27,6 @@ catch { console.error('✗ playwright não instalado'); process.exit(1); }
 
 const ROOT = path.resolve(__dirname, '..');
 const URL_LIST = path.join(ROOT, 'data', 'catalog', 'sweetcare-urls.json');
-const OUT_FILE = path.join(ROOT, 'data', 'catalog', 'sweetcare-full.json');
 
 const args = Object.fromEntries(
   process.argv.slice(2).map(a => {
@@ -44,6 +43,18 @@ const RESUME = !!args.resume;
 const CHUNK = args.chunk || null;
 const CHECKPOINT_EVERY = 50;
 const TIMEOUT_MS = 25000;
+
+// Output file: --output override → chunk-specific → default full
+function resolveOutFile() {
+  if (args.output) return path.resolve(ROOT, args.output);
+  if (CHUNK) {
+    // 1/6 → sweetcare-chunk-1-6.json  (unique per chunk, no commit conflicts)
+    const slug = CHUNK.replace('/', '-');
+    return path.join(ROOT, 'data', 'catalog', `sweetcare-chunk-${slug}.json`);
+  }
+  return path.join(ROOT, 'data', 'catalog', 'sweetcare-full.json');
+}
+const OUT_FILE = resolveOutFile();
 
 if (!fs.existsSync(URL_LIST)) {
   console.error(`✗ ${URL_LIST} não existe. Corre primeiro:`);
