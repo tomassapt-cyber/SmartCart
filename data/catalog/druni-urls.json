@@ -1,18 +1,165 @@
 {
-  "discovered_at": "2026-05-28T09:27:10.731Z",
+  "discovered_at": "2026-05-30T11:06:42.974Z",
   "source": "https://www.druni.pt/media/sitemap/sitemap_pt.xml",
   "target_categories": [
     "skincare",
     "haircare",
     "fragrance"
   ],
-  "total": 10123,
+  "total": 10133,
   "by_category": {
-    "skincare": 6746,
-    "haircare": 2083,
-    "fragrance": 1294
+    "skincare": 6750,
+    "haircare": 2087,
+    "fragrance": 1296
   },
   "urls": [
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-futura",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-futura",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-essenza",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-essenza",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-club",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-club",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-intensa",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-intensa",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-pura",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-pura",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/hero-eau-de-toilette-burberry-eau-de-toilette-para-homem",
+      "lastmod": "2026-05-27T12:38:20+00:00",
+      "priority": 1,
+      "slug": "hero-eau-de-toilette-burberry-eau-de-toilette-para-homem",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/pour-homme-eau-essentielle-issey-miyake-eau-de-parfum-para-homem",
+      "lastmod": "2026-05-27T12:38:17+00:00",
+      "priority": 1,
+      "slug": "pour-homme-eau-essentielle-issey-miyake-eau-de-parfum-para-homem",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/lumiere-dissey-issey-miyake-eau-de-parfum-para-mulher",
+      "lastmod": "2026-05-27T12:38:15+00:00",
+      "priority": 1,
+      "slug": "lumiere-dissey-issey-miyake-eau-de-parfum-para-mulher",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/gaultier-divine-couture-jean-paul-gaultier-eau-de-parfum-para-mulher",
+      "lastmod": "2026-05-27T12:38:15+00:00",
+      "priority": 1,
+      "slug": "gaultier-divine-couture-jean-paul-gaultier-eau-de-parfum-para-mulher",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/man-parfum-jimmy-choo-eau-de-parfum-masculino",
+      "lastmod": "2026-05-27T12:38:15+00:00",
+      "priority": 1,
+      "slug": "man-parfum-jimmy-choo-eau-de-parfum-masculino",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/eau-de-parfum-courreges-lempreinte-courreges-eau-de-parfum",
+      "lastmod": "2026-05-27T12:38:15+00:00",
+      "priority": 1,
+      "slug": "eau-de-parfum-courreges-lempreinte-courreges-eau-de-parfum",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/scandal-elixir-jean-paul-gaultier-perfume-para-mulher",
+      "lastmod": "2026-05-27T12:38:14+00:00",
+      "priority": 1,
+      "slug": "scandal-elixir-jean-paul-gaultier-perfume-para-mulher",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/acqua-di-gio-intense-armani-eau-de-parfum-intense",
+      "lastmod": "2026-05-27T12:38:14+00:00",
+      "priority": 1,
+      "slug": "acqua-di-gio-intense-armani-eau-de-parfum-intense",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/man-wood-essence-parfum-bvlgari-perfume-para-homem",
+      "lastmod": "2026-05-27T12:38:14+00:00",
+      "priority": 1,
+      "slug": "man-wood-essence-parfum-bvlgari-perfume-para-homem",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/the-coconut-club-body-hair-fragrance-mist-lancaster-bruma-perfumada",
+      "lastmod": "2026-05-27T12:38:08+00:00",
+      "priority": 1,
+      "slug": "the-coconut-club-body-hair-fragrance-mist-lancaster-bruma-perfumada",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/riviera-peach-party-body-hair-fragrance-mist-lancaster-nevoa-perfumada",
+      "lastmod": "2026-05-27T12:38:08+00:00",
+      "priority": 1,
+      "slug": "riviera-peach-party-body-hair-fragrance-mist-lancaster-nevoa-perfumada",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/jasmine-sunset-body-hair-fragrance-mist-lancaster-bruma-perfumada",
+      "lastmod": "2026-05-27T12:38:08+00:00",
+      "priority": 1,
+      "slug": "jasmine-sunset-body-hair-fragrance-mist-lancaster-bruma-perfumada",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/cofre-yum-me-sunny-escada-eau-de-parfum-para-mulher",
+      "lastmod": "2026-05-27T12:37:12+00:00",
+      "priority": 1,
+      "slug": "cofre-yum-me-sunny-escada-eau-de-parfum-para-mulher",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/fakhar-lattafa-eau-de-parfum-para-homem",
+      "lastmod": "2026-05-27T12:37:10+00:00",
+      "priority": 1,
+      "slug": "fakhar-lattafa-eau-de-parfum-para-homem",
+      "category": "fragrance"
+    },
+    {
+      "url": "https://www.druni.pt/cofre-the-one-dolce-gabbana-eau-de-parfum-para-homem",
+      "lastmod": "2026-05-27T12:37:10+00:00",
+      "priority": 1,
+      "slug": "cofre-the-one-dolce-gabbana-eau-de-parfum-para-homem",
+      "category": "fragrance"
+    },
     {
       "url": "https://www.druni.pt/asad-elixir-lattafa-eau-de-parfum-para-homem",
       "lastmod": "2026-05-26T12:34:38+00:00",
@@ -25,48 +172,6 @@
       "lastmod": "2026-05-26T12:34:37+00:00",
       "priority": 1,
       "slug": "asad-lattafa-eau-de-parfum-para-homem",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-essenza",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-essenza",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-club",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-club",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-intensa",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-intensa",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-pura",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-pura",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-futura",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-futura",
       "category": "fragrance"
     },
     {
@@ -186,13 +291,6 @@
       "lastmod": "2026-05-20T12:29:59+00:00",
       "priority": 1,
       "slug": "am-to-pm-playboy-eau-de-toilette-para-homem",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/man-parfum-jimmy-choo-eau-de-parfum-masculino",
-      "lastmod": "2026-05-19T12:44:57+00:00",
-      "priority": 1,
-      "slug": "man-parfum-jimmy-choo-eau-de-parfum-masculino",
       "category": "fragrance"
     },
     {
@@ -1071,13 +1169,6 @@
       "category": "fragrance"
     },
     {
-      "url": "https://www.druni.pt/hero-eau-de-toilette-burberry-eau-de-toilette-para-homem",
-      "lastmod": "2026-04-27T12:32:58+00:00",
-      "priority": 1,
-      "slug": "hero-eau-de-toilette-burberry-eau-de-toilette-para-homem",
-      "category": "fragrance"
-    },
-    {
       "url": "https://www.druni.pt/hero-eau-de-parfum-burberry-eau-de-parfum-para-homem",
       "lastmod": "2026-04-27T12:32:58+00:00",
       "priority": 1,
@@ -1089,13 +1180,6 @@
       "lastmod": "2026-04-27T12:31:54+00:00",
       "priority": 1,
       "slug": "badee-al-oud-for-glory-lattafa-eau-de-parfum-para-homem",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/fakhar-lattafa-eau-de-parfum-para-homem",
-      "lastmod": "2026-04-27T12:31:54+00:00",
-      "priority": 1,
-      "slug": "fakhar-lattafa-eau-de-parfum-para-homem",
       "category": "fragrance"
     },
     {
@@ -1288,38 +1372,10 @@
       "category": "fragrance"
     },
     {
-      "url": "https://www.druni.pt/gaultier-divine-couture-jean-paul-gaultier-eau-de-parfum-para-mulher",
-      "lastmod": "2026-04-13T12:38:17+00:00",
-      "priority": 1,
-      "slug": "gaultier-divine-couture-jean-paul-gaultier-eau-de-parfum-para-mulher",
-      "category": "fragrance"
-    },
-    {
       "url": "https://www.druni.pt/good-girl-jasmine-absolute-carolina-herrera-eau-de-parfum-para-mulher",
       "lastmod": "2026-04-13T12:38:17+00:00",
       "priority": 1,
       "slug": "good-girl-jasmine-absolute-carolina-herrera-eau-de-parfum-para-mulher",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/the-coconut-club-body-hair-fragrance-mist-lancaster-bruma-perfumada",
-      "lastmod": "2026-04-13T12:38:08+00:00",
-      "priority": 1,
-      "slug": "the-coconut-club-body-hair-fragrance-mist-lancaster-bruma-perfumada",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/riviera-peach-party-body-hair-fragrance-mist-lancaster-nevoa-perfumada",
-      "lastmod": "2026-04-13T12:38:08+00:00",
-      "priority": 1,
-      "slug": "riviera-peach-party-body-hair-fragrance-mist-lancaster-nevoa-perfumada",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/jasmine-sunset-body-hair-fragrance-mist-lancaster-bruma-perfumada",
-      "lastmod": "2026-04-13T12:38:08+00:00",
-      "priority": 1,
-      "slug": "jasmine-sunset-body-hair-fragrance-mist-lancaster-bruma-perfumada",
       "category": "fragrance"
     },
     {
@@ -1348,13 +1404,6 @@
       "lastmod": "2026-04-09T12:35:26+00:00",
       "priority": 1,
       "slug": "light-blue-eau-de-toilette-dolce-gabbana-eau-de-toilette-para-mulher",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/lumiere-dissey-issey-miyake-eau-de-parfum-para-mulher",
-      "lastmod": "2026-04-09T12:35:23+00:00",
-      "priority": 1,
-      "slug": "lumiere-dissey-issey-miyake-eau-de-parfum-para-mulher",
       "category": "fragrance"
     },
     {
@@ -1414,31 +1463,10 @@
       "category": "fragrance"
     },
     {
-      "url": "https://www.druni.pt/man-wood-essence-parfum-bvlgari-perfume-para-homem",
-      "lastmod": "2026-04-08T12:30:47+00:00",
-      "priority": 1,
-      "slug": "man-wood-essence-parfum-bvlgari-perfume-para-homem",
-      "category": "fragrance"
-    },
-    {
       "url": "https://www.druni.pt/cloud-pink-ariana-grande-eau-de-parfum-para-mulher",
       "lastmod": "2026-04-08T12:29:59+00:00",
       "priority": 1,
       "slug": "cloud-pink-ariana-grande-eau-de-parfum-para-mulher",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/cofre-yum-me-sunny-escada-eau-de-parfum-para-mulher",
-      "lastmod": "2026-04-08T12:29:59+00:00",
-      "priority": 1,
-      "slug": "cofre-yum-me-sunny-escada-eau-de-parfum-para-mulher",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/cofre-the-one-dolce-gabbana-eau-de-parfum-para-homem",
-      "lastmod": "2026-04-08T12:29:55+00:00",
-      "priority": 1,
-      "slug": "cofre-the-one-dolce-gabbana-eau-de-parfum-para-homem",
       "category": "fragrance"
     },
     {
@@ -3290,13 +3318,6 @@
       "category": "fragrance"
     },
     {
-      "url": "https://www.druni.pt/acqua-di-gio-intense-armani-eau-de-parfum-intense",
-      "lastmod": "2026-02-22T21:07:36+00:00",
-      "priority": 1,
-      "slug": "acqua-di-gio-intense-armani-eau-de-parfum-intense",
-      "category": "fragrance"
-    },
-    {
       "url": "https://www.druni.pt/scandal-elixir-parfum-jean-paul-gaultier-perfume-para-homem",
       "lastmod": "2026-02-22T21:07:35+00:00",
       "priority": 1,
@@ -3350,13 +3371,6 @@
       "lastmod": "2026-02-22T21:07:35+00:00",
       "priority": 1,
       "slug": "irresistible-nectar-givenchy-eau-de-parfum-para-mulher",
-      "category": "fragrance"
-    },
-    {
-      "url": "https://www.druni.pt/scandal-elixir-jean-paul-gaultier-perfume-para-mulher",
-      "lastmod": "2026-02-22T21:07:34+00:00",
-      "priority": 1,
-      "slug": "scandal-elixir-jean-paul-gaultier-perfume-para-mulher",
       "category": "fragrance"
     },
     {
@@ -9072,129 +9086,297 @@
       "category": "fragrance"
     },
     {
-      "url": "https://www.druni.pt/seriously-good-shampoo-glowfilter-shampoo-fortificante",
-      "lastmod": "2026-05-26T12:34:36+00:00",
+      "url": "https://www.druni.pt/beach-club-beter-2-presilhas-para-o-cabelo",
+      "lastmod": "2026-05-28T12:31:42+00:00",
       "priority": 1,
-      "slug": "seriously-good-shampoo-glowfilter-shampoo-fortificante",
+      "slug": "beach-club-beter-2-presilhas-para-o-cabelo",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/pro-longer",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/beach-club-beter-presilha-media-para-o-cabelo",
+      "lastmod": "2026-05-28T12:31:42+00:00",
       "priority": 1,
-      "slug": "marcas/loreal-professionnel/pro-longer",
+      "slug": "beach-club-beter-presilha-media-para-o-cabelo",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/beach-club-beter-presilha-grande-para-o-cabelo",
+      "lastmod": "2026-05-28T12:31:42+00:00",
       "priority": 1,
-      "slug": "marcas/loreal-professionnel/vitamino-color",
+      "slug": "beach-club-beter-presilha-grande-para-o-cabelo",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/collagen-lifter-elvive-condicionador-volumizador",
+      "lastmod": "2026-05-28T12:31:27+00:00",
       "priority": 1,
-      "slug": "marcas/loreal-professionnel/absolut-repair",
+      "slug": "collagen-lifter-elvive-condicionador-volumizador",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/liss-unlimited",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/full-resist-elvive-mascara-capilar-fortalecedora",
+      "lastmod": "2026-05-28T12:31:27+00:00",
       "priority": 1,
-      "slug": "marcas/loreal-professionnel/liss-unlimited",
+      "slug": "full-resist-elvive-mascara-capilar-fortalecedora",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/redken/acidic-bonding-concentrate",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/champu-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
+      "lastmod": "2026-05-28T12:31:26+00:00",
       "priority": 1,
-      "slug": "marcas/redken/acidic-bonding-concentrate",
+      "slug": "champu-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/redken/blondage-high-bright",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/acondicionador-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
+      "lastmod": "2026-05-28T12:31:26+00:00",
       "priority": 1,
-      "slug": "marcas/redken/blondage-high-bright",
+      "slug": "acondicionador-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/curl-expression",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/hialuronico-pure-elvive-champo-purificante-capilar-72h",
+      "lastmod": "2026-05-28T12:31:24+00:00",
       "priority": 1,
-      "slug": "marcas/loreal-professionnel/curl-expression",
+      "slug": "hialuronico-pure-elvive-champo-purificante-capilar-72h",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/redken/all-soft-mega-curls",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/glycolic-gloss-elvive-condicionador-cabelo-suave-e-brilhante",
+      "lastmod": "2026-05-28T12:31:12+00:00",
       "priority": 1,
-      "slug": "marcas/redken/all-soft-mega-curls",
+      "slug": "glycolic-gloss-elvive-condicionador-cabelo-suave-e-brilhante",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/scalp-advanced",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/bond-repair-elvive-pre-shampoo-resgate",
+      "lastmod": "2026-05-28T12:31:11+00:00",
       "priority": 1,
-      "slug": "marcas/loreal-professionnel/scalp-advanced",
+      "slug": "bond-repair-elvive-pre-shampoo-resgate",
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair-molecular",
-      "lastmod": "2026-05-26T12:22:59+00:00",
+      "url": "https://www.druni.pt/bond-repair-elvive-shampoo-fortificante",
+      "lastmod": "2026-05-28T12:31:11+00:00",
       "priority": 1,
-      "slug": "marcas/loreal-professionnel/absolut-repair-molecular",
+      "slug": "bond-repair-elvive-shampoo-fortificante",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/bond-repair-elvive-condicionador-reparador",
+      "lastmod": "2026-05-28T12:31:11+00:00",
+      "priority": 1,
+      "slug": "bond-repair-elvive-condicionador-reparador",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/glycolic-gloss-elvive-champo-cabelo-suave-e-brilhante",
+      "lastmod": "2026-05-28T12:31:11+00:00",
+      "priority": 1,
+      "slug": "glycolic-gloss-elvive-champo-cabelo-suave-e-brilhante",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/dream-long-elvive-mascara-cabelo-longo-e-danificado",
+      "lastmod": "2026-05-28T12:31:10+00:00",
+      "priority": 1,
+      "slug": "dream-long-elvive-mascara-cabelo-longo-e-danificado",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/dream-long-elvive-super-condicionador-cabelo-longo-e-danificado",
+      "lastmod": "2026-05-28T12:31:10+00:00",
+      "priority": 1,
+      "slug": "dream-long-elvive-super-condicionador-cabelo-longo-e-danificado",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/full-resist-acondicionador-anti-rotura-elvive-condicionador-fortificante-cabelo",
+      "lastmod": "2026-05-28T12:31:10+00:00",
+      "priority": 1,
+      "slug": "full-resist-acondicionador-anti-rotura-elvive-condicionador-fortificante-cabelo",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/aceite-extraordinario-sublimador-del-color-elvive-oleo-que-proporciona-vitalidade-ao-cabelo",
+      "lastmod": "2026-05-28T12:31:09+00:00",
+      "priority": 1,
+      "slug": "aceite-extraordinario-sublimador-del-color-elvive-oleo-que-proporciona-vitalidade-ao-cabelo",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/aceite-extraordinario-con-6-aceites-flores-elvive-creme-amaciador-cabelo-seco",
+      "lastmod": "2026-05-28T12:31:09+00:00",
+      "priority": 1,
+      "slug": "aceite-extraordinario-con-6-aceites-flores-elvive-creme-amaciador-cabelo-seco",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/champu-aceite-extraordinario-elvive-shampoo-nutritivo-oleo-coco",
+      "lastmod": "2026-05-28T12:31:09+00:00",
+      "priority": 1,
+      "slug": "champu-aceite-extraordinario-elvive-shampoo-nutritivo-oleo-coco",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/acondicionador-total-repair-5-elvive-cabelo-extremamente-danificado",
+      "lastmod": "2026-05-28T12:31:09+00:00",
+      "priority": 1,
+      "slug": "acondicionador-total-repair-5-elvive-cabelo-extremamente-danificado",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/keratina-nelly-creme-amaciador-anti-frizz",
+      "lastmod": "2026-05-28T12:31:09+00:00",
+      "priority": 1,
+      "slug": "keratina-nelly-creme-amaciador-anti-frizz",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/miel-nelly-creme-amaciador",
+      "lastmod": "2026-05-28T12:31:09+00:00",
+      "priority": 1,
+      "slug": "miel-nelly-creme-amaciador",
       "category": "haircare"
     },
     {
       "url": "https://www.druni.pt/marcas/loreal-professionnel/metal-detox",
-      "lastmod": "2026-05-26T12:22:58+00:00",
+      "lastmod": "2026-05-28T12:19:28+00:00",
       "priority": 1,
       "slug": "marcas/loreal-professionnel/metal-detox",
       "category": "haircare"
     },
     {
       "url": "https://www.druni.pt/marcas/redken/color-extend-magnetics",
-      "lastmod": "2026-05-26T12:22:58+00:00",
+      "lastmod": "2026-05-28T12:19:28+00:00",
       "priority": 1,
       "slug": "marcas/redken/color-extend-magnetics",
       "category": "haircare"
     },
     {
       "url": "https://www.druni.pt/marcas/redken/color-extend-blondage",
-      "lastmod": "2026-05-26T12:22:58+00:00",
+      "lastmod": "2026-05-28T12:19:28+00:00",
       "priority": 1,
       "slug": "marcas/redken/color-extend-blondage",
       "category": "haircare"
     },
     {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/pro-longer",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/pro-longer",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/vitamino-color",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/absolut-repair",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/liss-unlimited",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/liss-unlimited",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/acidic-bonding-concentrate",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/acidic-bonding-concentrate",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/blondage-high-bright",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/blondage-high-bright",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/curl-expression",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/curl-expression",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/all-soft-mega-curls",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/all-soft-mega-curls",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/scalp-advanced",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/scalp-advanced",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair-molecular",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/absolut-repair-molecular",
+      "category": "haircare"
+    },
+    {
       "url": "https://www.druni.pt/marcas/loreal-professionnel/serioxyl-x",
-      "lastmod": "2026-05-26T12:22:57+00:00",
+      "lastmod": "2026-05-28T12:19:27+00:00",
       "priority": 1,
       "slug": "marcas/loreal-professionnel/serioxyl-x",
       "category": "haircare"
     },
     {
       "url": "https://www.druni.pt/marcas/loreal-professionnel/tecni-art",
-      "lastmod": "2026-05-26T12:22:57+00:00",
+      "lastmod": "2026-05-28T12:19:27+00:00",
       "priority": 1,
       "slug": "marcas/loreal-professionnel/tecni-art",
       "category": "haircare"
     },
     {
       "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color-spectrum",
-      "lastmod": "2026-05-26T12:22:57+00:00",
+      "lastmod": "2026-05-28T12:19:27+00:00",
       "priority": 1,
       "slug": "marcas/loreal-professionnel/vitamino-color-spectrum",
       "category": "haircare"
     },
     {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/aminexil-advanced",
+      "lastmod": "2026-05-28T12:19:26+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/aminexil-advanced",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/chroma-creme",
+      "lastmod": "2026-05-28T12:19:26+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/chroma-creme",
+      "category": "haircare"
+    },
+    {
       "url": "https://www.druni.pt/marcas/loreal-professionnel/keratin-alpha-sleek",
-      "lastmod": "2026-05-26T12:22:57+00:00",
+      "lastmod": "2026-05-28T12:19:26+00:00",
       "priority": 1,
       "slug": "marcas/loreal-professionnel/keratin-alpha-sleek",
+      "category": "haircare"
+    },
+    {
+      "url": "https://www.druni.pt/seriously-good-shampoo-glowfilter-shampoo-fortificante",
+      "lastmod": "2026-05-26T12:34:36+00:00",
+      "priority": 1,
+      "slug": "seriously-good-shampoo-glowfilter-shampoo-fortificante",
       "category": "haircare"
     },
     {
@@ -9786,13 +9968,6 @@
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/full-resist-elvive-mascara-capilar-fortalecedora",
-      "lastmod": "2026-05-25T12:31:57+00:00",
-      "priority": 1,
-      "slug": "full-resist-elvive-mascara-capilar-fortalecedora",
-      "category": "haircare"
-    },
-    {
       "url": "https://www.druni.pt/pinza-l-oasis-heaven-blue-invisibobble-acessorio-cabelo",
       "lastmod": "2026-05-25T12:31:56+00:00",
       "priority": 1,
@@ -9853,13 +10028,6 @@
       "lastmod": "2026-05-25T12:31:44+00:00",
       "priority": 1,
       "slug": "sedoso-brillante-pantene-shampoo-reparador-capilar",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/dream-long-elvive-mascara-cabelo-longo-e-danificado",
-      "lastmod": "2026-05-25T12:31:43+00:00",
-      "priority": 1,
-      "slug": "dream-long-elvive-mascara-cabelo-longo-e-danificado",
       "category": "haircare"
     },
     {
@@ -9968,13 +10136,6 @@
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/glycolic-gloss-elvive-champo-cabelo-suave-e-brilhante",
-      "lastmod": "2026-05-21T12:30:24+00:00",
-      "priority": 1,
-      "slug": "glycolic-gloss-elvive-champo-cabelo-suave-e-brilhante",
-      "category": "haircare"
-    },
-    {
       "url": "https://www.druni.pt/champu-reparador-cabellos-tenidos-drn-shampoo-oleo-argan",
       "lastmod": "2026-05-21T12:30:24+00:00",
       "priority": 1,
@@ -10035,20 +10196,6 @@
       "lastmod": "2026-05-21T12:30:22+00:00",
       "priority": 1,
       "slug": "adios-frizz-pantene-shampoo-anti-frizz",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/bond-repair-elvive-pre-shampoo-resgate",
-      "lastmod": "2026-05-21T12:30:11+00:00",
-      "priority": 1,
-      "slug": "bond-repair-elvive-pre-shampoo-resgate",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/bond-repair-elvive-shampoo-fortificante",
-      "lastmod": "2026-05-21T12:30:11+00:00",
-      "priority": 1,
-      "slug": "bond-repair-elvive-shampoo-fortificante",
       "category": "haircare"
     },
     {
@@ -11277,48 +11424,6 @@
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/champu-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
-      "lastmod": "2026-04-30T12:44:39+00:00",
-      "priority": 1,
-      "slug": "champu-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/acondicionador-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
-      "lastmod": "2026-04-30T12:44:39+00:00",
-      "priority": 1,
-      "slug": "acondicionador-boost-de-brillo-elvive-cabelo-opaco-e-sem-brilho",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/collagen-lifter-elvive-condicionador-volumizador",
-      "lastmod": "2026-04-30T12:44:39+00:00",
-      "priority": 1,
-      "slug": "collagen-lifter-elvive-condicionador-volumizador",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/hialuronico-pure-elvive-champo-purificante-capilar-72h",
-      "lastmod": "2026-04-30T12:44:38+00:00",
-      "priority": 1,
-      "slug": "hialuronico-pure-elvive-champo-purificante-capilar-72h",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/dream-long-elvive-super-condicionador-cabelo-longo-e-danificado",
-      "lastmod": "2026-04-30T12:44:37+00:00",
-      "priority": 1,
-      "slug": "dream-long-elvive-super-condicionador-cabelo-longo-e-danificado",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/full-resist-acondicionador-anti-rotura-elvive-condicionador-fortificante-cabelo",
-      "lastmod": "2026-04-30T12:44:37+00:00",
-      "priority": 1,
-      "slug": "full-resist-acondicionador-anti-rotura-elvive-condicionador-fortificante-cabelo",
-      "category": "haircare"
-    },
-    {
       "url": "https://www.druni.pt/champu-al-huevo-kamel-champo-cabelo-fraco-fragil-e-seco",
       "lastmod": "2026-04-29T12:37:32+00:00",
       "priority": 1,
@@ -11344,27 +11449,6 @@
       "lastmod": "2026-04-29T12:37:10+00:00",
       "priority": 1,
       "slug": "champu-pure-nelly-shampoo-cabelos-finos-formato-viagem",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/champu-aceite-extraordinario-elvive-shampoo-nutritivo-oleo-coco",
-      "lastmod": "2026-04-29T12:37:10+00:00",
-      "priority": 1,
-      "slug": "champu-aceite-extraordinario-elvive-shampoo-nutritivo-oleo-coco",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/acondicionador-total-repair-5-elvive-cabelo-extremamente-danificado",
-      "lastmod": "2026-04-29T12:37:10+00:00",
-      "priority": 1,
-      "slug": "acondicionador-total-repair-5-elvive-cabelo-extremamente-danificado",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/aceite-extraordinario-con-6-aceites-flores-elvive-creme-amaciador-cabelo-seco",
-      "lastmod": "2026-04-29T12:37:09+00:00",
-      "priority": 1,
-      "slug": "aceite-extraordinario-con-6-aceites-flores-elvive-creme-amaciador-cabelo-seco",
       "category": "haircare"
     },
     {
@@ -11540,20 +11624,6 @@
       "lastmod": "2026-04-20T12:31:49+00:00",
       "priority": 1,
       "slug": "pure-champu-cocunat-shampoo-cabelo-oleoso",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/aminexil-advanced",
-      "lastmod": "2026-04-20T11:41:27+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/aminexil-advanced",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/chroma-creme",
-      "lastmod": "2026-04-20T11:41:27+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/chroma-creme",
       "category": "haircare"
     },
     {
@@ -13293,24 +13363,10 @@
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/glycolic-gloss-elvive-condicionador-cabelo-suave-e-brilhante",
-      "lastmod": "2026-04-02T12:43:22+00:00",
-      "priority": 1,
-      "slug": "glycolic-gloss-elvive-condicionador-cabelo-suave-e-brilhante",
-      "category": "haircare"
-    },
-    {
       "url": "https://www.druni.pt/carbon-magnetico-aceite-semilla-negra-original-remedies-mascara-cabelo-seco",
       "lastmod": "2026-04-02T12:43:19+00:00",
       "priority": 1,
       "slug": "carbon-magnetico-aceite-semilla-negra-original-remedies-mascara-cabelo-seco",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/bond-repair-elvive-condicionador-reparador",
-      "lastmod": "2026-04-02T12:43:18+00:00",
-      "priority": 1,
-      "slug": "bond-repair-elvive-condicionador-reparador",
       "category": "haircare"
     },
     {
@@ -13493,13 +13549,6 @@
       "lastmod": "2026-04-02T12:43:01+00:00",
       "priority": 1,
       "slug": "mascarilla-nutricion-extrema-original-remedies-mascara-nutritiva-cabelo-seco-e-sensivel",
-      "category": "haircare"
-    },
-    {
-      "url": "https://www.druni.pt/aceite-extraordinario-sublimador-del-color-elvive-oleo-que-proporciona-vitalidade-ao-cabelo",
-      "lastmod": "2026-04-02T12:43:00+00:00",
-      "priority": 1,
-      "slug": "aceite-extraordinario-sublimador-del-color-elvive-oleo-que-proporciona-vitalidade-ao-cabelo",
       "category": "haircare"
     },
     {
@@ -21651,13 +21700,6 @@
       "category": "haircare"
     },
     {
-      "url": "https://www.druni.pt/nutre-y-cuida-hs-shampoo-anticaspa",
-      "lastmod": "2025-11-25T04:01:02+00:00",
-      "priority": 1,
-      "slug": "nutre-y-cuida-hs-shampoo-anticaspa",
-      "category": "haircare"
-    },
-    {
       "url": "https://www.druni.pt/submarine-hairmate-pasta-para-cabelo-com-brilho-natural",
       "lastmod": "2025-11-17T13:36:08+00:00",
       "priority": 1,
@@ -23653,6 +23695,636 @@
       "category": "haircare"
     },
     {
+      "url": "https://www.druni.pt/locion-limpiadora-cetaphil-limpa-pele-suavidade",
+      "lastmod": "2026-05-28T12:32:05+00:00",
+      "priority": 1,
+      "slug": "locion-limpiadora-cetaphil-limpa-pele-suavidade",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-ultimate-diamond-transformative-estee-lauder-fortalece-a-pele-e-melhora-sua-firmeza",
+      "lastmod": "2026-05-28T12:32:02+00:00",
+      "priority": 1,
+      "slug": "serum-ultimate-diamond-transformative-estee-lauder-fortalece-a-pele-e-melhora-sua-firmeza",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/fluido-invisible-oil-control-spf50-cerave-protetor-solar-facial",
+      "lastmod": "2026-05-28T12:32:01+00:00",
+      "priority": 1,
+      "slug": "fluido-invisible-oil-control-spf50-cerave-protetor-solar-facial",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/fluido-invisible-hidratante-spf50-cerave-protetor-solar-facial",
+      "lastmod": "2026-05-28T12:32:01+00:00",
+      "priority": 1,
+      "slug": "fluido-invisible-hidratante-spf50-cerave-protetor-solar-facial",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/bruma-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
+      "lastmod": "2026-05-28T12:32:01+00:00",
+      "priority": 1,
+      "slug": "bruma-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/locion-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
+      "lastmod": "2026-05-28T12:32:01+00:00",
+      "priority": 1,
+      "slug": "locion-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-ojos-collagen-specialist16-vichy-tratamento-antienvelhecimento",
+      "lastmod": "2026-05-28T12:32:00+00:00",
+      "priority": 1,
+      "slug": "serum-ojos-collagen-specialist16-vichy-tratamento-antienvelhecimento",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/stick-solar-anthelios-spf50-la-roche-posay-protetor-solar-facial",
+      "lastmod": "2026-05-28T12:32:00+00:00",
+      "priority": 1,
+      "slug": "stick-solar-anthelios-spf50-la-roche-posay-protetor-solar-facial",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/mela-b3-roche-posay-serum-intenso-antimanchas",
+      "lastmod": "2026-05-28T12:31:59+00:00",
+      "priority": 1,
+      "slug": "mela-b3-roche-posay-serum-intenso-antimanchas",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/capital-soleil-spf50-vichy-oleo-solar-invisivel",
+      "lastmod": "2026-05-28T12:31:59+00:00",
+      "priority": 1,
+      "slug": "capital-soleil-spf50-vichy-oleo-solar-invisivel",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/pure-vitamin-c12-la-roche-posay-serum-vitamina-c12",
+      "lastmod": "2026-05-28T12:31:59+00:00",
+      "priority": 1,
+      "slug": "pure-vitamin-c12-la-roche-posay-serum-vitamina-c12",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/effaclar-duo-spf30-la-roche-posay-tratamento-anti-imperfeicoes",
+      "lastmod": "2026-05-28T12:31:59+00:00",
+      "priority": 1,
+      "slug": "effaclar-duo-spf30-la-roche-posay-tratamento-anti-imperfeicoes",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-mune-400-fluido-antimanchas-la-roche-posay-protetor-solar-spf50",
+      "lastmod": "2026-05-28T12:31:59+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-mune-400-fluido-antimanchas-la-roche-posay-protetor-solar-spf50",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-air-spf50-la-roche-posay-fluido-protetor-solar",
+      "lastmod": "2026-05-28T12:31:59+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-air-spf50-la-roche-posay-fluido-protetor-solar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-mune-400-fluido-invisible-spf50-roche-posay-fluido-invisivel",
+      "lastmod": "2026-05-28T12:31:57+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-mune-400-fluido-invisible-spf50-roche-posay-fluido-invisivel",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-mune-400-fluidoinvisible-spf50-color-roche-posay-fluido-invisivel-cor",
+      "lastmod": "2026-05-28T12:31:57+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-mune-400-fluidoinvisible-spf50-color-roche-posay-fluido-invisivel-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-mune-400-crema-hidratante-spf50-roche-posay-protetor-solar-hidratante",
+      "lastmod": "2026-05-28T12:31:57+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-mune-400-crema-hidratante-spf50-roche-posay-protetor-solar-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-mune-400-crema-hidratante-spf50-color-roche-posay-protetor-solar-hidratante-cor",
+      "lastmod": "2026-05-28T12:31:57+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-mune-400-crema-hidratante-spf50-color-roche-posay-protetor-solar-hidratante-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-mune-roche-posay-protetor-solar-spf50",
+      "lastmod": "2026-05-28T12:31:57+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-mune-roche-posay-protetor-solar-spf50",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-uv-mune-400-roche-posay-protetor-solar-facial-spf50-cor",
+      "lastmod": "2026-05-28T12:31:57+00:00",
+      "priority": 1,
+      "slug": "anthelios-uv-mune-400-roche-posay-protetor-solar-facial-spf50-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/retinol-b3-roche-posay-serum-anti-rugas-regenerador",
+      "lastmod": "2026-05-28T12:31:56+00:00",
+      "priority": 1,
+      "slug": "retinol-b3-roche-posay-serum-anti-rugas-regenerador",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/capital-soleil-hydrating-water-spf50-vichy-agua-solar-protetora-hidratacao",
+      "lastmod": "2026-05-28T12:31:56+00:00",
+      "priority": 1,
+      "slug": "capital-soleil-hydrating-water-spf50-vichy-agua-solar-protetora-hidratacao",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/capital-soleil-uv-age-daily-spf50-vichy-protetor-solar-facial",
+      "lastmod": "2026-05-28T12:31:56+00:00",
+      "priority": 1,
+      "slug": "capital-soleil-uv-age-daily-spf50-vichy-protetor-solar-facial",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/cs-cell-protectspray-spf50-vichy-protetor-solar-spray",
+      "lastmod": "2026-05-28T12:31:56+00:00",
+      "priority": 1,
+      "slug": "cs-cell-protectspray-spf50-vichy-protetor-solar-spray",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/daily-mineral-sunscreen-spf50-sol-de-ibiza-protetor-solar-rosto-e-pescoco",
+      "lastmod": "2026-05-28T12:31:56+00:00",
+      "priority": 1,
+      "slug": "daily-mineral-sunscreen-spf50-sol-de-ibiza-protetor-solar-rosto-e-pescoco",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/cream-ultimate-repair-moisturizer-elizabeth-arden-creme-hidratante",
+      "lastmod": "2026-05-28T12:31:55+00:00",
+      "priority": 1,
+      "slug": "cream-ultimate-repair-moisturizer-elizabeth-arden-creme-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/effaclar-serum-roche-posay-serum-renovador-tripla-acao",
+      "lastmod": "2026-05-28T12:31:54+00:00",
+      "priority": 1,
+      "slug": "effaclar-serum-roche-posay-serum-renovador-tripla-acao",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/ideal-soleil-50-rostro-vichy-creme-solar-facial",
+      "lastmod": "2026-05-28T12:31:54+00:00",
+      "priority": 1,
+      "slug": "ideal-soleil-50-rostro-vichy-creme-solar-facial",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/ideal-soleil-after-sun-milk-vichy-leite-calmante-after-sun",
+      "lastmod": "2026-05-28T12:31:54+00:00",
+      "priority": 1,
+      "slug": "ideal-soleil-after-sun-milk-vichy-leite-calmante-after-sun",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-xl-anti-brillos-50-roche-posay-protetor-solar-cor",
+      "lastmod": "2026-05-28T12:31:54+00:00",
+      "priority": 1,
+      "slug": "anthelios-xl-anti-brillos-50-roche-posay-protetor-solar-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/ideal-soleil-vichy-protecao-solar-criancas",
+      "lastmod": "2026-05-28T12:31:54+00:00",
+      "priority": 1,
+      "slug": "ideal-soleil-vichy-protecao-solar-criancas",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anthelios-oil-control-gel-crema-la-roche-posay-protetor-solar",
+      "lastmod": "2026-05-28T12:31:54+00:00",
+      "priority": 1,
+      "slug": "anthelios-oil-control-gel-crema-la-roche-posay-protetor-solar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/effaclar-sebo-regulating-moisturizer-roche-posay-creme-hidratante-matificante-e-anti-poros",
+      "lastmod": "2026-05-28T12:31:53+00:00",
+      "priority": 1,
+      "slug": "effaclar-sebo-regulating-moisturizer-roche-posay-creme-hidratante-matificante-e-anti-poros",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/ideal-soleil-tinted-mattifying-face-fluid-spf-50-vichy-protetor-solar-facial-cor",
+      "lastmod": "2026-05-28T12:31:53+00:00",
+      "priority": 1,
+      "slug": "ideal-soleil-tinted-mattifying-face-fluid-spf-50-vichy-protetor-solar-facial-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/capital-soleil-spf50-vichy-creme-rosto-toque-seco",
+      "lastmod": "2026-05-28T12:31:53+00:00",
+      "priority": 1,
+      "slug": "capital-soleil-spf50-vichy-creme-rosto-toque-seco",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/set-hydrating-beauty-program-dr-irena-eris-rotina-hidratante",
+      "lastmod": "2026-05-28T12:31:51+00:00",
+      "priority": 1,
+      "slug": "set-hydrating-beauty-program-dr-irena-eris-rotina-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/aceite-argan-100-puro-arganour-nutre-e-protege-pele-excelente-anti-rugas-e-anti-idade",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "aceite-argan-100-puro-arganour-nutre-e-protege-pele-excelente-anti-rugas-e-anti-idade",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/exotic-bronze-spf-0-babaria-gelatina-bronzeadora",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "exotic-bronze-spf-0-babaria-gelatina-bronzeadora",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/bio-watery-sun-cream-tocobo-protetor-solar-spf-50",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "bio-watery-sun-cream-tocobo-protetor-solar-spf-50",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/relief-sun-aqua-fresh-rice-beauty-of-joseon-protetor-solar-spf-50",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "relief-sun-aqua-fresh-rice-beauty-of-joseon-protetor-solar-spf-50",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-glass-hair-sin-aclarado-elvive-cabelo-mais-brilhante-instantaneamente",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "serum-glass-hair-sin-aclarado-elvive-cabelo-mais-brilhante-instantaneamente",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/rice-7-ceramide-anua-serum-hidratante-facial",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "rice-7-ceramide-anua-serum-hidratante-facial",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/collagen-jelly-cream-medicube-creme-facial-gel",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "collagen-jelly-cream-medicube-creme-facial-gel",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/pdrn-pink-peptide-serum-medicube-serum-antienvelhecimento",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "pdrn-pink-peptide-serum-medicube-serum-antienvelhecimento",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/cream-345-dralthea-creme-facial-regenerador-relief",
+      "lastmod": "2026-05-28T12:31:27+00:00",
+      "priority": 1,
+      "slug": "cream-345-dralthea-creme-facial-regenerador-relief",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/aceite-extraordinario-coco-elvive-serum-nutritivo-para-cabelo-normal",
+      "lastmod": "2026-05-28T12:31:26+00:00",
+      "priority": 1,
+      "slug": "aceite-extraordinario-coco-elvive-serum-nutritivo-para-cabelo-normal",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-anticaida-gowth-booster-elvive-tratamento-fortalecedor-capilar",
+      "lastmod": "2026-05-28T12:31:25+00:00",
+      "priority": 1,
+      "slug": "serum-anticaida-gowth-booster-elvive-tratamento-fortalecedor-capilar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/glycolic-gloss-elvive-serum-cabelo-suave-e-brilhante",
+      "lastmod": "2026-05-28T12:31:24+00:00",
+      "priority": 1,
+      "slug": "glycolic-gloss-elvive-serum-cabelo-suave-e-brilhante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/hialuronico-pure-elvive-pre-shampoo-serum-purificante-capilar",
+      "lastmod": "2026-05-28T12:31:24+00:00",
+      "priority": 1,
+      "slug": "hialuronico-pure-elvive-pre-shampoo-serum-purificante-capilar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/midnight-elvive-serum-capilar-noturno-cabelo-seco",
+      "lastmod": "2026-05-28T12:31:24+00:00",
+      "priority": 1,
+      "slug": "midnight-elvive-serum-capilar-noturno-cabelo-seco",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/bond-repair-elvive-serum-reparador-sem-enxague",
+      "lastmod": "2026-05-28T12:31:11+00:00",
+      "priority": 1,
+      "slug": "bond-repair-elvive-serum-reparador-sem-enxague",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/hidra-hialuronico-elvive-serum-noturno-hidratante",
+      "lastmod": "2026-05-28T12:31:11+00:00",
+      "priority": 1,
+      "slug": "hidra-hialuronico-elvive-serum-noturno-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-stop-frizz-elvive-serum-capilar",
+      "lastmod": "2026-05-28T12:31:10+00:00",
+      "priority": 1,
+      "slug": "serum-stop-frizz-elvive-serum-capilar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/acondicionador-hidra-hialuronico-elvive-condicionador-hidratante",
+      "lastmod": "2026-05-28T12:31:10+00:00",
+      "priority": 1,
+      "slug": "acondicionador-hidra-hialuronico-elvive-condicionador-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/mascarilla-hidra-hialuronico-elvive-maacutescara-intensiva-hidratante",
+      "lastmod": "2026-05-28T12:31:10+00:00",
+      "priority": 1,
+      "slug": "mascarilla-hidra-hialuronico-elvive-maacutescara-intensiva-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-rellenador-hidra-hialuronico-elvive-serum-preenchedor",
+      "lastmod": "2026-05-28T12:31:10+00:00",
+      "priority": 1,
+      "slug": "serum-rellenador-hidra-hialuronico-elvive-serum-preenchedor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/bella-aurora/b7-antimanchas",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/bella-aurora/b7-antimanchas",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/hyalu-b5",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/hyalu-b5",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/bella-aurora/proteccion-solar",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/bella-aurora/proteccion-solar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/revolution-skincare/vitamina-c",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/revolution-skincare/vitamina-c",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/vitamina-c",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/vitamina-c",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/effaclar",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/effaclar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/anthelios",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/anthelios",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/cicaplast",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/cicaplast",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/ziaja/vitamina-c-b3-niacinamida",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/ziaja/vitamina-c-b3-niacinamida",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/marcas/beauty-of-joseon/solares",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/beauty-of-joseon/solares",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/solar-facial-natural-spf50-alma-secret-protecao-solar-com-cor",
+      "lastmod": "2026-05-27T12:38:21+00:00",
+      "priority": 1,
+      "slug": "solar-facial-natural-spf50-alma-secret-protecao-solar-com-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/sublime-karite-mascarilla-rene-furterer-mascara-hidratante",
+      "lastmod": "2026-05-27T12:38:20+00:00",
+      "priority": 1,
+      "slug": "sublime-karite-mascarilla-rene-furterer-mascara-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/antihelios-roche-posay-protetor-solar-cor",
+      "lastmod": "2026-05-27T12:38:18+00:00",
+      "priority": 1,
+      "slug": "antihelios-roche-posay-protetor-solar-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/regenerador-capilar-nuggela-sule-ampolas-que-aumentam-espessura-cabelo",
+      "lastmod": "2026-05-27T12:38:18+00:00",
+      "priority": 1,
+      "slug": "regenerador-capilar-nuggela-sule-ampolas-que-aumentam-espessura-cabelo",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/fotoprotector-compact-spf-50-isdin-maquiagem-compacta-alta-protecao-solar",
+      "lastmod": "2026-05-27T12:38:18+00:00",
+      "priority": 1,
+      "slug": "fotoprotector-compact-spf-50-isdin-maquiagem-compacta-alta-protecao-solar",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/all-about-eyes-clinique-creme-hidratante-contorno-olhos-bolsas-e-olheiras",
+      "lastmod": "2026-05-27T12:38:17+00:00",
+      "priority": 1,
+      "slug": "all-about-eyes-clinique-creme-hidratante-contorno-olhos-bolsas-e-olheiras",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/hyaluron-filler-elasticity-eucerin-creme-de-dia-fps-30",
+      "lastmod": "2026-05-27T12:38:17+00:00",
+      "priority": 1,
+      "slug": "hyaluron-filler-elasticity-eucerin-creme-de-dia-fps-30",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/daily-tinted-fluid-sunscreen-spf-30-beauty-of-joseon-gotas-bronzeadoras-fps-30",
+      "lastmod": "2026-05-27T12:38:14+00:00",
+      "priority": 1,
+      "slug": "daily-tinted-fluid-sunscreen-spf-30-beauty-of-joseon-gotas-bronzeadoras-fps-30",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/estuche-solar-dior-protecao-solar-e-tratamento",
+      "lastmod": "2026-05-27T12:38:13+00:00",
+      "priority": 1,
+      "slug": "estuche-solar-dior-protecao-solar-e-tratamento",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/anti-hair-loss-fore-serum-nuggela-sule-serum-capilar-antiqueda",
+      "lastmod": "2026-05-27T12:38:13+00:00",
+      "priority": 1,
+      "slug": "anti-hair-loss-fore-serum-nuggela-sule-serum-capilar-antiqueda",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/beauty-tan-serum-cocunat-autobronzeador-facial",
+      "lastmod": "2026-05-27T12:38:10+00:00",
+      "priority": 1,
+      "slug": "beauty-tan-serum-cocunat-autobronzeador-facial",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/natural-protector-spf30-cocunat-protetor-solar-natural",
+      "lastmod": "2026-05-27T12:38:09+00:00",
+      "priority": 1,
+      "slug": "natural-protector-spf30-cocunat-protetor-solar-natural",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/sunrise-radiance-bronzing-serum-freshly-cosmetics-bronzeador-dourado-vitamina-c",
+      "lastmod": "2026-05-27T12:38:09+00:00",
+      "priority": 1,
+      "slug": "sunrise-radiance-bronzing-serum-freshly-cosmetics-bronzeador-dourado-vitamina-c",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/natural-shield-spf30-cocunat-protetor-solar-facial-cor",
+      "lastmod": "2026-05-27T12:38:09+00:00",
+      "priority": 1,
+      "slug": "natural-shield-spf30-cocunat-protetor-solar-facial-cor",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/hydro-harmony-fluido-liquido-hidratante-stendhal-paris-hidrata-e-controla",
+      "lastmod": "2026-05-27T12:38:08+00:00",
+      "priority": 1,
+      "slug": "hydro-harmony-fluido-liquido-hidratante-stendhal-paris-hidrata-e-controla",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/bronceador-spf-15-babaria-spray-oleo-solar-corporal",
+      "lastmod": "2026-05-27T12:37:10+00:00",
+      "priority": 1,
+      "slug": "bronceador-spf-15-babaria-spray-oleo-solar-corporal",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/cica-calming-sun-serum-tocobo-serum-protetor-solar-spf-50",
+      "lastmod": "2026-05-27T12:36:58+00:00",
+      "priority": 1,
+      "slug": "cica-calming-sun-serum-tocobo-serum-protetor-solar-spf-50",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/cica-calming-sun-stick-tocobo-protetor-solar-spf-50",
+      "lastmod": "2026-05-27T12:36:58+00:00",
+      "priority": 1,
+      "slug": "cica-calming-sun-stick-tocobo-protetor-solar-spf-50",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-no-more-pores-nacomi-serum-facial-esfoliante-noite",
+      "lastmod": "2026-05-27T12:36:57+00:00",
+      "priority": 1,
+      "slug": "serum-no-more-pores-nacomi-serum-facial-esfoliante-noite",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-the-exfoliator-nacomi-serum-facial-esfoliante",
+      "lastmod": "2026-05-27T12:36:57+00:00",
+      "priority": 1,
+      "slug": "serum-the-exfoliator-nacomi-serum-facial-esfoliante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/crema-golden-rays-holiday-dia-spf50-nacomi-creme-facial-hidratante",
+      "lastmod": "2026-05-27T12:36:57+00:00",
+      "priority": 1,
+      "slug": "crema-golden-rays-holiday-dia-spf50-nacomi-creme-facial-hidratante",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/serum-bye-puffy-eye-nacomi-seacuterum-efeito-lifting-contorno-olhos",
+      "lastmod": "2026-05-27T12:36:57+00:00",
+      "priority": 1,
+      "slug": "serum-bye-puffy-eye-nacomi-seacuterum-efeito-lifting-contorno-olhos",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/crema-facial-hidratante-revuele-acido-hialuronico",
+      "lastmod": "2026-05-27T12:36:57+00:00",
+      "priority": 1,
+      "slug": "crema-facial-hidratante-revuele-acido-hialuronico",
+      "category": "skincare"
+    },
+    {
+      "url": "https://www.druni.pt/hydro-care-power-serum-nivea-serum-hidratante-para-homem",
+      "lastmod": "2026-05-27T12:36:57+00:00",
+      "priority": 1,
+      "slug": "hydro-care-power-serum-nivea-serum-hidratante-para-homem",
+      "category": "skincare"
+    },
+    {
       "url": "https://www.druni.pt/moisture-surge-sheertint-hydrator-spf25-clinique-creme-facial-hidratante-cor",
       "lastmod": "2026-05-26T12:35:17+00:00",
       "priority": 1,
@@ -23933,76 +24605,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/marcas/bella-aurora/b7-antimanchas",
-      "lastmod": "2026-05-26T12:22:59+00:00",
-      "priority": 1,
-      "slug": "marcas/bella-aurora/b7-antimanchas",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/hyalu-b5",
-      "lastmod": "2026-05-26T12:22:59+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/hyalu-b5",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/bella-aurora/proteccion-solar",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/bella-aurora/proteccion-solar",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/revolution-skincare/vitamina-c",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/revolution-skincare/vitamina-c",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/vitamina-c",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/vitamina-c",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/effaclar",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/effaclar",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/anthelios",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/anthelios",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/cicaplast",
-      "lastmod": "2026-05-26T12:22:58+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/cicaplast",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/ziaja/vitamina-c-b3-niacinamida",
-      "lastmod": "2026-05-26T12:22:57+00:00",
-      "priority": 1,
-      "slug": "marcas/ziaja/vitamina-c-b3-niacinamida",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/marcas/beauty-of-joseon/solares",
-      "lastmod": "2026-05-26T12:22:57+00:00",
-      "priority": 1,
-      "slug": "marcas/beauty-of-joseon/solares",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/mineral-89-vichy-booster-hialurocircnico-efeito-revitalizador-e-preenchimento",
       "lastmod": "2026-05-25T12:33:10+00:00",
       "priority": 1,
@@ -24164,20 +24766,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/bruma-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
-      "lastmod": "2026-05-25T12:32:54+00:00",
-      "priority": 1,
-      "slug": "bruma-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/locion-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
-      "lastmod": "2026-05-25T12:32:54+00:00",
-      "priority": 1,
-      "slug": "locion-uvsport-f50-anthelios-la-roche-posay-protetor-solar-invisivel",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/pack-hyalu-crema-uvm400-la-roche-posay-pacote-hyalu-creme-uvm400",
       "lastmod": "2026-05-25T12:32:54+00:00",
       "priority": 1,
@@ -24189,13 +24777,6 @@
       "lastmod": "2026-05-25T12:32:53+00:00",
       "priority": 1,
       "slug": "neceser-destination-beauty-apivita-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/pure-vitamin-c12-la-roche-posay-serum-vitamina-c12",
-      "lastmod": "2026-05-25T12:32:53+00:00",
-      "priority": 1,
-      "slug": "pure-vitamin-c12-la-roche-posay-serum-vitamina-c12",
       "category": "skincare"
     },
     {
@@ -24227,20 +24808,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/anthelios-uv-mune-roche-posay-protetor-solar-spf50",
-      "lastmod": "2026-05-25T12:32:51+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-mune-roche-posay-protetor-solar-spf50",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/mela-b3-roche-posay-serum-intenso-antimanchas",
-      "lastmod": "2026-05-25T12:32:51+00:00",
-      "priority": 1,
-      "slug": "mela-b3-roche-posay-serum-intenso-antimanchas",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/pure-jasmine-apivita-gel-banho-hidratante",
       "lastmod": "2026-05-25T12:32:51+00:00",
       "priority": 1,
@@ -24252,13 +24819,6 @@
       "lastmod": "2026-05-25T12:32:51+00:00",
       "priority": 1,
       "slug": "royal-honey-apivita-gel-banho-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/anthelios-uv-mune-400-fluido-invisible-spf50-roche-posay-fluido-invisivel",
-      "lastmod": "2026-05-25T12:32:50+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-mune-400-fluido-invisible-spf50-roche-posay-fluido-invisivel",
       "category": "skincare"
     },
     {
@@ -24322,13 +24882,6 @@
       "lastmod": "2026-05-25T12:32:48+00:00",
       "priority": 1,
       "slug": "locion-hidratante-rostro-cerave-creme-hidratante-pele-normal-seca",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/retinol-b3-roche-posay-serum-anti-rugas-regenerador",
-      "lastmod": "2026-05-25T12:32:48+00:00",
-      "priority": 1,
-      "slug": "retinol-b3-roche-posay-serum-anti-rugas-regenerador",
       "category": "skincare"
     },
     {
@@ -24420,13 +24973,6 @@
       "lastmod": "2026-05-25T12:32:43+00:00",
       "priority": 1,
       "slug": "effaclar-duo-m-roche-posay-creme-corretor-anti-imperfeicoes",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/effaclar-serum-roche-posay-serum-renovador-tripla-acao",
-      "lastmod": "2026-05-25T12:32:43+00:00",
-      "priority": 1,
-      "slug": "effaclar-serum-roche-posay-serum-renovador-tripla-acao",
       "category": "skincare"
     },
     {
@@ -24661,13 +25207,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/pdrn-pink-peptide-serum-medicube-serum-antienvelhecimento",
-      "lastmod": "2026-05-25T12:32:02+00:00",
-      "priority": 1,
-      "slug": "pdrn-pink-peptide-serum-medicube-serum-antienvelhecimento",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/tonico-zero-pore-medicube-equilibrante-facial-excesso-de-sebo",
       "lastmod": "2026-05-25T12:32:02+00:00",
       "priority": 1,
@@ -24756,13 +25295,6 @@
       "lastmod": "2026-05-25T12:32:01+00:00",
       "priority": 1,
       "slug": "triple-collagen-cream-medicube-creme-facial-antienvelhecimento",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/collagen-jelly-cream-medicube-creme-facial-gel",
-      "lastmod": "2026-05-25T12:32:01+00:00",
-      "priority": 1,
-      "slug": "collagen-jelly-cream-medicube-creme-facial-gel",
       "category": "skincare"
     },
     {
@@ -24917,13 +25449,6 @@
       "lastmod": "2026-05-25T12:31:44+00:00",
       "priority": 1,
       "slug": "overnight-beauty-reset-pantene-serum-reparador-noturno-capilar",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/mascarilla-hidra-hialuronico-elvive-maacutescara-intensiva-hidratante",
-      "lastmod": "2026-05-25T12:31:43+00:00",
-      "priority": 1,
-      "slug": "mascarilla-hidra-hialuronico-elvive-maacutescara-intensiva-hidratante",
       "category": "skincare"
     },
     {
@@ -25354,13 +25879,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/sublime-karite-mascarilla-rene-furterer-mascara-hidratante",
-      "lastmod": "2026-05-19T12:45:08+00:00",
-      "priority": 1,
-      "slug": "sublime-karite-mascarilla-rene-furterer-mascara-hidratante",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/hydrazen-gel-cream-tratamento-hidratante-lancome",
       "lastmod": "2026-05-19T12:45:08+00:00",
       "priority": 1,
@@ -25435,13 +25953,6 @@
       "lastmod": "2026-05-19T12:44:59+00:00",
       "priority": 1,
       "slug": "glass-cloud-catrice-serum-labial-com-cor",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/serum-ultimate-diamond-transformative-estee-lauder-fortalece-a-pele-e-melhora-sua-firmeza",
-      "lastmod": "2026-05-19T12:44:59+00:00",
-      "priority": 1,
-      "slug": "serum-ultimate-diamond-transformative-estee-lauder-fortalece-a-pele-e-melhora-sua-firmeza",
       "category": "skincare"
     },
     {
@@ -25855,13 +26366,6 @@
       "lastmod": "2026-05-19T12:44:19+00:00",
       "priority": 1,
       "slug": "ultra-facila-barrier-balm-kiehls-balsamo-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/estuche-solar-dior-protecao-solar-e-tratamento",
-      "lastmod": "2026-05-19T12:44:19+00:00",
-      "priority": 1,
-      "slug": "estuche-solar-dior-protecao-solar-e-tratamento",
       "category": "skincare"
     },
     {
@@ -28126,13 +28630,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/effaclar-sebo-regulating-moisturizer-roche-posay-creme-hidratante-matificante-e-anti-poros",
-      "lastmod": "2026-05-19T12:42:23+00:00",
-      "priority": 1,
-      "slug": "effaclar-sebo-regulating-moisturizer-roche-posay-creme-hidratante-matificante-e-anti-poros",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/hydrating-fix-mist-sensai-nevoa-fixadora-hidratante",
       "lastmod": "2026-05-19T12:41:57+00:00",
       "priority": 1,
@@ -29491,13 +29988,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/cream-345-dralthea-creme-facial-regenerador-relief",
-      "lastmod": "2026-05-19T12:36:09+00:00",
-      "priority": 1,
-      "slug": "cream-345-dralthea-creme-facial-regenerador-relief",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/hydra-fotoprotector-babaria-bruma-spray-protetor-solar-spf50",
       "lastmod": "2026-05-19T12:36:09+00:00",
       "priority": 1,
@@ -30303,13 +30793,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/exotic-bronze-spf-0-babaria-gelatina-bronzeadora",
-      "lastmod": "2026-05-19T12:35:47+00:00",
-      "priority": 1,
-      "slug": "exotic-bronze-spf-0-babaria-gelatina-bronzeadora",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/sleep-body-cream-sence-of-wellness-creme-corporal-hidratante",
       "lastmod": "2026-05-19T12:35:47+00:00",
       "priority": 1,
@@ -30443,13 +30926,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/aceite-argan-100-puro-arganour-nutre-e-protege-pele-excelente-anti-rugas-e-anti-idade",
-      "lastmod": "2026-05-19T12:35:36+00:00",
-      "priority": 1,
-      "slug": "aceite-argan-100-puro-arganour-nutre-e-protege-pele-excelente-anti-rugas-e-anti-idade",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/aftersun-locion-hidratante-hawaiian-tropic-locao-depois-sol",
       "lastmod": "2026-05-19T12:35:36+00:00",
       "priority": 1,
@@ -30555,13 +31031,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/serum-stop-frizz-elvive-serum-capilar",
-      "lastmod": "2026-05-19T12:35:21+00:00",
-      "priority": 1,
-      "slug": "serum-stop-frizz-elvive-serum-capilar",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/protector-solar-capilar-nelly-protetor-solar-sem-enxaacutegue",
       "lastmod": "2026-05-19T12:35:21+00:00",
       "priority": 1,
@@ -30608,13 +31077,6 @@
       "lastmod": "2026-05-19T12:35:20+00:00",
       "priority": 1,
       "slug": "eight-hour-cream-sun-defense-for-face-spf-50-pa-elizabeth-arden-creme-protetor-solar",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/locion-limpiadora-cetaphil-limpa-pele-suavidade",
-      "lastmod": "2026-05-14T12:34:56+00:00",
-      "priority": 1,
-      "slug": "locion-limpiadora-cetaphil-limpa-pele-suavidade",
       "category": "skincare"
     },
     {
@@ -31077,13 +31539,6 @@
       "lastmod": "2026-05-12T12:36:34+00:00",
       "priority": 1,
       "slug": "cellular-eye-make-up-remover-la-prairie-removedor-de-maquiagem-com-efeito-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/hydro-harmony-fluido-liquido-hidratante-stendhal-paris-hidrata-e-controla",
-      "lastmod": "2026-05-12T12:36:34+00:00",
-      "priority": 1,
-      "slug": "hydro-harmony-fluido-liquido-hidratante-stendhal-paris-hidrata-e-controla",
       "category": "skincare"
     },
     {
@@ -31745,13 +32200,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/daily-mineral-sunscreen-spf50-sol-de-ibiza-protetor-solar-rosto-e-pescoco",
-      "lastmod": "2026-05-04T12:37:13+00:00",
-      "priority": 1,
-      "slug": "daily-mineral-sunscreen-spf50-sol-de-ibiza-protetor-solar-rosto-e-pescoco",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/cleanology-tri-enzyme-peeling-dr-irena-eris-esfoliante-enzimatico-suave",
       "lastmod": "2026-05-04T12:37:11+00:00",
       "priority": 1,
@@ -31983,13 +32431,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/set-hydrating-beauty-program-dr-irena-eris-rotina-hidratante",
-      "lastmod": "2026-05-04T12:36:47+00:00",
-      "priority": 1,
-      "slug": "set-hydrating-beauty-program-dr-irena-eris-rotina-hidratante",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/vitaceric-revitalizing-moisturizing-day-cream-spf-15-dr-irena-eris-creme-dia-revitalizante-e-nutritivo",
       "lastmod": "2026-05-04T12:36:46+00:00",
       "priority": 1,
@@ -32183,13 +32624,6 @@
       "lastmod": "2026-04-29T12:37:37+00:00",
       "priority": 1,
       "slug": "glow-getter-moira-oleo-labial-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/acondicionador-hidra-hialuronico-elvive-condicionador-hidratante",
-      "lastmod": "2026-04-29T12:37:10+00:00",
-      "priority": 1,
-      "slug": "acondicionador-hidra-hialuronico-elvive-condicionador-hidratante",
       "category": "skincare"
     },
     {
@@ -32781,13 +33215,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/anthelios-uv-mune-400-fluidoinvisible-spf50-color-roche-posay-fluido-invisivel-cor",
-      "lastmod": "2026-04-20T12:31:54+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-mune-400-fluidoinvisible-spf50-color-roche-posay-fluido-invisivel-cor",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/anthelios-100-ka-med-roche-posay-creme-hidratante-protecao",
       "lastmod": "2026-04-20T12:31:54+00:00",
       "priority": 1,
@@ -32827,13 +33254,6 @@
       "lastmod": "2026-04-20T12:31:53+00:00",
       "priority": 1,
       "slug": "the-originals-moisturizing-mask-martiderm-mascara-hidratante-intensiva",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/capital-soleil-uv-age-daily-spf50-vichy-protetor-solar-facial",
-      "lastmod": "2026-04-20T12:31:53+00:00",
-      "priority": 1,
-      "slug": "capital-soleil-uv-age-daily-spf50-vichy-protetor-solar-facial",
       "category": "skincare"
     },
     {
@@ -33376,13 +33796,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/anthelios-xl-anti-brillos-50-roche-posay-protetor-solar-cor",
-      "lastmod": "2026-04-13T12:38:06+00:00",
-      "priority": 1,
-      "slug": "anthelios-xl-anti-brillos-50-roche-posay-protetor-solar-cor",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/effaclar-agua-micelar-roche-posay-limpador-facial",
       "lastmod": "2026-04-13T12:38:06+00:00",
       "priority": 1,
@@ -33642,13 +34055,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/hydro-care-power-serum-nivea-serum-hidratante-para-homem",
-      "lastmod": "2026-04-08T12:29:54+00:00",
-      "priority": 1,
-      "slug": "hydro-care-power-serum-nivea-serum-hidratante-para-homem",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/orchidee-imperiale-brightening-lotion-guerlain-locao-iluminadora-anti-idade",
       "lastmod": "2026-04-07T12:37:32+00:00",
       "priority": 1,
@@ -33744,13 +34150,6 @@
       "lastmod": "2026-04-06T12:29:48+00:00",
       "priority": 1,
       "slug": "dream-radiant-liquid-maybelline-new-york-base-maquiagem-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/regenerador-capilar-nuggela-sule-ampolas-que-aumentam-espessura-cabelo",
-      "lastmod": "2026-04-06T12:29:48+00:00",
-      "priority": 1,
-      "slug": "regenerador-capilar-nuggela-sule-ampolas-que-aumentam-espessura-cabelo",
       "category": "skincare"
     },
     {
@@ -34811,73 +35210,10 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/serum-glass-hair-sin-aclarado-elvive-cabelo-mais-brilhante-instantaneamente",
-      "lastmod": "2026-04-02T12:43:29+00:00",
-      "priority": 1,
-      "slug": "serum-glass-hair-sin-aclarado-elvive-cabelo-mais-brilhante-instantaneamente",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/aceite-extraordinario-coco-elvive-serum-nutritivo-para-cabelo-normal",
-      "lastmod": "2026-04-02T12:43:28+00:00",
-      "priority": 1,
-      "slug": "aceite-extraordinario-coco-elvive-serum-nutritivo-para-cabelo-normal",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/serum-anticaida-gowth-booster-elvive-tratamento-fortalecedor-capilar",
-      "lastmod": "2026-04-02T12:43:25+00:00",
-      "priority": 1,
-      "slug": "serum-anticaida-gowth-booster-elvive-tratamento-fortalecedor-capilar",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/hialuronico-pure-elvive-pre-shampoo-serum-purificante-capilar",
-      "lastmod": "2026-04-02T12:43:23+00:00",
-      "priority": 1,
-      "slug": "hialuronico-pure-elvive-pre-shampoo-serum-purificante-capilar",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/elixir-miel-original-remedies-serum-capilar-reparador",
       "lastmod": "2026-04-02T12:43:23+00:00",
       "priority": 1,
       "slug": "elixir-miel-original-remedies-serum-capilar-reparador",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/midnight-elvive-serum-capilar-noturno-cabelo-seco",
-      "lastmod": "2026-04-02T12:43:23+00:00",
-      "priority": 1,
-      "slug": "midnight-elvive-serum-capilar-noturno-cabelo-seco",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/glycolic-gloss-elvive-serum-cabelo-suave-e-brilhante",
-      "lastmod": "2026-04-02T12:43:22+00:00",
-      "priority": 1,
-      "slug": "glycolic-gloss-elvive-serum-cabelo-suave-e-brilhante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/hidra-hialuronico-elvive-serum-noturno-hidratante",
-      "lastmod": "2026-04-02T12:43:19+00:00",
-      "priority": 1,
-      "slug": "hidra-hialuronico-elvive-serum-noturno-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/bond-repair-elvive-serum-reparador-sem-enxague",
-      "lastmod": "2026-04-02T12:43:18+00:00",
-      "priority": 1,
-      "slug": "bond-repair-elvive-serum-reparador-sem-enxague",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/serum-rellenador-hidra-hialuronico-elvive-serum-preenchedor",
-      "lastmod": "2026-04-02T12:43:15+00:00",
-      "priority": 1,
-      "slug": "serum-rellenador-hidra-hialuronico-elvive-serum-preenchedor",
       "category": "skincare"
     },
     {
@@ -36029,27 +36365,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/stick-solar-anthelios-spf50-la-roche-posay-protetor-solar-facial",
-      "lastmod": "2026-03-23T13:30:23+00:00",
-      "priority": 1,
-      "slug": "stick-solar-anthelios-spf50-la-roche-posay-protetor-solar-facial",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/fluido-invisible-oil-control-spf50-cerave-protetor-solar-facial",
-      "lastmod": "2026-03-23T13:30:23+00:00",
-      "priority": 1,
-      "slug": "fluido-invisible-oil-control-spf50-cerave-protetor-solar-facial",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/fluido-invisible-hidratante-spf50-cerave-protetor-solar-facial",
-      "lastmod": "2026-03-23T13:30:23+00:00",
-      "priority": 1,
-      "slug": "fluido-invisible-hidratante-spf50-cerave-protetor-solar-facial",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/not-exfoliante-granizado-collistar-gel-esfoliante",
       "lastmod": "2026-03-23T13:30:11+00:00",
       "priority": 1,
@@ -36159,13 +36474,6 @@
       "lastmod": "2026-03-20T12:58:06+00:00",
       "priority": 1,
       "slug": "leche-solar-pediatrics-photoderm-spf50-bioderma-protecao-solar-infantil",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/anthelios-uv-mune-400-fluido-antimanchas-la-roche-posay-protetor-solar-spf50",
-      "lastmod": "2026-03-20T12:58:05+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-mune-400-fluido-antimanchas-la-roche-posay-protetor-solar-spf50",
       "category": "skincare"
     },
     {
@@ -36796,13 +37104,6 @@
       "lastmod": "2026-03-19T13:33:12+00:00",
       "priority": 1,
       "slug": "duplo-spray-transparente-dry-touch-spf50-eucerin-spray-solar-transparente",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/serum-ojos-collagen-specialist16-vichy-tratamento-antienvelhecimento",
-      "lastmod": "2026-03-19T13:33:12+00:00",
-      "priority": 1,
-      "slug": "serum-ojos-collagen-specialist16-vichy-tratamento-antienvelhecimento",
       "category": "skincare"
     },
     {
@@ -37492,13 +37793,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/solar-facial-natural-spf50-alma-secret-protecao-solar-com-cor",
-      "lastmod": "2026-03-11T13:35:26+00:00",
-      "priority": 1,
-      "slug": "solar-facial-natural-spf50-alma-secret-protecao-solar-com-cor",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/ultra-fluido-xdefense-spf50-photoderm-bioderma-protetor-solar-com-cor",
       "lastmod": "2026-03-11T13:35:24+00:00",
       "priority": 1,
@@ -37527,24 +37821,10 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/fotoprotector-compact-spf-50-isdin-maquiagem-compacta-alta-protecao-solar",
-      "lastmod": "2026-03-11T13:35:15+00:00",
-      "priority": 1,
-      "slug": "fotoprotector-compact-spf-50-isdin-maquiagem-compacta-alta-protecao-solar",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/multivitamina-energy-nuggela-sule-ampolas-capilares-nutritivas-iluminadoras",
       "lastmod": "2026-03-11T13:35:14+00:00",
       "priority": 1,
       "slug": "multivitamina-energy-nuggela-sule-ampolas-capilares-nutritivas-iluminadoras",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/antihelios-roche-posay-protetor-solar-cor",
-      "lastmod": "2026-03-11T13:35:12+00:00",
-      "priority": 1,
-      "slug": "antihelios-roche-posay-protetor-solar-cor",
       "category": "skincare"
     },
     {
@@ -38451,13 +38731,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/sunrise-radiance-bronzing-serum-freshly-cosmetics-bronzeador-dourado-vitamina-c",
-      "lastmod": "2026-03-04T13:28:47+00:00",
-      "priority": 1,
-      "slug": "sunrise-radiance-bronzing-serum-freshly-cosmetics-bronzeador-dourado-vitamina-c",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/serum-labial-hidratacion-intensa-drn-aroma-a-pirulito",
       "lastmod": "2026-03-04T13:28:05+00:00",
       "priority": 1,
@@ -38861,13 +39134,6 @@
       "lastmod": "2026-03-02T13:32:50+00:00",
       "priority": 1,
       "slug": "retinal-smooth-isdinceutics-serum-revitalizante-noturno",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/effaclar-duo-spf30-la-roche-posay-tratamento-anti-imperfeicoes",
-      "lastmod": "2026-03-02T13:32:50+00:00",
-      "priority": 1,
-      "slug": "effaclar-duo-spf30-la-roche-posay-tratamento-anti-imperfeicoes",
       "category": "skincare"
     },
     {
@@ -39886,13 +40152,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/daily-tinted-fluid-sunscreen-spf-30-beauty-of-joseon-gotas-bronzeadoras-fps-30",
-      "lastmod": "2026-02-22T21:07:36+00:00",
-      "priority": 1,
-      "slug": "daily-tinted-fluid-sunscreen-spf-30-beauty-of-joseon-gotas-bronzeadoras-fps-30",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/addict-lip-glow-oil-dior-oleo-para-labios-hidratante-24-horas",
       "lastmod": "2026-02-22T21:07:36+00:00",
       "priority": 1,
@@ -40086,13 +40345,6 @@
       "lastmod": "2026-02-22T21:06:48+00:00",
       "priority": 1,
       "slug": "pack-protocolo-piel-madura-vichy-tratamento-antimanchas",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/anti-hair-loss-fore-serum-nuggela-sule-serum-capilar-antiqueda",
-      "lastmod": "2026-02-22T21:06:48+00:00",
-      "priority": 1,
-      "slug": "anti-hair-loss-fore-serum-nuggela-sule-serum-capilar-antiqueda",
       "category": "skincare"
     },
     {
@@ -41951,13 +42203,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/anthelios-uv-mune-400-roche-posay-protetor-solar-facial-spf50-cor",
-      "lastmod": "2026-02-16T13:44:36+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-mune-400-roche-posay-protetor-solar-facial-spf50-cor",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/ureadin-cream-10-isdin-creme-hidratante-em-pote",
       "lastmod": "2026-02-16T13:44:36+00:00",
       "priority": 1,
@@ -43813,13 +44058,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/ideal-soleil-vichy-protecao-solar-criancas",
-      "lastmod": "2026-02-11T13:37:27+00:00",
-      "priority": 1,
-      "slug": "ideal-soleil-vichy-protecao-solar-criancas",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/salises-moisturizing-gel-cream-sesderma-creme-gel-hidratante-peles-oleosas-e-tendencia-acneica",
       "lastmod": "2026-02-11T13:37:26+00:00",
       "priority": 1,
@@ -44737,13 +44975,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/anthelios-uv-air-spf50-la-roche-posay-fluido-protetor-solar",
-      "lastmod": "2026-02-10T13:35:19+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-air-spf50-la-roche-posay-fluido-protetor-solar",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/sun-cream-daily-wear-martinelia-protecao-facial-spf-50",
       "lastmod": "2026-02-10T13:34:17+00:00",
       "priority": 1,
@@ -45448,20 +45679,6 @@
       "lastmod": "2026-01-27T13:33:26+00:00",
       "priority": 1,
       "slug": "mineral-fluid-spf50-avene-protecao-solar-muito-alta",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/bio-watery-sun-cream-tocobo-protetor-solar-spf-50",
-      "lastmod": "2026-01-27T13:32:51+00:00",
-      "priority": 1,
-      "slug": "bio-watery-sun-cream-tocobo-protetor-solar-spf-50",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/cica-calming-sun-stick-tocobo-protetor-solar-spf-50",
-      "lastmod": "2026-01-27T13:32:51+00:00",
-      "priority": 1,
-      "slug": "cica-calming-sun-stick-tocobo-protetor-solar-spf-50",
       "category": "skincare"
     },
     {
@@ -46260,13 +46477,6 @@
       "lastmod": "2026-01-19T13:34:38+00:00",
       "priority": 1,
       "slug": "heartleaf-77-anua-discos-de-tonico-faciais",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/relief-sun-aqua-fresh-rice-beauty-of-joseon-protetor-solar-spf-50",
-      "lastmod": "2026-01-19T13:34:37+00:00",
-      "priority": 1,
-      "slug": "relief-sun-aqua-fresh-rice-beauty-of-joseon-protetor-solar-spf-50",
       "category": "skincare"
     },
     {
@@ -48657,13 +48867,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/capital-soleil-spf50-vichy-oleo-solar-invisivel",
-      "lastmod": "2025-12-11T09:19:24+00:00",
-      "priority": 1,
-      "slug": "capital-soleil-spf50-vichy-oleo-solar-invisivel",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/photoderm-bioderma-bruma-solar",
       "lastmod": "2025-12-11T09:19:24+00:00",
       "priority": 1,
@@ -49651,20 +49854,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/anthelios-uv-mune-400-crema-hidratante-spf50-roche-posay-protetor-solar-hidratante",
-      "lastmod": "2025-12-11T09:18:04+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-mune-400-crema-hidratante-spf50-roche-posay-protetor-solar-hidratante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/anthelios-uv-mune-400-crema-hidratante-spf50-color-roche-posay-protetor-solar-hidratante-cor",
-      "lastmod": "2025-12-11T09:18:04+00:00",
-      "priority": 1,
-      "slug": "anthelios-uv-mune-400-crema-hidratante-spf50-color-roche-posay-protetor-solar-hidratante-cor",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/minucell-extreme-elifexir-serum-anticelulite",
       "lastmod": "2025-12-11T09:18:04+00:00",
       "priority": 1,
@@ -49683,13 +49872,6 @@
       "lastmod": "2025-12-11T09:18:04+00:00",
       "priority": 1,
       "slug": "balsamo-labial-citrus-suavina-hidratante-e-calmante",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/cs-cell-protectspray-spf50-vichy-protetor-solar-spray",
-      "lastmod": "2025-12-11T09:18:03+00:00",
-      "priority": 1,
-      "slug": "cs-cell-protectspray-spf50-vichy-protetor-solar-spray",
       "category": "skincare"
     },
     {
@@ -50645,13 +50827,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/capital-soleil-hydrating-water-spf50-vichy-agua-solar-protetora-hidratacao",
-      "lastmod": "2025-12-11T09:17:09+00:00",
-      "priority": 1,
-      "slug": "capital-soleil-hydrating-water-spf50-vichy-agua-solar-protetora-hidratacao",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/ampoule-lift-laboratoires-svr-serum-facial-ultra-concentrado",
       "lastmod": "2025-12-11T09:17:09+00:00",
       "priority": 1,
@@ -50960,13 +51135,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/beauty-tan-serum-cocunat-autobronzeador-facial",
-      "lastmod": "2025-12-11T09:16:40+00:00",
-      "priority": 1,
-      "slug": "beauty-tan-serum-cocunat-autobronzeador-facial",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/cofre-hydratation-my-clarins-rotina-facial-hidratante",
       "lastmod": "2025-12-11T09:16:38+00:00",
       "priority": 1,
@@ -51170,13 +51338,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/natural-shield-spf30-cocunat-protetor-solar-facial-cor",
-      "lastmod": "2025-12-11T09:16:11+00:00",
-      "priority": 1,
-      "slug": "natural-shield-spf30-cocunat-protetor-solar-facial-cor",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/hair-rescue-protecting-serum-freshly-cosmetics-serum-reparador-e-selador-pontas-duplas",
       "lastmod": "2025-12-11T09:16:11+00:00",
       "priority": 1,
@@ -51377,13 +51538,6 @@
       "lastmod": "2025-12-11T09:15:52+00:00",
       "priority": 1,
       "slug": "the-ritual-of-sakura-body-scrub-rituals-esfoliante-corporal-acucar",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/natural-protector-spf30-cocunat-protetor-solar-natural",
-      "lastmod": "2025-12-11T09:15:49+00:00",
-      "priority": 1,
-      "slug": "natural-protector-spf30-cocunat-protetor-solar-natural",
       "category": "skincare"
     },
     {
@@ -51807,13 +51961,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/ideal-soleil-after-sun-milk-vichy-leite-calmante-after-sun",
-      "lastmod": "2025-12-11T09:14:20+00:00",
-      "priority": 1,
-      "slug": "ideal-soleil-after-sun-milk-vichy-leite-calmante-after-sun",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/ideal-soleil-vichy-leite-hidratante-autobronzeador",
       "lastmod": "2025-12-11T09:14:20+00:00",
       "priority": 1,
@@ -51884,24 +52031,10 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/ideal-soleil-50-rostro-vichy-creme-solar-facial",
-      "lastmod": "2025-12-11T09:14:19+00:00",
-      "priority": 1,
-      "slug": "ideal-soleil-50-rostro-vichy-creme-solar-facial",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/pack-beauty-axovital-tratamento-anti-rugas",
       "lastmod": "2025-12-11T09:14:19+00:00",
       "priority": 1,
       "slug": "pack-beauty-axovital-tratamento-anti-rugas",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/anthelios-oil-control-gel-crema-la-roche-posay-protetor-solar",
-      "lastmod": "2025-12-11T09:14:19+00:00",
-      "priority": 1,
-      "slug": "anthelios-oil-control-gel-crema-la-roche-posay-protetor-solar",
       "category": "skincare"
     },
     {
@@ -52136,13 +52269,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/ideal-soleil-tinted-mattifying-face-fluid-spf-50-vichy-protetor-solar-facial-cor",
-      "lastmod": "2025-12-11T09:14:08+00:00",
-      "priority": 1,
-      "slug": "ideal-soleil-tinted-mattifying-face-fluid-spf-50-vichy-protetor-solar-facial-cor",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/dry-touch-gel-cream-spf-50-isdin-protetor-solar-facial-matificante",
       "lastmod": "2025-12-11T09:14:08+00:00",
       "priority": 1,
@@ -52175,13 +52301,6 @@
       "lastmod": "2025-12-11T09:14:07+00:00",
       "priority": 1,
       "slug": "ideal-soleil-gentle-protective-milk-spf50-vichy-protetor-solar-criancas",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/capital-soleil-spf50-vichy-creme-rosto-toque-seco",
-      "lastmod": "2025-12-11T09:14:07+00:00",
-      "priority": 1,
-      "slug": "capital-soleil-spf50-vichy-creme-rosto-toque-seco",
       "category": "skincare"
     },
     {
@@ -52826,13 +52945,6 @@
       "lastmod": "2025-12-11T08:56:36+00:00",
       "priority": 1,
       "slug": "locion-hidratante-facial-astra-makeup-hidrata-e-reequilibra",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/rice-7-ceramide-anua-serum-hidratante-facial",
-      "lastmod": "2025-12-11T08:56:36+00:00",
-      "priority": 1,
-      "slug": "rice-7-ceramide-anua-serum-hidratante-facial",
       "category": "skincare"
     },
     {
@@ -63441,13 +63553,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/cica-calming-sun-serum-tocobo-serum-protetor-solar-spf-50",
-      "lastmod": "2025-11-10T14:33:16+00:00",
-      "priority": 1,
-      "slug": "cica-calming-sun-serum-tocobo-serum-protetor-solar-spf-50",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/plump-and-firm-mountagne-jeunesse-mascara-facial-hidratante",
       "lastmod": "2025-11-10T14:33:15+00:00",
       "priority": 1,
@@ -67151,13 +67256,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/crema-facial-hidratante-revuele-acido-hialuronico",
-      "lastmod": "2025-11-10T14:31:09+00:00",
-      "priority": 1,
-      "slug": "crema-facial-hidratante-revuele-acido-hialuronico",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/serum-phospholipids-revuele-cys-fosfolipidos",
       "lastmod": "2025-11-10T14:31:09+00:00",
       "priority": 1,
@@ -68488,13 +68586,6 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/serum-bye-puffy-eye-nacomi-seacuterum-efeito-lifting-contorno-olhos",
-      "lastmod": "2025-11-10T14:30:16+00:00",
-      "priority": 1,
-      "slug": "serum-bye-puffy-eye-nacomi-seacuterum-efeito-lifting-contorno-olhos",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/serum-sharp-look-nacomi-serum-anti-idade-contorno-olhos",
       "lastmod": "2025-11-10T14:30:16+00:00",
       "priority": 1,
@@ -68880,31 +68971,10 @@
       "category": "skincare"
     },
     {
-      "url": "https://www.druni.pt/serum-no-more-pores-nacomi-serum-facial-esfoliante-noite",
-      "lastmod": "2025-11-10T14:30:02+00:00",
-      "priority": 1,
-      "slug": "serum-no-more-pores-nacomi-serum-facial-esfoliante-noite",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/serum-the-exfoliator-nacomi-serum-facial-esfoliante",
-      "lastmod": "2025-11-10T14:30:02+00:00",
-      "priority": 1,
-      "slug": "serum-the-exfoliator-nacomi-serum-facial-esfoliante",
-      "category": "skincare"
-    },
-    {
       "url": "https://www.druni.pt/crema-golden-rays-city-dia-spf50-nacomi-creme-facial-anti-poluicao",
       "lastmod": "2025-11-10T14:30:02+00:00",
       "priority": 1,
       "slug": "crema-golden-rays-city-dia-spf50-nacomi-creme-facial-anti-poluicao",
-      "category": "skincare"
-    },
-    {
-      "url": "https://www.druni.pt/crema-golden-rays-holiday-dia-spf50-nacomi-creme-facial-hidratante",
-      "lastmod": "2025-11-10T14:30:02+00:00",
-      "priority": 1,
-      "slug": "crema-golden-rays-holiday-dia-spf50-nacomi-creme-facial-hidratante",
       "category": "skincare"
     },
     {
