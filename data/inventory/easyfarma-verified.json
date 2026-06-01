@@ -3,8 +3,8 @@
   "store_slug": "easyfarma",
   "store_name": "Easyfarma",
   "store_url": "https://easyfarma.pt",
-  "verified_at": "2026-05-31T10:37:28.241Z",
-  "method": "playwright-headless (refresh 2026-05-31)",
+  "verified_at": "2026-06-01T20:08:54.741Z",
+  "method": "playwright-headless (refresh 2026-06-01)",
   "stats": {
     "total": 13,
     "verified": 3,
@@ -66,9 +66,9 @@
       "observed_volume_ml": 40,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Easyfarma vende variante Duo+M (slug confirma). 40ml bate. Scrape 2026-05-17: 10.21€ Refresh 2026-05-17: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-20: 10.21€ → 10.21€ Refresh 2026-05-21: 10.21€ → 12.26€ Refresh 2026-05-23: 12.26€ → 20.43€ Refresh 2026-05-24: 20.43€ → 12.26€ Refresh 2026-05-26: 12.26€ → 12.26€ Refresh 2026-05-27: 12.26€ → 10.21€ Refresh 2026-05-28: 10.21€ → 11.06€ Refresh 2026-05-30: 11.06€ → 11.06€ Refresh 2026-05-31: 11.06€ → 18.43€",
-      "verified_at": "2026-05-31T10:34:57.622Z",
-      "observed_price": 18.43,
+      "notes": "Easyfarma vende variante Duo+M (slug confirma). 40ml bate. Scrape 2026-05-17: 10.21€ Refresh 2026-05-17: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-18: 10.21€ → 10.21€ Refresh 2026-05-20: 10.21€ → 10.21€ Refresh 2026-05-21: 10.21€ → 12.26€ Refresh 2026-05-23: 12.26€ → 20.43€ Refresh 2026-05-24: 20.43€ → 12.26€ Refresh 2026-05-26: 12.26€ → 12.26€ Refresh 2026-05-27: 12.26€ → 10.21€ Refresh 2026-05-28: 10.21€ → 11.06€ Refresh 2026-05-30: 11.06€ → 11.06€ Refresh 2026-05-31: 11.06€ → 18.43€ Refresh 2026-06-01: 18.43€ → 14.55€",
+      "verified_at": "2026-06-01T20:06:28.483Z",
+      "observed_price": 14.55,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -82,7 +82,7 @@
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 18.43,
+          "price": 14.55,
           "in_stock": true,
           "url": null
         }
