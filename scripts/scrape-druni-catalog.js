@@ -36,7 +36,6 @@ catch {
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const URL_LIST = path.join(CATALOG_DIR, 'druni-urls.json');
-const OUT_FILE = path.join(CATALOG_DIR, 'druni-full.json');
 
 const args = Object.fromEntries(
   process.argv.slice(2).map(a => {
@@ -50,6 +49,13 @@ const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 // Ex: --chunk=1/3 corre primeiro terço; --chunk=2/3 segundo terço.
 // Útil para dividir 4h em 3 runs de ~1h20min com checkpoints commitáveis.
 const CHUNK = args.chunk || null;
+// Output file: --output override → chunk-specific (druni-chunk-N-M.json) → default full.
+// Ficheiro único por chunk = zero conflitos git entre jobs paralelos (igual à Sweetcare).
+const OUT_FILE = args.output
+  ? path.resolve(ROOT, args.output)
+  : (CHUNK
+      ? path.join(CATALOG_DIR, `druni-chunk-${CHUNK.replace('/', '-')}.json`)
+      : path.join(CATALOG_DIR, 'druni-full.json'));
 const ALPHA_GROUPS = args.alpha || null; // ex: "a-f" ou "g-m"
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 3;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 1500;
