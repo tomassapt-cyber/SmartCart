@@ -41,6 +41,15 @@ RAW_FILES=("$@")  # ficheiros raw do catálogo a preservar entre resets
 BRANCH="${GITHUB_REF_NAME:-main}"
 SEED_AND_HTML=(data/seed-bundle.json demo.html index.html catalogo.html)
 
+# Garantir identidade git. CRÍTICO: alguns workflows definem a identidade só
+# via env (GIT_AUTHOR_NAME/…) no step de commit, que NÃO se propaga até aqui.
+# Sem isto, o `git commit` no caminho de re-integração falha com "empty ident
+# name", o HEAD fica == origin, o push diz "up-to-date" e o step reporta
+# sucesso DEITANDO FORA os dados frescos (hollow success). Só definimos se
+# ainda não houver identidade configurada (wells/druni já a definem no bloco).
+git config user.name  >/dev/null 2>&1 || git config user.name  "smartcart-bot"
+git config user.email >/dev/null 2>&1 || git config user.email "bot@smartcart.local"
+
 # Backoffs com jitter — ~30min de janela total, dentro do timeout do job.
 BACKOFFS=(0 10 25 45 90 150 240 360 540 540)
 
@@ -90,7 +99,12 @@ for i in "${!BACKOFFS[@]}"; do
     echo "ℹ Nada novo após re-integrar (loja já no main mais recente) — terminar ok."
     exit 0
   fi
-  git commit -m "${COMMIT_MSG}"
+  # CRÍTICO: se o commit falhar (ex.: identidade), abortar em vez de continuar
+  # para um `git push` que diria "up-to-date" e mascararia a perda dos dados.
+  if ! git commit -m "${COMMIT_MSG}"; then
+    echo "❌ git commit falhou no retry — a abortar (evitar hollow success)."
+    exit 1
+  fi
 done
 
 echo "❌ Push falhou após ${#BACKOFFS[@]} tentativas. Artifact contém os dados."
