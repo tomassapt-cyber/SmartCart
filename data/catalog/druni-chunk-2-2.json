@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-02T18:38:27.529Z",
+  "scraped_at": "2026-06-02T19:03:44.285Z",
   "source": "/home/runner/work/SmartCart/SmartCart/data/catalog/druni-urls.json",
   "in_progress": false,
   "stats": {
@@ -16357,348 +16357,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 2988
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3306
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-club",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-club",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 2935
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-essenza",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-essenza",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 2948
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-futura",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-futura",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3218
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-intensa",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-intensa",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 2928
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-pura",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-pura",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3102
-    },
-    {
-      "url": "https://www.druni.pt/marcas/beauty-of-joseon/solares",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/beauty-of-joseon/solares",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3161
-    },
-    {
-      "url": "https://www.druni.pt/marcas/bella-aurora/b7-antimanchas",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/bella-aurora/b7-antimanchas",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3053
-    },
-    {
-      "url": "https://www.druni.pt/marcas/bella-aurora/proteccion-solar",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/bella-aurora/proteccion-solar",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3107
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/anthelios",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/anthelios",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3162
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/cicaplast",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/cicaplast",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3147
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/effaclar",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/effaclar",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2761
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/hyalu-b5",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/hyalu-b5",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3514
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/vitamina-c",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/vitamina-c",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2950
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/absolut-repair",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3379
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair-molecular",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/absolut-repair-molecular",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3581
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/aminexil-advanced",
-      "lastmod": "2026-05-28T12:19:26+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/aminexil-advanced",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3191
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/chroma-creme",
-      "lastmod": "2026-05-28T12:19:26+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/chroma-creme",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3092
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/curl-expression",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/curl-expression",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3210
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/keratin-alpha-sleek",
-      "lastmod": "2026-05-28T12:19:26+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/keratin-alpha-sleek",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3328
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/liss-unlimited",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/liss-unlimited",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3310
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/metal-detox",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/metal-detox",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3076
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/pro-longer",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/pro-longer",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3437
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/pure-resource",
-      "lastmod": "2024-07-19T12:43:48+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/pure-resource",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3097
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/scalp-advanced",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/scalp-advanced",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2996
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/serioxyl-x",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/serioxyl-x",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3217
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/tecni-art",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/tecni-art",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3242
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/vitamino-color",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3150
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color-spectrum",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/vitamino-color-spectrum",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3213
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/acidic-bonding-concentrate",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/acidic-bonding-concentrate",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3384
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/acidic-color-gloss",
-      "lastmod": "2025-07-18T10:05:16+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/acidic-color-gloss",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3783
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/all-soft-mega-curls",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/all-soft-mega-curls",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3824
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/blondage-high-bright",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/blondage-high-bright",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3276
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/color-extend-blondage",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/color-extend-blondage",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3008
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/color-extend-brownlights",
-      "lastmod": "2024-07-19T12:43:43+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/color-extend-brownlights",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3005
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/color-extend-magnetics",
-      "lastmod": "2026-05-28T12:19:28+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/color-extend-magnetics",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3172
-    },
-    {
-      "url": "https://www.druni.pt/marcas/revolution-skincare/vitamina-c",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/revolution-skincare/vitamina-c",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3205
-    },
-    {
-      "url": "https://www.druni.pt/marcas/ziaja/vitamina-c-b3-niacinamida",
-      "lastmod": "2026-05-28T12:19:27+00:00",
-      "priority": 1,
-      "slug": "marcas/ziaja/vitamina-c-b3-niacinamida",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3501
     },
     {
       "url": "https://www.druni.pt/mare-divino-elite-eau-de-parfum-para-mulher",
@@ -82811,51 +82469,6 @@
       "latency_ms": 3190
     },
     {
-      "url": "https://www.druni.pt/solares/protetor-solar/com-cor",
-      "lastmod": "2024-05-30T12:53:36+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/com-cor",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3805
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-20-a-25",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-20-a-25",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3499
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-4-a-15",
-      "lastmod": "2024-11-05T16:39:10+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-4-a-15",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 4044
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-30-a-45",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-30-a-45",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 4079
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-50-a-100",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-50-a-100",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3789
-    },
-    {
       "url": "https://www.druni.pt/soleil-bronzer-face-sun-bb-cream-spf-50-lancome-protetor-solar-com-cor",
       "lastmod": "2026-05-19T12:36:55+00:00",
       "priority": 1,
@@ -82898,15 +82511,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3794
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/pele-oleosa",
-      "lastmod": "2024-11-05T16:38:34+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/pele-oleosa",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3811
     },
     {
       "url": "https://www.druni.pt/soleil-neige-tom-ford-eau-de-parfum-para-mulher",
@@ -115439,6 +115043,402 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3017
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3869
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-club",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-club",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3937
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-essenza",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-essenza",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 4013
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-intensa",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-intensa",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3126
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-pura",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-pura",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3137
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-futura",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-futura",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3475
+    },
+    {
+      "url": "https://www.druni.pt/marcas/bella-aurora/b7-antimanchas",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/bella-aurora/b7-antimanchas",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3441
+    },
+    {
+      "url": "https://www.druni.pt/marcas/beauty-of-joseon/solares",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/beauty-of-joseon/solares",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3575
+    },
+    {
+      "url": "https://www.druni.pt/marcas/bella-aurora/proteccion-solar",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/bella-aurora/proteccion-solar",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 4250
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/cicaplast",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/cicaplast",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3282
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/effaclar",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/effaclar",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3446
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/anthelios",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/anthelios",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 4715
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/hyalu-b5",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/hyalu-b5",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2465
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/vitamina-c",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/vitamina-c",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3075
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/absolut-repair",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3613
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair-molecular",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/absolut-repair-molecular",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3897
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/aminexil-advanced",
+      "lastmod": "2026-05-28T12:19:26+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/aminexil-advanced",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3505
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/chroma-creme",
+      "lastmod": "2026-05-28T12:19:26+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/chroma-creme",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3422
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/curl-expression",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/curl-expression",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3700
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/keratin-alpha-sleek",
+      "lastmod": "2026-05-28T12:19:26+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/keratin-alpha-sleek",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3763
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/liss-unlimited",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/liss-unlimited",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3291
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/metal-detox",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/metal-detox",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3450
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/pro-longer",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/pro-longer",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3378
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/pure-resource",
+      "lastmod": "2024-07-19T12:43:48+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/pure-resource",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3247
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/scalp-advanced",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/scalp-advanced",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3168
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/tecni-art",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/tecni-art",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3363
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/serioxyl-x",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/serioxyl-x",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3803
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/vitamino-color",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3492
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color-spectrum",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/vitamino-color-spectrum",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3302
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/acidic-bonding-concentrate",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/acidic-bonding-concentrate",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3413
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/acidic-color-gloss",
+      "lastmod": "2025-07-18T10:05:16+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/acidic-color-gloss",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3357
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/all-soft-mega-curls",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/all-soft-mega-curls",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3316
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/blondage-high-bright",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/blondage-high-bright",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3509
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/color-extend-blondage",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/color-extend-blondage",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3609
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/color-extend-brownlights",
+      "lastmod": "2024-07-19T12:43:43+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/color-extend-brownlights",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3016
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/color-extend-magnetics",
+      "lastmod": "2026-05-28T12:19:28+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/color-extend-magnetics",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3241
+    },
+    {
+      "url": "https://www.druni.pt/marcas/revolution-skincare/vitamina-c",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/revolution-skincare/vitamina-c",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3116
+    },
+    {
+      "url": "https://www.druni.pt/marcas/ziaja/vitamina-c-b3-niacinamida",
+      "lastmod": "2026-05-28T12:19:27+00:00",
+      "priority": 1,
+      "slug": "marcas/ziaja/vitamina-c-b3-niacinamida",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3369
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/com-cor",
+      "lastmod": "2024-05-30T12:53:36+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/com-cor",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2976
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-20-a-25",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-20-a-25",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2422
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-4-a-15",
+      "lastmod": "2024-11-05T16:39:10+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-4-a-15",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2543
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-30-a-45",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-30-a-45",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3204
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-50-a-100",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-50-a-100",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2740
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/pele-oleosa",
+      "lastmod": "2024-11-05T16:38:34+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/pele-oleosa",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2688
     }
   ]
 }
