@@ -252,6 +252,16 @@ function isRealEan(ean) {
     console.warn('⚠ dedup-store-url falhou — continuar mesmo assim.');
   }
 
+  // Unificar capitalização de marcas (Druni grava em ALL CAPS; Sweetcare/Wells
+  // em Title Case) para a mesma marca não aparecer 2× no filtro do site.
+  console.log('\n▶ A correr normalize-brand-display (unificar capitalização de marcas)...');
+  const normBrand = spawnSync('node', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject'], {
+    cwd: ROOT, stdio: 'inherit',
+  });
+  if (normBrand.status !== 0) {
+    console.warn('⚠ normalize-brand-display falhou — continuar mesmo assim.');
+  }
+
   console.log('\n▶ Re-injectando no demo.html + index.html...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], {
     cwd: ROOT, stdio: 'inherit',

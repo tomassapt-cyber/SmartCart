@@ -183,6 +183,10 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
   const du = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-store-url.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
   if (du.status !== 0) console.warn('⚠ dedup-store-url falhou.');
 
+  console.log('\n▶ normalize-brand-display (unificar capitalização de marcas)...');
+  const nb = spawnSync('node', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
+  if (nb.status !== 0) console.warn('⚠ normalize-brand-display falhou.');
+
   console.log('\n▶ inject-seed-into-demo...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], { cwd: ROOT, stdio: 'inherit' });
   if (r.status === 0) console.log('\n✅ Integração completa.');
