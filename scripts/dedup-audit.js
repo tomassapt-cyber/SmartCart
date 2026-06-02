@@ -45,6 +45,60 @@ if (!fs.existsSync(SEED_BUNDLE)) {
 
 const seed = JSON.parse(fs.readFileSync(SEED_BUNDLE, 'utf8'));
 
+// ───────────────────────────────────────────────────────────────────────
+// 0) PRE-PASS: colapsar registos que partilham EAN idêntico.
+//    Dois produtos com o mesmo EAN são, por definição, o mesmo produto (o
+//    EAN é a chave primária). Isto apanha duplicados cross-língua — ex.:
+//    SweetCare com nome EN antigo + nome PT actual no mesmo `sweetcare-<slug>`
+//    — que o agrupamento por fingerprint NÃO vê, porque os nomes (e logo os
+//    fingerprints) diferem. Mantém o registo com nome PT (preferência) e faz
+//    backfill de marca/imagem/categoria a partir dos descartados. Idempotente.
+function collapseByEan(seed) {
+  const EN = /\b(mask|soap|deodorant|anti-?perspirant|treatment|leave-in|free|for|cream|with|hair|skin|cleansing|roll-on|protection|bar|lotion|body|perfumed)\b/i;
+  const PT = /\b(m[aá]scara|sabonete|desodorizante|antitranspirante|tratamento|creme|cabelo|pele|sem|para|com|[aá]gua|tecido|protetor|hidratante|esfoliante|leite|corporal|perfumado)\b/i;
+  const ACC = /[ãõçáéíóúâêô]/i;
+  const ptScore = (n) => { n = n || ''; let s = 0; if (PT.test(n)) s += 2; if (ACC.test(n)) s += 1; if (EN.test(n)) s -= 2; return s; };
+  const pickCanonical = (g) => g.slice().sort((a, b) => {
+    const ps = ptScore(b.name) - ptScore(a.name); if (ps) return ps;     // nome PT primeiro
+    const br = (b.brand ? 1 : 0) - (a.brand ? 1 : 0); if (br) return br;  // depois marca não-nula
+    return (a.name || '').length - (b.name || '').length;                // tiebreak: nome mais curto
+  })[0];
+
+  const byEan = {};
+  for (const p of seed.products) (byEan[p.ean] ||= []).push(p);
+  const drop = new Set();
+  let collapsed = 0;
+  for (const g of Object.values(byEan)) {
+    if (g.length < 2) continue;
+    const canonical = pickCanonical(g);
+    for (const p of g) {
+      if (p === canonical) continue;
+      if (!canonical.brand && p.brand) canonical.brand = p.brand;
+      if (!canonical.image_url && p.image_url) canonical.image_url = p.image_url;
+      if (!canonical.category && p.category) canonical.category = p.category;
+      drop.add(p);
+      collapsed++;
+    }
+  }
+  if (collapsed) {
+    seed.products = seed.products.filter(p => !drop.has(p));
+    // store_products: itens partilham o mesmo EAN → dedup por EAN, mantendo
+    // o verified_at mais recente (não há remap: o EAN não muda).
+    for (const sp of seed.store_products) {
+      const byItemEan = {};
+      for (const item of sp.items) {
+        const ex = byItemEan[item.ean];
+        if (!ex) { byItemEan[item.ean] = item; continue; }
+        byItemEan[item.ean] = (item.verified_at || '') > (ex.verified_at || '') ? item : ex;
+      }
+      sp.items = Object.values(byItemEan);
+    }
+  }
+  return collapsed;
+}
+const eanCollapsed = collapseByEan(seed);
+if (eanCollapsed) console.log(`🧹 EAN-collapse: ${eanCollapsed} registos com EAN duplicado fundidos (mesmo EAN = mesmo produto)\n`);
+
 // 1) Agrupar products por fingerprint
 const groups = {};
 for (const p of seed.products) {
@@ -60,7 +114,13 @@ console.log(`📊 Audit: ${seed.products.length} products, ${Object.keys(groups)
 console.log(`   ${dupGroups.length} grupos com ≥${MIN_GROUP} produtos (potenciais duplicados)\n`);
 
 if (dupGroups.length === 0) {
-  console.log('✅ Nenhum duplicado detectado. Catálogo limpo.');
+  console.log('✅ Nenhum duplicado por fingerprint.');
+  // Mesmo sem dups de fingerprint, se o EAN-collapse fundiu registos e
+  // estamos em --apply, é preciso persistir o resultado.
+  if (APPLY && !DRY_RUN && eanCollapsed) {
+    fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
+    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (apenas EAN-collapse: ${eanCollapsed} registos).`);
+  }
   process.exit(0);
 }
 

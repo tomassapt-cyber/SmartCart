@@ -83,7 +83,11 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
   const eanIndex = {};
   const fpIndex = {};
   for (const p of seed.products) {
-    if (isRealEan(p.ean)) eanIndex[p.ean] = p;
+    // Indexar EANs reais E sintéticos (sweetcare-<slug>). Antes só os reais
+    // eram indexados → o match por EAN sintético falhava e, quando o nome
+    // mudava (ex.: EN antigo → PT actual), criava-se um 2º registo com o
+    // mesmo EAN (duplicado cross-língua). Indexar tudo torna o match estável.
+    eanIndex[p.ean] = p;
     const fp = productFingerprint(p);
     if (fp && !fpIndex[fp]) fpIndex[fp] = p;
   }
@@ -106,10 +110,16 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
     let targetProduct = null;
     let matchSource = 'new';
 
-    if (isRealEan(sp.ean) && eanIndex[sp.ean]) {
-      targetProduct = eanIndex[sp.ean];
+    // EAN estável: real (GTIN) ou sintético derivado do slug. O match por
+    // EAN sintético evita criar um 2º registo quando só o nome muda.
+    const wantEan = isRealEan(sp.ean) ? sp.ean : `sweetcare-${sp.url.split('/').pop().slice(0,40)}`;
+    if (eanIndex[wantEan]) {
+      targetProduct = eanIndex[wantEan];
       matchedByEan++;
       matchSource = 'ean';
+      // Para produtos sweetcare (EAN sintético), o nome do scrape actual é a
+      // fonte de verdade → refresca p/ auto-curar nomes antigos noutra língua.
+      if (sp.name && wantEan.startsWith('sweetcare-')) targetProduct.name = sp.name;
     }
     if (!targetProduct) {
       const fp = productFingerprint(sp);
@@ -131,7 +141,7 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
       }
     }
     if (!targetProduct) {
-      const newEan = isRealEan(sp.ean) ? sp.ean : `sweetcare-${sp.url.split('/').pop().slice(0,40)}`;
+      const newEan = wantEan;
       targetProduct = {
         ean: newEan,
         name: sp.name,
