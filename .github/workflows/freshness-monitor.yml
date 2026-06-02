@@ -1,0 +1,41 @@
+# SmartCart — Monitor de frescura (health check diário)
+# ============================================================
+# Corre depois das janelas de scraping diário e FALHA (red X + email)
+# se alguma loja tiver o último refresh mais velho que --stale-days, ou
+# se reaparecerem duplicados de marca/fingerprint no seed.
+#
+# Objectivo: apanhar automaticamente "hollow success" / verified_at
+# congelado (ex.: workflow passa mas nunca integra) sem ter de inspeccionar
+# à mão. Lê o data/seed-bundle.json que está no main — reflecte o que está
+# mesmo live no site.
+
+name: Freshness monitor
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 07:00 UTC — depois das runs nocturnas
+  workflow_dispatch:
+    inputs:
+      stale_days:
+        description: 'Limite de dias para considerar uma loja stale'
+        required: false
+        default: '2'
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    name: Relatório de frescura por loja
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Freshness report (strict)
+        run: |
+          STALE="${{ github.event.inputs.stale_days || '2' }}"
+          node scripts/freshness-report.js --strict --stale-days="$STALE"
