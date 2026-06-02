@@ -63,6 +63,11 @@ const HEADED = !!args.headed;
 const RESUME = !!args.resume;
 const CHECKPOINT_EVERY = 50;
 const TIMEOUT_MS = 25000;
+// Resume "stale-aware": só salta URLs scrapados há menos de N horas.
+// Dentro da mesma run (crash/timeout) → salta os já feitos (recovery).
+// Numa run agendada horas depois → tudo "velho" → re-scrape fresco
+// (preços + verified_at atualizam SEMPRE). Default 8h.
+const RESUME_MAX_AGE_H = args['resume-max-age'] ? parseFloat(args['resume-max-age']) : 8;
 
 if (!fs.existsSync(URL_LIST)) {
   console.error(`✗ ${URL_LIST} não existe. Corre primeiro:`);
@@ -112,10 +117,22 @@ if (LIMIT !== Infinity) targets = targets.slice(0, LIMIT);
 let existing = { products: [], stats: { ok: 0, blocked: 0, no_jsonld: 0, error: 0 } };
 if (RESUME && fs.existsSync(OUT_FILE)) {
   existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
-  const scrapedUrls = new Set(existing.products.map(p => p.url));
+  const cutoff = Date.now() - RESUME_MAX_AGE_H * 3600000;
+  const isFresh = p => p.scraped_at && new Date(p.scraped_at).getTime() >= cutoff;
+  const totalExisting = (existing.products || []).length;
+  const freshProducts = (existing.products || []).filter(isFresh);
+  const scrapedUrls = new Set(freshProducts.map(p => p.url));
+  existing.products = freshProducts;
+  existing.stats = {
+    ok: freshProducts.filter(p => p.status === 'ok').length,
+    blocked: 0,
+    no_jsonld: freshProducts.filter(p => p.status === 'no-jsonld').length,
+    error: freshProducts.filter(p => p.status === 'error').length,
+  };
+  const dropped = totalExisting - freshProducts.length;
   const before = targets.length;
   targets = targets.filter(t => !scrapedUrls.has(t.url));
-  console.log(`▶ Resume: ${existing.products.length} já scraped, ${targets.length} restantes (de ${before})`);
+  console.log(`▶ Resume (max-age ${RESUME_MAX_AGE_H}h): ${freshProducts.length} frescos mantidos, ${dropped} velhos a re-scrapar, ${targets.length} restantes (de ${before})`);
 } else {
   console.log(`📦 ${targets.length} produtos para scrapar (concurrency=${CONCURRENCY}, delay=${DELAY_MS}ms)`);
 }

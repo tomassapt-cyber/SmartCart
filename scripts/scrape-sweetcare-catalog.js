@@ -43,6 +43,11 @@ const RESUME = !!args.resume;
 const CHUNK = args.chunk || null;
 const CHECKPOINT_EVERY = 50;
 const TIMEOUT_MS = 25000;
+// Resume "stale-aware": só salta URLs scrapados há menos de N horas.
+// Dentro da mesma run (crash/timeout) → salta os já feitos (recovery).
+// Numa run agendada horas depois → tudo "velho" → re-scrape fresco
+// (preços + verified_at atualizam SEMPRE). Default 8h < intervalo do cron (12h).
+const RESUME_MAX_AGE_H = args['resume-max-age'] ? parseFloat(args['resume-max-age']) : 8;
 
 // Output file: --output override → chunk-specific → default full
 function resolveOutFile() {
@@ -88,9 +93,24 @@ if (LIMIT !== Infinity) targets = targets.slice(0, LIMIT);
 let existing = { products: [], stats: { ok: 0, blocked: 0, no_jsonld: 0, error: 0 } };
 if (RESUME && fs.existsSync(OUT_FILE)) {
   existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
-  const done = new Set((existing.products || []).map(p => p.url));
+  const cutoff = Date.now() - RESUME_MAX_AGE_H * 3600000;
+  const isFresh = p => p.scraped_at && new Date(p.scraped_at).getTime() >= cutoff;
+  // Mantém só os produtos AINDA frescos; os "velhos" são descartados e
+  // voltam aos targets para re-scrape (sem duplicar no ficheiro).
+  const totalExisting = (existing.products || []).length;
+  const freshProducts = (existing.products || []).filter(isFresh);
+  const done = new Set(freshProducts.map(p => p.url));
+  existing.products = freshProducts;
+  // Recalcular stats a partir dos frescos mantidos (evita inflar totais ao re-scrapar)
+  existing.stats = {
+    ok: freshProducts.filter(p => p.status === 'ok').length,
+    blocked: 0,
+    no_jsonld: freshProducts.filter(p => p.status === 'no-jsonld').length,
+    error: freshProducts.filter(p => p.status === 'error').length,
+  };
+  const dropped = totalExisting - freshProducts.length;
   targets = targets.filter(t => !done.has(t.url));
-  console.log(`▶ RESUME: ${existing.products.length} done, ${targets.length} restantes`);
+  console.log(`▶ RESUME (max-age ${RESUME_MAX_AGE_H}h): ${freshProducts.length} frescos mantidos, ${dropped} velhos a re-scrapar, ${targets.length} restantes`);
 }
 
 console.log(`📊 ${targets.length} URLs · concurrency=${CONCURRENCY} · delay=${DELAY_MS}ms\n`);
