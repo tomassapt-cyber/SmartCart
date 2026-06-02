@@ -179,6 +179,10 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
   const d = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-audit.js'), '--apply'], { cwd: ROOT, stdio: 'inherit' });
   if (d.status !== 0) console.warn('⚠ dedup-audit falhou.');
 
+  console.log('\n▶ dedup-store-url (dups cross-língua mesma URL de loja)...');
+  const du = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-store-url.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
+  if (du.status !== 0) console.warn('⚠ dedup-store-url falhou.');
+
   console.log('\n▶ inject-seed-into-demo...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], { cwd: ROOT, stdio: 'inherit' });
   if (r.status === 0) console.log('\n✅ Integração completa.');

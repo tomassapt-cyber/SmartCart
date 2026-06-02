@@ -70,6 +70,16 @@ if (!fs.existsSync(URL_LIST)) {
 const urlList = JSON.parse(fs.readFileSync(URL_LIST, 'utf8'));
 let targets = urlList.urls;
 
+// Excluir bundles/coffrets da casa SweetCare (slug "...-N-products-...").
+// Aparecem como pseudo-produtos com desconto enganoso (ex: -69%) por
+// comparar o preço do pack contra o somatório das unidades.
+const KIT_SLUG_RE = /\b\d+-products?\b/i;
+const beforeKit = targets.length;
+targets = targets.filter(t => !KIT_SLUG_RE.test(t.slug || '') && !KIT_SLUG_RE.test(t.url || ''));
+if (targets.length !== beforeKit) {
+  console.log(`🚫 Bundles "N-products" excluídos: ${beforeKit - targets.length}`);
+}
+
 if (CATEGORY) {
   targets = targets.filter(t => t.category === CATEGORY);
   console.log(`🔍 Filtro categoria=${CATEGORY}: ${targets.length} URLs`);
