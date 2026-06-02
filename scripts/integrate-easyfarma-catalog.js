@@ -236,6 +236,14 @@ function syntheticEan(p) {
     console.warn('⚠ dedup-audit falhou — continuar mesmo assim.');
   }
 
+  console.log('\n▶ dedup-store-url (dups cross-língua mesma URL de loja)...');
+  const du = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-store-url.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
+  if (du.status !== 0) console.warn('⚠ dedup-store-url falhou — continuar.');
+
+  console.log('\n▶ normalize-brand-display (unificar capitalização de marcas)...');
+  const nb = spawnSync('node', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
+  if (nb.status !== 0) console.warn('⚠ normalize-brand-display falhou — continuar.');
+
   console.log('\n▶ Re-injectando no demo.html + index.html...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], {
     cwd: ROOT, stdio: 'inherit',
