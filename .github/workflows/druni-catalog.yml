@@ -198,7 +198,7 @@ jobs:
         run: |
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          git add -f data/catalog/druni-urls.json data/catalog/druni-full.json data/seed-bundle.json demo.html index.html 2>/dev/null || true
+          git add -f data/catalog/druni-urls.json data/catalog/druni-full.json data/seed-bundle.json demo.html index.html catalogo.html 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"
             exit 0
