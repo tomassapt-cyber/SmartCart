@@ -241,6 +241,27 @@ function isRealEan(ean) {
     console.warn('⚠ dedup-audit falhou — continuar mesmo assim.');
   }
 
+  // Dups cross-língua: o MESMO produto (mesma URL de loja, código p-XXXX)
+  // scrapado com nomes PT vs EN gera 2 produtos canónicos. O fingerprint
+  // não apanha; este passo funde-os com segurança (só EANs únicos).
+  console.log('\n▶ A correr dedup-store-url (dups cross-língua mesma URL de loja)...');
+  const dedupUrl = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-store-url.js'), '--apply', '--no-inject'], {
+    cwd: ROOT, stdio: 'inherit',
+  });
+  if (dedupUrl.status !== 0) {
+    console.warn('⚠ dedup-store-url falhou — continuar mesmo assim.');
+  }
+
+  // Unificar capitalização de marcas (Druni grava em ALL CAPS; Sweetcare/Wells
+  // em Title Case) para a mesma marca não aparecer 2× no filtro do site.
+  console.log('\n▶ A correr normalize-brand-display (unificar capitalização de marcas)...');
+  const normBrand = spawnSync('node', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject'], {
+    cwd: ROOT, stdio: 'inherit',
+  });
+  if (normBrand.status !== 0) {
+    console.warn('⚠ normalize-brand-display falhou — continuar mesmo assim.');
+  }
+
   console.log('\n▶ Re-injectando no demo.html + index.html...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], {
     cwd: ROOT, stdio: 'inherit',

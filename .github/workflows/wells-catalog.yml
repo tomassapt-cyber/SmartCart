@@ -1,14 +1,19 @@
 # SmartCart — Wells full catalog refresh
 # ============================================================
-# Descobre + scrape todos os produtos da Wells (categoria filtrável).
+# Descobre + scrape + INTEGRA todos os produtos da Wells no seed.
 # Trigger:
 #  - Manual via UI ("Run workflow"), com input de categoria
-#  - Cron semanal: domingos 05h00 Lisboa (04h UTC, 1h depois do daily)
+#  - Cron diário às 14h UTC (queues após Sweetcare das 10h)
 #
-# Output:
-#  - data/catalog/wells-urls.json (lista completa de URLs descobertas)
-#  - data/catalog/wells-full.json (produtos com nome/marca/preço/variantes)
-#  - Commit automático para main
+# Pipeline:
+#   1. discover-wells-catalog.js   → data/catalog/wells-urls.json
+#   2. scrape-wells-catalog.js     → data/catalog/wells-full.json
+#   3. integrate-wells-catalog.js  → merge no seed (atualiza verified_at) +
+#      dedup + normalize marcas + regenera demo/index/catalogo.html
+#   4. commit + push para main
+#
+# NOTA: antes, este workflow só fazia scrape e nunca integrava — por isso
+# os preços/verified_at da Wells no seed ficavam congelados durante dias.
 
 name: Wells catalog refresh
 
@@ -91,17 +96,21 @@ jobs:
             node -e "const d=require('./data/catalog/wells-full.json'); console.log('=== Wells catalog refresh ==='); console.log('Total products:', d.products.length); console.log('Stats:', JSON.stringify(d.stats, null, 2));"
           fi
 
+      - name: Integrate into seed (atualiza verified_at + regenera HTML)
+        run: node scripts/integrate-wells-catalog.js
+
       - name: Commit catalog data
         run: |
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          # Force-add wells-full.json mesmo que esteja em .gitignore
+          # Seed + HTML regenerados pelo integrate; + ficheiros raw (gitignored)
+          git add data/seed-bundle.json demo.html index.html catalogo.html 2>/dev/null || true
           git add -f data/catalog/wells-urls.json data/catalog/wells-full.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"
           else
             CAT="${{ github.event.inputs.category || 'all' }}"
-            git commit -m "chore: Wells catalog refresh - $CAT ($(date -u +%Y-%m-%d))"
+            git commit -m "chore: Wells daily refresh - $CAT ($(date -u +%Y-%m-%d))"
             BRANCH="${GITHUB_REF_NAME}"
             BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
             pushed=0

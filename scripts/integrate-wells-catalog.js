@@ -231,6 +231,22 @@ function loadJSON(file) {
   fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
   console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (${(fs.statSync(SEED_BUNDLE).size / 1024).toFixed(0)} KB)`);
 
+  // 10b) Limpeza pós-integração (alinhado com Sweetcare/Druni): dedup por
+  // fingerprint + dedup por URL de loja + unificar capitalização de marcas.
+  // Garante que produtos novos da Wells não reintroduzem duplicados nem
+  // marcas em ALL CAPS no filtro do site.
+  console.log('\n▶ dedup-audit...');
+  const da = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-audit.js'), '--apply'], { cwd: ROOT, stdio: 'inherit' });
+  if (da.status !== 0) console.warn('⚠ dedup-audit falhou — continuar.');
+
+  console.log('\n▶ dedup-store-url (dups cross-língua mesma URL de loja)...');
+  const du = spawnSync('node', [path.join(ROOT, 'scripts', 'dedup-store-url.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
+  if (du.status !== 0) console.warn('⚠ dedup-store-url falhou — continuar.');
+
+  console.log('\n▶ normalize-brand-display (unificar capitalização de marcas)...');
+  const nb = spawnSync('node', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
+  if (nb.status !== 0) console.warn('⚠ normalize-brand-display falhou — continuar.');
+
   // 11) Re-inject no demo.html
   console.log('\n▶ A re-injectar no demo.html...');
   const injectResult = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], {
