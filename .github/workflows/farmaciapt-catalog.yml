@@ -91,29 +91,10 @@ jobs:
           git commit -m "chore: Farmácia.pt daily refresh ($DATE)" \
             -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
 
-      - name: Push to main (with rebase-on-fail retry)
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
         run: |
           set -e
-          # Push com backoff exponencial: até 8 tentativas (~17 min total) com
-          # jitter aleatório. Suporta chunks paralelos a tentar push em
-          # simultâneo sem perderem trabalho.
-          BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
-          for i in "${!BACKOFFS[@]}"; do
-            attempt=$((i + 1))
-            if git push origin HEAD:main; then
-              echo "Push ok (tentativa $attempt)"
-              exit 0
-            fi
-            echo "Push falhou (tentativa $attempt) — rebase contra origin/main…"
-            git fetch origin main
-            if ! git rebase origin/main; then
-              git rebase --abort
-              echo "Rebase falhou — abortado"
-            fi
-            JITTER=$((RANDOM % 10))
-            WAIT=$((${BACKOFFS[$i]} + JITTER))
-            echo "A aguardar ${WAIT}s antes de retentar..."
-            sleep "$WAIT"
-          done
-          echo "Push falhou após 8 tentativas. Artifact contém os dados."
-          exit 1
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-farmaciapt-catalog.js" \
+            "chore: Farmácia.pt daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/farmaciapt-full.json

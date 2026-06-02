@@ -205,27 +205,7 @@ jobs:
           fi
           CAT="${{ github.event.inputs.category || 'all' }}"
           git commit -m "chore: Druni catalog refresh - $CAT merged ($(date -u +%Y-%m-%d))"
-          BRANCH="${GITHUB_REF_NAME}"
-          BACKOFFS=(5 15 30 60 120 180 240 300 420 600)
-          pushed=0
-          for i in "${!BACKOFFS[@]}"; do
-            attempt=$((i + 1))
-            if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
-            echo "Push falhou (tentativa $attempt), a rebasear..."
-            git fetch origin "${BRANCH}" || true
-            git rebase --abort 2>/dev/null || true
-            if git pull --rebase --autostash origin "${BRANCH}"; then
-              if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
-            else
-              git rebase --abort 2>/dev/null || true
-              git stash pop 2>/dev/null || true
-            fi
-            JITTER=$((RANDOM % 15))
-            WAIT=$((${BACKOFFS[$i]} + JITTER))
-            echo "A aguardar ${WAIT}s..."
-            sleep "$WAIT"
-          done
-          if [ "$pushed" != "1" ]; then
-            echo "ERRO: push falhou após ${#BACKOFFS[@]} tentativas"
-            exit 1
-          fi
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-druni-catalog.js" \
+            "chore: Druni catalog refresh - $CAT merged ($(date -u +%Y-%m-%d))" \
+            data/catalog/druni-urls.json data/catalog/druni-full.json

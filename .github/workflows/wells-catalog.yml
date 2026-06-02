@@ -111,28 +111,8 @@ jobs:
           else
             CAT="${{ github.event.inputs.category || 'all' }}"
             git commit -m "chore: Wells daily refresh - $CAT ($(date -u +%Y-%m-%d))"
-            BRANCH="${GITHUB_REF_NAME}"
-            BACKOFFS=(5 15 30 60 120 180 240 300 420 600 900 1200)
-            pushed=0
-            for i in "${!BACKOFFS[@]}"; do
-              attempt=$((i + 1))
-              if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
-              echo "Push falhou (tentativa $attempt), a rebasear contra origin/${BRANCH}..."
-              git fetch origin "${BRANCH}" || true
-              git rebase --abort 2>/dev/null || true
-              if git pull --rebase --autostash origin "${BRANCH}"; then
-                if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
-              else
-                git rebase --abort 2>/dev/null || true
-                git stash pop 2>/dev/null || true
-              fi
-              JITTER=$((RANDOM % 10))
-              WAIT=$((${BACKOFFS[$i]} + JITTER))
-              echo "Falhou tentativa $attempt, a aguardar ${WAIT}s..."
-              sleep "$WAIT"
-            done
-            if [ "$pushed" != "1" ]; then
-              echo "ERRO: 12 tentativas falharam — abortando step para tornar visível"
-              exit 1
-            fi
+            bash scripts/ci/resilient-push.sh \
+              "node scripts/integrate-wells-catalog.js" \
+              "chore: Wells daily refresh - $CAT ($(date -u +%Y-%m-%d))" \
+              data/catalog/wells-urls.json data/catalog/wells-full.json
           fi
