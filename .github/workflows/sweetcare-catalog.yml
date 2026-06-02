@@ -39,6 +39,11 @@ on:
         description: 'Chunk N/M (ex: 1/6, 3/6) — vazio = corre todos em paralelo'
         required: false
         default: ''
+      no_resume:
+        description: 'Forçar re-scrape (ignora --resume) — usar com limit p/ testes'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -86,8 +91,13 @@ jobs:
             echo "Skip: dispatch pediu chunk $MANUAL_CHUNK, este job é $MATRIX_CHUNK."
             exit 0
           fi
-          # --resume: salta URLs já presentes no chunk file (acumula entre runs)
-          ARGS="--chunk=$MATRIX_CHUNK --resume"
+          # --resume: salta URLs já presentes no chunk file (acumula entre runs).
+          # no_resume=true → omite --resume (re-scrape forçado, p/ testes/debug).
+          if [ "${{ github.event.inputs.no_resume }}" = "true" ]; then
+            ARGS="--chunk=$MATRIX_CHUNK"
+          else
+            ARGS="--chunk=$MATRIX_CHUNK --resume"
+          fi
           if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
             ARGS="$ARGS --category=${{ github.event.inputs.category }}"
           fi
