@@ -104,17 +104,21 @@ async function scrapeProductPage(page, url) {
   if (!/^https:\/\/www\.sweetcare\.pt\/pt\//.test(url)) {
     ptUrl = url.replace(/^https:\/\/www\.sweetcare\.pt\//, 'https://www.sweetcare.pt/pt/');
   }
-  await page.goto(ptUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUT_MS });
-  // Esperar até JSON-LD estar presente OU timeout 3s
-  try {
-    await page.waitForFunction(() => {
-      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-      return scripts.length > 0 && [...scripts].some(s => s.textContent.includes('"Product"'));
-    }, { timeout: 3000 });
-  } catch { /* ignore — may be no JSON-LD */ }
-  await page.waitForTimeout(500);
+  // Carrega a página e extrai. Espera por conteúdo REAL (JSON-LD Product OU preço
+  // no DOM) antes de extrair — senão apanhamos o "shell" do SPA (og:title=www.sweetcare.pt).
+  async function loadAndExtract(waitMs, settleMs) {
+    await page.goto(ptUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUT_MS });
+    try {
+      await page.waitForFunction(() => {
+        const ld = [...document.querySelectorAll('script[type="application/ld+json"]')]
+          .some(s => s.textContent.includes('"Product"'));
+        const dom = document.querySelector('.price-product .pvp, .pvp, [itemprop="price"]');
+        return ld || !!dom;
+      }, { timeout: waitMs });
+    } catch { /* sem conteúdo — provavelmente shell/bloqueio */ }
+    await page.waitForTimeout(settleMs);
 
-  return await page.evaluate(({ source, flags }) => {
+    return await page.evaluate(({ source, flags }) => {
     try {
     const VARIANT_EXCLUDE = new RegExp(source, flags);
 
@@ -344,7 +348,21 @@ async function scrapeProductPage(page, url) {
     } catch (e) {
       return { name: null, ean: null, brand: null, offers: [], variants: [], image_url: null, _debug: { err: e.message, stack: e.stack?.slice(0, 200) } };
     }
-  }, { source: VARIANT_EXCLUDE.source, flags: VARIANT_EXCLUDE.flags });
+    }, { source: VARIANT_EXCLUDE.source, flags: VARIANT_EXCLUDE.flags });
+  }
+
+  // 1ª tentativa com espera moderada. Se vier "shell" (sem produto real),
+  // recarrega e espera mais — páginas lentas (luxo) demoram a hidratar.
+  let data = await loadAndExtract(8000, 600);
+  const isShell = (!data.name || /^www\.sweetcare\.pt$/i.test(data.name))
+    && data.current_price_dom == null && !data.ean;
+  if (isShell) {
+    await page.waitForTimeout(1500);
+    data = await loadAndExtract(15000, 1200);
+  }
+  // Limpa name-lixo do shell para não poluir o catálogo com "www.sweetcare.pt".
+  if (data && /^www\.sweetcare\.pt$/i.test(data.name || '')) data.name = null;
+  return data;
 }
 
 function saveCheckpoint(allProducts, stats, final = false) {
@@ -365,28 +383,33 @@ function saveCheckpoint(allProducts, stats, final = false) {
     headless: !HEADED,
     args: ['--no-sandbox', '--disable-blink-features=AutomationControlled'],
   });
-  const context = await browser.newContext({
-    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-    locale: 'pt-PT',
-    timezoneId: 'Europe/Lisbon',
-    geolocation: { latitude: 38.7223, longitude: -9.1393 }, // Lisboa
-    permissions: ['geolocation'],
-    viewport: { width: 1366, height: 768 },
-    extraHTTPHeaders: {
-      // Forçar Accept-Language pt-PT — runners GitHub Actions correm de IPs
-      // dos EUA. Sweetcare aplica markup ~6% se detectar visitante não-PT.
-      // Headers + locale + cookies abaixo evitam esse markup.
-      'Accept-Language': 'pt-PT,pt;q=0.9,en;q=0.8',
-    },
-  });
-  // Cookies de localização — força Sweetcare a tratar como visitante PT
-  await context.addCookies([
-    { name: 'country', value: 'PT', domain: '.sweetcare.pt', path: '/' },
-    { name: 'currency', value: 'EUR', domain: '.sweetcare.pt', path: '/' },
-    { name: 'locale', value: 'pt_PT', domain: '.sweetcare.pt', path: '/' },
-  ]);
-  // Block images for speed
-  await context.route('**/*.{png,jpg,jpeg,gif,webp,svg,ico}', r => r.abort());
+  // Contexto FRESCO por produto — o anti-bot da Sweetcare bloqueia por sessão/cookie,
+  // NÃO por IP. Reutilizar o mesmo contexto → só o 1º pedido passa, o resto vem vazio.
+  // Contexto novo por produto → cada pedido é "visitante novo" → todos passam
+  // (testado localmente: 5/5 vs 1/4 com contexto partilhado).
+  async function makeContext() {
+    const ctx = await browser.newContext({
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+      locale: 'pt-PT',
+      timezoneId: 'Europe/Lisbon',
+      geolocation: { latitude: 38.7223, longitude: -9.1393 }, // Lisboa
+      permissions: ['geolocation'],
+      viewport: { width: 1366, height: 768 },
+      extraHTTPHeaders: {
+        // Forçar Accept-Language pt-PT. Headers + locale + cookies evitam markup ~6%.
+        'Accept-Language': 'pt-PT,pt;q=0.9,en;q=0.8',
+      },
+    });
+    // Cookies de localização — força Sweetcare a tratar como visitante PT
+    await ctx.addCookies([
+      { name: 'country', value: 'PT', domain: '.sweetcare.pt', path: '/' },
+      { name: 'currency', value: 'EUR', domain: '.sweetcare.pt', path: '/' },
+      { name: 'locale', value: 'pt_PT', domain: '.sweetcare.pt', path: '/' },
+    ]);
+    // Block images for speed
+    await ctx.route('**/*.{png,jpg,jpeg,gif,webp,svg,ico}', r => r.abort());
+    return ctx;
+  }
 
   const allProducts = [...(existing.products || [])];
   const stats = { ...(existing.stats || { ok: 0, blocked: 0, no_jsonld: 0, error: 0 }) };
@@ -399,7 +422,8 @@ function saveCheckpoint(allProducts, stats, final = false) {
     while (queue.length > 0) {
       const t = queue.shift();
       if (!t) break;
-      const page = await context.newPage();
+      const ctx = await makeContext();
+      const page = await ctx.newPage();
       try {
         const data = await scrapeProductPage(page, t.url);
         if (data._debug) console.log(`  DBG ${t.slug.slice(0,40)}: ${JSON.stringify(data._debug)}`);
@@ -448,6 +472,7 @@ function saveCheckpoint(allProducts, stats, final = false) {
         allProducts.push({ url: t.url, slug: t.slug, status: 'error', error: e.message.slice(0, 200), scraped_at: new Date().toISOString() });
       } finally {
         await page.close();
+        await ctx.close();
       }
       scraped++;
       if (scraped % 20 === 0) {
