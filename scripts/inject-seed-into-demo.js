@@ -72,6 +72,18 @@ const STALE_DAYS = 14;
   console.log(`🙈 Filtro de visibilidade: ${hidden} produtos ocultos (${seedJson.products.length} visíveis) · ${hiddenOffers} ofertas removidas do render.`);
 })();
 
+// ── Strip de descrições do render (NÃO-destrutivo) ───────────────────────
+// As descrições vivem no seed-bundle.json (a "base de dados") e servem para
+// recomendação/indexação, mas NÃO são renderizadas hoje. Mantê-las no HTML
+// publicado somava ~5MB a cada page-load sem benefício visível. Removemo-las
+// só da cópia em-memória que é injectada. Auto-reverte se algum dia o front
+// passar a mostrá-las (basta apagar este bloco).
+let strippedDesc = 0;
+for (const p of seedJson.products) {
+  if (p.description != null) { delete p.description; delete p.description_source; strippedDesc++; }
+}
+if (strippedDesc) console.log(`✂  Descrições removidas do render: ${strippedDesc} (ficam só no seed-bundle.json)`);
+
 // Adicionar um comentário identificativo no início do JSON injectado
 seedJson._comment = `Catálogo GirlMath v1 — gerado em ${new Date().toISOString()} · ${seedJson.products.length} SKUs · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0)} ofertas.`;
 
