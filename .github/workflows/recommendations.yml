@@ -9,7 +9,11 @@
 # churn a cada uma das 9 crons nem pôr o pipeline de preços em risco.
 #
 # Pipeline:
-#   build-recommendations.js → data/recommendations.json (~11MB, separado)
+#   build-recommendations.js   → data/recommendations.json (~11MB, separado)
+#   build-descriptions-file.js → data/descriptions.json    (~7MB, separado)
+#
+# Ambos são índices derivados do seed (texto/relacional), lazy-loaded pelo
+# front-end ao abrir um produto — ficam FORA do seed para o manter leve.
 
 name: Content recommendations
 
@@ -41,10 +45,12 @@ jobs:
       # Sem npm install: build-recommendations.js só usa builtins do Node
       # + scripts/lib locais (sem dependências externas).
 
-      - name: Build recommendations
-        run: node scripts/build-recommendations.js
+      - name: Build recommendations + descriptions index
+        run: |
+          node scripts/build-recommendations.js
+          node scripts/build-descriptions-file.js
 
-      - name: Commit recommendations
+      - name: Commit derived indexes
         env:
           GIT_AUTHOR_NAME: GirlMath Bot
           GIT_AUTHOR_EMAIL: bot@girlmath.pt
@@ -52,22 +58,22 @@ jobs:
           GIT_COMMITTER_EMAIL: bot@girlmath.pt
         run: |
           set -e
-          if git diff --quiet -- data/recommendations.json; then
-            echo "Nenhuma alteração nas recomendações — nada a fazer."
+          if git diff --quiet -- data/recommendations.json data/descriptions.json; then
+            echo "Nenhuma alteração nos índices derivados — nada a fazer."
             exit 0
           fi
-          git add data/recommendations.json
+          git add data/recommendations.json data/descriptions.json
           DATE=$(date -u +%Y-%m-%d)
-          git commit -m "chore: rebuild content recommendations ($DATE)" \
-            -m "Auto-update via GitHub Actions. Índice derivado do seed; preços intactos."
+          git commit -m "chore: rebuild content indexes ($DATE)" \
+            -m "Auto-update via GitHub Actions. Índices derivados do seed (similares + descrições); preços intactos."
 
       - name: Push (resilient — regenera sobre origin em conflito)
         # Se não houve commit (sem alterações), o push é um no-op "up-to-date".
-        # Em conflito com uma cron de preço, regenera recommendations.json
-        # sobre o seed mais recente de origin e volta a tentar.
+        # Em conflito com uma cron de preço, regenera AMBOS os índices sobre o
+        # seed mais recente de origin e volta a tentar.
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/build-recommendations.js" \
-            "chore: rebuild content recommendations ($(date -u +%Y-%m-%d))" \
-            data/recommendations.json
+            "node scripts/build-recommendations.js && node scripts/build-descriptions-file.js" \
+            "chore: rebuild content indexes ($(date -u +%Y-%m-%d))" \
+            data/recommendations.json data/descriptions.json
