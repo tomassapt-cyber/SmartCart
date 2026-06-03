@@ -24,8 +24,55 @@ const afterOpen = openIdx + OPEN.length;
 const closeIdx = html0.indexOf(CLOSE, afterOpen);
 if (closeIdx === -1) { console.error('✗ </script> de fecho não encontrado'); process.exit(1); }
 
-// Adicionar um comentário identificativo no início do JSON injectado
 const seedJson = JSON.parse(seed);
+
+// ── Filtro de visibilidade (NÃO-destrutivo) ──────────────────────────────
+// Esconde do HTML publicado produtos que não fazem sentido mostrar, SEM
+// alterar data/seed-bundle.json. Os scrapers continuam a manter o seed
+// completo; isto só afecta o que é renderizado e auto-corrige no próximo
+// rebuild (produto volta a stock / é re-verificado → reaparece sozinho).
+//
+// Critérios de OCULTAÇÃO (qualquer um esconde o produto):
+//   1. Órfão     — sem nenhuma oferta de loja (sem preço nem link).
+//   2. Fora-site — TODAS as ofertas não verificadas há > STALE_DAYS dias.
+//   3. Esgotado  — TODAS as ofertas com in_stock === false.
+const STALE_DAYS = 14;
+(function applyVisibilityFilter() {
+  const offersByEan = {};
+  for (const sp of seedJson.store_products)
+    for (const it of sp.items) (offersByEan[it.ean] ||= []).push(it);
+
+  // "Agora" robusto = verified_at mais recente do seed (evita marcar tudo
+  // stale se o relógio do CI divergir do horário real do utilizador).
+  let maxTs = Date.now();
+  for (const offs of Object.values(offersByEan))
+    for (const o of offs) { const t = +new Date(o.verified_at || 0); if (t > maxTs) maxTs = t; }
+  const ageDays = (o) => o.verified_at ? (maxTs - new Date(o.verified_at)) / 864e5 : Infinity;
+
+  const visibleEans = new Set();
+  for (const p of seedJson.products) {
+    const offs = offersByEan[p.ean] || [];
+    if (offs.length === 0) continue;                          // 1. órfão
+    if (offs.every(o => ageDays(o) > STALE_DAYS)) continue;   // 2. fora-site
+    if (offs.every(o => o.in_stock === false)) continue;      // 3. esgotado
+    visibleEans.add(p.ean);
+  }
+
+  const totalProducts = seedJson.products.length;
+  const totalOffers = seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0);
+
+  // Manter só produtos visíveis + as ofertas desses produtos (remover as
+  // ofertas dos ocultos evita contagens infladas e links partidos).
+  seedJson.products = seedJson.products.filter(p => visibleEans.has(p.ean));
+  for (const sp of seedJson.store_products)
+    sp.items = sp.items.filter(it => visibleEans.has(it.ean));
+
+  const hidden = totalProducts - seedJson.products.length;
+  const hiddenOffers = totalOffers - seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0);
+  console.log(`🙈 Filtro de visibilidade: ${hidden} produtos ocultos (${seedJson.products.length} visíveis) · ${hiddenOffers} ofertas removidas do render.`);
+})();
+
+// Adicionar um comentário identificativo no início do JSON injectado
 seedJson._comment = `Catálogo GirlMath v1 — gerado em ${new Date().toISOString()} · ${seedJson.products.length} SKUs · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0)} ofertas.`;
 
 const newBlock = '\n' + JSON.stringify(seedJson) + '\n';
