@@ -84,6 +84,23 @@ for (const p of seedJson.products) {
 }
 if (strippedDesc) console.log(`✂  Descrições removidas do render: ${strippedDesc} (ficam só no seed-bundle.json)`);
 
+// ── Overlay de NOMES traduzidos PT (NÃO-destrutivo) ──────────────────────
+// data/translations.json.names mapeia ean → nome PT limpo (whitelist, sem
+// híbridos — ver scripts/build-name-translations.js). Aplicamos SÓ à cópia
+// em-memória que vai para o HTML; o seed-bundle.json mantém o nome original
+// (fingerprint do dedup). Auto-reverte se o overlay for limpo.
+let renamed = 0;
+const TR_FILE = path.join(ROOT, 'data', 'translations.json');
+if (fs.existsSync(TR_FILE)) {
+  try {
+    const names = (JSON.parse(fs.readFileSync(TR_FILE, 'utf8')).names) || {};
+    for (const p of seedJson.products) {
+      if (names[p.ean] && names[p.ean] !== p.name) { p.name = names[p.ean]; renamed++; }
+    }
+  } catch (e) { console.warn('⚠  translations.json names não aplicado:', e.message); }
+}
+if (renamed) console.log(`🇵🇹 Nomes traduzidos aplicados ao render: ${renamed} (seed-bundle.json intacto)`);
+
 // Adicionar um comentário identificativo no início do JSON injectado
 seedJson._comment = `Catálogo GirlMath v1 — gerado em ${new Date().toISOString()} · ${seedJson.products.length} SKUs · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0)} ofertas.`;
 
