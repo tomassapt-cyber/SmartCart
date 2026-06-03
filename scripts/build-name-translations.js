@@ -159,13 +159,28 @@ const splitRe = new RegExp(`[^${LETTER}0-9]+`);
 function tokens(name) { return name.split(splitRe).filter(Boolean); }
 function isCode(tok) { return /\d/.test(tok); }      // Q10, SPF50, 30ml, C50…
 
-function translateName(name) {
-  let out = name;
-  for (const [es, pt] of Object.entries(DICT)) {
-    const re = new RegExp(`(^|[^${LETTER}])(${escapeRe(es)})(?=$|[^${LETTER}])`, 'gi');
-    out = out.replace(re, (m, pre, word) => pre + matchCase(word, pt));
+// Termos AMBÍGUOS PT/EN que só traduzimos quando o nome é claramente espanhol
+// (tem um conector ES como "con/sin/del/los/las"). Ex.: "color" é inglês em
+// linhas como "Color Care", mas é espanhol em "Crema Con Color" → "Com Cor".
+const CTX_DICT = { 'color': 'Cor', 'colores': 'Cores' };
+const ES_CTX_RE = new RegExp(`(^|[^${LETTER}])(con|sin|del|los|las|una|uno)(?=$|[^${LETTER}])`, 'i');
+function isSpanishContext(name) { return ES_CTX_RE.test(name); }
+
+// Tradução TOKEN-A-TOKEN (preserva delimitadores). Nunca traduz um token que
+// pertença à própria marca (evita "Axis-Y"→"Axis-E", "Y" da marca → "E", etc.)
+const keepRe = new RegExp(`([^${LETTER}0-9]+)`);
+function translateName(name, brandToks, esCtx) {
+  const parts = name.split(keepRe);   // alternadamente: token, delim, token, …
+  for (let i = 0; i < parts.length; i++) {
+    const seg = parts[i];
+    if (!seg || keepRe.test(seg)) continue;   // delimitador → mantém
+    if (/\d/.test(seg)) continue;             // código → mantém
+    const k = seg.toLowerCase();
+    if (brandToks.has(k)) continue;           // token da marca → NUNCA traduzir
+    if (DICT[k]) { parts[i] = matchCase(seg, DICT[k]); continue; }
+    if (esCtx && CTX_DICT[k]) parts[i] = matchCase(seg, CTX_DICT[k]);
   }
-  return out;
+  return parts.join('');
 }
 
 (function main() {
@@ -205,7 +220,7 @@ function translateName(name) {
       continue;
     }
 
-    const tr = translateName(p.name);
+    const tr = translateName(p.name, brandToks, isSpanishContext(p.name));
     if (tr === p.name) { skipNoChange++; continue; }  // 100% PT já / nada a mudar
     changedTotal++;
     clean[p.ean] = tr;
