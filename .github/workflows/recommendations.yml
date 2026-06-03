@@ -1,0 +1,73 @@
+# SmartCart — Recomendações por conteúdo (Fase 3)
+# ============================================================
+# Reconstrói data/recommendations.json (índice de "produtos similares"
+# por TF-IDF + cosseno sobre descrição/nome/marca) a partir do
+# seed-bundle.json já commitado. NÃO faz scraping e NÃO toca no seed.
+#
+# Corre 1×/dia (a similaridade é estável, ao contrário dos preços), de
+# propósito SEPARADO das crons de preço — para não somar 48s + 11MB de
+# churn a cada uma das 9 crons nem pôr o pipeline de preços em risco.
+#
+# Pipeline:
+#   build-recommendations.js → data/recommendations.json (~11MB, separado)
+
+name: Content recommendations
+
+on:
+  schedule:
+    # 05h UTC — depois do grosso das crons nocturnas de preço.
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Sem npm install: build-recommendations.js só usa builtins do Node
+      # + scripts/lib locais (sem dependências externas).
+
+      - name: Build recommendations
+        run: node scripts/build-recommendations.js
+
+      - name: Commit recommendations
+        env:
+          GIT_AUTHOR_NAME: GirlMath Bot
+          GIT_AUTHOR_EMAIL: bot@girlmath.pt
+          GIT_COMMITTER_NAME: GirlMath Bot
+          GIT_COMMITTER_EMAIL: bot@girlmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/recommendations.json; then
+            echo "Nenhuma alteração nas recomendações — nada a fazer."
+            exit 0
+          fi
+          git add data/recommendations.json
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: rebuild content recommendations ($DATE)" \
+            -m "Auto-update via GitHub Actions. Índice derivado do seed; preços intactos."
+
+      - name: Push (resilient — regenera sobre origin em conflito)
+        # Se não houve commit (sem alterações), o push é um no-op "up-to-date".
+        # Em conflito com uma cron de preço, regenera recommendations.json
+        # sobre o seed mais recente de origin e volta a tentar.
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/build-recommendations.js" \
+            "chore: rebuild content recommendations ($(date -u +%Y-%m-%d))" \
+            data/recommendations.json
