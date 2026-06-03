@@ -248,6 +248,10 @@ function loadJSON(file) {
   if (nb.status !== 0) console.warn('⚠ normalize-brand-display falhou — continuar.');
 
   // 11) Re-inject no demo.html
+  console.log('\n▶ backfill-descriptions (propagar descricoes raw→seed)...');
+  const bf = spawnSync('node', [path.join(ROOT, 'scripts', 'backfill-descriptions.js')], { cwd: ROOT, stdio: 'inherit' });
+  if (bf.status !== 0) console.warn('⚠ backfill-descriptions falhou — continuar.');
+
   console.log('\n▶ A re-injectar no demo.html...');
   const injectResult = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], {
     cwd: ROOT,

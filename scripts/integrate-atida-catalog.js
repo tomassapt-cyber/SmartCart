@@ -280,6 +280,10 @@ function syntheticEan(p) {
   const nb = spawnSync('node', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' });
   if (nb.status !== 0) console.warn('⚠ normalize-brand-display falhou — continuar.');
 
+  console.log('\n▶ backfill-descriptions (propagar descricoes raw→seed)...');
+  const bf = spawnSync('node', [path.join(ROOT, 'scripts', 'backfill-descriptions.js')], { cwd: ROOT, stdio: 'inherit' });
+  if (bf.status !== 0) console.warn('⚠ backfill-descriptions falhou — continuar.');
+
   console.log('\n▶ Re-injectando no demo.html + index.html...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], {
     cwd: ROOT, stdio: 'inherit',
