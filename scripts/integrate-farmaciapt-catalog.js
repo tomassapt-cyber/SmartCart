@@ -123,6 +123,34 @@ function syntheticEan(p) {
     seed.store_products.push(efSp);
   }
 
+  // ── Auto-registo da loja em seed.stores[] (self-healing) ─────────────────
+  // As ofertas vivem em store_products, mas a loja só aparece no site se
+  // existir o objecto de metadados em seed.stores[]. Antes, seed.stores era
+  // populado SÓ por build-demo-seed.js a partir de data/stores.json — se esse
+  // build não corresse depois de adicionar a loja, as 1000s de ofertas ficavam
+  // invisíveis. Aqui garantimos o registo a partir de data/stores.json, com a
+  // mesma forma que build-demo-seed.js usa. NÃO toca em nomes de produtos.
+  if (!seed.stores.some(s => s.slug === STORE_SLUG)) {
+    const FREE_SHIP_BY_TIER = { 1: 29, 2: 30, 3: 39, 4: 49, 5: 30, 6: 25, 7: 30 };
+    let def = null;
+    try {
+      const storesDoc = loadJSON(path.join(ROOT, 'data', 'stores.json'));
+      def = (storesDoc.stores || []).find(s => s.id === STORE_SLUG);
+    } catch (e) { /* fallback abaixo */ }
+    const storeEntry = {
+      slug: STORE_SLUG,
+      name: (def && def.nome) || 'Farmácia.pt',
+      base_url: (def && def.url) || 'https://farmacia.pt',
+      logo_url: (def && def.logo_url) || null,
+      free_shipping_threshold:
+        (def && def.free_shipping_threshold) ||
+        (def && FREE_SHIP_BY_TIER[def.tier]) || 39,
+      shipping_zones: (def && def.shipping_zones) || { mainland: 0, madeira: 1.5, acores: 1.5 },
+    };
+    seed.stores.push(storeEntry);
+    console.log(`🏬 Loja "${storeEntry.name}" registada em seed.stores[] (estava em falta).`);
+  }
+
   // Limpar ofertas Farmácia.pt com preço "fake" (placeholder do build-catalog
   // inicial). Detectamos isso porque essas ofertas têm `source: undefined`
   // ou `source: 'manual'` e EANs que estão noutras lojas com preço idêntico.
