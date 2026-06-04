@@ -3,8 +3,8 @@
   "store_slug": "sweetcare",
   "store_name": "SweetCare",
   "store_url": "https://sweetcare.pt",
-  "verified_at": "2026-06-02T18:13:54.977Z",
-  "method": "playwright-headless (refresh 2026-06-02)",
+  "verified_at": "2026-06-04T14:15:15.870Z",
+  "method": "playwright-headless (refresh 2026-06-04)",
   "stats": {
     "total": 20,
     "verified": 10,
@@ -34,8 +34,8 @@
       "observed_brand": "Yves Saint Laurent",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica. Variantes 30/50/90ml seleccionáveis na página. Scrape 2026-05-17: 74.42€ Refresh 2026-05-17: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-20: 74.42€ → 80.16€ Refresh 2026-05-21: 80.16€ → 80.16€ Refresh 2026-05-23: 80.16€ → 78.81€ Refresh 2026-05-24: 78.81€ → 78.81€ Refresh 2026-05-26: 78.81€ → 78.81€ Refresh 2026-05-27: 78.81€ → 78.81€ Refresh 2026-05-28: 78.81€ → 78.81€ Refresh 2026-05-30: 78.81€ → 79.48€ Refresh 2026-05-31: 79.48€ → 79.48€ Refresh 2026-06-01: 79.48€ → 79.48€",
-      "verified_at": "2026-06-01T20:07:28.181Z",
+      "notes": "PDP canónica. Variantes 30/50/90ml seleccionáveis na página. Scrape 2026-05-17: 74.42€ Refresh 2026-05-17: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-18: 74.42€ → 74.42€ Refresh 2026-05-20: 74.42€ → 80.16€ Refresh 2026-05-21: 80.16€ → 80.16€ Refresh 2026-05-23: 80.16€ → 78.81€ Refresh 2026-05-24: 78.81€ → 78.81€ Refresh 2026-05-26: 78.81€ → 78.81€ Refresh 2026-05-27: 78.81€ → 78.81€ Refresh 2026-05-28: 78.81€ → 78.81€ Refresh 2026-05-30: 78.81€ → 79.48€ Refresh 2026-05-31: 79.48€ → 79.48€ Refresh 2026-06-01: 79.48€ → 79.48€ Refresh 2026-06-04: 79.48€ → 79.48€",
+      "verified_at": "2026-06-04T14:13:51.195Z",
       "observed_price": 79.48,
       "observed_currency": "USD",
       "observed_in_stock": true,
@@ -60,8 +60,8 @@
       "observed_brand": "Dior",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica. Variantes 60/100/200ml. Scrape 2026-05-17: 73.02€ Refresh 2026-05-17: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-20: 73.02€ → 111.17€ Refresh 2026-05-21: 111.17€ → 111.17€ Refresh 2026-05-23: 111.17€ → 109.30€ Refresh 2026-05-24: 109.30€ → 109.30€ Refresh 2026-05-26: 109.30€ → 109.30€ Refresh 2026-05-27: 109.30€ → 109.30€ Refresh 2026-05-28: 109.30€ → 109.30€ Refresh 2026-05-30: 109.30€ → 110.24€ Refresh 2026-05-31: 110.24€ → 110.24€ Refresh 2026-06-01: 110.24€ → 116.80€",
-      "verified_at": "2026-06-01T20:07:28.050Z",
+      "notes": "PDP canónica. Variantes 60/100/200ml. Scrape 2026-05-17: 73.02€ Refresh 2026-05-17: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-18: 73.02€ → 73.02€ Refresh 2026-05-20: 73.02€ → 111.17€ Refresh 2026-05-21: 111.17€ → 111.17€ Refresh 2026-05-23: 111.17€ → 109.30€ Refresh 2026-05-24: 109.30€ → 109.30€ Refresh 2026-05-26: 109.30€ → 109.30€ Refresh 2026-05-27: 109.30€ → 109.30€ Refresh 2026-05-28: 109.30€ → 109.30€ Refresh 2026-05-30: 109.30€ → 110.24€ Refresh 2026-05-31: 110.24€ → 110.24€ Refresh 2026-06-01: 110.24€ → 116.80€ Refresh 2026-06-04: 116.80€ → 116.80€",
+      "verified_at": "2026-06-04T14:13:51.070Z",
       "observed_price": 116.8,
       "observed_currency": "USD",
       "observed_in_stock": true,
@@ -101,13 +101,25 @@
       "brand": "Lancôme",
       "expected_volume_ml": 50,
       "resolved_url": "https://store.sweetcare.pt/lancome-advanced-genifique-youth-activating-concentrate-p-003003lc",
-      "resolution_method": "google-site-search",
-      "observed_name": "Lancôme Advanced Génifique Youth Activating Concentrate",
+      "resolution_method": "playwright-jsonld",
+      "observed_name": "Advanced Génifique Youth Activating Concentrate ",
       "observed_brand": "Lancôme",
-      "confidence": 0.85,
+      "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica da família Génifique.",
-      "verified_at": "2026-05-13T21:00:00.000Z"
+      "notes": "PDP canónica da família Génifique. Scrape 2026-06-04: 156.48€",
+      "verified_at": "2026-06-04T14:13:51.926Z",
+      "observed_price": 156.48,
+      "observed_currency": "USD",
+      "observed_in_stock": true,
+      "observed_variants": [
+        {
+          "volume_ml": 50,
+          "unit": "ml",
+          "price": 156.48,
+          "in_stock": true,
+          "url": "https://store.sweetcare.pt/lancome-advanced-genifique-youth-activating-concentrate-p-003003lc"
+        }
+      ]
     },
     {
       "ean": "0887167491625",
