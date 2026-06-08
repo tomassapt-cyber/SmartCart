@@ -1,0 +1,100 @@
+# GirlMath — A Sua Farmácia Online daily price refresh
+# ============================================================
+# asuafarmaciaonline.pt — mesma plataforma da afarmaciaonline. data-layer ean
+# vazio; GTIN-13 no JSON-LD "mpn" (parcial). Match HÍBRIDO seguro:
+#   EAN(mpn) + nome+volume exacto + fuzzy guardado (marca+volume+jaccard>=0.7,
+#   com guards de SPF/multipack/variante/formato/token-distintivo).
+#
+# As páginas são grandes (~600KB) → bump de heap para evitar OOM.
+#
+# Pipeline:
+#   1. scrape-asuafarmaciaonline-catalog.js → data/catalog/asuafarmaciaonline-full.json
+#   2. integrate-asuafarmaciaonline-catalog.js → match híbrido (v1: só enriquece)
+#   3. inject-seed-into-demo.js (dentro do integrate) → regenera HTML
+
+name: A Sua Farmácia Online daily refresh
+
+on:
+  schedule:
+    # 21h UTC — depois da HaemiSkin (20h)
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=6144'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape A Sua Farmácia Online catalog
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-asuafarmaciaonline-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=4 --delay=250
+          else
+            node scripts/scrape-asuafarmaciaonline-catalog.js --concurrency=4 --delay=250
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: asuafarmaciaonline-catalog-${{ github.run_id }}
+          path: data/catalog/asuafarmaciaonline-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-asuafarmaciaonline-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: GirlMath Bot
+          GIT_AUTHOR_EMAIL: bot@girlmath.pt
+          GIT_COMMITTER_NAME: GirlMath Bot
+          GIT_COMMITTER_EMAIL: bot@girlmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/asuafarmaciaonline-full.json 2>/dev/null || true
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: A Sua Farmácia Online daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-asuafarmaciaonline-catalog.js" \
+            "chore: A Sua Farmácia Online daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/asuafarmaciaonline-full.json

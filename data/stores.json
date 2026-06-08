@@ -686,6 +686,26 @@
       }
     },
     {
+      "id": "asuafarmaciaonline",
+      "nome": "A Sua Farmácia Online",
+      "url": "https://www.asuafarmaciaonline.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "08h30 diária",
+      "tier": 3,
+      "notes": "Mesma plataforma da afarmaciaonline. data-layer ean vazio; GTIN-13 no JSON-LD mpn (~parcial). Match híbrido: EAN(mpn) + nome+volume + fuzzy seguro (marca+volume+jaccard>=0.7).",
+      "search_strategy": {
+        "type": "sitemap",
+        "sitemap": "https://www.asuafarmaciaonline.pt/sitemap.xml",
+        "product_url_pattern": ".html",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
       "id": "easyfarma",
       "nome": "Easyfarma",
       "url": "https://easyfarma.pt",
