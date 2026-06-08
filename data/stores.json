@@ -652,14 +652,16 @@
       "tem_api": false,
       "tem_afiliados": false,
       "url_afiliados": null,
-      "metodo_coleta": "cheerio",
+      "metodo_coleta": "cheerio+jsonld",
       "freq_atualizacao": "07h00 diária",
       "tier": 3,
+      "notes": "Magento. JSON-LD Product com gtin13 (EAN real) + preço + availability. feeds/sitemap.xml ~11k /artigo/.",
       "search_strategy": {
-        "type": "auto-discover",
-        "supports_ean": false,
-        "needs_playwright": false,
-        "notes": "Estratégia por investigar"
+        "type": "sitemap",
+        "sitemap": "https://www.lojadafarmacia.com/feeds/sitemap.xml",
+        "product_url_pattern": "/artigo/",
+        "supports_ean": true,
+        "needs_playwright": false
       }
     },
     {
