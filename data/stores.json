@@ -735,13 +735,12 @@
       "metodo_coleta": "cheerio+jsonld",
       "freq_atualizacao": "11h00 diária",
       "tier": 5,
-      "notes": "K-beauty boutique. COSRX, Anua, Heimish, Beauty of Joseon.",
+      "notes": "K-beauty boutique. COSRX, Anua, Heimish, Beauty of Joseon. Shopify, JSON-LD gtin13 (EAN real). sitemap_products_1.xml ~108 produtos.",
       "search_strategy": {
-        "type": "url-template",
-        "template": "https://www.haemiskin.pt/search?q={q}",
-        "result_link_selector": "a.product-card__link",
-        "title_selector": "h1.product-meta__title",
-        "supports_ean": false,
+        "type": "sitemap",
+        "sitemap": "https://www.haemiskin.pt/sitemap.xml",
+        "product_url_pattern": "/products/",
+        "supports_ean": true,
         "needs_playwright": false
       }
     },
