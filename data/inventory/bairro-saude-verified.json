@@ -3,8 +3,8 @@
   "store_slug": "bairro-saude",
   "store_name": "Bairro da Saúde",
   "store_url": "https://bairrodasaude.pt",
-  "verified_at": "2026-06-08T08:13:34.233Z",
-  "method": "playwright-headless (refresh 2026-06-08)",
+  "verified_at": "2026-06-09T06:55:28.798Z",
+  "method": "playwright-headless (refresh 2026-06-09)",
   "stats": {
     "total": 17,
     "verified": 7,
@@ -85,9 +85,9 @@
       "observed_volume_ml": 50,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "URL slug confirma 50ml. Brand+volume exacto. Scrape 2026-05-17: 24.10€ Refresh 2026-05-17: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-20: 24.10€ → 21.69€ Refresh 2026-05-21: 21.69€ → 21.69€ Refresh 2026-05-23: 21.69€ → 21.69€ Refresh 2026-05-24: 21.69€ → 21.69€ Refresh 2026-05-26: 21.69€ → 21.69€ Refresh 2026-05-27: 21.69€ → 21.69€ Refresh 2026-05-28: 21.69€ → 21.69€ Refresh 2026-05-30: 21.69€ → 21.69€ Refresh 2026-05-31: 21.69€ → 21.69€ Refresh 2026-06-01: 21.69€ → 21.69€ Refresh 2026-06-04: 21.69€ → 21.69€ Refresh 2026-06-06: 21.69€ → 21.69€ Refresh 2026-06-07: 21.69€ → 21.69€",
-      "verified_at": "2026-06-07T10:58:38.482Z",
-      "observed_price": 21.69,
+      "notes": "URL slug confirma 50ml. Brand+volume exacto. Scrape 2026-05-17: 24.10€ Refresh 2026-05-17: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-18: 24.10€ → 24.10€ Refresh 2026-05-20: 24.10€ → 21.69€ Refresh 2026-05-21: 21.69€ → 21.69€ Refresh 2026-05-23: 21.69€ → 21.69€ Refresh 2026-05-24: 21.69€ → 21.69€ Refresh 2026-05-26: 21.69€ → 21.69€ Refresh 2026-05-27: 21.69€ → 21.69€ Refresh 2026-05-28: 21.69€ → 21.69€ Refresh 2026-05-30: 21.69€ → 21.69€ Refresh 2026-05-31: 21.69€ → 21.69€ Refresh 2026-06-01: 21.69€ → 21.69€ Refresh 2026-06-04: 21.69€ → 21.69€ Refresh 2026-06-06: 21.69€ → 21.69€ Refresh 2026-06-07: 21.69€ → 21.69€ Refresh 2026-06-09: 21.69€ → 20.49€",
+      "verified_at": "2026-06-09T06:51:59.618Z",
+      "observed_price": 20.49,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -101,14 +101,14 @@
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 9.68,
+          "price": 9.03,
           "in_stock": true,
           "url": null
         },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 16.28,
+          "price": 15.19,
           "in_stock": true,
           "url": null
         },
@@ -133,8 +133,8 @@
       "observed_volume_ml": 40,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante Duo+M (com niacinamida). 40ml bate. Scrape 2026-05-17: 16.10€ Refresh 2026-05-17: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-20: 16.10€ → 17.46€ Refresh 2026-05-21: 17.46€ → 17.46€ Refresh 2026-05-23: 17.46€ → 17.46€ Refresh 2026-05-24: 17.46€ → 17.46€ Refresh 2026-05-26: 17.46€ → 17.46€ Refresh 2026-05-27: 17.46€ → 17.46€ Refresh 2026-05-28: 17.46€ → 17.46€ Refresh 2026-05-30: 17.46€ → 17.46€ Refresh 2026-05-31: 17.46€ → 17.46€ Refresh 2026-06-01: 17.46€ → 17.46€ Refresh 2026-06-04: 17.46€ → 17.46€ Refresh 2026-06-06: 17.46€ → 17.46€ Refresh 2026-06-07: 17.46€ → 17.46€",
-      "verified_at": "2026-06-07T10:58:38.654Z",
+      "notes": "Variante Duo+M (com niacinamida). 40ml bate. Scrape 2026-05-17: 16.10€ Refresh 2026-05-17: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-18: 16.10€ → 16.10€ Refresh 2026-05-20: 16.10€ → 17.46€ Refresh 2026-05-21: 17.46€ → 17.46€ Refresh 2026-05-23: 17.46€ → 17.46€ Refresh 2026-05-24: 17.46€ → 17.46€ Refresh 2026-05-26: 17.46€ → 17.46€ Refresh 2026-05-27: 17.46€ → 17.46€ Refresh 2026-05-28: 17.46€ → 17.46€ Refresh 2026-05-30: 17.46€ → 17.46€ Refresh 2026-05-31: 17.46€ → 17.46€ Refresh 2026-06-01: 17.46€ → 17.46€ Refresh 2026-06-04: 17.46€ → 17.46€ Refresh 2026-06-06: 17.46€ → 17.46€ Refresh 2026-06-07: 17.46€ → 17.46€ Refresh 2026-06-09: 17.46€ → 17.46€",
+      "verified_at": "2026-06-09T06:51:59.443Z",
       "observed_price": 17.46,
       "observed_currency": "EUR",
       "observed_in_stock": true,
@@ -156,7 +156,7 @@
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 15.36,
+          "price": 14.4,
           "in_stock": true,
           "url": null
         }
@@ -184,8 +184,8 @@
       "observed_volume_ml": 30,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "URL slug confirma 30ml. Scrape 2026-05-17: 47.90€ Refresh 2026-05-17: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-20: 47.90€ → 43.11€ Refresh 2026-05-21: 43.11€ → 43.11€ Refresh 2026-05-23: 43.11€ → 43.11€ Refresh 2026-05-24: 43.11€ → 43.11€ Refresh 2026-05-26: 43.11€ → 43.11€ Refresh 2026-05-27: 43.11€ → 43.11€ Refresh 2026-05-28: 43.11€ → 43.11€ Refresh 2026-05-30: 43.11€ → 36.63€ Refresh 2026-05-31: 36.63€ → 36.63€ Refresh 2026-06-01: 36.63€ → 36.63€ Refresh 2026-06-04: 36.63€ → 36.63€ Refresh 2026-06-06: 36.63€ → 43.11€ Refresh 2026-06-07: 43.11€ → 43.11€",
-      "verified_at": "2026-06-07T10:58:38.524Z",
+      "notes": "URL slug confirma 30ml. Scrape 2026-05-17: 47.90€ Refresh 2026-05-17: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-18: 47.90€ → 47.90€ Refresh 2026-05-20: 47.90€ → 43.11€ Refresh 2026-05-21: 43.11€ → 43.11€ Refresh 2026-05-23: 43.11€ → 43.11€ Refresh 2026-05-24: 43.11€ → 43.11€ Refresh 2026-05-26: 43.11€ → 43.11€ Refresh 2026-05-27: 43.11€ → 43.11€ Refresh 2026-05-28: 43.11€ → 43.11€ Refresh 2026-05-30: 43.11€ → 36.63€ Refresh 2026-05-31: 36.63€ → 36.63€ Refresh 2026-06-01: 36.63€ → 36.63€ Refresh 2026-06-04: 36.63€ → 36.63€ Refresh 2026-06-06: 36.63€ → 43.11€ Refresh 2026-06-07: 43.11€ → 43.11€ Refresh 2026-06-09: 43.11€ → 43.11€",
+      "verified_at": "2026-06-09T06:51:59.283Z",
       "observed_price": 43.11,
       "observed_currency": "EUR",
       "observed_in_stock": true,
@@ -256,8 +256,8 @@
       "observed_volume_ml": 500,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "URL slug confirma 500ml exacto. Scrape 2026-05-17: 19.95€ Refresh 2026-05-17: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-20: 19.95€ → 13.74€ Refresh 2026-05-21: 13.74€ → 13.74€ Refresh 2026-05-23: 13.74€ → 13.74€ Refresh 2026-05-24: 13.74€ → 13.74€ Refresh 2026-05-26: 13.74€ → 13.74€ Refresh 2026-05-27: 13.74€ → 13.74€ Refresh 2026-05-28: 13.74€ → 13.74€ Refresh 2026-05-30: 13.74€ → 13.74€ Refresh 2026-05-31: 13.74€ → 13.74€ Refresh 2026-06-01: 13.74€ → 9.21€ Refresh 2026-06-04: 9.21€ → 9.21€ Refresh 2026-06-06: 9.21€ → 9.21€ Refresh 2026-06-07: 9.21€ → 9.21€",
-      "verified_at": "2026-06-07T10:58:45.908Z",
+      "notes": "URL slug confirma 500ml exacto. Scrape 2026-05-17: 19.95€ Refresh 2026-05-17: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-18: 19.95€ → 19.95€ Refresh 2026-05-20: 19.95€ → 13.74€ Refresh 2026-05-21: 13.74€ → 13.74€ Refresh 2026-05-23: 13.74€ → 13.74€ Refresh 2026-05-24: 13.74€ → 13.74€ Refresh 2026-05-26: 13.74€ → 13.74€ Refresh 2026-05-27: 13.74€ → 13.74€ Refresh 2026-05-28: 13.74€ → 13.74€ Refresh 2026-05-30: 13.74€ → 13.74€ Refresh 2026-05-31: 13.74€ → 13.74€ Refresh 2026-06-01: 13.74€ → 9.21€ Refresh 2026-06-04: 9.21€ → 9.21€ Refresh 2026-06-06: 9.21€ → 9.21€ Refresh 2026-06-07: 9.21€ → 9.21€ Refresh 2026-06-09: 9.21€ → 9.21€",
+      "verified_at": "2026-06-09T06:52:06.688Z",
       "observed_price": 9.21,
       "observed_currency": "EUR",
       "observed_in_stock": true,
@@ -279,7 +279,7 @@
         {
           "volume_ml": 250,
           "unit": "ml",
-          "price": 16.5,
+          "price": 11.55,
           "in_stock": true,
           "url": null
         },
@@ -346,9 +346,9 @@
       "observed_volume_ml": 50,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "URL canónica confirmada. Múltiplas variantes (Magic, Repair, Color, Glow). Scrape 2026-05-17: 29.90€ Refresh 2026-05-17: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-20: 29.90€ → 20.93€ Refresh 2026-05-21: 20.93€ → 20.93€ Refresh 2026-05-23: 20.93€ → 20.93€ Refresh 2026-05-24: 20.93€ → 20.93€ Refresh 2026-05-26: 20.93€ → 20.93€ Refresh 2026-05-27: 20.93€ → 20.93€ Refresh 2026-05-28: 20.93€ → 20.93€ Refresh 2026-05-30: 20.93€ → 20.93€ Refresh 2026-05-31: 20.93€ → 20.93€ Refresh 2026-06-01: 20.93€ → 20.93€ Refresh 2026-06-04: 20.93€ → 20.93€ Refresh 2026-06-06: 20.93€ → 29.90€ Refresh 2026-06-07: 29.90€ → 29.90€",
-      "verified_at": "2026-06-07T10:58:46.965Z",
-      "observed_price": 29.9,
+      "notes": "URL canónica confirmada. Múltiplas variantes (Magic, Repair, Color, Glow). Scrape 2026-05-17: 29.90€ Refresh 2026-05-17: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-18: 29.90€ → 29.90€ Refresh 2026-05-20: 29.90€ → 20.93€ Refresh 2026-05-21: 20.93€ → 20.93€ Refresh 2026-05-23: 20.93€ → 20.93€ Refresh 2026-05-24: 20.93€ → 20.93€ Refresh 2026-05-26: 20.93€ → 20.93€ Refresh 2026-05-27: 20.93€ → 20.93€ Refresh 2026-05-28: 20.93€ → 20.93€ Refresh 2026-05-30: 20.93€ → 20.93€ Refresh 2026-05-31: 20.93€ → 20.93€ Refresh 2026-06-01: 20.93€ → 20.93€ Refresh 2026-06-04: 20.93€ → 20.93€ Refresh 2026-06-06: 20.93€ → 29.90€ Refresh 2026-06-07: 29.90€ → 29.90€ Refresh 2026-06-09: 29.90€ → 19.44€",
+      "verified_at": "2026-06-09T06:52:08.045Z",
+      "observed_price": 19.44,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
@@ -362,7 +362,7 @@
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 29.9,
+          "price": 19.44,
           "in_stock": true,
           "url": null
         }
@@ -384,13 +384,13 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço €18.02 (era €22.53, -20%). Em stock. Refresh 2026-05-17: 18.02€ → 50.95€ Refresh 2026-05-17: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-20: 50.95€ → 35.67€ Refresh 2026-05-21: 35.67€ → 35.67€ Refresh 2026-05-23: 35.67€ → 35.67€ Refresh 2026-05-24: 35.67€ → 35.67€ Refresh 2026-05-26: 35.67€ → 35.67€ Refresh 2026-05-27: 35.67€ → 35.67€ Refresh 2026-05-28: 35.67€ → 35.67€ Refresh 2026-05-30: 35.67€ → 35.67€ Refresh 2026-05-31: 35.67€ → 35.67€ Refresh 2026-06-01: 35.67€ → 35.67€ Refresh 2026-06-04: 35.67€ → 35.67€ Refresh 2026-06-06: 35.67€ → 15.28€ Refresh 2026-06-07: 15.28€ → 15.28€",
-      "verified_at": "2026-06-07T10:58:53.041Z",
+      "notes": "Preço €18.02 (era €22.53, -20%). Em stock. Refresh 2026-05-17: 18.02€ → 50.95€ Refresh 2026-05-17: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-18: 50.95€ → 50.95€ Refresh 2026-05-20: 50.95€ → 35.67€ Refresh 2026-05-21: 35.67€ → 35.67€ Refresh 2026-05-23: 35.67€ → 35.67€ Refresh 2026-05-24: 35.67€ → 35.67€ Refresh 2026-05-26: 35.67€ → 35.67€ Refresh 2026-05-27: 35.67€ → 35.67€ Refresh 2026-05-28: 35.67€ → 35.67€ Refresh 2026-05-30: 35.67€ → 35.67€ Refresh 2026-05-31: 35.67€ → 35.67€ Refresh 2026-06-01: 35.67€ → 35.67€ Refresh 2026-06-04: 35.67€ → 35.67€ Refresh 2026-06-06: 35.67€ → 15.28€ Refresh 2026-06-07: 15.28€ → 15.28€ Refresh 2026-06-09: 15.28€ → 15.28€",
+      "verified_at": "2026-06-09T06:52:14.093Z",
       "observed_variants": [
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 15,
+          "price": 14.4,
           "in_stock": true,
           "url": null
         },
@@ -398,6 +398,13 @@
           "volume_ml": 75,
           "unit": "ml",
           "price": 11.52,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 200,
+          "unit": "ml",
+          "price": 19.3,
           "in_stock": true,
           "url": null
         }
