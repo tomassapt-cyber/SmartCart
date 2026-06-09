@@ -726,6 +726,30 @@
       }
     },
     {
+      "id": "pharma-gdd",
+      "nome": "Pharma GDD",
+      "url": "https://www.pharma-gdd.com",
+      "pais": "FR",
+      "tipo": "parafarmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "22h00 diária",
+      "tier": 6,
+      "free_shipping_threshold": 99,
+      "shipping_zones": { "mainland": 12.9, "madeira": 15.9, "acores": 15.9 },
+      "shipping_estimated": true,
+      "notes": "Parafarmácia FRANCESA (Grande Pharmacie de la Place). JSON-LD gtin13 ~100%. Envia PT via Chronopost: grátis ao domicílio >=99€, abaixo ~12,90€ (ESTIMATIVA, confirmar). Só competitiva em cabazes grandes. Match por EAN global.",
+      "search_strategy": {
+        "type": "sitemap",
+        "sitemap": "https://www.pharma-gdd.com/sitemap-product.xml",
+        "product_url_pattern": "/fr/",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
       "id": "easyfarma",
       "nome": "Easyfarma",
       "url": "https://easyfarma.pt",

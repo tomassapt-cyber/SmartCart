@@ -1,0 +1,113 @@
+{
+  "_comment": "Tarifas de portes por loja e por zona, curadas (fonte: páginas das lojas + valores fornecidos pelo utilizador). Base de peso <=2kg (típico de cosmética). Usado para popular shipping_zones/free_shipping_threshold no seed de forma realista. weight_basis indica a linha de peso assumida.",
+  "_schema": {
+    "free_threshold": "valor mínimo de encomenda (€) para portes grátis no continente",
+    "min_order": "valor mínimo de encomenda para poder comprar (null se não houver)",
+    "zones": "custo de portes (€) por zona abaixo do free_threshold; null = grátis sempre; 'consulta' = preço sob consulta",
+    "weight_basis": "linha de peso assumida",
+    "source": "origem do dado",
+    "verified": "true se confirmado a olho/pelo utilizador"
+  },
+  "stores": {
+    "bairro-saude": {
+      "free_threshold": 39,
+      "min_order": null,
+      "zones": {
+        "lisboa": 3.99,
+        "mainland": 4.99,
+        "madeira": 23.05,
+        "acores": 23.05,
+        "nacex_pickup": 3.45,
+        "espanha": "consulta",
+        "europa": "consulta"
+      },
+      "weight_basis": "<=2kg",
+      "source": "utilizador (tabela oficial, screenshots) 2026-06-09",
+      "verified": true,
+      "notes": "Grátis em compras >39€ (continental). Lisboa = 3,99€ fixo (a tabela manda; o 'Grande Lisboa grátis' da página é promo/condicional, não aplicado). Nacex pick-up 3,45€."
+    },
+    "farmaciapt": {
+      "free_threshold": 40,
+      "min_order": null,
+      "zones": {
+        "mainland_under25": 3.40,
+        "mainland_25to40": 1.25,
+        "nacex_under25": 2.99,
+        "nacex_25to40": 1.15,
+        "madeira": null,
+        "acores": null
+      },
+      "weight_basis": "<=5kg",
+      "source": "páginas farmacia.pt 2026-06-09",
+      "verified": true,
+      "notes": "Continental: <25€ → 3,40€; 25–39,99€ → 1,25€; grátis ≥40€. Madeira/Açores grátis ≥65€ (até 5kg)."
+    },
+    "afarmaciaonline": {
+      "free_threshold": 24.99,
+      "min_order": null,
+      "zones": {
+        "lisboa": 0,
+        "mainland": 4.99,
+        "madeira": 11.55,
+        "acores": 11.55
+      },
+      "weight_basis": "<=2kg",
+      "source": "páginas afarmaciaonline.pt 2026-06-09",
+      "verified": true,
+      "notes": "Grande Lisboa grátis (entrega própria). Continental grátis ≥24,99€, abaixo 4,99€. Madeira/Açores 6,69€ (5-15 dias) ou 11,55€ (3-5 dias)."
+    },
+    "loja-farmacia": {
+      "free_threshold": null,
+      "min_order": null,
+      "zones": {
+        "mainland": 3.90,
+        "espanha": 6.90
+      },
+      "weight_basis": "<=2kg",
+      "source": "páginas lojadafarmacia.com 2026-06-09",
+      "verified": false,
+      "notes": "Continental 3,90€. Limite de portes grátis por confirmar."
+    },
+    "druni": {
+      "free_threshold": 20,
+      "min_order": null,
+      "zones": {
+        "mainland": 3.95,
+        "madeira": null,
+        "acores": null
+      },
+      "weight_basis": "flat (estimativa checkout)",
+      "source": "utilizador (screenshot checkout + free >20€) 2026-06-09",
+      "verified": true,
+      "notes": "Entrega ao domicílio 48-72h: 3,95€. Grátis ≥20€. Madeira/Açores não indicado."
+    },
+    "byfarma": {
+      "free_threshold": 59.99,
+      "min_order": null,
+      "zones": {
+        "mainland": null
+      },
+      "weight_basis": "<=2kg",
+      "source": "páginas byfarma.pt 2026-06-09",
+      "verified": false,
+      "notes": "Grátis ≥59,99€ (exceto ilhas). Custo abaixo do limite por confirmar."
+    },
+    "pharma-gdd": {
+      "free_threshold": 99,
+      "min_order": null,
+      "zones": {
+        "mainland": 12.90,
+        "madeira": 15.90,
+        "acores": 15.90
+      },
+      "weight_basis": "<=2kg",
+      "source": "CGV pharma-gdd (grátis domicílio ≥99€) + estimativa Chronopost PT 2026-06-09",
+      "verified": false,
+      "notes": "ESTIMATIVA: loja francesa, envia PT via Chronopost. Grátis ao domicílio ≥99€ (valor FR confirmado). Custo PT ~12,90€ estimado — confirmar no checkout. Só competitiva em cabazes grandes."
+    }
+  },
+  "pending": [
+    "wells", "easyfarma", "sweetcare", "atida", "farmacia365",
+    "haemiskin", "asuafarmaciaonline", "aminhafarmaciaonline", "pharma-gdd"
+  ]
+}
