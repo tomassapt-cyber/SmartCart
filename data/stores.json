@@ -706,6 +706,26 @@
       }
     },
     {
+      "id": "aminhafarmaciaonline",
+      "nome": "A Minha Farmácia Online",
+      "url": "https://aminhafarmaciaonline.pt",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio+jsonld",
+      "freq_atualizacao": "21h30 diária",
+      "tier": 3,
+      "notes": "WooCommerce (WoodMart). JSON-LD válido: gtin13 (EAN real parcial), offers.priceSpecification price, BreadcrumbList (categoria fiável). Scrape só /beleza/. Match híbrido EAN+nome+volume+fuzzy seguro (jaccard>=0.7).",
+      "search_strategy": {
+        "type": "sitemap",
+        "sitemap": "https://aminhafarmaciaonline.pt/sitemap.xml",
+        "product_url_pattern": "/shop/beleza/",
+        "supports_ean": true,
+        "needs_playwright": false
+      }
+    },
+    {
       "id": "easyfarma",
       "nome": "Easyfarma",
       "url": "https://easyfarma.pt",
