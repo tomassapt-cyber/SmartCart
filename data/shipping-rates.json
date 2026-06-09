@@ -57,16 +57,16 @@
       "notes": "Grande Lisboa grátis (entrega própria). Continental grátis ≥24,99€, abaixo 4,99€. Madeira/Açores 6,69€ (5-15 dias) ou 11,55€ (3-5 dias)."
     },
     "loja-farmacia": {
-      "free_threshold": null,
+      "free_threshold": 45,
       "min_order": null,
       "zones": {
         "mainland": 3.90,
         "espanha": 6.90
       },
       "weight_basis": "<=2kg",
-      "source": "páginas lojadafarmacia.com 2026-06-09",
-      "verified": false,
-      "notes": "Continental 3,90€. Limite de portes grátis por confirmar."
+      "source": "páginas lojadafarmacia.com + utilizador (grátis ≥45€) 2026-06-09",
+      "verified": true,
+      "notes": "Continental 3,90€, grátis ≥45€. Espanha 6,90€."
     },
     "aminhafarmaciaonline": {
       "free_threshold": 45,
