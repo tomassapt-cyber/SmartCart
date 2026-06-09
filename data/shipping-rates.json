@@ -30,6 +30,7 @@
       "free_threshold": 40,
       "min_order": null,
       "zones": {
+        "mainland": 3.40,
         "mainland_under25": 3.40,
         "mainland_25to40": 1.25,
         "nacex_under25": 2.99,
