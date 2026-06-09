@@ -89,6 +89,12 @@
         "title_selector": "h1.page-title span",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 20,
+      "shipping_zones": {
+        "mainland": 3.95,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -263,6 +269,12 @@
         "title_selector": "h1.product-title, h1[itemprop=\"name\"]",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 39,
+      "shipping_zones": {
+        "mainland": 2.99,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -579,6 +591,12 @@
         "title_selector": "h1.product-name, h1[itemprop=\"name\"]",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 49,
+      "shipping_zones": {
+        "mainland": 3.99,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -642,6 +660,12 @@
         "title_selector": "h1.page-title span",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 49.9,
+      "shipping_zones": {
+        "mainland": 3.3,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -662,6 +686,12 @@
         "product_url_pattern": "/artigo/",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 45,
+      "shipping_zones": {
+        "mainland": 3.9,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -683,6 +713,12 @@
         "title_selector": "h1.product_title",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 24.99,
+      "shipping_zones": {
+        "mainland": 4.99,
+        "madeira": 11.55,
+        "acores": 11.55
       }
     },
     {
@@ -703,6 +739,12 @@
         "product_url_pattern": ".html",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 99999,
+      "shipping_zones": {
+        "mainland": 3.7,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -723,6 +765,12 @@
         "product_url_pattern": "/shop/beleza/",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 45,
+      "shipping_zones": {
+        "mainland": 4.5,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -738,7 +786,11 @@
       "freq_atualizacao": "22h00 diária",
       "tier": 6,
       "free_shipping_threshold": 99,
-      "shipping_zones": { "mainland": 12.9, "madeira": 15.9, "acores": 15.9 },
+      "shipping_zones": {
+        "mainland": 12.9,
+        "madeira": 15.9,
+        "acores": 15.9
+      },
       "shipping_estimated": true,
       "notes": "Parafarmácia FRANCESA (Grande Pharmacie de la Place). JSON-LD gtin13 ~100%. Envia PT via Chronopost: grátis ao domicílio >=99€, abaixo ~12,90€ (ESTIMATIVA, confirmar). Só competitiva em cabazes grandes. Match por EAN global.",
       "search_strategy": {
@@ -768,6 +820,12 @@
         "title_selector": "h1.product-meta__title",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 69,
+      "shipping_zones": {
+        "mainland": 3.7,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -786,6 +844,12 @@
         "supports_ean": false,
         "needs_playwright": false,
         "notes": "Estratégia por investigar"
+      },
+      "free_shipping_threshold": 39,
+      "shipping_zones": {
+        "mainland": 4.99,
+        "madeira": 23.05,
+        "acores": 23.05
       }
     },
     {
@@ -806,6 +870,12 @@
         "product_url_pattern": "/products/",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 50,
+      "shipping_zones": {
+        "mainland": 4,
+        "madeira": 4,
+        "acores": 4
       }
     },
     {
@@ -922,6 +992,12 @@
         "title_selector": "h1.product-name, h1[itemprop=\"name\"]",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 65,
+      "shipping_zones": {
+        "mainland": 2.9,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -943,6 +1019,12 @@
         "title_selector": "h1[itemprop=\"name\"]",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 59.99,
+      "shipping_zones": {
+        "mainland": 3.95,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     },
     {
@@ -964,6 +1046,12 @@
         "title_selector": "h1.page-title span, h1[itemprop=\"name\"]",
         "supports_ean": true,
         "needs_playwright": false
+      },
+      "free_shipping_threshold": 40,
+      "shipping_zones": {
+        "mainland": 3.4,
+        "madeira": 1.5,
+        "acores": 1.5
       }
     }
   ]
