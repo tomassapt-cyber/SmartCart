@@ -185,8 +185,13 @@ async function main() {
       const scraped_at = new Date().toISOString();
       if (r.status === 'ok') {
         const data = extractProductData(r.html, url);
-        if (data) { products.push({ url, status: 'ok', scraped_at, ...data }); stats.ok++; if (data.ean) stats.ok_ean++; }
-        else { stats.skipped++; }
+        if (data) {
+          // flat-copy (JSON round-trip): quebra a retenção de "sliced strings"
+          // do V8 — sem isto cada campo extraído retém a página de ~600KB inteira
+          // e o heap rebenta (OOM exit 134) a meio do catálogo. Crítico no CI.
+          products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...data })));
+          stats.ok++; if (data.ean) stats.ok_ean++;
+        } else { stats.skipped++; }
       } else if (r.status === 'not_found') { stats.not_found++; }
       else { stats.error++; }
 

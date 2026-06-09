@@ -193,7 +193,7 @@ async function main() {
       const scraped_at = new Date().toISOString();
       if (r.status === 'ok') {
         const data = extractProductData(r.html, url);
-        if (data) { products.push({ url, status: 'ok', scraped_at, ...data }); stats.ok++; }
+        if (data) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...data }))); stats.ok++; } // flat-copy: evita retenção de sliced-strings (OOM)
         else { stats.skipped++; }
       } else if (r.status === 'not_found') { stats.not_found++; }
       else { stats.error++; }

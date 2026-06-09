@@ -28,9 +28,10 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 150
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
 
     steps:
       - name: Checkout
@@ -54,9 +55,9 @@ jobs:
       - name: Scrape Loja da Farmácia catalog
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-lojafarmacia-catalog.js --limit=${{ github.event.inputs.limit }}
+            node scripts/scrape-lojafarmacia-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=300
           else
-            node scripts/scrape-lojafarmacia-catalog.js
+            node scripts/scrape-lojafarmacia-catalog.js --concurrency=5 --delay=300
           fi
 
       - name: Upload scrape artifact (safety-net)
