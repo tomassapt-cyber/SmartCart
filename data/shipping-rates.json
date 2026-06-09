@@ -68,6 +68,118 @@
       "verified": false,
       "notes": "Continental 3,90€. Limite de portes grátis por confirmar."
     },
+    "aminhafarmaciaonline": {
+      "free_threshold": 45,
+      "min_order": null,
+      "zones": {
+        "mainland": 4.50,
+        "store_pickup": 0
+      },
+      "weight_basis": "flat (taxa fixa continente)",
+      "source": "utilizador (screenshot envio + grátis ≥45€) 2026-06-09",
+      "verified": true,
+      "notes": "Taxa fixa Continente 4,50€ (máx 2 dias). Grátis ≥45€. Levantamento na Farmácia D'Aires grátis."
+    },
+    "asuafarmaciaonline": {
+      "free_threshold": null,
+      "min_order": null,
+      "zones": {
+        "mainland": 3.70,
+        "ctt_pickup": 3.70,
+        "dpd_pickup": 3.00,
+        "mainland_domicilio": 5.00,
+        "ctt_expresso": 4.70,
+        "dpd": 4.10,
+        "store_pickup": 0
+      },
+      "weight_basis": "flat (checkout)",
+      "source": "utilizador (screenshot método de envio) 2026-06-09",
+      "verified": true,
+      "notes": "SEM portes grátis (nunca). Levantamento na loja grátis. CTT Standard 3,70€ (mais barato ao domicílio), DPD pickup 3,00€, Entrega Domicílio 5,00€, CTT Expresso 4,70€, DPD 4,10€."
+    },
+    "haemiskin": {
+      "free_threshold": 50,
+      "min_order": null,
+      "zones": {
+        "mainland": 4.00,
+        "madeira": 4.00,
+        "acores": 4.00
+      },
+      "free_threshold_islands": 70,
+      "weight_basis": "flat (checkout)",
+      "source": "utilizador (screenshot envio) 2026-06-09",
+      "verified": true,
+      "notes": "CTT Expresso domicílio 4,00€ (2 dias). Grátis ≥50€ (PT Continental), ≥70€ (Madeira/Açores)."
+    },
+    "farmacia365": {
+      "free_threshold": 49.90,
+      "min_order": null,
+      "zones": {
+        "mainland": 3.30,
+        "mainland_express": 4.50,
+        "ctt_pickup": 3.00
+      },
+      "weight_basis": "flat (checkout)",
+      "source": "utilizador (screenshot + grátis ≥49,90€) 2026-06-09",
+      "verified": true,
+      "notes": "CTT Standard 3,30€ (5d), Expresso 4,50€ (3d), Pickup 3,00€. Grátis ≥49,90€ (PT Continental). Entregas 24-48h."
+    },
+    "atida": {
+      "free_threshold": 49,
+      "min_order": null,
+      "zones": {
+        "mainland": 3.99,
+        "pickup": 3.99
+      },
+      "pickup_free_threshold": 39,
+      "weight_basis": "flat (checkout)",
+      "source": "utilizador (screenshot resumo) 2026-06-09",
+      "verified": true,
+      "notes": "Domicílio 3,99€, grátis ≥49€. Ponto de recolha grátis ≥39€ (custo abaixo assumido 3,99€). "
+    },
+    "sweetcare": {
+      "free_threshold": 65,
+      "min_order": null,
+      "zones": {
+        "mainland": 2.90,
+        "mainland_express": 3.42,
+        "inpost_pickup": 2.90,
+        "dpd_pickup": 3.25,
+        "store_pickup": 0
+      },
+      "weight_basis": "flat (checkout)",
+      "source": "utilizador (screenshots checkout + resumo encomenda: 14,06+50,94=65€) 2026-06-09",
+      "verified": true,
+      "notes": "Domicílio 2,90€ (2 dias) / 3,42€ (1 dia). InPost 2,90€, DPD 3,25€, loja grátis. Grátis ≥65€."
+    },
+    "easyfarma": {
+      "free_threshold": 69,
+      "min_order": null,
+      "zones": {
+        "mainland": 3.70,
+        "ctt_pickup": 0,
+        "madeira": null,
+        "acores": null
+      },
+      "weight_basis": "0-1kg",
+      "source": "utilizador (screenshots: grátis >69€ continental; CTT 0-1kg 3,70€; recolha grátis) 2026-06-09",
+      "verified": true,
+      "notes": "CTT Continental 0-1kg 3,70€. Grátis em postos de recolha. Grátis ≥69€. Madeira/Açores não indicado."
+    },
+    "wells": {
+      "free_threshold": 39,
+      "min_order": null,
+      "zones": {
+        "mainland": 2.99,
+        "ctt_pickup": 2.50,
+        "madeira": null,
+        "acores": null
+      },
+      "weight_basis": "flat (carrinho)",
+      "source": "utilizador (screenshot carrinho: falta 28,13€ p/ grátis num total 10,87€ => 39€) 2026-06-09",
+      "verified": true,
+      "notes": "Entrega ao domicílio 2,99€; recolha pontos CTT 2,50€. Grátis ≥39€. Madeira/Açores não indicado."
+    },
     "druni": {
       "free_threshold": 20,
       "min_order": null,
@@ -106,8 +218,5 @@
       "notes": "ESTIMATIVA: loja francesa, envia PT via Chronopost. Grátis ao domicílio ≥99€ (valor FR confirmado). Custo PT ~12,90€ estimado — confirmar no checkout. Só competitiva em cabazes grandes."
     }
   },
-  "pending": [
-    "wells", "easyfarma", "sweetcare", "atida", "farmacia365",
-    "haemiskin", "asuafarmaciaonline", "aminhafarmaciaonline", "pharma-gdd"
-  ]
+  "pending": []
 }
