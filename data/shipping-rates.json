@@ -197,12 +197,14 @@
       "free_threshold": 59.99,
       "min_order": null,
       "zones": {
-        "mainland": null
+        "mainland": 3.95,
+        "pickup": 2.95,
+        "store_pickup": 0
       },
       "weight_basis": "<=2kg",
-      "source": "páginas byfarma.pt 2026-06-09",
-      "verified": false,
-      "notes": "Grátis ≥59,99€ (exceto ilhas). Custo abaixo do limite por confirmar."
+      "source": "utilizador (screenshot método de envio) 2026-06-09",
+      "verified": true,
+      "notes": "CTT morada 3,95€ (24-48h). DHL/CTT pickup 2,95€. Levantamento nas farmácias Cajados/Poceirão grátis. Grátis ≥59,99€ (exceto ilhas)."
     },
     "pharma-gdd": {
       "free_threshold": 99,
