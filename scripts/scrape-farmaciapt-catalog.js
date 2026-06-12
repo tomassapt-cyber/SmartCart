@@ -54,7 +54,10 @@ const URL_EXCLUDE = /(comprimid|c[áa]psula|p[ií]lula|saqueta|sachet|gomas|jell
 
 function isBeautyUrl(url) {
   if (URL_EXCLUDE.test(url)) return false;
-  return URL_BEAUTY_HINTS.test(url);
+  if (URL_BEAUTY_HINTS.test(url)) return true;
+  // Recuperação: keywords sem-acento (champo!) + nomes de GAMA dermo que o
+  // filtro positivo perdia (produtos nomeados só por marca+gama). +milhares.
+  return /(champo|oleo|óleo|balsamo|bálsamo|fluido|emuls|espuma|desodoriz|syndet|anti.?queda|anti.?caspa|cica|atoderm|sebium|sensibio|cicaplast|lipikar|effaclar|hyseac|nutritic|toleriane|dercos|kerium|cleanance|hydrance|anthelios|bariederm|photoderm|pigmentbio|hydrabio|cytelium|cicalfate|nuxuriance|keratine|squalane|exomega|trixera|sensifluid)/i.test(url);
 }
 
 // Categoria heurística pelo URL slug

@@ -52,8 +52,13 @@ const URL_BEAUTY_HINTS = /(serum|sérum|creme|crema|cream|leite|loção|locao|lo
 const URL_EXCLUDE = /(comprimid|c[áa]psula|p[ií]lula|saqueta|sachet|gomas|jellies|suplement|vitamin-(?!c-creme)|tablete|tablet|tirinha|teste|test-(?!cream)|preservativ|fralda|chupeta|bib[eo]r[oã]o|leite-em-po|farinhas|papinha|cereal|formula-infant|toalhi|penso|gaze|c[uo]rativo|term[oóô]metro|inalador|m[aá]scara-cirurgica|m[aá]scara-ffp|seringa|gluc[oó]metro|tensiomet|piolho|antimosqu|antiparasit|carraça|repelent|spray-nasal|nicotina|niquitin|nicorette|laxante|diur[eé]tico|antial[eé]rgic|naprofeno|paracetamol|ibuprofen|aspirin|antibi[oó]tic)/i;
 
 function isBeautyUrl(url) {
+  // EXCLUDE-ONLY: scrapa tudo MENOS medicamentos/suplementos/acessórios médicos.
+  // O filtro de keyword POSITIVO (URL_BEAUTY_HINTS) deitava fora ~59% dos produtos
+  // — incluindo cosméticos cujo slug não tinha keyword reconhecida (ex: "champo"
+  // sem acento, ou produtos só com marca+gama tipo "bioderma-atoderm"). Produtos
+  // não-cosméticos que escapem ao EXCLUDE são inofensivos (não casam no integrate).
   if (URL_EXCLUDE.test(url)) return false;
-  return URL_BEAUTY_HINTS.test(url);
+  return true;
 }
 
 // Categoria heurística pelo URL slug
