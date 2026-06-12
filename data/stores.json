@@ -695,6 +695,32 @@
       }
     },
     {
+      "id": "barreiros",
+      "nome": "Farmácia Barreiros",
+      "url": "https://www.farmaciabarreiros.com",
+      "tipo": "farmacia",
+      "tem_api": false,
+      "tem_afiliados": false,
+      "url_afiliados": null,
+      "metodo_coleta": "cheerio",
+      "freq_atualizacao": "22h30 diária",
+      "tier": 3,
+      "notes": "PrestaShop. EAN no campo ean13 + price_amount no JS da página (JSON-LD é só WebSite). Scrape só /beleza/ (~2.5k, marcas francesas, forte overlap). Match por EAN.",
+      "search_strategy": {
+        "type": "sitemap",
+        "sitemap": "https://www.farmaciabarreiros.com/1_index_sitemap.xml",
+        "product_url_pattern": "/beleza/",
+        "supports_ean": true,
+        "needs_playwright": false
+      },
+      "free_shipping_threshold": 29.9,
+      "shipping_zones": {
+        "mainland": 5.0,
+        "madeira": 5.0,
+        "acores": 5.0
+      }
+    },
+    {
       "id": "afarmaciaonline",
       "nome": "A Farmácia Online",
       "url": "https://www.afarmaciaonline.pt",
