@@ -3,8 +3,8 @@
   "store_slug": "sweetcare",
   "store_name": "SweetCare",
   "store_url": "https://sweetcare.pt",
-  "verified_at": "2026-06-11T08:09:15.228Z",
-  "method": "playwright-headless (refresh 2026-06-11)",
+  "verified_at": "2026-06-12T07:25:57.964Z",
+  "method": "playwright-headless (refresh 2026-06-12)",
   "stats": {
     "total": 20,
     "verified": 10,
@@ -142,16 +142,16 @@
       "observed_brand": "Vichy",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Resultado primário é o creme ligeiro, não o sérum 50ml. SweetCare vende ambos — link directo pode levar à variante errada. Scrape 2026-05-17: 27.41€ Refresh 2026-05-17: 27.41€ → 27.41€ Refresh 2026-05-18: 27.41€ → 27.41€ Refresh 2026-05-18: 27.41€ → 27.41€ Refresh 2026-05-18: 27.41€ → 27.41€ Refresh 2026-06-05: 27.41€ → 26.62€ Refresh 2026-06-08: 26.62€ → 26.62€",
-      "verified_at": "2026-06-08T08:12:57.555Z",
-      "observed_price": 26.62,
+      "notes": "Resultado primário é o creme ligeiro, não o sérum 50ml. SweetCare vende ambos — link directo pode levar à variante errada. Scrape 2026-05-17: 27.41€ Refresh 2026-05-17: 27.41€ → 27.41€ Refresh 2026-05-18: 27.41€ → 27.41€ Refresh 2026-05-18: 27.41€ → 27.41€ Refresh 2026-05-18: 27.41€ → 27.41€ Refresh 2026-06-05: 27.41€ → 26.62€ Refresh 2026-06-08: 26.62€ → 26.62€ Refresh 2026-06-12: 26.62€ → 26.40€",
+      "verified_at": "2026-06-12T07:25:19.555Z",
+      "observed_price": 26.4,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 26.62,
+          "price": 26.4,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/vichy-mineral-89-creme-ligeiro-p-017766vy"
         }
@@ -168,16 +168,16 @@
       "observed_brand": "La Roche-Posay",
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante Duo+M (com niacinamida), 40ml. Variante do canónico. Scrape 2026-05-17: 18.95€ Refresh 2026-05-17: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-20: 18.95€ → 19.68€ Refresh 2026-05-21: 19.68€ → 19.86€ Refresh 2026-05-23: 19.86€ → 19.35€ Refresh 2026-05-24: 19.35€ → 19.35€ Refresh 2026-05-26: 19.35€ → 19.35€ Refresh 2026-05-27: 19.35€ → 19.35€ Refresh 2026-05-29: 19.35€ → 19.52€ Refresh 2026-06-02: 19.52€ → 19.52€ Refresh 2026-06-05: 19.52€ → 19.52€ Refresh 2026-06-08: 19.52€ → 19.52€",
-      "verified_at": "2026-06-08T08:12:56.131Z",
-      "observed_price": 19.52,
+      "notes": "Variante Duo+M (com niacinamida), 40ml. Variante do canónico. Scrape 2026-05-17: 18.95€ Refresh 2026-05-17: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-18: 18.95€ → 18.95€ Refresh 2026-05-20: 18.95€ → 19.68€ Refresh 2026-05-21: 19.68€ → 19.86€ Refresh 2026-05-23: 19.86€ → 19.35€ Refresh 2026-05-24: 19.35€ → 19.35€ Refresh 2026-05-26: 19.35€ → 19.35€ Refresh 2026-05-27: 19.35€ → 19.35€ Refresh 2026-05-29: 19.35€ → 19.52€ Refresh 2026-06-02: 19.52€ → 19.52€ Refresh 2026-06-05: 19.52€ → 19.52€ Refresh 2026-06-08: 19.52€ → 19.52€ Refresh 2026-06-12: 19.52€ → 19.35€",
+      "verified_at": "2026-06-12T07:25:18.292Z",
+      "observed_price": 19.35,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "observed_variants": [
         {
           "volume_ml": 40,
           "unit": "ml",
-          "price": 19.52,
+          "price": 19.35,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/la-roche-posay-effaclar-duo-pele-oleosa-imperfeicoes-severas-marcas-acne-p-001936rp"
         }
@@ -193,19 +193,19 @@
       "observed_name": "Huile Prodigieuse Multi-Usage Dry Oil ",
       "observed_brand": "Nuxe",
       "observed_volume_ml": 100,
-      "observed_price": 27.87,
+      "observed_price": 27.64,
       "observed_previous_price": 30.8,
       "observed_currency": "USD",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónica. 100ml @ €23.28 (sale, era €30.80, -24%). Refresh 2026-05-17: 23.28€ → 26.09€ Refresh 2026-05-17: 26.09€ → 26.09€ Refresh 2026-05-18: 26.09€ → 26.09€ Refresh 2026-05-18: 26.09€ → 26.09€ Refresh 2026-05-18: 26.09€ → 26.09€ Refresh 2026-06-05: 26.09€ → 27.87€ Refresh 2026-06-08: 27.87€ → 27.87€",
-      "verified_at": "2026-06-08T08:12:57.766Z",
+      "notes": "PDP canónica. 100ml @ €23.28 (sale, era €30.80, -24%). Refresh 2026-05-17: 23.28€ → 26.09€ Refresh 2026-05-17: 26.09€ → 26.09€ Refresh 2026-05-18: 26.09€ → 26.09€ Refresh 2026-05-18: 26.09€ → 26.09€ Refresh 2026-05-18: 26.09€ → 26.09€ Refresh 2026-06-05: 26.09€ → 27.87€ Refresh 2026-06-08: 27.87€ → 27.87€ Refresh 2026-06-12: 27.87€ → 27.64€",
+      "verified_at": "2026-06-12T07:25:19.477Z",
       "observed_variants": [
         {
           "volume_ml": 100,
           "unit": "ml",
-          "price": 27.87,
+          "price": 27.64,
           "in_stock": true,
           "url": "https://www.sweetcare.pt/nuxe-huile-prodigieuse-oleo-seco-nutritivo-p-006711nz"
         }
