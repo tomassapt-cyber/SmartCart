@@ -1,0 +1,80 @@
+# GirlMath — v2: criar produtos comparáveis em falta
+# ============================================================
+# Corre DEPOIS dos refreshes diários das lojas. Lê todos os catálogos
+# (data/catalog/*-full.json, force-added pelos workflows das lojas) e cria
+# produtos novos para EANs que aparecem em >=2 lojas mas não estão no seed
+# (há comparação real). Idempotente: produtos existentes são ignorados.
+
+name: Criar produtos comparáveis (v2)
+
+on:
+  schedule:
+    # 23h30 UTC — depois de todas as lojas (pharma-gdd 22h, barreiros 22h30)
+    - cron: '30 23 * * *'
+  workflow_dispatch:
+    inputs:
+      min:
+        description: 'Mín. de lojas por EAN (default 2)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Criar produtos comparáveis + injectar
+        run: |
+          if [ -n "${{ github.event.inputs.min }}" ]; then
+            node scripts/create-comparable-products.js --min=${{ github.event.inputs.min }} --inject
+          else
+            node scripts/create-comparable-products.js --inject
+          fi
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: GirlMath Bot
+          GIT_AUTHOR_EMAIL: bot@girlmath.pt
+          GIT_COMMITTER_NAME: GirlMath Bot
+          GIT_COMMITTER_EMAIL: bot@girlmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhum produto comparável novo — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: produtos comparáveis (v2) ($DATE)" \
+            -m "Cria produtos novos com EAN em >=2 lojas. Auto via GitHub Actions."
+
+      - name: Push to main (resilient)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/create-comparable-products.js --inject" \
+            "chore: produtos comparáveis (v2) ($(date -u +%Y-%m-%d))"
