@@ -80,6 +80,13 @@ function extractProductData(html, url) {
   }
   if (price == null || !isFinite(price) || price <= 0) return null;
 
+  // Preço original (promoção): PrestaShop expõe price_without_reduction no JS da
+  // página quando há redução. Aditivo e seguro — só marca desconto quando o
+  // original é claramente maior que o preço actual (sem falsos positivos).
+  let previous_price = null;
+  const wrM = html.match(/"price_without_reduction"\s*:\s*"?(\d+(?:\.\d+)?)/);
+  if (wrM) { const wr = Math.round(parseFloat(wrM[1]) * 100) / 100; if (isFinite(wr) && wr > price + 0.01) previous_price = wr; }
+
   let name = decodeEntities(metaContent(html, 'og:title') || '');
   name = name.replace(/\s*[-–|]\s*Farm[áa]cia Barreiros.*$/i, '').replace(/\s+/g, ' ').trim();
   if (!name) { const t = html.match(/<title>([^<]+)<\/title>/i); if (t) name = decodeEntities(t[1]).replace(/\s*[-–|]\s*Farm[áa]cia Barreiros.*$/i, '').trim(); }
@@ -95,7 +102,7 @@ function extractProductData(html, url) {
     sku: null,
     image_url,
     price,
-    previous_price: null,
+    previous_price,
     in_stock,
     volume_ml: volumeFromName(name),
     category: categoryFromUrl(url),

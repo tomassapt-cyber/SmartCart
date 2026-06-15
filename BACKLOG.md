@@ -8,9 +8,20 @@
       Cuidados: carga/politeness nos sites; minutos de GitHub Actions; escolher
       quais lojas (as grandes — druni/sweetcare/wells/pharma-gdd — são pesadas).
       Alternativa: 2× só nas lojas leves/rápidas + manter 1× nas pesadas.
-- [ ] **Capturar desconto da byFarma** — o scraper põe `previous_price=null`
-      (Next.js com classes CSS geradas; não deteta strikethrough). Extrair o
-      preço antigo por outro campo → mostrar "−30%" deles nas Promoções.
+- [ ] **Capturar descontos (11 lojas a 0%)** — secção Promoções + % poupança.
+      Já capturam: wells, easyfarma, sweetcare, bairro, farmaciapt.
+      Estado por loja (investigado 2026-06-15):
+      - **barreiros**: ✅ FEITO (price_without_reduction, aditivo) — ativa quando houver promo.
+      - **druni / atida**: têm preço antigo no DOM mas o selector mudou
+        (`.text-product-price-old` já não bate / Magento). Precisa inspeção LIVE
+        com Playwright para achar o selector atual.
+      - **pharma-gdd / loja-farmacia**: o JSON-LD só expõe o preço de venda
+        (sem listPrice/priceSpecification original). Preciso doutra fonte na página.
+      - **byFarma**: Next.js, classes CSS geradas — sem strikethrough detetável.
+      - **afarmaciaonline / asua / aminha / farmacia365**: têm marcador de desconto
+        mas falta localizar o VALOR do preço antigo (data-layer/JS).
+      NOTA: não forçar — descontos falsos destroem confiança. Só capturar quando
+      o preço original é fiável e claramente > preço atual.
 
 ## Portes / comparação
 - [ ] **Custos de ilhas (Madeira/Açores) reais** para as lojas que ficaram com
