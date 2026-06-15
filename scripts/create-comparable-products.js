@@ -68,11 +68,14 @@ function bestName(infos) {
   for (const g of seed.store_products) spBySlug[g.store_slug] = g;
 
   // 1. Ler todos os catálogos → ean → { stores: { slug: offer } }
+  // Nome do ficheiro NEM SEMPRE = slug da loja. Mapear os que diferem.
+  const SLUG_MAP = { lojafarmacia: 'loja-farmacia', pharmagdd: 'pharma-gdd' };
   const files = fs.readdirSync(CATALOG_DIR).filter(f => /-full\.json$/.test(f));
   const eanMap = {};   // ean -> { stores: Map(slug->offer), infos: [] }
   let catStores = 0;
   for (const f of files) {
-    const slug = f.replace('-full.json', '');
+    const rawSlug = f.replace('-full.json', '');
+    const slug = SLUG_MAP[rawSlug] || rawSlug;
     const d = load(path.join(CATALOG_DIR, f));
     if (!d?.products) continue;
     const ok = d.products.filter(p => p.status === 'ok' && isRealEan(p.ean) && p.price > 0 && p.name);
