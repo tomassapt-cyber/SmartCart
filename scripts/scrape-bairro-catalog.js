@@ -129,6 +129,7 @@ function mapProduct(p, url) {
     url,
     name: p.title,
     brand: (p.vendor || '').trim() || null,
+    ean: null,   // preenchido na passagem de enriquecimento (endpoint .js → barcode)
     category,
     image_url: bestImage(p),
     price: best.price,
@@ -140,7 +141,7 @@ function mapProduct(p, url) {
   };
 }
 
-async function fetchPage(page) {
+async function fetchPage(page, attempt = 1) {
   const url = `${BASE}/products.json?limit=250&page=${page}`;
   const r = await fetch(url, {
     headers: {
@@ -148,8 +149,51 @@ async function fetchPage(page) {
       'Accept': 'application/json',
     },
   });
+  if (r.status === 429 || r.status >= 500) {
+    if (attempt <= 4) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(page, attempt + 1); }
+  }
   if (!r.ok) throw new Error(`HTTP ${r.status} na página ${page}`);
   return await r.json();
+}
+
+// O /products.json em massa NÃO expõe o `barcode` (EAN), mas o endpoint leve
+// por produto `/products/<handle>.js` SIM. Enriquecemos cada produto com o
+// GTIN real (12-14 díg) → matching cross-store por EAN (seguro, sem over-merge).
+async function fetchJsWithRetry(url, attempt = 1) {
+  // Shopify rate-limita (~2 req/s). 429/5xx → backoff exponencial.
+  const r = await fetch(url, { headers: { 'User-Agent': 'GirlMath-Catalog-Bot/1.0', 'Accept': 'application/json' } });
+  if (r.status === 429 || r.status >= 500) {
+    if (attempt <= 4) { await new Promise(s => setTimeout(s, 1500 * attempt + Math.random() * 500)); return fetchJsWithRetry(url, attempt + 1); }
+    return null;
+  }
+  return r.ok ? r : null;
+}
+async function enrichEans(products, { concurrency = 3, delay = 350 } = {}) {
+  let idx = 0, filled = 0;
+  async function worker() {
+    while (idx < products.length) {
+      const p = products[idx++];
+      try {
+        const r = await fetchJsWithRetry(`${BASE}/products/${p.handle}.js`);
+        if (r) {
+          const j = await r.json();
+          const bc = (j.variants || []).map(v => String(v.barcode || '').trim()).find(b => /^\d{12,14}$/.test(b));
+          if (bc) { p.ean = bc; filled++; }
+          // também anexar barcode por variante (quando disponível)
+          if (Array.isArray(j.variants) && Array.isArray(p.variants)) {
+            for (let i = 0; i < p.variants.length; i++) {
+              const b = String((j.variants[i] || {}).barcode || '').trim();
+              if (/^\d{12,14}$/.test(b)) p.variants[i].ean = b;
+            }
+          }
+        }
+      } catch {}
+      if (idx % 200 === 0) console.log(`  …EAN enrich ${idx}/${products.length} (com EAN: ${filled})`);
+      await new Promise(s => setTimeout(s, delay + Math.random() * delay));
+    }
+  }
+  await Promise.all(Array.from({ length: concurrency }, worker));
+  return filled;
 }
 
 (async function main() {
@@ -173,8 +217,8 @@ async function fetchPage(page) {
     if (arr.length < 250) break;
     if (all.length >= LIMIT) break;
     page++;
-    // delay leve
-    await new Promise(r => setTimeout(r, 200));
+    // delay leve (gentil com o rate-limit do Shopify)
+    await new Promise(r => setTimeout(r, 500));
   }
 
   console.log(`\n✓ Raw fetched: ${all.length} produtos brutos`);
@@ -201,6 +245,11 @@ async function fetchPage(page) {
     if (!mapped) { skipped.noprice++; continue; }
     products.push(mapped);
   }
+
+  // ── Enriquecer com EAN real (endpoint .js por produto) ──
+  console.log(`\n🔖 A enriquecer ${products.length} produtos com EAN (endpoint .js)…`);
+  const eanFilled = await enrichEans(products);
+  console.log(`  ✓ ${eanFilled}/${products.length} produtos com EAN real (${Math.round(100 * eanFilled / (products.length || 1))}%)`);
 
   // Stats por categoria
   const byCat = {};
@@ -229,6 +278,12 @@ async function fetchPage(page) {
   const withDiscount = products.filter(p => p.discount_pct && p.discount_pct > 0).length;
   console.log(`\n  Com desconto activo:       ${withDiscount} (${Math.round(100*withDiscount/products.length)}%)`);
 
+  // Guarda anti-overwrite: se o scrape falhou (0 produtos, ex.: rate-limit 429),
+  // NÃO sobrescrever um catálogo bom já existente com um vazio.
+  if (products.length === 0) {
+    console.error('\n✗ 0 produtos (provável rate-limit/429). NÃO sobrescrevo o catálogo existente.');
+    process.exit(1);
+  }
   const out = {
     scraped_at: new Date().toISOString(),
     source: 'bairro.pt (Shopify products.json)',

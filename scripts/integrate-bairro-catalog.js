@@ -52,7 +52,9 @@ function loadJSON(file) {
 }
 
 function isRealEan(ean) {
-  return /^\d{8,14}$/.test(ean || '');
+  // GTIN-12/13/14. NÃO aceitar 8 dígitos (evita íman de EANs curtos/placeholder
+  // — ver scripts/purge-corrupt-merges.js, bug Nivea/Barral 2026-06-16).
+  return /^\d{12,14}$/.test(ean || '');
 }
 
 function syntheticEan(p) {
@@ -131,8 +133,10 @@ function syntheticEan(p) {
   const efItemByEan = {};
   for (const item of efSp.items) efItemByEan[item.ean] = item;
 
+  let matchedByEan = 0;
   let matchedByFp = 0;
   let matchedByFuzzy = 0;
+  let upgraded = 0;
   let createdNew = 0;
   let storeProductsAdded = 0;
   let storeProductsUpdated = 0;
@@ -141,12 +145,24 @@ function syntheticEan(p) {
   const fuzzySamples = [];
 
   for (const ep of efToIntegrate) {
-    // ── 1. Match por fingerprint exacto ──
     let targetProduct = null;
     const fp = productFingerprint(ep);
-    if (fp && fpIndex[fp]) {
+    // ── 0. Match por EAN real (GTIN-13 do endpoint .js — cross-store forte) ──
+    if (isRealEan(ep.ean) && eanIndex[ep.ean]) {
+      targetProduct = eanIndex[ep.ean];
+      matchedByEan++;
+    }
+    // ── 1. Match por fingerprint exacto ──
+    if (!targetProduct && fp && fpIndex[fp]) {
       targetProduct = fpIndex[fp];
       matchedByFp++;
+      // upgrade: produto com EAN sintético + Bairro tem GTIN real → adota o real
+      if (isRealEan(ep.ean) && !isRealEan(targetProduct.ean)) {
+        const oldEan = targetProduct.ean;
+        targetProduct.ean = ep.ean; eanIndex[ep.ean] = targetProduct; delete eanIndex[oldEan];
+        for (const g of seed.store_products) for (const it of g.items) if (it.ean === oldEan) it.ean = ep.ean;
+        upgraded++;
+      }
     }
 
     // ── 2. Match por fuzzy DESLIGADO — causava false positives perigosos ──
@@ -165,10 +181,10 @@ function syntheticEan(p) {
     //   if (fz) { targetProduct = fz.product; matchedByFuzzy++; }
     // }
 
-    // ── 3. Não match → criar como novo ──
+    // ── 3. Não match → criar como novo (preferir EAN real do Bairro) ──
     if (!targetProduct) {
-      const newEan = syntheticEan(ep);
-      // Se já existe sintético com este handle, reusa.
+      const newEan = isRealEan(ep.ean) ? ep.ean : syntheticEan(ep);
+      // Se já existe com este EAN/handle, reusa.
       if (eanIndex[newEan]) {
         targetProduct = eanIndex[newEan];
       } else {
@@ -204,6 +220,7 @@ function syntheticEan(p) {
   }
 
   console.log('══════ Resumo da integração ══════');
+  console.log(`  Match por EAN real (GTIN):              ${matchedByEan}  (upgrades sintético→real: ${upgraded})`);
   console.log(`  Match por fingerprint exacto:           ${matchedByFp}`);
   console.log(`  Match por fuzzy (mesma marca + Jaccard):${matchedByFuzzy}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);

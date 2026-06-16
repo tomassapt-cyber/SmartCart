@@ -139,7 +139,10 @@ function extractProductData(html, url) {
   // 6. EAN — Farmácia.pt geralmente não expõe GTIN público
   // Tentamos meta product:retailer_item_id ou descrição
   let ean = null;
-  const eanM = html.match(/EAN[\s:<>\/a-z"=]+?(\d{12,14})\b/i)
+  // Farmácia.pt expõe o GTIN real no bloco JS do produto como "gtin8"/"gtin13"
+  // (a chave diz gtin8 mas o valor é o EAN-13 completo). Procurar isso primeiro.
+  const eanM = html.match(/"gtin(?:8|13|14)?"\s*:\s*"(\d{12,14})"/i)
+            || html.match(/EAN[\s:<>\/a-z"=]+?(\d{12,14})\b/i)
             || html.match(/<meta property="product:retailer_item_id" content="(\d{12,14})"/);
   if (eanM) ean = eanM[1];
 

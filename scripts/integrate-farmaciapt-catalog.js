@@ -52,7 +52,8 @@ function loadJSON(file) {
 }
 
 function isRealEan(ean) {
-  return /^\d{8,14}$/.test(ean || '');
+  // GTIN-12/13/14 (não 8 díg — evita íman de EANs curtos, bug Nivea/Barral).
+  return /^\d{12,14}$/.test(ean || '');
 }
 
 function syntheticEan(p) {
