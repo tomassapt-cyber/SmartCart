@@ -173,6 +173,11 @@ async function extract(page) {
     // (Druni mostra strikethrough + current + per-unit; current é o mais baixo)
     const variants = [];
     const seen = new Set();
+    // Path do PRÓPRIO produto. Variantes legítimas (tamanhos) usam o mesmo path
+    // (+ query-param); um <a> que aponta para OUTRO path é um produto
+    // relacionado/recomendado (carrossel) — NÃO é variante. Isto elimina a
+    // contaminação cross-produto (ex.: serum Kiehl's a entrar como "50ml").
+    const basePath = location.pathname.replace(/\/+$/, '');
     // Variant context markers — produtos com estas palavras na proximidade NÃO
     // são variants do produto base (são refills, gift sets, etc. com EAN diferente).
     const VARIANT_EXCLUDE = /\b(recarga|refill|cofre|estuche|estuje|pack|set|kit|gift|conjunto|edicion limitada|limited edition|edição limitada|mini|sample|amostra)\b/i;
@@ -221,10 +226,17 @@ async function extract(page) {
       const { volMl, unit, price } = parsed;
       if (price <= 0.5 || price > 10000) return;
       if (volMl <= 0 || volMl > 5000) return;
+      // Rejeitar links para OUTRO produto (carrossel de relacionados).
+      let vUrl = el.tagName === 'A' ? (el.href || null) : null;
+      if (vUrl) {
+        let vPath = null;
+        try { vPath = new URL(vUrl, location.href).pathname.replace(/\/+$/, ''); } catch {}
+        if (vPath && vPath !== basePath) return;   // produto diferente → não é variante
+      }
       const key = `${volMl}${unit}|${price.toFixed(2)}`;
       if (seen.has(key)) return;
       seen.add(key);
-      variants.push({ volume_ml: volMl, unit, price, url: el.tagName === 'A' ? (el.href||null) : null });
+      variants.push({ volume_ml: volMl, unit, price, url: vUrl });
     });
 
     // Sanity check: filtrar variants pelo range JSON-LD offers
