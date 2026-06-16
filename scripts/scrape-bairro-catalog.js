@@ -168,10 +168,15 @@ async function fetchJsWithRetry(url, attempt = 1) {
   }
   return r.ok ? r : null;
 }
-async function enrichEans(products, { concurrency = 3, delay = 350 } = {}) {
-  let idx = 0, filled = 0;
+async function enrichEans(products, { concurrency = 4, delay = 250, budgetMs = 14 * 60 * 1000 } = {}) {
+  // Orçamento de tempo: se exceder (rate-limit pesado), para e devolve o que
+  // tiver — o catálogo é sempre escrito (com EANs parciais) em vez de o job
+  // ser CANCELADO por timeout. No dia seguinte completa o resto.
+  let idx = 0, filled = 0, stopped = false;
+  const deadline = Date.now() + budgetMs;
   async function worker() {
     while (idx < products.length) {
+      if (Date.now() > deadline) { stopped = true; break; }
       const p = products[idx++];
       try {
         const r = await fetchJsWithRetry(`${BASE}/products/${p.handle}.js`);
@@ -193,6 +198,7 @@ async function enrichEans(products, { concurrency = 3, delay = 350 } = {}) {
     }
   }
   await Promise.all(Array.from({ length: concurrency }, worker));
+  if (stopped) console.warn(`  ⏱ orçamento de tempo excedido — EAN parcial (${idx}/${products.length} processados). Completa no próximo run.`);
   return filled;
 }
 
