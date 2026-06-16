@@ -32,6 +32,19 @@
 - [ ] Confirmar custo PT real da **pharma-gdd** (atualmente estimativa ~12,90€).
 
 ## Mais lojas
+### Vertical de cabelo (iniciada 2026-06-16)
+- [x] **Manuela Serra** (manuelaserra.com) — FEITO, 17ª loja. Shopify, 412
+      produtos, cabelo salão (Redken/Milk Shake/Truss). 101 pares comparáveis.
+- [ ] **cabelos.pt / beautyshop.pt** — DIFERIDA. Magento, 100% cabelo, mas o
+      sitemap só lista categorias (não produtos) e NÃO há EAN em dados
+      estruturados → precisa crawl de categorias + Playwright/DOM. Reavaliar se
+      valer a pena (irmã 100%-cabelo da manuelaserra).
+- [ ] **lojadocabeleireiro.com** — WooCommerce, sem sitemap de produtos
+      acessível (Yoast 404); descoberta de URLs trabalhosa. A reavaliar.
+- [ ] **perfumesecompanhia.pt** — Magento, 1306 produtos, beleza geral (não só
+      cabelo); EAN não está no JSON-LD (ver DOM). Grande mas esforço médio-alto.
+- [ ] **Manuela Serra — portes de ilhas** (Madeira/Açores): placeholder 3,40€
+      (= Continente). A política só publica Continente; confirmar valor real.
 - [ ] **Douglas PT** — precisa de ScrapingBee (DataDome). Em hold por custo.
 - [ ] Candidatos EU maiores (Promofarma, Dosfarma, Atida.es, Newpharma) —
       bloqueiam HTTP simples (403). Precisariam de browser/ScrapingBee.
