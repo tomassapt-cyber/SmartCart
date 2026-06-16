@@ -42,3 +42,20 @@
 - [ ] Melhorar tradução PT de nomes (deferido há várias sessões).
 - [ ] v2 dos integradores parciais (asua/aminha): criar produtos NOVOS com
       categoria (a aminha traz breadcrumb fiável) em vez de só enriquecer.
+- [ ] **Over-merge legado (limpo 2026-06-16, vigiar recorrência)**: o fuzzy
+      matching antigo fundiu produtos distintos sob um EAN; ofertas erradas
+      ficaram congeladas no seed. Purgados 10 produtos via
+      `scripts/purge-corrupt-merges.js` (deteta ofertas com >=2 marcas
+      distintas nos URLs). RE-CORRER esse script de vez em quando (--dry-run
+      primeiro) para apanhar novos casos. O próximo scrape recria os purgados
+      corretos (fuzzy está off).
+- [ ] **`isRealEan` aceita 8 dígitos** (`/^\d{8,14}$/`) nos integradores — um
+      EAN curto/placeholder (ex.: 42398110) pode agir como íman e ser
+      sobrescrito pelo side-effect EAN-overwrite. Avaliar exigir >=12 dígitos
+      (GTIN-12/13/14) com cuidado (afeta matching de todas as lojas). NÃO
+      mudado ainda por risco; só documentado.
+- [ ] **Variantes contaminadas (druni FEITO)**: druni agora só aceita variante
+      cujo URL aponta p/ o MESMO produto. wells/sweetcare deixados como estão
+      (URL próprio por tamanho; 0% contaminação medida — filtro same-path
+      partiria variantes legítimas). Se aparecer contaminação lá, usar
+      overlap-de-tokens em vez de same-path.
