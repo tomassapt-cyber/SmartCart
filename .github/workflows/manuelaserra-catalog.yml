@@ -1,0 +1,75 @@
+# CosMath — Manuela Serra daily price refresh
+# ============================================================
+# Loja Shopify (cabelo profissional). Scraper usa /products.json (sem HTML,
+# sem Playwright) — 412 produtos, ~1 min. Matching por EAN-no-SKU (GTIN-13,
+# ~21%) + fingerprint (vendor+nome).
+#
+# Pipeline:
+#   1. scrape-manuelaserra-catalog.js  → data/catalog/manuelaserra-full.json
+#   2. integrate-manuelaserra-catalog.js → EAN real + fingerprint
+#   3. inject-seed-into-demo.js → regenera demo/index/catalogo
+
+name: Manuela Serra daily refresh
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Manuela Serra catalog
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-manuelaserra-catalog.js --limit=${{ github.event.inputs.limit }}
+          else
+            node scripts/scrape-manuelaserra-catalog.js
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuelaserra-catalog-${{ github.run_id }}
+          path: data/catalog/manuelaserra-full.json
+          retention-days: 14
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-manuelaserra-catalog.js" \
+            "chore: Manuela Serra daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/manuelaserra-full.json
