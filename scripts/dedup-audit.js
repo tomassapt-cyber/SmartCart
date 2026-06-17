@@ -125,17 +125,30 @@ if (dupGroups.length === 0) {
 }
 
 // 2) Para cada grupo, decidir produto canónico:
-//    preferir EAN real (numérico, 8+ dígitos) > wells-* > primeiro alfabeticamente
+//    preferir EAN real (numérico, 8+ dígitos) > wells-* > primeiro.
+//    DENTRO de cada tier, preferir o NOME mais limpo — sem palavras de
+//    tamanho/artefacto (Familiar/Cr/Maxi…) e mais curto — para o card mostrar
+//    "Nivea Creme" em vez de "Nivea Creme Cr 75mL".
 function isRealEan(ean) {
   return /^\d{8,14}$/.test(ean || '');
 }
+const NAME_NOISE = /\b(familiar|family|familial|grande|maxi|mini|pack|cr)\b/i;
+function nameScore(p) {
+  const n = (p.name || '').toLowerCase();
+  // sem volume (não penaliza tamanhos diferentes), depois penaliza ruído e comprimento
+  const core = n.replace(/\b\d+(?:[.,]\d+)?\s*(ml|gr|g|kg|l)\b/gi, '').trim();
+  return (NAME_NOISE.test(core) ? 1000 : 0) + core.length;
+}
+function cleanest(list) {
+  return list.slice().sort((a, b) => nameScore(a) - nameScore(b))[0];
+}
 function pickCanonical(group) {
-  // Preferência: EAN real > seed (não wells-) > wells-
-  const realEan = group.find(p => isRealEan(p.ean));
-  if (realEan) return realEan;
-  const seedNonWells = group.find(p => !p.ean?.startsWith('wells-'));
-  if (seedNonWells) return seedNonWells;
-  return group[0];
+  // Preferência de EAN: real > seed (não wells-) > qualquer; nome mais limpo dentro do tier.
+  const realEan = group.filter(p => isRealEan(p.ean));
+  if (realEan.length) return cleanest(realEan);
+  const seedNonWells = group.filter(p => !p.ean?.startsWith('wells-'));
+  if (seedNonWells.length) return cleanest(seedNonWells);
+  return cleanest(group);
 }
 
 // 3) Listar grupos
