@@ -325,6 +325,9 @@ const PHRASE_NORMALIZATION = [
   [/\bactivo\b/gi, 'active'],
   [/\bativo\b/gi, 'active'],
   [/\bactif\b/gi, 'active'],
+  // PT 'invisível'(→invisivel após stripAccents) ↔ EN/FR 'invisible' = mesmo descritor
+  // (ex.: Avène Ultra Fluido Invisível/Invisible SPF50 — mesmo SKU, lojas diferentes)
+  [/\binvisible\b/gi, 'invisivel'],
   // Foaming gel / gel moussant — Bioderma écrit os dois lados em alguns SKUs
   [/\bfoaming\s+gel\b/gi, 'gel-moussant'],
   // "without color" descriptor — Photoderm s/Cor ↔ Photoderm sin color ↔ tinted-free
