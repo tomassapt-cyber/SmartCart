@@ -128,6 +128,13 @@ const GENERIC_TOKENS = new Set([
   // Wrappers comuns sem valor
   'a', 'o', 'de', 'da', 'do', 'das', 'dos', 'la', 'le', 'el',
   'and', 'e', 'or', 'ou',
+
+  // Indicadores de TAMANHO — não distinguem o produto, só o volume (que já é
+  // variante). Ex.: "Nivea Creme Familiar 250ml" = "Nivea Creme" em formato
+  // maior → mesmo produto. Sem isto, ficavam cards separados por tamanho.
+  'familiar', 'family', 'familial', 'grande', 'maxi',
+  // Artefacto de abreviatura redundante (ex.: "Nivea Creme Cr" → Cr = Creme)
+  'cr',
 ]);
 
 function stripAccents(s) {
