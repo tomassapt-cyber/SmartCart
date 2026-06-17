@@ -274,6 +274,10 @@ function distinctiveDiffOk(aName, sName) {
   if (spawnSync('node', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject'], { cwd: ROOT, stdio: 'inherit' }).status !== 0) console.warn('⚠ normalize falhou.');
   console.log('\n▶ backfill-descriptions...');
   if (spawnSync('node', [path.join(ROOT, 'scripts', 'backfill-descriptions.js')], { cwd: ROOT, stdio: 'inherit' }).status !== 0) console.warn('⚠ backfill falhou.');
+  // Pós-processo: resgate cross-store por CNP (synth→real, regra anti-over-merge)
+  console.log('\n▶ apply-cnp-merge (resgate por CNP)...');
+  if (spawnSync('node', [path.join(ROOT, 'scripts', 'apply-cnp-merge.js'), '--apply'], { cwd: ROOT, stdio: 'inherit' }).status !== 0) console.warn('⚠ apply-cnp-merge falhou — continuar.');
+
   console.log('\n▶ inject-seed-into-demo...');
   if (spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], { cwd: ROOT, stdio: 'inherit' }).status === 0) console.log('\n✅ Integração asuafarmaciaonline completa.');
 })();

@@ -149,6 +149,8 @@ function syntheticEan(p) {
   for (const [label, script, extra] of [
     ['dedup-audit', 'dedup-audit.js', ['--apply']],
     ['normalize-brand-display', 'normalize-brand-display.js', ['--apply', '--no-inject']],
+    // Resgate cross-store por CNP (synth→real, regra anti-over-merge)
+    ['apply-cnp-merge', 'apply-cnp-merge.js', ['--apply']],
     ['inject', 'inject-seed-into-demo.js', []],
   ]) {
     console.log(`\n▶ ${label}…`);

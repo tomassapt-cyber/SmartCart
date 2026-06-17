@@ -184,6 +184,10 @@ function isRealEan(ean) { return /^\d{12,14}$/.test(ean || ''); }
   const bf = spawnSync('node', [path.join(ROOT, 'scripts', 'backfill-descriptions.js')], { cwd: ROOT, stdio: 'inherit' });
   if (bf.status !== 0) console.warn('⚠ backfill-descriptions falhou — continuar.');
 
+  // Pós-processo: resgate cross-store por CNP (synth→real, regra anti-over-merge)
+  console.log('\n▶ apply-cnp-merge (resgate por CNP)...');
+  if (spawnSync('node', [path.join(ROOT, 'scripts', 'apply-cnp-merge.js'), '--apply'], { cwd: ROOT, stdio: 'inherit' }).status !== 0) console.warn('⚠ apply-cnp-merge falhou — continuar.');
+
   console.log('\n▶ Re-injectando no demo.html + index.html...');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], { cwd: ROOT, stdio: 'inherit' });
   if (r.status === 0) console.log('\n✅ Integração afarmaciaonline completa.');

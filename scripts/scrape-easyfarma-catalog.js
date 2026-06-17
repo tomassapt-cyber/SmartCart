@@ -129,6 +129,7 @@ function mapProduct(p, url) {
     url,
     name: p.title,
     brand: (p.vendor || '').trim() || null,
+    cnp: null,   // preenchido no enrich (endpoint .js → barcode = CNP 7 díg, não GTIN)
     category,
     image_url: bestImage(p),
     price: best.price,
@@ -150,6 +151,43 @@ async function fetchPage(page) {
   });
   if (!r.ok) throw new Error(`HTTP ${r.status} na página ${page}`);
   return await r.json();
+}
+
+// O /products.json em massa NÃO expõe o `barcode`, mas o endpoint leve por
+// produto `/products/<handle>.js` SIM. Na easyfarma esse barcode é o CNP
+// (Código Nacional do Produto, 7 díg) — não GTIN. Guardamo-lo em `cnp` para
+// matching cross-store nacional (ver scripts/apply-cnp-merge.js). Mesmo padrão
+// e orçamento de tempo do scrape-bairro (gentil com o rate-limit Shopify).
+async function fetchJsWithRetry(url, attempt = 1) {
+  const r = await fetch(url, { headers: { 'User-Agent': 'GirlMath-Catalog-Bot/1.0', 'Accept': 'application/json' } });
+  if (r.status === 429 || r.status >= 500) {
+    if (attempt <= 4) { await new Promise(s => setTimeout(s, 1500 * attempt + Math.random() * 500)); return fetchJsWithRetry(url, attempt + 1); }
+    return null;
+  }
+  return r.ok ? r : null;
+}
+async function enrichCnp(products, { concurrency = 4, delay = 250, budgetMs = 14 * 60 * 1000 } = {}) {
+  let idx = 0, filled = 0, stopped = false;
+  const deadline = Date.now() + budgetMs;
+  async function worker() {
+    while (idx < products.length) {
+      if (Date.now() > deadline) { stopped = true; break; }
+      const p = products[idx++];
+      try {
+        const r = await fetchJsWithRetry(`${BASE}/products/${p.handle}.js`);
+        if (r) {
+          const j = await r.json();
+          const cnp = (j.variants || []).map(v => String(v.barcode || '').trim()).find(b => /^\d{7}$/.test(b));
+          if (cnp) { p.cnp = cnp; filled++; }
+        }
+      } catch {}
+      if (idx % 200 === 0) console.log(`  …CNP enrich ${idx}/${products.length} (com CNP: ${filled})`);
+      await new Promise(s => setTimeout(s, delay + Math.random() * delay));
+    }
+  }
+  await Promise.all(Array.from({ length: concurrency }, worker));
+  if (stopped) console.warn(`  ⏱ orçamento de tempo excedido — CNP parcial (${idx}/${products.length}). Completa no próximo run.`);
+  return filled;
 }
 
 (async function main() {
@@ -202,6 +240,11 @@ async function fetchPage(page) {
     products.push(mapped);
   }
 
+  // ── Enriquecer com CNP (endpoint .js por produto) ──
+  console.log(`\n🔖 A enriquecer ${products.length} produtos com CNP (endpoint .js)…`);
+  const cnpFilled = await enrichCnp(products);
+  console.log(`  ✓ ${cnpFilled}/${products.length} produtos com CNP (${Math.round(100 * cnpFilled / (products.length || 1))}%)`);
+
   // Stats por categoria
   const byCat = {};
   for (const p of products) byCat[p.category] = (byCat[p.category] || 0) + 1;
@@ -229,6 +272,17 @@ async function fetchPage(page) {
   const withDiscount = products.filter(p => p.discount_pct && p.discount_pct > 0).length;
   console.log(`\n  Com desconto activo:       ${withDiscount} (${Math.round(100*withDiscount/products.length)}%)`);
 
+  // Guarda anti-overwrite: scrape vazio (ex.: rate-limit 429) não deve
+  // sobrescrever um catálogo bom já existente.
+  if (products.length === 0) {
+    console.error('\n✗ 0 produtos (provável rate-limit/429). NÃO sobrescrevo o catálogo existente.');
+    process.exit(1);
+  }
+  // Smoke-test (--limit) NÃO deve sobrescrever o catálogo de produção (parcial).
+  if (LIMIT !== Infinity) {
+    console.log(`\n[--limit=${LIMIT}] smoke-test: NÃO escrevo ${OUT_FILE.replace(ROOT, '.')} (catálogo de produção preservado).`);
+    return;
+  }
   const out = {
     scraped_at: new Date().toISOString(),
     source: 'easyfarma.pt (Shopify products.json)',

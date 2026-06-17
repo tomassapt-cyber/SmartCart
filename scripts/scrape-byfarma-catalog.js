@@ -137,6 +137,12 @@ function extractProductData(html, url) {
   const rawEan = product.gtin13 || product.gtin || offer?.gtin13 || offer?.gtin || null;
   const ean = (rawEan && /^\d{12,14}$/.test(String(rawEan))) ? String(rawEan) : null;
 
+  // 3b. CNP — o `sku`/`gtin` de 7 díg da byFarma É o Código Nacional do Produto,
+  // partilhado entre farmácias PT. Guardamo-lo para matching cross-store
+  // nacional (ver scripts/apply-cnp-merge.js). Não confundir com EAN/GTIN.
+  const rawCnp = product.sku || offer?.sku || product.gtin || rawEan || null;
+  const cnp = (rawCnp && /^\d{7}$/.test(String(rawCnp))) ? String(rawCnp) : null;
+
   // 4. Imagem
   const image_url = Array.isArray(product.image) ? product.image[0]
     : (typeof product.image === 'string' ? product.image
@@ -186,6 +192,7 @@ function extractProductData(html, url) {
     name: product.name || null,
     brand,
     ean: typeof ean === 'string' ? ean : (ean ? String(ean) : null),
+    cnp,
     description: typeof product.description === 'string' ? product.description.slice(0, 300) : null,
     image_url,
     price,
