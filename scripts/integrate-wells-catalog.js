@@ -33,6 +33,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
 const { upsertStoreItem } = require('./lib/store-item-merge');
+const { classifyDermo } = require('./lib/dermo-classify');
 
 const ROOT = path.resolve(__dirname, '..');
 const WELLS_FULL = path.join(ROOT, 'data', 'catalog', 'wells-full.json');
@@ -109,15 +110,21 @@ function loadJSON(file) {
   console.log(`📦 Seed actual: ${seed.products.length} produtos, ${seed.stores.length} lojas`);
   console.log('');
 
-  // 2) Filtrar Wells products: status ok + categoria mapeada + tem name + preço
-  const wellsOk = wellsData.products.filter(p =>
-    p.status === 'ok' &&
-    p.name &&
-    p.price != null &&
-    CATEGORIES_FILTER.includes(p.category) &&
-    CATEGORY_MAP[p.category] != null
-  );
-  console.log(`✓ Wells produtos válidos (status=ok + categoria útil): ${wellsOk.length}`);
+  // 2) Filtrar Wells products: status ok + tem name + preço + categoria dermo.
+  //    A categorização por slug (discover) deixa ~59% em 'other'/null. Muitos
+  //    SÃO dermo (Vichy Neovadiol, ISDIN Fotoprotector, géis de limpeza…) — a
+  //    classifyDermo recupera-os pelo NOME. Aditivo: não remove nada do que já
+  //    passava por slug; só ACRESCENTA os 'other' que o nome confirma dermo.
+  let recoveredByName = 0;
+  const wellsOk = wellsData.products.filter(p => {
+    if (p.status !== 'ok' || !p.name || p.price == null) return false;
+    const slugCat = CATEGORIES_FILTER.includes(p.category) ? CATEGORY_MAP[p.category] : null;
+    if (slugCat) { p._cat = slugCat; return true; }
+    const nameCat = classifyDermo(p.name);   // 'skincare'|'hair'|'body'|null (dermo-only)
+    if (nameCat) { p._cat = nameCat; recoveredByName++; return true; }
+    return false;
+  });
+  console.log(`✓ Wells produtos válidos (dermo): ${wellsOk.length}  (recuperados por nome: ${recoveredByName})`);
 
   // 3) Ordenar: popular brands primeiro, depois por categoria
   wellsOk.sort((a, b) => {
@@ -180,7 +187,7 @@ function loadJSON(file) {
           ean: productId,
           name: wp.name,
           brand: displayBrand(wp.brand) || wp.brand,
-          category: CATEGORY_MAP[wp.category],
+          category: wp._cat || CATEGORY_MAP[wp.category],
           image_url: wp.image_url || null,
           _source: 'wells-catalog',
           _wells_product_id: wp.productId,
