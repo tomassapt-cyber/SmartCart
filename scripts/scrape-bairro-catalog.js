@@ -130,6 +130,7 @@ function mapProduct(p, url) {
     name: p.title,
     brand: (p.vendor || '').trim() || null,
     ean: null,   // preenchido na passagem de enriquecimento (endpoint .js → barcode)
+    cnp: null,   // barcode de 7 díg do .js = CNP (quando não é GTIN-13)
     category,
     image_url: bestImage(p),
     price: best.price,
@@ -182,8 +183,12 @@ async function enrichEans(products, { concurrency = 4, delay = 250, budgetMs = 1
         const r = await fetchJsWithRetry(`${BASE}/products/${p.handle}.js`);
         if (r) {
           const j = await r.json();
-          const bc = (j.variants || []).map(v => String(v.barcode || '').trim()).find(b => /^\d{12,14}$/.test(b));
+          const barcodes = (j.variants || []).map(v => String(v.barcode || '').trim());
+          const bc = barcodes.find(b => /^\d{12,14}$/.test(b));
           if (bc) { p.ean = bc; filled++; }
+          // barcode de 7 díg = CNP (Código Nacional do Produto) → matching cross-store
+          const cnp = barcodes.find(b => /^\d{7}$/.test(b));
+          if (cnp) p.cnp = cnp;
           // também anexar barcode por variante (quando disponível)
           if (Array.isArray(j.variants) && Array.isArray(p.variants)) {
             for (let i = 0; i < p.variants.length; i++) {

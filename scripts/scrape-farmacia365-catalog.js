@@ -151,6 +151,11 @@ function extractProductData(html, url) {
     if (/^\d{12,14}$/.test(s)) { ean = s; break; }
   }
 
+  // 3b. CNP — o `sku` de 7 díg é o Código Nacional do Produto (partilhado entre
+  // farmácias PT). Guardado para matching cross-store (ver apply-cnp-merge.js).
+  const rawCnp = product.sku || offer?.sku || null;
+  const cnp = (rawCnp && /^\d{7}$/.test(String(rawCnp).trim())) ? String(rawCnp).trim() : null;
+
   // 4. Imagem
   const image_url = Array.isArray(product.image) ? product.image[0]
     : (typeof product.image === 'string' ? product.image
@@ -173,6 +178,7 @@ function extractProductData(html, url) {
     name: product.name || null,
     brand,
     ean: typeof ean === 'string' ? ean : (ean ? String(ean) : null),
+    cnp,
     description: typeof product.description === 'string' ? product.description.slice(0, 300) : null,
     image_url,
     price,

@@ -72,6 +72,11 @@ function extractProductData(html, url) {
   let ean = eanM ? eanM[1] : null;
   if (ean && /0{6,}/.test(ean)) ean = null;   // placeholder
 
+  // CNP — PrestaShop expõe o Código Nacional do Produto (7 díg) em "reference".
+  // Partilhado entre farmácias PT → matching cross-store (ver apply-cnp-merge.js).
+  const refM = html.match(/"reference"\s*:\s*"(\d{7})"/);
+  const cnp = refM ? refM[1] : null;
+
   const paM = html.match(/"price_amount"\s*:\s*"?(\d+(?:\.\d+)?)/);
   let price = paM ? Math.round(parseFloat(paM[1]) * 100) / 100 : null;
   if (price == null) {
@@ -99,6 +104,7 @@ function extractProductData(html, url) {
     name,
     brand: null,                 // derivado no fingerprint; matching é por EAN
     ean,                          // GTIN-13 real (pode faltar nalguns)
+    cnp,                          // CNP 7 díg (reference PrestaShop)
     sku: null,
     image_url,
     price,
