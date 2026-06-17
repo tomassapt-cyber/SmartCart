@@ -31,6 +31,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand, fuzzyMatch, normalizeBrand } = require('./lib/product-fingerprint');
 const { upsertStoreItem } = require('./lib/store-item-merge');
+const { classifyDermo } = require('./lib/dermo-classify');
 
 const ROOT = path.resolve(__dirname, '..');
 const BYFARMA_FULL = path.join(ROOT, 'data', 'catalog', 'byfarma-full.json');
@@ -87,10 +88,18 @@ function syntheticEan(p) {
 
   // Filtrar categorias fora do foco dermo/farmácia (decisão 2026-05-25)
   // makeup + perfume excluídos. Mantemos: skincare, hair, body.
+  // A categorização por slug deixa muitos dermo sem categoria (null) → recuperamos
+  // aditivamente pelo NOME (classifyDermo), sem incluir makeup/perfume/suplementos.
   const ALLOWED_CATEGORIES = new Set(['skincare', 'hair', 'haircare', 'body']);
   const beforeFilter = efData.products.length;
-  let efToIntegrate = efData.products.filter(p => ALLOWED_CATEGORIES.has(p.category));
-  console.log(`🎯 Filtro categoria (dermo focus): ${beforeFilter} → ${efToIntegrate.length} produtos`);
+  let recoveredByName = 0;
+  let efToIntegrate = efData.products.filter(p => {
+    if (ALLOWED_CATEGORIES.has(p.category)) { p._cat = p.category === 'haircare' ? 'hair' : p.category; return true; }
+    const nameCat = classifyDermo(p.name);   // 'skincare'|'hair'|'body'|null
+    if (nameCat) { p._cat = nameCat; recoveredByName++; return true; }
+    return false;
+  });
+  console.log(`🎯 Filtro categoria (dermo focus): ${beforeFilter} → ${efToIntegrate.length} produtos (recuperados por nome: ${recoveredByName})`);
   console.log(`   (skip ${beforeFilter - efToIntegrate.length} de makeup/perfume/outros)\n`);
 
   efToIntegrate = efToIntegrate.slice(0, MAX_PRODUCTS);
@@ -203,7 +212,7 @@ function syntheticEan(p) {
           ean: newEan,
           name: ep.name,
           brand: displayBrand(ep.brand) || ep.brand,
-          category: ep.category === 'haircare' ? 'hair' : ep.category,
+          category: ep._cat || (ep.category === 'haircare' ? 'hair' : ep.category),
           image_url: ep.image_url || null,
           _source: 'byfarma-catalog',
         };
