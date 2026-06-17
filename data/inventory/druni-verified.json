@@ -3,8 +3,8 @@
   "store_slug": "druni",
   "store_name": "Druni PT",
   "store_url": "https://www.druni.pt",
-  "verified_at": "2026-06-16T08:48:59.327Z",
-  "method": "playwright-headless (refresh 2026-06-16)",
+  "verified_at": "2026-06-17T08:32:03.850Z",
+  "method": "playwright-headless (refresh 2026-06-17)",
   "limitation": "URLs identificadas via Google index. Preço/stock real ainda não foi extraído (PDP fetch bloqueado por 406). Volume confirmado por nome no slug + descrição da SERP.",
   "stats": {
     "total": 20,
@@ -241,8 +241,8 @@
       "observed_price": 19.08,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende a linha Minéral 89, mas o resultado primário é o creme leve, não o sérum 50ml. Marca como variant — investigar com PDP fetch real Scrape 2026-05-17: 19.08€ Refresh 2026-05-17: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-20: 19.08€ → 19.08€ Refresh 2026-05-21: 19.08€ → 19.08€ Refresh 2026-05-23: 19.08€ → 19.08€ Refresh 2026-05-24: 19.08€ → 19.08€ Refresh 2026-05-26: 19.08€ → 19.08€ Refresh 2026-05-27: 19.08€ → 19.08€ Refresh 2026-05-28: 19.08€ → 19.08€ Refresh 2026-05-30: 19.08€ → 19.08€ Refresh 2026-05-31: 19.08€ → 19.08€ Refresh 2026-06-01: 19.08€ → 19.08€ Refresh 2026-06-04: 19.08€ → 19.08€ Refresh 2026-06-06: 19.08€ → 19.08€ Refresh 2026-06-07: 19.08€ → 19.08€ Refresh 2026-06-09: 19.08€ → 19.08€ Refresh 2026-06-10: 19.08€ → 19.08€ Refresh 2026-06-11: 19.08€ → 19.08€ Refresh 2026-06-13: 19.08€ → 19.08€ Refresh 2026-06-14: 19.08€ → 19.08€ Refresh 2026-06-15: 19.08€ → 19.08€",
-      "verified_at": "2026-06-15T09:25:02.152Z",
+      "notes": "Druni vende a linha Minéral 89, mas o resultado primário é o creme leve, não o sérum 50ml. Marca como variant — investigar com PDP fetch real Scrape 2026-05-17: 19.08€ Refresh 2026-05-17: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-18: 19.08€ → 19.08€ Refresh 2026-05-20: 19.08€ → 19.08€ Refresh 2026-05-21: 19.08€ → 19.08€ Refresh 2026-05-23: 19.08€ → 19.08€ Refresh 2026-05-24: 19.08€ → 19.08€ Refresh 2026-05-26: 19.08€ → 19.08€ Refresh 2026-05-27: 19.08€ → 19.08€ Refresh 2026-05-28: 19.08€ → 19.08€ Refresh 2026-05-30: 19.08€ → 19.08€ Refresh 2026-05-31: 19.08€ → 19.08€ Refresh 2026-06-01: 19.08€ → 19.08€ Refresh 2026-06-04: 19.08€ → 19.08€ Refresh 2026-06-06: 19.08€ → 19.08€ Refresh 2026-06-07: 19.08€ → 19.08€ Refresh 2026-06-09: 19.08€ → 19.08€ Refresh 2026-06-10: 19.08€ → 19.08€ Refresh 2026-06-11: 19.08€ → 19.08€ Refresh 2026-06-13: 19.08€ → 19.08€ Refresh 2026-06-14: 19.08€ → 19.08€ Refresh 2026-06-15: 19.08€ → 19.08€ Refresh 2026-06-17: 19.08€ → 19.08€",
+      "verified_at": "2026-06-17T08:30:06.209Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "gtin_observed": "3337875831888",
@@ -252,7 +252,7 @@
           "unit": "ml",
           "price": 19.08,
           "in_stock": true,
-          "url": "https://www.druni.pt/crema-facial-vichy-mineral-89-hidratante-leve"
+          "url": null
         }
       ]
     },
@@ -272,8 +272,8 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende Effaclar Duo +M (não Duo+ original). 40ml · €16.95 (era €22.10, -23%). Variante M tem niacinamida + zinco PCA, ligeiramente diferente do Duo+ canónico. Refresh 2026-05-17: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-20: 16.95€ → 16.95€ Refresh 2026-05-21: 16.95€ → 16.95€ Refresh 2026-05-23: 16.95€ → 16.95€ Refresh 2026-05-24: 16.95€ → 16.95€ Refresh 2026-05-26: 16.95€ → 16.95€ Refresh 2026-05-27: 16.95€ → 16.95€ Refresh 2026-05-28: 16.95€ → 16.95€ Refresh 2026-05-30: 16.95€ → 16.95€ Refresh 2026-05-31: 16.95€ → 16.95€ Refresh 2026-06-01: 16.95€ → 16.95€ Refresh 2026-06-04: 16.95€ → 16.95€ Refresh 2026-06-06: 16.95€ → 16.95€ Refresh 2026-06-07: 16.95€ → 16.95€ Refresh 2026-06-09: 16.95€ → 16.95€ Refresh 2026-06-10: 16.95€ → 16.95€ Refresh 2026-06-11: 16.95€ → 16.95€ Refresh 2026-06-13: 16.95€ → 16.95€ Refresh 2026-06-14: 16.95€ → 16.95€ Refresh 2026-06-15: 16.95€ → 16.95€",
-      "verified_at": "2026-06-15T09:25:08.375Z",
+      "notes": "Druni vende Effaclar Duo +M (não Duo+ original). 40ml · €16.95 (era €22.10, -23%). Variante M tem niacinamida + zinco PCA, ligeiramente diferente do Duo+ canónico. Refresh 2026-05-17: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-18: 16.95€ → 16.95€ Refresh 2026-05-20: 16.95€ → 16.95€ Refresh 2026-05-21: 16.95€ → 16.95€ Refresh 2026-05-23: 16.95€ → 16.95€ Refresh 2026-05-24: 16.95€ → 16.95€ Refresh 2026-05-26: 16.95€ → 16.95€ Refresh 2026-05-27: 16.95€ → 16.95€ Refresh 2026-05-28: 16.95€ → 16.95€ Refresh 2026-05-30: 16.95€ → 16.95€ Refresh 2026-05-31: 16.95€ → 16.95€ Refresh 2026-06-01: 16.95€ → 16.95€ Refresh 2026-06-04: 16.95€ → 16.95€ Refresh 2026-06-06: 16.95€ → 16.95€ Refresh 2026-06-07: 16.95€ → 16.95€ Refresh 2026-06-09: 16.95€ → 16.95€ Refresh 2026-06-10: 16.95€ → 16.95€ Refresh 2026-06-11: 16.95€ → 16.95€ Refresh 2026-06-13: 16.95€ → 16.95€ Refresh 2026-06-14: 16.95€ → 16.95€ Refresh 2026-06-15: 16.95€ → 16.95€ Refresh 2026-06-17: 16.95€ → 16.95€",
+      "verified_at": "2026-06-17T08:30:10.859Z",
       "gtin_observed": "3337875863377",
       "observed_variants": [
         {
@@ -281,7 +281,7 @@
           "unit": "ml",
           "price": 16.95,
           "in_stock": true,
-          "url": "https://www.druni.pt/effaclar-duo-m-roche-posay-creme-corretor-anti-imperfeicoes"
+          "url": null
         }
       ]
     },
@@ -401,8 +401,8 @@
       "observed_price": 24.9,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "PDP canónico, brand+volume match exacto Scrape 2026-05-17: 24.90€ Refresh 2026-05-17: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-20: 24.90€ → 24.90€ Refresh 2026-05-21: 24.90€ → 24.90€ Refresh 2026-05-23: 24.90€ → 24.90€ Refresh 2026-05-24: 24.90€ → 24.90€ Refresh 2026-05-26: 24.90€ → 24.90€ Refresh 2026-05-27: 24.90€ → 24.90€ Refresh 2026-05-28: 24.90€ → 24.90€ Refresh 2026-05-30: 24.90€ → 24.90€ Refresh 2026-05-31: 24.90€ → 24.90€ Refresh 2026-06-01: 24.90€ → 24.90€ Refresh 2026-06-04: 24.90€ → 24.90€ Refresh 2026-06-06: 24.90€ → 24.90€ Refresh 2026-06-07: 24.90€ → 24.90€ Refresh 2026-06-09: 24.90€ → 24.90€ Refresh 2026-06-10: 24.90€ → 24.90€ Refresh 2026-06-11: 24.90€ → 24.90€ Refresh 2026-06-13: 24.90€ → 24.90€ Refresh 2026-06-14: 24.90€ → 24.90€ Refresh 2026-06-15: 24.90€ → 24.90€",
-      "verified_at": "2026-06-15T09:25:17.313Z",
+      "notes": "PDP canónico, brand+volume match exacto Scrape 2026-05-17: 24.90€ Refresh 2026-05-17: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-18: 24.90€ → 24.90€ Refresh 2026-05-20: 24.90€ → 24.90€ Refresh 2026-05-21: 24.90€ → 24.90€ Refresh 2026-05-23: 24.90€ → 24.90€ Refresh 2026-05-24: 24.90€ → 24.90€ Refresh 2026-05-26: 24.90€ → 24.90€ Refresh 2026-05-27: 24.90€ → 24.90€ Refresh 2026-05-28: 24.90€ → 24.90€ Refresh 2026-05-30: 24.90€ → 24.90€ Refresh 2026-05-31: 24.90€ → 24.90€ Refresh 2026-06-01: 24.90€ → 24.90€ Refresh 2026-06-04: 24.90€ → 24.90€ Refresh 2026-06-06: 24.90€ → 24.90€ Refresh 2026-06-07: 24.90€ → 24.90€ Refresh 2026-06-09: 24.90€ → 24.90€ Refresh 2026-06-10: 24.90€ → 24.90€ Refresh 2026-06-11: 24.90€ → 24.90€ Refresh 2026-06-13: 24.90€ → 24.90€ Refresh 2026-06-14: 24.90€ → 24.90€ Refresh 2026-06-15: 24.90€ → 24.90€ Refresh 2026-06-17: 24.90€ → 24.90€",
+      "verified_at": "2026-06-17T08:30:20.655Z",
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "gtin_observed": "8719134187731",
@@ -412,7 +412,7 @@
           "unit": "ml",
           "price": 24.9,
           "in_stock": true,
-          "url": "https://www.druni.pt/the-ritual-of-sakura-body-cream-rituals-creme-corporal"
+          "url": null
         }
       ]
     },
@@ -431,8 +431,8 @@
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Druni vende a versão Pump 500ml (€13.54 com desconto de €17.95). Pump é variante do produto canónico (mesma fórmula, embalagem com bomba). Marca como variant. Refresh 2026-05-17: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-20: 13.54€ → 13.54€ Refresh 2026-05-21: 13.54€ → 13.54€ Refresh 2026-05-23: 13.54€ → 13.54€ Refresh 2026-05-24: 13.54€ → 13.54€ Refresh 2026-05-26: 13.54€ → 13.54€ Refresh 2026-05-27: 13.54€ → 13.54€ Refresh 2026-05-28: 13.54€ → 13.54€ Refresh 2026-05-30: 13.54€ → 13.54€ Refresh 2026-05-31: 13.54€ → 13.54€ Refresh 2026-06-01: 13.54€ → 13.54€ Refresh 2026-06-04: 13.54€ → 13.54€ Refresh 2026-06-06: 13.54€ → 13.54€ Refresh 2026-06-07: 13.54€ → 13.54€ Refresh 2026-06-09: 13.54€ → 13.54€ Refresh 2026-06-10: 13.54€ → 13.54€ Refresh 2026-06-11: 13.54€ → 13.54€ Refresh 2026-06-13: 13.54€ → 13.54€ Refresh 2026-06-14: 13.54€ → 13.54€ Refresh 2026-06-15: 13.54€ → 13.54€",
-      "verified_at": "2026-06-15T09:25:17.549Z",
+      "notes": "Druni vende a versão Pump 500ml (€13.54 com desconto de €17.95). Pump é variante do produto canónico (mesma fórmula, embalagem com bomba). Marca como variant. Refresh 2026-05-17: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-18: 13.54€ → 13.54€ Refresh 2026-05-20: 13.54€ → 13.54€ Refresh 2026-05-21: 13.54€ → 13.54€ Refresh 2026-05-23: 13.54€ → 13.54€ Refresh 2026-05-24: 13.54€ → 13.54€ Refresh 2026-05-26: 13.54€ → 13.54€ Refresh 2026-05-27: 13.54€ → 13.54€ Refresh 2026-05-28: 13.54€ → 13.54€ Refresh 2026-05-30: 13.54€ → 13.54€ Refresh 2026-05-31: 13.54€ → 13.54€ Refresh 2026-06-01: 13.54€ → 13.54€ Refresh 2026-06-04: 13.54€ → 13.54€ Refresh 2026-06-06: 13.54€ → 13.54€ Refresh 2026-06-07: 13.54€ → 13.54€ Refresh 2026-06-09: 13.54€ → 13.54€ Refresh 2026-06-10: 13.54€ → 13.54€ Refresh 2026-06-11: 13.54€ → 13.54€ Refresh 2026-06-13: 13.54€ → 13.54€ Refresh 2026-06-14: 13.54€ → 13.54€ Refresh 2026-06-15: 13.54€ → 13.54€ Refresh 2026-06-17: 13.54€ → 13.54€",
+      "verified_at": "2026-06-17T08:30:21.173Z",
       "gtin_observed": "3701129812129",
       "observed_variants": [
         {
@@ -440,7 +440,7 @@
           "unit": "ml",
           "price": 13.54,
           "in_stock": true,
-          "url": "https://www.druni.pt/sensibio-h2o-pump-bioderma-agua-micelar-dermatologica"
+          "url": null
         }
       ]
     },
