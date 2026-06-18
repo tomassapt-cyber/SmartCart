@@ -28,8 +28,9 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const { productFingerprint, normalizeBrand } = require('./lib/product-fingerprint');
+const { productFingerprint, normalizeBrand, displayBrand } = require('./lib/product-fingerprint');
 const { upsertStoreItem } = require('./lib/store-item-merge');
+const { classifyDermo } = require('./lib/dermo-classify');
 
 const ROOT = path.resolve(__dirname, '..');
 const LDF_FULL = path.join(ROOT, 'data', 'catalog', 'lojafarmacia-full.json');
@@ -106,7 +107,7 @@ function isRealEan(ean) { return /^\d{12,14}$/.test(ean || ''); }
   const itemByEan = {};
   for (const item of sp.items) itemByEan[item.ean] = item;
 
-  let matchedByEan = 0, matchedByFp = 0, upgraded = 0, unmatched = 0;
+  let matchedByEan = 0, matchedByFp = 0, upgraded = 0, unmatched = 0, createdNew = 0;
   let added = 0, updated = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
 
@@ -134,8 +135,27 @@ function isRealEan(ean) { return /^\d{12,14}$/.test(ean || ''); }
       }
     }
 
-    // 3. SEM match → ignora (v1 não cria produtos novos)
-    if (!target) { unmatched++; continue; }
+    // 3. SEM match → criar produto novo, MAS só se o nome for dermo
+    //    (skincare/cabelo/corpo). lojadafarmacia vende muito não-cosmético
+    //    (elixir bucal, pasta dentífrica, tiras-teste, compressas, xaropes,
+    //    suplementos) — classifyDermo exclui isso. Mantém o foco do site.
+    if (!target) {
+      const dermo = classifyDermo(ep.name);
+      if (!dermo) { unmatched++; continue; }
+      target = {
+        ean: ep.ean,
+        name: ep.name,
+        brand: displayBrand(ep.brand) || ep.brand || null,
+        category: dermo,
+        image_url: ep.image_url || null,
+        _source: 'lojafarmacia-catalog',
+      };
+      seed.products.push(target);
+      eanIndex[ep.ean] = target;
+      const fp = productFingerprint(ep);
+      if (fp && !fpIndex[fp]) fpIndex[fp] = target;
+      createdNew++;
+    }
 
     // Enriquecer imagem em falta (sticky)
     if (!target.image_url && ep.image_url) target.image_url = ep.image_url;
@@ -151,7 +171,8 @@ function isRealEan(ean) { return /^\d{12,14}$/.test(ean || ''); }
   console.log('══════ Resumo da integração (loja-farmacia) ══════');
   console.log(`  Match por EAN real:        ${matchedByEan}`);
   console.log(`  Match por fingerprint:     ${matchedByFp} (upgrades EAN sintético→real: ${upgraded})`);
-  console.log(`  Sem match (ignorados v1):  ${unmatched}`);
+  console.log(`  Produtos novos (dermo):    ${createdNew}`);
+  console.log(`  Sem match (não-dermo):     ${unmatched}`);
   console.log(`  Ofertas loja-farmacia:     +${added} adicionadas, ${updated} actualizadas`);
   console.log(`  Total ofertas loja-farmacia: ${sp.items.length}`);
   const withDisc = sp.items.filter(i => i.previous_price && i.previous_price > i.price).length;
