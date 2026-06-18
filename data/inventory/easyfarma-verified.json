@@ -3,8 +3,8 @@
   "store_slug": "easyfarma",
   "store_name": "Easyfarma",
   "store_url": "https://easyfarma.pt",
-  "verified_at": "2026-06-17T08:32:03.852Z",
-  "method": "playwright-headless (refresh 2026-06-17)",
+  "verified_at": "2026-06-18T08:11:16.165Z",
+  "method": "playwright-headless (refresh 2026-06-18)",
   "stats": {
     "total": 13,
     "verified": 3,
@@ -25,37 +25,37 @@
       "observed_volume_ml": 50,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "URL slug confirma 50ml. Brand+volume match exacto. Scrape 2026-05-17: 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-17: 12.54€ → 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-17: 12.54€ → 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-18: 12.54€ → 12.54€ Refresh 2026-05-18: 12.54€ → 12.54€ Refresh 2026-05-20: 12.54€ → 12.54€ Refresh 2026-05-21: 12.54€ → 12.54€ Refresh 2026-05-23: 12.54€ → 12.54€ Refresh 2026-05-24: 12.54€ → 12.54€ Refresh 2026-05-26: 12.54€ → 12.54€ Refresh 2026-05-27: 12.54€ → 12.54€ Refresh 2026-05-28: 12.54€ → 12.54€ Refresh 2026-05-30: 12.54€ → 12.54€ Refresh 2026-05-31: 12.54€ → 20.90€ Refresh 2026-06-16: 20.90€ → 15.67€",
-      "verified_at": "2026-06-16T08:48:09.128Z",
-      "observed_price": 15.67,
+      "notes": "URL slug confirma 50ml. Brand+volume match exacto. Scrape 2026-05-17: 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-17: 12.54€ → 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-17: 12.54€ → 13.77€ Refresh 2026-05-18: 13.77€ → 12.54€ Refresh 2026-05-18: 12.54€ → 12.54€ Refresh 2026-05-18: 12.54€ → 12.54€ Refresh 2026-05-20: 12.54€ → 12.54€ Refresh 2026-05-21: 12.54€ → 12.54€ Refresh 2026-05-23: 12.54€ → 12.54€ Refresh 2026-05-24: 12.54€ → 12.54€ Refresh 2026-05-26: 12.54€ → 12.54€ Refresh 2026-05-27: 12.54€ → 12.54€ Refresh 2026-05-28: 12.54€ → 12.54€ Refresh 2026-05-30: 12.54€ → 12.54€ Refresh 2026-05-31: 12.54€ → 20.90€ Refresh 2026-06-16: 20.90€ → 15.67€ Refresh 2026-06-18: 15.67€ → 33.84€",
+      "verified_at": "2026-06-18T08:10:27.627Z",
+      "observed_price": 33.84,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
         {
-          "volume_ml": 15,
+          "volume_ml": 75,
           "unit": "ml",
-          "price": 10.21,
+          "price": 8.94,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 30,
+          "volume_ml": 200,
           "unit": "ml",
-          "price": 16.73,
+          "price": 4,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 50,
+          "volume_ml": 300,
           "unit": "ml",
-          "price": 15.67,
+          "price": 9.03,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 250,
+          "volume_ml": 500,
           "unit": "ml",
-          "price": 22.33,
+          "price": 18.96,
           "in_stock": true,
           "url": null
         }
@@ -107,37 +107,37 @@
       "observed_volume_ml": 500,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Variante edição especial 30 anos (Victoria Beckham). Mesma fórmula. Scrape 2026-05-18: 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-20: 25.83€ → 25.83€ Refresh 2026-05-21: 25.83€ → 25.83€ Refresh 2026-05-23: 25.83€ → 25.83€ Refresh 2026-05-24: 25.83€ → 25.83€ Refresh 2026-05-26: 25.83€ → 25.83€ Refresh 2026-05-27: 25.83€ → 25.83€ Refresh 2026-05-28: 25.83€ → 25.83€ Refresh 2026-05-30: 25.83€ → 25.83€ Refresh 2026-05-31: 25.83€ → 22.14€ Refresh 2026-06-16: 22.14€ → 21.04€",
-      "verified_at": "2026-06-16T08:48:09.258Z",
-      "observed_price": 21.04,
+      "notes": "Variante edição especial 30 anos (Victoria Beckham). Mesma fórmula. Scrape 2026-05-18: 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-18: 25.83€ → 25.83€ Refresh 2026-05-20: 25.83€ → 25.83€ Refresh 2026-05-21: 25.83€ → 25.83€ Refresh 2026-05-23: 25.83€ → 25.83€ Refresh 2026-05-24: 25.83€ → 25.83€ Refresh 2026-05-26: 25.83€ → 25.83€ Refresh 2026-05-27: 25.83€ → 25.83€ Refresh 2026-05-28: 25.83€ → 25.83€ Refresh 2026-05-30: 25.83€ → 25.83€ Refresh 2026-05-31: 25.83€ → 22.14€ Refresh 2026-06-16: 22.14€ → 21.04€ Refresh 2026-06-18: 21.04€ → 18.96€",
+      "verified_at": "2026-06-18T08:10:27.527Z",
+      "observed_price": 18.96,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "observed_variants": [
         {
-          "volume_ml": 15,
+          "volume_ml": 75,
           "unit": "ml",
-          "price": 10.21,
+          "price": 8.94,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 30,
+          "volume_ml": 200,
           "unit": "ml",
-          "price": 16.73,
+          "price": 4,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 50,
+          "volume_ml": 300,
           "unit": "ml",
-          "price": 15.67,
+          "price": 9.03,
           "in_stock": true,
           "url": null
         },
         {
-          "volume_ml": 250,
+          "volume_ml": 500,
           "unit": "ml",
-          "price": 22.33,
+          "price": 18.96,
           "in_stock": true,
           "url": null
         }
