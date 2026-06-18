@@ -406,8 +406,10 @@ function canonicalName(name, brand) {
   // Reduzir pontuação a espaços, EXCEPTO + e -
   n = n.replace(/[^\w\s+-]/g, ' ');
 
-  // Tokenize
-  const tokens = n.split(/\s+/).filter(Boolean).filter(t => {
+  // Tokenize — separa também por hífen: a hifenização é arbitrária entre lojas
+  // ("gel-creme" vs "gel creme", "anti-caspa" vs "anti caspa") e fragmentava o
+  // mesmo produto em fingerprints diferentes. Split por hífen torna-os iguais.
+  const tokens = n.split(/[\s-]+/).filter(Boolean).filter(t => {
     if (GENERIC_TOKENS.has(t)) return false;
     if (QUALIFIER_NOISE.has(t)) return false;
     if (t.length === 1 && !/[a-z+]/i.test(t)) return false;
