@@ -49,12 +49,24 @@ const STALE_DAYS = 14;
     for (const o of offs) { const t = +new Date(o.verified_at || 0); if (t > maxTs) maxTs = t; }
   const ageDays = (o) => o.verified_at ? (maxTs - new Date(o.verified_at)) / 864e5 : Infinity;
 
+  // Comparabilidade: nº de lojas distintas com preço (>=2 = comparável).
+  const storesWithPrice = {};
+  for (const sp of seedJson.store_products)
+    for (const it of sp.items)
+      if (it.price > 0) (storesWithPrice[it.ean] ||= new Set()).add(sp.store_slug);
+  const comparable = (ean) => (storesWithPrice[ean] ? storesWithPrice[ean].size : 0) >= 2;
+
   const visibleEans = new Set();
   for (const p of seedJson.products) {
     const offs = offersByEan[p.ean] || [];
-    if (offs.length === 0) continue;                          // 1. órfão
-    if (offs.every(o => ageDays(o) > STALE_DAYS)) continue;   // 2. fora-site
-    if (offs.every(o => o.in_stock === false)) continue;      // 3. esgotado
+    if (offs.length === 0) continue;                          // 1. órfão (sempre esconde)
+    // Comparável (>=2 lojas c/ preço) → mostra SEMPRE, mesmo esgotado/stale:
+    // tem valor de comparação de preço. Só os NÃO-comparáveis são escondidos
+    // por estarem fora-de-site/esgotados.
+    if (!comparable(p.ean)) {
+      if (offs.every(o => ageDays(o) > STALE_DAYS)) continue;   // 2. fora-site
+      if (offs.every(o => o.in_stock === false)) continue;      // 3. esgotado
+    }
     visibleEans.add(p.ean);
   }
 
