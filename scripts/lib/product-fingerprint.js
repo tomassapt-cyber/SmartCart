@@ -324,6 +324,16 @@ const PHRASE_NORMALIZATION = [
   [/\bspf\s*(\d+)\s*\+?/gi, 'spf$1'],
   [/\bfps\s*(\d+)\s*\+?/gi, 'spf$1'],
 
+  // ───── Sinónimos seguros (minerados de quase-gémeos mesma-marca+volume) ─────
+  // Mesmo significado entre lojas/línguas → unificar p/ não fragmentar produtos.
+  // (NÃO incluir shampoo/condicionador, creme/gel, cor/creme — são DISCRIMINADORES.)
+  [/\bcorporal\b/gi, 'corpo'],          // corpo ↔ corporal (body)
+  [/\bsoro\b/gi, 'serum'],              // soro (PT) ↔ serum
+  [/\bfotoprotetor\b/gi, 'fotoprotector'], // PT ↔ ES
+  [/\bexfoliante\b/gi, 'esfoliante'],   // ES ↔ PT
+  [/\bl[aá]bios\b/gi, 'labial'],        // lábios ↔ labial (lip)
+  [/\bnoturno\b/gi, 'noite'],           // creme noturno ↔ creme de noite
+
   // ───── Cross-language qualifier normalisation (Bioderma-style) ─────
   // PT 'rico' ↔ EN 'rich' ↔ FR 'riche' = same variant descriptor
   [/\brico\b/gi, 'rich'],
