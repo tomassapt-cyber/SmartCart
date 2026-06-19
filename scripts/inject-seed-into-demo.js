@@ -59,14 +59,11 @@ const STALE_DAYS = 14;
   const visibleEans = new Set();
   for (const p of seedJson.products) {
     const offs = offersByEan[p.ean] || [];
-    if (offs.length === 0) continue;                          // 1. órfão (sempre esconde)
-    // Comparável (>=2 lojas c/ preço) → mostra SEMPRE, mesmo esgotado/stale:
-    // tem valor de comparação de preço. Só os NÃO-comparáveis são escondidos
-    // por estarem fora-de-site/esgotados.
-    if (!comparable(p.ean)) {
-      if (offs.every(o => ageDays(o) > STALE_DAYS)) continue;   // 2. fora-site
-      if (offs.every(o => o.in_stock === false)) continue;      // 3. esgotado
-    }
+    if (offs.length === 0) continue;                          // 1. órfão
+    if (offs.every(o => o.in_stock === false)) continue;      // 2. esgotado → SEMPRE esconde
+    // 3. fora-de-site (todas as ofertas stale >14d): só esconde os NÃO-comparáveis;
+    //    um produto comparável (>=2 lojas c/ preço) e em stock mantém-se visível.
+    if (!comparable(p.ean) && offs.every(o => ageDays(o) > STALE_DAYS)) continue;
     visibleEans.add(p.ean);
   }
 
