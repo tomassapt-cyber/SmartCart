@@ -333,6 +333,11 @@ const PHRASE_NORMALIZATION = [
   [/\bexfoliante\b/gi, 'esfoliante'],   // ES ↔ PT
   [/\bl[aá]bios\b/gi, 'labial'],        // lábios ↔ labial (lip)
   [/\bnoturno\b/gi, 'noite'],           // creme noturno ↔ creme de noite
+  [/\blavante\b/gi, 'limpeza'],         // gel lavante ↔ gel de limpeza
+  [/\bligeiro\b/gi, 'leve'],            // ligeiro ↔ leve (textura leve)
+  [/\bmascarilla\b/gi, 'mascara'],     // ES ↔ máscara
+  [/\bmanteca\b/gi, 'manteiga'],       // ES manteca ↔ manteiga (corporal)
+  [/\byeux\b/gi, 'olhos'],             // FR yeux ↔ olhos
 
   // ───── Cross-language qualifier normalisation (Bioderma-style) ─────
   // PT 'rico' ↔ EN 'rich' ↔ FR 'riche' = same variant descriptor
