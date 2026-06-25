@@ -26,6 +26,17 @@ if (closeIdx === -1) { console.error('✗ </script> de fecho não encontrado'); 
 
 const seedJson = JSON.parse(seed);
 
+// ── Overlay: FUNDIR variantes promocionais no produto-base (NÃO-destrutivo) ─
+// Um MESMO produto listado com promo/oferta ("+100ml grátis", "Edição
+// Limitada", "−50% 2ª unidade", "PROMO") vem no seed como produto separado.
+// Aqui movemos as suas ofertas para o produto-base com uma nota de promoção e
+// escondemos o card duplicado. seed-bundle.json fica intacto (auto-reverte).
+(function applyPromoFold() {
+  const { foldPromoVariants } = require('./lib/promo-fold');
+  const r = foldPromoVariants(seedJson);
+  if (r.folded) console.log(`🎁 Promo-fold: ${r.folded} variantes fundidas no produto-base · ${r.movedOffers} ofertas movidas · ${r.annotated} anotadas em loja existente`);
+})();
+
 // ── Filtro de visibilidade (NÃO-destrutivo) ──────────────────────────────
 // Esconde do HTML publicado produtos que não fazem sentido mostrar, SEM
 // alterar data/seed-bundle.json. Os scrapers continuam a manter o seed
