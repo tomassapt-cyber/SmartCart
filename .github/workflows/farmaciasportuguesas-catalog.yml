@@ -1,0 +1,108 @@
+# CosMath — Farmácias Portuguesas daily price refresh
+# ============================================================
+# Maior rede de farmácias PT (Magento + Smile ElasticSuite).
+# Particularidades:
+#   • Sitemap inclui ~4.7k URLs de produto (terminam em "-NNNNNNN.html",
+#     NNNNNNN = CNP). Muitas são MEDICAMENTOS (HTTP 500, não vendáveis online)
+#     que o scraper salta; sobram os produtos de venda livre (dermo/beleza).
+#   • SEM EAN — sku = CNP. Match por CNP (apply-cnp-merge liga CNP↔EAN via
+#     outras farmácias) + fingerprint. enrich-only (não cria produtos).
+#   • PREÇOS por-farmácia: o scraper usa a farmácia de referência 09881 (a
+#     farmácia online principal) via cookie pharmacy_code. Sem Playwright.
+#
+# Pipeline:
+#   1. scrape-farmaciasportuguesas-catalog.js → data/catalog/farmaciasportuguesas-full.json
+#   2. integrate-farmaciasportuguesas-catalog.js → match CNP/fingerprint (enrich)
+#      (inject-seed-into-demo.js corre dentro do integrate → regenera HTML)
+
+name: Farmácias Portuguesas daily refresh
+
+on:
+  schedule:
+    # 16h UTC — antes de Pharma2you (17h) e A Farmácia Online (18h)
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite)'
+        required: false
+        default: ''
+      pharmacy:
+        description: 'Código da farmácia de referência (default 09881)'
+        required: false
+        default: '09881'
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Farmácias Portuguesas
+        run: |
+          PH="${{ github.event.inputs.pharmacy }}"; PH="${PH:-09881}"
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-farmaciasportuguesas-catalog.js --pharmacy=$PH --limit=${{ github.event.inputs.limit }} --dermo --concurrency=5 --delay=200
+          else
+            node scripts/scrape-farmaciasportuguesas-catalog.js --pharmacy=$PH --dermo --concurrency=5 --delay=200
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: farmaciasportuguesas-catalog-${{ github.run_id }}
+          path: data/catalog/farmaciasportuguesas-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-farmaciasportuguesas-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/farmaciasportuguesas-full.json 2>/dev/null || true
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: Farmácias Portuguesas daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-farmaciasportuguesas-catalog.js" \
+            "chore: Farmácias Portuguesas daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/farmaciasportuguesas-full.json
