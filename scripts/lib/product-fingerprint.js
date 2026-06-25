@@ -207,6 +207,13 @@ function extractVolumeMl(name) {
  * Aplicado ANTES de tokenização para evitar divisões.
  */
 const PHRASE_NORMALIZATION = [
+  // ───── Ruído de listagem: marcadores de PROMOÇÃO (mesmo produto, em promo) ─────
+  // "X Preço Especial" / "Promo Pack X" = o mesmo produto X, só uma listagem
+  // promocional. Removidos para não fragmentar (a promo aparece no preço/desconto).
+  [/\b(pre[cç]o\s+especial|promo[cç][aã]o|promo\s+pack|em\s+promo[cç][aã]o|oferta\s+especial)\b/gi, ' '],
+  // ───── Nome da LOJA vazado no fim do nome (artefacto de scrape) ─────
+  // ex.: "... - Farmácia Barreiros", "... - Druni". Removido até ao fim.
+  [/\s*[-–·(]\s*(farm[aá]cia(\s+\w+)?|druni|wells|atida|sweetcare|byfarma|easyfarma|barreiros|bairro\s+da\s+sa[uú]de)\b[^|]*$/gi, ' '],
   // ───── Perfumaria ─────
   [/\beau\s+de\s+parfum\b/gi, 'edp'],
   [/\beau\s+de\s+toilette\b/gi, 'edt'],
