@@ -1,0 +1,104 @@
+# CosMath — Notino daily price refresh
+# ============================================================
+# Notino PT — maior marketplace de beleza online PT. JSON-LD com gtin13 REAL
+# → match forte por EAN. Sitemaps por categoria dermo: plet (rosto), telo
+# (corpo), vlasy (cabelo) — ~30k produtos; saltamos perfume/maquilhagem.
+#
+# CLOUDFLARE: bloqueia o fetch do Node (TLS fingerprint) mas deixa passar o
+# curl → o scraper busca via curl (child_process), com ritmo BAIXO p/ não
+# disparar rate-limit. 30k é demasiado p/ uma corrida → --limit por dia +
+# --resume cresce a cobertura ao longo do tempo.
+#
+# Pipeline:
+#   1. scrape-notino-catalog.js --resume --limit=N → data/catalog/notino-full.json
+#   2. integrate-notino-catalog.js (EAN + pós-processo + inject)
+
+name: Notino daily refresh
+
+on:
+  schedule:
+    # 14h UTC — antes de Cocooncenter (15h)
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit por corrida (default 1500)'
+        required: false
+        default: '1500'
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Restore previous notino catalog (p/ --resume crescer)
+        uses: actions/download-artifact@v4
+        with:
+          name: notino-catalog-latest
+          path: data/catalog/
+        continue-on-error: true
+
+      - name: Scrape Notino (curl, ritmo baixo, --resume)
+        run: |
+          LIM="${{ github.event.inputs.limit }}"; LIM="${LIM:-1500}"
+          node scripts/scrape-notino-catalog.js --resume --limit=$LIM --concurrency=2 --delay=700
+
+      - name: Upload notino catalog (latest + run)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: notino-catalog-latest
+          path: data/catalog/notino-full.json
+          retention-days: 30
+          overwrite: true
+
+      - name: Integrate into seed
+        run: node scripts/integrate-notino-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: Notino daily refresh ($DATE)" -m "Auto-update via GitHub Actions."
+
+      - name: Push to main (resilient)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-notino-catalog.js" \
+            "chore: Notino daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/notino-full.json
