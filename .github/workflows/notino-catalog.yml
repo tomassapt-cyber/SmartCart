@@ -16,9 +16,13 @@
 name: Notino daily refresh
 
 on:
-  schedule:
-    # 14h UTC — antes de Cocooncenter (15h)
-    - cron: '0 14 * * *'
+  # ⚠️ AGENDAMENTO NA NUVEM DESATIVADO: o Cloudflare da Notino bloqueia o IP
+  # de datacenter do GitHub Actions (403), mesmo via curl. O scraper FUNCIONA a
+  # partir de um IP residencial (o PC do utilizador) mas NÃO da nuvem do GitHub.
+  # Para reactivar na nuvem seria preciso um proxy residencial / serviço de
+  # scraping (ScraperAPI, etc.). Fica só manual (workflow_dispatch) por agora.
+  # schedule:
+  #   - cron: '0 14 * * *'
   workflow_dispatch:
     inputs:
       limit:
