@@ -179,6 +179,17 @@ async function extract(page) {
       filteredVariants = variants.filter(v => v.price >= lo && v.price <= hi);
     }
 
+    // Defesa contra preço TRUNCADO: a Wells separa euros/cêntimos em spans
+    // (.w-price-int / .w-price-dec). O scan de variantes pode apanhar só os
+    // euros (7,98 € → 7). Descartamos a variante cujo preço inteiro é o floor
+    // de um preço JSON-LD não-inteiro — o integrador reconstrói a variante a
+    // partir do preço fiável do item (price/_jsonld_price).
+    if (normOffers.length > 0) {
+      const ldP = normOffers.map(o => o.price).filter(p => p > 0);
+      filteredVariants = filteredVariants.filter(v =>
+        !(Number.isInteger(v.price) && ldP.some(p => !Number.isInteger(p) && Math.floor(p) === v.price)));
+    }
+
     // DOM strikethrough detection — Wells expõe:
     //   .w-sales-price → preço actual promocional
     //   .w-price-list  → preço lista/anterior (só visível quando há promo)

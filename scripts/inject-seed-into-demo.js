@@ -26,6 +26,29 @@ if (closeIdx === -1) { console.error('✗ </script> de fecho não encontrado'); 
 
 const seedJson = JSON.parse(seed);
 
+// ── Overlay: CORRIGIR preços de variante truncados ao inteiro (NÃO-destrutivo) ─
+// Bug do scraper da Wells (e afins): a extração de variantes por DOM apanha às
+// vezes o preço sem decimais (7,98 € → 7). Como o card usa o preço da VARIANTE
+// ao volume de referência (offerPriceAtVol), isso mostra um preço errado (mais
+// baixo) do que o real. O preço do item (item.price) vem do JSON-LD e é fiável.
+// Recuperamos: numa oferta de UMA só variante, se o preço da variante é um
+// inteiro igual ao floor do item.price (não-inteiro), repomos o item.price.
+(function fixTruncatedVariantPrices() {
+  let fixed = 0;
+  for (const sp of seedJson.store_products) {
+    for (const it of sp.items) {
+      if (!Array.isArray(it.variants) || it.variants.length !== 1 || !(it.price > 0)) continue;
+      const v = it.variants[0];
+      if (v.price != null && Number.isInteger(v.price) && !Number.isInteger(it.price) && Math.floor(it.price) === v.price) {
+        v.price = it.price;
+        if (it.previous_price) v.previous_price = it.previous_price;
+        fixed++;
+      }
+    }
+  }
+  if (fixed) console.log(`🔧 Preços de variante truncados corrigidos: ${fixed} (ex.: 7→7.98)`);
+})();
+
 // ── Overlay: FUNDIR variantes promocionais no produto-base (NÃO-destrutivo) ─
 // Um MESMO produto listado com promo/oferta ("+100ml grátis", "Edição
 // Limitada", "−50% 2ª unidade", "PROMO") vem no seed como produto separado.
