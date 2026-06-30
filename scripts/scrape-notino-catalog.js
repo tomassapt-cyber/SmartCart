@@ -27,6 +27,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
+const { stripAccents } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -125,6 +126,25 @@ async function main() {
   }
   urls = [...new Set(urls)];
   console.log(`  total dermo: ${urls.length} produtos`);
+
+  // --match-seed: PRIORIDADE a comparação com o que já temos. Filtra os URLs
+  // às marcas que existem no nosso seed e ordena-os pelo nº de produtos NOSSOS
+  // dessa marca (desc) → as marcas dermo core (La Roche-Posay, Vichy, Avène…)
+  // são raspadas primeiro, maximizando matches por EAN por hora.
+  if (args['match-seed']) {
+    const slug = s => stripAccents(String(s || '').toLowerCase()).replace(/&/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const brandCount = {};
+    try {
+      const seed = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
+      for (const p of seed.products) if (p.brand) { const b = slug(p.brand); brandCount[b] = (brandCount[b] || 0) + 1; }
+    } catch (e) { console.warn('  ⚠ seed-bundle.json não lido p/ marcas:', e.message); }
+    const brandOf = u => { const m = u.match(/notino\.pt\/([^/]+)\//); return m ? m[1] : ''; };
+    const before = urls.length;
+    urls = urls.filter(u => brandCount[brandOf(u)])
+               .sort((a, b) => (brandCount[brandOf(b)] || 0) - (brandCount[brandOf(a)] || 0));
+    console.log(`  🎯 --match-seed: ${urls.length} de ${before} (só marcas que já temos, prioridade às de maior sobreposição)`);
+  }
+
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 
   const cp = loadCheckpoint();

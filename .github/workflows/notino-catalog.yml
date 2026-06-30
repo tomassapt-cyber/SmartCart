@@ -69,7 +69,7 @@ jobs:
       - name: Scrape Notino (curl, ritmo baixo, --resume)
         run: |
           LIM="${{ github.event.inputs.limit }}"; LIM="${LIM:-1500}"
-          node scripts/scrape-notino-catalog.js --resume --limit=$LIM --concurrency=2 --delay=700
+          node scripts/scrape-notino-catalog.js --resume --match-seed --limit=$LIM --concurrency=2 --delay=700
 
       - name: Upload notino catalog (latest + run)
         if: always()
