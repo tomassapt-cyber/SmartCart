@@ -149,7 +149,14 @@ function loadCheckpoint() {
   try {
     const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
     if (!Array.isArray(d.products)) return null;
-    return { products: d.products, done: new Set(d.products.map(p => p.url)) };
+    // Resume CONSCIENTE DA FRESCURA: só salta produtos raspados nas últimas
+    // ~20h; os mais velhos são RE-RASPADOS. Sem isto, o catálogo committado +
+    // --resume salta tudo e os preços congelam (staleness). Diário → tudo >20h
+    // → re-scrape completo; resume no mesmo dia → salta os recentes.
+    const MAX_AGE_MS = (parseFloat(process.env.RESUME_MAX_AGE_HOURS) || 20) * 3600e3;
+    const now = Date.now();
+    const fresh = d.products.filter(p => p.scraped_at && (now - new Date(p.scraped_at)) < MAX_AGE_MS);
+    return { products: fresh, done: new Set(fresh.map(p => p.url)) };
   } catch { return null; }
 }
 

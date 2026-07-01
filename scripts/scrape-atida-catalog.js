@@ -78,8 +78,16 @@ function loadCheckpoint() {
   try {
     const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
     if (!Array.isArray(d.products)) return null;
-    const done = new Set(d.products.map(p => p.url));
-    return { products: d.products, done };
+    // Resume CONSCIENTE DA FRESCURA: só mantém/salta produtos raspados nas
+    // últimas ~20h. Os mais velhos são RE-RASPADOS (preços frescos). Sem isto,
+    // um catálogo committado congela os preços (o --resume salta TUDO e o run
+    // diário só re-integra dados velhos → staleness). Num run diário tudo é
+    // >20h → re-scrape completo; num resume no MESMO dia salta os recentes.
+    const MAX_AGE_MS = (parseFloat(process.env.RESUME_MAX_AGE_HOURS) || 20) * 3600e3;
+    const now = Date.now();
+    const fresh = d.products.filter(p => p.scraped_at && (now - new Date(p.scraped_at)) < MAX_AGE_MS);
+    const done = new Set(fresh.map(p => p.url));
+    return { products: fresh, done };
   } catch { return null; }
 }
 
