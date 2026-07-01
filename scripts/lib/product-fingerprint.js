@@ -142,7 +142,46 @@ const BRAND_ALIASES = {
   // Ducray
   'dexyane': 'ducray', 'ictyane': 'ducray', 'kelual': 'ducray', 'anaphase': 'ducray',
   'kertyol': 'ducray', 'squanorm': 'ducray', 'neoptide': 'ducray', 'melascreen': 'ducray',
+
+  // ── Typos / truncamentos / entidades vazadas do scraper (mesma marca) ──────
+  'laboratoires svr': 'svr',              // ordem de palavras trocada no alias antigo
+  'daveia': 'd-aveia',                    // apóstrofe perdida na extração
+  'aderma': 'a-derma',                    // hífen perdido na extração
+  'skin resisit': 'skin-resist',          // typo (easyfarma)
+  'euceirn': 'eucerin',                   // typo (easyfarma)
+  'fotoprot': 'isdin',                    // truncamento de "Fotoprotector" (byfarma)
+
+  // ── Sub-marca → marca-mãe (mesmo fabricante, nome de linha extraído) ──────
+  'isdinceutics': 'isdin',                // sub-linha dermocosmética do Isdin
+  'roc keops': 'roc',                     // linha de desodorizantes da RoC
+  'letifem': 'leti',                      // linha da Leti Pharma
+  'etat': 'etat-pur',                     // "Etat Pur" truncado
+  'lierac homme': 'lierac',               // linha masculina da Lierac
 };
+
+// ── Fabricantes/distribuidores GENÉRICOS ────────────────────────────────────
+// Alguns catálogos (ex.: easyfarma, byfarma) usam o nome do FABRICANTE
+// diversificado (dono de várias linhas distintas: Cantabria Labs → Heliocare,
+// Endocare, Neoretin, BiRetix...; Pierre Fabre → Avène, Dexeryl, Elgydium...)
+// como se fosse a "marca" do produto, em vez da linha real. Como um único
+// fabricante cobre produtos DIFERENTES, não podemos mapear para uma linha
+// fixa (over-merge). Em vez disso, tratamos estes valores como *wildcard* na
+// guarda de marca do apply-cnp-merge: são ignorados na comparação, e só a(s)
+// marca(s) específica(s) restante(s) têm de coincidir.
+const GENERIC_BRAND_LABELS = new Set([
+  'sem-marca',              // "Sem Marca" — nenhuma marca extraída
+  'cantabria-labs', 'cantabria',
+  'pierre-fabre',
+  'arkopharma',
+  'bausch-lomb',
+  'hartmann',
+  'medinfar',
+  'nestle',
+  'italfarmaco',
+  'laboratorios-faes-farma',
+  'coffret',                // "Coffret" (embalagem de oferta) — não é marca
+  'protetor',               // "Protetor" (Solar) — palavra de tipo de produto, não marca
+]);
 
 // Palavras genéricas a remover do nome canónico — não distinguem
 // produtos do mesmo tipo. Manter SPF, números, "+", "-" etc.
@@ -169,9 +208,19 @@ function stripAccents(s) {
   return s.normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
+// Alguns scrapers vazam entidades HTML por-decodificar no campo brand
+// (ex.: "D&#x27;Aveia", "Roger &amp; Gallet") — decodificar antes de tudo o
+// resto, senão "D&#x27;Aveia" e "D'Aveia" normalizam para valores diferentes.
+function decodeHtmlEntities(s) {
+  return String(s)
+    .replace(/&amp;/gi, '&')
+    .replace(/&#x27;|&#39;|&#039;/gi, "'")
+    .replace(/&quot;/gi, '"');
+}
+
 function normalizeBrand(brand) {
   if (!brand) return '';
-  let b = stripAccents(String(brand).toLowerCase())
+  let b = stripAccents(decodeHtmlEntities(String(brand)).toLowerCase())
     .replace(/[^\w\s-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -569,4 +618,5 @@ module.exports = {
   fuzzyMatch,
   nameTokenSet,
   jaccard,
+  GENERIC_BRAND_LABELS,
 };

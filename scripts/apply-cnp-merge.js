@@ -24,7 +24,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const { normalizeBrand } = require('./lib/product-fingerprint');
+const { normalizeBrand, GENERIC_BRAND_LABELS } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED_BUNDLE = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -81,8 +81,11 @@ for (const [cnp, set] of Object.entries(eansByCnp)) {
   // Regra 1: ≥2 EANs reais distintos → RECUSAR
   if (realEans.length >= 2) { refused.push([cnp, eans]); continue; }
 
-  // Regra 3: guarda de marca — todos os produtos têm de partilhar marca canónica
-  const brands = new Set(eans.map(e => normalizeBrand((productByEan[e] || {}).brand)).filter(Boolean));
+  // Regra 3: guarda de marca — todos os produtos têm de partilhar marca canónica.
+  // Marcas GENÉRICAS (fabricante diversificado, "Sem Marca", etc.) são wildcard:
+  // não contam para o conflito, só as marcas específicas restantes têm de bater.
+  const brandsRaw = eans.map(e => normalizeBrand((productByEan[e] || {}).brand)).filter(Boolean);
+  const brands = new Set(brandsRaw.filter(b => !GENERIC_BRAND_LABELS.has(b)));
   if (brands.size > 1) { skippedBrand.push([cnp, eans]); continue; }
 
   // Canonical: o EAN real se existir; senão o produto presente em mais lojas.
