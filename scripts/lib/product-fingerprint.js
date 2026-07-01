@@ -114,6 +114,34 @@ const BRAND_ALIASES = {
   'charlotte tilbury': 'charlotte-tilbury',
   'nars': 'nars',
   'nars cosmetics': 'nars',
+
+  // ── LINHA → MARCA-MÃE (dermo) ──────────────────────────────────────────────
+  // Alguns scrapers extraem o nome da LINHA como "marca" (ex.: "Pigmentbio",
+  // "Fotoprotector", "Dercos") em vez do fabricante. Isto fazia a guarda de
+  // marca do apply-cnp-merge recusar (Pigmentbio ≠ Bioderma) e o fingerprint
+  // falhar → produtos duplicados soltos. Mapeamos as linhas conhecidas.
+  // Bioderma
+  'sensibio': 'bioderma', 'sebium': 'bioderma', 'sébium': 'bioderma', 'atoderm': 'bioderma',
+  'hydrabio': 'bioderma', 'photoderm': 'bioderma', 'pigmentbio': 'bioderma', 'cicabio': 'bioderma',
+  'node': 'bioderma', 'nodé': 'bioderma', 'abcderm': 'bioderma', 'crealine': 'bioderma', 'créaline': 'bioderma',
+  // Isdin
+  'fotoprotector': 'isdin', 'fotoultra': 'isdin', 'ureadin': 'isdin', 'nutratopic': 'isdin', 'lambdapil': 'isdin',
+  // Vichy
+  'dercos': 'vichy', 'liftactiv': 'vichy', 'neovadiol': 'vichy', 'normaderm': 'vichy',
+  'aqualia': 'vichy', 'capital soleil': 'vichy', 'mineral 89': 'vichy', 'purete thermale': 'vichy',
+  // La Roche-Posay
+  'effaclar': 'la-roche-posay', 'anthelios': 'la-roche-posay', 'cicaplast': 'la-roche-posay',
+  'toleriane': 'la-roche-posay', 'lipikar': 'la-roche-posay', 'pigmentclar': 'la-roche-posay',
+  'rosaliac': 'la-roche-posay', 'kerium': 'la-roche-posay', 'redermic': 'la-roche-posay',
+  // Avène
+  'cicalfate': 'avene', 'xeracalm': 'avene', 'hydrance': 'avene', 'cleanance': 'avene',
+  'antirougeurs': 'avene', 'ystheal': 'avene', 'physiolift': 'avene', 'couvrance': 'avene', 'dermabsolu': 'avene',
+  // Uriage
+  'barieuderm': 'uriage', 'barierm': 'uriage', 'bariéderm': 'uriage', 'hyseac': 'uriage', 'hyséac': 'uriage',
+  'xemose': 'uriage', 'xémose': 'uriage', 'roseliane': 'uriage', 'roséliane': 'uriage',
+  // Ducray
+  'dexyane': 'ducray', 'ictyane': 'ducray', 'kelual': 'ducray', 'anaphase': 'ducray',
+  'kertyol': 'ducray', 'squanorm': 'ducray', 'neoptide': 'ducray', 'melascreen': 'ducray',
 };
 
 // Palavras genéricas a remover do nome canónico — não distinguem
