@@ -110,12 +110,18 @@ function extractProductData(html, url) {
   const ld = extractJsonLd(html);
   if (!ld) return null;                  // sem Product JSON-LD → ignora (med/supl/conteúdo)
   if (ld.price == null) return null;     // sem preço não serve
-  if (!ld.ean) return null;              // exige EAN real (foco dermo; medic. s/ EAN caem) — CNP é bónus
+  // Fallback de IDENTIDADE (2026-07): o site voltou a expor o EAN/CNP em
+  // data-attributes (data-ean/data-cnp) e tirou-os do JSON-LD (mpn/gtin13). Sem
+  // este fallback o scraper saltava TODOS os produtos (catálogo vazio → stale).
+  let ean = ld.ean, cnp = ld.cnp;
+  if (!ean) { const m = html.match(/data-ean=["'](\d{12,14})["']/i); if (m && !/0{6,}/.test(m[1])) ean = m[1]; }
+  if (!cnp) { const m = html.match(/data-cnp=["'](\d{6,8})["']/i); if (m) cnp = m[1]; }
+  if (!ean) return null;                 // ainda sem EAN → med/supl, ignora
   return {
     name: ld.name || null,
     brand: ld.brand || null,
-    ean: ld.ean || null,
-    cnp: ld.cnp || null,
+    ean: ean || null,
+    cnp: cnp || null,
     image_url: ld.image_url || null,
     price: ld.price,
     previous_price: null,
