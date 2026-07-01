@@ -49,6 +49,42 @@ const seedJson = JSON.parse(seed);
   if (fixed) console.log(`🔧 Preços de variante truncados corrigidos: ${fixed} (ex.: 7→7.98)`);
 })();
 
+// ── Overlay: REMOVER variantes de PRODUTO TROCADO (NÃO-destrutivo) ────────────
+// Bug de scrapers (SweetCare/Druni/Wells): a extração de variantes por DOM às
+// vezes apanha um PRODUTO RELACIONADO diferente como se fosse uma "variante" de
+// volume. Ex.: Bioderma Sensibio H2O (água micelar) trazia uma "variante 40ml"
+// a 24€ que era na verdade o Sensibio AR BB Cream (produto diferente) — o card,
+// ao escolher 40ml, mostrava o preço errado. Assinatura fiável e conservadora:
+// a variante intrusa tem um URL DIFERENTE da maioria das variantes E viola a
+// monotonia de volume (volume MENOR mas preço MAIOR que uma variante de volume
+// MAIOR que partilha o URL-maioria). Só assim se apaga — evita apanhar tamanhos
+// legítimos (que partilham o URL) ou promoções (que não têm URL discordante).
+(function dropWrongProductVariants() {
+  let dropped = 0;
+  for (const sp of seedJson.store_products) {
+    for (const it of sp.items) {
+      const vs = (it.variants || []).filter(v => v.url && v.volume_ml > 0 && v.price > 0);
+      if (vs.length < 2) continue;
+      const cnt = {};
+      for (const v of vs) cnt[v.url] = (cnt[v.url] || 0) + 1;
+      const mode = Object.entries(cnt).sort((a, b) => b[1] - a[1])[0];
+      if (mode[1] < 2) continue;                       // sem URL-maioria clara
+      const majVars = vs.filter(v => v.url === mode[0]);
+      const toDrop = new Set();
+      for (const v of vs) {
+        if (v.url === mode[0]) continue;               // parte da maioria → mantém
+        // URL discordante: apaga se um volume MAIOR da maioria custa MENOS.
+        if (majVars.some(w => w.volume_ml > v.volume_ml && w.price < v.price * 0.95)) toDrop.add(v);
+      }
+      if (toDrop.size) {
+        it.variants = it.variants.filter(v => !toDrop.has(v));
+        dropped += toDrop.size;
+      }
+    }
+  }
+  if (dropped) console.log(`🧹 Variantes de produto-trocado removidas: ${dropped} (ex.: BB cream 40ml numa água micelar)`);
+})();
+
 // ── Overlay: FUNDIR variantes promocionais no produto-base (NÃO-destrutivo) ─
 // Um MESMO produto listado com promo/oferta ("+100ml grátis", "Edição
 // Limitada", "−50% 2ª unidade", "PROMO") vem no seed como produto separado.

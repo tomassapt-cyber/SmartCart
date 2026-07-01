@@ -90,19 +90,22 @@ function syntheticEan(p) {
   // makeup + perfume excluídos. Mantemos: skincare, hair, body.
   // A categorização por slug deixa muitos dermo sem categoria (null) → recuperamos
   // aditivamente pelo NOME (classifyDermo), sem incluir makeup/perfume/suplementos.
+  // TAG de dermo (NÃO filtra aqui): o filtro dermo aplica-se só à CRIAÇÃO de
+  // produtos NOVOS. Um produto que CASA com o nosso catálogo (por EAN/fingerprint)
+  // é dermo por definição e entra SEMPRE — mesmo que o classifyDermo não
+  // reconheça o nome (ex.: "Effaclar Duo +M", um nome de linha sem palavra
+  // genérica de skincare). Antes, o pré-filtro descartava esses e perdíamos
+  // ofertas (a byFarma tinha o Effaclar Duo+M a 12.64€, o mais barato, e sumia).
   const ALLOWED_CATEGORIES = new Set(['skincare', 'hair', 'haircare', 'body']);
-  const beforeFilter = efData.products.length;
   let recoveredByName = 0;
-  let efToIntegrate = efData.products.filter(p => {
-    if (ALLOWED_CATEGORIES.has(p.category)) { p._cat = p.category === 'haircare' ? 'hair' : p.category; return true; }
-    const nameCat = classifyDermo(p.name);   // 'skincare'|'hair'|'body'|null
-    if (nameCat) { p._cat = nameCat; recoveredByName++; return true; }
-    return false;
-  });
-  console.log(`🎯 Filtro categoria (dermo focus): ${beforeFilter} → ${efToIntegrate.length} produtos (recuperados por nome: ${recoveredByName})`);
-  console.log(`   (skip ${beforeFilter - efToIntegrate.length} de makeup/perfume/outros)\n`);
+  for (const p of efData.products) {
+    if (ALLOWED_CATEGORIES.has(p.category)) { p._cat = p.category === 'haircare' ? 'hair' : p.category; p._catConfirmed = true; }
+    else { const nameCat = classifyDermo(p.name); if (nameCat) { p._cat = nameCat; p._catConfirmed = true; recoveredByName++; } else { p._catConfirmed = false; } }
+  }
+  const confirmedCount = efData.products.filter(p => p._catConfirmed).length;
+  console.log(`🎯 Dermo-confirmados: ${confirmedCount}/${efData.products.length} (recuperados por nome: ${recoveredByName}). Filtro só na CRIAÇÃO; os que casam entram sempre.\n`);
 
-  efToIntegrate = efToIntegrate.slice(0, MAX_PRODUCTS);
+  let efToIntegrate = efData.products.slice(0, MAX_PRODUCTS);
   if (MAX_PRODUCTS !== Infinity && efToIntegrate.length < beforeFilter) {
     console.log(`📋 --max=${MAX_PRODUCTS}: ${efToIntegrate.length} retidos\n`);
   }
@@ -153,6 +156,7 @@ function syntheticEan(p) {
   // byFarma expõe GTIN-13 real → matching por EAN funciona forte (cross-store)
   let matchedByEan = 0;
   let upgradedFromSynthetic = 0;
+  let unmatchedNonDermo = 0;
 
   for (const ep of efToIntegrate) {
     // ── 0. Match por EAN real (preferencial — byFarma dá GTIN-13) ──
@@ -201,7 +205,10 @@ function syntheticEan(p) {
     //   if (fz) { targetProduct = fz.product; matchedByFuzzy++; }
     // }
 
-    // ── 3. Não match → criar como novo (preferir EAN real byFarma) ──
+    // ── 3. Não match → criar como novo, MAS só se for dermo-confirmado ──
+    // (produtos que casaram acima já entraram; aqui filtramos os NOVOS para não
+    //  poluir com makeup/perfume/suplementos que não reconhecemos.)
+    if (!targetProduct && !ep._catConfirmed) { unmatchedNonDermo++; continue; }
     if (!targetProduct) {
       const newEan = isRealEan(ep.ean) ? ep.ean : syntheticEan(ep);
       // Se já existe com este EAN/slug, reusa.
