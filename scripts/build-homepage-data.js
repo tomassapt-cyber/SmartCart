@@ -48,7 +48,39 @@ function stripVolume(name) {
   return String(name || '').replace(/\s*\d+(?:[.,]\d+)?\s*(?:ml|gr|g|kg|l)\b/gi, '').trim();
 }
 
+// ── Consistência de VOLUME (réplica de refVolumeFor/offerPriceAtVol do demo) ─
+// Sem isto, um produto multi-tamanho mostrava "desde 3.49€" (100ml da atida)
+// na hero de um frasco de 500ml. Mostramos SEMPRE o preço ao volume de
+// referência (o do nome do produto, senão o mais oferecido pelas lojas).
+function _volFromName(name) {
+  if (!name) return null;
+  const m = String(name).normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
+  if (!m) return null;
+  const n = parseFloat(m[1].replace(',', '.')), u = m[2].toLowerCase();
+  return (u === 'l' || u === 'kg') ? n * 1000 : n;
+}
+function refVolumeFor(seed, ean) {
+  const p = seed.products.find(x => x.ean === ean);
+  const fromName = _volFromName(p && p.name);
+  if (fromName) return fromName;
+  const vc = {};
+  for (const sp of seed.store_products)
+    for (const it of sp.items)
+      if (it.ean === ean && it.in_stock)
+        for (const v of (it.variants || []))
+          if (v.price > 0 && v.volume_ml) vc[v.volume_ml] = (vc[v.volume_ml] || 0) + 1;
+  const top = Object.entries(vc).sort((a, b) => b[1] - a[1] || b[0] - a[0])[0];
+  return top ? Number(top[0]) : null;
+}
+function offerPriceAtVol(item, refVol) {
+  if (!refVol || !item.variants || !item.variants.length) return item.price;
+  const ex = item.variants.find(v => v.volume_ml === refVol && v.price > 0 && v.in_stock !== false);
+  return ex ? ex.price : null;
+}
+
 function bestOfferFor(seed, ean) {
+  const refVol = refVolumeFor(seed, ean);
   let best = null;
   for (const sp of seed.store_products) {
     const item = sp.items.find(i => i.ean === ean && i.in_stock);
@@ -57,9 +89,12 @@ function bestOfferFor(seed, ean) {
       || /scraped|canonical/i.test(item.source || '')
       || (item.variants && item.variants.some(v => v.price > 0));
     if (!hasReal) continue;
-    if (!best || item.price < best.price) {
+    const priceAtVol = offerPriceAtVol(item, refVol);
+    if (priceAtVol == null) continue;   // a loja não vende o volume de referência
+    if (!best || priceAtVol < best.price) {
       const store = seed.stores.find(s => s.slug === sp.store_slug);
-      best = { price: item.price, store_slug: sp.store_slug, store_name: store?.name || sp.store_slug, url: item.url };
+      const variant = refVol && item.variants ? item.variants.find(v => v.volume_ml === refVol && v.url) : null;
+      best = { price: priceAtVol, store_slug: sp.store_slug, store_name: store?.name || sp.store_slug, url: variant?.url || item.url };
     }
   }
   return best;

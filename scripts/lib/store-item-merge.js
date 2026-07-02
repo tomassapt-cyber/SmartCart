@@ -90,27 +90,45 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
   if (existingItem) {
     // MERGE: juntar variants, manter min price como headline.
     // Regra de dedup: variantes com MESMO volume colidem (ignorando URL).
-    // Promovemos URL: se a existing for null e a nova tem URL, sobe a URL;
-    // se preço novo é mais baixo, actualiza preço.
-    const mergedVariants = [...(existingItem.variants || [])];
+    //
+    // DENTRO do batch (baseVariants desta página): mesmo volume em vários
+    // "subtypes" (ex.: sweetcare 500ml normal/pump/reverse) → fica o mais
+    // barato in-stock (arbitragem de subtipo).
+    // ENTRE batch e histórico: o scrape FRESCO SUBSTITUI o preço antigo do
+    // mesmo volume — subidas de preço TÊM de propagar. A regra antiga
+    // ("preço mais baixo ganha") deixava preços antigos errados/baixos
+    // presos para sempre (ex.: druni 100/250/500ml todos @4.50 de um scrape
+    // com bug, nunca curados pelos preços reais 4.50/9.29/10.99) e escondia
+    // TODAS as subidas de preço reais — fatal num comparador.
+    const batch = [];
     for (const v of baseVariants) {
+      const dup = batch.find(b => b.volume_ml === v.volume_ml);
+      if (!dup) { batch.push(v); continue; }
+      const better = (v.in_stock && !dup.in_stock) || ((v.in_stock === dup.in_stock) && v.price < dup.price);
+      if (better) batch[batch.indexOf(dup)] = { ...v, url: v.url || dup.url };
+      else if (!dup.url && v.url) dup.url = v.url;
+    }
+    const mergedVariants = [...(existingItem.variants || [])];
+    for (const v of batch) {
       const dup = mergedVariants.find(ev => ev.volume_ml === v.volume_ml);
       if (!dup) {
         mergedVariants.push(v);
         continue;
       }
-      // Preço mais baixo ganha; preserva URL não-null
-      if (v.price < dup.price) {
-        dup.price = v.price;
-        dup.in_stock = dup.in_stock || v.in_stock;
-        if (v.previous_price) dup.previous_price = v.previous_price;
-      }
+      // fresco substitui histórico (preço atual da loja, para cima ou baixo)
+      dup.price = v.price;
+      dup.in_stock = v.in_stock;
+      dup.previous_price = v.previous_price || null;
       // Promover URL: se existing não tem mas nova tem, copia
       if (!dup.url && v.url) dup.url = v.url;
     }
     mergedVariants.sort((a, b) => a.volume_ml - b.volume_ml);
+    // Headline = variante mais barata EM STOCK (senão a mais barata; senão o
+    // preço fresco do scrape — nunca o headline antigo, que pode estar stale).
+    const inStockPrices = mergedVariants.filter(v => v.in_stock && v.price > 0).map(v => v.price);
     const allPrices = mergedVariants.map(v => v.price).filter(p => p > 0);
-    const headlinePrice = allPrices.length ? Math.min(...allPrices) : existingItem.price;
+    const headlinePrice = inStockPrices.length ? Math.min(...inStockPrices)
+      : (allPrices.length ? Math.min(...allPrices) : spPrice);
     // URL: manter a do volume mais barato in_stock (mais útil para o user)
     const cheapestInStock = mergedVariants.find(v => v.price === headlinePrice && v.in_stock);
     const headlineUrl = cheapestInStock?.url || existingItem.url || sp.url;
@@ -118,7 +136,12 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
     existingItem.variants = mergedVariants.length > 0 ? mergedVariants : undefined;
     existingItem.price = Number(headlinePrice.toFixed(2));
     existingItem.url = headlineUrl;
-    existingItem.in_stock = existingItem.in_stock || sp.in_stock !== false;
+    // Disponibilidade FRESCA: com variantes, "alguma em stock"; sem, o scrape
+    // actual manda. (A regra antiga "existing || novo" nunca deixava uma
+    // oferta passar a esgotada — stock sticky é tão enganador como preço sticky.)
+    existingItem.in_stock = mergedVariants.length > 0
+      ? mergedVariants.some(v => v.in_stock)
+      : sp.in_stock !== false;
     existingItem.verified_at = sp.scraped_at || sourceTimestamp;
     // Re-derivar previous_price/discount_pct para a variante headline (a mais barata)
     const headlineVariant = mergedVariants.find(v => v.price === headlinePrice);
@@ -128,6 +151,10 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
     } else if (sp.previous_price && sp.previous_price > headlinePrice) {
       existingItem.previous_price = Number(sp.previous_price.toFixed(2));
       existingItem.discount_pct = Math.round((1 - headlinePrice / sp.previous_price) * 100);
+    } else {
+      // promo antiga terminou → não deixar o claim de desconto stale no card
+      existingItem.previous_price = null;
+      existingItem.discount_pct = null;
     }
     if (state.updatedCounter) state.updatedCounter.value++;
     return { item: existingItem, action: 'merged' };
