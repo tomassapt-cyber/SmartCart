@@ -85,9 +85,6 @@ const BRAND_ALIASES = {
   'svr laboratoires': 'svr',
   'uriage': 'uriage',
   'klorane': 'klorane',
-  'polysianes': 'klorane',           // linha solar da Klorane
-  'polysianes psa': 'klorane',
-  'klorane polysianes': 'klorane',
   'ducray': 'ducray',
   'noreva': 'noreva',
   'mustela': 'mustela',
@@ -115,48 +112,104 @@ const BRAND_ALIASES = {
   'nars': 'nars',
   'nars cosmetics': 'nars',
 
-  // ── LINHA → MARCA-MÃE (dermo) ──────────────────────────────────────────────
-  // Alguns scrapers extraem o nome da LINHA como "marca" (ex.: "Pigmentbio",
-  // "Fotoprotector", "Dercos") em vez do fabricante. Isto fazia a guarda de
-  // marca do apply-cnp-merge recusar (Pigmentbio ≠ Bioderma) e o fingerprint
-  // falhar → produtos duplicados soltos. Mapeamos as linhas conhecidas.
-  // Bioderma
-  'sensibio': 'bioderma', 'sebium': 'bioderma', 'sébium': 'bioderma', 'atoderm': 'bioderma',
-  'hydrabio': 'bioderma', 'photoderm': 'bioderma', 'pigmentbio': 'bioderma', 'cicabio': 'bioderma',
-  'node': 'bioderma', 'nodé': 'bioderma', 'abcderm': 'bioderma', 'crealine': 'bioderma', 'créaline': 'bioderma',
-  // Isdin
-  'fotoprotector': 'isdin', 'fotoultra': 'isdin', 'ureadin': 'isdin', 'nutratopic': 'isdin', 'lambdapil': 'isdin',
-  // Vichy
-  'dercos': 'vichy', 'liftactiv': 'vichy', 'neovadiol': 'vichy', 'normaderm': 'vichy',
-  'aqualia': 'vichy', 'capital soleil': 'vichy', 'mineral 89': 'vichy', 'purete thermale': 'vichy',
-  // La Roche-Posay
-  'effaclar': 'la-roche-posay', 'anthelios': 'la-roche-posay', 'cicaplast': 'la-roche-posay',
-  'toleriane': 'la-roche-posay', 'lipikar': 'la-roche-posay', 'pigmentclar': 'la-roche-posay',
-  'rosaliac': 'la-roche-posay', 'kerium': 'la-roche-posay', 'redermic': 'la-roche-posay',
-  // Avène
-  'cicalfate': 'avene', 'xeracalm': 'avene', 'hydrance': 'avene', 'cleanance': 'avene',
-  'antirougeurs': 'avene', 'ystheal': 'avene', 'physiolift': 'avene', 'couvrance': 'avene', 'dermabsolu': 'avene',
-  // Uriage
-  'barieuderm': 'uriage', 'barierm': 'uriage', 'bariéderm': 'uriage', 'hyseac': 'uriage', 'hyséac': 'uriage',
-  'xemose': 'uriage', 'xémose': 'uriage', 'roseliane': 'uriage', 'roséliane': 'uriage',
-  // Ducray
-  'dexyane': 'ducray', 'ictyane': 'ducray', 'kelual': 'ducray', 'anaphase': 'ducray',
-  'kertyol': 'ducray', 'squanorm': 'ducray', 'neoptide': 'ducray', 'melascreen': 'ducray',
-
   // ── Typos / truncamentos / entidades vazadas do scraper (mesma marca) ──────
   'laboratoires svr': 'svr',              // ordem de palavras trocada no alias antigo
   'daveia': 'd-aveia',                    // apóstrofe perdida na extração
   'aderma': 'a-derma',                    // hífen perdido na extração
   'skin resisit': 'skin-resist',          // typo (easyfarma)
   'euceirn': 'eucerin',                   // typo (easyfarma)
-  'fotoprot': 'isdin',                    // truncamento de "Fotoprotector" (byfarma)
-
-  // ── Sub-marca → marca-mãe (mesmo fabricante, nome de linha extraído) ──────
-  'isdinceutics': 'isdin',                // sub-linha dermocosmética do Isdin
-  'roc keops': 'roc',                     // linha de desodorizantes da RoC
-  'letifem': 'leti',                      // linha da Leti Pharma
   'etat': 'etat-pur',                     // "Etat Pur" truncado
-  'lierac homme': 'lierac',               // linha masculina da Lierac
+  'lierac homme': 'lierac',               // "homme" é token genérico, strip inócuo
+};
+
+// ── LINHA → MARCA-MÃE ────────────────────────────────────────────────────────
+// Alguns scrapers extraem o nome da LINHA como "marca" (ex.: "Pigmentbio",
+// "Dercos") em vez do fabricante — isto fazia a guarda de marca do
+// apply-cnp-merge recusar e o fingerprint divergir entre lojas.
+//
+// ⚠️ DIFERENÇA CRÍTICA vs BRAND_ALIASES: um alias de marca (ysl ↔ Yves Saint
+// Laurent) é o MESMO emissor — pode ser removido do nome canónico. O nome de
+// uma LINHA distingue PRODUTOS DIFERENTES da mesma marca (Sensibio ≠ Sébium ≠
+// Hydrabio Gel Moussant) — remover o token da linha do nome colapsava linhas
+// distintas no mesmo fingerprint ('bioderma|gel-moussant') e o dedup diário
+// FUNDIA produtos diferentes num só card (bug grave detectado 2026-07-02).
+// Por isso estas entradas: (1) normalizam a MARCA (Dercos→vichy) como antes;
+// (2) NUNCA são removidas do nome; (3) se a "marca" da loja era a linha, o
+// token da linha é INJETADO no nome canónico (senão "brand:Sébium, name:Gel
+// Moussant" não colidia com "brand:Bioderma, name:Sébium Gel Moussant").
+// Valor = token canónico a injetar (chave e valor sem acentos via lookup).
+const LINE_ALIASES = {
+  // Bioderma
+  'sensibio': { brand: 'bioderma', token: 'sensibio' },
+  'sebium': { brand: 'bioderma', token: 'sebium' },
+  'atoderm': { brand: 'bioderma', token: 'atoderm' },
+  'hydrabio': { brand: 'bioderma', token: 'hydrabio' },
+  'photoderm': { brand: 'bioderma', token: 'photoderm' },
+  'pigmentbio': { brand: 'bioderma', token: 'pigmentbio' },
+  'cicabio': { brand: 'bioderma', token: 'cicabio' },
+  'node': { brand: 'bioderma', token: 'node' },
+  'abcderm': { brand: 'bioderma', token: 'abcderm' },
+  'crealine': { brand: 'bioderma', token: 'crealine' },
+  // Isdin
+  'fotoprotector': { brand: 'isdin', token: 'fotoprotector' },
+  'fotoprot': { brand: 'isdin', token: 'fotoprotector' },  // truncamento (byfarma)
+  'fotoultra': { brand: 'isdin', token: 'fotoultra' },
+  'ureadin': { brand: 'isdin', token: 'ureadin' },
+  'nutratopic': { brand: 'isdin', token: 'nutratopic' },
+  'lambdapil': { brand: 'isdin', token: 'lambdapil' },
+  'isdinceutics': { brand: 'isdin', token: 'isdinceutics' },
+  // Vichy
+  'dercos': { brand: 'vichy', token: 'dercos' },
+  'liftactiv': { brand: 'vichy', token: 'liftactiv' },
+  'neovadiol': { brand: 'vichy', token: 'neovadiol' },
+  'normaderm': { brand: 'vichy', token: 'normaderm' },
+  'aqualia': { brand: 'vichy', token: 'aqualia' },
+  'capital soleil': { brand: 'vichy', token: 'capital-soleil' },
+  'mineral 89': { brand: 'vichy', token: 'mineral-89' },
+  'purete thermale': { brand: 'vichy', token: 'purete-thermale' },
+  // La Roche-Posay
+  'effaclar': { brand: 'la-roche-posay', token: 'effaclar' },
+  'anthelios': { brand: 'la-roche-posay', token: 'anthelios' },
+  'cicaplast': { brand: 'la-roche-posay', token: 'cicaplast' },
+  'toleriane': { brand: 'la-roche-posay', token: 'toleriane' },
+  'lipikar': { brand: 'la-roche-posay', token: 'lipikar' },
+  'pigmentclar': { brand: 'la-roche-posay', token: 'pigmentclar' },
+  'rosaliac': { brand: 'la-roche-posay', token: 'rosaliac' },
+  'kerium': { brand: 'la-roche-posay', token: 'kerium' },
+  'redermic': { brand: 'la-roche-posay', token: 'redermic' },
+  // Avène
+  'cicalfate': { brand: 'avene', token: 'cicalfate' },
+  'xeracalm': { brand: 'avene', token: 'xeracalm' },
+  'hydrance': { brand: 'avene', token: 'hydrance' },
+  'cleanance': { brand: 'avene', token: 'cleanance' },
+  'antirougeurs': { brand: 'avene', token: 'antirougeurs' },
+  'ystheal': { brand: 'avene', token: 'ystheal' },
+  'physiolift': { brand: 'avene', token: 'physiolift' },
+  'couvrance': { brand: 'avene', token: 'couvrance' },
+  'dermabsolu': { brand: 'avene', token: 'dermabsolu' },
+  // Uriage
+  'barieuderm': { brand: 'uriage', token: 'bariederm' },
+  'barierm': { brand: 'uriage', token: 'bariederm' },
+  'bariederm': { brand: 'uriage', token: 'bariederm' },
+  'hyseac': { brand: 'uriage', token: 'hyseac' },
+  'xemose': { brand: 'uriage', token: 'xemose' },
+  'roseliane': { brand: 'uriage', token: 'roseliane' },
+  // Ducray
+  'dexyane': { brand: 'ducray', token: 'dexyane' },
+  'ictyane': { brand: 'ducray', token: 'ictyane' },
+  'kelual': { brand: 'ducray', token: 'kelual' },
+  'anaphase': { brand: 'ducray', token: 'anaphase' },
+  'kertyol': { brand: 'ducray', token: 'kertyol' },
+  'squanorm': { brand: 'ducray', token: 'squanorm' },
+  'neoptide': { brand: 'ducray', token: 'neoptide' },
+  'melascreen': { brand: 'ducray', token: 'melascreen' },
+  // Klorane
+  'polysianes': { brand: 'klorane', token: 'polysianes' },
+  'polysianes psa': { brand: 'klorane', token: 'polysianes' },
+  'klorane polysianes': { brand: 'klorane', token: 'polysianes' },
+  // RoC / Leti
+  'roc keops': { brand: 'roc', token: 'keops' },
+  'letifem': { brand: 'leti', token: 'letifem' },
 };
 
 // ── Fabricantes/distribuidores GENÉRICOS ────────────────────────────────────
@@ -226,12 +279,26 @@ function normalizeBrand(brand) {
     .trim();
 
   if (BRAND_ALIASES[b]) return BRAND_ALIASES[b];
+  if (LINE_ALIASES[b]) return LINE_ALIASES[b].brand;
   // Tentar match sem hifens
   const noDash = b.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   if (BRAND_ALIASES[noDash]) return BRAND_ALIASES[noDash];
+  if (LINE_ALIASES[noDash]) return LINE_ALIASES[noDash].brand;
 
   // Default: espaços → hífens
   return b.replace(/\s+/g, '-');
+}
+
+// Se a "marca" vinda da loja é afinal uma LINHA, devolve o token canónico da
+// linha (para injetar no nome canónico); senão null.
+function lineTokenForBrand(brand) {
+  if (!brand) return null;
+  const b = stripAccents(decodeHtmlEntities(String(brand)).toLowerCase())
+    .replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (LINE_ALIASES[b]) return LINE_ALIASES[b].token;
+  const noDash = b.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
+  if (LINE_ALIASES[noDash]) return LINE_ALIASES[noDash].token;
+  return null;
 }
 
 /**
@@ -475,9 +542,12 @@ function canonicalName(name, brand) {
   // Remover volume (já foi extraído à parte)
   n = n.replace(/\b\d+(?:[.,]\d+)?\s*(ml|gr|g|kg|l)\b/gi, ' ');
 
-  // Remover marca completa (palavras + aliases)
+  // Remover marca completa (palavras + aliases).
+  // EXCEÇÃO: se a "marca" da loja é uma LINHA (Sébium, Dercos…), o token da
+  // linha distingue produtos — NÃO se remove; injeta-se no nome (em baixo).
+  const lineToken = lineTokenForBrand(brand);
   const allBrandTokens = new Set();
-  if (brand) {
+  if (brand && !lineToken) {
     stripAccents(String(brand).toLowerCase())
       .replace(/[^\w\s]/g, ' ')
       .split(/\s+/)
@@ -514,6 +584,15 @@ function canonicalName(name, brand) {
     if (t.length === 1 && !/[a-z+]/i.test(t)) return false;
     return true;
   });
+
+  // Injetar o token da linha quando a "marca" da loja era a linha e o nome
+  // não a repete (ex.: brand "Sébium" + name "Gel Moussant 200ml" tem de
+  // colidir com brand "Bioderma" + name "Sébium Gel Moussant 200ml").
+  if (lineToken) {
+    for (const t of lineToken.split('-')) {
+      if (t && !tokens.includes(t)) tokens.push(t);
+    }
+  }
 
   // Ordenar para idempotência (mesmo set de tokens em qualquer ordem = mesma fingerprint)
   tokens.sort();
@@ -619,4 +698,6 @@ module.exports = {
   nameTokenSet,
   jaccard,
   GENERIC_BRAND_LABELS,
+  LINE_ALIASES,
+  lineTokenForBrand,
 };
