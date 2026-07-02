@@ -108,6 +108,14 @@ Reactivar na nuvem exigiria um proxy residencial / serviço (ScraperAPI, etc.).
 - Header **`Accept: text/html` faz alguns Magento devolver 500** (Farm. Portuguesas).
 - **ECONNRESET** se não consumir/cancelar `r.body` em respostas não-ok.
 - `/tmp` no Windows: node escreve `C:\tmp`, git-bash usa outro → backups no dir do projeto.
+- **Workflows "verdes" com scrape VAZIO (hollow success)** — 3 variantes apanhadas
+  em 2026-07-02: (a) WAF serve sitemap vazio a IPs de datacenter mas nao ao PC
+  (afarmaciaonline 27d stale, barreiros 3d) -> fallback do sitemap via curl +
+  guarda anti-vazio (0 produtos -> exit 1 SEM escrever o catalogo) em TODOS os
+  scrapers; (b) workflow SEM steps Integrate/Commit -> resilient-push ve
+  HEAD==origin e diz "up-to-date" exit 0 (manuelaserra 15d); (c) --limit de
+  smoke-test sobrescrevia o catalogo de producao -> agora --limit nunca escreve.
+  O freshness-monitor (13h UTC, --strict --ignore=notino) e a rede de seguranca.
 
 ---
 

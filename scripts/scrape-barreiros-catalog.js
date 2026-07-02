@@ -168,6 +168,17 @@ async function main() {
   console.log(`📋 A descobrir produtos Barreiros (${ALL ? 'tudo' : 'só /beleza/'})…`);
   let urls = await discoverProductUrls();
   console.log(`  ${urls.length} URLs de produto`);
+  // FALLBACK (2026-07-02): o WAF passou a servir os SITEMAPS vazios a IPs de
+  // datacenter (fetch E curl) mas as páginas de produto podem continuar
+  // acessíveis. Sem sitemap, refrescamos os PREÇOS dos URLs do último catálogo
+  // committado (novos produtos entram quando o sitemap voltar / run do PC).
+  if (urls.length === 0 && fs.existsSync(OUT_FILE)) {
+    try {
+      const prev = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+      urls = [...new Set((prev.products || []).map(p => p.url).filter(Boolean))];
+      console.log(`  ⚠ Sitemap vazio (WAF?) → fallback: ${urls.length} URLs do catálogo committado (refresh de preços)`);
+    } catch { /* segue para a guarda anti-vazio */ }
+  }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 
   const cp = loadCheckpoint();

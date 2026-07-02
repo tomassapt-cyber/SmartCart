@@ -194,7 +194,19 @@ async function main() {
   const allUrls = (smXml.match(/<loc>([^<]+)<\/loc>/g) || []).map(m => m.replace(/<\/?loc>/g, '').trim());
   let urls = allUrls.filter(isProductUrl);
   console.log(`  ${allUrls.length} URLs no sitemap · ${urls.length} candidatos a produto (.html)`);
-  if (urls.length === 0) { console.error('✗ Sitemap vazio (fetch E curl) — abortar sem tocar no catálogo.'); process.exit(1); }
+  // FALLBACK (2026-07-02): sitemap bloqueado a IPs de datacenter (fetch E curl
+  // vazios) mas as páginas de produto podem responder. Refrescamos os PREÇOS
+  // dos URLs que a loja já tem no seed (novos produtos entram quando o sitemap
+  // voltar / run do PC). O catálogo committado está vazio desde 06-16 → seed.
+  if (urls.length === 0) {
+    try {
+      const seedNow = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
+      const sp = (seedNow.store_products || []).find(g => g.store_slug === 'afarmaciaonline');
+      urls = [...new Set((sp?.items || []).map(it => it.url).filter(u => u && isProductUrl(u)))];
+      console.log(`  ⚠ Sitemap vazio (WAF?) → fallback: ${urls.length} URLs das ofertas no seed (refresh de preços)`);
+    } catch { /* segue para a guarda */ }
+  }
+  if (urls.length === 0) { console.error('✗ Sitemap vazio (fetch E curl) e sem URLs no seed — abortar sem tocar no catálogo.'); process.exit(1); }
 
   if (CHUNK) {
     const [n, m] = CHUNK.split('/').map(Number);
