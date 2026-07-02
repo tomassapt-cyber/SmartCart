@@ -96,6 +96,35 @@ const seedJson = JSON.parse(seed);
   if (r.folded) console.log(`🎁 Promo-fold: ${r.folded} variantes fundidas no produto-base · ${r.movedOffers} ofertas movidas · ${r.annotated} anotadas em loja existente`);
 })();
 
+// ── Overlay: ESCONDER ofertas-fantasma (produto removido da loja) ─────────
+// Os integradores nunca removem ofertas → quando uma loja tira um produto do
+// site, a oferta fica no seed com o preço velho e o link dá 404. Dois sinais
+// OBRIGATÓRIOS para esconder (ver scripts/lib/ghost-offers.js):
+//   1. URL ausente do catálogo raspado fresco da loja (candidato);
+//   2. confirmação HTTP 404/410 em cache (data/ghost-check.json, mantida por
+//      scripts/verify-ghost-offers.js — corrido aqui de forma bounded).
+// NÃO-destrutivo (seed intacto; auto-recupera se o produto voltar). Corre
+// ANTES do filtro de visibilidade: produtos cujas ofertas fiquem TODAS
+// fantasma tornam-se órfãos e são escondidos por esse filtro.
+(function applyGhostOffers() {
+  const { spawnSync } = require('child_process');
+  // Actualizar a cache de verificação (bounded; falha de rede não bloqueia —
+  // o overlay usa a cache existente e nunca esconde sem confirmação).
+  try {
+    const r = spawnSync('node', [path.join(__dirname, 'verify-ghost-offers.js'), '--quiet', '--max=250'], { cwd: ROOT, encoding: 'utf8', timeout: 180000 });
+    if (r.stdout) process.stdout.write(r.stdout);
+  } catch { /* offline → usa cache existente */ }
+  const { dropGhostOffers } = require('./lib/ghost-offers');
+  const r = dropGhostOffers(seedJson);
+  if (r.totalGhost) {
+    const detail = r.perStore.filter(s => s.ghosts).sort((a, b) => b.ghosts - a.ghosts)
+      .map(s => `${s.slug}:${s.ghosts}`).join(', ');
+    console.log(`👻 Ofertas-fantasma escondidas: ${r.totalGhost} (confirmadas 404; ${r.totalUnconfirmed} candidatas por confirmar mantêm-se) · ${detail}`);
+  } else {
+    console.log(`👻 Ofertas-fantasma: 0 confirmadas (${r.totalUnconfirmed} candidatas por confirmar; ${r.storesProcessed} lojas verificadas)`);
+  }
+})();
+
 // ── Filtro de visibilidade (NÃO-destrutivo) ──────────────────────────────
 // Esconde do HTML publicado produtos que não fazem sentido mostrar, SEM
 // alterar data/seed-bundle.json. Os scrapers continuam a manter o seed
