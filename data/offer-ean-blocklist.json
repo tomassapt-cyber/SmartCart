@@ -51,6 +51,13 @@
       "added_at": "2026-07-02"
     },
     {
+      "store_slug": "atida",
+      "ean": "2100000301027",
+      "reason": "Pack atida (FotoUltra 50ml + Melaclear 30ml, 89.62€) no EAN interno 21x que o pipeline trata como canónico e reabsorve as ofertas do FotoUltra simples (19.8-26.4€) — split manual foi desfeito pelos merges diários (dedup-store-url/cnp). Excluir o pack mantém a comparação coerente; fix estrutural = despriorizar EANs 2xx como identidade.",
+      "url": "https://www.atida.com/pt-pt/isdin-fotoultra-100-spot-prevent-color-spf50-50-ml-melaclear-1-8-30-ml",
+      "added_at": "2026-07-02"
+    },
+    {
       "store_slug": "notino",
       "ean": "8809525246014",
       "reason": "Folha única Beauty of Joseon Centella (2.20€) publicada com o EAN da caixa de 10 unidades (atida 19.99€) — mesmo padrão da loja-farmacia.",
