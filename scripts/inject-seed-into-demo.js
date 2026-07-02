@@ -96,6 +96,31 @@ const seedJson = JSON.parse(seed);
   if (r.folded) console.log(`🎁 Promo-fold: ${r.folded} variantes fundidas no produto-base · ${r.movedOffers} ofertas movidas · ${r.annotated} anotadas em loja existente`);
 })();
 
+// ── Overlay: ESCONDER ofertas na blocklist de EAN-errado (NÃO-destrutivo) ─
+// data/offer-ean-blocklist.json lista ofertas (store_slug, ean) confirmadas
+// como PRODUTO ERRADO no EAN — a loja publica o mesmo EAN para outro produto
+// (ver scripts/audit-price-outliers.js). A guarda principal vive em
+// scripts/lib/store-item-merge.js (os integradores não as re-adicionam ao
+// seed); esta é a última defesa no render, para o caso de uma oferta
+// bloqueada re-entrar por outro caminho (merge manual, dedup-by-similarity).
+(function dropBlocklistedOffers() {
+  const BL_FILE = path.join(ROOT, 'data', 'offer-ean-blocklist.json');
+  if (!fs.existsSync(BL_FILE)) return;
+  let blocked;
+  try {
+    blocked = new Set((JSON.parse(fs.readFileSync(BL_FILE, 'utf8')).blocked || [])
+      .map(b => `${b.store_slug}|${b.ean}`));
+  } catch { return; }
+  if (!blocked.size) return;
+  let dropped = 0;
+  for (const sp of seedJson.store_products) {
+    const before = sp.items.length;
+    sp.items = sp.items.filter(it => !blocked.has(`${sp.store_slug}|${it.ean}`));
+    dropped += before - sp.items.length;
+  }
+  if (dropped) console.log(`🚫 Ofertas em blocklist (EAN errado da loja) fora do render: ${dropped}`);
+})();
+
 // ── Overlay: ESCONDER ofertas-fantasma (produto removido da loja) ─────────
 // Os integradores nunca removem ofertas → quando uma loja tira um produto do
 // site, a oferta fica no seed com o preço velho e o link dá 404. Dois sinais

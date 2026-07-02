@@ -1,0 +1,61 @@
+{
+  "_comment": "Ofertas confirmadas como PRODUTO ERRADO no EAN: a loja publica este EAN para OUTRO produto (auditado em scripts/audit-price-outliers.js — nome no URL da loja vs produto do seed). Enquanto a loja continuar a publicar o EAN errado, o par (store_slug, ean) fica aqui: scripts/lib/store-item-merge.js impede os integradores de re-adicionar a oferta, e inject-seed-into-demo.js esconde-a do render como última defesa. Remover a entrada quando a loja corrigir o EAN.",
+  "blocked": [
+    {
+      "store_slug": "loja-farmacia",
+      "ean": "8809525246014",
+      "reason": "Folha única Beauty of Joseon Centella (1.40€) publicada com o EAN da caixa de 10 unidades (atida 19.99€).",
+      "url": "https://www.lojadafarmacia.com/pt/artigo/beauty-of-joseon-cent-asia-calm-mask",
+      "added_at": "2026-07-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "5201062007449",
+      "reason": "Girafa Sophie anel de dentição (18€) publicado com o EAN da Youth Lab Máscara de Limpeza Radiance 2x6ml.",
+      "url": "https://www.saudemayor.pt/girafa-sophie-anel-de-denticao-0m.html",
+      "added_at": "2026-07-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "3666057064555",
+      "reason": "Dr Browns escova de dentes (17.05€) publicada com o EAN do Clarins Creme Noturno Multi Intensivo 50ml (82–97€).",
+      "url": "https://www.saudemayor.pt/dr-browns-escova-dentes-lontra-1-4-anos.html",
+      "added_at": "2026-07-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "3666057200069",
+      "reason": "Saro rede de alimentação (6.60€) publicada com o EAN do Clarins Hydra-Essentiel Masque-Crème 75ml (28–31€).",
+      "url": "https://www.saudemayor.pt/saro-alimentacao-em-rede-aprendo-a-comer-rosa.html",
+      "added_at": "2026-07-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "3666057098031",
+      "reason": "Bibs mordedor estrela pêssego (8.40€) publicado com o EAN do Clarins Hydra Essentiel Gel Matifiant 75ml (35–38€).",
+      "url": "https://www.saudemayor.pt/bibs-baby-bitie-mordedor-estrela-pessego-3-m.html",
+      "added_at": "2026-07-02"
+    },
+    {
+      "store_slug": "loja-farmacia",
+      "ean": "8058664144204",
+      "reason": "Chicco Tablet Animais (13.83€) publicado com o EAN do Olmitos Bicicleta Speed Up Ice da saudemayor (86.45€) — a loja ainda publica este EAN hoje.",
+      "url": "https://www.lojadafarmacia.com/pt/artigo/chicco-tablet-animais",
+      "added_at": "2026-07-02"
+    },
+    {
+      "store_slug": "wells",
+      "ean": "3372290002109",
+      "reason": "Wells 'Extra-Gentle Family Shampoo' 5.01€ (travel size, sem EAN no catálogo — entra por fingerprint/merge) no EAN do Lazartigue 500ml (12.5–21.9€).",
+      "url": "https://wells.pt/extra-gentle-family-shampoo-415625.html",
+      "added_at": "2026-07-02"
+    },
+    {
+      "store_slug": "notino",
+      "ean": "8437019178024",
+      "reason": "Notino MartiDerm Night Renew 30 ampolas (54.80€, EAN próprio 8437000435594) entra por fingerprint idêntico no EAN do pack de 10 ampolas (druni 12.95€).",
+      "url": "https://www.notino.pt/martiderm/platinum-night-renew-serum-esfoliante-em-ampolas/",
+      "added_at": "2026-07-02"
+    }
+  ]
+}

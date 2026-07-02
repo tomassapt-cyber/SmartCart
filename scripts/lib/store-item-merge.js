@@ -10,7 +10,26 @@
  * volume vive DENTRO do store_product, nunca como múltiplas entries.
  */
 
+const fs = require('fs');
+const path = require('path');
 const { extractVolumeMl } = require('./product-fingerprint');
+
+// Blocklist de ofertas com EAN ERRADO da própria loja (a loja publica este
+// EAN para OUTRO produto — ex.: mordedor de bebé com EAN de creme Clarins).
+// Mantida por scripts/audit-price-outliers.js em data/offer-ean-blocklist.json.
+// Sem esta guarda, remover a oferta do seed dura 1 dia: o integrador diário
+// re-adiciona-a no próximo scrape da loja.
+let _blockedOffers = null;
+function isBlockedOffer(storeSlug, ean) {
+  if (!_blockedOffers) {
+    _blockedOffers = new Set();
+    try {
+      const bl = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'offer-ean-blocklist.json'), 'utf8'));
+      for (const b of (bl.blocked || [])) _blockedOffers.add(`${b.store_slug}|${b.ean}`);
+    } catch { /* sem blocklist → nada bloqueado */ }
+  }
+  return _blockedOffers.has(`${storeSlug}|${ean}`);
+}
 
 /**
  * Constrói o array de variants base a partir de um scraped product.
@@ -63,6 +82,8 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
   // scrape obteve JSON-LD parcial (sem offers) — não-fatal, só ignorar.
   const spPrice = typeof sp?.price === 'number' && isFinite(sp.price) && sp.price > 0 ? sp.price : null;
   if (!spPrice) return { item: null, action: 'skipped' };
+  // Oferta confirmada como produto-errado neste EAN → nunca (re-)adicionar.
+  if (isBlockedOffer(state.storeSp?.store_slug, targetEan)) return { item: null, action: 'blocked' };
   const baseVariants = buildBaseVariants(sp);
   const existingItem = state.itemByEan[targetEan];
 
@@ -138,4 +159,4 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
   return { item, action: 'added' };
 }
 
-module.exports = { buildBaseVariants, upsertStoreItem };
+module.exports = { buildBaseVariants, upsertStoreItem, isBlockedOffer };
