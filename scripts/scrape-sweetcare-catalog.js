@@ -396,6 +396,8 @@ async function scrapeProductPage(page, url) {
 }
 
 function saveCheckpoint(allProducts, stats, final = false) {
+  if (LIMIT !== Infinity) return; /* smoke-test (--limit) NÃO sobrescreve o catálogo de produção */
+  if (final && allProducts.length === 0) { console.error('✗ 0 produtos — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   const out = {
     scraped_at: new Date().toISOString(),
     source: URL_LIST,

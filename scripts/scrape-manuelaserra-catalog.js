@@ -132,6 +132,8 @@ async function fetchJson(url, attempt = 1) {
     await new Promise(s => setTimeout(s, 400));
   }
 
+  if (products.length === 0) { console.error('✗ 0 produtos — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
+  if (LIMIT !== Infinity) { console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`); process.exit(0); }
   const out = { scraped_at: new Date().toISOString(), source: 'manuelaserra.com (Shopify products.json)', in_progress: false, products };
   fs.writeFileSync(OUT_FILE, JSON.stringify(out), 'utf8');
 

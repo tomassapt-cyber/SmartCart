@@ -46,6 +46,10 @@ const args = Object.fromEntries(
 const STRICT = !!args.strict;
 const AS_JSON = !!args.json;
 const STALE_DAYS = args['stale-days'] ? parseFloat(args['stale-days']) : 2;
+// Lojas EXCLUÍDAS do gate --strict (continuam na tabela, marcadas):
+// snapshot manual que não actualiza na nuvem (ex.: notino, Cloudflare bloqueia
+// IPs de datacenter — refresca-se do PC). Sem isto o monitor falharia sempre.
+const IGNORE = new Set(String(args.ignore || '').split(',').map(s => s.trim()).filter(Boolean));
 
 // Fingerprint partilhado (mesmo critério do dedup/integrate)
 let productFingerprint;
@@ -171,9 +175,11 @@ if (AS_JSON) {
 }
 
 // ── Exit code (modo --strict) ────────────────────────────────────────────────
-const staleStores = rows.filter(r => r.stale);
+const staleStores = rows.filter(r => r.stale && !IGNORE.has(r.slug));
+const staleIgnored = rows.filter(r => r.stale && IGNORE.has(r.slug));
 if (STRICT) {
   const problems = [];
+  if (staleIgnored.length) console.error(`\nℹ Stale mas IGNORADAS (--ignore): ${staleIgnored.map(s => `${s.slug} (${s.lastRefreshAgeDays}d)`).join(', ')}`);
   if (staleStores.length) problems.push(`${staleStores.length} loja(s) stale (>${STALE_DAYS}d): ${staleStores.map(s => s.slug).join(', ')}`);
   if (brandCollisions.length) problems.push(`${brandCollisions.length} colisões de marca`);
   if (fpDupGroups) problems.push(`${fpDupGroups} grupos de fingerprint duplicados`);

@@ -140,6 +140,7 @@ function loadCheckpoint() {
   } catch { return null; }
 }
 function saveCheckpoint(products, inProgress = true) {
+  if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
   fs.writeFileSync(OUT_FILE, JSON.stringify({
     scraped_at: new Date().toISOString(),
     source: 'asuafarmaciaonline.pt (HTTP + JSON-LD; EAN do mpn quando presente)',
@@ -207,6 +208,7 @@ async function main() {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
 
   console.log(`\n══════ asuafarmaciaonline scrape ══════`);

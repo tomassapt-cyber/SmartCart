@@ -38,4 +38,4 @@ jobs:
       - name: Freshness report (strict)
         run: |
           STALE="${{ github.event.inputs.stale_days || '2' }}"
-          node scripts/freshness-report.js --strict --stale-days="$STALE"
+          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore=notino

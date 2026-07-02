@@ -295,6 +295,7 @@ async function enrichEans(products, { concurrency = 4, delay = 250, budgetMs = 1
     console.error('\n✗ 0 produtos (provável rate-limit/429). NÃO sobrescrevo o catálogo existente.');
     process.exit(1);
   }
+  if (LIMIT !== Infinity) { console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`); process.exit(0); }
   const out = {
     scraped_at: new Date().toISOString(),
     source: 'bairro.pt (Shopify products.json)',

@@ -92,6 +92,7 @@ function loadCheckpoint() {
 }
 
 function saveCheckpoint(products, inProgress = true) {
+  if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
   const out = {
     scraped_at: new Date().toISOString(),
     source: 'atida.com (HTTP + JSON-LD)',
@@ -281,6 +282,7 @@ async function fetchPage(url, attempt = 1) {
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 
+  if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
 
   // Stats finais

@@ -135,6 +135,8 @@ async function main() {
     if (p.in_stock) stats.inStock++;
   }
 
+  if (products.length === 0) { console.error('✗ 0 produtos (feed vazio/bloqueio?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
+  if (LIMIT !== Infinity) { console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`); process.exit(0); }
   fs.writeFileSync(OUT_FILE, JSON.stringify({
     scraped_at: new Date().toISOString(),
     source: 'pharma2you.pt (Google Merchant feed; SEM EAN — match por fingerprint)',

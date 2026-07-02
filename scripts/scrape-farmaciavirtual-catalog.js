@@ -96,7 +96,7 @@ async function fetchPage(url, attempt = 1) {
 }
 
 function loadCheckpoint() { if (!RESUME || !fs.existsSync(OUT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
-function saveCheckpoint(products, inProgress = true) { fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'farmaciavirtual.pt (WooCommerce; SEM EAN, sku=CNP)', in_progress: inProgress, products }), 'utf8'); }
+function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) return; /* smoke-test (--limit) NÃO sobrescreve o catálogo de produção */ fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'farmaciavirtual.pt (WooCommerce; SEM EAN, sku=CNP)', in_progress: inProgress, products }), 'utf8'); }
 
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
@@ -137,6 +137,7 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
   console.log(`\n══════ farmaciavirtual scrape ══════`);
   console.log(`  Produtos em stock c/ preço: ${products.length} · esgotados: ${stats.oos}`);

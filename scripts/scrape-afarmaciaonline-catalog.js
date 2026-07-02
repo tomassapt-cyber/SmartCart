@@ -167,6 +167,7 @@ function loadCheckpoint() {
 }
 
 function saveCheckpoint(products, inProgress = true) {
+  if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
   fs.writeFileSync(OUT_FILE, JSON.stringify({
     scraped_at: new Date().toISOString(),
     source: 'afarmaciaonline.pt (HTTP + JSON-LD: mpn=EAN, sku=CNP)',
@@ -179,11 +180,21 @@ async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
 
   console.log('📋 A descarregar sitemap afarmaciaonline…');
-  const smRes = await fetch(SITEMAP_URL, { headers: { 'User-Agent': UA } });
-  const smXml = await smRes.text();
+  // O WAF do site serve o sitemap VAZIO ao fetch do Node a partir de IPs de
+  // datacenter (GitHub Actions) — mas deixa passar o curl (TLS fingerprint
+  // tipo-browser; mesmo padrão do Notino). fetch primeiro, curl em fallback.
+  let smXml = '';
+  try { smXml = await (await fetch(SITEMAP_URL, { headers: { 'User-Agent': UA } })).text(); } catch { /* tenta curl */ }
+  if (!/<loc>/.test(smXml)) {
+    console.log('  fetch deu sitemap vazio → a tentar via curl (bypass WAF)…');
+    const { spawnSync } = require('child_process');
+    const r = spawnSync('curl', ['-s', '-L', '-A', UA, '-H', 'Accept-Language: pt-PT,pt;q=0.9', '--max-time', '60', SITEMAP_URL], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    smXml = r.stdout || '';
+  }
   const allUrls = (smXml.match(/<loc>([^<]+)<\/loc>/g) || []).map(m => m.replace(/<\/?loc>/g, '').trim());
   let urls = allUrls.filter(isProductUrl);
   console.log(`  ${allUrls.length} URLs no sitemap · ${urls.length} candidatos a produto (.html)`);
+  if (urls.length === 0) { console.error('✗ Sitemap vazio (fetch E curl) — abortar sem tocar no catálogo.'); process.exit(1); }
 
   if (CHUNK) {
     const [n, m] = CHUNK.split('/').map(Number);
@@ -231,6 +242,7 @@ async function main() {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
 
   const inStock = products.filter(p => p.in_stock).length;

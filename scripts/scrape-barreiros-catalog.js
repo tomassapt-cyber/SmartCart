@@ -125,14 +125,29 @@ async function fetchText(url, attempt = 1) {
   } catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
 }
 
+// O WAF serve os sitemaps VAZIOS ao fetch do Node a partir de IPs de datacenter
+// (GitHub Actions) — mas deixa passar o curl (TLS fingerprint tipo-browser;
+// mesmo padrão do Notino/afarmaciaonline). Fallback por XML individual.
+function curlText(url) {
+  const { spawnSync } = require('child_process');
+  const r = spawnSync('curl', ['-s', '-L', '-A', UA, '-H', 'Accept-Language: pt-PT,pt;q=0.9', '--max-time', '60', url], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  return r.stdout || '';
+}
+async function fetchXml(url) {
+  const r = await fetchText(url);
+  if (r.status === 'ok' && /<loc>/i.test(r.html)) return r.html;
+  const viaCurl = curlText(url);
+  if (/<loc>/i.test(viaCurl)) { console.log(`  (sitemap via curl — fetch bloqueado: ${url.split('/').pop()})`); return viaCurl; }
+  return r.status === 'ok' ? r.html : '';
+}
 async function discoverProductUrls() {
-  const idx = await fetchText(SITEMAP_INDEX);
-  if (idx.status !== 'ok') return [];
-  const subs = locs(idx.html).filter(u => /\.xml/i.test(u));
+  const idxHtml = await fetchXml(SITEMAP_INDEX);
+  if (!idxHtml) return [];
+  const subs = locs(idxHtml).filter(u => /\.xml/i.test(u));
   const urls = new Set();
   for (const s of (subs.length ? subs : [])) {
-    const r = await fetchText(s);
-    if (r.status === 'ok') for (const u of locs(r.html)) if (isProductUrl(u)) urls.add(u);
+    const html = await fetchXml(s);
+    for (const u of locs(html)) if (isProductUrl(u)) urls.add(u);
   }
   let arr = [...urls];
   if (!ALL) arr = arr.filter(u => /\/beleza\//.test(u));
@@ -144,6 +159,7 @@ function loadCheckpoint() {
   try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; }
 }
 function saveCheckpoint(products, inProgress = true) {
+  if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
   fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'farmaciabarreiros.com (PrestaShop, ean13 + price_amount)', in_progress: inProgress, products }), 'utf8');
 }
 
@@ -175,6 +191,7 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
   console.log(`\n══════ Barreiros scrape ══════`);
   console.log(`  Produtos: ${products.length} (com EAN: ${products.filter(p => p.ean).length}) · in_stock: ${products.filter(p => p.in_stock).length}`);
