@@ -2,7 +2,7 @@
 
 Referência de todas as lojas integradas, como cada uma é raspada, por que chave
 casa, e se se actualiza sozinha na nuvem (GitHub Actions) ou precisa do PC.
-Última actualização: 2026-06-29 · **21 lojas · ~49.000 ofertas**.
+Última actualização: 2026-07-02 · **25 lojas · ~71.000 ofertas** (seed).
 
 ---
 
@@ -24,33 +24,53 @@ Pipeline por loja: `scrape-<loja>-catalog.js` → `data/catalog/<loja>-full.json
 
 ---
 
-## As 21 lojas
+## As 25 lojas
 
 | # | Loja | Ofertas | Chave | Técnica de scrape | Nuvem? |
 |---|------|--------:|-------|-------------------|--------|
-| 1 | Druni PT | 9.759 | EAN | sitemap + JSON-LD | ✅ 06h |
-| 2 | SweetCare | 6.964 | EAN | sitemap + JSON-LD | ✅ 10h |
-| 3 | Wells | 5.329 | EAN | sitemap + JSON-LD | ✅ 14h |
-| 4 | Atida \| Mifarma | 4.212 | EAN | sitemap + JSON-LD | ✅ 15h |
-| 5 | Loja da Farmácia | 4.165 | EAN | Magento + JSON-LD | ✅ 19h |
-| 6 | Farmácia.pt | 3.349 | EAN | sitemap + JSON-LD | ✅ 17h |
-| 7 | Bairro da Saúde | 2.922 | CNP | HTML | ✅ 05h |
-| 8 | Easyfarma | 1.875 | CNP | HTML (barcode=CNP) | ✅ 04h |
-| 9 | **Cocooncenter** 🆕 | 1.565 | EAN | sitemap-pt + JSON-LD; 410=descont. | ✅ 15h |
-| 10 | Pharma GDD (FR) | 1.523 | EAN | sitemap + JSON-LD | ✅ 22h |
-| 11 | Farmácia Barreiros | 1.410 | CNP | PrestaShop | ✅ 22h30 |
-| 12 | Farmácia 365 | 1.271 | EAN | sitemap + JSON-LD | ✅ 16h |
-| 13 | byFarma | 973 | EAN | Magento + JSON-LD | ✅ 12h |
-| 14 | A Sua Farmácia Online | 945 | EAN/fp | HTML | ✅ 21h |
-| 15 | **Farmácias Portuguesas** 🆕 | 704 | CNP | Magento; preço via cookie `pharmacy_code=09881` + JSON `pricingData` | ✅ 16h |
-| 16 | **Notino** 🆕 | 703 | EAN | sitemap-categoria + JSON-LD; **via curl** | ❌ **só PC** |
-| 17 | **Pharma2you** 🆕 | 362 | fingerprint | feed Google Merchant (sem EAN) | ✅ 17h |
-| 18 | Manuela Serra | 360 | EAN/fp | HTML | ✅ 06h |
-| 19 | A Farmácia Online | 353 | EAN | sitemap + JSON-LD | ✅ 18h |
-| 20 | A Minha Farmácia Online | 219 | EAN | sitemap + JSON-LD | ✅ 21h30 |
-| 21 | HaemiSkin | 72 | EAN | sitemap + JSON-LD | ✅ 20h |
+| 1 | Atida \| Mifarma | 10.375 | EAN | sitemap + JSON-LD | ✅ 15h |
+| 2 | Druni PT | 9.849 | EAN | sitemap + JSON-LD | ✅ 06h |
+| 3 | SweetCare | 8.250 | EAN | sitemap + JSON-LD | ✅ 10h |
+| 4 | Wells | 5.475 | EAN | sitemap + JSON-LD | ✅ 14h |
+| 5 | **Aveiro Farma** 🆕 | 4.821 | EAN | OpenCart + JSON-LD (gtin14); servidor LENTO (PHP 5.6, ~15s/pedido) — timeouts generosos | ✅ 11h |
+| 6 | Loja da Farmácia | 4.284 | EAN | Magento + JSON-LD | ✅ 19h |
+| 7 | Farmácia.pt | 3.716 | EAN | sitemap + JSON-LD | ✅ 17h |
+| 8 | Notino | 3.647 | EAN | sitemap-categoria + JSON-LD; **via curl** | ❌ **só PC** |
+| 9 | Cocooncenter | 3.272 | EAN | sitemap-pt + JSON-LD; 410=descont. | ✅ 15h |
+| 10 | Bairro da Saúde | 3.020 | CNP | HTML | ✅ 05h |
+| 11 | **Farmácia Virtual** 🆕 | 2.092 | CNP | sitemap + JSON-LD | ✅ 13h |
+| 12 | Pharma GDD (FR) | 2.040 | EAN | sitemap + JSON-LD | ✅ 22h |
+| 13 | Easyfarma | 1.899 | CNP | HTML (barcode=CNP) | ✅ 04h |
+| 14 | Farmácia Barreiros | 1.399 | CNP | PrestaShop | ✅ 22h30 |
+| 15 | Farmácia 365 | 1.286 | EAN | sitemap + JSON-LD | ✅ 16h |
+| 16 | byFarma | 1.067 | EAN | Magento + JSON-LD | ✅ 12h |
+| 17 | A Sua Farmácia Online | 963 | EAN/fp | HTML | ✅ 21h |
+| 18 | **Saúde Mayor** 🆕 | 920 | **EAN + CNP** | plataforma própria + JSON-LD (`mpn`=EAN, `sku`=CNP — chave dupla) | ✅ 09h |
+| 19 | **My Cosmetics** 🆕 | 820 | EAN (+CNP) | Shopify + JSON-LD (gtin13; `sku`=CNP em ~99%) | ✅ 08h |
+| 20 | Farmácias Portuguesas | 701 | CNP | Magento; preço via cookie `pharmacy_code=09881` + JSON `pricingData` | ✅ 16h |
+| 21 | Pharma2you | 384 | fingerprint | feed Google Merchant (sem EAN) | ✅ 17h |
+| 22 | Manuela Serra | 366 | EAN/fp | HTML | ✅ 06h |
+| 23 | A Farmácia Online | 351 | EAN | sitemap + JSON-LD | ✅ 18h |
+| 24 | A Minha Farmácia Online | 221 | EAN | sitemap + JSON-LD | ✅ 21h30 |
+| 25 | HaemiSkin | 75 | EAN | sitemap + JSON-LD | ✅ 20h |
 
-🆕 = adicionadas em Jun 2026. Horários em UTC. **20/21 actualizam sozinhas na nuvem.**
+🆕 = adicionadas em Jul 2026. Horários em UTC. **24/25 actualizam sozinhas na nuvem.**
+Ofertas = itens no seed (a "base de dados"); o render publica menos (filtro de
+visibilidade + ofertas-fantasma, ver abaixo).
+
+### 👻 Ofertas-fantasma (produto removido da loja)
+Os integradores são *enrich-only* (nunca removem) → quando uma loja tira um
+produto do site, a oferta ficava no seed com o preço velho, aparecia como
+"melhor preço" e o link dava 404. Solução (overlay NÃO-destrutivo no inject):
+1. **Candidato** — URL da oferta ausente do catálogo raspado fresco da loja
+   (`ghost-offers.js`; guardas: catálogo completo/recente/são).
+2. **Confirmação HTTP** — `verify-ghost-offers.js` testa os candidatos
+   (404/410 = morto) com cache em `data/ghost-check.json` (morto=30d TTL,
+   vivo=7d, inconclusivo=1d; bounded a 250/inject).
+Só ausente **E** confirmado morto é escondido do render; o seed preserva tudo
+(se o produto voltar à loja, reaparece sozinho). ⚠️ O sinal do catálogo SOZINHO
+não chega: os scrapers só guardam produtos extraídos com sucesso (cocooncenter
+tinha 747 "ausentes" e >50% estavam vivos).
 
 ### ⚠️ Notino — a excepção (snapshot manual)
 A Notino tem **Cloudflare** que bloqueia o **fetch do Node** (TLS fingerprint do
@@ -104,6 +124,8 @@ Reactivar na nuvem exigiria um proxy residencial / serviço (ScraperAPI, etc.).
 | dosfarma.com (ES) | Cloudflare 403 (bloqueia produto) |
 | shop-apotheke.com | Só envia DE |
 | newpharma.com | Inalcançável (curl 000) |
+| farmaciaportugal.pt | WordPress institucional; product-sitemap parado desde 2020 (catálogo morto) |
+| parafarma24.com | Site em ES por default, sem sinal de envio PT / rota /pt |
 
 ## Candidatas VIÁVEIS por explorar (futuro)
 - **Continente Online** — tem EAN+JSON-LD e é acessível, MAS catálogo dominado por
