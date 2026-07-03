@@ -80,7 +80,9 @@ function offerPriceAtVol(item, refVol) {
 }
 
 function bestOfferFor(seed, ean) {
-  const refVol = refVolumeFor(seed, ean);
+  // MÍNIMO ABSOLUTO (qualquer volume) — decisão do user 2026-07-03: o "desde"
+  // é o preço mais baixo real da oferta viva, mesmo que seja o tamanho pequeno
+  // (estratégia de marketing). A comparação por volume vive no modal.
   let best = null;
   for (const sp of seed.store_products) {
     const item = sp.items.find(i => i.ean === ean && i.in_stock);
@@ -89,12 +91,14 @@ function bestOfferFor(seed, ean) {
       || /scraped|canonical/i.test(item.source || '')
       || (item.variants && item.variants.some(v => v.price > 0));
     if (!hasReal) continue;
-    const priceAtVol = offerPriceAtVol(item, refVol);
-    if (priceAtVol == null) continue;   // a loja não vende o volume de referência
-    if (!best || priceAtVol < best.price) {
-      const store = seed.stores.find(s => s.slug === sp.store_slug);
-      const variant = refVol && item.variants ? item.variants.find(v => v.volume_ml === refVol && v.url) : null;
-      best = { price: priceAtVol, store_slug: sp.store_slug, store_name: store?.name || sp.store_slug, url: variant?.url || item.url };
+    const cands = [];
+    if (item.price > 0) cands.push({ price: item.price, url: item.url });
+    for (const v of (item.variants || [])) if (v.price > 0 && v.in_stock !== false) cands.push({ price: v.price, url: v.url || item.url });
+    for (const c of cands) {
+      if (!best || c.price < best.price) {
+        const store = seed.stores.find(s => s.slug === sp.store_slug);
+        best = { price: c.price, store_slug: sp.store_slug, store_name: store?.name || sp.store_slug, url: c.url };
+      }
     }
   }
   return best;
@@ -133,6 +137,32 @@ function condenseByEan(seed, eans) {
 
 (function main() {
   const seed = JSON.parse(fs.readFileSync(SEED, 'utf8'));
+
+  // ── UNIFORMIDADE com o render (2026-07-03): aplicar os MESMOS overlays do
+  // inject antes de escolher best offers — sem isto a homepage mostrava
+  // preços-fantasma/podres que o site principal já esconde (ex.: Effaclar
+  // 11.61 do bairro, produto removido da loja).
+  try {
+    const BL = path.join(ROOT, 'data', 'offer-ean-blocklist.json');
+    if (fs.existsSync(BL)) {
+      const blocked = new Set((JSON.parse(fs.readFileSync(BL, 'utf8')).blocked || []).map(b => `${b.store_slug}|${b.ean}`));
+      for (const sp of seed.store_products) sp.items = sp.items.filter(it => !blocked.has(`${sp.store_slug}|${it.ean}`));
+    }
+  } catch { /* sem blocklist */ }
+  try {
+    const { dropGhostOffers } = require('./lib/ghost-offers');
+    dropGhostOffers(seed);
+  } catch { /* sem cache de fantasmas */ }
+  (function dropRotten() {   // oferta >=7d atrás do refresh da própria loja
+    const DAY = 864e5;
+    const ageOf = it => { let t = +new Date(it.verified_at || 0); for (const v of (it.variants || [])) { const tv = +new Date(v.verified_at || 0); if (tv > t) t = tv; } return t; };
+    for (const sp of seed.store_products) {
+      let freshest = 0;
+      for (const it of sp.items) { const t = ageOf(it); if (t > freshest) freshest = t; }
+      if (!freshest) continue;
+      sp.items = sp.items.filter(it => { const t = ageOf(it); if (!t) return true; return (freshest - t) <= 7 * DAY; });
+    }
+  })();
   console.log(`📦 Seed: ${seed.products.length} produtos`);
 
   // 1) Hero sponsored — EANs curados

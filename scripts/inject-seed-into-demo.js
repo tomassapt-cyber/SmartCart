@@ -297,3 +297,37 @@ console.log(`✔ ${INDEX} (homepage principal com catálogo)`);
 console.log(`✔ ${CATALOGO} (alias /catalogo.html)`);
 console.log(`  demo.html: ${before} KB → ${after} KB`);
 console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s,sp)=>s+sp.items.length,0)} ofertas`);
+
+
+// ── Homepage curada SEMPRE em sincronia (2026-07-03) ────────────────────────
+// O bloco "Homepage curated data" (hero/em-alta/bestsellers) era gerado à mão
+// e ficou semanas parado — mostrava preços que o render já escondia (fantasma
+// Effaclar 11.61). Agora regenera-se em CADA inject com os mesmos overlays
+// (o build-homepage-data.js aplica blocklist+fantasmas+podres) e injeta-se.
+{
+  // NOTA: scripts/inject-homepage-data.js é LEGADO (escreve index.html a
+  // partir do template homepage.html antigo — destruiria o site). O bloco
+  // <script id="hp-data"> vive DENTRO de demo/index/catalogo — substituímos
+  // in-place nos 3 ficheiros.
+  const { spawnSync } = require('child_process');
+  const r1 = spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 120000 });
+  if (r1.status === 0) {
+    try {
+      const hp = fs.readFileSync(path.join(ROOT, 'data', 'homepage-data.json'), 'utf8');
+      const HP_OPEN = '<script type="application/json" id="hp-data">';
+      let done = 0;
+      for (const f of ['demo.html', 'index.html', 'catalogo.html']) {
+        const fp = path.join(ROOT, f);
+        const h = fs.readFileSync(fp, 'utf8');
+        const o = h.indexOf(HP_OPEN);
+        if (o === -1) continue;
+        const a = o + HP_OPEN.length;
+        const c = h.indexOf('</'+'script>', a);
+        if (c === -1) continue;
+        fs.writeFileSync(fp, h.slice(0, a) + String.fromCharCode(10) + hp + String.fromCharCode(10) + h.slice(c), 'utf8');
+        done++;
+      }
+      console.log(`🏠 Homepage curada regenerada (mínimo absoluto + overlays) em ${done} ficheiros.`);
+    } catch (e) { console.warn('⚠ substituição hp-data falhou:', e.message); }
+  } else console.warn('⚠ build-homepage-data falhou:', (r1.stderr || '').slice(0, 200));
+}
