@@ -85,6 +85,17 @@ const seedJson = JSON.parse(seed);
   if (dropped) console.log(`🧹 Variantes de produto-trocado removidas: ${dropped} (ex.: BB cream 40ml numa água micelar)`);
 })();
 
+// ── Overlay: FUNDIR variantes de GTIN (UPC-A ↔ EAN-13 com zero) ────────────
+// O mesmo GTIN codificado com padding diferente (850… vs 0850…) partia o
+// produto em 2 cards e os preços não comparavam. Funde por núcleo canónico
+// (só zeros à esquerda — seguro; ver scripts/dedup-ean-variants.js). Corre a
+// cada refresh para apanhar variantes novas que os scrapes vão trazendo.
+(function applyEanVariantMerge() {
+  const { mergeEanVariants } = require('./dedup-ean-variants');
+  const r = mergeEanVariants(seedJson);
+  if (r.merged) console.log(`🔗 Variantes de GTIN fundidas (UPC-A↔EAN-13): ${r.merged} produtos · ${r.remapped} ofertas`);
+})();
+
 // ── Overlay: FUNDIR variantes promocionais no produto-base (NÃO-destrutivo) ─
 // Um MESMO produto listado com promo/oferta ("+100ml grátis", "Edição
 // Limitada", "−50% 2ª unidade", "PROMO") vem no seed como produto separado.
