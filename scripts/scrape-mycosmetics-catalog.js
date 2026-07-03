@@ -140,7 +140,7 @@ async function main() {
   console.log(`\n══════ mycosmetics scrape ══════`);
   console.log(`  Produtos com EAN: ${products.length} · in_stock: ${products.filter(p => p.in_stock).length}`);
   console.log(`  skipped/404/erro: ${stats.skipped}/${stats.not_found}/${stats.error}`);
-  console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
+  if (LIMIT === Infinity) console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
 }
 
 module.exports = { extractProductData, isProductUrl };
