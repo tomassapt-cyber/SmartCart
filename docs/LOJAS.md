@@ -2,7 +2,7 @@
 
 Referência de todas as lojas integradas, como cada uma é raspada, por que chave
 casa, e se se actualiza sozinha na nuvem (GitHub Actions) ou precisa do PC.
-Última actualização: 2026-07-02 · **25 lojas · ~71.000 ofertas** (seed).
+Última actualização: 2026-07-03 · **27 lojas · ~87.000 ofertas** (seed).
 
 ---
 
@@ -24,37 +24,39 @@ Pipeline por loja: `scrape-<loja>-catalog.js` → `data/catalog/<loja>-full.json
 
 ---
 
-## As 25 lojas
+## As 27 lojas
 
 | # | Loja | Ofertas | Chave | Técnica de scrape | Nuvem? |
 |---|------|--------:|-------|-------------------|--------|
-| 1 | Atida \| Mifarma | 10.375 | EAN | sitemap + JSON-LD | ✅ 15h |
-| 2 | Druni PT | 9.849 | EAN | sitemap + JSON-LD | ✅ 06h |
-| 3 | SweetCare | 8.250 | EAN | sitemap + JSON-LD | ✅ 10h |
-| 4 | Wells | 5.475 | EAN | sitemap + JSON-LD | ✅ 14h |
-| 5 | **Aveiro Farma** 🆕 | 4.821 | EAN | OpenCart + JSON-LD (gtin14); servidor LENTO (PHP 5.6, ~15s/pedido) — timeouts generosos | ✅ 11h |
-| 6 | Loja da Farmácia | 4.284 | EAN | Magento + JSON-LD | ✅ 19h |
-| 7 | Farmácia.pt | 3.716 | EAN | sitemap + JSON-LD | ✅ 17h |
-| 8 | Notino | 3.647 | EAN | sitemap-categoria + JSON-LD; **via curl** | ❌ **só PC** |
-| 9 | Cocooncenter | 3.272 | EAN | sitemap-pt + JSON-LD; 410=descont. | ✅ 15h |
-| 10 | Bairro da Saúde | 3.020 | CNP | HTML | ✅ 05h |
-| 11 | **Farmácia Virtual** 🆕 | 2.092 | CNP | sitemap + JSON-LD | ✅ 13h |
-| 12 | Pharma GDD (FR) | 2.040 | EAN | sitemap + JSON-LD | ✅ 22h |
-| 13 | Easyfarma | 1.899 | CNP | HTML (barcode=CNP) | ✅ 04h |
-| 14 | Farmácia Barreiros | 1.399 | CNP | PrestaShop | ✅ 22h30 |
-| 15 | Farmácia 365 | 1.286 | EAN | sitemap + JSON-LD | ✅ 16h |
-| 16 | byFarma | 1.067 | EAN | Magento + JSON-LD | ✅ 12h |
-| 17 | A Sua Farmácia Online | 963 | EAN/fp | HTML | ✅ 21h |
-| 18 | **Saúde Mayor** 🆕 | 920 | **EAN + CNP** | plataforma própria + JSON-LD (`mpn`=EAN, `sku`=CNP — chave dupla) | ✅ 09h |
-| 19 | **My Cosmetics** 🆕 | 820 | EAN (+CNP) | Shopify + JSON-LD (gtin13; `sku`=CNP em ~99%) | ✅ 08h |
-| 20 | Farmácias Portuguesas | 701 | CNP | Magento; preço via cookie `pharmacy_code=09881` + JSON `pricingData` | ✅ 16h |
-| 21 | Pharma2you | 384 | fingerprint | feed Google Merchant (sem EAN) | ✅ 17h |
-| 22 | Manuela Serra | 366 | EAN/fp | HTML | ✅ 06h |
-| 23 | A Farmácia Online | 351 | EAN | sitemap + JSON-LD | ✅ 18h |
-| 24 | A Minha Farmácia Online | 221 | EAN | sitemap + JSON-LD | ✅ 21h30 |
-| 25 | HaemiSkin | 75 | EAN | sitemap + JSON-LD | ✅ 20h |
+| 1 | Atida \| Mifarma | 10 410 | EAN | sitemap + JSON-LD | ✅ 15h |
+| 2 | Druni PT | 9908 | EAN | sitemap + JSON-LD | ✅ 06h |
+| 3 | Primor | 8733 | EAN | Magento + JSON-LD (mpn=EAN); --dermo de 37k | ✅ 02h |
+| 4 | SweetCare | 8250 | EAN | sitemap + JSON-LD | ✅ 10h |
+| 5 | Notino | 7456 | EAN | sitemap-categoria + JSON-LD; **via curl** | ❌ **só PC** |
+| 6 | Wells | 5472 | EAN | sitemap + JSON-LD | ✅ 14h |
+| 7 | Aveiro Farma | 5007 | EAN | OpenCart + JSON-LD (gtin14); servidor LENTO | ✅ 11h |
+| 8 | Loja da Farmácia | 4915 | EAN | Magento + JSON-LD | ✅ 19h |
+| 9 | Farmácia.pt | 3731 | EAN | sitemap + JSON-LD | ✅ 17h |
+| 10 | Cocooncenter | 3352 | EAN | sitemap-pt + JSON-LD; 410=descont. | ✅ 15h |
+| 11 | Bairro da Saúde | 3069 | CNP | HTML | ✅ 05h |
+| 12 | Farmácia Virtual | 2502 | CNP | sitemap + JSON-LD | ✅ 13h |
+| 13 | Pharma GDD | 2092 | EAN | sitemap + JSON-LD | ✅ 22h |
+| 14 | Easyfarma | 1884 | CNP | HTML (barcode=CNP) | ✅ 04h |
+| 15 | Farmácia Barreiros | 1459 | CNP | PrestaShop; fallback URLs-conhecidos se WAF | ✅ 22h30 |
+| 16 | Saúde Mayor | 1367 | **EAN + CNP** | JSON-LD (mpn=EAN, sku=CNP — dupla) | ✅ 09h |
+| 17 | Farmácia 365 | 1290 | EAN | sitemap + JSON-LD | ✅ 16h |
+| 18 | Perfume's Club | 1116 | EAN | sitemap + JSON-LD (gtin13); --dermo por marca | ✅ 00h30 |
+| 19 | My Cosmetics | 1100 | EAN (+CNP) | Shopify + JSON-LD | ✅ 08h |
+| 20 | byFarma | 1087 | EAN | Magento + JSON-LD | ✅ 12h |
+| 21 | A Sua Farmácia Online | 1018 | EAN/fp | HTML | ✅ 21h |
+| 22 | Farmácias Portuguesas | 774 | CNP | Magento; cookie pharmacy_code | ✅ 16h |
+| 23 | Pharma2you | 430 | fingerprint | feed Google Merchant | ✅ 17h |
+| 24 | Manuela Serra | 368 | EAN/fp | HTML | ✅ 06h |
+| 25 | A Farmácia Online | 350 | EAN | sitemap + JSON-LD; fallback URLs-do-seed se WAF | ✅ 18h |
+| 26 | A Minha Farmácia Online | 226 | EAN | sitemap + JSON-LD | ✅ 21h30 |
+| 27 | HaemiSkin | 80 | EAN | sitemap + JSON-LD | ✅ 20h |
 
-🆕 = adicionadas em Jul 2026. Horários em UTC. **24/25 actualizam sozinhas na nuvem.**
+Horários em UTC. **26/27 actualizam sozinhas na nuvem** (Notino só do PC). Novas Jul 2026: Farmácia Virtual, Saúde Mayor, My Cosmetics, Aveiro Farma, Perfume’s Club, Primor.
 Ofertas = itens no seed (a "base de dados"); o render publica menos (filtro de
 visibilidade + ofertas-fantasma, ver abaixo).
 
@@ -134,6 +136,14 @@ Reactivar na nuvem exigiria um proxy residencial / serviço (ScraperAPI, etc.).
 | newpharma.com | Inalcançável (curl 000) |
 | farmaciaportugal.pt | WordPress institucional; product-sitemap parado desde 2020 (catálogo morto) |
 | parafarma24.com | Site em ES por default, sem sinal de envio PT / rota /pt |
+
+### Varrimento COMPLETO da Google Sheet (2026-07-03)
+91 domínios sondados (script probe em massa): **67 mortos** (DNS nem resolve),
+~15 vivos sem EAN acessível (pluricosmetica, celeiro, organii, smartbeauty…),
+4 protegidos (Sephora/Douglas 400-bot-wall, farmaciagarcia products.json
+bloqueado, Perfumes&Companhia timeout). **Integrados: Primor + Perfume's Club.**
+Pequenas viáveis por integrar (CNP no sku; sitemaps com 301 a resolver):
+pharmascalabis.com.pt (WooCommerce), farmaciaideal.pt (Magento).
 
 ## Candidatas VIÁVEIS por explorar (futuro)
 - **Continente Online** — tem EAN+JSON-LD e é acessível, MAS catálogo dominado por
