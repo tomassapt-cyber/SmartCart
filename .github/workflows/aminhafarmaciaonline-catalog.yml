@@ -16,6 +16,7 @@ on:
   schedule:
     # 21h30 UTC — depois da A Sua Farmácia Online (21h)
     - cron: '30 21 * * *'
+    - cron: '30 9 * * *'   # 2x/dia: preços <12h stale (regra do user 2026-07-03)
   workflow_dispatch:
     inputs:
       limit:

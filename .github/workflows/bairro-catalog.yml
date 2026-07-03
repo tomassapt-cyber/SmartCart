@@ -16,6 +16,7 @@ on:
   schedule:
     # 05h UTC — depois de Easyfarma (04h), antes de Druni (06h)
     - cron: '0 5 * * *'
+    - cron: '0 17 * * *'   # 2x/dia: precos <12h stale (regra do user 2026-07-03)
   workflow_dispatch:
     inputs:
       limit:

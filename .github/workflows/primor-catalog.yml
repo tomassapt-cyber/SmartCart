@@ -8,6 +8,7 @@ on:
   schedule:
     # 02h UTC — slot livre; catalogo grande (37k, dermo ~?k)
     - cron: '0 2 * * *'
+    - cron: '0 14 * * *'   # 2x/dia: preços <12h stale (regra do user 2026-07-03)
   workflow_dispatch:
     inputs:
       limit:

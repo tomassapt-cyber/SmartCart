@@ -21,6 +21,7 @@ on:
   schedule:
     # 13h UTC — antes de Pharma2you (17h) e A Farmácia Online (18h)
     - cron: '0 13 * * *'
+    - cron: '0 1 * * *'   # 2x/dia: preços <12h stale (regra do user 2026-07-03)
   workflow_dispatch:
     inputs:
       limit:

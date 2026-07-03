@@ -16,6 +16,7 @@ on:
   schedule:
     # 18h UTC — depois de Farmácia.pt (17h)
     - cron: '0 18 * * *'
+    - cron: '0 6 * * *'   # 2x/dia: preços <12h stale (regra do user 2026-07-03)
   workflow_dispatch:
     inputs:
       limit:

@@ -16,6 +16,7 @@ on:
   schedule:
     # 15h UTC — depois de Wells (14h), antes do ciclo recomeçar
     - cron: '0 17 * * *'
+    - cron: '30 4 * * *'   # 2x/dia: precos <12h stale (regra do user 2026-07-03)
   workflow_dispatch:
     inputs:
       limit:

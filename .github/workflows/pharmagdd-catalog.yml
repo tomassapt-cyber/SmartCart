@@ -13,6 +13,7 @@ on:
   schedule:
     # 22h UTC — fim da cadeia diária
     - cron: '0 22 * * *'
+    - cron: '0 10 * * *'   # 2x/dia: preços <12h stale (regra do user 2026-07-03)
   workflow_dispatch:
     inputs:
       limit:
