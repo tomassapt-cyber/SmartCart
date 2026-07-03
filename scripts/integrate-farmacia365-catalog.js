@@ -89,7 +89,16 @@ function syntheticEan(p) {
   // makeup + perfume excluídos. Mantemos: skincare, hair, body.
   const ALLOWED_CATEGORIES = new Set(['skincare', 'hair', 'haircare', 'body']);
   const beforeFilter = efData.products.length;
-  let efToIntegrate = efData.products.filter(p => ALLOWED_CATEGORIES.has(p.category));
+  // Ofertas EXISTENTES nunca ficam presas ao filtro dermo (auditoria
+  // 2026-07-03): URL com oferta nesta loja passa sempre — update de preço.
+  const _existingUrls = new Set(((seed.store_products.find(g => g.store_slug === 'farmacia365') || {}).items || []).map(it => it.url).filter(Boolean));
+  let keptKnown = 0;
+  let efToIntegrate = efData.products.filter(p => {
+    if (ALLOWED_CATEGORIES.has(p.category)) return true;
+    if (p.url && _existingUrls.has(p.url)) { keptKnown++; return true; }
+    return false;
+  });
+  if (keptKnown) console.log(`   ↻ ${keptKnown} fora do filtro mas com oferta existente — mantidos p/ refresh`);
   console.log(`🎯 Filtro categoria (dermo focus): ${beforeFilter} → ${efToIntegrate.length} produtos`);
   console.log(`   (skip ${beforeFilter - efToIntegrate.length} de makeup/perfume/outros)\n`);
 

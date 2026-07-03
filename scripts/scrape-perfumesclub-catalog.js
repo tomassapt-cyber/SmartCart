@@ -139,6 +139,17 @@ async function main() {
   urls = [...new Set(urls)];
   console.log(`  ${urls.length} produtos no sitemap`);
   if (args.dermo) { const b = urls.length; urls = urls.filter(u => DERMO_BRANDS.has(brandSlugOf(u))); console.log(`  🧴 --dermo (marca): ${urls.length} de ${b}`); }
+  // Ofertas EXISTENTES nunca ficam presas ao filtro --dermo (auditoria
+  // 2026-07-03): URLs com oferta no seed re-entram SEMPRE na fila — sem isto
+  // o preço delas apodrecia (a loja raspa todos os dias mas nunca as visita).
+  try {
+    const seedNow = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
+    const spSeed = (seedNow.store_products || []).find(g => g.store_slug === 'perfumesclub');
+    const known = (spSeed?.items || []).map(it => it.url).filter(u => u && isProductUrl(u));
+    const b2 = urls.length;
+    urls = [...new Set([...urls, ...known])];
+    if (urls.length > b2) console.log(`  ↻ +${urls.length - b2} URLs de ofertas existentes (fora do filtro dermo)`);
+  } catch { /* sem seed local (CI antes do checkout completo?) — segue */ }
   if (urls.length === 0) { console.error('✗ Sitemap vazio (bloqueio de IP?) — abortar sem tocar no catálogo.'); process.exit(1); }
   if (CHUNK) { const [n, mm] = CHUNK.split('/').map(Number); const sorted = [...urls].sort(); const size = Math.ceil(sorted.length / mm); urls = sorted.slice((n - 1) * size, n * size); console.log(`  Chunk ${CHUNK}: ${urls.length}`); }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);

@@ -136,7 +136,7 @@ const seedJson = JSON.parse(seed);
   // Actualizar a cache de verificação (bounded; falha de rede não bloqueia —
   // o overlay usa a cache existente e nunca esconde sem confirmação).
   try {
-    const r = spawnSync('node', [path.join(__dirname, 'verify-ghost-offers.js'), '--quiet', '--max=250'], { cwd: ROOT, encoding: 'utf8', timeout: 180000 });
+    const r = spawnSync('node', [path.join(__dirname, 'verify-ghost-offers.js'), '--quiet', '--max=400'], { cwd: ROOT, encoding: 'utf8', timeout: 180000 });
     if (r.stdout) process.stdout.write(r.stdout);
   } catch { /* offline → usa cache existente */ }
   const { dropGhostOffers } = require('./lib/ghost-offers');
@@ -148,6 +148,34 @@ const seedJson = JSON.parse(seed);
   } else {
     console.log(`👻 Ofertas-fantasma: 0 confirmadas (${r.totalUnconfirmed} candidatas por confirmar; ${r.storesProcessed} lojas verificadas)`);
   }
+})();
+
+// ── Overlay: ESCONDER ofertas PODRES (loja fresca, oferta parada) ──────────
+// Auditoria 2026-07-03: ~1.900 ofertas com verified_at >7d em lojas que raspam
+// diariamente — produto removido (fantasma pendente), fora do filtro --dermo,
+// ou a falhar extração. O preço destas ofertas apodrece e "não bate certo"
+// (reportado pelo user 3×). Regra: se a oferta está ≥7 dias mais velha que o
+// refresh mais recente DA MESMA loja → esconder do render (seed intacto;
+// volta sozinha quando o scrape a re-verificar). Lojas-snapshot (Notino) não
+// são afetadas: a diferença interna é ~0.
+(function dropRottenOffers() {
+  const DAY = 864e5, MAX_LAG_DAYS = 7;
+  const ageOf = (it) => {
+    let t = +new Date(it.verified_at || 0);
+    for (const v of (it.variants || [])) { const tv = +new Date(v.verified_at || 0); if (tv > t) t = tv; }
+    return t;
+  };
+  let hidden = 0; const perStore = [];
+  for (const sp of seedJson.store_products) {
+    let freshest = 0;
+    for (const it of sp.items) { const t = ageOf(it); if (t > freshest) freshest = t; }
+    if (!freshest) continue;
+    const before = sp.items.length;
+    sp.items = sp.items.filter(it => { const t = ageOf(it); if (!t) return true; return (freshest - t) <= MAX_LAG_DAYS * DAY; });
+    const n = before - sp.items.length;
+    if (n) { hidden += n; perStore.push(`${sp.store_slug}:${n}`); }
+  }
+  if (hidden) console.log(`🥀 Ofertas podres escondidas (>${7}d atrás do refresh da loja): ${hidden} · ${perStore.join(', ')}`);
 })();
 
 // ── Filtro de visibilidade (NÃO-destrutivo) ──────────────────────────────

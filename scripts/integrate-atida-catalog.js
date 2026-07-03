@@ -93,12 +93,19 @@ function syntheticEan(p) {
   const ALLOWED_CATEGORIES = new Set(['skincare', 'hair', 'haircare', 'body']);
   const beforeFilter = efData.products.length;
   let recoveredByName = 0;
+  // Ofertas EXISTENTES nunca ficam presas ao filtro dermo: se o produto já
+  // está no site (URL conhecido nesta loja), o preço TEM de continuar a
+  // atualizar (auditoria 2026-07-03: 239 ofertas atida presas >7d por isto).
+  const _existingUrls = new Set(((seed.store_products.find(g => g.store_slug === 'atida') || {}).items || []).map(it => it.url).filter(Boolean));
+  let keptKnown = 0;
   let efToIntegrate = efData.products.filter(p => {
     if (ALLOWED_CATEGORIES.has(p.category)) { p._cat = p.category === 'haircare' ? 'hair' : p.category; return true; }
     const nameCat = classifyDermo(p.name);
     if (nameCat) { p._cat = nameCat; recoveredByName++; return true; }
+    if (p.url && _existingUrls.has(p.url)) { p._cat = null; keptKnown++; return true; }  // update-only
     return false;
   });
+  if (keptKnown) console.log(`   ↻ ${keptKnown} produtos fora do filtro mas com oferta existente — mantidos p/ refresh de preço`);
   console.log(`🎯 Filtro categoria (dermo focus): ${beforeFilter} → ${efToIntegrate.length} produtos (recuperados por nome: ${recoveredByName})`);
   console.log(`   (skip ${beforeFilter - efToIntegrate.length} de makeup/perfume/outros)\n`);
 

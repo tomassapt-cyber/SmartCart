@@ -14,7 +14,8 @@ on:
   schedule:
     # 20h UTC — depois de Loja da Farmácia (19h)
     - cron: '0 20 * * *'
-    - cron: '0 8 * * *'   # 2x/dia: preços <12h stale (regra do user 2026-07-03)
+    - cron: '0 4 * * *'   # 3x/dia (regra do user 2026-07-03)
+    - cron: '0 12 * * *'   # 3x/dia
   workflow_dispatch:
     inputs:
       limit:
