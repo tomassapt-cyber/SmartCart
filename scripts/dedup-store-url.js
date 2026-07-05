@@ -64,7 +64,8 @@ const parent = {};
 const find = x => { parent[x] ??= x; return parent[x] === x ? x : (parent[x] = find(parent[x])); };
 const union = (a, b) => { const ra = find(a), rb = find(b); if (ra !== rb) parent[ra] = rb; };
 
-let safeGroups = 0, skippedCollision = 0;
+const isRealGtin = e => /^\d{12,14}$/.test(String(e || '')) && !/0{6,}/.test(String(e));
+let safeGroups = 0, skippedCollision = 0, conflictRealEans = 0;
 for (const sp of seed.store_products) {
   const byCode = {};
   for (const it of sp.items) {
@@ -73,10 +74,16 @@ for (const sp of seed.store_products) {
   }
   for (const items of Object.values(byCode)) {
     if (items.length < 2) continue;
-    // SEGURANÇA: todos os EANs do grupo têm de ser únicos no seed
+    // SEGURANÇA 1: todos os EANs do grupo têm de ser únicos no seed
     if (!items.every(it => eanCount[it.ean] === 1)) { skippedCollision++; continue; }
-    safeGroups++;
     const eans = [...new Set(items.map(it => it.ean))];
+    // SEGURANÇA 2 (2026-07-04): NÃO fundir ≥2 GTINs REAIS distintos. Um mesmo
+    // URL de loja sob dois EANs reais é um CONFLITO (item stale de um scraper
+    // antigo + item fresco), NÃO o mesmo produto. Fundi-los espalhava um ÍMAN
+    // (Klorane/Uriage colados no Olaplex Nº5P, a regenerar todos os dias).
+    // A união por URL só é segura quando ≤1 GTIN real (resto sintético).
+    if (eans.filter(isRealGtin).length >= 2) { conflictRealEans++; continue; }
+    safeGroups++;
     for (let i = 1; i < eans.length; i++) union(eans[0], eans[i]);
   }
 }
@@ -91,7 +98,7 @@ for (const p of seed.products) {
 const dupClusters = Object.values(clusters).map(s => [...s]).filter(a => a.length >= 2);
 
 console.log(`📊 ${seed.products.length} produtos`);
-console.log(`   grupos de URL seguros: ${safeGroups} | ignorados (colisão EAN): ${skippedCollision}`);
+console.log(`   grupos de URL seguros: ${safeGroups} | ignorados (colisão EAN): ${skippedCollision} | conflitos 2+ GTIN real (não fundidos): ${conflictRealEans}`);
 console.log(`   clusters a fundir: ${dupClusters.length}\n`);
 
 if (dupClusters.length === 0) { console.log('✅ Nada a fundir.'); process.exit(0); }
