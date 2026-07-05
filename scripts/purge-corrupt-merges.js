@@ -117,7 +117,17 @@ for (const c of corrupt) {
 
 if (!APPLY) {
   console.log('🧪 dry-run: nada apagado. Revê a lista acima; corre com --apply para purgar.');
-  process.exit(0);
+  // Exit-code p/ monitor: 0 = limpo, 1 = há corrupção detectada.
+  process.exit(corrupt.length > 0 ? 1 : 0);
+}
+
+// SEGURANÇA (2026-07-04): o detector é curado/preciso (12 típicos). Se de
+// repente marca muitos, algo partiu (ex.: BRAND_PATTERNS a bater em lixo) —
+// abortar em vez de apagar meio catálogo. Override com --force.
+const MAX_PURGE = parseInt((process.argv.find(a => a.startsWith('--max=')) || '').split('=')[1] || '80', 10);
+if (corrupt.length > MAX_PURGE && !process.argv.includes('--force')) {
+  console.error(`\n✗ ABORTADO: ${corrupt.length} candidatos > teto ${MAX_PURGE}. Suspeito de detector partido. Revê ou usa --force.`);
+  process.exit(2);
 }
 
 const eansToPurge = new Set(corrupt.map(c => c.ean));

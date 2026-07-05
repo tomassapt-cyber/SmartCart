@@ -1,0 +1,75 @@
+# CosMath — Monitor de qualidade das comparações (auto-cura de ímanes)
+# ============================================================
+# Os "ímanes" (um EAN com ofertas de ≥2 marcas distintas — ex.: Klorane/Uriage
+# colados num Olaplex) davam comparações erradas. A causa raiz (dedup-store-url
+# a fundir 2 GTINs reais) foi corrigida em 2026-07-04, mas este monitor é a
+# rede de segurança: corre DEPOIS das janelas de scraping, deteta ímanes com o
+# detector curado (purge-corrupt-merges) e AUTO-CURA (purga → inject → push).
+# Como o merge legado está OFF, o próximo scrape recria os produtos corretos e
+# separados. Se não houver ímanes, não faz nada (sai limpo).
+#
+# Precisão: o detector só marca produtos cujas ofertas revelam ≥2 MARCAS
+# bem-conhecidas distintas (lista curada, famílias agrupadas). Teto de
+# segurança (--max) aborta se marcar demais (sinal de detector partido).
+
+name: Quality monitor (imanes)
+
+on:
+  schedule:
+    - cron: '30 6 * * *'   # 06:30 UTC — depois das runs nocturnas, antes do freshness (07h)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  heal:
+    name: Deteta e auto-cura ímanes
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
+
+      - name: Detetar ímanes (dry-run)
+        id: detect
+        run: |
+          if node scripts/purge-corrupt-merges.js; then
+            echo "found=0" >> "$GITHUB_OUTPUT"
+            echo "✅ Sem ímanes."
+          else
+            echo "found=1" >> "$GITHUB_OUTPUT"
+            echo "⚠ Ímanes detetados — a auto-curar."
+          fi
+
+      - name: Auto-curar (purga + inject + commit + push resiliente)
+        if: steps.detect.outputs.found == '1'
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          node scripts/purge-corrupt-merges.js --apply
+          node scripts/inject-seed-into-demo.js
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nada mudou — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html data/homepage-data.json 2>/dev/null || true
+          git commit -m "fix: auto-cura de imanes (quality-monitor $(date -u +%Y-%m-%d))"
+          # resilient-push re-corre purga+inject sobre o origin mais recente em conflito
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/purge-corrupt-merges.js --apply && node scripts/inject-seed-into-demo.js" \
+            "fix: auto-cura de imanes (quality-monitor $(date -u +%Y-%m-%d))"
