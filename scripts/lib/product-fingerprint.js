@@ -686,6 +686,37 @@ function fuzzyMatch(candidate, productList, threshold = 0.65) {
   return bestMatch ? { product: bestMatch, score: bestScore } : null;
 }
 
+/**
+ * Fuzzy SEGURO para lojas de COMPARAÇÃO enrich-only (sem EAN): liga um produto
+ * do catálogo a um produto EXISTENTE do seed da MESMA marca quando é claramente
+ * o mesmo item com nome diferente. Guards apertados (validados 2026-07-05 —
+ * abaixo disto apanha SKUs diferentes: gel≠creme, tripla-ação≠extra-fresca):
+ *   • mesma marca canónica (a lista é já filtrada por marca pelo caller);
+ *   • volume dentro de 6% (se ambos tiverem);
+ *   • Jaccard dos tokens do nome >= threshold (default 0.85);
+ *   • >=1 token distintivo partilhado (>4 chars, não spf/genérico).
+ * Como a loja é enrich-only, o pior caso é 1 preço errado (recuperável), não
+ * corromper a identidade de um produto. Devolve { product, score } ou null.
+ */
+function safeFuzzyMatch(candidate, sameBrandProducts, opts = {}) {
+  const threshold = opts.threshold != null ? opts.threshold : 0.85;
+  const cand = nameTokenSet(candidate.name, candidate.brand);
+  if (cand.size < 2) return null;
+  const cvol = extractVolumeMl(candidate.name);
+  let best = null, bestScore = threshold;
+  for (const p of sameBrandProducts) {
+    const svol = extractVolumeMl(p.name);
+    if (cvol && svol && Math.abs(cvol - svol) / Math.max(cvol, svol) > 0.06) continue;   // volume tem de bater
+    const pt = nameTokenSet(p.name, p.brand);
+    let distinctive = false;
+    for (const t of cand) if (t.length > 4 && pt.has(t) && !/^spf\d*$/.test(t)) { distinctive = true; break; }
+    if (!distinctive) continue;
+    const score = jaccard(cand, pt);
+    if (score > bestScore) { bestScore = score; best = p; }
+  }
+  return best ? { product: best, score: bestScore } : null;
+}
+
 module.exports = {
   productFingerprint,
   productFingerprintWithVolume,
@@ -695,6 +726,7 @@ module.exports = {
   extractVolumeMl,
   stripAccents,
   fuzzyMatch,
+  safeFuzzyMatch,
   nameTokenSet,
   jaccard,
   GENERIC_BRAND_LABELS,
