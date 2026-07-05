@@ -1,30 +1,30 @@
-# CosMath — Continente Online daily price refresh
+# CosMath — Continente Online (loja de COMPARAÇÃO, não cria produtos)
 # ============================================================
-# continente.pt (Magento) NÃO expõe EAN/JSON-LD nas páginas, mas publica um
-# feed Google Merchant completo (~2.6k produtos):
-#   https://continente.pt/feeds/google_export.xml
+# continente.pt NÃO expõe gtin — o integrador casa por FINGERPRINT (marca+nome)
+# com guard de volume e entra SÓ como fonte de preço sobre produtos existentes.
+# O catálogo tem ~104k páginas; a whitelist de marcas beleza reduz a ~4.5k.
 #
-# O scraper é feed-based (1 download, sem raspar página a página → rápido).
-# Sem EAN, o integrador casa por FINGERPRINT (marca+nome) com guard de volume
-# e entra SÓ como fonte de preço sobre produtos existentes (não cria SKUs).
-#
-# Pipeline:
-#   1. scrape-continente-catalog.js   → data/catalog/continente-full.json
-#   2. integrate-continente-catalog.js → match por fingerprint (enrich-only)
-#      (inject-seed-into-demo.js corre dentro do integrate → regenera HTML)
+# CADÊNCIA (2026-07-05): os crons DIÁRIOS correm em modo KNOWN-ONLY — só
+# refrescam os URLs das ofertas que já temos (rápido, <1min). Um cron SEMANAL
+# (--full --resume) faz o scan completo para descobrir novos matches. Isto
+# resolve o timeout de 30min (o scan completo não cabia).
 
-name: Continente Online daily refresh
+name: Continente Online refresh
 
 on:
   schedule:
-    # 17h UTC — antes de A Farmácia Online (18h) e Loja da Farmácia (19h)
-    - cron: '15 2 * * *'
+    - cron: '15 2 * * *'      # diário known-only (rápido)
     - cron: '15 10 * * *'
     - cron: '15 18 * * *'
+    - cron: '0 4 * * 1'       # SEMANAL (segunda 04h UTC) — scan completo --full
   workflow_dispatch:
     inputs:
       limit:
         description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+      full:
+        description: 'true = scan completo (descobrir novos matches)'
         required: false
         default: ''
 
@@ -33,7 +33,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -57,10 +57,12 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
-      - name: Scrape Continente Online feed
+      - name: Scrape Continente Online
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-continente-catalog.js --limit=${{ github.event.inputs.limit }}
+          elif [ "${{ github.event.schedule }}" = "0 4 * * 1" ] || [ -n "${{ github.event.inputs.full }}" ]; then
+            node scripts/scrape-continente-catalog.js --full --resume
           else
             node scripts/scrape-continente-catalog.js
           fi

@@ -17,14 +17,18 @@ name: Pluricosmetica daily refresh
 
 on:
   schedule:
-    # 17h UTC — antes de A Farmácia Online (18h) e Loja da Farmácia (19h)
-    - cron: '45 2 * * *'
+    - cron: '45 2 * * *'      # diário known-only (rápido)
     - cron: '45 10 * * *'
     - cron: '45 18 * * *'
+    - cron: '30 4 * * 1'      # SEMANAL (segunda 04h30 UTC) — scan completo --full
   workflow_dispatch:
     inputs:
       limit:
         description: 'Limit (vazio = sem limite, útil para teste)'
+        required: false
+        default: ''
+      full:
+        description: 'true = scan completo (descobrir novos matches)'
         required: false
         default: ''
 
@@ -33,7 +37,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -57,10 +61,12 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
-      - name: Scrape Pluricosmetica feed
+      - name: Scrape Pluricosmetica
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-pluricosmetica-catalog.js --limit=${{ github.event.inputs.limit }}
+          elif [ "${{ github.event.schedule }}" = "30 4 * * 1" ] || [ -n "${{ github.event.inputs.full }}" ]; then
+            node scripts/scrape-pluricosmetica-catalog.js --full --resume
           else
             node scripts/scrape-pluricosmetica-catalog.js
           fi

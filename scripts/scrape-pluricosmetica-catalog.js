@@ -115,7 +115,20 @@ async function main() {
   const smXml = await fetchText(SITEMAP_URL);
   let urls = [...new Set(locs(smXml).filter(isProductUrl))];
   console.log(`  ${urls.length} produtos no sitemap`);
-  if (urls.length === 0) { console.error('✗ 0 URLs após filtro (sitemap vazio/bloqueio?) — abortar.'); process.exit(1); }
+  // MODO KNOWN-ONLY (default nos crons diários): loja de COMPARAÇÃO (~10k URLs,
+  // enrich-only). Refrescar tudo 3×/dia rebentava o timeout de 30min. Por
+  // omissão scrapamos SÓ os URLs das ofertas que já existem no seed; descoberta
+  // de novos matches com --full (semanal / manual).
+  if (!args.full) {
+    try {
+      const seedNow = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
+      const sp = (seedNow.store_products || []).find(g => g.store_slug === 'pluricosmetica');
+      const known = [...new Set((sp?.items || []).map(it => it.url).filter(u => u && isProductUrl(u)))];
+      if (known.length >= 5) { urls = known; console.log(`  ♻ known-only: ${urls.length} URLs de ofertas existentes (usa --full p/ descobrir novos)`); }
+      else console.log(`  (poucas ofertas conhecidas — scan completo)`);
+    } catch { /* sem seed → scan completo */ }
+  }
+  if (urls.length === 0) { console.error('✗ 0 URLs (sitemap vazio/bloqueio?) — abortar.'); process.exit(1); }
   if (CHUNK) { const [n, mm] = CHUNK.split('/').map(Number); const sorted = [...urls].sort(); const size = Math.ceil(sorted.length / mm); urls = sorted.slice((n - 1) * size, n * size); console.log(`  Chunk ${CHUNK}: ${urls.length}`); }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 

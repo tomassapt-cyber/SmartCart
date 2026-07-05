@@ -139,7 +139,21 @@ async function main() {
   const b = urls.length;
   urls = urls.filter(u => BRAND_RE.test(u));
   console.log(`  🧴 whitelist de marcas beleza: ${urls.length} de ${b}`);
-  if (urls.length === 0) { console.error('✗ 0 URLs após filtro (sitemap vazio/bloqueio?) — abortar.'); process.exit(1); }
+  // MODO KNOWN-ONLY (default nos crons diários): loja de COMPARAÇÃO — só
+  // enriquece produtos que já temos. Scrapar as ~104k páginas do hipermercado
+  // 3×/dia para refrescar dezenas de ofertas rebentava o timeout. Por omissão
+  // refrescamos SÓ os URLs das ofertas que já existem no seed (rápido); a
+  // descoberta de novos matches faz-se com --full (cron semanal / run manual).
+  if (!args.full) {
+    try {
+      const seedNow = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
+      const sp = (seedNow.store_products || []).find(g => g.store_slug === 'continente');
+      const known = [...new Set((sp?.items || []).map(it => it.url).filter(u => u && isProductUrl(u)))];
+      if (known.length >= 5) { urls = known; console.log(`  ♻ known-only: ${urls.length} URLs de ofertas existentes (usa --full p/ descobrir novos)`); }
+      else console.log(`  (poucas ofertas conhecidas — scan completo)`);
+    } catch { /* sem seed → scan completo */ }
+  }
+  if (urls.length === 0) { console.error('✗ 0 URLs (sitemap vazio/bloqueio?) — abortar.'); process.exit(1); }
   if (CHUNK) { const [n, mm] = CHUNK.split('/').map(Number); const sorted = [...urls].sort(); const size = Math.ceil(sorted.length / mm); urls = sorted.slice((n - 1) * size, n * size); console.log(`  Chunk ${CHUNK}: ${urls.length}`); }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 
