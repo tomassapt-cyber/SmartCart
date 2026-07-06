@@ -29,7 +29,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const { productFingerprint, normalizeBrand, displayBrand, stripAccents, extractVolumeMl, safeFuzzyMatch } = require('./lib/product-fingerprint');
+const { productFingerprint, normalizeBrand, displayBrand, stripAccents, extractVolumeMl, safeFuzzyMatch, looseMatchKey } = require('./lib/product-fingerprint');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -63,6 +63,9 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   // Índice por marca canónica p/ o fallback fuzzy seguro (mesma marca).
   const byBrand = {};
   for (const p of seed.products) { const b = normalizeBrand(p.brand); if (b) (byBrand[b] = byBrand[b] || []).push(p); }
+  // Índice de match SOLTO seguro (nome sem palavras-ruído): brand|chave -> produtos.
+  const looseIndex = {};
+  for (const p of seed.products) { const b = normalizeBrand(p.brand); if (!b) continue; const k = looseMatchKey(p.name, b); if (k) (looseIndex[b + '|' + k] = looseIndex[b + '|' + k] || []).push(p); }
 
   // Volumes conhecidos por produto (canónico + variantes de qualquer loja) —
   // guard de volume: o fingerprint ignora volume, por isso só anexamos a
@@ -123,7 +126,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     console.log(`🏬 Loja "Pharma2you" registada em seed.stores[].`);
   }
 
-  let matched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, added = 0, updated = 0, imgFilled = 0;
+  let matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, added = 0, updated = 0, imgFilled = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
 
   for (const ep of items) {
@@ -131,6 +134,15 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     if (!brand) { noBrand++; continue; }
     const fp = productFingerprint({ name: ep.name, brand });
     let target = fp ? fpIndex[fp] : null;
+    if (!target) {
+      // Match SOLTO determinístico: mesmo nome sem palavras-ruído (cabelo/capilar,
+      // conectores) + volume compatível. Seguro (discriminadores ficam).
+      const nb = normalizeBrand(brand);
+      const lk = looseMatchKey(ep.name, brand);
+      const cands = lk ? (looseIndex[nb + '|' + lk] || []) : [];
+      const lm = cands.find(c => { const cv = extractVolumeMl(ep.name), sv = extractVolumeMl(c.name); return !(cv && sv && Math.abs(cv - sv) / Math.max(cv, sv) > 0.06); });
+      if (lm) { target = lm; looseMatched++; }
+    }
     if (!target) {
       // Fallback fuzzy SEGURO (mesma marca+volume, J>=0.85, token distintivo).
       const fz = safeFuzzyMatch({ name: ep.name, brand }, byBrand[normalizeBrand(brand)] || []);
@@ -152,6 +164,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
 
   console.log('══════ Resumo (pharma2you · fonte de preço por fingerprint) ══════');
   console.log(`  Casados por fingerprint:   ${matched}`);
+  console.log(`  Casados por nome-sem-ruido: ${looseMatched}`);
   console.log(`  Casados por fuzzy seguro:   ${fuzzyMatched}`);
   console.log(`  Sem marca resolúvel:       ${noBrand}`);
   console.log(`  Sem produto correspondente: ${noMatch}`);

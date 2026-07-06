@@ -717,6 +717,32 @@ function safeFuzzyMatch(candidate, sameBrandProducts, opts = {}) {
   return best ? { product: best, score: bestScore } : null;
 }
 
+// ── Palavras-RUÍDO para matching "solto" das lojas de COMPARAÇÃO ────────────
+// Descritores genéricos que NUNCA distinguem produtos (conectores + redundância
+// tipo cabelo/capilar). NÃO incluir discriminadores reais (rosto/corpo/pele,
+// seco/oleoso, dia/noite, sky/high). Usado por looseMatchKey: dois nomes com o
+// MESMO conjunto de tokens após remover estes são o mesmo produto (ex.: Pantene
+// "Espuma Cabelo Pro V" ↔ "Espuma Capilar Pro-V"). Determinístico, sem fuzzy.
+const NOISE_TOKENS = new Set([
+  'para', 'com', 'e', 'de', 'da', 'do', 'em', 'no', 'na', 'nos', 'nas',
+  'the', 'of', 'and', 'a', 'o',
+  'cabelo', 'cabelos', 'capilar', 'pelo', 'pelos',
+  'uso', 'tipo', 'todo', 'todos', 'toda', 'todas',
+  'linha', 'profissional', 'professional', 'gama',
+]);
+
+/**
+ * Chave de match SOLTO (mas seguro): tokens do nome canónico MENOS palavras-
+ * ruído, ordenados. Dois produtos da mesma marca+volume com a mesma chave são
+ * o mesmo item (só diferem em descritores redundantes). Devolve null se
+ * ficarem < minTokens tokens distintivos (evita colidir nomes genéricos).
+ */
+function looseMatchKey(name, brand, minTokens = 2) {
+  const toks = [...nameTokenSet(name, brand)].filter(t => !NOISE_TOKENS.has(t));
+  if (toks.length < minTokens) return null;
+  return toks.sort().join('-');
+}
+
 module.exports = {
   productFingerprint,
   productFingerprintWithVolume,
@@ -727,6 +753,8 @@ module.exports = {
   stripAccents,
   fuzzyMatch,
   safeFuzzyMatch,
+  looseMatchKey,
+  NOISE_TOKENS,
   nameTokenSet,
   jaccard,
   GENERIC_BRAND_LABELS,
