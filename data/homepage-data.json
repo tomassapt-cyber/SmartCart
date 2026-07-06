@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-03T11:01:59.846Z",
-  "seed_total_products": 47493,
+  "generated_at": "2026-07-06T11:14:04.416Z",
+  "seed_total_products": 48817,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -55,6 +55,36 @@
   ],
   "bestsellers": [
     {
+      "ean": "3661434001437",
+      "name": "Uriage Bariesun Creme Minerale Spf50+",
+      "brand": "Uriage",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/uriage-000484ur-01-at-2x.webp",
+      "best_price": 7.97,
+      "best_store": "Pharma Scalabis",
+      "best_store_slug": "pharmascalabis",
+      "best_url": "https://www.pharmascalabis.com/store/uriage-bebe-1o-creme-mineral-spf50-50ml/"
+    },
+    {
+      "ean": "3282770388299",
+      "name": "Avène Tolérance Hydra 10 fluide hydratant",
+      "brand": "Avène",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798427.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 13.83,
+      "best_store": "Loja da Farmácia",
+      "best_store_slug": "loja-farmacia",
+      "best_url": "https://www.lojadafarmacia.com/pt/artigo/avene-tolerance-hydra-10-cr-40ml"
+    },
+    {
+      "ean": "3282770037340",
+      "name": "Avène Cleanance Hydra Creme Suavizante",
+      "brand": "Avène",
+      "image_url": "https://www.mycosmetics.pt/cdn/shop/products/3282770100891_CLEANANCE_HYDRA_CREME_SUAVIZANTE_grande.png?v=1603899497",
+      "best_price": 12.49,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/avene-cleanance-hydra-creme-apaisante-40ml"
+    },
+    {
       "ean": "3337872414145",
       "name": "Cicaplast",
       "brand": "La Roche-Posay",
@@ -63,36 +93,6 @@
       "best_store": "Farmácia 365",
       "best_store_slug": "farmacia365",
       "best_url": "https://www.farmacia365.pt/la-roche-posay-cicaplast-creme-maos-50ml"
-    },
-    {
-      "ean": "3661434001437",
-      "name": "Uriage Bariesun Creme Minerale Spf50+",
-      "brand": "Uriage",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/uriage-000484ur-01-at-2x.webp",
-      "best_price": 8.18,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/uriage-1-creme-mineral-spf50-50ml"
-    },
-    {
-      "ean": "3282770139204",
-      "name": "Avène Cleanance Gel de Limpeza Sem Sabão",
-      "brand": "Avène",
-      "image_url": "https://static.lojadafarmacia.com/27540/avene-limpeza-cleanance-gel-limpeza-200-ml.jpeg",
-      "best_price": 7.41,
-      "best_store": "SweetCare",
-      "best_store_slug": "sweetcare",
-      "best_url": "https://www.sweetcare.pt/la-roche-posay-lipikar-limpeza-corpo-peles-secas-p-001975rp"
-    },
-    {
-      "ean": "3661434006548",
-      "name": "Uriage Bariederm Creme Reparador Cica com Cu-Zn FPS50+",
-      "brand": "Uriage",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/u/r/uriagebariedermcicacremespf50_.jpg",
-      "best_price": 7,
-      "best_store": "My Cosmetics",
-      "best_store_slug": "mycosmetics",
-      "best_url": "https://www.mycosmetics.pt/products/uriage-bariederm-cica-creme-spf50-40ml"
     },
     {
       "ean": "3337871310455",
@@ -107,16 +107,6 @@
   ],
   "skincare_kits": [
     {
-      "ean": "3337875924887",
-      "name": "Parches Effaclar Duo+M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809209.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 9.84,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
-    },
-    {
       "ean": "3337875518598",
       "name": "La Roche-Posay Effaclar Duo(+) Unifiant Tom Médio",
       "brand": "La Roche-Posay",
@@ -127,14 +117,24 @@
       "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-medio-40ml"
     },
     {
+      "ean": "3337875924887",
+      "name": "Parches Effaclar Duo+M",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809209.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 9.84,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
+    },
+    {
       "ean": "8470001859853",
       "name": "Biretix Duo Gel Imperfeições -",
       "brand": "BiRetix",
       "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/qiXBqo_581fccbb-d904-4663-9c8b-99eaac410108.jpg?v=1779413302",
-      "best_price": 19,
-      "best_store": "My Cosmetics",
-      "best_store_slug": "mycosmetics",
-      "best_url": "https://www.mycosmetics.pt/products/biretix-duo-gel-imperfeicoes-30ml"
+      "best_price": 18.95,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/cantabria-labs/duo-gel-anti-imperfecciones/p_55711/"
     },
     {
       "ean": "8429420162389",
@@ -147,14 +147,14 @@
       "best_url": "https://www.farmacia365.pt/isdin-woman-creme-corpo-estrias-2x250ml-50-desconto-na-2-unidade"
     },
     {
-      "ean": "3338221001085",
-      "name": "Phytophanere (x120 cápsulas) Pack Duplo",
-      "brand": "Phyto",
-      "image_url": "https://static.lojadafarmacia.com/25779/phytophanere-x120-capsulas-oferta-120-capsulas-suplemento-alimentar.png",
-      "best_price": 21.89,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/phytophanere-cheveux-et-ongles-2x120-capsules"
+      "ean": "3337875909280",
+      "name": "La Roche-Posay Effaclar Duo+M Unifiant Creme Anti-Imperfeições Tom Médio",
+      "brand": "La Roche-Posay",
+      "image_url": "https://assets.atida.com/transform/f40cb8cf-bc36-464b-97f3-424d99cc36c5/La-Roche-Posay-Effaclar-Duo-Unifiant-Tono-Medio-40-ml",
+      "best_price": 15.74,
+      "best_store": "Farmácia.pt",
+      "best_store_slug": "farmaciapt",
+      "best_url": "https://farmacia.pt/la-roche-posay-effaclar-duo-m-creme-uniformizador-medium-40ml"
     }
   ],
   "em_alta": [
@@ -212,35 +212,35 @@
   "top_brands": [
     {
       "name": "Isdin",
-      "products": 697
+      "products": 713
     },
     {
       "name": "Nivea",
-      "products": 568
+      "products": 590
     },
     {
       "name": "Avène",
-      "products": 564
+      "products": 582
     },
     {
       "name": "La Roche-Posay",
-      "products": 553
+      "products": 563
     },
     {
       "name": "Eucerin",
-      "products": 526
-    },
-    {
-      "name": "Uriage",
-      "products": 517
+      "products": 542
     },
     {
       "name": "Bioderma",
-      "products": 511
+      "products": 536
+    },
+    {
+      "name": "Uriage",
+      "products": 536
     },
     {
       "name": "L'Oréal Paris",
-      "products": 501
+      "products": 526
     }
   ],
   "telegram_alerts": [
