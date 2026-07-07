@@ -743,7 +743,23 @@ function looseMatchKey(name, brand, minTokens = 2) {
   return toks.sort().join('-');
 }
 
+/**
+ * Filtro de NÃO-cosmética (medicamentos, suplementos orais, fórmula infantil,
+ * puericultura, dispositivos, pet). Usado pelas lojas em MODO COMPARAÇÃO para
+ * não anexar preços a produtos fora do foco dermo/skincare/cabelo/corpo.
+ *
+ * REGRA-CHAVE: filtramos por FORMA FARMACÊUTICA (comprimidos/cápsulas/saquetas…)
+ * e por FÓRMULA INFANTIL / PET, NUNCA por INGREDIENTE — "Vitamina C Sérum",
+ * "Creme Colagénio" e "Leite de Limpeza/Corporal" são cosmética e TÊM de passar.
+ * Stems SEM `\b` final (senão "comprimid\b" falha em "comprimidos" — foi o bug
+ * que deixou passar suplementos e um pack de leite Aptamil com preço errado).
+ */
+const NON_COSMETIC = /\b(comprimid|c[áa]psula|dr[áa]geia|saqueta|past[ie]lha|gomas\b|xarope|ampola[s]? bebiv|p[óo] sol[úu]vel|suplement|medicament|antibi[óo]tic|fralda|chupeta|biber[oóã]o|papa infantil|cereais infant|term[óo]metro|tensi[óo]metro|nebuliz|inalad|ligadura|compressa esteril|penso r[áa]pid|piolho|repelent|carraç|ra[çc][ãa]o|(?:para )?(?:c[ãa]es|gatos)\b|animal de estim|veterin|aptamil|nutrib[ée]n|nidina|blemil|novalac|enfamil|nan \d|profutura|leite (?:de )?(?:transi|continua|crescimento|infantil|[123])\b|leite em p[óo])/i;
+function isNonCosmetic(name) { return NON_COSMETIC.test(String(name || '')); }
+
 module.exports = {
+  NON_COSMETIC,
+  isNonCosmetic,
   productFingerprint,
   productFingerprintWithVolume,
   normalizeBrand,
