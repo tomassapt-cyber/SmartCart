@@ -8,21 +8,52 @@ desafio anti-bot que bloqueia curl). Cruzado com as nossas 32 lojas.
 electrónica, brinquedos, pet, sex-shop, salões, etc.).
 
 ## ⚠️ Nota de método
-O *slug* do KK (ex.: `farmacia2u`) **não é** o domínio real. Adivinhar
-`<slug>.pt` acerta pouco (muitos deram "morto" por ser domínio errado, não por
-estarem mortos). Resolver o domínio real via página `/lojas/<slug>` do KK OU
-conhecimento do utilizador é o passo fiável antes de sondar/construir.
+O *slug* do KK (ex.: `farmacia2u`) **não é** o domínio real. Mas a página
+`/lojas/<slug>` do KK dá, no botão "Mais informação": **nome legal + NIF +
+morada + país de expedição** e, na barra lateral, a **contagem de produtos em
+"Saúde e Beleza"** = métrica direta de *poder de comparação* da loja.
+(Recolhido via browser — o KK bloqueia curl 403.)
 
-## ✓ Viável confirmada (por sondagem de domínio-palpite)
-- **fastpharma.pt** — CNP (matchável via apply-cnp-merge). Sitemap em `/pt-pt/` —
-  resolver caminho antes de construir.
+---
 
-## ~ Vivas, chave a confirmar (domínio-palpite acertou, mas EAN/CNP não detetado
-no palpite — pode ter chave noutro caminho)
-poupafarma · atuafarmacia (Shopify) · atcosmetics (Shopify) · all2skin (Shopify) ·
-perfumes4you (Woo) · care2me · pharmavida (Presta) · shopcosmetics (Presta) ·
-farmaoli (Presta) · skpro (Presta) · beleza37 · sobeauty · farmahome · dbcosmetic ·
-farmacentral · pharmia
+## ⭐ SHORTLIST SONDADA AO VIVO (2026-07-07) — contagem cosmética + chave de matching
+
+Ordenado por nº de produtos de cosmética no KK. Chave sondada no domínio real
+(products.json / JSON-LD da ficha). **Todas estas são farmácias/parafarmácias PT
+que carregam as MESMAS marcas dermo que já temos (LRP, Uriage, Isdin, Bioderma,
+Eucerin, Avène) → comparação cross-store real por CNP/EAN.**
+
+| Loja (domínio) | Cosm. no KK | Plataforma | Chave sondada | Veredicto |
+|---|---:|---|---|---|
+| **a-tua-farmacia** (atuafarmacia.pt) | **8095** | Shopify | CNP no `sku` + EAN-13 no dataLayer | ⭐ CONSTRUIR — maior prémio |
+| **poupafarma.pt** | **2802** | slug/custom | **EAN-13** no `sku` do JSON-LD | ⭐ CONSTRUIR |
+| **farmacentral.pt** | **2686** | custom `/pt/` | JSON-LD não server-side (JS?) | ~ viável, + trabalho |
+| **unifarma.pt** | **1936** | Shopify | **CNP** no `sku` do JSON-LD | ✓ CONSTRUIR |
+| **fastpharma.pt** | **1295** | Magento | **CNP** (confirmada antes) | ✓ CONSTRUIR |
+| **farmavalley.com** (Salus2Be) | 1089 | Presta | sitemap difícil (sem robots) | ~ + trabalho |
+| **quickfarma.pt** | 990 | Woo | **CNP** no `sku` do JSON-LD | ✓ CONSTRUIR |
+| **shopcosmetics.pt** (Farm. Brito Martins) | 905 | Presta | **EAN-13 + CNP** no JSON-LD | ⭐ CONSTRUIR — chaves ótimas |
+| atcosmetics.pt (Fun Fashion) | 932 | Shopify | products.json SEM barcode (makeup) | enrich-only por fingerprint |
+
+**Descartadas na sondagem** (contagem baixa ou sem overlap de comparação):
+all2skin (46, só marca-nicho Schrammek) · mccm-medical-cosmetics (196, marca
+própria — 0 overlap) · global-cosmetics (97, nicho Cocosolis/Geomar) ·
+magicpharma (15, material clínico, não cosmética).
+
+**Prioridade de construção recomendada** (chave forte + catálogo grande, padrão
+enrich-only por CNP/EAN como as farmácias que já temos):
+1. **a-tua-farmacia** (8095, CNP+EAN) — Shopify, fácil (products.json + JSON-LD).
+2. **poupafarma** (2802, EAN-13) — slug simples, sitemap de 12k URLs.
+3. **shopcosmetics** (905, EAN+CNP) — chaves ótimas, esforço baixo.
+4. **unifarma** (1936, CNP) + **quickfarma** (990, CNP) — Shopify/Woo, JSON-LD limpo.
+5. **fastpharma** (1295, CNP) — Magento, já confirmada.
+6. Depois: farmacentral / farmavalley (precisam resolver render JS / sitemap).
+
+## Candidatas por sondar (não visitadas ao vivo ainda)
+Farmácias: farmacia-camelo, farmacia-do-costume, nossa-farmacia, wow-farma,
+go-farma, hiper-farma, ia-farma, 365farma, farmacias-low-cost, poupafarma-afins.
+Parafarmácia/beleza: care2me, powerbeauty, smartbeauty, perfumes4you, cosmeticfan,
+beleza37, sobeauty, skpro, sweetlife. (Verificar contagem + chave pelo mesmo método.)
 
 ---
 
