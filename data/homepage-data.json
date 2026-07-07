@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-06T11:14:04.416Z",
-  "seed_total_products": 48817,
+  "generated_at": "2026-07-07T10:08:03.803Z",
+  "seed_total_products": 48897,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -37,7 +37,7 @@
       "name": "Minéral 89 Probiotic Fractions",
       "brand": "Vichy",
       "image_url": "https://www.druni.pt/media/catalog/product/5/7/5796439.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 19.33,
+      "best_price": 20.34,
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
       "best_url": "https://easyfarma.pt/products/vichy-mineral-89-serum-conc-reg-rep-30ml"
@@ -69,7 +69,7 @@
       "name": "Avène Tolérance Hydra 10 fluide hydratant",
       "brand": "Avène",
       "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798427.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.83,
+      "best_price": 13.63,
       "best_store": "Loja da Farmácia",
       "best_store_slug": "loja-farmacia",
       "best_url": "https://www.lojadafarmacia.com/pt/artigo/avene-tolerance-hydra-10-cr-40ml"
@@ -95,14 +95,14 @@
       "best_url": "https://www.farmacia365.pt/la-roche-posay-cicaplast-creme-maos-50ml"
     },
     {
-      "ean": "3337871310455",
-      "name": "Vichy Desodorante Creme 7 Dias",
+      "ean": "3337875485128",
+      "name": "Vichy Dercos Shampoo Ultra-Calmante para Cabelos Normais ou Oleosos",
       "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d9158be1-e1a4-4721-88a0-8ed73b6505da/Vichy-Desodorante-Crema-7-Dias-30-ml",
-      "best_price": 8.49,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/vichy-creme-traitement-anti-transpirant-7-jours"
+      "image_url": "https://assets.atida.com/transform/aa9d730a-6ca7-4c10-b119-6d3e0d8d7d70/Vichy-Dercos-Champu-Ultra-Calmante-Cabello-Normal-o-Graso-200-ml",
+      "best_price": 8.44,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/dercos-technique-champo-ultra-apaziguante-cabelo-normal-a-oleoso-200-ml"
     }
   ],
   "skincare_kits": [
@@ -212,15 +212,15 @@
   "top_brands": [
     {
       "name": "Isdin",
-      "products": 713
+      "products": 715
     },
     {
       "name": "Nivea",
-      "products": 590
+      "products": 591
     },
     {
       "name": "Avène",
-      "products": 582
+      "products": 581
     },
     {
       "name": "La Roche-Posay",
@@ -228,15 +228,15 @@
     },
     {
       "name": "Eucerin",
-      "products": 542
+      "products": 544
     },
     {
       "name": "Bioderma",
-      "products": 536
+      "products": 538
     },
     {
       "name": "Uriage",
-      "products": 536
+      "products": 538
     },
     {
       "name": "L'Oréal Paris",
