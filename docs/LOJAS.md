@@ -2,7 +2,11 @@
 
 Referência de todas as lojas integradas, como cada uma é raspada, por que chave
 casa, e se se actualiza sozinha na nuvem (GitHub Actions) ou precisa do PC.
-Última actualização: 2026-07-03 · **27 lojas · ~87.000 ofertas** (seed).
+Última actualização: 2026-07-07 · **33 lojas · ~97.000 ofertas** (seed).
+(A tabela detalhada abaixo ainda lista 27; lojas 28-33 = Farmácia Ideal, Pharma
+Scalabis, Continente, Pluricosmética, DocMorris, **A Tua Farmácia** — sincronizar
+a tabela numa próxima passagem. A Tua Farmácia: atuafarmacia.pt, Shopify PT,
+products.json sku=CNP, **enrich-only por CNP directo**, 3× dia.)
 
 ---
 

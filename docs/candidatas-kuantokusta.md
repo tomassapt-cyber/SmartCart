@@ -25,7 +25,7 @@ Eucerin, Avène) → comparação cross-store real por CNP/EAN.**
 
 | Loja (domínio) | Cosm. no KK | Plataforma | Chave sondada | Veredicto |
 |---|---:|---|---|---|
-| **a-tua-farmacia** (atuafarmacia.pt) | **8095** | Shopify | CNP no `sku` + EAN-13 no dataLayer | ⭐ CONSTRUIR — maior prémio |
+| **a-tua-farmacia** (atuafarmacia.pt) | **8095** | Shopify | CNP no `sku` (10113/10482) + EAN nalguns | ✅ **CONSTRUÍDA (33ª loja)** — 3343 ofertas por CNP |
 | **poupafarma.pt** | **2802** | slug/custom | **EAN-13** no `sku` do JSON-LD | ⭐ CONSTRUIR |
 | **farmacentral.pt** | **2686** | custom `/pt/` | JSON-LD não server-side (JS?) | ~ viável, + trabalho |
 | **unifarma.pt** | **1936** | Shopify | **CNP** no `sku` do JSON-LD | ✓ CONSTRUIR |
@@ -42,12 +42,22 @@ magicpharma (15, material clínico, não cosmética).
 
 **Prioridade de construção recomendada** (chave forte + catálogo grande, padrão
 enrich-only por CNP/EAN como as farmácias que já temos):
-1. **a-tua-farmacia** (8095, CNP+EAN) — Shopify, fácil (products.json + JSON-LD).
+1. ✅ **a-tua-farmacia** (8095, CNP) — FEITA (33ª loja). products.json com sku=CNP;
+   match CNP directo contra o seed (guarda de marca+volume), enrich-only, 0
+   produtos novos. 3343 ofertas, 0 outliers de preço. **Lição: o rate-limit do
+   products.json (429 após ~12 páginas) era só cooldown do meu burst local — a
+   nuvem (IP fresco, pacing 1.5s) apanhou as 10482 páginas de uma vez.**
 2. **poupafarma** (2802, EAN-13) — slug simples, sitemap de 12k URLs.
 3. **shopcosmetics** (905, EAN+CNP) — chaves ótimas, esforço baixo.
 4. **unifarma** (1936, CNP) + **quickfarma** (990, CNP) — Shopify/Woo, JSON-LD limpo.
 5. **fastpharma** (1295, CNP) — Magento, já confirmada.
 6. Depois: farmacentral / farmavalley (precisam resolver render JS / sitemap).
+
+**Padrão reutilizável (farmácia CNP enrich-only)** — para as próximas: scraper
+lê products.json (ou JSON-LD) e guarda `cnp`/`ean`; integrador constrói índice
+CNP→produto dos catálogos (como apply-cnp-merge, join por URL) e casa por CNP +
+guarda de marca + guarda de volume; NUNCA cria. Ver
+`scrape-atuafarmacia-catalog.js` + `integrate-atuafarmacia-catalog.js`.
 
 ## Candidatas por sondar (não visitadas ao vivo ainda)
 Farmácias: farmacia-camelo, farmacia-do-costume, nossa-farmacia, wow-farma,
