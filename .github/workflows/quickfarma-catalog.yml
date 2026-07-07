@@ -1,0 +1,102 @@
+# CosMath — Quickfarma daily price refresh
+# ============================================================
+# Quickfarma (quickfarma.pt): maior farmácia dermo do KuantoKusta (~8k
+# produtos), Shopify PT, envia PT. O /products.json expõe sku=CNP (7 díg) na
+# maioria + EAN-13 nalguns → MODO COMPARAÇÃO (enrich-only): casa por CNP nacional
+# contra os produtos que já temos; NÃO cria produtos novos.
+#
+# ⚠️ A loja limita o /products.json (429 após ~12 páginas). O scraper corre com
+# --resume: constrói/refresca o catálogo progressivamente entre runs sem nunca
+# encolher (fresh-wins por handle + guarda anti-vazio).
+#
+# Pipeline:
+#   1. scrape-quickfarma-catalog.js --resume → data/catalog/quickfarma-full.json
+#   2. integrate-quickfarma-catalog.js (match CNP/fingerprint + inject)
+
+name: Quickfarma daily refresh
+
+on:
+  schedule:
+    - cron: '50 5 * * *'
+    - cron: '50 13 * * *'   # 3x/dia (regra do user 2026-07-03)
+    - cron: '50 21 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Quickfarma
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-quickfarma-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=6 --delay=200
+          else
+            node scripts/scrape-quickfarma-catalog.js --concurrency=6 --delay=200
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quickfarma-catalog-${{ github.run_id }}
+          path: data/catalog/quickfarma-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-quickfarma-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/quickfarma-full.json 2>/dev/null || true
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: Quickfarma daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-quickfarma-catalog.js" \
+            "chore: Quickfarma daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/quickfarma-full.json
