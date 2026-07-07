@@ -32,6 +32,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { isNonCosmetic } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -49,7 +50,7 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 // Enrich-only → o que passar mas não casar é simplesmente ignorado; por isso
 // somos PERMISSIVOS (só cortamos o que nunca seria dermo) para maximizar
 // comparação. A categoria é best-effort (fica no registo do catálogo).
-const EXCLUDE = /\b(suplement|vitamin|magn[ée]s|colag[eé]n|prote[ií]na|amino[aá]cid|teste (de )?(gravidez|ovula|covid|antig)|preservativo|medicament|comprimid|c[áa]psula|p[íi]lula|xarope|seringa|fralda|chupeta|biber[oóã]o|leite (em p[oó]|infant|materno|transi)|papa infantil|term[óo]metro|tensi[óo]metro|oxím|nebuliz|inalad|penso|ligadura|compressa|adesivo|gengiv|escova de dentes|dent[íi]fric|fio dent|colut[óo]rio|piolho|antimosqu|repelent|carraç|preju[íi]|medidor)\b/i;
+const EXCLUDE = { test: isNonCosmetic };  // filtro nao-cosmetica partilhado (lib)
 const CAT = [
   { c: 'haircare', rx: /\b(cabelo|champ[oô]|shampoo|condicion|capilar|anti[- ]?queda|anti[- ]?caspa|óleo capilar|máscara capilar)\b/i },
   { c: 'skincare', rx: /\b(rosto|facial|s[eé]rum|creme|hidrat|protetor[ -]?solar|solar|spf|fps|m[aá]scara|esfoliant|t[óo]nico|micel|hialur|antirrug|antiidad|manchas|at[óo]pic|sens[íi]vel|contorno|peeling|limpeza|pele)\b/i },

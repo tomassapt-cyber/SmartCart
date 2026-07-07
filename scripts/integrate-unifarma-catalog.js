@@ -33,7 +33,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const { productFingerprint, normalizeBrand, displayBrand, stripAccents, extractVolumeMl, safeFuzzyMatch, looseMatchKey, GENERIC_BRAND_LABELS } = require('./lib/product-fingerprint');
+const { productFingerprint, normalizeBrand, displayBrand, stripAccents, extractVolumeMl, safeFuzzyMatch, looseMatchKey, GENERIC_BRAND_LABELS, isNonCosmetic } = require('./lib/product-fingerprint');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -60,7 +60,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   const seed = loadJSON(SEED_BUNDLE);
   if (!feed?.products || !seed?.products) { console.error('✗ Ficheiros inválidos.'); process.exit(1); }
 
-  let items = feed.products.filter(p => p.status === 'ok' && p.price > 0);
+  let items = feed.products.filter(p => p.status === "ok" && p.price > 0 && !isNonCosmetic(p.name));
   console.log(`📦 unifarma: ${feed.products.length} entradas · ${items.length} com preço`);
   console.log(`📦 Seed actual:     ${seed.products.length} produtos, ${seed.stores.length} lojas\n`);
 
