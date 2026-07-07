@@ -71,8 +71,21 @@ enrich-only por CNP/EAN como as farmácias que já temos):
 8. Depois: farmacentral / farmavalley (precisam resolver render JS / sitemap).
 
 ## 2ª vaga sondada ao vivo (2026-07-07)
-- **nossa-farmacia 6278** ✅ construída (ver acima).
-- **wow-farma 1488** · **go-farma 1038** — por sondar domínio/chave (próximas).
+- **nossa-farmacia 6278** ✅ construída (39ª).
+- **wow-farma 1488** ✅ construída (40ª, wowfarma.pt): **feed KK próprio em
+  /kkfeedwowfarma.xml com reference=CNP + ean** → scrape de 1 pedido. ⚠️ Lição:
+  procurar SEMPRE /kkfeed*.xml no sitemap de lojas novas.
+- **go-farma 1038** ✅ construída (41ª, go-farma.com — o slug≠domínio: gofarma.pt
+  é parking; resolvido por pesquisa web com NIF/morada do modal KK). Guard de
+  sanidade bloqueou 8 preços-sentinela €8499.99/€9999.99.
+- **hiper-farma 3070** ✅ construída (42ª, hiperfarma.pt Shopify sku=CNP).
+  ⚠️ Lição: vendor = DISTRIBUIDOR (Laboratoires Uriage/IFC/…) → resolveBrand
+  só aceita vendor se for marca conhecida; senão prefixo do título.
+- **ia-farma 83** ✗ descartada (pequena demais).
+- **farmavalley** ✗ descartada (fichas sem chave no JSON-LD, como farmacentral).
+- Por sondar: care2me, powerbeauty, cosmeticfan, beleza37, sobeauty, skpro,
+  sweetlife, smartbeauty, perfumes4you, 365farma, farmacias-low-cost,
+  farmacia-camelo, farmacia-do-costume.
 
 **Padrão reutilizável (farmácia CNP enrich-only)** — para as próximas: scraper
 lê products.json (ou JSON-LD) e guarda `cnp`/`ean`; integrador constrói índice
