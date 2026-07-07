@@ -83,9 +83,20 @@ enrich-only por CNP/EAN como as farmácias que já temos):
   só aceita vendor se for marca conhecida; senão prefixo do título.
 - **ia-farma 83** ✗ descartada (pequena demais).
 - **farmavalley** ✗ descartada (fichas sem chave no JSON-LD, como farmacentral).
-- Por sondar: care2me, powerbeauty, cosmeticfan, beleza37, sobeauty, skpro,
-  sweetlife, smartbeauty, perfumes4you, 365farma, farmacias-low-cost,
-  farmacia-camelo, farmacia-do-costume.
+## Cauda sondada (2026-07-07, noite) — afinal é GORDA
+| Loja | Cosm@KK | Domínio/plataforma | Chave | Estado |
+|---|---:|---|---|---|
+| **powerbeauty** | **19621** (a MAIOR do KK!) | powerbeauty.pt, Presta, 22.6k fichas | **gtin13=EAN real** | ⏳ 43ª EM CURSO (scan inicial; diário known-only + semanal full) |
+| **smartbeauty** | 3814 | smartbeauty.pt — sitemap opaco | ? | parked (investigar) |
+| **sweetlife** | 3461 | sweetlife.pt, Presta (1_index CDATA) | **gtin13=EAN** | ⏳ 44ª EM CURSO (suplementos-heavy; subset dermo casa por EAN) |
+| **cosmeticfan** | 3181 | cosmeticfan.com, **VTEX** mas API 404 (binding custom) | ? | parked (tentar __STATE__/host vtexcommercestable) |
+| **beleza37** | 3176 | beleza37.pt — sitemap opaco | ? | parked |
+| **365farma** | 1903 | 365farma.pt (MPVFarma ≠ a nossa Farmácia 365!) | render JS, sem chave server-side | parked (como farmacentral) |
+| **perfumes4you** | 1636 | — | ? | por sondar (perfumaria, menos overlap) |
+| sobeauty | 896 | — | ? | por sondar |
+| farmacias-low-cost | 567 | — | ? | por sondar |
+| care2me | 347 | — | ? | pequena |
+| ia-farma | 83 | — | — | descartada |
 
 **Padrão reutilizável (farmácia CNP enrich-only)** — para as próximas: scraper
 lê products.json (ou JSON-LD) e guarda `cnp`/`ean`; integrador constrói índice
