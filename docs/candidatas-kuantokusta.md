@@ -47,11 +47,18 @@ enrich-only por CNP/EAN como as farmácias que já temos):
    produtos novos. 3343 ofertas, 0 outliers de preço. **Lição: o rate-limit do
    products.json (429 após ~12 páginas) era só cooldown do meu burst local — a
    nuvem (IP fresco, pacing 1.5s) apanhou as 10482 páginas de uma vez.**
-2. **poupafarma** (2802, EAN-13) — slug simples, sitemap de 12k URLs.
-3. **shopcosmetics** (905, EAN+CNP) — chaves ótimas, esforço baixo.
-4. **unifarma** (1936, CNP) + **quickfarma** (990, CNP) — Shopify/Woo, JSON-LD limpo.
-5. **fastpharma** (1295, CNP) — Magento, já confirmada.
-6. Depois: farmacentral / farmavalley (precisam resolver render JS / sitemap).
+2. ✅ **unifarma** (1936, CNP) — FEITA (34ª): Shopify products.json sku=CNP, clone
+   directo do padrão; 1750 CNP → 1631 ofertas, 0 outliers.
+3. ✅ **poupafarma** (2802, CNP+EAN) — FEITA (35ª): Jumpseller, ficha-a-ficha
+   (JSON-LD sku=CNP; sem products.json); 1486 CNP → 1456 ofertas. **Apanhou o bug
+   do filtro não-cosmética** (plurais: comprimidos/cápsulas escapavam ao \b) →
+   novo `isNonCosmetic` partilhado em product-fingerprint.js, aplicado às 4.
+4. ✅ **quickfarma** (990, CNP+EAN) — FEITA (36ª): WooCommerce/All-in-One-SEO
+   (sitemap com <loc> em CDATA → locs() adaptado); 470 CNP + 112 EAN → 571 ofertas.
+5. ⏳ **shopcosmetics** (905, EAN+CNP) — EM CURSO: PrestaShop, /1_index_sitemap.xml
+   CDATA, fichas /<cat>/<id>-slug.html, gtin13+sku=CNP.
+6. **fastpharma** (1295, CNP) — Magento, próxima.
+7. Depois: farmacentral / farmavalley (precisam resolver render JS / sitemap).
 
 **Padrão reutilizável (farmácia CNP enrich-only)** — para as próximas: scraper
 lê products.json (ou JSON-LD) e guarda `cnp`/`ean`; integrador constrói índice
