@@ -57,8 +57,22 @@ enrich-only por CNP/EAN como as farmácias que já temos):
    (sitemap com <loc> em CDATA → locs() adaptado); 470 CNP + 112 EAN → 571 ofertas.
 5. ⏳ **shopcosmetics** (905, EAN+CNP) — EM CURSO: PrestaShop, /1_index_sitemap.xml
    CDATA, fichas /<cat>/<id>-slug.html, gtin13+sku=CNP.
-6. **fastpharma** (1295, CNP) — Magento, próxima.
-7. Depois: farmacentral / farmavalley (precisam resolver render JS / sitemap).
+6. ✅ **fastpharma** (1295, CNP+EAN) — FEITA (38ª): Magento, sitemap flat
+   /sitemap/sitemap_web.xml, fichas /pt-pt/product/<slug>, JSON-LD sku=mpn=CNP
+   + gtin13 em 2470; 1980 matches → 1904 ofertas. Nomes truncados da loja só
+   casáveis por chave nacional.
+7. ✅ **nossa-farmacia** (2ª vaga; 6278 cosm!) — FEITA (39ª): nossafarmacia.pt,
+   **VTEX** (1ª nossa) — API JSON `/api/catalog_system/pub/products/search`
+   paginada por subcategoria (teto 2500/query; 206=parcial normal;
+   `productReference`=CNP; ean vazio). 8159 c/ CNP em 179 pedidos → 2979 ofertas.
+   **Guard novo de SANIDADE DE PREÇO** (>3x fora do intervalo existente →
+   rejeitar): apanhou 11 packs Apivita sob o CNP da saqueta unitária; backport
+   aos 6 integradores CNP.
+8. Depois: farmacentral / farmavalley (precisam resolver render JS / sitemap).
+
+## 2ª vaga sondada ao vivo (2026-07-07)
+- **nossa-farmacia 6278** ✅ construída (ver acima).
+- **wow-farma 1488** · **go-farma 1038** — por sondar domínio/chave (próximas).
 
 **Padrão reutilizável (farmácia CNP enrich-only)** — para as próximas: scraper
 lê products.json (ou JSON-LD) e guarda `cnp`/`ean`; integrador constrói índice
