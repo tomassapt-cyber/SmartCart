@@ -11,11 +11,15 @@
 name: Power Beauty refresh
 
 on:
-  schedule:
-    - cron: '35 5 * * *'
-    - cron: '35 13 * * *'
-    - cron: '35 21 * * *'
-    - cron: '0 3 * * 2'       # SEMANAL (terça) — scan completo --full
+  # ⚠️ powerbeauty.pt BLOQUEIA IPs de datacenter (como a Notino): o run cloud
+  # devolve página-desafio (0 locs no sitemap; anti-vazio guarda). Schedule
+  # DESATIVADO — refresh corre do PC (scrape local + integrate + push), padrão
+  # Notino. Reativar exigiria proxy residencial.
+  # schedule:
+  #   - cron: '35 5 * * *'
+  #   - cron: '35 13 * * *'
+  #   - cron: '35 21 * * *'
+  #   - cron: '0 3 * * 2'     # SEMANAL — scan completo --full
   workflow_dispatch:
     inputs:
       limit:
