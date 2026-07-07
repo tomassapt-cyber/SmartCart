@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 /**
- * CosMath — Integrate A Tua Farmácia catalog into seed (FONTE DE PREÇO — nunca cria)
+ * CosMath — Integrate Nossa Farmácia catalog into seed (FONTE DE PREÇO — nunca cria)
  * ===================================================================
  *
- * Lê data/catalog/atuafarmacia-full.json (Shopify products.json; sku=CNP/EAN)
- * e funde no seed em MODO COMPARAÇÃO: A Tua Farmácia entra SÓ como fonte de
- * preço sobre produtos que JÁ EXISTEM. A maior farmácia dermo do KuantoKusta
- * (8095 produtos) carrega as mesmas marcas que já temos (LRP, Uriage, Isdin,
- * Bioderma, Eucerin, Avène) → muita comparação real, zero risco de poluir.
+ * Lê data/catalog/nossafarmacia-full.json (VTEX API; productReference=CNP)
+ * e funde no seed em MODO COMPARAÇÃO: Nossa Farmácia entra SÓ como fonte de preço
+ * sobre produtos que JÁ EXISTEM. Farmácia dermo PT que carrega as mesmas marcas
+ * que já temos (LRP, Uriage, Isdin, Bioderma, Eucerin, Avène) → comparação real
+ * por CNP/EAN, zero risco de poluir.
  *
  * POLÍTICA (conservadora, enrich-only):
+ *   • EAN directo (gtin13): casa no produto com o mesmo EAN — sinal mais forte.
  *   • CNP directo: o sku=CNP (7 díg) casa num produto existente que partilha
  *     esse CNP (índice construído dos catálogos, como apply-cnp-merge) + guarda
- *     de marca → é o SINAL FORTE (a loja usa nomes descritivos ≠ dos nossos, o
- *     fingerprint só apanha ~2%; o CNP nacional apanha ~35%).
+ *     de marca → sinal forte (a loja usa nomes descritivos ≠ dos nossos).
  *   • fingerprint(marca+nome) → adiciona a oferta.
  *   • nome-sem-ruído (looseMatchKey) + volume compatível → idem.
  *   • fuzzy SEGURO (mesma marca+volume, J≥0.85, token distintivo) → idem.
@@ -25,9 +25,9 @@
  * NUNCA altera nomes/EANs de produtos. Idempotente.
  *
  * Uso:
- *   node scripts/integrate-atuafarmacia-catalog.js
- *   node scripts/integrate-atuafarmacia-catalog.js --dry-run
- *   node scripts/integrate-atuafarmacia-catalog.js --no-inject
+ *   node scripts/integrate-nossafarmacia-catalog.js
+ *   node scripts/integrate-nossafarmacia-catalog.js --dry-run
+ *   node scripts/integrate-nossafarmacia-catalog.js --no-inject
  */
 
 const fs = require('fs');
@@ -38,9 +38,9 @@ const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
-const FEED_FULL = path.join(ROOT, 'data', 'catalog', 'atuafarmacia-full.json');
+const FEED_FULL = path.join(ROOT, 'data', 'catalog', 'nossafarmacia-full.json');
 const SEED_BUNDLE = path.join(ROOT, 'data', 'seed-bundle.json');
-const STORE_SLUG = 'atuafarmacia';
+const STORE_SLUG = 'nossafarmacia';
 const isCnp = s => /^\d{7}$/.test(String(s || '').trim());
 const isRealEan = s => /^\d{12,14}$/.test(String(s || '').trim());
 
@@ -53,7 +53,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
 
 (function main() {
   if (!fs.existsSync(FEED_FULL)) {
-    console.error('✗ Não existe', FEED_FULL, '\n  Corre primeiro: node scripts/scrape-atuafarmacia-catalog.js');
+    console.error('✗ Não existe', FEED_FULL, '\n  Corre primeiro: node scripts/scrape-nossafarmacia-catalog.js');
     process.exit(1);
   }
   const feed = loadJSON(FEED_FULL);
@@ -61,14 +61,14 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   if (!feed?.products || !seed?.products) { console.error('✗ Ficheiros inválidos.'); process.exit(1); }
 
   let items = feed.products.filter(p => p.status === "ok" && p.price > 0 && !isNonCosmetic(p.name));
-  console.log(`📦 atuafarmacia: ${feed.products.length} entradas · ${items.length} com preço`);
+  console.log(`📦 nossafarmacia: ${feed.products.length} entradas · ${items.length} com preço`);
   console.log(`📦 Seed actual:     ${seed.products.length} produtos, ${seed.stores.length} lojas\n`);
 
   const productByEan = {};
   for (const p of seed.products) productByEan[p.ean] = p;
 
   // ── Índice CNP → produto existente (join catálogos↔seed por URL, como
-  // apply-cnp-merge). Exclui o próprio catálogo atuafarmacia. É o sinal forte:
+  // apply-cnp-merge). Exclui o próprio catálogo nossafarmacia. É o sinal forte:
   // a loja usa nomes descritivos diferentes dos nossos, mas o CNP nacional é
   // partilhado entre farmácias. ──
   const cnpByUrl = {};
@@ -131,7 +131,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   function resolveBrand(item) {
     // vendor da loja é fiável, mas se for o nome da própria loja tentamos o título.
     const v = (item.brand || '').trim();
-    if (v && !/^(a ?tua ?farm|atuafarmacia|farmacia central|needs|yneeds)/i.test(v)) return v;
+    if (v && !/^(nossafarmacia)/i.test(v)) return v;
     const tn = norm(item.name);
     for (const nb of brandList) if (tn === nb || tn.startsWith(nb + ' ')) return brandSet.get(nb);
     return v || null;
@@ -145,17 +145,17 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   if (!seed.stores.some(s => s.slug === STORE_SLUG)) {
     seed.stores.push({
       slug: STORE_SLUG,
-      name: 'A Tua Farmácia',
-      base_url: 'https://www.atuafarmacia.pt',
+      name: 'Nossa Farmácia',
+      base_url: 'https://www.nossafarmacia.pt',
       logo_url: null,
       // TODO confirmar portes/threshold reais (Shopify PT; ver site/sheet)
       free_shipping_threshold: 49,
       shipping_zones: { mainland: 3.50, madeira: 5.99, acores: 5.99 },
     });
-    console.log(`🏬 Loja "A Tua Farmácia" registada em seed.stores[].`);
+    console.log(`🏬 Loja "Nossa Farmácia" registada em seed.stores[].`);
   }
 
-  let cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, priceSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0;
+  let eanMatched = 0, cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, priceSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
 
   for (const ep of items) {
@@ -164,8 +164,11 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     const nb = normalizeBrand(brand);
     let target = null;
 
+    // ── 0. EAN directo (gtin13 real) — o sinal mais forte, língua irrelevante ──
+    if (isRealEan(ep.ean) && productByEan[ep.ean]) { target = productByEan[ep.ean]; eanMatched++; }
+
     // ── 1. CNP directo (sinal forte) + guarda de marca ──
-    if (isCnp(ep.cnp) && cnpToProducts[ep.cnp]) {
+    if (!target && isCnp(ep.cnp) && cnpToProducts[ep.cnp]) {
       const cands = [...cnpToProducts[ep.cnp]];
       // guarda de marca: só aceita se a marca do alvo coincide (ou é
       // genérica/desconhecida) — evita colisões de CNP=código-de-linha entre
@@ -189,8 +192,10 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     }
     if (!target) { noMatch++; continue; }
     if (!volumeOk(target, ep.volume_ml)) { volSkip++; continue; }
-    // Guard de SANIDADE DE PREÇO (>3x fora do intervalo existente = unidade de
-    // venda diferente sob o mesmo CNP, ex. pack/expositor vs saqueta) — rejeitar.
+    // Guard de SANIDADE DE PREÇO: se o preço está >3x acima do máximo (ou <1/3
+    // do mínimo) do intervalo existente do produto, é quase de certeza uma
+    // unidade de venda diferente sob o mesmo CNP (ex.: pack/expositor Apivita
+    // €21 vs saqueta €3.5) — rejeitar; um preço errado mata a comparação.
     const pr = priceRangeByEan[target.ean];
     if (pr && (ep.price > pr.max * 3 || ep.price < pr.min / 3)) { priceSkip++; continue; }
 
@@ -204,8 +209,9 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     else if (r.action === 'merged') updated++;
   }
 
-  const totalMatched = cnpMatched + matched + looseMatched + fuzzyMatched;
-  console.log('══════ Resumo (A Tua Farmácia · fonte de preço, enrich-only) ══════');
+  const totalMatched = eanMatched + cnpMatched + matched + looseMatched + fuzzyMatched;
+  console.log('══════ Resumo (Nossa Farmácia · fonte de preço, enrich-only) ══════');
+  console.log(`  Casados por EAN directo:    ${eanMatched}`);
   console.log(`  Casados por CNP directo:    ${cnpMatched}`);
   console.log(`  Casados por fingerprint:    ${matched}`);
   console.log(`  Casados por nome-sem-ruído: ${looseMatched}`);
@@ -216,7 +222,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   console.log(`  Sem produto correspondente: ${noMatch}`);
   console.log(`  Volume não coincide (skip): ${volSkip}`);
   console.log(`  Preço fora de sanidade >3x (skip): ${priceSkip}`);
-  console.log(`  Ofertas atuafarmacia:      +${added} novas, ${updated} actualizadas (total ${sp.items.length})`);
+  console.log(`  Ofertas nossafarmacia:      +${added} novas, ${updated} actualizadas (total ${sp.items.length})`);
   console.log(`  Imagens preenchidas:        ${imgFilled}`);
   const withDisc = sp.items.filter(i => i.previous_price && i.previous_price > i.price).length;
   console.log(`    com desconto activo:      ${withDisc}`);
@@ -228,5 +234,5 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   if (NO_INJECT) { console.log('↩  --no-inject: não re-injectado.'); return; }
   console.log('\n▶ Re-injectando no demo.html + index.html…');
   const r = spawnSync('node', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')], { cwd: ROOT, stdio: 'inherit' });
-  if (r.status === 0) console.log('\n✅ Integração A Tua Farmácia completa.');
+  if (r.status === 0) console.log('\n✅ Integração Nossa Farmácia completa.');
 })();

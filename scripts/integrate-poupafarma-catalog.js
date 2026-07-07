@@ -81,8 +81,10 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   }
   const storeCountByEan = {};
   const cnpToProducts = {};   // cnp -> Set(produto)
+  const priceRangeByEan = {}; // ean -> {min,max} dos preços existentes (guard de sanidade)
   for (const g of seed.store_products) for (const it of g.items) {
     storeCountByEan[it.ean] = (storeCountByEan[it.ean] || 0) + 1;
+    if (it.price > 0) { const r = priceRangeByEan[it.ean] = priceRangeByEan[it.ean] || { min: it.price, max: it.price }; if (it.price < r.min) r.min = it.price; if (it.price > r.max) r.max = it.price; }
     const cnp = cnpByUrl[it.url];
     if (cnp && productByEan[it.ean]) (cnpToProducts[cnp] = cnpToProducts[cnp] || new Set()).add(productByEan[it.ean]);
   }
@@ -155,7 +157,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     console.log(`🏬 Loja "Poupafarma" registada em seed.stores[].`);
   }
 
-  let eanMatched = 0, cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0;
+  let eanMatched = 0, cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, priceSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
 
   for (const ep of items) {
@@ -192,6 +194,10 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     }
     if (!target) { noMatch++; continue; }
     if (!volumeOk(target, ep.volume_ml)) { volSkip++; continue; }
+    // Guard de SANIDADE DE PREÇO (>3x fora do intervalo existente = unidade de
+    // venda diferente sob o mesmo CNP, ex. pack/expositor vs saqueta) — rejeitar.
+    const pr = priceRangeByEan[target.ean];
+    if (pr && (ep.price > pr.max * 3 || ep.price < pr.min / 3)) { priceSkip++; continue; }
 
     if (!target.image_url && ep.image_url) { target.image_url = ep.image_url; imgFilled++; }
 
@@ -215,6 +221,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   console.log(`  Sem marca resolúvel:        ${noBrand}`);
   console.log(`  Sem produto correspondente: ${noMatch}`);
   console.log(`  Volume não coincide (skip): ${volSkip}`);
+  console.log(`  Preço fora de sanidade >3x (skip): ${priceSkip}`);
   console.log(`  Ofertas poupafarma:      +${added} novas, ${updated} actualizadas (total ${sp.items.length})`);
   console.log(`  Imagens preenchidas:        ${imgFilled}`);
   const withDisc = sp.items.filter(i => i.previous_price && i.previous_price > i.price).length;
