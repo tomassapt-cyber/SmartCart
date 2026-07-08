@@ -30,7 +30,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, normalizeBrand, displayBrand, stripAccents, extractVolumeMl, safeFuzzyMatch, looseMatchKey } = require('./lib/product-fingerprint');
-const { upsertStoreItem } = require('./lib/store-item-merge');
+const { upsertStoreItem, urlRefreshPass } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
 const FEED_FULL = path.join(ROOT, 'data', 'catalog', 'pharma2you-full.json');
@@ -129,6 +129,12 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   let matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, added = 0, updated = 0, imgFilled = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
 
+  // Passe 0 — refresh por URL (anti-oferta-amarela): ofertas cujo URL segue no
+  // feed fresco refrescam SEMPRE, mesmo que o fingerprint tenha derivado.
+  const { refreshed: urlRefreshed, usedUrls } = urlRefreshPass(
+    { storeSp: sp, itemByEan, addedCounter: addedC, updatedCounter: updatedC }, items, feed.scraped_at);
+  items = items.filter(ep => !usedUrls.has(ep.url));
+
   for (const ep of items) {
     const brand = resolveBrand(ep);
     if (!brand) { noBrand++; continue; }
@@ -163,6 +169,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   }
 
   console.log('══════ Resumo (pharma2you · fonte de preço por fingerprint) ══════');
+  console.log(`  Refresh por URL (passe 0):  ${urlRefreshed}`);
   console.log(`  Casados por fingerprint:   ${matched}`);
   console.log(`  Casados por nome-sem-ruido: ${looseMatched}`);
   console.log(`  Casados por fuzzy seguro:   ${fuzzyMatched}`);

@@ -238,6 +238,18 @@ async function fetchPage(url, attempt = 1) {
   let urls = allUrls.filter(isBeautyUrl);
   console.log(`  ${urls.length} URLs beauty/dermo (após filtro keywords)`);
 
+  // União com URLs das ofertas do seed (anti-oferta-amarela): produtos com
+  // oferta nossa cujo slug caiu fora do filtro de keywords re-entram SEMPRE
+  // na fila — sem isto ~16% das ofertas ficavam >48h sem re-verificação.
+  try {
+    const seedNow = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
+    const spSeed = (seedNow.store_products || []).find(g => g.store_slug === 'farmacia365');
+    const known = (spSeed?.items || []).map(it => it.url).filter(Boolean);
+    const b2 = urls.length;
+    urls = [...new Set([...urls, ...known])];
+    if (urls.length > b2) console.log(`  ↻ +${urls.length - b2} URLs de ofertas existentes (fora do filtro)`);
+  } catch { /* sem seed local — segue */ }
+
   // 3. Chunking
   if (CHUNK) {
     const [n, m] = CHUNK.split('/').map(Number);

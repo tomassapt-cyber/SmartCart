@@ -186,4 +186,36 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
   return { item, action: 'added' };
 }
 
-module.exports = { buildBaseVariants, upsertStoreItem, isBlockedOffer };
+/**
+ * Passe de REFRESH POR URL (anti-oferta-amarela): para cada produto do catálogo
+ * fresco cujo URL já é uma oferta desta loja, refresca preço/stock/verified_at
+ * nessa oferta — a identidade produto↔oferta foi estabelecida quando a oferta
+ * nasceu; o scrape fresco do MESMO URL é a mesma oferta, mesmo que a ficha
+ * tenha perdido a chave (EAN→null) ou o nome tenha derivado (fingerprint já
+ * não casa). Sem isto, essas ofertas ficam presas com verificação amarela.
+ *
+ * @param {object} state  — { storeSp, itemByEan, addedCounter, updatedCounter }
+ * @param {Array}  products — entradas do catálogo fresco ({url, price, ...})
+ * @param {string} scrapedAt — timestamp do scrape
+ * @param {function} [skip] — opcional: skip(ep) true → deixa para a cascata normal
+ * @returns {{refreshed:number, usedUrls:Set<string>}}
+ */
+function urlRefreshPass(state, products, scrapedAt, skip) {
+  const itemByUrl = {};
+  for (const item of state.storeSp.items) {
+    if (item.url) itemByUrl[item.url] = item;
+    for (const v of (item.variants || [])) if (v.url) itemByUrl[v.url] = itemByUrl[v.url] || item;
+  }
+  let refreshed = 0; const usedUrls = new Set();
+  for (const ep of products) {
+    if (!ep || !ep.url || !(ep.price > 0)) continue;
+    if (skip && skip(ep)) continue;
+    const it = itemByUrl[ep.url];
+    if (!it) continue;
+    const r = upsertStoreItem(state, it.ean, ep, scrapedAt);
+    if (r.action === 'merged' || r.action === 'added') { refreshed++; usedUrls.add(ep.url); }
+  }
+  return { refreshed, usedUrls };
+}
+
+module.exports = { buildBaseVariants, upsertStoreItem, isBlockedOffer, urlRefreshPass };

@@ -27,7 +27,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, stripAccents, extractVolumeMl } = require('./lib/product-fingerprint');
-const { upsertStoreItem } = require('./lib/store-item-merge');
+const { upsertStoreItem, urlRefreshPass } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
 const FULL = path.join(ROOT, 'data', 'catalog', 'farmaciasportuguesas-full.json');
@@ -113,6 +113,13 @@ const isCnp = s => /^\d{7}$/.test(String(s || '').trim());
 
   let byCnp = 0, byFp = 0, noMatch = 0, volSkip = 0, added = 0, updated = 0, imgFilled = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
+
+  // Passe 0 — refresh por URL (anti-oferta-amarela): ofertas cujo URL segue no
+  // catálogo fresco refrescam SEMPRE (mesmo que o CNP/fingerprint já não case).
+  const { refreshed: urlRefreshed, usedUrls } = urlRefreshPass(
+    { storeSp: sp, itemByEan, addedCounter: addedC, updatedCounter: updatedC }, items, cat.scraped_at);
+  items = items.filter(ep => !usedUrls.has(ep.url));
+  console.log(`  ↻ refresh por URL (passe 0): ${urlRefreshed}`);
 
   for (const ep of items) {
     let target = cnpToProduct[ep.cnp] || null;   // 1) CNP forte
