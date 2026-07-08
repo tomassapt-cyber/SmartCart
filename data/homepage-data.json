@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-08T15:19:27.694Z",
-  "seed_total_products": 50105,
+  "generated_at": "2026-07-08T16:35:51.943Z",
+  "seed_total_products": 50104,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -79,7 +79,7 @@
       "name": "Serum Retinol Acné",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798541.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 15.03,
+      "best_price": 14.2,
       "best_store": "Bairro da Saúde",
       "best_store_slug": "bairro-saude",
       "best_url": "https://bairrodasaude.pt/products/cerave-serum-retinol-anti-marcas-30-ml"
@@ -220,11 +220,11 @@
     },
     {
       "name": "Avène",
-      "products": 592
+      "products": 591
     },
     {
       "name": "La Roche-Posay",
-      "products": 572
+      "products": 571
     },
     {
       "name": "L'Oréal Paris",
@@ -232,7 +232,7 @@
     },
     {
       "name": "Uriage",
-      "products": 549
+      "products": 550
     },
     {
       "name": "Eucerin",
