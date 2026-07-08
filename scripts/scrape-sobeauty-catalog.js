@@ -20,6 +20,7 @@
 
 const fs = require('fs');
 const zlib = require('zlib');
+const { spawn } = require('child_process');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 
@@ -95,30 +96,38 @@ function extractProductData(html) {
   return null;
 }
 
+// ⚠ O servidor da sobeauty CORTA ligações do fetch/undici em IPs de datacenter
+// (UND_ERR_SOCKET aos 35s no GitHub Actions) mas aceita curl (fingerprint
+// tipo-browser) — padrão Notino. Buscamos TUDO via curl (child_process),
+// binário-seguro porque os sub-sitemaps vêm em .xml.gz (gunzip depois).
+function curlGet(url) {
+  return new Promise(resolve => {
+    const cp = spawn('curl', ['-s', '-L', '-A', UA, '-H', 'Accept-Language: pt-PT,pt;q=0.9', '--max-time', '30', '-w', '%{http_code}', url]);
+    const chunks = [];
+    cp.stdout.on('data', d => chunks.push(d));
+    cp.on('close', () => { const b = Buffer.concat(chunks); const code = parseInt(b.slice(-3).toString('ascii'), 10) || 0; resolve({ code, buf: b.slice(0, -3) }); });
+    cp.on('error', () => resolve({ code: 0, buf: Buffer.alloc(0) }));
+  });
+}
+
 // gunzip-aware (sub-sitemaps .xml.gz) + backoff longo no 429 do sitemap.
 async function fetchText(url, attempt = 1) {
-  try {
-    const r = await fetch(url, { headers: { 'User-Agent': UA } });
-    if (r.status === 429 || r.status >= 500) {
-      try { r.body && r.body.cancel().catch(() => {}); } catch {}
-      if (attempt <= 6) { const w = 10000 * attempt; console.log(`    ⏳ ${r.status} no sitemap — espera ${w / 1000}s`); await new Promise(s => setTimeout(s, w)); return fetchText(url, attempt + 1); }
-      return '';
-    }
-    const b = Buffer.from(await r.arrayBuffer());
-    try { return zlib.gunzipSync(b).toString('utf8'); } catch { return b.toString('utf8'); }
+  const { code, buf } = await curlGet(url);
+  if (code === 429 || code >= 500 || code === 0) {
+    if (attempt <= 6) { const w = 10000 * attempt; console.log(`    ⏳ ${code} no sitemap — espera ${w / 1000}s`); await new Promise(s => setTimeout(s, w)); return fetchText(url, attempt + 1); }
+    return '';
   }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
+  try { return zlib.gunzipSync(buf).toString('utf8'); } catch { return buf.toString('utf8'); }
 }
 
 async function fetchPage(url, attempt = 1) {
-  let r;
-  try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
-  const drop = () => { try { return r.body ? r.body.cancel().catch(() => {}) : undefined; } catch { return undefined; } };
-  if (r.status === 404 || r.status === 410) { await drop(); return { status: 'not_found' }; }
-  if (r.status === 429 || r.status >= 500) { await drop(); if (attempt <= 5) { await new Promise(s => setTimeout(s, 6000 * attempt + Math.random() * 2000)); return fetchPage(url, attempt + 1); } return { status: 'http_error', http: r.status }; }
-  try { return { status: 'ok', html: await r.text() }; }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 1500 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
+  const { code, buf } = await curlGet(url);
+  if (code === 404 || code === 410) return { status: 'not_found' };
+  if (code === 429 || code >= 500 || code === 0 || code === 403) {
+    if (attempt <= 5) { await new Promise(s => setTimeout(s, 6000 * attempt + Math.random() * 2000)); return fetchPage(url, attempt + 1); }
+    return { status: 'http_error', http: code };
+  }
+  return { status: 'ok', html: buf.toString('utf8') };
 }
 
 function loadCheckpoint() { if (!RESUME || !fs.existsSync(OUT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
