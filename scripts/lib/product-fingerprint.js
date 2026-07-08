@@ -754,10 +754,35 @@ function looseMatchKey(name, brand, minTokens = 2) {
  * Stems SEM `\b` final (senão "comprimid\b" falha em "comprimidos" — foi o bug
  * que deixou passar suplementos e um pack de leite Aptamil com preço errado).
  */
+/**
+ * parsePriceEU — parse de preço à prova de formatos europeus.
+ * parseFloat("7,48") devolve 7 (TRUNCA na vírgula!) — foi assim que a
+ * mycosmetics ficou com 100% do catálogo com preços errados (JSON-LD do tema
+ * emite vírgula decimal). Regras:
+ *   "7,48"→7.48 · "1.234,56"→1234.56 · "1,234.56"→1234.56 · "7.48"→7.48 ·
+ *   7.48→7.48 · "7,48 €"→7.48 · null→NaN
+ */
+function parsePriceEU(x) {
+  if (typeof x === 'number') return x;
+  let s = String(x == null ? '' : x).replace(/[^\d.,-]/g, '');
+  if (!s) return NaN;
+  const lastC = s.lastIndexOf(','), lastD = s.lastIndexOf('.');
+  if (lastC > -1 && lastD > -1) {
+    // ambos presentes: o ÚLTIMO é o decimal, o outro é separador de milhares
+    if (lastC > lastD) s = s.replace(/\./g, '').replace(',', '.');
+    else s = s.replace(/,/g, '');
+  } else if (lastC > -1) {
+    // só vírgula: decimal se tiver 1-2 díg. à direita, senão milhares
+    s = (s.length - lastC - 1) <= 2 ? s.replace(',', '.') : s.replace(/,/g, '');
+  }
+  return parseFloat(s);
+}
+
 const NON_COSMETIC = /\b(comprimid|c[áa]psula|dr[áa]geia|saqueta|past[ie]lha|gomas\b|xarope|ampola[s]? bebiv|p[óo] sol[úu]vel|suplement|medicament|antibi[óo]tic|fralda|chupeta|biber[oóã]o|papa infantil|cereais infant|term[óo]metro|tensi[óo]metro|nebuliz|inalad|ligadura|compressa esteril|penso r[áa]pid|piolho|repelent|carraç|ra[çc][ãa]o|(?:para )?(?:c[ãa]es|gatos)\b|animal de estim|veterin|aptamil|nutrib[ée]n|nidina|blemil|novalac|enfamil|nan \d|profutura|leite (?:de )?(?:transi|continua|crescimento|infantil|[123])\b|leite em p[óo])/i;
 function isNonCosmetic(name) { return NON_COSMETIC.test(String(name || '')); }
 
 module.exports = {
+  parsePriceEU,
   NON_COSMETIC,
   isNonCosmetic,
   productFingerprint,

@@ -41,6 +41,9 @@ jobs:
         run: |
           if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
 
+      - name: Auditoria de preços truncados (vírgula-decimal)
+        run: node scripts/audit-truncated-prices.js
+
       - name: Detetar ímanes (dry-run)
         id: detect
         run: |

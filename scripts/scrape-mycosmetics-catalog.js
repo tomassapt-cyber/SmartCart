@@ -18,6 +18,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parsePriceEU } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -65,7 +66,10 @@ function extractProductData(html) {
       const offer = Array.isArray(n.offers) ? n.offers[0] : n.offers;
       let price = offer ? offer.price : null;
       if (!price && offer && offer.priceSpecification) { const ps = Array.isArray(offer.priceSpecification) ? offer.priceSpecification[0] : offer.priceSpecification; if (ps) price = ps.price; }
-      price = price != null ? parseFloat(price) : null;
+      // ⚠ parsePriceEU e NUNCA parseFloat: o JSON-LD deste tema emite vírgula
+      // decimal ("7,48") e parseFloat truncava para 7 — 100% do catálogo ficou
+      // com preços errados até 2026-07-08. parsePriceEU trata , e . correctamente.
+      price = price != null ? parsePriceEU(price) : null;
       if (price == null || !isFinite(price) || price <= 0) return null;
       const in_stock = offer ? /InStock/i.test(offer.availability || '') : true;
       const brand = n.brand ? (typeof n.brand === 'string' ? n.brand : (n.brand.name || null)) : null;
