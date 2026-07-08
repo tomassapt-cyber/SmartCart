@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-07T22:47:49.622Z",
-  "seed_total_products": 48880,
+  "generated_at": "2026-07-08T00:52:10.368Z",
+  "seed_total_products": 48861,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -147,14 +147,14 @@
       "best_url": "https://www.poupafarma.pt/curaprox-kit-de-viagem-rosa"
     },
     {
-      "ean": "3337875909280",
-      "name": "La Roche-Posay Effaclar Duo+M Unifiant Creme Anti-Imperfeições Tom Médio",
-      "brand": "La Roche-Posay",
-      "image_url": "https://assets.atida.com/transform/f40cb8cf-bc36-464b-97f3-424d99cc36c5/La-Roche-Posay-Effaclar-Duo-Unifiant-Tono-Medio-40-ml",
-      "best_price": 15.74,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/la-roche-posay-effaclar-duo-m-creme-uniformizador-medium-40ml"
+      "ean": "7612412423686",
+      "name": "Curaprox Pack Pasta Dentífrica Black Is White + Escova de Dentes",
+      "brand": "Curaprox",
+      "image_url": "https://static.lojadafarmacia.com/5989/curaprox-bw-kit-pasta-dentifrica-branqueadora-90ml-escova.jpg",
+      "best_price": 16.9,
+      "best_store": "Poupafarma",
+      "best_store_slug": "poupafarma",
+      "best_url": "https://www.poupafarma.pt/curaprox-black-is-white-kit-pasta-de-dentes-90-ml-escova-de-dentes"
     }
   ],
   "em_alta": [
@@ -212,7 +212,7 @@
   "top_brands": [
     {
       "name": "Isdin",
-      "products": 720
+      "products": 716
     },
     {
       "name": "Nivea",
@@ -220,11 +220,11 @@
     },
     {
       "name": "Avène",
-      "products": 583
+      "products": 581
     },
     {
       "name": "La Roche-Posay",
-      "products": 564
+      "products": 563
     },
     {
       "name": "Eucerin",
@@ -232,11 +232,11 @@
     },
     {
       "name": "Uriage",
-      "products": 540
+      "products": 538
     },
     {
       "name": "Bioderma",
-      "products": 539
+      "products": 535
     },
     {
       "name": "L'Oréal Paris",
