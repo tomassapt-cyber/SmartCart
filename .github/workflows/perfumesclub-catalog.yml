@@ -49,9 +49,9 @@ jobs:
       - name: Scrape Perfumes Club (dermo)
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-perfumesclub-catalog.js --dermo --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=200
+            node scripts/scrape-perfumesclub-catalog.js --dermo --limit=${{ github.event.inputs.limit }} --concurrency=3 --delay=500
           else
-            node scripts/scrape-perfumesclub-catalog.js --dermo --concurrency=5 --delay=200
+            node scripts/scrape-perfumesclub-catalog.js --dermo --concurrency=3 --delay=500
           fi
 
       - name: Upload scrape artifact (safety-net)

@@ -166,8 +166,18 @@ async function main() {
   async function worker() {
     while (idx < queue.length) {
       const url = queue[idx++];
-      const r = await fetchPage(url); const scraped_at = new Date().toISOString();
-      if (r.status === 'ok') { const d = extractProductData(r.html); if (d) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; } else stats.skipped++; }
+      let r = await fetchPage(url); let scraped_at = new Date().toISOString();
+      let d = r.status === 'ok' ? extractProductData(r.html) : null;
+      // SOFT-BLOCK RETRY: a perfumesclub serve HTML SEM JSON-LD (200, sem 429)
+      // quando o ritmo é alto em IPs de datacenter — a maioria dos "skips" da
+      // nuvem eram isto, deixando 51% das ofertas >48h (amarelo no site).
+      // 1 retry com pausa longa recupera a página completa.
+      if (r.status === 'ok' && !d) {
+        await new Promise(s => setTimeout(s, 3000 + Math.random() * 2000));
+        r = await fetchPage(url); scraped_at = new Date().toISOString();
+        if (r.status === 'ok') d = extractProductData(r.html);
+      }
+      if (r.status === 'ok') { if (d) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; } else stats.skipped++; }
       else if (r.status === 'not_found') stats.not_found++; else stats.error++;
       const total = stats.ok + stats.skipped + stats.not_found + stats.error;
       if (total % CHECKPOINT_EVERY === 0) { saveCheckpoint(products); const rate = total / ((Date.now() - start) / 1000); console.log(`  [${total}/${queue.length}] ok:${stats.ok} skip:${stats.skipped} 404:${stats.not_found} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round((queue.length - total) / rate / 60)}m`); }
