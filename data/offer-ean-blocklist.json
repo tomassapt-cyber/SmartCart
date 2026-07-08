@@ -1,103 +1,118 @@
 {
-  "_comment": "Ofertas confirmadas como PRODUTO ERRADO no EAN: a loja publica este EAN para OUTRO produto (auditado em scripts/audit-price-outliers.js — nome no URL da loja vs produto do seed). Enquanto a loja continuar a publicar o EAN errado, o par (store_slug, ean) fica aqui: scripts/lib/store-item-merge.js impede os integradores de re-adicionar a oferta, e inject-seed-into-demo.js esconde-a do render como última defesa. Remover a entrada quando a loja corrigir o EAN.",
-  "blocked": [
-    {
-      "store_slug": "loja-farmacia",
-      "ean": "8809525246014",
-      "reason": "Folha única Beauty of Joseon Centella (1.40€) publicada com o EAN da caixa de 10 unidades (atida 19.99€).",
-      "url": "https://www.lojadafarmacia.com/pt/artigo/beauty-of-joseon-cent-asia-calm-mask",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "saudemayor",
-      "ean": "5201062007449",
-      "reason": "Girafa Sophie anel de dentição (18€) publicado com o EAN da Youth Lab Máscara de Limpeza Radiance 2x6ml.",
-      "url": "https://www.saudemayor.pt/girafa-sophie-anel-de-denticao-0m.html",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "saudemayor",
-      "ean": "3666057064555",
-      "reason": "Dr Browns escova de dentes (17.05€) publicada com o EAN do Clarins Creme Noturno Multi Intensivo 50ml (82–97€).",
-      "url": "https://www.saudemayor.pt/dr-browns-escova-dentes-lontra-1-4-anos.html",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "saudemayor",
-      "ean": "3666057200069",
-      "reason": "Saro rede de alimentação (6.60€) publicada com o EAN do Clarins Hydra-Essentiel Masque-Crème 75ml (28–31€).",
-      "url": "https://www.saudemayor.pt/saro-alimentacao-em-rede-aprendo-a-comer-rosa.html",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "saudemayor",
-      "ean": "3666057098031",
-      "reason": "Bibs mordedor estrela pêssego (8.40€) publicado com o EAN do Clarins Hydra Essentiel Gel Matifiant 75ml (35–38€).",
-      "url": "https://www.saudemayor.pt/bibs-baby-bitie-mordedor-estrela-pessego-3-m.html",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "loja-farmacia",
-      "ean": "8058664144204",
-      "reason": "Chicco Tablet Animais (13.83€) publicado com o EAN do Olmitos Bicicleta Speed Up Ice da saudemayor (86.45€) — a loja ainda publica este EAN hoje.",
-      "url": "https://www.lojadafarmacia.com/pt/artigo/chicco-tablet-animais",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "wells",
-      "ean": "3372290002109",
-      "reason": "Wells 'Extra-Gentle Family Shampoo' 5.01€ (travel size, sem EAN no catálogo — entra por fingerprint/merge) no EAN do Lazartigue 500ml (12.5–21.9€).",
-      "url": "https://wells.pt/extra-gentle-family-shampoo-415625.html",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "atida",
-      "ean": "2100000301027",
-      "reason": "Pack atida (FotoUltra 50ml + Melaclear 30ml, 89.62€) no EAN interno 21x que o pipeline trata como canónico e reabsorve as ofertas do FotoUltra simples (19.8-26.4€) — split manual foi desfeito pelos merges diários (dedup-store-url/cnp). Excluir o pack mantém a comparação coerente; fix estrutural = despriorizar EANs 2xx como identidade.",
-      "url": "https://www.atida.com/pt-pt/isdin-fotoultra-100-spot-prevent-color-spf50-50-ml-melaclear-1-8-30-ml",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "notino",
-      "ean": "8809525246014",
-      "reason": "Folha única Beauty of Joseon Centella (2.20€) publicada com o EAN da caixa de 10 unidades (atida 19.99€) — mesmo padrão da loja-farmacia.",
-      "url": "https://www.notino.pt/beauty-of-joseon/centella-asiatica-calming-mask-mascara-em-folha-com-efeito-hidratante-para-apaziguamento-e-reforcamento-da-pele-sensivel/",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "druni",
-      "ean": "3701436912321",
-      "reason": "Druni Eau de Cologne Jean Marie Farina (sem EAN no catálogo, entra por fingerprint) no EAN que a notino publica para o GEL DE DUCHE (6.40€ vs 34.95€) — produtos diferentes da mesma gama.",
-      "url": "https://www.druni.pt/jean-marie-farina-roger-gallet-eau-de-cologne",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "notino",
-      "ean": "5028197314019",
-      "reason": "Notino Almond Milk Hand BALM (15.10€) publicado com o EAN do creme de mãos Leite Amêndoas e Mel da druni (2.99€) — produtos diferentes.",
-      "url": "https://www.notino.pt/the-body-shop/almond-hand-balm-vegan-creme-de-maos/",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "notino",
-      "ean": "3474637265007",
-      "reason": "Notino Aminexil Advanced 42x6ml (136.16€) publicado com o EAN do pack 10x6ml (31.75-31.99€) — pack-size errado, a loja ainda publica hoje.",
-      "url": "https://www.notino.pt/loreal-professionnel/serie-expert-aminexil-advanced-ampola-para-cresimento-e-reforcamento-das-raizes-7076993/",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "notino",
-      "ean": "3474637328900",
-      "reason": "Notino Metal Detox 300ml (34.48€) publicado com o EAN do formato 100ml (8.09€) — tamanho errado, a loja ainda publica hoje.",
-      "url": "https://www.notino.pt/loreal-professionnel/serie-expert-metal-detox-champo-de-limpeza-profunda-apos-coloracao/",
-      "added_at": "2026-07-02"
-    },
-    {
-      "store_slug": "notino",
-      "ean": "8437019178024",
-      "reason": "Notino MartiDerm Night Renew 30 ampolas (54.80€, EAN próprio 8437000435594) entra por fingerprint idêntico no EAN do pack de 10 ampolas (druni 12.95€).",
-      "url": "https://www.notino.pt/martiderm/platinum-night-renew-serum-esfoliante-em-ampolas/",
-      "added_at": "2026-07-02"
-    }
-  ]
+ "_comment": "Ofertas confirmadas como PRODUTO ERRADO no EAN: a loja publica este EAN para OUTRO produto (auditado em scripts/audit-price-outliers.js — nome no URL da loja vs produto do seed). Enquanto a loja continuar a publicar o EAN errado, o par (store_slug, ean) fica aqui: scripts/lib/store-item-merge.js impede os integradores de re-adicionar a oferta, e inject-seed-into-demo.js esconde-a do render como última defesa. Remover a entrada quando a loja corrigir o EAN.",
+ "blocked": [
+  {
+   "store_slug": "loja-farmacia",
+   "ean": "8809525246014",
+   "reason": "Folha única Beauty of Joseon Centella (1.40€) publicada com o EAN da caixa de 10 unidades (atida 19.99€).",
+   "url": "https://www.lojadafarmacia.com/pt/artigo/beauty-of-joseon-cent-asia-calm-mask",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "saudemayor",
+   "ean": "5201062007449",
+   "reason": "Girafa Sophie anel de dentição (18€) publicado com o EAN da Youth Lab Máscara de Limpeza Radiance 2x6ml.",
+   "url": "https://www.saudemayor.pt/girafa-sophie-anel-de-denticao-0m.html",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "saudemayor",
+   "ean": "3666057064555",
+   "reason": "Dr Browns escova de dentes (17.05€) publicada com o EAN do Clarins Creme Noturno Multi Intensivo 50ml (82–97€).",
+   "url": "https://www.saudemayor.pt/dr-browns-escova-dentes-lontra-1-4-anos.html",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "saudemayor",
+   "ean": "3666057200069",
+   "reason": "Saro rede de alimentação (6.60€) publicada com o EAN do Clarins Hydra-Essentiel Masque-Crème 75ml (28–31€).",
+   "url": "https://www.saudemayor.pt/saro-alimentacao-em-rede-aprendo-a-comer-rosa.html",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "saudemayor",
+   "ean": "3666057098031",
+   "reason": "Bibs mordedor estrela pêssego (8.40€) publicado com o EAN do Clarins Hydra Essentiel Gel Matifiant 75ml (35–38€).",
+   "url": "https://www.saudemayor.pt/bibs-baby-bitie-mordedor-estrela-pessego-3-m.html",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "loja-farmacia",
+   "ean": "8058664144204",
+   "reason": "Chicco Tablet Animais (13.83€) publicado com o EAN do Olmitos Bicicleta Speed Up Ice da saudemayor (86.45€) — a loja ainda publica este EAN hoje.",
+   "url": "https://www.lojadafarmacia.com/pt/artigo/chicco-tablet-animais",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "wells",
+   "ean": "3372290002109",
+   "reason": "Wells 'Extra-Gentle Family Shampoo' 5.01€ (travel size, sem EAN no catálogo — entra por fingerprint/merge) no EAN do Lazartigue 500ml (12.5–21.9€).",
+   "url": "https://wells.pt/extra-gentle-family-shampoo-415625.html",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "atida",
+   "ean": "2100000301027",
+   "reason": "Pack atida (FotoUltra 50ml + Melaclear 30ml, 89.62€) no EAN interno 21x que o pipeline trata como canónico e reabsorve as ofertas do FotoUltra simples (19.8-26.4€) — split manual foi desfeito pelos merges diários (dedup-store-url/cnp). Excluir o pack mantém a comparação coerente; fix estrutural = despriorizar EANs 2xx como identidade.",
+   "url": "https://www.atida.com/pt-pt/isdin-fotoultra-100-spot-prevent-color-spf50-50-ml-melaclear-1-8-30-ml",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "notino",
+   "ean": "8809525246014",
+   "reason": "Folha única Beauty of Joseon Centella (2.20€) publicada com o EAN da caixa de 10 unidades (atida 19.99€) — mesmo padrão da loja-farmacia.",
+   "url": "https://www.notino.pt/beauty-of-joseon/centella-asiatica-calming-mask-mascara-em-folha-com-efeito-hidratante-para-apaziguamento-e-reforcamento-da-pele-sensivel/",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "druni",
+   "ean": "3701436912321",
+   "reason": "Druni Eau de Cologne Jean Marie Farina (sem EAN no catálogo, entra por fingerprint) no EAN que a notino publica para o GEL DE DUCHE (6.40€ vs 34.95€) — produtos diferentes da mesma gama.",
+   "url": "https://www.druni.pt/jean-marie-farina-roger-gallet-eau-de-cologne",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "notino",
+   "ean": "5028197314019",
+   "reason": "Notino Almond Milk Hand BALM (15.10€) publicado com o EAN do creme de mãos Leite Amêndoas e Mel da druni (2.99€) — produtos diferentes.",
+   "url": "https://www.notino.pt/the-body-shop/almond-hand-balm-vegan-creme-de-maos/",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "notino",
+   "ean": "3474637265007",
+   "reason": "Notino Aminexil Advanced 42x6ml (136.16€) publicado com o EAN do pack 10x6ml (31.75-31.99€) — pack-size errado, a loja ainda publica hoje.",
+   "url": "https://www.notino.pt/loreal-professionnel/serie-expert-aminexil-advanced-ampola-para-cresimento-e-reforcamento-das-raizes-7076993/",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "notino",
+   "ean": "3474637328900",
+   "reason": "Notino Metal Detox 300ml (34.48€) publicado com o EAN do formato 100ml (8.09€) — tamanho errado, a loja ainda publica hoje.",
+   "url": "https://www.notino.pt/loreal-professionnel/serie-expert-metal-detox-champo-de-limpeza-profunda-apos-coloracao/",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "notino",
+   "ean": "8437019178024",
+   "reason": "Notino MartiDerm Night Renew 30 ampolas (54.80€, EAN próprio 8437000435594) entra por fingerprint idêntico no EAN do pack de 10 ampolas (druni 12.95€).",
+   "url": "https://www.notino.pt/martiderm/platinum-night-renew-serum-esfoliante-em-ampolas/",
+   "added_at": "2026-07-02"
+  },
+  {
+   "store_slug": "saudemayor",
+   "ean": "7612017058160",
+   "reason": "Valmont DetO2x 204€ real; saudemayor vende outro produto a 15.87 sob este EAN (url~nome 0%)"
+  },
+  {
+   "store_slug": "farmaciavirtual",
+   "ean": "3666057128257",
+   "reason": "Clarins Cryo-Flash ~57€ real; farmaciavirtual vende outro produto a 6.48 (url~nome 0%)"
+  },
+  {
+   "store_slug": "saudemayor",
+   "ean": "3522932003562",
+   "reason": "EAN Caudalie; saudemayor vende chupeta Bibs 7.60 sob este EAN (puericultura, produto-errado)"
+  }
+ ]
 }

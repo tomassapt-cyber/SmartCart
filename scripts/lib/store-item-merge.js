@@ -42,7 +42,7 @@ function buildBaseVariants(sp) {
   // Por isso fallback v.url → sp.url para que cada variante tenha sempre um
   // destino útil quando o user clica "Abrir".
   const baseVariants = (sp.variants || [])
-    .filter(v => v.volume_ml > 0 && v.price > 0)
+    .filter(v => v.volume_ml > 0 && v.price > 0 && v.price < PRICE_CAP)
     .map(v => ({
       volume_ml: v.volume_ml,
       unit: v.unit || 'ml',
@@ -77,10 +77,16 @@ function buildBaseVariants(sp) {
  * @param {string} sourceTimestamp — ISO date string para verified_at
  * @returns {object} { item, action: 'added'|'merged' }
  */
+// Nenhum produto de cosmética/parafarmácia custa ≥5000€ — preços assim são
+// SENTINELAS de "indisponível" das lojas (visto: primor 9998, gofarma 8499.99/
+// 9999.99). Sem este tampão apareciam como ofertas reais (razão ×897 num
+// Neutrogena). Cobre os 44 integradores por passar todos por aqui.
+const PRICE_CAP = 5000;
+
 function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
   // Defensive: skip products sem preço ou preço inválido. Acontece quando
   // scrape obteve JSON-LD parcial (sem offers) — não-fatal, só ignorar.
-  const spPrice = typeof sp?.price === 'number' && isFinite(sp.price) && sp.price > 0 ? sp.price : null;
+  const spPrice = typeof sp?.price === 'number' && isFinite(sp.price) && sp.price > 0 && sp.price < PRICE_CAP ? sp.price : null;
   if (!spPrice) return { item: null, action: 'skipped' };
   // Oferta confirmada como produto-errado neste EAN → nunca (re-)adicionar.
   if (isBlockedOffer(state.storeSp?.store_slug, targetEan)) return { item: null, action: 'blocked' };
