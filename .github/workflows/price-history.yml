@@ -1,0 +1,60 @@
+# CosMath — Histórico de preços (gravação diária)
+# ============================================================
+# Grava 1×/dia o melhor preço vivo de cada produto em data/price-history.json
+# (formato compacto, append-só-quando-muda). Fundação para: sparklines,
+# selo "mínimo 30 dias" (Omnibus UE), conselho compra-agora/espera, alertas.
+# Corre às 23:40 UTC — depois da vaga de refreshes da noite, escritor único
+# (sem corridas com os workflows das lojas, que não tocam neste ficheiro).
+
+name: Price history daily record
+
+on:
+  schedule:
+    - cron: '40 23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Record price history
+        run: node scripts/record-price-history.js
+
+      - name: Commit & push (retry em corrida)
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/price-history.json; then
+            echo "Sem mudanças de preço hoje — nada a gravar."
+            exit 0
+          fi
+          git add data/price-history.json
+          git commit -m "chore: price history ($(date -u +%Y-%m-%d))"
+          for i in 1 2 3 4 5; do
+            git push origin main && exit 0
+            git fetch origin
+            git rebase origin/main || { git rebase --abort; git reset --hard origin/main; node scripts/record-price-history.js; git add data/price-history.json; git commit -m "chore: price history ($(date -u +%Y-%m-%d))"; }
+            sleep $((i * 20))
+          done
+          echo "push falhou após 5 tentativas" && exit 1
