@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-08T01:17:12.698Z",
-  "seed_total_products": 49966,
+  "generated_at": "2026-07-08T15:19:27.694Z",
+  "seed_total_products": 50105,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -75,6 +75,16 @@
       "best_url": "https://byfarma.pt/products/dercos-technique-champo-ultra-apaziguante-cabelo-normal-a-oleoso-200-ml"
     },
     {
+      "ean": "3337875829007",
+      "name": "Serum Retinol Acné",
+      "brand": "CeraVe",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798541.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 15.03,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/cerave-serum-retinol-anti-marcas-30-ml"
+    },
+    {
       "ean": "3337875597272",
       "name": "CeraVe Creme Reparador Contorno de Olhos",
       "brand": "CeraVe",
@@ -93,16 +103,6 @@
       "best_store": "Pharma GDD",
       "best_store_slug": "pharma-gdd",
       "best_url": "https://www.pharma-gdd.com/fr/vichy-creme-traitement-anti-transpirant-7-jours"
-    },
-    {
-      "ean": "3661434001437",
-      "name": "Uriage Bariesun Creme Minerale Spf50+",
-      "brand": "Uriage",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/uriage-000484ur-01-at-2x.webp",
-      "best_price": 7.97,
-      "best_store": "Pharma Scalabis",
-      "best_store_slug": "pharmascalabis",
-      "best_url": "https://www.pharmascalabis.com/store/uriage-bebe-1o-creme-mineral-spf50-50ml/"
     }
   ],
   "skincare_kits": [
@@ -212,11 +212,11 @@
   "top_brands": [
     {
       "name": "Isdin",
-      "products": 728
+      "products": 731
     },
     {
       "name": "Nivea",
-      "products": 598
+      "products": 602
     },
     {
       "name": "Avène",
@@ -224,7 +224,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 570
+      "products": 572
     },
     {
       "name": "L'Oréal Paris",
@@ -236,11 +236,11 @@
     },
     {
       "name": "Eucerin",
-      "products": 544
+      "products": 546
     },
     {
       "name": "Bioderma",
-      "products": 538
+      "products": 541
     }
   ],
   "telegram_alerts": [
