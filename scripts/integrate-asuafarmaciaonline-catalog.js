@@ -192,13 +192,30 @@ function distinctiveDiffOk(aName, sName) {
 
   const itemByEan = {};
   for (const item of sp.items) itemByEan[item.ean] = item;
+  // Índice URL→item desta loja (headline + variantes) p/ o passo 0.
+  const itemByUrl = {};
+  for (const item of sp.items) {
+    if (item.url) itemByUrl[item.url] = item;
+    for (const v of (item.variants || [])) if (v.url) itemByUrl[v.url] = itemByUrl[v.url] || item;
+  }
 
-  let mEan = 0, mFpv = 0, mFuzzy = 0, unmatched = 0, added = 0, updated = 0;
+  let mUrl = 0, mEan = 0, mFpv = 0, mFuzzy = 0, unmatched = 0, added = 0, updated = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
   const fuzzySamples = [];
 
   for (const ep of asua) {
     let target = null, via = null;
+
+    // 0. REFRESH POR URL (fichas que PERDERAM o EAN no site): se o URL já é
+    // uma oferta NOSSA desta loja, a identidade foi estabelecida quando a
+    // oferta nasceu — o scrape fresco do MESMO URL é a mesma oferta →
+    // refresca preço/stock/verified_at. Sem isto, 292 fichas ean=null→só-cnp
+    // deixavam ~29% das ofertas >48h (verificação amarela no site).
+    if (!isRealEan(ep.ean) && itemByUrl[ep.url]) {
+      const it = itemByUrl[ep.url];
+      const r0 = upsertStoreItem({ storeSp: sp, itemByEan, addedCounter: addedC, updatedCounter: updatedC }, it.ean, ep, asuaData.scraped_at);
+      if (r0.action === 'merged' || r0.action === 'added') { mUrl++; continue; }
+    }
 
     // 1. EAN real (mpn)
     if (ep.ean && eanIndex[ep.ean]) { target = eanIndex[ep.ean]; via = 'ean'; mEan++; }
@@ -249,6 +266,7 @@ function distinctiveDiffOk(aName, sName) {
   }
 
   console.log('══════ Resumo da integração (asuafarmaciaonline) ══════');
+  console.log(`  Refresh por URL (sem EAN):   ${mUrl}`);
   console.log(`  Match por EAN (mpn):         ${mEan}`);
   console.log(`  Match nome+volume exacto:    ${mFpv}`);
   console.log(`  Match fuzzy seguro (≥${FUZZY_MIN}):  ${mFuzzy}`);
