@@ -1,0 +1,48 @@
+name: Deploy branch sync (Vercel)
+
+# O Vercel observa o branch `deploy` (não o main): os ~140 pushes/dia dos bots
+# esgotavam o limite de ~100 deploys/dia do plano free. Este workflow aponta
+# `deploy` para o tip do main:
+#   - 4×/dia por cron (deploys previsíveis com os dados frescos)
+#   - imediatamente após pushes MANUAIS (commit que NÃO começa por "chore:" —
+#     os bots dos refreshes usam sempre "chore: <Loja> daily refresh")
+#   - à mão via workflow_dispatch
+# O update é feito via API (PATCH da ref) — não descarrega os HTMLs de 60MB.
+
+on:
+  schedule:
+    - cron: '30 6 * * *'
+    - cron: '30 12 * * *'
+    - cron: '30 18 * * *'
+    - cron: '50 23 * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-branch-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    # push de bot ("chore:") não deploya — espera pelo próximo cron
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'chore:')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Apontar deploy → main (via API, sem checkout)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          SHA="${{ github.sha }}"
+          echo "A apontar refs/heads/deploy → $SHA"
+          gh api "repos/${{ github.repository }}/git/refs/heads/deploy" \
+            -X PATCH -f sha="$SHA" -F force=true \
+          || gh api "repos/${{ github.repository }}/git/refs" \
+            -X POST -f ref=refs/heads/deploy -f sha="$SHA"
+          echo "deploy agora em:"
+          gh api "repos/${{ github.repository }}/branches/deploy" --jq '.commit.sha'
