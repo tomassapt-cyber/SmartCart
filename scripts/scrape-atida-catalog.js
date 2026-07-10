@@ -131,8 +131,21 @@ function extractProductData(html, url) {
   const offers = Array.isArray(product.offers) ? product.offers
     : (product.offers ? [product.offers] : []);
   const offer = offers[0];
-  const price = offer ? (typeof offer.price === 'number' ? offer.price : parseFloat(offer.price)) : null;
-  const inStock = offer ? /InStock/i.test(offer.availability || '') : false;
+  let price = offer ? (typeof offer.price === 'number' ? offer.price : parseFloat(offer.price)) : null;
+  let inStock = offer ? /InStock/i.test(offer.availability || '') : false;
+  // 2b. AggregateOffer (marketplace multi-vendedor): ~5.6k fichas atida usam
+  // lowPrice/offers[] em vez de price simples — sem isto ficavam SEM preço
+  // para sempre (não era soft-block: o mesmo HTML vem em qualquer IP).
+  if ((price == null || isNaN(price)) && offer && /AggregateOffer/i.test(String(offer['@type'] || ''))) {
+    const nested = Array.isArray(offer.offers) ? offer.offers : [];
+    const nestedPrices = nested
+      .map(o => (typeof o.price === 'number' ? o.price : parseFloat(o.price)))
+      .filter(pr => pr > 0);
+    const low = typeof offer.lowPrice === 'number' ? offer.lowPrice : parseFloat(offer.lowPrice);
+    price = nestedPrices.length ? Math.min(...nestedPrices) : (low > 0 ? low : null);
+    inStock = nested.some(o => /InStock/i.test(o.availability || '')) || Number(offer.offerCount) > 0 || low > 0;
+  }
+  if (price != null && isNaN(price)) price = null;
 
   // strikethrough do Magento: classe old-price contém preço lista
   let previous_price = null;
@@ -245,7 +258,7 @@ async function fetchPage(url, attempt = 1) {
   const start = Date.now();
   let idx = 0;
   const stats = { ok: 0, no_jsonld: 0, not_found: 0, error: 0, retried: 0, retry_ok: 0 };
-  const RETRY_BUDGET = parseInt(process.env.RETRY_BUDGET || '1200', 10);
+  const RETRY_BUDGET = parseInt(process.env.RETRY_BUDGET || '0', 10); // 0 = off (o "soft-block" afinal era AggregateOffer; env reativa se preciso)
 
   async function worker() {
     while (idx < queue.length) {
