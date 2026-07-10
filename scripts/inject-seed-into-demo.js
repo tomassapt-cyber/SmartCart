@@ -274,7 +274,7 @@ if (fs.existsSync(TR_FILE)) {
 if (renamed) console.log(`🇵🇹 Nomes traduzidos aplicados ao render: ${renamed} (seed-bundle.json intacto)`);
 
 // Adicionar um comentário identificativo no início do JSON injectado
-seedJson._comment = `Catálogo GirlMath v1 — gerado em ${new Date().toISOString()} · ${seedJson.products.length} SKUs · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0)} ofertas.`;
+seedJson._comment = `Catálogo CosMath v1 — gerado em ${new Date().toISOString()} · ${seedJson.products.length} SKUs · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0)} ofertas.`;
 
 const newBlock = '\n' + JSON.stringify(seedJson) + '\n';
 let next = html0.slice(0, afterOpen) + newBlock + html0.slice(closeIdx);
