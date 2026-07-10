@@ -62,8 +62,11 @@ const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
   const now = Date.now();
   const day = Math.floor(now / 86400000);
 
-  // melhor preço vivo por ean
-  const best = {};   // ean -> {cents, slug}
+  // melhor preço vivo por ean (mínimo absoluto — série legada/"desde")
+  // + melhor preço POR VOLUME (vseries — cada volume tem o SEU mínimo/média/hoje;
+  //   sem isto o gráfico mostrava o preço do volume mais pequeno em fichas multi-volume)
+  const best = {};      // ean -> {cents, slug}
+  const bestVol = {};   // ean -> { ml -> {cents, slug} }  (só de variantes com volume_ml)
   for (const g of seed.store_products) {
     for (const it of g.items) {
       if (!it.ean) continue;
@@ -72,7 +75,16 @@ const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
       if (!fresh) continue;
       const candidates = [];
       if (it.in_stock !== false && it.price > 0) candidates.push(it.price);
-      for (const v of (it.variants || [])) if (v.in_stock !== false && v.price > 0) candidates.push(v.price);
+      for (const v of (it.variants || [])) {
+        if (v.in_stock === false || !(v.price > 0)) continue;
+        candidates.push(v.price);
+        const ml = Math.round(Number(v.volume_ml) || 0);
+        if (ml > 0) {
+          const c = Math.round(v.price * 100);
+          const bucket = bestVol[it.ean] || (bestVol[it.ean] = {});
+          if (!bucket[ml] || c < bucket[ml].cents) bucket[ml] = { cents: c, slug: g.store_slug };
+        }
+      }
       if (!candidates.length) continue;
       const p = Math.min(...candidates);
       const cents = Math.round(p * 100);
@@ -95,12 +107,34 @@ const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
     else unchanged++;
   }
 
+  // vseries: só p/ produtos com ≥2 volumes distintos hoje (1 volume = série legada)
+  if (!hist.vseries) hist.vseries = {};
+  let vBaselines = 0, vChanges = 0, vSame = 0;
+  for (const [ean, bucket] of Object.entries(bestVol)) {
+    const vols = Object.keys(bucket);
+    if (vols.length < 2) continue;
+    for (const ml of vols) {
+      const key = ean + '|' + ml;
+      const b = bucket[ml];
+      const s = hist.vseries[key] || (hist.vseries[key] = []);
+      const last = s[s.length - 1];
+      if (!last) { s.push([day, b.cents, idxOf(b.slug)]); vBaselines++; continue; }
+      if (last[0] === day) {
+        if (last[1] !== b.cents) { last[1] = b.cents; last[2] = idxOf(b.slug); vChanges++; }
+        continue;
+      }
+      if (last[1] !== b.cents) { s.push([day, b.cents, idxOf(b.slug)]); vChanges++; }
+      else vSame++;
+    }
+  }
+
   const nSeries = Object.keys(hist.series).length;
   console.log('══════ record-price-history ══════');
   console.log(`  dia UTC: ${day} (${new Date(day * 86400000).toISOString().slice(0, 10)})`);
   console.log(`  produtos com preço vivo hoje: ${Object.keys(best).length}`);
   console.log(`  baselines novas: ${baselines} · mudanças de preço: ${changes} · updates mesmo-dia: ${sameDayUpdates} · sem mudança: ${unchanged}`);
   console.log(`  séries totais: ${nSeries}`);
+  console.log(`  vseries (por volume): ${Object.keys(hist.vseries).length} · baselines: ${vBaselines} · mudanças: ${vChanges} · sem mudança: ${vSame}`);
 
   if (Object.keys(best).length === 0) { console.error('✗ 0 preços vivos (seed vazio/corrompido?) — NÃO escrevo.'); process.exit(1); }
   if (DRY_RUN) { console.log('\n🧪 --dry-run: nada escrito.'); return; }
