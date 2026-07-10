@@ -244,7 +244,8 @@ async function fetchPage(url, attempt = 1) {
 
   const start = Date.now();
   let idx = 0;
-  const stats = { ok: 0, no_jsonld: 0, not_found: 0, error: 0 };
+  const stats = { ok: 0, no_jsonld: 0, not_found: 0, error: 0, retried: 0, retry_ok: 0 };
+  const RETRY_BUDGET = parseInt(process.env.RETRY_BUDGET || '1200', 10);
 
   async function worker() {
     while (idx < queue.length) {
@@ -253,7 +254,21 @@ async function fetchPage(url, attempt = 1) {
       const r = await fetchPage(url);
       const scraped_at = new Date().toISOString();
       if (r.status === 'ok') {
-        const data = extractProductData(r.html, url);
+        let data = extractProductData(r.html, url);
+        // Soft-block anti-datacenter (classe perfumesclub, 2026-07-10): a atida
+        // devolve 200 SEM JSON-LD/preço em ~45% dos pedidos da nuvem — ao vivo
+        // a página tem preço e carrinho. Retry único com pausa, com ORÇAMENTO
+        // por run (senão dobrava a duração): recupera a maioria; o resto fica
+        // para o run seguinte (a lib agora carimba a verificação na mesma).
+        if ((!data || !(data.price > 0)) && stats.retried < RETRY_BUDGET) {
+          stats.retried++;
+          await new Promise(s => setTimeout(s, 2500 + Math.random() * 2000));
+          const r2 = await fetchPage(url);
+          if (r2.status === 'ok') {
+            const d2 = extractProductData(r2.html, url);
+            if (d2 && (d2.price > 0 || !data)) { data = d2; if (d2.price > 0) stats.retry_ok++; }
+          }
+        }
         if (data) {
           products.push({ url, status: 'ok', scraped_at, ...data });
           stats.ok++;
@@ -274,7 +289,7 @@ async function fetchPage(url, attempt = 1) {
         const elapsed = (Date.now() - start) / 1000;
         const rate = done / elapsed;
         const eta = (queue.length - done) / rate;
-        console.log(`  [${done}/${queue.length}] ok:${stats.ok} no_ld:${stats.no_jsonld} 404:${stats.not_found} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round(eta / 60)}m`);
+        console.log(`  [${done}/${queue.length}] ok:${stats.ok} no_ld:${stats.no_jsonld} 404:${stats.not_found} err:${stats.error} · retry:${stats.retried}(+${stats.retry_ok}) · ${rate.toFixed(1)}/s · ETA ${Math.round(eta / 60)}m`);
       }
       await new Promise(s => setTimeout(s, DELAY_MS + Math.random() * DELAY_MS * 0.3));
     }

@@ -87,7 +87,37 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
   // Defensive: skip products sem preço ou preço inválido. Acontece quando
   // scrape obteve JSON-LD parcial (sem offers) — não-fatal, só ignorar.
   const spPrice = typeof sp?.price === 'number' && isFinite(sp.price) && sp.price > 0 && sp.price < PRICE_CAP ? sp.price : null;
-  if (!spPrice) return { item: null, action: 'skipped' };
+  if (!spPrice) {
+    // Página raspada SEM preço = quase sempre ESGOTADO na loja (JSON-LD sem
+    // offer; inclui sentinelas ≥PRICE_CAP). Se JÁ temos a oferta: marcar
+    // esgotado COM verificação fresca — sai das comparações e volta sozinho
+    // quando houver preço. (Antes: skip total → preço e verified_at ficavam
+    // presos p/ sempre; atida tinha 5.6k ofertas assim, 45% do catálogo.)
+    const existing = state.itemByEan[targetEan];
+    if (existing) {
+      // ⚠️ sem-preço NÃO significa esgotado: a atida soft-bloqueia IPs de
+      // datacenter (200 sem JSON-LD) em ~45% das páginas — ao vivo têm preço
+      // e carrinho. Só esgotamos com sinal EXPLÍCITO do scraper
+      // (sp.in_stock === false); senão apenas carimbamos a verificação
+      // (visitámos hoje; o preço mantém o último conhecido até o retry ler).
+      if (sp.in_stock === false) {
+        const vol = extractVolumeMl(sp.name);
+        let touched = false;
+        for (const v of (existing.variants || [])) {
+          if ((sp.url && v.url === sp.url) || (vol && v.volume_ml === vol)) { v.in_stock = false; touched = true; }
+        }
+        if (existing.variants && existing.variants.length) {
+          if (touched) existing.in_stock = existing.variants.some(v => v.in_stock);
+        } else if (!sp.url || !existing.url || existing.url === sp.url) {
+          existing.in_stock = false;
+        }
+      }
+      existing.verified_at = sp.scraped_at || sourceTimestamp;
+      if (state.updatedCounter) state.updatedCounter.value++;
+      return { item: existing, action: 'stamped' };
+    }
+    return { item: null, action: 'skipped' };
+  }
   // Oferta confirmada como produto-errado neste EAN → nunca (re-)adicionar.
   if (isBlockedOffer(state.storeSp?.store_slug, targetEan)) return { item: null, action: 'blocked' };
   const baseVariants = buildBaseVariants(sp);
