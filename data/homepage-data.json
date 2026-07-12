@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-07-08T16:35:51.943Z",
-  "seed_total_products": 50104,
+  "generated_at": "2026-07-12T08:41:03.603Z",
+  "seed_total_products": 51345,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
       "name": "Effaclar Duo +M",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 12.64,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/la-roche-posay-effaclar-duo-m-40-ml"
+      "best_price": 12.54,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
     },
     {
       "ean": "3614274772012",
@@ -21,16 +21,6 @@
       "best_store": "Druni PT",
       "best_store_slug": "druni",
       "best_url": "https://www.druni.pt/estuche-advance-genefique-lancome-cofre-serum-concentrado-ativador-juventude-e-luminosidade"
-    },
-    {
-      "ean": "0887167667501",
-      "name": "Advanced Night Repair Edición Limitada",
-      "brand": "Estée Lauder",
-      "image_url": "https://www.druni.pt/media/catalog/product/1/7/1788203.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 64.96,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/advanced-night-repair-edicion-limitada-estee-lauder-serum-antienvelhecimento"
     },
     {
       "ean": "3337875762908",
@@ -47,7 +37,7 @@
       "name": "Bioderma Sensibio H2O Água Micelar",
       "brand": "Bioderma",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 3.49,
+      "best_price": 3.79,
       "best_store": "Atida | Mifarma PT",
       "best_store_slug": "atida",
       "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
@@ -65,14 +55,14 @@
       "best_url": "https://www.farmacia365.pt/la-roche-posay-cicaplast-creme-maos-50ml"
     },
     {
-      "ean": "3337875485128",
-      "name": "Vichy Dercos Shampoo Ultra-Calmante para Cabelos Normais ou Oleosos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/aa9d730a-6ca7-4c10-b119-6d3e0d8d7d70/Vichy-Dercos-Champu-Ultra-Calmante-Cabello-Normal-o-Graso-200-ml",
-      "best_price": 8.44,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/dercos-technique-champo-ultra-apaziguante-cabelo-normal-a-oleoso-200-ml"
+      "ean": "3337875549530",
+      "name": "Anthelios",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5014211.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.27,
+      "best_store": "Farmácia.pt",
+      "best_store_slug": "farmaciapt",
+      "best_url": "https://farmacia.pt/la-roche-posay-anthelios-spf50-bruma-anti-brilho-75ml"
     },
     {
       "ean": "3337875829007",
@@ -85,14 +75,14 @@
       "best_url": "https://bairrodasaude.pt/products/cerave-serum-retinol-anti-marcas-30-ml"
     },
     {
-      "ean": "3337875597272",
-      "name": "CeraVe Creme Reparador Contorno de Olhos",
-      "brand": "CeraVe",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
-      "best_price": 10.92,
-      "best_store": "Unifarma",
-      "best_store_slug": "unifarma",
-      "best_url": "https://www.unifarma.pt/products/cerave-eye-repair-creme-reparador-olhos-circulos-e-papos-14g"
+      "ean": "3337875485128",
+      "name": "Vichy Dercos Shampoo Ultra-Calmante para Cabelos Normais ou Oleosos",
+      "brand": "Vichy",
+      "image_url": "https://assets.atida.com/transform/aa9d730a-6ca7-4c10-b119-6d3e0d8d7d70/Vichy-Dercos-Champu-Ultra-Calmante-Cabello-Normal-o-Graso-200-ml",
+      "best_price": 8.44,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/dercos-technique-champo-ultra-apaziguante-cabelo-normal-a-oleoso-200-ml"
     },
     {
       "ean": "3337871310455",
@@ -117,16 +107,6 @@
       "best_url": "https://www.perfumesclub.pt/pt/cantabria-labs/duo-gel-anti-imperfecciones/p_55711/"
     },
     {
-      "ean": "3337875518598",
-      "name": "La Roche-Posay Effaclar Duo(+) Unifiant Tom Médio",
-      "brand": "La Roche-Posay",
-      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/3337875909280.jpg?v=1749134903",
-      "best_price": 14,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-medio-40ml"
-    },
-    {
       "ean": "3337875924887",
       "name": "Parches Effaclar Duo+M",
       "brand": "La Roche-Posay",
@@ -147,14 +127,24 @@
       "best_url": "https://www.poupafarma.pt/curaprox-kit-de-viagem-rosa"
     },
     {
-      "ean": "7612412423686",
-      "name": "Curaprox Pack Pasta Dentífrica Black Is White + Escova de Dentes",
-      "brand": "Curaprox",
-      "image_url": "https://static.lojadafarmacia.com/5989/curaprox-bw-kit-pasta-dentifrica-branqueadora-90ml-escova.jpg",
-      "best_price": 16.9,
-      "best_store": "Poupafarma",
-      "best_store_slug": "poupafarma",
-      "best_url": "https://www.poupafarma.pt/curaprox-black-is-white-kit-pasta-de-dentes-90-ml-escova-de-dentes"
+      "ean": "3574661016320",
+      "name": "Aveeno Skin Relief Duo Creme Mentol 2 x",
+      "brand": "Aveeno",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/aveeno-skin-relief-creme-hidratante-lenitivo-mentol-2-x-200ml-MxHqZ.webp",
+      "best_price": 12.05,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/aveeno-skin-relief-duo-creme-mentol-2-x-200ml"
+    },
+    {
+      "ean": "3337875909303",
+      "name": "La Roche-Posay Effaclar Duo+M Gel-Creme Tom Light - Farmácia ...",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.farmaciabarreiros.com/38085/la-roche-posay-effaclar-duom-gel-creme-tom-light-40-ml.jpg",
+      "best_price": 14,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-light-40ml"
     }
   ],
   "em_alta": [
@@ -163,7 +153,7 @@
       "name": "Bioderma Sensibio H2O Água Micelar",
       "brand": "Bioderma",
       "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 3.49,
+      "best_price": 3.79,
       "best_store": "Atida | Mifarma PT",
       "best_store_slug": "atida",
       "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
@@ -193,7 +183,7 @@
       "name": "Effaclar Duo+ SPF30",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 14.03,
+      "best_price": 14.34,
       "best_store": "byFarma",
       "best_store_slug": "byfarma",
       "best_url": "https://byfarma.pt/products/la-roche-posay-effaclar-duo-fps-30-40-ml"
@@ -203,44 +193,44 @@
       "name": "Effaclar Duo +M",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 12.64,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/la-roche-posay-effaclar-duo-m-40-ml"
+      "best_price": 12.54,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
     }
   ],
   "top_brands": [
     {
       "name": "Isdin",
-      "products": 731
+      "products": 725
     },
     {
       "name": "Nivea",
-      "products": 602
+      "products": 617
     },
     {
       "name": "Avène",
-      "products": 591
-    },
-    {
-      "name": "La Roche-Posay",
-      "products": 571
+      "products": 587
     },
     {
       "name": "L'Oréal Paris",
-      "products": 562
+      "products": 570
     },
     {
-      "name": "Uriage",
-      "products": 550
+      "name": "La Roche-Posay",
+      "products": 561
     },
     {
       "name": "Eucerin",
-      "products": 546
+      "products": 550
+    },
+    {
+      "name": "Clarins",
+      "products": 549
     },
     {
       "name": "Bioderma",
-      "products": 541
+      "products": 539
     }
   ],
   "telegram_alerts": [
@@ -249,9 +239,9 @@
       "brand": "Eucerin",
       "name": "Sensitive Protect Kids SPF 50+",
       "store": "Wells",
-      "price": 16.69,
+      "price": 13.35,
       "previous_price": 30.34,
-      "discount_pct": 45
+      "discount_pct": 56
     },
     {
       "ean": "wells-8769550",
