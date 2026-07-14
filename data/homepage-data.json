@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-14T12:27:51.666Z",
-  "seed_total_products": 51376,
+  "generated_at": "2026-07-14T18:00:40.579Z",
+  "seed_total_products": 51697,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -107,16 +107,6 @@
       "best_url": "https://www.perfumesclub.pt/pt/cantabria-labs/duo-gel-anti-imperfecciones/p_55711/"
     },
     {
-      "ean": "3337875924887",
-      "name": "Parches Effaclar Duo+M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809209.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 9.84,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
-    },
-    {
       "ean": "7612412429886",
       "name": "Curaprox Kit de viagem Be You Challenger",
       "brand": "Curaprox",
@@ -125,6 +115,16 @@
       "best_store": "Poupafarma",
       "best_store_slug": "poupafarma",
       "best_url": "https://www.poupafarma.pt/curaprox-kit-de-viagem-rosa"
+    },
+    {
+      "ean": "3337875924887",
+      "name": "Parches Effaclar Duo+M",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809209.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 9.84,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
     },
     {
       "ean": "3574661016320",
@@ -202,15 +202,15 @@
   "top_brands": [
     {
       "name": "Isdin",
-      "products": 725
+      "products": 726
     },
     {
       "name": "Nivea",
-      "products": 617
+      "products": 618
     },
     {
       "name": "Avène",
-      "products": 589
+      "products": 590
     },
     {
       "name": "L'Oréal Paris",
@@ -218,11 +218,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 559
+      "products": 560
     },
     {
       "name": "Eucerin",
-      "products": 550
+      "products": 551
     },
     {
       "name": "Clarins",
