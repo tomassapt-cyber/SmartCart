@@ -11,8 +11,14 @@
 #   bash scripts/refresh-pc-only.sh --full     # powerbeauty faz re-scan completo
 #
 # O que faz: valida tree limpo → reset a origin/main → para cada loja
-# scrape+integrate (continua se uma falhar) → commit único → resilient-push
-# (re-integra sobre origin em caso de corrida com os bots).
+# scrape+integrate → commit+push DESSA loja (resilient-push individual).
+#
+# ⚠ PUSH POR LOJA, NUNCA batch: o retry do resilient-push re-corre só o
+# integrate da loja (~10-15min de janela) e aterra à 1ª-2ª tentativa. A versão
+# antiga fazia UM commit das 5 lojas — o retry re-integrava as 5 (~70min de
+# janela) e perdeu TODAS as 10 tentativas contra os bots (2026-07-14). Além
+# disso o resilient-push só preserva os RAW files entre resets: um commit
+# batch com patches de código perdia-os silenciosamente a partir do 2º retry.
 # ============================================================================
 set -uo pipefail
 cd "$(dirname "$0")/.."
@@ -40,40 +46,37 @@ ORDER=(notino powerbeauty sobeauty smartbeauty beleza37)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"
-  if ${SCRAPE[$loja]}; then
-    echo "════════ ${loja} — integrate ════════"
-    if node "scripts/integrate-${loja}-catalog.js"; then
-      OK+=("$loja")
-    else
-      FAIL+=("${loja} (integrate)")
-    fi
-  else
+  if ! ${SCRAPE[$loja]}; then
     FAIL+=("${loja} (scrape)")
+    continue
+  fi
+  echo "════════ ${loja} — integrate ════════"
+  if ! node "scripts/integrate-${loja}-catalog.js"; then
+    FAIL+=("${loja} (integrate)")
+    continue
+  fi
+  # commit + push DESTA loja já — janela de corrida mínima
+  RAW="data/catalog/${loja}-full.json"
+  MSG="chore: ${loja} refresh do PC ($(date -u +%F))"
+  git add data/seed-bundle.json demo.html index.html catalogo.html data/ghost-check.json data/homepage-data.json 2>/dev/null || true
+  git add -f "$RAW" 2>/dev/null || true
+  if git diff --staged --quiet; then
+    echo "ℹ Nada mudou (${loja})."
+    OK+=("$loja")
+    continue
+  fi
+  git commit -m "$MSG"
+  if bash scripts/ci/resilient-push.sh "node scripts/integrate-${loja}-catalog.js" "$MSG" "$RAW"; then
+    OK+=("$loja")
+  else
+    # dados ficam no tree; a próxima loja commit-a por cima (aterram juntos)
+    FAIL+=("${loja} (push)")
   fi
 done
 
-if [ ${#OK[@]} -eq 0 ]; then
-  echo "❌ Nenhuma loja integrada — nada a publicar. Falhas: ${FAIL[*]}"
+if [ ${#OK[@]} -eq 0 ] && [ ${#FAIL[@]} -gt 0 ]; then
+  echo "❌ Nenhuma loja publicada. Falhas: ${FAIL[*]}"
   exit 1
-fi
-
-# resilient-push re-integra SÓ as lojas que correram (idempotente)
-REINT=""
-RAW=()
-for loja in "${OK[@]}"; do
-  REINT+="node scripts/integrate-${loja}-catalog.js && "
-  RAW+=("data/catalog/${loja}-full.json")
-done
-REINT="${REINT% && }"
-MSG="chore: refresh PC-only (${OK[*]}) ($(date -u +%F))"
-
-git add data/seed-bundle.json demo.html index.html catalogo.html
-for f in "${RAW[@]}"; do git add -f "$f" 2>/dev/null || true; done
-if git diff --staged --quiet; then
-  echo "ℹ Nada mudou após integrar — terminado."
-else
-  git commit -m "$MSG"
-  bash scripts/ci/resilient-push.sh "$REINT" "$MSG" "${RAW[@]}"
 fi
 
 echo; echo "──────── Resumo ────────"
