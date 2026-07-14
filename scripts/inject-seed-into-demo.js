@@ -342,3 +342,13 @@ console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.l
     } catch (e) { console.warn('⚠ substituição hp-data falhou:', e.message); }
   } else console.warn('⚠ build-homepage-data falhou:', (r1.stderr || '').slice(0, 200));
 }
+
+// ── Índice de descrições p/ o scan por foto (data/scan-index.json) ──
+// Regenera-se aqui para acompanhar produtos novos do seed (o scan cruza o texto
+// OCR com estes tokens distintivos das descrições). Falha = não-fatal.
+{
+  const { spawnSync } = require('child_process');
+  const r = spawnSync('node', [path.join(__dirname, 'build-scan-index.js')], { cwd: ROOT, encoding: 'utf8', timeout: 120000 });
+  if (r.status === 0) console.log('🔎 scan-index (descrições) regenerado.');
+  else console.warn('⚠ build-scan-index falhou:', (r.stderr || '').slice(0, 160));
+}

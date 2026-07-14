@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-14T19:36:53.959Z",
-  "seed_total_products": 51694,
+  "generated_at": "2026-07-14T23:46:24.209Z",
+  "seed_total_products": 51692,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -202,7 +202,7 @@
   "top_brands": [
     {
       "name": "Isdin",
-      "products": 726
+      "products": 727
     },
     {
       "name": "Nivea",
@@ -222,15 +222,15 @@
     },
     {
       "name": "Eucerin",
-      "products": 550
+      "products": 551
     },
     {
       "name": "Clarins",
-      "products": 550
+      "products": 548
     },
     {
       "name": "Bioderma",
-      "products": 538
+      "products": 537
     }
   ],
   "telegram_alerts": [
