@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-12T08:41:03.603Z",
-  "seed_total_products": 51345,
+  "generated_at": "2026-07-14T12:27:51.666Z",
+  "seed_total_products": 51376,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -210,7 +210,7 @@
     },
     {
       "name": "Avène",
-      "products": 587
+      "products": 589
     },
     {
       "name": "L'Oréal Paris",
@@ -218,7 +218,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 561
+      "products": 559
     },
     {
       "name": "Eucerin",
@@ -226,11 +226,11 @@
     },
     {
       "name": "Clarins",
-      "products": 549
+      "products": 550
     },
     {
       "name": "Bioderma",
-      "products": 539
+      "products": 538
     }
   ],
   "telegram_alerts": [
