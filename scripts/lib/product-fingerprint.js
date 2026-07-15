@@ -472,8 +472,11 @@ const PHRASE_NORMALIZATION = [
   // Decisão: remover sufixos genéricos de área quando aparecem isolados.
 
   // ───── SPF/FPS normalization ─────
-  [/\bspf\s*(\d+)\s*\+?/gi, 'spf$1'],
-  [/\bfps\s*(\d+)\s*\+?/gi, 'spf$1'],
+  // Junta o número ao SPF/FPS e remove o '+'. O ESPAÇO FINAL do replacement é
+  // CRÍTICO: sem ele o \s*\+? engolia o espaço para o volume seguinte e colava
+  // "spf30 200" → "spf30200" (partia protetores solares de tamanhos/línguas
+  // diferentes e impedia a remoção do volume). FPS(PT)/SPF/IP(FR) → spf.
+  [/\b(?:spf|fps|ip)\s*(\d+)\s*\+?/gi, 'spf$1 '],
 
   // ───── Sinónimos seguros (minerados de quase-gémeos mesma-marca+volume) ─────
   // Mesmo significado entre lojas/línguas → unificar p/ não fragmentar produtos.
