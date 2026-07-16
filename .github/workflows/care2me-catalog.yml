@@ -1,0 +1,100 @@
+# CosMath — Care2Me daily price refresh
+# ============================================================
+# Care2Me (care2me.pt): farmácia PT, preços EUR, envia PT. JSON-LD
+# expõe mpn=EAN real (13 díg) E sku=CNP (7 díg) — chave dupla. O JSON-LD vem
+# partido (bug de template do site) → extracção por regex, não JSON.parse
+# (ver nota em scripts/scrape-care2me-catalog.js).
+# Sitemap /sitemap.xml (urlset único, ~5.5k URLs incl. não-produto).
+#
+# Pipeline:
+#   1. scrape-care2me-catalog.js → data/catalog/care2me-full.json
+#   2. integrate-care2me-catalog.js (match EAN + pós-processo + inject;
+#      o CNP é apanhado automaticamente pelo apply-cnp-merge.js)
+
+name: Care2Me daily refresh
+
+on:
+  schedule:
+    - cron: '40 4 * * *'
+    - cron: '40 12 * * *'   # 3x/dia (regra do user 2026-07-03)
+    - cron: '40 20 * * *'   # 3x/dia
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Care2Me
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-care2me-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=250
+          else
+            node scripts/scrape-care2me-catalog.js --concurrency=5 --delay=250
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: care2me-catalog-${{ github.run_id }}
+          path: data/catalog/care2me-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-care2me-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/care2me-full.json 2>/dev/null || true
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: Care2Me daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-care2me-catalog.js" \
+            "chore: Care2Me daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/care2me-full.json
