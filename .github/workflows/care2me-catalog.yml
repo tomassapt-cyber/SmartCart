@@ -24,13 +24,18 @@ on:
         description: 'Limit (vazio = sem limite)'
         required: false
         default: ''
+      resume:
+        description: 'Retomar do catálogo committed (1 = sim; vazio = scrape completo)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # ~9.9k fichas c/ ~87% de 404 (sitemap-cemitério) ≈ 150 min a conc=5 — 120 cancelava a 80%
+    timeout-minutes: 200
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -56,10 +61,12 @@ jobs:
 
       - name: Scrape Care2Me
         run: |
+          RESUME=""
+          if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-care2me-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=250
+            node scripts/scrape-care2me-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=250 $RESUME
           else
-            node scripts/scrape-care2me-catalog.js --concurrency=5 --delay=250
+            node scripts/scrape-care2me-catalog.js --concurrency=5 --delay=250 $RESUME
           fi
 
       - name: Upload scrape artifact (safety-net)

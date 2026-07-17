@@ -24,13 +24,18 @@ on:
         description: 'Limit (vazio = sem limite)'
         required: false
         default: ''
+      resume:
+        description: 'Retomar do catálogo committed (1 = sim; vazio = scrape completo)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # 16.375 fichas e Shopify a dar throttle a conc=5 (35% err) → conc=3/delay=400 ≈ 3h
+    timeout-minutes: 340
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -56,10 +61,12 @@ jobs:
 
       - name: Scrape FarmaToGo
         run: |
+          RESUME=""
+          if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-farmatogo-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=250
+            node scripts/scrape-farmatogo-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=3 --delay=400 $RESUME
           else
-            node scripts/scrape-farmatogo-catalog.js --concurrency=5 --delay=250
+            node scripts/scrape-farmatogo-catalog.js --concurrency=3 --delay=400 $RESUME
           fi
 
       - name: Upload scrape artifact (safety-net)
