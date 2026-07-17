@@ -153,6 +153,16 @@
       "store_slug": "farmaoli",
       "ean": "3282770395693",
       "reason": "Tracking-ean podre: ficha bálsamo Triphasic 150ml (slug …-3282770109405.html, 14.01€) colada ao EAN do Triphasic Reactional 12 ampolas (41-67€) — auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "farmaciagarcia",
+      "ean": "3574661656755",
+      "reason": "Ficha do Piz Buin Allergy SPF50+ 200ml (36.50€) colada ao EAN do formato 400ml via CNP-merge (sku do lojista errado) — auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "farmaciagarcia",
+      "ean": "5609238304499",
+      "reason": "Bio-Oil Gel formato grande (24€) no EAN do 50ml (crowd 5.56-9.34€) via CNP-merge (sku do lojista errado) — auditoria 2026-07-17"
     }
   ]
 }
