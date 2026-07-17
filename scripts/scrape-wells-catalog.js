@@ -198,10 +198,14 @@ async function extract(page) {
       if (!el) return null;
       const intEl = el.querySelector('.w-price-int');
       const decEl = el.querySelector('.w-price-dec');
-      if (!intEl) return null;
+      // Sem AMBAS as partes não há preço fiável: assumir 0 cêntimos quando o
+      // span dos decimais falta foi o que truncou 48% do catálogo (9,99→9;
+      // registo de correções #2, 2026-07-17). Devolver null faz o pipeline
+      // cair no JSON-LD, que é sempre completo.
+      if (!intEl || !decEl) return null;
       const intVal = parseInt((intEl.textContent || '').replace(/[^\d]/g, ''), 10);
-      const decVal = decEl ? parseInt((decEl.textContent || '').replace(/[^\d]/g, ''), 10) || 0 : 0;
-      if (!isFinite(intVal)) return null;
+      const decVal = parseInt((decEl.textContent || '').replace(/[^\d]/g, ''), 10);
+      if (!isFinite(intVal) || !isFinite(decVal)) return null;
       return intVal + (decVal / 100);
     }
     const salesPriceEl = document.querySelector('.w-pdp-price-container .w-sales-price, .w-pdp-price .w-sales-price');
@@ -305,7 +309,13 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
         const cheapestPrice = cheapestOffer?.price ?? data.variants[0]?.price ?? null;
         // PRIORIDADE: DOM .w-sales-price (preço promocional displayed) > JSON-LD
         // — JSON-LD às vezes tem o preço lista, DOM tem o que utilizador vê.
-        const finalPrice = data.dom_sale_price ?? cheapestPrice;
+        let finalPrice = data.dom_sale_price ?? cheapestPrice;
+        // Assinatura de truncagem: DOM inteiro com JSON-LD não-inteiro de floor
+        // igual (9 vs 9,99) → o JSON-LD é que está certo.
+        if (finalPrice != null && Number.isInteger(finalPrice) && typeof cheapestPrice === 'number' &&
+            !Number.isInteger(cheapestPrice) && Math.floor(cheapestPrice) === finalPrice) {
+          finalPrice = cheapestPrice;
+        }
         allProducts.push({
           ...t,
           status: 'ok',

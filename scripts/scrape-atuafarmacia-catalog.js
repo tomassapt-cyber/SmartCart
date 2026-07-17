@@ -130,7 +130,11 @@ function mapProduct(p, category) {
 
 async function fetchPage(page, attempt = 1) {
   try {
-    const r = await fetch(`${BASE}/products.json?limit=250&page=${page}`, { headers: { 'User-Agent': UA, 'Accept': 'application/json', 'Accept-Language': 'pt-PT,pt;q=0.9' } });
+    // Cookie localization=PT: Shopify Markets serve preços por GEO-IP — do runner
+    // GitHub (IP US) vinham preços do mercado internacional (+16,7% constante em
+    // TODO o catálogo; registo de correções #2, 2026-07-17). O cookie é o mesmo
+    // que o seletor de país do site define e força o mercado PT.
+    const r = await fetch(`${BASE}/products.json?limit=250&page=${page}`, { headers: { 'User-Agent': UA, 'Accept': 'application/json', 'Accept-Language': 'pt-PT,pt;q=0.9', 'Cookie': 'localization=PT' } });
     if (r.status === 429 || r.status >= 500) {
       if (attempt <= 6) { const wait = 3000 * attempt + Math.random() * 1000; console.log(`    ⏳ ${r.status} na página ${page} — espera ${Math.round(wait / 1000)}s (tentativa ${attempt}/6)`); await new Promise(s => setTimeout(s, wait)); return fetchPage(page, attempt + 1); }
       return { rateLimited: true };

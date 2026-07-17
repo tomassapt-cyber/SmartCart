@@ -68,12 +68,12 @@ function extractProductData(html) {
 }
 
 async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); return await r.text(); }
+  try { const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9', 'Cookie': 'localization=PT' }, redirect: 'follow' }); return await r.text(); }
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
 }
 async function fetchPage(url, attempt = 1) {
   let r;
-  try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); }
+  try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9', 'Cookie': 'localization=PT' }, redirect: 'follow' }); }
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
   const drop = () => { try { return r.body ? r.body.cancel().catch(() => {}) : undefined; } catch { return undefined; } };
   if (r.status === 404 || r.status === 410) { await drop(); return { status: 'not_found' }; }
@@ -93,7 +93,12 @@ async function main() {
   console.log(`  ${productMaps.length} sitemaps de produto`);
   let urls = [];
   for (const sm of productMaps) { const xml = await fetchText(sm); urls.push(...locs(xml).filter(u => u.includes('/products/'))); await new Promise(s => setTimeout(s, 500)); }
-  urls = [...new Set(urls.map(u => u.split('?')[0]))];
+  // Shopify Markets: o sitemap traz o MESMO produto em /en/products/ e
+  // /es/products/ com preços de mercado ≠ PT (±1-2%) — e 90% das ofertas
+  // estavam a aterrar em URLs/preços não-PT (registo de correções #2,
+  // 2026-07-17). Normalizamos TUDO para o URL canónico PT (sem prefixo),
+  // o que também corta a fila para ~1/3.
+  urls = [...new Set(urls.map(u => u.split('?')[0].replace(/farmatogo\.com\/(?:[a-z]{2}(?:-[a-z]{2})?)\/products\//i, 'farmatogo.com/products/')))];
   const t0 = urls.length;
   urls = urls.filter(slugLooksCosmetic);
   console.log(`  ${t0} fichas → ${urls.length} após filtro de slug não-cosmético`);

@@ -35,7 +35,7 @@ function volumeFromName(name) {
 
 async function fetchJson(url, attempt = 1) {
   let r;
-  try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9', 'Accept': 'application/json' }, redirect: 'follow' }); }
+  try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9', 'Cookie': 'localization=PT', 'Accept': 'application/json' }, redirect: 'follow' }); }
   catch (e) { if (attempt < 4) { await new Promise(s => setTimeout(s, 2500 * attempt)); return fetchJson(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
   if (r.status === 404 || r.status === 410) { try { if (r.body) await r.body.cancel().catch(() => {}); } catch {} return { status: 'not_found' }; }
   if (r.status === 429 || r.status >= 500) {
