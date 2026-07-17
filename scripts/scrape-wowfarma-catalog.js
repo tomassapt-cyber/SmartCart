@@ -70,7 +70,14 @@ async function fetchFeed(attempt = 1) {
     const cnp = /^\d{7}$/.test(ref) ? ref : null;
     const ean = /^\d{12,14}$/.test(eanRaw) && !/0{6,}/.test(eanRaw) ? eanRaw : null;
     if (!cnp && !ean) { noKey++; continue; }
-    const price = parseFloat(tag(b, 'price').replace(/\./g, '').replace(',', '.'));   // "1.234,56" → 1234.56 (PT)
+    const base = parseFloat(tag(b, 'price').replace(/\./g, '').replace(',', '.'));   // "1.234,56" → 1234.56 (PT)
+    // <promotional_price> (quando existe e < base) é o preço ATUAL da loja —
+    // ignorá-lo mostrava o preço base durante promoções (erro reportado pelo
+    // user 2026-07-17: Cicabio 40ml a 12,90€ no site com promo a 9,34€).
+    const promoRaw = tag(b, 'promotional_price');
+    const promo = promoRaw ? parseFloat(promoRaw.replace(/\./g, '').replace(',', '.')) : null;
+    const emPromo = promo != null && promo > 0 && promo < base;
+    const price = emPromo ? promo : base;
     if (!(price > 0)) { noPrice++; continue; }
     const stock = parseInt(tag(b, 'stock'), 10);
     products.push({
@@ -82,7 +89,7 @@ async function fetchFeed(attempt = 1) {
       category: decodeEntities(tag(b, 'category')) || null,
       image_url: tag(b, 'image_url') || null,
       price,
-      previous_price: null,
+      previous_price: emPromo ? base : null,
       discount_pct: null,
       in_stock: !isFinite(stock) || stock > 0,
       volume_ml: volumeFromName(name),
