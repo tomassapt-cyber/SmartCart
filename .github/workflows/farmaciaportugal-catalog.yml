@@ -1,0 +1,101 @@
+# CosMath — Farmacia Portugal daily price refresh
+# ============================================================
+# loja.farmaciaportugal.pt (o domínio raiz é institucional!); sitemap_web + JSON-LD gtin13 parcial + sku=mpn=CNP. ~2.7k fichas.
+#
+# Pipeline:
+#   1. scrape-farmaciaportugal-catalog.js → data/catalog/farmaciaportugal-full.json
+#   2. integrate-farmaciaportugal-catalog.js (match EAN/CNP + pós-processo + inject)
+
+name: Farmacia Portugal daily refresh
+
+on:
+  schedule:
+    - cron: '20 9 * * *'
+    - cron: '20 17 * * *'   # 3x/dia (regra do user 2026-07-03)
+    - cron: '20 1 * * *'   # 3x/dia
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite)'
+        required: false
+        default: ''
+      resume:
+        description: 'Retomar do catálogo committed (1 = sim; vazio = scrape completo)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Farmacia Portugal
+        run: |
+          RESUME=""
+          if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-farmaciaportugal-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=250 $RESUME
+          else
+            node scripts/scrape-farmaciaportugal-catalog.js --concurrency=5 --delay=250 $RESUME
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: farmaciaportugal-catalog-${{ github.run_id }}
+          path: data/catalog/farmaciaportugal-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-farmaciaportugal-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/farmaciaportugal-full.json 2>/dev/null || true
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: Farmacia Portugal daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-farmaciaportugal-catalog.js" \
+            "chore: Farmacia Portugal daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/farmaciaportugal-full.json
