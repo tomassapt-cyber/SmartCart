@@ -26,6 +26,34 @@ if (closeIdx === -1) { console.error('✗ </script> de fecho não encontrado'); 
 
 const seedJson = JSON.parse(seed);
 
+// ── Overlay: PORTES VERIFICADOS (data/store-shipping.json — NÃO-destrutivo) ──
+// Os integradores registam lojas novas com defaults adivinhados (49€/3,95€) e
+// os limiares reais mudam. store-shipping.json é a fonte de verdade verificada
+// à mão site-a-site (auditoria 2026-07-17). Aplica-se ao seed EM MEMÓRIA a cada
+// inject: qualquer refresh de bot re-impõe os valores; seed-bundle.json intacto.
+(function applyVerifiedShipping() {
+  const SHIP_FILE = path.join(ROOT, 'data', 'store-shipping.json');
+  if (!fs.existsSync(SHIP_FILE)) return;
+  let ship; try { ship = JSON.parse(fs.readFileSync(SHIP_FILE, 'utf8')); } catch { return; }
+  let n = 0;
+  for (const st of (seedJson.stores || [])) {
+    const v = ship[st.slug];
+    if (!v) continue;
+    let touched = false;
+    if (v.gratis != null && st.free_shipping_threshold !== v.gratis) { st.free_shipping_threshold = v.gratis; touched = true; }
+    if (v.casa != null) {
+      st.shipping_zones = st.shipping_zones || {};
+      const ilhas = v.ilhas != null ? v.ilhas : v.casa;
+      if (st.shipping_zones.mainland !== v.casa || st.shipping_zones.madeira !== ilhas || st.shipping_zones.acores !== ilhas) {
+        st.shipping_zones.mainland = v.casa; st.shipping_zones.madeira = ilhas; st.shipping_zones.acores = ilhas; touched = true;
+      }
+    }
+    if (v.ponto != null && st.pickup_cost !== v.ponto) { st.pickup_cost = v.ponto; st.pickup_note = v.ponto_txt || null; touched = true; }
+    if (touched) n++;
+  }
+  if (n) console.log(`🚚 Portes verificados aplicados a ${n} lojas (store-shipping.json).`);
+})();
+
 // ── Overlay: CORRIGIR preços de variante truncados ao inteiro (NÃO-destrutivo) ─
 // Bug do scraper da Wells (e afins): a extração de variantes por DOM apanha às
 // vezes o preço sem decimais (7,98 € → 7). Como o card usa o preço da VARIANTE

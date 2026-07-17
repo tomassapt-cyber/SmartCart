@@ -1,0 +1,357 @@
+{
+ "bairro-saude": {
+  "gratis": 15,
+  "casa": 4.99,
+  "ponto": 3.45,
+  "ponto_txt": "3,45 € (farma2go)"
+ },
+ "easyfarma": {
+  "gratis": 69,
+  "casa": 3.95,
+  "ponto": 2.95,
+  "ponto_txt": "2.95"
+ },
+ "cocooncenter": {
+  "gratis": 79,
+  "casa": 6.95,
+  "ponto": 6.95,
+  "ponto_txt": "6.95"
+ },
+ "pharma-gdd": {
+  "gratis": 59,
+  "casa": 4.95,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "byfarma": {
+  "gratis": 59.99,
+  "casa": 4.95,
+  "ponto": null,
+  "ponto_txt": "sem ponto"
+ },
+ "asuafarmaciaonline": {
+  "gratis": 49,
+  "casa": 4.95,
+  "ponto": 3.95,
+  "ponto_txt": "3.95"
+ },
+ "farmaciasportuguesas": {
+  "gratis": 39,
+  "casa": 3.95,
+  "ponto": 2.95,
+  "ponto_txt": "2.95"
+ },
+ "pharma2you": {
+  "gratis": 49,
+  "casa": 4.95,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "afarmaciaonline": {
+  "gratis": 49,
+  "casa": 4.95,
+  "ponto": 3.95,
+  "ponto_txt": "3.95"
+ },
+ "aminhafarmaciaonline": {
+  "gratis": 45,
+  "casa": 3.95,
+  "ponto": 2.95,
+  "ponto_txt": "2.95"
+ },
+ "haemiskin": {
+  "gratis": 50,
+  "casa": 4.99,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "farmaciavirtual": {
+  "gratis": 100,
+  "casa": 4.29,
+  "ponto": null,
+  "ponto_txt": "Depende da morada (Farmácia Virtual)"
+ },
+ "sweetcare": {
+  "gratis": 49,
+  "casa": 3.99,
+  "ponto": null,
+  "ponto_txt": "Locker/Pickup disponível em algumas zonas"
+ },
+ "farmacia365": {
+  "gratis": 49.9,
+  "casa": 4.95,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "loja-farmacia": {
+  "gratis": 60,
+  "casa": 3.95,
+  "ponto": 2.95,
+  "ponto_txt": "2.95"
+ },
+ "wells": {
+  "gratis": 39,
+  "casa": 3.99,
+  "ponto": 0,
+  "ponto_txt": "Grátis (levantamento em loja)"
+ },
+ "aveirofarma": {
+  "gratis": 39,
+  "casa": 3.95,
+  "ponto": 3.5,
+  "ponto_txt": "Pickup DPD 3,50 €"
+ },
+ "mycosmetics": {
+  "gratis": 50,
+  "casa": 4.5,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "saudemayor": {
+  "gratis": 44.5,
+  "casa": 4.95,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "barreiros": {
+  "gratis": 39,
+  "casa": 3.95,
+  "ponto": 0,
+  "ponto_txt": "Grátis (levantamento em loja)"
+ },
+ "pharmascalabis": {
+  "gratis": 39,
+  "casa": 3.95,
+  "ponto": 0,
+  "ponto_txt": "Grátis (levantamento em loja)"
+ },
+ "atida": {
+  "gratis": 49,
+  "casa": 3.95,
+  "ponto": null,
+  "ponto_txt": "n/d (Atida)"
+ },
+ "druni": {
+  "gratis": 29.95,
+  "casa": 3.95,
+  "ponto": 0,
+  "ponto_txt": "Grátis em loja Druni"
+ },
+ "primor": {
+  "gratis": 25,
+  "casa": 3.95,
+  "ponto": 0,
+  "ponto_txt": "Grátis em loja Primor"
+ },
+ "care2me": {
+  "gratis": 50,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "farmatogo": {
+  "gratis": 49,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": "Pickup CTT disponível"
+ },
+ "docmorris": {
+  "gratis": null,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "atuafarmacia": {
+  "gratis": 55,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "poupafarma": {
+  "gratis": null,
+  "casa": 3.25,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "quickfarma": {
+  "gratis": 50,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "shopcosmetics": {
+  "gratis": 40,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "fastpharma": {
+  "gratis": 34.99,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "unifarma": {
+  "gratis": 39,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "nossafarmacia": {
+  "gratis": 55,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "wowfarma": {
+  "gratis": 60,
+  "casa": null,
+  "ponto": 3,
+  "ponto_txt": "DHL Ponto de Recolha (até 3 kg)"
+ },
+ "pharmavida": {
+  "gratis": 39,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "gofarma": {
+  "gratis": 44,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "hiperfarma": {
+  "gratis": null,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "beleza37": {
+  "gratis": 100,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "farmaciapt": {
+  "gratis": 40,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "pharmee": {
+  "gratis": null,
+  "casa": null,
+  "ponto": 3.5,
+  "ponto_txt": "3,50 € (grátis ≥40€)"
+ },
+ "powerbeauty": {
+  "gratis": 49,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "sobeauty": {
+  "gratis": 49,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "perfumes4you": {
+  "gratis": 50,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "farmaoli": {
+  "gratis": 40,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": "Levantamento em loja"
+ },
+ "farmaciadocostume": {
+  "gratis": 50,
+  "casa": 3,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "bemecare": {
+  "gratis": 50,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "vallispharma": {
+  "gratis": 40,
+  "casa": 3.99,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "lovemypharma": {
+  "gratis": 49,
+  "casa": 3.48,
+  "ponto": null,
+  "ponto_txt": null,
+  "ilhas": 6.5
+ },
+ "notino": {
+  "gratis": 45,
+  "casa": 3.95,
+  "ponto": null,
+  "ponto_txt": "Pickup disponível (preço varia consoante o ponto) (Notino)"
+ },
+ "pluricosmetica": {
+  "gratis": 39,
+  "casa": 3.95,
+  "ponto": null,
+  "ponto_txt": "n/d (pluricosmetica.com)"
+ },
+ "continente": {
+  "gratis": null,
+  "casa": 5.99,
+  "ponto": 1,
+  "ponto_txt": "Click&Go desde 1 €"
+ },
+ "farmaciaideal": {
+  "gratis": 60,
+  "casa": 3.95,
+  "ponto": null,
+  "ponto_txt": "Levantamento na farmácia"
+ },
+ "perfumesclub": {
+  "gratis": 19.95,
+  "casa": 3.95,
+  "ponto": null,
+  "ponto_txt": "Pickup disponível (preço varia)"
+ },
+ "smartbeauty": {
+  "gratis": 60,
+  "casa": 3.95,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "cosmeticfan": {
+  "gratis": 49,
+  "casa": 4.95,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "manuelaserra": {
+  "gratis": 50,
+  "casa": 3.4,
+  "ponto": null,
+  "ponto_txt": "Levantamento em loja"
+ },
+ "farmaciaportugal": {
+  "gratis": 40,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "farmaciagarcia": {
+  "gratis": null,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ }
+}
