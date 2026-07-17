@@ -192,6 +192,14 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
       existingItem.previous_price = null;
       existingItem.discount_pct = null;
     }
+    // "Desde X€" de marketplace (só quem envia sp.min_price — farmaciasportuguesas):
+    // refrescar SEMPRE do scrape (e limpar quando deixa de ser mais barato),
+    // senão o claim "desde" fica stale como qualquer preço.
+    if (typeof sp.min_price === 'number' && sp.min_price > 0 && sp.min_price < existingItem.price) {
+      existingItem.min_price = Number(sp.min_price.toFixed(2));
+    } else if (existingItem.min_price != null) {
+      delete existingItem.min_price;
+    }
     if (state.updatedCounter) state.updatedCounter.value++;
     return { item: existingItem, action: 'merged' };
   }
@@ -216,6 +224,10 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
     source: 'scraped',
     variants: baseVariants.length > 0 ? baseVariants : undefined,
   };
+  // "Desde X€" de marketplace (só quem envia sp.min_price — farmaciasportuguesas)
+  if (typeof sp.min_price === 'number' && sp.min_price > 0 && sp.min_price < item.price) {
+    item.min_price = Number(sp.min_price.toFixed(2));
+  }
   state.storeSp.items.push(item);
   state.itemByEan[targetEan] = item;
   if (state.addedCounter) state.addedCounter.value++;

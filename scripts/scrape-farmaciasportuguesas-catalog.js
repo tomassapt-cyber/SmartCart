@@ -80,12 +80,21 @@ function extractProductData(html, url) {
   // price<=0 → não disponível nesta farmácia (sem preço) → ignorar.
   if (!(price > 0)) return { url, status: 'no_price', cnp, name };
 
+  // "Desde": o <meta itemprop="price"> vem SEM cookie e é o preço mínimo entre
+  // as farmácias do marketplace (SEO). Vem na MESMA ficha → zero pedidos extra.
+  // Só é útil quando é mesmo menor que o preço da nossa farmácia de referência.
+  const mm = html.match(/<meta\s+itemprop=["']price["']\s+content=["']([\d.]+)["']/i);
+  const metaMin = mm ? parseFloat(mm[1]) : null;
+  const min_price = (metaMin != null && isFinite(metaMin) && metaMin > 0 && metaMin < price - 0.009)
+    ? Number(metaMin.toFixed(2)) : null;
+
   const image_url = `${BASE}/media/catalog/product/${cnp[0]}/${cnp[1]}/${cnp}.png`;
   return {
     url, status: 'ok', name, brand: null,
     ean: null, cnp, sku: cnp,
     image_url, price: Number(price.toFixed(2)),
     previous_price: previous_price ? Number(previous_price.toFixed(2)) : null,
+    min_price,
     in_stock: true, volume_ml: volumeFromName(name), category: null, variants: [],
   };
 }
