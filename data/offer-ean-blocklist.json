@@ -138,6 +138,21 @@
       "store_slug": "druni",
       "ean": "8429420128644",
       "reason": "ISDIN Micellar Solution ON-THE-GO (formato viagem, 4.49€) no EAN do formato 400ml (crowd 11-18.5€) — auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "lovemypharma",
+      "ean": "5600360018247",
+      "reason": "Barral Babyprotect provável 500ml (13.28€) no EAN do formato viagem 100ml (crowd 3.77-4.99€) — auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "farmaoli",
+      "ean": "5600880000418",
+      "reason": "Tracking-ean podre: ficha Heliocare 360 MD A-R SPF50 (slug …-8470002061705.html, 16.10€) colada ao EAN do Ultra D trio (63-80€) — auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "farmaoli",
+      "ean": "3282770395693",
+      "reason": "Tracking-ean podre: ficha bálsamo Triphasic 150ml (slug …-3282770109405.html, 14.01€) colada ao EAN do Triphasic Reactional 12 ampolas (41-67€) — auditoria 2026-07-17"
     }
   ]
 }

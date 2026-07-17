@@ -60,11 +60,14 @@ function extractProductData(html, url) {
   if (!name) name = ((html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1] || '').replace(/<[^>]+>/g, '').trim();
   name = name.replace(/\s+/g, ' ').replace(/\s*[|–-]\s*Farmaoli.*$/i, '').trim();
   if (!name || isNonCosmetic(name)) return null;
-  // EAN: JSON de tracking > slug validado
-  let ean = null;
-  const tr = html.match(/["']ean["']\s*[:=]\s*["']?(\d{12,14})/i);
-  if (tr && /^\d{12,14}$/.test(tr[1]) && !/0{6,}/.test(tr[1])) ean = tr[1];
-  if (!ean) ean = eanFromSlug(url);
+  // EAN: slug validado por checksum VENCE o tracking — o JSON de tracking mente
+  // nalgumas fichas (ex.: 700952-heliocare-360-…-8470002061705.html com tracking
+  // ean do trio Ultra D), e o slug é a curadoria do catálogo.
+  let ean = eanFromSlug(url);
+  if (!ean) {
+    const tr = html.match(/["']ean["']\s*[:=]\s*["']?(\d{12,14})/i);
+    if (tr && /^\d{12,14}$/.test(tr[1]) && !/0{6,}/.test(tr[1])) ean = tr[1];
+  }
   // CNP: "reference" com 7 dígitos (itemprop sku/mpn é dummy — ignorar)
   let cnp = null;
   const ref = html.match(/["']reference["']\s*[:=]\s*["']?(\d{6,8})["']?/i);
