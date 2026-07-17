@@ -128,6 +128,16 @@
       "store_slug": "farmaciavirtual",
       "ean": "3666057241413",
       "reason": "Saro Nature colheres silicone (11.35€) no EAN do Clarins Skin Illusion 108.3N 30ml — 0% match, auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "farmatogo",
+      "ean": "3401381381813",
+      "reason": "Ficha do Topialyse Gel Lavante 200ml (2.72€) colada ao EAN do formato 55ml (~3.9€; 200ml de mercado ~8-12€) — vol ≠REF, auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "8429420128644",
+      "reason": "ISDIN Micellar Solution ON-THE-GO (formato viagem, 4.49€) no EAN do formato 400ml (crowd 11-18.5€) — auditoria 2026-07-17"
     }
   ]
 }
