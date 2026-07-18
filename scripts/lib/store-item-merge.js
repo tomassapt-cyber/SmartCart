@@ -163,8 +163,17 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
     // preço fresco do scrape — nunca o headline antigo, que pode estar stale).
     const inStockPrices = mergedVariants.filter(v => v.in_stock && v.price > 0).map(v => v.price);
     const allPrices = mergedVariants.map(v => v.price).filter(p => p > 0);
-    const headlinePrice = inStockPrices.length ? Math.min(...inStockPrices)
-      : (allPrices.length ? Math.min(...allPrices) : spPrice);
+    // ⚠️ Se o scrape FRESCO não trouxe variante nenhuma (batch vazio), as
+    // variantes históricas NÃO podem mandar no preço: são de uma leitura
+    // anterior da mesma página e podem estar erradas/obsoletas. O preço da
+    // página lido agora (spPrice) é a fonte mais recente e honesta.
+    // (Registo de correções #5: 729 preços truncados da Wells ficaram presos
+    // assim — o scraper já devolvia 18,68€ e o seed mostrava 28€ vindo de uma
+    // variante velha.)
+    const headlinePrice = batch.length === 0
+      ? spPrice
+      : (inStockPrices.length ? Math.min(...inStockPrices)
+        : (allPrices.length ? Math.min(...allPrices) : spPrice));
     // URL: manter a do volume mais barato in_stock (mais útil para o user)
     const cheapestInStock = mergedVariants.find(v => v.price === headlinePrice && v.in_stock);
     const headlineUrl = cheapestInStock?.url || existingItem.url || sp.url;
