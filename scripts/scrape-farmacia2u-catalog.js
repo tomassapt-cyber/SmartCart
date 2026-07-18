@@ -92,9 +92,33 @@ function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) r
 
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
-  console.log('📋 A descarregar sitemap.xml farmacia2u…');
-  const xml = await fetchText(BASE + '/sitemap.xml');
-  let urls = [...new Set(locs(xml).filter(u => /\/pt\/comprar\/[a-z0-9-]+$/.test(u)))];
+  console.log('📋 A descarregar sitemap farmacia2u…');
+  // O sitemap pode vir do apex ou do www, e o primeiro pode ser um index.
+  // Na nuvem apanhámos 0 locs (2026-07-18) — por isso tentamos variantes e
+  // imprimimos diagnóstico do que o servidor devolveu, em vez de sair mudos.
+  const CANDS = [BASE + '/sitemap.xml', 'https://farmacia2u.com/sitemap.xml', BASE + '/pt/sitemap.xml', BASE + '/sitemap_index.xml'];
+  const isFicha = u => /\/pt\/comprar\/[a-z0-9-]+$/.test(u);
+  let urls = [];
+  for (const cand of CANDS) {
+    let xml = '';
+    try { xml = await fetchText(cand); } catch (e) { console.log(`  ${cand} → erro ${e.message}`); continue; }
+    let all = locs(xml);
+    // sitemap index → descer aos filhos
+    if (all.length && all.every(u => /\.xml(\.gz)?$/i.test(u))) {
+      console.log(`  ${cand} → index com ${all.length} filhos`);
+      const filhos = [];
+      for (const child of all.slice(0, 12)) {
+        try { filhos.push(...locs(await fetchText(child))); } catch {}
+        await new Promise(s => setTimeout(s, 300));
+      }
+      all = filhos;
+    }
+    const fichas = all.filter(isFicha);
+    console.log(`  ${cand} → ${xml.length} bytes · ${all.length} locs · ${fichas.length} fichas`);
+    if (fichas.length) { urls = [...new Set(fichas)]; break; }
+    if (xml.length && all.length === 0) console.log(`    início do corpo: ${xml.slice(0, 160).replace(/\s+/g, ' ')}`);
+  }
+  if (!urls.length) { console.error('✗ nenhum sitemap deu fichas — ver diagnóstico acima (bloqueio de datacenter?).'); process.exit(1); }
   const t0 = urls.length;
   urls = urls.filter(slugLooksCosmetic);
   console.log(`  ${t0} fichas → ${urls.length} após filtro de slug não-cosmético`);
