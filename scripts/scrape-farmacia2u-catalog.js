@@ -29,6 +29,24 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 300;
 const CHECKPOINT_EVERY = 100;
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+// O openresty deste site devolve 415 ao runner do GitHub (de casa responde 200
+// a QUALQUER combinação de headers) — WAF a disfarçar bloqueio de datacenter.
+// Mandamos um fingerprint completo de browser: se o filtro for por headers,
+// passa; se for por IP, o guard de 0-produtos protege e os crons vão tentando
+// (o care2me teve o mesmo padrão e desbloqueou sozinho ao fim de horas).
+const BROWSER_HEADERS = {
+  'User-Agent': UA,
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+  'Accept-Language': 'pt-PT,pt;q=0.9,en;q=0.8',
+  'Accept-Encoding': 'gzip, deflate, br',
+  'Upgrade-Insecure-Requests': '1',
+  'Sec-Fetch-Dest': 'document',
+  'Sec-Fetch-Mode': 'navigate',
+  'Sec-Fetch-Site': 'none',
+  'Sec-Fetch-User': '?1',
+  'Cache-Control': 'no-cache',
+  'Pragma': 'no-cache',
+};
 
 function locs(xml) { return (xml.match(/<loc>([^<]+)<\/loc>/g) || []).map(m => m.replace(/<\/?loc>/g, '').trim().replace(/&amp;/g, '&')); }
 function slugLooksCosmetic(u) { const slug = (u.split('/').pop() || '').replace(/-/g, ' '); return !!slug && !isNonCosmetic(slug); }
@@ -73,12 +91,12 @@ function extractProductData(html) {
 }
 
 async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); return await r.text(); }
+  try { const r = await fetch(url, { headers: BROWSER_HEADERS, redirect: 'follow' }); return await r.text(); }
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
 }
 async function fetchPage(url, attempt = 1) {
   let r;
-  try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); }
+  try { r = await fetch(url, { headers: BROWSER_HEADERS, redirect: 'follow' }); }
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
   const drop = () => { try { return r.body ? r.body.cancel().catch(() => {}) : undefined; } catch { return undefined; } };
   if (r.status === 404 || r.status === 410) { await drop(); return { status: 'not_found' }; }
