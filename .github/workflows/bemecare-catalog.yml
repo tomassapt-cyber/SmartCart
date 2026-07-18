@@ -29,7 +29,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 30
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -58,9 +58,9 @@ jobs:
           RESUME=""
           if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-bemecare-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=4 --delay=300 $RESUME
+            node scripts/scrape-bemecare-catalog.js --limit=${{ github.event.inputs.limit }}
           else
-            node scripts/scrape-bemecare-catalog.js --concurrency=4 --delay=300 $RESUME
+            node scripts/scrape-bemecare-catalog.js
           fi
 
       - name: Upload scrape artifact (safety-net)
