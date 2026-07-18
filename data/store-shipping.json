@@ -353,5 +353,24 @@
   "casa": null,
   "ponto": null,
   "ponto_txt": null
+ },
+ "skpro": {
+  "gratis": 65,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "vidamais": {
+  "gratis": 39,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null
+ },
+ "atcosmetics": {
+  "gratis": 25,
+  "casa": null,
+  "ponto": null,
+  "ponto_txt": null,
+  "ilhas": null
  }
 }

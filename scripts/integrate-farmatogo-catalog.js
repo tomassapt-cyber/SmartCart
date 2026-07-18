@@ -45,7 +45,7 @@ const isRealEan = e => /^\d{12,14}$/.test(e || '');
   if (!data?.products || !seed?.products) { console.error('✗ Ficheiros inválidos.'); process.exit(1); }
 
   let sm = data.products.filter(p => p.status === 'ok' && p.price > 0 && (isRealEan(p.ean) || /^\d{7}$/.test(p.cnp || ''))).slice(0, MAX);
-  console.log(`📦 farmaciaideal: ${data.products.length} entradas · ${sm.length} com EAN real + preço`);
+  console.log(`📦 farmatogo: ${data.products.length} entradas · ${sm.length} com EAN real + preço`);
   console.log(`📦 Seed actual:  ${seed.products.length} produtos, ${seed.stores.length} lojas\n`);
 
   const eanIndex = {}; const fpIndex = {};
@@ -114,5 +114,5 @@ const isRealEan = e => /^\d{12,14}$/.test(e || '');
   run('normalize-brand-display', [path.join(ROOT, 'scripts', 'normalize-brand-display.js'), '--apply', '--no-inject']);
   run('apply-cnp-merge', [path.join(ROOT, 'scripts', 'apply-cnp-merge.js'), '--apply']);
   run('Re-injectar no demo/index/catalogo', [path.join(ROOT, 'scripts', 'inject-seed-into-demo.js')]);
-  console.log('\n✅ Integração farmaciaideal completa.');
+  console.log('\n✅ Integração farmatogo completa.');
 })();

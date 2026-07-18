@@ -163,6 +163,16 @@
       "store_slug": "farmaciagarcia",
       "ean": "5609238304499",
       "reason": "Bio-Oil Gel formato grande (24€) no EAN do 50ml (crowd 5.56-9.34€) via CNP-merge (sku do lojista errado) — auditoria 2026-07-17"
+    },
+    {
+      "store_slug": "atcosmetics",
+      "ean": "8435534402792",
+      "reason": "laCabine \"Ampolas Flash Effect\" (caixa, 17.95€) no EAN da ampola individual 2ml (crowd ~2.99€) — o lojista atribuiu o EAN da unidade à caixa; auditoria 2026-07-18"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "8435534404437",
+      "reason": "laCabine \"Perfect Glow ampolas uso tópico\" (caixa, 16.95€) no EAN da ampola individual 2ml (atcosmetics 2.75€ c/ sku=barcode=imagem concordantes) — auditoria 2026-07-18"
     }
   ]
 }
