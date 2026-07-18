@@ -157,10 +157,24 @@ async function extract(page) {
       if (VARIANT_EXCLUDE.test(ctxTxt)) return;
       const volM = txt.match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
       if (!volM) return;
-      const priceMatches = [...txt.matchAll(/€\s*(\d{1,4}(?:[.,]\d{1,2})?)|(\d{1,4}(?:[.,]\d{1,2})?)\s*€/g)];
-      const prices = priceMatches.map(m => parseFloat((m[1]||m[2]).replace(',', '.'))).filter(p => isFinite(p) && p > 0.5 && p < 5000);
-      if (prices.length === 0) return;
-      const price = Math.min(...prices); // current price (não strikethrough)
+      // Preço EXATO por atributo primeiro: a Wells expõe content="6.59" no
+      // elemento do preço (.js-w-sales-price-value). O texto renderizado separa
+      // euros/cêntimos em spans e o scan de texto truncava (9,99→9; 48% do
+      // catálogo — registo de correções #2/#3).
+      let price = null;
+      try {
+        const pEl = el.querySelector('.js-w-sales-price-value[content], [itemprop="price"][content]');
+        if (pEl) { const v = parseFloat(pEl.getAttribute('content')); if (isFinite(v) && v > 0.5 && v < 5000) price = v; }
+      } catch {}
+      if (price == null) {
+        const priceMatches = [...txt.matchAll(/€\s*(\d{1,4}(?:[.,]\d{1,2})?)|(\d{1,4}(?:[.,]\d{1,2})?)\s*€/g)];
+        const prices = priceMatches.map(m => parseFloat((m[1]||m[2]).replace(',', '.'))).filter(p => isFinite(p) && p > 0.5 && p < 5000);
+        if (prices.length === 0) return;
+        price = Math.min(...prices); // current price (não strikethrough)
+        // Sem confirmação por atributo, um preço inteiro é quase de certeza a
+        // truncagem int/dec — descartar; o headline cai no JSON-LD, que é exato.
+        if (Number.isInteger(price)) return;
+      }
       const vol = parseFloat(volM[1].replace(',', '.'));
       const unit = volM[2].toLowerCase();
       const volMl = unit === 'l' ? vol * 1000 : vol;
