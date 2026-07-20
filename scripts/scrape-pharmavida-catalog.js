@@ -20,6 +20,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -104,9 +105,29 @@ const PROD_URL_RE = /https:\/\/pharmavida\.pt\/[a-z0-9-]+\/\d+-[a-z0-9-]+\.html/
 
 async function discoverProductUrls() {
   console.log('📋 A ler o mapa de categorias (controller=sitemap)…');
-  const mapHtml = await fetchText(BASE + '/index.php?controller=sitemap');
+  // Este download é o único ponto de entrada de todo o scrape: se falhar, não há
+  // categorias, não há URLs, e o resto do programa corre a vazio. Antes usava-se
+  // `return await r.text()` sem olhar ao status — quando o WAF respondia, o HTML de
+  // erro era parseado na mesma e o log dizia só "0 categorias". Perdemos horas a
+  // perceber que o site nos tinha bloqueado. Agora o helper valida status + forma do
+  // corpo e ATIRA um erro que diz exatamente o que veio do servidor.
+  // Nota: nesta loja o mapa é uma página HTML (controller=sitemap), não um XML.
+  const mapHtml = await fetchTextResilient(BASE + '/index.php?controller=sitemap', {
+    expect: 'html',
+    minBytes: 2000, // o mapa lista todas as categorias; abaixo disto é página de erro/truncada
+  });
   const cats = [...new Set((mapHtml.match(/href="https:\/\/pharmavida\.pt\/(\d+-[a-z0-9-]+)"/g) || [])
     .map(m => m.match(/pharmavida\.pt\/(\d+-[a-z0-9-]+)/)[1]))];
+  // Chegar aqui com 0 categorias já NÃO pode ser bloqueio (o helper teria atirado):
+  // sobra a hipótese de a loja ter mudado de estrutura. Abortamos em vez de seguir
+  // para o crawl e acabar com o "0 produtos" ambíguo lá ao fundo.
+  if (cats.length === 0) {
+    throw new Error(
+      'Mapa de categorias descarregado com sucesso mas sem nenhuma categoria reconhecida.\n' +
+      '   Não é bloqueio (o fetch resiliente validou a resposta) — a estrutura do site mudou.\n' +
+      `   Rever o padrão de href "/<id>-<slug>" em ${BASE}/index.php?controller=sitemap (${mapHtml.length} bytes recebidos).`
+    );
+  }
   console.log(`  ${cats.length} categorias`);
   const urls = new Set();
   let catIdx = 0;
@@ -160,7 +181,11 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  if (products.length === 0) { console.error('✗ 0 produtos (bloqueio/site em baixo?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
+  // Guard de segurança do catálogo: nunca sobrescrever com vazio. A mensagem já não
+  // pode dizer "bloqueio?" — o mapa inicial passou pelo fetch resiliente, portanto o
+  // site respondeu-nos. Se mesmo assim não saiu um único produto, o problema é de
+  // extração (JSON-LD/estrutura das fichas), e é aí que se deve procurar.
+  if (products.length === 0) { console.error(`✗ 0 produtos de ${queue.length} fichas (ok:${stats.ok} skip:${stats.skipped} 404:${stats.not_found} err:${stats.error}) — o mapa de categorias foi lido, logo a estrutura das fichas mudou. NÃO sobrescrevo o catálogo existente.`); process.exit(1); }
   saveCheckpoint(products, false);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);
   console.log(`\n══════ pharmavida scrape ══════`);

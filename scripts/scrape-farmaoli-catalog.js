@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -89,9 +90,13 @@ function extractProductData(html, url) {
   return { name, brand, ean, cnp, image_url: og, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
 }
 
-async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); return await r.text(); }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
+// PORQUÊ: a versão anterior fazia `return await r.text()` sem olhar para o
+// r.status. Quando o WAF respondia 403/challenge, o HTML de erro era parseado
+// como XML, dava 0 <loc> e o log dizia apenas "0 produtos" — indistinguível de
+// um sitemap genuinamente vazio. Esse log mudo custou-nos horas de diagnóstico
+// à mão. O helper valida status + tipo de corpo e ATIRA um erro que diz porquê.
+async function fetchSitemap(url, minBytes) {
+  return fetchTextResilient(url, { expect: 'xml', minBytes, attempts: 4, timeoutMs: 30000, headers: { 'User-Agent': UA } });
 }
 async function fetchPage(url, attempt = 1) {
   let r;
@@ -110,13 +115,24 @@ function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) r
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   console.log('📋 A descarregar 1_index_sitemap.xml farmaoli…');
-  const idx = await fetchText(BASE + '/1_index_sitemap.xml');
+  const idx = await fetchSitemap(BASE + '/1_index_sitemap.xml', 300);
   const children = locs(idx).filter(u => /_sitemap\.xml$/i.test(u));
+  // Se chegámos aqui o download foi legítimo (o helper já teria atirado em caso
+  // de bloqueio), logo 0 children só pode significar mudança de estrutura no
+  // site. Abortar já — continuar daria o mesmo "0 produtos" mudo de sempre.
+  if (children.length === 0) {
+    throw new Error(`índice de sitemap descarregado com sucesso (${idx.length} bytes) mas sem nenhum *_sitemap.xml dentro — a estrutura do farmaoli.pt mudou; rever /1_index_sitemap.xml à mão.`);
+  }
   console.log(`  ${children.length} sub-sitemaps`);
   let urls = [];
-  for (const sm of children) { const xml = await fetchText(sm); urls.push(...locs(xml).filter(isProductUrl)); await new Promise(s => setTimeout(s, 500)); }
+  for (const sm of children) { const xml = await fetchSitemap(sm, 200); urls.push(...locs(xml).filter(isProductUrl)); await new Promise(s => setTimeout(s, 500)); }
   urls = [...new Set(urls)];
   const t0 = urls.length;
+  // Idem: os sub-sitemaps vieram todos válidos, portanto 0 fichas não é
+  // bloqueio — é o padrão de URL das fichas que deixou de bater certo.
+  if (t0 === 0) {
+    throw new Error(`${children.length} sub-sitemaps descarregados sem bloqueio mas 0 fichas reconhecidas por isProductUrl() — a estrutura de URLs do farmaoli.pt mudou; NÃO é um bloqueio do WAF.`);
+  }
   urls = urls.filter(slugLooksCosmetic);
   console.log(`  ${t0} fichas → ${urls.length} após filtro de slug não-cosmético`);
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);

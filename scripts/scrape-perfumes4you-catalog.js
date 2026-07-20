@@ -21,6 +21,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -92,9 +93,15 @@ function extractProductData(html) {
   return null;
 }
 
-async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA } }); return await r.text(); }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
+// PORQUÊ: esta função só descarrega sitemaps XML do WordPress. A versão antiga
+// fazia `return await r.text()` sem olhar para r.status — quando o WAF respondia
+// 403 (ou 200 com página de challenge), o HTML era parseado como XML, dava 0
+// <loc>, e o log dizia apenas "0 produtos". Esse silêncio custou-nos horas de
+// diagnóstico à mão. Agora o helper valida status + forma do corpo e ATIRA um
+// erro que diz status, content-type e início do corpo — bloqueio deixa de ser
+// confundível com sitemap genuinamente vazio.
+async function fetchText(url) {
+  return fetchTextResilient(url, { expect: 'xml', minBytes: 1000, headers: { 'User-Agent': UA } });
 }
 
 async function fetchPage(url, attempt = 1) {
@@ -121,6 +128,10 @@ async function main() {
   for (const sm of (subs.length ? subs : [SITEMAP_INDEX])) { const xml = await fetchText(sm); urls.push(...locs(xml).filter(isProductUrl)); }
   urls = [...new Set(urls)];
   console.log(`  ${urls.length} candidatos a produto no sitemap`);
+  // Chegar aqui com 0 URLs já NÃO pode ser bloqueio: o fetch resiliente teria
+  // atirado com o diagnóstico. Logo a causa é estrutural — dizê-lo em voz alta
+  // para ninguém voltar a perder horas a suspeitar do WAF.
+  if (urls.length === 0) console.error('✗ Sitemap descarregado e válido, mas 0 URLs de produto — a estrutura do site mudou (padrão dos <loc> ou das rotas /product/). Rever locs()/isProductUrl().');
 
   if (CHUNK) { const [n, mm] = CHUNK.split('/').map(Number); const sorted = [...urls].sort(); const size = Math.ceil(sorted.length / mm); urls = sorted.slice((n - 1) * size, n * size); console.log(`  Chunk ${CHUNK}: ${urls.length}`); }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
@@ -146,7 +157,10 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  if (products.length === 0) { console.error('✗ 0 produtos (feed vazio/bloqueio de IP?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
+  // Guard mantido: nunca sobrescrever o catálogo com vazio. A mensagem já não
+  // fala em bloqueio porque o download inicial passa por fetchTextResilient —
+  // se fosse WAF, o processo teria morrido antes com o erro diagnóstico.
+  if (products.length === 0) { console.error('✗ 0 produtos apesar de o sitemap ter sido descarregado e validado — não é bloqueio; a estrutura do site mudou (JSON-LD das fichas ou rotas). NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);
   console.log(`\n══════ perfumes4you scrape ══════`);

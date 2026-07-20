@@ -19,6 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -93,8 +94,25 @@ function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) r
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   console.log('📋 A descarregar sitemap-pt-products cocooncenter…');
-  const smXml = await (await fetch(SITEMAP_URL, { headers: { 'User-Agent': UA } })).text();
+  // Antes isto era um `fetch(...).text()` nu: sem retry e sem olhar ao status.
+  // Quando o WAF respondia, o HTML de erro era parseado como XML, dava 0 <loc>,
+  // e o log dizia apenas "0 produtos" — igualzinho a um sitemap genuinamente
+  // vazio. Custou-nos horas a perceber que o site nos tinha bloqueado. Agora o
+  // helper valida status/tipo/tamanho e ATIRA com o diagnóstico à frente.
+  // Este sitemap é grande (dezenas de milhar de URLs), daí o timeout largo e o
+  // minBytes: uma resposta curta é feed truncado, não catálogo real.
+  const smXml = await fetchTextResilient(SITEMAP_URL, { expect: 'xml', minBytes: 10000, timeoutMs: 90000 });
   let urls = [...new Set(locs(smXml).filter(isProductUrl))];
+  if (urls.length === 0) {
+    // Chegámos aqui com XML válido e do tamanho esperado (o helper já teria
+    // atirado em caso de bloqueio), logo o problema não é rede nem WAF: o
+    // sitemap deixou de ter URLs de produto no formato /<slug>/<id>.html.
+    throw new Error(
+      `Sitemap descarregado com sucesso (${smXml.length} bytes) mas 0 URLs de produto — ` +
+      `a estrutura do site mudou (padrão /<slug>/<id>.html deixou de bater certo?). ` +
+      `Rever isProductUrl()/SITEMAP_URL em ${__filename}.`
+    );
+  }
   console.log(`  ${urls.length} produtos no sitemap`);
   if (args.dermo) { const b = urls.length; urls = urls.filter(u => DERMO_RE.test(u)); console.log(`  🧴 --dermo: ${urls.length} de ${b} (saltados ${b - urls.length} não-dermo)`); }
   // Ofertas EXISTENTES nunca ficam presas ao filtro --dermo (auditoria
@@ -132,7 +150,18 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
+  // Guard do catálogo: nunca sobrescrever com vazio. O sitemap já vinha bom
+  // (senão tínhamos rebentado acima com o diagnóstico do helper), portanto 0
+  // produtos aqui aponta para as FICHAS: bloqueio a meio do scrape ou JSON-LD
+  // mudado. Dizemos qual, para não voltarmos a olhar para um log mudo.
+  if (products.length === 0) {
+    console.error(`✗ 0 produtos de ${queue.length} URLs do sitemap — NÃO sobrescrevo o catálogo existente.`);
+    console.error(`  Contadores: ok:${stats.ok} sem-JSON-LD:${stats.skipped} 404:${stats.not_found} erro:${stats.error}`);
+    console.error(stats.error > stats.skipped
+      ? '  Predominam erros de rede/HTTP → provável bloqueio das fichas a meio do scrape.'
+      : '  Predominam fichas sem JSON-LD utilizável → o site mudou o markup (rever extractProductData).');
+    process.exit(1);
+  }
   saveCheckpoint(products, false);
   console.log(`\n══════ cocooncenter scrape ══════`);
   console.log(`  Produtos com EAN: ${products.length} · in_stock: ${products.filter(p => p.in_stock).length}`);

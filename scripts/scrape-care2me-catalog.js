@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -55,10 +56,12 @@ function extractProductData(html) {
   return { name, brand, ean, cnp, image_url: og, price, previous_price: (prev && prev > price) ? prev : null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
 }
 
-async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); return await r.text(); }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
-}
+// NOTA: o antigo fetchText() daqui foi removido de propósito. Fazia
+// `return await r.text()` sem olhar para r.status, por isso um 403/challenge do
+// WAF entrava no locs() como se fosse XML, dava 0 <loc> e o log limitava-se a
+// dizer "0 produtos" — o mesmo output que um sitemap genuinamente vazio. Custou-nos
+// horas de diagnóstico à mão. O download do sitemap passa a usar
+// fetchTextResilient, que ATIRA um erro com status + content-type + corpo.
 async function fetchPage(url, attempt = 1) {
   let r;
   try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); }
@@ -76,9 +79,23 @@ function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) r
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   console.log('📋 A descarregar sitemap.xml care2me…');
-  const xml = await fetchText(BASE + '/sitemap.xml');
+  // minBytes 10000: o /sitemap.xml do care2me tem ~13k URLs, logo centenas de KB.
+  // Qualquer corpo mais curto é um feed truncado ou uma página de erro disfarçada —
+  // e é preferível rebentar aqui, alto e claro, do que seguir em frente com 0 <loc>.
+  // Sem try/catch de propósito: se o download falhar, o erro do helper (status +
+  // content-type + início do corpo) tem de chegar intacto ao FATAL do fim do ficheiro.
+  const xml = await fetchTextResilient(BASE + '/sitemap.xml', { expect: 'xml', minBytes: 10000 });
   let urls = [...new Set(locs(xml).filter(isProductUrl))];
   const t0 = urls.length;
+  // Chegar aqui com 0 significa que o XML era válido e não-bloqueado (o helper já
+  // teria atirado) mas nenhum <loc> bate no padrão /pt/buy/<slug> — ou seja, a loja
+  // mudou a estrutura de URLs. Dizê-lo, em vez de deixar o run morrer mudo lá à frente.
+  if (t0 === 0) {
+    console.error(`✗ sitemap descarregado com sucesso (${xml.length} bytes) mas 0 fichas de produto.`);
+    console.error('  Não é bloqueio (o fetch resiliente valida status/conteúdo): a estrutura do site mudou.');
+    console.error('  Verificar o padrão de URL de produto em isProductUrl() — esperado /pt/buy/<slug>.');
+    process.exit(1);
+  }
   urls = urls.filter(slugLooksCosmetic);
   console.log(`  ${t0} fichas → ${urls.length} após filtro de slug não-cosmético`);
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);

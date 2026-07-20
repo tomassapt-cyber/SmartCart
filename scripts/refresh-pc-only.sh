@@ -33,12 +33,18 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 git fetch origin main && git reset --hard origin/main
 
+# ⚠️ SEM --resume: este script faz REFRESH DE PRECOS, nao retoma um scrape.
+# Com --resume o scraper via o catalogo do refresh anterior, dava todos os URLs
+# como "ja feitos" e nao raspava NADA — os precos ficavam congelados enquanto o
+# script reportava sucesso. Foi assim que estas lojas passaram 6-12 dias
+# desactualizadas (beleza37: 1 produto re-raspado em 6.365). Se um scrape for
+# mesmo interrompido, correr o scraper a mao com --resume.
 declare -A SCRAPE=(
-  [notino]="node scripts/scrape-notino-catalog.js --resume --match-seed"
+  [notino]="node scripts/scrape-notino-catalog.js --match-seed"
   [powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --known-only"
-  [sobeauty]="node scripts/scrape-sobeauty-catalog.js --resume"
-  [smartbeauty]="node scripts/scrape-smartbeauty-catalog.js --resume"
-  [beleza37]="node scripts/scrape-beleza37-catalog.js --resume"
+  [sobeauty]="node scripts/scrape-sobeauty-catalog.js"
+  [smartbeauty]="node scripts/scrape-smartbeauty-catalog.js"
+  [beleza37]="node scripts/scrape-beleza37-catalog.js"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 

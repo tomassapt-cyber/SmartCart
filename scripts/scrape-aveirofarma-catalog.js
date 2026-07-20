@@ -20,6 +20,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -77,11 +78,14 @@ function extractProductData(html) {
   return null;
 }
 
-async function fetchText(url, timeoutMs = 30000) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), timeoutMs);
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA }, signal: ctrl.signal }); return await r.text(); }
-  finally { clearTimeout(t); }
+// O download do feed passou a usar o helper resiliente. Antes era um
+// `return await r.text()` que ignorava o r.status: quando o WAF respondia com
+// HTML de erro, o parser de <loc> devolvia 0 e o log dizia apenas "0 produtos"
+// — indistinguível de um feed genuinamente vazio. Custou-nos horas a
+// diagnosticar à mão. Agora um bloqueio ATIRA erro com status/content-type.
+// timeoutMs 60s porque este feed é gerado on-the-fly por PHP antigo (~20s).
+function fetchFeedXml() {
+  return fetchTextResilient(FEED_URL, { expect: 'xml', minBytes: 100000, timeoutMs: 60000 });
 }
 
 async function fetchPage(url, attempt = 1) {
@@ -101,9 +105,19 @@ function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) r
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   console.log('📋 A descarregar feed_sitemap_products (pode demorar ~20s, servidor lento)…');
-  const xml = await fetchText(FEED_URL, 60000);
+  // Sem try/catch de propósito: se o feed falhar ainda não temos produtos
+  // nenhuns, e o erro do helper (status + content-type + início do corpo) tem
+  // de chegar inteiro ao log em vez de virar um "0 produtos" mudo.
+  const xml = await fetchFeedXml();
   let urls = [...new Set(locs(xml))];
   console.log(`  ${urls.length} produtos no feed`);
+  // Chegar aqui com 0 <loc> já NÃO pode ser bloqueio (o helper teria atirado):
+  // o XML veio válido e com tamanho normal, logo o que mudou foi a estrutura.
+  if (urls.length === 0) {
+    console.error(`✗ Feed descarregado com sucesso (${xml.length} bytes de XML válido) mas 0 <loc> — isto NÃO é bloqueio.`);
+    console.error(`  A estrutura do feed mudou (outra tag que não <loc>, ou índice de sitemaps): ${FEED_URL}`);
+    process.exit(1);
+  }
   if (args.dermo !== false) { const b = urls.length; urls = urls.filter(u => DERMO_RE.test(u)); console.log(`  🧴 --dermo: ${urls.length} de ${b} (saltados ${b - urls.length} não-dermo)`); }
   // Ofertas EXISTENTES nunca ficam presas ao filtro --dermo (auditoria
   // 2026-07-03): URLs com oferta no seed re-entram SEMPRE na fila — sem isto
@@ -140,7 +154,15 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  if (products.length === 0) { console.error('✗ 0 produtos (feed vazio/bloqueio de IP?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
+  // Guard mantido (protege o catálogo). A mensagem já pode ser específica: o
+  // feed veio bom e com URLs, portanto o problema está nas fichas — ou o
+  // JSON-LD mudou, ou o fetchPage apanhou erros (ver contadores em baixo).
+  if (products.length === 0) {
+    console.error(`✗ 0 produtos de ${queue.length} URLs — NÃO sobrescrevo o catálogo existente.`);
+    console.error(`  O feed veio íntegro, logo não foi bloqueio no download. Fichas: skip:${stats.skipped} 404:${stats.not_found} err:${stats.error}.`);
+    console.error(`  skip alto = JSON-LD/gtin14 mudou de formato · err/404 alto = bloqueio ou URLs mortos nas fichas.`);
+    process.exit(1);
+  }
   saveCheckpoint(products, false);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);
   console.log(`\n══════ aveirofarma scrape ══════`);

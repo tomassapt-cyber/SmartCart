@@ -113,7 +113,24 @@ async function fetchPage(url, attempt = 1) {
   return { status: 'ok', html };
 }
 
-function loadCheckpoint() { if (!RESUME || !fs.existsSync(OUT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
+function loadCheckpoint() {
+  // ⚠️ Um checkpoint COMPLETO e VELHO nao e ponto de retoma — e o catalogo do
+  // ultimo refresh. Retomar dele fazia o scrape saltar TODOS os URLs (queue
+  // vazia) e os precos ficavam congelados enquanto o refresh reportava
+  // sucesso: as lojas SO-PC passaram 6-12 dias assim (beleza37 re-raspou 1 de
+  // 6.365 produtos). --resume so deve continuar um scrape INTERROMPIDO.
+  const CHECKPOINT_STALE_H = 12;
+  try {
+    if (RESUME && fs.existsSync(OUT_FILE)) {
+      const meta = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+      const idadeH = (Date.now() - new Date(meta.scraped_at || 0)) / 3600000;
+      if (!meta.in_progress && idadeH > CHECKPOINT_STALE_H) {
+        console.log(`  ↻ catalogo completo com ${idadeH.toFixed(0)}h — refresh total (checkpoint ignorado)`);
+        return null;
+      }
+    }
+  } catch { /* checkpoint ilegivel → segue o caminho normal */ }
+ if (!RESUME || !fs.existsSync(OUT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
 function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) return; /* smoke-test (--limit) NÃO sobrescreve o catálogo de produção */ fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'notino.pt (skincare/corpo/cabelo; JSON-LD gtin13)', in_progress: inProgress, products }), 'utf8'); }
 
 async function main() {
