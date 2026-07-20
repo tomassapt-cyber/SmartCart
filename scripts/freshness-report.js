@@ -50,6 +50,10 @@ const STALE_DAYS = args['stale-days'] ? parseFloat(args['stale-days']) : 2;
 // snapshot manual que não actualiza na nuvem (ex.: notino, Cloudflare bloqueia
 // IPs de datacenter — refresca-se do PC). Sem isto o monitor falharia sempre.
 const IGNORE = new Set(String(args.ignore || '').split(',').map(s => s.trim()).filter(Boolean));
+// --only=<slugs>: mede SÓ estas lojas (o inverso de --ignore). Serve para dar
+// às lojas SÓ-PC um limiar próprio (refrescam à mão, não podem usar o mesmo
+// prazo das cloud) sem perder a vigilância sobre elas.
+const ONLY = new Set(String(args.only || '').split(',').map(s => s.trim()).filter(Boolean));
 
 // Fingerprint partilhado (mesmo critério do dedup/integrate)
 let productFingerprint;
@@ -175,8 +179,9 @@ if (AS_JSON) {
 }
 
 // ── Exit code (modo --strict) ────────────────────────────────────────────────
-const staleStores = rows.filter(r => r.stale && !IGNORE.has(r.slug));
-const staleIgnored = rows.filter(r => r.stale && IGNORE.has(r.slug));
+const inScope = r => (!ONLY.size || ONLY.has(r.slug)) && !IGNORE.has(r.slug);
+const staleStores = rows.filter(r => r.stale && inScope(r));
+const staleIgnored = rows.filter(r => r.stale && !inScope(r));
 if (STRICT) {
   const problems = [];
   if (staleIgnored.length) console.error(`\nℹ Stale mas IGNORADAS (--ignore): ${staleIgnored.map(s => `${s.slug} (${s.lastRefreshAgeDays}d)`).join(', ')}`);

@@ -50,8 +50,27 @@ SEED_AND_HTML=(data/seed-bundle.json demo.html index.html catalogo.html)
 git config user.name  >/dev/null 2>&1 || git config user.name  "smartcart-bot"
 git config user.email >/dev/null 2>&1 || git config user.email "bot@smartcart.local"
 
-# Backoffs com jitter — ~30min de janela total, dentro do timeout do job.
-BACKOFFS=(0 10 25 45 90 150 240 360 540 540)
+# Backoffs com jitter. NB: o custo dominante NÃO é o sleep — é o re-integrate
+# (~4 min). Por isso os backoffs são curtos e o ganho real vem do push imediato
+# a seguir ao commit (ver push_burst): é aí que estamos mais perto do topo.
+BACKOFFS=(0 8 15 30 60 90 120 150 180 240)
+
+# Push em rajada: tenta empurrar VÁRIAS vezes seguidas com pausas curtas, sem
+# re-integrar entre elas. Enquanto o remoto não mexer no seed-bundle, o nosso
+# commit continua a ser um fast-forward válido — e cada re-integrate custa ~4
+# min, que era exatamente a janela que os outros bots usavam para nos passar
+# à frente (livelock: 10/10 rejeições com o mesmo commit pronto).
+push_burst() {
+  local tries="${1:-4}"
+  for k in $(seq 1 "$tries"); do
+    if git push origin "HEAD:${BRANCH}"; then
+      echo "✅ Push ok (rajada ${k}/${tries})"
+      return 0
+    fi
+    [ "$k" -lt "$tries" ] && sleep $((2 + RANDOM % 5))
+  done
+  return 1
+}
 
 stage_all() {
   git add "${SEED_AND_HTML[@]}" 2>/dev/null || true
@@ -67,10 +86,7 @@ for i in "${!BACKOFFS[@]}"; do
     sleep "$WAIT"
   fi
 
-  if git push origin "HEAD:${BRANCH}"; then
-    echo "✅ Push ok (tentativa ${attempt})"
-    exit 0
-  fi
+  if push_burst 4; then exit 0; fi
 
   echo "↻ Push rejeitado (tentativa ${attempt}) — re-integrar sobre origin/${BRANCH}…"
 
@@ -105,6 +121,11 @@ for i in "${!BACKOFFS[@]}"; do
     echo "❌ git commit falhou no retry — a abortar (evitar hollow success)."
     exit 1
   fi
+
+  # Empurrar JÁ: acabámos de reconstruir sobre o origin mais recente, portanto
+  # esta é a janela em que temos mais hipóteses de fast-forward. Esperar aqui
+  # pelo backoff do topo do loop era o que nos fazia perder a corrida.
+  if push_burst 4; then exit 0; fi
 done
 
 echo "❌ Push falhou após ${#BACKOFFS[@]} tentativas. Artifact contém os dados."

@@ -7,7 +7,7 @@ on:
   schedule:
     - cron: '50 5 * * *'
     - cron: '50 13 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '50 21 * * *'   # 3x/dia
+    - cron: '20 23 * * *'   # slot da noite estava congestionado (push-race)   # 3x/dia
   workflow_dispatch:
     inputs:
       limit:

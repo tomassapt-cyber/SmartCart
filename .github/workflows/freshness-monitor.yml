@@ -38,4 +38,18 @@ jobs:
       - name: Freshness report (strict)
         run: |
           STALE="${{ github.event.inputs.stale_days || '2' }}"
-          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore=notino
+          # As 5 lojas SÓ-PC (Cloudflare bloqueia IPs de datacenter) refrescam
+          # à mão via scripts/refresh-pc-only.sh — não podem ser medidas com o
+          # mesmo limiar das cloud, senão o gate dispara todos os dias e o
+          # alarme deixa de significar alguma coisa (era o que acontecia).
+          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37"
+          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY"
+
+      - name: Gate das lojas SÓ-PC (limiar folgado — refresh é manual)
+        run: |
+          # Continuam a ser vigiadas, mas com 7 dias: se o refresh manual for
+          # esquecido a sério, isto falha e avisa.
+          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37 || {
+              echo "::warning::Lojas SÓ-PC com mais de 7 dias — correr scripts/refresh-pc-only.sh no PC."
+              exit 1
+            }
