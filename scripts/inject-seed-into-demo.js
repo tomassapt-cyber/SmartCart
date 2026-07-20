@@ -197,24 +197,42 @@ const seedJson = JSON.parse(seed);
 // refresh mais recente DA MESMA loja → esconder do render (seed intacto;
 // volta sozinha quando o scrape a re-verificar). Lojas-snapshot (Notino) não
 // são afetadas: a diferença interna é ~0.
+// ⚠️ PONTO CEGO CORRIGIDO (2026-07-20): a regra abaixo é RELATIVA — compara
+// cada oferta com a mais fresca DA MESMA loja. Isso apanha ofertas esquecidas
+// dentro de uma loja activa, mas deixa passar uma loja PARADA POR INTEIRO: se
+// tudo é igualmente velho, não há nada mais fresco com que comparar e nada é
+// escondido. Medido: 2.964 ofertas visíveis com >7 dias, todas de 4 lojas
+// paradas (smartbeauty/beleza37 11d, sobeauty/powerbeauty 6d). Por isso há
+// agora também um tecto ABSOLUTO: 14 dias (folgado de propósito — as lojas
+// SÓ-PC refrescam à mão e não vale a pena amputar cobertura por 8 dias).
 (function dropRottenOffers() {
-  const DAY = 864e5, MAX_LAG_DAYS = 7;
+  const DAY = 864e5, MAX_LAG_DAYS = 7, MAX_ABS_DAYS = 14;
   const ageOf = (it) => {
     let t = +new Date(it.verified_at || 0);
     for (const v of (it.variants || [])) { const tv = +new Date(v.verified_at || 0); if (tv > t) t = tv; }
     return t;
   };
-  let hidden = 0; const perStore = [];
+  const AGORA = Date.now();
+  let hidden = 0, hiddenAbs = 0; const perStore = [], perStoreAbs = [];
   for (const sp of seedJson.store_products) {
     let freshest = 0;
     for (const it of sp.items) { const t = ageOf(it); if (t > freshest) freshest = t; }
     if (!freshest) continue;
     const before = sp.items.length;
-    sp.items = sp.items.filter(it => { const t = ageOf(it); if (!t) return true; return (freshest - t) <= MAX_LAG_DAYS * DAY; });
+    let absLoja = 0;
+    sp.items = sp.items.filter(it => {
+      const t = ageOf(it);
+      if (!t) return true;
+      if ((freshest - t) > MAX_LAG_DAYS * DAY) return false;          // relativo à loja
+      if ((AGORA - t) > MAX_ABS_DAYS * DAY) { absLoja++; return false; } // tecto absoluto
+      return true;
+    });
     const n = before - sp.items.length;
     if (n) { hidden += n; perStore.push(`${sp.store_slug}:${n}`); }
+    if (absLoja) { hiddenAbs += absLoja; perStoreAbs.push(`${sp.store_slug}:${absLoja}`); }
   }
-  if (hidden) console.log(`🥀 Ofertas podres escondidas (>${7}d atrás do refresh da loja): ${hidden} · ${perStore.join(', ')}`);
+  if (hidden) console.log(`🥀 Ofertas podres escondidas (>${MAX_LAG_DAYS}d atrás do refresh da loja): ${hidden} · ${perStore.join(', ')}`);
+  if (hiddenAbs) console.log(`⏳ Destas, por tecto absoluto (>${MAX_ABS_DAYS}d — loja parada por inteiro): ${hiddenAbs} · ${perStoreAbs.join(', ')}`);
 })();
 
 // ── Filtro de visibilidade (NÃO-destrutivo) ──────────────────────────────
