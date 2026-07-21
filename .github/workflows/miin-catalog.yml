@@ -1,0 +1,101 @@
+# CosMath — MiiN Cosmetics daily price refresh
+# ============================================================
+# miin-cosmetics.pt PrestaShop; sitemap 6_pt_0 CDATA; microdata gtin13 + meta product:price (com IVA).
+#
+# Pipeline:
+#   1. scrape-miin-catalog.js → data/catalog/miin-full.json
+#   2. integrate-miin-catalog.js (match EAN/CNP + pós-processo + inject)
+
+name: MiiN Cosmetics daily refresh
+
+on:
+  schedule:
+    - cron: '45 13 * * *'
+    - cron: '45 21 * * *'   # 3x/dia (regra do user 2026-07-03)
+    - cron: '45 5 * * *'   # 3x/dia
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Limit (vazio = sem limite)'
+        required: false
+        default: ''
+      resume:
+        description: 'Retomar do catálogo committed (1 = sim; vazio = scrape completo)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape MiiN Cosmetics
+        run: |
+          RESUME=""
+          if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            node scripts/scrape-miin-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=4 --delay=300 $RESUME
+          else
+            node scripts/scrape-miin-catalog.js --concurrency=4 --delay=300 $RESUME
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: miin-catalog-${{ github.run_id }}
+          path: data/catalog/miin-full.json
+          retention-days: 14
+
+      - name: Integrate into seed
+        run: node scripts/integrate-miin-catalog.js
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add -f data/catalog/miin-full.json 2>/dev/null || true
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore: MiiN Cosmetics daily refresh ($DATE)" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-miin-catalog.js" \
+            "chore: MiiN Cosmetics daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/miin-full.json
