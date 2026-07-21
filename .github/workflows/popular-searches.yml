@@ -1,0 +1,66 @@
+# CosMath — Popularidade por pesquisa (2×/semana)
+# ============================================================
+# Regenera data/popular-searches.json a partir do Google Suggest (hl=pt, gl=pt):
+# o que as pessoas REALMENTE procuram em PT → mapeado a produtos do catálogo.
+# Alimenta o HERO da homepage ("Mais procurados").
+#
+# Só escreve o JSON: o hero é montado pelo build-homepage-data.js, que corre
+# dentro do inject de cada refresh diário — ou seja, o refresh seguinte já
+# apanha as pesquisas novas. Não precisa de rebuild/inject aqui.
+#
+# Corre às 05:30 UTC de segunda e quinta (depois da vaga de refreshes da noite).
+# Nota: o script tem fallback aos produtos mais carregados se o Suggest falhar,
+# e recusa escrever com <5 produtos — o hero nunca fica fraco ou vazio.
+
+name: Popular searches (2x/semana)
+
+on:
+  schedule:
+    - cron: '30 5 * * 1,4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build popular searches (Google Suggest PT)
+        run: node scripts/build-popular-searches.js
+
+      - name: Commit & push (retry em corrida)
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          if git diff --quiet -- data/popular-searches.json; then
+            echo "Pesquisas populares sem mudanças — nada a gravar."
+            exit 0
+          fi
+          git add data/popular-searches.json
+          git commit -m "chore: popular searches ($(date -u +%Y-%m-%d))"
+          for i in 1 2 3 4 5; do
+            git push origin main && exit 0
+            git fetch origin
+            git rebase origin/main || { git rebase --abort; git reset --hard origin/main; node scripts/build-popular-searches.js; git add data/popular-searches.json; git commit -m "chore: popular searches ($(date -u +%Y-%m-%d))"; }
+            sleep $((i * 20))
+          done
+          echo "push falhou após 5 tentativas" && exit 1
