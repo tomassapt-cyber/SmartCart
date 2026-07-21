@@ -244,11 +244,18 @@ function computeEmAlta(seed) {
     const pj = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'popular-searches.json'), 'utf8'));
     popularEans = (pj.products || []).map(p => p.ean).filter(Boolean);
   } catch { /* sem ficheiro → fallback */ }
-  const heroSponsored = (popularEans && popularEans.length >= 5)
-    ? condenseByEan(seed, popularEans).slice(0, 5)
-    : condenseByEan(seed, SPONSORED_EANS);
-  const heroSource = (popularEans && heroSponsored.length >= 5 && heroSponsored[0] && !SPONSORED_EANS.includes(heroSponsored[0].ean)) ? 'mais-procurados' : 'curado (fallback)';
-  console.log(`  Hero: ${heroSponsored.length}/5 (${heroSource})`);
+  const heroSponsored = popularEans && popularEans.length ? condenseByEan(seed, popularEans).slice(0, 5) : [];
+  const nPopular = heroSponsored.length;
+  // Guardamos 8 EANs populares mas alguns podem perder oferta viva num refresh
+  // futuro — TOPAR sempre até 5 com os curados p/ o hero nunca ficar curto.
+  if (heroSponsored.length < 5) {
+    const have = new Set(heroSponsored.map(p => p.ean));
+    for (const p of condenseByEan(seed, SPONSORED_EANS)) {
+      if (heroSponsored.length >= 5) break;
+      if (!have.has(p.ean)) { heroSponsored.push(p); have.add(p.ean); }
+    }
+  }
+  console.log(`  Hero: ${heroSponsored.length}/5 (${nPopular} mais-procurados${nPopular < 5 ? ` + ${heroSponsored.length - nPopular} curados` : ''})`);
 
   // 1b) Em alta — DESCIDAS DE PREÇO recentes (fallback aos EANs curados se o
   // histórico não der ≥3 descidas credíveis). Computado cedo p/ excluir dos
