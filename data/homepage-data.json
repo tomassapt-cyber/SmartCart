@@ -1,46 +1,56 @@
 {
-  "generated_at": "2026-07-21T03:51:32.897Z",
-  "seed_total_products": 57374,
+  "generated_at": "2026-07-21T12:27:35.285Z",
+  "seed_total_products": 57373,
   "hero_sponsored": [
     {
-      "ean": "3337875863377",
-      "name": "Effaclar Duo +M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 12.54,
+      "ean": "8429420158399",
+      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
+      "best_price": 19.22,
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
+      "best_url": "https://easyfarma.pt/products/fotoprotetor-isdin-fusion-water-spf50-50ml"
     },
     {
-      "ean": "3614274772012",
-      "name": "Cofre Génifique Ultimate Serum",
-      "brand": "Lancôme",
-      "image_url": "https://www.druni.pt/media/catalog/product/1/7/1726001.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 75.95,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/estuche-advance-genefique-lancome-cofre-serum-concentrado-ativador-juventude-e-luminosidade"
+      "ean": "3606000560833",
+      "name": "Sérum Con Ácido Hialurónico",
+      "brand": "CeraVe",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 13.94,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/cerave-serum-hidratante-acido-hialuronico-30-ml"
     },
     {
-      "ean": "3337875762908",
-      "name": "Minéral 89 Probiotic Fractions",
+      "ean": "7427244506335",
+      "name": "Papillon Creme de Rosto Vitamina C",
+      "brand": "Papillon",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
+      "best_price": 19.29,
+      "best_store": "Pharma Scalabis",
+      "best_store_slug": "pharmascalabis",
+      "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/"
+    },
+    {
+      "ean": "3337875492799",
+      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
       "brand": "Vichy",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5796439.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 20.34,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/vichy-mineral-89-serum-conc-reg-rep-30ml"
+      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
+      "best_price": 8.92,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
     },
     {
-      "ean": "3401395614172",
-      "name": "Bioderma Sensibio H2O Água Micelar",
-      "brand": "Bioderma",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 3.79,
+      "ean": "0717334253124",
+      "name": "Esfoliante Facial Origins Checks and Balances",
+      "brand": "Origins",
+      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
+      "best_price": 22.79,
       "best_store": "Atida | Mifarma PT",
       "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
+      "best_url": "https://www.atida.com/pt-pt/esfoliante-facial-origins-checks-and-balances-75-ml"
     }
   ],
   "bestsellers": [
@@ -107,6 +117,16 @@
       "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-spf30-40ml"
     },
     {
+      "ean": "3337875863377",
+      "name": "Effaclar Duo +M",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 12.54,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
+    },
+    {
       "ean": "8470001859853",
       "name": "Biretix Duo Gel Imperfeições -",
       "brand": "BiRetix",
@@ -135,16 +155,6 @@
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
       "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
-    },
-    {
-      "ean": "3337875909303",
-      "name": "La Roche-Posay Effaclar Duo+M Gel-Creme Tom Light - Farmácia ...",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.farmaciabarreiros.com/38085/la-roche-posay-effaclar-duom-gel-creme-tom-light-40-ml.jpg",
-      "best_price": 14,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-light-40ml"
     }
   ],
   "em_alta": [
@@ -217,7 +227,7 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1869
+      "products": 1868
     },
     {
       "name": "Isdin",

@@ -235,9 +235,20 @@ function computeEmAlta(seed) {
   })();
   console.log(`📦 Seed: ${seed.products.length} produtos`);
 
-  // 1) Hero sponsored — EANs curados
-  const heroSponsored = condenseByEan(seed, SPONSORED_EANS);
-  console.log(`  Hero sponsored: ${heroSponsored.length}/5`);
+  // 1) Hero = TOP MAIS PROCURADOS (pedido do user 2026-07-21). Semeado por
+  // data/popular-searches.json (Google Suggest PT → build-popular-searches.js,
+  // 2×/semana; substituído pelo tracking real quando o site tiver tráfego).
+  // Re-condensado contra o seed atual p/ preços frescos. Fallback aos curados.
+  let popularEans = null;
+  try {
+    const pj = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'popular-searches.json'), 'utf8'));
+    popularEans = (pj.products || []).map(p => p.ean).filter(Boolean);
+  } catch { /* sem ficheiro → fallback */ }
+  const heroSponsored = (popularEans && popularEans.length >= 5)
+    ? condenseByEan(seed, popularEans).slice(0, 5)
+    : condenseByEan(seed, SPONSORED_EANS);
+  const heroSource = (popularEans && heroSponsored.length >= 5 && heroSponsored[0] && !SPONSORED_EANS.includes(heroSponsored[0].ean)) ? 'mais-procurados' : 'curado (fallback)';
+  console.log(`  Hero: ${heroSponsored.length}/5 (${heroSource})`);
 
   // 1b) Em alta — DESCIDAS DE PREÇO recentes (fallback aos EANs curados se o
   // histórico não der ≥3 descidas credíveis). Computado cedo p/ excluir dos
@@ -247,7 +258,7 @@ function computeEmAlta(seed) {
   console.log(`  Em alta: ${emAlta.length}/5 (${emAltaSource})`);
 
   // 2) Bestsellers — top 5 por nº de lojas (excluindo já no hero/em-alta)
-  const usedEans = new Set([...SPONSORED_EANS, ...emAlta.map(p => p.ean)]);
+  const usedEans = new Set([...heroSponsored.map(p => p.ean), ...emAlta.map(p => p.ean)]);
   const candidates = seed.products
     .filter(p => !usedEans.has(p.ean) && p.image_url) // só com imagem
     .map(p => ({ p, n: countStores(seed, p.ean) }))
