@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-15T01:57:17.668Z",
-  "seed_total_products": 52397,
+  "generated_at": "2026-07-21T02:42:14.373Z",
+  "seed_total_products": 57374,
   "hero_sponsored": [
     {
       "ean": "3337875863377",
@@ -55,44 +55,44 @@
       "best_url": "https://www.farmacia365.pt/la-roche-posay-cicaplast-creme-maos-50ml"
     },
     {
-      "ean": "3337875549530",
-      "name": "Anthelios",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5014211.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 10.27,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/la-roche-posay-anthelios-spf50-bruma-anti-brilho-75ml"
+      "ean": "3282779416139",
+      "name": "Avène Cicalfate Creme de Mãos",
+      "brand": "Avène",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg",
+      "best_price": 7.69,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml"
     },
     {
       "ean": "3337875829007",
       "name": "Serum Retinol Acné",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798541.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 14.2,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/cerave-serum-retinol-anti-marcas-30-ml"
+      "best_price": 13.53,
+      "best_store": "WOWFARMA",
+      "best_store_slug": "wowfarma",
+      "best_url": "https://www.wowfarma.pt/cerave-retinol-serum-antimarcas-30ml.html"
     },
     {
-      "ean": "3337875485128",
-      "name": "Vichy Dercos Shampoo Ultra-Calmante para Cabelos Normais ou Oleosos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/aa9d730a-6ca7-4c10-b119-6d3e0d8d7d70/Vichy-Dercos-Champu-Ultra-Calmante-Cabello-Normal-o-Graso-200-ml",
-      "best_price": 8.44,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/dercos-technique-champo-ultra-apaziguante-cabelo-normal-a-oleoso-200-ml"
+      "ean": "3337875597272",
+      "name": "CeraVe Creme Reparador Contorno de Olhos",
+      "brand": "CeraVe",
+      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
+      "best_price": 10.68,
+      "best_store": "BeMeCare",
+      "best_store_slug": "bemecare",
+      "best_url": "https://bemecare.com/pt/artigo/cerave-spec-moist-cr-repar-olhos4g"
     },
     {
-      "ean": "3337871310455",
-      "name": "Vichy Desodorante Creme 7 Dias",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d9158be1-e1a4-4721-88a0-8ed73b6505da/Vichy-Desodorante-Crema-7-Dias-30-ml",
-      "best_price": 8.69,
+      "ean": "3662361000364",
+      "name": "SVR Sebiaclear Sérum Corretor Global",
+      "brand": "SVR",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/v/svr_sebiaclears_rum30ml.jpg",
+      "best_price": 12.9,
       "best_store": "Pharma GDD",
       "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/vichy-creme-traitement-anti-transpirant-7-jours"
+      "best_url": "https://www.pharma-gdd.com/fr/svr-sebiaclear-serum"
     }
   ],
   "skincare_kits": [
@@ -127,16 +127,6 @@
       "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
     },
     {
-      "ean": "3574661016320",
-      "name": "Aveeno Skin Relief Duo Creme Mentol 2 x",
-      "brand": "Aveeno",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/aveeno-skin-relief-creme-hidratante-lenitivo-mentol-2-x-200ml-MxHqZ.webp",
-      "best_price": 12.05,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/aveeno-skin-relief-duo-creme-mentol-2-x-200ml"
-    },
-    {
       "ean": "3337875909303",
       "name": "La Roche-Posay Effaclar Duo+M Gel-Creme Tom Light - Farmácia ...",
       "brand": "La Roche-Posay",
@@ -145,6 +135,16 @@
       "best_store": "Farmácia 365",
       "best_store_slug": "farmacia365",
       "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-light-40ml"
+    },
+    {
+      "ean": "7612412429879",
+      "name": "Curaprox Kit de viagem Be You Pure Happiness",
+      "brand": "Curaprox",
+      "image_url": "https://static.lojadafarmacia.com/12027/curaprox-kit-viagem-be-you-pure-happiness.jpg",
+      "best_price": 9.15,
+      "best_store": "WOWFARMA",
+      "best_store_slug": "wowfarma",
+      "best_url": "https://www.wowfarma.pt/curaprox-kit-de-viagem-be-you-pure-happiness.html"
     }
   ],
   "em_alta": [
@@ -163,10 +163,10 @@
       "name": "Anthelios 100 Ka+Med",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797854.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.66,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/la-roche-posay-anthelios-100-ka-med-50-ml"
+      "best_price": 21.5,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/la-roche-posay-anthelios-100-ka-med-creme-50-ml"
     },
     {
       "ean": "8431567644116",
@@ -183,10 +183,10 @@
       "name": "Effaclar Duo+ SPF30",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 14.34,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/la-roche-posay-effaclar-duo-fps-30-40-ml"
+      "best_price": 13.72,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-spf30-40ml"
     },
     {
       "ean": "3337875863377",
@@ -201,36 +201,36 @@
   ],
   "top_brands": [
     {
+      "name": "null",
+      "products": 1869
+    },
+    {
       "name": "Isdin",
-      "products": 727
-    },
-    {
-      "name": "Nivea",
-      "products": 622
-    },
-    {
-      "name": "Avène",
-      "products": 595
-    },
-    {
-      "name": "L'Oréal Paris",
-      "products": 571
-    },
-    {
-      "name": "La Roche-Posay",
-      "products": 561
-    },
-    {
-      "name": "Bioderma",
-      "products": 556
-    },
-    {
-      "name": "Eucerin",
-      "products": 555
+      "products": 742
     },
     {
       "name": "Clarins",
-      "products": 555
+      "products": 675
+    },
+    {
+      "name": "Avène",
+      "products": 649
+    },
+    {
+      "name": "Nivea",
+      "products": 617
+    },
+    {
+      "name": "La Roche-Posay",
+      "products": 582
+    },
+    {
+      "name": "Eucerin",
+      "products": 579
+    },
+    {
+      "name": "L'Oréal Paris",
+      "products": 570
     }
   ],
   "telegram_alerts": [
@@ -239,17 +239,17 @@
       "brand": "Eucerin",
       "name": "Sensitive Protect Kids SPF 50+",
       "store": "Wells",
-      "price": 13.35,
+      "price": 16.69,
       "previous_price": 30.34,
-      "discount_pct": 56
+      "discount_pct": 45
     },
     {
-      "ean": "wells-8769550",
-      "brand": "Vichy",
-      "name": "Invisible Hydrating Protective Milk SPF 50+",
+      "ean": "wells-8760922",
+      "brand": "Eucerin",
+      "name": "Oil Control UV Serum SPF 50+",
       "store": "Wells",
-      "price": 21,
-      "previous_price": 35,
+      "price": 21.23,
+      "previous_price": 35.39,
       "discount_pct": 40
     },
     {

@@ -367,7 +367,10 @@ console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.l
   // <script id="hp-data"> vive DENTRO de demo/index/catalogo — substituímos
   // in-place nos 3 ficheiros.
   const { spawnSync } = require('child_process');
-  const r1 = spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 120000 });
+  // timeout 420s: o build cresceu para ~274s com 140k ofertas (2026-07-21); a
+  // 120s falhava SEMPRE e a homepage curada nunca regenerava (bloco hp-data
+  // congelava — exactamente o que o comentário acima diz que devia ser evitado).
+  const r1 = spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 420000 });
   if (r1.status === 0) {
     try {
       const hp = fs.readFileSync(path.join(ROOT, 'data', 'homepage-data.json'), 'utf8');

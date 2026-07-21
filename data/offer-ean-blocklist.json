@@ -173,6 +173,30 @@
       "store_slug": "druni",
       "ean": "8435534404437",
       "reason": "laCabine \"Perfect Glow ampolas uso tópico\" (caixa, 16.95€) no EAN da ampola individual 2ml (atcosmetics 2.75€ c/ sku=barcode=imagem concordantes) — auditoria 2026-07-18"
+    },
+    {
+      "store_slug": "storekbeauty",
+      "ean": "8809525246014",
+      "reason": "Beauty of Joseon Centella folha ÚNICA (url …-1pcs, 2.50€) colada ao EAN do pack de 10 unidades (atida 18.99€) — mesmo padrão de loja-farmacia/notino; verificado ao vivo 2026-07-21.",
+      "added_at": "2026-07-21"
+    },
+    {
+      "store_slug": "storekbeauty",
+      "ean": "8800289475009",
+      "reason": "Medicube Kojic gel mask PACK de 4 (url …gel-mask, 4pcs, 17.90€) colado ao EAN da UNIDADE (aveirofarma 3.51€ 100% match, haemiskin 5.90€) — verificado ao vivo 2026-07-21.",
+      "added_at": "2026-07-21"
+    },
+    {
+      "store_slug": "miin",
+      "ean": "8809514550184",
+      "reason": "Rated Green Cold Press Avocado 200ml (19.99€) colado ao EAN do formato 50ml (atida 4.74€, 100% match) — verificado ao vivo 2026-07-21.",
+      "added_at": "2026-07-21"
+    },
+    {
+      "store_slug": "miin",
+      "ean": "8437016160251",
+      "reason": "Meisani Niacinamide Aqua Gel Cream MINI 15gr de viagem (5.99€) colado ao EAN do 50ml full-size (sweetcare 22.87€, docmorris 27.44€/50ml) — apareceria como mais barato; verificado ao vivo 2026-07-21.",
+      "added_at": "2026-07-21"
     }
   ]
 }
