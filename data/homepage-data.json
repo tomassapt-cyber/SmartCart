@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T02:42:14.373Z",
+  "generated_at": "2026-07-21T03:51:32.897Z",
   "seed_total_products": 57374,
   "hero_sponsored": [
     {
@@ -97,6 +97,16 @@
   ],
   "skincare_kits": [
     {
+      "ean": "3337875549493",
+      "name": "Effaclar Duo+ SPF30",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 13.72,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-spf30-40ml"
+    },
+    {
       "ean": "8470001859853",
       "name": "Biretix Duo Gel Imperfeições -",
       "brand": "BiRetix",
@@ -135,68 +145,73 @@
       "best_store": "Farmácia 365",
       "best_store_slug": "farmacia365",
       "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-light-40ml"
-    },
-    {
-      "ean": "7612412429879",
-      "name": "Curaprox Kit de viagem Be You Pure Happiness",
-      "brand": "Curaprox",
-      "image_url": "https://static.lojadafarmacia.com/12027/curaprox-kit-viagem-be-you-pure-happiness.jpg",
-      "best_price": 9.15,
-      "best_store": "WOWFARMA",
-      "best_store_slug": "wowfarma",
-      "best_url": "https://www.wowfarma.pt/curaprox-kit-de-viagem-be-you-pure-happiness.html"
     }
   ],
   "em_alta": [
     {
-      "ean": "3401395614172",
-      "name": "Bioderma Sensibio H2O Água Micelar",
-      "brand": "Bioderma",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 3.79,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
+      "ean": "8432225127873",
+      "name": "Champô Revlon Luz Argan Orofluido Revlon",
+      "brand": "Revlon Professional",
+      "image_url": "https://cdn1.costatic.com/img/product/400/67f913872fd93/champo-revlon-luz-p108365.jpg",
+      "best_price": 17.62,
+      "best_store": "Power Beauty",
+      "best_store_slug": "powerbeauty",
+      "best_url": "https://powerbeauty.pt/unisexo/10973-orofluido-shampoo-1000-ml-8432225127873.html",
+      "previous_price": 38.95,
+      "discount_pct": 55,
+      "dropped_day": 20655
     },
     {
-      "ean": "3337875798181",
-      "name": "Anthelios 100 Ka+Med",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797854.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 21.5,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/la-roche-posay-anthelios-100-ka-med-creme-50-ml"
+      "ean": "8424730019330",
+      "name": "SAPHIR PARFUMS FRUITS ATTRACTION VERBENA FLOWERS EDT VAP - Perfumes4You - O mundo dos perfumes à sua porta",
+      "brand": "PARFUMS SAPHIR",
+      "image_url": "[object Object]",
+      "best_price": 4.8,
+      "best_store": "Power Beauty",
+      "best_store_slug": "powerbeauty",
+      "best_url": "https://powerbeauty.pt/unisexo/20742-fleurs-de-verveine-edt-vapeur-100-ml-8424730019330.html",
+      "previous_price": 10.13,
+      "discount_pct": 53,
+      "dropped_day": 20655
     },
     {
-      "ean": "8431567644116",
-      "name": "Cofre Mineral 89",
-      "brand": "Vichy",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802259.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 19.95,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/cofre-mineral-89-vichy-hidratacao-profunda"
+      "ean": "0192333053508",
+      "name": "MOISTURE SURGE INTENSE gel creme 72 horas de hidrata&#231;&#227;o restauradora de lip&#237;dios",
+      "brand": "Clinique",
+      "image_url": "https://i1.perfumesclub.com/grande/220287.jpg",
+      "best_price": 27.15,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/clinique/moisture-surge-intense-gel-creme/p_71990/",
+      "previous_price": 55.9,
+      "discount_pct": 51,
+      "dropped_day": 20655
     },
     {
-      "ean": "3337875549493",
-      "name": "Effaclar Duo+ SPF30",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.72,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-spf30-40ml"
+      "ean": "4064666042541",
+      "name": "Wella Laca Mistify Me Light",
+      "brand": "Wella Professionals",
+      "image_url": "https://cdn-shopkit.com/usercontent/rui37/media/images/02391de-120651-1689682358_5d7a11d8f4bf8def33b0951a0bd1a4e9.jpeg",
+      "best_price": 4.39,
+      "best_store": "Power Beauty",
+      "best_store_slug": "powerbeauty",
+      "best_url": "https://powerbeauty.pt/unisexo/20322-eimi-brume-moi-lumiere-75-ml-4064666042541.html",
+      "previous_price": 8.95,
+      "discount_pct": 51,
+      "dropped_day": 20655
     },
     {
-      "ean": "3337875863377",
-      "name": "Effaclar Duo +M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 12.54,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
+      "ean": "3282770144819",
+      "name": "REPARACI&#211;N mascarilla al cupua&#231;u bio",
+      "brand": "Klorane",
+      "image_url": "https://cdn.notinoimg.com/order_2k/klorane/3282770144819_01-o/cupuacu-bio-bio___211006.jpg",
+      "best_price": 13.14,
+      "best_store": "Dermis",
+      "best_store_slug": "dermis",
+      "best_url": "https://dermis.pt/pt/artigo/klorane-capilar-mascara-manteiga-cupuacu-bio-150ml",
+      "previous_price": 25.99,
+      "discount_pct": 49,
+      "dropped_day": 20655
     }
   ],
   "top_brands": [

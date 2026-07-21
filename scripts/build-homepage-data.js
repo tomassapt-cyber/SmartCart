@@ -19,6 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { isNonCosmetic } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -135,6 +136,75 @@ function condenseByEan(seed, eans) {
     .filter(p => p && p.best_price != null); // só com oferta válida
 }
 
+// ── "Em alta" = DESCIDAS DE PREÇO recentes (pedido do user 2026-07-21) ────────
+// Lê data/price-history.json (séries [[dia, cêntimos, lojaIdx]] por EAN,
+// gravado 1×/dia por record-price-history.js). Uma descida = a última entrada é
+// menor que a anterior. FILTRAGEM ROBUSTA — as "maiores descidas" cruas são
+// LIXO (a ampola laCabine bloqueada dava -84%; colisões de formato e lojas
+// novas a aparecer dão -90%+). Só deixamos passar descidas CREDÍVEIS:
+//   • chave é EAN real (ignora séries legadas por-URL);
+//   • recente (≤ RECENT_DAYS);
+//   • magnitude na banda 8–60% (fora = quase sempre artefacto de dados);
+//   • o produto existe, tem imagem e uma oferta viva/fresca/não-bloqueada;
+//   • a descida ainda está VIVA (o melhor preço atual ≈ o preço pós-descida —
+//     senão já reverteu). Devolve previous_price + discount_pct para o render.
+function computeEmAlta(seed) {
+  const HIST = path.join(ROOT, 'data', 'price-history.json');
+  let hist;
+  try { hist = JSON.parse(fs.readFileSync(HIST, 'utf8')); } catch { return null; }
+  if (!hist || !hist.series) return null;
+  const today = Math.floor(Date.now() / 86400000);
+  const RECENT_DAYS = 10, MIN_PCT = 0.08, MAX_PCT = 0.55;
+  // preços vivos ordenados por EAN (seed já sem blocklist neste ponto do main)
+  const pricesFor = (ean) => {
+    const a = [];
+    for (const g of seed.store_products)
+      for (const it of g.items) {
+        if (it.ean !== ean || it.in_stock === false) continue;
+        if (it.price > 0) a.push(it.price);
+        for (const v of (it.variants || [])) if (v.price > 0 && v.in_stock !== false) a.push(v.price);
+      }
+    return a.sort((x, y) => x - y);
+  };
+  const drops = [];
+  for (const [ean, s] of Object.entries(hist.series)) {
+    if (!/^\d{12,14}$/.test(ean)) continue;
+    if (!Array.isArray(s) || s.length < 2) continue;
+    const last = s[s.length - 1], prev = s[s.length - 2];
+    if (!last || !prev || last[0] < today - RECENT_DAYS) continue;
+    if (!(last[1] < prev[1])) continue;
+    const pct = 1 - last[1] / prev[1];
+    if (pct < MIN_PCT || pct > MAX_PCT) continue;
+    drops.push({ ean, day: last[0], fromCents: prev[1], toCents: last[1], pct });
+  }
+  // mais recentes primeiro; dentro do mesmo dia, maior descida primeiro
+  drops.sort((a, b) => b.day - a.day || b.pct - a.pct);
+  const out = [], seen = new Set();
+  for (const d of drops) {
+    if (out.length >= 5) break;
+    if (seen.has(d.ean)) continue;
+    const p = seed.products.find(x => x.ean === d.ean);
+    if (!p || !p.image_url) continue;
+    if (isNonCosmetic(p.name)) continue;             // sem brinquedos/puericultura
+    const cp = condenseProduct(seed, p);
+    if (!cp || cp.best_price == null) continue;
+    const liveCents = Math.round(cp.best_price * 100);
+    if (liveCents > d.toCents * 1.15) continue;      // já reverteu/subiu
+    const prevPrice = d.fromCents / 100;
+    if (!(cp.best_price < prevPrice)) continue;
+    // guarda anti-colisão de formato: se há ≥2 vendedores e o mais barato é
+    // < 55% do 2º mais barato, o "preço" é quase de certeza um mini/amostra
+    // colado ao EAN do tamanho grande (não uma descida real).
+    const prices = pricesFor(d.ean);
+    if (prices.length >= 2 && cp.best_price < 0.55 * prices[1]) continue;
+    cp.previous_price = Number(prevPrice.toFixed(2));
+    cp.discount_pct = Math.round(d.pct * 100);
+    cp.dropped_day = d.day;
+    out.push(cp); seen.add(d.ean);
+  }
+  return out.length >= 3 ? out : null;   // < 3 descidas boas → usa fallback curado
+}
+
 (function main() {
   const seed = JSON.parse(fs.readFileSync(SEED, 'utf8'));
 
@@ -169,8 +239,15 @@ function condenseByEan(seed, eans) {
   const heroSponsored = condenseByEan(seed, SPONSORED_EANS);
   console.log(`  Hero sponsored: ${heroSponsored.length}/5`);
 
+  // 1b) Em alta — DESCIDAS DE PREÇO recentes (fallback aos EANs curados se o
+  // histórico não der ≥3 descidas credíveis). Computado cedo p/ excluir dos
+  // bestsellers/kits.
+  const emAlta = computeEmAlta(seed) || condenseByEan(seed, EM_ALTA_EANS);
+  const emAltaSource = emAlta && emAlta[0] && emAlta[0].discount_pct != null ? 'descidas' : 'curado (fallback)';
+  console.log(`  Em alta: ${emAlta.length}/5 (${emAltaSource})`);
+
   // 2) Bestsellers — top 5 por nº de lojas (excluindo já no hero/em-alta)
-  const usedEans = new Set([...SPONSORED_EANS, ...EM_ALTA_EANS]);
+  const usedEans = new Set([...SPONSORED_EANS, ...emAlta.map(p => p.ean)]);
   const candidates = seed.products
     .filter(p => !usedEans.has(p.ean) && p.image_url) // só com imagem
     .map(p => ({ p, n: countStores(seed, p.ean) }))
@@ -189,10 +266,6 @@ function condenseByEan(seed, eans) {
   kitsRaw.forEach(p => usedEans.add(p.ean));
   const skincareKits = kitsRaw.map(p => condenseProduct(seed, p)).filter(p => p?.best_price != null);
   console.log(`  Skincare kits: ${skincareKits.length}/5`);
-
-  // 4) Em alta — EANs curados
-  const emAlta = condenseByEan(seed, EM_ALTA_EANS);
-  console.log(`  Em alta: ${emAlta.length}/5`);
 
   // 5) Top brands — top 6 por nº de produtos
   const brandCount = {};
