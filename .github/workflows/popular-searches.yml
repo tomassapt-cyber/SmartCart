@@ -40,8 +40,17 @@ jobs:
         with:
           node-version: '22'
 
+      # 1) semente: o que se procura na internet em PT
       - name: Build popular searches (Google Suggest PT)
         run: node scripts/build-popular-searches.js
+
+      # 2) se o site já tiver tráfego suficiente, as pesquisas REAIS mandam e
+      #    substituem a semente. Sem secrets ou sem volume, sai em silêncio.
+      - name: Override com pesquisas reais do site (se houver volume)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node scripts/aggregate-search-popularity.js
 
       - name: Commit & push (retry em corrida)
         env:
