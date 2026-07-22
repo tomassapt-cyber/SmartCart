@@ -136,6 +136,39 @@ function condenseByEan(seed, eans) {
     .filter(p => p && p.best_price != null); // só com oferta válida
 }
 
+// ── Verificação AO VIVO de um candidato (caso Sensilis/Wells 2026-07-22) ─────
+// A Wells serviu 9.36€ durante ~1 dia (flash/erro de backend; página real
+// 19.06€) e o "Em alta" publicou a descida falsa. Antes de publicar, vamos à
+// página da loja confirmar o preço (JSON-LD + metas, tolerância ±10%). Lojas
+// que bloqueiam fetch simples não são verificáveis → candidato NÃO entra
+// (só publicamos o que conseguimos provar).
+const FETCH_BLOCKED = new Set(['sweetcare', 'atida', 'notino', 'perfumesclub', 'powerbeauty', 'sobeauty', 'smartbeauty', 'beleza37', 'druni']);
+const LIVE_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+async function livePricesFor(url) {
+  try {
+    const r = await fetch(url, { headers: { 'User-Agent': LIVE_UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(12000) });
+    if (!r.ok) return null;
+    const h = await r.text();
+    const prices = [];
+    for (const m of h.matchAll(/<script[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script>/g)) {
+      try {
+        const j = JSON.parse(m[1]);
+        for (const o of (Array.isArray(j) ? j : [j])) {
+          const offs = o && o.offers;
+          if (!offs) continue;
+          for (const of_ of (Array.isArray(offs) ? offs : [offs])) {
+            for (const v of [of_.price, of_.lowPrice, of_.highPrice]) { const p = parseFloat(String(v).replace(',', '.')); if (p > 0) prices.push(p); }
+          }
+        }
+      } catch { /* ld inválido */ }
+    }
+    for (const re of [/property=["']product:price:amount["'][^>]*content=["']([\d.,]+)/, /itemprop=["']price["'][^>]*content=["']([\d.,]+)/, /content=["']([\d.,]+)["'][^>]*itemprop=["']price["']/]) {
+      const m = h.match(re); if (m) { const p = parseFloat(m[1].replace(',', '.')); if (p > 0) prices.push(p); }
+    }
+    return prices.length ? prices : null;
+  } catch { return null; }
+}
+
 // ── "Em alta" = DESCIDAS DE PREÇO recentes (pedido do user 2026-07-21) ────────
 // Lê data/price-history.json (séries [[dia, cêntimos, lojaIdx]] por EAN,
 // gravado 1×/dia por record-price-history.js). Uma descida = a última entrada é
@@ -148,7 +181,7 @@ function condenseByEan(seed, eans) {
 //   • o produto existe, tem imagem e uma oferta viva/fresca/não-bloqueada;
 //   • a descida ainda está VIVA (o melhor preço atual ≈ o preço pós-descida —
 //     senão já reverteu). Devolve previous_price + discount_pct para o render.
-function computeEmAlta(seed) {
+async function computeEmAlta(seed) {
   const HIST = path.join(ROOT, 'data', 'price-history.json');
   let hist;
   try { hist = JSON.parse(fs.readFileSync(HIST, 'utf8')); } catch { return null; }
@@ -179,13 +212,18 @@ function computeEmAlta(seed) {
   }
   // mais recentes primeiro; dentro do mesmo dia, maior descida primeiro
   drops.sort((a, b) => b.day - a.day || b.pct - a.pct);
-  const out = [], seen = new Set();
+  // 1ª passagem: candidatos que passam TODOS os filtros estáticos (até 14 —
+  // alguns vão cair na verificação ao vivo)
+  const cands = [], seen = new Set();
   for (const d of drops) {
-    if (out.length >= 5) break;
+    if (cands.length >= 40) break;   // pool larga: muitos candidatos caem na verificação ao vivo (lojas não-fetcháveis)
     if (seen.has(d.ean)) continue;
     const p = seed.products.find(x => x.ean === d.ean);
     if (!p || !p.image_url) continue;
     if (isNonCosmetic(p.name)) continue;             // sem brinquedos/puericultura
+    // pedido do user 2026-07-22: só entra quem é COMPARADO em ≥5 lojas — uma
+    // descida validada por comparação ampla é muito mais fiável (e mais útil).
+    if (countStores(seed, d.ean) < 5) continue;
     const cp = condenseProduct(seed, p);
     if (!cp || cp.best_price == null) continue;
     const liveCents = Math.round(cp.best_price * 100);
@@ -200,12 +238,29 @@ function computeEmAlta(seed) {
     cp.previous_price = Number(prevPrice.toFixed(2));
     cp.discount_pct = Math.round(d.pct * 100);
     cp.dropped_day = d.day;
-    out.push(cp); seen.add(d.ean);
+    cands.push(cp); seen.add(d.ean);
   }
-  return out.length >= 3 ? out : null;   // < 3 descidas boas → usa fallback curado
+  // 2ª passagem: VERIFICAÇÃO AO VIVO do preço reclamado (caso Sensilis/Wells:
+  // a loja serviu um preço-fantasma 1 dia e nós publicámo-lo). Só entra quem
+  // conseguimos confirmar na página da loja (±10%). Loja não-fetchável → fora.
+  const out = [];
+  for (const cp of cands) {
+    if (out.length >= 5) break;
+    if (!cp.best_url || FETCH_BLOCKED.has(cp.best_store_slug)) {
+      console.log(`    em-alta: ✂ ${cp.ean} @${cp.best_store_slug} (não-verificável)`); continue;
+    }
+    const lp = await livePricesFor(cp.best_url);
+    const ok = lp && lp.some(p => Math.abs(p - cp.best_price) / cp.best_price <= 0.10);
+    if (!ok) {
+      console.log(`    em-alta: ✗ ${cp.ean} @${cp.best_store_slug} seed=${cp.best_price}€ live=[${(lp || []).slice(0, 3).join(',')}] — descartado`);
+      continue;
+    }
+    out.push(cp);
+  }
+  return out.length >= 3 ? out : null;   // < 3 descidas verificadas → fallback curado
 }
 
-(function main() {
+(async function main() {
   const seed = JSON.parse(fs.readFileSync(SEED, 'utf8'));
 
   // ── UNIFORMIDADE com o render (2026-07-03): aplicar os MESMOS overlays do
@@ -260,7 +315,7 @@ function computeEmAlta(seed) {
   // 1b) Em alta — DESCIDAS DE PREÇO recentes (fallback aos EANs curados se o
   // histórico não der ≥3 descidas credíveis). Computado cedo p/ excluir dos
   // bestsellers/kits.
-  const emAlta = computeEmAlta(seed) || condenseByEan(seed, EM_ALTA_EANS);
+  const emAlta = (await computeEmAlta(seed)) || condenseByEan(seed, EM_ALTA_EANS);
   const emAltaSource = emAlta && emAlta[0] && emAlta[0].discount_pct != null ? 'descidas' : 'curado (fallback)';
   console.log(`  Em alta: ${emAlta.length}/5 (${emAltaSource})`);
 
