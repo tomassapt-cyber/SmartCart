@@ -131,15 +131,19 @@ function dimsFromBuffer(buf) {
   return null;
 }
 
-async function checkUrl(url, timeoutMs = 12000) {
+async function checkUrl(url, timeoutMs = 12000, noRange = false) {
   const ctl = new AbortController();
   const t = setTimeout(() => ctl.abort(), timeoutMs);
   try {
-    const r = await fetch(url, {
-      method: 'GET', redirect: 'follow', signal: ctl.signal,
-      headers: { Range: 'bytes=0-16383', 'User-Agent': UA, Accept: 'image/*,*/*' },
-    });
+    const headers = { 'User-Agent': UA, Accept: 'image/webp,image/apng,image/*,*/*;q=0.8' };
+    if (!noRange) headers.Range = 'bytes=0-16383';
+    const r = await fetch(url, { method: 'GET', redirect: 'follow', signal: ctl.signal, headers });
     clearTimeout(t);
+    // 403/429 com Range: CDNs (ex.: static.sweetcare.pt) recusam o Range mas
+    // servem 200 a um GET normal — 932 falsos "dead" na 1ª ronda. Retry limpo;
+    // se persistir, é "blocked" (nunca "dead": não se troca uma imagem viva).
+    if ((r.status === 403 || r.status === 429) && !noRange) { try { r.body?.cancel(); } catch {} return checkUrl(url, timeoutMs, true); }
+    if (r.status === 403 || r.status === 429) { try { r.body?.cancel(); } catch {} return { v: 'blocked', http: r.status }; }
     if (r.status >= 400) { try { r.body?.cancel(); } catch {} return { v: 'dead', http: r.status }; }
     const ct = (r.headers.get('content-type') || '').toLowerCase();
     const cr = r.headers.get('content-range');
@@ -225,7 +229,7 @@ async function checkUrl(url, timeoutMs = 12000) {
   console.log(`  URL suspeito (placeholder/malformado): ${urlSuspeito.length} · ${APPLY ? 'substituídas' : 'substituíveis'}: ${fixedSusp} · ${APPLY ? 'limpas p/ fallback' : 'a limpar'}: ${clearedSusp}`);
 
   // ── LIVE (com cache incremental) ───────────────────────────────────────────
-  const liveStats = { ok: 0, dead: 0, 'not-image': 0, tiny: 0, placeholder: 0, distorted: 0, error: 0 };
+  const liveStats = { ok: 0, dead: 0, 'not-image': 0, tiny: 0, placeholder: 0, distorted: 0, error: 0, blocked: 0 };
   let fixedBad = 0;
   if (LIVE) {
     const now = Date.now();

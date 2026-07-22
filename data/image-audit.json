@@ -1,218 +1,173 @@
 {
-  "generated_at": "2026-07-22T15:00:18.512Z",
+  "generated_at": "2026-07-22T15:17:47.971Z",
   "lote": "todos",
   "produtos_no_lote": 57619,
-  "sem_imagem": 494,
-  "preencheveis": 0,
-  "sem_substituta": 494,
+  "sem_imagem": 604,
+  "preencheveis": 62,
+  "sem_substituta": 542,
   "url_suspeito": [
     {
-      "ean": "0810912033696",
-      "url": "https://static.sweetcare.pt/img/prd/max/v-638337440181155953/sol-de-janeiro-018335sj_02.jpg"
-    },
-    {
-      "ean": "0810912033665",
-      "url": "https://static.sweetcare.pt/img/prd/max/v-638337438063720282/sol-de-janeiro-018334sj_02.jpg"
-    },
-    {
-      "ean": "0810912032071",
-      "url": "https://cdn.notinoimg.com/order_2k/sol_de_janeiro/810912032071_01-o/brazilian-joia-milky-leave-in-conditioner___260717.jpg"
-    },
-    {
-      "ean": "8015150010986",
-      "url": "https://www.druni.pt/media/catalog/product/5/0/5023350.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
-    },
-    {
-      "ean": "8015150011136",
-      "url": "https://www.druni.pt/media/catalog/product/5/0/5023331.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
-    },
-    {
-      "ean": "wells-8793547",
-      "url": null
-    },
-    {
-      "ean": "druni-complexion-rescue-foundation-stick-barem",
-      "url": "https://www.druni.pt/media/catalog/product/6/0/6010.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
-    },
-    {
-      "ean": "3461020007986",
-      "url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/5923363-LIMPEZA-AGUA-DE-LIMPEZA-OSMOPURE-ESTHEDERM-P-01.jpg?v=1747827643"
-    },
-    {
-      "ean": "8429420329867",
-      "url": "https://www.druni.pt/media/catalog/product/5/8/5810775.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
-    },
-    {
-      "ean": "3701436911614",
-      "url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/r/o/rogergallettriosabonetesboisd_orange.jpg"
-    },
-    {
-      "ean": "4011396417897",
-      "url": null
-    },
-    {
-      "ean": "farmaciapt-freshly-golden-radiance-oleo-corporal",
-      "url": null
-    },
-    {
-      "ean": "farmaciapt-freshly-hair-radiance-keratin-spray-de-keratina",
-      "url": null
-    },
-    {
-      "ean": "769915195743",
-      "url": null
-    },
-    {
-      "ean": "8809925186064",
-      "url": null
-    },
-    {
-      "ean": "8809954941498",
-      "url": "https://cdn.notinoimg.com/order_2k/beauty_of_joseon/8809954941498_01-o/dynasty-cream___251022.jpg"
-    },
-    {
-      "ean": "3522930027027",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-caudalie-vinoperfect-serum-manchas-30ml-oferta-sol",
-      "url": null
-    },
-    {
-      "ean": "8424730030281",
-      "url": null
-    },
-    {
-      "ean": "3540550000428",
-      "url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/f/i/filorgasleeppeel40ml.jpeg"
-    },
-    {
-      "ean": "3372290111825",
-      "url": "https://www.cosmeticfan.com/thumb/phpThumb.php?src=../uploads/6342436.png"
-    },
-    {
-      "ean": "3372290123026",
-      "url": "https://static.sweetcare.pt/img/prd/max/v-637236736605635842/lazartigue-008575lz_02.jpg"
-    },
-    {
-      "ean": "3372290000556",
-      "url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/2/7258418_lazartigueecorefillfortificanteshampoo.jpeg"
-    },
-    {
-      "ean": "3372290143123",
-      "url": "https://www.mycosmetics.pt/cdn/shop/products/6342394_grande.png?v=1615148518"
-    },
-    {
-      "ean": "3372290143024",
-      "url": "https://www.mycosmetics.pt/cdn/shop/products/6342386_grande.png?v=1615148516"
-    },
-    {
-      "ean": "3461020008167",
-      "url": "https://cdn.notinoimg.com/order_2k/institut-esthederm/3461020008167_01-o/cellular-water-concentrate___160922.jpg"
-    },
-    {
-      "ean": "3461020013420",
-      "url": "https://cdn.notinoimg.com/order_2k/institut-esthederm/3461020013420_01-o/sensi-system-calming-cream___161005.jpg"
-    },
-    {
-      "ean": "3461020013192",
-      "url": "https://cdn.notinoimg.com/order_2k/institut-esthederm/3461020013192_01-o/osmoclean-high-tolerance-make-up-remover___241015.jpg"
-    },
-    {
-      "ean": "3461020013659",
-      "url": "https://cdn.notinoimg.com/order_2k/institut-esthederm/3461020013659_01-o/derm-repair-restructuring-serum___241015.jpg"
-    },
-    {
-      "ean": "farmacia365-invisibobble-elastico-cabelo-kids-rapunzel-3-unida",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-invisibobble-elastico-cabelo-kids-frozen-3-unidade",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-beautyblender-blendercleanser-liquido-limpeza-150m",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-agua-micelar-100ml",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-tonico-revitalizador-100ml",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-esfoliante-rosto-50ml",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-eyeliner-negro-waterproof",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-primer-olhos-nude",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-bb-cream-medio-escuro-spf15-25ml",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-paleta-sombras-de-olhos-deep-sunset-64g",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-paleta-sombras-de-olhos-honey-vibes-64g",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-olhos-negro-rigido",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-olhos-preto-suave",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-metallic-grey",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-metallic-blue",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-metallic-brown",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-preto-longa-duracao-24h",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-metallic-green",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-azul",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-green",
-      "url": null
-    },
-    {
-      "ean": "farmacia365-lovren-lapis-de-olhos-brown",
-      "url": null
+      "ean": "3282779024549",
+      "url": "https://assets.asuafarmaciaonline.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.asuafarmaciaonline.pt/images/originals/6428607-Avène MEN Espuma de Barbear 200ml-2.webp"
     }
   ],
   "live_stats_desta_corrida": null,
-  "cache_total": 0,
+  "cache_total": 11068,
   "problemas": {
     "dead": {
-      "n": 0,
-      "amostra": []
+      "n": 373,
+      "amostra": [
+        {
+          "ean": "easyfarma-alvita-oleo-de-amendoas-doces-125ml",
+          "name": "Alvita Óleo de Amêndoas Doces 125ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/Wa6vDN_fde3340b-e0b1-4e55-b391-6ca0ec0de08a.png?v=1779411753",
+          "http": 404
+        },
+        {
+          "ean": "3282770393507",
+          "name": "Avène Activ Cg Creme Antienvelhecimento - 50ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/876ZXd_4a198144-8afd-494c-923c-f65b74d2bcf6.jpg?v=1779361087",
+          "http": 404
+        },
+        {
+          "ean": "5600903501465",
+          "name": "Oleoban Gel de Banho 950ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/wVHmtY_9d127b3c-670c-4b02-90b4-add291cda542.jpg?v=1779241015",
+          "http": 404
+        },
+        {
+          "ean": "3592610001814",
+          "name": "Dexeryl Creme Emoliente 250G",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HJGoD7.jpg?v=1779239416",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-chicco-maca-puxa-e-descobre",
+          "name": "Chicco Maça Puxa e Descobre",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/KpKJXL.jpg?v=1779154905",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-chicco-brinquedo-hippo-6-36m",
+          "name": "Chicco Brinquedo Hippo 6-36M",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/lCcUBj_167039a4-2ce4-4b64-9360-b1d1aa460e0e.jpg?v=1779154901",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-chicco-animais-encaixaveis-6-36m",
+          "name": "Chicco Animais Encaixáveis 6-36M",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/yP9DSs_19d4b795-a23e-4fa0-b2b1-6199ab7e0c40.jpg?v=1779154899",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-chicco-livro-de-banho-magico-6-36m",
+          "name": "Chicco Livro de Banho Mágico 6-36M",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/lq1naE.jpg?v=1779154896",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-duo-isdin-deo-lambda-fresh-roll-50-2u-desodorizant",
+          "name": "ISDIN Deo Duo Lambda Control Fresh 48h 2x50ml 50% ",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/tEv92Z_49bb46aa-9087-488b-9de2-60f537f7d775.jpg?v=1779154857",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-klorane-junior-champo-desembaracador-pessego-500ml",
+          "name": "Klorane Júnior Champô Desembaraçador de Pessêgo pa",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/2GMyOE_5039d0ec-b0df-423c-b31e-16b718e81120.jpg?v=1779153586",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-isdin-acniben-night-concentrate-serum-anti-imperfe",
+          "name": "ISDIN ACNIBEN Night Concentrate Sérum Anti-Imperfe",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/UH9xSt_37ea2f6f-e93b-4e0f-820e-9d52b1689091.jpg?v=1779153436",
+          "http": 404
+        },
+        {
+          "ean": "8058664075225",
+          "name": "Chicco Faixa Pós-parto S",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/LxdsDC_7cc6588c-59d0-43f0-9179-b3d2240ebdb5.jpg?v=1779152906",
+          "http": 404
+        },
+        {
+          "ean": "8058664103218",
+          "name": "Chicco Esponja Natural Média",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/JeT6vd_ce9c4bc1-d918-4a55-92ae-f7d6c46161a1.jpg?v=1779152904",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-chicco-detergente-para-roupa",
+          "name": "Chicco Detergente para Roupa",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/MqWxz8_f6a727d8-dad1-4d10-9f1d-a4b0b8fb2a95.jpg?v=1779152900",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-tricovivax-50-mg-ml-100-ml-x-3-sol-cut-minoxidil",
+          "name": "Tricovivax, 50 mg/mL-100 mL x 3 solução cutânea",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/JHjWbW.jpg?v=1778980643",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-lambdapil-anti-queda-duo-champo-2-x-400-ml-com-des",
+          "name": "ISDIN Lambdapil Antiqueda Shampoo 400ML -50% 2DA E",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/GrCXIF_d4ae2cb1-98da-4126-bd9b-5c6d0c2a40c0.jpg?v=1779412610",
+          "http": 404
+        },
+        {
+          "ean": "3701129817919",
+          "name": "Bioderma Sensibio Óleo Limpeza Micelar 150ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/9yqtQP_fc17db4d-64fe-4f8c-a135-0d52f858141c.png?v=1779152809",
+          "http": 404
+        },
+        {
+          "ean": "8428076017371",
+          "name": "Durex Conexão Total Extra Lubrificado (x10 preserv",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/xw65Nm_40a0344d-ff76-46d1-ae3b-f96736a1c2de.jpg?v=1779241195",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-eucerin-coffret-hyaluron-filler-3x-effect-serum-fi",
+          "name": "Eucerin Coffret Hyaluron-Filler 3x Effect Sérum Fi",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/Qnr887_b23b3300-9de0-4191-9046-aa68e944d250.jpg?v=1778940998",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-dercos-aminexil-clinic-serum-regenerador-booster-9",
+          "name": "Dercos Aminexil Clinic Sérum Regenerador Booster 9",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/aqDkH0_59bacf2a-ed2b-4ca1-8f29-15702f0c7482.jpg?v=1779413779",
+          "http": 404
+        },
+        {
+          "ean": "3337875803786",
+          "name": "La Roche-Posay Lipikar Baume AP Light - 400ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/WHTroH_a894fbbe-6ee0-44c3-b960-d76b1cc1ddd4.jpg?v=1778935884",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-la-roche-posay-cicaplast-baume-b5-fp50-40ml",
+          "name": "La Roche-Posay Cicaplast Baume B5 FP50 - 40ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/y4uVoy_21b7f2b0-1cdd-48c1-bbc8-7cf46fd0800b.jpg?v=1778935877",
+          "http": 404
+        },
+        {
+          "ean": "3337875492805",
+          "name": "Dercos Champô Ultra-Apaziguante Cabelo Seco 200ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/JQLpcd_7e4ca637-d64a-4fc8-a020-739b0fc2ee69.png?v=1779412212",
+          "http": 404
+        },
+        {
+          "ean": "3701129807330",
+          "name": "Bioderma Atoderm Óleo Duche Ecorefill - 1L",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/zc1Mkf_e889e259-a7ea-4501-a4dd-53cb7686617b.jpg?v=1779239182",
+          "http": 404
+        },
+        {
+          "ean": "easyfarma-gerber-organic-snack-morango-35g-8m",
+          "name": "Gerber Organic Snack Morango 35g +8M",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/SYASWA_c9c79d9f-58a4-4faf-bb0d-b027de5f1561.png?v=1778940637",
+          "http": 404
+        }
+      ]
     },
     "not-image": {
       "n": 0,
@@ -227,8 +182,16 @@
       "amostra": []
     },
     "distorted": {
-      "n": 0,
-      "amostra": []
+      "n": 1,
+      "amostra": [
+        {
+          "ean": "3461020013178",
+          "name": "Esthederm Osmoclean Mousse Purificante - 150ml",
+          "url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/EeztRI.jpg?v=1779412344",
+          "w": 293,
+          "h": 1080
+        }
+      ]
     }
   }
 }
