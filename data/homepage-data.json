@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-22T15:24:52.037Z",
-  "seed_total_products": 57619,
+  "generated_at": "2026-07-22T16:37:07.350Z",
+  "seed_total_products": 57618,
   "hero_sponsored": [
     {
       "ean": "8429420158399",
@@ -110,7 +110,7 @@
       "ean": "8470001859853",
       "name": "Biretix Duo Gel Imperfeições -",
       "brand": "BiRetix",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/qiXBqo_581fccbb-d904-4663-9c8b-99eaac410108.jpg?v=1779413302",
+      "image_url": "https://cdn.notinoimg.com/detail_main_mq/biretix/8470001859853_01-o/treat-duo-anti-blemish-gel___231102.jpg",
       "best_price": 16.15,
       "best_store": "Notino",
       "best_store_slug": "notino",
@@ -232,7 +232,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 584
+      "products": 583
     },
     {
       "name": "Eucerin",
