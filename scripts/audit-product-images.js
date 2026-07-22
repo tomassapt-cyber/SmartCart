@@ -155,8 +155,9 @@ async function checkUrl(url, timeoutMs = 12000, noRange = false) {
     if (size > 0 && size < 1200) return { v: 'placeholder', bytes: size };
     if (dims && dims.w && dims.h) {
       if (Math.min(dims.w, dims.h) < 60) return { v: 'tiny', w: dims.w, h: dims.h };
-      const ratio = Math.max(dims.w, dims.h) / Math.min(dims.w, dims.h);
-      if (ratio > 3.5) return { v: 'distorted', w: dims.w, h: dims.h };
+      // só LARGO é suspeito (banner no lugar do packshot); ALTO é normal em
+      // cosmética (frascos/tubos esguios deram 610 falsos positivos 2026-07-22)
+      if (dims.w / dims.h > 3.5) return { v: 'distorted', w: dims.w, h: dims.h };
       return { v: 'ok', w: dims.w, h: dims.h };
     }
     return { v: 'ok' };
@@ -270,6 +271,19 @@ async function checkUrl(url, timeoutMs = 12000, noRange = false) {
     console.log(`  LIVE final: ${JSON.stringify(liveStats)}`);
   }
 
+  // ── APLICAR A PARTIR DA CACHE ─────────────────────────────────────────────
+  // O loop LIVE só corrige o que verificou NESTA corrida; com a cache quente a
+  // fila fica vazia e os maus já conhecidos ficavam por trocar (bug 2026-07-22:
+  // "más-live 0" com 803 dead em cache). Passagem dedicada sobre os veredictos.
+  let fixedCache = 0;
+  for (const p of selected) {
+    const c = p.image_url && cache.checked[p.image_url];
+    if (!c || !['dead', 'not-image', 'placeholder', 'tiny'].includes(c.v)) continue;
+    const r = replacementFor(p.ean, p.image_url);
+    if (r) { if (APPLY) p.image_url = r.img; fixedCache++; }
+  }
+  console.log(`  ${APPLY ? 'trocadas' : 'trocáveis'} a partir da cache (dead/placeholder/tiny): ${fixedCache}`);
+
   // ── RELATÓRIO (tudo o que a cache sabe sobre o lote) ──────────────────────
   const bad = { dead: [], 'not-image': [], tiny: [], placeholder: [], distorted: [] };
   for (const p of selected) {
@@ -291,9 +305,9 @@ async function checkUrl(url, timeoutMs = 12000, noRange = false) {
 
   console.log(`\n══════ Resumo ══════`);
   for (const [k, v] of Object.entries(bad)) console.log(`  ${k}: ${v.length}`);
-  console.log(`  ${APPLY ? 'Corrigidas' : 'Corrigíveis'}: sem-imagem ${fixedMissing} + suspeitas ${fixedSusp} + limpas ${clearedSusp} + más-live ${fixedBad}`);
+  console.log(`  ${APPLY ? 'Corrigidas' : 'Corrigíveis'}: sem-imagem ${fixedMissing} + suspeitas ${fixedSusp} + limpas ${clearedSusp} + más-live ${fixedBad} + cache ${fixedCache}`);
   console.log(`✓ relatório: ${OUT_FILE.replace(ROOT, '.')}`);
-  if (APPLY && (fixedMissing || fixedBad || fixedSusp || clearedSusp)) {
+  if (APPLY && (fixedMissing || fixedBad || fixedSusp || clearedSusp || fixedCache)) {
     fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
     console.log(`✓ seed-bundle atualizado — corre inject-seed-into-demo.js para publicar.`);
   } else if (!APPLY) console.log('[DRY-RUN] Re-corre com --apply para gravar as substituições.');

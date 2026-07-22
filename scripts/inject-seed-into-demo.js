@@ -370,7 +370,11 @@ console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.l
   // timeout 420s: o build cresceu para ~274s com 140k ofertas (2026-07-21); a
   // 120s falhava SEMPRE e a homepage curada nunca regenerava (bloco hp-data
   // congelava — exactamente o que o comentário acima diz que devia ser evitado).
-  const r1 = spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 420000 });
+  // COSMATH_SKIP_HP=1: salta o rebuild do hp (274s) — landing rápido na vaga
+  // de refreshes; o hp aterra num passo separado a seguir (2026-07-22).
+  const r1 = process.env.COSMATH_SKIP_HP === '1'
+    ? { status: 1, stderr: 'saltado (COSMATH_SKIP_HP=1)' }
+    : spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 420000 });
   if (r1.status === 0) {
     try {
       const hp = fs.readFileSync(path.join(ROOT, 'data', 'homepage-data.json'), 'utf8');
