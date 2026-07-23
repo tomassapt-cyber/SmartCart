@@ -197,6 +197,18 @@
       "ean": "8437016160251",
       "reason": "Meisani Niacinamide Aqua Gel Cream MINI 15gr de viagem (5.99€) colado ao EAN do 50ml full-size (sweetcare 22.87€, docmorris 27.44€/50ml) — apareceria como mais barato; verificado ao vivo 2026-07-21.",
       "added_at": "2026-07-21"
+    },
+    {
+      "store_slug": "farmaciasprogresso",
+      "ean": "8435125400817",
+      "reason": "Máscara cirúrgica UNITÁRIA (0.14€, url~nome 0%) colada ao EAN da caixa de 50 (skpro 2.45€, smartbeauty 2.95€) — auditoria de estreia da loja 70, 2026-07-23.",
+      "added_at": "2026-07-23"
+    },
+    {
+      "store_slug": "farmaciasprogresso",
+      "ean": "3282770140781",
+      "reason": "René Furterer Tonucia champô formato VIAGEM 50ml (5.01€ promo, verificado ao vivo) colado ao EAN do 500ml (crowd 14.51-18.95€) — auditoria de estreia da loja 70, 2026-07-23.",
+      "added_at": "2026-07-23"
     }
   ]
 }
