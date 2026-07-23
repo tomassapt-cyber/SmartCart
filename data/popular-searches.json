@@ -1,31 +1,7 @@
 {
-  "generated_at": "2026-07-21T04:16:06.362Z",
+  "generated_at": "2026-07-23T07:57:43.659Z",
   "source": "google-suggest-pt",
   "products": [
-    {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.22,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/fotoprotetor-isdin-fusion-water-spf50-50ml",
-      "search_term": "isdin protetor solar",
-      "pop_score": 61
-    },
-    {
-      "ean": "3606000560833",
-      "name": "Sérum Con Ácido Hialurónico",
-      "brand": "CeraVe",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.94,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/cerave-serum-hidratante-acido-hialuronico-30-ml",
-      "search_term": "acido hialuronico gluteos",
-      "pop_score": 45
-    },
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
@@ -36,7 +12,19 @@
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/",
       "search_term": "vitamina c rosto melhores",
-      "pop_score": 45
+      "pop_score": 59
+    },
+    {
+      "ean": "8429420158399",
+      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
+      "best_price": 17.76,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/isdin-fotoprotector-fusion-water-rosto-spf50-50ml",
+      "search_term": "protetor solar facial la roche",
+      "pop_score": 46
     },
     {
       "ean": "3337875492799",
@@ -48,43 +36,31 @@
       "best_store_slug": "farmaoli",
       "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
       "search_term": "shampoo anticaspa",
-      "pop_score": 41
+      "pop_score": 44
     },
     {
-      "ean": "0717334253124",
-      "name": "Esfoliante Facial Origins Checks and Balances",
-      "brand": "Origins",
-      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
-      "best_price": 18.94,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
-      "search_term": "esfoliante facial caseiro",
-      "pop_score": 30
+      "ean": "3606000560833",
+      "name": "Sérum Con Ácido Hialurónico",
+      "brand": "CeraVe",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 13.94,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/cerave-serum-hidratante-acido-hialuronico-30-ml",
+      "search_term": "acido hialuronico gluteos",
+      "pop_score": 37
     },
     {
-      "ean": "5201279072193",
-      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
-      "brand": "Apivita",
-      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
-      "best_price": 2.84,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/apivita-express-beauty-mascara-de-limpeza-profunda-com-argila-verde-2x8ml",
-      "search_term": "mascara facial coreana",
-      "pop_score": 30
-    },
-    {
-      "ean": "8429979208040",
-      "name": "Azelac Ru Liposomal Serum",
-      "brand": "Sesderma",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5013126.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 25.95,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/azelac-ru-liposomal-serum-sesderma-serum-despigmentante",
-      "search_term": "sesderma azelac ru",
-      "pop_score": 27
+      "ean": "8429420231559",
+      "name": "ISDIN Fotoprotector Fusion Water Magic Color BRONZE SPF50 - Protetor solar facial ultraligeiro com cor",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/7114835_1.webp",
+      "best_price": 16.11,
+      "best_store": "DocMorris",
+      "best_store_slug": "docmorris",
+      "best_url": "https://www.docmorris.pt/pt/isdin-fotoprotector-fusion-water-magic-bronze-spf50-50ml/p-614628",
+      "search_term": "protetor solar com cor la roche",
+      "pop_score": 33
     },
     {
       "ean": "3282779416139",
@@ -97,6 +73,30 @@
       "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml",
       "search_term": "creme de maos loccitane",
       "pop_score": 27
+    },
+    {
+      "ean": "0717334253124",
+      "name": "Esfoliante Facial Origins Checks and Balances",
+      "brand": "Origins",
+      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
+      "best_price": 18.94,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
+      "search_term": "esfoliante facial caseiro",
+      "pop_score": 25
+    },
+    {
+      "ean": "5201279072193",
+      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
+      "brand": "Apivita",
+      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
+      "best_price": 2.45,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/",
+      "search_term": "mascara facial coreana",
+      "pop_score": 22
     }
   ]
 }
