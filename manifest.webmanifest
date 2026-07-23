@@ -1,16 +1,21 @@
 {
-  "name": "GirlMath — Compara, combina e poupa",
-  "short_name": "GirlMath",
-  "description": "Comparação de preços em 30+ lojas de cosmética portuguesas e europeias.",
+  "name": "CosMath — Compara, combina e poupa",
+  "short_name": "CosMath",
+  "description": "O melhor preço real de cada produto de cosmética, em 70 lojas portuguesas — com portes incluídos.",
   "lang": "pt-PT",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f4f4f5",
-  "theme_color": "#6d84a7",
+  "background_color": "#ffffff",
+  "theme_color": "#cebfee",
   "categories": ["shopping", "lifestyle", "beauty"],
   "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
     {
       "src": "/icon.svg",
       "sizes": "any",
