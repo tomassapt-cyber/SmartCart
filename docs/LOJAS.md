@@ -2,7 +2,7 @@
 
 Referência de todas as lojas integradas, como cada uma é raspada, por que chave
 casa, e se se actualiza sozinha na nuvem (GitHub Actions) ou precisa do PC.
-Última actualização: 2026-07-22 · **69 lojas · ~162 500 ofertas** no seed
+Última actualização: 2026-07-23 · **70 lojas · ~165 600 ofertas** no seed
 (~121.500 publicadas no render após os overlays de qualidade: fantasmas,
 anti-podre, blocklist).
 
@@ -26,82 +26,83 @@ Pipeline por loja: `scrape-<loja>-catalog.js` → `data/catalog/<loja>-full.json
 
 ---
 
-## As 69 lojas
+## As 70 lojas
 
 Ofertas contadas no seed em 2026-07-09. Horários em UTC; "3×" = três crons
 diários (regra de cadência de 2026-07-03: lojas rápidas correm 3×/dia).
 
 | # | Loja | Ofertas | Chave | Técnica de scrape | Nuvem? |
 |---|------|--------:|-------|-------------------|--------|
-| 1 | Atida (Mifarma) | 11 018 | EAN | sitemap + JSON-LD | ✅ 15h |
-| 2 | Druni PT | 10 417 | EAN | sitemap + JSON-LD | ✅ 06h |
-| 3 | Primor | 9 873 | EAN | Magento + JSON-LD (mpn=EAN); --dermo de 37k | ✅ 3× 02h |
-| 4 | Notino | 9 380 | EAN | sitemap-categoria + JSON-LD; **via curl** | ❌ **só PC** |
-| 5 | SweetCare | 8 284 | EAN | sitemap + JSON-LD | ✅ 10h+22h |
-| 6 | Loja da Farmácia | 6 938 | EAN | Magento + JSON-LD | ✅ 3× 19h |
-| 7 | Aveiro Farma | 5 853 | EAN (gtin14) | OpenCart + JSON-LD; servidor LENTO | ✅ 3× 11h |
-| 8 | Wells | 5 633 | EAN | sitemap + JSON-LD | ✅ 14h |
-| 9 | Perfume's Club | 4 722 | EAN | sitemap + JSON-LD (gtin13); --dermo por marca; retry anti soft-block; **nunca raspar do PC** | ✅ 3× 00h30 |
-| 10 | A Tua Farmácia | 4 285 | CNP | Shopify products.json (sku=CNP); **enrich-only por CNP directo** | ✅ 3× 06h40 |
+| 1 | Atida (Mifarma) | 11 023 | EAN | sitemap + JSON-LD | ✅ 15h |
+| 2 | Druni PT | 10 430 | EAN | sitemap + JSON-LD | ✅ 06h |
+| 3 | Notino | 9 977 | EAN | sitemap-categoria + JSON-LD; **via curl** | ❌ **só PC** |
+| 4 | Primor | 9 912 | EAN | Magento + JSON-LD (mpn=EAN); --dermo de 37k | ✅ 3× 02h |
+| 5 | SweetCare | 8 286 | EAN | sitemap + JSON-LD | ✅ 10h+22h |
+| 6 | Loja da Farmácia | 6 947 | EAN | Magento + JSON-LD | ✅ 3× 19h |
+| 7 | Aveiro Farma | 5 861 | EAN (gtin14) | OpenCart + JSON-LD; servidor LENTO | ✅ 3× 11h |
+| 8 | Wells | 5 654 | EAN | sitemap + JSON-LD | ✅ 14h |
+| 9 | Perfume's Club | 4 725 | EAN | sitemap + JSON-LD (gtin13); --dermo por marca; retry anti soft-block; **nunca raspar do PC** | ✅ 3× 00h30 |
+| 10 | A Tua Farmácia | 4 288 | CNP | Shopify products.json (sku=CNP); **enrich-only por CNP directo** | ✅ 3× 06h40 |
 | 11 | Power Beauty | 4 244 | EAN | PrestaShop sitemap CDATA; Product é o 4º bloco JSON-LD | ❌ **só PC** |
-| 12 | Farmácia.pt | 4 100 | EAN | sitemap + JSON-LD | ✅ 3× 17h |
-| 13 | Pharma Scalabis | 4 042 | EAN + CNP | WooCommerce + JSON-LD (mpn=EAN) | ✅ 3× 01h30 |
-| 14 | Cocooncenter | 3 738 | EAN | sitemap-pt + JSON-LD; 410=descont. | ✅ 3× 15h |
-| 15 | Farmácia Virtual | 3 711 | CNP | WooCommerce (sku=CNP) | ✅ 3× 13h |
-| 16 | Nossa Farmácia | 3 655 | CNP | **VTEX API JSON** (productReference=CNP; paginar por subcategoria) | ✅ 3× 00h45 |
-| 17 | Bairro da Saúde | 3 347 | CNP | HTML | ✅ 3× 05h |
-| 18 | FastPharma | 2 545 | CNP + EAN | Magento sitemap_web flat (sku=mpn=CNP; gtin13 parcial) | ✅ 3× 01h15 |
-| 19 | Dermis | 2 536 | CNP + EAN 81% | API pública api.dermis.pt (Ycommerce=bemecare; campaign_price) | ✅ 3× 06h05 |
-| 20 | Love My Pharma | 2 487 | CNP+EAN | Shopify products.json + <handle>.js (barcode) | ✅ 3× 08h55 |
-| 21 | FarmaToGo | 2 425 | EAN+CNP | Shopify sitemaps + JSON-LD ficha-a-ficha | ✅ 3× 05h10 |
-| 22 | Pharmee | 2 403 | EAN+CNP | sitemap + JSON-LD | ✅ 3× 06h25 |
-| 23 | Pharma GDD | 2 387 | EAN | sitemap + JSON-LD | ✅ 3× 22h |
-| 24 | CosmeticFan | 2 040 | EAN+CNP | sitemap + JSON-LD | ✅ 3× 05h50 |
-| 25 | Unifarma | 2 004 | CNP | Shopify products.json (sku=CNP) | ✅ 3× 03h20 |
-| 26 | Easyfarma | 1 984 | CNP | HTML (barcode=CNP) | ✅ 3× 04h |
-| 27 | Poupafarma | 1 964 | CNP (+EAN) | Jumpseller ficha-a-ficha (JSON-LD sku) | ✅ 3× 04h10 |
-| 28 | Farmácia do Costume | 1 928 | EAN+CNP | sitemap + JSON-LD (mpn=EAN); só fichas .html | ✅ 3× 07h05 |
-| 29 | Farmácia Ideal | 1 883 | EAN + CNP | mesma plataforma da Saúde Mayor | ✅ 3× 07h |
-| 30 | Saúde Mayor | 1 844 | **EAN + CNP** | JSON-LD por regex (mpn=EAN, sku=CNP; JSON partido) | ✅ 3× 09h |
-| 31 | Farmácia Barreiros | 1 655 | CNP | PrestaShop; fallback URLs-conhecidos se WAF | ✅ 3× 22h30 |
-| 32 | Farmácia Garcia | 1 587 | CNP | loja.farmaciagarcia.net Shopify products.json (sem barcode) | ✅ 3× 09h50 |
-| 33 | GO-farma | 1 560 | EAN + CNP | Magento sitemap_products_pt (gtin13 + sku=CNP) | ✅ 3× 03h55 |
-| 34 | DocMorris | 1 526 | fingerprint | enrich-only fp+loose+fuzzy; known-only diário + full semanal | ✅ 3× 05h05 + seg 04h30 |
-| 35 | Farmácia 365 | 1 413 | EAN | sitemap + JSON-LD; fila ∪ URLs do seed | ✅ 3× 16h |
-| 36 | WOWFARMA | 1 389 | EAN + CNP | **feed KuantoKusta** /kkfeedwowfarma.xml (1 pedido) | ✅ 3× 07h25 |
-| 37 | BeMeCare | 1 341 | CNP | Nuxt vm-eval __NUXT__ (sitemap 92% morto) | ✅ 3× 03h15 |
-| 38 | My Cosmetics | 1 262 | EAN (+CNP) | Shopify + JSON-LD; preços via parsePriceEU | ✅ 3× 08h |
-| 39 | byFarma | 1 255 | EAN | Magento + JSON-LD | ✅ 3× 12h |
-| 40 | VallisPharma | 1 245 | EAN+CNP | prop Vue :product HTML-encoded | ✅ 3× 03h45 |
-| 41 | A Sua Farmácia Online | 1 239 | EAN/CNP | HTML; urlRefreshPass | ✅ 3× 21h |
-| 42 | Farmácia Portugal | 1 225 | CNP + EAN parcial | loja. subdomínio; sitemap_web + JSON-LD (sku=mpn=CNP) | ✅ 3× 09h20 |
-| 43 | Smart Beauty | 976 | EAN | plataforma SoBeauty (.xml.gz) | ❌ **só PC** |
-| 44 | SoBeauty | 953 | EAN + CNP | sitemaps .xml.gz + JSON-LD; rate-limit agressivo | ❌ **só PC** |
-| 45 | Hiper Farma | 893 | CNP | Shopify (sku=CNP); resolveBrand (vendor=distribuidor) | ✅ 3× 06h05 |
-| 46 | Farmácias Portuguesas | 863 | CNP | Magento; cookie pharmacy_code + pricingData | ✅ 3× 16h |
-| 47 | Beleza37 | 862 | EAN | plataforma SoBeauty (.xml.gz) | ❌ **só PC** |
-| 48 | Farmácia Camelo | 846 | CNP | DynamoCMS (clone vidamais); CNP no filename prod-{CNP}.png | ✅ 3× 04h15 |
-| 49 | Care2Me | 827 | CNP+EAN parcial | sitemap + __GA3ProductDetail (JSON embebido) | ✅ 3× 04h40 |
-| 50 | Quickfarma | 769 | CNP + EAN | WooCommerce; sitemap AIOSEO com CDATA | ✅ 3× 05h50 |
-| 51 | Farmácia Vida+Mais | 757 | CNP + EAN parcial | Dynamo/Selenia SEM sitemap: all-products?p=N → data-ref | ✅ 3× 10h05 |
-| 52 | Farmaoli | 753 | EAN (slug+checksum) | PrestaShop CDATA sitemap; slug-EAN vence tracking | ✅ 3× 07h35 |
-| 53 | MiiN Cosmetics | 733 | EAN | PrestaShop microdata gtin13; preço meta product:price:amount (COM IVA) | ✅ 3× 05h45 |
-| 54 | ATCosmetics | 700 | EAN | Shopify products.json; EAN = filename da imagem (checksum) | ✅ 3× 11h05 |
-| 55 | Pharma2you | 636 | fingerprint | feed Google Merchant | ✅ 3× 17h |
-| 56 | StoreKBeauty | 543 | EAN | Shopify /pt-pt products.json sku=EAN-13; cookie localization=PT | ✅ 3× 05h25 |
-| 57 | PharmaVida | 445 | EAN+CNP | sitemap + JSON-LD | ✅ 3× 06h20 |
-| 58 | A Farmácia Online | 373 | EAN | JSON-LD + data-ean; fallback URLs-do-seed se WAF | ✅ 3× 18h |
-| 59 | ShopCosmetics | 373 | EAN + CNP | PrestaShop 1_index_sitemap CDATA | ✅ 3× 02h30 |
-| 60 | Manuela Serra | 372 | EAN/fp | HTML (Shopify) | ✅ 3× 06h |
-| 61 | SKPRO | 365 | EAN (12+checksum) | PrestaShop; EAN-12 no slug + dígito calculado; preço og | ✅ 3× 10h35 |
-| 62 | Perfumes4you | 348 | EAN | WooCommerce (sku=EAN-13) | ✅ 3× 04h35 |
-| 63 | A Minha Farmácia Online | 264 | EAN | sitemap + JSON-LD | ✅ 3× 21h30 |
-| 64 | HaemiSkin | 115 | EAN | sitemap + JSON-LD | ✅ 3× 20h |
-| 65 | Farmácia 2U | 108 | CNP+EAN | sitemap-cemitério (mortos dão HTTP 200 → DEAD_RE); JSON-LD sku=mpn=CNP + gtin13 | ✅ 3× 03h45 |
-| 66 | Farmácias Low Cost | 86 | CNP (~50%) | ASP.NET WebForms; CNP em hidden input; preço em div.pricebox (sem hífen!) | ✅ 3× 04h35 |
-| 67 | Continente | 82 | fingerprint | known-only diário + full semanal (seg 04h) | ✅ 3× 02h15 |
-| 68 | Pluricosmética | 64 | fingerprint | known-only diário + full semanal (seg 04h30) | ✅ 3× 02h45 |
-| 69 | Pharmia | 1 | CNP | Woo; JSON-LD sku=CNP + meta product:price (overlap marginal) | ✅ 3× 04h55 |
+| 12 | Farmácia.pt | 4 103 | EAN | sitemap + JSON-LD | ✅ 3× 17h |
+| 13 | Pharma Scalabis | 4 056 | EAN + CNP | WooCommerce + JSON-LD (mpn=EAN) | ✅ 3× 01h30 |
+| 14 | Cocooncenter | 3 746 | EAN | sitemap-pt + JSON-LD; 410=descont. | ✅ 3× 15h |
+| 15 | Farmácia Virtual | 3 713 | CNP | WooCommerce (sku=CNP) | ✅ 3× 13h |
+| 16 | Nossa Farmácia | 3 658 | CNP | **VTEX API JSON** (productReference=CNP; paginar por subcategoria) | ✅ 3× 00h45 |
+| 17 | Bairro da Saúde | 3 340 | CNP | HTML | ✅ 3× 05h |
+| 18 | FastPharma | 2 556 | CNP + EAN | Magento sitemap_web flat (sku=mpn=CNP; gtin13 parcial) | ✅ 3× 01h15 |
+| 19 | Dermis | 2 538 | CNP + EAN 81% | API pública api.dermis.pt (Ycommerce=bemecare; campaign_price) | ✅ 3× 06h05 |
+| 20 | Love My Pharma | 2 493 | CNP+EAN | Shopify products.json + <handle>.js (barcode) | ✅ 3× 08h55 |
+| 21 | FarmaToGo | 2 424 | EAN+CNP | Shopify sitemaps + JSON-LD ficha-a-ficha | ✅ 3× 05h10 |
+| 22 | Pharmee | 2 406 | EAN+CNP | sitemap + JSON-LD | ✅ 3× 06h25 |
+| 23 | Pharma GDD | 2 401 | EAN | sitemap + JSON-LD | ✅ 3× 22h |
+| 24 | Farmácias Progresso | 2 224 | CNP+EAN (sku/mpn flexível) | Presta; sitemap flat sem .html; filtro JSON-LD Product | ✅ 3× 07h40 |
+| 25 | CosmeticFan | 2 037 | EAN+CNP | sitemap + JSON-LD | ✅ 3× 05h50 |
+| 26 | Unifarma | 2 012 | CNP | Shopify products.json (sku=CNP) | ✅ 3× 03h20 |
+| 27 | Easyfarma | 1 987 | CNP | HTML (barcode=CNP) | ✅ 3× 04h |
+| 28 | Poupafarma | 1 966 | CNP (+EAN) | Jumpseller ficha-a-ficha (JSON-LD sku) | ✅ 3× 04h10 |
+| 29 | Farmácia do Costume | 1 931 | EAN+CNP | sitemap + JSON-LD (mpn=EAN); só fichas .html | ✅ 3× 07h05 |
+| 30 | Farmácia Ideal | 1 890 | EAN + CNP | mesma plataforma da Saúde Mayor | ✅ 3× 07h |
+| 31 | Saúde Mayor | 1 864 | **EAN + CNP** | JSON-LD por regex (mpn=EAN, sku=CNP; JSON partido) | ✅ 3× 09h |
+| 32 | Farmácia Barreiros | 1 656 | CNP | PrestaShop; fallback URLs-conhecidos se WAF | ✅ 3× 22h30 |
+| 33 | Farmácia Garcia | 1 589 | CNP | loja.farmaciagarcia.net Shopify products.json (sem barcode) | ✅ 3× 09h50 |
+| 34 | GO-farma | 1 561 | EAN + CNP | Magento sitemap_products_pt (gtin13 + sku=CNP) | ✅ 3× 03h55 |
+| 35 | DocMorris | 1 526 | fingerprint | enrich-only fp+loose+fuzzy; known-only diário + full semanal | ✅ 3× 05h05 + seg 04h30 |
+| 36 | Farmácia 365 | 1 415 | EAN | sitemap + JSON-LD; fila ∪ URLs do seed | ✅ 3× 16h |
+| 37 | WOWFARMA | 1 399 | EAN + CNP | **feed KuantoKusta** /kkfeedwowfarma.xml (1 pedido) | ✅ 3× 07h25 |
+| 38 | BeMeCare | 1 339 | CNP | Nuxt vm-eval __NUXT__ (sitemap 92% morto) | ✅ 3× 03h15 |
+| 39 | My Cosmetics | 1 272 | EAN (+CNP) | Shopify + JSON-LD; preços via parsePriceEU | ✅ 3× 08h |
+| 40 | byFarma | 1 263 | EAN | Magento + JSON-LD | ✅ 3× 12h |
+| 41 | VallisPharma | 1 246 | EAN+CNP | prop Vue :product HTML-encoded | ✅ 3× 03h45 |
+| 42 | A Sua Farmácia Online | 1 239 | EAN/CNP | HTML; urlRefreshPass | ✅ 3× 21h |
+| 43 | Farmácia Portugal | 1 227 | CNP + EAN parcial | loja. subdomínio; sitemap_web + JSON-LD (sku=mpn=CNP) | ✅ 3× 09h20 |
+| 44 | Smart Beauty | 985 | EAN | plataforma SoBeauty (.xml.gz) | ❌ **só PC** |
+| 45 | SoBeauty | 954 | EAN + CNP | sitemaps .xml.gz + JSON-LD; rate-limit agressivo | ❌ **só PC** |
+| 46 | Hiper Farma | 894 | CNP | Shopify (sku=CNP); resolveBrand (vendor=distribuidor) | ✅ 3× 06h05 |
+| 47 | Beleza37 | 866 | EAN | plataforma SoBeauty (.xml.gz) | ❌ **só PC** |
+| 48 | Farmácias Portuguesas | 863 | CNP | Magento; cookie pharmacy_code + pricingData | ✅ 3× 16h |
+| 49 | Farmácia Camelo | 848 | CNP | DynamoCMS (clone vidamais); CNP no filename prod-{CNP}.png | ✅ 3× 04h15 |
+| 50 | Care2Me | 827 | CNP+EAN parcial | sitemap + __GA3ProductDetail (JSON embebido) | ✅ 3× 04h40 |
+| 51 | Quickfarma | 771 | CNP + EAN | WooCommerce; sitemap AIOSEO com CDATA | ✅ 3× 05h50 |
+| 52 | Farmácia Vida+Mais | 758 | CNP + EAN parcial | Dynamo/Selenia SEM sitemap: all-products?p=N → data-ref | ✅ 3× 10h05 |
+| 53 | Farmaoli | 752 | EAN (slug+checksum) | PrestaShop CDATA sitemap; slug-EAN vence tracking | ✅ 3× 07h35 |
+| 54 | MiiN Cosmetics | 734 | EAN | PrestaShop microdata gtin13; preço meta product:price:amount (COM IVA) | ✅ 3× 05h45 |
+| 55 | ATCosmetics | 700 | EAN | Shopify products.json; EAN = filename da imagem (checksum) | ✅ 3× 11h05 |
+| 56 | Pharma2you | 636 | fingerprint | feed Google Merchant | ✅ 3× 17h |
+| 57 | StoreKBeauty | 551 | EAN | Shopify /pt-pt products.json sku=EAN-13; cookie localization=PT | ✅ 3× 05h25 |
+| 58 | PharmaVida | 449 | EAN+CNP | sitemap + JSON-LD | ✅ 3× 06h20 |
+| 59 | ShopCosmetics | 389 | EAN + CNP | PrestaShop 1_index_sitemap CDATA | ✅ 3× 02h30 |
+| 60 | A Farmácia Online | 373 | EAN | JSON-LD + data-ean; fallback URLs-do-seed se WAF | ✅ 3× 18h |
+| 61 | Manuela Serra | 372 | EAN/fp | HTML (Shopify) | ✅ 3× 06h |
+| 62 | SKPRO | 365 | EAN (12+checksum) | PrestaShop; EAN-12 no slug + dígito calculado; preço og | ✅ 3× 10h35 |
+| 63 | Perfumes4you | 348 | EAN | WooCommerce (sku=EAN-13) | ✅ 3× 04h35 |
+| 64 | A Minha Farmácia Online | 265 | EAN | sitemap + JSON-LD | ✅ 3× 21h30 |
+| 65 | HaemiSkin | 116 | EAN | sitemap + JSON-LD | ✅ 3× 20h |
+| 66 | Farmácia 2U | 108 | CNP+EAN | sitemap-cemitério (mortos dão HTTP 200 → DEAD_RE); JSON-LD sku=mpn=CNP + gtin13 | ✅ 3× 03h45 |
+| 67 | Farmácias Low Cost | 86 | CNP (~50%) | ASP.NET WebForms; CNP em hidden input; preço em div.pricebox (sem hífen!) | ✅ 3× 04h35 |
+| 68 | Continente | 82 | fingerprint | known-only diário + full semanal (seg 04h) | ✅ 3× 02h15 |
+| 69 | Pluricosmética | 64 | fingerprint | known-only diário + full semanal (seg 04h30) | ✅ 3× 02h45 |
+| 70 | Pharmia | 1 | CNP | Woo; JSON-LD sku=CNP + meta product:price (overlap marginal) | ✅ 3× 04h55 |
 
 **42/47 actualizam sozinhas na nuvem.** As 5 restantes são **só-PC** (Cloudflare/
 WAF bloqueia IPs de datacenter): Notino, Power Beauty, SoBeauty, Smart Beauty,
