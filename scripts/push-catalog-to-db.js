@@ -47,10 +47,15 @@ async function upsert(table, rows, onConflict) {
           body: JSON.stringify(chunk),
           signal: AbortSignal.timeout(60000),
         });
-        if (r.status >= 400) throw new Error(`HTTP ${r.status}: ${(await r.text()).slice(0, 180)}`);
+        if (r.status >= 400) {
+          const body = (await r.text()).slice(0, 180);
+          // 4xx = determinístico (dado mau) → falhar JÁ, retry só ajuda em 5xx/rede
+          if (r.status < 500) throw Object.assign(new Error(`HTTP ${r.status}: ${body}`), { fatal: true });
+          throw new Error(`HTTP ${r.status}: ${body}`);
+        }
         ok = true;
       } catch (e) {
-        if (att === 3) throw new Error(`${table} lote ${i / BATCH}: ${e.message}`);
+        if (e.fatal || att === 3) throw new Error(`${table} lote ${i / BATCH}: ${e.message}`);
         await new Promise(s => setTimeout(s, 2000 * att));
       }
     }
@@ -95,10 +100,13 @@ async function upsert(table, rows, onConflict) {
     } catch { /* mantém false */ }
     console.log(`  colunas de popularidade (migration 005): ${hasPopCols ? 'presentes ✓' : 'ausentes — sync sem elas (aplicar 005)'}`);
   }
+  // url/image só http(s) — a BD nunca guarda javascript:/data: vindos do
+  // scraping (defesa em profundidade; app.html já valida no href) (auditoria).
+  const safeUrl = u => { const x = String(u || ''); return /^https?:\/\//i.test(x) ? x : null; };
   const products = (seed.products || []).filter(p => p.ean && p.name).map(p => {
     const base = {
       ean: p.ean, name: p.name, brand: p.brand || null, category: p.category || null,
-      image_url: p.image_url || null, updated_at: runTs,
+      image_url: safeUrl(p.image_url), updated_at: runTs,
     };
     if (hasPopCols) {
       const e = pop[p.ean];
@@ -109,9 +117,12 @@ async function upsert(table, rows, onConflict) {
     return base;
   });
   const eanSet = new Set(products.map(p => p.ean));
+  const storeSet = new Set(stores.map(s => s.slug));   // FK offers.store_slug (auditoria)
 
   const offers = [];
+  let semLoja = 0;
   for (const g of seed.store_products || []) {
+    if (!storeSet.has(g.store_slug)) { semLoja += (g.items || []).length; continue; }   // FK: loja tem de existir em stores
     for (const it of g.items || []) {
       if (!it.ean || !eanSet.has(it.ean) || !(it.price > 0)) continue;
       if (blocked.has(g.store_slug + '|' + it.ean)) continue;
@@ -119,7 +130,7 @@ async function upsert(table, rows, onConflict) {
         store_slug: g.store_slug, ean: it.ean,
         price: it.price, previous_price: it.previous_price ?? null,
         discount_pct: it.discount_pct != null ? Math.round(it.discount_pct) : null,
-        in_stock: it.in_stock !== false, url: it.url || null,
+        in_stock: it.in_stock !== false, url: safeUrl(it.url),
         verified_at: it.verified_at || null, synced_at: runTs,
       });
     }
@@ -150,7 +161,7 @@ async function upsert(table, rows, onConflict) {
           const cur = bestVar.get(k);
           if (!cur || v.price < cur.price) bestVar.set(k, {
             store_slug: g.store_slug, ean: it.ean, volume_ml: ml, price: v.price,
-            url: v.url || it.url || null, in_stock: v.in_stock !== false, synced_at: runTs,
+            url: safeUrl(v.url) || safeUrl(it.url), in_stock: v.in_stock !== false, synced_at: runTs,
           });
         }
       }
@@ -172,9 +183,25 @@ async function upsert(table, rows, onConflict) {
   const dupN = (products.length - products2.length) + (offers.length - offers2.length) + (variants.length - variants2.length);
   if (dupN) console.log(`  dedupe: ${dupN} PKs repetidas removidas`);
 
+  if (semLoja) console.log(`  ⚠ ${semLoja} ofertas de lojas ausentes de seed.stores — ignoradas (FK)`);
   console.log(`📦 payloads: ${stores2.length} lojas · ${products2.length} produtos · ${offers2.length} ofertas · ${variants2.length} variantes (blocklist aplicada)`);
   if (DRY) { console.log('🧪 --dry-run: nada enviado.'); return; }
   if (!URL_ || !KEY) { console.log('ℹ Sem SUPABASE_URL/SERVICE_KEY — sync saltado (Fase 1 ainda não ativada).'); return; }
+
+  // GUARDRAIL anti-apagão (auditoria): se o seed vier truncado (scraper de uma
+  // loja grande falhou → vaga parcial), a semântica-espelho apagaria milhares
+  // de ofertas vivas da BD pública. Se o payload tem < 80% do que a BD já tem,
+  // fazemos os UPSERTS mas SALTAMOS as limpezas (ofertas stale sobrevivem 1
+  // ciclo — muito melhor que apagar uma loja inteira).
+  let skipPurge = false;
+  try {
+    const rc = await fetch(`${URL_}/rest/v1/offers?select=count`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'count=exact', Range: '0-0' }, signal: AbortSignal.timeout(20000) });
+    const countBD = parseInt((rc.headers.get('content-range') || '/0').split('/')[1], 10) || 0;
+    if (countBD > 1000 && offers2.length < 0.8 * countBD) {
+      skipPurge = true;
+      console.log(`  ⛔ GUARDRAIL: payload ${offers2.length} < 80% da BD (${countBD}) — seed truncado? UPSERTS sim, limpezas SALTADAS.`);
+    }
+  } catch { /* sem count → segue normal */ }
 
   await upsert('stores', stores2, 'slug');
   await upsert('products', products2, 'ean');
@@ -191,12 +218,14 @@ async function upsert(table, rows, onConflict) {
     if (r.status >= 400) throw new Error(`limpeza ${table}: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
     console.log(`  limpeza ${table} saídas: HTTP ${r.status} ✓`);
   }
-  if (hasVariants) await purge('offer_variants');
-  await purge('offers');
-  // produtos-fantasma: um produto que saiu do seed nunca era apagado e ficava
-  // no topo do catálogo com n_stores/min_price congelados (auditoria). products
-  // usa updated_at (é o carimbo do upsert deste run).
-  {
+  if (skipPurge) {
+    console.log('  ⛔ limpezas saltadas pelo guardrail (ofertas stale sobrevivem 1 ciclo).');
+  } else {
+    if (hasVariants) await purge('offer_variants');
+    await purge('offers');
+    // produtos-fantasma: um produto que saiu do seed nunca era apagado e ficava
+    // no topo do catálogo com n_stores/min_price congelados (auditoria). products
+    // usa updated_at (é o carimbo do upsert deste run).
     const r = await fetch(`${URL_}/rest/v1/products?updated_at=lt.${encodeURIComponent(runTs)}`, {
       method: 'DELETE', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' }, signal: AbortSignal.timeout(60000),
     });

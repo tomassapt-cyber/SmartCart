@@ -143,15 +143,16 @@ function shipFor(slug, price) {
 
 async function fetchPage(first) {
   const p = new URLSearchParams();
-  p.set('select', 'ean,name,brand,image_url,offers(price,store_slug,url,in_stock)' + (state.varEmbed ? ',offer_variants(volume_ml,price,store_slug,url,in_stock)' : ''));
+  p.set('select', 'ean,name,brand,image_url,offers!offers_ean_fkey!inner(price,store_slug,url,in_stock)' + (state.varEmbed ? ',offer_variants(volume_ml,price,store_slug,url,in_stock)' : ''));
   p.set('offers.in_stock', 'eq.true');
   p.set('offers.order', 'price.asc');
   p.set('order', state.orderPop ? 'n_stores.desc.nullslast,ean.asc' : 'name.asc,ean.asc');
   p.set('limit', PAGE);
   p.set('offset', state.offset);
   if (state.q) {
-    const t = state.q.replace(/[%,()]/g, ' ').trim();
-    p.set('or', `(name.ilike.*${t}*,brand.ilike.*${t}*)`);
+    const toks = state.q.replace(/[%,()\\]/g, ' ').split(/\s+/).filter(Boolean).slice(0, 6);
+    if (toks.length === 1) p.set('or', `(name.ilike.*${toks[0]}*,brand.ilike.*${toks[0]}*)`);
+    else if (toks.length) p.set('and', '(' + toks.map(tk => `or(name.ilike.*${tk}*,brand.ilike.*${tk}*)`).join(',') + ')');
   }
   const headers = { apikey: KEY, Authorization: 'Bearer ' + KEY };
   if (first) headers.Prefer = 'count=exact';
@@ -204,7 +205,17 @@ function renderSheetOffers(rows) {
       <span class="offer-go">↗</span>
     </a>`).join('') + '<div class="sheet-note">portes para Portugal continental, 1 produto · na compra de vários, o cabaz do site principal otimiza os portes</div>';
 }
+function logSearchEvent(ean) {
+  try {
+    fetch(SB + '/rest/v1/search_events', {
+      method: 'POST',
+      headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ term: (state.q || '').toLowerCase().slice(0, 64) || null, ean: String(ean) }),
+    }).catch(() => {});
+  } catch (e) { /* nunca propaga */ }
+}
 function openSheet(pr) {
+  logSearchEvent(pr.ean);
   const offs = (pr.offers || []).filter(o => o.price > 0);
   document.getElementById('sh-brand').textContent = pr.brand || '';
   document.getElementById('sh-name').textContent = pr.name || '';
