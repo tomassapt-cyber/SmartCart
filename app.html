@@ -12,10 +12,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
-   FASE 2 (protótipo, 2026-07-24): catálogo servido pela BD.
-   ~15KB em vez de 73MB — pesquisa e paginação via Supabase REST
-   (leitura anon pública). Quando provar, substitui o catálogo
-   embebido do site principal.
+   FASE 2 v2 (2026-07-24): catálogo servido pela BD.
+   ~16KB vs 73MB — pesquisa server-side, paginação, comparação de
+   ofertas em folha inferior, ordenação por popularidade (n_stores,
+   migration 005) com fallback para nome enquanto a 005 não for
+   aplicada. Leitura anon pública (RLS); escrita vedada.
    ============================================================ */
 :root{--text:#1c1917;--text-soft:#6b6560;--muted:#9a8f86;--gold:#c8913c;}
 *{box-sizing:border-box}
@@ -32,9 +33,8 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 .logo em{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500}
 .beta{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft);background:rgba(255,255,255,.7);padding:3px 8px;border-radius:999px}
 .back{margin-left:auto;font-size:12.5px;color:var(--text-soft);text-decoration:none}
-.searchbar{display:flex;gap:8px}
 .searchbar input{
-  flex:1;min-height:48px;border:1px solid rgba(120,90,170,.18);border-radius:14px;
+  width:100%;min-height:48px;border:1px solid rgba(120,90,170,.18);border-radius:14px;
   padding:0 16px;font:inherit;font-size:16px;background:rgba(255,255,255,.85);outline:none;
 }
 .searchbar input:focus{border-color:#9b7fd4;background:#fff}
@@ -42,7 +42,7 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px 12px;margin-top:6px}
 .card{
   background:rgba(255,255,255,.86);border:1px solid rgba(120,90,170,.10);border-radius:16px;
-  padding:12px;display:flex;flex-direction:column;box-shadow:0 3px 12px rgba(74,50,110,.05);
+  padding:12px;display:flex;flex-direction:column;box-shadow:0 3px 12px rgba(74,50,110,.05);cursor:pointer;
 }
 .card-img{height:120px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
 .card-img img{max-width:88%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}
@@ -52,12 +52,28 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 .card-price{margin-top:auto;font-size:16px;font-weight:800}
 .card-store{font-size:11px;color:var(--text-soft)}
 .card-n{font-size:10.5px;color:var(--muted);margin-top:2px}
-.card a{color:inherit;text-decoration:none}
 .more{display:block;margin:22px auto 8px;min-height:48px;padding:0 28px;border:none;border-radius:999px;background:var(--text);color:#fff;font:inherit;font-weight:700;font-size:14px}
 .more[disabled]{opacity:.4}
 .empty{margin:34px 8px;color:var(--text-soft);text-align:center}
 .spin{margin:30px auto;width:26px;height:26px;border:3px solid rgba(120,90,170,.2);border-top-color:#9b7fd4;border-radius:50%;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
+/* folha de comparação */
+.sheet{position:fixed;inset:0;z-index:100;background:rgba(28,25,23,.45);display:flex;align-items:flex-end}
+.sheet[hidden]{display:none}
+.sheet-card{background:#fff;width:100%;max-height:78vh;border-radius:22px 22px 0 0;padding:18px 18px calc(20px + env(safe-area-inset-bottom));overflow-y:auto}
+.sheet-head{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.sheet-img{width:56px;height:56px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sheet-img img{max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}
+.sheet-brand{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.sheet-name{font-size:14.5px;font-weight:700;line-height:1.25}
+.sheet-x{margin-left:auto;background:none;border:none;font-size:22px;color:var(--muted);min-width:44px;min-height:44px}
+.offer{display:flex;align-items:center;gap:10px;padding:11px 4px;border-top:1px solid #f0ebe3;text-decoration:none;color:inherit;min-height:48px}
+.offer:first-of-type{border-top:none}
+.offer-store{flex:1;font-size:13.5px;font-weight:600}
+.offer-price{font-size:15px;font-weight:800}
+.offer-best .offer-price{color:#0f766e}
+.offer-best .offer-store::after{content:" · melhor preço";font-size:10px;color:#0f766e;font-weight:700}
+.offer-go{font-size:12px;color:var(--text-soft)}
 </style>
 </head>
 <body>
@@ -76,35 +92,59 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
   <div class="empty" id="empty" hidden>Sem resultados — tenta outro termo.</div>
   <button class="more" id="more" hidden>Carregar mais</button>
 </div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <div class="sheet-img" id="sh-img"></div>
+      <div><div class="sheet-brand" id="sh-brand"></div><div class="sheet-name" id="sh-name"></div></div>
+      <button class="sheet-x" id="sh-x" aria-label="Fechar">×</button>
+    </div>
+    <div id="sh-offers"></div>
+  </div>
+</div>
+
 <script>
-/* Catálogo direto da BD (Fase 2). Leitura pública (anon) — a mesma chave que
-   o site principal já expõe; a escrita está vedada por RLS. */
+/* Catálogo direto da BD (Fase 2 v2). Leitura pública (anon); escrita vedada
+   por RLS. Ordenação: n_stores desc (migration 005) com fallback p/ nome. */
 const SB = 'https://sqjtkwtoaudmfmexreqk.supabase.co';
 const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxanRrd3RvYXVkbWZtZXhyZXFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NTI4NjcsImV4cCI6MjA5NDQyODg2N30.V6V_qyYXjO39xRM8vuoF8gHq9gvpYRN8u0GNijywr20';
 const PAGE = 24;
-const state = { q: '', offset: 0, busy: false, done: false };
+const state = { q: '', offset: 0, busy: false, done: false, total: null, orderPop: true, items: [] };
 
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = n => '€' + Number(n).toFixed(2).replace('.', ',');
+const NOMES = { 'bairro-saude': 'Bairro da Saúde', 'loja-farmacia': 'Loja da Farmácia', 'pharma-gdd': 'Pharma GDD' };
+const storeName = s => NOMES[s] || s.replace(/(^|[-_])([a-z])/g, (_, a, b) => (a ? ' ' : '') + b.toUpperCase());
 
-async function fetchPage() {
+async function fetchPage(first) {
   const p = new URLSearchParams();
   p.set('select', 'ean,name,brand,image_url,offers(price,store_slug,url,in_stock)');
   p.set('offers.in_stock', 'eq.true');
   p.set('offers.order', 'price.asc');
-  p.set('order', 'name.asc');
+  p.set('order', state.orderPop ? 'n_stores.desc.nullslast' : 'name.asc');
   p.set('limit', PAGE);
   p.set('offset', state.offset);
   if (state.q) {
     const t = state.q.replace(/[%,()]/g, ' ').trim();
     p.set('or', `(name.ilike.*${t}*,brand.ilike.*${t}*)`);
   }
-  const r = await fetch(`${SB}/rest/v1/products?${p}`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY } });
-  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const headers = { apikey: KEY, Authorization: 'Bearer ' + KEY };
+  if (first) headers.Prefer = 'count=exact';
+  const r = await fetch(`${SB}/rest/v1/products?${p}`, { headers });
+  if (!r.ok) {
+    // 400 provável = coluna n_stores ausente (migration 005 por aplicar) → fallback
+    if (state.orderPop && r.status === 400) { state.orderPop = false; return fetchPage(first); }
+    throw new Error('HTTP ' + r.status);
+  }
+  if (first) {
+    const cr = r.headers.get('content-range');
+    if (cr && cr.includes('/')) state.total = parseInt(cr.split('/')[1], 10) || null;
+  }
   return r.json();
 }
 
-function card(pr) {
+function card(pr, idx) {
   const offs = (pr.offers || []).filter(o => o.price > 0);
   if (!offs.length) return '';
   const best = offs[0];
@@ -112,31 +152,55 @@ function card(pr) {
   const img = pr.image_url
     ? `<img src="${esc(pr.image_url)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'card-ini',textContent:'${esc(ini)}'}))">`
     : `<span class="card-ini">${esc(ini)}</span>`;
-  return `<div class="card"><a href="${esc(best.url || '#')}" target="_blank" rel="noopener">
+  return `<div class="card" data-idx="${idx}">
     <div class="card-img">${img}</div>
     <div class="card-brand">${esc(pr.brand || '')}</div>
     <div class="card-name">${esc(pr.name || '')}</div>
     <div class="card-price">desde ${fmt(best.price)}</div>
-    <div class="card-store">@ ${esc(best.store_slug)}</div>
+    <div class="card-store">@ ${esc(storeName(best.store_slug))}</div>
     <div class="card-n">${offs.length} loja${offs.length === 1 ? '' : 's'} a comparar</div>
-  </a></div>`;
+  </div>`;
 }
+
+function openSheet(pr) {
+  const offs = (pr.offers || []).filter(o => o.price > 0);
+  document.getElementById('sh-brand').textContent = pr.brand || '';
+  document.getElementById('sh-name').textContent = pr.name || '';
+  document.getElementById('sh-img').innerHTML = pr.image_url ? `<img src="${esc(pr.image_url)}" alt="">` : '';
+  document.getElementById('sh-offers').innerHTML = offs.map((o, i) => `
+    <a class="offer ${i === 0 ? 'offer-best' : ''}" href="${esc(o.url || '#')}" target="_blank" rel="noopener">
+      <span class="offer-store">${esc(storeName(o.store_slug))}</span>
+      <span class="offer-price">${fmt(o.price)}</span>
+      <span class="offer-go">ir à loja ↗</span>
+    </a>`).join('');
+  document.getElementById('sheet').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function closeSheet() { document.getElementById('sheet').hidden = true; document.body.style.overflow = ''; }
+document.getElementById('sh-x').onclick = closeSheet;
+document.getElementById('sheet').addEventListener('click', e => { if (e.target === document.getElementById('sheet')) closeSheet(); });
+document.getElementById('grid').addEventListener('click', e => {
+  const c = e.target.closest('.card');
+  if (c) openSheet(state.items[parseInt(c.dataset.idx, 10)]);
+});
 
 async function load(reset) {
   if (state.busy) return;
   state.busy = true;
   document.getElementById('spin').hidden = false;
   document.getElementById('more').hidden = true;
-  if (reset) { state.offset = 0; state.done = false; document.getElementById('grid').innerHTML = ''; }
+  if (reset) { state.offset = 0; state.done = false; state.total = null; state.items = []; document.getElementById('grid').innerHTML = ''; }
   try {
     const t0 = performance.now();
-    const rows = await fetchPage();
+    const rows = await fetchPage(reset);
     const ms = Math.round(performance.now() - t0);
-    const html = rows.map(card).join('');
-    document.getElementById('grid').insertAdjacentHTML('beforeend', html);
+    const base = state.items.length;
+    state.items.push(...rows);
+    document.getElementById('grid').insertAdjacentHTML('beforeend', rows.map((r, i) => card(r, base + i)).join(''));
     state.offset += rows.length;
     state.done = rows.length < PAGE;
-    document.getElementById('meta').textContent = `${state.offset} produto${state.offset === 1 ? '' : 's'}${state.q ? ` para “${state.q}”` : ''} · resposta da BD em ${ms}ms`;
+    const tot = state.total != null ? ` de ${state.total.toLocaleString('pt-PT')}` : '';
+    document.getElementById('meta').textContent = `${state.offset}${tot} produto${state.offset === 1 ? '' : 's'}${state.q ? ` para “${state.q}”` : ''} · BD em ${ms}ms${state.orderPop ? ' · por popularidade' : ''}`;
     document.getElementById('empty').hidden = state.offset > 0;
     document.getElementById('more').hidden = state.done;
   } catch (e) {

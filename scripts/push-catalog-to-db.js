@@ -74,10 +74,40 @@ async function upsert(table, rows, onConflict) {
     updated_at: runTs,
   }));
 
-  const products = (seed.products || []).filter(p => p.ean && p.name).map(p => ({
-    ean: p.ean, name: p.name, brand: p.brand || null, category: p.category || null,
-    image_url: p.image_url || null, updated_at: runTs,
-  }));
+  // popularidade por produto (nº lojas com preço em stock + melhor preço) —
+  // preenche as colunas da migration 005; se ainda não existirem na BD,
+  // degrada graciosamente (ver hasPopCols mais abaixo).
+  const pop = {};
+  for (const g of seed.store_products || []) {
+    for (const it of g.items || []) {
+      if (!it.ean || it.in_stock === false || !(it.price > 0)) continue;
+      if (blocked.has(g.store_slug + '|' + it.ean)) continue;
+      const e = pop[it.ean] || (pop[it.ean] = { stores: new Set(), min: Infinity, minStore: null });
+      e.stores.add(g.store_slug);
+      if (it.price < e.min) { e.min = it.price; e.minStore = g.store_slug; }
+    }
+  }
+  let hasPopCols = false;
+  if (URL_ && KEY) {
+    try {
+      const r = await fetch(`${URL_}/rest/v1/products?select=n_stores&limit=0`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY }, signal: AbortSignal.timeout(15000) });
+      hasPopCols = r.status < 400;
+    } catch { /* mantém false */ }
+    console.log(`  colunas de popularidade (migration 005): ${hasPopCols ? 'presentes ✓' : 'ausentes — sync sem elas (aplicar 005)'}`);
+  }
+  const products = (seed.products || []).filter(p => p.ean && p.name).map(p => {
+    const base = {
+      ean: p.ean, name: p.name, brand: p.brand || null, category: p.category || null,
+      image_url: p.image_url || null, updated_at: runTs,
+    };
+    if (hasPopCols) {
+      const e = pop[p.ean];
+      base.n_stores = e ? e.stores.size : 0;
+      base.min_price = e && isFinite(e.min) ? e.min : null;
+      base.min_price_store = e ? e.minStore : null;
+    }
+    return base;
+  });
   const eanSet = new Set(products.map(p => p.ean));
 
   const offers = [];
