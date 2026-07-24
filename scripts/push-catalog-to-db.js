@@ -103,19 +103,18 @@ async function upsert(table, rows, onConflict) {
   // url/image só http(s) — a BD nunca guarda javascript:/data: vindos do
   // scraping (defesa em profundidade; app.html já valida no href) (auditoria).
   const safeUrl = u => { const x = String(u || ''); return /^https?:\/\//i.test(x) ? x : null; };
-  const products = (seed.products || []).filter(p => p.ean && p.name).map(p => {
-    const base = {
-      ean: p.ean, name: p.name, brand: p.brand || null, category: p.category || null,
-      image_url: safeUrl(p.image_url), updated_at: runTs,
-    };
-    if (hasPopCols) {
-      const e = pop[p.ean];
-      base.n_stores = e ? e.stores.size : 0;
-      base.min_price = e && isFinite(e.min) ? e.min : null;
-      base.min_price_store = e ? e.minStore : null;
-    }
-    return base;
-  });
+  // dados base (sem pop-cols) — as colunas de popularidade escrevem-se num
+  // SEGUNDO upsert no FIM (depois das ofertas + limpezas), para o "desde X€"
+  // nunca anteceder as ofertas que o justificam (auditoria: janela de
+  // inconsistência). Ver popRows/upsert final.
+  const products = (seed.products || []).filter(p => p.ean && p.name).map(p => ({
+    ean: p.ean, name: p.name, brand: p.brand || null, category: p.category || null,
+    image_url: safeUrl(p.image_url), updated_at: runTs,
+  }));
+  const popRows = hasPopCols ? products.map(p => {
+    const e = pop[p.ean];
+    return { ean: p.ean, n_stores: e ? e.stores.size : 0, min_price: e && isFinite(e.min) ? e.min : null, min_price_store: e ? e.minStore : null };
+  }) : [];
   const eanSet = new Set(products.map(p => p.ean));
   const storeSet = new Set(stores.map(s => s.slug));   // FK offers.store_slug (auditoria)
 
@@ -231,6 +230,13 @@ async function upsert(table, rows, onConflict) {
     });
     if (r.status >= 400) throw new Error(`limpeza products: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
     console.log(`  limpeza products fantasma: HTTP ${r.status} ✓`);
+  }
+
+  // pop-cols de products NO FIM: agora que offers reflete o estado real, o
+  // "desde X€"/n_stores fica coerente com as ofertas (auditoria — janela).
+  if (hasPopCols && popRows.length) {
+    await upsert('products', dedupe(popRows, p => p.ean), 'ean');
+    console.log('  ✓ popularidade (n_stores/min_price) escrita no fim');
   }
 
   // verificação: contagens na BD
