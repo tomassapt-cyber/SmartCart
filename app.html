@@ -74,6 +74,11 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 .offer-best .offer-price{color:#0f766e}
 .offer-best .offer-store::after{content:" · melhor preço";font-size:10px;color:#0f766e;font-weight:700}
 .offer-go{font-size:12px;color:var(--text-soft)}
+.offer-l{flex:1;min-width:0}
+.offer-ship{font-size:11px;color:var(--muted)}
+.offer-tot{font-size:11px;color:var(--text-soft)}
+.offer-besttot .offer-tot{color:#0f766e;font-weight:700}
+.sheet-note{font-size:10.5px;color:var(--muted);margin-top:10px;text-align:center}
 </style>
 </head>
 <body>
@@ -114,8 +119,22 @@ const state = { q: '', offset: 0, busy: false, done: false, total: null, orderPo
 
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = n => '€' + Number(n).toFixed(2).replace('.', ',');
-const NOMES = { 'bairro-saude': 'Bairro da Saúde', 'loja-farmacia': 'Loja da Farmácia', 'pharma-gdd': 'Pharma GDD' };
-const storeName = s => NOMES[s] || s.replace(/(^|[-_])([a-z])/g, (_, a, b) => (a ? ' ' : '') + b.toUpperCase());
+let STORES = {};   // slug → {name, ship, free} (carregado 1× da BD)
+const storeName = s => (STORES[s] && STORES[s].name) || s.replace(/(^|[-_])([a-z])/g, (_, a, b) => (a ? ' ' : '') + b.toUpperCase());
+async function loadStores() {
+  try {
+    const r = await fetch(SB + '/rest/v1/stores?select=slug,name,shipping_mainland,free_shipping_threshold', { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY } });
+    for (const st of await r.json()) STORES[st.slug] = { name: st.name, ship: st.shipping_mainland, free: st.free_shipping_threshold };
+  } catch (e) { /* sem portes — a folha degrada para só-preços */ }
+}
+function shipFor(slug, price) {
+  const st = STORES[slug];
+  if (!st || st.ship == null) return { ship: null, total: price, label: 'portes n/d' };
+  const gratis = st.free != null && price >= st.free;
+  const ship = gratis ? 0 : Number(st.ship);
+  const label = gratis ? 'portes grátis ✓' : ('+ portes ' + fmt(ship) + (st.free != null ? ' · grátis ≥ ' + fmt(st.free) : ''));
+  return { ship, total: price + ship, label };
+}
 
 async function fetchPage(first) {
   const p = new URLSearchParams();
@@ -167,12 +186,21 @@ function openSheet(pr) {
   document.getElementById('sh-brand').textContent = pr.brand || '';
   document.getElementById('sh-name').textContent = pr.name || '';
   document.getElementById('sh-img').innerHTML = pr.image_url ? `<img src="${esc(pr.image_url)}" alt="">` : '';
-  document.getElementById('sh-offers').innerHTML = offs.map((o, i) => `
-    <a class="offer ${i === 0 ? 'offer-best' : ''}" href="${esc(o.url || '#')}" target="_blank" rel="noopener">
-      <span class="offer-store">${esc(storeName(o.store_slug))}</span>
-      <span class="offer-price">${fmt(o.price)}</span>
-      <span class="offer-go">ir à loja ↗</span>
+  const comPortes = offs.map(o => ({ ...o, s: shipFor(o.store_slug, o.price) }));
+  const melhorTotal = Math.min(...comPortes.map(o => o.s.total));
+  document.getElementById('sh-offers').innerHTML = comPortes.map((o, i) => `
+    <a class="offer ${i === 0 ? 'offer-best' : ''} ${o.s.total === melhorTotal ? 'offer-besttot' : ''}" href="${esc(o.url || '#')}" target="_blank" rel="noopener">
+      <span class="offer-l">
+        <span class="offer-store">${esc(storeName(o.store_slug))}</span><br>
+        <span class="offer-ship">${o.s.label}</span>
+      </span>
+      <span style="text-align:right">
+        <span class="offer-price">${fmt(o.price)}</span><br>
+        <span class="offer-tot">${o.s.ship == null ? '' : 'total ' + fmt(o.s.total)}${o.s.total === melhorTotal && o.s.ship != null ? ' · melhor c/ portes' : ''}</span>
+      </span>
+      <span class="offer-go">↗</span>
     </a>`).join('');
+  document.getElementById('sh-offers').insertAdjacentHTML('beforeend', '<div class="sheet-note">portes para Portugal continental, 1 produto · na compra de vários, o cabaz do site principal otimiza os portes</div>');
   document.getElementById('sheet').hidden = false;
   document.body.style.overflow = 'hidden';
 }
@@ -216,6 +244,7 @@ document.getElementById('q').addEventListener('input', (e) => {
   deb = setTimeout(() => { state.q = e.target.value.trim(); load(true); }, 350);
 });
 document.getElementById('more').addEventListener('click', () => load(false));
+loadStores();
 load(true);
 </script>
 </body>
