@@ -9,7 +9,7 @@
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" ry="112" fill="url(#bg)"/>
-  <!-- "girl" em Inter weight 600 -->
+  <!-- "Cos" em Inter weight 600 -->
   <text x="256" y="240"
         font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
         font-size="120" font-weight="600"

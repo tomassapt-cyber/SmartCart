@@ -1,5 +1,5 @@
 /**
- * GirlMath service worker — PASS-THROUGH (no caching).
+ * CosMath service worker — PASS-THROUGH (no caching).
  *
  * Decisão: o caching agressivo do SW estava a causar problemas — utilizadores
  * ficavam presos em versões antigas após deploys. Como ainda não temos uma
@@ -11,7 +11,7 @@
  * Resultado: cada deploy é visível após simples F5, sem o SW a interpor-se.
  * Se voltarmos a precisar de offline, fazemos uma versão nova com estratégia.
  */
-const SW_VERSION = 'gm-passthrough-v1';
+const SW_VERSION = 'cosmath-passthrough-v2';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting());
