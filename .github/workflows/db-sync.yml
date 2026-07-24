@@ -1,0 +1,41 @@
+# CosMath — Sync do catálogo para a BD (Fase 1 do backend)
+# ============================================================
+# Corre 3×/dia DEPOIS das vagas de refresh e faz upsert do seed-bundle na BD
+# Supabase (stores/products/offers). Sem secrets configurados, o script sai
+# em silêncio — o workflow nunca fica vermelho por a Fase 1 não estar ativa.
+# O site ainda NÃO lê da BD (isso é a Fase 2); isto é o dual-write.
+
+name: DB sync (Fase 1)
+
+on:
+  schedule:
+    - cron: '30 8 * * *'
+    - cron: '30 16 * * *'   # 3x/dia, ~1h depois das vagas de refresh
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Push catalog to DB
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node scripts/push-catalog-to-db.js
