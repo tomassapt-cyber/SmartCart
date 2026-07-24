@@ -1,10 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "echo 'no build needed'",
+  "buildCommand": "COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
   "framework": null,
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/demo.html", "destination": "/", "permanent": false },
+    { "source": "/demo", "destination": "/", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*)",

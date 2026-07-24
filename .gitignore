@@ -27,3 +27,9 @@ data/catalog/*-full.json
 data/.artifacts/
 # Relatórios de diagnóstico locais gerados por scripts (super-dedup, etc.) — não versionar
 data/.*-report.json
+# HTML gerado no build (~78MB cada, byte-idênticos). NÃO versionar: são
+# construídos a partir do TEMPLATE demo.html + data/seed-bundle.json pelo
+# scripts/inject-seed-into-demo.js (CI local e/ou build do Vercel). Só o
+# template demo.html (shell, ~0.7MB) e o seed é que ficam em git.
+/index.html
+/catalogo.html

@@ -88,7 +88,12 @@ jobs:
           rm -f data/.scrapingbee.key
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          git add data/inventory demo.html index.html data/seed-bundle.json data/scraped 2>/dev/null || true
+          # index.html é build output git-ignored (construído no deploy do Vercel
+          # a partir do template demo.html + seed). Committamos os INPUTS do build
+          # de deploy que o inject regenera aqui — homepage-data.json (bloco hp-data)
+          # e ghost-check.json (cache de ofertas-fantasma) — para o Vercel os embeber
+          # frescos (o deploy salta a regeneração pesada/de-rede desses).
+          git add data/inventory demo.html data/seed-bundle.json data/scraped data/homepage-data.json data/ghost-check.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"
           else

@@ -9,8 +9,16 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const DEMO = path.join(ROOT, 'demo.html');
+const DEMO = path.join(ROOT, 'demo.html');       // TEMPLATE versionado (shell, seed vazio) — só LEITURA
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
+
+// Modo build de DEPLOY (Vercel): gera o HTML a partir do template + seed já
+// committado, SEM correr os sub-builds pesados/de-rede (ghost-verify HTTP,
+// build-homepage-data ~274s, build-scan-index). Esses regeneram os data/*.json
+// no CI diário; o deploy só embebe o que já está committado (homepage-data.json,
+// ghost-check.json, etc.). O Vercel define VERCEL=1 automaticamente;
+// COSMATH_DEPLOY_BUILD=1 força o mesmo modo localmente (teste do build).
+const DEPLOY = process.env.COSMATH_DEPLOY_BUILD === '1' || process.env.VERCEL === '1';
 
 const html0 = fs.readFileSync(DEMO, 'utf8');
 const seed = fs.readFileSync(SEED, 'utf8');
@@ -174,10 +182,14 @@ const seedJson = JSON.parse(seed);
   const { spawnSync } = require('child_process');
   // Actualizar a cache de verificação (bounded; falha de rede não bloqueia —
   // o overlay usa a cache existente e nunca esconde sem confirmação).
-  try {
-    const r = spawnSync('node', [path.join(__dirname, 'verify-ghost-offers.js'), '--quiet', '--max=400'], { cwd: ROOT, encoding: 'utf8', timeout: 180000 });
-    if (r.stdout) process.stdout.write(r.stdout);
-  } catch { /* offline → usa cache existente */ }
+  // No DEPLOY (Vercel) NÃO se corre a verificação de rede: usa-se a cache
+  // committada data/ghost-check.json (dropGhostOffers em baixo lê-a na mesma).
+  if (!DEPLOY) {
+    try {
+      const r = spawnSync('node', [path.join(__dirname, 'verify-ghost-offers.js'), '--quiet', '--max=400'], { cwd: ROOT, encoding: 'utf8', timeout: 180000 });
+      if (r.stdout) process.stdout.write(r.stdout);
+    } catch { /* offline → usa cache existente */ }
+  }
   const { dropGhostOffers } = require('./lib/ghost-offers');
   const r = dropGhostOffers(seedJson);
   if (r.totalGhost) {
@@ -338,10 +350,11 @@ if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
   }
 }
 const html = html0;
-fs.writeFileSync(DEMO, next, 'utf8');
 
-// Mirror para BOTH index.html (homepage) e catalogo.html (alias).
-// O user quer o catálogo dinâmico com todas as features como homepage principal.
+// OUTPUTS (git-ignored): index.html (homepage) + catalogo.html (alias). O
+// demo.html NÃO é reescrito — é o TEMPLATE versionado (shell com seed vazio),
+// editado à mão. O HTML final com o seed embebido é construído aqui (CI local
+// e/ou build do Vercel) e nunca committado — ver .gitignore + vercel.json.
 const INDEX = path.join(ROOT, 'index.html');
 const CATALOGO = path.join(ROOT, 'catalogo.html');
 fs.writeFileSync(INDEX, next, 'utf8');
@@ -349,10 +362,9 @@ fs.writeFileSync(CATALOGO, next, 'utf8');
 
 const before = (html.length / 1024).toFixed(1);
 const after = (next.length / 1024).toFixed(1);
-console.log(`✔ ${DEMO}`);
 console.log(`✔ ${INDEX} (homepage principal com catálogo)`);
 console.log(`✔ ${CATALOGO} (alias /catalogo.html)`);
-console.log(`  demo.html: ${before} KB → ${after} KB`);
+console.log(`  template demo.html: ${before} KB (shell) → output: ${after} KB (com seed)`);
 console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s,sp)=>s+sp.items.length,0)} ofertas`);
 
 
@@ -361,7 +373,7 @@ console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.l
 // e ficou semanas parado — mostrava preços que o render já escondia (fantasma
 // Effaclar 11.61). Agora regenera-se em CADA inject com os mesmos overlays
 // (o build-homepage-data.js aplica blocklist+fantasmas+podres) e injeta-se.
-{
+if (!DEPLOY) {
   // NOTA: scripts/inject-homepage-data.js é LEGADO (escreve index.html a
   // partir do template homepage.html antigo — destruiria o site). O bloco
   // <script id="hp-data"> vive DENTRO de demo/index/catalogo — substituímos
@@ -380,7 +392,7 @@ console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.l
       const hp = fs.readFileSync(path.join(ROOT, 'data', 'homepage-data.json'), 'utf8');
       const HP_OPEN = '<script type="application/json" id="hp-data">';
       let done = 0;
-      for (const f of ['demo.html', 'index.html', 'catalogo.html']) {
+      for (const f of ['index.html', 'catalogo.html']) {
         const fp = path.join(ROOT, f);
         const h = fs.readFileSync(fp, 'utf8');
         const o = h.indexOf(HP_OPEN);
@@ -399,7 +411,7 @@ console.log(`  seed: ${seedJson.products.length} produtos · ${seedJson.stores.l
 // ── Índice de descrições p/ o scan por foto (data/scan-index.json) ──
 // Regenera-se aqui para acompanhar produtos novos do seed (o scan cruza o texto
 // OCR com estes tokens distintivos das descrições). Falha = não-fatal.
-{
+if (!DEPLOY) {
   const { spawnSync } = require('child_process');
   const r = spawnSync('node', [path.join(__dirname, 'build-scan-index.js')], { cwd: ROOT, encoding: 'utf8', timeout: 120000 });
   if (r.status === 0) console.log('🔎 scan-index (descrições) regenerado.');
