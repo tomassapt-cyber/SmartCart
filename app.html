@@ -38,6 +38,12 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
   padding:0 16px;font:inherit;font-size:16px;background:rgba(255,255,255,.85);outline:none;
 }
 .searchbar input:focus{border-color:#9b7fd4;background:#fff}
+.filters{display:flex;align-items:center;gap:8px;margin-top:12px}
+.cats{display:flex;gap:7px;overflow-x:auto;flex:1;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.cats::-webkit-scrollbar{display:none}
+.cat{flex:0 0 auto;border:1px solid rgba(120,90,170,.2);background:rgba(255,255,255,.8);border-radius:999px;padding:8px 14px;font:inherit;font-size:12.5px;font-weight:600;color:var(--text-soft);white-space:nowrap;min-height:38px}
+.cat.on{background:var(--text);color:#fff;border-color:var(--text)}
+.sortbtn{flex:0 0 auto;border:1px solid rgba(120,90,170,.2);background:rgba(255,255,255,.8);border-radius:999px;padding:8px 12px;font:inherit;font-size:12px;font-weight:600;color:var(--text);min-height:38px;display:flex;align-items:center;gap:4px}
 .meta{font-size:12px;color:var(--text-soft);margin:10px 2px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px 12px;margin-top:6px}
 .card{
@@ -95,6 +101,10 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
     <label for="q" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Pesquisar produto ou marca</label>
     <input id="q" type="search" placeholder="Pesquisa produto ou marca… (ex.: anthelios, cerave)" autocomplete="off" aria-label="Pesquisar produto ou marca" />
   </div>
+  <div class="filters">
+    <div class="cats" id="cats" role="tablist" aria-label="Categorias"></div>
+    <button class="sortbtn" id="sort" type="button" aria-label="Ordenação">↑↓ Populares</button>
+  </div>
   <div class="meta" id="meta" role="status" aria-live="polite">A carregar…</div>
   <div class="grid" id="grid"></div>
   <div class="spin" id="spin" hidden></div>
@@ -120,7 +130,8 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 const SB = 'https://sqjtkwtoaudmfmexreqk.supabase.co';
 const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxanRrd3RvYXVkbWZtZXhyZXFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NTI4NjcsImV4cCI6MjA5NDQyODg2N30.V6V_qyYXjO39xRM8vuoF8gHq9gvpYRN8u0GNijywr20';
 const PAGE = 24;
-const state = { q: '', offset: 0, busy: false, done: false, total: null, orderPop: true, varEmbed: true, items: [] };
+const state = { q: '', cat: '', sort: 'pop', offset: 0, busy: false, done: false, total: null, orderPop: true, varEmbed: true, items: [] };
+const CATS = [['', 'Tudo'], ['skincare', 'Rosto'], ['hair', 'Cabelo'], ['body', 'Corpo'], ['perfume', 'Perfumes'], ['makeup', 'Maquilhagem']];
 
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = n => '€' + Number(n).toFixed(2).replace('.', ',');
@@ -147,7 +158,9 @@ async function fetchPage(first) {
   p.set('select', 'ean,name,brand,image_url,offers!offers_ean_fkey!inner(price,store_slug,url,in_stock)' + (state.varEmbed ? ',offer_variants(volume_ml,price,store_slug,url,in_stock)' : ''));
   p.set('offers.in_stock', 'eq.true');
   p.set('offers.order', 'price.asc');
-  p.set('order', state.orderPop ? 'n_stores.desc.nullslast,ean.asc' : 'name.asc,ean.asc');
+  if (state.cat) p.set('category', 'eq.' + state.cat);
+  if (state.sort === 'price' && state.orderPop) p.set('order', 'min_price.asc.nullslast,ean.asc');
+  else p.set('order', state.orderPop ? 'n_stores.desc.nullslast,ean.asc' : 'name.asc,ean.asc');
   p.set('limit', PAGE);
   p.set('offset', state.offset);
   if (state.q) {
@@ -157,7 +170,9 @@ async function fetchPage(first) {
   }
   const headers = { apikey: KEY, Authorization: 'Bearer ' + KEY };
   if (first) headers.Prefer = 'count=exact';
-  const r = await fetch(`${SB}/rest/v1/products?${p}`, { headers });
+  let r = await fetch(`${SB}/rest/v1/products?${p}`, { headers });
+  // 5xx transitorio (cold start / schema-cache do Supabase) -> 1 retry
+  if (r.status >= 500) { await new Promise(s => setTimeout(s, 900)); r = await fetch(`${SB}/rest/v1/products?${p}`, { headers }); }
   if (!r.ok) {
     // fallbacks silenciosos por migration ausente: 1º sem variantes (006),
     // depois sem ordenação por popularidade (005)
@@ -272,7 +287,9 @@ async function load(reset) {
     state.offset += rows.length;
     state.done = rows.length < PAGE;
     const tot = state.total != null ? ` de ${state.total.toLocaleString('pt-PT')}` : '';
-    document.getElementById('meta').textContent = `${state.offset}${tot} produto${state.offset === 1 ? '' : 's'}${state.q ? ` para “${state.q}”` : ''} · BD em ${ms}ms${state.orderPop ? ' · por popularidade' : ''}`;
+    const catNome = (CATS.find(c => c[0] === state.cat) || ['', ''])[1];
+    const ord = state.sort === 'price' && state.orderPop ? ' · mais barato' : (state.orderPop ? ' · populares' : '');
+    document.getElementById('meta').textContent = `${state.offset}${tot}${state.cat ? ' em ' + catNome : ''}${state.q ? ` para “${state.q}”` : ''} · ${ms}ms${ord}`;
     document.getElementById('empty').hidden = state.offset > 0;
     document.getElementById('more').hidden = state.done;
   } catch (e) {
@@ -301,6 +318,20 @@ async function probeSchema() {
     state.varEmbed = b.ok;       // 006 aplicada?
   } catch (e) { /* offline → deixa os defaults e o fallback trata */ }
 }
+function renderCats() {
+  document.getElementById('cats').innerHTML = CATS.map(([v, n]) =>
+    `<button class="cat ${v === state.cat ? 'on' : ''}" role="tab" aria-selected="${v === state.cat}" data-cat="${v}">${n}</button>`).join('');
+}
+document.getElementById('cats').addEventListener('click', e => {
+  const b = e.target.closest('.cat'); if (!b) return;
+  state.cat = b.dataset.cat; renderCats(); load(true);
+});
+document.getElementById('sort').addEventListener('click', () => {
+  state.sort = state.sort === 'pop' ? 'price' : 'pop';
+  document.getElementById('sort').textContent = state.sort === 'price' ? '↑↓ Mais barato' : '↑↓ Populares';
+  load(true);
+});
+renderCats();
 (async () => { await Promise.all([loadStores(), probeSchema()]); load(true); })();
 </script>
 </body>
