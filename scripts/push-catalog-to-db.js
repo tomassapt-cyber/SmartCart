@@ -19,6 +19,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { fixCategory } = require('./lib/classify-category');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -109,7 +110,7 @@ async function upsert(table, rows, onConflict) {
   // usa as ofertas embebidas, não min_price. Auditoria 2026-07-24).
   const products = (seed.products || []).filter(p => p.ean && p.name).map(p => {
     const base = {
-      ean: p.ean, name: p.name, brand: p.brand || null, category: p.category || null,
+      ean: p.ean, name: p.name, brand: p.brand || null, category: fixCategory(p.name, p.category),
       image_url: safeUrl(p.image_url), updated_at: runTs,
     };
     if (hasPopCols) {
