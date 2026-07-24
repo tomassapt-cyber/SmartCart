@@ -125,15 +125,55 @@ async function upsert(table, rows, onConflict) {
     }
   }
 
-  console.log(`📦 payloads: ${stores.length} lojas · ${products.length} produtos · ${offers.length} ofertas (blocklist aplicada)`);
+  // variantes de volume: melhor preço por (loja, ean, volume) — migration 006;
+  // deteção da tabela como as colunas de popularidade (degrada sem ela).
+  let hasVariants = false;
+  if (URL_ && KEY) {
+    try {
+      const r = await fetch(`${URL_}/rest/v1/offer_variants?select=ean&limit=0`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY }, signal: AbortSignal.timeout(15000) });
+      hasVariants = r.status < 400;
+    } catch { /* mantém false */ }
+    console.log(`  tabela offer_variants (migration 006): ${hasVariants ? 'presente ✓' : 'ausente — sync sem variantes (aplicar 006)'}`);
+  }
+  const variants = [];
+  if (hasVariants) {
+    const offerKey = new Set(offers.map(o => o.store_slug + '|' + o.ean));
+    const bestVar = new Map();   // store|ean|ml → melhor
+    for (const g of seed.store_products || []) {
+      for (const it of g.items || []) {
+        if (!it.ean || !eanSet.has(it.ean)) continue;
+        if (!offerKey.has(g.store_slug + '|' + it.ean)) continue;   // FK: só variantes de ofertas presentes
+        for (const v of (it.variants || [])) {
+          const ml = Math.round(Number(v.volume_ml) || 0);
+          if (!(ml > 0) || !(v.price > 0)) continue;
+          const k = g.store_slug + '|' + it.ean + '|' + ml;
+          const cur = bestVar.get(k);
+          if (!cur || v.price < cur.price) bestVar.set(k, {
+            store_slug: g.store_slug, ean: it.ean, volume_ml: ml, price: v.price,
+            url: v.url || it.url || null, in_stock: v.in_stock !== false, synced_at: runTs,
+          });
+        }
+      }
+    }
+    variants.push(...bestVar.values());
+  }
+
+  console.log(`📦 payloads: ${stores.length} lojas · ${products.length} produtos · ${offers.length} ofertas · ${variants.length} variantes (blocklist aplicada)`);
   if (DRY) { console.log('🧪 --dry-run: nada enviado.'); return; }
   if (!URL_ || !KEY) { console.log('ℹ Sem SUPABASE_URL/SERVICE_KEY — sync saltado (Fase 1 ainda não ativada).'); return; }
 
   await upsert('stores', stores, 'slug');
   await upsert('products', products, 'ean');
   await upsert('offers', offers, 'store_slug,ean');
+  if (hasVariants && variants.length) await upsert('offer_variants', variants, 'store_slug,ean,volume_ml');
 
-  // apagar ofertas que saíram do seed (não tocadas neste run)
+  // apagar o que saiu do seed (não tocado neste run) — variantes primeiro (FK)
+  if (hasVariants) {
+    const delV = await fetch(`${URL_}/rest/v1/offer_variants?synced_at=lt.${encodeURIComponent(runTs)}`, {
+      method: 'DELETE', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' }, signal: AbortSignal.timeout(60000),
+    });
+    console.log(`  limpeza de variantes saídas: HTTP ${delV.status}`);
+  }
   const del = await fetch(`${URL_}/rest/v1/offers?synced_at=lt.${encodeURIComponent(runTs)}`, {
     method: 'DELETE',
     headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' },

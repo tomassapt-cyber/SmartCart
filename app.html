@@ -79,6 +79,9 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 .offer-tot{font-size:11px;color:var(--text-soft)}
 .offer-besttot .offer-tot{color:#0f766e;font-weight:700}
 .sheet-note{font-size:10.5px;color:var(--muted);margin-top:10px;text-align:center}
+.vol-chips{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 10px}
+.vol-chip{border:1px solid rgba(120,90,170,.22);background:#fff;border-radius:999px;padding:7px 13px;font:inherit;font-size:12px;font-weight:600;color:var(--text-soft);min-height:36px}
+.vol-chip.on{background:var(--text);color:#fff;border-color:var(--text)}
 </style>
 </head>
 <body>
@@ -105,6 +108,7 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
       <div><div class="sheet-brand" id="sh-brand"></div><div class="sheet-name" id="sh-name"></div></div>
       <button class="sheet-x" id="sh-x" aria-label="Fechar">×</button>
     </div>
+    <div class="vol-chips" id="sh-chips" hidden></div>
     <div id="sh-offers"></div>
   </div>
 </div>
@@ -115,7 +119,7 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 const SB = 'https://sqjtkwtoaudmfmexreqk.supabase.co';
 const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxanRrd3RvYXVkbWZtZXhyZXFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NTI4NjcsImV4cCI6MjA5NDQyODg2N30.V6V_qyYXjO39xRM8vuoF8gHq9gvpYRN8u0GNijywr20';
 const PAGE = 24;
-const state = { q: '', offset: 0, busy: false, done: false, total: null, orderPop: true, items: [] };
+const state = { q: '', offset: 0, busy: false, done: false, total: null, orderPop: true, varEmbed: true, items: [] };
 
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = n => '€' + Number(n).toFixed(2).replace('.', ',');
@@ -138,7 +142,7 @@ function shipFor(slug, price) {
 
 async function fetchPage(first) {
   const p = new URLSearchParams();
-  p.set('select', 'ean,name,brand,image_url,offers(price,store_slug,url,in_stock)');
+  p.set('select', 'ean,name,brand,image_url,offers(price,store_slug,url,in_stock)' + (state.varEmbed ? ',offer_variants(volume_ml,price,store_slug,url,in_stock)' : ''));
   p.set('offers.in_stock', 'eq.true');
   p.set('offers.order', 'price.asc');
   p.set('order', state.orderPop ? 'n_stores.desc.nullslast' : 'name.asc');
@@ -152,8 +156,10 @@ async function fetchPage(first) {
   if (first) headers.Prefer = 'count=exact';
   const r = await fetch(`${SB}/rest/v1/products?${p}`, { headers });
   if (!r.ok) {
-    // 400 provável = coluna n_stores ausente (migration 005 por aplicar) → fallback
-    if (state.orderPop && r.status === 400) { state.orderPop = false; return fetchPage(first); }
+    // fallbacks silenciosos por migration ausente: 1º sem variantes (006),
+    // depois sem ordenação por popularidade (005)
+    if (r.status === 400 && state.varEmbed) { state.varEmbed = false; return fetchPage(first); }
+    if (r.status === 400 && state.orderPop) { state.orderPop = false; return fetchPage(first); }
     throw new Error('HTTP ' + r.status);
   }
   if (first) {
@@ -181,12 +187,8 @@ function card(pr, idx) {
   </div>`;
 }
 
-function openSheet(pr) {
-  const offs = (pr.offers || []).filter(o => o.price > 0);
-  document.getElementById('sh-brand').textContent = pr.brand || '';
-  document.getElementById('sh-name').textContent = pr.name || '';
-  document.getElementById('sh-img').innerHTML = pr.image_url ? `<img src="${esc(pr.image_url)}" alt="">` : '';
-  const comPortes = offs.map(o => ({ ...o, s: shipFor(o.store_slug, o.price) }));
+function renderSheetOffers(rows) {
+  const comPortes = rows.map(o => ({ ...o, s: shipFor(o.store_slug, o.price) }));
   const melhorTotal = Math.min(...comPortes.map(o => o.s.total));
   document.getElementById('sh-offers').innerHTML = comPortes.map((o, i) => `
     <a class="offer ${i === 0 ? 'offer-best' : ''} ${o.s.total === melhorTotal ? 'offer-besttot' : ''}" href="${esc(o.url || '#')}" target="_blank" rel="noopener">
@@ -199,8 +201,34 @@ function openSheet(pr) {
         <span class="offer-tot">${o.s.ship == null ? '' : 'total ' + fmt(o.s.total)}${o.s.total === melhorTotal && o.s.ship != null ? ' · melhor c/ portes' : ''}</span>
       </span>
       <span class="offer-go">↗</span>
-    </a>`).join('');
-  document.getElementById('sh-offers').insertAdjacentHTML('beforeend', '<div class="sheet-note">portes para Portugal continental, 1 produto · na compra de vários, o cabaz do site principal otimiza os portes</div>');
+    </a>`).join('') + '<div class="sheet-note">portes para Portugal continental, 1 produto · na compra de vários, o cabaz do site principal otimiza os portes</div>';
+}
+function openSheet(pr) {
+  const offs = (pr.offers || []).filter(o => o.price > 0);
+  document.getElementById('sh-brand').textContent = pr.brand || '';
+  document.getElementById('sh-name').textContent = pr.name || '';
+  document.getElementById('sh-img').innerHTML = pr.image_url ? `<img src="${esc(pr.image_url)}" alt="">` : '';
+  // chips de volume (se a 006 estiver viva e houver variantes)
+  const vars = (pr.offer_variants || []).filter(v => v.price > 0 && v.in_stock !== false);
+  const vols = [...new Set(vars.map(v => Number(v.volume_ml)))].sort((a, b) => a - b);
+  const chipsEl = document.getElementById('sh-chips');
+  if (vols.length >= 2) {
+    chipsEl.hidden = false;
+    chipsEl.innerHTML = ['<button class="vol-chip on" data-vol="">melhor de cada loja</button>']
+      .concat(vols.map(v => `<button class="vol-chip" data-vol="${v}">${v} ml</button>`)).join('');
+    chipsEl.onclick = (e) => {
+      const b = e.target.closest('.vol-chip'); if (!b) return;
+      chipsEl.querySelectorAll('.vol-chip').forEach(x => x.classList.toggle('on', x === b));
+      const vol = b.dataset.vol;
+      if (!vol) renderSheetOffers(offs);
+      else {
+        const porLoja = new Map();
+        for (const v of vars) if (Number(v.volume_ml) === Number(vol)) { const cur = porLoja.get(v.store_slug); if (!cur || v.price < cur.price) porLoja.set(v.store_slug, v); }
+        renderSheetOffers([...porLoja.values()].sort((a, b) => a.price - b.price));
+      }
+    };
+  } else { chipsEl.hidden = true; chipsEl.innerHTML = ''; }
+  renderSheetOffers(offs);
   document.getElementById('sheet').hidden = false;
   document.body.style.overflow = 'hidden';
 }
