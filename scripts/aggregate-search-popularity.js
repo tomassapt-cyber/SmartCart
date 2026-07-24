@@ -60,7 +60,7 @@ async function fetchEvents() {
   const rows = [];
   const PAGE = 1000;
   for (let from = 0; from < 50000; from += PAGE) {
-    const u = `${URL.replace(/\/+$/, '')}/rest/v1/search_events?select=ean,term&created_at=gte.${encodeURIComponent(since)}`;
+    const u = `${URL.replace(/\/+$/, '')}/rest/v1/search_events?select=ean,term&created_at=gte.${encodeURIComponent(since)}&order=created_at.desc`;
     const r = await fetch(u, {
       headers: {
         apikey: KEY, Authorization: 'Bearer ' + KEY,

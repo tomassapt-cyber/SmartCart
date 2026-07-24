@@ -102,7 +102,7 @@ header{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
 </div>
 
 <div class="sheet" id="sheet" hidden>
-  <div class="sheet-card">
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sh-name">
     <div class="sheet-head">
       <div class="sheet-img" id="sh-img"></div>
       <div><div class="sheet-brand" id="sh-brand"></div><div class="sheet-name" id="sh-name"></div></div>
@@ -123,6 +123,7 @@ const state = { q: '', offset: 0, busy: false, done: false, total: null, orderPo
 
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = n => '€' + Number(n).toFixed(2).replace('.', ',');
+const safeUrl = u => { const s = String(u || ''); return /^https?:\/\//i.test(s) ? s : '#'; };
 let STORES = {};   // slug → {name, ship, free} (carregado 1× da BD)
 const storeName = s => (STORES[s] && STORES[s].name) || s.replace(/(^|[-_])([a-z])/g, (_, a, b) => (a ? ' ' : '') + b.toUpperCase());
 async function loadStores() {
@@ -145,7 +146,7 @@ async function fetchPage(first) {
   p.set('select', 'ean,name,brand,image_url,offers(price,store_slug,url,in_stock)' + (state.varEmbed ? ',offer_variants(volume_ml,price,store_slug,url,in_stock)' : ''));
   p.set('offers.in_stock', 'eq.true');
   p.set('offers.order', 'price.asc');
-  p.set('order', state.orderPop ? 'n_stores.desc.nullslast' : 'name.asc');
+  p.set('order', state.orderPop ? 'n_stores.desc.nullslast,ean.asc' : 'name.asc,ean.asc');
   p.set('limit', PAGE);
   p.set('offset', state.offset);
   if (state.q) {
@@ -177,7 +178,7 @@ function card(pr, idx) {
   const img = pr.image_url
     ? `<img src="${esc(pr.image_url)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'card-ini',textContent:'${esc(ini)}'}))">`
     : `<span class="card-ini">${esc(ini)}</span>`;
-  return `<div class="card" data-idx="${idx}">
+  return `<div class="card" data-idx="${idx}" role="button" tabindex="0" aria-label="Comparar ${esc((pr.brand || '') + ' ' + (pr.name || ''))}">
     <div class="card-img">${img}</div>
     <div class="card-brand">${esc(pr.brand || '')}</div>
     <div class="card-name">${esc(pr.name || '')}</div>
@@ -191,7 +192,7 @@ function renderSheetOffers(rows) {
   const comPortes = rows.map(o => ({ ...o, s: shipFor(o.store_slug, o.price) }));
   const melhorTotal = Math.min(...comPortes.map(o => o.s.total));
   document.getElementById('sh-offers').innerHTML = comPortes.map((o, i) => `
-    <a class="offer ${i === 0 ? 'offer-best' : ''} ${o.s.total === melhorTotal ? 'offer-besttot' : ''}" href="${esc(o.url || '#')}" target="_blank" rel="noopener">
+    <a class="offer ${i === 0 ? 'offer-best' : ''} ${o.s.total === melhorTotal ? 'offer-besttot' : ''}" href="${esc(safeUrl(o.url))}" target="_blank" rel="noopener">
       <span class="offer-l">
         <span class="offer-store">${esc(storeName(o.store_slug))}</span><br>
         <span class="offer-ship">${o.s.label}</span>
@@ -234,14 +235,17 @@ function openSheet(pr) {
 }
 function closeSheet() { document.getElementById('sheet').hidden = true; document.body.style.overflow = ''; }
 document.getElementById('sh-x').onclick = closeSheet;
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !document.getElementById('sheet').hidden) closeSheet(); });
 document.getElementById('sheet').addEventListener('click', e => { if (e.target === document.getElementById('sheet')) closeSheet(); });
-document.getElementById('grid').addEventListener('click', e => {
-  const c = e.target.closest('.card');
-  if (c) openSheet(state.items[parseInt(c.dataset.idx, 10)]);
+function activateCard(el) { if (el) openSheet(state.items[parseInt(el.dataset.idx, 10)]); }
+document.getElementById('grid').addEventListener('click', e => activateCard(e.target.closest('.card')));
+document.getElementById('grid').addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { const c = e.target.closest('.card'); if (c) { e.preventDefault(); activateCard(c); } }
 });
 
+let pending = null;
 async function load(reset) {
-  if (state.busy) return;
+  if (state.busy) { if (reset) pending = true; return; }
   state.busy = true;
   document.getElementById('spin').hidden = false;
   document.getElementById('more').hidden = true;
@@ -264,6 +268,7 @@ async function load(reset) {
   }
   document.getElementById('spin').hidden = true;
   state.busy = false;
+  if (pending) { pending = null; load(true); }
 }
 
 let deb;

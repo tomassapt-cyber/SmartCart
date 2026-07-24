@@ -158,28 +158,51 @@ async function upsert(table, rows, onConflict) {
     variants.push(...bestVar.values());
   }
 
-  console.log(`📦 payloads: ${stores.length} lojas · ${products.length} produtos · ${offers.length} ofertas · ${variants.length} variantes (blocklist aplicada)`);
+  // DEDUPE por PK antes de enviar (auditoria 2026-07-24): uma PK repetida no
+  // MESMO lote faz o PostgREST abortar ("cannot affect row a second time").
+  const dedupe = (rows, keyFn, pick) => {
+    const m = new Map();
+    for (const r of rows) { const k = keyFn(r); const cur = m.get(k); if (!cur || (pick && pick(r, cur))) m.set(k, r); }
+    return [...m.values()];
+  };
+  const products2 = dedupe(products, p => p.ean);
+  const stores2 = dedupe(stores, s => s.slug);
+  const offers2 = dedupe(offers, o => o.store_slug + '|' + o.ean, (r, c) => r.price < c.price);
+  const variants2 = dedupe(variants, v => v.store_slug + '|' + v.ean + '|' + v.volume_ml, (r, c) => r.price < c.price);
+  const dupN = (products.length - products2.length) + (offers.length - offers2.length) + (variants.length - variants2.length);
+  if (dupN) console.log(`  dedupe: ${dupN} PKs repetidas removidas`);
+
+  console.log(`📦 payloads: ${stores2.length} lojas · ${products2.length} produtos · ${offers2.length} ofertas · ${variants2.length} variantes (blocklist aplicada)`);
   if (DRY) { console.log('🧪 --dry-run: nada enviado.'); return; }
   if (!URL_ || !KEY) { console.log('ℹ Sem SUPABASE_URL/SERVICE_KEY — sync saltado (Fase 1 ainda não ativada).'); return; }
 
-  await upsert('stores', stores, 'slug');
-  await upsert('products', products, 'ean');
-  await upsert('offers', offers, 'store_slug,ean');
-  if (hasVariants && variants.length) await upsert('offer_variants', variants, 'store_slug,ean,volume_ml');
+  await upsert('stores', stores2, 'slug');
+  await upsert('products', products2, 'ean');
+  await upsert('offers', offers2, 'store_slug,ean');
+  if (hasVariants && variants2.length) await upsert('offer_variants', variants2, 'store_slug,ean,volume_ml');
 
-  // apagar o que saiu do seed (não tocado neste run) — variantes primeiro (FK)
-  if (hasVariants) {
-    const delV = await fetch(`${URL_}/rest/v1/offer_variants?synced_at=lt.${encodeURIComponent(runTs)}`, {
+  // apagar o que saiu do seed (não tocado neste run). Ordem por FK: variantes →
+  // ofertas → produtos. Status VERIFICADO (auditoria 2026-07-24: uma limpeza
+  // falhada terminava com "✓ completo"); um DELETE que falha aborta o sync.
+  async function purge(table) {
+    const r = await fetch(`${URL_}/rest/v1/${table}?synced_at=lt.${encodeURIComponent(runTs)}`, {
       method: 'DELETE', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' }, signal: AbortSignal.timeout(60000),
     });
-    console.log(`  limpeza de variantes saídas: HTTP ${delV.status}`);
+    if (r.status >= 400) throw new Error(`limpeza ${table}: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
+    console.log(`  limpeza ${table} saídas: HTTP ${r.status} ✓`);
   }
-  const del = await fetch(`${URL_}/rest/v1/offers?synced_at=lt.${encodeURIComponent(runTs)}`, {
-    method: 'DELETE',
-    headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' },
-    signal: AbortSignal.timeout(60000),
-  });
-  console.log(`  limpeza de ofertas saídas: HTTP ${del.status}`);
+  if (hasVariants) await purge('offer_variants');
+  await purge('offers');
+  // produtos-fantasma: um produto que saiu do seed nunca era apagado e ficava
+  // no topo do catálogo com n_stores/min_price congelados (auditoria). products
+  // usa updated_at (é o carimbo do upsert deste run).
+  {
+    const r = await fetch(`${URL_}/rest/v1/products?updated_at=lt.${encodeURIComponent(runTs)}`, {
+      method: 'DELETE', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' }, signal: AbortSignal.timeout(60000),
+    });
+    if (r.status >= 400) throw new Error(`limpeza products: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
+    console.log(`  limpeza products fantasma: HTTP ${r.status} ✓`);
+  }
 
   // verificação: contagens na BD
   for (const t of ['stores', 'products', 'offers']) {
