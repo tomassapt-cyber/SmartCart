@@ -1,5 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "//git": "Só o branch `deploy` (produção) faz deploy. Pushes a `main` (~70/dia dos bots de refresh) NÃO criam deployment — evita esgotar o limite de ~100 deploys/dia do plano free. O branch `deploy` é avançado 4x/dia por .github/workflows/deploy-branch.yml. IMPORTANTE: no dashboard Vercel, Production Branch tem de ser `deploy`.",
+  "git": {
+    "deploymentEnabled": {
+      "main": false
+    }
+  },
   "buildCommand": "COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
