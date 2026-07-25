@@ -83,34 +83,94 @@ jobs:
             cat "data/scraped/$(date -u +%Y-%m-%d)/_summary.json"
           fi
 
+      # ── Commit + push resiliente (2026-07-25) ────────────────────────────
+      # NUNCA rebasear: data/seed-bundle.json é uma linha única gigante que ~70
+      # workflows de loja disputam. O `git pull --rebase` colidia, deixava o
+      # repo a meio e o push seguinte respondia "Everything up-to-date" com
+      # exit 0 → o passo dizia SUCCESS e o commit diário EVAPORAVA-SE. Foi isso
+      # que congelou o data/homepage-data.json (e o "Em alta") em 2026-07-22:
+      # o último "chore: daily price refresh" em main era de 2026-07-15.
+      # Estratégia (a mesma já provada em scripts/ci/resilient-push.sh): quando
+      # o push é rejeitado, adopta-se o main mais recente e RE-DERIVA-SE por
+      # cima dele (refresh de preços + inject) — nunca se faz merge de ficheiros
+      # gerados. No fim PROVA-SE que aterrou, senão o job fica VERMELHO.
+      # data/scraped/ saiu da lista: está no .gitignore (só servia para abortar
+      # o `git add` inteiro quando a pasta não existia → "Nothing to commit").
       - name: Commit refreshed data
+        shell: bash
         run: |
+          set -uo pipefail
           rm -f data/.scrapingbee.key
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          # index.html é build output git-ignored (construído no deploy do Vercel
-          # a partir do template demo.html + seed). Committamos os INPUTS do build
-          # de deploy que o inject regenera aqui — homepage-data.json (bloco hp-data)
-          # e ghost-check.json (cache de ofertas-fantasma) — para o Vercel os embeber
-          # frescos (o deploy salta a regeneração pesada/de-rede desses).
-          git add data/inventory demo.html data/seed-bundle.json data/scraped data/homepage-data.json data/ghost-check.json 2>/dev/null || true
-          if git diff --staged --quiet; then
-            echo "Nothing to commit"
-          else
-            git commit -m "chore: daily price refresh ($(date -u +%Y-%m-%d))"
-            # Push directo; rebase contra mesmo branch se push falhar.
-            BRANCH="${GITHUB_REF_NAME}"
-            pushed=0
-            for i in 1 2 3; do
-              if git push origin "HEAD:${BRANCH}"; then pushed=1; break; fi
-              git fetch origin "${BRANCH}" || true
-              if git pull --rebase --autostash origin "${BRANCH}" && git push origin "HEAD:${BRANCH}"; then
-                pushed=1; break
-              fi
-              echo "Falhou tentativa $i, a aguardar 10s..."
-              sleep 10
-            done
-            if [ "$pushed" != "1" ]; then
-              echo "ERRO: 3 tentativas falharam"; exit 1
+          BRANCH="${GITHUB_REF_NAME:-main}"
+          # index.html/catalogo.html são build outputs git-ignored (o Vercel
+          # constrói-os do template demo.html + seed). Committamos os INPUTS que
+          # o inject regenera aqui: homepage-data.json (bloco hp-data, alimenta
+          # o "Em alta") e ghost-check.json (cache de ofertas-fantasma).
+          FILES=(data/inventory demo.html data/seed-bundle.json data/homepage-data.json data/ghost-check.json)
+          MSG="chore: daily price refresh ($(date -u +%Y-%m-%d))"
+
+          stage() { git add "${FILES[@]}" 2>/dev/null || true; }
+
+          # Push que NÃO mente: com --porcelain, uma linha a começar por "=" é
+          # "up-to-date" — nada aterrou. Era exactamente esse o falso sucesso.
+          try_push() {
+            local out rc
+            out="$(git push --porcelain origin "HEAD:${BRANCH}" 2>&1)"; rc=$?
+            echo "$out"
+            [ $rc -ne 0 ] && return 1
+            if printf '%s\n' "$out" | grep -qE '^='; then
+              echo "⚠ push devolveu up-to-date — o commit NÃO aterrou"; return 1
             fi
+            return 0
+          }
+
+          stage
+          if git diff --staged --quiet; then
+            echo "Nothing to commit"; exit 0
           fi
+          git commit -m "$MSG" || { echo "ERRO: commit falhou"; exit 1; }
+
+          BACKOFFS=(0 8 20 45 90 150 240)
+          landed=0
+          for i in "${!BACKOFFS[@]}"; do
+            W=${BACKOFFS[$i]}
+            if [ "$W" -gt 0 ]; then echo "⏳ ${W}s antes da tentativa $((i+1))…"; sleep "$W"; fi
+            if try_push; then landed=1; break; fi
+            echo "↻ Push rejeitado — adoptar origin/${BRANCH} e re-derivar por cima…"
+            TMP="$(mktemp -d)"
+            cp -r data/inventory "$TMP/" 2>/dev/null || true
+            git rebase --abort 2>/dev/null || true
+            git fetch origin "${BRANCH}" || true
+            git reset --hard "origin/${BRANCH}" || { echo "ERRO: reset falhou"; exit 1; }
+            if [ -d "$TMP/inventory" ]; then rm -rf data/inventory; cp -r "$TMP/inventory" data/; fi
+            rm -rf "$TMP"
+            # re-derivar sobre o seed NOVO (preserva as integrações que outras
+            # lojas meteram entretanto) e reconstruir o hp a partir dele, para o
+            # homepage-data ficar coerente com o seed que vai para o main.
+            node scripts/refresh-seed-prices.js || { echo "ERRO: refresh-seed-prices falhou"; exit 1; }
+            node scripts/inject-seed-into-demo.js || { echo "ERRO: inject falhou"; exit 1; }
+            stage
+            if git diff --staged --quiet; then
+              echo "ℹ Nada novo sobre o origin (outro run já publicou o mesmo) — ok."; landed=1; break
+            fi
+            git commit -m "$MSG" || { echo "ERRO: commit falhou"; exit 1; }
+          done
+          [ "$landed" = "1" ] || { echo "ERRO: o refresh diário NÃO aterrou em main"; exit 1; }
+
+          # ── PROVA de aterragem ──────────────────────────────────────────────
+          # Sem isto o passo já dizia "sucesso" com o hp congelado há 10 dias.
+          git fetch origin "${BRANCH}" -q || true
+          git show "origin/${BRANCH}:data/homepage-data.json" > "${RUNNER_TEMP:-/tmp}/hp-origin.json" \
+            || { echo "ERRO: sem data/homepage-data.json em origin/${BRANCH}"; exit 1; }
+          node -e '
+            const fs = require("fs");
+            const j = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+            const horas = (Date.now() - Date.parse(j.generated_at)) / 36e5;
+            const n = (j.em_alta || []).length;
+            const comDesconto = (j.em_alta || []).filter(p => p.discount_pct != null).length;
+            console.log(`hp-data em origin: generated_at=${j.generated_at} (${horas.toFixed(1)}h) · em_alta=${n} (${comDesconto} com desconto)`);
+            if (!(horas < 24)) { console.error("ERRO: hp-data em origin tem mais de 24h — o Em alta ia ficar congelado"); process.exit(1); }
+            if (n < 5) { console.error("ERRO: em_alta só com " + n + " itens (a grelha da homepage precisa de 5)"); process.exit(1); }
+          ' "${RUNNER_TEMP:-/tmp}/hp-origin.json"

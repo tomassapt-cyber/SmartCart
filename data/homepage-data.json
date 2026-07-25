@@ -1,27 +1,7 @@
 {
-  "generated_at": "2026-07-22T16:37:07.350Z",
-  "seed_total_products": 57618,
+  "generated_at": "2026-07-25T02:47:30.815Z",
+  "seed_total_products": 58397,
   "hero_sponsored": [
-    {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 17.76,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/isdin-fotoprotector-fusion-water-rosto-spf50-50ml"
-    },
-    {
-      "ean": "3606000560833",
-      "name": "Sérum Con Ácido Hialurónico",
-      "brand": "CeraVe",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.94,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/cerave-serum-hidratante-acido-hialuronico-30-ml"
-    },
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
@@ -31,6 +11,16 @@
       "best_store": "Pharma Scalabis",
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/"
+    },
+    {
+      "ean": "8429420158399",
+      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
+      "best_price": 19.22,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/fotoprotetor-isdin-fusion-water-spf50-50ml"
     },
     {
       "ean": "3337875492799",
@@ -43,14 +33,24 @@
       "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
     },
     {
-      "ean": "0717334253124",
-      "name": "Esfoliante Facial Origins Checks and Balances",
-      "brand": "Origins",
-      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
-      "best_price": 22.79,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/esfoliante-facial-origins-checks-and-balances-75-ml"
+      "ean": "3606000560833",
+      "name": "Sérum Con Ácido Hialurónico",
+      "brand": "CeraVe",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 13.94,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/cerave-serum-hidratante-acido-hialuronico-30-ml"
+    },
+    {
+      "ean": "8429420231559",
+      "name": "ISDIN Fotoprotector Fusion Water Magic Color BRONZE SPF50 - Protetor solar facial ultraligeiro com cor",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/7114835_1.webp",
+      "best_price": 18.5,
+      "best_store": "My Cosmetics",
+      "best_store_slug": "mycosmetics",
+      "best_url": "https://www.mycosmetics.pt/products/isdin-fotoprotector-fusion-water-bronze-spf50-50ml"
     }
   ],
   "bestsellers": [
@@ -59,10 +59,10 @@
       "name": "Cicaplast",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803197.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 6.81,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-cicaplast-creme-maos-50ml"
+      "best_price": 6.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/cicaplast-la-roche-posay-creme-reparador"
     },
     {
       "ean": "3282779416139",
@@ -85,6 +85,16 @@
       "best_url": "https://www.pharma-gdd.com/fr/svr-sebiaclear-serum"
     },
     {
+      "ean": "3337875597272",
+      "name": "CeraVe Creme Reparador Contorno de Olhos",
+      "brand": "CeraVe",
+      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
+      "best_price": 10.65,
+      "best_store": "Farmácias Progresso",
+      "best_store_slug": "farmaciasprogresso",
+      "best_url": "https://www.farmaciasprogresso.pt/cerave-spec-moistcr-repar-olhos-14g"
+    },
+    {
       "ean": "3337875829007",
       "name": "Serum Retinol Acné",
       "brand": "CeraVe",
@@ -93,19 +103,29 @@
       "best_store": "WOWFARMA",
       "best_store_slug": "wowfarma",
       "best_url": "https://www.wowfarma.pt/cerave-retinol-serum-antimarcas-30ml.html"
-    },
-    {
-      "ean": "3337875597272",
-      "name": "CeraVe Creme Reparador Contorno de Olhos",
-      "brand": "CeraVe",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
-      "best_price": 10.68,
-      "best_store": "BeMeCare",
-      "best_store_slug": "bemecare",
-      "best_url": "https://bemecare.com/pt/artigo/cerave-spec-moist-cr-repar-olhos4g"
     }
   ],
   "skincare_kits": [
+    {
+      "ean": "3337875549493",
+      "name": "Effaclar Duo+ SPF30",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 13.13,
+      "best_store": "Farmácias Progresso",
+      "best_store_slug": "farmaciasprogresso",
+      "best_url": "https://www.farmaciasprogresso.pt/lrposay-effaclar-duo-fps30-40ml"
+    },
+    {
+      "ean": "3337875863377",
+      "name": "Effaclar Duo +M",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 12.54,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
+    },
     {
       "ean": "8470001859853",
       "name": "Biretix Duo Gel Imperfeições -",
@@ -135,112 +155,112 @@
       "best_store": "Poupafarma",
       "best_store_slug": "poupafarma",
       "best_url": "https://www.poupafarma.pt/curaprox-kit-de-viagem-rosa"
-    },
-    {
-      "ean": "3337875909303",
-      "name": "La Roche-Posay Effaclar Duo+M Gel-Creme Tom Light - Farmácia ...",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.farmaciabarreiros.com/38085/la-roche-posay-effaclar-duom-gel-creme-tom-light-40-ml.jpg",
-      "best_price": 14,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-light-40ml"
-    },
-    {
-      "ean": "7612412429879",
-      "name": "Curaprox Kit de viagem Be You Pure Happiness",
-      "brand": "Curaprox",
-      "image_url": "https://static.lojadafarmacia.com/12027/curaprox-kit-viagem-be-you-pure-happiness.jpg",
-      "best_price": 9.15,
-      "best_store": "WOWFARMA",
-      "best_store_slug": "wowfarma",
-      "best_url": "https://www.wowfarma.pt/curaprox-kit-de-viagem-be-you-pure-happiness.html"
     }
   ],
   "em_alta": [
     {
-      "ean": "3401395614172",
-      "name": "Bioderma Sensibio H2O Água Micelar",
-      "brand": "Bioderma",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 3.79,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
+      "ean": "3401381332785",
+      "name": "SVR Sebiaclear Gel Limpeza -",
+      "brand": "SVR",
+      "image_url": "https://static.lojadafarmacia.com/26285/svr-sebiaclear-gel-limpeza-400ml.png",
+      "best_price": 6.15,
+      "best_store": "Skin",
+      "best_store_slug": "skin",
+      "best_url": "https://skin.pt/svr-sebiaclear-gel-de-limpeza",
+      "previous_price": 13.23,
+      "discount_pct": 54,
+      "dropped_day": 20658,
+      "verified_live": true
     },
     {
-      "ean": "3337875798181",
-      "name": "Anthelios 100 Ka+Med",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797854.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 21.5,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/la-roche-posay-anthelios-100-ka-med-creme-50-ml"
+      "ean": "3574660533552",
+      "name": "Neutrogena Deep Moisture Bálsamo Hidratante Rosto e Corpo",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/6857243-neutrogena_deep_moisture_balm_300ml.jpg",
+      "best_price": 3.85,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/hidratantes/2180-neutrogena-balsamo-hidratação-profunda-300ml.html",
+      "previous_price": 7.7,
+      "discount_pct": 50,
+      "dropped_day": 20658,
+      "verified_live": true
     },
     {
-      "ean": "8431567644116",
-      "name": "Cofre Mineral 89",
-      "brand": "Vichy",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802259.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 19.95,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/cofre-mineral-89-vichy-hidratacao-profunda"
+      "ean": "8437014389524",
+      "name": "Babe Shampoo Extra Suave",
+      "brand": "Babé",
+      "image_url": "https://assets.atida.com/transform/db2ef98a-60d9-432b-ab37-5dd3028d8bf3/Babe-Champu-Extrasuave-500-ml",
+      "best_price": 4,
+      "best_store": "CosmeticFan",
+      "best_store_slug": "cosmeticfan",
+      "best_url": "https://www.cosmeticfan.com/babe-champo-extra-suave-100-ml.html",
+      "previous_price": 7.92,
+      "discount_pct": 49,
+      "dropped_day": 20651,
+      "verified_live": true
     },
     {
-      "ean": "3337875549493",
-      "name": "Effaclar Duo+ SPF30",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.72,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-spf30-40ml"
+      "ean": "8470001770523",
+      "name": "Farline Gel de Banho Argan",
+      "brand": null,
+      "image_url": "https://nossafarmacia.vteximg.com.br/arquivos/ids/210069/6964429_1.jpg?v=638034217587270000",
+      "best_price": 2.28,
+      "best_store": "Unifarma",
+      "best_store_slug": "unifarma",
+      "best_url": "https://www.unifarma.pt/products/farline-gel-de-banho-argao-higiene-peles-sensiveis-750-ml",
+      "previous_price": 4.5,
+      "discount_pct": 49,
+      "dropped_day": 20656,
+      "verified_live": true
     },
     {
-      "ean": "3337875863377",
-      "name": "Effaclar Duo +M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 12.54,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
+      "ean": "635494391206",
+      "name": "Skinceuticals Blemish Age Defense Sérum",
+      "brand": "SkinCeuticals",
+      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Designsemnome_38_b2272f0d-207d-4663-a2d5-1ead36b44648.jpg?v=1750689236",
+      "best_price": 42.8,
+      "best_store": "Pharmee",
+      "best_store_slug": "pharmee",
+      "best_url": "https://www.pharmeestore.com/pt/unissexo/rosto/skinceuticals-blemish-+-age-gel_p37882.html",
+      "previous_price": 83.7,
+      "discount_pct": 49,
+      "dropped_day": 20651,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1869
+      "products": 1947
     },
     {
       "name": "Isdin",
-      "products": 740
+      "products": 767
     },
     {
       "name": "Clarins",
-      "products": 676
+      "products": 678
     },
     {
       "name": "Avène",
-      "products": 652
+      "products": 678
     },
     {
       "name": "Nivea",
-      "products": 617
-    },
-    {
-      "name": "La Roche-Posay",
-      "products": 583
+      "products": 620
     },
     {
       "name": "Eucerin",
-      "products": 579
+      "products": 596
     },
     {
-      "name": "L'Oréal Paris",
-      "products": 570
+      "name": "La Roche-Posay",
+      "products": 596
+    },
+    {
+      "name": "Bioderma",
+      "products": 582
     }
   ],
   "telegram_alerts": [

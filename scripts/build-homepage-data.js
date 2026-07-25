@@ -181,6 +181,13 @@ async function livePricesFor(url) {
 //   • o produto existe, tem imagem e uma oferta viva/fresca/não-bloqueada;
 //   • a descida ainda está VIVA (o melhor preço atual ≈ o preço pós-descida —
 //     senão já reverteu). Devolve previous_price + discount_pct para o render.
+// Reforço SÓ para a montra (2026-07-25): o isNonCosmetic deixa passar
+// puericultura/aparelhos — apareceu "Chicco Bomba de extração de leite
+// elétrica" a -30% entre os candidatos. Num comparador de COSMÉTICA isso não
+// pode encabeçar o "Em alta". Lista curta e literal de propósito (nada de
+// palavras ambíguas que apanhem cosmética a sério).
+const FORA_DA_MONTRA = /\b(bomba(s)? (de |tira[- ]?)?leite|tira[- ]?leite|extra(c|ç)[aã]o de leite|biber[aã]o|biberon|chupeta|tetina|term[oó]metro|esterilizador|fralda(s)?|leite infantil|papa infantil|teste de gravidez|preservativo(s)?|nebulizador|tensi[oó]metro|compressa(s)?|ligadura(s)?|gaze|penso(s)? r[aá]pido(s)?|seringa(s)?|agulha(s)?|algod[aã]o hidr[oó]filo|soro fisiol[oó]gico|luva(s)? (de |cir[uú]rgica)|m[aá]scara(s)? cir[uú]rgica(s)?|canadiana|meia(s)? de compress[aã]o)\b/i;
+
 async function computeEmAlta(seed) {
   const HIST = path.join(ROOT, 'data', 'price-history.json');
   let hist;
@@ -211,16 +218,20 @@ async function computeEmAlta(seed) {
     drops.push({ ean, day: last[0], fromCents: prev[1], toCents: last[1], pct });
   }
   // mais recentes primeiro; dentro do mesmo dia, maior descida primeiro
-  drops.sort((a, b) => b.day - a.day || b.pct - a.pct);
+  // pedido do user (2026-07-25): "as maiores promoções têm de estar lá".
+  // Antes ordenava por RECÊNCIA e o pool (40) enchia-se com as mais recentes —
+  // as maiores descidas do dia nunca chegavam sequer a ser candidatas.
+  drops.sort((a, b) => b.pct - a.pct || b.day - a.day);
   // 1ª passagem: candidatos que passam TODOS os filtros estáticos (até 14 —
   // alguns vão cair na verificação ao vivo)
   const cands = [], seen = new Set();
   for (const d of drops) {
-    if (cands.length >= 40) break;   // pool larga: muitos candidatos caem na verificação ao vivo (lojas não-fetcháveis)
+    if (cands.length >= 200) break;  // pool larga: muitos caem na verificação ao vivo (lojas não-fetcháveis) ou na diversidade de marca
     if (seen.has(d.ean)) continue;
     const p = seed.products.find(x => x.ean === d.ean);
     if (!p || !p.image_url) continue;
     if (isNonCosmetic(p.name)) continue;             // sem brinquedos/puericultura
+    if (FORA_DA_MONTRA.test(p.name)) continue;       // reforço da montra (ver topo)
     // pedido do user 2026-07-22: só entra quem é COMPARADO em ≥5 lojas — uma
     // descida validada por comparação ampla é muito mais fiável (e mais útil).
     if (countStores(seed, d.ean) < 5) continue;
@@ -243,21 +254,41 @@ async function computeEmAlta(seed) {
   // 2ª passagem: VERIFICAÇÃO AO VIVO do preço reclamado (caso Sensilis/Wells:
   // a loja serviu um preço-fantasma 1 dia e nós publicámo-lo). Só entra quem
   // conseguimos confirmar na página da loja (±10%). Loja não-fetchável → fora.
-  const out = [];
+  // ANTES isto era um PORTEIRO: com < 3 confirmados ao vivo devolvia null e a
+  // montra caía nos 5 EANs curados. Como a maioria das lojas não é fetchável no
+  // CI, ficou meses nos MESMOS 5 produtos (queixa do user, 2026-07-25). Agora é
+  // uma PREFERÊNCIA:
+  //   • quem FALHA a verificação ao vivo continua a ser DESCARTADO (a defesa
+  //     anti-preço-fantasma do caso Sensilis/Wells mantém-se intacta);
+  //   • quem nunca chegou a ser tentado (loja não-fetchável ou orçamento de
+  //     rede esgotado) fica em RESERVA e pode preencher os lugares restantes —
+  //     já passou os filtros estáticos, que são exigentes: >=5 lojas, 8-55%,
+  //     não-revertido, anti-colisão de formato, e main() já deitou fora ofertas
+  //     podres (>=7d) e fantasmas ANTES de chegarmos aqui;
+  //   • os verificados vêm sempre primeiro, por isso o slot 0 (o que dá o
+  //     título "promoções verificadas" à secção) é verificado sempre que exista.
+  const ALVO = 5, MAX_POR_MARCA = 2, MAX_FETCHES = 25;
+  const cabe = (cp, lista) => lista.length < ALVO &&
+    lista.filter(x => String(x.brand || '').toLowerCase() === String(cp.brand || '').toLowerCase()).length < MAX_POR_MARCA;
+  const verificados = [], reserva = [];
+  let fetches = 0;
   for (const cp of cands) {
-    if (out.length >= 5) break;
-    if (!cp.best_url || FETCH_BLOCKED.has(cp.best_store_slug)) {
-      console.log(`    em-alta: ✂ ${cp.ean} @${cp.best_store_slug} (não-verificável)`); continue;
-    }
+    if (verificados.length >= ALVO) break;
+    if (!cp.best_url || FETCH_BLOCKED.has(cp.best_store_slug) || fetches >= MAX_FETCHES) { reserva.push(cp); continue; }
+    fetches++;
     const lp = await livePricesFor(cp.best_url);
     const ok = lp && lp.some(p => Math.abs(p - cp.best_price) / cp.best_price <= 0.10);
     if (!ok) {
       console.log(`    em-alta: ✗ ${cp.ean} @${cp.best_store_slug} seed=${cp.best_price}€ live=[${(lp || []).slice(0, 3).join(',')}] — descartado`);
-      continue;
+      continue;   // falhou a prova → fora de vez (NÃO vai para reserva)
     }
-    out.push(cp);
+    cp.verified_live = true;
+    if (cabe(cp, verificados)) verificados.push(cp);
   }
-  return out.length >= 3 ? out : null;   // < 3 descidas verificadas → fallback curado
+  const out = verificados.slice();
+  for (const cp of reserva) { if (!cabe(cp, out)) continue; out.push(cp); }
+  console.log(`    em-alta: ${verificados.length} verificados ao vivo + ${out.length - verificados.length} de reserva = ${out.length}/${ALVO}`);
+  return out.length ? out : null;   // só sem NENHUM candidato é que cai no curado
 }
 
 (async function main() {
