@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-25T08:36:39.623Z",
-  "seed_total_products": 58389,
+  "generated_at": "2026-07-25T11:43:51.930Z",
+  "seed_total_products": 58397,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -159,34 +159,6 @@
   ],
   "em_alta": [
     {
-      "ean": "3401381332785",
-      "name": "SVR Sebiaclear Gel Limpeza -",
-      "brand": "SVR",
-      "image_url": "https://static.lojadafarmacia.com/26285/svr-sebiaclear-gel-limpeza-400ml.png",
-      "best_price": 6.15,
-      "best_store": "Skin",
-      "best_store_slug": "skin",
-      "best_url": "https://skin.pt/svr-sebiaclear-gel-de-limpeza",
-      "previous_price": 13.23,
-      "discount_pct": 54,
-      "dropped_day": 20658,
-      "verified_live": true
-    },
-    {
-      "ean": "3282771000237",
-      "name": "René Furterer Triphasic Shampoo Queda de Cabelo",
-      "brand": "René Furterer",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/t/r/triphasic200ml1.jpg",
-      "best_price": 5.73,
-      "best_store": "Skin",
-      "best_store_slug": "skin",
-      "best_url": "https://skin.pt/rene-furterer-triphasic-shampoo-queda-de-cabelo",
-      "previous_price": 11.98,
-      "discount_pct": 52,
-      "dropped_day": 20658,
-      "verified_live": true
-    },
-    {
       "ean": "3574660533552",
       "name": "Neutrogena Deep Moisture Bálsamo Hidratante Rosto e Corpo",
       "brand": "Neutrogena",
@@ -198,20 +170,6 @@
       "previous_price": 7.7,
       "discount_pct": 50,
       "dropped_day": 20658,
-      "verified_live": true
-    },
-    {
-      "ean": "8437014389524",
-      "name": "Babe Shampoo Extra Suave",
-      "brand": "Babé",
-      "image_url": "https://assets.atida.com/transform/db2ef98a-60d9-432b-ab37-5dd3028d8bf3/Babe-Champu-Extrasuave-500-ml",
-      "best_price": 4,
-      "best_store": "CosmeticFan",
-      "best_store_slug": "cosmeticfan",
-      "best_url": "https://www.cosmeticfan.com/babe-champo-extra-suave-100-ml.html",
-      "previous_price": 7.92,
-      "discount_pct": 49,
-      "dropped_day": 20651,
       "verified_live": true
     },
     {
@@ -227,6 +185,48 @@
       "discount_pct": 49,
       "dropped_day": 20656,
       "verified_live": true
+    },
+    {
+      "ean": "3474636976126",
+      "name": "Silver Conditioner",
+      "brand": "L'Oréal Professionnel",
+      "image_url": "https://www.druni.pt/media/catalog/product/7/0/7002971.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 8.79,
+      "best_store": "SKPRO",
+      "best_store_slug": "skpro",
+      "best_url": "https://skpro.pt/pt/condicionadores-em-creme/1101-loreal-professionell-condicionador-silver-200ml-8013572200-347463697612",
+      "previous_price": 14.95,
+      "discount_pct": 41,
+      "dropped_day": 20653,
+      "verified_live": true
+    },
+    {
+      "ean": "3337875945820",
+      "name": "CeraVe Leite Solar Hidratante Invisível SPF30",
+      "brand": null,
+      "image_url": "https://cdn1.costatic.com/img/product/400/69c415751e613/cerave-leite-solar-p114722.jpg",
+      "best_price": 7.32,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/cerave-locao-protetora-invisivel-hidratante-spf-30-75ml",
+      "previous_price": 11.87,
+      "discount_pct": 38,
+      "dropped_day": 20650,
+      "verified_live": true
+    },
+    {
+      "ean": "3282770114195",
+      "name": "Avene Xeracalm Ad Creme Relipidante",
+      "brand": "Avène",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/avene-xeracalm-ad-creme-relipidante-400ml-kzkKr.webp",
+      "best_price": 13.46,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/pele-atopica/993-avène-xeracalm-creme-relipidante-400-ml-3282770114195.html",
+      "previous_price": 21.42,
+      "discount_pct": 37,
+      "dropped_day": 20658,
+      "verified_live": true
     }
   ],
   "top_brands": [
@@ -236,7 +236,7 @@
     },
     {
       "name": "Isdin",
-      "products": 766
+      "products": 767
     },
     {
       "name": "Clarins",
@@ -244,7 +244,7 @@
     },
     {
       "name": "Avène",
-      "products": 677
+      "products": 678
     },
     {
       "name": "Nivea",

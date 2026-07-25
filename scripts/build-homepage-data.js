@@ -186,7 +186,7 @@ async function livePricesFor(url) {
 // elétrica" a -30% entre os candidatos. Num comparador de COSMÉTICA isso não
 // pode encabeçar o "Em alta". Lista curta e literal de propósito (nada de
 // palavras ambíguas que apanhem cosmética a sério).
-const FORA_DA_MONTRA = /\b(bomba(s)? (de |tira[- ]?)?leite|tira[- ]?leite|extra(c|ç)[aã]o de leite|biber[aã]o|biberon|chupeta|tetina|term[oó]metro|esterilizador|fralda(s)?|leite infantil|papa infantil|teste de gravidez|preservativo(s)?|nebulizador|tensi[oó]metro|compressa(s)?|ligadura(s)?|gaze|penso(s)? r[aá]pido(s)?|seringa(s)?|agulha(s)?|algod[aã]o hidr[oó]filo|soro fisiol[oó]gico|luva(s)? (de |cir[uú]rgica)|m[aá]scara(s)? cir[uú]rgica(s)?|canadiana|meia(s)? de compress[aã]o)\b/i;
+const FORA_DA_MONTRA = /\b(bomba(s)? (de |tira[- ]?)?leite|tira[- ]?leite|extra(c|ç)[aã]o de leite|biber[aã]o|biberon|chupeta|tetina|term[oó]metro|esterilizador|fralda(s)?|leite infantil|papa infantil|teste de gravidez|preservativo(s)?|nebulizador|tensi[oó]metro|compressa(s)?|ligadura(s)?|gaze|penso(s)? r[aá]pido(s)?|seringa(s)?|agulha(s)?|algod[aã]o hidr[oó]filo|soro fisiol[oó]gico|luva(s)? (de |cir[uú]rgica)|m[aá]scara(s)? cir[uú]rgica(s)?|canadiana|meia(s)? de compress[aã]o|penso(s)?|adesivo(s)?|gummies|gomas|p[oó] de prote[ií]na|poudre de prot|prote[ií]nas? em p[oó]|gel nasal|spray nasal|soro nasal|descongestionante|afta(s)?|bolsa (de )?gel|quente\/frio|(faixa|cinta|banda|almofada|saco|bolsa|manta)s? t[ée]rmica?s?|joelheira|cotoveleira|tornozeleira|cinta abdominal|b[aá]lsamo peitoral|articula[çc][õo]es e m[uú]sculos)\b/i;
 
 async function computeEmAlta(seed) {
   const HIST = path.join(ROOT, 'data', 'price-history.json');
@@ -195,27 +195,71 @@ async function computeEmAlta(seed) {
   if (!hist || !hist.series) return null;
   const today = Math.floor(Date.now() / 86400000);
   const RECENT_DAYS = 10, MIN_PCT = 0.08, MAX_PCT = 0.55;
+  // índice ean → ofertas (com o pool a 200, varrer o seed por candidato saía caro)
+  const itensPorEan = new Map();
+  for (const g of seed.store_products)
+    for (const it of (g.items || [])) {
+      if (!it.ean) continue;
+      let a = itensPorEan.get(it.ean); if (!a) itensPorEan.set(it.ean, a = []);
+      a.push(it);
+    }
   // preços vivos ordenados por EAN (seed já sem blocklist neste ponto do main)
   const pricesFor = (ean) => {
     const a = [];
-    for (const g of seed.store_products)
-      for (const it of g.items) {
-        if (it.ean !== ean || it.in_stock === false) continue;
-        if (it.price > 0) a.push(it.price);
-        for (const v of (it.variants || [])) if (v.price > 0 && v.in_stock !== false) a.push(v.price);
-      }
+    for (const it of (itensPorEan.get(ean) || [])) {
+      if (it.in_stock === false) continue;
+      if (it.price > 0) a.push(it.price);
+      for (const v of (it.variants || [])) if (v.price > 0 && v.in_stock !== false) a.push(v.price);
+    }
     return a.sort((x, y) => x - y);
   };
+  // melhor preço vivo NUM volume concreto (null se ninguém o vende)
+  const precoNoVolume = (ean, ml) => {
+    let min = null;
+    for (const it of (itensPorEan.get(ean) || [])) {
+      if (it.in_stock === false) continue;
+      for (const v of (it.variants || [])) {
+        if (v.in_stock === false || !(v.price > 0)) continue;
+        if (Math.round(Number(v.volume_ml) || 0) !== ml) continue;
+        if (min == null || v.price < min) min = v.price;
+      }
+    }
+    return min;
+  };
+  // volumes com série própria no histórico (hist.vseries["ean|ml"])
+  const volsPorEan = new Map();
+  for (const k of Object.keys(hist.vseries || {})) {
+    const i = k.lastIndexOf('|'); if (i < 0) continue;
+    const ean = k.slice(0, i), ml = Number(k.slice(i + 1));
+    if (!(ml > 0)) continue;
+    let a = volsPorEan.get(ean); if (!a) volsPorEan.set(ean, a = []);
+    a.push(ml);
+  }
+  // CONSISTÊNCIA DE VOLUME (2026-07-25, pedido do user): a hist.series[ean]
+  // guarda o melhor preço do EAN entre TODOS os volumes — se a oferta mais
+  // barata saltar do 400ml para o 100ml de viagem, isso aparece como "descida"
+  // quando é só uma mudança de tamanho. Nas fichas MULTI-VOLUME passamos a ler
+  // a hist.vseries["ean|ml"] (uma série por volume) e a comparar sempre dentro
+  // do MESMO volume; mais abaixo exige-se ainda que o preço em montra seja
+  // desse volume. Fichas de volume único mantêm a série global.
   const drops = [];
-  for (const [ean, s] of Object.entries(hist.series)) {
-    if (!/^\d{12,14}$/.test(ean)) continue;
-    if (!Array.isArray(s) || s.length < 2) continue;
-    const last = s[s.length - 1], prev = s[s.length - 2];
-    if (!last || !prev || last[0] < today - RECENT_DAYS) continue;
-    if (!(last[1] < prev[1])) continue;
+  const registaDescida = (ean, serie, ml) => {
+    if (!Array.isArray(serie) || serie.length < 2) return;
+    const last = serie[serie.length - 1], prev = serie[serie.length - 2];
+    if (!last || !prev || last[0] < today - RECENT_DAYS) return;
+    if (!(last[1] < prev[1])) return;
     const pct = 1 - last[1] / prev[1];
-    if (pct < MIN_PCT || pct > MAX_PCT) continue;
-    drops.push({ ean, day: last[0], fromCents: prev[1], toCents: last[1], pct });
+    if (pct < MIN_PCT || pct > MAX_PCT) return;
+    drops.push({ ean, day: last[0], fromCents: prev[1], toCents: last[1], pct, volume_ml: ml || null });
+  };
+  for (const [ean, serie] of Object.entries(hist.series)) {
+    if (!/^\d{12,14}$/.test(ean)) continue;
+    const vols = volsPorEan.get(ean) || [];
+    if (vols.length >= 2) {
+      for (const ml of vols) registaDescida(ean, (hist.vseries || {})[ean + '|' + ml], ml);
+    } else {
+      registaDescida(ean, serie, null);
+    }
   }
   // mais recentes primeiro; dentro do mesmo dia, maior descida primeiro
   // pedido do user (2026-07-25): "as maiores promoções têm de estar lá".
@@ -246,6 +290,15 @@ async function computeEmAlta(seed) {
     // colado ao EAN do tamanho grande (não uma descida real).
     const prices = pricesFor(d.ean);
     if (prices.length >= 2 && cp.best_price < 0.55 * prices[1]) continue;
+    // descida medida num volume concreto → o preço que vamos MOSTRAR tem de
+    // ser desse mesmo volume, senão anunciávamos a descida de um tamanho com
+    // o preço de outro (era exactamente a queixa do user).
+    if (d.volume_ml) {
+      const pv = precoNoVolume(d.ean, d.volume_ml);
+      if (pv == null) continue;
+      if (Math.abs(pv - cp.best_price) / pv > 0.02) continue;
+      cp.volume_ml = d.volume_ml;
+    }
     cp.previous_price = Number(prevPrice.toFixed(2));
     cp.discount_pct = Math.round(d.pct * 100);
     cp.dropped_day = d.day;

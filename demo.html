@@ -7100,6 +7100,22 @@
   .cm-a2hs-card ol { margin: 0 0 16px 18px; padding: 0; font-size: 14px; line-height: 1.6; }
   .cm-a2hs-ok { width: 100%; background: var(--text); color: #fff; border: none; border-radius: 999px; padding: 13px; font-size: 14px; font-weight: 700; }
 
+  /* ── LIMITES HORIZONTAIS (2026-07-25) ─────────────────────────────────
+     No telemóvel a página tinha 438px de conteúdo para 375px de ecrã: via-se
+     uma faixa branca à direita e o layout desformatava (reportado pelo user).
+     CAUSA: em grelhas/flex os filhos têm min-width:auto por omissão e RECUSAM
+     encolher abaixo do conteúdo — a grelha do newsletter ficava presa numa
+     coluna de 404px por causa dos 2 "stats" lado a lado.
+     Corrige-se a causa E fica uma rede de segurança global, para nenhuma
+     secção futura voltar a empurrar a página para o lado.
+     NOTA: overflow-x:clip e não hidden — clip não cria contexto de
+     scroll, por isso não parte os position:sticky que o site usa. */
+  html, body { max-width: 100%; overflow-x: clip; }
+  img, svg, video, canvas, iframe { max-width: 100%; }
+  .gm-telegram-shell, .gm-tg-left, .gm-tg-stats, .gm-news-form, .gm-stat { min-width: 0; }
+  .gm-tg-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gm-tg-h2, .gm-tg-sub, .gm-stat-n, .gm-stat-l { overflow-wrap: anywhere; }
+
 </style>
 </head>
 <body>
@@ -7154,7 +7170,7 @@
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Compara · combina · poupa</div>
-    <h1>O melhor preço<br/>por produto, em <em>tempo real</em>.</h1>
+    <h1>O melhor preço <br/>por produto, em <em>tempo real</em>.</h1>
     <p>Comparamos <span id="tagline-stores">17</span> lojas de cosmética portuguesas e europeias. Tu escolhes, nós fazemos as contas e mostramos-te a combinação que custa menos — preço + portes incluídos.</p>
     <div class="hero-search-bar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
