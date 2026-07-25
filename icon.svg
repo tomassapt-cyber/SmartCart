@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <!-- CosMath PWA icon — paleta Maio 2026 -->
+  <!-- CosMath PWA icon — aurora (2026-07-25): letras com gradiente rosa→roxo→azul; "Cos" direito + "Math" itálico, ambos Cormorant Garamond -->
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#d8c9ec"/>
-      <stop offset="55%" stop-color="#bac5d7"/>
-      <stop offset="100%" stop-color="#f2f1bb"/>
+      <stop offset="0" stop-color="#fdf8ff"/>
+      <stop offset="1" stop-color="#e9ddf5"/>
+    </linearGradient>
+    <linearGradient id="txt" x1="0" y1="0.15" x2="1" y2="0.9">
+      <stop offset="0" stop-color="#e0559b"/>
+      <stop offset="0.5" stop-color="#8a4fd0"/>
+      <stop offset="1" stop-color="#3f7fe0"/>
     </linearGradient>
   </defs>
-  <rect width="512" height="512" rx="112" ry="112" fill="url(#bg)"/>
-  <!-- "Cos" em Inter weight 600 -->
-  <text x="256" y="240"
-        font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
-        font-size="120" font-weight="600"
-        fill="#2c3142" text-anchor="middle" letter-spacing="-4">Cos</text>
-  <!-- "Math" em Cormorant Garamond itálico -->
-  <text x="256" y="372"
-        font-family="'Cormorant Garamond', Georgia, serif"
-        font-size="150" font-style="italic" font-weight="500"
-        fill="#6d84a7" text-anchor="middle" letter-spacing="-2">Math</text>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <text x="256" y="222" font-family="'Cormorant Garamond', Georgia, serif" font-size="142" font-weight="600" fill="url(#txt)" text-anchor="middle">Cos</text>
+  <text x="256" y="382" font-family="'Cormorant Garamond', Georgia, serif" font-size="172" font-weight="600" font-style="italic" letter-spacing="-1" fill="url(#txt)" text-anchor="middle">Math</text>
 </svg>
