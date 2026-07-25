@@ -20,6 +20,7 @@
 const fs = require('fs');
 const path = require('path');
 const { fixCategory } = require('./lib/classify-category');
+const { isNonCosmetic } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -108,7 +109,9 @@ async function upsert(table, rows, onConflict) {
   // o 2º upsert só-pop-cols fazia INSERT sem name quando o ON CONFLICT não
   // batia; e a janela de inconsistência que resolveria é benigna: o app.html
   // usa as ofertas embebidas, não min_price. Auditoria 2026-07-24).
-  const products = (seed.products || []).filter(p => p.ean && p.name).map(p => {
+  // fora do catálogo o que não é cosmética (auditado 2026-07-25) — a montra, a
+  // pesquisa e as categorias do app.html ficam só com cosmética a sério.
+  const products = (seed.products || []).filter(p => p.ean && p.name && !isNonCosmetic(p.name)).map(p => {
     const base = {
       ean: p.ean, name: p.name, brand: p.brand || null, category: fixCategory(p.name, p.category),
       image_url: safeUrl(p.image_url), updated_at: runTs,

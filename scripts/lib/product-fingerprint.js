@@ -782,11 +782,31 @@ function parsePriceEU(x) {
 }
 
 const NON_COSMETIC = /\b(comprimid|c[áa]psula|dr[áa]geia|saqueta|past[ie]lha|gomas\b|xarope|ampola[s]? bebiv|p[óo] sol[úu]vel|suplement|medicament|antibi[óo]tic|fralda|chupeta|biber[oóã]o|papa infantil|cereais infant|term[óo]metro|tensi[óo]metro|nebuliz|inalad|ligadura|compressa esteril|penso r[áa]pid|piolho|repelent|carraç|ra[çc][ãa]o|(?:para )?(?:c[ãa]es|gatos)\b|animal de estim|veterin|aptamil|nutrib[ée]n|nidina|blemil|novalac|enfamil|nan \d|profutura|leite (?:de )?(?:transi|continua|crescimento|infantil|[123])\b|leite em p[óo])/i;
-function isNonCosmetic(name) { return NON_COSMETIC.test(String(name || '')); }
+// Alargamento auditado no catálogo vivo (2026-07-25): 431 produtos (0,8%) que
+// NÃO são cosmética e o NON_COSMETIC deixava passar — material clínico e de
+// penso, suplementos em goma, dispositivos térmicos/ortopédicos, higiene não
+// cosmética. Saíram do topo do "Em alta" e da pesquisa.
+const NON_COSMETIC_EXTRA = /\b(gummies|preservativo(s)?|bomba(s)? (de |tira[- ]?)?leite|tira[- ]?leite|extra(c|ç)[aã]o de leite|tetina|esterilizador|teste de gravidez|compressa(s)?|gaze|seringa(s)?|algod[aã]o hidr[oó]filo|soro fisiol[oó]gico|luva(s)? (de |cir[uú]rgica)|m[aá]scara(s)? cir[uú]rgica(s)?|canadiana|meia(s)? de compress[aã]o|p[oó] de prote[ií]na|poudre de prot|prote[ií]nas? em p[oó]|gel nasal|spray nasal|soro nasal|descongestionante|afta(s)?|bolsa (de )?gel|quente\/frio|(faixa|cinta|banda|almofada|saco|manta)s? t[ée]rmica?s?|joelheira|cotoveleira|tornozeleira|cinta abdominal|b[aá]lsamo peitoral|articula[çc][õo]es e m[uú]sculos)\b/i;
+// "adesivo" e "penso" TAMBÉM existem em cosmética — adesivos de hidrogel para o
+// contorno de olhos (Klorane, Missha, Natura Siberica) e pensos antiborbulhas
+// (CeraVe, Garnier, Benzacare, Compeed). Por isso só contam quando o nome não
+// traz um sinal cosmético: sem esta salvaguarda perdiam-se 12 produtos reais.
+// NOTA: "agulha" foi deliberadamente deixado de fora — no catálogo dava 3
+// falsos positivos (traduções más de estojos Mustela/Nuxe) para 1 verdadeiro,
+// que o "seringa" já apanha.
+const AMBIGUO_COSMETICO = /\b(adesivos?|pensos?)\b/i;
+const AINDA_E_COSMETICO = /\b(olhos|olheiras|contorno|hidrogel|antiborbulhas?|borbulhas?|acne|espinhas?|pestanas?|l[aá]bios|pimple|hidrocol[oó]ide|hydrocolloid|power patch)\b/i;
+
+function isNonCosmetic(name) {
+  const n = String(name || '');
+  if (NON_COSMETIC.test(n) || NON_COSMETIC_EXTRA.test(n)) return true;
+  return AMBIGUO_COSMETICO.test(n) && !AINDA_E_COSMETICO.test(n);
+}
 
 module.exports = {
   parsePriceEU,
   NON_COSMETIC,
+  NON_COSMETIC_EXTRA,
   isNonCosmetic,
   productFingerprint,
   productFingerprintWithVolume,

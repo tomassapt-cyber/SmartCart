@@ -7,6 +7,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { isNonCosmetic } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const DEMO = path.join(ROOT, 'demo.html');       // TEMPLATE versionado (shell, seed vazio) — só LEITURA
@@ -280,6 +281,7 @@ const STALE_DAYS = 14;
   const visibleEans = new Set();
   for (const p of seedJson.products) {
     const offs = offersByEan[p.ean] || [];
+    if (isNonCosmetic(p.name)) continue;                      // 0. não é cosmética (auditado 2026-07-25)
     if (offs.length === 0) continue;                          // 1. órfão
     if (offs.every(o => o.in_stock === false)) continue;      // 2. esgotado → SEMPRE esconde
     // 3. fora-de-site (todas as ofertas stale >14d): só esconde os NÃO-comparáveis;
