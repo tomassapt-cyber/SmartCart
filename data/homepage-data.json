@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-25T02:47:30.815Z",
-  "seed_total_products": 58397,
+  "generated_at": "2026-07-25T08:36:39.623Z",
+  "seed_total_products": 58389,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -173,6 +173,20 @@
       "verified_live": true
     },
     {
+      "ean": "3282771000237",
+      "name": "René Furterer Triphasic Shampoo Queda de Cabelo",
+      "brand": "René Furterer",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/t/r/triphasic200ml1.jpg",
+      "best_price": 5.73,
+      "best_store": "Skin",
+      "best_store_slug": "skin",
+      "best_url": "https://skin.pt/rene-furterer-triphasic-shampoo-queda-de-cabelo",
+      "previous_price": 11.98,
+      "discount_pct": 52,
+      "dropped_day": 20658,
+      "verified_live": true
+    },
+    {
       "ean": "3574660533552",
       "name": "Neutrogena Deep Moisture Bálsamo Hidratante Rosto e Corpo",
       "brand": "Neutrogena",
@@ -213,20 +227,6 @@
       "discount_pct": 49,
       "dropped_day": 20656,
       "verified_live": true
-    },
-    {
-      "ean": "635494391206",
-      "name": "Skinceuticals Blemish Age Defense Sérum",
-      "brand": "SkinCeuticals",
-      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Designsemnome_38_b2272f0d-207d-4663-a2d5-1ead36b44648.jpg?v=1750689236",
-      "best_price": 42.8,
-      "best_store": "Pharmee",
-      "best_store_slug": "pharmee",
-      "best_url": "https://www.pharmeestore.com/pt/unissexo/rosto/skinceuticals-blemish-+-age-gel_p37882.html",
-      "previous_price": 83.7,
-      "discount_pct": 49,
-      "dropped_day": 20651,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -236,7 +236,7 @@
     },
     {
       "name": "Isdin",
-      "products": 767
+      "products": 766
     },
     {
       "name": "Clarins",
@@ -244,7 +244,7 @@
     },
     {
       "name": "Avène",
-      "products": 678
+      "products": 677
     },
     {
       "name": "Nivea",
