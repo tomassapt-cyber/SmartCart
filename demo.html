@@ -5220,18 +5220,18 @@
   .cm-tabbar button span { font-size: 18px; line-height: 1; }
   .cm-tabbar button.active { color: var(--gold); }
   .cm-tabbar { grid-template-columns: repeat(5, 1fr); }
-  .cm-tab-scan {
-    position: relative;
-    margin-top: -22px;
-  }
-  .cm-tab-scan span {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 52px; height: 52px; border-radius: 50%;
-    background: var(--text); color: #fff;
-    font-size: 22px !important;
-    box-shadow: 0 6px 18px rgba(20,24,34,.28), 0 0 0 4px rgba(255,255,255,.9);
-  }
-  .cm-tab-scan.active span { background: var(--gold); }
+  /* Scan uniformizado com os outros separadores (2026-07-25): era um crachá
+     escuro de 52px, elevado (margin-top:-22px), que destoava dos restantes
+     ícones (emoji de 18px, sem fundo). Agora herda o mesmo estilo. */
+  .cm-tab-scan { position: relative; }
+  /* Separadores a sério: as vistas de ecrã-inteiro (Fórum 200, O meu espaço
+     1090, Scan 1200) tapavam a tab bar (150) — lá dentro não havia como saltar
+     para outro separador. Enquanto uma está aberta, a barra sobe acima delas
+     (os modais de diálogo — quiz, fatura — continuam por cima, como devem) e
+     as vistas reservam espaço em baixo para a barra não tapar conteúdo. */
+  body.cm-tabview-open .cm-tabbar { z-index: 1250; }
+  body.cm-tabview-open .forum-view,
+  body.cm-tabview-open .scan-view { padding-bottom: calc(58px + env(safe-area-inset-bottom)); }
   /* ── Scanner de código de barras ── */
   .scan-view {
     position: fixed; inset: 0; z-index: 1200;
@@ -13424,24 +13424,49 @@ document.getElementById('pr-backdrop').addEventListener('click', closeProfile);
 (function initTabbar() {
   const bar = document.getElementById('cm-tabbar');
   if (!bar) return;
-  bar.querySelectorAll('button').forEach(b => {
-    b.onclick = () => {
-      bar.querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b));
-      const t = b.dataset.tab;
-      // app-like: sair do separador "me" fecha a página do espaço (mobile)
-      if (t !== 'me' && document.getElementById('pr-modal')?.classList.contains('open')) closeProfile();
-      if (t === 'home') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (t === 'forum') {
-        if (typeof openForum === 'function') openForum(); else location.hash = '#forum';
-      } else if (t === 'scan') {
-        openScanner();
-      } else if (t === 'cart') {
-        document.getElementById('gm-cart-link')?.click();
-      } else if (t === 'me') {
-        openProfile();
-      }
-    };
+  // Separadores a sério (2026-07-25): uma só vista aberta de cada vez e a barra
+  // fica sempre acessível por cima (body.cm-tabview-open no CSS) — dá para
+  // saltar de QUALQUER separador para qualquer outro sem fechar nada à mão.
+  const VIEWS = ['forum', 'scan', 'me', 'cart'];
+  const isOpen = {
+    forum: () => !!document.querySelector('.forum-view:not([hidden])'),
+    scan: () => !!document.querySelector('.scan-view:not([hidden])'),
+    me: () => !!document.getElementById('pr-modal')?.classList.contains('open'),
+    cart: () => !!document.getElementById('bundle-drawer')?.classList.contains('open'),
+  };
+  const show = {
+    forum: () => { if (typeof openForum === 'function') openForum(); else location.hash = '#forum'; },
+    scan: () => openScanner(),
+    me: () => openProfile(),
+    cart: () => { if (typeof bundleOpen === 'function') bundleOpen(); else document.getElementById('gm-cart-link')?.click(); },
+  };
+  const hide = {
+    forum: () => { if (typeof closeForum === 'function') closeForum(); },
+    scan: () => { if (typeof closeScanner === 'function') closeScanner(); },
+    me: () => closeProfile(),
+    cart: () => { if (typeof bundleClose === 'function') bundleClose(); },
+  };
+  function cmSyncTabs() {
+    const cur = VIEWS.find(k => isOpen[k]()) || 'home';
+    // o carrinho é uma gaveta lateral, não uma vista de ecrã inteiro: não
+    // precisa de levantar a barra.
+    document.body.classList.toggle('cm-tabview-open', cur === 'forum' || cur === 'scan' || cur === 'me');
+    bar.querySelectorAll('button').forEach(x => x.classList.toggle('active', x.dataset.tab === cur));
+  }
+  function cmSetTab(t) {
+    for (const k of VIEWS) if (k !== t && isOpen[k]()) hide[k]();   // exclusão mútua
+    if (show[t]) show[t]();
+    else if (t === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+    cmSyncTabs();
+  }
+  window.cmSetTab = cmSetTab;
+  bar.querySelectorAll('button').forEach(b => { b.onclick = () => cmSetTab(b.dataset.tab); });
+  // fechar por dentro (✕, Escape, botão "voltar") devolve o separador certo à
+  // barra — sem isto ficava "Fórum" aceso depois de sair do fórum.
+  const mo = new MutationObserver(cmSyncTabs);
+  ['forum-view', 'scan-view', 'pr-modal', 'bundle-drawer'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) mo.observe(el, { attributes: true, attributeFilter: ['hidden', 'class'] });
   });
 })();
 
