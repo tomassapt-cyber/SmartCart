@@ -66,11 +66,11 @@ jobs:
           set -e
           node scripts/purge-corrupt-merges.js --apply
           node scripts/inject-seed-into-demo.js
-          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+          if git diff --quiet -- data/seed-bundle.json demo.html; then
             echo "Nada mudou — nada a fazer."
             exit 0
           fi
-          git add data/seed-bundle.json demo.html index.html catalogo.html data/homepage-data.json 2>/dev/null || true
+          git add data/seed-bundle.json demo.html data/homepage-data.json 2>/dev/null || true
           git commit -m "fix: auto-cura de imanes (quality-monitor $(date -u +%Y-%m-%d))"
           # resilient-push re-corre purga+inject sobre o origin mais recente em conflito
           bash scripts/ci/resilient-push.sh \

@@ -81,11 +81,11 @@ jobs:
           GIT_COMMITTER_EMAIL: bot@cosmath.pt
         run: |
           set -e
-          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+          if git diff --quiet -- data/seed-bundle.json demo.html; then
             echo "Nenhuma alteração — nada a fazer."
             exit 0
           fi
-          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add data/seed-bundle.json demo.html
           git add -f data/catalog/pharmascalabis-full.json 2>/dev/null || true
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "chore: Pharma Scalabis daily refresh ($DATE)" \

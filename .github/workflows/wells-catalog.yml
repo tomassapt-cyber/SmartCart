@@ -104,7 +104,7 @@ jobs:
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
           # Seed + HTML regenerados pelo integrate; + ficheiros raw (gitignored)
-          git add data/seed-bundle.json demo.html index.html catalogo.html 2>/dev/null || true
+          git add data/seed-bundle.json demo.html 2>/dev/null || true
           git add -f data/catalog/wells-urls.json data/catalog/wells-full.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"

@@ -39,7 +39,11 @@ COMMIT_MSG="${1:?commit-msg em falta}"; shift
 RAW_FILES=("$@")  # ficheiros raw do catálogo a preservar entre resets
 
 BRANCH="${GITHUB_REF_NAME:-main}"
-SEED_AND_HTML=(data/seed-bundle.json demo.html index.html catalogo.html)
+# index.html/catalogo.html saíram daqui: são build outputs git-ignored,
+# construídos no deploy do Vercel a partir do template demo.html + seed.
+# (Mantê-los fazia o `git add` avisar "paths are ignored"; em workflows com
+# `set -e` isso matava o job — ver fix de 2026-07-25.)
+SEED_AND_HTML=(data/seed-bundle.json demo.html)
 
 # Garantir identidade git. CRÍTICO: alguns workflows definem a identidade só
 # via env (GIT_AUTHOR_NAME/…) no step de commit, que NÃO se propaga até aqui.

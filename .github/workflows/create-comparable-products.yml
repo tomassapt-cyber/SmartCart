@@ -63,11 +63,11 @@ jobs:
           GIT_COMMITTER_EMAIL: bot@girlmath.pt
         run: |
           set -e
-          if git diff --quiet -- data/seed-bundle.json demo.html index.html catalogo.html; then
+          if git diff --quiet -- data/seed-bundle.json demo.html; then
             echo "Nenhum produto comparável novo — nada a fazer."
             exit 0
           fi
-          git add data/seed-bundle.json demo.html index.html catalogo.html
+          git add data/seed-bundle.json demo.html
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "chore: produtos comparáveis (v2) ($DATE)" \
             -m "Cria produtos novos com EAN em >=2 lojas. Auto via GitHub Actions."
