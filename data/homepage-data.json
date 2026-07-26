@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-25T11:43:51.930Z",
-  "seed_total_products": 58397,
+  "generated_at": "2026-07-26T06:16:58.984Z",
+  "seed_total_products": 58527,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -85,14 +85,14 @@
       "best_url": "https://www.pharma-gdd.com/fr/svr-sebiaclear-serum"
     },
     {
-      "ean": "3337875597272",
-      "name": "CeraVe Creme Reparador Contorno de Olhos",
-      "brand": "CeraVe",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
-      "best_price": 10.65,
-      "best_store": "Farmácias Progresso",
-      "best_store_slug": "farmaciasprogresso",
-      "best_url": "https://www.farmaciasprogresso.pt/cerave-spec-moistcr-repar-olhos-14g"
+      "ean": "3401348840421",
+      "name": "Sébium Hydra",
+      "brand": "Bioderma",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797462.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.69,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/bioderma-sebium-hydra-creme-hydratante-40ml"
     },
     {
       "ean": "3337875829007",
@@ -147,14 +147,14 @@
       "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
     },
     {
-      "ean": "7612412429886",
-      "name": "Curaprox Kit de viagem Be You Challenger",
-      "brand": "Curaprox",
-      "image_url": "https://static.lojadafarmacia.com/12025/curaprox-kit-viagem-be-you-challenger.jpg",
-      "best_price": 7.99,
-      "best_store": "Poupafarma",
-      "best_store_slug": "poupafarma",
-      "best_url": "https://www.poupafarma.pt/curaprox-kit-de-viagem-rosa"
+      "ean": "3337875909303",
+      "name": "La Roche-Posay Effaclar Duo+M Gel-Creme Tom Light - Farmácia ...",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.farmaciabarreiros.com/38085/la-roche-posay-effaclar-duom-gel-creme-tom-light-40-ml.jpg",
+      "best_price": 14,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-light-40ml"
     }
   ],
   "em_alta": [
@@ -232,15 +232,15 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1947
+      "products": 1939
     },
     {
       "name": "Isdin",
-      "products": 767
+      "products": 765
     },
     {
       "name": "Clarins",
-      "products": 678
+      "products": 680
     },
     {
       "name": "Avène",
@@ -251,16 +251,16 @@
       "products": 620
     },
     {
+      "name": "La Roche-Posay",
+      "products": 599
+    },
+    {
       "name": "Eucerin",
       "products": 596
     },
     {
-      "name": "La Roche-Posay",
-      "products": 596
-    },
-    {
       "name": "Bioderma",
-      "products": 582
+      "products": 586
     }
   ],
   "telegram_alerts": [
