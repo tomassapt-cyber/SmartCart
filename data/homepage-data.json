@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-26T06:16:58.984Z",
-  "seed_total_products": 58527,
+  "generated_at": "2026-07-27T06:47:53.563Z",
+  "seed_total_products": 58557,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -201,38 +201,38 @@
       "verified_live": true
     },
     {
-      "ean": "3337875945820",
-      "name": "CeraVe Leite Solar Hidratante Invisível SPF30",
-      "brand": null,
-      "image_url": "https://cdn1.costatic.com/img/product/400/69c415751e613/cerave-leite-solar-p114722.jpg",
-      "best_price": 7.32,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/cerave-locao-protetora-invisivel-hidratante-spf-30-75ml",
-      "previous_price": 11.87,
-      "discount_pct": 38,
-      "dropped_day": 20650,
+      "ean": "4057599003376",
+      "name": "Bepanthen SensiControl Creme Emoliente",
+      "brand": "Bepanthene",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/bepanthen/35729_main-800x800.jpg",
+      "best_price": 14.07,
+      "best_store": "Nossa Farmácia",
+      "best_store_slug": "nossafarmacia",
+      "best_url": "https://www.nossafarmacia.pt/bepanthene-sensicontrol-creme-emoliente-p-atopica-400ml/p",
+      "previous_price": 22.21,
+      "discount_pct": 37,
+      "dropped_day": 20652,
       "verified_live": true
     },
     {
-      "ean": "3282770114195",
-      "name": "Avene Xeracalm Ad Creme Relipidante",
-      "brand": "Avène",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/avene-xeracalm-ad-creme-relipidante-400ml-kzkKr.webp",
-      "best_price": 13.46,
+      "ean": "8032472013686",
+      "name": "Golamir 2Act Spray Sem Álcool",
+      "brand": "Aboca",
+      "image_url": "https://cdn.care2me.pt/documentos/image/produtos/catalogo/6242289.webp",
+      "best_price": 8.45,
       "best_store": "ShopCosmetics",
       "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/pele-atopica/993-avène-xeracalm-creme-relipidante-400-ml-3282770114195.html",
-      "previous_price": 21.42,
-      "discount_pct": 37,
-      "dropped_day": 20658,
+      "best_url": "https://shopcosmetics.pt/suplementos/3304-aboca-golamir-2act-spray-sem-álcool-30ml.html",
+      "previous_price": 13.19,
+      "discount_pct": 36,
+      "dropped_day": 20653,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1939
+      "products": 1940
     },
     {
       "name": "Isdin",
@@ -244,7 +244,7 @@
     },
     {
       "name": "Avène",
-      "products": 678
+      "products": 679
     },
     {
       "name": "Nivea",
@@ -260,7 +260,7 @@
     },
     {
       "name": "Bioderma",
-      "products": 586
+      "products": 585
     }
   ],
   "telegram_alerts": [
