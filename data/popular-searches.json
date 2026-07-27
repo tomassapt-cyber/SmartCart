@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T07:57:43.659Z",
+  "generated_at": "2026-07-27T08:55:34.906Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -12,19 +12,7 @@
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/",
       "search_term": "vitamina c rosto melhores",
-      "pop_score": 59
-    },
-    {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 17.76,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/isdin-fotoprotector-fusion-water-rosto-spf50-50ml",
-      "search_term": "protetor solar facial la roche",
-      "pop_score": 46
+      "pop_score": 64
     },
     {
       "ean": "3337875492799",
@@ -59,8 +47,32 @@
       "best_store": "DocMorris",
       "best_store_slug": "docmorris",
       "best_url": "https://www.docmorris.pt/pt/isdin-fotoprotector-fusion-water-magic-bronze-spf50-50ml/p-614628",
-      "search_term": "protetor solar com cor la roche",
-      "pop_score": 33
+      "search_term": "protetor solar com cor",
+      "pop_score": 34
+    },
+    {
+      "ean": "8429420158399",
+      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
+      "best_price": 19.22,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/fotoprotetor-isdin-fusion-water-spf50-50ml",
+      "search_term": "protetor solar facial",
+      "pop_score": 34
+    },
+    {
+      "ean": "5201279072193",
+      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
+      "brand": "Apivita",
+      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
+      "best_price": 2.45,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/",
+      "search_term": "mascara facial coreana",
+      "pop_score": 29
     },
     {
       "ean": "3282779416139",
@@ -72,7 +84,7 @@
       "best_store_slug": "atuafarmacia",
       "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml",
       "search_term": "creme de maos loccitane",
-      "pop_score": 27
+      "pop_score": 28
     },
     {
       "ean": "0717334253124",
@@ -85,18 +97,6 @@
       "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
       "search_term": "esfoliante facial caseiro",
       "pop_score": 25
-    },
-    {
-      "ean": "5201279072193",
-      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
-      "brand": "Apivita",
-      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
-      "best_price": 2.45,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/",
-      "search_term": "mascara facial coreana",
-      "pop_score": 22
     }
   ]
 }
