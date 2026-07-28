@@ -80,6 +80,41 @@ async function upsert(table, rows, onConflict) {
     const { aplicadas, total } = applyVerifiedShipping(seed, ROOT);
     console.log(`  portes verificados: ${aplicadas}/${total} lojas corrigidas (store-shipping.json)`);
   }
+
+  // ── PARIDADE COM O SITE (2026-07-28) ────────────────────────────────────
+  // Medido pelo scripts/audit-db-vs-render.js: a BD mostrava 6.485 produtos e
+  // ~13.900 ofertas que o site principal esconde de propósito. Causa: os
+  // overlays viviam só no inject. Estes três JÁ eram funções reutilizáveis —
+  // aplicam-se aqui pela MESMA ordem do site, sem tocar no inject (portanto
+  // sem qualquer risco de alterar o que o site rende).
+  // Ficam de fora, por enquanto, os que ainda são inline no inject (ofertas
+  // podres e filtro de visibilidade) — próximo passo, com prova por hash.
+  {
+    const { mergeEanVariants } = require('./dedup-ean-variants');
+    const r = mergeEanVariants(seed);
+    if (r.merged) console.log(`  merge de GTIN (UPC-A↔EAN-13): ${r.merged} produtos · ${r.remapped} ofertas`);
+  }
+  {
+    const { foldPromoVariants } = require('./lib/promo-fold');
+    const r = foldPromoVariants(seed);
+    if (r.folded) console.log(`  promo-fold: ${r.folded} variantes fundidas · ${r.movedOffers} ofertas movidas`);
+  }
+  {
+    // usa a cache committed data/ghost-check.json (404 já confirmados) — sem rede
+    const { dropGhostOffers } = require('./lib/ghost-offers');
+    const r = dropGhostOffers(seed);
+    if (r.totalGhost) console.log(`  ofertas-fantasma removidas: ${r.totalGhost} (confirmadas 404)`);
+  }
+  {
+    // ofertas podres + filtro de visibilidade: a MESMA lib que o site usa
+    // (scripts/lib/catalog-visibility.js). São estes dois que fechavam o grosso
+    // da divergência — órfãos, esgotados, stale e ofertas paradas.
+    const { dropRottenOffers, applyVisibilityFilter } = require('./lib/catalog-visibility');
+    const rp = dropRottenOffers(seed);
+    if (rp.hidden) console.log(`  ofertas podres removidas: ${rp.hidden} (>${rp.MAX_LAG_DAYS}d atrás do refresh da loja)`);
+    const rv = applyVisibilityFilter(seed, isNonCosmetic);
+    console.log(`  filtro de visibilidade: ${rv.hidden} produtos ocultos (${rv.visiveis} publicáveis) · ${rv.hiddenOffers} ofertas`);
+  }
   const stores = (seed.stores || []).map(s => ({
     slug: s.slug, name: s.name || s.slug, base_url: s.base_url || null,
     free_shipping_threshold: s.free_shipping_threshold ?? null,

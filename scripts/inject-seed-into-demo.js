@@ -204,34 +204,11 @@ const seedJson = JSON.parse(seed);
 // paradas (smartbeauty/beleza37 11d, sobeauty/powerbeauty 6d). Por isso há
 // agora também um tecto ABSOLUTO: 14 dias (folgado de propósito — as lojas
 // SÓ-PC refrescam à mão e não vale a pena amputar cobertura por 8 dias).
-(function dropRottenOffers() {
-  const DAY = 864e5, MAX_LAG_DAYS = 7, MAX_ABS_DAYS = 14;
-  const ageOf = (it) => {
-    let t = +new Date(it.verified_at || 0);
-    for (const v of (it.variants || [])) { const tv = +new Date(v.verified_at || 0); if (tv > t) t = tv; }
-    return t;
-  };
-  const AGORA = Date.now();
-  let hidden = 0, hiddenAbs = 0; const perStore = [], perStoreAbs = [];
-  for (const sp of seedJson.store_products) {
-    let freshest = 0;
-    for (const it of sp.items) { const t = ageOf(it); if (t > freshest) freshest = t; }
-    if (!freshest) continue;
-    const before = sp.items.length;
-    let absLoja = 0;
-    sp.items = sp.items.filter(it => {
-      const t = ageOf(it);
-      if (!t) return true;
-      if ((freshest - t) > MAX_LAG_DAYS * DAY) return false;          // relativo à loja
-      if ((AGORA - t) > MAX_ABS_DAYS * DAY) { absLoja++; return false; } // tecto absoluto
-      return true;
-    });
-    const n = before - sp.items.length;
-    if (n) { hidden += n; perStore.push(`${sp.store_slug}:${n}`); }
-    if (absLoja) { hiddenAbs += absLoja; perStoreAbs.push(`${sp.store_slug}:${absLoja}`); }
-  }
-  if (hidden) console.log(`🥀 Ofertas podres escondidas (>${MAX_LAG_DAYS}d atrás do refresh da loja): ${hidden} · ${perStore.join(', ')}`);
-  if (hiddenAbs) console.log(`⏳ Destas, por tecto absoluto (>${MAX_ABS_DAYS}d — loja parada por inteiro): ${hiddenAbs} · ${perStoreAbs.join(', ')}`);
+(function esconderOfertasPodres() {
+  const { dropRottenOffers } = require('./lib/catalog-visibility');
+  const r = dropRottenOffers(seedJson);
+  if (r.hidden) console.log(`🥀 Ofertas podres escondidas (>${r.MAX_LAG_DAYS}d atrás do refresh da loja): ${r.hidden} · ${r.perStore.join(', ')}`);
+  if (r.hiddenAbs) console.log(`⏳ Destas, por tecto absoluto (>${r.MAX_ABS_DAYS}d — loja parada por inteiro): ${r.hiddenAbs} · ${r.perStoreAbs.join(', ')}`);
 })();
 
 // ── Filtro de visibilidade (NÃO-destrutivo) ──────────────────────────────
@@ -244,50 +221,10 @@ const seedJson = JSON.parse(seed);
 //   1. Órfão     — sem nenhuma oferta de loja (sem preço nem link).
 //   2. Fora-site — TODAS as ofertas não verificadas há > STALE_DAYS dias.
 //   3. Esgotado  — TODAS as ofertas com in_stock === false.
-const STALE_DAYS = 14;
-(function applyVisibilityFilter() {
-  const offersByEan = {};
-  for (const sp of seedJson.store_products)
-    for (const it of sp.items) (offersByEan[it.ean] ||= []).push(it);
-
-  // "Agora" robusto = verified_at mais recente do seed (evita marcar tudo
-  // stale se o relógio do CI divergir do horário real do utilizador).
-  let maxTs = Date.now();
-  for (const offs of Object.values(offersByEan))
-    for (const o of offs) { const t = +new Date(o.verified_at || 0); if (t > maxTs) maxTs = t; }
-  const ageDays = (o) => o.verified_at ? (maxTs - new Date(o.verified_at)) / 864e5 : Infinity;
-
-  // Comparabilidade: nº de lojas distintas com preço (>=2 = comparável).
-  const storesWithPrice = {};
-  for (const sp of seedJson.store_products)
-    for (const it of sp.items)
-      if (it.price > 0) (storesWithPrice[it.ean] ||= new Set()).add(sp.store_slug);
-  const comparable = (ean) => (storesWithPrice[ean] ? storesWithPrice[ean].size : 0) >= 2;
-
-  const visibleEans = new Set();
-  for (const p of seedJson.products) {
-    const offs = offersByEan[p.ean] || [];
-    if (isNonCosmetic(p.name)) continue;                      // 0. não é cosmética (auditado 2026-07-25)
-    if (offs.length === 0) continue;                          // 1. órfão
-    if (offs.every(o => o.in_stock === false)) continue;      // 2. esgotado → SEMPRE esconde
-    // 3. fora-de-site (todas as ofertas stale >14d): só esconde os NÃO-comparáveis;
-    //    um produto comparável (>=2 lojas c/ preço) e em stock mantém-se visível.
-    if (!comparable(p.ean) && offs.every(o => ageDays(o) > STALE_DAYS)) continue;
-    visibleEans.add(p.ean);
-  }
-
-  const totalProducts = seedJson.products.length;
-  const totalOffers = seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0);
-
-  // Manter só produtos visíveis + as ofertas desses produtos (remover as
-  // ofertas dos ocultos evita contagens infladas e links partidos).
-  seedJson.products = seedJson.products.filter(p => visibleEans.has(p.ean));
-  for (const sp of seedJson.store_products)
-    sp.items = sp.items.filter(it => visibleEans.has(it.ean));
-
-  const hidden = totalProducts - seedJson.products.length;
-  const hiddenOffers = totalOffers - seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0);
-  console.log(`🙈 Filtro de visibilidade: ${hidden} produtos ocultos (${seedJson.products.length} visíveis) · ${hiddenOffers} ofertas removidas do render.`);
+(function aplicarFiltroDeVisibilidade() {
+  const { applyVisibilityFilter } = require('./lib/catalog-visibility');
+  const r = applyVisibilityFilter(seedJson, isNonCosmetic);
+  console.log(`🙈 Filtro de visibilidade: ${r.hidden} produtos ocultos (${r.visiveis} visíveis) · ${r.hiddenOffers} ofertas removidas do render.`);
 })();
 
 // ── Strip de descrições do render (NÃO-destrutivo) ───────────────────────
