@@ -244,16 +244,10 @@ if (strippedDesc) console.log(`✂  Descrições removidas do render: ${stripped
 // híbridos — ver scripts/build-name-translations.js). Aplicamos SÓ à cópia
 // em-memória que vai para o HTML; o seed-bundle.json mantém o nome original
 // (fingerprint do dedup). Auto-reverte se o overlay for limpo.
-let renamed = 0;
-const TR_FILE = path.join(ROOT, 'data', 'translations.json');
-if (fs.existsSync(TR_FILE)) {
-  try {
-    const names = (JSON.parse(fs.readFileSync(TR_FILE, 'utf8')).names) || {};
-    for (const p of seedJson.products) {
-      if (names[p.ean] && names[p.ean] !== p.name) { p.name = names[p.ean]; renamed++; }
-    }
-  } catch (e) { console.warn('⚠  translations.json names não aplicado:', e.message); }
-}
+// (2026-07-28) A implementação vive agora em scripts/lib/name-translations.js,
+// partilhada com o push-catalog-to-db.js — enquanto era só aqui, a BD (e o
+// app.html) serviam os nomes originais em ES/FR das lojas estrangeiras.
+const { renamed } = require('./lib/name-translations').applyNameTranslations(seedJson, ROOT);
 if (renamed) console.log(`🇵🇹 Nomes traduzidos aplicados ao render: ${renamed} (seed-bundle.json intacto)`);
 
 // Adicionar um comentário identificativo no início do JSON injectado

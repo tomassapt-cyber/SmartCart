@@ -22,6 +22,7 @@ const path = require('path');
 const { fixCategory } = require('./lib/classify-category');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 const { applyVerifiedShipping } = require('./lib/verified-shipping');
+const { loadNameTranslations } = require('./lib/name-translations');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -155,9 +156,17 @@ async function upsert(table, rows, onConflict) {
   // usa as ofertas embebidas, não min_price. Auditoria 2026-07-24).
   // fora do catálogo o que não é cosmética (auditado 2026-07-25) — a montra, a
   // pesquisa e as categorias do app.html ficam só com cosmética a sério.
+  // Nomes PT (2026-07-28): a BD servia os nomes originais em ES/FR das lojas
+  // estrangeiras, que o site já mostra traduzidos. ORDEM CRÍTICA — o
+  // isNonCosmetic e o fixCategory abaixo correm sobre o nome ORIGINAL (p.name);
+  // a tradução entra só no campo `name` que vai para a BD. Trocar a ordem
+  // partiria a classificação (ver scripts/lib/name-translations.js).
+  const nomesPT = loadNameTranslations(ROOT);
+  let traduzidos = 0;
   const products = (seed.products || []).filter(p => p.ean && p.name && !isNonCosmetic(p.name)).map(p => {
+    const nomePT = nomesPT[p.ean] && nomesPT[p.ean] !== p.name ? (traduzidos++, nomesPT[p.ean]) : p.name;
     const base = {
-      ean: p.ean, name: p.name, brand: p.brand || null, category: fixCategory(p.name, p.category),
+      ean: p.ean, name: nomePT, brand: p.brand || null, category: fixCategory(p.name, p.category),
       image_url: safeUrl(p.image_url), updated_at: runTs,
     };
     if (hasPopCols) {
@@ -168,6 +177,7 @@ async function upsert(table, rows, onConflict) {
     }
     return base;
   });
+  if (traduzidos) console.log(`  nomes traduzidos para PT: ${traduzidos} (o site já os mostrava assim)`);
   const eanSet = new Set(products.map(p => p.ean));
   const storeSet = new Set(stores.map(s => s.slug));   // FK offers.store_slug (auditoria)
 
