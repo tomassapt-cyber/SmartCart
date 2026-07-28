@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-28T03:46:59.937Z",
-  "seed_total_products": 58391,
+  "generated_at": "2026-07-28T06:08:03.734Z",
+  "seed_total_products": 58598,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -11,16 +11,6 @@
       "best_store": "Pharma Scalabis",
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/"
-    },
-    {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.22,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/fotoprotetor-isdin-fusion-water-spf50-50ml"
     },
     {
       "ean": "3337875492799",
@@ -51,6 +41,16 @@
       "best_store": "My Cosmetics",
       "best_store_slug": "mycosmetics",
       "best_url": "https://www.mycosmetics.pt/products/isdin-fotoprotector-fusion-water-bronze-spf50-50ml"
+    },
+    {
+      "ean": "8429420158399",
+      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
+      "best_price": 19.22,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/fotoprotetor-isdin-fusion-water-spf50-50ml"
     }
   ],
   "bestsellers": [
@@ -85,14 +85,14 @@
       "best_url": "https://www.pharma-gdd.com/fr/svr-sebiaclear-serum"
     },
     {
-      "ean": "3337875597272",
-      "name": "CeraVe Creme Reparador Contorno de Olhos",
-      "brand": "CeraVe",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
-      "best_price": 10.65,
-      "best_store": "Farmácias Progresso",
-      "best_store_slug": "farmaciasprogresso",
-      "best_url": "https://www.farmaciasprogresso.pt/cerave-spec-moistcr-repar-olhos-14g"
+      "ean": "3401348840421",
+      "name": "Sébium Hydra",
+      "brand": "Bioderma",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797462.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.69,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/bioderma-sebium-hydra-creme-hydratante-40ml"
     },
     {
       "ean": "3337875829007",
@@ -147,14 +147,14 @@
       "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
     },
     {
-      "ean": "7612412429886",
-      "name": "Curaprox Kit de viagem Be You Challenger",
-      "brand": "Curaprox",
-      "image_url": "https://static.lojadafarmacia.com/12025/curaprox-kit-viagem-be-you-challenger.jpg",
-      "best_price": 7.99,
-      "best_store": "Poupafarma",
-      "best_store_slug": "poupafarma",
-      "best_url": "https://www.poupafarma.pt/curaprox-kit-de-viagem-rosa"
+      "ean": "3337875909303",
+      "name": "La Roche-Posay Effaclar Duo+M Gel-Creme Tom Light - Farmácia ...",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.farmaciabarreiros.com/38085/la-roche-posay-effaclar-duom-gel-creme-tom-light-40-ml.jpg",
+      "best_price": 14,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-effaclar-duo-m-gel-creme-light-40ml"
     }
   ],
   "em_alta": [
@@ -187,6 +187,20 @@
       "verified_live": true
     },
     {
+      "ean": "8432225113593",
+      "name": "Hydrating Shampoo",
+      "brand": "REVLON PRO YOU",
+      "image_url": "https://www.druni.pt/media/catalog/product/7/0/7003197.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 3.95,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/revlon-pro-you-champo-hidratante-9055.html",
+      "previous_price": 6.78,
+      "discount_pct": 42,
+      "dropped_day": 20662,
+      "verified_live": true
+    },
+    {
       "ean": "3474636976126",
       "name": "Silver Conditioner",
       "brand": "L'Oréal Professionnel",
@@ -213,55 +227,40 @@
       "discount_pct": 37,
       "dropped_day": 20652,
       "verified_live": true
-    },
-    {
-      "ean": "3701436916787",
-      "name": "Phyto Nutrição Máscara",
-      "brand": "Phyto",
-      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/phyto-nutricao-mascara-75ml-large.jpg?v=1779182868",
-      "best_price": 8.39,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/phyto-nutricao-mascara-75ml",
-      "volume_ml": 75,
-      "previous_price": 13,
-      "discount_pct": 35,
-      "dropped_day": 20658,
-      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1947
+      "products": 1945
     },
     {
       "name": "Isdin",
-      "products": 766
+      "products": 765
     },
     {
       "name": "Clarins",
-      "products": 678
+      "products": 681
     },
     {
       "name": "Avène",
-      "products": 677
+      "products": 678
     },
     {
       "name": "Nivea",
       "products": 620
     },
     {
+      "name": "La Roche-Posay",
+      "products": 599
+    },
+    {
       "name": "Eucerin",
       "products": 596
     },
     {
-      "name": "La Roche-Posay",
-      "products": 596
-    },
-    {
       "name": "Bioderma",
-      "products": 583
+      "products": 586
     }
   ],
   "telegram_alerts": [
