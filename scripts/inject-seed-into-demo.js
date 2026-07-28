@@ -396,14 +396,16 @@ if (!DEPLOY) {
   // <script id="hp-data"> vive DENTRO de demo/index/catalogo — substituímos
   // in-place nos 3 ficheiros.
   const { spawnSync } = require('child_process');
-  // timeout 420s: o build cresceu para ~274s com 140k ofertas (2026-07-21); a
-  // 120s falhava SEMPRE e a homepage curada nunca regenerava (bloco hp-data
-  // congelava — exactamente o que o comentário acima diz que devia ser evitado).
-  // COSMATH_SKIP_HP=1: salta o rebuild do hp (274s) — landing rápido na vaga
-  // de refreshes; o hp aterra num passo separado a seguir (2026-07-22).
+  // timeout 900s (2026-07-25): o build cresceu para ~274s com 140k ofertas e,
+  // com a verificação ao vivo das descidas, passou dos 420s no CI — o run das
+  // 03h de 2026-07-25 morreu por timeout (stderr VAZIO, a assinatura de um
+  // spawnSync morto) e o hp-data ficou por regenerar SEM ninguém dar por isso.
+  // O build em si já foi acelerado (verificação concorrente + orçamento de
+  // 120s), isto é a margem de segurança. COSMATH_SKIP_HP=1 salta o rebuild —
+  // landing rápido na vaga de refreshes; o hp aterra num passo separado.
   const r1 = process.env.COSMATH_SKIP_HP === '1'
     ? { status: 1, stderr: 'saltado (COSMATH_SKIP_HP=1)' }
-    : spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 420000 });
+    : spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 900000 });
   if (r1.status === 0) {
     try {
       const hp = fs.readFileSync(path.join(ROOT, 'data', 'homepage-data.json'), 'utf8');
@@ -422,7 +424,17 @@ if (!DEPLOY) {
       }
       console.log(`🏠 Homepage curada regenerada (mínimo absoluto + overlays) em ${done} ficheiros.`);
     } catch (e) { console.warn('⚠ substituição hp-data falhou:', e.message); }
-  } else console.warn('⚠ build-homepage-data falhou:', (r1.stderr || '').slice(0, 200));
+  } else {
+    // Diagnóstico explícito (2026-07-25): quando o spawnSync é morto por
+    // timeout, o stderr vem VAZIO — e o aviso genérico não dizia porquê, pelo
+    // que o hp ficou 3 dias sem regenerar sem ninguém perceber a causa.
+    const porTimeout = r1.error && r1.error.code === 'ETIMEDOUT';
+    const motivo = porTimeout ? 'TIMEOUT (excedeu o tempo permitido)'
+      : (r1.stderr || '').trim() ? (r1.stderr || '').slice(0, 300)
+      : `saiu com status ${r1.status}${r1.signal ? ' / sinal ' + r1.signal : ''} e stderr vazio (provável timeout)`;
+    console.warn(`⚠ build-homepage-data NÃO regenerou o hp-data — ${motivo}`);
+    console.warn('   → o "Em alta" fica com o conteúdo anterior; a guarda de frescura do daily-scrape torna isto vermelho se persistir.');
+  }
 }
 
 // ── Índice de descrições p/ o scan por foto (data/scan-index.json) ──

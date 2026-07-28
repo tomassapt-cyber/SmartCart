@@ -19,7 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { isNonCosmetic, parsePriceEU } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -146,7 +146,7 @@ const FETCH_BLOCKED = new Set(['sweetcare', 'atida', 'notino', 'perfumesclub', '
 const LIVE_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 async function livePricesFor(url) {
   try {
-    const r = await fetch(url, { headers: { 'User-Agent': LIVE_UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(12000) });
+    const r = await fetch(url, { headers: { 'User-Agent': LIVE_UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(8000) });
     if (!r.ok) return null;
     const h = await r.text();
     const prices = [];
@@ -157,13 +157,13 @@ async function livePricesFor(url) {
           const offs = o && o.offers;
           if (!offs) continue;
           for (const of_ of (Array.isArray(offs) ? offs : [offs])) {
-            for (const v of [of_.price, of_.lowPrice, of_.highPrice]) { const p = parseFloat(String(v).replace(',', '.')); if (p > 0) prices.push(p); }
+            for (const v of [of_.price, of_.lowPrice, of_.highPrice]) { const p = parsePriceEU(v); if (p > 0) prices.push(p); }
           }
         }
       } catch { /* ld inválido */ }
     }
     for (const re of [/property=["']product:price:amount["'][^>]*content=["']([\d.,]+)/, /itemprop=["']price["'][^>]*content=["']([\d.,]+)/, /content=["']([\d.,]+)["'][^>]*itemprop=["']price["']/]) {
-      const m = h.match(re); if (m) { const p = parseFloat(m[1].replace(',', '.')); if (p > 0) prices.push(p); }
+      const m = h.match(re); if (m) { const p = parsePriceEU(m[1]); if (p > 0) prices.push(p); }
     }
     return prices.length ? prices : null;
   } catch { return null; }
@@ -187,6 +187,13 @@ async function livePricesFor(url) {
 // pode encabeçar o "Em alta". Lista curta e literal de propósito (nada de
 // palavras ambíguas que apanhem cosmética a sério).
 const FORA_DA_MONTRA = /\b(bomba(s)? (de |tira[- ]?)?leite|tira[- ]?leite|extra(c|ç)[aã]o de leite|biber[aã]o|biberon|chupeta|tetina|term[oó]metro|esterilizador|fralda(s)?|leite infantil|papa infantil|teste de gravidez|preservativo(s)?|nebulizador|tensi[oó]metro|compressa(s)?|ligadura(s)?|gaze|penso(s)? r[aá]pido(s)?|seringa(s)?|agulha(s)?|algod[aã]o hidr[oó]filo|soro fisiol[oó]gico|luva(s)? (de |cir[uú]rgica)|m[aá]scara(s)? cir[uú]rgica(s)?|canadiana|meia(s)? de compress[aã]o|penso(s)?|adesivo(s)?|gummies|gomas|p[oó] de prote[ií]na|poudre de prot|prote[ií]nas? em p[oó]|gel nasal|spray nasal|soro nasal|descongestionante|afta(s)?|bolsa (de )?gel|quente\/frio|(faixa|cinta|banda|almofada|saco|bolsa|manta)s? t[ée]rmica?s?|joelheira|cotoveleira|tornozeleira|cinta abdominal|b[aá]lsamo peitoral|articula[çc][õo]es e m[uú]sculos)\b/i;
+
+// Marcas de fitoterapia/medicamento que NÃO devem encabeçar uma montra de
+// cosmética. Só afecta a MONTRA (os produtos continuam no catálogo): há nomes
+// que nenhuma regex denuncia — 'Aboca Golamir 2Act Spray Sem Álcool' é um
+// spray para a garganta e o nome não o diz. O catálogo da marca confirma-o:
+// xaropes, comprimidos, cápsulas, micro clister, pomada endorectal.
+const MARCAS_FORA_DA_MONTRA = /\b(aboca)\b/i;
 
 async function computeEmAlta(seed) {
   const HIST = path.join(ROOT, 'data', 'price-history.json');
@@ -276,6 +283,7 @@ async function computeEmAlta(seed) {
     if (!p || !p.image_url) continue;
     if (isNonCosmetic(p.name)) continue;             // sem brinquedos/puericultura
     if (FORA_DA_MONTRA.test(p.name)) continue;       // reforço da montra (ver topo)
+    if (MARCAS_FORA_DA_MONTRA.test((p.brand || '') + ' ' + p.name)) continue;
     // pedido do user 2026-07-22: só entra quem é COMPARADO em ≥5 lojas — uma
     // descida validada por comparação ampla é muito mais fiável (e mais útil).
     if (countStores(seed, d.ean) < 5) continue;
@@ -320,24 +328,40 @@ async function computeEmAlta(seed) {
   //     podres (>=7d) e fantasmas ANTES de chegarmos aqui;
   //   • os verificados vêm sempre primeiro, por isso o slot 0 (o que dá o
   //     título "promoções verificadas" à secção) é verificado sempre que exista.
-  const ALVO = 5, MAX_POR_MARCA = 2, MAX_FETCHES = 25;
+  const ALVO = 5, MAX_POR_MARCA = 2, MAX_FETCHES = 24, CONC = 6, ORCAMENTO_MS = 120000;
   const cabe = (cp, lista) => lista.length < ALVO &&
     lista.filter(x => String(x.brand || '').toLowerCase() === String(cp.brand || '').toLowerCase()).length < MAX_POR_MARCA;
   const verificados = [], reserva = [];
-  let fetches = 0;
+  // CONCORRENTE + com orçamento de tempo (2026-07-25): era sequencial (até 25
+  // fetches × 12s = 300s) e fazia o build rebentar o timeout de 420s do inject
+  // no CI — o hp-data nunca era regenerado e o "Em alta" congelava. Agora vão
+  // CONC a CONC, com 8s por fetch e um tecto global; o que não der tempo cai
+  // na reserva (não é descartado — só não chegou a ser provado).
+  const fila = [], tentar = [];
   for (const cp of cands) {
-    if (verificados.length >= ALVO) break;
-    if (!cp.best_url || FETCH_BLOCKED.has(cp.best_store_slug) || fetches >= MAX_FETCHES) { reserva.push(cp); continue; }
-    fetches++;
-    const lp = await livePricesFor(cp.best_url);
-    const ok = lp && lp.some(p => Math.abs(p - cp.best_price) / cp.best_price <= 0.10);
-    if (!ok) {
-      console.log(`    em-alta: ✗ ${cp.ean} @${cp.best_store_slug} seed=${cp.best_price}€ live=[${(lp || []).slice(0, 3).join(',')}] — descartado`);
-      continue;   // falhou a prova → fora de vez (NÃO vai para reserva)
-    }
-    cp.verified_live = true;
-    if (cabe(cp, verificados)) verificados.push(cp);
+    if (cp.best_url && !FETCH_BLOCKED.has(cp.best_store_slug) && tentar.length < MAX_FETCHES) tentar.push(cp);
+    else fila.push(cp);
   }
+  const t0 = Date.now();
+  for (let i = 0; i < tentar.length; i += CONC) {
+    if (verificados.length >= ALVO) { reserva.push(...tentar.slice(i)); break; }
+    if (Date.now() - t0 > ORCAMENTO_MS) {
+      console.log(`    em-alta: ⏱ orçamento de ${ORCAMENTO_MS / 1000}s esgotado — ${tentar.length - i} candidatos ficam por verificar`);
+      reserva.push(...tentar.slice(i)); break;
+    }
+    const lote = tentar.slice(i, i + CONC);
+    const res = await Promise.all(lote.map(cp => livePricesFor(cp.best_url).then(lp => ({ cp, lp })).catch(() => ({ cp, lp: null }))));
+    for (const { cp, lp } of res) {
+      const ok = lp && lp.some(p => Math.abs(p - cp.best_price) / cp.best_price <= 0.10);
+      if (!ok) {
+        console.log(`    em-alta: ✗ ${cp.ean} @${cp.best_store_slug} seed=${cp.best_price}€ live=[${(lp || []).slice(0, 3).join(',')}] — descartado`);
+        continue;   // falhou a prova → fora de vez (NÃO vai para reserva)
+      }
+      cp.verified_live = true;
+      if (cabe(cp, verificados)) verificados.push(cp);
+    }
+  }
+  reserva.push(...fila);
   const out = verificados.slice();
   for (const cp of reserva) { if (!cabe(cp, out)) continue; out.push(cp); }
   console.log(`    em-alta: ${verificados.length} verificados ao vivo + ${out.length - verificados.length} de reserva = ${out.length}/${ALVO}`);
