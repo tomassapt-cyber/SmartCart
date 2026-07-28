@@ -135,9 +135,13 @@ async function upsert(table, rows, onConflict) {
     for (const it of g.items || []) {
       if (!it.ean || it.in_stock === false || !(it.price > 0)) continue;
       if (blocked.has(g.store_slug + '|' + it.ean)) continue;
-      const e = pop[it.ean] || (pop[it.ean] = { stores: new Set(), min: Infinity, minStore: null });
+      // packs multi-unidade ficam FORA do melhor/pior preço: o preço de um
+      // pack de 2 distorce a comparação por unidade (mesma regra do site).
+      if (it.promo_pack) continue;
+      const e = pop[it.ean] || (pop[it.ean] = { stores: new Set(), min: Infinity, minStore: null, max: 0 });
       e.stores.add(g.store_slug);
       if (it.price < e.min) { e.min = it.price; e.minStore = g.store_slug; }
+      if (it.price > e.max) { e.max = it.price; }
     }
   }
   let hasPopCols = false;
@@ -147,6 +151,15 @@ async function upsert(table, rows, onConflict) {
       hasPopCols = r.status < 400;
     } catch { /* mantém false */ }
     console.log(`  colunas de popularidade (migration 005): ${hasPopCols ? 'presentes ✓' : 'ausentes — sync sem elas (aplicar 005)'}`);
+  }
+  // colunas de promoção/estatística (migration 010) — mesmo padrão.
+  let hasPromoCols = false;
+  if (URL_ && KEY) {
+    try {
+      const r = await fetch(`${URL_}/rest/v1/offers?select=promo_note&limit=0`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY }, signal: AbortSignal.timeout(15000) });
+      hasPromoCols = r.status < 400;
+    } catch { /* mantém false */ }
+    console.log(`  colunas de promoção/estatística (migration 010): ${hasPromoCols ? 'presentes ✓' : 'ausentes — aplicar 010'}`);
   }
   // coluna de pesquisa sem acentos (migration 009) — mesmo padrão: degrada
   // graciosamente enquanto a migração não estiver aplicada.
@@ -185,6 +198,7 @@ async function upsert(table, rows, onConflict) {
       base.n_stores = e ? e.stores.size : 0;
       base.min_price = e && isFinite(e.min) ? e.min : null;
       base.min_price_store = e ? e.minStore : null;
+      if (hasPromoCols) base.max_price = e && e.max > 0 ? e.max : null;
     }
     // texto pesquisável sem acentos — usa o nome JÁ TRADUZIDO (é o que o
     // utilizador vê e escreve) + a marca.
@@ -208,6 +222,9 @@ async function upsert(table, rows, onConflict) {
         discount_pct: it.discount_pct != null ? Math.round(it.discount_pct) : null,
         in_stock: it.in_stock !== false, url: safeUrl(it.url),
         verified_at: it.verified_at || null, synced_at: runTs,
+        // criados pelo overlay promo-fold (não existem no seed em disco):
+        // a etiqueta "🎁 +15ml grátis" e a marca de pack multi-unidade.
+        ...(hasPromoCols ? { promo_note: it.promo_note ?? null, promo_pack: !!it.promo_pack } : {}),
       });
     }
   }
@@ -238,6 +255,8 @@ async function upsert(table, rows, onConflict) {
           if (!cur || v.price < cur.price) bestVar.set(k, {
             store_slug: g.store_slug, ean: it.ean, volume_ml: ml, price: v.price,
             url: safeUrl(v.url) || safeUrl(it.url), in_stock: v.in_stock !== false, synced_at: runTs,
+            // preço riscado / "−X%" ao volume escolhido, dentro da folha de comparação
+            ...(hasPromoCols ? { previous_price: v.previous_price ?? null } : {}),
           });
         }
       }
