@@ -358,7 +358,7 @@ const HP_OPEN = '<script type="application/json" id="hp-data">';
 if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
   // mesmo escape do seed: o hp-data também traz nomes de produto do scraping
   const hpData = fs.readFileSync(HP_DATA, 'utf8')
-    .replace(/</g, '\\u003c').replace(/ /g, '\\u2028').replace(/ /g, '\\u2029');
+    .replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
   const hpOpenIdx = next.indexOf(HP_OPEN);
   const hpAfterOpen = hpOpenIdx + HP_OPEN.length;
   const hpCloseIdx = next.indexOf(CLOSE, hpAfterOpen);
