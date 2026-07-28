@@ -21,6 +21,7 @@ const fs = require('fs');
 const path = require('path');
 const { fixCategory } = require('./lib/classify-category');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { applyVerifiedShipping } = require('./lib/verified-shipping');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -71,6 +72,14 @@ async function upsert(table, rows, onConflict) {
   const blocked = new Set((() => { try { return (JSON.parse(fs.readFileSync(BL, 'utf8')).blocked || []).map(b => b.store_slug + '|' + b.ean); } catch { return []; } })());
   const runTs = new Date().toISOString();
 
+  // PORTES VERIFICADOS (2026-07-28): sem isto a BD ficava com os defaults
+  // adivinhados pelos integradores e o app.html mostrava portes errados em 33
+  // das 62 lojas — incluindo promessas falsas de "portes grátis". O site já
+  // aplicava este overlay; agora o sync usa a MESMA lib.
+  {
+    const { aplicadas, total } = applyVerifiedShipping(seed, ROOT);
+    console.log(`  portes verificados: ${aplicadas}/${total} lojas corrigidas (store-shipping.json)`);
+  }
   const stores = (seed.stores || []).map(s => ({
     slug: s.slug, name: s.name || s.slug, base_url: s.base_url || null,
     free_shipping_threshold: s.free_shipping_threshold ?? null,
