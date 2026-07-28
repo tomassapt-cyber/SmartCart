@@ -23,6 +23,7 @@ const { fixCategory } = require('./lib/classify-category');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 const { applyVerifiedShipping } = require('./lib/verified-shipping');
 const { loadNameTranslations } = require('./lib/name-translations');
+const { productSearchNorm } = require('./lib/search-norm');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -147,6 +148,16 @@ async function upsert(table, rows, onConflict) {
     } catch { /* mantém false */ }
     console.log(`  colunas de popularidade (migration 005): ${hasPopCols ? 'presentes ✓' : 'ausentes — sync sem elas (aplicar 005)'}`);
   }
+  // coluna de pesquisa sem acentos (migration 009) — mesmo padrão: degrada
+  // graciosamente enquanto a migração não estiver aplicada.
+  let hasSearchNorm = false;
+  if (URL_ && KEY) {
+    try {
+      const r = await fetch(`${URL_}/rest/v1/products?select=search_norm&limit=0`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY }, signal: AbortSignal.timeout(15000) });
+      hasSearchNorm = r.status < 400;
+    } catch { /* mantém false */ }
+    console.log(`  coluna de pesquisa sem acentos (migration 009): ${hasSearchNorm ? 'presente ✓' : 'ausente — aplicar 009 (a pesquisa perde ~6.000 resultados por acentos)'}`);
+  }
   // url/image só http(s) — a BD nunca guarda javascript:/data: vindos do
   // scraping (defesa em profundidade; app.html já valida no href) (auditoria).
   const safeUrl = u => { const x = String(u || ''); return /^https?:\/\//i.test(x) ? x : null; };
@@ -175,6 +186,9 @@ async function upsert(table, rows, onConflict) {
       base.min_price = e && isFinite(e.min) ? e.min : null;
       base.min_price_store = e ? e.minStore : null;
     }
+    // texto pesquisável sem acentos — usa o nome JÁ TRADUZIDO (é o que o
+    // utilizador vê e escreve) + a marca.
+    if (hasSearchNorm) base.search_norm = productSearchNorm({ name: nomePT, brand: p.brand });
     return base;
   });
   if (traduzidos) console.log(`  nomes traduzidos para PT: ${traduzidos} (o site já os mostrava assim)`);
