@@ -336,14 +336,29 @@ if (renamed) console.log(`🇵🇹 Nomes traduzidos aplicados ao render: ${renam
 // Adicionar um comentário identificativo no início do JSON injectado
 seedJson._comment = `Catálogo CosMath v1 — gerado em ${new Date().toISOString()} · ${seedJson.products.length} SKUs · ${seedJson.stores.length} lojas · ${seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0)} ofertas.`;
 
-const newBlock = '\n' + JSON.stringify(seedJson) + '\n';
+// SEGURANÇA (auditoria 2026-07-25): o JSON.stringify NÃO escapa "<", e o parser
+// de HTML fecha o <script> ao ver "</script" mesmo com type="application/json".
+// Um nome de produto vindo do scraping com "</script>" partia o bloco e o resto
+// do catálogo passava a ser interpretado como HTML na nossa origem (a mesma do
+// account.html, onde vive a sessão Supabase). Já há 20 nomes no seed com < > ou
+// aspas, e HTML cru de lojas chega mesmo ao seed (ex.: um nome com <span ...>).
+// Escapar "<" (e os separadores de linha U+2028/9, que partem o JS) resolve: é
+// JSON válido e desarma "</script", "<script" e "<!--".
+const jsonSeguro = o => JSON.stringify(o)
+  .replace(/</g, '\\u003c')
+  .replace(/\u2028/g, '\\u2028')
+  .replace(/\u2029/g, '\\u2029');
+
+const newBlock = '\n' + jsonSeguro(seedJson) + '\n';
 let next = html0.slice(0, afterOpen) + newBlock + html0.slice(closeIdx);
 
 // Injectar também homepage-data (10KB) no <script id="hp-data"> se existir
 const HP_DATA = path.join(ROOT, 'data', 'homepage-data.json');
 const HP_OPEN = '<script type="application/json" id="hp-data">';
 if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
-  const hpData = fs.readFileSync(HP_DATA, 'utf8');
+  // mesmo escape do seed: o hp-data também traz nomes de produto do scraping
+  const hpData = fs.readFileSync(HP_DATA, 'utf8')
+    .replace(/</g, '\\u003c').replace(/ /g, '\\u2028').replace(/ /g, '\\u2029');
   const hpOpenIdx = next.indexOf(HP_OPEN);
   const hpAfterOpen = hpOpenIdx + HP_OPEN.length;
   const hpCloseIdx = next.indexOf(CLOSE, hpAfterOpen);

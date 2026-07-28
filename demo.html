@@ -8560,7 +8560,7 @@ function productCard(p) {
         ${tag ? `<span class="product-tag ${tag.cls}">${tag.label}</span>` : ''}
         <div class="product-img-shell">
           ${hasRealImage
-            ? `<img src="${p.image_url}" alt="${p.name}" class="product-img-real" loading="lazy"
+            ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" class="product-img-real" loading="lazy"
                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
                <div class="product-img-inner" style="display:none; --gradient: ${palette.bg}; --initial-color: ${palette.fg};">
                  <span class="product-initial">${initial}</span>
@@ -8571,8 +8571,8 @@ function productCard(p) {
         </div>
       </div>
       <div class="product-info">
-        <div class="product-brand">${p.brand}</div>
-        <div class="product-name">${displayName(p.name, p.brand)}</div>
+        <div class="product-brand">${escapeHtml(p.brand)}</div>
+        <div class="product-name">${escapeHtml(displayName(p.name, p.brand))}</div>
         <div class="product-pricing">
           ${minPrice !== null || best ? `
             <div>
@@ -8661,9 +8661,9 @@ function goToBestOffer(ean) {
   const product = PRODUCT_BY_EAN[ean];
   // Se a oferta não está verificada, a URL é apenas a pesquisa na loja → toast diferente
   if (best.offer.verified !== true) {
-    toast(`Preço estimado — a procurar ${product.brand} na ${best.store.name}…`);
+    toast(`Preço estimado — a procurar ${escapeHtml(product.brand)} na ${best.store.name}…`);
   } else {
-    toast(`Melhor oferta para ${product.brand}: ${best.store.name}`);
+    toast(`Melhor oferta para ${escapeHtml(product.brand)}: ${best.store.name}`);
   }
   window.open(best.url || best.offer.url, '_blank', 'noopener');
 }
@@ -8681,15 +8681,15 @@ function renderMiniCards(targetId, eans) {
     const initial = brandInitial(p.brand);
     const inBundle = bundleHas(p.ean);
     const media = p.image_url
-      ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy"
+      ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy"
             onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mini-media-fallback',textContent:'${initial}',style:'color:${palette.fg}'}))" />`
       : `<span class="mini-media-fallback" style="color:${palette.fg}">${initial}</span>`;
     return `<article class="mini-card">
       <div class="mini-media" style="background:${palette.bg}">
         ${media}
       </div>
-      <div class="mini-brand">${p.brand}</div>
-      <div class="mini-name">${displayName(p.name, p.brand)}</div>
+      <div class="mini-brand">${escapeHtml(p.brand)}</div>
+      <div class="mini-name">${escapeHtml(displayName(p.name, p.brand))}</div>
       <div class="mini-meta">
         <div class="mini-price">${price}</div>
         <div class="mini-store">na ${store}</div>
@@ -8722,8 +8722,8 @@ function renderInstagramFeed() {
   grid.innerHTML = picks.map((ean) => {
     const p = PRODUCT_BY_EAN[ean];
     if (!p) return '';
-    return `<button class="insta-tile" title="${p.brand} — ${p.name}" data-ean="${ean}">
-      <img src="${p.image_url || ''}" alt="${p.name}" loading="lazy" />
+    return `<button class="insta-tile" title="${escapeHtml(p.brand)} — ${escapeHtml(p.name)}" data-ean="${ean}">
+      <img src="${escapeHtml(p.image_url || '')}" alt="${escapeHtml(p.name)}" loading="lazy" />
     </button>`;
   }).join('');
 }
@@ -8784,13 +8784,13 @@ function renderFeatured() {
       <div class="featured-img" style="background: ${palette.bg};">
         ${isNew ? '<span class="featured-new-tag">Novo</span>' : ''}
         ${p.image_url
-          ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy"
+          ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy"
                   onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:72px;color:${palette.fg};opacity:0.85'}))" />`
           : `<span style="font-family:Georgia,serif;font-weight:700;font-size:72px;color:${palette.fg};opacity:0.85">${initial}</span>`}
       </div>
       <div class="featured-info">
-        <div class="featured-brand">${p.brand}</div>
-        <div class="featured-name">${displayName(p.name, p.brand)}</div>
+        <div class="featured-brand">${escapeHtml(p.brand)}</div>
+        <div class="featured-name">${escapeHtml(displayName(p.name, p.brand))}</div>
         <div class="featured-foot">
           <div>
             ${best ? `<span class="featured-price-from">desde · ${best.store.name}</span>
@@ -8872,7 +8872,7 @@ function openPriceAnalyzer(ean) {
   const imgEl = document.getElementById('pa-img');
   imgEl.style.background = palette.bg;
   imgEl.innerHTML = p.image_url
-    ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg}'}))">`
+    ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg}'}))">`
     : `<span style="font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg}">${initial}</span>`;
 
   // Volume default: tenta extrair do nome do produto (ex: "...50 ml" → 50)
@@ -8931,13 +8931,13 @@ function renderSimilarProducts(ean) {
           const palette = brandPalette(p.brand);
           const initial = brandInitial(p.brand);
           const img = p.image_url
-            ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'pa-sim-initial',textContent:'${initial}',style:'color:${palette.fg}'}))">`
+            ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'pa-sim-initial',textContent:'${initial}',style:'color:${palette.fg}'}))">`
             : `<span class="pa-sim-initial" style="color:${palette.fg}">${initial}</span>`;
           return `<article class="pa-sim-card" data-sim-ean="${p.ean}">
             <div class="pa-sim-img" style="background:${palette.bg}">${img}</div>
             <div class="pa-sim-info">
-              <div class="pa-sim-brand">${p.brand || ''}</div>
-              <div class="pa-sim-name">${displayName(p.name, p.brand)}</div>
+              <div class="pa-sim-brand">${escapeHtml(p.brand || '')}</div>
+              <div class="pa-sim-name">${escapeHtml(displayName(p.name, p.brand))}</div>
               <div class="pa-sim-price"><small>desde</small> ${price.toFixed(2)}€</div>
             </div>
           </article>`;
@@ -9591,13 +9591,13 @@ function renderCategoryModalList(cat, products) {
     return `<div class="catmodal-item">
       <div class="catmodal-item-img" style="background:${palette.bg}">
         ${p.image_url
-          ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy"
+          ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy"
                 onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:28px;color:${palette.fg}'}))">`
           : `<span style="font-family:Georgia,serif;font-weight:700;font-size:28px;color:${palette.fg}">${initial}</span>`}
       </div>
       <div class="catmodal-item-info">
-        <div class="catmodal-item-brand">${p.brand}</div>
-        <div class="catmodal-item-name">${displayName(p.name, p.brand)}</div>
+        <div class="catmodal-item-brand">${escapeHtml(p.brand)}</div>
+        <div class="catmodal-item-name">${escapeHtml(displayName(p.name, p.brand))}</div>
         <div class="catmodal-item-price">
           ${best ? `desde <strong>${best.price.toFixed(2)}€</strong> · ${best.store.name}` : 'sem stock'}
         </div>
@@ -11107,13 +11107,13 @@ function renderQuizResultCard(match, idx) {
     <div class="quiz-result-main">
       <div class="quiz-result-img" style="background:${palette.bg}">
         ${p.image_url
-          ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy"
+          ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy"
                 onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:30px;color:${palette.fg}'}))">`
           : `<span style="font-family:Georgia,serif;font-weight:700;font-size:30px;color:${palette.fg}">${initial}</span>`}
       </div>
       <div class="quiz-result-info">
-        <div class="quiz-result-brand">${p.brand}</div>
-        <div class="quiz-result-name">${displayName(p.name, p.brand)}</div>
+        <div class="quiz-result-brand">${escapeHtml(p.brand)}</div>
+        <div class="quiz-result-name">${escapeHtml(displayName(p.name, p.brand))}</div>
         ${why ? `<div class="quiz-result-why">${why}</div>` : ''}
         ${reasonChips ? `<div class="quiz-reasons">${reasonChips}</div>` : ''}
       </div>
@@ -11403,11 +11403,11 @@ function aiAddMessage(role, htmlContent, extras = {}) {
       const initial = brandInitial(p.brand);
       return `<a class="ai-msg-product" href="#" data-ean="${p.ean}">
         <div class="ai-msg-product-img" style="background:${palette.bg}">
-          ${p.image_url ? `<img src="${p.image_url}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:18px;color:${palette.fg}'}))">` : `<span style="font-family:Georgia,serif;font-weight:700;font-size:18px;color:${palette.fg}">${initial}</span>`}
+          ${p.image_url ? `<img src="${escapeHtml(p.image_url)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:18px;color:${palette.fg}'}))">` : `<span style="font-family:Georgia,serif;font-weight:700;font-size:18px;color:${palette.fg}">${initial}</span>`}
         </div>
         <div class="ai-msg-product-info">
-          <div class="ai-msg-product-brand">${p.brand}</div>
-          <div class="ai-msg-product-name">${displayName(p.name, p.brand)}</div>
+          <div class="ai-msg-product-brand">${escapeHtml(p.brand)}</div>
+          <div class="ai-msg-product-name">${escapeHtml(displayName(p.name, p.brand))}</div>
         </div>
         <div class="ai-msg-product-price">${best ? best.price.toFixed(2)+'€' : '—'}</div>
       </a>`;
@@ -11547,12 +11547,12 @@ function renderSponsoredCarousel() {
       <div class="sponsored-slide ${i === 0 ? 'active' : ''}" data-idx="${i}" data-ean="${p.ean}">
         <div class="sponsored-slide-img">
           ${p.image_url
-            ? `<img src="${p.image_url}" alt="${p.name}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'sponsored-slide-img-fallback',textContent:'${initial}'}))" />`
+            ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'sponsored-slide-img-fallback',textContent:'${initial}'}))" />`
             : `<div class="sponsored-slide-img-fallback">${initial}</div>`}
         </div>
         <div class="sponsored-slide-caption">
-          <div class="sponsored-slide-brand">${p.brand}</div>
-          <div class="sponsored-slide-name">${displayName(p.name, p.brand)}</div>
+          <div class="sponsored-slide-brand">${escapeHtml(p.brand)}</div>
+          <div class="sponsored-slide-name">${escapeHtml(displayName(p.name, p.brand))}</div>
           <div class="sponsored-slide-meta">
             <div>
               <span class="sponsored-slide-price-from">desde</span>
@@ -11672,7 +11672,7 @@ function renderBrandFilter() {
   if (q) brands = brands.filter(([b]) => b.toLowerCase().includes(q));
   brandsEl.innerHTML = brands.map(([b, n]) => {
     const checked = state.brands.has(b) ? 'checked' : '';
-    return `<label><input type="checkbox" data-brand="${b.replace(/"/g, '&quot;')}" ${checked} /> <span>${b}</span> <span style="color:var(--muted);font-size:11px;margin-left:auto">${n}</span></label>`;
+    return `<label><input type="checkbox" data-brand="${escapeHtml(b)}" ${checked} /> <span>${escapeHtml(b)}</span> <span style="color:var(--muted);font-size:11px;margin-left:auto">${n}</span></label>`;
   }).join('') || '<div style="font-size:12px;color:var(--muted);padding:8px 0">Sem resultados</div>';
   brandsEl.querySelectorAll('input[type=checkbox]').forEach(cb => {
     cb.onchange = () => {
@@ -11891,12 +11891,12 @@ function bundleRefresh() {
     return `<div class="bundle-row">
       <div class="bundle-row-img">
         ${p.image_url
-          ? `<img src="${p.image_url}" alt="${p.name}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{innerHTML:'<span style=\\'font-family:serif;font-weight:700;font-size:24px;color:${palette.fg}\\'>${initial}</span>',style:'background:${palette.bg};display:flex;align-items:center;justify-content:center;width:100%;height:100%'}))" />`
+          ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{innerHTML:'<span style=\\'font-family:serif;font-weight:700;font-size:24px;color:${palette.fg}\\'>${initial}</span>',style:'background:${palette.bg};display:flex;align-items:center;justify-content:center;width:100%;height:100%'}))" />`
           : `<span style="font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg};background:${palette.bg};width:100%;height:100%;display:flex;align-items:center;justify-content:center">${initial}</span>`}
       </div>
       <div class="bundle-row-info">
-        <div class="bundle-row-brand">${p.brand} ${volBadge}</div>
-        <div class="bundle-row-name">${displayName(p.name, p.brand)}</div>
+        <div class="bundle-row-brand">${escapeHtml(p.brand)} ${volBadge}</div>
+        <div class="bundle-row-name">${escapeHtml(displayName(p.name, p.brand))}</div>
         <div class="bundle-row-bottom">
           <div class="bundle-row-qty">
             <button data-bundle-qty data-ean="${ean}" data-delta="-1">−</button>
@@ -12326,7 +12326,7 @@ function productPodiumMiniHTML(ean) {
       <div class="results-product-mini">
         <div class="results-product-mini-head">
           <div>
-            <div class="results-product-mini-brand">${product.brand}${chosenVol ? ` · ${chosenVol} ml` : ''}</div>
+            <div class="results-product-mini-brand">${escapeHtml(product.brand)}${chosenVol ? ` · ${chosenVol} ml` : ''}</div>
             <div class="results-product-mini-name">${displayName(product.name, product.brand)}</div>
           </div>
         </div>
@@ -12346,7 +12346,7 @@ function productPodiumMiniHTML(ean) {
     <div class="results-product-mini">
       <div class="results-product-mini-head">
         <div>
-          <div class="results-product-mini-brand">${product.brand} ${volBadge}</div>
+          <div class="results-product-mini-brand">${escapeHtml(product.brand)} ${volBadge}</div>
           <div class="results-product-mini-name">${displayName(product.name, product.brand)}</div>
         </div>
         ${savings > 0 ? `<div class="results-product-mini-savings">Poupas ${savings.toFixed(2)}€</div>` : ''}
@@ -12408,7 +12408,7 @@ function storeLineHTML(b) {
   // vários separadores de uma vez, que os browsers bloqueiam).
   const itemsList = b.lines.map(l => {
     const nm = displayName(l.name, l.brand);
-    const label = nm ? `${l.brand} ${nm}` : l.brand;
+    const label = nm ? `${escapeHtml(l.brand)} ${nm}` : l.brand;
     return `<a class="sl-prod" href="${l.url}" target="_blank" rel="noopener" title="Abrir na ${b.store_name}">
       <span class="sl-prod-name">${l.qty}× ${label}</span>
       <span class="sl-prod-price">${l.unitPrice.toFixed(2)}€</span>
@@ -12500,7 +12500,7 @@ function freeShippingUpsellHTML(b) {
     <div class="upsell-list">${sugg.map(c => `
       <button class="upsell-item" data-upsell-ean="${c.p.ean}" title="Adicionar à selecção">
         <div class="upsell-item-info">
-          <div class="upsell-item-brand">${c.p.brand}</div>
+          <div class="upsell-item-brand">${escapeHtml(c.p.brand)}</div>
           <div class="upsell-item-name">${displayName(c.p.name, c.p.brand)}</div>
         </div>
         <div class="upsell-item-price">+${c.price.toFixed(2)}€</div>
@@ -13520,7 +13520,7 @@ function handleScanCode(raw, viaCamera) {
     try { fbLog('scanned', ean, null, { source: viaCamera ? 'scan-camera' : 'scan-manual' }); } catch (e) {}
     closeScanner();
     const p = PRODUCT_BY_EAN[ean];
-    toast(`📷 ${p.brand || ''} encontrado — a comparar ${STORES.length} lojas`);
+    toast(`📷 ${escapeHtml(p.brand || '')} encontrado — a comparar ${STORES.length} lojas`);
     openPriceAnalyzer(ean);
     return true;
   }
@@ -13653,7 +13653,7 @@ function renderLabelResults(products, sourceLabel) {
     const best = (typeof bestOfferFor === 'function') ? bestOfferFor(p.ean) : null;
     const nm = (typeof displayName === 'function') ? displayName(p.name, p.brand) : p.name;
     return `<button type="button" class="scan-sugg" data-scanean="${p.ean}">
-      ${p.image_url ? `<img src="${p.image_url}" alt="" loading="lazy">` : '<span class="scan-sugg-noimg">🧴</span>'}
+      ${p.image_url ? `<img src="${escapeHtml(p.image_url)}" alt="" loading="lazy">` : '<span class="scan-sugg-noimg">🧴</span>'}
       <span class="scan-sugg-txt"><b>${escapeHtml(p.brand || '')}</b><span class="scan-sugg-name">${escapeHtml(nm)}</span></span>
       ${best ? `<span class="scan-sugg-price">desde ${best.price.toFixed(2)}€</span>` : ''}
     </button>`;
@@ -14806,7 +14806,7 @@ function prv3RenderAddStepResults() {
   const stats = statsByEanMap();
   const hits = [];
   for (const p of PRODUCTS) {
-    if (!(`${p.brand} ${p.name}`.toLowerCase().includes(q))) continue;
+    if (!(`${escapeHtml(p.brand)} ${escapeHtml(p.name)}`.toLowerCase().includes(q))) continue;
     const st = stats[p.ean];
     hits.push([st && st.bestPrice > 0 ? st.storeCount : 0, p, st]);
     if (hits.length > 400) break;
@@ -14814,10 +14814,10 @@ function prv3RenderAddStepResults() {
   hits.sort((x, y) => y[0] - x[0]);
   box.innerHTML = hits.slice(0, 8).map(([, p, st]) => `
     <div class="prv3-addres-item" data-addean="${p.ean}">
-      <div class="prv3-addres-img">${p.image_url ? `<img src="${p.image_url}" loading="lazy" alt="">` : '🧴'}</div>
+      <div class="prv3-addres-img">${p.image_url ? `<img src="${escapeHtml(p.image_url)}" loading="lazy" alt="">` : '🧴'}</div>
       <div class="prv3-row-main">
-        <div class="prv3-step" style="width:auto">${p.brand || ''}</div>
-        <div class="prv3-name">${displayName(p.name, p.brand)}</div>
+        <div class="prv3-step" style="width:auto">${escapeHtml(p.brand || '')}</div>
+        <div class="prv3-name">${escapeHtml(displayName(p.name, p.brand))}</div>
       </div>
       <span class="prv3-price" style="cursor:default">${st && st.bestPrice ? 'desde ' + st.bestPrice.toFixed(2) + '€' : ''}</span>
     </div>`).join('') || '<div class="prv3-sub" style="padding:4px 2px">Nada encontrado.</div>';
@@ -15003,9 +15003,9 @@ function prv3SuggestionsHTML(steps) {
     </div>
     <div class="prv3-sugg">${picks.map(([, p, s]) => `
       <div class="prv3-sugg-card" data-ean="${p.ean}">
-        <div class="prv3-sugg-img">${p.image_url ? `<img src="${p.image_url}" loading="lazy" alt="">` : '🧴'}</div>
-        <div class="prv3-sugg-brand">${p.brand || ''}</div>
-        <div class="prv3-sugg-name">${displayName(p.name, p.brand)}</div>
+        <div class="prv3-sugg-img">${p.image_url ? `<img src="${escapeHtml(p.image_url)}" loading="lazy" alt="">` : '🧴'}</div>
+        <div class="prv3-sugg-brand">${escapeHtml(p.brand || '')}</div>
+        <div class="prv3-sugg-name">${escapeHtml(displayName(p.name, p.brand))}</div>
         <div class="prv3-sugg-price">desde ${s.bestPrice.toFixed(2)}€ · ${s.storeCount} lojas</div>
       </div>`).join('')}</div>
   </div>`;
@@ -15413,11 +15413,11 @@ function prRoutineItemHTML(item) {
   return `<div class="pr-routine-item ${itemCls}">
     <div class="pr-routine-img" style="background:${palette.bg};color:${palette.fg}">
       ${product.image_url
-        ? `<img src="${product.image_url}" alt="${product.name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">`
+        ? `<img src="${escapeHtml(product.image_url)}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">`
         : initial}
     </div>
     <div class="pr-routine-info">
-      <div class="pr-routine-brand">${product.brand}</div>
+      <div class="pr-routine-brand">${escapeHtml(product.brand)}</div>
       <div class="pr-routine-name">${displayName(product.name, product.brand)}</div>
       <div class="pr-routine-progress-row" style="align-items:center;gap:10px">
         ${(() => { const pct = Math.max(0, Math.min(100, Math.round(st.pctRemaining ?? 0)));
@@ -15499,7 +15499,7 @@ function prRenderAdd() {
   function render(filter) {
     const q = (filter || '').toLowerCase().trim();
     const filtered = q
-      ? availableProducts.filter(p => `${p.brand} ${p.name}`.toLowerCase().includes(q))
+      ? availableProducts.filter(p => `${escapeHtml(p.brand)} ${escapeHtml(p.name)}`.toLowerCase().includes(q))
       : availableProducts;
     document.getElementById('pr-add-results').innerHTML = filtered.length === 0
       ? `<div class="pr-routine-empty" style="grid-column:1/-1">Nenhum produto encontrado${q?` para "${q}"`:''}.</div>`
@@ -15508,11 +15508,11 @@ function prRenderAdd() {
           const initial = brandInitial(p.brand);
           return `<div class="pr-add-card" data-ean="${p.ean}">
             <div class="pr-add-card-img" style="background:${palette.bg};color:${palette.fg}">
-              ${p.image_url ? `<img src="${p.image_url}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">` : initial}
+              ${p.image_url ? `<img src="${escapeHtml(p.image_url)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">` : initial}
             </div>
             <div class="pr-add-card-info">
-              <div class="pr-add-card-brand">${p.brand}</div>
-              <div class="pr-add-card-name">${displayName(p.name, p.brand)}</div>
+              <div class="pr-add-card-brand">${escapeHtml(p.brand)}</div>
+              <div class="pr-add-card-name">${escapeHtml(displayName(p.name, p.brand))}</div>
             </div>
           </div>`;
         }).join('');
@@ -15564,10 +15564,10 @@ function prRenderAddDetails(ean) {
     <div class="prv3-card" style="max-width:680px;margin:0 auto">
       <div class="prv3-addhead">
         <div class="pr-add-card-img" style="background:${palette.bg};color:${palette.fg};width:64px;height:64px;font-size:24px;border-radius:16px;flex-shrink:0">
-          ${product.image_url ? `<img src="${product.image_url}" alt="">` : initial}
+          ${product.image_url ? `<img src="${escapeHtml(product.image_url)}" alt="">` : initial}
         </div>
         <div>
-          <div class="prv3-eyebrow">${product.brand || ''}</div>
+          <div class="prv3-eyebrow">${escapeHtml(product.brand || '')}</div>
           <div class="prv3-title" style="font-size:19px">${displayName(product.name, product.brand)}</div>
         </div>
       </div>
@@ -15678,10 +15678,10 @@ function prRenderEdit() {
     <div class="prv3-card" style="max-width:680px;margin:0 auto">
       <div class="prv3-addhead">
         <div class="pr-add-card-img" style="background:${palette.bg};color:${palette.fg};width:64px;height:64px;font-size:24px;border-radius:16px;flex-shrink:0">
-          ${product.image_url ? `<img src="${product.image_url}" alt="">` : initial}
+          ${product.image_url ? `<img src="${escapeHtml(product.image_url)}" alt="">` : initial}
         </div>
         <div>
-          <div class="prv3-eyebrow">${product.brand || ''}</div>
+          <div class="prv3-eyebrow">${escapeHtml(product.brand || '')}</div>
           <div class="prv3-title" style="font-size:19px">${displayName(product.name, product.brand)}</div>
         </div>
       </div>
@@ -15906,15 +15906,15 @@ initSupabase().then(() => {
   const imgOrInitial = (p) => {
     const initial = (p.brand || 'GM').split(' ').map(w => w[0] || '').slice(0, 2).join('');
     return p.image_url
-      ? `<img src="${p.image_url}" alt="${(p.brand||'')+' '+(p.name||'')}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-size:36px;color:var(--muted)'}))"/>`
+      ? `<img src="${escapeHtml(p.image_url)}" alt="${(p.brand||'')+' '+(p.name||'')}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-size:36px;color:var(--muted)'}))"/>`
       : `<span style="font-family:Georgia,serif;font-size:36px;color:var(--muted)">${initial}</span>`;
   };
   const cardHTML = (p, badge) => `
     <article class="gm-card" data-ean="${p.ean}">
       <div class="gm-card-media">${imgOrInitial(p)}</div>
       ${badge ? `<span class="gm-card-badge ${badge.cls || ''}">${badge.label}</span>` : ''}
-      <div class="gm-card-brand">${p.brand || ''}</div>
-      <h3 class="gm-card-name">${p.name || ''}</h3>
+      <div class="gm-card-brand">${escapeHtml(p.brand || '')}</div>
+      <h3 class="gm-card-name">${escapeHtml(p.name || '')}</h3>
       <div class="gm-card-price">
         <span class="price-now">${fmt(p.best_price)}</span>
         <span class="at-store">@ ${p.best_store || ''}</span>
@@ -15949,7 +15949,7 @@ initSupabase().then(() => {
     };
     feed.innerHTML = hp.telegram_alerts.slice(0, 3).map((a, i) => {
       const ts = hh([14, 41, 67][i] || 12 + i * 30);
-      return `<div class="gm-tg-msg"><span class="when">${ts}</span><span>${a.brand} ${(a.name||'').split(' ').slice(0,5).join(' ')} — ${a.store} ${fmt(a.price)} (era ${fmt(a.previous_price)}) · −${a.discount_pct}%</span></div>`;
+      return `<div class="gm-tg-msg"><span class="when">${ts}</span><span>${escapeHtml(a.brand)} ${(a.name||'').split(' ').slice(0,5).join(' ')} — ${a.store} ${fmt(a.price)} (era ${fmt(a.previous_price)}) · −${a.discount_pct}%</span></div>`;
     }).join('');
   }
 
@@ -15997,8 +15997,8 @@ initSupabase().then(() => {
       <article class="gm-trend-card" data-ean="${p.ean}">
         ${p.discount_pct ? `<span class="gm-drop-badge-abs">−${p.discount_pct}%</span>` : ''}
         <div class="gm-trend-card-img">${imgOrInitial(p)}</div>
-        <div class="gm-brand">${p.brand || ''}</div>
-        <h4 class="gm-name">${p.name || ''}</h4>
+        <div class="gm-brand">${escapeHtml(p.brand || '')}</div>
+        <h4 class="gm-name">${escapeHtml(p.name || '')}</h4>
         <div class="gm-price">${fmt(p.best_price)}${p.previous_price ? ` <span class="gm-price-old">${fmt(p.previous_price)}</span>` : ''}</div>
         <button class="gm-info-btn gm-info-btn-sm" type="button" data-ean="${p.ean}">Mais informação →</button>
       </article>

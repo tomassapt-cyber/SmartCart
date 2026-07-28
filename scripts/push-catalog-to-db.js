@@ -201,15 +201,30 @@ async function upsert(table, rows, onConflict) {
   // de ofertas vivas da BD pública. Se o payload tem < 80% do que a BD já tem,
   // fazemos os UPSERTS mas SALTAMOS as limpezas (ofertas stale sobrevivem 1
   // ciclo — muito melhor que apagar uma loja inteira).
+  // FALHA FECHADA (auditoria 2026-07-25): antes, QUALQUER falha a obter o count
+  // (5xx, timeout, rede) deixava countBD=0 → a condição não disparava → o
+  // guardrail desligava-se em SILÊNCIO e a purga corria à mesma. E não é
+  // teórico: este endpoint já devolveu 500 (statement timeout do PostgREST) —
+  // ou seja, o guardrail desarmava-se exactamente quando a BD está com
+  // problemas. Agora: sem count fiável → NÃO se limpa nada e diz-se porquê.
+  // (select=ean em vez de select=count: o agregado obriga a dois varrimentos
+  // completos da tabela e é o que provoca os timeouts.)
   let skipPurge = false;
   try {
-    const rc = await fetch(`${URL_}/rest/v1/offers?select=count`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'count=exact', Range: '0-0' }, signal: AbortSignal.timeout(20000) });
-    const countBD = parseInt((rc.headers.get('content-range') || '/0').split('/')[1], 10) || 0;
-    if (countBD > 1000 && offers2.length < 0.8 * countBD) {
+    const rc = await fetch(`${URL_}/rest/v1/offers?select=ean`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'count=exact', Range: '0-0' }, signal: AbortSignal.timeout(20000) });
+    const cr = rc.headers.get('content-range');
+    const countBD = rc.ok && cr ? (parseInt(cr.split('/')[1], 10) || 0) : NaN;
+    if (!Number.isFinite(countBD) || countBD === 0) {
+      skipPurge = true;
+      console.warn(`  ⛔ GUARDRAIL: não consegui contar as ofertas na BD (HTTP ${rc.status}${cr ? '' : ', sem content-range'}) — limpezas SALTADAS por precaução.`);
+    } else if (countBD > 1000 && offers2.length < 0.8 * countBD) {
       skipPurge = true;
       console.log(`  ⛔ GUARDRAIL: payload ${offers2.length} < 80% da BD (${countBD}) — seed truncado? UPSERTS sim, limpezas SALTADAS.`);
     }
-  } catch { /* sem count → segue normal */ }
+  } catch (e) {
+    skipPurge = true;
+    console.warn(`  ⛔ GUARDRAIL: falha a contar as ofertas na BD (${e.message}) — limpezas SALTADAS por precaução.`);
+  }
 
   await upsert('stores', stores2, 'slug');
   await upsert('products', products2, 'ean');
