@@ -46,12 +46,18 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      # --resume + --max-minutes=75 (2026-07-28): o scrape completo passou a
+      # demorar 101-119 min e rebentava o timeout-minutes:120 DENTRO do scrape,
+      # deitando fora a run inteira (9 seguidas perdidas; dados congelados desde
+      # 24/07). Agora pára aos 75 min, grava o parcial e deixa correr o
+      # integrate (~6 min) + push (~7 min); a run seguinte continua com --resume
+      # (mantém o que tem <20h, só visita o que falta). Cada run ENTREGA dados.
       - name: Scrape Perfumes Club (dermo)
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-perfumesclub-catalog.js --dermo --limit=${{ github.event.inputs.limit }} --concurrency=3 --delay=500
           else
-            node scripts/scrape-perfumesclub-catalog.js --dermo --concurrency=3 --delay=500
+            node scripts/scrape-perfumesclub-catalog.js --dermo --resume --max-minutes=75 --concurrency=3 --delay=500
           fi
 
       - name: Upload scrape artifact (safety-net)

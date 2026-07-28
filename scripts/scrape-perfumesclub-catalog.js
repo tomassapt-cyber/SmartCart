@@ -32,6 +32,15 @@ const RESUME = !!args.resume;
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 5;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 250;
 const CHECKPOINT_EVERY = 100;
+// ORÇAMENTO DE TEMPO (2026-07-28). O catálogo cresceu e o scrape passou a
+// demorar 101-119 min: com o timeout-minutes:120 do workflow, o job morria
+// DENTRO do scrape e deitava fora ~2h de trabalho (9 runs seguidas perdidas,
+// dados congelados desde 24/07). Com --max-minutes o scrape pára a tempo,
+// grava o que já tem (in_progress:true → ghost-offers ignora a loja, ver
+// scripts/lib/ghost-offers.js) e deixa o integrate+push correr. O --resume
+// da run seguinte continua de onde ficou. Sem a flag, nada muda.
+const T0 = Date.now();
+const MAX_MS = args['max-minutes'] ? parseFloat(args['max-minutes']) * 60000 : Infinity;
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 
@@ -161,10 +170,12 @@ async function main() {
   const queue = urls.filter(u => !done.has(u));
   console.log(`\n🚀 A scrapar ${queue.length} URLs (concurrency=${CONCURRENCY}, delay=${DELAY_MS}ms)…\n`);
 
-  const start = Date.now(); let idx = 0;
+  const start = Date.now(); let idx = 0; let budgetHit = false;
   const stats = { ok: 0, skipped: 0, not_found: 0, error: 0 };
   async function worker() {
     while (idx < queue.length) {
+      // Orçamento esgotado → sair limpo (o checkpoint final fica in_progress).
+      if (Date.now() - T0 > MAX_MS) { budgetHit = true; return; }
       const url = queue[idx++];
       let r = await fetchPage(url); let scraped_at = new Date().toISOString();
       let d = r.status === 'ok' ? extractProductData(r.html) : null;
@@ -186,7 +197,12 @@ async function main() {
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
   if (products.length === 0) { console.error('✗ 0 produtos (bloqueio/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
-  saveCheckpoint(products, false);
+  // in_progress = true se o orçamento cortou o scrape a meio: o catálogo está
+  // incompleto e ghost-offers TEM de ignorar esta loja (senão as URLs ainda não
+  // visitadas nesta passagem virariam candidatas a fantasma).
+  saveCheckpoint(products, budgetHit);
+  const restantes = queue.length - idx;
+  if (budgetHit) console.log(`\n⏳ Orçamento de ${MAX_MS / 60000}min esgotado — parado a meio (faltam ~${restantes > 0 ? restantes : 0} URLs). Catálogo gravado como in_progress; a próxima run com --resume continua daqui.`);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);
   console.log(`\n══════ perfumesclub scrape ══════`);
   console.log(`  Produtos com EAN: ${products.length} · in_stock: ${products.filter(p => p.in_stock).length}`);
