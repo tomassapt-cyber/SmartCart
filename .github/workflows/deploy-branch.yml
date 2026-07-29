@@ -11,10 +11,21 @@ name: Deploy branch sync (Vercel)
 
 on:
   schedule:
-    - cron: '30 6 * * *'
-    - cron: '30 12 * * *'
-    - cron: '30 18 * * *'
-    - cron: '50 23 * * *'
+    # De 3 em 3 horas (2026-07-29). Eram 4 janelas (6/6h): um preço raspado às
+    # 07h só aparecia no site às 12h30 — até ~6h de atraso. Com 8 janelas o
+    # atraso máximo passa a ~3h.
+    # Margem confirmada antes de mexer: o repo faz 4-15 deploys/dia contra um
+    # limite de ~100/dia no plano free, e cada janela só deploya se a branch
+    # `deploy` mudar. Se algum dia voltar a bater no limite, é aqui que se
+    # reduz (e a causa provável será outra coisa a empurrar deploys).
+    - cron: '20 0 * * *'
+    - cron: '20 3 * * *'
+    - cron: '20 6 * * *'
+    - cron: '20 9 * * *'
+    - cron: '20 12 * * *'
+    - cron: '20 15 * * *'
+    - cron: '20 18 * * *'
+    - cron: '20 21 * * *'
   push:
     branches: [main]
   workflow_dispatch:
