@@ -183,13 +183,38 @@ create trigger on_auth_user_created_notify
   for each row execute function public.notify_telegram_on_signup();
 
 -- ============================================================
--- 8) Helper view: routine_with_status (calcula daysLeft no servidor)
+-- 8) [REMOVIDO 2026-07-29] Helper view: routine_with_status
 -- ============================================================
-create or replace view public.routine_with_status as
-select
-  rp.*,
-  (started_at + (volume_ml / nullif(doses_per_use,0) / nullif(uses_per_week,0) * 7) * interval '1 day')::date as est_ends_at,
-  ((started_at + (volume_ml / nullif(doses_per_use,0) / nullif(uses_per_week,0) * 7) * interval '1 day')::date - current_date) as days_left
-from public.routine_products rp;
+-- NÃO voltar a criar esta vista na forma antiga. Ela expunha ao visitante
+-- ANÓNIMO a rotina de skincare de todos os utilizadores.
+--
+-- Porquê: em Postgres, uma vista corre por omissão com os privilégios de quem
+-- a CRIOU, não de quem a consulta (`security_invoker = off`). Como esta vista
+-- fazia `select rp.*` sobre public.routine_products — que tem RLS com a policy
+-- routine_select_own — a RLS deixava de ser avaliada para quem entrasse pela
+-- vista. Medido ao vivo com a chave pública: a tabela devolvia 0 linhas e a
+-- vista devolvia as linhas reais, com user_id incluído. Sendo uma vista
+-- "simples", o Postgres tornava-a ainda automaticamente actualizável, pelo que
+-- também dava para ESCREVER na tabela por ali.
+--
+-- Apagada pela migração 011_rls_vistas_e_grants.sql. Nenhuma funcionalidade a
+-- usava (0 referências fora dos ficheiros de esquema); o days_left é calculado
+-- no cliente.
+--
+-- Se algum dia fizer falta, a forma SEGURA é esta — repara na cláusula `with`,
+-- que é o que faz a vista correr com os privilégios de QUEM CONSULTA:
+--
+--   create or replace view public.routine_with_status
+--     with (security_invoker = on) as
+--   select
+--     rp.*,
+--     (started_at + (volume_ml / nullif(doses_per_use,0) / nullif(uses_per_week,0) * 7) * interval '1 day')::date as est_ends_at,
+--     ((started_at + (volume_ml / nullif(doses_per_use,0) / nullif(uses_per_week,0) * 7) * interval '1 day')::date - current_date) as days_left
+--   from public.routine_products rp;
+--   revoke all on public.routine_with_status from anon, authenticated;
+--   grant select on public.routine_with_status to authenticated;
+--
+-- ATENÇÃO: um `create or replace view` posterior que não repita a cláusula
+-- `with (security_invoker = on)` APAGA a opção e reintroduz a fuga.
 
 -- pronto. Verifica em Table Editor que vês profiles + routine_products + routine_actions.

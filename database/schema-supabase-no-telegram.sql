@@ -121,14 +121,15 @@ create trigger routine_products_touch before update on public.routine_products
   for each row execute function public.touch_updated_at();
 
 -- ============================================================
--- 6) View útil: rotina com days_left calculado
+-- 6) [REMOVIDO 2026-07-29] View: rotina com days_left calculado
 -- ============================================================
-create or replace view public.routine_with_status as
-select
-  rp.*,
-  (started_at + (volume_ml / nullif(doses_per_use,0) / nullif(uses_per_week,0) * 7) * interval '1 day')::date as est_ends_at,
-  ((started_at + (volume_ml / nullif(doses_per_use,0) / nullif(uses_per_week,0) * 7) * interval '1 day')::date - current_date) as days_left
-from public.routine_products rp;
+-- Removida por expor ao visitante ANÓNIMO a rotina de todos os utilizadores:
+-- uma vista em Postgres corre por omissão com os privilégios de quem a criou,
+-- por isso a RLS de public.routine_products não era avaliada para quem
+-- entrasse por aqui (e, sendo uma vista simples, também dava para escrever).
+-- Ver a explicação completa em database/schema-supabase.sql secção 8 e a
+-- correcção em database/migrations/011_rls_vistas_e_grants.sql.
+-- Se voltar a ser precisa, tem de levar `with (security_invoker = on)`.
 
 -- ============================================================
 -- ✓ Pronto. Vê em Table Editor que tens:
