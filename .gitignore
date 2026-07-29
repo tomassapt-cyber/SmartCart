@@ -33,3 +33,4 @@ data/.*-report.json
 # template demo.html (shell, ~0.7MB) e o seed é que ficam em git.
 /index.html
 /catalogo.html
+.snapshot/
