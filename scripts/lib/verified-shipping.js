@@ -33,7 +33,13 @@ function applyVerifiedShipping(seedJson, root) {
     if (!v) continue;
     total++;
     let tocada = false;
-    if (v.gratis != null && st.free_shipping_threshold !== v.gratis) {
+    // 'gratis' AUSENTE = não verificado (não mexer).
+    // 'gratis': null PRESENTE = verificado e a loja NUNCA dá portes grátis →
+    // tem de ficar null, senão sobrevive a sentinela do seed (o Continente
+    // tinha 9999 e o /app anunciava "grátis ≥ 9999,00 €", que é absurdo).
+    // São 6 lojas: docmorris, poupafarma, hiperfarma, pharmee, continente,
+    // farmaciagarcia. (2026-07-29)
+    if ('gratis' in v && st.free_shipping_threshold !== v.gratis) {
       st.free_shipping_threshold = v.gratis; tocada = true;
     }
     if (v.casa != null) {

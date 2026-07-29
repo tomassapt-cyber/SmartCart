@@ -227,6 +227,17 @@ for (const p of seedJson.products) {
 }
 if (strippedDesc) console.log(`✂  Descrições removidas do render: ${strippedDesc} (ficam só no seed-bundle.json)`);
 
+// ── Overlay: LIMPEZA de nomes (NÃO-destrutivo) ───────────────────────────
+// Lixo dos scrapers que chegava ao ecrã: entidades HTML por descodificar
+// ("L&#39;Oréal", "Roger&amp;Gallet"), o nome da LOJA colado no fim
+// ("… - Farmácia Barreiros") e reticências de nomes truncados. O
+// seed-bundle.json mantém o nome original (é a chave do fingerprint).
+(function limparNomes() {
+  const { applyNameCleanup } = require('./lib/name-cleanup');
+  const { limpos } = applyNameCleanup(seedJson);
+  if (limpos) console.log(`🧼 Nomes limpos no render: ${limpos} (entidades HTML, loja colada, reticências)`);
+})();
+
 // ── Overlay de NOMES traduzidos PT (NÃO-destrutivo) ──────────────────────
 // data/translations.json.names mapeia ean → nome PT limpo (whitelist, sem
 // híbridos — ver scripts/build-name-translations.js). Aplicamos SÓ à cópia

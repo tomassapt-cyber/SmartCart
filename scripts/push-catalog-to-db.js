@@ -196,10 +196,15 @@ async function upsert(table, rows, onConflict) {
   // isNonCosmetic e o fixCategory abaixo correm sobre o nome ORIGINAL (p.name);
   // a tradução entra só no campo `name` que vai para a BD. Trocar a ordem
   // partiria a classificação (ver scripts/lib/name-translations.js).
+  // limpeza de nomes (2026-07-29): entidades HTML, loja colada no fim e
+  // reticências — o mesmo overlay que o site aplica. Corre ANTES da tradução e
+  // do search_norm, para a BD guardar (e indexar) o nome já limpo.
+  const { cleanNameSafe } = require("./lib/name-cleanup");
   const nomesPT = loadNameTranslations(ROOT);
   let traduzidos = 0;
   const products = (seed.products || []).filter(p => p.ean && p.name && !isNonCosmetic(p.name)).map(p => {
-    const nomePT = nomesPT[p.ean] && nomesPT[p.ean] !== p.name ? (traduzidos++, nomesPT[p.ean]) : p.name;
+    const nomeLimpo = cleanNameSafe(p.name);
+    const nomePT = nomesPT[p.ean] && nomesPT[p.ean] !== nomeLimpo ? (traduzidos++, nomesPT[p.ean]) : nomeLimpo;
     const base = {
       ean: p.ean, name: nomePT, brand: p.brand || null, category: fixCategory(p.name, p.category),
       image_url: safeUrl(p.image_url), updated_at: runTs,
