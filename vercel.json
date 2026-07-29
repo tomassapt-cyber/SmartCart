@@ -5,7 +5,7 @@
       "main": false
     }
   },
-  "buildCommand": "COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js && (node --max-old-space-size=4096 scripts/build-catalog-snapshot.js --out=catalog --quiet || echo 'AVISO: snapshot nao gerado — /catalog cai para o Storage pelo rewrite')",
+  "buildCommand": "COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
   "framework": null,
@@ -84,6 +84,12 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/catalog/:path*",
+      "destination": "https://sqjtkwtoaudmfmexreqk.supabase.co/storage/v1/object/public/catalog/:path*"
     }
   ]
 }
