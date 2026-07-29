@@ -155,7 +155,7 @@ function shipFor(slug, price) {
 
 async function fetchPage(first) {
   const p = new URLSearchParams();
-  p.set('select', 'ean,name,brand,image_url,offers!offers_ean_fkey!inner(price,store_slug,url,in_stock)' + (state.varEmbed ? ',offer_variants(volume_ml,price,store_slug,url,in_stock)' : ''));
+  p.set('select', 'ean,name,brand,image_url,offers!offers_ean_fkey!inner(price,store_slug,url,in_stock,promo_pack)' + (state.varEmbed ? ',offer_variants(volume_ml,price,store_slug,url,in_stock)' : ''));
   p.set('offers.in_stock', 'eq.true');
   p.set('offers.order', 'price.asc');
   if (state.cat) p.set('category', 'eq.' + state.cat);
@@ -199,9 +199,18 @@ async function fetchPage(first) {
 }
 
 function card(pr, idx) {
-  const offs = (pr.offers || []).filter(o => o.price > 0);
-  if (!offs.length) return '';
-  const best = offs[0];
+  const todas = (pr.offers || []).filter(o => o.price > 0);
+  if (!todas.length) return '';
+  // Packs multi-unidade fora do "desde": o preço de um pack de 2 não é preço
+  // por unidade (a mesma regra do site principal e do min_price da BD). Se só
+  // houver packs, mostra-se o que há.
+  const semPack = todas.filter(o => !o.promo_pack);
+  const offs = semPack.length ? semPack : todas;
+  // ⚠️ O PostgREST NÃO ordena os recursos embebidos: `offs[0]` era uma oferta
+  // AO ACASO. Medido em produção (2026-07-29): 59 de 60 cartões mostravam um
+  // preço que não era o mais barato — o Avène Cicalfate anunciava 15,21€
+  // quando havia a 7,69€. Num comparador de preços, isto falha o essencial.
+  const best = offs.reduce((a, b) => (b.price < a.price ? b : a), offs[0]);
   const ini = (pr.brand || '?').split(' ').map(w => w[0] || '').slice(0, 2).join('');
   const img = pr.image_url
     ? `<img src="${esc(pr.image_url)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'card-ini',textContent:'${esc(ini)}'}))">`
@@ -212,7 +221,7 @@ function card(pr, idx) {
     <div class="card-name">${esc(pr.name || '')}</div>
     <div class="card-price">desde ${fmt(best.price)}</div>
     <div class="card-store">@ ${esc(storeName(best.store_slug))}</div>
-    <div class="card-n">${offs.length} loja${offs.length === 1 ? '' : 's'} a comparar</div>
+    <div class="card-n">${todas.length} loja${todas.length === 1 ? '' : 's'} a comparar</div>
   </div>`;
 }
 
