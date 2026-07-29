@@ -255,6 +255,17 @@ async function computeEmAlta(seed) {
     const last = serie[serie.length - 1], prev = serie[serie.length - 2];
     if (!last || !prev || last[0] < today - RECENT_DAYS) return;
     if (!(last[1] < prev[1])) return;
+    // DESCIDA A SÉRIO = foi a MESMA loja que baixou o preço (2026-07-28).
+    // A série guarda [dia, cêntimos, ÍNDICE DA LOJA] e segue o MELHOR preço do
+    // EAN entre TODAS as lojas. Se o índice da loja muda, o "desconto" é só
+    // outra loja mais barata a entrar na comparação — o produto não baixou de
+    // preço nenhum, e anunciar "−50%" nesse caso é uma afirmação FALSA.
+    // Medido: de 876 candidatos, 747 eram trocas de loja e só 129 descidas
+    // reais — e os 5 que a montra mostrava eram TODOS trocas (o Neutrogena
+    // "−50%" era a perfumesclub a 7,70€ e a shopcosmetics a 3,85€).
+    // Ordenar por % agravava o problema: as maiores percentagens são
+    // precisamente as trocas entre lojas com preços muito diferentes.
+    if (last[2] !== prev[2]) return;
     const pct = 1 - last[1] / prev[1];
     if (pct < MIN_PCT || pct > MAX_PCT) return;
     drops.push({ ean, day: last[0], fromCents: prev[1], toCents: last[1], pct, volume_ml: ml || null });
