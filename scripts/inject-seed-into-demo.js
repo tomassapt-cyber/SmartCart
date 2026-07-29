@@ -56,19 +56,9 @@ const seedJson = JSON.parse(seed);
 // baixo) do que o real. O preço do item (item.price) vem do JSON-LD e é fiável.
 // Recuperamos: numa oferta de UMA só variante, se o preço da variante é um
 // inteiro igual ao floor do item.price (não-inteiro), repomos o item.price.
-(function fixTruncatedVariantPrices() {
-  let fixed = 0;
-  for (const sp of seedJson.store_products) {
-    for (const it of sp.items) {
-      if (!Array.isArray(it.variants) || it.variants.length !== 1 || !(it.price > 0)) continue;
-      const v = it.variants[0];
-      if (v.price != null && Number.isInteger(v.price) && !Number.isInteger(it.price) && Math.floor(it.price) === v.price) {
-        v.price = it.price;
-        if (it.previous_price) v.previous_price = it.previous_price;
-        fixed++;
-      }
-    }
-  }
+(function corrigirVariantesTruncadas() {
+  const { fixTruncatedVariantPrices } = require('./lib/variant-fixes');
+  const { fixed } = fixTruncatedVariantPrices(seedJson);
   if (fixed) console.log(`🔧 Preços de variante truncados corrigidos: ${fixed} (ex.: 7→7.98)`);
 })();
 
@@ -82,29 +72,9 @@ const seedJson = JSON.parse(seed);
 // monotonia de volume (volume MENOR mas preço MAIOR que uma variante de volume
 // MAIOR que partilha o URL-maioria). Só assim se apaga — evita apanhar tamanhos
 // legítimos (que partilham o URL) ou promoções (que não têm URL discordante).
-(function dropWrongProductVariants() {
-  let dropped = 0;
-  for (const sp of seedJson.store_products) {
-    for (const it of sp.items) {
-      const vs = (it.variants || []).filter(v => v.url && v.volume_ml > 0 && v.price > 0);
-      if (vs.length < 2) continue;
-      const cnt = {};
-      for (const v of vs) cnt[v.url] = (cnt[v.url] || 0) + 1;
-      const mode = Object.entries(cnt).sort((a, b) => b[1] - a[1])[0];
-      if (mode[1] < 2) continue;                       // sem URL-maioria clara
-      const majVars = vs.filter(v => v.url === mode[0]);
-      const toDrop = new Set();
-      for (const v of vs) {
-        if (v.url === mode[0]) continue;               // parte da maioria → mantém
-        // URL discordante: apaga se um volume MAIOR da maioria custa MENOS.
-        if (majVars.some(w => w.volume_ml > v.volume_ml && w.price < v.price * 0.95)) toDrop.add(v);
-      }
-      if (toDrop.size) {
-        it.variants = it.variants.filter(v => !toDrop.has(v));
-        dropped += toDrop.size;
-      }
-    }
-  }
+(function removerVariantesDeProdutoTrocado() {
+  const { dropWrongProductVariants } = require('./lib/variant-fixes');
+  const { dropped } = dropWrongProductVariants(seedJson);
   if (dropped) console.log(`🧹 Variantes de produto-trocado removidas: ${dropped} (ex.: BB cream 40ml numa água micelar)`);
 })();
 
@@ -225,6 +195,24 @@ const seedJson = JSON.parse(seed);
   const { applyVisibilityFilter } = require('./lib/catalog-visibility');
   const r = applyVisibilityFilter(seedJson, isNonCosmetic);
   console.log(`🙈 Filtro de visibilidade: ${r.hidden} produtos ocultos (${r.visiveis} visíveis) · ${r.hiddenOffers} ofertas removidas do render.`);
+})();
+
+// ── Overlay: CATEGORIA corrigida (NÃO-destrutivo) ─────────────────────────
+// Assimetria ao contrário das outras (2026-07-29): este overlay só corria no
+// push-catalog-to-db.js, por isso a BD tinha as categorias corrigidas e o SITE
+// mostrava as cruas da loja — 2.182 produtos em separadores diferentes nos
+// dois sítios (um "Hair Serum" em Rosto no site e em Cabelo no /app).
+// A correção só promove quando o nome não deixa dúvidas (ver a lib); corre
+// sobre o nome ORIGINAL, por isso ANTES da tradução — trocar a ordem partiria
+// a classificação.
+(function corrigirCategorias() {
+  const { fixCategory } = require('./lib/classify-category');
+  let n = 0;
+  for (const p of seedJson.products) {
+    const nova = fixCategory(p.name, p.category);
+    if (nova !== (p.category ?? null)) { p.category = nova; n++; }
+  }
+  if (n) console.log(`🏷️  Categorias corrigidas no render: ${n} (mesma regra da BD)`);
 })();
 
 // ── Strip de descrições do render (NÃO-destrutivo) ───────────────────────

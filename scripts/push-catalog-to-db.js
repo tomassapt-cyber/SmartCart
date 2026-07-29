@@ -92,6 +92,17 @@ async function upsert(table, rows, onConflict) {
   // Ficam de fora, por enquanto, os que ainda são inline no inject (ofertas
   // podres e filtro de visibilidade) — próximo passo, com prova por hash.
   {
+    // correções às variantes de volume (2026-07-29): faltavam no sync e a BD
+    // servia os preços errados que o site já corrigia — 43 variantes com o
+    // preço de OUTRO produto e variantes truncadas (29 € em vez de 29,74 €).
+    // Correm ANTES do merge de GTIN, como no site.
+    const { fixTruncatedVariantPrices, dropWrongProductVariants } = require('./lib/variant-fixes');
+    const t = fixTruncatedVariantPrices(seed);
+    if (t.fixed) console.log(`  preços de variante truncados corrigidos: ${t.fixed}`);
+    const w = dropWrongProductVariants(seed);
+    if (w.dropped) console.log(`  variantes de produto-trocado removidas: ${w.dropped}`);
+  }
+  {
     const { mergeEanVariants } = require('./dedup-ean-variants');
     const r = mergeEanVariants(seed);
     if (r.merged) console.log(`  merge de GTIN (UPC-A↔EAN-13): ${r.merged} produtos · ${r.remapped} ofertas`);
