@@ -27,13 +27,23 @@ const ENTIDADES = {
   '&Atilde;': 'Ã', '&Otilde;': 'Õ', '&Ccedil;': 'Ç', '&Ocirc;': 'Ô', '&Ecirc;': 'Ê',
 };
 
-/** Descodifica entidades HTML (nomeadas e numéricas). */
+/**
+ * Descodifica entidades HTML (nomeadas e numéricas).
+ * ⚠️ REPETE até estabilizar: há 13 nomes no catálogo com codificação DUPLA
+ * ("&amp;amp;" — o scraper escapou o que já vinha escapado). Uma só passagem
+ * deixava "&amp;" visível ao utilizador. Limite de 3 voltas para nunca
+ * entrar em ciclo com dados patológicos.
+ */
 function decodeEntities(s) {
   let t = String(s || '');
-  // numéricas primeiro (&#211; &#x27;) — cobrem tudo o que a tabela não tem
-  t = t.replace(/&#x([0-9a-f]{1,5});/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)));
-  t = t.replace(/&#(\d{1,6});/g, (_, d) => String.fromCodePoint(parseInt(d, 10)));
-  for (const [e, c] of Object.entries(ENTIDADES)) t = t.split(e).join(c);
+  for (let volta = 0; volta < 3; volta++) {
+    const antes = t;
+    // numéricas primeiro (&#211; &#x27;) — cobrem tudo o que a tabela não tem
+    t = t.replace(/&#x([0-9a-f]{1,5});/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)));
+    t = t.replace(/&#(\d{1,6});/g, (_, d) => String.fromCodePoint(parseInt(d, 10)));
+    for (const [e, c] of Object.entries(ENTIDADES)) t = t.split(e).join(c);
+    if (t === antes) break;
+  }
   return t;
 }
 
