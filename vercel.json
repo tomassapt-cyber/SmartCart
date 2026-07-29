@@ -5,7 +5,7 @@
       "main": false
     }
   },
-  "buildCommand": "COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
+  "buildCommand": "COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js && (node --max-old-space-size=4096 scripts/build-catalog-snapshot.js --out=catalog --quiet || echo 'AVISO: snapshot nao gerado — /catalog cai para o Storage pelo rewrite')",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
   "framework": null,
@@ -45,6 +45,18 @@
       "source": "/service-worker.js",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/catalog/((?!manifest\\.json).*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/catalog/manifest.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }
   ]

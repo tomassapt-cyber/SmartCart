@@ -34,3 +34,6 @@ data/.*-report.json
 /index.html
 /catalogo.html
 .snapshot/
+
+# gerado no build do Vercel (scripts/build-catalog-snapshot.js) — nunca commitar
+/catalog/
