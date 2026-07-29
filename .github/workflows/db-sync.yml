@@ -43,3 +43,17 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: node scripts/push-catalog-to-db.js
+
+      # ── Fase 2b: snapshot do catálogo em shards (o site ainda NÃO lê) ──────
+      # Publica o mesmo catálogo em ficheiros cacheáveis, um por loja. É aditivo
+      # e isolado: se falhar, o sync da BD acima já aterrou e o site (que lê o
+      # catálogo embebido) não é afectado — por isso continue-on-error.
+      - name: Publicar snapshot do catálogo
+        continue-on-error: true
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          NODE_OPTIONS: '--max-old-space-size=6144'
+        run: |
+          node scripts/build-catalog-snapshot.js
+          node scripts/publish-catalog-snapshot.js
