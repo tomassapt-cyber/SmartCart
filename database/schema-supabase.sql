@@ -129,58 +129,90 @@ create trigger routine_products_touch before update on public.routine_products
   for each row execute function public.touch_updated_at();
 
 -- ============================================================
--- 7) Notificação Telegram quando alguém se regista
+-- 7) Aviso por EMAIL quando alguém se regista
 -- ============================================================
--- IMPORTANTE: substitui {{TELEGRAM_BOT_TOKEN}} e {{TELEGRAM_CHAT_ID}}
--- pelos teus valores reais antes de correr esta secção.
+-- [2026-07-29] Era por Telegram, com o token do bot escrito em texto limpo
+-- dentro do corpo da função. Duas coisas mudaram:
+--   · o aviso passa a ser por email (é o que se quer);
+--   · os segredos saem do código e vão para o cofre (Vault) do Supabase — o
+--     corpo de uma função lê-se em pg_proc.prosrc, no dashboard e em qualquer
+--     backup, por isso nunca é sítio para uma chave.
 --
--- Para encontrar o tutorial completo, ver SETUP.md.
+-- O Postgres não fala SMTP; o que sabe fazer é pedidos HTTP (extensão pg_net,
+-- criada lá em cima). Por isso o email sai por uma API — o Resend.
+--
+-- ANTES de isto funcionar, guarda os segredos uma vez, no SQL Editor:
+--   select vault.create_secret('re_xxxxxxxx',        'resend_api_key');
+--   select vault.create_secret('tu@exemplo.com',     'signup_notify_email');
+--   -- opcional, só depois de verificares um domínio teu no Resend:
+--   select vault.create_secret('CosMath <avisos@ocositio.pt>', 'signup_notify_from');
+--
+-- Sem eles não rebenta nada: a função sai logo no início e o aviso fica
+-- desligado. E o registo do utilizador NUNCA falha por causa disto.
 -- ============================================================
-create or replace function public.notify_telegram_on_signup()
+create or replace function public.notify_email_on_signup()
 returns trigger
 language plpgsql
 security definer
+set search_path = public, pg_temp
 as $$
 declare
-  bot_token text := '{{TELEGRAM_BOT_TOKEN}}';
-  chat_id   text := '{{TELEGRAM_CHAT_ID}}';
-  msg       text;
-  url       text;
+  api_key   text;
+  para      text;
+  remetente text;
 begin
-  msg := format(
-    E'🌸 *Novo registo no SmartCart!*\n\n' ||
-    E'📧 Email: `%s`\n' ||
-    E'🆔 ID: `%s`\n' ||
-    E'⏰ Quando: %s\n\n' ||
-    E'_(Confirmação de email %s)_',
-    new.email,
-    new.id,
-    to_char(new.created_at at time zone 'Europe/Lisbon', 'DD/MM HH24:MI'),
-    case when new.email_confirmed_at is null then 'pendente' else 'confirmada' end
-  );
-  url := format('https://api.telegram.org/bot%s/sendMessage', bot_token);
+  begin
+    select decrypted_secret into api_key
+      from vault.decrypted_secrets where name = 'resend_api_key';
+    select decrypted_secret into para
+      from vault.decrypted_secrets where name = 'signup_notify_email';
+    select decrypted_secret into remetente
+      from vault.decrypted_secrets where name = 'signup_notify_from';
+  exception when others then
+    raise warning 'aviso de registo: nao consegui ler o Vault (%)', sqlerrm;
+    return new;
+  end;
+
+  if api_key is null or para is null then
+    return new;
+  end if;
+  remetente := coalesce(remetente, 'CosMath <onboarding@resend.dev>');
 
   perform net.http_post(
-    url := url,
-    body := jsonb_build_object(
-      'chat_id', chat_id,
-      'text', msg,
-      'parse_mode', 'Markdown'
+    url     := 'https://api.resend.com/emails',
+    headers := jsonb_build_object(
+      'Content-Type',  'application/json',
+      'Authorization', 'Bearer ' || api_key
     ),
-    headers := '{"Content-Type":"application/json"}'::jsonb
+    body    := jsonb_build_object(
+      'from',    remetente,
+      'to',      jsonb_build_array(para),
+      'subject', 'CosMath — novo registo: ' || coalesce(new.email, '(sem email)'),
+      -- um só literal, com prefixo E: literais adjacentes concatenam-se, mas o
+      -- `E` só vale para o primeiro (nos outros o \n sairia como texto)
+      'text',    format(
+        E'Alguem registou-se no CosMath.\n\nEmail: %s\nID:    %s\nHora:  %s (Lisboa)\nEmail confirmado: %s\n',
+        coalesce(new.email, '(sem email)'),
+        new.id,
+        to_char(new.created_at at time zone 'Europe/Lisbon', 'DD/MM/YYYY HH24:MI'),
+        case when new.email_confirmed_at is null then 'ainda nao' else 'sim' end
+      )
+    )
   );
-
   return new;
 exception when others then
-  -- não bloqueia o signup se o Telegram falhar
-  raise warning 'Telegram notify failed: %', sqlerrm;
+  -- o aviso é um extra: se falhar, o registo segue na mesma
+  raise warning 'aviso de registo por email falhou: %', sqlerrm;
   return new;
 end $$;
 
-drop trigger if exists on_auth_user_created_notify on auth.users;
-create trigger on_auth_user_created_notify
+revoke all on function public.notify_email_on_signup() from anon, authenticated;
+
+drop trigger if exists on_auth_user_created_notify on auth.users;   -- o antigo, do Telegram
+drop trigger if exists on_auth_user_created_email on auth.users;
+create trigger on_auth_user_created_email
   after insert on auth.users
-  for each row execute function public.notify_telegram_on_signup();
+  for each row execute function public.notify_email_on_signup();
 
 -- ============================================================
 -- 8) [REMOVIDO 2026-07-29] Helper view: routine_with_status

@@ -31,7 +31,8 @@
 --   5. catálogo                   — idem (só o CI com service key escreve).
 --   6. public.search_events       — privilégio mínimo: só INSERT.
 --   7. public.handle_new_user()   — `security definer` sem `search_path`.
---   8. public.notify_telegram_on_signup() — idem + segredo em texto limpo.
+--   8. aviso de novo registo   — sai o Telegram (com o token em texto limpo
+--                                 no corpo da função), entra email pelo Resend.
 --   9. default privileges         — travão para tudo o que nascer no futuro.
 --  10. o que NÃO se mexe, e porquê.
 --  11. bloco de VERIFICAÇÃO (queries para correres depois).
@@ -381,107 +382,141 @@ end $$;
 
 
 -- ============================================================================
--- 8) public.notify_telegram_on_signup() — segredo em texto limpo + search_path
+-- 8) Aviso de novo registo: FORA o Telegram, DENTRO o email (Resend)
 -- ============================================================================
--- SINTOMA: o token do bot do Telegram e o chat_id ficam escritos dentro do
---   corpo da função (`bot_token text := '...'`, schema-supabase.sql:145-146).
---   O corpo de uma função é legível em pg_proc.prosrc, aparece no dashboard,
---   em qualquer backup/dump e pode aparecer em logs. Quem tiver o token manda
---   mensagens pelo bot. No repositório só estão os placeholders
---   {{TELEGRAM_BOT_TOKEN}}/{{TELEGRAM_CHAT_ID}} (nada foi commitado), mas o
---   SETUP-AUTH.md:27 manda colar o token real antes de correr o SQL.
---   Acumula ainda o mesmo problema de `search_path` da secção 7.
--- CAUSA RAIZ: segredos hardcoded. O sítio certo é o Vault do Supabase, que os
---   guarda cifrados e só os decifra a pedido.
--- PORQUE RESOLVE: a função passa a ir buscar os valores ao Vault em tempo de
---   execução; o corpo deixa de conter segredo nenhum.
+-- DECISÃO (2026-07-29, pedido do dono do site): não se quer Telegram. O aviso
+-- de "alguém registou-se" passa a chegar por email.
 --
--- ANTES DE CORRER ESTA MIGRAÇÃO, faz isto (fora daqui, para o token não ficar
--- guardado num ficheiro do repositório):
---   1) @BotFather → /revoke → gera um token NOVO (o antigo esteve em claro);
---   2) no SQL Editor, uma vez:
---        select vault.create_secret('<TOKEN_NOVO>', 'telegram_bot_token');
---        select vault.create_secret('<CHAT_ID>',    'telegram_chat_id');
--- Se saltares o passo 2, nada rebenta: a função sai logo no início e a
--- notificação fica simplesmente desligada até criares os segredos.
+-- Havia aqui dois problemas a resolver ao mesmo tempo:
+--   (a) a função public.notify_telegram_on_signup() guardava o token do bot e o
+--       chat_id EM TEXTO LIMPO dentro do próprio corpo (schema-supabase.sql:
+--       145-146, via os placeholders que o SETUP-AUTH.md manda substituir pelos
+--       valores reais). O corpo de uma função lê-se em pg_proc.prosrc, aparece
+--       no dashboard, em qualquer backup/dump e pode ir parar aos logs;
+--   (b) era `security definer` sem `set search_path` — a mesma lacuna da
+--       secção 7 (classe CVE-2018-1058).
+-- Como a função desaparece, os dois problemas desaparecem com ela.
 --
--- NÃO PARTE NADA: a função só manda uma notificação para ti; o registo do
---   utilizador nunca depende dela (o `exception when others` devolve `new` na
---   mesma). Só se toca na função se ela já existir — se instalaste o esquema
---   pelo schema-supabase-no-telegram.sql, esta secção não faz nada.
+-- PORQUÊ UM SERVIÇO DE EMAIL E NÃO "MANDAR UM EMAIL DIRECTO": o Postgres não
+-- fala SMTP. O que a base de dados sabe fazer é pedidos HTTP (extensão pg_net,
+-- já instalada — schema-supabase.sql:16). Por isso o aviso sai por uma API de
+-- email. Escolhido o Resend: conta gratuita com 3.000 emails/mês e, muito
+-- prático, deixa enviar para o endereço com que te registaste sem teres de
+-- verificar domínio nenhum (usando o remetente onboarding@resend.dev).
+--
+-- ANTES DE CORRER ESTA MIGRAÇÃO — dois passos, uma vez só:
+--
+--   1) Se alguma vez colaste o token real do Telegram nesta base de dados, vai
+--      ao @BotFather e faz /revoke. Ele esteve legível em claro; apagar a
+--      função não desfaz isso. Se nunca configuraste o Telegram, salta este
+--      passo (a secção detecta e ignora).
+--
+--   2) Cria conta em resend.com (grátis), gera uma API key em "API Keys", e
+--      guarda os segredos no cofre do Supabase — SQL Editor, uma vez:
+--
+--        select vault.create_secret('re_xxxxxxxxxxxx', 'resend_api_key');
+--        select vault.create_secret('tomas.sa.pt@gmail.com', 'signup_notify_email');
+--
+--      (o email tem de ser o MESMO com que criaste a conta Resend, enquanto
+--      não verificares um domínio teu — é a regra deles para o remetente de
+--      teste). Se um dia verificares um domínio, acrescenta um terceiro
+--      segredo e o remetente passa a ser esse, sem mexer em SQL:
+--
+--        select vault.create_secret('CosMath <avisos@ocositio.pt>', 'signup_notify_from');
+--
+-- SE SALTARES O PASSO 2, NADA REBENTA: a função sai logo no início e o aviso
+-- fica simplesmente desligado até criares os segredos. E, aconteça o que
+-- acontecer dentro dela, o registo do utilizador NUNCA falha por causa disto —
+-- o `exception when others` devolve `new` na mesma. Um aviso é um extra, não
+-- pode ser um ponto de falha do registo.
 
-do $do$
+-- 8.1 — remover o Telegram (trigger primeiro, depois a função)
+drop trigger if exists on_auth_user_created_notify on auth.users;
+drop function if exists public.notify_telegram_on_signup();
+
+-- 8.2 — a função nova: lê os segredos do cofre e faz um POST ao Resend
+create or replace function public.notify_email_on_signup()
+returns trigger
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $body$
+declare
+  api_key   text;
+  para      text;
+  remetente text;
 begin
-  if exists (
-    select 1
-      from pg_proc p
-      join pg_namespace n on n.oid = p.pronamespace
-     where n.nspname = 'public' and p.proname = 'notify_telegram_on_signup'
-  ) then
-    execute $fn$
-      create or replace function public.notify_telegram_on_signup()
-      returns trigger
-      language plpgsql
-      security definer
-      set search_path = public, pg_temp
-      as $body$
-      declare
-        bot_token text;
-        chat_id   text;
-        msg       text;
-        url       text;
-      begin
-        select decrypted_secret into bot_token
-          from vault.decrypted_secrets where name = 'telegram_bot_token';
-        select decrypted_secret into chat_id
-          from vault.decrypted_secrets where name = 'telegram_chat_id';
+  -- O cofre pode não estar acessível (permissões, extensão não activada).
+  -- Isso não pode derrubar um registo, por isso vai em bloco próprio.
+  begin
+    select decrypted_secret into api_key
+      from vault.decrypted_secrets where name = 'resend_api_key';
+    select decrypted_secret into para
+      from vault.decrypted_secrets where name = 'signup_notify_email';
+    select decrypted_secret into remetente
+      from vault.decrypted_secrets where name = 'signup_notify_from';
+  exception when others then
+    raise warning 'aviso de registo: nao consegui ler o Vault (%)', sqlerrm;
+    return new;
+  end;
 
-        -- sem segredos no Vault → não notifica, mas deixa o registo seguir
-        if bot_token is null or chat_id is null then
-          return new;
-        end if;
-
-        msg := format(
-          E'🌸 *Novo registo no SmartCart!*\n\n' ||
-          E'📧 Email: `%s`\n' ||
-          E'🆔 ID: `%s`\n' ||
-          E'⏰ Quando: %s\n\n' ||
-          E'_(Confirmação de email %s)_',
-          new.email,
-          new.id,
-          to_char(new.created_at at time zone 'Europe/Lisbon', 'DD/MM HH24:MI'),
-          case when new.email_confirmed_at is null then 'pendente' else 'confirmada' end
-        );
-        url := format('https://api.telegram.org/bot%s/sendMessage', bot_token);
-
-        perform net.http_post(
-          url := url,
-          body := jsonb_build_object(
-            'chat_id', chat_id,
-            'text', msg,
-            'parse_mode', 'Markdown'
-          ),
-          headers := '{"Content-Type":"application/json"}'::jsonb
-        );
-
-        return new;
-      exception when others then
-        -- nunca bloqueia o signup se o Telegram (ou o Vault) falhar
-        raise warning 'Telegram notify failed: %', sqlerrm;
-        return new;
-      end
-      $body$;
-    $fn$;
-    raise notice '011: notify_telegram_on_signup() reescrita — segredos vao ao Vault e search_path fixo.';
-  else
-    raise notice '011: notify_telegram_on_signup() nao existe — seccao 8 ignorada.';
+  -- ainda não configurado — segue em silêncio
+  if api_key is null or para is null then
+    return new;
   end if;
-end
-$do$;
+  remetente := coalesce(remetente, 'CosMath <onboarding@resend.dev>');
 
--- Se já não queres a notificação de todo (mais simples e mais seguro):
---   drop trigger if exists on_auth_user_created_notify on auth.users;
---   drop function if exists public.notify_telegram_on_signup();
+  -- Texto simples de propósito: sem HTML não há nada para escapar, e o email
+  -- do utilizador vai aqui dentro. O destino é só o dono do site.
+  perform net.http_post(
+    url     := 'https://api.resend.com/emails',
+    headers := jsonb_build_object(
+      'Content-Type',  'application/json',
+      'Authorization', 'Bearer ' || api_key
+    ),
+    body    := jsonb_build_object(
+      'from',    remetente,
+      'to',      jsonb_build_array(para),
+      'subject', 'CosMath — novo registo: ' || coalesce(new.email, '(sem email)'),
+      -- ATENÇÃO: um só literal com prefixo E. Literais adjacentes em SQL são
+      -- concatenados, MAS o `E` só vale para o primeiro — nos seguintes o \n
+      -- sairia como barra-e-n em texto, não como mudança de linha.
+      'text',    format(
+        E'Alguem registou-se no CosMath.\n\nEmail: %s\nID:    %s\nHora:  %s (Lisboa)\nEmail confirmado: %s\n',
+        coalesce(new.email, '(sem email)'),
+        new.id,
+        to_char(new.created_at at time zone 'Europe/Lisbon', 'DD/MM/YYYY HH24:MI'),
+        case when new.email_confirmed_at is null then 'ainda nao' else 'sim' end
+      )
+    )
+  );
+  return new;
+
+exception when others then
+  -- rede em baixo, Resend a devolver erro, o que for: o registo segue.
+  raise warning 'aviso de registo por email falhou: %', sqlerrm;
+  return new;
+end $body$;
+
+-- 8.3 — ligar ao registo de novos utilizadores
+drop trigger if exists on_auth_user_created_email on auth.users;
+create trigger on_auth_user_created_email
+  after insert on auth.users
+  for each row execute function public.notify_email_on_signup();
+
+-- 8.4 — ninguém de fora precisa de poder chamar isto
+revoke all on function public.notify_email_on_signup() from anon, authenticated;
+
+-- COMO TESTAR sem esperar por um registo a sério: cria um utilizador de teste
+-- em Authentication → Users → Add user (com "Auto Confirm User"), confirma que
+-- o email chega, e apaga-o a seguir. Se não chegar, vê Database → Logs (a
+-- função escreve lá um `warning` a dizer porquê) e o painel do Resend em
+-- "Emails", que mostra as entregas e as recusas.
+
+-- Se um dia não quiseres aviso nenhum, é só desligar (o registo continua a
+-- funcionar exactamente na mesma):
+--   drop trigger if exists on_auth_user_created_email on auth.users;
+--   drop function if exists public.notify_email_on_signup();
 
 
 -- ============================================================================
