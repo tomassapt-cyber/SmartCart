@@ -13,9 +13,11 @@ name: Care to Beauty daily refresh
 
 on:
   schedule:
+    # 2x/dia e nao 3x como as lojas pequenas: sao 16 mil fichas, ~40 min cada
+    # passagem. Horarios afastados dos das outras lojas para nao competirem
+    # pelos executores do GitHub.
     - cron: '10 2 * * *'
-    - cron: '10 16 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - #   # 3x/dia
+    - cron: '10 16 * * *'
   workflow_dispatch:
     inputs:
       limit:
