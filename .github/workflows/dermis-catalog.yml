@@ -55,12 +55,15 @@ jobs:
 
       - name: Scrape Dermis
         run: |
+          # [2026-07-30] O $RESUME era calculado e NUNCA usado — o botao
+          # "Retomar" da interface nao fazia nada. Na Care to Beauty isso
+          # custava 57 min de recolha repetida (run 30561862354).
           RESUME=""
           if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-dermis-catalog.js --limit=${{ github.event.inputs.limit }}
+            node scripts/scrape-dermis-catalog.js --limit=${{ github.event.inputs.limit }} $RESUME
           else
-            node scripts/scrape-dermis-catalog.js
+            node scripts/scrape-dermis-catalog.js $RESUME
           fi
 
       - name: Upload scrape artifact (safety-net)
