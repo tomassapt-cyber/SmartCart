@@ -9691,23 +9691,52 @@ function heroQuiz() {
   hideHeroSuggest();
   document.getElementById('quizzes')?.scrollIntoView({ behavior: 'smooth' });
 }
-// Newsletter: captura o email (localStorage, sem backend) e confirma.
+// Newsletter: regista o email na BD (tabela newsletter_subscribers).
+//
+// [2026-07-30] ANTES isto só fazia localStorage.setItem() — o email ficava no
+// browser da própria pessoa e NUNCA chegava ao site, mas a mensagem dizia
+// "✓ Subscrito! Vais receber alertas...". Prometia o que não podia cumprir, e
+// todos os emails deixados até aqui perderam-se. Agora vai mesmo para a BD
+// (ver database/migrations/012_newsletter_subscribers.sql: o anónimo só pode
+// INSERIR — não consegue ler nem apagar a lista) e a confirmação só aparece
+// se o registo tiver mesmo acontecido.
 function subscribeNewsletter(ev) {
   if (ev) ev.preventDefault();
   const input = document.getElementById('newsletter-email');
   const msg = document.getElementById('newsletter-msg');
+  const btn = ev && ev.target ? ev.target.querySelector('button[type=submit]') : null;
   const email = (input?.value || '').trim();
+  const setMsg = (t, erro) => { if (msg) { msg.textContent = t; msg.style.color = erro ? '#ffd2d2' : ''; } };
+  const falhou = () => { setMsg('✗ Não conseguimos registar agora. Tenta daqui a pouco.', true); if (btn) btn.disabled = false; };
+
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    if (msg) { msg.textContent = '✗ Email inválido — verifica e tenta de novo.'; msg.style.color = '#ffd2d2'; }
+    setMsg('✗ Email inválido — verifica e tenta de novo.', true);
     return false;
   }
-  try {
-    const list = JSON.parse(localStorage.getItem('cosmath_newsletter') || '[]');
-    if (!list.includes(email)) { list.push(email); localStorage.setItem('cosmath_newsletter', JSON.stringify(list)); }
-  } catch (e) {}
-  if (input) input.value = '';
-  if (msg) { msg.textContent = '✓ Subscrito! Vais receber alertas das maiores descidas de preço.'; msg.style.color = ''; }
-  if (typeof toast === 'function') toast('Email subscrito — alertas de preço ativados ✓');
+
+  const sb = window.SUPABASE;
+  if (!sb) { falhou(); return false; }
+
+  setMsg('A registar…');
+  if (btn) btn.disabled = true;
+
+  sb.from('newsletter_subscribers')
+    .insert({ email: email.toLowerCase(), source: 'homepage' })
+    .then(({ error }) => {
+      // 23505 = violação do índice único: já cá estava. Para quem subscreve,
+      // isso é sucesso na mesma — não se diz a ninguém "já te tinhas inscrito".
+      if (error && error.code !== '23505') throw error;
+      try {
+        const list = JSON.parse(localStorage.getItem('cosmath_newsletter') || '[]');
+        if (!list.includes(email)) { list.push(email); localStorage.setItem('cosmath_newsletter', JSON.stringify(list)); }
+      } catch (e) { /* localStorage cheio ou bloqueado: não é motivo para falhar */ }
+      if (input) input.value = '';
+      if (btn) btn.disabled = false;
+      setMsg('✓ Email registado. Avisamos-te das maiores descidas.');
+      if (typeof toast === 'function') toast('Email registado ✓');
+    })
+    .catch(falhou);
+
   return false;
 }
 document.getElementById('search').oninput = (e) => heroSuggest(e.target.value);
