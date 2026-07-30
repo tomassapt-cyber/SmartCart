@@ -308,6 +308,13 @@ if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
     try {
       const hp = JSON.parse(fs.readFileSync(HP_DATA, 'utf8'));
       hp.stats = stats;
+      // versão dos pedaços de produto (data/p/<versao>/) — o cliente usa-a
+      // para montar o endereço. Se o ficheiro não existir, fica vazia e o
+      // cliente cai nos ficheiros completos, como antes da Fase 3.
+      try {
+        const vp = path.join(ROOT, 'data', 'p', 'versao.txt');
+        hp.shard_version = fs.existsSync(vp) ? fs.readFileSync(vp, 'utf8').trim() : '';
+      } catch { hp.shard_version = ''; }
       fs.writeFileSync(HP_DATA, JSON.stringify(hp, null, 2));
       console.log('📊 Hero: ' + stats.stores + ' lojas · ' + stats.products + ' produtos · poupanca media -' + stats.avg_savings_pct + '%');
     } catch (e) { console.warn('⚠ nao consegui gravar os stats no hp-data:', e.message); }

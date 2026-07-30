@@ -5,7 +5,7 @@
       "main": false
     }
   },
-  "buildCommand": "COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
+  "buildCommand": "(node --max-old-space-size=4096 scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados') && COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
   "framework": null,
@@ -64,6 +64,15 @@
         {
           "key": "Cache-Control",
           "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/data/p/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     }

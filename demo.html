@@ -9042,6 +9042,68 @@ function openPriceAnalyzer(ean) {
 }
 
 // ─────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+//  PEDAÇOS DE PRODUTO (2026-07-30)
+//  Antes, abrir UMA ficha descarregava recommendations.json (2,95 MB),
+//  descriptions.json (2,50 MB) e price-history.json (0,80 MB) INTEIROS —
+//  6,25 MB comprimidos em 3 pedidos, para mostrar um produto. Agora pede-se
+//  só o pedaço onde esse produto vive: ~23 KB, 1 pedido.
+//
+//  O nome da pasta leva o hash do conteúdo, por isso pode ter cache eterna
+//  (ver vercel.json). Se o pedaço não existir — build antigo, ficheiros por
+//  gerar, file:// — cai-se nos ficheiros completos e tudo funciona como
+//  antes. Esta queda é deliberada: uma tentativa anterior de gerar
+//  ficheiros no build parou os deploys, e isto não pode voltar a acontecer.
+// ─────────────────────────────────────────────────────────────
+const SHARD_N = 512;
+let SHARD_V = null;          // versão (hash) vinda da página
+const SHARD_CACHE = new Map();
+
+function shardVersion() {
+  if (SHARD_V !== null) return SHARD_V;
+  try {
+    const hp = JSON.parse(document.getElementById('hp-data')?.textContent || '{}');
+    SHARD_V = hp.shard_version || '';
+  } catch { SHARD_V = ''; }
+  return SHARD_V;
+}
+
+// FNV-1a de 32 bits. TEM de ser idêntico ao de scripts/build-product-shards.js
+// — se divergir, pede-se o ficheiro errado e a ficha fica sem descrição.
+function shardBucket(chave) {
+  let h = 0x811c9dc5;
+  const s = String(chave);
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return String(h % SHARD_N).padStart(3, '0');
+}
+
+function loadShard(ean) {
+  const v = shardVersion();
+  if (!v || !ean) return Promise.resolve(null);
+  const b = shardBucket(ean);
+  if (!SHARD_CACHE.has(b)) {
+    SHARD_CACHE.set(b, fetch('data/p/' + v + '/' + b + '.json')
+      .then(r => (r.ok ? r.json() : null))
+      .catch(() => null));
+  }
+  return SHARD_CACHE.get(b);
+}
+
+// a lista de lojas é partilhada por todos os pedaços (as séries guardam a
+// posição da loja, não o nome) — um pedido de 1 KB, uma vez por sessão
+let SHARD_STORES = null;
+function loadShardStores() {
+  const v = shardVersion();
+  if (!v) return Promise.resolve(null);
+  if (SHARD_STORES) return SHARD_STORES;
+  SHARD_STORES = fetch('data/p/' + v + '/_stores.json')
+    .then(r => (r.ok ? r.json() : null))
+    .catch(() => null);
+  return SHARD_STORES;
+}
 //  Produtos similares — índice pré-computado (data/recommendations.json)
 //  Carregado lazy (uma vez por sessão, só quando o utilizador abre um
 //  produto) para NÃO somar ~11MB ao load inicial da página. Falha em
@@ -9049,7 +9111,7 @@ function openPriceAnalyzer(ean) {
 // ─────────────────────────────────────────────────────────────
 let RECS_MAP = null;        // { ean: [ean,...] } quando carregado
 let RECS_PROMISE = null;    // promise em curso (evita fetch duplicado)
-function loadRecommendations() {
+function loadRecommendationsCompleto() {
   if (RECS_MAP) return Promise.resolve(RECS_MAP);
   if (RECS_PROMISE) return RECS_PROMISE;
   RECS_PROMISE = fetch('data/recommendations.json')
@@ -9057,6 +9119,10 @@ function loadRecommendations() {
     .then(j => { RECS_MAP = (j && j.map) ? j.map : {}; return RECS_MAP; })
     .catch(() => { RECS_MAP = {}; return RECS_MAP; });
   return RECS_PROMISE;
+}
+// pedaço primeiro; o ficheiro de 2,95 MB só se o pedaço faltar
+function loadRecommendations(ean) {
+  return loadShard(ean).then(s => (s && s.r) ? s.r : loadRecommendationsCompleto());
 }
 function similarMinPrice(ean) {
   const offers = OFFERS_BY_PRODUCT[ean] || {};
@@ -9066,7 +9132,7 @@ function similarMinPrice(ean) {
 function renderSimilarProducts(ean) {
   const host = document.getElementById('pa-similar');
   if (!host) return;
-  loadRecommendations().then(map => {
+  loadRecommendations(ean).then(map => {
     // O utilizador pode ter aberto outro produto entretanto.
     if (!PA_STATE || PA_STATE.ean !== ean) return;
     const recEans = (map && map[ean]) || [];
@@ -9113,7 +9179,7 @@ function renderSimilarProducts(ean) {
 // ─────────────────────────────────────────────────────────────
 let DESC_MAP = null;        // { ean: "texto" } quando carregado
 let DESC_PROMISE = null;
-function loadDescriptions() {
+function loadDescriptionsCompleto() {
   if (DESC_MAP) return Promise.resolve(DESC_MAP);
   if (DESC_PROMISE) return DESC_PROMISE;
   DESC_PROMISE = fetch('data/descriptions.json')
@@ -9121,6 +9187,10 @@ function loadDescriptions() {
     .then(j => { DESC_MAP = (j && j.map) ? j.map : {}; return DESC_MAP; })
     .catch(() => { DESC_MAP = {}; return DESC_MAP; });
   return DESC_PROMISE;
+}
+// pedaço primeiro; o ficheiro de 2,50 MB só se o pedaço faltar
+function loadDescriptions(ean) {
+  return loadShard(ean).then(s => (s && s.d) ? s.d : loadDescriptionsCompleto());
 }
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => (
@@ -9130,7 +9200,7 @@ function escapeHtml(s) {
 function renderDescription(ean) {
   const host = document.getElementById('pa-desc');
   if (!host) return;
-  loadDescriptions().then(map => {
+  loadDescriptions(ean).then(map => {
     // O utilizador pode ter aberto outro produto entretanto.
     if (!PA_STATE || PA_STATE.ean !== ean) return;
     const text = map && map[ean];
@@ -9435,7 +9505,7 @@ let PH_FETCH = null;         // promessa em curso
 const PH_STATE = { period: '3M' };
 const PH_PERIODS = { '1M': 30, '3M': 90, '1A': 365, 'Tudo': Infinity };
 
-function fetchPriceHistory() {
+function fetchPriceHistoryCompleto() {
   if (PH_DATA) return Promise.resolve(PH_DATA);
   if (!PH_FETCH) {
     PH_FETCH = fetch('data/price-history.json', { cache: 'no-cache' })
@@ -9444,6 +9514,16 @@ function fetchPriceHistory() {
       .catch(() => { PH_FETCH = null; return null; });
   }
   return PH_FETCH;
+}
+// Pedaço primeiro. Devolve a MESMA forma { stores, series, vseries } que o
+// ficheiro completo, para nenhum sítio que use isto precisar de mudar.
+function fetchPriceHistory(ean) {
+  return loadShard(ean).then(s => {
+    if (!s || !s.h) return fetchPriceHistoryCompleto();
+    return loadShardStores().then(stores => ({
+      v: 1, stores: stores || [], series: s.h, vseries: s.vh || {},
+    }));
+  });
 }
 
 function phToday() { return Math.floor(Date.now() / 86400000); }
@@ -9530,7 +9610,7 @@ function renderPriceHistory(ean, currentPrice, activeVolume, hasVolumeOptions) {
   const host = document.getElementById('pa-history');
   if (!host) return;
   host.innerHTML = '<div class="ph-card"><div class="ph-head"><span class="ph-title">📈 Histórico de preços</span></div><div class="ph-empty">a carregar…</div></div>';
-  fetchPriceHistory().then(data => {
+  fetchPriceHistory(ean).then(data => {
     const el = document.getElementById('pa-history');
     if (!el) return;                                   // modal já fechou
     if (!data) { el.innerHTML = ''; return; }

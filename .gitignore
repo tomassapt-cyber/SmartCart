@@ -37,3 +37,6 @@ data/.*-report.json
 
 # gerado no build do Vercel (scripts/build-catalog-snapshot.js) — nunca commitar
 /catalog/
+
+# pedacos de produto gerados no build (scripts/build-product-shards.js)
+/data/p/
