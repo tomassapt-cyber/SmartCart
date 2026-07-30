@@ -66,30 +66,6 @@
           "value": "no-cache, no-store, must-revalidate"
         }
       ]
-    },
-    {
-      "source": "/catalog/((?!manifest\\.json).*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/catalog/manifest.json",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/catalog/:path*",
-      "destination": "https://sqjtkwtoaudmfmexreqk.supabase.co/storage/v1/object/public/catalog/:path*"
     }
   ]
 }
