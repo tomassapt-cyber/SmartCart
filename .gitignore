@@ -40,3 +40,6 @@ data/.*-report.json
 
 # pedacos de produto gerados no build (scripts/build-product-shards.js)
 /data/p/
+
+# indice de pesquisa gerado (scripts/build-search-index.js)
+/data/idx/
