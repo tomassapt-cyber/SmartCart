@@ -8121,6 +8121,13 @@ function rebuildCatalogIndexes(seed) {
     POPULARITY_SCORE[s.ean] = s.storeCount * 1000 + Math.min(s.savings, 50) * 5 - (s.bestPrice ?? 9999) * 0.01;
   }
   TOP50_ROT = null; // scores mudaram → o rank rotativo da época recalcula-se
+  // [2026-07-30] O memo de statsByEanMap tinha de ser invalidado AQUI e não era.
+  // Guarda um dicionário ean→estatísticas construído à primeira chamada e nunca
+  // mais o largava; como esta função SUBSTITUI PRODUCT_STATS, tudo o que lesse
+  // as estatísticas a seguir (a rotina, a prateleira, o carrinho, "Para ti")
+  // ficava preso aos valores antigos. Sintoma visível: carregar em "mostrar
+  // estimativas" mudava o catálogo mas NÃO os preços da rotina.
+  statsByEanMap._m = null;
 
   HIGHLIGHTS = {
     newReleases: PRODUCT_STATS
@@ -12747,7 +12754,17 @@ function toast(msg) {
 // INIT
 // ============================================================
 async function initApp() {
-  rebuildCatalogIndexes(SEED_FALLBACK);
+  // [2026-07-30] Esta chamada era feita SEMPRE, e o loadLiveCatalog() a seguir
+  // indexa outra vez em TODOS os seus caminhos — em produção com exactamente o
+  // mesmo SEED_FALLBACK. Ou seja: construíam-se os 8 índices globais sobre
+  // 50 mil produtos e 149 mil ofertas duas vezes seguidas, para nada.
+  //
+  // Em localhost mantém-se, e por um motivo concreto: aí há um fetch real à API
+  // local pelo meio, e sem esta indexação eager a página ficaria sem índices
+  // durante esse tempo. Em produção não há espera nenhuma — o loadLiveCatalog
+  // devolve logo no primeiro if.
+  const devLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  if (devLocal) rebuildCatalogIndexes(SEED_FALLBACK);
   const loadedLive = await loadLiveCatalog();
   renderCatalog();
   renderDynamicSections();
@@ -12782,11 +12799,13 @@ async function initApp() {
       }
     }
   } catch (e) {}
-  if (loadedLive) {
-    toast('Precos e stock carregados em tempo real da base de dados');
-  } else {
-    toast('A usar dataset local (backend live indisponivel)');
-  }
+  // [2026-07-30] Antes mostrava-se SEMPRE um aviso, e em produção era este:
+  // "A usar dataset local (backend live indisponivel)". Toda a gente que entra
+  // no site vê, a cada visita, o anúncio de uma avaria que não existe — a API
+  // "live" só existe em localhost, por desenho (ver loadLiveCatalog). Em
+  // produção ler o catálogo embutido é o funcionamento normal, não uma falha.
+  // O aviso de sucesso mantém-se em dev, onde é informação verdadeira.
+  if (loadedLive) toast('Precos e stock carregados em tempo real da base de dados');
 }
 
 /**
