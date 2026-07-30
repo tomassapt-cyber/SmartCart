@@ -324,7 +324,15 @@ if (!DEPLOY) {
     : spawnSync('node', [path.join(__dirname, 'build-homepage-data.js')], { cwd: ROOT, encoding: 'utf8', timeout: 900000 });
   if (r1.status === 0) {
     try {
-      const hp = fs.readFileSync(path.join(ROOT, 'data', 'homepage-data.json'), 'utf8');
+      // MESMO escape do caminho de cima (linha ~277). Faltava aqui, e este é o
+      // caminho que corre TODOS OS DIAS no CI: o hp-data traz nomes vindos do
+      // scraping, e bastava um nome com "</script>" para fechar o bloco a meio
+      // e deixar a homepage sem showcase — exactamente a avaria de 2026-07-2x.
+      // U+2028/U+2029 são quebras de linha invisíveis que o JSON aceita e o
+      // JavaScript não. Escritos como sequências \u… de propósito: pôr os
+      // caracteres literais no código já deu asneira uma vez.
+      const hp = fs.readFileSync(path.join(ROOT, 'data', 'homepage-data.json'), 'utf8')
+        .replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
       const HP_OPEN = '<script type="application/json" id="hp-data">';
       let done = 0;
       for (const f of ['index.html', 'catalogo.html']) {
