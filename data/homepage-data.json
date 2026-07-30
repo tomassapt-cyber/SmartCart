@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T00:25:21.346Z",
+  "generated_at": "2026-07-30T03:39:03.532Z",
   "seed_total_products": 58391,
   "hero_sponsored": [
     {
@@ -107,54 +107,54 @@
   ],
   "skincare_kits": [
     {
-      "ean": "3337875549493",
-      "name": "Effaclar Duo+ SPF30",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.13,
+      "ean": "3574661540887",
+      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
+      "brand": "Aveeno",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
+      "best_price": 7.67,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
+    },
+    {
+      "ean": "3701436934781",
+      "name": "Cofre Serum Lift Integral",
+      "brand": "Lierac",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809514.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 32.56,
+      "best_store": "Cocooncenter",
+      "best_store_slug": "cocooncenter",
+      "best_url": "https://www.cocooncenter.pt/lierac-lift-integral-o-serum-tensor-30-ml-o-tratamento-lift-olhos-15-ml-oferecido/119782.html"
+    },
+    {
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 17.45,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
+    },
+    {
+      "ean": "3574661879185",
+      "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
+      "best_price": 12.26,
       "best_store": "Farmácias Progresso",
       "best_store_slug": "farmaciasprogresso",
-      "best_url": "https://www.farmaciasprogresso.pt/lrposay-effaclar-duo-fps30-40ml"
+      "best_url": "https://www.farmaciasprogresso.pt/neutrogena-deep-moisture-pele-seca-25"
     },
     {
-      "ean": "3337875863377",
-      "name": "Effaclar Duo +M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 12.54,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-40ml"
-    },
-    {
-      "ean": "8470001859853",
-      "name": "Biretix Duo Gel Imperfeições -",
-      "brand": "BiRetix",
-      "image_url": "https://cdn.notinoimg.com/detail_main_mq/biretix/8470001859853_01-o/treat-duo-anti-blemish-gel___231102.jpg",
-      "best_price": 16.15,
-      "best_store": "Notino",
-      "best_store_slug": "notino",
-      "best_url": "https://www.notino.pt/biretix/treat-duo-anti-blemish-gel-tratamento-corretor-e-renovador-anti-imperfeicoes-da-pele-anti-marcas-apos-acne-anti-recorrencia/"
-    },
-    {
-      "ean": "3337875924887",
-      "name": "Parches Effaclar Duo+M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809209.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 9.84,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-effaclar-duo-m-patch-anti-imperfeicoes-x22"
-    },
-    {
-      "ean": "7612412429886",
-      "name": "Curaprox Kit de viagem Be You Challenger",
-      "brand": "Curaprox",
-      "image_url": "https://static.lojadafarmacia.com/12025/curaprox-kit-viagem-be-you-challenger.jpg",
-      "best_price": 7.99,
-      "best_store": "Poupafarma",
-      "best_store_slug": "poupafarma",
-      "best_url": "https://www.poupafarma.pt/curaprox-kit-de-viagem-rosa"
+      "ean": "3574661087054",
+      "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
+      "best_price": 5.52,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/neutrogena-formula-norueguesa-creme-maos-concentrado-50ml-oferta-stick-labial"
     }
   ],
   "em_alta": [
@@ -171,20 +171,6 @@
       "previous_price": 16.66,
       "discount_pct": 32,
       "dropped_day": 20659,
-      "verified_live": true
-    },
-    {
-      "ean": "3574661352565",
-      "name": "Neutrogena Hydro Boost Anti-Rugas para o Contorno dos Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://www.farmaciabarreiros.com/16540/neutrogena-hydro-boost-gel-creme-contorno-dos-olhos-anti-fadiga-15-ml.jpg",
-      "best_price": 4.9,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/labios-e-olhos/3266-neutrogena-hydro-boost-contorno-de-olhos-15ml.html",
-      "previous_price": 7,
-      "discount_pct": 30,
-      "dropped_day": 20653,
       "verified_live": true
     },
     {
@@ -228,6 +214,21 @@
       "previous_price": 12.3,
       "discount_pct": 20,
       "dropped_day": 20659,
+      "verified_live": true
+    },
+    {
+      "ean": "4005800291999",
+      "name": "Loção Hidratante Pele Seca e Sensível pH5",
+      "brand": "Eucerin",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw7571abeb/images/wells/732/7328045-ROTINA-LOCAO-HIDRATANTE-PELE-SECA-E-SENSIVEL-PH5-EUCERIN-P-01.png",
+      "best_price": 11.64,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/eucerin-ph5-locao-protetora-400-ml",
+      "volume_ml": 400,
+      "previous_price": 14.55,
+      "discount_pct": 20,
+      "dropped_day": 20655,
       "verified_live": true
     }
   ],

@@ -43,7 +43,64 @@ const EM_ALTA_EANS = [
   '3337875863377', // LRP Effaclar Duo +M
 ];
 
-const KIT_KEYWORDS = /\b(kit|cofre|set|pack|estuche|conjunto|coffret|bundle|trio|duo)\b/i;
+// ── É UM KIT DE SKINCARE? (reescrito 2026-07-30) ────────────────────────────
+// A regra antiga era `/\b(kit|cofre|set|pack|...|trio|duo)\b/i` e enchia a
+// secção "Skincare Kits" de coisas que não são kits nem skincare. Teste cego
+// com 3 juízes independentes sobre os 5 que estavam no site: **0 de 5** eram
+// mesmo kits de cuidado de pele. Os falhanços, por ordem de gravidade:
+//
+//   1. "duo"/"trio" são NOMES DE GAMA, não quantidades. Effaclar Duo+, Biretix
+//      Duo, Effaclar Duo +M são UM frasco cada — o "Duo" refere a dupla acção
+//      da fórmula. Enchiam 4 dos 5 lugares.
+//   2. A CATEGORIA da BD não serve de filtro: as escovas Curaprox e as tintas
+//      PhytoColor vêm marcadas como "skincare". Daí um kit de higiene oral
+//      aparecer numa secção de rosto.
+//   3. "pack" sozinho apanha multipacks do MESMO produto ("Pack de 2 x 500 ml"
+//      do mesmo creme) — duas unidades iguais não são um conjunto.
+//
+// A regra nova exige TRÊS coisas ao mesmo tempo: é um conjunto, é de pele, e
+// não é de cabelo/oral/unhas. Validada em 8 casos-fronteira (ver o histórico
+// da conversa) e no teste cego: 14 dos 15 aprovados pelos juízes.
+const KIT_CONJUNTO = /\b(kit|cofre|coffret|estuche|conjunto|bundle|set)\b/i;
+// "duo"/"trio" só valem colados a uma palavra de embalagem ("Duo Box", "Coffret Duo")
+const KIT_DUO_OK = /\b(duo|trio)\s*[- ]?\s*(box|pack|kit|set|caixa|holidays?)\b|\b(box|pack|kit|set|caixa|coffret)\s*[- ]?\s*(duo|trio)\b/i;
+// multipack do MESMO produto — não é kit
+const KIT_MULTIPACK = /\bpack\s+de\s+\d+\s*x\b|\b\d+\s*x\s*\d+\s*(ml|g|gr)\b|\bpack\s+\d+\s*unidades?\b/i;
+// "pack" só conta com um "+" (dois produtos diferentes) e sem cara de multipack
+const kitPackOk = n => /\bpack\b/i.test(n) && /\+/.test(n) && !KIT_MULTIPACK.test(n);
+
+// sinal POSITIVO de cuidado de pele. Preferido a uma lista de exclusões: o que
+// for novo e não for skincare simplesmente não entra, sem ter de o prever.
+const KIT_EH_SKINCARE = new RegExp([
+  'cr[eè]me', 'creme', 'cream', 's[eé]rum', 'serum', 'hidratante', 'hydra',
+  'limpeza', 'limpador', 'cleanser', 't[óo]nico', 'toner',
+  'contorno', 'olhos', 'rosto', 'facial',
+  '[áa]cido hialur[óo]nico', 'retinol', 'vitamina c', 'niacinamida', 'peeling',
+  'esfoliante', 'antirrugas', 'anti-idade', 'anti-aging',
+  'firmeza', 'lifting', 'nutritiv', 'reparador',
+  'protetor solar', 'protector solar', 'spf', 'solar', 'fotoprotetor',
+  'corporal', 'm[ãa]os',
+].join('|'), 'i');
+
+// e o que NÃO é pele, apesar de vir marcado como "skincare" na categoria
+const KIT_NAO_SKINCARE = new RegExp([
+  'phytocolor', 'colora', 'coloration', 'castanho', 'louro', 'loiro', 'ruivo',
+  'acaju', 'champ', 'shampoo', 'condicionador', 'capilar',
+  'escov', 'dentes', 'dentifric', 'dent[íi]fric', 'interdental', 'colutorio', 'ortho',
+  'verniz', 'unhas', 'fralda', 'chupeta',
+].join('|'), 'i');
+
+const KIT_CATEGORIAS = new Set(['skincare', 'body', 'suncare']);
+
+function ehKitDeSkincare(p) {
+  const n = p && p.name ? String(p.name) : '';
+  if (!n) return false;
+  const conjunto = KIT_CONJUNTO.test(n) || KIT_DUO_OK.test(n) || kitPackOk(n);
+  return conjunto
+    && KIT_EH_SKINCARE.test(n)
+    && !KIT_NAO_SKINCARE.test(n)
+    && KIT_CATEGORIAS.has(String(p.category || '').toLowerCase());
+}
 
 function stripVolume(name) {
   return String(name || '').replace(/\s*\d+(?:[.,]\d+)?\s*(?:ml|gr|g|kg|l)\b/gi, '').trim();
@@ -449,15 +506,16 @@ async function computeEmAlta(seed) {
   const bestsellers = bestsellersRaw.map(p => condenseProduct(seed, p)).filter(p => p?.best_price != null);
   console.log(`  Bestsellers: ${bestsellers.length}/5`);
 
-  // 3) Skincare kits — filtrar por keyword + ter imagem
+  // 3) Skincare kits — ver ehKitDeSkincare() lá em cima para o porquê de cada
+  //    condição. Só entram conjuntos DE PELE, com imagem.
   const kitCandidates = seed.products
-    .filter(p => !usedEans.has(p.ean) && KIT_KEYWORDS.test(p.name) && p.image_url)
+    .filter(p => !usedEans.has(p.ean) && p.image_url && ehKitDeSkincare(p))
     .map(p => ({ p, n: countStores(seed, p.ean) }))
     .sort((a, b) => b.n - a.n);
   const kitsRaw = kitCandidates.slice(0, 5).map(c => c.p);
   kitsRaw.forEach(p => usedEans.add(p.ean));
   const skincareKits = kitsRaw.map(p => condenseProduct(seed, p)).filter(p => p?.best_price != null);
-  console.log(`  Skincare kits: ${skincareKits.length}/5`);
+  console.log(`  Skincare kits: ${skincareKits.length}/5 (de ${kitCandidates.length} candidatos)`);
 
   // 5) Top brands — top 6 por nº de produtos
   const brandCount = {};
