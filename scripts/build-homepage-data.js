@@ -559,12 +559,11 @@ async function computeEmAlta(seed) {
   const out = {
     generated_at: new Date().toISOString(),
     seed_total_products: seed.products.length,
-    // números que a página mostra antes de ter o catálogo
-    stats: {
-      stores: nLojas,
-      products: seed.products.length,
-      avg_savings_pct: poupancaMediaPct,
-    },
+    // NOTA: o campo `stats` (lojas/produtos/poupança média que o hero mostra)
+    // NÃO é escrito aqui — é o inject-seed-into-demo.js que o acrescenta. Só
+    // ele conhece os números verdadeiros, porque só ele corre as sete camadas
+    // de correcção e o filtro de visibilidade: este ficheiro lê o seed em
+    // BRUTO e daria ~8.000 produtos a mais do que a página mostra.
     hero_sponsored: heroSponsored,
     bestsellers,
     skincare_kits: skincareKits,
