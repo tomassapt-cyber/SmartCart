@@ -559,6 +559,12 @@ async function computeEmAlta(seed) {
   const out = {
     generated_at: new Date().toISOString(),
     seed_total_products: seed.products.length,
+    // números que a página mostra antes de ter o catálogo
+    stats: {
+      stores: nLojas,
+      products: seed.products.length,
+      avg_savings_pct: poupancaMediaPct,
+    },
     hero_sponsored: heroSponsored,
     bestsellers,
     skincare_kits: skincareKits,

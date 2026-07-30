@@ -7797,6 +7797,156 @@
   </div>
 </div>
 
+<!-- [2026-07-30] Showcase movido para ANTES do bloco do catálogo.
+     O HTML é um documento único: enquanto os ~12 MB do catálogo não passarem,
+     o browser nem chega ao código que está depois deles. Este bloco desenha
+     "Em alta", "Skincare Kits" e os números do hero a partir dos 12 KB de
+     #hp-data, que já cá estão desde o início. -->
+<script>
+/* ============================================================
+   Populate CosMath showcase sections from #hp-data
+   ============================================================ */
+(function () {
+  // [2026-07-30] Cópia LOCAL de escapeHtml: este bloco passou a correr ANTES
+  // do catálogo, e a versão global só é definida bem mais abaixo. Idêntica à
+  // de demo.html (a global mantém-se onde estava, para todo o resto).
+  const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+
+  let hp;
+  try { hp = JSON.parse(document.getElementById('hp-data')?.textContent || '{}'); }
+  catch { hp = {}; }
+  // [2026-07-30] Números do hero/tagline/rodapé a partir do showcase.
+  // ANTES: o HTML trazia "17" e "46" escritos à mão e só eram corrigidos por
+  // JS que corria DEPOIS dos 11,84 MB do catálogo — durante todo esse tempo o
+  // site afirmava números errados (são 71 lojas). Agora corrige-se de imediato.
+  // A actualização depois do catálogo mantém-se e escreve os mesmos valores.
+  if (hp.stats) {
+    const pt = n => Number(n).toLocaleString('pt-PT');
+    const setTxt = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    const nL = hp.stats.stores, nP = hp.stats.products;
+    if (nL) {
+      ['hero-stat-stores', 'tagline-stores', 'footer-tag-stores', 'footer-mini-stores',
+       'announce-stores', 'news-sub-stores', 'news-stat-stores'].forEach(id => setTxt(id, nL));
+    }
+    if (nP) {
+      setTxt('hero-stat-products', nP + '+');
+      setTxt('footer-mini-products', pt(nP));
+      setTxt('news-stat-products', pt(nP));
+    }
+    if (hp.stats.avg_savings_pct) setTxt('hero-stat-savings', '\u2212' + hp.stats.avg_savings_pct + '%');
+  }
+
+  if (!hp.bestsellers?.length) return;
+
+  const fmt = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
+  const imgOrInitial = (p) => {
+    const initial = (p.brand || 'GM').split(' ').map(w => w[0] || '').slice(0, 2).join('');
+    return p.image_url
+      ? `<img src="${escapeHtml(p.image_url)}" alt="${(p.brand||'')+' '+(p.name||'')}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-size:36px;color:var(--muted)'}))"/>`
+      : `<span style="font-family:Georgia,serif;font-size:36px;color:var(--muted)">${initial}</span>`;
+  };
+  const cardHTML = (p, badge) => `
+    <article class="gm-card" data-ean="${p.ean}">
+      <div class="gm-card-media">${imgOrInitial(p)}</div>
+      ${badge ? `<span class="gm-card-badge ${badge.cls || ''}">${badge.label}</span>` : ''}
+      <div class="gm-card-brand">${escapeHtml(p.brand || '')}</div>
+      <h3 class="gm-card-name">${escapeHtml(p.name || '')}</h3>
+      <div class="gm-card-price">
+        <span class="price-now">${fmt(p.best_price)}</span>
+        <span class="at-store">@ ${p.best_store || ''}</span>
+      </div>
+    </article>
+  `;
+  const wireClick = root => {
+    root.querySelectorAll('.gm-card, .gm-trend-hero, .gm-trend-card').forEach(el => {
+      el.addEventListener('click', (e) => {
+        if (e.target.closest('.gm-info-btn')) return; // botão dedicado trata
+        const ean = el.dataset.ean;
+        if (ean && typeof openPriceAnalyzer === 'function') openPriceAnalyzer(ean);
+      });
+    });
+    root.querySelectorAll('.gm-info-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const parent = btn.closest('[data-ean]');
+        const ean = btn.dataset.ean || btn.dataset.infoEan || (parent && parent.dataset.ean);
+        if (ean && typeof openPriceAnalyzer === 'function') openPriceAnalyzer(ean);
+      });
+    });
+  };
+
+  // Telegram alerts feed
+  const feed = document.getElementById('gm-tg-feed');
+  if (feed && hp.telegram_alerts?.length) {
+    const now = new Date();
+    const hh = m => {
+      const d = new Date(now.getTime() - m * 60000);
+      return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+    };
+    feed.innerHTML = hp.telegram_alerts.slice(0, 3).map((a, i) => {
+      const ts = hh([14, 41, 67][i] || 12 + i * 30);
+      return `<div class="gm-tg-msg"><span class="when">${ts}</span><span>${escapeHtml(a.brand)} ${(a.name||'').split(' ').slice(0,5).join(' ')} — ${a.store} ${fmt(a.price)} (era ${fmt(a.previous_price)}) · −${a.discount_pct}%</span></div>`;
+    }).join('');
+  }
+
+  // Bestsellers
+  const best = document.getElementById('gm-best-grid');
+  if (best) {
+    best.innerHTML = hp.bestsellers.slice(0, 5)
+      .map(p => cardHTML(p, { label: 'Bestseller', cls: '' })).join('');
+    wireClick(best);
+  }
+
+  // Kits
+  const kits = document.getElementById('gm-kits-grid');
+  if (kits) {
+    kits.innerHTML = hp.skincare_kits.slice(0, 5)
+      .map(p => cardHTML(p, { label: 'Kit', cls: 'is-deal' })).join('');
+    wireClick(kits);
+  }
+
+  // cabeçalho honesto: sem descidas verificadas (fallback curado) → texto neutro, sem badges falsos
+  if (!(hp.em_alta && hp.em_alta[0] && hp.em_alta[0].discount_pct)) {
+    const sec = document.getElementById('gm-em-alta');
+    if (sec) {
+      const eb = sec.querySelector('.gm-eyebrow'); if (eb) eb.textContent = 'Curadoria CosMath';
+      const h2 = sec.querySelector('.gm-h2'); if (h2) h2.innerHTML = '<em>Em alta</em> · trending now';
+      const sub = sec.querySelector('.gm-sub'); if (sub) sub.textContent = 'Os produtos mais comparados no CosMath esta semana.';
+    }
+  }
+  // Em Alta — 1 grande + 4 mini
+  const trendHero = document.getElementById('gm-trend-hero');
+  if (trendHero && hp.em_alta?.[0]) {
+    const p = hp.em_alta[0];
+    trendHero.dataset.ean = p.ean;
+    trendHero.querySelector('.gm-trend-hero-img').innerHTML = imgOrInitial(p);
+    trendHero.querySelector('.gm-brand').textContent = p.brand || '';
+    trendHero.querySelector('.gm-name').textContent = p.name || '';
+    trendHero.querySelector('.gm-price').textContent = fmt(p.best_price);
+    trendHero.querySelector('.gm-price-old').textContent = p.previous_price ? fmt(p.previous_price) : '';
+    trendHero.querySelector('.gm-drop-badge').textContent = p.discount_pct ? ('−' + p.discount_pct + '%') : '';
+    trendHero.querySelector('.gm-store-tag').textContent = '@ ' + (p.best_store || '');
+  }
+  const trendMini = document.getElementById('gm-trend-mini');
+  if (trendMini) {
+    trendMini.innerHTML = hp.em_alta.slice(1, 5).map(p => `
+      <article class="gm-trend-card" data-ean="${p.ean}">
+        ${p.discount_pct ? `<span class="gm-drop-badge-abs">−${p.discount_pct}%</span>` : ''}
+        <div class="gm-trend-card-img">${imgOrInitial(p)}</div>
+        <div class="gm-brand">${escapeHtml(p.brand || '')}</div>
+        <h4 class="gm-name">${escapeHtml(p.name || '')}</h4>
+        <div class="gm-price">${fmt(p.best_price)}${p.previous_price ? ` <span class="gm-price-old">${fmt(p.previous_price)}</span>` : ''}</div>
+        <button class="gm-info-btn gm-info-btn-sm" type="button" data-ean="${p.ean}">Mais informação →</button>
+      </article>
+    `).join('');
+    wireClick(trendMini);
+  }
+  if (trendHero) wireClick(trendHero.parentElement);
+})();
+</script>
+
 <!-- Seed data injected here -->
 <script type="application/json" id="seed-data"></script>
 
@@ -15921,122 +16071,6 @@ initSupabase().then(() => {
 }).catch(e => console.warn('Supabase init failed', e));
 </script>
 
-<script>
-/* ============================================================
-   Populate CosMath showcase sections from #hp-data
-   ============================================================ */
-(function () {
-  let hp;
-  try { hp = JSON.parse(document.getElementById('hp-data')?.textContent || '{}'); }
-  catch { hp = {}; }
-  if (!hp.bestsellers?.length) return;
-
-  const fmt = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
-  const imgOrInitial = (p) => {
-    const initial = (p.brand || 'GM').split(' ').map(w => w[0] || '').slice(0, 2).join('');
-    return p.image_url
-      ? `<img src="${escapeHtml(p.image_url)}" alt="${(p.brand||'')+' '+(p.name||'')}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-size:36px;color:var(--muted)'}))"/>`
-      : `<span style="font-family:Georgia,serif;font-size:36px;color:var(--muted)">${initial}</span>`;
-  };
-  const cardHTML = (p, badge) => `
-    <article class="gm-card" data-ean="${p.ean}">
-      <div class="gm-card-media">${imgOrInitial(p)}</div>
-      ${badge ? `<span class="gm-card-badge ${badge.cls || ''}">${badge.label}</span>` : ''}
-      <div class="gm-card-brand">${escapeHtml(p.brand || '')}</div>
-      <h3 class="gm-card-name">${escapeHtml(p.name || '')}</h3>
-      <div class="gm-card-price">
-        <span class="price-now">${fmt(p.best_price)}</span>
-        <span class="at-store">@ ${p.best_store || ''}</span>
-      </div>
-    </article>
-  `;
-  const wireClick = root => {
-    root.querySelectorAll('.gm-card, .gm-trend-hero, .gm-trend-card').forEach(el => {
-      el.addEventListener('click', (e) => {
-        if (e.target.closest('.gm-info-btn')) return; // botão dedicado trata
-        const ean = el.dataset.ean;
-        if (ean && typeof openPriceAnalyzer === 'function') openPriceAnalyzer(ean);
-      });
-    });
-    root.querySelectorAll('.gm-info-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const parent = btn.closest('[data-ean]');
-        const ean = btn.dataset.ean || btn.dataset.infoEan || (parent && parent.dataset.ean);
-        if (ean && typeof openPriceAnalyzer === 'function') openPriceAnalyzer(ean);
-      });
-    });
-  };
-
-  // Telegram alerts feed
-  const feed = document.getElementById('gm-tg-feed');
-  if (feed && hp.telegram_alerts?.length) {
-    const now = new Date();
-    const hh = m => {
-      const d = new Date(now.getTime() - m * 60000);
-      return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
-    };
-    feed.innerHTML = hp.telegram_alerts.slice(0, 3).map((a, i) => {
-      const ts = hh([14, 41, 67][i] || 12 + i * 30);
-      return `<div class="gm-tg-msg"><span class="when">${ts}</span><span>${escapeHtml(a.brand)} ${(a.name||'').split(' ').slice(0,5).join(' ')} — ${a.store} ${fmt(a.price)} (era ${fmt(a.previous_price)}) · −${a.discount_pct}%</span></div>`;
-    }).join('');
-  }
-
-  // Bestsellers
-  const best = document.getElementById('gm-best-grid');
-  if (best) {
-    best.innerHTML = hp.bestsellers.slice(0, 5)
-      .map(p => cardHTML(p, { label: 'Bestseller', cls: '' })).join('');
-    wireClick(best);
-  }
-
-  // Kits
-  const kits = document.getElementById('gm-kits-grid');
-  if (kits) {
-    kits.innerHTML = hp.skincare_kits.slice(0, 5)
-      .map(p => cardHTML(p, { label: 'Kit', cls: 'is-deal' })).join('');
-    wireClick(kits);
-  }
-
-  // cabeçalho honesto: sem descidas verificadas (fallback curado) → texto neutro, sem badges falsos
-  if (!(hp.em_alta && hp.em_alta[0] && hp.em_alta[0].discount_pct)) {
-    const sec = document.getElementById('gm-em-alta');
-    if (sec) {
-      const eb = sec.querySelector('.gm-eyebrow'); if (eb) eb.textContent = 'Curadoria CosMath';
-      const h2 = sec.querySelector('.gm-h2'); if (h2) h2.innerHTML = '<em>Em alta</em> · trending now';
-      const sub = sec.querySelector('.gm-sub'); if (sub) sub.textContent = 'Os produtos mais comparados no CosMath esta semana.';
-    }
-  }
-  // Em Alta — 1 grande + 4 mini
-  const trendHero = document.getElementById('gm-trend-hero');
-  if (trendHero && hp.em_alta?.[0]) {
-    const p = hp.em_alta[0];
-    trendHero.dataset.ean = p.ean;
-    trendHero.querySelector('.gm-trend-hero-img').innerHTML = imgOrInitial(p);
-    trendHero.querySelector('.gm-brand').textContent = p.brand || '';
-    trendHero.querySelector('.gm-name').textContent = p.name || '';
-    trendHero.querySelector('.gm-price').textContent = fmt(p.best_price);
-    trendHero.querySelector('.gm-price-old').textContent = p.previous_price ? fmt(p.previous_price) : '';
-    trendHero.querySelector('.gm-drop-badge').textContent = p.discount_pct ? ('−' + p.discount_pct + '%') : '';
-    trendHero.querySelector('.gm-store-tag').textContent = '@ ' + (p.best_store || '');
-  }
-  const trendMini = document.getElementById('gm-trend-mini');
-  if (trendMini) {
-    trendMini.innerHTML = hp.em_alta.slice(1, 5).map(p => `
-      <article class="gm-trend-card" data-ean="${p.ean}">
-        ${p.discount_pct ? `<span class="gm-drop-badge-abs">−${p.discount_pct}%</span>` : ''}
-        <div class="gm-trend-card-img">${imgOrInitial(p)}</div>
-        <div class="gm-brand">${escapeHtml(p.brand || '')}</div>
-        <h4 class="gm-name">${escapeHtml(p.name || '')}</h4>
-        <div class="gm-price">${fmt(p.best_price)}${p.previous_price ? ` <span class="gm-price-old">${fmt(p.previous_price)}</span>` : ''}</div>
-        <button class="gm-info-btn gm-info-btn-sm" type="button" data-ean="${p.ean}">Mais informação →</button>
-      </article>
-    `).join('');
-    wireClick(trendMini);
-  }
-  if (trendHero) wireClick(trendHero.parentElement);
-})();
-</script>
 
 <!-- ============================================================
      Onboarding Quiz Modal — 6 steps, +100 pts

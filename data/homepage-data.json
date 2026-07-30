@@ -1,6 +1,11 @@
 {
-  "generated_at": "2026-07-30T03:39:03.532Z",
+  "generated_at": "2026-07-30T04:34:03.935Z",
   "seed_total_products": 58391,
+  "stats": {
+    "stores": 71,
+    "products": 50328,
+    "avg_savings_pct": 29
+  },
   "hero_sponsored": [
     {
       "ean": "7427244506335",

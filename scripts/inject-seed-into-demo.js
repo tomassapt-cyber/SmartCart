@@ -272,6 +272,47 @@ let next = html0.slice(0, afterOpen) + newBlock + html0.slice(closeIdx);
 const HP_DATA = path.join(ROOT, 'data', 'homepage-data.json');
 const HP_OPEN = '<script type="application/json" id="hp-data">';
 if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
+  // ── Números do hero, calculados AQUI e não no build-homepage-data ────────
+  // [2026-07-30] O hero mostra "X lojas / Y produtos / poupança média −Z%".
+  // Estes números TÊM de bater certo com o que o site mostra, e só este ponto
+  // os sabe: o build-homepage-data lê o seed em BRUTO (58.391 produtos), mas
+  // aqui já correram as sete camadas de correcção e o filtro de visibilidade
+  // (50.328). Calculá-los lá dava um hero a anunciar 8 mil produtos que a
+  // pessoa nunca encontraria.
+  //
+  // A poupança usa a MESMA fórmula do cliente: média de (mais caro − mais
+  // barato) / mais caro, só sobre produtos com 2+ lojas e diferença real de
+  // preço. Uma passagem pelas ofertas (~1s); a forma ingénua, produto a
+  // produto, seriam 58k × 170k operações e nunca acabaria.
+  (function calcularStatsDoHero() {
+    const minMax = new Map();
+    for (const sp of seedJson.store_products) {
+      for (const it of (sp.items || [])) {
+        const preco = Number(it.price);
+        if (!(preco > 0) || it.in_stock === false) continue;
+        const e = minMax.get(it.ean);
+        if (!e) minMax.set(it.ean, { min: preco, max: preco, n: 1 });
+        else { if (preco < e.min) e.min = preco; if (preco > e.max) e.max = preco; e.n++; }
+      }
+    }
+    let soma = 0, n = 0;
+    for (const v of minMax.values()) {
+      if (v.n < 2 || !(v.max > v.min)) continue;
+      soma += (v.max - v.min) / v.max; n++;
+    }
+    const stats = {
+      stores: (seedJson.stores || []).length,
+      products: (seedJson.products || []).length,
+      avg_savings_pct: n ? Math.round(soma / n * 100) : null,
+    };
+    try {
+      const hp = JSON.parse(fs.readFileSync(HP_DATA, 'utf8'));
+      hp.stats = stats;
+      fs.writeFileSync(HP_DATA, JSON.stringify(hp, null, 2));
+      console.log('📊 Hero: ' + stats.stores + ' lojas · ' + stats.products + ' produtos · poupanca media -' + stats.avg_savings_pct + '%');
+    } catch (e) { console.warn('⚠ nao consegui gravar os stats no hp-data:', e.message); }
+  })();
+
   // mesmo escape do seed: o hp-data também traz nomes de produto do scraping
   const hpData = fs.readFileSync(HP_DATA, 'utf8')
     .replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
