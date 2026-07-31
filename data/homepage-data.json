@@ -1,11 +1,6 @@
 {
-  "generated_at": "2026-07-30T04:34:03.935Z",
-  "seed_total_products": 58391,
-  "stats": {
-    "stores": 71,
-    "products": 50328,
-    "avg_savings_pct": 29
-  },
+  "generated_at": "2026-07-31T09:30:38.464Z",
+  "seed_total_products": 61988,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -48,14 +43,14 @@
       "best_url": "https://bairrodasaude.pt/products/cerave-serum-hidratante-acido-hialuronico-30-ml"
     },
     {
-      "ean": "8429420231559",
-      "name": "ISDIN Fotoprotector Fusion Water Magic Color BRONZE SPF50 - Protetor solar facial ultraligeiro com cor",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/7114835_1.webp",
-      "best_price": 18.5,
-      "best_store": "My Cosmetics",
-      "best_store_slug": "mycosmetics",
-      "best_url": "https://www.mycosmetics.pt/products/isdin-fotoprotector-fusion-water-bronze-spf50-50ml"
+      "ean": "5201279072193",
+      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
+      "brand": "Apivita",
+      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
+      "best_price": 2.45,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/"
     }
   ],
   "bestsellers": [
@@ -70,14 +65,34 @@
       "best_url": "https://www.druni.pt/cicaplast-la-roche-posay-creme-reparador"
     },
     {
-      "ean": "3282779416139",
-      "name": "Avène Cicalfate Creme de Mãos",
-      "brand": "Avène",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg",
-      "best_price": 7.69,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml"
+      "ean": "3337875597449",
+      "name": "Loción Hidratante De Rostro",
+      "brand": "CeraVe",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5795295.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.85,
+      "best_store": "WOWFARMA",
+      "best_store_slug": "wowfarma",
+      "best_url": "https://www.wowfarma.pt/cerave-core-locao-facial-hidratante-pm-52g.html"
+    },
+    {
+      "ean": "3337875597272",
+      "name": "CeraVe Creme Reparador Contorno de Olhos",
+      "brand": "CeraVe",
+      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
+      "best_price": 10.42,
+      "best_store": "BeMeCare",
+      "best_store_slug": "bemecare",
+      "best_url": "https://bemecare.com/pt/artigo/cerave-spec-moist-cr-repar-olhos4g"
+    },
+    {
+      "ean": "3401348840421",
+      "name": "Sébium Hydra",
+      "brand": "Bioderma",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797462.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.69,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/bioderma-sebium-hydra-creme-hydratante-40ml"
     },
     {
       "ean": "3662361000364",
@@ -88,38 +103,18 @@
       "best_store": "Pharma GDD",
       "best_store_slug": "pharma-gdd",
       "best_url": "https://www.pharma-gdd.com/fr/svr-sebiaclear-serum"
-    },
-    {
-      "ean": "3337875597272",
-      "name": "CeraVe Creme Reparador Contorno de Olhos",
-      "brand": "CeraVe",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
-      "best_price": 10.65,
-      "best_store": "Farmácias Progresso",
-      "best_store_slug": "farmaciasprogresso",
-      "best_url": "https://www.farmaciasprogresso.pt/cerave-spec-moistcr-repar-olhos-14g"
-    },
-    {
-      "ean": "3337875829007",
-      "name": "Serum Retinol Acné",
-      "brand": "CeraVe",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798541.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.53,
-      "best_store": "WOWFARMA",
-      "best_store_slug": "wowfarma",
-      "best_url": "https://www.wowfarma.pt/cerave-retinol-serum-antimarcas-30ml.html"
     }
   ],
   "skincare_kits": [
     {
-      "ean": "3574661540887",
-      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
-      "brand": "Aveeno",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 7.67,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 17.45,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
     },
     {
       "ean": "3701436934781",
@@ -132,143 +127,140 @@
       "best_url": "https://www.cocooncenter.pt/lierac-lift-integral-o-serum-tensor-30-ml-o-tratamento-lift-olhos-15-ml-oferecido/119782.html"
     },
     {
-      "ean": "3574661874951",
-      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 17.45,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
-    },
-    {
-      "ean": "3574661879185",
-      "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 12.26,
-      "best_store": "Farmácias Progresso",
-      "best_store_slug": "farmaciasprogresso",
-      "best_url": "https://www.farmaciasprogresso.pt/neutrogena-deep-moisture-pele-seca-25"
-    },
-    {
       "ean": "3574661087054",
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 5.52,
+      "best_price": 4.48,
+      "best_store": "Farmácia2U",
+      "best_store_slug": "farmacia2u",
+      "best_url": "https://www.farmacia2u.com/pt/comprar/neutrogena-pack-creme-de-maos-concentrado-oferta-stick-labial-50ml-48-gr"
+    },
+    {
+      "ean": "3574661761107",
+      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
+      "best_price": 8.61,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/hidratantes/3184-neutrogena-hydro-boost-gel-creme-50ml-gel-creme-contorno-de-olhos-15ml.html"
+    },
+    {
+      "ean": "3574661540887",
+      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
+      "brand": "Aveeno",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
+      "best_price": 14.54,
       "best_store": "Aveiro Farma",
       "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/neutrogena-formula-norueguesa-creme-maos-concentrado-50ml-oferta-stick-labial"
+      "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
     }
   ],
   "em_alta": [
     {
-      "ean": "3337875598767",
-      "name": "Loção de limpeza hidratante CeraVe 1 litro",
-      "brand": "CeraVe",
-      "image_url": "https://assets.atida.com/transform/3bfd8916-d1cb-448b-95ed-875e31e4a67d/CeraVe-Locion-Limpiadora-Hidratante-1-Litro",
-      "best_price": 11.29,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/cerave-creme-hidratante-de-limpeza-1000ml-",
-      "volume_ml": 976,
-      "previous_price": 16.66,
-      "discount_pct": 32,
-      "dropped_day": 20659,
+      "ean": "4064666339009",
+      "name": "Blonde Recharge",
+      "brand": "Wella Professionals",
+      "image_url": "https://www.druni.pt/media/catalog/product/7/0/7004238.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 9.29,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/wella-invigo-blonde-recharge-condicionador-85478.html",
+      "previous_price": 12.95,
+      "discount_pct": 28,
+      "dropped_day": 20663,
       "verified_live": true
     },
     {
-      "ean": "8431567743505",
-      "name": "CeraVe Pack Espuma de Limpeza Foaming Cleanser + Sérum de Vitamina C",
-      "brand": "CeraVe",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a11b9ff716e1_1_1.jpg",
-      "best_price": 23.2,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/cerave-pack-espuma-de-limpeza-foaming-cleanser-148ml-serum-de-vitamina-c-30ml",
-      "previous_price": 32.6,
-      "discount_pct": 29,
-      "dropped_day": 20655,
-      "verified_live": true
-    },
-    {
-      "ean": "4005800195990",
-      "name": "Eucerin pH5 Gel de Banho Dry Sensitive Skin",
-      "brand": "Eucerin",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/eucerin/24786_main-800x800.jpg",
-      "best_price": 7.99,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/eucerin-ph5-gel-de-banho-400-ml",
-      "previous_price": 9.99,
-      "discount_pct": 20,
-      "dropped_day": 20655,
-      "verified_live": true
-    },
-    {
-      "ean": "4001638099226",
-      "name": "Óleo de massagem Weleda com Arnica",
+      "ean": "3596200000331",
+      "name": "Solar UV Glow Fluid SPF30",
       "brand": "Weleda",
-      "image_url": "https://assets.atida.com/transform/88663a54-2023-4eda-b271-9bd60fa97bbf/Weleda-Aceite-para-Masaje-con-Arnica-100-ml",
-      "best_price": 9.84,
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5035266.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 9.1,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/weleda-fluido-solar-glow-145650.html",
+      "previous_price": 11.95,
+      "discount_pct": 24,
+      "dropped_day": 20665,
+      "verified_live": true
+    },
+    {
+      "ean": "3367729181142",
+      "name": "Biomains Age Delaying",
+      "brand": "Biotherm",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/7/1741040.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 9.6,
       "best_store": "Cocooncenter",
       "best_store_slug": "cocooncenter",
-      "best_url": "https://www.cocooncenter.pt/weleda-oleo-de-massagem-com-arnica-100-ml/35814.html",
-      "volume_ml": 100,
-      "previous_price": 12.3,
-      "discount_pct": 20,
-      "dropped_day": 20659,
+      "best_url": "https://www.cocooncenter.pt/biotherm-biomains-creme-de-maos-antidesidratante-100-ml/18248.html",
+      "previous_price": 12.6,
+      "discount_pct": 24,
+      "dropped_day": 20665,
       "verified_live": true
     },
     {
-      "ean": "4005800291999",
-      "name": "Loção Hidratante Pele Seca e Sensível pH5",
-      "brand": "Eucerin",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw7571abeb/images/wells/732/7328045-ROTINA-LOCAO-HIDRATANTE-PELE-SECA-E-SENSIVEL-PH5-EUCERIN-P-01.png",
-      "best_price": 11.64,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/eucerin-ph5-locao-protetora-400-ml",
-      "volume_ml": 400,
-      "previous_price": 14.55,
-      "discount_pct": 20,
-      "dropped_day": 20655,
+      "ean": "3661434008917",
+      "name": "Fluido Antimanchas",
+      "brand": "Uriage",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799676.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 7.04,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/manchas/1680240-uriage-bariesun-protetor-solar-fluido-antimanchas-spf-50-40ml-3661434008917.html",
+      "previous_price": 10.07,
+      "discount_pct": 23,
+      "dropped_day": 20662,
+      "verified_live": true
+    },
+    {
+      "ean": "3661434008894",
+      "name": "Uriage Bariésun Creme Cor Claro SPF50+",
+      "brand": "Uriage",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/b/a/bariesunclaro1.jpg",
+      "best_price": 7.42,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/protetores-solares/1680229-uriage-bariesun-creme-com-cor-claro-spf50-50-ml-3661434008894.html",
+      "previous_price": 9.9,
+      "discount_pct": 23,
+      "dropped_day": 20662,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1947
+      "products": 1944
     },
     {
       "name": "Isdin",
-      "products": 766
+      "products": 764
     },
     {
       "name": "Clarins",
-      "products": 678
+      "products": 698
     },
     {
       "name": "Avène",
-      "products": 677
+      "products": 675
     },
     {
       "name": "Nivea",
-      "products": 620
-    },
-    {
-      "name": "Eucerin",
-      "products": 596
+      "products": 638
     },
     {
       "name": "La Roche-Posay",
-      "products": 596
+      "products": 609
+    },
+    {
+      "name": "Eucerin",
+      "products": 601
     },
     {
       "name": "Bioderma",
-      "products": 583
+      "products": 594
     }
   ],
   "telegram_alerts": [
@@ -291,13 +283,13 @@
       "discount_pct": 40
     },
     {
-      "ean": "wells-8793544",
-      "brand": "Nuxe",
-      "name": "Fluido Glow Rosto SPF 30",
+      "ean": "wells-8769550",
+      "brand": "Vichy",
+      "name": "Invisible Hydrating Protective Milk SPF 50+",
       "store": "Wells",
-      "price": 16.14,
-      "previous_price": 26.9,
-      "discount_pct": 40
+      "price": 22.75,
+      "previous_price": 35,
+      "discount_pct": 35
     }
   ]
 }
