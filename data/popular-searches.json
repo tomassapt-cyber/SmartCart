@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T07:55:36.318Z",
+  "generated_at": "2026-08-03T08:48:26.220Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -55,7 +55,7 @@
       "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
       "brand": "Apivita",
       "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
-      "best_price": 2.45,
+      "best_price": 2.28,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/",
@@ -67,10 +67,10 @@
       "name": "Avène Cicalfate Creme de Mãos",
       "brand": "Avène",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg",
-      "best_price": 7.69,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml",
+      "best_price": 7.99,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/avene-cicalfate-creme-mains-100ml",
       "search_term": "creme de maos loccitane",
       "pop_score": 28
     },
