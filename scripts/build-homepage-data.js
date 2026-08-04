@@ -528,33 +528,9 @@ async function computeEmAlta(seed) {
 
   // 6) Telegram alerts — top 3 produtos com desconto real
   // Filtra ofertas com discount_pct > 0, escolhe 3 diferentes (1 produto cada)
-  const discountAlerts = [];
-  const seenProductsForAlerts = new Set();
-  for (const sp of seed.store_products) {
-    for (const item of sp.items) {
-      if (!item.in_stock || !item.discount_pct || item.discount_pct < 10) continue;
-      if (!item.previous_price || item.previous_price <= item.price) continue;
-      if (seenProductsForAlerts.has(item.ean)) continue;
-      const product = seed.products.find(p => p.ean === item.ean);
-      if (!product) continue;
-      const store = seed.stores.find(s => s.slug === sp.store_slug);
-      discountAlerts.push({
-        ean: item.ean,
-        brand: product.brand,
-        name: stripVolume(product.name),
-        store: store?.name || sp.store_slug,
-        price: item.price,
-        previous_price: item.previous_price,
-        discount_pct: Math.round(item.discount_pct),
-      });
-      seenProductsForAlerts.add(item.ean);
-      if (discountAlerts.length >= 12) break;
-    }
-    if (discountAlerts.length >= 12) break;
-  }
-  discountAlerts.sort((a, b) => b.discount_pct - a.discount_pct);
-  const telegramAlerts = discountAlerts.slice(0, 3);
-  console.log(`  Telegram alerts: ${telegramAlerts.length}/3 (de ${discountAlerts.length} candidatos com >=10% desconto)`);
+  // [2026-07-30] Removido o cálculo dos "telegram alerts": o elemento que
+  // os desenhava (#gm-tg-feed) nunca existiu no HTML, e o Telegram saiu do
+  // projeto. Percorria as ofertas todas para produzir 3 linhas invisíveis.
 
   const out = {
     generated_at: new Date().toISOString(),
@@ -565,11 +541,14 @@ async function computeEmAlta(seed) {
     // de correcção e o filtro de visibilidade: este ficheiro lê o seed em
     // BRUTO e daria ~8.000 produtos a mais do que a página mostra.
     hero_sponsored: heroSponsored,
-    bestsellers,
+    // [2026-07-30] `bestsellers` e `telegram_alerts` DEIXARAM de ser enviados:
+    // a secção de bestsellers foi removida do site e o elemento do feed de
+    // alertas nunca existiu no HTML. Eram 2,2 KB por visita a não mostrar
+    // nada. O CÁLCULO dos bestsellers mantém-se — ele alimenta `usedEans`,
+    // que evita os mesmos produtos repetidos nos kits e no "em alta".
     skincare_kits: skincareKits,
     em_alta: emAlta,
     top_brands: topBrands,
-    telegram_alerts: telegramAlerts,
   };
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2));
   const kb = Math.round(fs.statSync(OUT).size / 1024);

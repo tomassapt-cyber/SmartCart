@@ -7575,7 +7575,9 @@
         <h4 class="gm-footer-h">Comprar</h4>
         <ul class="gm-footer-ul">
           <li><a href="#categories-visual">Catálogo</a></li>
-          <li><a href="#gm-bestsellers">Bestsellers</a></li>
+          <!-- [2026-07-30] "Bestsellers" removido: apontava para #gm-bestsellers,
+               uma secção que já não existe no site. Era um link que não ia a
+               lado nenhum. -->
           <li><a href="#gm-kits">Skincare Kits</a></li>
           <li><a href="#gm-em-alta">Em alta</a></li>
           <li><a href="#gm-brindes">Vantagens de conta</a></li>
@@ -7838,7 +7840,13 @@
     if (hp.stats.avg_savings_pct) setTxt('hero-stat-savings', '\u2212' + hp.stats.avg_savings_pct + '%');
   }
 
-  if (!hp.bestsellers?.length) return;
+  // [2026-07-30] A guarda era `!hp.bestsellers?.length`, mas a secção de
+  // bestsellers foi removida do site há muito (ver o comentário perto do
+  // #gm-kits) — os 5 produtos continuavam a ser calculados todos os dias só
+  // para servir de guarda a este bloco. Passa a guardar pelo que o bloco
+  // realmente desenha: se não houver nem "em alta" nem kits, não há nada a
+  // fazer. Sem esta troca, remover os bestsellers deixava a homepage vazia.
+  if (!hp.em_alta?.length && !hp.skincare_kits?.length) return;
 
   const fmt = n => `€${Number(n).toFixed(2).replace('.', ',')}`;
   const imgOrInitial = (p) => {
