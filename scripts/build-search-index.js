@@ -104,6 +104,85 @@ function textoPesquisavel(nome, marca, categoria) {
     .toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
+
+/**
+ * O bloco de arranque: o mínimo para a primeira vista, sem rede.
+ * Recebe o índice já construído (tem tudo o que é preciso).
+ */
+function construirArranque(indice, seed) {
+  // ── popularidade, com a MESMA fórmula do cliente (demo.html) ──────────────
+  // POPULARITY_SCORE[ean] = storeCount*1000 + min(savings,50)*5 - bestPrice*0.01
+  const pop = [];
+  for (let i = 0; i < indice.n; i++) {
+    const lojas = indice.s[i];
+    if (!lojas) continue;
+    const min = indice.mn[i] < 0 ? null : indice.mn[i] / 100;
+    const max = indice.mx[i] < 0 ? null : indice.mx[i] / 100;
+    const poupanca = (min != null && max != null) ? +(max - min).toFixed(2) : 0;
+    pop.push({
+      i,
+      score: lojas * 1000 + Math.min(poupanca, 50) * 5 - (min ?? 9999) * 0.01,
+      lojas, min, max, poupanca,
+    });
+  }
+  pop.sort((a, b) => b.score - a.score);
+
+  // ── HIGHLIGHTS: as etiquetas Viral/Novo/Bestseller (demo.html ~8140) ──────
+  const porLojas = [...pop].sort((a, b) =>
+    b.lojas - a.lojas || (a.min ?? 9999) - (b.min ?? 9999));
+  const porMisto = [...pop].sort((a, b) =>
+    (b.lojas * 20 - (b.min ?? 9999)) - (a.lojas * 20 - (a.min ?? 9999)));
+  const porPoupanca = pop.filter(x => x.lojas > 1).sort((a, b) => b.poupanca - a.poupanca);
+  const ean = x => indice.e[x.i];
+  const highlights = {
+    newReleases: porLojas.slice(0, 4).map(ean),
+    bestSellers: porMisto.slice(0, 4).map(ean),
+    tiktok: porPoupanca.slice(0, 4).map(ean),
+  };
+
+  // ── contagens (hoje custam varrer os 58 mil no arranque) ──────────────────
+  const porCategoria = {};
+  for (let i = 0; i < indice.n; i++) {
+    const c = indice.cats[indice.c[i]] || '';
+    if (c) porCategoria[c] = (porCategoria[c] || 0) + 1;
+  }
+  const porMarca = {};
+  for (let i = 0; i < indice.n; i++) {
+    const m = indice.brands[indice.b[i]] || '';
+    if (m) porMarca[m] = (porMarca[m] || 0) + 1;
+  }
+  const marcasTop = Object.entries(porMarca)
+    .sort((a, b) => b[1] - a[1]).slice(0, 40)
+    .map(([nome, n]) => ({ nome, n }));
+
+  // ── os ~150 mais populares, com o que o cartão precisa ────────────────────
+  // 150 e nao 8: a ordem final e calculada no CLIENTE (baralhamento por epoca),
+  // por isso manda-se um superconjunto largo o suficiente para cobrir qualquer
+  // ordem que ele produza nas primeiras paginas.
+  const imgPorEan = new Map();
+  for (const p of (seed.products || [])) if (p.image_url) imgPorEan.set(p.ean, p.image_url);
+  const primeiros = pop.slice(0, 150).map(x => ({
+    ean: indice.e[x.i],
+    nome: indice.nm[x.i],
+    marca: indice.brands[indice.b[x.i]] || null,
+    cat: indice.cats[indice.c[x.i]] || null,
+    lojas: x.lojas,
+    min: x.min,
+    max: x.max,
+    promo: indice.pr[x.i] === 1,
+    img: imgPorEan.get(indice.e[x.i]) || null,
+  }));
+
+  return {
+    v: 1,
+    totais: { produtos: indice.n, marcas: indice.brands.length },
+    categorias: porCategoria,
+    marcas: marcasTop,
+    highlights,
+    primeiros,
+  };
+}
+
 // ── construção ──────────────────────────────────────────────────────────────
 function construirIndice(seed) {
   // Ofertas por EAN, só as VISÍVEIS (o site esconde estimativas por omissão).
@@ -195,6 +274,14 @@ if (require.main === module) {
   fs.writeFileSync(path.join(OUT_DIR, nome), buf);
   fs.writeFileSync(path.join(OUT_DIR, 'versao.txt'), versao);
 
+  // bloco de arranque: vai para data/, e o inject mete-o dentro do #hp-data
+  const arranque = construirArranque(indice, seed);
+  fs.writeFileSync(path.join(ROOT, 'data', 'startup-block.json'), JSON.stringify(arranque));
+  if (!QUIET) {
+    const g = zlib.gzipSync(Buffer.from(JSON.stringify(arranque)), { level: 6 }).length;
+    console.log(`🚀 bloco de arranque: ${(g / 1024).toFixed(0)} KB gz · ${arranque.primeiros.length} produtos · ${Object.keys(arranque.categorias).length} categorias · ${arranque.marcas.length} marcas`);
+  }
+
   if (!QUIET) {
     const gz = zlib.gzipSync(buf, { level: 6 }).length;
     const comTexto = zlib.gzipSync(Buffer.from(JSON.stringify({ e: indice.e, nm: indice.nm, b: indice.b, c: indice.c, brands: indice.brands, cats: indice.cats })), { level: 6 }).length;
@@ -208,4 +295,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { construirIndice, textoPesquisavel, volumeDeReferencia, precoAoVolume, temDadosReais };
+module.exports = { construirIndice, construirArranque, textoPesquisavel, volumeDeReferencia, precoAoVolume, temDadosReais };

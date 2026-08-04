@@ -43,3 +43,6 @@ data/.*-report.json
 
 # indice de pesquisa gerado (scripts/build-search-index.js)
 /data/idx/
+
+# bloco de arranque gerado (scripts/build-search-index.js)
+/data/startup-block.json
