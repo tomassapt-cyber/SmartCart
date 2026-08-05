@@ -13744,10 +13744,21 @@ async function initApp() {
     // média dos produtos comparáveis (>=2 lojas com diferença de preço).
     const elSave = document.getElementById('hero-stat-savings');
     if (elSave) {
-      const comp = PRODUCT_STATS.filter(s => s.storeCount >= 2 && s.worstPrice > 0 && s.savings > 0);
-      if (comp.length) {
-        const avgPct = Math.round(comp.reduce((a, s) => a + (s.savings / s.worstPrice), 0) / comp.length * 100);
-        elSave.textContent = '−' + avgPct + '%';
+      // ⚠️ PRIMEIRO o número do build, medido sobre o catálogo INTEIRO.
+      // Calcular aqui a partir de PRODUCT_STATS só está certo quando ele tem
+      // tudo. Enquanto a página vive da ponte, PRODUCT_STATS são os 150 da
+      // montra — produtos escolhidos precisamente por terem grandes poupanças —
+      // e a conta dava −53% quando a verdade são −29%. Um número inflacionado
+      // no hero de um comparador de preços é uma promessa que não se cumpre.
+      const doBuild = (_dadosDaPagina().stats || {}).avg_savings_pct;
+      if (doBuild > 0) {
+        elSave.textContent = '−' + Math.round(doBuild) + '%';
+      } else {
+        const comp = PRODUCT_STATS.filter(s => s.storeCount >= 2 && s.worstPrice > 0 && s.savings > 0);
+        if (comp.length) {
+          const avgPct = Math.round(comp.reduce((a, s) => a + (s.savings / s.worstPrice), 0) / comp.length * 100);
+          elSave.textContent = '−' + avgPct + '%';
+        }
       }
     }
   } catch (e) {}
