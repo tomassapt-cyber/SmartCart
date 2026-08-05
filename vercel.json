@@ -5,8 +5,8 @@
       "main": false
     }
   },
-  "_nota_buildCommand": "ORDEM OBRIGATORIA: pedacos, indice, inject. O build-search-index.js escreve data/idx/ E data/startup-block.json, e o inject le os dois para os meter no #hp-data (idx_version + arranque). Trocar a ordem faz a pagina sair com a versao do indice vazia e o caminho novo desligado, sem erro nenhum. Cada passo tem a sua guarda ||: se um falhar, o deploy continua e o site cai no catalogo embebido, que e' o comportamento antigo. Medido em 2026-08-05: o indice cabe em 4096 MB. AVISO HISTORICO: acrescentar um passo aqui ja partiu os deploys durante 45 min sem dar erro nenhum -- o sinal fiavel de que um deploy aterrou e' o ETag de / mudar, nao o workflow dizer que passou.",
-  "buildCommand": "(node --max-old-space-size=4096 scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados') && (node --max-old-space-size=4096 scripts/build-search-index.js || echo 'AVISO: indice nao gerado') && COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
+  "_nota_buildCommand": "NAO ACRESCENTAR PASSOS AQUI SEM VERIFICAR O DEPLOY A SEGUIR. Aconteceu duas vezes: a primeira com o build-product-shards.js (45 min parado), a segunda em 2026-08-05 com o build-search-index.js -- os deploys falharam TODOS durante 9,5 horas e nada disso apareceu como erro no GitHub, porque o workflow 'Deploy branch sync' passa a verde na mesma. O sinal fiavel e' o estado do deployment (gh api repos/OWNER/REPO/deployments/<id>/statuses) e o ETag de / mudar; o Age do CDN a crescer sem parar quer dizer que nenhum deploy aterrou. As guardas || NAO chegam: protegem contra um passo que devolve erro, nao contra o build inteiro morrer por memoria, disco ou tempo.",
+  "buildCommand": "(node --max-old-space-size=4096 scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados') && COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
   "framework": null,
