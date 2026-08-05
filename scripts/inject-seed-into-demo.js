@@ -327,6 +327,15 @@ if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
         const ip = path.join(ROOT, 'data', 'idx', 'versao.txt');
         hp.idx_version = fs.existsSync(ip) ? fs.readFileSync(ip, 'utf8').trim() : '';
       } catch { hp.idx_version = ''; }
+      // bloco de arranque: o mínimo para a primeira vista SEM rede — as lojas,
+      // os 150 produtos da montra e as contagens. São 11 KB comprimidos, e
+      // injectá-los aqui poupa um pedido no arranque, que é onde ele mais custa.
+      // (O build-search-index.js escreve-o e o comentário dele já dizia que era
+      // o inject a metê-lo no #hp-data; faltava o código.)
+      try {
+        const ap = path.join(ROOT, 'data', 'startup-block.json');
+        if (fs.existsSync(ap)) hp.arranque = JSON.parse(fs.readFileSync(ap, 'utf8'));
+      } catch (e) { console.warn('⚠ bloco de arranque nao injectado:', e.message); }
       fs.writeFileSync(HP_DATA, JSON.stringify(hp, null, 2));
       console.log('📊 Hero: ' + stats.stores + ' lojas · ' + stats.products + ' produtos · poupanca media -' + stats.avg_savings_pct + '%');
     } catch (e) { console.warn('⚠ nao consegui gravar os stats no hp-data:', e.message); }

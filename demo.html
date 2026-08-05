@@ -7962,7 +7962,19 @@
 // ============================================================
 // SEED + INDEX
 // ============================================================
-const SEED_FALLBACK = JSON.parse(document.getElementById('seed-data').textContent);
+// ⚠️ O seed embebido passou a ser OPCIONAL (Fase 4b). Enquanto cá estiver é a
+// rede de segurança do caminho novo; quando sair, este bloco fica vazio.
+// A versão anterior era `JSON.parse(...textContent)` sem defesa nenhuma: com o
+// bloco vazio atira SyntaxError e mata o <script> INTEIRO — não é o catálogo
+// que falha, é a página toda, sem nada no ecrã.
+const SEED_FALLBACK = (() => {
+  try { return JSON.parse(document.getElementById('seed-data')?.textContent || 'null'); }
+  catch (e) { console.warn('seed embebido ilegível:', e && e.message); return null; }
+})();
+/** há catálogo embebido nesta página? (a rede de segurança existe?) */
+const TEM_SEED_EMBEBIDO = !!(SEED_FALLBACK
+  && Array.isArray(SEED_FALLBACK.products) && SEED_FALLBACK.products.length
+  && Array.isArray(SEED_FALLBACK.stores) && SEED_FALLBACK.stores.length);
 // IMAGE_OVERRIDES legado — agora usamos data/image-overrides.json no build-time
 // (lido por scripts/build-catalog.js e aplicado ao seed-bundle). Esvaziar para
 // não sobrescrever as imagens Wells/Notino que já vêm aplicadas no seed.
@@ -8151,12 +8163,16 @@ function _ofertaDaBd(o) {
  */
 async function carregarOfertas(eans, opcoes) {
   const comVariantes = !!(opcoes && opcoes.variantes);
-  const sb = window.SUPABASE;
   // já pedido? no modo com variantes a pergunta é outra — ter as ofertas não
   // significa ter os tamanhos.
   const jaTem = e => (comVariantes ? OFERTAS_COM_VARIANTES.has(e) : ofertasProntas(e));
   const porFazer = [...new Set((eans || []).filter(e => e && !jaTem(e)))];
-  if (!sb || !porFazer.length) return 0;
+  if (!porFazer.length) return 0;
+  // esperar pelo cliente em vez de desistir: o initApp corre antes do
+  // initSupabase e o SDK ainda vem de um CDN. Sem isto, o primeiro desenho
+  // pedia ofertas, recebia zero e nunca mais tentava.
+  const sb = window.SUPABASE || (await aguardarSupabase() ? window.SUPABASE : null);
+  if (!sb) return 0;
 
   // uma promessa por (EAN, modo), para que dois pedidos simultâneos do mesmo
   // produto não disparem dois fetches
@@ -8440,11 +8456,103 @@ function rebuildCatalogIndexes(seed) {
   };
 }
 
+// ─────────────────────────────────────────────────────────────
+//  CARREGAR O CATÁLOGO A PARTIR DO ÍNDICE (Fase 4b)
+//
+//  A página embebia o catálogo inteiro: 73 MB, 8,39 MB comprimidos, pagos por
+//  toda a gente antes de ver o primeiro pixel. O caminho novo:
+//
+//    · bloco de arranque   — injectado no #hp-data, 11 KB gz, sem rede.
+//                            Chega para a montra e para as contagens do hero.
+//    · índice de pesquisa  — data/idx/search-<versao>.json, 1,33 MB gz.
+//                            NÃO bloqueia a primeira pintura: é pedido a
+//                            seguir, e só a pesquisa e o catálogo esperam
+//                            por ele.
+//    · ofertas             — da base de dados, à medida (carregarOfertas).
+//
+//  ⚠️ A VERSÃO VEM DA PÁGINA, não de um pedido a data/idx/versao.txt. O nome do
+//  ficheiro carrega o hash do conteúdo; se a versão viesse de um ficheiro fixo,
+//  esse ficheiro podia vir da cache e apontar para um índice antigo — e um
+//  índice antigo não tem os campos que o site entretanto passou a ler.
+// ─────────────────────────────────────────────────────────────
+let _promessaIndice = null;
+let INDICE_CARREGADO = false;
+
+function _dadosDaPagina() {
+  try { return JSON.parse(document.getElementById('hp-data')?.textContent || '{}'); }
+  catch { return {}; }
+}
+
+/**
+ * Garante que os índices globais estão construídos a partir do índice completo.
+ * Memoizada: várias chamadas simultâneas partilham o mesmo pedido.
+ * @returns {Promise<boolean>} conseguiu?
+ */
+function garantirIndice() {
+  if (INDICE_CARREGADO) return Promise.resolve(true);
+  if (_promessaIndice) return _promessaIndice;
+  _promessaIndice = (async () => {
+    const hp = _dadosDaPagina();
+    const versao = hp.idx_version || '';
+    if (!hp.arranque || !versao) return false;   // build antigo: não há por onde
+    try {
+      const r = await fetch('data/idx/search-' + versao + '.json');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const indice = await r.json();
+      if (!indice || !indice.n || !Array.isArray(indice.e)) throw new Error('índice vazio');
+      rebuildCatalogIndexesFromSources(hp.arranque, indice);
+      INDICE_CARREGADO = true;
+      return true;
+    } catch (e) {
+      console.warn('índice não carregou:', e && e.message);
+      _promessaIndice = null;   // deixar re-tentar: isto não é um extra opcional
+      return false;
+    }
+  })();
+  return _promessaIndice;
+}
+
+/**
+ * Espera que o cliente Supabase exista.
+ * O initApp() corre ANTES do initSupabase() (fim do ficheiro) e o SDK ainda é
+ * carregado de um CDN — sem isto, tudo o que a primeira pintura pedisse saía
+ * pela porta do "não há cliente" e devolvia zero em silêncio, sem re-tentar.
+ */
+function aguardarSupabase(msMax) {
+  if (window.SUPABASE) return Promise.resolve(true);
+  const limite = Date.now() + (msMax || 8000);
+  return new Promise(resolve => {
+    const tenta = () => {
+      if (window.SUPABASE) return resolve(true);
+      if (Date.now() > limite) return resolve(false);
+      setTimeout(tenta, 120);
+    };
+    tenta();
+  });
+}
+
 async function loadLiveCatalog() {
   // Live API só corre em localhost (dev). Em produção, salta directamente para seed.
   const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   if (!isLocalDev) {
-    rebuildCatalogIndexes(SEED_FALLBACK);
+    // Fase 4b. Enquanto o catálogo embebido existir é ELE que manda: o caminho
+    // novo fica ligado mas inactivo, para que este passo não mude nada em
+    // produção antes de estar provado. Quando o #seed-data ficar vazio, o
+    // índice passa a construir tudo sem mais nenhuma alteração de código.
+    //
+    // ?indice=1 força o caminho novo com o seed ainda cá — é a única forma de o
+    // exercitar em produção ANTES de tirar a rede de segurança. Sem isto, a
+    // troca só seria testada no momento em que já não há por onde voltar.
+    const forcado = /[?&]indice=1\b/.test(window.location.search);
+    if (TEM_SEED_EMBEBIDO && !forcado) {
+      rebuildCatalogIndexes(SEED_FALLBACK);
+      return false;
+    }
+    const ok = await garantirIndice();
+    if (!ok) {
+      console.error('Fase 4b: o índice não carregou e não há seed embebido.');
+      if (TEM_SEED_EMBEBIDO) rebuildCatalogIndexes(SEED_FALLBACK);   // volta atrás
+    }
     return false;
   }
   const LIVE_API_URL = "http://localhost:3000/api/live-catalog";
@@ -13136,7 +13244,9 @@ async function initApp() {
   // durante esse tempo. Em produção não há espera nenhuma — o loadLiveCatalog
   // devolve logo no primeiro if.
   const devLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  if (devLocal) rebuildCatalogIndexes(SEED_FALLBACK);
+  // TEM_SEED_EMBEBIDO: sem esta guarda, uma página sem catálogo embebido atira
+  // aqui ao ler SEED.stores e nem chega ao loadLiveCatalog que sabe recuperar.
+  if (devLocal && TEM_SEED_EMBEBIDO) rebuildCatalogIndexes(SEED_FALLBACK);
   const loadedLive = await loadLiveCatalog();
   renderCatalog();
   renderDynamicSections();
