@@ -8599,10 +8599,18 @@ async function loadLiveCatalog() {
     // produção antes de estar provado. Quando o #seed-data ficar vazio, o
     // índice passa a construir tudo sem mais nenhuma alteração de código.
     //
-    // ?indice=1 força o caminho novo com o seed ainda cá — é a única forma de o
-    // exercitar em produção ANTES de tirar a rede de segurança. Sem isto, a
-    // troca só seria testada no momento em que já não há por onde voltar.
-    const forcado = /[?&]indice=1\b/.test(window.location.search);
+    // ⚠️ NÃO SE ACTIVA PELO ENDEREÇO. Havia aqui um `?indice=1`, e foi retirado
+    // por decisão do dono do site (2026-08-05): um parâmetro de endereço é
+    // público — qualquer pessoa o pode escrever, e basta um link partilhado ou
+    // indexado para pôr utilizadores reais num caminho que ainda não foi
+    // aprovado. Ninguém deve entrar aqui por acidente.
+    //
+    // Para experimentar, é preciso acesso à consola do navegador:
+    //     localStorage.setItem('cosmath.indice', '1')   // ligar
+    //     localStorage.removeItem('cosmath.indice')     // desligar
+    // Sem isso não há maneira de lá chegar.
+    let forcado = false;
+    try { forcado = localStorage.getItem('cosmath.indice') === '1'; } catch (e) {}
     if (TEM_SEED_EMBEBIDO && !forcado) {
       rebuildCatalogIndexes(SEED_FALLBACK);
       return false;
