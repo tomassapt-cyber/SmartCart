@@ -9556,11 +9556,20 @@ async function openPriceAnalyzer(ean) {
   // header (estático — não muda com o volume)
   document.getElementById('pa-brand').textContent = p.brand;
   document.getElementById('pa-name').textContent = displayName(p.name, p.brand);
-  const imgEl = document.getElementById('pa-img');
-  imgEl.style.background = palette.bg;
-  imgEl.innerHTML = p.image_url
-    ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg}'}))">`
-    : `<span style="font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg}">${initial}</span>`;
+  // ⚠️ Numa função, e chamada DUAS vezes: uma agora e outra depois de as
+  // ofertas chegarem. É com elas que vem a imagem (o índice não a leva), e o
+  // cabeçalho era desenhado antes — a ficha ficava com a inicial da marca em
+  // vez da fotografia do produto, para sempre. Apanhado a testar em produção
+  // com o caminho novo ligado, 2026-08-05.
+  const pintarImagemDaFicha = () => {
+    const imgEl = document.getElementById('pa-img');
+    if (!imgEl) return;
+    imgEl.style.background = palette.bg;
+    imgEl.innerHTML = p.image_url
+      ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}',style:'font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg}'}))">`
+      : `<span style="font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg}">${initial}</span>`;
+  };
+  pintarImagemDaFicha();
 
   // Volume default: tenta extrair do nome do produto (ex: "...50 ml" → 50)
   const m = p.name.match(/(\d+(?:[.,]\d+)?)\s*ml/i);
@@ -9593,6 +9602,7 @@ async function openPriceAnalyzer(ean) {
   // entre o pedido e a resposta o utilizador pode ter fechado a ficha ou aberto
   // outra: sem esta guarda, o pódio do produto antigo aterrava por cima
   if (!PA_STATE || PA_STATE.ean !== ean) return;
+  pintarImagemDaFicha();   // a imagem veio com as ofertas
   renderPodiumBody();
 }
 
