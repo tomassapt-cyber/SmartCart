@@ -8075,6 +8075,129 @@ function normalizeSeedFromLive(payload) {
 //  produto AINDA NÃO CARREGADO tem de esperar pelo pedido — é a diferença de
 //  fundo face ao catálogo embutido, onde tudo estava sempre lá.
 // ─────────────────────────────────────────────────────────────
+
+// ─────────────────────────────────────────────────────────────
+//  OFERTAS À MEDIDA (Fase 4b)
+//  Com o catálogo fora da página, OFFERS_BY_PRODUCT nasce vazio e vai sendo
+//  preenchido a partir da base de dados à medida que os produtos aparecem.
+//
+//  DOIS MODOS, porque o custo é muito diferente (medido):
+//    · cartões  — só ofertas:            8 produtos = 55 KB em 121 ms
+//    · ficha    — ofertas + variantes:   8 produtos = 90 KB em 557 ms
+//  As variantes de volume só fazem falta no selector de tamanho da ficha, por
+//  isso não se pagam nos cartões.
+//
+//  ⚠️ CAMPOS QUE A BASE DE DADOS NÃO TEM: verified, verified_url, source e
+//  variant_note. Não é um problema, e foi medido antes de se assumir: das
+//  150.934 ofertas com preço no catálogo, **zero** são estimativas — todas
+//  passam a regra hasRealData que o site usa para decidir se mostra um preço.
+//  Ou seja, tudo o que está na base de dados é oferta real, e é isso que se
+//  assume abaixo. Se algum dia voltarem a entrar estimativas no catálogo, esta
+//  suposição deixa de valer e passam a aparecer preços inventados nas fichas —
+//  por isso o sync tem de continuar a mandar só ofertas reais.
+// ─────────────────────────────────────────────────────────────
+const OFERTAS_PEDIDAS = new Set();     // EANs já pedidos (não repetir)
+const OFERTAS_EM_CURSO = new Map();    // EAN → promessa em voo
+
+/** transforma uma linha da base de dados na forma que o site espera */
+function _ofertaDaBd(o) {
+  return {
+    price: Number(o.price),
+    previous_price: o.previous_price != null ? Number(o.previous_price) : null,
+    discount_pct: o.discount_pct != null ? Number(o.discount_pct) : null,
+    in_stock: Boolean(o.in_stock),
+    url: o.url,
+    // ver a nota acima: tudo o que está na BD é oferta real
+    verified: true,
+    verified_url: true,
+    verified_at: o.verified_at || null,
+    source: 'scraped',
+    variant_note: null,
+    promo_note: o.promo_note || null,
+    promo_pack: Boolean(o.promo_pack),
+    variants: undefined,
+  };
+}
+
+/**
+ * Traz as ofertas destes produtos e enche OFFERS_BY_PRODUCT.
+ * @param {string[]} eans
+ * @param {{variantes?: boolean}} opcoes  variantes = também os tamanhos (ficha)
+ * @returns {Promise<number>} quantos produtos ficaram com ofertas
+ */
+async function carregarOfertas(eans, opcoes) {
+  const comVariantes = !!(opcoes && opcoes.variantes);
+  const sb = window.SUPABASE;
+  const porFazer = [...new Set((eans || []).filter(e =>
+    e && (comVariantes || !OFERTAS_PEDIDAS.has(e))))];
+  if (!sb || !porFazer.length) return 0;
+
+  // uma promessa por EAN, para que dois pedidos simultâneos do mesmo produto
+  // não disparem dois fetches
+  const jaEmCurso = porFazer.filter(e => OFERTAS_EM_CURSO.has(e));
+  const novos = porFazer.filter(e => !OFERTAS_EM_CURSO.has(e));
+  if (!novos.length) {
+    await Promise.all(jaEmCurso.map(e => OFERTAS_EM_CURSO.get(e)));
+    return 0;
+  }
+
+  // lotes de 50: acima disso o endereço do pedido fica demasiado comprido
+  const lotes = [];
+  for (let i = 0; i < novos.length; i += 50) lotes.push(novos.slice(i, i + 50));
+
+  let comOfertas = 0;
+  const trabalho = (async () => {
+    for (const lote of lotes) {
+      let sel = 'ean,image_url,offers!offers_ean_fkey(store_slug,price,previous_price,discount_pct,in_stock,url,verified_at,promo_note,promo_pack)';
+      if (comVariantes) sel += ',offer_variants(store_slug,volume_ml,price,url,in_stock,previous_price)';
+      try {
+        const { data, error } = await sb.from('products').select(sel).in('ean', lote);
+        if (error) throw error;
+        for (const p of (data || [])) {
+          // imagem: o índice não a traz (custava +947 KB); vem aqui
+          const alvo = PRODUCT_BY_EAN[p.ean];
+          if (alvo && !alvo.image_url && p.image_url) alvo.image_url = p.image_url;
+
+          const porLoja = {};
+          for (const o of (p.offers || [])) {
+            if (!(o.price > 0)) continue;
+            porLoja[o.store_slug] = _ofertaDaBd(o);   // a última da loja ganha, como no catálogo
+          }
+          if (comVariantes) {
+            for (const v of (p.offer_variants || [])) {
+              const alvoO = porLoja[v.store_slug];
+              if (!alvoO) continue;
+              (alvoO.variants = alvoO.variants || []).push({
+                volume_ml: v.volume_ml, price: v.price,
+                url: v.url || alvoO.url, in_stock: v.in_stock,
+                previous_price: v.previous_price ?? null,
+              });
+            }
+          }
+          OFFERS_BY_PRODUCT[p.ean] = porLoja;
+          OFFERS_BY_PRODUCT_ALL[p.ean] = porLoja;
+          if (Object.keys(porLoja).length) comOfertas++;
+        }
+      } catch (e) {
+        console.warn('ofertas: lote falhou', e && e.message);
+      }
+    }
+    // as estatísticas memoizadas passam a estar velhas
+    statsByEanMap._m = null;
+  })();
+
+  novos.forEach(e => OFERTAS_EM_CURSO.set(e, trabalho));
+  await trabalho;
+  novos.forEach(e => { OFERTAS_PEDIDAS.add(e); OFERTAS_EM_CURSO.delete(e); });
+  await Promise.all(jaEmCurso.map(e => OFERTAS_EM_CURSO.get(e)).filter(Boolean));
+  return comOfertas;
+}
+
+/** já temos as ofertas deste produto em memória? */
+function temOfertas(ean) {
+  return !!(OFFERS_BY_PRODUCT && OFFERS_BY_PRODUCT[ean]);
+}
+
 function rebuildCatalogIndexesFromSources(arranque, indice) {
   // ── lojas ────────────────────────────────────────────────────────────────
   STORES = (arranque.lojas || []).map(l => ({
