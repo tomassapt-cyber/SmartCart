@@ -8054,6 +8054,97 @@ function normalizeSeedFromLive(payload) {
   };
 }
 
+
+// ─────────────────────────────────────────────────────────────
+//  AS MESMAS GLOBAIS, SEM O CATÁLOGO EMBUTIDO (Fase 4b)
+//  Constrói SEED/STORES/PRODUCTS/PRODUCT_STATS/… a partir de:
+//    · bloco de arranque (11 KB, já na página): lojas, etiquetas, contagens
+//      e os 150 produtos mais populares já com preço e imagem;
+//    · índice de pesquisa (1,24 MB, buscado ao primeiro toque na pesquisa):
+//      os 50 mil produtos com nome, marca, categoria, nº de lojas e preços;
+//    · base de dados: as ofertas de cada produto, à medida que fazem falta.
+//
+//  As imagens NÃO estão no índice — medido, custariam +947 KB e a tabelagem
+//  de prefixos não ajuda (os nomes de ficheiro são únicos). Vêm da base de
+//  dados no MESMO pedido que traz os preços: 8 produtos com imagens e ofertas
+//  = 34 KB em 580 ms. Até chegarem, o cartão mostra as iniciais da marca,
+//  que é o que já faz hoje quando uma imagem falha.
+//
+//  ⚠️ Esta função NÃO preenche OFFERS_BY_PRODUCT: fica vazio e vai sendo
+//  preenchido por quem abre produtos. Tudo o que dependa de ofertas de um
+//  produto AINDA NÃO CARREGADO tem de esperar pelo pedido — é a diferença de
+//  fundo face ao catálogo embutido, onde tudo estava sempre lá.
+// ─────────────────────────────────────────────────────────────
+function rebuildCatalogIndexesFromSources(arranque, indice) {
+  // ── lojas ────────────────────────────────────────────────────────────────
+  STORES = (arranque.lojas || []).map(l => ({
+    slug: l.slug,
+    name: l.nome,
+    base_url: l.url,
+    logo_url: null,
+    free_shipping_threshold: l.gratis,
+    shipping_zones: l.portes,
+  }));
+  STORE_BY_SLUG = Object.fromEntries(STORES.map(s => [s.slug, s]));
+
+  // ── produtos ─────────────────────────────────────────────────────────────
+  // imagem: a dos 150 do arranque; as outras chegam com as ofertas
+  const imgs = {};
+  for (const p of (arranque.primeiros || [])) if (p.img) imgs[p.ean] = p.img;
+
+  PRODUCTS = new Array(indice.n);
+  PRODUCT_BY_EAN = {};
+  for (let i = 0; i < indice.n; i++) {
+    const ean = indice.e[i];
+    const p = {
+      ean,
+      name: indice.nm[i],
+      brand: indice.brands[indice.b[i]] || null,
+      category: indice.cats[indice.c[i]] || null,
+      image_url: IMAGE_OVERRIDES[ean] || imgs[ean] || null,
+      id: i + 1,
+    };
+    PRODUCTS[i] = p;
+    PRODUCT_BY_EAN[ean] = p;
+  }
+
+  // ── ofertas: vazias, preenchidas à medida ────────────────────────────────
+  OFFERS_BY_PRODUCT = {};
+  OFFERS_BY_PRODUCT_ALL = {};
+
+  // ── estatísticas: vêm prontas do índice ──────────────────────────────────
+  // (o verificador provou que batem certo com as que o site calcula: 50.160
+  //  de 50.160 iguais em nº de lojas, preço mínimo e preço máximo)
+  PRODUCT_STATS = new Array(indice.n);
+  for (let i = 0; i < indice.n; i++) {
+    const bestPrice = indice.mn[i] < 0 ? null : indice.mn[i] / 100;
+    const worstPrice = indice.mx[i] < 0 ? null : indice.mx[i] / 100;
+    PRODUCT_STATS[i] = {
+      ean: indice.e[i],
+      storeCount: indice.s[i],
+      bestPrice,
+      worstPrice,
+      savings: (bestPrice !== null && worstPrice !== null) ? +(worstPrice - bestPrice).toFixed(2) : 0,
+    };
+  }
+
+  // ── derivadas: exactamente as mesmas fórmulas de rebuildCatalogIndexes ────
+  POPULARITY_SCORE = {};
+  for (const s of PRODUCT_STATS) {
+    POPULARITY_SCORE[s.ean] = s.storeCount * 1000 + Math.min(s.savings, 50) * 5 - (s.bestPrice ?? 9999) * 0.01;
+  }
+  TOP50_ROT = null;
+  statsByEanMap._m = null;
+
+  // as etiquetas vêm calculadas no build (verificadas: idênticas às do site)
+  HIGHLIGHTS = arranque.highlights || { newReleases: [], bestSellers: [], tiktok: [] };
+
+  // SEED deixa de existir como objecto completo. Fica o mínimo para quem lhe
+  // toque, mas o toggle de estimativas — o único que precisava do seed CRU —
+  // morre nesta fase, por decisão tomada a 2026-08-04.
+  SEED = { stores: STORES, products: PRODUCTS, store_products: [] };
+}
+
 function rebuildCatalogIndexes(seed) {
   SEED = seed;
   STORES = SEED.stores;
