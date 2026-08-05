@@ -265,7 +265,28 @@ const jsonSeguro = o => JSON.stringify(o)
   .replace(/\u2028/g, '\\u2028')
   .replace(/\u2029/g, '\\u2029');
 
-const newBlock = '\n' + jsonSeguro(seedJson) + '\n';
+// ─────────────────────────────────────────────────────────────────────────────
+//  O CATÁLOGO DEIXOU DE IR NA PÁGINA (Fase 4b, 2026-08-05)
+//
+//  Durante anos o <script id="seed-data"> levou o catálogo inteiro: 47 mil
+//  produtos e 136 mil ofertas, 68 MB, que TODOS os visitantes descarregavam
+//  antes de ver o primeiro pixel — para depois verem oito cartões.
+//
+//  Agora a página leva o bloco de arranque (11 KB comprimidos, já dentro do
+//  HTML: 73 lojas, 150 produtos e os totais) e vai buscar o resto à medida:
+//  o índice de pesquisa quando é preciso pesquisar ou navegar o catálogo, e as
+//  ofertas de cada produto à base de dados quando esse produto aparece.
+//
+//  ⚠️ O `seedJson` CONTINUA a ser calculado acima, e tem de continuar: é dele
+//  que saem os números do hero, o homepage-data, o índice e os pedaços. O que
+//  muda é só isto: deixa de ser ESCRITO na página.
+//
+//  Para voltar atrás, uma palavra: EMBEBER_CATALOGO = true. É a rede de
+//  segurança — o demo.html continua a saber ler o bloco se ele lá estiver.
+// ─────────────────────────────────────────────────────────────────────────────
+const EMBEBER_CATALOGO = false;
+
+const newBlock = EMBEBER_CATALOGO ? '\n' + jsonSeguro(seedJson) + '\n' : '\n';
 let next = html0.slice(0, afterOpen) + newBlock + html0.slice(closeIdx);
 
 // Injectar também homepage-data (10KB) no <script id="hp-data"> se existir
