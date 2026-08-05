@@ -5,7 +5,8 @@
       "main": false
     }
   },
-  "buildCommand": "(node --max-old-space-size=4096 scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados') && COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
+  "_nota_buildCommand": "ORDEM OBRIGATORIA: pedacos, indice, inject. O build-search-index.js escreve data/idx/ E data/startup-block.json, e o inject le os dois para os meter no #hp-data (idx_version + arranque). Trocar a ordem faz a pagina sair com a versao do indice vazia e o caminho novo desligado, sem erro nenhum. Cada passo tem a sua guarda ||: se um falhar, o deploy continua e o site cai no catalogo embebido, que e' o comportamento antigo. Medido em 2026-08-05: o indice cabe em 4096 MB. AVISO HISTORICO: acrescentar um passo aqui ja partiu os deploys durante 45 min sem dar erro nenhum -- o sinal fiavel de que um deploy aterrou e' o ETag de / mudar, nao o workflow dizer que passou.",
+  "buildCommand": "(node --max-old-space-size=4096 scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados') && (node --max-old-space-size=4096 scripts/build-search-index.js || echo 'AVISO: indice nao gerado') && COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
   "framework": null,
