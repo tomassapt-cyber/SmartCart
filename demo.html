@@ -13111,6 +13111,23 @@ async function runAnalysis() {
   // recebe explicação nenhuma.
   try {
     const { solutions, uncovered } = optimizeBundle(items, bundleState.zone);
+    // Os candidatos ao "junta mais um e tens portes grátis" TÊM de estar cá
+    // antes de desenhar: o freeShippingUpsellHTML corre dentro de um template
+    // síncrono e não pode esperar por nada.
+    const pedidos = [];
+    for (const s of (solutions || [])) {
+      for (const b of (s.breakdown || [])) {
+        if (b.free_shipping) continue;
+        const loja = STORE_BY_SLUG[b.store_slug];
+        const limite = (loja && loja.free_shipping_threshold) || 0;
+        if (!limite || limite >= 9999) continue;
+        const falta = limite - b.subtotal;
+        if (falta > 0 && !pedidos.some(x => x.store_slug === b.store_slug)) {
+          pedidos.push({ store_slug: b.store_slug, gap: falta });
+        }
+      }
+    }
+    if (pedidos.length) await carregarCandidatosUpsell(pedidos);
     renderResults(solutions, uncovered, items);
   } catch (e) {
     console.error('[carrinho] análise falhou:', e);
@@ -13332,6 +13349,40 @@ function storeLineHTML(b) {
 }
 
 // Upsell: produtos baratos a adicionar para atingir portes grátis
+// Candidatos a "junta mais um produto e tens portes grátis", por loja.
+// Preenchido pelo carregarCandidatosUpsell() ANTES de desenhar os resultados —
+// o desenho é síncrono e não pode esperar por nada.
+const UPSELL_CANDIDATOS = new Map();
+
+/**
+ * Vai buscar, para cada loja com portes em falta, os produtos dessa loja numa
+ * faixa de preço à volta da lacuna.
+ * @param {Array<{store_slug: string, gap: number}>} pedidos
+ */
+async function carregarCandidatosUpsell(pedidos) {
+  const sb = window.SUPABASE || (await aguardarSupabase() ? window.SUPABASE : null);
+  if (!sb || !pedidos.length) return;
+  await Promise.all(pedidos.map(async ({ store_slug, gap }) => {
+    if (UPSELL_CANDIDATOS.has(store_slug)) return;
+    try {
+      // faixa generosa: o ordenador lá em baixo prefere quem fica just-above da
+      // lacuna, mas também sabe usar quem fica abaixo quando não há melhor
+      const { data, error } = await sb.from('offers')
+        .select('ean,price,url')
+        .eq('store_slug', store_slug).eq('in_stock', true)
+        .gte('price', Math.max(0.5, gap * 0.35)).lte('price', gap * 3)
+        .order('price', { ascending: true }).limit(120);
+      if (error) throw error;
+      // ⚠️ preço de montra, não ao volume de referência: aqui a pergunta é
+      // "quanto custa juntar isto ao cabaz", e é este o valor que se paga.
+      UPSELL_CANDIDATOS.set(store_slug, (data || []).filter(o => o.price > 0));
+    } catch (e) {
+      console.warn('upsell: loja ' + store_slug + ' falhou', e && e.message);
+      UPSELL_CANDIDATOS.set(store_slug, []);   // não insistir nesta análise
+    }
+  }));
+}
+
 function freeShippingUpsellHTML(b) {
   if (b.free_shipping) return '';
   const store = STORE_BY_SLUG[b.store_slug];
@@ -13351,19 +13402,26 @@ function freeShippingUpsellHTML(b) {
   }
   const relevance = (p) => cartCats.has(p.category) ? 0 : (cartBrands.has((p.brand || '').toLowerCase()) ? 1 : 2);
 
-  // candidatos: oferta in-stock nesta loja, NÃO já no bundle. Preço ao volume ref.
+  // ── candidatos: vêm da base de dados, já filtrados por loja e faixa de preço
+  // A versão anterior varria os 50 mil produtos em memória à procura de quem
+  // tivesse oferta nesta loja — uma vez por loja, por solução, cerca de nove
+  // vezes por análise, e tudo isto dentro de um template síncrono. Com o
+  // catálogo fora da página isso deixaria de encontrar seja o que for, e a
+  // sugestão que empurra o cabaz para os portes grátis morria em silêncio,
+  // custando dinheiro real a quem compra.
+  //
+  // A pergunta — "que produtos baratos tem a loja X" — é exactamente o que uma
+  // consulta responde bem, e responde melhor: procura no catálogo INTEIRO da
+  // loja, não só no que estiver carregado.
   const eansInBundle = new Set(b.lines.map(l => l.ean));
+  const brutos = UPSELL_CANDIDATOS.get(b.store_slug) || null;
+  if (!brutos) return '';   // ainda não pedimos, ou a loja não deu nada
   const candidates = [];
-  for (const p of PRODUCTS) {
-    if (eansInBundle.has(p.ean)) continue;
-    const offers = OFFERS_BY_PRODUCT[p.ean] || {};
-    const o = offers[b.store_slug];
-    if (!o || !o.in_stock) continue;
-    const rv = refVolumeFor(p.ean);
-    const pr = offerPriceAtVol(o, rv);
-    if (pr == null) continue;
-    const v = rv && o.variants ? o.variants.find(x => x.volume_ml === rv && x.price > 0) : null;
-    candidates.push({ p, price: pr, url: (v && v.url) || o.url, gapAfter: pr - gap, rel: relevance(p) });
+  for (const c of brutos) {
+    if (eansInBundle.has(c.ean)) continue;
+    const p = PRODUCT_BY_EAN[c.ean];
+    if (!p) continue;
+    candidates.push({ p, price: c.price, url: c.url, gapAfter: c.price - gap, rel: relevance(p) });
   }
   if (!candidates.length) return '';
   // Sugerir produtos PERTO do preço necessário (pouco excesso) e RELEVANTES ao
