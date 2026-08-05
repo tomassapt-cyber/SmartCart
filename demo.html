@@ -9699,10 +9699,17 @@ function similarMinPrice(ean) {
 function renderSimilarProducts(ean) {
   const host = document.getElementById('pa-similar');
   if (!host) return;
-  loadRecommendations(ean).then(map => {
+  loadRecommendations(ean).then(async map => {
     // O utilizador pode ter aberto outro produto entretanto.
     if (!PA_STATE || PA_STATE.ean !== ean) return;
     const recEans = (map && map[ean]) || [];
+    // O similarMinPrice lê as ofertas, e sem elas devolve nada para todos os
+    // similares — cards.length ficava a zero e a secção inteira desaparecia
+    // sem explicação nenhuma. Um lote com os 12 primeiros chega.
+    const porPedir = recEans.slice(0, 12).filter(e => PRODUCT_BY_EAN[e] && !ofertasProntas(e));
+    if (porPedir.length) await carregarOfertas(porPedir);
+    // guarda REPETIDA: houve um await pelo meio e o produto pode ter mudado
+    if (!PA_STATE || PA_STATE.ean !== ean) return;
     const cards = [];
     for (const e of recEans) {
       const p = PRODUCT_BY_EAN[e];
