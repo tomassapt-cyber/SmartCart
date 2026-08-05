@@ -8270,6 +8270,63 @@ async function garantirImagens(eans) {
   return entraram;
 }
 
+/** totais reais do catálogo, vindos do bloco de arranque (não é PRODUCTS.length) */
+let TOTAIS_DO_CATALOGO = null;
+
+/**
+ * A PONTE: põe o site de pé com o bloco de arranque apenas, sem esperar rede.
+ *
+ * O índice são 4,4 MB e demora. Sem isto, entre a página abrir e o índice
+ * chegar — e para sempre, se ele nunca chegar — PRODUCTS está vazio, e o que se
+ * vê não é uma página a carregar: é uma página a MENTIR. O hero diz "0 lojas /
+ * 0+ produtos", a pesquisa responde "sem resultados para cerave", os cartões da
+ * montra não abrem quando se clica, e a prateleira do utilizador aparece em
+ * branco com o contador ao lado a dizer que tem produtos lá dentro.
+ *
+ * O bloco de arranque já traz, dentro do próprio HTML: as 73 lojas completas,
+ * 150 produtos com imagem e preço, os totais verdadeiros e os destaques. Chega
+ * para a primeira vista inteira, e o índice substitui tudo quando chegar.
+ *
+ * Os números do hero saem de `totais`, NÃO de PRODUCTS.length — senão diriam
+ * 150 produtos em vez de 47 mil.
+ */
+function construirDoArranque(arranque) {
+  if (!arranque || !Array.isArray(arranque.lojas)) return false;
+
+  STORES = (arranque.lojas || []).map(l => ({
+    slug: l.slug, name: l.nome, base_url: l.url, logo_url: null,
+    free_shipping_threshold: l.gratis, shipping_zones: l.portes,
+  }));
+  STORE_BY_SLUG = Object.fromEntries(STORES.map(s => [s.slug, s]));
+
+  const primeiros = arranque.primeiros || [];
+  PRODUCTS = primeiros.map((p, i) => ({
+    ean: p.ean, name: p.nome, brand: p.marca || null,
+    category: p.cat || null, image_url: p.img || null, id: i + 1,
+  }));
+  PRODUCT_BY_EAN = Object.fromEntries(PRODUCTS.map(p => [p.ean, p]));
+
+  PRODUCT_STATS = primeiros.map(p => {
+    const bestPrice = p.min != null ? p.min : null;
+    const worstPrice = p.max != null ? p.max : null;
+    return {
+      ean: p.ean, storeCount: p.lojas || 0, bestPrice, worstPrice,
+      savings: (bestPrice !== null && worstPrice !== null) ? +(worstPrice - bestPrice).toFixed(2) : 0,
+      absBest: bestPrice, hasPromo: !!p.promo,
+    };
+  });
+  POPULARITY_SCORE = {};
+  for (const s of PRODUCT_STATS) {
+    POPULARITY_SCORE[s.ean] = s.storeCount * 1000 + Math.min(s.savings, 50) * 5 - (s.bestPrice ?? 9999) * 0.01;
+  }
+  TOP50_ROT = null;
+  statsByEanMap._m = null;
+  HIGHLIGHTS = arranque.highlights || { newReleases: [], bestSellers: [], tiktok: [] };
+  SEED = { stores: STORES, products: PRODUCTS, store_products: [] };
+  TOTAIS_DO_CATALOGO = arranque.totais || null;
+  return true;
+}
+
 function rebuildCatalogIndexesFromSources(arranque, indice) {
   // ── lojas ────────────────────────────────────────────────────────────────
   STORES = (arranque.lojas || []).map(l => ({
@@ -8520,19 +8577,28 @@ function garantirIndice() {
     const hp = _dadosDaPagina();
     const versao = hp.idx_version || '';
     if (!hp.arranque || !versao) return false;   // build antigo: não há por onde
-    try {
-      const r = await fetch('data/idx/search-' + versao + '.json');
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      const indice = await r.json();
-      if (!indice || !indice.n || !Array.isArray(indice.e)) throw new Error('índice vazio');
-      rebuildCatalogIndexesFromSources(hp.arranque, indice);
-      INDICE_CARREGADO = true;
-      return true;
-    } catch (e) {
-      console.warn('índice não carregou:', e && e.message);
-      _promessaIndice = null;   // deixar re-tentar: isto não é um extra opcional
-      return false;
+    // TRÊS TENTATIVAS, com recuo. São 4,4 MB: numa rede móvel a primeira falha
+    // acontece, e sem isto uma falha passageira deixava a sessão INTEIRA com o
+    // catálogo reduzido aos 150 do arranque, sem re-tentar e sem dizer nada.
+    let ultimoErro = null;
+    for (let tentativa = 1; tentativa <= 3; tentativa++) {
+      try {
+        const r = await fetch('data/idx/search-' + versao + '.json');
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const indice = await r.json();
+        if (!indice || !indice.n || !Array.isArray(indice.e)) throw new Error('índice vazio');
+        rebuildCatalogIndexesFromSources(hp.arranque, indice);
+        INDICE_CARREGADO = true;
+        return true;
+      } catch (e) {
+        ultimoErro = e;
+        console.warn(`índice, tentativa ${tentativa}/3:`, e && e.message);
+        if (tentativa < 3) await new Promise(r2 => setTimeout(r2, tentativa * 1200));
+      }
     }
+    console.error('índice não carregou ao fim de 3 tentativas:', ultimoErro && ultimoErro.message);
+    _promessaIndice = null;   // uma acção do utilizador mais tarde volta a tentar
+    return false;
   })();
   return _promessaIndice;
 }
@@ -8581,9 +8647,14 @@ async function loadLiveCatalog() {
       rebuildCatalogIndexes(SEED_FALLBACK);
       return false;
     }
+    // A PONTE PRIMEIRO, sempre: o site fica de pé com os 150 do arranque, sem
+    // rede nenhuma. Só depois se vai buscar o índice, que substitui tudo.
+    // Sem esta ordem, o que aparece entre uma coisa e outra — e para sempre, se
+    // o índice falhar — é uma página a afirmar que não há lojas nem produtos.
+    construirDoArranque(_dadosDaPagina().arranque);
     const ok = await garantirIndice();
     if (!ok) {
-      console.error('Fase 4b: o índice não carregou e não há seed embebido.');
+      console.error('Fase 4b: o índice não carregou.');
       if (TEM_SEED_EMBEBIDO) rebuildCatalogIndexes(SEED_FALLBACK);   // volta atrás
     }
     return false;
@@ -8599,7 +8670,11 @@ async function loadLiveCatalog() {
     rebuildCatalogIndexes(normalizeSeedFromLive(payload));
     return true;
   } catch {
-    rebuildCatalogIndexes(SEED_FALLBACK);
+    // sem guarda, isto era rebuildCatalogIndexes(null) quando o seed sai da
+    // página: SEED.stores sobre null, e o desenvolvimento local morria sem
+    // sequer tentar o índice (este ramo nunca chega ao garantirIndice)
+    if (TEM_SEED_EMBEBIDO) rebuildCatalogIndexes(SEED_FALLBACK);
+    else { construirDoArranque(_dadosDaPagina().arranque); await garantirIndice(); }
     return false;
   }
 }
@@ -9219,9 +9294,15 @@ function productCard(p) {
   const tag = productTag(p.ean);
 
   // Poupança vs loja mais cara — agora ao MESMO volume (sem descontos falsos).
+  // ⚠️ NO RAMO SEM OFERTAS usa-se o bestPrice, não o absBest. Os dois números do
+  // índice não são comparáveis entre si: o absBest é o mínimo ABSOLUTO (inclui
+  // outros tamanhos e packs) e o worstPrice é o máximo AO VOLUME DE REFERÊNCIA.
+  // Dividir um pelo outro dava "-78%" em cartões que não têm desconto nenhum —
+  // e um desconto inventado num comparador de preços é a pior espécie de erro.
   let discountPct = 0;
-  if (minPrice != null && maxPrice != null && maxPrice > minPrice) {
-    discountPct = Math.round(((maxPrice - minPrice) / maxPrice) * 100);
+  const _minParaDesconto = (_semOfertas && _st) ? _st.bestPrice : minPrice;
+  if (_minParaDesconto != null && maxPrice != null && maxPrice > _minParaDesconto) {
+    discountPct = Math.round(((maxPrice - _minParaDesconto) / maxPrice) * 100);
   }
 
   // Mini-badges das lojas (preço ao volume de referência)
@@ -9266,6 +9347,14 @@ function productCard(p) {
               <div class="product-price-from">desde</div>
               <div class="product-price-value">${(best && (minPrice == null || best.price < minPrice) ? best.price : minPrice).toFixed(2)}€</div>
               ${(() => {
+                // ⚠️ Sem ofertas carregadas não se mostra o €/100 ml. O preço
+                // vem do mínimo absoluto (pode ser o frasco pequeno) e o volume
+                // só se sabe pelo NOME do produto, que costuma ser o do frasco
+                // grande — dividia-se um pelo outro e saía um preço por 100 ml
+                // três a quatro vezes abaixo do real. E este é justamente o
+                // número que serve para comparar produtos entre si.
+                // Reaparece na repintura, quando as variantes já cá estão.
+                if (_semOfertas) return '';
                 const usesBest = best && (minPrice == null || best.price < minPrice);
                 const shownPrice = usesBest ? best.price : minPrice;
                 const shownVol = usesBest ? best.vol : ((typeof refVolumeFor === 'function' ? refVolumeFor(p.ean) : null) || null);
@@ -9335,7 +9424,14 @@ function bestOfferFor(ean) {
     const cands = [];
     if (o.price > 0) cands.push({ price: o.price, url: o.url, vol: null });
     for (const v of (o.variants || [])) if (v.price > 0 && v.in_stock !== false) cands.push({ price: v.price, url: v.url || o.url, vol: Number(v.volume_ml) || null });
-    for (const c of cands) if (!best || c.price < best.price) best = { slug, offer: o, store: STORE_BY_SLUG[slug], price: c.price, url: c.url, vol: c.vol };
+    // ⚠️ `|| { slug, name: slug }`: as ofertas vêm da base de dados e as lojas
+    // do bloco de arranque, e os dois são gerados em momentos diferentes — o
+    // sync corre 3× por dia, o bloco só no deploy. Uma loja integrada entretanto
+    // chega nas ofertas e não existe aqui. Sem isto, `best.store.name` atirava
+    // TypeError dentro dos templates do quiz, do carrossel e do carrinho — e no
+    // carrinho o erro é dentro do .map() que monta as linhas, por isso o
+    // carrinho não era desenhado de todo.
+    for (const c of cands) if (!best || c.price < best.price) best = { slug, offer: o, store: STORE_BY_SLUG[slug] || { slug, name: slug }, price: c.price, url: c.url, vol: c.vol };
   }
   return best;
 }
@@ -9548,6 +9644,14 @@ function renderCategoryCards() {
 let PA_STATE = { ean: null, volume: null };
 
 async function openPriceAnalyzer(ean) {
+  // O produto pode não estar em memória: a montra e os destaques são pintados
+  // com os 150 do bloco de arranque, mas os EANs vindos do scanner, de um link
+  // partilhado ou de uma rotina guardada não estão lá. Sem isto, clicar
+  // devolvia silêncio — sem ficha, sem aviso, sem nada a acontecer.
+  if (!PRODUCT_BY_EAN[ean] && typeof garantirIndice === 'function') {
+    const ok = await garantirIndice();
+    if (!ok || !PRODUCT_BY_EAN[ean]) { toast('Não consegui abrir este produto. Tenta outra vez.'); return; }
+  }
   const p = PRODUCT_BY_EAN[ean];
   if (!p) return;
   const palette = brandPalette(p.brand);
@@ -10484,6 +10588,20 @@ function heroSuggest(q) {
   if (!box) return;
   const query = _hnorm(q);
   if (query.length < 2) return hideHeroSuggest();
+  // A barra do hero está acima da dobra e aceita texto muito antes de o
+  // catálogo completo existir. Sem isto, escrever "cerave" nos primeiros
+  // segundos respondia "Sem resultados para cerave" — o site a afirmar que um
+  // produto não existe, o que é pior do que demorar. Pede o índice e repete a
+  // sugestão quando ele chegar.
+  if (typeof INDICE_CARREGADO !== 'undefined' && !INDICE_CARREGADO && typeof garantirIndice === 'function') {
+    box.innerHTML = '<div class="hero-suggest-empty">a carregar o catálogo…</div>';
+    box.classList.add('open');
+    garantirIndice().then(ok => {
+      const agora = document.getElementById('search');
+      if (ok && agora && _hnorm(agora.value) === query) heroSuggest(agora.value);
+    });
+    return;
+  }
   const toks = query.split(/\s+/).filter(Boolean);
   const matches = [];
   for (const p of PRODUCTS) {
@@ -12755,7 +12873,9 @@ function bundleRefresh() {
         const v = o.variants.find(vv => Number(vv.volume_ml) === chosenVol && vv.in_stock !== false);
         if (!v) continue;
         if (!cheapest || v.price < cheapest.price) {
-          cheapest = { price: v.price, store: STORE_BY_SLUG[slug] };
+          // mesma razão do bestOfferFor: a loja pode vir das ofertas e não
+          // existir no bloco de arranque, e quem lê isto faz store.name
+          cheapest = { price: v.price, store: STORE_BY_SLUG[slug] || { slug, name: slug } };
         }
       }
       best = cheapest ? { offer: { price: cheapest.price }, store: cheapest.store, price: cheapest.price } : null;
@@ -13095,9 +13215,10 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
   let subtotalAll = 0;
   let shippingAll = 0;
   for (const [slug, lines] of byStore.entries()) {
-    const store = STORE_BY_SLUG[slug];
+    const store = STORE_BY_SLUG[slug] || { slug, name: slug };
     const subtotal = lines.reduce((s, l) => s + l.line, 0);
     const ship = shippingForStore(slug, zone);
+    // uma loja desconhecida nunca oferece portes: sem limiar conhecido, cobra-se
     const free = subtotal >= (store.free_shipping_threshold ?? Infinity);
     const shipping = free ? 0 : ship;
     breakdown.push({
@@ -13566,21 +13687,27 @@ async function initApp() {
   bundleRefresh();
   // Hero stats dinâmicos (design handoff v5)
   try {
-    const elS = document.getElementById('hero-stat-stores');
-    const elP = document.getElementById('hero-stat-products');
-    if (elS) elS.textContent = STORES.length;
-    if (elP) elP.textContent = PRODUCTS.length + '+';
-    // Contagens de lojas/produtos dinâmicas (tagline + footer) — sem números fixos.
-    const nStores = STORES.length;
+    // ⚠️ NUNCA escrever estes números a partir de PRODUCTS.length.
+    // Duas razões, e as duas dão números falsos ao visitante:
+    //   · com o catálogo fora da página, PRODUCTS traz os 150 do bloco de
+    //     arranque até o índice chegar — o hero anunciaria "150+ produtos";
+    //   · se o índice falhar, PRODUCTS.length é 0 e o site passa a afirmar
+    //     "0 lojas / 0+ produtos", que é pior do que não dizer nada.
+    // Os totais verdadeiros vêm do bloco de arranque, e só se escreve o que se
+    // sabe: um número por saber deixa ficar o que lá está no HTML.
+    const nStores = (TOTAIS_DO_CATALOGO && TOTAIS_DO_CATALOGO.lojas) || STORES.length || 0;
+    const nProds = (TOTAIS_DO_CATALOGO && TOTAIS_DO_CATALOGO.produtos) || PRODUCTS.length || 0;
     const setTxt = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-    setTxt('tagline-stores', nStores);
-    setTxt('footer-tag-stores', nStores);
-    setTxt('footer-mini-stores', nStores);
-    setTxt('footer-mini-products', PRODUCTS.length.toLocaleString('pt-PT'));
-    setTxt('announce-stores', nStores);
-    setTxt('news-sub-stores', nStores);
-    setTxt('news-stat-stores', nStores);
-    setTxt('news-stat-products', PRODUCTS.length.toLocaleString('pt-PT'));
+    if (nStores) {
+      setTxt('hero-stat-stores', nStores);
+      ['tagline-stores', 'footer-tag-stores', 'footer-mini-stores',
+       'announce-stores', 'news-sub-stores', 'news-stat-stores'].forEach(id => setTxt(id, nStores));
+    }
+    if (nProds) {
+      setTxt('hero-stat-products', nProds + '+');
+      setTxt('footer-mini-products', nProds.toLocaleString('pt-PT'));
+      setTxt('news-stat-products', nProds.toLocaleString('pt-PT'));
+    }
     // Poupança média REAL: comparação mesmo-produto + mesmo-volume (PRODUCT_STATS
     // já é volume-consistente). % = (preço mais caro − mais barato) / mais caro,
     // média dos produtos comparáveis (>=2 lojas com diferença de preço).
@@ -13966,11 +14093,18 @@ async function prCloudUpsertProduct(item) {
   if (!SUPABASE || !CURRENT_USER) return;
   try { shelfTombRevive(item.ean); } catch (e) {} // (re-)adicionar anula a lápide em todos os dispositivos
   const product = PRODUCT_BY_EAN[item.ean];
+  // ⚠️ Se o produto não estiver em memória, NÃO se mandam estas duas colunas.
+  // Mandá-las a null era pior do que não as mandar: o upsert é por
+  // (user_id, ean), portanto substituía um nome bom guardado antes por nada — e
+  // estas colunas existem precisamente para a prateleira não depender do
+  // catálogo. Ninguém dava por isso, porque o prCloudPull nem as lê.
+  const nomeDoProduto = product
+    ? { product_name: product.name || null, product_brand: product.brand || null }
+    : {};
   const { error } = await SUPABASE.from('routine_products').upsert({
     user_id: CURRENT_USER.id,
     ean: item.ean,
-    product_name: product?.name || null,
-    product_brand: product?.brand || null,
+    ...nomeDoProduto,
     started_at: item.started_at,
     volume_ml: item.volume_ml,
     doses_per_use: item.doses_per_use,
@@ -15417,6 +15551,16 @@ function prRender() {
     const daRotina = (typeof loadRoutine === 'function'
       ? ((loadRoutine() || {}).steps || []).map(s => s.ean) : []);
     const eans = [...new Set([...daPrateleira, ...daRotina])].filter(Boolean);
+    // ⚠️ PRIMEIRO o índice. A prateleira guarda só o EAN e as medidas — o nome,
+    // a marca e a imagem são reidratados de PRODUCT_BY_EAN. Se o produto não
+    // estiver em memória, cada linha devolve vazio e a prateleira aparece EM
+    // BRANCO com o contador ao lado a dizer "3 produtos em uso". É o único
+    // sítio onde dados que o utilizador criou desaparecem sem explicação.
+    const emFalta = eans.filter(e => !PRODUCT_BY_EAN[e]);
+    if (emFalta.length && typeof garantirIndice === 'function' && !INDICE_CARREGADO) {
+      garantirIndice().then(ok => { if (ok) prRender(); });
+      return;
+    }
     if (eans.length) garantirImagens(eans).then(n => { if (n) prRender(); });
   } catch (e) { console.warn('imagens da prateleira:', e && e.message); }
 }

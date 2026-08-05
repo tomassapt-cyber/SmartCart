@@ -550,7 +550,17 @@ async function computeEmAlta(seed) {
     em_alta: emAlta,
     top_brands: topBrands,
   };
-  fs.writeFileSync(OUT, JSON.stringify(out, null, 2));
+  // ⚠️ FUNDIR, não substituir. Este ficheiro leva mais coisas do que as que
+  // esta função calcula: o inject-seed-into-demo.js acrescenta-lhe `stats`,
+  // `shard_version`, `idx_version` e `arranque` — e é de `arranque` e
+  // `idx_version` que o site depende para construir o catálogo a partir do
+  // índice. Escrever por cima com um objecto novo apagava-os em silêncio, e o
+  // garantirIndice() do cliente desistia no primeiro `if`, sem sequer tentar o
+  // pedido. (Produção escapava, porque este passo está atrás de `if (!DEPLOY)`;
+  // mas o ficheiro mutilado era o que ficava committado.)
+  let anterior = {};
+  try { anterior = JSON.parse(fs.readFileSync(OUT, 'utf8')); } catch (e) {}
+  fs.writeFileSync(OUT, JSON.stringify({ ...anterior, ...out }, null, 2));
   const kb = Math.round(fs.statSync(OUT).size / 1024);
   console.log(`\n✓ ${OUT.replace(ROOT, '.')} (${kb} KB)`);
 })();
