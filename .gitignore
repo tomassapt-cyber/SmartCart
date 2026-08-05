@@ -33,6 +33,15 @@ data/.*-report.json
 # template demo.html (shell, ~0.7MB) e o seed é que ficam em git.
 /index.html
 /catalogo.html
+# Saídas de build da Fase 3/4b, geradas a partir do data/seed-bundle.json:
+#   data/p/    — pedaços por produto (scripts/build-product-shards.js)
+#   data/idx/  — índice de pesquisa   (scripts/build-search-index.js)
+# NÃO versionar. O índice sozinho são 4,4 MB regenerados a cada refresh diário,
+# e este repositório já mostra o que isso custa: o data/seed-bundle.json ocupa
+# 9,33 GiB em 3.850 versões, 53% do repositório. São artefactos determinísticos
+# — quem precisar deles corre o script.
+data/p/
+data/idx/
 .snapshot/
 
 # gerado no build do Vercel (scripts/build-catalog-snapshot.js) — nunca commitar

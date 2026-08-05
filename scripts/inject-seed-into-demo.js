@@ -315,6 +315,18 @@ if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
         const vp = path.join(ROOT, 'data', 'p', 'versao.txt');
         hp.shard_version = fs.existsSync(vp) ? fs.readFileSync(vp, 'utf8').trim() : '';
       } catch { hp.shard_version = ''; }
+      // versão do índice de pesquisa (data/idx/search-<versao>.json).
+      // ⚠️ TEM DE VIR DAQUI, não de um pedido a data/idx/versao.txt: a versão é
+      // o hash do CONTEÚDO do índice, e o nome do ficheiro carrega-a. Se o
+      // cliente fosse buscar a versão a um ficheiro fixo, esse ficheiro podia
+      // vir da cache e apontar para um índice antigo — e um índice antigo não
+      // tem os campos que o site entretanto passou a ler (o `ab`, por exemplo,
+      // sem o qual o cartão mostra preços ACIMA do real em 4,9% dos produtos).
+      // Vindo injectada na página, a versão é sempre a do build que a gerou.
+      try {
+        const ip = path.join(ROOT, 'data', 'idx', 'versao.txt');
+        hp.idx_version = fs.existsSync(ip) ? fs.readFileSync(ip, 'utf8').trim() : '';
+      } catch { hp.idx_version = ''; }
       fs.writeFileSync(HP_DATA, JSON.stringify(hp, null, 2));
       console.log('📊 Hero: ' + stats.stores + ' lojas · ' + stats.products + ' produtos · poupanca media -' + stats.avg_savings_pct + '%');
     } catch (e) { console.warn('⚠ nao consegui gravar os stats no hp-data:', e.message); }

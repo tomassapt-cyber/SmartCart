@@ -8096,8 +8096,32 @@ function normalizeSeedFromLive(payload) {
 //  suposição deixa de valer e passam a aparecer preços inventados nas fichas —
 //  por isso o sync tem de continuar a mandar só ofertas reais.
 // ─────────────────────────────────────────────────────────────
-const OFERTAS_PEDIDAS = new Set();     // EANs já pedidos (não repetir)
-const OFERTAS_EM_CURSO = new Map();    // EAN → promessa em voo
+const OFERTAS_PEDIDAS = new Set();       // EANs já pedidos COM SUCESSO
+const OFERTAS_COM_VARIANTES = new Set(); // EANs cujas ofertas já trazem variants
+const OFERTAS_FALHADAS = new Set();      // o lote falhou: pode e DEVE re-tentar
+const OFERTAS_EM_CURSO = new Map();      // chave(ean,modo) → promessa em voo
+let GERACAO_CATALOGO = 0;                // guarda anti-atraso das repinturas
+
+// chave de "em curso": TEM de incluir o modo. Sem isto, um pedido com variantes
+// de um EAN que já vinha a caminho SEM variantes fica à espera do pedido errado
+// e devolve sem nunca pedir offer_variants — a ficha abre sem selector de
+// tamanho, que é o bug Cicabio documentado mais abaixo neste ficheiro.
+const _chaveOferta = (ean, comVariantes) => ean + (comVariantes ? '|v' : '|s');
+
+/**
+ * As ofertas deste produto já foram pedidas e chegaram?
+ * ⚠️ USAR ISTO, não o temOfertas(). O temOfertas devolve verdadeiro para um
+ * objecto vazio (produto sem linhas na base de dados) e não distingue "ainda
+ * não pedimos" de "pedimos e não tem ofertas" — são estados diferentes e o
+ * cartão mostra coisas diferentes em cada um.
+ */
+function ofertasProntas(ean) {
+  return OFERTAS_PEDIDAS.has(ean) && !OFERTAS_FALHADAS.has(ean);
+}
+/** e trazem também as variantes de volume? (ficha e carrinho precisam) */
+function ofertasProntasComVariantes(ean) {
+  return OFERTAS_COM_VARIANTES.has(ean);
+}
 
 /** transforma uma linha da base de dados na forma que o site espera */
 function _ofertaDaBd(o) {
@@ -8128,16 +8152,19 @@ function _ofertaDaBd(o) {
 async function carregarOfertas(eans, opcoes) {
   const comVariantes = !!(opcoes && opcoes.variantes);
   const sb = window.SUPABASE;
-  const porFazer = [...new Set((eans || []).filter(e =>
-    e && (comVariantes || !OFERTAS_PEDIDAS.has(e))))];
+  // já pedido? no modo com variantes a pergunta é outra — ter as ofertas não
+  // significa ter os tamanhos.
+  const jaTem = e => (comVariantes ? OFERTAS_COM_VARIANTES.has(e) : ofertasProntas(e));
+  const porFazer = [...new Set((eans || []).filter(e => e && !jaTem(e)))];
   if (!sb || !porFazer.length) return 0;
 
-  // uma promessa por EAN, para que dois pedidos simultâneos do mesmo produto
-  // não disparem dois fetches
-  const jaEmCurso = porFazer.filter(e => OFERTAS_EM_CURSO.has(e));
-  const novos = porFazer.filter(e => !OFERTAS_EM_CURSO.has(e));
+  // uma promessa por (EAN, modo), para que dois pedidos simultâneos do mesmo
+  // produto não disparem dois fetches
+  const chave = e => _chaveOferta(e, comVariantes);
+  const jaEmCurso = porFazer.filter(e => OFERTAS_EM_CURSO.has(chave(e)));
+  const novos = porFazer.filter(e => !OFERTAS_EM_CURSO.has(chave(e)));
   if (!novos.length) {
-    await Promise.all(jaEmCurso.map(e => OFERTAS_EM_CURSO.get(e)));
+    await Promise.all(jaEmCurso.map(e => OFERTAS_EM_CURSO.get(chave(e))));
     return 0;
   }
 
@@ -8146,6 +8173,8 @@ async function carregarOfertas(eans, opcoes) {
   for (let i = 0; i < novos.length; i += 50) lotes.push(novos.slice(i, i + 50));
 
   let comOfertas = 0;
+  const chegaram = new Set();   // EANs que a base de dados devolveu
+  const falharam = new Set();   // EANs de lotes que rebentaram
   const trabalho = (async () => {
     for (const lote of lotes) {
       let sel = 'ean,image_url,offers!offers_ean_fkey(store_slug,price,previous_price,discount_pct,in_stock,url,verified_at,promo_note,promo_pack)';
@@ -8157,6 +8186,10 @@ async function carregarOfertas(eans, opcoes) {
           // imagem: o índice não a traz (custava +947 KB); vem aqui
           const alvo = PRODUCT_BY_EAN[p.ean];
           if (alvo && !alvo.image_url && p.image_url) alvo.image_url = p.image_url;
+          // o volume de referência memoizado no produto foi calculado sem
+          // variantes; com elas pode mudar. Um Set vazio é truthy, por isso
+          // ficaria congelado para o resto da sessão.
+          if (alvo) delete alvo._vols;
 
           const porLoja = {};
           for (const o of (p.offers || [])) {
@@ -8174,11 +8207,23 @@ async function carregarOfertas(eans, opcoes) {
               });
             }
           }
-          OFFERS_BY_PRODUCT[p.ean] = porLoja;
-          OFFERS_BY_PRODUCT_ALL[p.ean] = porLoja;
+          // FUNDIR, não substituir: um segundo pedido (com variantes) sobre um
+          // produto já carregado deitaria fora o objecto e deixaria penduradas
+          // as referências que outros sítios guardaram (o pódio guarda a oferta
+          // escolhida, por exemplo).
+          OFFERS_BY_PRODUCT[p.ean] = Object.assign(OFFERS_BY_PRODUCT[p.ean] || {}, porLoja);
+          // ⚠️ CÓPIA, não a mesma referência. Se os dois mapas forem o mesmo
+          // objecto deixam de ser dois índices e a separação entre o visível e
+          // o total deixa de existir em silêncio.
+          OFFERS_BY_PRODUCT_ALL[p.ean] = Object.assign(OFFERS_BY_PRODUCT_ALL[p.ean] || {}, porLoja);
+          chegaram.add(p.ean);
           if (Object.keys(porLoja).length) comOfertas++;
         }
       } catch (e) {
+        // ⚠️ NÃO marcar estes EANs como pedidos. Uma falha de rede passageira
+        // marcá-los-ia para sempre e nunca mais seriam pedidos nesta sessão —
+        // sem mensagem, e indistinguível de "produto sem ofertas".
+        lote.forEach(e2 => falharam.add(e2));
         console.warn('ofertas: lote falhou', e && e.message);
       }
     }
@@ -8186,14 +8231,26 @@ async function carregarOfertas(eans, opcoes) {
     statsByEanMap._m = null;
   })();
 
-  novos.forEach(e => OFERTAS_EM_CURSO.set(e, trabalho));
+  novos.forEach(e => OFERTAS_EM_CURSO.set(chave(e), trabalho));
   await trabalho;
-  novos.forEach(e => { OFERTAS_PEDIDAS.add(e); OFERTAS_EM_CURSO.delete(e); });
-  await Promise.all(jaEmCurso.map(e => OFERTAS_EM_CURSO.get(e)).filter(Boolean));
+  for (const e of novos) {
+    OFERTAS_EM_CURSO.delete(chave(e));
+    if (falharam.has(e)) { OFERTAS_FALHADAS.add(e); continue; }
+    OFERTAS_FALHADAS.delete(e);
+    OFERTAS_PEDIDAS.add(e);
+    // só os que a base de dados devolveu é que têm mesmo as variantes
+    if (comVariantes && chegaram.has(e)) OFERTAS_COM_VARIANTES.add(e);
+  }
+  await Promise.all(jaEmCurso.map(e => OFERTAS_EM_CURSO.get(chave(e))).filter(Boolean));
   return comOfertas;
 }
 
-/** já temos as ofertas deste produto em memória? */
+/**
+ * já temos as ofertas deste produto em memória?
+ * ⚠️ NÃO SERVE DE GUARDA. Devolve verdadeiro para um objecto vazio e não
+ * distingue os modos. Para decidir se é preciso ir à base de dados usa-se
+ * ofertasProntas() ou ofertasProntasComVariantes().
+ */
 function temOfertas(ean) {
   return !!(OFFERS_BY_PRODUCT && OFFERS_BY_PRODUCT[ean]);
 }
@@ -8248,6 +8305,19 @@ function rebuildCatalogIndexesFromSources(arranque, indice) {
       bestPrice,
       worstPrice,
       savings: (bestPrice !== null && worstPrice !== null) ? +(worstPrice - bestPrice).toFixed(2) : 0,
+      // ── os dois campos que só existem aqui, e porquê ────────────────────
+      // absBest: o preço que o CARTÃO mostra, que não é o bestPrice. O cartão
+      // mostra o menor entre o mínimo ao volume de referência (bestPrice) e o
+      // mínimo absoluto entre tamanhos (isto), réplica do bestOfferFor. Medido
+      // em 2026-08-05: em 2.460 dos 50.158 produtos com stock (4,9%) o segundo
+      // é menor, e por muito — 3,99 contra 1,75, 39,99 contra 22,99. Sem este
+      // campo, um cartão sem ofertas carregadas mostraria preços ACIMA do real
+      // em 1 de cada 20 produtos, que é o pior erro que um comparador pode
+      // cometer. O construtor do índice tem o mesmo aviso.
+      absBest: (!indice.ab || indice.ab[i] == null || indice.ab[i] < 0) ? null : indice.ab[i] / 100,
+      // hasPromo: o filtro "Em promoção" lia as ofertas. Sem isto, ligar esse
+      // filtro esvaziaria o catálogo inteiro em vez de o filtrar.
+      hasPromo: (indice.pr && indice.pr[i] === 1) || false,
     };
   }
 
