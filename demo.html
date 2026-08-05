@@ -8801,6 +8801,9 @@ const catalogPaging = { shown: 8, lastSig: null };
 function renderCatalog() {
   const grid = document.getElementById('product-grid');
   if (!grid) return; // catálogo removido do layout
+  // Cada render é uma geração. As ofertas chegam depois, e sem isto a resposta
+  // de uma pesquisa antiga aterrava por cima dos resultados da nova.
+  const geracao = ++GERACAO_CATALOGO;
   const q = (document.getElementById('search').value || '').toLowerCase().trim();
   state.search = q;
   // Pesquisa tokenizada e SEM acentos: cada palavra tem de bater algures no
@@ -8822,15 +8825,25 @@ function renderCatalog() {
       if (!qTokens.every(t => hay.includes(t))) return false;
     }
     if (state.brands.size > 0 && !state.brands.has(p.brand)) return false;
-    // Price filter
-    const offers = OFFERS_BY_PRODUCT[p.ean] || {};
-    const inStockOffers = Object.entries(offers).filter(([, o]) => o.in_stock);
-    const minP = inStockOffers.length ? Math.min(...inStockOffers.map(([, o]) => o.price)) : null;
-    if (state.priceMax < 200 && (minP === null || minP > state.priceMax)) return false;
-    // Verified only: pelo menos uma oferta verificada
-    if (state.verifiedOnly && !inStockOffers.some(([, o]) => o.verified)) return false;
-    // Promo only: pelo menos uma oferta com discount_pct
-    if (state.promoOnly && !inStockOffers.some(([, o]) => o.discount_pct && o.discount_pct > 0)) return false;
+    // ── Preço e promoção: do ÍNDICE, nunca das ofertas ────────────────────
+    // Isto corria sobre o catálogo INTEIRO, produto a produto, antes de existir
+    // a fatia visível — e lia OFFERS_BY_PRODUCT. Com as ofertas a chegarem à
+    // medida, ler daqui é uma armadilha fechada: sem ofertas em memória o
+    // `minP` é null, o cursor de preço deita fora TODOS os produtos, a grelha
+    // fica vazia, e como não sobra nenhum EAN para pedir nunca mais recupera.
+    // O mesmo com "Em promoção". O índice tem as duas respostas para os 50 mil.
+    const st = statsByEanMap()[p.ean];
+    if (state.priceMax < 200) {
+      // absBest antes de bestPrice: é o que o cartão MOSTRA (ver productCard)
+      const minP = st ? (st.absBest ?? st.bestPrice) : null;
+      if (minP === null || minP > state.priceMax) return false;
+    }
+    if (state.promoOnly && !(st && st.hasPromo)) return false;
+    // state.verifiedOnly: deixou de filtrar. Nenhuma interface o liga (só a
+    // reposição de filtros o desliga) e, desde que as ofertas vêm da base de
+    // dados, TODAS são reais — medido: 0 estimativas em 150.934 ofertas com
+    // preço. Filtrar por "verificada" seria filtrar por uma coisa que já é
+    // sempre verdade, e sem ofertas em memória esvaziaria a grelha.
     // Filtros contextuais por categoria (config-driven; match no nome do produto)
     const nm = (p.name || '').toLowerCase();
     for (const g of catFiltersFor(state.category)) {
@@ -8848,16 +8861,22 @@ function renderCatalog() {
 
   // ── Sort ──
   filtered.sort((a, b) => {
-    const aOffers = OFFERS_BY_PRODUCT[a.ean] || {};
-    const bOffers = OFFERS_BY_PRODUCT[b.ean] || {};
-    const aPrices = Object.values(aOffers).filter(o => o.in_stock).map(o => o.price);
-    const bPrices = Object.values(bOffers).filter(o => o.in_stock).map(o => o.price);
-    const aMin = aPrices.length ? Math.min(...aPrices) : Infinity;
-    const bMin = bPrices.length ? Math.min(...bPrices) : Infinity;
-    const aMax = aPrices.length ? Math.max(...aPrices) : 0;
-    const bMax = bPrices.length ? Math.max(...bPrices) : 0;
-    const aSavings = aPrices.length ? aMax - aMin : 0;
-    const bSavings = bPrices.length ? bMax - bMin : 0;
+    // ── Ordenação: do ÍNDICE ───────────────────────────────────────────────
+    // A versão anterior lia as ofertas e caía em Infinity quando não as tinha.
+    // Duas consequências, ambas silenciosas:
+    //   · sem nada carregado, Infinity - Infinity = NaN, que a especificação
+    //     converte em 0 — as abas "Preço ↑", "Preço ↓" e "Maior poupança"
+    //     mudavam de aspecto e NÃO ordenavam nada;
+    //   · com meia dúzia carregada, "Preço ↓" era um ciclo aberto: os que já
+    //     tinham preço afundavam para o fim, a fatia visível passava a ser
+    //     outros oito, pediam-se esses, afundavam também — e a grelha andava
+    //     sozinha pelos 50 mil, oito a oito, sem parar.
+    const sa = statsByEanMap()[a.ean] || {};
+    const sb2 = statsByEanMap()[b.ean] || {};
+    const aMin = sa.absBest ?? sa.bestPrice ?? Infinity;
+    const bMin = sb2.absBest ?? sb2.bestPrice ?? Infinity;
+    const aSavings = sa.savings || 0;
+    const bSavings = sb2.savings || 0;
     switch (state.sort) {
       case 'price-asc': return aMin - bMin;
       case 'price-desc': return bMin - aMin;
@@ -8934,11 +8953,36 @@ function renderCatalog() {
     });
   }
 
-  grid.querySelectorAll('.btn-compare, .product-quick-link').forEach(btn => {
+  ligarHandlersDeCards(grid);
+
+  // Controlos "Ver mais / Ver menos"
+  renderCatalogPagination(shown, filtered.length);
+
+  animateReveal('.product-card');
+
+  // ── pedir as ofertas SÓ da fatia visível ────────────────────────────────
+  // Aqui — e não mais acima — porque é o primeiro sítio onde se sabe QUAIS são
+  // os oito produtos. O filtro e a ordenação passaram a ler o índice de
+  // propósito: enquanto liam ofertas, era preciso o catálogo inteiro carregado
+  // para saber o que mostrar, e o objectivo da fase é o contrário disso.
+  // Sem esperar: os cartões já estão pintados com os números do índice, e a
+  // repintura substitui-os pelos da base de dados quando chegarem.
+  const pedir = slice.map(p => p.ean).filter(e => !ofertasProntas(e));
+  if (pedir.length) {
+    carregarOfertas(pedir).then(() => repintarCards(pedir, geracao));
+  }
+}
+
+/** liga os handlers dos cartões dentro de `raiz` (usado no render e na repintura) */
+function ligarHandlersDeCards(raiz) {
+  if (!raiz) return;
+  raiz.querySelectorAll('.btn-compare, .product-quick-link').forEach(btn => {
     btn.onclick = e => { e.stopPropagation(); openPriceAnalyzer(btn.dataset.ean); };
   });
   // Click no card todo (não nos botões) → abre podium
-  grid.querySelectorAll('.product-card').forEach(card => {
+  raiz.querySelectorAll('.product-card').forEach(card => {
+    if (card._ligado) return;          // não empilhar handlers na repintura
+    card._ligado = true;
     card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
       if (e.target.closest('[data-action="bundle"]')) return;
@@ -8948,11 +8992,36 @@ function renderCatalog() {
       if (ean) openPriceAnalyzer(ean);
     });
   });
+}
 
-  // Controlos "Ver mais / Ver menos"
-  renderCatalogPagination(shown, filtered.length);
-
-  animateReveal('.product-card');
+/**
+ * Repinta SÓ os cartões destes produtos, no sítio onde já estão.
+ *
+ * ⚠️ NUNCA chamar renderCatalog() para isto. Voltar a renderizar re-ordena a
+ * lista (e com "Preço ↓" isso era um ciclo aberto), cria mais um
+ * IntersectionObserver no animateReveal — que nunca é desligado — e re-faz o
+ * aparecimento de toda a grelha a cada lote que chega.
+ *
+ * A geração protege contra chegadas atrasadas: se o utilizador pesquisou outra
+ * coisa entretanto, a resposta do pedido antigo já não pertence a este ecrã.
+ */
+function repintarCards(eans, geracao) {
+  if (geracao !== GERACAO_CATALOGO) return;
+  const grid = document.getElementById('product-grid');
+  if (!grid) return;
+  for (const ean of eans) {
+    const antigo = grid.querySelector('.product-card[data-ean="' + (window.CSS && CSS.escape ? CSS.escape(ean) : ean) + '"]');
+    const p = PRODUCT_BY_EAN[ean];
+    if (!antigo || !p) continue;
+    const caixa = document.createElement('div');
+    caixa.innerHTML = productCard(p);
+    const novo = caixa.firstElementChild;
+    if (!novo) continue;
+    // já está visível: entrar outra vez com o fade-in seria um piscar
+    novo.classList.add('reveal-item', 'is-visible');
+    antigo.replaceWith(novo);
+  }
+  ligarHandlersDeCards(grid);
 }
 
 /**
@@ -9078,14 +9147,36 @@ function productCard(p) {
   if (priced.length === 0) priced = priceOffers.map(([slug, o]) => [slug, o, o.price]);  // fallback
   const sortedOffers = priced.slice().sort((a, b) => a[2] - b[2]);
   const prices = sortedOffers.map(t => t[2]);
-  const minPrice = prices.length ? prices[0] : null;
-  const maxPrice = prices.length ? prices[prices.length - 1] : null;
-  const storeCount = inStockOffers.length;   // disponibilidade total (todos os tamanhos)
+
+  // ── TRÊS estados, não dois ─────────────────────────────────────────────────
+  // As ofertas chegam da base de dados à medida, por isso "não tenho ofertas"
+  // deixou de querer dizer "não há preço":
+  //   · ainda não pedimos      → preço e nº de lojas saem do ÍNDICE
+  //   · pedimos e chegaram     → saem das ofertas (mais frescos)
+  //   · pedimos e não há nada  → aí sim, "sem stock"
+  // Sem esta distinção o cartão de um produto por carregar dizia "Sem stock
+  // disponível" — uma afirmação FALSA sobre um produto que tem preço — e o
+  // bloco de acções desaparecia inteiro (a guarda é storeCount > 0), levando
+  // com ele o "Ver preços" E o botão do carrinho.
+  const _st = statsByEanMap()[p.ean];
+  const _semOfertas = !ofertasProntas(p.ean) && !inStockOffers.length;
+  const minPrice = prices.length ? prices[0]
+    : (_semOfertas && _st ? (_st.absBest ?? _st.bestPrice) : null);
+  const maxPrice = prices.length ? prices[prices.length - 1]
+    : (_semOfertas && _st ? _st.worstPrice : null);
+  const storeCount = inStockOffers.length
+    || (_semOfertas && _st ? _st.storeCount : 0);   // disponibilidade total (todos os tamanhos)
 
   const palette = brandPalette(p.brand);
   const initial = brandInitial(p.brand);
   const hasRealImage = Boolean(p.image_url);
-  const best = bestOfferFor(p.ean);
+  // bestOfferFor lê as ofertas; sem elas devolve null e o cartão ficava sem
+  // preço. O índice guarda exactamente o mesmo número no absBest (é uma
+  // réplica verificada do bestOfferFor sobre o mesmo seed), por isso serve de
+  // substituto até as ofertas chegarem. Sem url: o botão de ir à loja resolve
+  // o destino no clique, que é quando se pode esperar.
+  const best = bestOfferFor(p.ean)
+    || (_semOfertas && _st && _st.absBest != null ? { price: _st.absBest, offer: null, store: null, slug: null, vol: null } : null);
   const tag = productTag(p.ean);
 
   // Poupança vs loja mais cara — agora ao MESMO volume (sem descontos falsos).
