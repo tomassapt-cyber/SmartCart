@@ -8242,6 +8242,24 @@ const IMAGENS_PEDIDAS = new Set();
  * @returns {Promise<number>} quantas imagens novas entraram (0 = nada mudou,
  *          e o chamador não precisa de voltar a desenhar)
  */
+/**
+ * Pede as imagens destes produtos e volta a desenhar SE alguma entrar.
+ *
+ * Atalho para o padrão que sete ecrãs precisam: ecrãs que mostram produtos e
+ * NÃO mostram preços, portanto nunca chamam o carregarOfertas — a montra de
+ * "Para ti", o formulário de adicionar à prateleira, o de adicionar à rotina,
+ * as sugestões do scanner, as do chat e o dropdown da pesquisa do hero. Sem
+ * isto ficavam todos com o emoji de frasco, porque o índice não leva imagens.
+ *
+ * Não há ciclo: o garantirImagens só pede EANs que ainda não pediu, por isso a
+ * segunda passagem devolve zero e pára.
+ */
+function imagensDepois(eans, redesenhar) {
+  const porFazer = (eans || []).filter(e => e && PRODUCT_BY_EAN[e] && !PRODUCT_BY_EAN[e].image_url);
+  if (!porFazer.length) return;
+  garantirImagens(porFazer).then(n => { if (n) { try { redesenhar(); } catch (e) {} } });
+}
+
 async function garantirImagens(eans) {
   const porFazer = [...new Set((eans || []).filter(e =>
     e && !IMAGENS_PEDIDAS.has(e) && PRODUCT_BY_EAN[e] && !PRODUCT_BY_EAN[e].image_url))];
@@ -10646,6 +10664,11 @@ function heroSuggest(q) {
     const hay = p._snorm || (p._snorm = _hnorm((p.name||'')+' '+(p.brand||'')+' '+(p.category||'')));
     if (toks.every(t => hay.includes(t))) { matches.push(p); if (matches.length >= 5) break; }
   }
+  // as imagens não vêm no índice; pede-as e repete a sugestão quando chegarem
+  imagensDepois(matches.map(p => p.ean), () => {
+    const campo = document.getElementById('search');
+    if (campo && _hnorm(campo.value) === query) heroSuggest(campo.value);
+  });
   const items = matches.length
     ? matches.map(p => `<button class="hero-suggest-item" data-name="${escapeHtml(p.name||'')}">`
         + (p.image_url ? `<img src="${escapeHtml(p.image_url)}" alt="" loading="lazy">` : `<span class="hero-suggest-noimg">🔎</span>`)
@@ -12410,6 +12433,17 @@ function aiAddMessage(role, htmlContent, extras = {}) {
     // as ofertas destes produtos podem ainda não estar cá; pede-se em fundo e
     // repinta-se o preço quando chegarem (esta função é síncrona e é chamada
     // de vários sítios, não vale a pena torná-la assíncrona por causa disto)
+    // as imagens: repinta-se só a <img> de cada cartão, sem refazer a mensagem
+    imagensDepois(extras.products.map(x => x.ean), () => {
+      for (const p of extras.products) {
+        const url = (PRODUCT_BY_EAN[p.ean] || {}).image_url;
+        if (!url) continue;
+        const alvo = msg.querySelector('.ai-msg-product[data-ean="' + (window.CSS && CSS.escape ? CSS.escape(p.ean) : p.ean) + '"] .ai-msg-product-img');
+        if (alvo && !alvo.querySelector('img')) {
+          alvo.innerHTML = '<img src="' + escapeHtml(url) + '" alt="" loading="lazy">';
+        }
+      }
+    });
     const eansMsg = extras.products.map(x => x.ean).filter(e => e && !ofertasProntas(e));
     if (eansMsg.length) {
       carregarOfertas(eansMsg).then(() => {
@@ -14803,6 +14837,9 @@ function renderLabelResults(products, sourceLabel) {
   // ecrãs seguintes.
   const eansLbl = products.map(x => x.ean).filter(e => e && !ofertasProntas(e));
   if (eansLbl.length) carregarOfertas(eansLbl);
+  // e as imagens — que aqui não são enfeite: é a fotografia que permite
+  // reconhecer o produto que se acabou de apontar com a câmara
+  imagensDepois(products.map(x => x.ean), () => renderLabelResults(products, sourceLabel));
   box.innerHTML = products.map(p => {
     const _stLbl = statsByEanMap()[p.ean];
     const best = ((typeof bestOfferFor === 'function') ? bestOfferFor(p.ean) : null)
@@ -14945,7 +14982,11 @@ const MARKETING_STOP = new Set([
 ]);
 let SCAN_BRAND_LEX = null;
 function scanBrandLexicon() {
-  if (SCAN_BRAND_LEX) return SCAN_BRAND_LEX;
+  // ⚠️ `.length`: um array VAZIO é truthy. Construído durante a ponte — quando
+  // só há 150 produtos, ou nenhum — ficava congelado a sessão inteira, e o
+  // scanner deixava de reconhecer marcas. É o mesmo defeito que o comentário
+  // do _vols documenta mais acima.
+  if (SCAN_BRAND_LEX && SCAN_BRAND_LEX.length) return SCAN_BRAND_LEX;
   // conta EANs por marca — só marcas com ≥2 EANs entram (mata mislabels de 1
   // produto tipo "Sensibio"); fuzzy (edit-distance) só para marcas ≥8 EANs
   // (bem estabelecidas), reduzindo colisões de OCR com palavras incidentais.
@@ -16018,7 +16059,9 @@ function prv3RenderAddStepResults() {
     if (hits.length > 400) break;
   }
   hits.sort((x, y) => y[0] - x[0]);
-  box.innerHTML = hits.slice(0, 8).map(([, p, st]) => `
+  const oito = hits.slice(0, 8);
+  imagensDepois(oito.map(([, p]) => p.ean), () => prv3RenderAddStepResults());
+  box.innerHTML = oito.map(([, p, st]) => `
     <div class="prv3-addres-item" data-addean="${p.ean}">
       <div class="prv3-addres-img">${p.image_url ? `<img src="${escapeHtml(p.image_url)}" loading="lazy" alt="">` : '🧴'}</div>
       <div class="prv3-row-main">
@@ -16200,6 +16243,10 @@ function prv3SuggestionsHTML(steps) {
   scored.sort((a, b) => b[0] - a[0]);
   const picks = scored.slice(0, 6);
   if (!picks.length) return '';
+  // Estes seis são escolhidos EXCLUINDO o que já está na prateleira e na rotina
+  // — ou seja, exactamente o complemento do que o prRender pede. Sem isto
+  // ficavam com o emoji de frasco de forma permanente.
+  imagensDepois(picks.map(([, p]) => p.ean), () => { if (typeof prRender === 'function') prRender(); });
   return `<div style="margin-top:14px">
     <div class="pr-section-head">
       <div>
@@ -16707,9 +16754,12 @@ function prRenderAdd() {
     const filtered = q
       ? availableProducts.filter(p => `${escapeHtml(p.brand)} ${escapeHtml(p.name)}`.toLowerCase().includes(q))
       : availableProducts;
+    const visiveis = filtered.slice(0, 24);
+    // sem fotografia, escolher um produto nesta grelha é escolher entre iniciais
+    imagensDepois(visiveis.map(p => p.ean), () => render(filter));
     document.getElementById('pr-add-results').innerHTML = filtered.length === 0
       ? `<div class="pr-routine-empty" style="grid-column:1/-1">Nenhum produto encontrado${q?` para "${q}"`:''}.</div>`
-      : filtered.slice(0, 24).map(p => {
+      : visiveis.map(p => {
           const palette = brandPalette(p.brand);
           const initial = brandInitial(p.brand);
           return `<div class="pr-add-card" data-ean="${p.ean}">
@@ -16748,6 +16798,12 @@ function prRenderAddDetails(ean) {
     || (typeof refVolumeFor === 'function' ? refVolumeFor(ean) : null)
     || null;
   const today = new Date().toISOString().slice(0, 10);
+  // O produto ainda NÃO está em PR_STATE.products (só entra ao confirmar), por
+  // isso o pedido de imagens do prRender nunca o apanha. Sem isto, o ecrã de
+  // "Como usas este produto?" mostrava a inicial da marca — e logo a seguir,
+  // já na prateleira, aparecia a fotografia, o que fazia este passo parecer
+  // avariado.
+  imagensDepois([ean], () => prRenderAddDetails(ean));
 
   document.getElementById('pr-head-eyebrow').textContent = 'A minha prateleira';
   document.getElementById('pr-head-title').textContent = 'Como usas este produto?';
