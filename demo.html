@@ -12433,27 +12433,34 @@ function aiAddMessage(role, htmlContent, extras = {}) {
     // as ofertas destes produtos podem ainda não estar cá; pede-se em fundo e
     // repinta-se o preço quando chegarem (esta função é síncrona e é chamada
     // de vários sítios, não vale a pena torná-la assíncrona por causa disto)
-    // as imagens: repinta-se só a <img> de cada cartão, sem refazer a mensagem
-    imagensDepois(extras.products.map(x => x.ean), () => {
-      for (const p of extras.products) {
-        const url = (PRODUCT_BY_EAN[p.ean] || {}).image_url;
-        if (!url) continue;
-        const alvo = msg.querySelector('.ai-msg-product[data-ean="' + (window.CSS && CSS.escape ? CSS.escape(p.ean) : p.ean) + '"] .ai-msg-product-img');
-        if (alvo && !alvo.querySelector('img')) {
-          alvo.innerHTML = '<img src="' + escapeHtml(url) + '" alt="" loading="lazy">';
-        }
+    // ⚠️ UMA repintura só, e depois das OFERTAS. Estavam aqui duas — uma para
+    // as imagens e outra para os preços — e a das imagens nunca fazia nada: o
+    // carregarOfertas traz a imagem de boleia, chegava primeiro, e o
+    // imagensDepois via que já não faltava nenhuma e desistia. Resultado: os
+    // cartões do chat ficavam com a inicial da marca embora a fotografia já
+    // estivesse em memória.
+    const esc = e => (window.CSS && CSS.escape ? CSS.escape(e) : e);
+    const repintarCartaoDoChat = e => {
+      const cartao = msg.querySelector('.ai-msg-product[data-ean="' + esc(e) + '"]');
+      if (!cartao) return;
+      const b = bestOfferFor(e);
+      if (b) {
+        const preco = cartao.querySelector('.ai-msg-product-price');
+        if (preco) preco.textContent = b.price.toFixed(2) + '€';
       }
-    });
-    const eansMsg = extras.products.map(x => x.ean).filter(e => e && !ofertasProntas(e));
-    if (eansMsg.length) {
-      carregarOfertas(eansMsg).then(() => {
-        for (const e of eansMsg) {
-          const b = bestOfferFor(e);
-          if (!b) continue;
-          msg.querySelectorAll('.ai-msg-product[data-ean="' + (window.CSS && CSS.escape ? CSS.escape(e) : e) + '"] .ai-msg-product-price')
-            .forEach(no => { no.textContent = b.price.toFixed(2) + '€'; });
-        }
-      });
+      const url = (PRODUCT_BY_EAN[e] || {}).image_url;
+      const caixa = cartao.querySelector('.ai-msg-product-img');
+      if (url && caixa && !caixa.querySelector('img')) {
+        caixa.innerHTML = '<img src="' + escapeHtml(url) + '" alt="" loading="lazy">';
+      }
+    };
+    const eansMsg = extras.products.map(x => x.ean).filter(Boolean);
+    const porCarregar = eansMsg.filter(e => !ofertasProntas(e));
+    if (porCarregar.length) {
+      carregarOfertas(porCarregar).then(() => eansMsg.forEach(repintarCartaoDoChat));
+    } else {
+      // já cá está tudo: ainda assim pode faltar a imagem
+      imagensDepois(eansMsg, () => eansMsg.forEach(repintarCartaoDoChat));
     }
     html += `<div class="ai-msg-products">${extras.products.map(p => {
       // enquanto não chegam, o preço sai do índice — o absBest é a réplica
