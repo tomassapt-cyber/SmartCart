@@ -6508,44 +6508,8 @@
   }
   .hero-cta-secondary:hover { background: rgba(255,255,255,.8) !important; }
 
-  /* ── Entrada nativa para o novo catálogo /app (beta BD) · 2026-07-24 ──
-     Reversível: apagar este bloco + o <a class="gm-app-entry"> no hero.
-     iPhone-first: NÃO vive dentro de .hero-ctas (essa é display:none ≤760px),
-     por isso continua visível no telemóvel. */
-  .gm-app-entry {
-    display: inline-flex; align-items: center; gap: 10px;
-    margin-top: 16px;
-    padding: 9px 15px 9px 9px;
-    border-radius: var(--radius-pill);
-    background: rgba(255,255,255,.5);
-    border: 1px solid var(--border);
-    color: var(--text); text-decoration: none;
-    font-size: 13px; font-weight: 500; line-height: 1.2;
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 6px 18px -12px rgba(90,70,130,.5);
-    transition: transform .15s, box-shadow .15s, background .15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .gm-app-entry:hover { transform: translateY(-1px); background: rgba(255,255,255,.72); box-shadow: 0 10px 24px -12px rgba(90,70,130,.55); }
-  .gm-app-entry-badge {
-    flex: none; padding: 3px 9px;
-    border-radius: var(--radius-pill);
-    background: var(--pill-active);
-    color: #4a4358; font-size: 10px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .gm-app-entry-text em { font-style: normal; color: var(--text-soft); }
-  .gm-app-entry-arrow { color: var(--gold); font-weight: 600; transition: transform .15s; }
-  .gm-app-entry:hover .gm-app-entry-arrow { transform: translateX(2px); }
-  @media (max-width: 760px) {
-    .gm-app-entry {
-      order: 2;               /* logo a seguir à .hero-search-bar (order:2), antes do carrossel */
-      display: flex; width: 100%;
-      margin: 10px 0 0; padding: 0 14px;
-      min-height: 44px; box-sizing: border-box;
-    }
-    .gm-app-entry-arrow { margin-left: auto; }
-  }
+  /* O CSS da entrada "Catálogo novo, mais rápido · beta" (.gm-app-entry)
+     saiu com o link, a 2026-08-05. Ver o comentário no hero. */
   .hero-stats {
     margin-top: 38px;
     display: flex; align-items: center; gap: 22px;
@@ -7167,11 +7131,13 @@
       <button class="hero-cta-primary" onclick="document.getElementById('categories-visual').scrollIntoView({behavior:'smooth'})">Comprar agora →</button>
       <button class="hero-cta-secondary" onclick="document.getElementById('how-it-works')?.scrollIntoView({behavior:'smooth'}) || alert('Comparamos preços em 17 lojas. Adicionas produtos à tua selecção e fazemos as contas: mostramos-te a combinação de lojas que custa menos, já com portes incluídos.')">Como funciona</button>
     </div>
-    <a href="/app.html" class="gm-app-entry" aria-label="Abrir o novo catálogo rápido (beta)">
-      <span class="gm-app-entry-badge">novo</span>
-      <span class="gm-app-entry-text">Catálogo novo, mais rápido <em>· beta</em></span>
-      <span class="gm-app-entry-arrow" aria-hidden="true">→</span>
-    </a>
+    <!-- Aqui esteve, de 2026-07-24 a 2026-08-05, um link "Catálogo novo, mais
+         rápido · beta" para /app.html. Removido a pedido do dono do site, e a
+         razão vale a pena ficar escrita: pôr o utilizador a escolher entre dois
+         catálogos é dar-lhe um trabalho que é nosso. A página tem de ser
+         rápida sem ninguém ter de saber porquê nem carregar em nada.
+         O /app.html continua a existir no seu endereço — deixou é de ser
+         anunciado. -->
     <div class="hero-stats">
       <div><div class="hero-stat-num" id="hero-stat-stores">46</div><div class="hero-stat-lbl">lojas</div></div>
       <div class="hero-stat-div"></div>
