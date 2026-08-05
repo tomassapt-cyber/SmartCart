@@ -173,8 +173,19 @@ function construirArranque(indice, seed) {
     img: imgPorEan.get(indice.e[x.i]) || null,
   }));
 
+  // As lojas: nome, endereço e portes. Sem elas o cartão não sabe dizer
+  // "@ Farmácia X" nem calcular o custo total com envio.
+  const lojas = (seed.stores || []).map(s => ({
+    slug: s.slug,
+    nome: s.name,
+    url: s.base_url,
+    gratis: s.free_shipping_threshold ?? null,
+    portes: s.shipping_zones || null,
+  }));
+
   return {
     v: 1,
+    lojas,
     totais: { produtos: indice.n, marcas: indice.brands.length },
     categorias: porCategoria,
     marcas: marcasTop,
@@ -279,7 +290,7 @@ if (require.main === module) {
   fs.writeFileSync(path.join(ROOT, 'data', 'startup-block.json'), JSON.stringify(arranque));
   if (!QUIET) {
     const g = zlib.gzipSync(Buffer.from(JSON.stringify(arranque)), { level: 6 }).length;
-    console.log(`🚀 bloco de arranque: ${(g / 1024).toFixed(0)} KB gz · ${arranque.primeiros.length} produtos · ${Object.keys(arranque.categorias).length} categorias · ${arranque.marcas.length} marcas`);
+    console.log(`🚀 bloco de arranque: ${(g / 1024).toFixed(0)} KB gz · ${arranque.lojas.length} lojas · ${arranque.primeiros.length} produtos · ${Object.keys(arranque.categorias).length} categorias · ${arranque.marcas.length} marcas`);
   }
 
   if (!QUIET) {
