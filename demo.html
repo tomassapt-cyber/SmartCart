@@ -8360,9 +8360,23 @@ function rebuildCatalogIndexesFromSources(arranque, indice) {
     PRODUCT_BY_EAN[ean] = p;
   }
 
-  // ── ofertas: vazias, preenchidas à medida ────────────────────────────────
-  OFFERS_BY_PRODUCT = {};
-  OFFERS_BY_PRODUCT_ALL = {};
+  // ── ofertas: PRESERVAM-SE ────────────────────────────────────────────────
+  // ⚠️ Isto era `OFFERS_BY_PRODUCT = {}` e dava um defeito permanente e mudo.
+  // Sequência real, medida em produção: a ponte desenha os oito cartões e pede
+  // as ofertas aos 810 ms; o índice chega aos ~1.600 ms e esta função corria,
+  // apagando-as. Só que a lista de "já pedidos" NÃO é apagada — portanto o
+  // desenho seguinte via os mesmos EANs como já tratados, não voltava a pedir
+  // nada, e os cartões ficavam sem crachás de loja para o resto da sessão.
+  // Passei uma hora a perseguir um "a base de dados devolve zero linhas" que
+  // nunca existiu: as ofertas chegavam e eram deitadas fora a seguir.
+  //
+  // Preservá-las é o correcto e não só o conveniente: são indexadas por EAN e
+  // vêm da base de dados, não do índice — nada do que esta função reconstrói
+  // as invalida. Se algum dia for preciso limpá-las, tem de se limpar as três
+  // listas ao mesmo tempo (OFERTAS_PEDIDAS, OFERTAS_COM_VARIANTES e
+  // OFERTAS_FALHADAS), senão volta exactamente este defeito.
+  OFFERS_BY_PRODUCT = OFFERS_BY_PRODUCT || {};
+  OFFERS_BY_PRODUCT_ALL = OFFERS_BY_PRODUCT_ALL || {};
 
   // ── estatísticas: vêm prontas do índice ──────────────────────────────────
   // (o verificador provou que batem certo com as que o site calcula: 50.160
