@@ -43,6 +43,10 @@ function extrairFuncao(assinatura) {
 const DEPENDENCIAS = [
   'function _volFromName(', 'function refVolumeFor(', 'function offerPriceAtVol(',
   'function rebuildCatalogIndexes(seed)',
+  // o mínimo ABSOLUTO que o cartão mostra quando é menor que o mínimo ao volume
+  // de referência — em 4,9% dos produtos é, e por muito. O índice guarda-o em
+  // `ab`; sem esta comparação esse campo passava sem gate.
+  'function bestOfferFor(ean)',
 ];
 const codigo = DEPENDENCIAS.map(d => {
   try { return extrairFuncao(d); } catch (e) { console.warn('  ⚠ ' + e.message); return null; }
@@ -94,7 +98,7 @@ const statsPorEan = new Map(doSite.map(s => [s.ean, s]));
 const cent = v => (v == null ? -1 : Math.round(v * 100));
 
 let iguais = 0;
-const difs = { lojas: [], min: [], max: [], ausente: [], texto: [] };
+const difs = { lojas: [], min: [], max: [], absoluto: [], ausente: [], texto: [] };
 const total = AMOSTRA ? Math.min(AMOSTRA, indice.n) : indice.n;
 const passo = AMOSTRA ? Math.floor(indice.n / total) || 1 : 1;
 
@@ -107,6 +111,14 @@ for (let i = 0; i < indice.n; i += passo) {
   if (s.storeCount !== indice.s[i]) { if (difs.lojas.length < 6) difs.lojas.push(`${ean}: site=${s.storeCount} índice=${indice.s[i]}`); ok = false; }
   if (cent(s.bestPrice) !== indice.mn[i]) { if (difs.min.length < 6) difs.min.push(`${ean}: site=${s.bestPrice} índice=${indice.mn[i] / 100}`); ok = false; }
   if (cent(s.worstPrice) !== indice.mx[i]) { if (difs.max.length < 6) difs.max.push(`${ean}: site=${s.worstPrice} índice=${indice.mx[i] / 100}`); ok = false; }
+
+  // `ab` contra o bestOfferFor REAL do site
+  const melhor = ctx.bestOfferFor(ean);
+  const doSiteAbs = melhor ? cent(melhor.price) : -1;
+  if (doSiteAbs !== indice.ab[i]) {
+    if (difs.absoluto.length < 6) difs.absoluto.push(`${ean}: site=${doSiteAbs / 100} índice=${indice.ab[i] / 100}`);
+    ok = false;
+  }
 
   // o texto pesquisável tem de dar exactamente o mesmo que o _snorm do cliente
   const p = ctx.PRODUCT_BY_EAN[ean];

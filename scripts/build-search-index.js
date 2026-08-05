@@ -222,7 +222,7 @@ function construirIndice(seed) {
     return mapa.get(k);
   };
 
-  const e = [], nm = [], b = [], c = [], s = [], mn = [], mx = [], pr = [];
+  const e = [], nm = [], b = [], c = [], s = [], mn = [], mx = [], pr = [], ab = [];
   let semOfertas = 0;
 
   for (const p of seed.products) {
@@ -239,6 +239,24 @@ function construirIndice(seed) {
     // "tem promoção": alguma oferta visível com preço anterior mais alto
     const promo = ofertas.some(o => o.previous_price != null && o.previous_price > o.price) ? 1 : 0;
 
+    // MÍNIMO ABSOLUTO — réplica do bestOfferFor (demo.html:9018).
+    // ⚠️ NÃO É O MESMO QUE `mn`, e a diferença é visível: o cartão mostra o
+    // MENOR entre `mn` (mínimo ao volume de referência) e este. Medido em
+    // 2026-08-05: em 2.460 dos 50.158 produtos com stock (4,9%) o cartão mostra
+    // menos do que `mn` — e não por cêntimos (3,99→1,75, 39,99→22,99). Sem este
+    // campo, tirar o catálogo da página faria o cartão mostrar preços ACIMA do
+    // real nesses 4,9%. Custa 89 KB gz num índice de 1.262 KB.
+    // Diferenças face ao cálculo do `mn`, todas de propósito: entram as
+    // variantes de outros tamanhos, e NÃO se excluem os packs promocionais
+    // (o bestOfferFor também não exclui).
+    let abs = null;
+    for (const o of ofertas) {
+      if (o.price > 0 && (abs == null || o.price < abs)) abs = o.price;
+      for (const v of (o.variants || [])) {
+        if (v.price > 0 && v.in_stock !== false && (abs == null || v.price < abs)) abs = v.price;
+      }
+    }
+
     e.push(p.ean);
     nm.push(p.name || '');
     b.push(idx(marcas, iMarca, p.brand));
@@ -248,10 +266,11 @@ function construirIndice(seed) {
     mn.push(min == null ? -1 : Math.round(min * 100));
     mx.push(max == null ? -1 : Math.round(max * 100));
     pr.push(promo);
+    ab.push(abs == null ? -1 : Math.round(abs * 100));
   }
 
   return {
-    indice: { v: 1, n: e.length, brands: marcas, cats, e, nm, b, c, s, mn, mx, pr },
+    indice: { v: 1, n: e.length, brands: marcas, cats, e, nm, b, c, s, mn, mx, pr, ab },
     semOfertas,
   };
 }
