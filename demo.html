@@ -12535,10 +12535,16 @@ const SPONSORED_EANS_FALLBACK = [
   '0887167667501', // Estée Lauder ANR Edición Limitada
 ];
 
+let GERACAO_CARROSSEL = 0;
 async function renderSponsoredCarousel() {
   const slidesEl = document.getElementById('sponsored-slides');
   const dotsEl = document.getElementById('sponsored-dots');
   if (!slidesEl) return;
+  // Esta função espera pelas ofertas antes de escrever. Sem geração, a chamada
+  // do arranque — que só conhece os 150 produtos da ponte e por isso encontra
+  // um dos cinco patrocinados — acabava DEPOIS da chamada feita quando o
+  // índice chegou, e escrevia o seu único slide por cima dos cinco certos.
+  const geracao = ++GERACAO_CARROSSEL;
 
   // Preferir hp.hero_sponsored (curado em build-homepage-data.js); fallback
   // à lista hardcoded se hp-data falhar a carregar ou estiver vazio.
@@ -12560,6 +12566,7 @@ async function renderSponsoredCarousel() {
   // A lista tem 5 EANs e já está pronta aqui: um lote, e desenha-se uma vez só.
   const porPedir = items.map(p => p.ean).filter(e => !ofertasProntas(e));
   if (porPedir.length) await carregarOfertas(porPedir);
+  if (geracao !== GERACAO_CARROSSEL) return;   // chegou tarde: já há um melhor
 
   slidesEl.innerHTML = items.map((p, i) => {
     const best = bestOfferFor(p.ean);
