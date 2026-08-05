@@ -9289,7 +9289,15 @@ function productCard(p) {
   // bloco de acções desaparecia inteiro (a guarda é storeCount > 0), levando
   // com ele o "Ver preços" E o botão do carrinho.
   const _st = statsByEanMap()[p.ean];
-  const _semOfertas = !ofertasProntas(p.ean) && !inStockOffers.length;
+  // ⚠️ A segunda metade da condição não é zelo a mais — foi vista a acontecer.
+  // Se o pedido à base de dados devolver ZERO LINHAS sem dar erro (aconteceu
+  // num arranque a frio, em produção), os EANs ficam marcados como pedidos e o
+  // cartão passava a afirmar "Sem stock disponível" sobre um produto que o
+  // índice diz ter 37 lojas. Uma falha passageira de rede virava uma mentira
+  // permanente no ecrã. Quando o índice diz que há lojas e não chegou oferta
+  // nenhuma, o certo é mostrar o que o índice sabe — não inventar ausência.
+  const _semOfertas = !inStockOffers.length
+    && (!ofertasProntas(p.ean) || !!(_st && _st.storeCount > 0));
   const minPrice = prices.length ? prices[0]
     : (_semOfertas && _st ? (_st.absBest ?? _st.bestPrice) : null);
   const maxPrice = prices.length ? prices[prices.length - 1]
