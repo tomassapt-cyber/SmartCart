@@ -4196,21 +4196,8 @@
   .pa-row.oos .pa-price-value { text-decoration: line-through; }
 
   /* ─── Verification state (PR 1: honestidade) ─── */
-  .estimate-banner {
-    background: #fff8e1;
-    border: 1px solid #f5d97a;
-    color: #6b5410;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-size: 13px;
-    margin: 14px auto;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .estimate-banner-icon { font-size: 18px; flex-shrink: 0; }
-  .estimate-banner strong { color: #3d3a37; }
+  /* .estimate-banner e .estimate-banner-icon saíram com o aviso de estimativas
+     (2026-08-05) — o elemento deixou de existir no HTML. */
   .price-estimate {
     color: #8a827a !important;
     font-style: italic;
@@ -7158,13 +7145,11 @@
 </div>
 
 <!-- Estimate disclaimer banner -->
-<div class="estimate-banner" id="estimate-banner" style="display:none">
-  <span class="estimate-banner-icon">ⓘ</span>
-  <span id="estimate-banner-text"></span>
-  <button id="toggle-estimates-btn" style="margin-left:auto;background:transparent;border:1px solid #c9a08a;color:#6b5410;padding:6px 12px;border-radius:999px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap">
-    Mostrar estimativas
-  </button>
-</div>
+<!-- O aviso de estimativas e o seu botão foram removidos em 2026-08-05: não há
+     estimativas nenhumas no catálogo (medido: 0 em 150.934 ofertas com preço),
+     por isso o aviso estava permanentemente escondido — e o botão lá dentro
+     apagava o catálogo se alguém lhe chegasse. Ver o comentário no sítio onde
+     estava o toggleEstimates. -->
 
 <!-- Hero -->
 <section class="hero">
@@ -7984,7 +7969,7 @@ let STORES = [];
 let STORE_BY_SLUG = {};
 let PRODUCTS = [];
 let PRODUCT_BY_EAN = {};
-let OFFERS_BY_PRODUCT = {};       // visíveis na UI (filtrado por HIDE_ESTIMATES)
+let OFFERS_BY_PRODUCT = {};       // visíveis na UI (só ofertas com dados reais)
 let OFFERS_BY_PRODUCT_ALL = {};   // tudo, preservado para debug/admin/contagens
 let PRODUCT_STATS = [];
 let POPULARITY_SCORE = {};
@@ -8030,10 +8015,12 @@ let HIGHLIGHTS = { newReleases: [], bestSellers: [], tiktok: [] };
 // Mostra apenas ofertas com preço real verified ou URL canónica.
 // Estimativas (preço inventado + URL de search) ficam escondidas mas preservadas em OFFERS_BY_PRODUCT_ALL.
 // Toggle via localStorage 'smartcart.hideEstimates' ('1' default, '0' mostra tudo).
-let HIDE_ESTIMATES = (() => {
-  try { return localStorage.getItem('smartcart.hideEstimates') !== '0'; }
-  catch { return true; }
-})();
+// HIDE_ESTIMATES foi removido com o interruptor de estimativas (ver o comentário
+// mais abaixo, onde estava o toggleEstimates). Era uma preferência guardada no
+// localStorage que já só podia valer "esconder", porque não há estimativas
+// nenhumas — medido: 0 em 150.934 ofertas com preço. As ofertas estimadas
+// deixaram de entrar no catálogo, e se voltarem o sítio para as travar é o
+// sync, não uma preferência do lado do navegador.
 
 function normalizeSeedFromLive(payload) {
   return {
@@ -8271,6 +8258,52 @@ function temOfertas(ean) {
   return !!(OFFERS_BY_PRODUCT && OFFERS_BY_PRODUCT[ean]);
 }
 
+// ─────────────────────────────────────────────────────────────
+//  IMAGENS À MEDIDA
+//  Só os produtos do bloco de arranque trazem imagem — o índice não a leva
+//  porque custava perto de um megabyte a toda a gente. Nas ofertas ela vem de
+//  boleia, mas há ecrãs que mostram produtos e NÃO precisam de preços: a
+//  prateleira, a rotina, o formulário de adicionar. Sem isto ficariam com o
+//  emoji de frasco para sempre.
+//
+//  Pedido deliberadamente magro: só ean e image_url. Trazer as ofertas todas
+//  só para ir buscar uma imagem seria pagar cem vezes o que vale.
+// ─────────────────────────────────────────────────────────────
+const IMAGENS_PEDIDAS = new Set();
+
+/**
+ * Enche a imagem destes produtos, se faltar.
+ * @returns {Promise<number>} quantas imagens novas entraram (0 = nada mudou,
+ *          e o chamador não precisa de voltar a desenhar)
+ */
+async function garantirImagens(eans) {
+  const porFazer = [...new Set((eans || []).filter(e =>
+    e && !IMAGENS_PEDIDAS.has(e) && PRODUCT_BY_EAN[e] && !PRODUCT_BY_EAN[e].image_url))];
+  if (!porFazer.length) return 0;
+  const sb = window.SUPABASE || (await aguardarSupabase() ? window.SUPABASE : null);
+  if (!sb) return 0;
+  // marcar ANTES de pedir: sem isto, dois desenhos seguidos do mesmo ecrã
+  // disparavam dois pedidos iguais
+  porFazer.forEach(e => IMAGENS_PEDIDAS.add(e));
+  let entraram = 0;
+  for (let i = 0; i < porFazer.length; i += 50) {
+    const lote = porFazer.slice(i, i + 50);
+    try {
+      const { data, error } = await sb.from('products').select('ean,image_url').in('ean', lote);
+      if (error) throw error;
+      for (const p of (data || [])) {
+        const alvo = PRODUCT_BY_EAN[p.ean];
+        if (alvo && !alvo.image_url && p.image_url) { alvo.image_url = p.image_url; entraram++; }
+      }
+    } catch (e) {
+      // ao contrário das ofertas, uma imagem em falta é um extra: não vale a
+      // pena re-tentar nem avisar o utilizador
+      console.warn('imagens: lote falhou', e && e.message);
+    }
+  }
+  return entraram;
+}
+
 function rebuildCatalogIndexesFromSources(arranque, indice) {
   // ── lojas ────────────────────────────────────────────────────────────────
   STORES = (arranque.lojas || []).map(l => ({
@@ -8402,7 +8435,10 @@ function rebuildCatalogIndexes(seed) {
       const hasRealData = offer.verified
         || /scraped|canonical/i.test(offer.source || '')
         || (offer.variants && offer.variants.some(v => v.price > 0));
-      if (!HIDE_ESTIMATES || hasRealData) {
+      // era `!HIDE_ESTIMATES || hasRealData`: com o interruptor fora, fica só a
+      // regra que sempre esteve em vigor por omissão — só entra no índice
+      // visível o que tem dados reais de scraping
+      if (hasRealData) {
         if (!OFFERS_BY_PRODUCT[item.ean]) OFFERS_BY_PRODUCT[item.ean] = {};
         OFFERS_BY_PRODUCT[item.ean][sp.store_slug] = offer;
       }
@@ -13437,7 +13473,6 @@ async function initApp() {
   renderCatalog();
   renderDynamicSections();
   bundleRefresh();
-  updateEstimateBanner();
   // Hero stats dinâmicos (design handoff v5)
   try {
     const elS = document.getElementById('hero-stat-stores');
@@ -13476,67 +13511,33 @@ async function initApp() {
   if (loadedLive) toast('Precos e stock carregados em tempo real da base de dados');
 }
 
-/**
- * Banner adapta-se ao estado do filtro HIDE_ESTIMATES.
- * - HIDE_ESTIMATES=true:  "X ofertas reais visíveis · Y estimativas escondidas"
- * - HIDE_ESTIMATES=false: "Mostrando tudo · Y estimativas"
- */
-function updateEstimateBanner() {
-  const banner = document.getElementById('estimate-banner');
-  const textEl = document.getElementById('estimate-banner-text');
-  const toggleBtn = document.getElementById('toggle-estimates-btn');
-  if (!banner || !textEl) return;
-
-  // Contagens a partir do índice ALL (sempre disponível)
-  let totalAll = 0, verifiedCnt = 0, urlCnt = 0;
-  for (const ean in OFFERS_BY_PRODUCT_ALL) {
-    for (const slug in OFFERS_BY_PRODUCT_ALL[ean]) {
-      const o = OFFERS_BY_PRODUCT_ALL[ean][slug];
-      totalAll++;
-      if (o.verified) verifiedCnt++;
-      else if (o.verified_url) urlCnt++;
-    }
-  }
-  const realCnt = verifiedCnt + urlCnt;
-  const estimatedCnt = totalAll - realCnt;
-  const verifiedStores = new Set();
-  for (const ean in OFFERS_BY_PRODUCT_ALL) {
-    for (const slug in OFFERS_BY_PRODUCT_ALL[ean]) {
-      const o = OFFERS_BY_PRODUCT_ALL[ean][slug];
-      if (o.verified || o.verified_url) verifiedStores.add(slug);
-    }
-  }
-
-  if (estimatedCnt === 0) {
-    banner.style.display = 'none';
-    return;
-  }
-
-  banner.style.display = 'flex';
-  if (HIDE_ESTIMATES) {
-    textEl.innerHTML = `<strong>${realCnt} ofertas verificadas</strong> de <strong>${verifiedStores.size} lojas</strong> · ` +
-      `<span style="opacity:.8">${estimatedCnt} estimativas escondidas</span> (em verificação)`;
-    toggleBtn.textContent = 'Mostrar estimativas';
-  } else {
-    textEl.innerHTML = `<strong>A mostrar tudo:</strong> ${realCnt} verificadas + ${estimatedCnt} estimativas. ` +
-      `Estimativas marcadas com <span class="estimate-badge">estimativa</span>.`;
-    toggleBtn.textContent = 'Esconder estimativas';
-  }
-}
-
-/** Alterna entre mostrar/esconder estimativas. Persiste no localStorage. */
-function toggleEstimates() {
-  HIDE_ESTIMATES = !HIDE_ESTIMATES;
-  try { localStorage.setItem('smartcart.hideEstimates', HIDE_ESTIMATES ? '1' : '0'); } catch {}
-  // Reconstrói índices visíveis a partir do ALL e re-renderiza tudo
-  rebuildCatalogIndexes(SEED);
-  renderCatalog();
-  renderDynamicSections();
-  bundleRefresh();
-  updateEstimateBanner();
-  toast(HIDE_ESTIMATES ? 'A mostrar apenas ofertas verificadas' : 'A mostrar todas as ofertas (incl. estimativas)');
-}
-document.getElementById('toggle-estimates-btn')?.addEventListener('click', toggleEstimates);
+// ─────────────────────────────────────────────────────────────
+//  O INTERRUPTOR DE ESTIMATIVAS FOI REMOVIDO (2026-08-05)
+//
+//  O que fazia: alternava entre "só ofertas verificadas" e "tudo, incluindo
+//  preços estimados", reconstruindo os índices a partir do catálogo embebido.
+//
+//  Porque saiu — três razões, e a última é fatal:
+//
+//  1. Já não há estimativas. Todas as ofertas vêm da base de dados e o
+//     _ofertaDaBd marca-as como reais, o que é verdade: medido, 0 estimativas
+//     em 150.934 ofertas com preço. O contador dava sempre zero e o aviso
+//     ficava permanentemente escondido — a par com o botão, que vivia lá
+//     dentro.
+//
+//  2. Estando escondido, ninguém lhe tocava e ninguém dava pelo problema.
+//     Mas o ouvinte continuava ligado.
+//
+//  3. Se alguém lhe tocasse, chamava rebuildCatalogIndexes(SEED) — e o SEED
+//     do caminho novo não tem store_products. Isso apagava as ofertas todas,
+//     recriava os objectos dos produtos (perdendo a imagem vinda da base de
+//     dados, o texto de pesquisa e os volumes memoizados), punha as
+//     estatísticas a zero e NÃO limpava a lista de EANs já pedidos — ou seja,
+//     nada voltava a ser pedido. Estado irrecuperável sem recarregar a página.
+//
+//  Se um dia voltarem a entrar preços estimados no catálogo, o sítio para os
+//  esconder é o sync, não um interruptor no cliente.
+// ─────────────────────────────────────────────────────────────
 
 // ============================================================
 // SUPABASE CLIENT (auth + cloud profile)
@@ -15296,6 +15297,23 @@ function prRender() {
   else if (PR_VIEW === 'add') prRenderAdd();
   else if (PR_VIEW === 'edit') prRenderEdit();
   else prRenderDashboard();
+
+  // ── as imagens da prateleira e da rotina ────────────────────────────────
+  // Estes ecrãs mostram produtos e não mostram preços, por isso nunca chamam o
+  // carregarOfertas — e como o índice não leva imagens, ficavam todos com o
+  // emoji de frasco. Um pedido magro (só ean e image_url) resolve os seis
+  // ecrãs de uma vez, aqui, que é por onde todos passam.
+  //
+  // Sem esperar: desenha-se já e volta-se a desenhar SE alguma imagem entrar.
+  // Não há ciclo — o garantirImagens só pede EANs que ainda não pediu, por isso
+  // a segunda passagem devolve zero e pára.
+  try {
+    const daPrateleira = (PR_STATE.products || []).map(it => it.ean);
+    const daRotina = (typeof loadRoutine === 'function'
+      ? ((loadRoutine() || {}).steps || []).map(s => s.ean) : []);
+    const eans = [...new Set([...daPrateleira, ...daRotina])].filter(Boolean);
+    if (eans.length) garantirImagens(eans).then(n => { if (n) prRender(); });
+  } catch (e) { console.warn('imagens da prateleira:', e && e.message); }
 }
 
 function prRenderCreate() {
