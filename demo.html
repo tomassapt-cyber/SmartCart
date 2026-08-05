@@ -8651,10 +8651,26 @@ async function loadLiveCatalog() {
     // rede nenhuma. Só depois se vai buscar o índice, que substitui tudo.
     // Sem esta ordem, o que aparece entre uma coisa e outra — e para sempre, se
     // o índice falhar — é uma página a afirmar que não há lojas nem produtos.
-    construirDoArranque(_dadosDaPagina().arranque);
+    const pontePronta = construirDoArranque(_dadosDaPagina().arranque);
+    if (pontePronta) {
+      // ⚠️ SEM `await`. A primeira vista já está toda servida pela ponte — a
+      // montra, os números, os oito cartões — e esperar aqui pelo índice era
+      // fazer toda a gente pagar 1,25 MB antes de ver o primeiro pixel, que é
+      // exactamente o que esta fase veio acabar. O índice chega em fundo e a
+      // página volta a desenhar-se com o catálogo completo.
+      garantirIndice().then(ok => {
+        if (!ok) { console.error('Fase 4b: o índice não carregou; fica só o bloco de arranque.'); return; }
+        try {
+          renderCatalog();
+          if (typeof renderDynamicSections === 'function') renderDynamicSections();
+        } catch (e) { console.warn('re-desenho depois do índice:', e && e.message); }
+      });
+      return false;
+    }
+    // sem bloco de arranque não há por onde começar: aí sim, espera-se
     const ok = await garantirIndice();
     if (!ok) {
-      console.error('Fase 4b: o índice não carregou.');
+      console.error('Fase 4b: nem bloco de arranque nem índice.');
       if (TEM_SEED_EMBEBIDO) rebuildCatalogIndexes(SEED_FALLBACK);   // volta atrás
     }
     return false;
