@@ -8310,6 +8310,13 @@ let TOTAIS_DO_CATALOGO = null;
  */
 function construirDoArranque(arranque) {
   if (!arranque || !Array.isArray(arranque.lojas)) return false;
+  // ⚠️ NUNCA por cima do índice. O garantirIndice pode ter sido disparado de
+  // outro sítio (a pesquisa do hero, a prateleira) e ter chegado primeiro; sem
+  // esta guarda a ponte substituía os 47 mil produtos pelos seus 150 e o
+  // catálogo encolhia sem ninguém perceber porquê — com o INDICE_CARREGADO a
+  // dizer que estava tudo bem, e a chamada seguinte a garantirIndice a devolver
+  // a promessa memoizada sem reconstruir nada.
+  if (INDICE_CARREGADO) return true;
 
   STORES = (arranque.lojas || []).map(l => ({
     slug: l.slug, name: l.nome, base_url: l.url, logo_url: null,
@@ -15595,7 +15602,7 @@ async function gmReceiptFromRoutine() {
   }));
   // contagens quando o browser estiver livre (mesma lógica de match do catálogo)
   const later = window.requestIdleCallback || (fn => setTimeout(fn, 900));
-  later(() => {
+  const contar = () => {
     try {
       cards.forEach(c => {
         const toks = _hnorm(c.dataset.colq).split(/\s+/).filter(Boolean);
@@ -15609,7 +15616,19 @@ async function gmReceiptFromRoutine() {
         if (el && n) el.textContent = n.toLocaleString('pt-PT') + ' produtos comparados';
       });
     } catch (e) {}
-  });
+  };
+  // ⚠️ Contar DUAS vezes. Isto corria uma só, quando o navegador ficasse livre
+  // — e agora fica livre muito antes de o índice chegar, portanto contava sobre
+  // os 150 produtos da ponte e os quatro cartões ficavam com números
+  // ridiculamente baixos ("3 produtos comparados") ou com o texto genérico.
+  later(contar);
+  // A segunda contagem NÃO usa o requestIdleCallback: quando o índice chega já
+  // não há razão para esperar por repouso, são ~50 ms de trabalho, e há
+  // contextos em que o navegador nunca declara repouso nenhum — aí os quatro
+  // cartões ficavam para sempre com o subtítulo genérico.
+  if (typeof garantirIndice === 'function') {
+    garantirIndice().then(ok => { if (ok) setTimeout(contar, 0); });
+  }
 })();
 
 // ── Filtros colapsáveis no mobile (o painel inteiro tapava o catálogo) ──
