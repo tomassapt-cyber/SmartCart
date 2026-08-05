@@ -11800,7 +11800,7 @@ function renderDeepResults(body, foot) {
   draw();
 }
 
-function renderQuizStep() {
+async function renderQuizStep() {
   const def = QUIZ_DEFS[quizState.id];
   if (!def) return;
   const total = def.questions.length;
@@ -11815,6 +11815,13 @@ function renderQuizStep() {
     fill.style.width = '100%';
     if (quizState.id === 'routine') { renderDeepResults(body, foot); return; }
     const matches = def.match(quizState.answers);
+    // O cartão de resultado mostra "desde X€ · Loja" a partir das ofertas. São
+    // 3 EANs e a lista já está aqui — um lote antes de desenhar evita mostrar
+    // um preço do índice e trocá-lo por outro um instante depois, que num
+    // resultado de quiz lê-se como o site a mudar de ideias.
+    const eansQuiz = matches.map(m => m && m.p && m.p.ean).filter(Boolean);
+    const faltamQuiz = eansQuiz.filter(e => !ofertasProntas(e));
+    if (faltamQuiz.length) await carregarOfertas(faltamQuiz, { variantes: true });
     body.innerHTML = `
       <div class="quiz-results-intro">
         <div class="quiz-results-eyebrow">A tua selecção</div>
@@ -12317,7 +12324,7 @@ const SPONSORED_EANS_FALLBACK = [
   '0887167667501', // Estée Lauder ANR Edición Limitada
 ];
 
-function renderSponsoredCarousel() {
+async function renderSponsoredCarousel() {
   const slidesEl = document.getElementById('sponsored-slides');
   const dotsEl = document.getElementById('sponsored-dots');
   if (!slidesEl) return;
@@ -12336,6 +12343,12 @@ function renderSponsoredCarousel() {
     items = SPONSORED_EANS_FALLBACK.map(ean => PRODUCT_BY_EAN[ean]).filter(Boolean);
   }
   if (items.length === 0) return;
+
+  // O carrossel é a primeira coisa que se vê. Sem ofertas, o bestOfferFor
+  // devolve nada e cada slide mostrava "—" no lugar do preço e nenhuma loja.
+  // A lista tem 5 EANs e já está pronta aqui: um lote, e desenha-se uma vez só.
+  const porPedir = items.map(p => p.ean).filter(e => !ofertasProntas(e));
+  if (porPedir.length) await carregarOfertas(porPedir);
 
   slidesEl.innerHTML = items.map((p, i) => {
     const best = bestOfferFor(p.ean);
@@ -14697,7 +14710,11 @@ function scanParseSignals(raw) {
 // volumes conhecidos do produto (nome + variantes reais das ofertas), cacheados.
 // As ofertas vivem no mapa global OFFERS_BY_PRODUCT[ean], não no objeto produto.
 function scanProductVols(p) {
-  if (p._vols) return p._vols;
+  // ⚠️ `.size`: um Set VAZIO é truthy. Se isto correr antes de as ofertas
+  // chegarem e o nome não tiver volume, o resultado vazio ficava congelado no
+  // produto para o resto da sessão — e as variantes que chegassem depois nunca
+  // mais eram vistas. (O carregarOfertas larga o _vols quando traz variantes.)
+  if (p._vols && p._vols.size) return p._vols;
   const s = new Set(); let m;
   const re = /(\d{1,4})\s*(?:ml|g)\b/g;
   const nm = _hnorm(p.name || '');
@@ -15423,8 +15440,16 @@ function prBindQuizRoutineCard() {
   const redo = document.getElementById('pr-qzrt-redo');
   if (redo) redo.onclick = () => { closeProfile(); if (typeof openQuiz === 'function') openQuiz('routine'); };
   const shelf = document.getElementById('pr-qzrt-shelf');
-  if (shelf) shelf.onclick = () => {
+  if (shelf) shelf.onclick = async () => {
     const rt = loadRoutine(); if (!rt) return;
+    // ⚠️ ÚNICO SÍTIO onde um dado errado por falta de ofertas fica GRAVADO.
+    // O refVolumeFor lê as variantes; sem elas devolve o volume do nome do
+    // produto, e para os que não têm ml no nome devolve nada — e a linha
+    // abaixo escrevia 50 ml inventados, que vão para o localStorage e para a
+    // cloud e ficam lá. É um clique, portanto pode esperar.
+    const eans = [...new Set(rt.steps.map(s => s.ean))];
+    const faltam = eans.filter(e => !ofertasProntasComVariantes(e));
+    if (faltam.length) await carregarOfertas(faltam, { variantes: true });
     const have = new Set(PR_STATE.products.map(it => it.ean));
     const today = new Date().toISOString().slice(0, 10);
     const perDay = {};   // ean → nº de passos (AM+PM = 2 usos/dia)
@@ -15433,7 +15458,12 @@ function prBindQuizRoutineCard() {
     for (const [ean, uses] of Object.entries(perDay)) {
       if (have.has(ean)) continue;
       const p = PRODUCT_BY_EAN[ean];
-      const vol = (typeof refVolumeFor === 'function' ? refVolumeFor(ean) : null) || 50;
+      // sem 50 inventado: se não se sabe o volume, fica por saber. O formulário
+      // da prateleira pede-o, e um campo por preencher é honesto — 50 ml
+      // gravados em silêncio não são.
+      const vol = (typeof refVolumeFor === 'function' ? refVolumeFor(ean) : null)
+        || (typeof _volFromName === 'function' ? _volFromName(p && p.name || '') : null)
+        || null;
       const item = {
         ean,
         started_at: today,
@@ -16384,7 +16414,16 @@ function prRenderAddDetails(ean) {
   const initial = brandInitial(product.brand);
   const defaultDose = PR_DEFAULT_DOSE[product.category] ?? 0.5;
   const defaultFreq = PR_DEFAULT_FREQ[product.category] ?? 7;
-  const defaultVol = product.volume_ml || 50;
+  // ⚠️ Era `product.volume_ml || 50`, e os produtos construídos a partir do
+  // índice NÃO TÊM campo volume_ml — o valor seria sempre 50, gravado no
+  // localStorage e na cloud sem ninguém dar por isso. Pergunta-se ao nome, às
+  // variantes já carregadas, e se nem assim se souber deixa-se VAZIO para o
+  // utilizador preencher. Um campo por preencher é honesto; 50 ml inventados
+  // com ar de facto não são.
+  const defaultVol = product.volume_ml
+    || (typeof _volFromName === 'function' ? _volFromName(product.name || '') : null)
+    || (typeof refVolumeFor === 'function' ? refVolumeFor(ean) : null)
+    || null;
   const today = new Date().toISOString().slice(0, 10);
 
   document.getElementById('pr-head-eyebrow').textContent = 'A minha prateleira';
@@ -16435,7 +16474,7 @@ function prRenderAddDetails(ean) {
         </div>
         <div>
           <div class="prv3-col-label">Tamanho da embalagem (ml)</div>
-          <input type="number" id="pr-volume" class="prv3-input" min="1" max="1000" step="1" value="${defaultVol}" />
+          <input type="number" id="pr-volume" class="prv3-input" min="1" max="1000" step="1" value="${defaultVol ?? ''}" placeholder="ex.: 50" />
         </div>
       </div>
       <div class="prv3-predict" id="pr-prediction"></div>
@@ -16447,7 +16486,10 @@ function prRenderAddDetails(ean) {
     return {
       ean,
       started_at: document.getElementById('pr-started').value || today,
-      volume_ml: Number(document.getElementById('pr-volume').value) || defaultVol,
+      // se o campo ficar vazio e não se souber o volume, grava-se NULO em vez
+      // de um número inventado — a previsão de duração fica por fazer, que é
+      // melhor do que estar errada
+      volume_ml: Number(document.getElementById('pr-volume').value) || defaultVol || null,
       doses_per_use: dose,
       uses_per_week: freq,
     };
