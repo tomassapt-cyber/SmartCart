@@ -5,7 +5,7 @@
       "main": false
     }
   },
-  "buildCommand": "(node --max-old-space-size=4096 scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados') && (node --max-old-space-size=4096 scripts/build-search-index.js || echo 'AVISO: indice nao gerado') && COSMATH_DEPLOY_BUILD=1 node --max-old-space-size=4096 scripts/inject-seed-into-demo.js",
+  "buildCommand": "bash scripts/build-vercel.sh",
   "outputDirectory": ".",
   "installCommand": "echo 'no install needed'",
   "framework": null,

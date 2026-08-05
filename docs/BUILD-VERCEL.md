@@ -53,3 +53,19 @@ sair com a versão do índice vazia e o caminho novo desligado — sem erro nenh
 As guardas `|| echo` protegem contra um passo que devolve código de erro. **Não**
 protegem contra o build inteiro morrer por memória, disco ou tempo, nem contra
 uma recusa à entrada.
+
+## O `buildCommand` tem um limite de 256 caracteres
+
+Foi a **segunda** causa da paragem de 2026-08-05, escondida atrás da primeira.
+Depois de tirar a chave desconhecida, os deploys voltaram — e voltaram a falhar
+assim que o passo do índice entrou outra vez. Instantaneamente, outra vez.
+
+  199 caracteres → aceite
+  300 caracteres → recusado, no mesmo segundo, sem explicação
+
+Por isso o build vive agora em `scripts/build-vercel.sh` e o `vercel.json` tem
+só `"buildCommand": "bash scripts/build-vercel.sh"` (28 caracteres). No script
+não há limite de tamanho e cabem comentários — que era o que eu queria fazer no
+JSON e desencadeou tudo isto.
+
+**Passos novos vão para o script, nunca para o JSON.**
