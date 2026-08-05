@@ -8682,7 +8682,13 @@ function postalCodeToZone(raw) {
 }
 function shippingForStore(slug, zone) {
   const store = STORE_BY_SLUG[slug];
-  return store.shipping_zones[zone === 'Madeira' ? 'madeira' : zone === 'Açores' ? 'acores' : 'mainland'] ?? 0;
+  // Guarda obrigatória desde que os slugs vêm da base de dados e as lojas do
+  // bloco de arranque: uma loja nova, integrada depois do último build, chega
+  // nas ofertas e não existe aqui. Sem isto era um TypeError no meio do
+  // optimizador — e o "Ver as melhores combinações" deixava de fazer o que
+  // quer que fosse, sem mensagem nenhuma.
+  if (!store || !store.shipping_zones) return 0;
+  return store.shipping_zones[zone === 'Madeira' ? 'madeira' : zone === 'Açores' ? 'acores' : 'mainland'] ??0;
 }
 
 // ============================================================
@@ -9508,7 +9514,7 @@ function renderCategoryCards() {
 // Estado actual do pódio (ean a ser visto, volume seleccionado)
 let PA_STATE = { ean: null, volume: null };
 
-function openPriceAnalyzer(ean) {
+async function openPriceAnalyzer(ean) {
   const p = PRODUCT_BY_EAN[ean];
   if (!p) return;
   const palette = brandPalette(p.brand);
@@ -9529,7 +9535,41 @@ function openPriceAnalyzer(ean) {
   // seedVolume = volume "original" deste EAN, fixo durante a sessão do modal
   // volume = volume actualmente seleccionado (muda com chips)
   PA_STATE = { ean, volume: seedVolume, seedVolume };
+
+  // ── as ofertas COM VARIANTES têm de estar cá antes de desenhar ──────────
+  // Já estão? desenha já, sem piscar. Não estão? abre o modal com o cabeçalho
+  // (que não depende delas) e o miolo em espera, e desenha quando chegarem.
+  //
+  // ⚠️ TEM de ser {variantes: true}. Sem os tamanhos, o pódio cai no ramo do
+  // "produto sem opções de volume" e compara a loja que vende o 500 ml com a
+  // que vende o 50 ml como se fossem a mesma coisa — é o bug Cicabio, que está
+  // documentado mais abaixo neste ficheiro.
+  //
+  // ⚠️ E NÃO se aplica aqui a política do "falha em silêncio" que a descrição,
+  // os similares e o histórico usam: esses são extras, as ofertas são o miolo.
+  if (ofertasProntasComVariantes(ean)) { renderPodiumBody(); return; }
+
+  abrirModalDaFicha();
+  const corpo = document.getElementById('pa-body');
+  if (corpo) {
+    corpo.innerHTML = '<div class="ph-card"><div class="ph-head">' +
+      '<span class="ph-title">⚖️ Comparar preços</span></div>' +
+      '<div class="ph-empty">a comparar as lojas…</div></div>';
+  }
+  await carregarOfertas([ean], { variantes: true });
+  // entre o pedido e a resposta o utilizador pode ter fechado a ficha ou aberto
+  // outra: sem esta guarda, o pódio do produto antigo aterrava por cima
+  if (!PA_STATE || PA_STATE.ean !== ean) return;
   renderPodiumBody();
+}
+
+/** abre a moldura da ficha (sem miolo) — usado enquanto as ofertas não chegam */
+function abrirModalDaFicha() {
+  const bd = document.getElementById('pa-backdrop');
+  const md = document.getElementById('pa-modal');
+  if (bd) bd.classList.add('open');
+  if (md) { md.classList.add('open'); md.setAttribute('aria-hidden', 'false'); }
+  document.body.style.overflow = 'hidden';
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -12677,11 +12717,28 @@ function bundleLiveUpdate() {
   clearTimeout(BUNDLE_LIVE_T);
   BUNDLE_LIVE_T = setTimeout(bundleLiveNow, 220);
 }
-function bundleLiveNow() {
+async function bundleLiveNow() {
   const box = document.getElementById('bundle-live');
   if (!box) return;
   const items = [...bundleState.items.entries()].map(([ean, qty]) => ({ ean, qty }));
   if (!items.length) { box.innerHTML = ''; return; }
+
+  // ── as ofertas do carrinho TÊM de trazer os tamanhos ────────────────────
+  // O optimizeBundle reparte o cabaz por lojas e soma portes. Sem as variantes,
+  // uma loja que só vende o tamanho grande entra na conta com o preço desse
+  // tamanho como se fosse o que o utilizador escolheu — e o optimizador
+  // apresenta-a como "melhor preço". É a regressão mais perigosa desta
+  // migração porque é totalmente silenciosa: dá um número, e o número está
+  // errado. E este número vai parar ao window.RECEIPT_LAST_BUNDLE, que é o
+  // objecto que o utilizador PARTILHA.
+  const faltam = items.map(i => i.ean).filter(e => !ofertasProntasComVariantes(e));
+  if (faltam.length) {
+    box.innerHTML = '<div class="bundle-live-card"><span class="ph-empty">a calcular a melhor combinação…</span></div>';
+    await carregarOfertas(faltam, { variantes: true });
+    // o utilizador pode ter esvaziado o carrinho enquanto esperava
+    if (!bundleState.items.size) { box.innerHTML = ''; return; }
+  }
+
   let best = null, saved = 0;
   try {
     const { solutions } = optimizeBundle(items, bundleState.zone);
@@ -12851,8 +12908,18 @@ function optimizeBundle(items, zone = 'nacional') {
     // usar o preço/URL DESSA variante em cada loja. Lojas sem essa variante
     // ficam EXCLUÍDAS deste produto (não comparamos 500ml com 100ml).
     const chosenVolume = bundleState.volumes?.get?.(ean) || null;
-    offersByEan[ean] = Object.entries(offers)
+    // Com um volume escolhido, as variantes deixam de ser opcionais: se ainda
+    // não chegaram, o ramo de baixo cai no "preço de montra" da loja e mete na
+    // conta o tamanho errado sem dizer nada. Antes isso não podia acontecer
+    // porque o catálogo vinha todo embebido; agora pode. Melhor não responder
+    // do que responder mal — o produto sai para `uncovered`, que é visível.
+    const semVariantes = chosenVolume && !ofertasProntasComVariantes(ean);
+    offersByEan[ean] = semVariantes ? [] : Object.entries(offers)
       .filter(([, o]) => o.in_stock)
+      // loja que existe nas ofertas mas não no bloco de arranque (integrada
+      // depois do último build): sem isto rebentava mais à frente, ao ler
+      // free_shipping_threshold e shipping_zones
+      .filter(([slug]) => STORE_BY_SLUG[slug])
       .map(([slug, o]) => {
         if (chosenVolume && Array.isArray(o.variants) && o.variants.length > 0) {
           const v = o.variants.find(vv => Number(vv.volume_ml) === chosenVolume && vv.in_stock !== false);
@@ -12981,11 +13048,26 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
 // ============================================================
 // RESULTS RENDER
 // ============================================================
-function runAnalysis() {
+async function runAnalysis() {
   const items = [...bundleState.items.entries()].map(([ean, qty]) => ({ ean, qty }));
   if (!items.length) return;
-  const { solutions, uncovered } = optimizeBundle(items, bundleState.zone);
-  renderResults(solutions, uncovered, items);
+  // mesmas razões do bundleLiveNow: sem os tamanhos, o optimizador escolhe a
+  // loja errada e apresenta-a como a mais barata
+  const faltam = items.map(i => i.ean).filter(e => !ofertasProntasComVariantes(e));
+  if (faltam.length) await carregarOfertas(faltam, { variantes: true });
+  if (!bundleState.items.size) return;
+  // ⚠️ try/catch obrigatório: não tinha nenhum, e com os slugs a virem da base
+  // de dados basta uma loja que o bloco de arranque não conheça para rebentar
+  // aqui dentro. Sem isto, o botão passa a não fazer NADA e o utilizador não
+  // recebe explicação nenhuma.
+  try {
+    const { solutions, uncovered } = optimizeBundle(items, bundleState.zone);
+    renderResults(solutions, uncovered, items);
+  } catch (e) {
+    console.error('[carrinho] análise falhou:', e);
+    toast('Não consegui calcular as combinações. Tenta outra vez.');
+    return;
+  }
   const zsel = document.getElementById('zone-select');
   if (zsel) zsel.value = bundleState.zone;
   document.getElementById('results-backdrop').classList.add('open');
