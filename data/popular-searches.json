@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T08:01:34.192Z",
+  "generated_at": "2026-08-10T06:52:17.690Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -19,10 +19,10 @@
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
       "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.22,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/fotoprotetor-isdin-fusion-water-spf50-50ml",
+      "best_price": 19.44,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml",
       "search_term": "protetor solar facial",
       "pop_score": 49
     },
@@ -43,12 +43,12 @@
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.94,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/cerave-serum-hidratante-acido-hialuronico-30-ml",
+      "best_price": 13.72,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 37
+      "pop_score": 35
     },
     {
       "ean": "5201279072193",
