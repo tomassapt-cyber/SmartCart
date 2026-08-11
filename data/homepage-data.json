@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-10T04:49:06.224Z",
-  "seed_total_products": 63080,
+  "generated_at": "2026-08-11T04:26:58.331Z",
+  "seed_total_products": 63117,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -258,7 +258,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 613
+      "products": 612
     },
     {
       "name": "Eucerin",
@@ -296,7 +296,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 50386,
+    "products": 50401,
     "avg_savings_pct": 30
   },
   "shard_version": "",
