@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T06:52:17.690Z",
+  "generated_at": "2026-08-13T06:56:40.278Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -12,7 +12,7 @@
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/",
       "search_term": "vitamina c rosto melhores",
-      "pop_score": 64
+      "pop_score": 67
     },
     {
       "ean": "8429420158399",
@@ -24,19 +24,19 @@
       "best_store_slug": "bairro-saude",
       "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml",
       "search_term": "protetor solar facial",
-      "pop_score": 49
+      "pop_score": 58
     },
     {
-      "ean": "3372290001805",
-      "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
-      "brand": "Lazartigue",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 10.43,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/lazartigue-clear-champo-caspa-oleosa-250ml",
+      "ean": "3337875492799",
+      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
+      "brand": "Vichy",
+      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
+      "best_price": 8.92,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
       "search_term": "shampoo anticaspa",
-      "pop_score": 43
+      "pop_score": 48
     },
     {
       "ean": "3606000560833",
@@ -48,7 +48,7 @@
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 35
+      "pop_score": 42
     },
     {
       "ean": "5201279072193",
@@ -67,35 +67,35 @@
       "name": "Avène Cicalfate Creme de Mãos",
       "brand": "Avène",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg",
-      "best_price": 7.99,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/avene-cicalfate-creme-mains-100ml",
+      "best_price": 7.69,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml",
       "search_term": "creme de maos loccitane",
-      "pop_score": 28
+      "pop_score": 27
     },
     {
-      "ean": "8429420231559",
-      "name": "ISDIN Fotoprotector Fusion Water Magic Color BRONZE SPF50 - Protetor solar facial ultraligeiro com cor",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/7114835_1.webp",
-      "best_price": 16.11,
-      "best_store": "DocMorris",
-      "best_store_slug": "docmorris",
-      "best_url": "https://www.docmorris.pt/pt/isdin-fotoprotector-fusion-water-magic-bronze-spf50-50ml/p-614628",
-      "search_term": "protetor solar com cor",
+      "ean": "bemecare-lrposay-effaclar-h-isobiome-cr-lav-390ml",
+      "name": "La Roche Posay Effaclar H Iso-Biome Creme Lavante",
+      "brand": null,
+      "image_url": "https://shopcosmetics.pt/5383-home_default/lrposay-effaclar-h-isobiome-cr-lav-390ml.jpg",
+      "best_price": 22,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
+      "search_term": "la roche posay sunscreen",
       "pop_score": 26
     },
     {
-      "ean": "0717334253124",
-      "name": "Esfoliante Facial Origins Checks and Balances",
-      "brand": "Origins",
-      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
-      "best_price": 18.94,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
-      "search_term": "esfoliante facial caseiro",
+      "ean": "8428749915409",
+      "name": "Sérum Facial Skin D-Pigment",
+      "brand": "Sensilis",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799459.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 30.04,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/sensilis-skin-d-pigment-serum-atx-30ml",
+      "search_term": "serum facial principia",
       "pop_score": 25
     }
   ]
