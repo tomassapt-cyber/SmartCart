@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-11T04:26:58.331Z",
-  "seed_total_products": 63117,
+  "generated_at": "2026-08-14T08:01:54.543Z",
+  "seed_total_products": 63391,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -23,14 +23,14 @@
       "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml"
     },
     {
-      "ean": "3372290001805",
-      "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
-      "brand": "Lazartigue",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 12.6,
-      "best_store": "SoBeauty",
-      "best_store_slug": "sobeauty",
-      "best_url": "https://www.sobeauty.pt/product/lazartigue-clear-champo-anticaspa-couro-cabeludo-seco-250ml"
+      "ean": "3337875492799",
+      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
+      "brand": "Vichy",
+      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
+      "best_price": 8.92,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
     },
     {
       "ean": "3606000560833",
@@ -159,20 +159,6 @@
   ],
   "em_alta": [
     {
-      "ean": "3661434028069",
-      "name": "Uriage Bariésun Protetor Solar Hidratante FPS50+",
-      "brand": "Uriage",
-      "image_url": "https://www.pharma-gdd.com/media/cache/resolve/product_show/6298eb48d5d064653ca41689dc503848f728fcd42e3dfbc44d916b0785d6e73e31519206.jpg",
-      "best_price": 6.72,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/uriage-bariesun-creme-hidratante-spf50",
-      "previous_price": 11.62,
-      "discount_pct": 42,
-      "dropped_day": 20673,
-      "verified_live": true
-    },
-    {
       "ean": "3661434028212",
       "name": "Uriage Bariésun Dry Oil SPF 30",
       "brand": "Uriage",
@@ -184,6 +170,21 @@
       "previous_price": 12.67,
       "discount_pct": 35,
       "dropped_day": 20673,
+      "verified_live": true
+    },
+    {
+      "ean": "3661434008818",
+      "name": "Creme Lavante Sólido",
+      "brand": "Uriage",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwc8ba9029/images/wells/745/7452613-ROTINA-CREME-LAVANTE-SOLIDO-URIAGE-P-01.jpg",
+      "best_price": 3.64,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/uriage-1º-creme-lavante-solido-100-g",
+      "volume_ml": 100,
+      "previous_price": 5.6,
+      "discount_pct": 35,
+      "dropped_day": 20677,
       "verified_live": true
     },
     {
@@ -202,46 +203,45 @@
       "verified_live": true
     },
     {
-      "ean": "3337875598767",
-      "name": "Loção de limpeza hidratante CeraVe 1 litro",
-      "brand": "CeraVe",
-      "image_url": "https://assets.atida.com/transform/3bfd8916-d1cb-448b-95ed-875e31e4a67d/CeraVe-Locion-Limpiadora-Hidratante-1-Litro",
-      "best_price": 7.63,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/cerave-creme-hidratante-de-limpeza-1000ml-",
-      "volume_ml": 976,
-      "previous_price": 11.29,
-      "discount_pct": 32,
-      "dropped_day": 20673,
+      "ean": "3282770208597",
+      "name": "Avène Body Desodorizante 24h Roll-On",
+      "brand": "Avène",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/2/6239368.jpg",
+      "best_price": 6.05,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/desodorizantes/1191-avène-desodorizante-roll-on-body-50-ml.html",
+      "previous_price": 8.25,
+      "discount_pct": 27,
+      "dropped_day": 20669,
       "verified_live": true
     },
     {
-      "ean": "5201279088705",
-      "name": "Mini Bees Caléndula Y Miel",
-      "brand": "Apivita",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799015.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 6.56,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/apivita-mini-bees-gel-cabelo-e-corpo-crianca-500ml",
-      "previous_price": 9.17,
-      "discount_pct": 28,
-      "dropped_day": 20673,
+      "ean": "3499320013888",
+      "name": "Cetaphil Loção de Limpeza Peles Secas e Sensíveis",
+      "brand": "Cetaphil",
+      "image_url": "https://assets.atida.com/transform/92385ab5-d1a7-437d-a394-e8dc77b24e57/Cetaphil-Locion-Limpiadora-473-ml",
+      "best_price": 9.59,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/cetaphil-locao-de-limpeza-473ml-preco-especial",
+      "previous_price": 12.79,
+      "discount_pct": 25,
+      "dropped_day": 20677,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1948
-    },
-    {
-      "name": "Isdin",
-      "products": 769
+      "products": 1943
     },
     {
       "name": "Clarins",
+      "products": 771
+    },
+    {
+      "name": "Isdin",
       "products": 769
     },
     {
@@ -254,11 +254,11 @@
     },
     {
       "name": "L'Oréal Paris",
-      "products": 616
+      "products": 620
     },
     {
       "name": "La Roche-Posay",
-      "products": 612
+      "products": 613
     },
     {
       "name": "Eucerin",
@@ -296,7 +296,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 50401,
+    "products": 49972,
     "avg_savings_pct": 30
   },
   "shard_version": "",
