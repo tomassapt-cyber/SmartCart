@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-14T08:01:54.543Z",
-  "seed_total_products": 63391,
+  "generated_at": "2026-08-15T03:57:40.543Z",
+  "seed_total_products": 63406,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -203,20 +203,6 @@
       "verified_live": true
     },
     {
-      "ean": "3282770208597",
-      "name": "Avène Body Desodorizante 24h Roll-On",
-      "brand": "Avène",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/2/6239368.jpg",
-      "best_price": 6.05,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/desodorizantes/1191-avène-desodorizante-roll-on-body-50-ml.html",
-      "previous_price": 8.25,
-      "discount_pct": 27,
-      "dropped_day": 20669,
-      "verified_live": true
-    },
-    {
       "ean": "3499320013888",
       "name": "Cetaphil Loção de Limpeza Peles Secas e Sensíveis",
       "brand": "Cetaphil",
@@ -229,12 +215,26 @@
       "discount_pct": 25,
       "dropped_day": 20677,
       "verified_live": true
+    },
+    {
+      "ean": "3662361004058",
+      "name": "SVR Sun Secure Água Solar Hidratante SPF50+",
+      "brand": "Laboratorios SVR",
+      "image_url": "https://assets.atida.com/transform/e393892c-7f33-4ed5-84cf-ff3c13173a35/SVR-Sun-Secure-Agua-Solar-SPF50-100-ml",
+      "best_price": 5.44,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/sun-secure-agua-solar-spf50-1",
+      "previous_price": 7.02,
+      "discount_pct": 23,
+      "dropped_day": 20673,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1943
+      "products": 1945
     },
     {
       "name": "Clarins",
@@ -242,7 +242,7 @@
     },
     {
       "name": "Isdin",
-      "products": 769
+      "products": 770
     },
     {
       "name": "Avène",
@@ -262,7 +262,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 604
+      "products": 603
     }
   ],
   "telegram_alerts": [
@@ -296,7 +296,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49972,
+    "products": 50002,
     "avg_savings_pct": 30
   },
   "shard_version": "",
