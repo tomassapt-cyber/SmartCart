@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-15T03:57:40.543Z",
-  "seed_total_products": 63406,
+  "generated_at": "2026-08-15T07:10:46.356Z",
+  "seed_total_products": 63398,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -234,7 +234,7 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1945
+      "products": 1944
     },
     {
       "name": "Clarins",
@@ -242,7 +242,7 @@
     },
     {
       "name": "Isdin",
-      "products": 770
+      "products": 768
     },
     {
       "name": "Avène",
@@ -262,7 +262,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 603
+      "products": 604
     }
   ],
   "telegram_alerts": [
@@ -296,7 +296,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 50002,
+    "products": 49981,
     "avg_savings_pct": 30
   },
   "shard_version": "",
