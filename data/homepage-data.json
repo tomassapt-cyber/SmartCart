@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-15T07:10:46.356Z",
-  "seed_total_products": 63398,
+  "generated_at": "2026-08-17T07:36:09.516Z",
+  "seed_total_products": 63457,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -43,14 +43,14 @@
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
     },
     {
-      "ean": "5201279072193",
-      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
-      "brand": "Apivita",
-      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
-      "best_price": 2.28,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/"
+      "ean": "0717334253124",
+      "name": "Esfoliante Facial Origins Checks and Balances",
+      "brand": "Origins",
+      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
+      "best_price": 22.79,
+      "best_store": "Atida | Mifarma PT",
+      "best_store_slug": "atida",
+      "best_url": "https://www.atida.com/pt-pt/esfoliante-facial-origins-checks-and-balances-75-ml"
     }
   ],
   "bestsellers": [
@@ -131,10 +131,10 @@
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 7.67,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
+      "best_price": 14.54,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
     },
     {
       "ean": "3701436934781",
@@ -188,21 +188,6 @@
       "verified_live": true
     },
     {
-      "ean": "328770075533",
-      "name": "Ducray Anaphase Champô Anti-Afinamento -",
-      "brand": "Ducray",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/d/u/ducray1_1_1__1.jpg",
-      "best_price": 7.79,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/ducray-anaphase-champo-antiqueda-anti-afinamento-200ml",
-      "volume_ml": 200,
-      "previous_price": 11.7,
-      "discount_pct": 33,
-      "dropped_day": 20670,
-      "verified_live": true
-    },
-    {
       "ean": "3499320013888",
       "name": "Cetaphil Loção de Limpeza Peles Secas e Sensíveis",
       "brand": "Cetaphil",
@@ -229,20 +214,34 @@
       "discount_pct": 23,
       "dropped_day": 20673,
       "verified_live": true
+    },
+    {
+      "ean": "3662361001743",
+      "name": "SVR Leite Solar Sun Secure FPS50+",
+      "brand": "Laboratorios SVR",
+      "image_url": "https://assets.atida.com/transform/76accca8-eed3-46a5-86e7-fcc4579d9a8f/Leche-Solar-Sun-Secure-SPF50-SVR-250ml",
+      "best_price": 11.3,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/protetor-solar-sun-secure-lait-spf50",
+      "previous_price": 14.54,
+      "discount_pct": 22,
+      "dropped_day": 20673,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1944
+      "products": 1943
+    },
+    {
+      "name": "Isdin",
+      "products": 771
     },
     {
       "name": "Clarins",
       "products": 771
-    },
-    {
-      "name": "Isdin",
-      "products": 768
     },
     {
       "name": "Avène",
@@ -254,15 +253,15 @@
     },
     {
       "name": "L'Oréal Paris",
-      "products": 620
+      "products": 625
     },
     {
       "name": "La Roche-Posay",
-      "products": 613
+      "products": 614
     },
     {
       "name": "Eucerin",
-      "products": 604
+      "products": 603
     }
   ],
   "telegram_alerts": [
@@ -296,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49981,
+    "products": 49989,
     "avg_savings_pct": 30
   },
   "shard_version": "",
