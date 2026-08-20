@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-18T04:24:23.807Z",
-  "seed_total_products": 63468,
+  "generated_at": "2026-08-20T03:57:43.394Z",
+  "seed_total_products": 63514,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -17,10 +17,10 @@
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
       "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.44,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml"
+      "best_price": 18.25,
+      "best_store": "Saúde Mayor",
+      "best_store_slug": "saudemayor",
+      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
     },
     {
       "ean": "3337875492799",
@@ -121,10 +121,10 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 4.48,
-      "best_store": "Farmácia2U",
-      "best_store_slug": "farmacia2u",
-      "best_url": "https://www.farmacia2u.com/pt/comprar/neutrogena-pack-creme-de-maos-concentrado-oferta-stick-labial-50ml-48-gr"
+      "best_price": 5.69,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/neutrogena-formula-norueguesa-creme-maos-concentrado-50ml-oferta-stick-labial"
     },
     {
       "ean": "3574661540887",
@@ -159,17 +159,18 @@
   ],
   "em_alta": [
     {
-      "ean": "3661434028212",
-      "name": "Uriage Bariésun Dry Oil SPF 30",
-      "brand": "Uriage",
-      "image_url": "https://cdn.notinoimg.com/detail_main_mq/uriage/3661434028212_01-o/bariesun-dry-oil-spf-30___260225.jpg",
-      "best_price": 8.22,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/uriage-bariesun-oleo-seco-spf30",
-      "previous_price": 12.67,
-      "discount_pct": 35,
-      "dropped_day": 20673,
+      "ean": "3662361003297",
+      "name": "Hydraliane Creme Rico",
+      "brand": "SVR",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638418668518544950/svr-020347vr_01.jpg",
+      "best_price": 9.43,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/svr-hydraliane-creme-rico-hidratacao-intensa-50ml",
+      "volume_ml": 40,
+      "previous_price": 15.88,
+      "discount_pct": 40,
+      "dropped_day": 20683,
       "verified_live": true
     },
     {
@@ -188,20 +189,6 @@
       "verified_live": true
     },
     {
-      "ean": "3282770392999",
-      "name": "Spray High Protection Spf 30",
-      "brand": "Avène",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5013167.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 10.38,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/spray-spf-30",
-      "previous_price": 14.95,
-      "discount_pct": 31,
-      "dropped_day": 20682,
-      "verified_live": true
-    },
-    {
       "ean": "3499320013888",
       "name": "Cetaphil Loção de Limpeza Peles Secas e Sensíveis",
       "brand": "Cetaphil",
@@ -216,17 +203,32 @@
       "verified_live": true
     },
     {
-      "ean": "3662361004058",
-      "name": "SVR Sun Secure Água Solar Hidratante SPF50+",
-      "brand": "Laboratorios SVR",
-      "image_url": "https://assets.atida.com/transform/e393892c-7f33-4ed5-84cf-ff3c13173a35/SVR-Sun-Secure-Agua-Solar-SPF50-100-ml",
-      "best_price": 5.44,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/sun-secure-agua-solar-spf50-1",
-      "previous_price": 7.02,
-      "discount_pct": 23,
-      "dropped_day": 20673,
+      "ean": "3282770390766",
+      "name": "Klorane Champô Seco Leite de Aveia para Cabelos Castanhos",
+      "brand": "Klorane",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/2/7254326-klorane_oat_ceramide_dry_shampoo_150ml.jpg",
+      "best_price": 5.64,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/klorane-capilar-aveia-bio-e-ceramida-champo-seco-cor-150-ml",
+      "previous_price": 7.06,
+      "discount_pct": 20,
+      "dropped_day": 20677,
+      "verified_live": true
+    },
+    {
+      "ean": "3504105035518",
+      "name": "Hydra Bebé Body Lotion",
+      "brand": "Mustela",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802475.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 8.4,
+      "best_store": "Wells",
+      "best_store_slug": "wells",
+      "best_url": "https://wells.pt/body-lotion-hydra-bebe-3000775.html",
+      "volume_ml": 300,
+      "previous_price": 10.51,
+      "discount_pct": 20,
+      "dropped_day": 20684,
       "verified_live": true
     }
   ],
@@ -249,7 +251,7 @@
     },
     {
       "name": "Nivea",
-      "products": 640
+      "products": 641
     },
     {
       "name": "L'Oréal Paris",
@@ -261,7 +263,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 604
+      "products": 605
     }
   ],
   "telegram_alerts": [
@@ -295,7 +297,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 50004,
+    "products": 49963,
     "avg_savings_pct": 30
   },
   "shard_version": "",
