@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T06:01:01.560Z",
+  "generated_at": "2026-08-20T05:57:52.476Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -11,7 +11,7 @@
       "best_store": "Pharma Scalabis",
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/",
-      "search_term": "vitamina c rosto melhores",
+      "search_term": "vitamina c rosto para que serve",
       "pop_score": 65
     },
     {
@@ -19,12 +19,12 @@
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
       "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.44,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml",
-      "search_term": "protetor solar facial coreano",
-      "pop_score": 53
+      "best_price": 18.25,
+      "best_store": "Saúde Mayor",
+      "best_store_slug": "saudemayor",
+      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html",
+      "search_term": "protetor solar facial isdin",
+      "pop_score": 49
     },
     {
       "ean": "3337875492799",
@@ -43,24 +43,12 @@
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.72,
+      "best_price": 13.85,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 42
-    },
-    {
-      "ean": "0717334253124",
-      "name": "Esfoliante Facial Origins Checks and Balances",
-      "brand": "Origins",
-      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
-      "best_price": 18.94,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
-      "search_term": "esfoliante facial caseiro",
-      "pop_score": 29
+      "pop_score": 41
     },
     {
       "ean": "8429420236769",
@@ -72,7 +60,7 @@
       "best_store_slug": "farmatogo",
       "best_url": "https://www.farmatogo.com/products/isdin-acniben-face-mask-75ml",
       "search_term": "mascara facial coreana",
-      "pop_score": 29
+      "pop_score": 30
     },
     {
       "ean": "3282779416139",
@@ -84,7 +72,19 @@
       "best_store_slug": "atuafarmacia",
       "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml",
       "search_term": "creme de maos loccitane",
-      "pop_score": 27
+      "pop_score": 26
+    },
+    {
+      "ean": "bemecare-lrposay-effaclar-h-isobiome-cr-lav-390ml",
+      "name": "La Roche Posay Effaclar H Iso-Biome Creme Lavante",
+      "brand": null,
+      "image_url": "https://shopcosmetics.pt/5383-home_default/lrposay-effaclar-h-isobiome-cr-lav-390ml.jpg",
+      "best_price": 22,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
+      "search_term": "la roche posay sunscreen",
+      "pop_score": 26
     },
     {
       "ean": "8428749915409",
