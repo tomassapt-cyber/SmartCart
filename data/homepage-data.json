@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-22T03:52:55.641Z",
-  "seed_total_products": 63582,
+  "generated_at": "2026-08-22T07:16:18.397Z",
+  "seed_total_products": 63593,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -202,42 +202,42 @@
       "verified_live": true
     },
     {
-      "ean": "3661434014123",
-      "name": "Uriage Bariésun Stick Solar Invisível FPS50+",
+      "ean": "3661434005459",
+      "name": "Uriage Bariéderm-Cica Bálsamo Protetor Labial",
       "brand": "Uriage",
-      "image_url": "https://byfarma.pt/assets/capturar__708.jpg",
-      "best_price": 6.24,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/uriage-bariesun-stick-solar-invisivel-fps50",
-      "previous_price": 7.93,
-      "discount_pct": 21,
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/6804526600.jpg",
+      "best_price": 5.04,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/uriage-bariederm-cica-labial-balsamo-protetor-15ml",
+      "previous_price": 6.5,
+      "discount_pct": 22,
       "dropped_day": 20686,
       "verified_live": true
     },
     {
-      "ean": "3282770390766",
-      "name": "Klorane Champô Seco Leite de Aveia para Cabelos Castanhos",
-      "brand": "Klorane",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/2/7254326-klorane_oat_ceramide_dry_shampoo_150ml.jpg",
-      "best_price": 5.64,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/klorane-capilar-aveia-bio-e-ceramida-champo-seco-cor-150-ml",
-      "previous_price": 7.06,
+      "ean": "5901761919264",
+      "name": "Eveline Cosmetics Hyaluronic Micellar Water 3 In 1",
+      "brand": "Eveline",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/evelin/5901761919264-800x800.jpg",
+      "best_price": 4.02,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/eveline-facemed-agua-micelar-hialuronica-3-em-1-400ml",
+      "previous_price": 5.05,
       "discount_pct": 20,
-      "dropped_day": 20677,
+      "dropped_day": 20686,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1953
+      "products": 1952
     },
     {
       "name": "Isdin",
-      "products": 772
+      "products": 771
     },
     {
       "name": "Clarins",
@@ -249,7 +249,7 @@
     },
     {
       "name": "Nivea",
-      "products": 641
+      "products": 642
     },
     {
       "name": "L'Oréal Paris",
@@ -295,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 50010,
+    "products": 50015,
     "avg_savings_pct": 30
   },
   "shard_version": "",
