@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-20T03:57:43.394Z",
-  "seed_total_products": 63514,
+  "generated_at": "2026-08-22T03:52:55.641Z",
+  "seed_total_products": 63582,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -43,14 +43,14 @@
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
     },
     {
-      "ean": "0717334253124",
-      "name": "Esfoliante Facial Origins Checks and Balances",
-      "brand": "Origins",
-      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
-      "best_price": 22.79,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/esfoliante-facial-origins-checks-and-balances-75-ml"
+      "ean": "8429420236769",
+      "name": "ISDIN Acniben Máscara Facial Purificante - Para pele oleosa com tendência a acneica.",
+      "brand": "Isdin",
+      "image_url": "https://assets.atida.com/transform/aee1d54b-a6b0-4f14-99a9-8c1199fc9a31/Isdin-Acniben-Mascarilla-Facial-Purificante-75-ml",
+      "best_price": 12.18,
+      "best_store": "FarmaToGo",
+      "best_store_slug": "farmatogo",
+      "best_url": "https://www.farmatogo.com/products/isdin-acniben-face-mask-75ml"
     }
   ],
   "bestsellers": [
@@ -121,10 +121,20 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 5.69,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/neutrogena-formula-norueguesa-creme-maos-concentrado-50ml-oferta-stick-labial"
+      "best_price": 5.95,
+      "best_store": "Farmacentral",
+      "best_store_slug": "farmacentral",
+      "best_url": "https://farmacentral.pt/pt/artigo/neutrogena-maos-creme-concentrado-maos-stick-labial"
+    },
+    {
+      "ean": "3574661761107",
+      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
+      "best_price": 12.49,
+      "best_store": "My Cosmetics",
+      "best_store_slug": "mycosmetics",
+      "best_url": "https://www.mycosmetics.pt/products/neutrogen-hydro-boost-gel-cr50-cr-olh15"
     },
     {
       "ean": "3574661540887",
@@ -145,34 +155,9 @@
       "best_store": "Bairro da Saúde",
       "best_store_slug": "bairro-saude",
       "best_url": "https://bairrodasaude.pt/products/lierac-lift-integral-coffret-serum-tensor-30ml-oferta-cuidado-lift-dos-olhos-15ml"
-    },
-    {
-      "ean": "3574661761107",
-      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
-      "best_price": 12.49,
-      "best_store": "My Cosmetics",
-      "best_store_slug": "mycosmetics",
-      "best_url": "https://www.mycosmetics.pt/products/neutrogen-hydro-boost-gel-cr50-cr-olh15"
     }
   ],
   "em_alta": [
-    {
-      "ean": "3662361003297",
-      "name": "Hydraliane Creme Rico",
-      "brand": "SVR",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638418668518544950/svr-020347vr_01.jpg",
-      "best_price": 9.43,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/svr-hydraliane-creme-rico-hidratacao-intensa-50ml",
-      "volume_ml": 40,
-      "previous_price": 15.88,
-      "discount_pct": 40,
-      "dropped_day": 20683,
-      "verified_live": true
-    },
     {
       "ean": "3661434008818",
       "name": "Creme Lavante Sólido",
@@ -186,6 +171,20 @@
       "previous_price": 5.6,
       "discount_pct": 35,
       "dropped_day": 20677,
+      "verified_live": true
+    },
+    {
+      "ean": "3574661117621",
+      "name": "Piz Buin Creme Facial Alergia FPS50",
+      "brand": "Piz Buin",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6931428-pizbuinallergyrostospf50.jpg",
+      "best_price": 4.86,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-facial-allergy-pele-sensivel-fps50",
+      "previous_price": 6.67,
+      "discount_pct": 27,
+      "dropped_day": 20686,
       "verified_live": true
     },
     {
@@ -203,6 +202,20 @@
       "verified_live": true
     },
     {
+      "ean": "3661434014123",
+      "name": "Uriage Bariésun Stick Solar Invisível FPS50+",
+      "brand": "Uriage",
+      "image_url": "https://byfarma.pt/assets/capturar__708.jpg",
+      "best_price": 6.24,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/uriage-bariesun-stick-solar-invisivel-fps50",
+      "previous_price": 7.93,
+      "discount_pct": 21,
+      "dropped_day": 20686,
+      "verified_live": true
+    },
+    {
       "ean": "3282770390766",
       "name": "Klorane Champô Seco Leite de Aveia para Cabelos Castanhos",
       "brand": "Klorane",
@@ -215,39 +228,24 @@
       "discount_pct": 20,
       "dropped_day": 20677,
       "verified_live": true
-    },
-    {
-      "ean": "3504105035518",
-      "name": "Hydra Bebé Body Lotion",
-      "brand": "Mustela",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802475.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 8.4,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/body-lotion-hydra-bebe-3000775.html",
-      "volume_ml": 300,
-      "previous_price": 10.51,
-      "discount_pct": 20,
-      "dropped_day": 20684,
-      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1944
+      "products": 1953
+    },
+    {
+      "name": "Isdin",
+      "products": 772
     },
     {
       "name": "Clarins",
       "products": 771
     },
     {
-      "name": "Isdin",
-      "products": 770
-    },
-    {
       "name": "Avène",
-      "products": 676
+      "products": 679
     },
     {
       "name": "Nivea",
@@ -259,11 +257,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 613
+      "products": 614
     },
     {
       "name": "Eucerin",
-      "products": 605
+      "products": 606
     }
   ],
   "telegram_alerts": [
@@ -297,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49963,
+    "products": 50010,
     "avg_savings_pct": 30
   },
   "shard_version": "",
