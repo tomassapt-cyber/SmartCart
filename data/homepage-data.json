@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-22T07:16:18.397Z",
-  "seed_total_products": 63593,
+  "generated_at": "2026-08-24T04:21:35.145Z",
+  "seed_total_products": 63655,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -127,24 +127,14 @@
       "best_url": "https://farmacentral.pt/pt/artigo/neutrogena-maos-creme-concentrado-maos-stick-labial"
     },
     {
-      "ean": "3574661761107",
-      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
-      "best_price": 12.49,
-      "best_store": "My Cosmetics",
-      "best_store_slug": "mycosmetics",
-      "best_url": "https://www.mycosmetics.pt/products/neutrogen-hydro-boost-gel-cr50-cr-olh15"
-    },
-    {
       "ean": "3574661540887",
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 7.67,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
+      "best_price": 14.54,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
     },
     {
       "ean": "3701436934781",
@@ -155,24 +145,19 @@
       "best_store": "Bairro da Saúde",
       "best_store_slug": "bairro-saude",
       "best_url": "https://bairrodasaude.pt/products/lierac-lift-integral-coffret-serum-tensor-30ml-oferta-cuidado-lift-dos-olhos-15ml"
+    },
+    {
+      "ean": "3574661761107",
+      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
+      "best_price": 13.05,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/neutrogena-hydro-boost-hidratante-facial-gel-de-agua-50ml-oferta-contorno-de-olhos-anti-fadiga-gel-creme-15ml"
     }
   ],
   "em_alta": [
-    {
-      "ean": "3661434008818",
-      "name": "Creme Lavante Sólido",
-      "brand": "Uriage",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwc8ba9029/images/wells/745/7452613-ROTINA-CREME-LAVANTE-SOLIDO-URIAGE-P-01.jpg",
-      "best_price": 3.64,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/uriage-1º-creme-lavante-solido-100-g",
-      "volume_ml": 100,
-      "previous_price": 5.6,
-      "discount_pct": 35,
-      "dropped_day": 20677,
-      "verified_live": true
-    },
     {
       "ean": "3574661117621",
       "name": "Piz Buin Creme Facial Alergia FPS50",
@@ -185,20 +170,6 @@
       "previous_price": 6.67,
       "discount_pct": 27,
       "dropped_day": 20686,
-      "verified_live": true
-    },
-    {
-      "ean": "3499320013888",
-      "name": "Cetaphil Loção de Limpeza Peles Secas e Sensíveis",
-      "brand": "Cetaphil",
-      "image_url": "https://assets.atida.com/transform/92385ab5-d1a7-437d-a394-e8dc77b24e57/Cetaphil-Locion-Limpiadora-473-ml",
-      "best_price": 9.59,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/cetaphil-locao-de-limpeza-473ml-preco-especial",
-      "previous_price": 12.79,
-      "discount_pct": 25,
-      "dropped_day": 20677,
       "verified_live": true
     },
     {
@@ -216,6 +187,20 @@
       "verified_live": true
     },
     {
+      "ean": "3661434014123",
+      "name": "Uriage Bariésun Stick Solar Invisível FPS50+",
+      "brand": "Uriage",
+      "image_url": "https://byfarma.pt/assets/capturar__708.jpg",
+      "best_price": 6.24,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/uriage-bariesun-stick-solar-invisivel-fps50",
+      "previous_price": 7.93,
+      "discount_pct": 21,
+      "dropped_day": 20686,
+      "verified_live": true
+    },
+    {
       "ean": "5901761919264",
       "name": "Eveline Cosmetics Hyaluronic Micellar Water 3 In 1",
       "brand": "Eveline",
@@ -228,16 +213,31 @@
       "discount_pct": 20,
       "dropped_day": 20686,
       "verified_live": true
+    },
+    {
+      "ean": "3504105035518",
+      "name": "Hydra Bebé Body Lotion",
+      "brand": "Mustela",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802475.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 8.4,
+      "best_store": "Wells",
+      "best_store_slug": "wells",
+      "best_url": "https://wells.pt/body-lotion-hydra-bebe-3000775.html",
+      "volume_ml": 300,
+      "previous_price": 10.51,
+      "discount_pct": 20,
+      "dropped_day": 20684,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1952
+      "products": 1954
     },
     {
       "name": "Isdin",
-      "products": 771
+      "products": 773
     },
     {
       "name": "Clarins",
@@ -245,7 +245,7 @@
     },
     {
       "name": "Avène",
-      "products": 679
+      "products": 680
     },
     {
       "name": "Nivea",
@@ -257,11 +257,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 614
+      "products": 619
     },
     {
       "name": "Eucerin",
-      "products": 606
+      "products": 609
     }
   ],
   "telegram_alerts": [
@@ -295,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 50015,
+    "products": 49942,
     "avg_savings_pct": 30
   },
   "shard_version": "",
