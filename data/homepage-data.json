@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-24T04:21:35.145Z",
-  "seed_total_products": 63655,
+  "generated_at": "2026-08-24T07:43:40.391Z",
+  "seed_total_products": 63647,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -43,14 +43,14 @@
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
     },
     {
-      "ean": "8429420236769",
-      "name": "ISDIN Acniben Máscara Facial Purificante - Para pele oleosa com tendência a acneica.",
-      "brand": "Isdin",
-      "image_url": "https://assets.atida.com/transform/aee1d54b-a6b0-4f14-99a9-8c1199fc9a31/Isdin-Acniben-Mascarilla-Facial-Purificante-75-ml",
-      "best_price": 12.18,
-      "best_store": "FarmaToGo",
-      "best_store_slug": "farmatogo",
-      "best_url": "https://www.farmatogo.com/products/isdin-acniben-face-mask-75ml"
+      "ean": "5201279072193",
+      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
+      "brand": "Apivita",
+      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
+      "best_price": 2.28,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/"
     }
   ],
   "bestsellers": [
@@ -233,7 +233,7 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1954
+      "products": 1952
     },
     {
       "name": "Isdin",
@@ -245,7 +245,7 @@
     },
     {
       "name": "Avène",
-      "products": 680
+      "products": 679
     },
     {
       "name": "Nivea",
@@ -261,7 +261,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 609
+      "products": 608
     }
   ],
   "telegram_alerts": [
@@ -295,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49942,
+    "products": 49910,
     "avg_savings_pct": 30
   },
   "shard_version": "",
