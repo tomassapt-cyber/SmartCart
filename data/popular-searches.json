@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T05:57:52.476Z",
+  "generated_at": "2026-08-24T06:04:07.908Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -11,7 +11,7 @@
       "best_store": "Pharma Scalabis",
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/",
-      "search_term": "vitamina c rosto para que serve",
+      "search_term": "vitamina c rosto melhores",
       "pop_score": 65
     },
     {
@@ -23,8 +23,8 @@
       "best_store": "Saúde Mayor",
       "best_store_slug": "saudemayor",
       "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html",
-      "search_term": "protetor solar facial isdin",
-      "pop_score": 49
+      "search_term": "protetor solar facial coreano",
+      "pop_score": 52
     },
     {
       "ean": "3337875492799",
@@ -51,16 +51,28 @@
       "pop_score": 41
     },
     {
-      "ean": "8429420236769",
-      "name": "ISDIN Acniben Máscara Facial Purificante - Para pele oleosa com tendência a acneica.",
-      "brand": "Isdin",
-      "image_url": "https://assets.atida.com/transform/aee1d54b-a6b0-4f14-99a9-8c1199fc9a31/Isdin-Acniben-Mascarilla-Facial-Purificante-75-ml",
-      "best_price": 12.18,
-      "best_store": "FarmaToGo",
-      "best_store_slug": "farmatogo",
-      "best_url": "https://www.farmatogo.com/products/isdin-acniben-face-mask-75ml",
+      "ean": "5201279072193",
+      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
+      "brand": "Apivita",
+      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
+      "best_price": 2.28,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/",
       "search_term": "mascara facial coreana",
-      "pop_score": 30
+      "pop_score": 29
+    },
+    {
+      "ean": "bemecare-lrposay-effaclar-h-isobiome-cr-lav-390ml",
+      "name": "La Roche Posay Effaclar H Iso-Biome Creme Lavante",
+      "brand": null,
+      "image_url": "https://shopcosmetics.pt/5383-home_default/lrposay-effaclar-h-isobiome-cr-lav-390ml.jpg",
+      "best_price": 22,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
+      "search_term": "la roche posay sunscreen",
+      "pop_score": 28
     },
     {
       "ean": "3282779416139",
@@ -75,26 +87,14 @@
       "pop_score": 26
     },
     {
-      "ean": "bemecare-lrposay-effaclar-h-isobiome-cr-lav-390ml",
-      "name": "La Roche Posay Effaclar H Iso-Biome Creme Lavante",
-      "brand": null,
-      "image_url": "https://shopcosmetics.pt/5383-home_default/lrposay-effaclar-h-isobiome-cr-lav-390ml.jpg",
-      "best_price": 22,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
-      "search_term": "la roche posay sunscreen",
-      "pop_score": 26
-    },
-    {
-      "ean": "8428749915409",
-      "name": "Sérum Facial Skin D-Pigment",
-      "brand": "Sensilis",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799459.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 30.04,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/sensilis-skin-d-pigment-serum-atx-30ml",
+      "ean": "3461020017831",
+      "name": "Institut Esthederm Intensive NAD+ Sérum Facial Redefinidor e Uniformizador",
+      "brand": "Esthederm",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a22f2e02e1dd_esthederm-nad-serum-30ml-1_1.jpg",
+      "best_price": 46.24,
+      "best_store": "Skin",
+      "best_store_slug": "skin",
+      "best_url": "https://skin.pt/institut-esthederm-intensive-nad-serum-facial-redefinidor-e-uniformizador-30ml",
       "search_term": "serum facial principia",
       "pop_score": 25
     }
