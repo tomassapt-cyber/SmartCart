@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T06:04:07.908Z",
+  "generated_at": "2026-08-27T16:39:25.479Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -12,7 +12,7 @@
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/",
       "search_term": "vitamina c rosto melhores",
-      "pop_score": 65
+      "pop_score": 66
     },
     {
       "ean": "8429420158399",
@@ -36,7 +36,7 @@
       "best_store_slug": "farmaoli",
       "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
       "search_term": "shampoo anticaspa",
-      "pop_score": 48
+      "pop_score": 49
     },
     {
       "ean": "3606000560833",
@@ -48,7 +48,7 @@
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 41
+      "pop_score": 43
     },
     {
       "ean": "5201279072193",
@@ -60,7 +60,7 @@
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/",
       "search_term": "mascara facial coreana",
-      "pop_score": 29
+      "pop_score": 30
     },
     {
       "ean": "bemecare-lrposay-effaclar-h-isobiome-cr-lav-390ml",
@@ -72,18 +72,6 @@
       "best_store_slug": "shopcosmetics",
       "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
       "search_term": "la roche posay sunscreen",
-      "pop_score": 28
-    },
-    {
-      "ean": "3282779416139",
-      "name": "Avène Cicalfate Creme de Mãos",
-      "brand": "Avène",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg",
-      "best_price": 7.69,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/avene-cicalfate-creme-maos-100ml",
-      "search_term": "creme de maos loccitane",
       "pop_score": 26
     },
     {
@@ -96,6 +84,18 @@
       "best_store_slug": "skin",
       "best_url": "https://skin.pt/institut-esthederm-intensive-nad-serum-facial-redefinidor-e-uniformizador-30ml",
       "search_term": "serum facial principia",
+      "pop_score": 25
+    },
+    {
+      "ean": "0717334253124",
+      "name": "Esfoliante Facial Origins Checks and Balances",
+      "brand": "Origins",
+      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
+      "best_price": 18.94,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
+      "search_term": "esfoliante facial caseiro",
       "pop_score": 25
     }
   ]
