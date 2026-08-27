@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-25T07:29:32.415Z",
-  "seed_total_products": 63659,
+  "generated_at": "2026-08-27T14:03:43.124Z",
+  "seed_total_products": 63737,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -173,6 +173,20 @@
       "verified_live": true
     },
     {
+      "ean": "3662361004324",
+      "name": "SVR Biotic Pepti Gel-Mat Retexturizante Alisante",
+      "brand": "SVR",
+      "image_url": "https://cdn1.costatic.com/img/product/240/67d981dc15f90/svr-biotic-pepti-p98891.jpg",
+      "best_price": 21.5,
+      "best_store": "My Cosmetics",
+      "best_store_slug": "mycosmetics",
+      "best_url": "https://www.mycosmetics.pt/products/svr-biotic-pepti-gel-mate-recarreg-50ml",
+      "previous_price": 28.22,
+      "discount_pct": 24,
+      "dropped_day": 20690,
+      "verified_live": true
+    },
+    {
       "ean": "5901761919264",
       "name": "Eveline Cosmetics Hyaluronic Micellar Water 3 In 1",
       "brand": "Eveline",
@@ -202,38 +216,24 @@
       "verified_live": true
     },
     {
-      "ean": "3282770105919",
-      "name": "René Furterer 5 Sens Champô",
-      "brand": "René Furterer",
-      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/KloraneCapilarManteigaDeMangaCondicionador200ml_42.jpg?v=1747746619",
-      "best_price": 8.36,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/rene-furterer-5-sens-champo",
-      "previous_price": 10.42,
+      "ean": "850056933285",
+      "name": "Olaplex Nº5 Leave-In Condicionador Hidratante e Reparador",
+      "brand": "Olaplex",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/olaplex/850056933285-800x800.jpg",
+      "best_price": 15.95,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/olaplex-condicionador-n-5-leave-in-120319.html",
+      "previous_price": 19.95,
       "discount_pct": 20,
-      "dropped_day": 20682,
-      "verified_live": true
-    },
-    {
-      "ean": "3577057054661",
-      "name": "Elgydium Júnior Escova Dentes Júnior Racoon",
-      "brand": "Pierre Fabre",
-      "image_url": "https://static.lojadafarmacia.com/439/elgydium-junior-escova-dentes-junior-racoon.jpg",
-      "best_price": 2.7,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/escovas-de-dentes/1642-elgydium-junior-escova-dentes-7-12anos.html",
-      "previous_price": 3.3,
-      "discount_pct": 18,
-      "dropped_day": 20683,
+      "dropped_day": 20692,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1948
+      "products": 1958
     },
     {
       "name": "Isdin",
@@ -245,7 +245,7 @@
     },
     {
       "name": "Avène",
-      "products": 679
+      "products": 683
     },
     {
       "name": "Nivea",
@@ -257,7 +257,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 621
+      "products": 620
     },
     {
       "name": "Eucerin",
@@ -295,8 +295,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49911,
-    "avg_savings_pct": 30
+    "products": 49994,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": ""
