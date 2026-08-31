@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-31T10:09:13.884Z",
-  "seed_total_products": 63792,
+  "generated_at": "2026-08-31T14:24:09.979Z",
+  "seed_total_products": 63782,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -13,16 +13,6 @@
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/"
     },
     {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 18.25,
-      "best_store": "Saúde Mayor",
-      "best_store_slug": "saudemayor",
-      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
-    },
-    {
       "ean": "3337875492799",
       "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
       "brand": "Vichy",
@@ -31,6 +21,16 @@
       "best_store": "Farmaoli",
       "best_store_slug": "farmaoli",
       "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
+    },
+    {
+      "ean": "8429420158399",
+      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
+      "best_price": 18.25,
+      "best_store": "Saúde Mayor",
+      "best_store_slug": "saudemayor",
+      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
     },
     {
       "ean": "3606000560833",
@@ -233,11 +233,11 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1960
+      "products": 1959
     },
     {
       "name": "Isdin",
-      "products": 774
+      "products": 772
     },
     {
       "name": "Clarins",
@@ -245,7 +245,7 @@
     },
     {
       "name": "Avène",
-      "products": 683
+      "products": 682
     },
     {
       "name": "Nivea",
@@ -261,7 +261,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 616
+      "products": 615
     }
   ],
   "telegram_alerts": [
@@ -295,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49884,
+    "products": 49873,
     "avg_savings_pct": 30
   },
   "shard_version": "",
