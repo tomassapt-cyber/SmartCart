@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-27T17:54:15.058Z",
-  "seed_total_products": 63735,
+  "generated_at": "2026-08-31T10:09:13.884Z",
+  "seed_total_products": 63792,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -131,10 +131,20 @@
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 7.67,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
+      "best_price": 14.54,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
+    },
+    {
+      "ean": "3662361005949",
+      "name": "SVR Coffret Densitium Creme + SVR Ampoule C - + - Farmá...",
+      "brand": "SVR",
+      "image_url": "https://www.farmaciabarreiros.com/38185/svr-coffret-densitium-creme-svr-ampoule-c-50-ml-10-ml.jpg",
+      "best_price": 31.07,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/svr-duo-redensificante-iluminador"
     },
     {
       "ean": "3701436934781",
@@ -145,19 +155,24 @@
       "best_store": "Bairro da Saúde",
       "best_store_slug": "bairro-saude",
       "best_url": "https://bairrodasaude.pt/products/lierac-lift-integral-coffret-serum-tensor-30ml-oferta-cuidado-lift-dos-olhos-15ml"
-    },
-    {
-      "ean": "3574661761107",
-      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
-      "best_price": 13.05,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/neutrogena-hydro-boost-hidratante-facial-gel-de-agua-50ml-oferta-contorno-de-olhos-anti-fadiga-gel-creme-15ml"
     }
   ],
   "em_alta": [
+    {
+      "ean": "3701129807897",
+      "name": "Bioderma Photoderm Eau Solaire Anti-Ox Água Solar Protetora SPF50",
+      "brand": "Bioderma",
+      "image_url": "https://assets.atida.com/transform/2aaf5d6c-6815-461e-b906-28bed82ef2fd/Bioderma-Photoderm-Eau-Solaire-SPF50-200-ml",
+      "best_price": 12.66,
+      "best_store": "Pharma Scalabis",
+      "best_store_slug": "pharmascalabis",
+      "best_url": "https://www.pharmascalabis.com/store/bioderma-photoderm-bruma-invisible-spf50-150-ml/",
+      "volume_ml": 150,
+      "previous_price": 23.77,
+      "discount_pct": 47,
+      "dropped_day": 20694,
+      "verified_live": true
+    },
     {
       "ean": "8809598454316",
       "name": "Propolis Light Ampoule",
@@ -170,6 +185,20 @@
       "previous_price": 21.75,
       "discount_pct": 28,
       "dropped_day": 20689,
+      "verified_live": true
+    },
+    {
+      "ean": "3662361004041",
+      "name": "SVR Sun Secure Stick Solar FPS50+",
+      "brand": "Laboratorios SVR",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/v/svr_sunsecuresticksolarspf50_.jpg",
+      "best_price": 5.03,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/sun-secure-stick-spf50",
+      "previous_price": 6.94,
+      "discount_pct": 28,
+      "dropped_day": 20694,
       "verified_live": true
     },
     {
@@ -187,57 +216,28 @@
       "verified_live": true
     },
     {
-      "ean": "5901761919264",
-      "name": "Eveline Cosmetics Hyaluronic Micellar Water 3 In 1",
-      "brand": "Eveline",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/evelin/5901761919264-800x800.jpg",
-      "best_price": 4.02,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/eveline-facemed-agua-micelar-hialuronica-3-em-1-400ml",
-      "previous_price": 5.05,
-      "discount_pct": 20,
-      "dropped_day": 20686,
-      "verified_live": true
-    },
-    {
-      "ean": "3504105035518",
-      "name": "Hydra Bebé Body Lotion",
-      "brand": "Mustela",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802475.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 8.4,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/body-lotion-hydra-bebe-3000775.html",
-      "volume_ml": 300,
-      "previous_price": 10.51,
-      "discount_pct": 20,
-      "dropped_day": 20684,
-      "verified_live": true
-    },
-    {
-      "ean": "850056933285",
-      "name": "Olaplex Nº5 Leave-In Condicionador Hidratante e Reparador",
-      "brand": "Olaplex",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/olaplex/850056933285-800x800.jpg",
-      "best_price": 15.95,
+      "ean": "5056585800448",
+      "name": "Máscara Esfoliante para calcanhares Expert Care",
+      "brand": "Dr. Scholls",
+      "image_url": "https://static.lojadafarmacia.com/21921/scholl-masc-esfoliante-calcanhar-x2.webp",
+      "best_price": 5.98,
       "best_store": "Primor",
       "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/olaplex-condicionador-n-5-leave-in-120319.html",
-      "previous_price": 19.95,
-      "discount_pct": 20,
-      "dropped_day": 20692,
+      "best_url": "https://pt.primor.eu/pt_pt/dr-scholl-mascara-esfoliante-para-calcanhares-expert-care-91543.html",
+      "previous_price": 7.75,
+      "discount_pct": 23,
+      "dropped_day": 20696,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1958
+      "products": 1960
     },
     {
       "name": "Isdin",
-      "products": 773
+      "products": 774
     },
     {
       "name": "Clarins",
@@ -245,11 +245,11 @@
     },
     {
       "name": "Avène",
-      "products": 682
+      "products": 683
     },
     {
       "name": "Nivea",
-      "products": 642
+      "products": 643
     },
     {
       "name": "L'Oréal Paris",
@@ -257,11 +257,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 619
+      "products": 618
     },
     {
       "name": "Eucerin",
-      "products": 610
+      "products": 616
     }
   ],
   "telegram_alerts": [
@@ -295,8 +295,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49982,
-    "avg_savings_pct": 29
+    "products": 49884,
+    "avg_savings_pct": 30
   },
   "shard_version": "",
   "idx_version": ""
