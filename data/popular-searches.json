@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T16:39:25.479Z",
+  "generated_at": "2026-08-31T11:45:50.105Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -11,8 +11,20 @@
       "best_store": "Pharma Scalabis",
       "best_store_slug": "pharmascalabis",
       "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/",
-      "search_term": "vitamina c rosto melhores",
+      "search_term": "vitamina c rosto para que serve",
       "pop_score": 66
+    },
+    {
+      "ean": "3337875492799",
+      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
+      "brand": "Vichy",
+      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
+      "best_price": 8.92,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
+      "search_term": "shampoo anticaspa",
+      "pop_score": 56
     },
     {
       "ean": "8429420158399",
@@ -27,18 +39,6 @@
       "pop_score": 52
     },
     {
-      "ean": "3337875492799",
-      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 8.92,
-      "best_store": "Farmaoli",
-      "best_store_slug": "farmaoli",
-      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
-      "search_term": "shampoo anticaspa",
-      "pop_score": 49
-    },
-    {
       "ean": "3606000560833",
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
@@ -48,7 +48,7 @@
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 43
+      "pop_score": 42
     },
     {
       "ean": "5201279072193",
@@ -75,14 +75,14 @@
       "pop_score": 26
     },
     {
-      "ean": "3461020017831",
-      "name": "Institut Esthederm Intensive NAD+ Sérum Facial Redefinidor e Uniformizador",
-      "brand": "Esthederm",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a22f2e02e1dd_esthederm-nad-serum-30ml-1_1.jpg",
-      "best_price": 46.24,
-      "best_store": "Skin",
-      "best_store_slug": "skin",
-      "best_url": "https://skin.pt/institut-esthederm-intensive-nad-serum-facial-redefinidor-e-uniformizador-30ml",
+      "ean": "8428749915409",
+      "name": "Sérum Facial Skin D-Pigment",
+      "brand": "Sensilis",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799459.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 30.04,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/sensilis-skin-d-pigment-serum-atx-30ml",
       "search_term": "serum facial principia",
       "pop_score": 25
     },
