@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-31T14:24:09.979Z",
-  "seed_total_products": 63782,
+  "generated_at": "2026-09-01T08:32:01.419Z",
+  "seed_total_products": 63789,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 19.29,
-      "best_store": "Pharma Scalabis",
-      "best_store_slug": "pharmascalabis",
-      "best_url": "https://www.pharmascalabis.com/store/papillon-creme-rosto-vitamina-c-50ml/"
+      "best_price": 17.94,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
     },
     {
       "ean": "3337875492799",
@@ -37,7 +37,7 @@
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.85,
+      "best_price": 13.58,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
@@ -47,7 +47,7 @@
       "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
       "brand": "Apivita",
       "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
-      "best_price": 2.28,
+      "best_price": 2.45,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/"
@@ -111,10 +111,10 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 17.75,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
+      "best_price": 15.54,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
     },
     {
       "ean": "3574661087054",
@@ -188,17 +188,17 @@
       "verified_live": true
     },
     {
-      "ean": "3662361004041",
-      "name": "SVR Sun Secure Stick Solar FPS50+",
-      "brand": "Laboratorios SVR",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/v/svr_sunsecuresticksolarspf50_.jpg",
-      "best_price": 5.03,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/sun-secure-stick-spf50",
-      "previous_price": 6.94,
-      "discount_pct": 28,
-      "dropped_day": 20694,
+      "ean": "7895389162783",
+      "name": "Clarité Sérum TX Antimanchas",
+      "brand": "Dermagius",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638726384756633579/dermagius-022648ji_01.jpg",
+      "best_price": 27.71,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/dermagius-clarite-serum-tx-anti-manchas_p72642.html",
+      "previous_price": 36.95,
+      "discount_pct": 25,
+      "dropped_day": 20697,
       "verified_live": true
     },
     {
@@ -233,11 +233,11 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1959
+      "products": 1957
     },
     {
       "name": "Isdin",
-      "products": 772
+      "products": 774
     },
     {
       "name": "Clarins",
@@ -261,7 +261,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 615
+      "products": 616
     }
   ],
   "telegram_alerts": [
@@ -295,8 +295,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49873,
-    "avg_savings_pct": 30
+    "products": 49865,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": ""

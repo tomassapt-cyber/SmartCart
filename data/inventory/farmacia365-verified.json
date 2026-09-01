@@ -3,8 +3,8 @@
   "store_slug": "farmacia365",
   "store_name": "Farmácia 365",
   "store_url": "https://www.farmacia365.pt",
-  "verified_at": "2026-08-31T09:27:14.940Z",
-  "method": "playwright-headless (refresh 2026-08-31)",
+  "verified_at": "2026-09-01T08:23:14.343Z",
+  "method": "playwright-headless (refresh 2026-09-01)",
   "stats": {
     "total": 17,
     "verified": 6,
@@ -203,19 +203,40 @@
       "observed_name": "La Roche Posay Hyalu B5 Serum 30mL",
       "observed_brand": "La Roche-Posay",
       "observed_volume_ml": 30,
-      "observed_price": 33.6,
+      "observed_price": 47.35,
       "observed_previous_price": 55.45,
       "observed_currency": "EUR",
       "observed_in_stock": true,
       "confidence": 0.97,
       "status": "verified",
-      "notes": "Preço directo via fetch da PDP: €33.27 (era €55.45, -40%, promo até 2026-05-31). Refresh 2026-05-17: 33.27€ → 39.55€ Refresh 2026-05-17: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-20: 39.55€ → 30.65€ Refresh 2026-05-21: 30.65€ → 30.65€ Refresh 2026-05-23: 30.65€ → 15.33€ Refresh 2026-05-24: 15.33€ → 15.33€ Refresh 2026-05-26: 15.33€ → 33.27€ Refresh 2026-05-27: 33.27€ → 33.27€ Refresh 2026-05-28: 33.27€ → 33.27€ Refresh 2026-05-30: 33.27€ → 33.27€ Refresh 2026-05-31: 33.27€ → 33.27€ Refresh 2026-06-01: 33.27€ → 33.27€ Refresh 2026-06-04: 33.27€ → 33.27€ Refresh 2026-06-06: 33.27€ → 33.27€ Refresh 2026-06-07: 33.27€ → 33.27€ Refresh 2026-06-09: 33.27€ → 33.27€ Refresh 2026-06-10: 33.27€ → 33.27€ Refresh 2026-06-11: 33.27€ → 33.27€ Refresh 2026-06-13: 33.27€ → 33.27€ Refresh 2026-06-14: 33.27€ → 33.27€ Refresh 2026-06-15: 33.27€ → 33.27€ Refresh 2026-07-01: 33.27€ → 47.35€ Refresh 2026-07-28: 47.35€ → 33.60€ Refresh 2026-08-24: 33.60€ → 33.60€",
-      "verified_at": "2026-08-24T03:56:03.688Z",
+      "notes": "Preço directo via fetch da PDP: €33.27 (era €55.45, -40%, promo até 2026-05-31). Refresh 2026-05-17: 33.27€ → 39.55€ Refresh 2026-05-17: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-18: 39.55€ → 39.55€ Refresh 2026-05-20: 39.55€ → 30.65€ Refresh 2026-05-21: 30.65€ → 30.65€ Refresh 2026-05-23: 30.65€ → 15.33€ Refresh 2026-05-24: 15.33€ → 15.33€ Refresh 2026-05-26: 15.33€ → 33.27€ Refresh 2026-05-27: 33.27€ → 33.27€ Refresh 2026-05-28: 33.27€ → 33.27€ Refresh 2026-05-30: 33.27€ → 33.27€ Refresh 2026-05-31: 33.27€ → 33.27€ Refresh 2026-06-01: 33.27€ → 33.27€ Refresh 2026-06-04: 33.27€ → 33.27€ Refresh 2026-06-06: 33.27€ → 33.27€ Refresh 2026-06-07: 33.27€ → 33.27€ Refresh 2026-06-09: 33.27€ → 33.27€ Refresh 2026-06-10: 33.27€ → 33.27€ Refresh 2026-06-11: 33.27€ → 33.27€ Refresh 2026-06-13: 33.27€ → 33.27€ Refresh 2026-06-14: 33.27€ → 33.27€ Refresh 2026-06-15: 33.27€ → 33.27€ Refresh 2026-07-01: 33.27€ → 47.35€ Refresh 2026-07-28: 47.35€ → 33.60€ Refresh 2026-08-24: 33.60€ → 33.60€ Refresh 2026-09-01: 33.60€ → 47.35€",
+      "verified_at": "2026-09-01T08:22:47.134Z",
       "observed_variants": [
+        {
+          "volume_ml": 30,
+          "unit": "ml",
+          "price": 33.6,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 40,
+          "unit": "ml",
+          "price": 14.7,
+          "in_stock": true,
+          "url": null
+        },
         {
           "volume_ml": 50,
           "unit": "ml",
-          "price": 7,
+          "price": 14,
+          "in_stock": true,
+          "url": null
+        },
+        {
+          "volume_ml": 100,
+          "unit": "ml",
+          "price": 23.6,
           "in_stock": true,
           "url": null
         }
