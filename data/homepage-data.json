@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-01T12:02:53.094Z",
-  "seed_total_products": 63784,
+  "generated_at": "2026-09-02T07:52:48.725Z",
+  "seed_total_products": 63787,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -141,10 +141,10 @@
       "name": "SVR Coffret Densitium Creme + SVR Ampoule C - + - Farmá...",
       "brand": "SVR",
       "image_url": "https://www.farmaciabarreiros.com/38185/svr-coffret-densitium-creme-svr-ampoule-c-50-ml-10-ml.jpg",
-      "best_price": 31.07,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/svr-duo-redensificante-iluminador"
+      "best_price": 22.75,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/svr-densitium-creme-50ml-oferta-ampoule-c10ml-bolsa"
     },
     {
       "ean": "3701436934781",
@@ -202,6 +202,20 @@
       "verified_live": true
     },
     {
+      "ean": "3282770155112",
+      "name": "Ducray Anaphase Creastim lotion antichute",
+      "brand": "Ducray",
+      "image_url": "https://www.farmaciabarreiros.com/37873/ducray-anaphase-creastim-locao-60-ml.jpg",
+      "best_price": 21.04,
+      "best_store": "Nossa Farmácia",
+      "best_store_slug": "nossafarmacia",
+      "best_url": "https://www.nossafarmacia.pt/anacaps-reactiv-caps-30/p",
+      "previous_price": 28.05,
+      "discount_pct": 25,
+      "dropped_day": 20698,
+      "verified_live": true
+    },
+    {
       "ean": "3662361004324",
       "name": "SVR Biotic Pepti Gel-Mat Retexturizante Alisante",
       "brand": "SVR",
@@ -214,26 +228,12 @@
       "discount_pct": 24,
       "dropped_day": 20690,
       "verified_live": true
-    },
-    {
-      "ean": "5056585800448",
-      "name": "Máscara Esfoliante para calcanhares Expert Care",
-      "brand": "Dr. Scholls",
-      "image_url": "https://static.lojadafarmacia.com/21921/scholl-masc-esfoliante-calcanhar-x2.webp",
-      "best_price": 5.98,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/dr-scholl-mascara-esfoliante-para-calcanhares-expert-care-91543.html",
-      "previous_price": 7.75,
-      "discount_pct": 23,
-      "dropped_day": 20696,
-      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1957
+      "products": 1956
     },
     {
       "name": "Isdin",
@@ -295,8 +295,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49865,
-    "avg_savings_pct": 29
+    "products": 49847,
+    "avg_savings_pct": 30
   },
   "shard_version": "",
   "idx_version": ""
