@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-02T07:52:48.725Z",
-  "seed_total_products": 63787,
+  "generated_at": "2026-09-02T11:39:29.989Z",
+  "seed_total_products": 63785,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -295,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49847,
+    "products": 49846,
     "avg_savings_pct": 30
   },
   "shard_version": "",
