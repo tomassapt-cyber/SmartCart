@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-02T11:39:29.989Z",
-  "seed_total_products": 63785,
+  "generated_at": "2026-09-03T08:17:31.863Z",
+  "seed_total_products": 63786,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -174,6 +174,20 @@
       "verified_live": true
     },
     {
+      "ean": "8429979424464",
+      "name": "Sesderma C-VIT Creme Contorno Olhos -",
+      "brand": "Sesderma",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/0/7003236-sesderma_c-vit_eye_cream_15ml.jpg",
+      "best_price": 15.9,
+      "best_store": "Nossa Farmácia",
+      "best_store_slug": "nossafarmacia",
+      "best_url": "https://www.nossafarmacia.pt/c-vit-creme-olhos-15ml/p",
+      "previous_price": 22.71,
+      "discount_pct": 30,
+      "dropped_day": 20699,
+      "verified_live": true
+    },
+    {
       "ean": "8809598454316",
       "name": "Propolis Light Ampoule",
       "brand": "COSRX",
@@ -202,38 +216,24 @@
       "verified_live": true
     },
     {
-      "ean": "3282770155112",
-      "name": "Ducray Anaphase Creastim lotion antichute",
-      "brand": "Ducray",
-      "image_url": "https://www.farmaciabarreiros.com/37873/ducray-anaphase-creastim-locao-60-ml.jpg",
-      "best_price": 21.04,
-      "best_store": "Nossa Farmácia",
-      "best_store_slug": "nossafarmacia",
-      "best_url": "https://www.nossafarmacia.pt/anacaps-reactiv-caps-30/p",
-      "previous_price": 28.05,
+      "ean": "3282770202090",
+      "name": "Avène Solar Spray Criança Protetor Solar SPF50+- - Farmácia ...",
+      "brand": "Avène",
+      "image_url": "https://assets.asuafarmaciaonline.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.asuafarmaciaonline.pt/images/originals/6825877-ave-ne-solar-spray-fps-50-crianc-a-200ml.webp",
+      "best_price": 8.4,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/bebe-e-crianca/580-avene-solar-spray-spf50-crianca-200ml.html",
+      "previous_price": 11.2,
       "discount_pct": 25,
-      "dropped_day": 20698,
-      "verified_live": true
-    },
-    {
-      "ean": "3662361004324",
-      "name": "SVR Biotic Pepti Gel-Mat Retexturizante Alisante",
-      "brand": "SVR",
-      "image_url": "https://cdn1.costatic.com/img/product/240/67d981dc15f90/svr-biotic-pepti-p98891.jpg",
-      "best_price": 21.5,
-      "best_store": "My Cosmetics",
-      "best_store_slug": "mycosmetics",
-      "best_url": "https://www.mycosmetics.pt/products/svr-biotic-pepti-gel-mate-recarreg-50ml",
-      "previous_price": 28.22,
-      "discount_pct": 24,
-      "dropped_day": 20690,
+      "dropped_day": 20699,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1956
+      "products": 1957
     },
     {
       "name": "Isdin",
@@ -295,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49846,
+    "products": 49843,
     "avg_savings_pct": 30
   },
   "shard_version": "",
