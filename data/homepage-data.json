@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T08:17:31.863Z",
+  "generated_at": "2026-09-05T07:34:40.054Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -13,16 +13,6 @@
       "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
     },
     {
-      "ean": "3337875492799",
-      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 8.92,
-      "best_store": "Farmaoli",
-      "best_store_slug": "farmaoli",
-      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
-    },
-    {
       "ean": "8429420158399",
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
@@ -31,6 +21,16 @@
       "best_store": "Saúde Mayor",
       "best_store_slug": "saudemayor",
       "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
+    },
+    {
+      "ean": "3337875492799",
+      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
+      "brand": "Vichy",
+      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
+      "best_price": 8.92,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
     },
     {
       "ean": "3606000560833",
@@ -107,16 +107,6 @@
   ],
   "skincare_kits": [
     {
-      "ean": "3574661874951",
-      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.54,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
-    },
-    {
       "ean": "3574661087054",
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
@@ -125,6 +115,16 @@
       "best_store": "Aveiro Farma",
       "best_store_slug": "aveirofarma",
       "best_url": "https://aveirofarma.pt/neutrogena-formula-norueguesa-creme-maos-concentrado-50ml-oferta-stick-labial"
+    },
+    {
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 15.54,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
     },
     {
       "ean": "3574661540887",
@@ -151,10 +151,10 @@
       "name": "Cofre Serum Lift Integral",
       "brand": "Lierac",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809514.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 37.5,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/lierac-lift-integral-coffret-serum-tensor-30ml-oferta-cuidado-lift-dos-olhos-15ml"
+      "best_price": 38.43,
+      "best_store": "Unifarma",
+      "best_store_slug": "unifarma",
+      "best_url": "https://www.unifarma.pt/products/lierac-lift-integral-serum-coffret-efeito-lifting-natal25"
     }
   ],
   "em_alta": [
@@ -188,34 +188,6 @@
       "verified_live": true
     },
     {
-      "ean": "8809598454316",
-      "name": "Propolis Light Ampoule",
-      "brand": "COSRX",
-      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1467109.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 15.68,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/cosrx-propolis-serum-leve-iluminador-30ml",
-      "previous_price": 21.75,
-      "discount_pct": 28,
-      "dropped_day": 20689,
-      "verified_live": true
-    },
-    {
-      "ean": "7895389162783",
-      "name": "Clarité Sérum TX Antimanchas",
-      "brand": "Dermagius",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638726384756633579/dermagius-022648ji_01.jpg",
-      "best_price": 27.71,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/dermagius-clarite-serum-tx-anti-manchas_p72642.html",
-      "previous_price": 36.95,
-      "discount_pct": 25,
-      "dropped_day": 20697,
-      "verified_live": true
-    },
-    {
       "ean": "3282770202090",
       "name": "Avène Solar Spray Criança Protetor Solar SPF50+- - Farmácia ...",
       "brand": "Avène",
@@ -228,6 +200,33 @@
       "discount_pct": 25,
       "dropped_day": 20699,
       "verified_live": true
+    },
+    {
+      "ean": "3282770155112",
+      "name": "Ducray Anaphase Creastim lotion antichute",
+      "brand": "Ducray",
+      "image_url": "https://www.farmaciabarreiros.com/37873/ducray-anaphase-creastim-locao-60-ml.jpg",
+      "best_price": 21.04,
+      "best_store": "Nossa Farmácia",
+      "best_store_slug": "nossafarmacia",
+      "best_url": "https://www.nossafarmacia.pt/anacaps-reactiv-caps-30/p",
+      "previous_price": 28.05,
+      "discount_pct": 25,
+      "dropped_day": 20698,
+      "verified_live": true
+    },
+    {
+      "ean": "3338221002440",
+      "name": "Phytocolor Kit Coloration Permanente Blond clair 8",
+      "brand": "Phyto",
+      "image_url": "https://static.lojadafarmacia.com/25765/phytocolor-coloracao-8-louro-claro.png",
+      "best_price": 6.38,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-blond-clair-8",
+      "previous_price": 7.98,
+      "discount_pct": 20,
+      "dropped_day": 20698
     }
   ],
   "top_brands": [
@@ -295,8 +294,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49843,
-    "avg_savings_pct": 30
+    "products": 49193,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": ""

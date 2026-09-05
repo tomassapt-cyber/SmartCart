@@ -3,8 +3,8 @@
   "store_slug": "notino",
   "store_name": "Notino PT",
   "store_url": "https://www.notino.pt",
-  "verified_at": "2026-09-03T07:53:33.668Z",
-  "method": "playwright-headless (refresh 2026-09-03)",
+  "verified_at": "2026-09-05T07:30:48.244Z",
+  "method": "playwright-headless (refresh 2026-09-05)",
   "items": [
     {
       "ean": "3145891264100",
