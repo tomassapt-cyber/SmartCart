@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T08:34:15.220Z",
+  "generated_at": "2026-09-07T08:09:24.402Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -188,20 +188,6 @@
       "verified_live": true
     },
     {
-      "ean": "3282770202090",
-      "name": "Avène Solar Spray Criança Protetor Solar SPF50+- - Farmácia ...",
-      "brand": "Avène",
-      "image_url": "https://assets.asuafarmaciaonline.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.asuafarmaciaonline.pt/images/originals/6825877-ave-ne-solar-spray-fps-50-crianc-a-200ml.webp",
-      "best_price": 8.4,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/bebe-e-crianca/580-avene-solar-spray-spf50-crianca-200ml.html",
-      "previous_price": 11.2,
-      "discount_pct": 25,
-      "dropped_day": 20699,
-      "verified_live": true
-    },
-    {
       "ean": "3282770155112",
       "name": "Ducray Anaphase Creastim lotion antichute",
       "brand": "Ducray",
@@ -224,6 +210,19 @@
       "best_store": "Pharma GDD",
       "best_store_slug": "pharma-gdd",
       "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-chatain-clair-dore-5-3",
+      "previous_price": 7.98,
+      "discount_pct": 20,
+      "dropped_day": 20698
+    },
+    {
+      "ean": "3338221002624",
+      "name": "Phytocolor Kit Coloration permanente Châtain Clair marron 5.7",
+      "brand": "Phyto",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/phyto/12968-800x800.jpg",
+      "best_price": 6.38,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-5-7-chatain-clair-marron",
       "previous_price": 7.98,
       "discount_pct": 20,
       "dropped_day": 20698
@@ -294,7 +293,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 49200,
+    "products": 42593,
     "avg_savings_pct": 29
   },
   "shard_version": "",
