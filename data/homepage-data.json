@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T08:09:24.402Z",
+  "generated_at": "2026-09-08T07:59:40.321Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -202,19 +202,6 @@
       "verified_live": true
     },
     {
-      "ean": "3338221002600",
-      "name": "PhytoColor Kit Coloration permanente Châtain Clair doré 5.3",
-      "brand": "Phyto",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/phyto/12085_main-800x800.jpg",
-      "best_price": 6.38,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-chatain-clair-dore-5-3",
-      "previous_price": 7.98,
-      "discount_pct": 20,
-      "dropped_day": 20698
-    },
-    {
       "ean": "3338221002624",
       "name": "Phytocolor Kit Coloration permanente Châtain Clair marron 5.7",
       "brand": "Phyto",
@@ -223,6 +210,19 @@
       "best_store": "Pharma GDD",
       "best_store_slug": "pharma-gdd",
       "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-5-7-chatain-clair-marron",
+      "previous_price": 7.98,
+      "discount_pct": 20,
+      "dropped_day": 20698
+    },
+    {
+      "ean": "3338221002587",
+      "name": "Phyto Coloration permanente châtain clair 5",
+      "brand": "Phyto",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/phyto/12970_main-800x800.jpg",
+      "best_price": 6.38,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-chatain-clair-5",
       "previous_price": 7.98,
       "discount_pct": 20,
       "dropped_day": 20698
@@ -293,7 +293,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 42593,
+    "products": 42315,
     "avg_savings_pct": 29
   },
   "shard_version": "",
