@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T07:59:40.321Z",
+  "generated_at": "2026-09-09T08:16:40.160Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -147,30 +147,43 @@
       "best_url": "https://www.farmacia365.pt/svr-densitium-creme-50ml-oferta-ampoule-c10ml-bolsa"
     },
     {
-      "ean": "3701436934781",
-      "name": "Cofre Serum Lift Integral",
-      "brand": "Lierac",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809514.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 38.43,
-      "best_store": "Unifarma",
-      "best_store_slug": "unifarma",
-      "best_url": "https://www.unifarma.pt/products/lierac-lift-integral-serum-coffret-efeito-lifting-natal25"
+      "ean": "3574661761107",
+      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
+      "best_price": 9.9,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-hydro-boost-gel-de-agua-+-contorno-olhos_p13218.html"
     }
   ],
   "em_alta": [
     {
-      "ean": "3701129807897",
-      "name": "Bioderma Photoderm Eau Solaire Anti-Ox Água Solar Protetora SPF50",
-      "brand": "Bioderma",
-      "image_url": "https://assets.atida.com/transform/2aaf5d6c-6815-461e-b906-28bed82ef2fd/Bioderma-Photoderm-Eau-Solaire-SPF50-200-ml",
-      "best_price": 12.66,
-      "best_store": "Pharma Scalabis",
-      "best_store_slug": "pharmascalabis",
-      "best_url": "https://www.pharmascalabis.com/store/bioderma-photoderm-bruma-invisible-spf50-150-ml/",
-      "volume_ml": 150,
-      "previous_price": 23.77,
-      "discount_pct": 47,
-      "dropped_day": 20694,
+      "ean": "4006000150222",
+      "name": "Nivea Q10 Creme Corporal Refirmante e Rejuvenescedor",
+      "brand": "Nivea",
+      "image_url": "https://assets.atida.com/transform/c17d9fd0-ea06-4f3b-8919-ba4eacac3326/Nivea-Q10-Crema-Corporal-Reafirmante-y-Rejuvenecedora-400-ml",
+      "best_price": 9.47,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/nivea-q10-creme-corporal-reafirmante-e-rejuvenescedora-126283.html",
+      "previous_price": 14.59,
+      "discount_pct": 35,
+      "dropped_day": 20705,
+      "verified_live": true
+    },
+    {
+      "ean": "6344387636730",
+      "name": "Papillon Anti-Age Plus Creme Ácido Hialurónico",
+      "brand": "Papillon",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e9119a2422_PapillonAnti-AgePlusCremeAcidoHialuronico50ml1_1.jpg",
+      "best_price": 25.47,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/papillon-anti-age-plus-creme_p86667.html",
+      "previous_price": 39.9,
+      "discount_pct": 30,
+      "dropped_day": 20705,
       "verified_live": true
     },
     {
@@ -202,30 +215,17 @@
       "verified_live": true
     },
     {
-      "ean": "3338221002624",
-      "name": "Phytocolor Kit Coloration permanente Châtain Clair marron 5.7",
-      "brand": "Phyto",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/phyto/12968-800x800.jpg",
-      "best_price": 6.38,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-5-7-chatain-clair-marron",
-      "previous_price": 7.98,
-      "discount_pct": 20,
-      "dropped_day": 20698
-    },
-    {
-      "ean": "3338221002587",
-      "name": "Phyto Coloration permanente châtain clair 5",
-      "brand": "Phyto",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/phyto/12970_main-800x800.jpg",
-      "best_price": 6.38,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/phytocolor-kit-coloration-permanente-chatain-clair-5",
-      "previous_price": 7.98,
-      "discount_pct": 20,
-      "dropped_day": 20698
+      "ean": "4005900809483",
+      "name": "Nivea Creme Intensivo para Mãos",
+      "brand": "Nivea",
+      "image_url": "https://images.openbeautyfacts.org/images/products/400/590/080/9483/front_es.5.400.jpg",
+      "best_price": 1.13,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/nivea/intensivo-cuidado-manos-aceite-almendras/p_162999/",
+      "previous_price": 4.69,
+      "discount_pct": 25,
+      "dropped_day": 20705
     }
   ],
   "top_brands": [
@@ -293,8 +293,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 42315,
-    "avg_savings_pct": 29
+    "products": 36681,
+    "avg_savings_pct": 31
   },
   "shard_version": "",
   "idx_version": ""
