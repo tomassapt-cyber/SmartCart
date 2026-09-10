@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T08:16:40.160Z",
+  "generated_at": "2026-09-10T08:02:57.172Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -159,6 +159,20 @@
   ],
   "em_alta": [
     {
+      "ean": "3282770207774",
+      "name": "Avène Cleanance Gel de Limpeza Sem Sabão com Dispensador",
+      "brand": "Avène",
+      "image_url": "https://assets.atida.com/transform/906b42b5-e931-447d-a5fb-32b30579a7d1/Avene-Cleanance-Gel-Limpiador-Acne-400-ml",
+      "best_price": 10.05,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/limpezadesmaquilhantes/183-avene-cleanance-gel-400ml.html",
+      "previous_price": 18.38,
+      "discount_pct": 45,
+      "dropped_day": 20706,
+      "verified_live": true
+    },
+    {
       "ean": "4006000150222",
       "name": "Nivea Q10 Creme Corporal Refirmante e Rejuvenescedor",
       "brand": "Nivea",
@@ -173,17 +187,17 @@
       "verified_live": true
     },
     {
-      "ean": "6344387636730",
-      "name": "Papillon Anti-Age Plus Creme Ácido Hialurónico",
-      "brand": "Papillon",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e9119a2422_PapillonAnti-AgePlusCremeAcidoHialuronico50ml1_1.jpg",
-      "best_price": 25.47,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/papillon-anti-age-plus-creme_p86667.html",
-      "previous_price": 39.9,
-      "discount_pct": 30,
-      "dropped_day": 20705,
+      "ean": "4008600434597",
+      "name": "Nuk Mini-Me Flip Copo_12M+_Lilás -",
+      "brand": "Nuk",
+      "image_url": "https://static.lojadafarmacia.com/24970/nuk-mini-me-flip-copo-12m-lilas-450ml.jpeg",
+      "best_price": 6.68,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/biberoes-e-tetinas/4632-nuk-mini-me-flip-garrafa-desportiva-com-bocal-2-em-1-450ml-12m-rosa.html",
+      "previous_price": 9.78,
+      "discount_pct": 32,
+      "dropped_day": 20706,
       "verified_live": true
     },
     {
@@ -213,19 +227,6 @@
       "discount_pct": 25,
       "dropped_day": 20698,
       "verified_live": true
-    },
-    {
-      "ean": "4005900809483",
-      "name": "Nivea Creme Intensivo para Mãos",
-      "brand": "Nivea",
-      "image_url": "https://images.openbeautyfacts.org/images/products/400/590/080/9483/front_es.5.400.jpg",
-      "best_price": 1.13,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/nivea/intensivo-cuidado-manos-aceite-almendras/p_162999/",
-      "previous_price": 4.69,
-      "discount_pct": 25,
-      "dropped_day": 20705
     }
   ],
   "top_brands": [
@@ -293,7 +294,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 36681,
+    "products": 32722,
     "avg_savings_pct": 31
   },
   "shard_version": "",
