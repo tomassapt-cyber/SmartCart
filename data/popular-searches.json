@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T10:37:56.627Z",
+  "generated_at": "2026-09-10T09:58:17.616Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -63,18 +63,6 @@
       "pop_score": 30
     },
     {
-      "ean": "8428749915409",
-      "name": "Sérum Facial Skin D-Pigment",
-      "brand": "Sensilis",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799459.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 30,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/sensilis-skin-d-pigment-[serum-atx-b3]_p15575.html",
-      "search_term": "serum facial principia",
-      "pop_score": 28
-    },
-    {
       "ean": "bemecare-lrposay-effaclar-h-isobiome-cr-lav-390ml",
       "name": "La Roche Posay Effaclar H Iso-Biome Creme Lavante",
       "brand": null,
@@ -84,7 +72,19 @@
       "best_store_slug": "shopcosmetics",
       "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
       "search_term": "la roche posay cleanser",
-      "pop_score": 27
+      "pop_score": 29
+    },
+    {
+      "ean": "8428749915409",
+      "name": "Sérum Facial Skin D-Pigment",
+      "brand": "Sensilis",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799459.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 30,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/sensilis-skin-d-pigment-[serum-atx-b3]_p15575.html",
+      "search_term": "serum facial principia",
+      "pop_score": 25
     },
     {
       "ean": "0717334253124",
@@ -96,7 +96,7 @@
       "best_store_slug": "primor",
       "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
       "search_term": "esfoliante facial caseiro",
-      "pop_score": 26
+      "pop_score": 25
     }
   ]
 }
