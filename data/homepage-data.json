@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T08:02:57.172Z",
+  "generated_at": "2026-09-11T08:15:34.447Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -294,7 +294,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 32722,
+    "products": 32697,
     "avg_savings_pct": 31
   },
   "shard_version": "",
