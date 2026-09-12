@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T08:15:34.447Z",
+  "generated_at": "2026-09-12T07:51:11.041Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -215,18 +215,17 @@
       "verified_live": true
     },
     {
-      "ean": "3282770155112",
-      "name": "Ducray Anaphase Creastim lotion antichute",
-      "brand": "Ducray",
-      "image_url": "https://www.farmaciabarreiros.com/37873/ducray-anaphase-creastim-locao-60-ml.jpg",
-      "best_price": 21.04,
-      "best_store": "Nossa Farmácia",
-      "best_store_slug": "nossafarmacia",
-      "best_url": "https://www.nossafarmacia.pt/anacaps-reactiv-caps-30/p",
-      "previous_price": 28.05,
+      "ean": "4005900809483",
+      "name": "Nivea Creme Intensivo para Mãos",
+      "brand": "Nivea",
+      "image_url": "https://images.openbeautyfacts.org/images/products/400/590/080/9483/front_es.5.400.jpg",
+      "best_price": 1.13,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/nivea/intensivo-cuidado-manos-aceite-almendras/p_162999/",
+      "previous_price": 4.69,
       "discount_pct": 25,
-      "dropped_day": 20698,
-      "verified_live": true
+      "dropped_day": 20705
     }
   ],
   "top_brands": [
@@ -294,7 +293,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 32697,
+    "products": 32669,
     "avg_savings_pct": 31
   },
   "shard_version": "",
