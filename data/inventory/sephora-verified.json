@@ -3,8 +3,8 @@
   "store_slug": "sephora",
   "store_name": "Sephora PT",
   "store_url": "https://www.sephora.pt",
-  "verified_at": "2026-09-13T08:06:28.020Z",
-  "method": "playwright-headless (refresh 2026-09-13)",
+  "verified_at": "2026-09-14T08:40:06.628Z",
+  "method": "playwright-headless (refresh 2026-09-14)",
   "items": [
     {
       "ean": "3145891264100",
