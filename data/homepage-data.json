@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T08:46:13.603Z",
+  "generated_at": "2026-09-15T08:33:37.323Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -13,16 +13,6 @@
       "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
     },
     {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 18.25,
-      "best_store": "Saúde Mayor",
-      "best_store_slug": "saudemayor",
-      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
-    },
-    {
       "ean": "3337875492799",
       "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
       "brand": "Vichy",
@@ -31,6 +21,16 @@
       "best_store": "Farmaoli",
       "best_store_slug": "farmaoli",
       "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
+    },
+    {
+      "ean": "8429420158399",
+      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
+      "best_price": 18.25,
+      "best_store": "Saúde Mayor",
+      "best_store_slug": "saudemayor",
+      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
     },
     {
       "ean": "3606000560833",
@@ -159,14 +159,28 @@
   ],
   "em_alta": [
     {
+      "ean": "3282770207774",
+      "name": "Avène Cleanance Gel de Limpeza Sem Sabão com Dispensador",
+      "brand": "Avène",
+      "image_url": "https://assets.atida.com/transform/906b42b5-e931-447d-a5fb-32b30579a7d1/Avene-Cleanance-Gel-Limpiador-Acne-400-ml",
+      "best_price": 10.05,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/limpezadesmaquilhantes/183-avene-cleanance-gel-400ml.html",
+      "previous_price": 18.38,
+      "discount_pct": 45,
+      "dropped_day": 20706,
+      "verified_live": true
+    },
+    {
       "ean": "4006000150222",
       "name": "Nivea Q10 Creme Corporal Refirmante e Rejuvenescedor",
       "brand": "Nivea",
       "image_url": "https://assets.atida.com/transform/c17d9fd0-ea06-4f3b-8919-ba4eacac3326/Nivea-Q10-Crema-Corporal-Reafirmante-y-Rejuvenecedora-400-ml",
-      "best_price": 9.47,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/nivea-q10-creme-corporal-reafirmante-e-rejuvenescedora-126283.html",
+      "best_price": 9.44,
+      "best_store": "Continente Online",
+      "best_store_slug": "continente",
+      "best_url": "https://www.continente.pt/produto/creme-corpo-q10-refirmante-e-rejuvenescedor-nivea-nivea-8442666.html",
       "previous_price": 14.59,
       "discount_pct": 35,
       "dropped_day": 20705,
@@ -183,20 +197,6 @@
       "best_url": "https://shopcosmetics.pt/biberoes-e-tetinas/4632-nuk-mini-me-flip-garrafa-desportiva-com-bocal-2-em-1-450ml-12m-rosa.html",
       "previous_price": 9.78,
       "discount_pct": 32,
-      "dropped_day": 20706,
-      "verified_live": true
-    },
-    {
-      "ean": "8410104610210",
-      "name": "Scholl Gelactiv Palmilha Salto Alto  (x2 unidades)",
-      "brand": "Scholl",
-      "image_url": "https://assets.farmaciaideal.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciaideal.pt/images/originals/8410104602147-1-a764.webp",
-      "best_price": 8.5,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/pes/3424-scholl-palmilhs-gelactiv-saltos-de-uso-diário.html",
-      "previous_price": 10.37,
-      "discount_pct": 18,
       "dropped_day": 20706,
       "verified_live": true
     },
@@ -294,8 +294,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 27580,
-    "avg_savings_pct": 31
+    "products": 17852,
+    "avg_savings_pct": 30
   },
   "shard_version": "",
   "idx_version": ""
