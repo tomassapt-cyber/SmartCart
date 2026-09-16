@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T08:33:37.323Z",
+  "generated_at": "2026-09-16T08:25:28.594Z",
   "seed_total_products": 63786,
   "hero_sponsored": [
     {
@@ -173,17 +173,17 @@
       "verified_live": true
     },
     {
-      "ean": "4006000150222",
-      "name": "Nivea Q10 Creme Corporal Refirmante e Rejuvenescedor",
-      "brand": "Nivea",
-      "image_url": "https://assets.atida.com/transform/c17d9fd0-ea06-4f3b-8919-ba4eacac3326/Nivea-Q10-Crema-Corporal-Reafirmante-y-Rejuvenecedora-400-ml",
-      "best_price": 9.44,
+      "ean": "3600541361249",
+      "name": "Garnier Desmaquilhante de Olhos 2 em 1",
+      "brand": "Garnier",
+      "image_url": "https://images.openbeautyfacts.org/images/products/360/054/136/1249/front_es.8.400.jpg",
+      "best_price": 3.24,
       "best_store": "Continente Online",
       "best_store_slug": "continente",
-      "best_url": "https://www.continente.pt/produto/creme-corpo-q10-refirmante-e-rejuvenescedor-nivea-nivea-8442666.html",
-      "previous_price": 14.59,
+      "best_url": "https://www.continente.pt/produto/desmaquilhante-de-olhos-2-em-1-garnier-garnier-4310349.html",
+      "previous_price": 4.99,
       "discount_pct": 35,
-      "dropped_day": 20705,
+      "dropped_day": 20712,
       "verified_live": true
     },
     {
@@ -294,8 +294,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 17852,
-    "avg_savings_pct": 30
+    "products": 12250,
+    "avg_savings_pct": 28
   },
   "shard_version": "",
   "idx_version": ""
