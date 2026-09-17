@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T10:54:12.875Z",
+  "generated_at": "2026-09-17T10:17:05.957Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -15,18 +15,6 @@
       "pop_score": 66
     },
     {
-      "ean": "3337875492799",
-      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 8.92,
-      "best_store": "Farmaoli",
-      "best_store_slug": "farmaoli",
-      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
-      "search_term": "shampoo anticaspa",
-      "pop_score": 56
-    },
-    {
       "ean": "8429420158399",
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
@@ -37,6 +25,18 @@
       "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html",
       "search_term": "protetor solar facial coreano",
       "pop_score": 53
+    },
+    {
+      "ean": "3337875492799",
+      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
+      "brand": "Vichy",
+      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
+      "best_price": 8.92,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
+      "search_term": "shampoo anticaspa",
+      "pop_score": 44
     },
     {
       "ean": "3606000560833",
@@ -72,7 +72,7 @@
       "best_store_slug": "shopcosmetics",
       "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
       "search_term": "la roche posay cleanser",
-      "pop_score": 27
+      "pop_score": 29
     },
     {
       "ean": "0717334253124",
