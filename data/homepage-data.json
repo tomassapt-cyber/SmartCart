@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-16T08:25:28.594Z",
-  "seed_total_products": 63786,
+  "generated_at": "2026-09-17T08:45:36.638Z",
+  "seed_total_products": 63785,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -111,10 +111,10 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 5.9,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/neutrogena-formula-norueguesa-creme-maos-concentrado-50ml-oferta-stick-labial"
+      "best_price": 4.3,
+      "best_store": "Farmácia do Costume",
+      "best_store_slug": "farmaciadocostume",
+      "best_url": "https://www.farmaciadocostume.pt/neutrogena-formula-norueguesa-maos-promo-creme-concentrado-stick-labial.html"
     },
     {
       "ean": "3574661874951",
@@ -215,17 +215,17 @@
       "verified_live": true
     },
     {
-      "ean": "3574661308272",
-      "name": "Neutrogena Visibly Firming Loção Corporal Elasticidade Intensa",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/4/7466276-neutrogena_visibly_firming_lotion_750ml.jpg",
-      "best_price": 8.75,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/reafirmantes/4226-neutrogena-corpo-visibly-renew-loção-refirmante-750-ml.html",
-      "previous_price": 10.25,
-      "discount_pct": 15,
-      "dropped_day": 20706,
+      "ean": "3282770073355",
+      "name": "Ducray Dexyane Eczema Cream",
+      "brand": "Ducray",
+      "image_url": "https://cdn.care2me.pt/documentos/image/produtos/catalogo/6980144.webp",
+      "best_price": 14.04,
+      "best_store": "Farmácia2U",
+      "best_store_slug": "farmacia2u",
+      "best_url": "https://www.farmacia2u.com/pt/comprar/ducray-dexyane-med-creme-reparador-100ml",
+      "previous_price": 16.34,
+      "discount_pct": 14,
+      "dropped_day": 20708,
       "verified_live": true
     }
   ],
@@ -294,8 +294,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 12250,
-    "avg_savings_pct": 28
+    "products": 10007,
+    "avg_savings_pct": 26
   },
   "shard_version": "",
   "idx_version": ""
