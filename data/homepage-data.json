@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-17T08:45:36.638Z",
-  "seed_total_products": 63785,
+  "generated_at": "2026-09-18T08:09:40.840Z",
+  "seed_total_products": 63782,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -13,16 +13,6 @@
       "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
     },
     {
-      "ean": "3337875492799",
-      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 8.92,
-      "best_store": "Farmaoli",
-      "best_store_slug": "farmaoli",
-      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
-    },
-    {
       "ean": "8429420158399",
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
@@ -31,6 +21,16 @@
       "best_store": "Saúde Mayor",
       "best_store_slug": "saudemayor",
       "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
+    },
+    {
+      "ean": "3337875492799",
+      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
+      "brand": "Vichy",
+      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
+      "best_price": 8.92,
+      "best_store": "Farmaoli",
+      "best_store_slug": "farmaoli",
+      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
     },
     {
       "ean": "3606000560833",
@@ -201,31 +201,32 @@
       "verified_live": true
     },
     {
-      "ean": "3282779317658",
-      "name": "DUCRAY SENSINOL CHAMPÔ DE CUIDADO FISIOPROTETOR",
-      "brand": "Ducray",
-      "image_url": "https://assets.asuafarmaciaonline.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.asuafarmaciaonline.pt/images/originals/6875401-ducray-sensinol-champo-fisioprotetor-200ml.webp",
-      "best_price": 7.54,
-      "best_store": "Farmácia2U",
-      "best_store_slug": "farmacia2u",
-      "best_url": "https://www.farmacia2u.com/pt/comprar/ducray-sensinol-champo-fisioprotetor-200ml",
-      "previous_price": 8.84,
-      "discount_pct": 15,
-      "dropped_day": 20708,
+      "ean": "3574660533361",
+      "name": "Neutrogena Loção Corporal Reparadora",
+      "brand": "Neutrogena",
+      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/intense_repair_400ml_portuguese-pt-pt.jpg?v=1740400945",
+      "best_price": 5.08,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/hidratantes/4512-neutrogena-repair-intense-loção-corporal-pele-seca-400ml.html",
+      "volume_ml": 400,
+      "previous_price": 5.8,
+      "discount_pct": 12,
+      "dropped_day": 20706,
       "verified_live": true
     },
     {
-      "ean": "3282770073355",
-      "name": "Ducray Dexyane Eczema Cream",
-      "brand": "Ducray",
-      "image_url": "https://cdn.care2me.pt/documentos/image/produtos/catalogo/6980144.webp",
-      "best_price": 14.04,
-      "best_store": "Farmácia2U",
-      "best_store_slug": "farmacia2u",
-      "best_url": "https://www.farmacia2u.com/pt/comprar/ducray-dexyane-med-creme-reparador-100ml",
-      "previous_price": 16.34,
-      "discount_pct": 14,
-      "dropped_day": 20708,
+      "ean": "2545103235761",
+      "name": "Trikare K Champô Dermatite Seborreica",
+      "brand": "Trikare",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/t/r/trikarekshampoo.jpg",
+      "best_price": 19.11,
+      "best_store": "Nossa Farmácia",
+      "best_store_slug": "nossafarmacia",
+      "best_url": "https://www.nossafarmacia.pt/trikare-k-champo-seborreia-200ml/p",
+      "previous_price": 20.78,
+      "discount_pct": 8,
+      "dropped_day": 20705,
       "verified_live": true
     }
   ],
@@ -294,7 +295,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 10007,
+    "products": 16622,
     "avg_savings_pct": 26
   },
   "shard_version": "",
