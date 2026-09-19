@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-18T08:09:40.840Z",
-  "seed_total_products": 63782,
+  "generated_at": "2026-09-19T07:58:51.490Z",
+  "seed_total_products": 63780,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -159,20 +159,6 @@
   ],
   "em_alta": [
     {
-      "ean": "3282770207774",
-      "name": "Avène Cleanance Gel de Limpeza Sem Sabão com Dispensador",
-      "brand": "Avène",
-      "image_url": "https://assets.atida.com/transform/906b42b5-e931-447d-a5fb-32b30579a7d1/Avene-Cleanance-Gel-Limpiador-Acne-400-ml",
-      "best_price": 10.05,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/limpezadesmaquilhantes/183-avene-cleanance-gel-400ml.html",
-      "previous_price": 18.38,
-      "discount_pct": 45,
-      "dropped_day": 20706,
-      "verified_live": true
-    },
-    {
       "ean": "3600541361249",
       "name": "Garnier Desmaquilhante de Olhos 2 em 1",
       "brand": "Garnier",
@@ -184,6 +170,20 @@
       "previous_price": 4.99,
       "discount_pct": 35,
       "dropped_day": 20712,
+      "verified_live": true
+    },
+    {
+      "ean": "3282770149074",
+      "name": "Avène Fluido Ultra Light SPF50+",
+      "brand": "Avène",
+      "image_url": "https://assets.atida.com/transform/3d3c5f65-0bb6-4617-b1a9-9fb4aabdbea5/Avene-Fluido-Solar-SPF50-50-ml",
+      "best_price": 12.19,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/solares/avene-solar-fluido-fps-50+_p519.html",
+      "previous_price": 19.44,
+      "discount_pct": 33,
+      "dropped_day": 20715,
       "verified_live": true
     },
     {
@@ -201,33 +201,32 @@
       "verified_live": true
     },
     {
-      "ean": "3574660533361",
-      "name": "Neutrogena Loção Corporal Reparadora",
-      "brand": "Neutrogena",
-      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/intense_repair_400ml_portuguese-pt-pt.jpg?v=1740400945",
-      "best_price": 5.08,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratantes/4512-neutrogena-repair-intense-loção-corporal-pele-seca-400ml.html",
-      "volume_ml": 400,
-      "previous_price": 5.8,
-      "discount_pct": 12,
-      "dropped_day": 20706,
+      "ean": "3282770392692",
+      "name": "Avene Solar Mat Perfect Fluido c/ Cor SPF50+ -",
+      "brand": "Avène",
+      "image_url": "https://static.lojadafarmacia.com/24366/avene-solar-mat-perfect-fluido-c-cor-spf50-50ml.png",
+      "best_price": 11.71,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/copy-of-cleanance-solar-com-cor",
+      "previous_price": 16.22,
+      "discount_pct": 23,
+      "dropped_day": 20715,
       "verified_live": true
     },
     {
-      "ean": "2545103235761",
-      "name": "Trikare K Champô Dermatite Seborreica",
-      "brand": "Trikare",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/t/r/trikarekshampoo.jpg",
-      "best_price": 19.11,
-      "best_store": "Nossa Farmácia",
-      "best_store_slug": "nossafarmacia",
-      "best_url": "https://www.nossafarmacia.pt/trikare-k-champo-seborreia-200ml/p",
-      "previous_price": 20.78,
-      "discount_pct": 8,
-      "dropped_day": 20705,
-      "verified_live": true
+      "ean": "3282770148275",
+      "name": "Ducray Champô Equilibrante",
+      "brand": "Ducray",
+      "image_url": "https://images.openbeautyfacts.org/images/products/328/277/014/8275/front_fr.8.400.jpg",
+      "best_price": 4.46,
+      "best_store": "SweetCare",
+      "best_store_slug": "sweetcare",
+      "best_url": "https://www.sweetcare.pt/ducray-extra-doux-shampoo-dermoprotetor-uso-frequente-p-001444du",
+      "volume_ml": 100,
+      "previous_price": 6.49,
+      "discount_pct": 31,
+      "dropped_day": 20714
     }
   ],
   "top_brands": [
@@ -295,7 +294,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 16622,
+    "products": 16888,
     "avg_savings_pct": 26
   },
   "shard_version": "",
