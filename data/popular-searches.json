@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T10:17:05.957Z",
+  "generated_at": "2026-09-21T10:59:33.835Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -36,7 +36,7 @@
       "best_store_slug": "farmaoli",
       "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
       "search_term": "shampoo anticaspa",
-      "pop_score": 44
+      "pop_score": 49
     },
     {
       "ean": "3606000560833",
@@ -63,18 +63,6 @@
       "pop_score": 30
     },
     {
-      "ean": "bemecare-lrposay-effaclar-h-isobiome-cr-lav-390ml",
-      "name": "La Roche Posay Effaclar H Iso-Biome Creme Lavante",
-      "brand": null,
-      "image_url": "https://shopcosmetics.pt/5383-home_default/lrposay-effaclar-h-isobiome-cr-lav-390ml.jpg",
-      "best_price": 22,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/acnepele-oleosa/3913-lrposay-effaclar-h-isobiome-cr-lav-390ml.html",
-      "search_term": "la roche posay cleanser",
-      "pop_score": 29
-    },
-    {
       "ean": "0717334253124",
       "name": "Esfoliante Facial Origins Checks and Balances",
       "brand": "Origins",
@@ -96,6 +84,18 @@
       "best_store_slug": "sofarma",
       "best_url": "https://www.sofarma.com/pt/beleza/sensilis-skin-d-pigment-[serum-atx-b3]_p15575.html",
       "search_term": "serum facial principia",
+      "pop_score": 25
+    },
+    {
+      "ean": "3282779416139",
+      "name": "Avène Cicalfate Creme de Mãos",
+      "brand": "Avène",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg",
+      "best_price": 7.99,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/avene-cicalfate-creme-mains-100ml",
+      "search_term": "creme de maos loccitane",
       "pop_score": 25
     }
   ]
