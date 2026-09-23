@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T08:21:53.467Z",
+  "generated_at": "2026-09-23T08:29:27.810Z",
   "seed_total_products": 63780,
   "hero_sponsored": [
     {
@@ -187,32 +187,18 @@
       "verified_live": true
     },
     {
-      "ean": "3282779317658",
-      "name": "DUCRAY SENSINOL CHAMPÔ DE CUIDADO FISIOPROTETOR",
+      "ean": "3282770148275",
+      "name": "Ducray Champô Equilibrante",
       "brand": "Ducray",
-      "image_url": "https://assets.asuafarmaciaonline.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.asuafarmaciaonline.pt/images/originals/6875401-ducray-sensinol-champo-fisioprotetor-200ml.webp",
-      "best_price": 7.54,
-      "best_store": "Farmácia2U",
-      "best_store_slug": "farmacia2u",
-      "best_url": "https://www.farmacia2u.com/pt/comprar/ducray-sensinol-champo-fisioprotetor-200ml",
-      "previous_price": 8.84,
-      "discount_pct": 15,
-      "dropped_day": 20708,
-      "verified_live": true
-    },
-    {
-      "ean": "3282770073355",
-      "name": "Ducray Dexyane Eczema Cream",
-      "brand": "Ducray",
-      "image_url": "https://cdn.care2me.pt/documentos/image/produtos/catalogo/6980144.webp",
-      "best_price": 14.04,
-      "best_store": "Farmácia2U",
-      "best_store_slug": "farmacia2u",
-      "best_url": "https://www.farmacia2u.com/pt/comprar/ducray-dexyane-med-creme-reparador-100ml",
-      "previous_price": 16.34,
-      "discount_pct": 14,
-      "dropped_day": 20708,
-      "verified_live": true
+      "image_url": "https://images.openbeautyfacts.org/images/products/328/277/014/8275/front_fr.8.400.jpg",
+      "best_price": 4.46,
+      "best_store": "SweetCare",
+      "best_store_slug": "sweetcare",
+      "best_url": "https://www.sweetcare.pt/ducray-extra-doux-shampoo-dermoprotetor-uso-frequente-p-001444du",
+      "volume_ml": 100,
+      "previous_price": 6.49,
+      "discount_pct": 31,
+      "dropped_day": 20714
     },
     {
       "ean": "8720181594816",
@@ -226,6 +212,20 @@
       "previous_price": 7.19,
       "discount_pct": 25,
       "dropped_day": 20712
+    },
+    {
+      "ean": "3504105035426",
+      "name": "Água de Limpeza sem Enxaguamento",
+      "brand": "Mustela",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-639071996854010184/mustela-002667mu_01.jpg",
+      "best_price": 6.55,
+      "best_store": "SweetCare",
+      "best_store_slug": "sweetcare",
+      "best_url": "https://www.sweetcare.pt/mustela-bebe-toilete-physiobebe-agua-limpeza-sem-enxaguamento-p-002667mu",
+      "volume_ml": 300,
+      "previous_price": 8.66,
+      "discount_pct": 24,
+      "dropped_day": 20714
     }
   ],
   "top_brands": [
@@ -293,7 +293,7 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 14652,
+    "products": 14202,
     "avg_savings_pct": 26
   },
   "shard_version": "",
