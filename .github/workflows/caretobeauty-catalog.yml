@@ -133,11 +133,16 @@ jobs:
           GIT_COMMITTER_EMAIL: bot@cosmath.pt
         run: |
           set -e
-          if git diff --quiet -- data/seed-bundle.json demo.html; then
+          # O .json é ignorado pelo git — só o .gz é rastreado. Um `git diff`
+          # do .json diria SEMPRE "sem alterações", e loja nenhuma publicava nada.
+          # Comprimir PRIMEIRO e testar o .gz, que é byte-a-byte determinístico
+          # graças ao `gzip -n` (sem -n, o cabeçalho leva a data e o teste dava
+          # sempre alteração — 13,4 MB de commit por dia e por loja, sem dados novos).
+          bash scripts/ci/seed.sh pack
+          if git diff --quiet -- data/seed-bundle.json.gz demo.html; then
             echo "Nenhuma alteração — nada a fazer."
             exit 0
           fi
-          bash scripts/ci/seed.sh pack
           git add data/seed-bundle.json.gz demo.html
           git add -f data/catalog/caretobeauty-full.json 2>/dev/null || true
           DATE=$(date -u +%Y-%m-%d)

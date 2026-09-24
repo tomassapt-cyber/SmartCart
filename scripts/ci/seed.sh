@@ -65,7 +65,12 @@ case "${1:-}" in
       exit 1
     fi
     # -6 e não -9: medido, a diferença é 0,3 MB e o -9 demora 50% mais.
-    gzip -6 -c "$JSON" > "$GZ"
+    # -n é OBRIGATÓRIO: sem ele o gzip grava a data do .json nos bytes 5-8
+    # do cabeçalho, e o .gz sai DIFERENTE a cada corrida mesmo com dados
+    # idênticos. O `git diff` do .gz dava sempre alteração e cada loja
+    # empurrava 13,4 MB por dia sem nada de novo, num repo que já tem 18 GB.
+    # Com -n, mesmo conteúdo = mesmos bytes (verificado com cmp).
+    gzip -n -6 -c "$JSON" > "$GZ"
     local_mb=$(tamanho "$GZ")
     echo "📦 seed comprimido: $(tamanho "$JSON") MB → ${local_mb} MB"
     # Guarda: se algum dia voltar a aproximar-se dos 100 MB, avisar ANTES de o
