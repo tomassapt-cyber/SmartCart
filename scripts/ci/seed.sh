@@ -51,7 +51,17 @@ case "${1:-}" in
     ;;
   pack)
     if [ ! -f "$JSON" ]; then
-      echo "✗ $JSON não existe — nada para comprimir." >&2
+      # Sem .json em disco, o .gz que veio do checkout é que manda: não há
+      # nada de novo para comprimir. NÃO falhar aqui — quem chama o pack é o
+      # stage_all do resilient-push, e um push de ficheiros que nada têm a ver
+      # com o catálogo (histórico de preços, pesquisas populares) morreria com
+      # um erro do gzip que não explica nada. Só é incoerente se faltarem os
+      # dois.
+      if [ -f "$GZ" ]; then
+        echo "ℹ $JSON não existe — mantenho o $GZ do checkout." >&2
+        exit 0
+      fi
+      echo "✗ nem $JSON nem $GZ existem — o repositório está incoerente." >&2
       exit 1
     fi
     # -6 e não -9: medido, a diferença é 0,3 MB e o -9 demora 50% mais.
