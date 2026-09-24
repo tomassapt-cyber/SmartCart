@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T10:59:33.835Z",
+  "generated_at": "2026-09-24T10:22:21.698Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -23,8 +23,8 @@
       "best_store": "Saúde Mayor",
       "best_store_slug": "saudemayor",
       "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html",
-      "search_term": "protetor solar facial coreano",
-      "pop_score": 53
+      "search_term": "isdin protetor solar",
+      "pop_score": 57
     },
     {
       "ean": "3337875492799",
@@ -36,7 +36,7 @@
       "best_store_slug": "farmaoli",
       "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
       "search_term": "shampoo anticaspa",
-      "pop_score": 49
+      "pop_score": 50
     },
     {
       "ean": "3606000560833",
@@ -47,8 +47,8 @@
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
-      "search_term": "acido hialuronico para que sirve",
-      "pop_score": 42
+      "search_term": "acido hialuronico gluteos",
+      "pop_score": 40
     },
     {
       "ean": "5201279072193",
@@ -63,16 +63,16 @@
       "pop_score": 30
     },
     {
-      "ean": "0717334253124",
-      "name": "Esfoliante Facial Origins Checks and Balances",
-      "brand": "Origins",
-      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
-      "best_price": 18.94,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
-      "search_term": "esfoliante facial caseiro",
-      "pop_score": 26
+      "ean": "3282770098938",
+      "name": "Avène Protetor Solar Creme FPS50+",
+      "brand": "Avène",
+      "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
+      "best_price": 10.05,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/avene-solar-spf50-cleanance-50ml_6941245",
+      "search_term": "la roche posay protetor solar",
+      "pop_score": 28
     },
     {
       "ean": "8428749915409",
@@ -84,19 +84,19 @@
       "best_store_slug": "sofarma",
       "best_url": "https://www.sofarma.com/pt/beleza/sensilis-skin-d-pigment-[serum-atx-b3]_p15575.html",
       "search_term": "serum facial principia",
-      "pop_score": 25
+      "pop_score": 26
     },
     {
-      "ean": "3282779416139",
-      "name": "Avène Cicalfate Creme de Mãos",
-      "brand": "Avène",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg",
-      "best_price": 7.99,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/avene-cicalfate-creme-mains-100ml",
-      "search_term": "creme de maos loccitane",
-      "pop_score": 25
+      "ean": "0717334253124",
+      "name": "Esfoliante Facial Origins Checks and Balances",
+      "brand": "Origins",
+      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
+      "best_price": 18.94,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
+      "search_term": "esfoliante facial caseiro",
+      "pop_score": 26
     }
   ]
 }
