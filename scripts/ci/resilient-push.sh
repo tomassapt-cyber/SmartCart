@@ -43,7 +43,10 @@ BRANCH="${GITHUB_REF_NAME:-main}"
 # construídos no deploy do Vercel a partir do template demo.html + seed.
 # (Mantê-los fazia o `git add` avisar "paths are ignored"; em workflows com
 # `set -e` isso matava o job — ver fix de 2026-07-25.)
-SEED_AND_HTML=(data/seed-bundle.json demo.html)
+# ⚠️ O .gz, NUNCA o .json. O json tinha 100,000 MiB contra um limite de
+# 100 MiB no GitHub -- 145 bytes de margem -- e qualquer loja que crescesse
+# via o push recusado com GH001. Ver scripts/ci/seed.sh.
+SEED_AND_HTML=(data/seed-bundle.json.gz demo.html)
 
 # Garantir identidade git. CRÍTICO: alguns workflows definem a identidade só
 # via env (GIT_AUTHOR_NAME/…) no step de commit, que NÃO se propaga até aqui.
@@ -77,6 +80,8 @@ push_burst() {
 }
 
 stage_all() {
+  # o .json de trabalho vira .gz antes de entrar no commit
+  bash scripts/ci/seed.sh pack
   git add "${SEED_AND_HTML[@]}" 2>/dev/null || true
   for f in "${RAW_FILES[@]}"; do git add -f "$f" 2>/dev/null || true; done
 }
@@ -103,6 +108,12 @@ for i in "${!BACKOFFS[@]}"; do
   # 2) Adoptar o seed mais recente do main
   git fetch origin "${BRANCH}" || true
   git reset --hard "origin/${BRANCH}"
+
+  # ⚠️ OBRIGATORIO. O reset trouxe o .gz de origin, mas o .json em disco e'
+  # o nosso, de antes -- esta' ignorado pelo git e o reset nao lhe toca. Sem
+  # este unpack, o re-integrate correria sobre o seed VELHO e o commit
+  # seguinte desfazia o trabalho das outras lojas em silencio.
+  bash scripts/ci/seed.sh unpack
 
   # 3) Restaurar raw e re-integrar (idempotente)
   for f in "${RAW_FILES[@]}"; do

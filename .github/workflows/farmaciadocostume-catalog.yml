@@ -47,6 +47,12 @@ jobs:
         with:
           fetch-depth: 1
 
+      # O catalogo vive comprimido no git (13 MB em vez de 100 MB): o
+      # .json passava o limite de 100 MB do GitHub e as lojas grandes viam
+      # o push recusado com GH001. Ver scripts/ci/seed.sh.
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -93,7 +99,8 @@ jobs:
             echo "Nenhuma alteração — nada a fazer."
             exit 0
           fi
-          git add data/seed-bundle.json demo.html
+          bash scripts/ci/seed.sh pack
+          git add data/seed-bundle.json.gz demo.html
           git add -f data/catalog/farmaciadocostume-full.json 2>/dev/null || true
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "chore: Farmacia do Costume daily refresh ($DATE)" \

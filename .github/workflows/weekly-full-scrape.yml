@@ -53,6 +53,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      # O catalogo vive comprimido no git (13 MB em vez de 100 MB): o
+      # .json passava o limite de 100 MB do GitHub e as lojas grandes viam
+      # o push recusado com GH001. Ver scripts/ci/seed.sh.
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
       - name: Setup Node 20
         uses: actions/setup-node@v4
         with:
@@ -89,7 +95,8 @@ jobs:
           rm -f data/.scrapingbee.key
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"
-          git add data/inventory demo.html data/seed-bundle.json data/products-master.json data/prices-snapshot.json data/scraped 2>/dev/null || true
+          bash scripts/ci/seed.sh pack
+          git add data/inventory demo.html data/seed-bundle.json.gz data/products-master.json data/prices-snapshot.json data/scraped 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nothing to commit"
           else

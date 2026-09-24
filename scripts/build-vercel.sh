@@ -16,6 +16,12 @@ set -euo pipefail
 
 MEM=--max-old-space-size=4096
 
+# 0. O catalogo vem comprimido do git (o .json passava o limite de 100 MB
+#    do GitHub). Descomprimir ANTES de tudo -- todos os passos a seguir
+#    leem data/seed-bundle.json como sempre leram.
+bash scripts/ci/seed.sh unpack
+
+
 # 1. Pedaços por produto (data/p/<versao>/) — a ficha de produto vai buscar só
 #    o pedaço do produto aberto, em vez dos ficheiros completos.
 node $MEM scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados'
