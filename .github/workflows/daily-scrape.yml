@@ -150,6 +150,13 @@ jobs:
             git rebase --abort 2>/dev/null || true
             git fetch origin "${BRANCH}" || true
             git reset --hard "origin/${BRANCH}" || { echo "ERRO: reset falhou"; exit 1; }
+            # OBRIGATORIO. A arvore acabou de andar: o .gz passou a ser o do
+            # origin, mas o .json em disco ficou o nosso, de antes -- esta no
+            # .gitignore e nenhum comando de git lhe toca. Sem este unpack, o
+            # pack seguinte comprime o seed VELHO e apaga em silencio tudo o
+            # que as outras lojas publicaram entretanto (foi o que aconteceu a
+            # Atida em 2026-09-24: 2h30 de recolha revertidas).
+            bash scripts/ci/seed.sh unpack
             if [ -d "$TMP/inventory" ]; then rm -rf data/inventory; cp -r "$TMP/inventory" data/; fi
             rm -rf "$TMP"
             # re-derivar sobre o seed NOVO (preserva as integrações que outras
