@@ -7759,7 +7759,9 @@
 /* ============================================================
    Populate CosMath showcase sections from #hp-data
    ============================================================ */
-(function () {
+// Tem NOME (era anonimo) para o modo de desenho o poder voltar a chamar depois
+// de carregar a amostra — sem isso a montra ficava com os textos de reserva.
+function pintarMontra() {
   // [2026-07-30] Cópia LOCAL de escapeHtml: este bloco passou a correr ANTES
   // do catálogo, e a versão global só é definida bem mais abaixo. Idêntica à
   // de demo.html (a global mantém-se onde estava, para todo o resto).
@@ -7903,7 +7905,8 @@
     wireClick(trendMini);
   }
   if (trendHero) wireClick(trendHero.parentElement);
-})();
+}
+pintarMontra();
 </script>
 
 <!-- Seed data injected here -->
@@ -8115,6 +8118,8 @@ function _ofertaDaBd(o) {
  * @returns {Promise<number>} quantos produtos ficaram com ofertas
  */
 async function carregarOfertas(eans, opcoes) {
+  // a desenhar nao se vai a' base de dados: a amostra ja traz as ofertas todas
+  if (MODO_DESENHO) return 0;
   const comVariantes = !!(opcoes && opcoes.variantes);
   // já pedido? no modo com variantes a pergunta é outra — ter as ofertas não
   // significa ter os tamanhos.
@@ -8261,6 +8266,7 @@ function imagensDepois(eans, redesenhar) {
 }
 
 async function garantirImagens(eans) {
+  if (MODO_DESENHO) return 0;   // a amostra ja traz as imagens
   const porFazer = [...new Set((eans || []).filter(e =>
     e && !IMAGENS_PEDIDAS.has(e) && PRODUCT_BY_EAN[e] && !PRODUCT_BY_EAN[e].image_url))];
   if (!porFazer.length) return 0;
@@ -8661,7 +8667,93 @@ function aguardarSupabase(msMax) {
   });
 }
 
+
+// ─────────────────────────────────────────────────────────────
+//  MODO DE DESENHO
+//
+//  Este ficheiro E' o site: o build pega nele, injecta os dados nos blocos
+//  #hp-data e #seed-data, e publica. Aberto directamente, esses blocos estao
+//  vazios e nao aparecia nada no ecra — o que tornava impossivel trabalhar no
+//  aspecto sem fazer um build de 100 MB primeiro.
+//
+//  Agora, se o #hp-data estiver vazio, carrega-se data/preview-arranque.json:
+//  uma amostra FIXA com as 74 lojas, 150 produtos reais com fotografia e as
+//  ofertas verdadeiras desses produtos. Da' para ver e afinar tudo — cartoes,
+//  ficha, carrinho, quizzes — sem base de dados e sem build.
+//
+//  ⚠️ NUNCA corre em producao: la' o #hp-data vem cheio e esta funcao nem e'
+//  chamada. E a amostra nao substitui dados a serio em lado nenhum — so'
+//  preenche o ecra para se poder desenhar.
+// ─────────────────────────────────────────────────────────────
+let MODO_DESENHO = false;
+
+async function _amostraDeDesenho() {
+  try {
+    const r = await fetch('data/preview-arranque.json');
+    if (!r.ok) return null;
+    const j = await r.json();
+    if (!j || !j.arranque) return null;
+    return j;
+  } catch (e) {
+    console.warn('modo de desenho: nao encontrei data/preview-arranque.json', e && e.message);
+    return null;
+  }
+}
+
+/** enche OFFERS_BY_PRODUCT com as ofertas da amostra, na forma que o site espera */
+function _ofertasDaAmostra(ofertas) {
+  if (!ofertas) return 0;
+  let n = 0;
+  for (const ean of Object.keys(ofertas)) {
+    const porLoja = {};
+    for (const slug of Object.keys(ofertas[ean])) {
+      const o = ofertas[ean][slug];
+      porLoja[slug] = {
+        price: Number(o.price),
+        previous_price: o.previous_price != null ? Number(o.previous_price) : null,
+        discount_pct: o.discount_pct != null ? Number(o.discount_pct) : null,
+        in_stock: o.in_stock !== false,
+        url: o.url || null,
+        verified: true, verified_url: true, verified_at: null,
+        source: 'scraped', variant_note: null,
+        promo_note: o.promo_note || null,
+        promo_pack: !!o.promo_pack,
+        variants: Array.isArray(o.variants) ? o.variants : undefined,
+      };
+      n++;
+    }
+    OFFERS_BY_PRODUCT[ean] = porLoja;
+    OFFERS_BY_PRODUCT_ALL[ean] = Object.assign({}, porLoja);
+    OFERTAS_PEDIDAS.add(ean);
+    OFERTAS_COM_VARIANTES.add(ean);
+  }
+  statsByEanMap._m = null;
+  return n;
+}
+
 async function loadLiveCatalog() {
+  // Template aberto directamente, sem build: entra o modo de desenho.
+  if (!_dadosDaPagina().arranque) {
+    const amostra = await _amostraDeDesenho();
+    if (amostra) {
+      construirDoArranque(amostra.arranque);
+      const n = _ofertasDaAmostra(amostra.ofertas);
+      MODO_DESENHO = true;
+      // A montra (carrossel, "em alta", kits, marcas) le o #hp-data, e esse
+      // bloco corre no arranque, antes de a amostra existir. Enche-se agora e
+      // volta-se a pintar, senao ficariam os textos de reserva no ecra.
+      if (amostra.hp) {
+        try {
+          const bloco = document.getElementById('hp-data');
+          if (bloco) bloco.textContent = JSON.stringify(amostra.hp).replace(/</g, '\u003c');
+          if (typeof pintarMontra === 'function') pintarMontra();
+        } catch (e) { console.warn('modo de desenho: montra', e && e.message); }
+      }
+      console.info('%c MODO DE DESENHO ', 'background:#c9a08a;color:#fff;font-weight:700',
+        PRODUCTS.length + ' produtos · ' + STORES.length + ' lojas · ' + n + ' ofertas de amostra');
+      return false;
+    }
+  }
   // Live API só corre em localhost (dev). Em produção, salta directamente para seed.
   const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   if (!isLocalDev) {
