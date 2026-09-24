@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T08:29:27.810Z",
+  "generated_at": "2026-09-24T08:17:24.893Z",
   "seed_total_products": 63780,
   "hero_sponsored": [
     {
@@ -187,6 +187,20 @@
       "verified_live": true
     },
     {
+      "ean": "4005800036798",
+      "name": "Eucerin Dermo Capillaire Champô Apaziguante 5% Ureia",
+      "brand": "Eucerin",
+      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/VOEkW2.png?v=1778934575",
+      "best_price": 9.94,
+      "best_store": "byFarma",
+      "best_store_slug": "byfarma",
+      "best_url": "https://byfarma.pt/products/eucerin-dermo-capillaire-champo-calmante-5-ureia-250-ml",
+      "previous_price": 20.25,
+      "discount_pct": 15,
+      "dropped_day": 20720,
+      "verified_live": true
+    },
+    {
       "ean": "3282770148275",
       "name": "Ducray Champô Equilibrante",
       "brand": "Ducray",
@@ -212,26 +226,12 @@
       "previous_price": 7.19,
       "discount_pct": 25,
       "dropped_day": 20712
-    },
-    {
-      "ean": "3504105035426",
-      "name": "Água de Limpeza sem Enxaguamento",
-      "brand": "Mustela",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-639071996854010184/mustela-002667mu_01.jpg",
-      "best_price": 6.55,
-      "best_store": "SweetCare",
-      "best_store_slug": "sweetcare",
-      "best_url": "https://www.sweetcare.pt/mustela-bebe-toilete-physiobebe-agua-limpeza-sem-enxaguamento-p-002667mu",
-      "volume_ml": 300,
-      "previous_price": 8.66,
-      "discount_pct": 24,
-      "dropped_day": 20714
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1957
+      "products": 1958
     },
     {
       "name": "Isdin",
@@ -293,8 +293,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 14202,
-    "avg_savings_pct": 26
+    "products": 13016,
+    "avg_savings_pct": 24
   },
   "shard_version": "",
   "idx_version": ""
