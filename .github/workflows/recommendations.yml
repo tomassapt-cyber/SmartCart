@@ -29,7 +29,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
 
     steps:
       - name: Checkout
@@ -45,10 +45,16 @@ jobs:
       # Sem npm install: build-recommendations.js só usa builtins do Node
       # + scripts/lib locais (sem dependências externas).
 
-      - name: Build recommendations + descriptions index
+      - name: Build recommendations + descriptions + homepage
         run: |
           node scripts/build-recommendations.js
           node scripts/build-descriptions-file.js
+          # A curadoria da homepage ("em alta", kits, patrocinados) era
+          # regenerada dentro de CADA integracao de loja -- 219 vezes por dia,
+          # 4m40s de cada vez, sempre o mesmo trabalho. As lojas passaram a
+          # salta-la (COSMATH_SKIP_HP=1) e ela aterra aqui, uma vez por dia,
+          # que e' o ritmo a que a curadoria muda.
+          node scripts/build-homepage-data.js
 
       - name: Commit derived indexes
         env:
@@ -58,11 +64,11 @@ jobs:
           GIT_COMMITTER_EMAIL: bot@girlmath.pt
         run: |
           set -e
-          if git diff --quiet -- data/recommendations.json data/descriptions.json; then
+          if git diff --quiet -- data/recommendations.json data/descriptions.json data/homepage-data.json; then
             echo "Nenhuma alteração nos índices derivados — nada a fazer."
             exit 0
           fi
-          git add data/recommendations.json data/descriptions.json
+          git add data/recommendations.json data/descriptions.json data/homepage-data.json
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "chore: rebuild content indexes ($DATE)" \
             -m "Auto-update via GitHub Actions. Índices derivados do seed (similares + descrições); preços intactos."
@@ -74,6 +80,6 @@ jobs:
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/build-recommendations.js && node scripts/build-descriptions-file.js" \
+            "node scripts/build-recommendations.js && node scripts/build-descriptions-file.js && node scripts/build-homepage-data.js" \
             "chore: rebuild content indexes ($(date -u +%Y-%m-%d))" \
-            data/recommendations.json data/descriptions.json
+            data/recommendations.json data/descriptions.json data/homepage-data.json

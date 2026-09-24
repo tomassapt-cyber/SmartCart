@@ -43,6 +43,13 @@ jobs:
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
+      # Medido a 2026-09-24: sem isto, cada integracao gasta 4m40s a
+      # regenerar a curadoria da homepage (build-homepage-data) -- trabalho
+      # identico em todas as lojas, feito 219x por dia. Com a variavel, a
+      # integracao passa de ~5min para ~10s, e o re-integrate do
+      # resilient-push deixa de custar 5 minutos por tentativa rejeitada.
+      # A homepage e' regenerada uma vez por dia no recommendations.yml.
+      COSMATH_SKIP_HP: '1'
 
     steps:
       - name: Checkout
