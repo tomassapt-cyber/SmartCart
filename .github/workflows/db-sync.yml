@@ -9,9 +9,31 @@ name: DB sync (Fase 1)
 
 on:
   schedule:
-    - cron: '30 8 * * *'
-    - cron: '30 16 * * *'   # 3x/dia, ~1h depois das vagas de refresh
-    - cron: '30 0 * * *'
+    # De 2 em 2 horas (2026-09-25). Eram 3x/dia, escolhidas para correr "~1h
+    # depois das vagas de refresh" -- mas vagas ja' nao existem: as 203
+    # corridas de loja estao espalhadas por TODAS as horas (6 a 13 por hora,
+    # medido). Contra 3 pontos de sync isso dava:
+    #
+    #     espera media de um preco ate' entrar na BD: 3,5 h
+    #     pior caso:                                  7   h
+    #
+    # E a espera conta: o site le' as ofertas da BD em tempo real
+    # (carregarOfertas -> window.SUPABASE), por isso o painel de comparacao
+    # -- que e' a feature do site -- ficava ate' 7h atras do que ja' estava no
+    # git. O comentario antigo dizia "o site ainda NAO le' da BD"; isso era
+    # verdade na Fase 1 e deixou de ser.
+    #
+    # PORQUE 2h e nao 1h ou 30min: cada loja e' raspada ~2,7x/dia, logo passam
+    # ~9h entre raspagens da mesma loja. Com 2h a espera media cai a 1h, que e'
+    # ~11% desse ciclo -- abaixo disso optimizava-se algo que a cadencia das
+    # raspagens ja' domina, ao custo de 24 a 48 upserts completos de 261 mil
+    # linhas por dia. Custo actual: 12 x 3,4 min de Actions (o repo e' publico,
+    # os minutos sao gratis) e os upserts sao INGRESS, que nao mexe na quota de
+    # egress do Supabase (ver cosmath-catalogo-hospedagem).
+    #
+    # Minuto :50 de proposito: o GitHub atrasa ou DEIXA CAIR agendamentos ao
+    # minuto :00, e este repo ja' tem 71 crons la'.
+    - cron: '50 1,3,5,7,9,11,13,15,17,19,21,23 * * *'
   workflow_dispatch:
 
 concurrency:

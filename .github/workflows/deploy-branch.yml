@@ -18,14 +18,24 @@ on:
     # limite de ~100/dia no plano free, e cada janela só deploya se a branch
     # `deploy` mudar. Se algum dia voltar a bater no limite, é aqui que se
     # reduz (e a causa provável será outra coisa a empurrar deploys).
-    - cron: '20 0 * * *'
-    - cron: '20 3 * * *'
-    - cron: '20 6 * * *'
-    - cron: '20 9 * * *'
-    - cron: '20 12 * * *'
-    - cron: '20 15 * * *'
-    - cron: '20 18 * * *'
-    - cron: '20 21 * * *'
+    # De 2 em 2 horas (2026-09-25), 30 min DEPOIS do db-sync das horas impares.
+    # Eram 8 janelas de 3h. Duas razoes para encurtar e para o desfasamento:
+    #
+    # 1) latencia: o indice e o bloco de arranque (preco "desde X" no cartao)
+    #    sao gerados no build, logo ficavam ate' 3h atras do seed que esta' no
+    #    git. Agora ate' 2h.
+    # 2) coerencia: o cartao le' do indice (build) e o painel le' da BD (sync).
+    #    Com cadencias diferentes, os dois podiam divergir horas -- o cartao a
+    #    dizer um preco e o painel outro. Com o sync as :50 das horas impares e
+    #    o build as :20 das pares, os dois saem do MESMO seed, a 30 min de
+    #    distancia.
+    #
+    # Margem verificada antes de mexer: build medido em ~1 min
+    # (pending@21:35:40 -> success@21:36:40 no estado do commit), 12 builds/dia
+    # = ~12 dos ~200 minutos/dia do plano Hobby; e 12 deploys/dia contra o
+    # limite de ~100/dia. Os pushes dos bots ("chore:") continuam a NAO
+    # deployar -- sao ~200/dia e era isso que esgotava o limite.
+    - cron: '20 0,2,4,6,8,10,12,14,16,18,20,22 * * *'
   push:
     branches: [main]
   workflow_dispatch:
