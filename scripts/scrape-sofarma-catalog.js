@@ -307,6 +307,7 @@ async function fetchPage(url, attempt = 1) {
 
   const start = Date.now();
   let idx = 0;
+  const motivosErro = new Map();
   const stats = { ok: 0, no_jsonld: 0, not_found: 0, error: 0, retried: 0, retry_ok: 0 };
   const RETRY_BUDGET = parseInt(process.env.RETRY_BUDGET || '0', 10); // 0 = off (o "soft-block" afinal era AggregateOffer; env reativa se preciso)
 
@@ -345,6 +346,14 @@ async function fetchPage(url, attempt = 1) {
       } else {
         products.push({ url, status: 'error', scraped_at, error: r.error || ('HTTP ' + r.http) });
         stats.error++;
+        // DIZER QUAL. A corrida de 2026-09-25 acumulou 556 erros em 2.200 fichas
+        // (25%) e o log nao trazia UMA mensagem -- so o contador. Sem saber se e'
+        // timeout, 5xx ou corte de ligacao, nao se sabe se o remedio e' abrandar,
+        // repetir ou mudar de caminho. Guarda-se a contagem por motivo e imprime-se
+        // no resumo; as 3 primeiras aparecem logo, para nao esperar 2 horas.
+        const motivo = r.status === 'http_error' ? `HTTP ${r.http}` : `rede: ${(r.error || '').slice(0, 60)}`;
+        motivosErro.set(motivo, (motivosErro.get(motivo) || 0) + 1);
+        if (stats.error <= 3) console.error(`  erro (${stats.error}): ${motivo} - ${url}`);
       }
       if ((stats.ok + stats.no_jsonld + stats.not_found + stats.error) % CHECKPOINT_EVERY === 0) {
         saveCheckpoint(products);
@@ -375,6 +384,10 @@ async function fetchPage(url, attempt = 1) {
   console.log(`  No JSON-LD: ${stats.no_jsonld}`);
   console.log(`  404:   ${stats.not_found}`);
   console.log(`  Erro:  ${stats.error}`);
+  if (motivosErro.size) {
+    console.log('  Erros por motivo:');
+    for (const [m, n] of [...motivosErro.entries()].sort((a, b) => b[1] - a[1])) console.log(`    ${n}x  ${m}`);
+  }
   console.log(`  Com desconto activo: ${withDisc} (${stats.ok ? Math.round(100 * withDisc / stats.ok) : 0}%)`);
   console.log(`\n  Por categoria:`);
   Object.entries(byCat).sort((a, b) => b[1] - a[1]).forEach(([c, n]) => console.log(`    ${c.padEnd(14)} ${n}`));

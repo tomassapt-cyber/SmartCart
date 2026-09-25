@@ -73,12 +73,42 @@ jobs:
           fi
 
       - name: Scrape Sofarma
+        # TIMEOUT PROPRIO, MAIS CURTO QUE O DO JOB (120 min).
+        #
+        # Sem isto, o trabalho de duas horas ia todo fora. A corrida de 2026-09-25
+        # foi cancelada aos 120 min em 2.200/3.609 fichas, com 1.575 produtos ja
+        # extraidos -- e como o job inteiro e cancelado, os passos seguintes
+        # (Integrate, Commit, Push) nunca correram. Nada foi guardado, e a corrida
+        # seguinte comecava do zero. O --resume nao tinha de onde retomar.
+        #
+        # Com 100 min no passo e 120 no job, sobram 20 minutos para integrar,
+        # commitar e empurrar o que ja se recolheu. Somado ao --resume (consciente
+        # da frescura: salta so o que tem menos de 20h), as 3 janelas diarias
+        # avancam no catalogo em vez de repetirem o inicio.
+        #
+        # continue-on-error porque um timeout NAO e uma avaria: ha dados bons por
+        # guardar. A avaria a serio -- 0 produtos -- continua a aparecer no log com
+        # "NAO sobrescrevo o catalogo existente", e nesse caso o Commit diz
+        # "Nenhuma alteracao" e nada e publicado.
+        timeout-minutes: 100
+        continue-on-error: true
         run: |
           # [2026-07-30] O $RESUME era calculado e NUNCA usado — o botao
           # "Retomar" da interface nao fazia nada. Na Care to Beauty isso
           # custava 57 min de recolha repetida (run 30561862354).
           RESUME=""
-          if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
+          # --resume SEMPRE, nao so no disparo manual. A loja tem 3.609 fichas de
+          # beleza e o site responde a 0,3/s: sao ~3h20 de trabalho contra um
+          # timeout-minutes de 120. A corrida de 2026-09-25 foi cancelada aos 120
+          # min em 2.200/3.609, com 1.575 produtos ja extraidos -- e como o cron
+          # nao passava --resume, a seguinte comecava outra vez do zero. Nunca
+          # chegava ao fim.
+          #
+          # O --resume e CONSCIENTE DA FRESCURA (ver loadCheckpoint): so salta o
+          # que foi raspado nas ultimas 20h, logo as 3 janelas do dia cobrem o
+          # catalogo e nada congela. O checkpoint sobrevive porque o workflow faz
+          # git add -f do sofarma-full.json.
+          RESUME="--resume"
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-sofarma-catalog.js --limit=${{ github.event.inputs.limit }} $RESUME
           else
