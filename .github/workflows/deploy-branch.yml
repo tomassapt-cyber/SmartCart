@@ -3,41 +3,50 @@ name: Deploy branch sync (Vercel)
 # O Vercel observa o branch `deploy` (não o main): os ~140 pushes/dia dos bots
 # esgotavam o limite de ~100 deploys/dia do plano free. Este workflow aponta
 # `deploy` para o tip do main:
-#   - 4×/dia por cron (deploys previsíveis com os dados frescos)
+#   - a seguir a CADA db-sync (gatilho principal — ver o bloco `on:`)
+#   - 4×/dia por cron, só como rede de segurança
 #   - imediatamente após pushes MANUAIS (commit que NÃO começa por "chore:" —
 #     os bots dos refreshes usam sempre "chore: <Loja> daily refresh")
 #   - à mão via workflow_dispatch
 # O update é feito via API (PATCH da ref) — não descarrega os HTMLs de 60MB.
 
 on:
+  # O GATILHO PRINCIPAL e' o fim do db-sync, nao o relogio. Razao medida a
+  # 2026-09-25: o GitHub despriorizou os agendamentos deste repo (217 crons) e
+  # atrasa-os HORAS, de forma consistente:
+  #
+  #     db-sync         atraso mediano 275 min (4,6h), pior 406 min
+  #     deploy-branch   atraso mediano 113 min (1,9h), pior 173 min
+  #     lojas           2,5 a 5,5 h (unifarma, hiperfarma, atcosmetics)
+  #
+  # O ESPACAMENTO sobrevive (as lojas a 8h continuam a ~8h de intervalo), por
+  # isso a latencia melhora ao acrescentar janelas. O que NAO sobrevive e'
+  # qualquer tentativa de alinhar dois workflows pelo relogio: com 4,6h contra
+  # 1,9h de atraso, um desfasamento de 30 min nao existe -- nem a ordem se
+  # mantem. A primeira versao desta alteracao tentou isso e estava errada.
+  #
+  # PORQUE IMPORTA: o preco "desde X" no cartao vem do indice (gerado no build)
+  # e o painel de comparacao vem da BD (gerada no db-sync). Se o build correr
+  # sobre um seed diferente daquele que foi para a BD, o cartao anuncia um preco
+  # que o painel nao confirma -- num site de comparacao de precos isso e' o pior
+  # defeito possivel.
+  #
+  # Encadear resolve por construcao, e e' imune ao atraso: o build corre quando
+  # o sync ACABA, e aponta a branch ao MESMO commit que o sync usou
+  # (workflow_run.head_sha). Os dois passam a ver exactamente o mesmo seed.
+  workflow_run:
+    workflows: ['DB sync (Fase 1)']
+    types: [completed]
+
   schedule:
-    # De 3 em 3 horas (2026-07-29). Eram 4 janelas (6/6h): um preço raspado às
-    # 07h só aparecia no site às 12h30 — até ~6h de atraso. Com 8 janelas o
-    # atraso máximo passa a ~3h.
-    # Margem confirmada antes de mexer: o repo faz 4-15 deploys/dia contra um
-    # limite de ~100/dia no plano free, e cada janela só deploya se a branch
-    # `deploy` mudar. Se algum dia voltar a bater no limite, é aqui que se
-    # reduz (e a causa provável será outra coisa a empurrar deploys).
-    # De 2 em 2 horas (2026-09-25), 30 min DEPOIS do db-sync das horas impares.
-    # Eram 8 janelas de 3h. Duas razoes para encurtar e para o desfasamento:
-    #
-    # 1) latencia: o indice e o bloco de arranque (preco "desde X" no cartao)
-    #    sao gerados no build, logo ficavam ate' 3h atras do seed que esta' no
-    #    git. Agora ate' 2h.
-    # 2) coerencia: o cartao le' do indice (build) e o painel le' da BD (sync).
-    #    Com cadencias diferentes, os dois podiam divergir horas -- o cartao a
-    #    dizer um preco e o painel outro. Com o sync as :50 das horas impares e
-    #    o build as :20 das pares, os dois saem do MESMO seed, a 30 min de
-    #    distancia.
-    #
-    # Margem verificada antes de mexer: build medido em ~1 min
-    # (pending@21:35:40 -> success@21:36:40 no estado do commit), 12 builds/dia
-    # = ~12 dos ~200 minutos/dia do plano Hobby; e 12 deploys/dia contra o
-    # limite de ~100/dia. Os pushes dos bots ("chore:") continuam a NAO
-    # deployar -- sao ~200/dia e era isso que esgotava o limite.
-    - cron: '20 0,2,4,6,8,10,12,14,16,18,20,22 * * *'
+    # Rede de seguranca, nao o caminho normal: de 6 em 6 horas, para o site
+    # continuar a reconstruir se o db-sync deixar de correr. So' 4x/dia porque
+    # estas sao as janelas que podem sair incoerentes com a BD.
+    - cron: '20 1,7,13,19 * * *'
+
   push:
     branches: [main]
+
   workflow_dispatch:
 
 permissions:
@@ -49,8 +58,19 @@ concurrency:
 
 jobs:
   sync:
-    # push de bot ("chore:") não deploya — espera pelo próximo cron
-    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'chore:')
+    # Duas guardas:
+    #  - push de bot ("chore:") nao deploya (sao ~200/dia; esgotavam o limite
+    #    da Vercel). Espera pelo proximo db-sync ou pelo cron de rede.
+    #  - no gatilho workflow_run exige-se que o db-sync tenha tido SUCESSO. O
+    #    `types: [completed]` dispara tambem em falha e em cancelamento, e ai
+    #    a BD nao foi actualizada (ou ficou a meio: o push-catalog-to-db faz
+    #    upserts e so' depois as limpezas). Construir o indice nesse caso
+    #    poe o cartao a' frente do painel, que e' a incoerencia que este
+    #    encadeamento existe para evitar. Se o sync falhar em serie, o cron
+    #    de 6/6h continua a reconstruir o site.
+    if: >-
+      (github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'chore:'))
+      && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -59,7 +79,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -e
-          SHA="${{ github.sha }}"
+          # No gatilho workflow_run, o commit que o db-sync usou; nos outros, o tip.
+          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           echo "A apontar refs/heads/deploy → $SHA"
           gh api "repos/${{ github.repository }}/git/refs/heads/deploy" \
             -X PATCH -f sha="$SHA" -F force=true \
