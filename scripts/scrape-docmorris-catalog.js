@@ -23,6 +23,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { looksBlocked } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -91,7 +92,16 @@ async function fetchPage(url, attempt = 1) {
   if (r.status === 404 || r.status === 410) { await drop(); return { status: 'not_found' }; }
   if (r.status === 403) { await drop(); return { status: 'blocked' }; }
   if (r.status === 429 || r.status >= 500) { await drop(); if (attempt < 3) { await new Promise(s => setTimeout(s, 4000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'http_error', http: r.status }; }
-  try { return { status: 'ok', html: await r.text() }; }
+  // O 403 ja era apanhado acima. Falta o desafio que vem com 200: sem esta
+  // verificacao, ele passava como 'ok', a extraccao devolvia null, e o total
+  // somava em `skipped` -- indistinguivel de uma ficha sem dados. Era isso que
+  // punha o workflow a verde com 36 produtos de 1.655.
+  try {
+    const ctype = r.headers.get('content-type');
+    const html = await r.text();
+    if (looksBlocked(html, ctype, 'html')) return { status: 'blocked' };
+    return { status: 'ok', html };
+  }
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 1500 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
 }
 
@@ -153,7 +163,7 @@ async function main() {
       const r = await fetchPage(url); const scraped_at = new Date().toISOString();
       if (r.status === 'ok') { blockedStreak = 0; const d = extractProductData(r.html); if (d) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; } else stats.skipped++; }
       else if (r.status === 'not_found') stats.not_found++;
-      else if (r.status === 'blocked') { stats.blocked++; blockedStreak++; if (blockedStreak >= 20) { console.error('✗ 20×403 seguidos — WAF ativou; parar com o que temos.'); idx = queue.length; } await new Promise(s => setTimeout(s, 5000)); }
+      else if (r.status === 'blocked') { stats.blocked++; blockedStreak++; if (blockedStreak >= 20) { console.error('✗ 20 bloqueios seguidos — WAF ativou; parar com o que temos.'); idx = queue.length; } await new Promise(s => setTimeout(s, 5000)); }
       else stats.error++;
       const total = stats.ok + stats.skipped + stats.not_found + stats.error + stats.blocked;
       if (total % CHECKPOINT_EVERY === 0) { saveCheckpoint(products); const rate = total / ((Date.now() - start) / 1000); console.log(`  [${total}/${queue.length}] ok:${stats.ok} skip:${stats.skipped} 404:${stats.not_found} 403:${stats.blocked} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round((queue.length - total) / rate / 60)}m`); }

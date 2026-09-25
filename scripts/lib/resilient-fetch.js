@@ -37,7 +37,15 @@ function browserHeaders(extra = {}) {
 }
 
 // Assinaturas típicas de página de bloqueio/challenge servida com HTTP 200.
-const BLOCK_RE = /(just a moment|checking your browser|cf-browser-verification|attention required|access denied|unusual traffic|are you a robot|请稍候)/i;
+// `client challenge` e `_fs-ch-` sao o F5 / Shape Bot Defense, que responde
+// HTTP **200** com uma pagina de desafio em JavaScript -- o tipo mais
+// traicoeiro, porque nao dispara nenhuma verificacao de status. A DocMorris
+// serve isso desde ha semanas: 1.649 fichas pedidas, todas 200, TODAS com
+// exactamente 3.036 bytes e zero JSON-LD. A extraccao devolvia null e o
+// contador somava em `skipped`, por isso o workflow ficava VERDE a raspar 36
+// produtos de 1.655. O tamanho constante para URLs diferentes foi o que deu a
+// pista; `<title>Client Challenge</title>` confirmou.
+const BLOCK_RE = /(just a moment|checking your browser|cf-browser-verification|attention required|access denied|unusual traffic|are you a robot|client challenge|_fs-ch-|请稍候)/i;
 
 function looksBlocked(body, contentType, expect) {
   if (!body) return true;
