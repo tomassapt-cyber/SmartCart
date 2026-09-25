@@ -84,7 +84,24 @@ async function fetchPage(url, attempt = 1) {
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 1500 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
 }
 
-function loadCheckpoint() { if (!RESUME || !fs.existsSync(OUT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
+function loadCheckpoint() {
+  if (!RESUME || !fs.existsSync(OUT_FILE)) return null;
+  try {
+    const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+    if (!Array.isArray(d.products)) return null;
+    // Resume CONSCIENTE DA FRESCURA: so salta produtos raspados nas ultimas
+    // ~20h; os mais velhos sao RE-RASPADOS. Sem isto, o --resume saltava TUDO o
+    // que esta no catalogo committado e os precos CONGELAVAM -- trocava-se o
+    // problema do timeout por um pior, e silencioso. E' o mesmo padrao que a
+    // sofarma, a pharmee e a afarmaciaonline ja usam. Num run diario tudo tem
+    // mais de 20h (re-scrape completo); num segundo run no mesmo dia salta so o
+    // que ja se fez, e e' isso que faz as 2.443 fichas caberem no tempo.
+    const MAX_AGE_MS = (parseFloat(process.env.RESUME_MAX_AGE_HOURS) || 20) * 3600e3;
+    const now = Date.now();
+    const fresh = d.products.filter(p => p.scraped_at && (now - new Date(p.scraped_at)) < MAX_AGE_MS);
+    return { products: fresh, done: new Set(fresh.map(p => p.url)) };
+  } catch { return null; }
+}
 function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) return; fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'loja.farmaciaportugal.pt (sitemap_web; JSON-LD gtin13 + sku=mpn=CNP)', in_progress: inProgress, products }), 'utf8'); }
 
 async function main() {

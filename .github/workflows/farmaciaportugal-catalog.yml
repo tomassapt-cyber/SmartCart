@@ -29,7 +29,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -67,9 +67,19 @@ jobs:
           fi
 
       - name: Scrape Farmacia Portugal
+        # 2.443 fichas a 0,3/s = ~135 min, contra um job de 90. A corrida de
+        # 2026-09-25 foi cancelada em 1.300/2.443 com ok:857 -- e como o job
+        # inteiro e cancelado, os passos de integrar/commitar/empurrar nunca
+        # correram e as 857 fichas foram deitadas fora.
+        #
+        # Job para 120 min, passo em 95: sobram 25 para guardar o que se fez.
+        # continue-on-error porque um timeout NAO e avaria -- ha dados bons por
+        # guardar. Com 0 produtos o scraper continua a escrever "NAO sobrescrevo".
+        # Somado ao --resume acima, duas janelas cobrem o catalogo.
+        timeout-minutes: 95
+        continue-on-error: true
         run: |
-          RESUME=""
-          if [ -n "${{ github.event.inputs.resume }}" ]; then RESUME="--resume"; fi
+          RESUME="--resume"   # sempre, nao so no disparo manual
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-farmaciaportugal-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=250 $RESUME
           else
