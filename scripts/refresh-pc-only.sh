@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 # ============================================================================
-# CosMath — refresh das 5 lojas SÓ-PC em sequência (correr do PC, git-bash)
+# CosMath — refresh das lojas SÓ-PC em sequência (correr do PC, git-bash)
 # ============================================================================
-# Notino, Power Beauty, SoBeauty, Smart Beauty e Beleza37 bloqueiam IPs de
-# datacenter (Cloudflare/WAF) → os workflows têm o schedule desligado e o
-# refresh tem de vir de um IP residencial (este PC).
+# Estas lojas bloqueiam IPs de datacenter → os workflows têm o schedule
+# desligado e o refresh tem de vir de um IP residencial (este PC).
+#
+# A lista passou de 5 para 9 a 2026-09-25, depois de medir o que cada uma
+# devolve aos runners do GitHub:
+#
+#   HTTP 000 (nem liga)      sobeauty, smartbeauty, beleza37
+#   403 "Just a moment..."   notino, powerbeauty, care2me, afarmaciaonline
+#   403 Forbidden (Apache)   fastpharma
+#   200 "Client Challenge"   docmorris   ← desafio do F5 que vinha com 200 e
+#                                          por isso passava por página boa
+#
+# Falta a skin.pt: tem integrate-skin-catalog.js mas NÃO tem scraper nenhum —
+# as 3.834 ofertas dela nunca foram automatizadas. Enquanto não houver scraper,
+# não entra aqui.
 #
 # USO (da raiz do repo ou de qualquer lado):
 #   bash scripts/refresh-pc-only.sh            # refresh normal (known/resume)
@@ -33,6 +45,12 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 git fetch origin main && git reset --hard origin/main
 
+# OBRIGATORIO depois do reset. O catálogo vive no git comprimido
+# (data/seed-bundle.json.gz) e o .json está no .gitignore — o reset traz o .gz
+# novo e não toca no .json, que fica o de antes. Sem este unpack os integradores
+# corriam sobre o seed VELHO e o commit desfazia o trabalho das outras lojas.
+bash scripts/ci/seed.sh unpack
+
 # ⚠️ SEM --resume: este script faz REFRESH DE PRECOS, nao retoma um scrape.
 # Com --resume o scraper via o catalogo do refresh anterior, dava todos os URLs
 # como "ja feitos" e nao raspava NADA — os precos ficavam congelados enquanto o
@@ -40,15 +58,23 @@ git fetch origin main && git reset --hard origin/main
 # desactualizadas (beleza37: 1 produto re-raspado em 6.365). Se um scrape for
 # mesmo interrompido, correr o scraper a mao com --resume.
 declare -A SCRAPE=(
-  [notino]="node scripts/scrape-notino-catalog.js --match-seed"
-  [powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --known-only"
   [sobeauty]="node scripts/scrape-sobeauty-catalog.js"
   [smartbeauty]="node scripts/scrape-smartbeauty-catalog.js"
   [beleza37]="node scripts/scrape-beleza37-catalog.js"
+  [notino]="node scripts/scrape-notino-catalog.js --match-seed"
+  [powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --known-only"
+  [care2me]="node scripts/scrape-care2me-catalog.js"
+  [fastpharma]="node scripts/scrape-fastpharma-catalog.js"
+  [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
+  [docmorris]="node scripts/scrape-docmorris-catalog.js"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 
-ORDER=(notino powerbeauty sobeauty smartbeauty beleza37)
+# As tres primeiras leem o catalogo A GRANEL (/products.json, ver
+# lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
+# e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
+# aterrou o mais barato de obter.
+ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline docmorris)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"
@@ -64,7 +90,11 @@ for loja in "${ORDER[@]}"; do
   # commit + push DESTA loja já — janela de corrida mínima
   RAW="data/catalog/${loja}-full.json"
   MSG="chore: ${loja} refresh do PC ($(date -u +%F))"
-  git add data/seed-bundle.json demo.html index.html catalogo.html data/ghost-check.json data/homepage-data.json 2>/dev/null || true
+  # O catálogo entra no git COMPRIMIDO. Sem este pack, o `git add` do .json
+  # não preparava nada (está no .gitignore), o `git diff --staged` dava vazio, o
+  # script dizia "Nada mudou" e NÃO PUBLICAVA — com o scrape todo feito.
+  bash scripts/ci/seed.sh pack
+  git add data/seed-bundle.json.gz demo.html index.html catalogo.html data/ghost-check.json data/homepage-data.json 2>/dev/null || true
   git add -f "$RAW" 2>/dev/null || true
   if git diff --staged --quiet; then
     echo "ℹ Nada mudou (${loja})."

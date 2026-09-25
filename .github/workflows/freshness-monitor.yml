@@ -44,18 +44,34 @@ jobs:
       - name: Freshness report (strict)
         run: |
           STALE="${{ github.event.inputs.stale_days || '2' }}"
-          # As 5 lojas SÓ-PC (Cloudflare bloqueia IPs de datacenter) refrescam
-          # à mão via scripts/refresh-pc-only.sh — não podem ser medidas com o
-          # mesmo limiar das cloud, senão o gate dispara todos os dias e o
-          # alarme deixa de significar alguma coisa (era o que acontecia).
-          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37"
-          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY"
+          # As lojas SÓ-PC refrescam à mão, via scripts/refresh-pc-only.sh, e não
+          # podem ser medidas com o limiar das cloud — senão o gate dispara todos
+          # os dias e o alarme deixa de significar alguma coisa.
+          #
+          # ERA ISSO QUE ACONTECIA. A lista tinha 5 lojas e as bloqueadas eram 9:
+          # este monitor ficou VERMELHO seis dias seguidos (20 a 25/09) a acusar
+          # lojas que não podem correr na nuvem, e por isso ninguém olhou para ele
+          # — nem quando 10 lojas pararam a sério. Um alarme que soa sempre não é
+          # um alarme. Actualizado a 2026-09-25 com o que foi medido dos runners:
+          #
+          #   HTTP 000 (nem liga)      sobeauty, smartbeauty, beleza37
+          #   403 "Just a moment..."   notino, powerbeauty, care2me, afarmaciaonline
+          #   403 Forbidden (Apache)   fastpharma
+          #   200 "Client Challenge"   docmorris
+          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,docmorris"
+          # A skin.pt fica fora dos DOIS gates: tem integrate-skin-catalog.js mas
+          # NÃO tem scraper nenhum, logo está condenada a estar stale e mantê-la
+          # em qualquer gate é pedir um vermelho permanente. Volta quando tiver
+          # scraper. O aviso abaixo existe para não ser esquecida.
+          SEM_SCRAPER="skin"
+          echo "::warning::skin.pt nao tem scraper (so integrador) — fora dos gates de frescura ate' ter um."
+          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY,$SEM_SCRAPER"
 
       - name: Gate das lojas SÓ-PC (limiar folgado — refresh é manual)
         run: |
           # Continuam a ser vigiadas, mas com 7 dias: se o refresh manual for
           # esquecido a sério, isto falha e avisa.
-          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37 || {
+          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,docmorris || {
               echo "::warning::Lojas SÓ-PC com mais de 7 dias — correr scripts/refresh-pc-only.sh no PC."
               exit 1
             }
