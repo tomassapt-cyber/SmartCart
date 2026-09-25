@@ -12,6 +12,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -69,9 +70,15 @@ function extractProductData(html) {
   return null;
 }
 
-async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); return await r.text(); }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
+// `return await r.text()` sem olhar ao status era o mesmo defeito de outros 4
+// scrapers. Aqui custou concreto: a 2026-09-25 as 15:22 o sitemap devolveu
+// HTTP 429 (Too Many Requests) -- a loja limitou-nos o ritmo depois dos 1.300
+// pedidos da corrida das 13:28 -- e o corpo de erro foi parseado como XML,
+// dando '0 fichas'. Um 429 e' para REPETIR com espera, nao para desistir, e e'
+// o que o helper faz (2s, 6s, 15s, 30s com jitter). Se ainda assim falhar, diz
+// o status e o inicio do corpo em vez de mentir com um zero.
+async function fetchText(url) {
+  return fetchTextResilient(url, { expect: 'xml', minLocs: 1, attempts: 4, timeoutMs: 30000, headers: { 'User-Agent': UA } });
 }
 async function fetchPage(url, attempt = 1) {
   let r;

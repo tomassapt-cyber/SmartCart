@@ -72,6 +72,9 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      - name: Marcar o inicio da recolha
+        run: echo "INICIO_RECOLHA=$(date -u +%s)" >> $GITHUB_ENV
+
       - name: Scrape Sofarma
         # TIMEOUT PROPRIO, MAIS CURTO QUE O DO JOB (120 min).
         #
@@ -113,6 +116,32 @@ jobs:
           else
             node scripts/scrape-sofarma-catalog.js $RESUME
           fi
+
+      # SEPARA TIMEOUT DE AVARIA. O continue-on-error acima existe para o
+      # trabalho de uma recolha longa nao ser deitado fora quando o tempo
+      # acaba -- mas sozinho punha a VERDE tambem as avarias reais. Foi o que
+      # aconteceu na Farmacia Portugal a 2026-09-25: o scrape saiu com codigo 1
+      # e "0 fichas", o passo apareceu como success, e o Integrate seguinte
+      # re-integrou o catalogo de 24 de Julho como se fosse fresco.
+      #
+      # O sinal objectivo: o scraper SO escreve o catalogo quando tem produtos
+      # (com 0 diz "NAO sobrescrevo o catalogo existente"), e grava `scraped_at`
+      # no topo do ficheiro. Se esse carimbo e desta corrida, houve recolha --
+      # tenha ela acabado ou sido cortada a meio -- e vale a pena integrar. Se
+      # nao e, nao houve nada, e o job TEM de ficar vermelho.
+      - name: A recolha produziu algo nesta corrida?
+        if: always()
+        run: |
+          F=data/catalog/sofarma-full.json
+          if [ ! -f "$F" ]; then echo "sem ficheiro de catalogo"; exit 1; fi
+          TS=$(node -e 'const d=JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"));process.stdout.write(String(Math.floor(new Date(d.scraped_at).getTime()/1000)||0))' "$F")
+          if [ -n "$TS" ] && [ "$TS" -ge "${INICIO_RECOLHA:-0}" ]; then
+            echo "OK: o catalogo foi escrito nesta corrida (carimbo $TS >= inicio ${INICIO_RECOLHA})."
+            exit 0
+          fi
+          echo "A recolha nao escreveu nada nesta corrida (carimbo $TS < inicio ${INICIO_RECOLHA})."
+          echo "Isto e uma AVARIA, nao um timeout: nao ha dados novos para integrar."
+          exit 1
 
       - name: Upload scrape artifact (safety-net)
         if: always()
