@@ -1,13 +1,13 @@
 {
-  "scraped_at": "2026-09-25T13:51:29.952Z",
+  "scraped_at": "2026-09-25T18:20:06.026Z",
   "source": "/home/runner/work/SmartCart/SmartCart/data/catalog/druni-urls.json",
   "in_progress": false,
   "stats": {
     "total": 5481,
-    "ok": 5415,
+    "ok": 5432,
     "blocked": 0,
-    "no_jsonld": 61,
-    "error": 5
+    "no_jsonld": 49,
+    "error": 0
   },
   "products": [
     {
@@ -8079,15 +8079,6 @@
       "latency_ms": 22418
     },
     {
-      "url": "https://www.druni.pt/leche-solar-hydra24-spf50-delial-alta-protecao-corporal",
-      "lastmod": "2026-09-23T03:10:39+00:00",
-      "priority": 1,
-      "slug": "leche-solar-hydra24-spf50-delial-alta-protecao-corporal",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1716
-    },
-    {
       "url": "https://www.druni.pt/leche-solar-infantil-bioderma-photoderm-spf-50",
       "lastmod": "2026-09-23T03:04:36+00:00",
       "priority": 1,
@@ -8152,69 +8143,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3052
-    },
-    {
-      "url": "https://www.druni.pt/leche-solar-pediatrics-photoderm-spf50-bioderma-protecao-solar-infantil",
-      "lastmod": "2026-09-23T03:10:28+00:00",
-      "priority": 1,
-      "slug": "leche-solar-pediatrics-photoderm-spf50-bioderma-protecao-solar-infantil",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1714
-    },
-    {
-      "url": "https://www.druni.pt/leche-solar-spf50-sun-secure-laboratoires-svr-leite-solar-spf50",
-      "lastmod": "2026-09-23T03:10:44+00:00",
-      "priority": 1,
-      "slug": "leche-solar-spf50-sun-secure-laboratoires-svr-leite-solar-spf50",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1710
-    },
-    {
-      "url": "https://www.druni.pt/leche-solar-spf50-sunbrella-baby-dermedic-protecao-e-hidratacao",
-      "lastmod": "2026-09-23T03:09:41+00:00",
-      "priority": 1,
-      "slug": "leche-solar-spf50-sunbrella-baby-dermedic-protecao-e-hidratacao",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1711
-    },
-    {
-      "url": "https://www.druni.pt/leche-ultra-hidratante-corporal-dorada-topicrem-emulsao-hidratante",
-      "lastmod": "2026-09-23T03:04:33+00:00",
-      "priority": 1,
-      "slug": "leche-ultra-hidratante-corporal-dorada-topicrem-emulsao-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1707
-    },
-    {
-      "url": "https://www.druni.pt/leche-solar-zanahoria-spf-6-nivea-leite-intensificador-bronzeado",
-      "lastmod": "2026-09-23T03:02:58+00:00",
-      "priority": 1,
-      "slug": "leche-solar-zanahoria-spf-6-nivea-leite-intensificador-bronzeado",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1901
-    },
-    {
-      "url": "https://www.druni.pt/leche-ultra-hidratante-corporal-topicrem-emulsao-hidratante",
-      "lastmod": "2026-09-23T03:05:29+00:00",
-      "priority": 1,
-      "slug": "leche-ultra-hidratante-corporal-topicrem-emulsao-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1696
-    },
-    {
-      "url": "https://www.druni.pt/leche-ultra-hidratante-corporal-nacarada-topicrem-emulsao-hidratante",
-      "lastmod": "2026-09-23T03:04:33+00:00",
-      "priority": 1,
-      "slug": "leche-ultra-hidratante-corporal-nacarada-topicrem-emulsao-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2048
     },
     {
       "url": "https://www.druni.pt/leche-solar-spray-alta-proteccion-bebe-mustela-protetor-solar-spray",
@@ -8316,33 +8244,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3395
-    },
-    {
-      "url": "https://www.druni.pt/leila-nude-aqc-fragances-eau-de-toilette-para-mulher",
-      "lastmod": "2026-09-23T03:10:25+00:00",
-      "priority": 1,
-      "slug": "leila-nude-aqc-fragances-eau-de-toilette-para-mulher",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 4117
-    },
-    {
-      "url": "https://www.druni.pt/lemon-glow-scrub-biovene-esfoliante-corporal-iluminador",
-      "lastmod": "2026-09-23T03:03:12+00:00",
-      "priority": 1,
-      "slug": "lemon-glow-scrub-biovene-esfoliante-corporal-iluminador",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3498
-    },
-    {
-      "url": "https://www.druni.pt/lemon-pie-the-fruit-company-colonia-patisserie",
-      "lastmod": "2026-09-23T03:10:45+00:00",
-      "priority": 1,
-      "slug": "lemon-pie-the-fruit-company-colonia-patisserie",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 2291
     },
     {
       "url": "https://www.druni.pt/lemon-vitamin-c-babaria-shampoo-clareia-e-ilumina",
@@ -15774,15 +15675,6 @@
       "latency_ms": 3657
     },
     {
-      "url": "https://www.druni.pt/madagascar-centella-skin-1004-creme-hidratante",
-      "lastmod": "2026-09-23T03:11:09+00:00",
-      "priority": 1,
-      "slug": "madagascar-centella-skin-1004-creme-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3187
-    },
-    {
       "url": "https://www.druni.pt/madagascar-centella-skin-1004-mascara-facial-hidratante",
       "lastmod": "2026-09-23T03:11:09+00:00",
       "priority": 1,
@@ -17072,330 +16964,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3080
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3158
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-club",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-club",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3396
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-essenza",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-essenza",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3210
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-futura",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-futura",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3208
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-intensa",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-intensa",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3219
-    },
-    {
-      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-pura",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/acqua-di-parma/colonia-pura",
-      "category": "fragrance",
-      "status": "no_jsonld",
-      "latency_ms": 3077
-    },
-    {
-      "url": "https://www.druni.pt/marcas/beauty-of-joseon/solares",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/beauty-of-joseon/solares",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3144
-    },
-    {
-      "url": "https://www.druni.pt/marcas/bella-aurora/b7-antimanchas",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/bella-aurora/b7-antimanchas",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3377
-    },
-    {
-      "url": "https://www.druni.pt/marcas/bella-aurora/proteccion-solar",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/bella-aurora/proteccion-solar",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3676
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/anthelios",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/anthelios",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 4048
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/cicaplast",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/cicaplast",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3556
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/effaclar",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/effaclar",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3740
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/vitamina-c",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/vitamina-c",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3793
-    },
-    {
-      "url": "https://www.druni.pt/marcas/la-roche-posay/hyalu-b5",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/la-roche-posay/hyalu-b5",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 4274
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/absolut-repair",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3156
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair-molecular",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/absolut-repair-molecular",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3526
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/aminexil-advanced",
-      "lastmod": "2026-06-19T12:15:12+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/aminexil-advanced",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3290
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/chroma-creme",
-      "lastmod": "2026-06-19T12:15:12+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/chroma-creme",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3701
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/keratin-alpha-sleek",
-      "lastmod": "2026-09-14T12:19:46+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/keratin-alpha-sleek",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3012
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/curl-expression",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/curl-expression",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4079
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/liss-unlimited",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/liss-unlimited",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3465
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/metal-detox",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/metal-detox",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3320
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/pro-longer",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/pro-longer",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3833
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/scalp-advanced",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/scalp-advanced",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4004
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/serioxyl-x",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/serioxyl-x",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3262
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/tecni-art",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/tecni-art",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3912
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/vitamino-color",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3319
-    },
-    {
-      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color-spectrum",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/loreal-professionnel/vitamino-color-spectrum",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3658
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/acidic-bonding-concentrate",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/acidic-bonding-concentrate",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3420
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/acidic-color-gloss",
-      "lastmod": "2025-07-18T10:05:16+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/acidic-color-gloss",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3414
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/all-soft-mega-curls",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/all-soft-mega-curls",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3465
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/blondage-high-bright",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/blondage-high-bright",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3739
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/color-extend-magnetics",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/color-extend-magnetics",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3119
-    },
-    {
-      "url": "https://www.druni.pt/marcas/redken/color-extend-blondage",
-      "lastmod": "2026-09-23T12:20:30+00:00",
-      "priority": 1,
-      "slug": "marcas/redken/color-extend-blondage",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4421
-    },
-    {
-      "url": "https://www.druni.pt/marcas/revolution-skincare/vitamina-c",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/revolution-skincare/vitamina-c",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3280
-    },
-    {
-      "url": "https://www.druni.pt/marcas/ziaja/vitamina-c-b3-niacinamida",
-      "lastmod": "2026-09-23T12:20:29+00:00",
-      "priority": 1,
-      "slug": "marcas/ziaja/vitamina-c-b3-niacinamida",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 4139
     },
     {
       "url": "https://www.druni.pt/mare-divino-elite-eau-de-parfum-para-mulher",
@@ -27383,15 +26951,6 @@
       "latency_ms": 3289
     },
     {
-      "url": "https://www.druni.pt/mousse-facial-solar-spf-50-agrado-mousse-facial-resistente-a-agua",
-      "lastmod": "2026-09-23T03:03:04+00:00",
-      "priority": 1,
-      "slug": "mousse-facial-solar-spf-50-agrado-mousse-facial-resistente-a-agua",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 1706
-    },
-    {
       "url": "https://www.druni.pt/mousse-bouffante-kerastase-fixadores-e-acabamentos",
       "lastmod": "2026-09-23T03:04:43+00:00",
       "priority": 1,
@@ -31625,15 +31184,6 @@
       "latency_ms": 4011
     },
     {
-      "url": "https://www.druni.pt/niacinamida-vitamina-c-750ml-drn-creme-corporal-hidratante-e-iluminador",
-      "lastmod": "2026-09-23T03:11:10+00:00",
-      "priority": 1,
-      "slug": "niacinamida-vitamina-c-750ml-drn-creme-corporal-hidratante-e-iluminador",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3622
-    },
-    {
       "url": "https://www.druni.pt/niacinamida-purify-agrado-serum-redutor-de-imperfeicoes",
       "lastmod": "2026-09-23T03:09:54+00:00",
       "priority": 1,
@@ -32160,26 +31710,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 10575
-    },
-    {
-      "url": "https://www.druni.pt/night-renew-serum-ecoderma-serum-facial-renovacao",
-      "lastmod": "2026-09-23T03:07:49+00:00",
-      "priority": 1,
-      "slug": "night-renew-serum-ecoderma-serum-facial-renovacao",
-      "category": "skincare",
-      "status": "error",
-      "error": "page.goto: Timeout 25000ms exceeded.\nCall log:\n  - navigating to \"https://www.druni.pt/night-renew-serum-ecoderma-serum-facial-renovacao\", waiting until \"domcontentloaded\"\n",
-      "latency_ms": 25002
-    },
-    {
-      "url": "https://www.druni.pt/night-renewal-gold-collagen-serum-regenerador",
-      "lastmod": "2026-09-23T03:08:10+00:00",
-      "priority": 1,
-      "slug": "night-renewal-gold-collagen-serum-regenerador",
-      "category": "skincare",
-      "status": "error",
-      "error": "page.goto: Timeout 25000ms exceeded.\nCall log:\n  - navigating to \"https://www.druni.pt/night-renewal-gold-collagen-serum-regenerador\", waiting until \"domcontentloaded\"\n",
-      "latency_ms": 25001
     },
     {
       "url": "https://www.druni.pt/night-restore-serum-biovene-serum-antienvelhecimento",
@@ -36401,16 +35931,6 @@
       "latency_ms": 3611
     },
     {
-      "url": "https://www.druni.pt/oh-after-sun-delight-btan-locao-after-sun-hidratante",
-      "lastmod": "2026-09-23T03:03:20+00:00",
-      "priority": 1,
-      "slug": "oh-after-sun-delight-btan-locao-after-sun-hidratante",
-      "category": "skincare",
-      "status": "error",
-      "error": "page.goto: Timeout 25000ms exceeded.\nCall log:\n  - navigating to \"https://www.druni.pt/oh-after-sun-delight-btan-locao-after-sun-hidratante\", waiting until \"domcontentloaded\"\n",
-      "latency_ms": 25002
-    },
-    {
       "url": "https://www.druni.pt/oh-my-match-crema-flor-mayo-creme-facial-iluminador",
       "lastmod": "2026-09-23T03:03:19+00:00",
       "priority": 1,
@@ -39368,26 +38888,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3220
-    },
-    {
-      "url": "https://www.druni.pt/ortiga-klorane-champo-cabelo-oleoso",
-      "lastmod": "2026-09-23T03:04:35+00:00",
-      "priority": 1,
-      "slug": "ortiga-klorane-champo-cabelo-oleoso",
-      "category": "haircare",
-      "status": "error",
-      "error": "page.goto: Timeout 25000ms exceeded.\nCall log:\n  - navigating to \"https://www.druni.pt/ortiga-klorane-champo-cabelo-oleoso\", waiting until \"domcontentloaded\"\n",
-      "latency_ms": 25007
-    },
-    {
-      "url": "https://www.druni.pt/ortiga-natural-klorane-shampoo-seco",
-      "lastmod": "2026-09-23T03:08:43+00:00",
-      "priority": 1,
-      "slug": "ortiga-natural-klorane-shampoo-seco",
-      "category": "haircare",
-      "status": "error",
-      "error": "page.goto: Timeout 25000ms exceeded.\nCall log:\n  - navigating to \"https://www.druni.pt/ortiga-natural-klorane-shampoo-seco\", waiting until \"domcontentloaded\"\n",
-      "latency_ms": 24999
     },
     {
       "url": "https://www.druni.pt/otto-saphir-eau-cologne-infantil",
@@ -66356,15 +65856,6 @@
       "latency_ms": 3542
     },
     {
-      "url": "https://www.druni.pt/rosa-mosqueta-manteca-de-karite-750ml-drn-creme-corporal-hidratante-e-nutritiva",
-      "lastmod": "2026-09-23T03:11:10+00:00",
-      "priority": 1,
-      "slug": "rosa-mosqueta-manteca-de-karite-750ml-drn-creme-corporal-hidratante-e-nutritiva",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3162
-    },
-    {
       "url": "https://www.druni.pt/rosa-spicy-adolfo-dominguez-eau-de-parfum-para-mulher",
       "lastmod": "2026-09-23T03:09:12+00:00",
       "priority": 1,
@@ -89708,60 +89199,6 @@
       "latency_ms": 3189
     },
     {
-      "url": "https://www.druni.pt/solares/protetor-solar/com-cor",
-      "lastmod": "2024-05-30T12:53:36+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/com-cor",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2542
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-20-a-25",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-20-a-25",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3893
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-30-a-45",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-30-a-45",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3178
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-4-a-15",
-      "lastmod": "2024-11-05T16:39:10+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-4-a-15",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3226
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/pele-oleosa",
-      "lastmod": "2024-11-05T16:38:34+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/pele-oleosa",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2459
-    },
-    {
-      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-50-a-100",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "solares/protetor-solar/fator-spf-50-a-100",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3412
-    },
-    {
       "url": "https://www.druni.pt/soleil-bronzer-face-sun-bb-cream-spf-50-lancome-protetor-solar-com-cor",
       "lastmod": "2026-09-23T03:05:58+00:00",
       "priority": 1,
@@ -95146,24 +94583,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3795
-    },
-    {
-      "url": "https://www.druni.pt/stitch-1ud-lip-smacker-berry-swirl-dream-balsamo-hidratante",
-      "lastmod": "2026-09-23T03:11:10+00:00",
-      "priority": 1,
-      "slug": "stitch-1ud-lip-smacker-berry-swirl-dream-balsamo-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3294
-    },
-    {
-      "url": "https://www.druni.pt/stitch-1ud-lip-smacker-lemon-swirl-dream-balsamo-hidratante",
-      "lastmod": "2026-09-23T03:11:10+00:00",
-      "priority": 1,
-      "slug": "stitch-1ud-lip-smacker-lemon-swirl-dream-balsamo-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3358
     },
     {
       "url": "https://www.druni.pt/stitch-sence-beauty-mascara-hidratante",
@@ -102234,15 +101653,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3202
-    },
-    {
-      "url": "https://www.druni.pt/swiss-pristine-serum-la-prairie-serum-reparador",
-      "lastmod": "2026-09-23T03:11:15+00:00",
-      "priority": 1,
-      "slug": "swiss-pristine-serum-la-prairie-serum-reparador",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3110
     },
     {
       "url": "https://www.druni.pt/swiss-riviera-emulsion-colline-emulsao-antipoluicao-detoxificante",
@@ -114970,15 +114380,6 @@
       "latency_ms": 3024
     },
     {
-      "url": "https://www.druni.pt/urea-cica-750ml-drn-creme-corporal-hidratante-e-reparadora",
-      "lastmod": "2026-09-23T03:11:10+00:00",
-      "priority": 1,
-      "slug": "urea-cica-750ml-drn-creme-corporal-hidratante-e-reparadora",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3280
-    },
-    {
       "url": "https://www.druni.pt/urea-farnm-nutricion-medica-creme-hidratante",
       "lastmod": "2026-09-23T03:05:44+00:00",
       "priority": 1,
@@ -124792,6 +124193,834 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 2477
+    },
+    {
+      "url": "https://www.druni.pt/leche-solar-hydra24-spf50-delial-alta-protecao-corporal",
+      "lastmod": "2026-09-23T03:10:39+00:00",
+      "priority": 1,
+      "slug": "leche-solar-hydra24-spf50-delial-alta-protecao-corporal",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:37.401Z",
+      "name": "Leche Solar Hydra24 SPF50",
+      "brand": "DELIAL",
+      "ean": "3600542672764",
+      "description": "AS HYDRA24 MILK SPF50 B400ML B43 é um leite solar de alta proteção FPS50 que protege a pele dos raios UVA e UVB. Sua fórmula é enriquecida com Vitamina C, previne manchas solares e hidrata por 24 horas.Sua textura é leve e refrescante e de fácil absorção.",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1474418.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 13.95,
+      "previous_price": null,
+      "_price_source": "jsonld",
+      "_jsonld_price": 13.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 4741
+    },
+    {
+      "url": "https://www.druni.pt/leche-solar-spf50-sun-secure-laboratoires-svr-leite-solar-spf50",
+      "lastmod": "2026-09-23T03:10:44+00:00",
+      "priority": 1,
+      "slug": "leche-solar-spf50-sun-secure-laboratoires-svr-leite-solar-spf50",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:37.445Z",
+      "name": "Leche Solar Spf50+ Sun Secure",
+      "brand": "LABORATOIRES SVR",
+      "ean": "3662361003198",
+      "description": "Leite fluido e aveludado de muito alta proteção dermatológica: SUN SECURE Lait SPF50+ é adequado para o rosto e o corpo, sua textura aveludada se funde com a pele e deixa uma película hidratante invisível e não oleosa. Seu delicado aroma de verão fará com que você queira aplicá-lo repetidamente.",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5811088.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 27.9,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 27.9,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 4778
+    },
+    {
+      "url": "https://www.druni.pt/leche-solar-pediatrics-photoderm-spf50-bioderma-protecao-solar-infantil",
+      "lastmod": "2026-09-23T03:10:28+00:00",
+      "priority": 1,
+      "slug": "leche-solar-pediatrics-photoderm-spf50-bioderma-protecao-solar-infantil",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:37.590Z",
+      "name": "Leche Solar Pediatrics Photoderm SPF50+",
+      "brand": "BIODERMA",
+      "ean": "3701129807286",
+      "description": "Leite fotoprotetor para crianças: alta proteção para crianças, aprovada por pediatras. A partir dos 12 meses.Benefícios:- Leite com tripla proteção solar dermatológica graças à patente SUN BARRIER TECHNOLOGY. - Amplo espectro. Filtragem UV Otimizada e reforçada contra os raios UVA. - Reforça a funçã",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809900.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 15.95,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 15.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 4937
+    },
+    {
+      "url": "https://www.druni.pt/leche-solar-zanahoria-spf-6-nivea-leite-intensificador-bronzeado",
+      "lastmod": "2026-09-23T03:02:58+00:00",
+      "priority": 1,
+      "slug": "leche-solar-zanahoria-spf-6-nivea-leite-intensificador-bronzeado",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:42.627Z",
+      "name": "Leche Solar Zanahoria SPF 6",
+      "brand": "NIVEA",
+      "ean": "4005808445905",
+      "description": "NIVEA SUN Loción Solar Zanahoria FP 6 protege frente a los rayos UV y ayuda a que la piel consiga rápidamente un bronceado intenso y duradero sin autobronceador. Su fórmula con Extracto de Caroteno y Vitamina E es resistente al agua y no grasa para una aplicación más agradable y una absorción más rá",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1441058.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 10.99,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 10.99,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3702
+    },
+    {
+      "url": "https://www.druni.pt/leche-solar-spf50-sunbrella-baby-dermedic-protecao-e-hidratacao",
+      "lastmod": "2026-09-23T03:09:41+00:00",
+      "priority": 1,
+      "slug": "leche-solar-spf50-sunbrella-baby-dermedic-protecao-e-hidratacao",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:43.026Z",
+      "name": "Leche Solar Spf50+ Sunbrella Baby",
+      "brand": "DERMEDIC",
+      "ean": "5901643170592",
+      "description": "SUNBRELLA BABY Leite proteção Solar SPF50 para bebês desde o primeiro mês de vida, contém precursores da vitamina D3. Protege eficazmente o corpo do bebê dos efeitos nocivos das radiações UVA e UVB. O complexo de filtros minerais é seguro para a delicada pele da criança, forma uma barreira protetora",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809366.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 20.95,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 20.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 4122
+    },
+    {
+      "url": "https://www.druni.pt/leche-ultra-hidratante-corporal-dorada-topicrem-emulsao-hidratante",
+      "lastmod": "2026-09-23T03:04:33+00:00",
+      "priority": 1,
+      "slug": "leche-ultra-hidratante-corporal-dorada-topicrem-emulsao-hidratante",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:43.858Z",
+      "name": "Leche Ultra-Hidratante Corporal Dorada",
+      "brand": "TOPICREM",
+      "ean": "3700281702880",
+      "description": "Emulsão hidratante com acabamento efeito dourado.\n\nEmulsão suave e cremosa enriquecida com agentes hidratantes e pequenas lâminas elaboradas com uma tecnologia inovadora, deixando reflexos brilhantes sobre a pele. Hidrata a pele durante 24 horas e a ilumina, ficando suave e sedosa para peles secas a",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798153.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 13.95,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 13.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 4495
+    },
+    {
+      "url": "https://www.druni.pt/leche-ultra-hidratante-corporal-topicrem-emulsao-hidratante",
+      "lastmod": "2026-09-23T03:05:29+00:00",
+      "priority": 1,
+      "slug": "leche-ultra-hidratante-corporal-topicrem-emulsao-hidratante",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:48.460Z",
+      "name": "Leche Ultra-Hidratante Corporal",
+      "brand": "TOPICREM",
+      "ean": null,
+      "description": "Emulsão untuosa, enriquecida com agentes umectantes (ureia, glicerina), protetores e nutritivos.\n\nEmulsão untuosa, enriquecida com agentes umectantes, protetores e nutritivos: ureia e glicerina. Trata-se de um leite corporal que protege a pele e a mantém hidratada durante 24 horas, eliminando os sin",
+      "image_url": "https://www.druni.pt/media/catalog/product/6/6/6674.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 14.95,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 14.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [
+        {
+          "volume_ml": 500,
+          "unit": "ml",
+          "price": 14.95,
+          "url": null
+        },
+        {
+          "volume_ml": 1000,
+          "unit": "ml",
+          "price": 19.95,
+          "url": null
+        }
+      ],
+      "latency_ms": 3987
+    },
+    {
+      "url": "https://www.druni.pt/leche-ultra-hidratante-corporal-nacarada-topicrem-emulsao-hidratante",
+      "lastmod": "2026-09-23T03:04:33+00:00",
+      "priority": 1,
+      "slug": "leche-ultra-hidratante-corporal-nacarada-topicrem-emulsao-hidratante",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:48.488Z",
+      "name": "Leche Ultra-Hidratante Corporal Nacarada",
+      "brand": "TOPICREM",
+      "ean": "3700281703047",
+      "description": "Emulsão hidratante com acabamento efeito nacarado.\n\nEmulsão suave e cremosa enriquecida com agentes hidratantes e pequenas lâminas elaboradas com uma tecnologia inovadora, deixando reflexos brilhantes sobre a pele. Hidrata a pele durante 24 horas e a ilumina, ficando suave e sedosa para peles secas ",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5798154.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 13.95,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 13.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 4169
+    },
+    {
+      "url": "https://www.druni.pt/leila-nude-aqc-fragances-eau-de-toilette-para-mulher",
+      "lastmod": "2026-09-23T03:10:25+00:00",
+      "priority": 1,
+      "slug": "leila-nude-aqc-fragances-eau-de-toilette-para-mulher",
+      "category": "fragrance",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:48.558Z",
+      "name": "Leila Nude",
+      "brand": "AQC FRAGANCES",
+      "ean": "8436622277131",
+      "description": "Nude de AQC Fragrances é uma fragrância suave e envolvente que combina notas florais cremosas com uma base quente de baunilha e sândalo. Um aroma delicado, pensado para te acompanhar todos os dias com um toque de elegância sutil.",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1449020.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 4.95,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 4.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3386
+    },
+    {
+      "url": "https://www.druni.pt/lemon-pie-the-fruit-company-colonia-patisserie",
+      "lastmod": "2026-09-23T03:10:45+00:00",
+      "priority": 1,
+      "slug": "lemon-pie-the-fruit-company-colonia-patisserie",
+      "category": "fragrance",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:53.148Z",
+      "name": "Lemon Pie",
+      "brand": "THE FRUIT COMPANY",
+      "ean": "8436620171431",
+      "description": "LEMON PIE - EAU DE TOILETTE 40 ML PATISSERIEFRESCOR CREMOSO E TOQUE CÍTRICO Lemon Pie é a mistura perfeita entre o brilho ácido do limão e uma suavidade cremosa que equilibra o frescor com um toque gourmand. Um aroma luminoso, doce e revitalizante que desperta os sentidos.Eau de Toilette- 40mlA EDT ",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1474655.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 4.99,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 4.99,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3503
+    },
+    {
+      "url": "https://www.druni.pt/madagascar-centella-skin-1004-creme-hidratante",
+      "lastmod": "2026-09-23T03:11:09+00:00",
+      "priority": 1,
+      "slug": "madagascar-centella-skin-1004-creme-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3617
+    },
+    {
+      "url": "https://www.druni.pt/lemon-glow-scrub-biovene-esfoliante-corporal-iluminador",
+      "lastmod": "2026-09-23T03:03:12+00:00",
+      "priority": 1,
+      "slug": "lemon-glow-scrub-biovene-esfoliante-corporal-iluminador",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:18:53.917Z",
+      "name": "Lemon Glow Scrub",
+      "brand": "BIOVENE",
+      "ean": "8436575094571",
+      "description": "Esfoliante corporal de limão&nbsp;que restaura o brilho com sal do mar morto e ingredientes estrela abacate e óleo de cannabis, óleo de amêndoas doces esfolia, refresca, tonifica e hidrata sua pele para restaurar a suavidade e o brilho.\n\nBenefícios do produto:\n\n- Refrescar: rejuvenesce a pele para u",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1458679.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 3.99,
+      "previous_price": null,
+      "_price_source": "jsonld",
+      "_jsonld_price": 3.99,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 4283
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 4123
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-club",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-club",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3565
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-essenza",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-essenza",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3721
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-futura",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-futura",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 2958
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-intensa",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-intensa",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3575
+    },
+    {
+      "url": "https://www.druni.pt/marcas/acqua-di-parma/colonia-pura",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/acqua-di-parma/colonia-pura",
+      "category": "fragrance",
+      "status": "no_jsonld",
+      "latency_ms": 3944
+    },
+    {
+      "url": "https://www.druni.pt/marcas/beauty-of-joseon/solares",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/beauty-of-joseon/solares",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3705
+    },
+    {
+      "url": "https://www.druni.pt/marcas/bella-aurora/b7-antimanchas",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/bella-aurora/b7-antimanchas",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 4132
+    },
+    {
+      "url": "https://www.druni.pt/marcas/bella-aurora/proteccion-solar",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/bella-aurora/proteccion-solar",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 4279
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/anthelios",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/anthelios",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3936
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/cicaplast",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/cicaplast",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3975
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/effaclar",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/effaclar",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3991
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/hyalu-b5",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/hyalu-b5",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2645
+    },
+    {
+      "url": "https://www.druni.pt/marcas/la-roche-posay/vitamina-c",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/la-roche-posay/vitamina-c",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3587
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/absolut-repair",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3319
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/absolut-repair-molecular",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/absolut-repair-molecular",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4186
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/aminexil-advanced",
+      "lastmod": "2026-06-19T12:15:12+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/aminexil-advanced",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3698
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/chroma-creme",
+      "lastmod": "2026-06-19T12:15:12+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/chroma-creme",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3997
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/curl-expression",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/curl-expression",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3894
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/keratin-alpha-sleek",
+      "lastmod": "2026-09-14T12:19:46+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/keratin-alpha-sleek",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4119
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/liss-unlimited",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/liss-unlimited",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3900
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/metal-detox",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/metal-detox",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3846
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/pro-longer",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/pro-longer",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3519
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/scalp-advanced",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/scalp-advanced",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2819
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/serioxyl-x",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/serioxyl-x",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4011
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/vitamino-color",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3938
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/tecni-art",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/tecni-art",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4296
+    },
+    {
+      "url": "https://www.druni.pt/marcas/loreal-professionnel/vitamino-color-spectrum",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/loreal-professionnel/vitamino-color-spectrum",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3289
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/acidic-bonding-concentrate",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/acidic-bonding-concentrate",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3591
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/acidic-color-gloss",
+      "lastmod": "2025-07-18T10:05:16+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/acidic-color-gloss",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3631
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/all-soft-mega-curls",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/all-soft-mega-curls",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4148
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/blondage-high-bright",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/blondage-high-bright",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4123
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/color-extend-blondage",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/color-extend-blondage",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4113
+    },
+    {
+      "url": "https://www.druni.pt/marcas/redken/color-extend-magnetics",
+      "lastmod": "2026-09-23T12:20:30+00:00",
+      "priority": 1,
+      "slug": "marcas/redken/color-extend-magnetics",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3351
+    },
+    {
+      "url": "https://www.druni.pt/marcas/revolution-skincare/vitamina-c",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/revolution-skincare/vitamina-c",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3451
+    },
+    {
+      "url": "https://www.druni.pt/marcas/ziaja/vitamina-c-b3-niacinamida",
+      "lastmod": "2026-09-23T12:20:29+00:00",
+      "priority": 1,
+      "slug": "marcas/ziaja/vitamina-c-b3-niacinamida",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3683
+    },
+    {
+      "url": "https://www.druni.pt/mousse-facial-solar-spf-50-agrado-mousse-facial-resistente-a-agua",
+      "lastmod": "2026-09-23T03:03:04+00:00",
+      "priority": 1,
+      "slug": "mousse-facial-solar-spf-50-agrado-mousse-facial-resistente-a-agua",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:19:42.253Z",
+      "name": "Mousse Facial Solar SPF 50+",
+      "brand": "AGRADO",
+      "ean": "8433295062149",
+      "description": "Mousse Facial Solar que se transforma em creme, adequado para peles sensíveis, graças ao seu FPS 50+. \n\nTextura cremosa não pegajosa, proporciona uma grande hidratação antienvelhecimento e efeitos reparadores sobre a pele.\n\nFormulado para uma alta proteção contra os efeitos dos Infravermelhos e da l",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1454611.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 4.75,
+      "previous_price": null,
+      "_price_source": "jsonld",
+      "_jsonld_price": 4.75,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3583
+    },
+    {
+      "url": "https://www.druni.pt/niacinamida-vitamina-c-750ml-drn-creme-corporal-hidratante-e-iluminador",
+      "lastmod": "2026-09-23T03:11:10+00:00",
+      "priority": 1,
+      "slug": "niacinamida-vitamina-c-750ml-drn-creme-corporal-hidratante-e-iluminador",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2785
+    },
+    {
+      "url": "https://www.druni.pt/night-renew-serum-ecoderma-serum-facial-renovacao",
+      "lastmod": "2026-09-23T03:07:49+00:00",
+      "priority": 1,
+      "slug": "night-renew-serum-ecoderma-serum-facial-renovacao",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:19:44.522Z",
+      "name": "Night Renew Serum",
+      "brand": "ECODERMA",
+      "ean": "8435534412630",
+      "description": "Sérum facial renovação intensa com AHAs naturais, Retinal, Óleo de abissínia e Fitosteróis e textura suave e sedosa, ajuda a nutrir e renovar a pele durante a noite para que pareça suave e radiante pela manhã.",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5034073.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 8.45,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 8.45,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3067
+    },
+    {
+      "url": "https://www.druni.pt/oh-after-sun-delight-btan-locao-after-sun-hidratante",
+      "lastmod": "2026-09-23T03:03:20+00:00",
+      "priority": 1,
+      "slug": "oh-after-sun-delight-btan-locao-after-sun-hidratante",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:19:47.484Z",
+      "name": "Oh… After Sun Delight!",
+      "brand": "B.TAN",
+      "ean": "9347108003108",
+      "description": "&iexcl;Mant&eacute;n esse brilho de verão e ajuda a reparar a pele seca irritada pelo sol!\n\nO aloe vera e o &aacute;cido hialur&ocirc;nico ultrahidratante deixar&atilde;o tua pele reidratada e deliciosamente radiante.&nbsp;\n\nTua pele cantar&aacute; bem depois de que o sol se tenha posto. ooooh... af",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1461036.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 12.99,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 12.99,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3571
+    },
+    {
+      "url": "https://www.druni.pt/night-renewal-gold-collagen-serum-regenerador",
+      "lastmod": "2026-09-23T03:08:10+00:00",
+      "priority": 1,
+      "slug": "night-renewal-gold-collagen-serum-regenerador",
+      "category": "skincare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:19:47.890Z",
+      "name": "Night Renewal",
+      "brand": "GOLD COLLAGEN",
+      "ean": "5060259572043",
+      "description": "Night Renewal Serum está formulado para rejuvenescer e renovar sua pele enquanto você dorme. Aumenta o colágeno e ajuda a prevenir os sinais prematuros de envelhecimento, diminui a aparência das rugas, fortalece a barreira da pele ao longo da renovação celular e protege.Reduz a aparência das rugas e",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801933.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 25.95,
+      "previous_price": null,
+      "_price_source": "jsonld",
+      "_jsonld_price": 25.95,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3973
+    },
+    {
+      "url": "https://www.druni.pt/ortiga-klorane-champo-cabelo-oleoso",
+      "lastmod": "2026-09-23T03:04:35+00:00",
+      "priority": 1,
+      "slug": "ortiga-klorane-champo-cabelo-oleoso",
+      "category": "haircare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:19:49.677Z",
+      "name": "Ortiga",
+      "brand": "KLORANE",
+      "ean": "3282779304276",
+      "description": "Klorane Champô à Urtiga BIO&nbsp;é o produto de&nbsp;higiene capilar adequado para este tipo de cabelos, pois&nbsp;regula a produção de sebo, reduzindo-a.\n\nGraças à sua formulação, rica em&nbsp;urtiga&nbsp;e agentes lavantes,&nbsp;favorece o desembaraço, aumenta o&nbsp;volume&nbsp;capilar e o result",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799213.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 19.99,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 19.99,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3384
+    },
+    {
+      "url": "https://www.druni.pt/rosa-mosqueta-manteca-de-karite-750ml-drn-creme-corporal-hidratante-e-nutritiva",
+      "lastmod": "2026-09-23T03:11:10+00:00",
+      "priority": 1,
+      "slug": "rosa-mosqueta-manteca-de-karite-750ml-drn-creme-corporal-hidratante-e-nutritiva",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3015
+    },
+    {
+      "url": "https://www.druni.pt/ortiga-natural-klorane-shampoo-seco",
+      "lastmod": "2026-09-23T03:08:43+00:00",
+      "priority": 1,
+      "slug": "ortiga-natural-klorane-shampoo-seco",
+      "category": "haircare",
+      "status": "ok",
+      "scraped_at": "2026-09-25T18:19:52.276Z",
+      "name": "Ortiga Natural",
+      "brand": "KLORANE",
+      "ean": "3282770396416",
+      "description": "O shampoo seco purificante com urtiga e vitamina E dá ao cabelo oleoso e castanho um impulso de limpeza e o purifica durante 24 horas*.Enriquecido com urtiga medicinal seborreguladora, vitamina E antioxidante, pós ultraabsorventes de origem natural e pigmentos minerais, ajuda a eliminar o excesso de",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803335.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "price": 9.98,
+      "previous_price": null,
+      "_price_source": "dom",
+      "_jsonld_price": 9.98,
+      "currency": "EUR",
+      "in_stock": true,
+      "variants": [],
+      "latency_ms": 3094
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-20-a-25",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-20-a-25",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 4122
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/com-cor",
+      "lastmod": "2024-05-30T12:53:36+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/com-cor",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 5197
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-30-a-45",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-30-a-45",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3741
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-4-a-15",
+      "lastmod": "2024-11-05T16:39:10+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-4-a-15",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3302
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/fator-spf-50-a-100",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/fator-spf-50-a-100",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3354
+    },
+    {
+      "url": "https://www.druni.pt/solares/protetor-solar/pele-oleosa",
+      "lastmod": "2024-11-05T16:38:34+00:00",
+      "priority": 1,
+      "slug": "solares/protetor-solar/pele-oleosa",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3947
+    },
+    {
+      "url": "https://www.druni.pt/stitch-1ud-lip-smacker-berry-swirl-dream-balsamo-hidratante",
+      "lastmod": "2026-09-23T03:11:10+00:00",
+      "priority": 1,
+      "slug": "stitch-1ud-lip-smacker-berry-swirl-dream-balsamo-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3264
+    },
+    {
+      "url": "https://www.druni.pt/stitch-1ud-lip-smacker-lemon-swirl-dream-balsamo-hidratante",
+      "lastmod": "2026-09-23T03:11:10+00:00",
+      "priority": 1,
+      "slug": "stitch-1ud-lip-smacker-lemon-swirl-dream-balsamo-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3411
+    },
+    {
+      "url": "https://www.druni.pt/swiss-pristine-serum-la-prairie-serum-reparador",
+      "lastmod": "2026-09-23T03:11:15+00:00",
+      "priority": 1,
+      "slug": "swiss-pristine-serum-la-prairie-serum-reparador",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3273
+    },
+    {
+      "url": "https://www.druni.pt/urea-cica-750ml-drn-creme-corporal-hidratante-e-reparadora",
+      "lastmod": "2026-09-23T03:11:10+00:00",
+      "priority": 1,
+      "slug": "urea-cica-750ml-drn-creme-corporal-hidratante-e-reparadora",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 2850
     }
   ]
 }
