@@ -23,6 +23,7 @@ on:
 
 permissions:
   contents: read
+  issues: write   # o aviso e' uma issue (ver o passo final)
 
 jobs:
   monitor:
@@ -42,7 +43,12 @@ jobs:
           node-version: '22'
 
       - name: Freshness report (strict)
+        id: cloud
+        # continue-on-error para o passo do AVISO poder correr. O vermelho do job
+        # nao se perde: o ultimo passo re-falha se algum gate falhou.
+        continue-on-error: true
         run: |
+          set -o pipefail   # senao o codigo de saida seria o do tee, sempre 0
           STALE="${{ github.event.inputs.stale_days || '2' }}"
           # As lojas SÓ-PC refrescam à mão, via scripts/refresh-pc-only.sh, e não
           # podem ser medidas com o limiar das cloud — senão o gate dispara todos
@@ -65,13 +71,106 @@ jobs:
           # scraper. O aviso abaixo existe para não ser esquecida.
           SEM_SCRAPER="skin"
           echo "::warning::skin.pt nao tem scraper (so integrador) — fora dos gates de frescura ate' ter um."
-          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY,$SEM_SCRAPER"
+          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY,$SEM_SCRAPER" 2>&1 | tee /tmp/rel-cloud.txt
 
       - name: Gate das lojas SÓ-PC (limiar folgado — refresh é manual)
+        id: pc
+        continue-on-error: true
         run: |
+          set -o pipefail
           # Continuam a ser vigiadas, mas com 7 dias: se o refresh manual for
           # esquecido a sério, isto falha e avisa.
-          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,docmorris || {
+          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,docmorris 2>&1 | tee /tmp/rel-pc.txt || {
               echo "::warning::Lojas SÓ-PC com mais de 7 dias — correr scripts/refresh-pc-only.sh no PC."
               exit 1
             }
+
+      # ══════════════════════════════════════════════════════════════════════
+      # O AVISO. Sem isto o monitor era mais uma corrida vermelha entre ~200 por
+      # dia -- e foi exactamente por isso que 10 lojas pararem passou semanas sem
+      # ninguem notar. Uma issue: deduplica (ha' sempre no maximo UMA), notifica
+      # quando abre e quando fecha, e no meio actualiza-se em silencio.
+      #
+      # Nivel de ruido, de proposito:
+      #   problema novo      -> ABRE a issue          (notifica)
+      #   problema que dura  -> actualiza o corpo     (nao notifica; nao ha spam)
+      #   problema resolvido -> FECHA com comentario  (notifica)
+      # ══════════════════════════════════════════════════════════════════════
+      - name: Avisar por issue (abre, actualiza ou fecha)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FALHOU_CLOUD: ${{ steps.cloud.outcome }}
+          FALHOU_PC: ${{ steps.pc.outcome }}
+        run: |
+          set -uo pipefail
+          TITULO='Monitor de frescura: lojas desactualizadas'
+          CORPO=/tmp/corpo.md
+
+          HA_PROBLEMA=0
+          [ "$FALHOU_CLOUD" = 'failure' ] && HA_PROBLEMA=1
+          [ "$FALHOU_PC" = 'failure' ] && HA_PROBLEMA=1
+
+          # a issue aberta, se existir (procura por titulo; nao depende de labels)
+          # Sem --search e sem escapes aninhados. Duas razoes: o indice de
+          # procura do GitHub pode nao ver uma issue criada ha segundos (davam
+          # DUAS issues), e um --jq com aspas dentro de aspas dentro de YAML e
+          # um convite ao erro. Listar as abertas e filtrar com grep -F basta.
+          gh issue list --state open --limit 100 --json number,title \
+            --template '{{range .}}{{.number}}|{{.title}}{{"\n"}}{{end}}' > /tmp/issues.txt || true
+          NUM=$(grep -F "|$TITULO" /tmp/issues.txt | head -1 | cut -d"|" -f1 || true)
+
+          if [ "$HA_PROBLEMA" = '0' ]; then
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --body "Resolvido: todas as lojas dentro do limiar na corrida de $(date -u '+%F %H:%M') UTC. A fechar."
+              gh issue close "$NUM"
+              echo "Issue #$NUM fechada — nada stale."
+            else
+              echo 'Nada stale e nenhuma issue aberta: nada a fazer.'
+            fi
+            exit 0
+          fi
+
+          {
+            echo "Actualizado: **$(date -u '+%F %H:%M') UTC** · [corrida](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+            echo
+            echo 'Esta issue e mantida pelo `freshness-monitor.yml`. Fecha-se sozinha quando todas as lojas voltarem ao limiar — nao a feches a mao.'
+            echo
+            echo '## Lojas na nuvem (limiar 2 dias)'
+            echo '```'
+            # so' as linhas que interessam: o veredicto e os avisos, nao a tabela toda
+            grep -E '^(❌|⚠|ℹ|- [0-9]+ loja)' /tmp/rel-cloud.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
+            echo '```'
+            echo
+            echo '## Lojas so-PC (limiar 7 dias — `scripts/refresh-pc-only.sh`)'
+            echo '```'
+            grep -E '^(❌|⚠|ℹ|- [0-9]+ loja)' /tmp/rel-pc.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
+            echo '```'
+            echo
+            echo '<details><summary>Relatorio completo por loja</summary>'
+            echo
+            echo '```'
+            tail -120 /tmp/rel-cloud.txt 2>/dev/null || true
+            echo '```'
+            echo '</details>'
+          } > "$CORPO"
+
+          if [ -n "$NUM" ]; then
+            # ja' aberta: actualizar o corpo SEM comentar (um comentario por dia era spam)
+            gh issue edit "$NUM" --body-file "$CORPO"
+            echo "Issue #$NUM actualizada."
+          else
+            gh issue create --title "$TITULO" --body-file "$CORPO" \
+              && echo 'Issue aberta.'
+          fi
+
+      - name: Repor o vermelho se algum gate falhou
+        if: always()
+        run: |
+          # O continue-on-error dos gates existe para o aviso poder correr. O
+          # desfecho do job tem de continuar a refletir a verdade.
+          if [ '${{ steps.cloud.outcome }}' = 'failure' ] || [ '${{ steps.pc.outcome }}' = 'failure' ]; then
+            echo 'Um dos gates falhou — ver a issue.'
+            exit 1
+          fi
+          echo 'Todas as lojas dentro do limiar.'
