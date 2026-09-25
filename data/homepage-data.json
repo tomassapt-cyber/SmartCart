@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-24T08:17:24.893Z",
-  "seed_total_products": 63780,
+  "generated_at": "2026-09-25T10:32:56.630Z",
+  "seed_total_products": 64962,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -17,10 +17,10 @@
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
       "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 18.25,
-      "best_store": "Saúde Mayor",
-      "best_store_slug": "saudemayor",
-      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html"
+      "best_price": 17.94,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml"
     },
     {
       "ean": "3337875492799",
@@ -37,7 +37,7 @@
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.58,
+      "best_price": 13.52,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
@@ -117,6 +117,26 @@
       "best_url": "https://www.farmaciadocostume.pt/neutrogena-formula-norueguesa-maos-promo-creme-concentrado-stick-labial.html"
     },
     {
+      "ean": "3522930006343",
+      "name": "Caudalie Vinoperfect Sérum + Espuma Micro-Peeling Pack",
+      "brand": "Caudalie",
+      "image_url": "https://1630763059.rsc.cdn77.org/temp/1787652226_307f07976e1711a5b65506faaeaa7296.jpg",
+      "best_price": 42.21,
+      "best_store": "Unifarma",
+      "best_store_slug": "unifarma",
+      "best_url": "https://www.unifarma.pt/products/caudalie-vinoperf-ser-eclat30-ofmouss50"
+    },
+    {
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 17.75,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
+    },
+    {
       "ean": "3574661540887",
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
@@ -127,16 +147,6 @@
       "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
     },
     {
-      "ean": "3574661874951",
-      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.54,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
-    },
-    {
       "ean": "3662361005949",
       "name": "SVR Coffret Densitium Creme + SVR Ampoule C - + - Farmá...",
       "brand": "SVR",
@@ -145,60 +155,49 @@
       "best_store": "Farmácia 365",
       "best_store_slug": "farmacia365",
       "best_url": "https://www.farmacia365.pt/svr-densitium-creme-50ml-oferta-ampoule-c10ml-bolsa"
-    },
-    {
-      "ean": "3574661761107",
-      "name": "Neutrogena Hydro Boost Kit Gel Água + Gel-Creme Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/e/neutrogena_hydroboostpackgel_gua_cremeolhos.jpg",
-      "best_price": 9.9,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-hydro-boost-gel-de-agua-+-contorno-olhos_p13218.html"
     }
   ],
   "em_alta": [
     {
-      "ean": "3282770149074",
-      "name": "Avène Fluido Ultra Light SPF50+",
+      "ean": "3282779355773",
+      "name": "Avène Solar SPF50+ Tamanho Física",
       "brand": "Avène",
-      "image_url": "https://assets.atida.com/transform/3d3c5f65-0bb6-4617-b1a9-9fb4aabdbea5/Avene-Fluido-Solar-SPF50-50-ml",
-      "best_price": 12.19,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/solares/avene-solar-fluido-fps-50+_p519.html",
-      "previous_price": 19.44,
-      "discount_pct": 33,
-      "dropped_day": 20715,
-      "verified_live": true
-    },
-    {
-      "ean": "3282770392692",
-      "name": "Avene Solar Mat Perfect Fluido c/ Cor SPF50+ -",
-      "brand": "Avène",
-      "image_url": "https://static.lojadafarmacia.com/24366/avene-solar-mat-perfect-fluido-c-cor-spf50-50ml.png",
-      "best_price": 11.71,
+      "image_url": "https://assets.atida.com/transform/ab6deeec-415d-4179-9987-4a93704e9905/Avene-Solar-SPF50-Pantalla-Fisica-50ml",
+      "best_price": 9.67,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/copy-of-cleanance-solar-com-cor",
-      "previous_price": 16.22,
-      "discount_pct": 23,
+      "best_url": "https://lovemypharma.com/products/copy-of-fluido-solar-mineral-com-cor",
+      "previous_price": 15.02,
+      "discount_pct": 36,
       "dropped_day": 20715,
       "verified_live": true
     },
     {
-      "ean": "4005800036798",
-      "name": "Eucerin Dermo Capillaire Champô Apaziguante 5% Ureia",
-      "brand": "Eucerin",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/VOEkW2.png?v=1778934575",
-      "best_price": 9.94,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/eucerin-dermo-capillaire-champo-calmante-5-ureia-250-ml",
-      "previous_price": 20.25,
-      "discount_pct": 15,
-      "dropped_day": 20720,
+      "ean": "3282770149487",
+      "name": "Avène Creme SPF50+",
+      "brand": "Avène",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/avene/14587_main-800x800.jpg",
+      "best_price": 8.32,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-spf-50",
+      "previous_price": 19.63,
+      "discount_pct": 35,
+      "dropped_day": 20715,
       "verified_live": true
+    },
+    {
+      "ean": "4006000175812",
+      "name": "Desodorizante Roll-On Nivea Derma Control Defend para Mulher",
+      "brand": "Nivea",
+      "image_url": "https://assets.atida.com/transform/827fe51a-752c-4955-bb99-07cf6dd80ef6/Nivea-Derma-Control-Defend-Desodorante-Roll-On-Mujer-50-ml",
+      "best_price": 2.04,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/nivea/desodorante-roll-on-derma-control-defend/p_415461/",
+      "previous_price": 4.49,
+      "discount_pct": 40,
+      "dropped_day": 20712
     },
     {
       "ean": "3282770148275",
@@ -219,7 +218,7 @@
       "name": "Desodorizante em Stick para Todo o Corpo Lavanda & Camomila",
       "brand": "Dove",
       "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/8/7/8720181594816_2_63b7.jpg",
-      "best_price": 2.99,
+      "best_price": 4.51,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/dove/desodorante-em-bastao-unissex-lavanda-e-camomila/p_101629/",
@@ -231,35 +230,35 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1958
-    },
-    {
-      "name": "Isdin",
-      "products": 773
+      "products": 1970
     },
     {
       "name": "Clarins",
-      "products": 771
+      "products": 782
+    },
+    {
+      "name": "Isdin",
+      "products": 778
     },
     {
       "name": "Avène",
-      "products": 682
+      "products": 696
     },
     {
       "name": "Nivea",
-      "products": 643
-    },
-    {
-      "name": "L'Oréal Paris",
-      "products": 625
+      "products": 651
     },
     {
       "name": "La Roche-Posay",
-      "products": 618
+      "products": 633
     },
     {
       "name": "Eucerin",
-      "products": 616
+      "products": 631
+    },
+    {
+      "name": "L'Oréal Paris",
+      "products": 627
     }
   ],
   "telegram_alerts": [
