@@ -14,7 +14,14 @@ name: Druni catalog refresh
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    # 3x/dia (2026-09-25). Corria 1x/dia, sem razao escrita -- e nao havia:
+    # a corrida inteira leva 12 MINUTOS (os chunks vao em paralelo) e sao 10.810
+    # ofertas, a 2a maior loja do catalogo. Ficava com ~24h de intervalo entre
+    # raspagens quando as lojas pequenas, muito mais demoradas, estao a 8h.
+    # Minuto :05 e nao :00 -- o GitHub deixa cair agendamentos ao minuto cheio.
+    # O cruzamento com a Wells as 14h e' inofensivo: o repo e' publico, sao 20
+    # jobs concorrentes, e a Druni ocupa 12 min deles.
+    - cron: '5 6,14,22 * * *'
   workflow_dispatch:
     inputs:
       category:

@@ -15,8 +15,12 @@ name: Sweetcare catalog refresh
 
 on:
   schedule:
-    - cron: '0 10 * * *'
-    - cron: '0 22 * * *'
+    # 3x/dia (2026-09-25), eram 2x. 34 min por passagem e 8.284 ofertas -- cabe
+    # na mesma cadencia de 8h das restantes. Mantem-se a janela das 10h, que a
+    # Wells usa como referencia ("queues apos Sweetcare das 10h"), e acrescenta-se
+    # 02h e 18h. Minuto :25 para nao cair no :00 nem competir com as :20 do
+    # deploy-branch.
+    - cron: '25 2,10,18 * * *'
   workflow_dispatch:
     inputs:
       category:
