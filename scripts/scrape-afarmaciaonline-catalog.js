@@ -32,6 +32,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { looksBlocked } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -143,7 +144,18 @@ async function fetchPage(url, attempt = 1) {
       if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); }
       return { status: 'http_error', http: r.status };
     }
-    return { status: 'ok', html: await r.text() };
+    // DAR NOME AO BLOQUEIO. Antes, um 403 ou um challenge de WAF com 200
+    // devolvia status 'ok'; a extraccao nao achava nada e o contador somava em
+    // `skipped`, que significa "medicamento/suplemento sem EAN". Resultado: o
+    // log dizia 348 skips e nos procuravamos um parser avariado durante horas,
+    // quando a resposta era que o site nao nos deixa entrar da nuvem. Sao
+    // diagnosticos opostos: um arranja-se com codigo, o outro exige outro IP.
+    const ctype = r.headers.get('content-type');
+    const html = await r.text();
+    if (!r.ok || looksBlocked(html, ctype, 'html')) {
+      return { status: 'blocked', http: r.status, contentType: ctype, amostra: (html || '').slice(0, 160).replace(/\s+/g, ' ') };
+    }
+    return { status: 'ok', html };
   } catch (e) {
     if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); }
     return { status: 'fetch_error', error: e.message };
@@ -184,7 +196,19 @@ async function main() {
   // datacenter (GitHub Actions) — mas deixa passar o curl (TLS fingerprint
   // tipo-browser; mesmo padrão do Notino). fetch primeiro, curl em fallback.
   let smXml = '';
-  try { smXml = await (await fetch(SITEMAP_URL, { headers: { 'User-Agent': UA } })).text(); } catch { /* tenta curl */ }
+  // DIZER O QUE RECEBEMOS. O log antigo resumia isto a "sitemap vazio", o que
+  // manda procurar uma mudanca de estrutura na loja. Da rede domestica este
+  // mesmo sitemap devolve 8.936 URLs; do CI devolve nada. Sao diagnosticos
+  // opostos -- um arranja-se com codigo, o outro exige outro IP -- e o log tem
+  // de deixar claro qual e'.
+  try {
+    const r0 = await fetch(SITEMAP_URL, { headers: { 'User-Agent': UA } });
+    smXml = await r0.text();
+    if (!/<loc>/.test(smXml)) {
+      console.error(`  o sitemap respondeu HTTP ${r0.status} (${r0.headers.get('content-type')}) com ${smXml.length} bytes e NENHUM <loc>`);
+      console.error(`  inicio do corpo: ${smXml.slice(0, 200).replace(/\s+/g, ' ') || '(vazio)'}`);
+    }
+  } catch (e) { console.error(`  erro de rede no sitemap: ${e.message}`); }
   if (!/<loc>/.test(smXml)) {
     console.log('  fetch deu sitemap vazio → a tentar via curl (bypass WAF)…');
     const { spawnSync } = require('child_process');
@@ -227,7 +251,7 @@ async function main() {
 
   const start = Date.now();
   let idx = 0;
-  const stats = { ok: 0, skipped: 0, not_found: 0, error: 0 };
+  const stats = { ok: 0, skipped: 0, not_found: 0, error: 0, blocked: 0 };
 
   async function worker() {
     while (idx < queue.length) {
@@ -239,6 +263,10 @@ async function main() {
         if (data) { products.push({ url, status: 'ok', scraped_at, ...data }); stats.ok++; }
         else { stats.skipped++; }      // sem data-layer/EAN/preço → não guardamos (lixo med/supl)
       } else if (r.status === 'not_found') { stats.not_found++; }
+      else if (r.status === 'blocked') {
+        stats.blocked++;
+        if (stats.blocked === 1) console.error(`  BLOQUEADO pelo site: HTTP ${r.http} - ${r.contentType} - ${r.amostra}`);
+      }
       else { stats.error++; }
 
       const total = stats.ok + stats.skipped + stats.not_found + stats.error;
@@ -262,6 +290,7 @@ async function main() {
   console.log(`  Produtos guardados (com EAN): ${products.length}`);
   console.log(`  in_stock: ${inStock}`);
   console.log(`  skipped (med/supl/sem-EAN): ${stats.skipped}`);
+  if (stats.blocked) console.log(`  BLOQUEADAS pelo site (WAF/IP de datacenter): ${stats.blocked}`);
   console.log(`  404: ${stats.not_found} · erro: ${stats.error}`);
   console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
 }

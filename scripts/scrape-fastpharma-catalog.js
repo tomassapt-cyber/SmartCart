@@ -20,6 +20,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { fetchTextResilient, looksBlocked } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -91,9 +92,13 @@ function extractProductData(html) {
   return null;
 }
 
-async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA } }); return await r.text(); }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
+// `return await r.text()` sem olhar ao status era exactamente o defeito que o
+// lib/resilient-fetch.js foi escrito para acabar (ver o cabecalho dele: analise
+// de 18 runs falhados). Aqui ficou: um 403 chegava como texto, dava 0 <loc>, e o
+// log dizia '0 product-sitemap(s)'. Do CI vinham 0 URLs; da rede domestica vem o
+// mesmo sitemap com 6.294. Sem validar o status nao havia como saber qual era.
+async function fetchText(url) {
+  return fetchTextResilient(url, { expect: 'xml', minLocs: 1, attempts: 4, timeoutMs: 30000, headers: { 'User-Agent': UA } });
 }
 
 async function fetchPage(url, attempt = 1) {
@@ -103,7 +108,12 @@ async function fetchPage(url, attempt = 1) {
   const drop = () => { try { return r.body ? r.body.cancel().catch(() => {}) : undefined; } catch { return undefined; } };
   if (r.status === 404 || r.status === 410) { await drop(); return { status: 'not_found' }; }
   if (r.status === 429 || r.status >= 500) { await drop(); if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'http_error', http: r.status }; }
-  try { return { status: 'ok', html: await r.text() }; }
+  try {
+    const ctype = r.headers.get('content-type');
+    const html = await r.text();
+    if (!r.ok || looksBlocked(html, ctype, 'html')) return { status: 'blocked', http: r.status, contentType: ctype, amostra: (html || '').slice(0, 160).replace(/\s+/g, ' ') };
+    return { status: 'ok', html };
+  }
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 1500 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
 }
 

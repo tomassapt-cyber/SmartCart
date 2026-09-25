@@ -73,12 +73,19 @@ class FetchDiagnosticError extends Error {
  * @param {object} opts
  *   expect     'xml' | 'json' | 'html' | null   — valida a forma do corpo
  *   minBytes   number  — corpo mais curto que isto é suspeito (feed truncado)
+ *   minLocs    number  — nº mínimo de <loc> num sitemap. PREFERIR a minBytes
+ *              para sitemaps: o tamanho é um substituto grosseiro de "isto é um
+ *              feed a sério?" e engana-se em índices legítimos. Custou-nos a
+ *              Farmaoli parada 2 meses: o /1_index_sitemap.xml dela tem 233
+ *              bytes e UM <loc> válido (que aponta para 2.197 produtos), e o
+ *              minBytes:300 rejeitava-o como "corpo demasiado curto". O site
+ *              estava bem; a guarda estava errada.
  *   attempts   number  — tentativas totais (default 4)
  *   timeoutMs  number  — por tentativa (default 30000)
  *   headers    object  — extra
  */
 async function fetchTextResilient(url, opts = {}) {
-  const { expect = null, minBytes = 0, attempts = 4, timeoutMs = 30000, headers = {} } = opts;
+  const { expect = null, minBytes = 0, minLocs = 0, attempts = 4, timeoutMs = 30000, headers = {} } = opts;
   let last = { status: null, contentType: null, body: '', reason: 'falhou' };
 
   for (let i = 1; i <= attempts; i++) {
@@ -111,6 +118,17 @@ async function fetchTextResilient(url, opts = {}) {
       last = { status: r.status, contentType: ctype, body, reason: `corpo demasiado curto (${body.length} < ${minBytes} bytes esperados)` };
       if (i < attempts) { await sleep(backoff(i)); continue; }
       throw new FetchDiagnosticError(url, { ...last, attempts: i });
+    }
+
+    // Guarda por CONTEÚDO, não por tamanho: um sitemap serve para listar URLs,
+    // por isso a pergunta certa é "tem <loc>?" e não "tem N bytes?".
+    if (minLocs) {
+      const nLocs = (body.match(/<loc>/gi) || []).length;
+      if (nLocs < minLocs) {
+        last = { status: r.status, contentType: ctype, body, reason: `sitemap com ${nLocs} <loc> (esperava >= ${minLocs})` };
+        if (i < attempts) { await sleep(backoff(i)); continue; }
+        throw new FetchDiagnosticError(url, { ...last, attempts: i });
+      }
     }
 
     return body;

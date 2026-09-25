@@ -42,11 +42,18 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'sofarma-full.json');
-const SITEMAP_URL = 'https://www.sofarma.com/sitemaps/sitemap_products_pt.xml';
+// INDICE, nao o sitemap unico. A Sofarma partiu o sitemap de produtos em dois
+// (sitemap_products_pt_1.xml + _2.xml) e o caminho antigo passou a dar 404 --
+// 38 KB de pagina de erro em HTML, que o codigo antigo parseava como XML e
+// convertia num silencioso "0 URLs no sitemap". A loja ficou ~3 semanas parada.
+// Ler o indice e seguir os filhos sobrevive a novos cortes (_3, _4, ...).
+const SITEMAP_INDEX = 'https://www.sofarma.com/sitemap.xml';
+const isProductSitemap = u => /sitemap_products_pt(_\d+)?\.xml$/i.test(u);
 const URL_PREFIX = 'https://www.sofarma.com/pt/';
 
 const args = Object.fromEntries(
@@ -252,12 +259,26 @@ async function fetchPage(url, attempt = 1) {
 
   // 1. Sitemap
   console.log('📋 A descarregar mapa do site Sofarma…');
-  const smRes = await fetch(SITEMAP_URL, { headers: { 'User-Agent': 'GirlMath-Catalog-Bot/1.0' } });
   // O MAPA e UTF-8 (declara-o no cabecalho XML); so as FICHAS sao ISO-8859-1.
-  const smXml = Buffer.from(await smRes.arrayBuffer()).toString('utf8');
-  const allUrls = (smXml.match(/<loc>([^<]+)<\/loc>/g) || [])
-    .map(m => m.replace(/<\/?loc>/g, ''))
-    .filter(u => u.startsWith(URL_PREFIX));
+  // fetchTextResilient em vez de fetch: valida o status e o tipo de corpo. Sem
+  // isso, um 404 ou um challenge da WAF chegava como texto, dava 0 <loc> e o log
+  // dizia "0 URLs no sitemap" -- indistinguivel de a loja nao ter produtos.
+  const idxXml = await fetchTextResilient(SITEMAP_INDEX, { expect: 'xml', minLocs: 1, headers: { 'User-Agent': 'GirlMath-Catalog-Bot/1.0' } });
+  const filhos = (idxXml.match(/<loc>([^<]+)<\/loc>/g) || [])
+    .map(m => m.replace(/<\/?loc>/g, '').trim())
+    .filter(isProductSitemap);
+  if (!filhos.length) throw new Error(`o indice ${SITEMAP_INDEX} nao lista nenhum sitemap_products_pt -- a loja mudou de estrutura`);
+  console.log(`  ${filhos.length} sitemap(s) de produtos: ${filhos.map(u => u.split('/').pop()).join(', ')}`);
+  const allUrls = [];
+  for (const sm of filhos) {
+    const xml = await fetchTextResilient(sm, { expect: 'xml', minLocs: 1, headers: { 'User-Agent': 'GirlMath-Catalog-Bot/1.0' } });
+    const n = allUrls.length;
+    allUrls.push(...(xml.match(/<loc>([^<]+)<\/loc>/g) || [])
+      .map(m => m.replace(/<\/?loc>/g, ''))
+      .filter(u => u.startsWith(URL_PREFIX)));
+    console.log(`    ${sm.split('/').pop()}: +${allUrls.length - n}`);
+    await new Promise(s => setTimeout(s, 400));
+  }
   console.log(`  ${allUrls.length} URLs no sitemap`);
 
   // 2. Filtrar por beauty hints

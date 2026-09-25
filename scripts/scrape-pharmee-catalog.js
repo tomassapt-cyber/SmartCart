@@ -10,6 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -84,9 +85,24 @@ function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) r
 
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
-  console.log('📋 A descarregar sitemap_products_pt.xml pharmee…');
-  const xml = await fetchText(BASE + '/sitemaps/sitemap_products_pt.xml');
-  let urls = [...new Set(locs(xml).filter(u => /_p\d+\.html$/.test(u)))];
+  // INDICE, nao um sitemap fixo. A loja passou a publicar os produtos por
+  // IDIOMA (sitemap_products_pt_1.xml, _es_1, _fr_1, _en_1) e o caminho antigo
+  // /sitemaps/sitemap_products_pt.xml deixou de existir. O fetchText antigo
+  // devolvia o corpo sem olhar ao status, por isso a pagina de erro vinha
+  // parseada como XML, dava 0 <loc>, e o log dizia apenas "0 produtos" -- sem
+  // maneira de distinguir um bloqueio de uma loja vazia.
+  console.log('📋 A descarregar o indice de sitemaps da pharmee…');
+  const idxXml = await fetchTextResilient(BASE + '/sitemap.xml', { expect: 'xml', minLocs: 1, headers: { 'User-Agent': UA } });
+  const filhos = locs(idxXml).filter(u => /sitemap_products_pt(_\d+)?\.xml$/i.test(u));
+  if (!filhos.length) throw new Error(`o indice ${BASE}/sitemap.xml nao lista nenhum sitemap_products_pt -- a loja mudou de estrutura`);
+  console.log(`  ${filhos.length} sitemap(s) de produtos pt: ${filhos.map(u => u.split('/').pop()).join(', ')}`);
+  const locsTodos = [];
+  for (const sm of filhos) {
+    const xml = await fetchTextResilient(sm, { expect: 'xml', minLocs: 1, headers: { 'User-Agent': UA } });
+    locsTodos.push(...locs(xml));
+    await new Promise(s => setTimeout(s, 400));
+  }
+  let urls = [...new Set(locsTodos.filter(u => /_p\d+\.html$/.test(u)))];
   const t0 = urls.length;
   urls = urls.filter(slugLooksCosmetic);
   console.log(`  ${t0} fichas → ${urls.length} após filtro de slug não-cosmético`);

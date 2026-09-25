@@ -95,8 +95,13 @@ function extractProductData(html, url) {
 // como XML, dava 0 <loc> e o log dizia apenas "0 produtos" — indistinguível de
 // um sitemap genuinamente vazio. Esse log mudo custou-nos horas de diagnóstico
 // à mão. O helper valida status + tipo de corpo e ATIRA um erro que diz porquê.
-async function fetchSitemap(url, minBytes) {
-  return fetchTextResilient(url, { expect: 'xml', minBytes, attempts: 4, timeoutMs: 30000, headers: { 'User-Agent': UA } });
+// minLocs e NAO minBytes: o /1_index_sitemap.xml desta loja tem 233 bytes e UM
+// <loc> (que aponta para 2.197 produtos). A guarda antiga, minBytes:300,
+// rejeitava-o como "corpo demasiado curto" e a loja ficou 2 MESES parada com o
+// site inteiramente funcional. Um sitemap serve para listar URLs, por isso a
+// pergunta certa e' "tem <loc>?", nao "tem N bytes?".
+async function fetchSitemap(url, minLocs) {
+  return fetchTextResilient(url, { expect: 'xml', minLocs, attempts: 4, timeoutMs: 30000, headers: { 'User-Agent': UA } });
 }
 async function fetchPage(url, attempt = 1) {
   let r;
@@ -115,7 +120,7 @@ function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) r
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   console.log('📋 A descarregar 1_index_sitemap.xml farmaoli…');
-  const idx = await fetchSitemap(BASE + '/1_index_sitemap.xml', 300);
+  const idx = await fetchSitemap(BASE + '/1_index_sitemap.xml', 1);
   const children = locs(idx).filter(u => /_sitemap\.xml$/i.test(u));
   // Se chegámos aqui o download foi legítimo (o helper já teria atirado em caso
   // de bloqueio), logo 0 children só pode significar mudança de estrutura no
@@ -125,7 +130,7 @@ async function main() {
   }
   console.log(`  ${children.length} sub-sitemaps`);
   let urls = [];
-  for (const sm of children) { const xml = await fetchSitemap(sm, 200); urls.push(...locs(xml).filter(isProductUrl)); await new Promise(s => setTimeout(s, 500)); }
+  for (const sm of children) { const xml = await fetchSitemap(sm, 1); urls.push(...locs(xml).filter(isProductUrl)); await new Promise(s => setTimeout(s, 500)); }
   urls = [...new Set(urls)];
   const t0 = urls.length;
   // Idem: os sub-sitemaps vieram todos válidos, portanto 0 fichas não é
