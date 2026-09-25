@@ -138,13 +138,16 @@ jobs:
             echo
             echo '## Lojas na nuvem (limiar 2 dias)'
             echo '```'
-            # so' as linhas que interessam: o veredicto e os avisos, nao a tabela toda
-            grep -E '^(❌|⚠|ℹ|- [0-9]+ loja)' /tmp/rel-cloud.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
+            # SO' o veredicto. As linhas '⚠ <loja> <numeros>' sao da tabela (uma por
+            # loja ignorada) e enchiam o resumo, empurrando a resposta para fora do
+            # head -20 -- um alarme que enterra a propria conclusao. A tabela fica no
+            # <details> la' abaixo.
+            grep -E '^(❌|✅|- [0-9]+ loja|ℹ Stale mas IGNORADAS)' /tmp/rel-cloud.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
             echo '```'
             echo
             echo '## Lojas so-PC (limiar 7 dias — `scripts/refresh-pc-only.sh`)'
             echo '```'
-            grep -E '^(❌|⚠|ℹ|- [0-9]+ loja)' /tmp/rel-pc.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
+            grep -E '^(❌|✅|- [0-9]+ loja|ℹ Stale mas IGNORADAS)' /tmp/rel-pc.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
             echo '```'
             echo
             echo '<details><summary>Relatorio completo por loja</summary>'
