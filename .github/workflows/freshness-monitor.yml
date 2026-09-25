@@ -142,12 +142,12 @@ jobs:
             # loja ignorada) e enchiam o resumo, empurrando a resposta para fora do
             # head -20 -- um alarme que enterra a propria conclusao. A tabela fica no
             # <details> la' abaixo.
-            grep -E '^(❌|✅|- [0-9]+ loja|ℹ Stale mas IGNORADAS)' /tmp/rel-cloud.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
+            grep -E '^[[:space:]]*(❌|✅|-[[:space:]]*[0-9]+[[:space:]]*loja|ℹ Stale mas IGNORADAS)' /tmp/rel-cloud.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
             echo '```'
             echo
             echo '## Lojas so-PC (limiar 7 dias — `scripts/refresh-pc-only.sh`)'
             echo '```'
-            grep -E '^(❌|✅|- [0-9]+ loja|ℹ Stale mas IGNORADAS)' /tmp/rel-pc.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
+            grep -E '^[[:space:]]*(❌|✅|-[[:space:]]*[0-9]+[[:space:]]*loja|ℹ Stale mas IGNORADAS)' /tmp/rel-pc.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
             echo '```'
             echo
             echo '<details><summary>Relatorio completo por loja</summary>'
