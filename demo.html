@@ -10714,7 +10714,10 @@ function seoJsonLd(obj) {
 
 /** Chamado ao abrir a ficha. Escreve endereco + meta + JSON-LD do produto. */
 function seoAbrirProduto(ean) {
-  const p = (typeof PRODUCTS !== 'undefined' && PRODUCTS) ? PRODUCTS[ean] : null;
+  // PRODUCT_BY_EAN e nao PRODUCTS: o PRODUCTS e um ARRAY (as chaves sao
+  // indices, '0','1','2'), logo PRODUCTS[ean] e sempre undefined. O mapa por
+  // EAN e este, e e o que o resto do ficheiro usa.
+  const p = (typeof PRODUCT_BY_EAN !== 'undefined' && PRODUCT_BY_EAN) ? PRODUCT_BY_EAN[ean] : null;
   if (!p) return;
   const caminho = seoCaminhoDoProduto(ean, p.name);
   const abs = location.origin + caminho;
@@ -10807,20 +10810,14 @@ function seoAbrirDoEndereco() {
   const m = location.pathname.match(/^\/produto\/([^/]+)/);
   if (!m) return;
   const ean = decodeURIComponent(m[1]);
-  // O indice chega em fundo: no primeiro instante PRODUCTS pode ter so' os 150
-  // do bloco de arranque, e um produto fora desses ainda nao existe. Espera-se
-  // em vez de falhar -- caso contrario um link partilhado abria a homepage.
-  let tentativas = 0;
-  const tentar = () => {
-    if (typeof PRODUCTS !== 'undefined' && PRODUCTS && PRODUCTS[ean]) {
-      SEO_URL_ANTERIOR = '/';   // veio de fora: o fechar leva a' homepage
-      openPriceAnalyzer(ean);
-      return;
-    }
-    if (++tentativas < 40) setTimeout(tentar, 400);   // ate' 16s
-    else console.warn('SEO: produto ' + ean + ' nao existe no catalogo.');
-  };
-  tentar();
+  SEO_URL_ANTERIOR = '/';   // veio de fora: o fechar leva a' homepage
+  // Sem ciclo de espera. O openPriceAnalyzer JA' trata disto: se o EAN nao
+  // estiver em memoria chama o garantirIndice() e espera por ele, e avisa o
+  // utilizador se falhar. O comentario dele ate' menciona este caso --
+  // "os EANs vindos do scanner, de um link partilhado ou de uma rotina".
+  // A minha primeira versao sondava o PRODUCTS a cada 400ms; era duplicar um
+  // mecanismo que existe e faz melhor.
+  openPriceAnalyzer(ean);
 }
 
 // ============================================================
