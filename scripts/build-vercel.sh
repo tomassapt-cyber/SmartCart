@@ -16,12 +16,6 @@ set -euo pipefail
 
 MEM=--max-old-space-size=4096
 
-# 0. O catalogo vem comprimido do git (o .json passava o limite de 100 MB
-#    do GitHub). Descomprimir ANTES de tudo -- todos os passos a seguir
-#    leem data/seed-bundle.json como sempre leram.
-bash scripts/ci/seed.sh unpack
-
-
 # 1. Pedaços por produto (data/p/<versao>/) — a ficha de produto vai buscar só
 #    o pedaço do produto aberto, em vez dos ficheiros completos.
 node $MEM scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao gerados'
@@ -37,6 +31,19 @@ node $MEM scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao ge
 #    dava um deploy VERDE com um site sem catálogo, que é o pior desfecho
 #    possível. Sem ela, o deploy fica vermelho e o site anterior continua no ar.
 node $MEM scripts/build-search-index.js
+
+# 2b. O mapa do site, a partir do índice que acabou de ser gerado. TEM de vir
+#     depois: a fonte dos produtos é o data/idx/search-<hash>.json, que é
+#     exactamente o conjunto que o site serve (já passou pelo filtro de
+#     visibilidade). Um sitemap com produtos que o site não mostra ensina o
+#     Google a desconfiar do ficheiro.
+#
+#     SEM guarda `||`: até 2026-09-26 não havia sitemap nenhum e nenhum dos 48
+#     mil produtos podia ser indexado. Se isto falhar, é melhor o deploy ficar
+#     vermelho e o site anterior continuar no ar do que publicar um site que
+#     volta a ser invisível. O script tem a sua própria guarda: recusa escrever
+#     com menos de 1.000 produtos.
+node $MEM scripts/build-sitemap.js
 
 # 3. A página: template demo.html + seed embebido → index.html e catalogo.html.
 #    Também sem guarda: se falhar, não há site para servir, e é preferível o

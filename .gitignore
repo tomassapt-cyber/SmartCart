@@ -42,6 +42,13 @@ data/.*-report.json
 # — quem precisar deles corre o script.
 data/p/
 data/idx/
+
+# mapa do site gerado no build (scripts/build-sitemap.js) — NAO versionar.
+# Sao ~6 MB por deploy, derivados do data/idx/, e regenerados a cada build.
+# O robots.txt SIM e versionado: esse e escrito a mao.
+/sitemap.xml
+/sitemap-paginas.xml
+/sitemap-produtos-*.xml
 .snapshot/
 
 # gerado no build do Vercel (scripts/build-catalog-snapshot.js) — nunca commitar
@@ -55,13 +62,3 @@ data/idx/
 
 # bloco de arranque gerado (scripts/build-search-index.js)
 /data/startup-block.json
-
-# O catalogo vive COMPRIMIDO no git: data/seed-bundle.json.gz (~13 MB).
-# O .json descomprimido tinha 104.857.455 bytes contra um limite de
-# 104.857.600 no GitHub -- 145 BYTES de margem. Qualquer loja que
-# crescesse via o push recusado com GH001, e as grandes (atida, wells,
-# druni, Pharma GDD) ficaram SEMANAS sem publicar: o catalogo caiu de
-# 51.281 para 13.049 produtos e 88% ficaram com uma so' loja.
-# Os workflows descomprimem a seguir ao checkout e comprimem antes do
-# commit. Ver scripts/ci/seed.sh.
-data/seed-bundle.json
