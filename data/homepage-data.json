@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-25T10:32:56.630Z",
-  "seed_total_products": 64962,
+  "generated_at": "2026-09-26T08:56:28.993Z",
+  "seed_total_products": 65032,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.94,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
+      "best_price": 17.93,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
     },
     {
       "ean": "8429420158399",
@@ -27,10 +27,10 @@
       "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
       "brand": "Vichy",
       "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 8.92,
-      "best_store": "Farmaoli",
-      "best_store_slug": "farmaoli",
-      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html"
+      "best_price": 11.05,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/dercos-champo-anticaspa-para-cabelos-secos-200-ml"
     },
     {
       "ean": "3606000560833",
@@ -121,20 +121,20 @@
       "name": "Caudalie Vinoperfect Sérum + Espuma Micro-Peeling Pack",
       "brand": "Caudalie",
       "image_url": "https://1630763059.rsc.cdn77.org/temp/1787652226_307f07976e1711a5b65506faaeaa7296.jpg",
-      "best_price": 42.21,
-      "best_store": "Unifarma",
-      "best_store_slug": "unifarma",
-      "best_url": "https://www.unifarma.pt/products/caudalie-vinoperf-ser-eclat30-ofmouss50"
+      "best_price": 33.53,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/caudalie-vinoperfect-serum-30ml-oferta-mousse-50ml"
     },
     {
       "ean": "3574661874951",
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 17.75,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
+      "best_price": 15.54,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
     },
     {
       "ean": "3574661540887",
@@ -147,43 +147,58 @@
       "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
     },
     {
-      "ean": "3662361005949",
-      "name": "SVR Coffret Densitium Creme + SVR Ampoule C - + - Farmá...",
-      "brand": "SVR",
-      "image_url": "https://www.farmaciabarreiros.com/38185/svr-coffret-densitium-creme-svr-ampoule-c-50-ml-10-ml.jpg",
-      "best_price": 22.75,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/svr-densitium-creme-50ml-oferta-ampoule-c10ml-bolsa"
+      "ean": "3574661879185",
+      "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
+      "best_price": 8.63,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
     }
   ],
   "em_alta": [
+    {
+      "ean": "3282770200553",
+      "name": "Avene Dermabsolu Creme Rejuvenador Contorno Olhos",
+      "brand": "Avène",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/avene-dermabsolu-creme-rejuvenador-contorno-olhos-15ml-U2N3n.webp",
+      "best_price": 16.88,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/labios-e-olhos/1001-avène-dermabsolu-olhos-15-ml-3282770200553.html",
+      "previous_price": 36.33,
+      "discount_pct": 43,
+      "dropped_day": 20715,
+      "verified_live": true
+    },
     {
       "ean": "3282779355773",
       "name": "Avène Solar SPF50+ Tamanho Física",
       "brand": "Avène",
       "image_url": "https://assets.atida.com/transform/ab6deeec-415d-4179-9987-4a93704e9905/Avene-Solar-SPF50-Pantalla-Fisica-50ml",
-      "best_price": 9.67,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/copy-of-fluido-solar-mineral-com-cor",
+      "best_price": 8.55,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/solares/avene-solar-creme-mineral-fps-50+_p513.html",
       "previous_price": 15.02,
       "discount_pct": 36,
       "dropped_day": 20715,
       "verified_live": true
     },
     {
-      "ean": "3282770149487",
-      "name": "Avène Creme SPF50+",
-      "brand": "Avène",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/avene/14587_main-800x800.jpg",
-      "best_price": 8.32,
+      "ean": "4005800355998",
+      "name": "Eucerin pH5 Gel &amp; Óleo Duche -",
+      "brand": "Eucerin",
+      "image_url": "https://www.farmaciabarreiros.com/36741/eucerin-ph5-gel-e-oleo-duche-400-ml.jpg",
+      "best_price": 9.7,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/creme-spf-50",
-      "previous_price": 19.63,
-      "discount_pct": 35,
-      "dropped_day": 20715,
+      "best_url": "https://lovemypharma.com/products/gel-banho-e-oleo-rosto-e-corpo",
+      "volume_ml": 400,
+      "previous_price": 15.99,
+      "discount_pct": 15,
+      "dropped_day": 20720,
       "verified_live": true
     },
     {
@@ -212,53 +227,40 @@
       "previous_price": 6.49,
       "discount_pct": 31,
       "dropped_day": 20714
-    },
-    {
-      "ean": "8720181594816",
-      "name": "Desodorizante em Stick para Todo o Corpo Lavanda & Camomila",
-      "brand": "Dove",
-      "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/8/7/8720181594816_2_63b7.jpg",
-      "best_price": 4.51,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/dove/desodorante-em-bastao-unissex-lavanda-e-camomila/p_101629/",
-      "previous_price": 7.19,
-      "discount_pct": 25,
-      "dropped_day": 20712
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1970
+      "products": 1962
     },
     {
       "name": "Clarins",
-      "products": 782
+      "products": 783
     },
     {
       "name": "Isdin",
-      "products": 778
+      "products": 777
     },
     {
       "name": "Avène",
-      "products": 696
+      "products": 695
     },
     {
       "name": "Nivea",
       "products": 651
     },
     {
-      "name": "La Roche-Posay",
-      "products": 633
-    },
-    {
       "name": "Eucerin",
-      "products": 631
+      "products": 632
     },
     {
       "name": "L'Oréal Paris",
-      "products": 627
+      "products": 630
+    },
+    {
+      "name": "La Roche-Posay",
+      "products": 626
     }
   ],
   "telegram_alerts": [
@@ -292,8 +294,8 @@
   ],
   "stats": {
     "stores": 74,
-    "products": 13016,
-    "avg_savings_pct": 24
+    "products": 49775,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": ""
