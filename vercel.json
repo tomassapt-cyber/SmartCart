@@ -11,7 +11,7 @@
   "framework": null,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/produto/:resto*", "destination": "/index.html" }
+    { "source": "/produto/:resto*", "destination": "/" }
   ],
   "redirects": [
     {
