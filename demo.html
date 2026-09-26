@@ -8644,7 +8644,7 @@ function garantirIndice() {
     let ultimoErro = null;
     for (let tentativa = 1; tentativa <= 3; tentativa++) {
       try {
-        const r = await fetch('data/idx/search-' + versao + '.json');
+        const r = await fetch('/data/idx/search-' + versao + '.json');
         if (!r.ok) throw new Error('HTTP ' + r.status);
         const indice = await r.json();
         if (!indice || !indice.n || !Array.isArray(indice.e)) throw new Error('índice vazio');
@@ -8705,7 +8705,7 @@ let MODO_DESENHO = false;
 
 async function _amostraDeDesenho() {
   try {
-    const r = await fetch('data/preview-arranque.json');
+    const r = await fetch('data/preview-arranque.json')   /* relativo DE PROPOSITO: so' o modo de desenho o le, sempre na raiz, e relativo sobrevive a file:// */;
     if (!r.ok) return null;
     const j = await r.json();
     if (!j || !j.arranque) return null;
@@ -9936,7 +9936,7 @@ function loadShard(ean) {
   if (!v || !ean) return Promise.resolve(null);
   const b = shardBucket(ean);
   if (!SHARD_CACHE.has(b)) {
-    SHARD_CACHE.set(b, fetch('data/p/' + v + '/' + b + '.json')
+    SHARD_CACHE.set(b, fetch('/data/p/' + v + '/' + b + '.json')
       .then(r => (r.ok ? r.json() : null))
       .catch(() => null));
   }
@@ -9950,7 +9950,7 @@ function loadShardStores() {
   const v = shardVersion();
   if (!v) return Promise.resolve(null);
   if (SHARD_STORES) return SHARD_STORES;
-  SHARD_STORES = fetch('data/p/' + v + '/_stores.json')
+  SHARD_STORES = fetch('/data/p/' + v + '/_stores.json')
     .then(r => (r.ok ? r.json() : null))
     .catch(() => null);
   return SHARD_STORES;
@@ -9965,7 +9965,7 @@ let RECS_PROMISE = null;    // promise em curso (evita fetch duplicado)
 function loadRecommendationsCompleto() {
   if (RECS_MAP) return Promise.resolve(RECS_MAP);
   if (RECS_PROMISE) return RECS_PROMISE;
-  RECS_PROMISE = fetch('data/recommendations.json')
+  RECS_PROMISE = fetch('/data/recommendations.json')
     .then(r => (r.ok ? r.json() : null))
     .then(j => { RECS_MAP = (j && j.map) ? j.map : {}; return RECS_MAP; })
     .catch(() => { RECS_MAP = {}; return RECS_MAP; });
@@ -10040,7 +10040,7 @@ let DESC_PROMISE = null;
 function loadDescriptionsCompleto() {
   if (DESC_MAP) return Promise.resolve(DESC_MAP);
   if (DESC_PROMISE) return DESC_PROMISE;
-  DESC_PROMISE = fetch('data/descriptions.json')
+  DESC_PROMISE = fetch('/data/descriptions.json')
     .then(r => (r.ok ? r.json() : null))
     .then(j => { DESC_MAP = (j && j.map) ? j.map : {}; return DESC_MAP; })
     .catch(() => { DESC_MAP = {}; return DESC_MAP; });
@@ -10366,7 +10366,7 @@ const PH_PERIODS = { '1M': 30, '3M': 90, '1A': 365, 'Tudo': Infinity };
 function fetchPriceHistoryCompleto() {
   if (PH_DATA) return Promise.resolve(PH_DATA);
   if (!PH_FETCH) {
-    PH_FETCH = fetch('data/price-history.json', { cache: 'no-cache' })
+    PH_FETCH = fetch('/data/price-history.json', { cache: 'no-cache' })
       .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(j => { PH_DATA = j; return j; })
       .catch(() => { PH_FETCH = null; return null; });
@@ -15361,7 +15361,7 @@ let SCAN_DESC_INDEX = null, SCAN_DESC_LOADING = false;
 function scanLoadDescIndex() {
   if (SCAN_DESC_INDEX || SCAN_DESC_LOADING) return;
   SCAN_DESC_LOADING = true;
-  fetch('data/scan-index.json')
+  fetch('/data/scan-index.json')
     .then(r => (r.ok ? r.json() : Promise.reject(new Error('http ' + r.status))))
     .then(j => { SCAN_DESC_INDEX = j || {}; })
     .catch(() => { /* deixa SCAN_DESC_INDEX=null → re-tenta na próxima entrada em Frente */ })
