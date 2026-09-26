@@ -69,3 +69,35 @@ não há limite de tamanho e cabem comentários — que era o que eu queria faze
 JSON e desencadeou tudo isto.
 
 **Passos novos vão para o script, nunca para o JSON.**
+
+## `rewrites`: o endereço próprio por produto (2026-09-26)
+
+O `vercel.json` passou a ter:
+
+```json
+"rewrites": [
+  { "source": "/produto/:resto*", "destination": "/index.html" }
+]
+```
+
+**Porquê.** Até agora uma ficha de produto não tinha endereço nenhum: abria em
+sobreposição, por JavaScript, sem tocar no URL. Não se podia partilhar o link de
+um produto, o botão Voltar do telemóvel saía do site, e nenhum dos 49.397
+produtos podia ser indexado pelo Google — o que fecha o canal de aquisição de um
+site de comparação de preços.
+
+Agora cada produto tem `/produto/<ean>-<slug>`. O servidor entrega sempre a
+aplicação; é o `seoAbrirDoEndereco()` do `demo.html` que lê o caminho e abre a
+ficha certa, escrevendo também o `canonical`, o Open Graph e o JSON-LD
+(`AggregateOffer` — o tipo que descreve «o mesmo produto em N lojas, de X a Y»,
+e é o que faz o Google mostrar «desde 3,32 €»).
+
+**Sem o rewrite, um link directo dava 404** e tudo isto não servia de nada.
+
+**E porque é que a explicação está aqui e não no JSON.** Este comentário não pode
+viver no `vercel.json`: o ficheiro é validado contra `openapi.vercel.sh/vercel.json`,
+que **rejeita propriedades desconhecidas** — mesmo com nome começado por `_` ou
+`//`. Uma chave a mais faz a Vercel recusar o deploy **à entrada**, sem correr o
+build e sem dizer porquê; custou 9h46 de site parado a 5 de Agosto de 2026. Ao
+escrever o rewrite acima quase repeti o erro, com um `"//"` dentro do objecto.
+**Nada que não esteja no esquema entra no `vercel.json`.**

@@ -10,6 +10,9 @@
   "installCommand": "echo 'no install needed'",
   "framework": null,
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/produto/:resto*", "destination": "/index.html" }
+  ],
   "redirects": [
     {
       "source": "/demo.html",

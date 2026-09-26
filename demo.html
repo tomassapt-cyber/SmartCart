@@ -4,6 +4,22 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>CosMath — Compara, combina e poupa em cosmética</title>
+<!-- ── SEO base (2026-09-26) ────────────────────────────────────────────
+     Nada disto existia: sem description, sem canonical, sem Open Graph. Um
+     site de comparacao de precos vive de alguem procurar "<produto> preco"
+     no Google, e partilhar um link sem og: nao mostra nem titulo nem imagem.
+     Os valores por produto sao reescritos em JS (ver seoAbrirProduto) e
+     repostos ao fechar a ficha. -->
+<meta name="description" content="Compara o preco do mesmo produto de cosmetica em 74 lojas portuguesas. Precos verificados todos os dias." />
+<link rel="canonical" id="seo-canonical" href="https://smart-cart-zx55.vercel.app/" />
+<meta property="og:site_name" content="CosMath" />
+<meta property="og:locale" content="pt_PT" />
+<meta property="og:type" content="website" id="seo-og-type" />
+<meta property="og:title" content="CosMath — Compara, combina e poupa em cosmética" id="seo-og-title" />
+<meta property="og:description" content="Compara o preco do mesmo produto de cosmetica em 74 lojas portuguesas." id="seo-og-desc" />
+<meta property="og:url" content="https://smart-cart-zx55.vercel.app/" id="seo-og-url" />
+<meta property="og:image" content="https://smart-cart-zx55.vercel.app/apple-touch-icon-v4.png" id="seo-og-image" />
+<meta name="twitter:card" content="summary_large_image" />
 <!-- PWA -->
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="theme-color" content="#cebfee" />
@@ -9836,6 +9852,8 @@ async function openPriceAnalyzer(ean) {
   // seedVolume = volume "original" deste EAN, fixo durante a sessão do modal
   // volume = volume actualmente seleccionado (muda com chips)
   PA_STATE = { ean, volume: seedVolume, seedVolume };
+  // endereco proprio + meta + dados estruturados desta ficha
+  try { seoAbrirProduto(ean); } catch (e) { console.warn("SEO:", e && e.message); }
 
   // ── as ofertas COM VARIANTES têm de estar cá antes de desenhar ──────────
   // Já estão? desenha já, sem piscar. Não estão? abre o modal com o cabeçalho
@@ -10625,7 +10643,8 @@ function bundleSetVolume(ean, volume_ml) {
   bundleState.volumes.set(ean, Number(volume_ml));
 }
 
-function closePriceAnalyzer() {
+function closePriceAnalyzer(mexerNoHistorico) {
+  try { seoFecharProduto(mexerNoHistorico); } catch (e) { console.warn('SEO:', e && e.message); }
   document.getElementById('pa-backdrop').classList.remove('open');
   document.getElementById('pa-modal').classList.remove('open');
   document.getElementById('pa-modal').setAttribute('aria-hidden', 'true');
@@ -10633,6 +10652,176 @@ function closePriceAnalyzer() {
 }
 document.getElementById('pa-close').addEventListener('click', closePriceAnalyzer);
 document.getElementById('pa-backdrop').addEventListener('click', closePriceAnalyzer);
+
+// ════════════════════════════════════════════════════════════════════════
+//  ENDERECO E SEO DA FICHA DE PRODUTO  (2026-09-26)
+// ════════════════════════════════════════════════════════════════════════
+//  O PROBLEMA: uma ficha de produto nao tinha endereco NENHUM. Abria em
+//  sobreposicao, por JS, sem tocar no URL. Consequencias medidas:
+//    · nao se podia partilhar o link de um produto;
+//    · o botao Voltar do telemovel saia do site em vez de fechar a ficha;
+//    · nenhum dos 49.397 produtos podia ser indexado pelo Google, logo o
+//      canal de aquisicao de um site de comparacao de precos estava fechado.
+//
+//  O QUE ISTO FAZ: da a cada produto um endereco /produto/<ean>-<slug>, com
+//  canonical, Open Graph e JSON-LD proprios, e liga-o ao historico do
+//  navegador. Nao muda uma linha do desenho nem do funcionamento da ficha.
+//
+//  JSON-LD com AggregateOffer e nao Offer: e' o tipo que descreve 'o mesmo
+//  produto em N lojas, do preco X ao Y'. E' o que faz o Google mostrar
+//  'desde 3,32 EUR' nos resultados, e e' exactamente o que o site faz.
+//
+//  ⚠️ O rewrite de /produto/* para /index.html vive no vercel.json. Sem ele
+//  um link directo dava 404 e isto nao servia de nada.
+// ════════════════════════════════════════════════════════════════════════
+const SEO_BASE = { titulo: document.title, url: location.origin + '/' };
+let SEO_URL_ANTERIOR = null;   // para onde o fechar volta
+
+/** 'Cicaplast Gel B5 40ml' -> 'cicaplast-gel-b5-40ml' (so para ser legivel) */
+function seoSlug(s) {
+  return String(s || '').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+}
+
+function seoCaminhoDoProduto(ean, nome) {
+  const slug = seoSlug(nome);
+  // O EAN vai num SEGMENTO proprio e nao separado por hifen. 27,3% dos
+  // produtos (17.739 de 64.962) tem chave sintetica com hifen -- 'wells-8760922'
+  // -- e um separador '-' fazia o regex de leitura truncar em 'wells', logo um
+  // quarto dos links directos abria a homepage em vez do produto. Medido antes
+  // de publicar, nao descoberto depois.
+  return '/produto/' + encodeURIComponent(ean) + (slug ? '/' + slug : '');
+}
+
+function seoDefinir(id, attr, valor) {
+  const el = document.getElementById(id);
+  if (el && valor != null) el.setAttribute(attr, valor);
+}
+
+/** injecta (ou substitui) o bloco de dados estruturados */
+function seoJsonLd(obj) {
+  let s = document.getElementById('seo-jsonld');
+  if (!obj) { if (s) s.remove(); return; }
+  if (!s) {
+    s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.id = 'seo-jsonld';
+    document.head.appendChild(s);
+  }
+  s.textContent = JSON.stringify(obj);
+}
+
+/** Chamado ao abrir a ficha. Escreve endereco + meta + JSON-LD do produto. */
+function seoAbrirProduto(ean) {
+  const p = (typeof PRODUCTS !== 'undefined' && PRODUCTS) ? PRODUCTS[ean] : null;
+  if (!p) return;
+  const caminho = seoCaminhoDoProduto(ean, p.name);
+  const abs = location.origin + caminho;
+
+  // guardar de onde vinhamos, para o fechar (e o botao Voltar) reporem
+  if (SEO_URL_ANTERIOR === null) SEO_URL_ANTERIOR = location.pathname + location.search;
+  if (location.pathname !== caminho) {
+    try { history.pushState({ seoEan: ean }, '', caminho); } catch (e) {}
+  }
+
+  const titulo = p.name + (p.brand ? ' — ' + p.brand : '') + ' | preco em 74 lojas | CosMath';
+  const desc = 'Compara o preco de ' + p.name + ' em 74 lojas portuguesas. Preco verificado todos os dias.';
+  document.title = titulo;
+  seoDefinir('seo-canonical', 'href', abs);
+  seoDefinir('seo-og-type', 'content', 'product');
+  seoDefinir('seo-og-title', 'content', titulo);
+  seoDefinir('seo-og-desc', 'content', desc);
+  seoDefinir('seo-og-url', 'content', abs);
+  if (p.image_url) seoDefinir('seo-og-image', 'content', p.image_url);
+
+  const base = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: p.name,
+    url: abs,
+  };
+  if (p.image_url) base.image = p.image_url;
+  if (p.brand) base.brand = { '@type': 'Brand', name: p.brand };
+  if (/^\d{13}$/.test(String(ean))) base.gtin13 = String(ean);
+  else if (/^\d{12,14}$/.test(String(ean))) base.gtin = String(ean);
+  seoJsonLd(base);
+
+  // As ofertas chegam da base de dados depois. Sem elas o JSON-LD nao tem
+  // preco, que e' a parte que interessa ao Google -- por isso espera-se por
+  // elas em vez de desistir. Tentativas curtas, e para quando a ficha fechar
+  // ou o utilizador abrir outra.
+  let tentativas = 0;
+  const juntarOfertas = () => {
+    if (!PA_STATE || PA_STATE.ean !== ean) return;             // ja mudou de produto
+    const ofs = (typeof OFFERS_BY_PRODUCT !== 'undefined' && OFFERS_BY_PRODUCT[ean]) || null;
+    const vivas = ofs ? Object.values(ofs).filter(o => o && o.in_stock && Number(o.price) > 0) : [];
+    if (!vivas.length) {
+      if (++tentativas < 20) setTimeout(juntarOfertas, 500);   // ate' 10s
+      return;
+    }
+    const precos = vivas.map(o => Number(o.price));
+    seoJsonLd(Object.assign({}, base, {
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'EUR',
+        lowPrice: Math.min.apply(null, precos).toFixed(2),
+        highPrice: Math.max.apply(null, precos).toFixed(2),
+        offerCount: vivas.length,
+        availability: 'https://schema.org/InStock',
+      },
+    }));
+  };
+  juntarOfertas();
+}
+
+/** Chamado ao fechar a ficha. Repoe o endereco e as meta da pagina. */
+function seoFecharProduto(mexerNoHistorico) {
+  document.title = SEO_BASE.titulo;
+  seoDefinir('seo-canonical', 'href', SEO_BASE.url);
+  seoDefinir('seo-og-type', 'content', 'website');
+  seoDefinir('seo-og-title', 'content', SEO_BASE.titulo);
+  seoDefinir('seo-og-desc', 'content', 'Compara o preco do mesmo produto de cosmetica em 74 lojas portuguesas.');
+  seoDefinir('seo-og-url', 'content', SEO_BASE.url);
+  seoJsonLd(null);
+  if (mexerNoHistorico !== false && /^\/produto\//.test(location.pathname)) {
+    try { history.pushState(null, '', SEO_URL_ANTERIOR || '/'); } catch (e) {}
+  }
+  SEO_URL_ANTERIOR = null;
+}
+
+// O botao Voltar passa a fechar a ficha em vez de sair do site -- em telemovel
+// e' o gesto natural, e antes perdia-se a navegacao toda.
+window.addEventListener('popstate', () => {
+  const m = location.pathname.match(/^\/produto\/([^/]+)/);
+  if (m) {
+    const ean = decodeURIComponent(m[1]);
+    if (!PA_STATE || PA_STATE.ean !== ean) openPriceAnalyzer(ean);
+  } else if (document.getElementById('pa-modal') && document.getElementById('pa-modal').classList.contains('open')) {
+    closePriceAnalyzer(false);
+  }
+});
+
+/** Um link directo /produto/<ean>-<slug> abre a ficha desse produto. */
+function seoAbrirDoEndereco() {
+  const m = location.pathname.match(/^\/produto\/([^/]+)/);
+  if (!m) return;
+  const ean = decodeURIComponent(m[1]);
+  // O indice chega em fundo: no primeiro instante PRODUCTS pode ter so' os 150
+  // do bloco de arranque, e um produto fora desses ainda nao existe. Espera-se
+  // em vez de falhar -- caso contrario um link partilhado abria a homepage.
+  let tentativas = 0;
+  const tentar = () => {
+    if (typeof PRODUCTS !== 'undefined' && PRODUCTS && PRODUCTS[ean]) {
+      SEO_URL_ANTERIOR = '/';   // veio de fora: o fechar leva a' homepage
+      openPriceAnalyzer(ean);
+      return;
+    }
+    if (++tentativas < 40) setTimeout(tentar, 400);   // ate' 16s
+    else console.warn('SEO: produto ' + ean + ' nao existe no catalogo.');
+  };
+  tentar();
+}
 
 // ============================================================
 // CATEGORY MODAL — listar produtos da categoria + add ao bundle
@@ -13868,6 +14057,8 @@ async function initApp() {
   if (devLocal && TEM_SEED_EMBEBIDO) rebuildCatalogIndexes(SEED_FALLBACK);
   const loadedLive = await loadLiveCatalog();
   renderCatalog();
+  // se o endereco aponta para um produto, abrir essa ficha
+  try { seoAbrirDoEndereco(); } catch (e) { console.warn("SEO:", e && e.message); }
   renderDynamicSections();
   bundleRefresh();
   // Hero stats dinâmicos (design handoff v5)
