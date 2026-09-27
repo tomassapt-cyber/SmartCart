@@ -14314,7 +14314,19 @@ async function prCloudPull() {
 // todo (rotina/medicação) ganham pelo lado com _ts mais recente. Push: debounce
 // 2.5s sobre QUALQUER escrita às chaves (hook no localStorage.setItem cobre
 // todos os call-sites) + flush quando a página é escondida.
-const US_KEYS = ['cm.routine.v1', 'cm.trackerlog.v1', 'cm.streak.v1', 'cm.meds.v1', 'cm.medslog.v1', 'cm.feedback.v1', 'cm.shelftomb.v1'];
+// ⚠️ A MEDICACAO NAO SINCRONIZA, de proposito (decisao do dono do site,
+// 2026-09-28). cm.meds.v1 e cm.medslog.v1 sao a medicacao do utilizador e o
+// registo de tomas: DADOS DE SAUDE, categoria especial do RGPD (artigo 9.o),
+// que exigem CONSENTIMENTO EXPLICITO e nao apenas uma politica de privacidade.
+// Ficam so' no dispositivo onde foram registados. Tudo o resto sincroniza.
+//
+// Ate' aqui nada disto chegava ao servidor apenas porque a tabela user_state
+// nao existia -- a migracao 013 cria-a. Sem esta exclusao, aplicar a 013
+// comecava a guardar dados de saude na nuvem sem base legal.
+//
+// Voltar a pô-las aqui exige, antes, um ecra de consentimento explicito e a
+// revisao da politica de privacidade.
+const US_KEYS = ['cm.routine.v1', 'cm.trackerlog.v1', 'cm.streak.v1', 'cm.feedback.v1', 'cm.shelftomb.v1'];
 const US_TS_KEY = 'cm.us_ts'; // fora de US_KEYS de propósito (evita loop no hook)
 let US_TIMER = null, US_PUSHING = false, US_LAST_PULL = 0;
 
@@ -14384,12 +14396,12 @@ async function usPull(force) {
     if (cloud) {
       const cloudNewer = Number(cloud._ts || 0) > Number(localStorage.getItem(US_TS_KEY) || 0);
       // rotina + medicação: um TODO editável — ganha o lado mais recente
-      for (const k of ['cm.routine.v1', 'cm.meds.v1']) {
+      for (const k of ['cm.routine.v1']) {   // sem cm.meds.v1: fica so' no dispositivo (ver US_KEYS)
         if (cloud[k] !== undefined && (cloudNewer || usRead(k) == null)) usWrite(k, cloud[k]);
       }
       // acumulativos: união (dias marcados, tomas, conquistas, feedback)
       usMergeDays('cm.trackerlog.v1', cloud);
-      usMergeDays('cm.medslog.v1', cloud);
+      // cm.medslog.v1 NAO se funde da nuvem: dado de saude, fica no dispositivo (ver US_KEYS)
       const cs = cloud['cm.streak.v1'], ls = usRead('cm.streak.v1');
       if (cs || ls) usWrite('cm.streak.v1', {
         v: 1,
