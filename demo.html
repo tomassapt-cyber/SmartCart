@@ -14174,7 +14174,11 @@ async function initSupabase() {
   if (!window.supabase) {
     await new Promise((res, rej) => {
       const s = document.createElement('script');
-      s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
+      // Servido pelo proprio site, nao pelo jsdelivr: todas as visitas carregam
+      // isto, e cada pedido ao CDN entregava-lhe o IP do visitante. Para mudar de
+      // versao, pôr o ficheiro novo em /vendor/ com a versao no NOME (a pasta e'
+      // servida como imutavel -- ver vercel.json).
+      s.src = '/vendor/supabase-js-2.45.4.min.js';
       s.onload = res; s.onerror = rej;
       document.head.appendChild(s);
     });
