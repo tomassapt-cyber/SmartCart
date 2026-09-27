@@ -42,6 +42,13 @@ data/.*-report.json
 # — quem precisar deles corre o script.
 data/p/
 data/idx/
+
+# mapa do site gerado no build (scripts/build-sitemap.js) — NAO versionar.
+# Sao ~6 MB por deploy, derivados do data/idx/, e regenerados a cada build.
+# O robots.txt SIM e versionado: esse e escrito a mao.
+/sitemap.xml
+/sitemap-paginas.xml
+/sitemap-produtos-*.xml
 .snapshot/
 
 # gerado no build do Vercel (scripts/build-catalog-snapshot.js) — nunca commitar

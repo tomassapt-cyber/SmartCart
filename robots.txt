@@ -1,0 +1,19 @@
+# CosMath — comparação de preços de cosmética em Portugal
+#
+# Este ficheiro não existia: o pedido devolvia 404 e nada apontava para o mapa do
+# site. Criado a 2026-09-26, com o sitemap.
+
+User-agent: *
+Allow: /
+
+# A /app é uma página beta antiga, sem ligação de nenhum sítio do site. Enquanto
+# não for apagada ou ligada em condições, não deve entrar no índice.
+Disallow: /app
+
+# ⚠️ NÃO bloquear /data/. É tentador — são ficheiros de dados e não conteúdo — mas
+# as fichas de produto são desenhadas em JavaScript a partir do índice de pesquisa
+# (/data/idx/) e dos pedaços por produto (/data/p/). O Googlebot executa o
+# JavaScript; se não puder buscar esses ficheiros, vê páginas vazias e não indexa
+# nada. Bloquear aqui teria exactamente o efeito oposto ao pretendido.
+
+Sitemap: https://smart-cart-zx55.vercel.app/sitemap.xml

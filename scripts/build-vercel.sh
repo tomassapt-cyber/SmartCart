@@ -38,6 +38,14 @@ node $MEM scripts/build-product-shards.js --quiet || echo 'AVISO: pedacos nao ge
 #    possível. Sem ela, o deploy fica vermelho e o site anterior continua no ar.
 node $MEM scripts/build-search-index.js
 
+# 2b. O mapa do site, a partir do índice que acabou de ser gerado. TEM de vir
+#     depois: a fonte é o data/idx/search-<hash>.json, exactamente o conjunto
+#     que o site serve. Sem guarda `||`, de propósito: se falhar, o deploy fica
+#     vermelho e o site anterior continua no ar -- melhor do que publicar um
+#     site que o Google volta a não conseguir ler. O script recusa escrever com
+#     menos de 1.000 produtos.
+node $MEM scripts/build-sitemap.js
+
 # 3. A página: template demo.html + seed embebido → index.html e catalogo.html.
 #    Também sem guarda: se falhar, não há site para servir, e é preferível o
 #    deploy falhar do que publicar uma página vazia.
