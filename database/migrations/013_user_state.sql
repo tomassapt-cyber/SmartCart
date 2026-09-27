@@ -27,8 +27,9 @@
 --     .from('user_state').select('state').eq('user_id', <id>).maybeSingle()
 --     .from('user_state').upsert({ user_id: <id>, state })
 --   O `upsert` sem `onConflict` explícito conta com a chave primária em user_id.
---   O `state` é um objeto único que junta rotina, medicação, dias marcados,
---   conquistas e feedback, com um `_ts` lá dentro que o cliente usa para decidir
+--   O `state` é um objeto único que junta rotina, dias marcados, conquistas e
+--   feedback (a medicação ficou de fora a 2026-09-28: é dado de saúde e fica só
+--   no dispositivo -- ver US_KEYS no demo.html), com um `_ts` lá dentro que o cliente usa para decidir
 --   quem ganha na fusão — por isso o carimbo de tempo da fusão é do cliente, e o
 --   `updated_at` daqui serve só para diagnóstico.
 --
@@ -47,9 +48,9 @@ create table if not exists public.user_state (
 );
 
 comment on table  public.user_state is
-  'Sincronização entre dispositivos de "O meu espaço": rotina, medicação, dias marcados, conquistas e feedback. Uma linha por utilizador. Ver migração 013.';
+  'Sincronização entre dispositivos de "O meu espaço": rotina, dias marcados, conquistas e feedback. A medicação NÃO vem para aqui (dado de saúde, fica no dispositivo). Uma linha por utilizador. Ver migração 013.';
 comment on column public.user_state.state is
-  'Blob único com as chaves cm.routine.v1, cm.meds.v1 e acumuladores. Traz um _ts do cliente, que é quem resolve a fusão.';
+  'Blob único com cm.routine.v1 e acumuladores (registo diário, sequência, feedback, lápides). Sem cm.meds.v1/cm.medslog.v1: o site deixou de os enviar a 2026-09-28. Traz um _ts do cliente, que é quem resolve a fusão.';
 
 -- updated_at só é útil se se mantiver: o site faz upsert de {user_id, state} e
 -- nunca envia a data, por isso sem isto ficava congelada na criação da linha.
