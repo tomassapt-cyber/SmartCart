@@ -1,0 +1,68 @@
+/* As fontes do CosMath, servidas pelo próprio site.
+ *
+ * ⚠️ NÃO voltar a pôr o <link> do fonts.googleapis.com. Cada visita enviava o
+ * IP do visitante à Google antes de qualquer consentimento; um tribunal alemão
+ * (LG München I, 20.01.2022, 3 O 17493/20) condenou um site exactamente por
+ * isso, ao abrigo do RGPD. Servidas daqui, não sai nada para terceiros.
+ *
+ * Os ficheiros são os MESMOS que a Google servia (descarregados a 2026-09-28),
+ * e as declarações reproduzem o que o <link> antigo pedia — o aspecto do site
+ * não muda. Em particular:
+ *   - Cormorant Garamond só de 400 a 700 e SEM itálico: o demo.html nunca
+ *     carregou o itálico, logo os <em> em serifa (o "Math" do logótipo, o
+ *     "tempo real" do título) são itálico SINTETIZADO pelo navegador. Declarar
+ *     aqui o itálico verdadeiro mudava o desenho. Está disponível — ver
+ *     fontes-extra.css — e usá-lo é uma decisão de design, não técnica.
+ *   - Inter de 400 a 800.
+ *
+ * Os ficheiros são de fonte VARIÁVEL (um ficheiro cobre todos os pesos), e cada
+ * família vem partida em "latin" (tudo o que o português usa) e "latin-ext"
+ * (Ł, ő, ş... de nomes de marcas estrangeiras). O navegador só descarrega o
+ * latin-ext se a página tiver um desses caracteres.
+ *
+ * Cache: os .woff2 têm o início do SHA-256 no nome e são servidos como
+ * imutáveis (vercel.json). Para trocar um ficheiro, dá-se-lhe um nome NOVO;
+ * substituir o conteúdo mantendo o nome deixava browsers com a versão velha
+ * durante um ano.
+ *
+ * Licença: SIL Open Font License 1.1 — OFL-inter.txt e OFL-cormorant-garamond.txt,
+ * nesta pasta. A licença permite alojar e redistribuir; exige que o texto dela
+ * acompanhe os ficheiros.
+ */
+
+/* Inter — latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/inter-latin-3100e775.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Inter — latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/inter-latin-ext-34b9c504.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Cormorant Garamond — latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-d80df8ff.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Cormorant Garamond — latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-ext-cfa9a397.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
