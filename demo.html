@@ -12875,7 +12875,7 @@ function openAI() {
   // welcome message só na primeira abertura
   const body = document.getElementById('ai-body');
   if (!body.children.length) {
-    aiAddMessage('bot', `Olá! Sou a <strong>Sofia</strong>, beauty advisor da CosMath. Posso ajudar-te com skincare, rotinas, escolha de produtos e sinalizo quando algo merece avaliação médica.<br><br>Por onde começamos?`, {
+    aiAddMessage('bot', `Olá! Sou a <strong>Sofia</strong>, a assistente automática da CosMath — não sou uma pessoa. Posso ajudar-te com skincare, rotinas, escolha de produtos e sinalizo quando algo merece avaliação médica.<br><br>Por onde começamos?`, {
       suggestions: ['Tenho pele oleosa com acne', 'Como tratar manchas?', 'Rotina anti-aging', 'Pele sensível'],
       skipDisclaimer: true,
     });
