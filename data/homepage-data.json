@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-28T09:34:02.180Z",
-  "seed_total_products": 65245,
+  "generated_at": "2026-09-28T11:39:44.226Z",
+  "seed_total_products": 65252,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -233,7 +233,7 @@
   "top_brands": [
     {
       "name": "null",
-      "products": 1960
+      "products": 1959
     },
     {
       "name": "Clarins",
@@ -241,11 +241,11 @@
     },
     {
       "name": "Isdin",
-      "products": 777
+      "products": 776
     },
     {
       "name": "Avène",
-      "products": 695
+      "products": 696
     },
     {
       "name": "Nivea",
@@ -257,7 +257,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 632
+      "products": 636
     },
     {
       "name": "L'Oréal Paris",
