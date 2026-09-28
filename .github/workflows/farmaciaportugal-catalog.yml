@@ -9,10 +9,14 @@
 name: Farmacia Portugal daily refresh
 
 on:
-  schedule:
-    - cron: '20 9 * * *'
-    - cron: '20 17 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '20 1 * * *'   # 3x/dia
+  # ⚠️ SEM AGENDAMENTO NA NUVEM desde 2026-09-28 — passou para o PC
+  # (scripts/refresh-pc-only.sh). Os runners do GitHub levam 429 Too Many
+  # Requests logo no primeiro pedido (o sitemap); do PC responde 200. Os 3 crons diários só davam
+  # vermelho. O botão manual fica, para testar se o bloqueio passou.
+  # schedule:
+  #   - cron: '20 9 * * *'
+  #   - cron: '20 17 * * *'
+  #   - cron: '20 1 * * *'
   workflow_dispatch:
     inputs:
       limit:

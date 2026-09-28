@@ -13,11 +13,14 @@
 name: A Minha Farmácia Online daily refresh
 
 on:
-  schedule:
-    # 21h30 UTC — depois da A Sua Farmácia Online (21h)
-    - cron: '30 21 * * *'
-    - cron: '30 5 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '30 13 * * *'   # 3x/dia
+  # ⚠️ SEM AGENDAMENTO NA NUVEM desde 2026-09-28 — passou para o PC
+  # (scripts/refresh-pc-only.sh). Dos runners do GitHub o mapa do site vem vazio
+  # ("0 URLs de produto"); do PC dá 1.338 produtos de beleza. Os 3 crons diários só davam
+  # vermelho. O botão manual fica, para testar se o bloqueio passou.
+  # schedule:
+  #   - cron: '30 21 * * *'
+  #   - cron: '30 5 * * *'
+  #   - cron: '30 13 * * *'
   workflow_dispatch:
     inputs:
       limit:

@@ -14,6 +14,10 @@
 #   200 "Client Challenge"   docmorris   ← desafio do F5 que vinha com 200 e
 #                                          por isso passava por página boa
 #
+# E passou para 11 a 2026-09-28:
+#   429 no 1.º pedido        farmaciaportugal
+#   mapa do site vazio       aminhafarmaciaonline  (do PC: 1.338 produtos)
+#
 # Falta a skin.pt: tem integrate-skin-catalog.js mas NÃO tem scraper nenhum —
 # as 3.834 ofertas dela nunca foram automatizadas. Enquanto não houver scraper,
 # não entra aqui.
@@ -67,6 +71,8 @@ declare -A SCRAPE=(
   [fastpharma]="node scripts/scrape-fastpharma-catalog.js"
   [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
   [docmorris]="node scripts/scrape-docmorris-catalog.js"
+  [farmaciaportugal]="node scripts/scrape-farmaciaportugal-catalog.js --concurrency=5 --delay=250"
+  [aminhafarmaciaonline]="node scripts/scrape-aminhafarmaciaonline-catalog.js --concurrency=5 --delay=250"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 
@@ -74,7 +80,7 @@ declare -A SCRAPE=(
 # lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
 # e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
 # aterrou o mais barato de obter.
-ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline docmorris)
+ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline docmorris farmaciaportugal aminhafarmaciaonline)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"

@@ -64,7 +64,9 @@ jobs:
           #   403 "Just a moment..."   notino, powerbeauty, care2me, afarmaciaonline
           #   403 Forbidden (Apache)   fastpharma
           #   200 "Client Challenge"   docmorris
-          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,docmorris"
+          #   429 no 1.º pedido        farmaciaportugal      (2026-09-28)
+          #   mapa do site vazio       aminhafarmaciaonline  (2026-09-28)
+          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,docmorris,farmaciaportugal,aminhafarmaciaonline"
           # A skin.pt fica fora dos DOIS gates: tem integrate-skin-catalog.js mas
           # NÃO tem scraper nenhum, logo está condenada a estar stale e mantê-la
           # em qualquer gate é pedir um vermelho permanente. Volta quando tiver
