@@ -7478,39 +7478,41 @@
 
 <!-- ============ PONTOS DE CLIENTE (CosMath tiers) ============ -->
 <section class="gm-points-section" id="points">
+  <!-- Pintada por pontosPintar() com os pontos de quem tem sessão. Os escalões
+       são SÓ estatuto (decisão do dono, 2026-09-28): não anunciar aqui vantagens
+       que não existam. As regras vivem na migração 016. -->
   <div class="gm-points-shell">
     <div class="gm-points-head">
-      <span class="gm-eyebrow">Programa de lealdade</span>
+      <span class="gm-eyebrow">Programa de pontos</span>
       <h2 class="gm-h2"><em>Pontos</em> de cliente, sem letras pequenas.</h2>
-      <p class="gm-sub">Ganhas pontos ao escrever reviews e ao contribuir na comunidade. Sobem o teu estatuto e desbloqueiam alertas prioritários — não expiram durante 24 meses.</p>
+      <p class="gm-sub">Ganhas pontos ao completar o perfil (+10 por campo, +40 ao terminar), ao montar a tua prateleira (+20 por produto, até 10) e ao marcar a rotina (+5 por dia, +50 por cada 7 dias seguidos). Os escalões são um distintivo no teu perfil: não valem dinheiro, não se trocam por produtos e não expiram.</p>
     </div>
     <div class="gm-tiers">
-      <div class="gm-tier gm-tier-active">
-        <div class="gm-tier-name">BLOOM · ACTUAL</div>
+      <div class="gm-tier gm-tier-active" data-escalao="0">
+        <div class="gm-tier-name">BLOOM</div>
         <div class="gm-tier-pts">0 pts</div>
-        <div class="gm-tier-perks">Acesso · alertas de preço ilimitados · lista de favoritos.</div>
+        <div class="gm-tier-perks">Onde toda a gente começa.</div>
       </div>
-      <div class="gm-tier">
+      <div class="gm-tier" data-escalao="1">
         <div class="gm-tier-name">BUD</div>
-        <div class="gm-tier-pts">1 000 pts</div>
-        <div class="gm-tier-perks">Alertas prioritários · destaque na comunidade.</div>
+        <div class="gm-tier-pts">300 pts</div>
+        <div class="gm-tier-perks">Distintivo Bud no teu perfil.</div>
       </div>
-      <div class="gm-tier">
+      <div class="gm-tier" data-escalao="2">
         <div class="gm-tier-name">PETAL</div>
-        <div class="gm-tier-pts">2 000 pts</div>
-        <div class="gm-tier-perks">Alertas prioritários · badge exclusivo · acesso antecipado às maiores descidas.</div>
+        <div class="gm-tier-pts">1 000 pts</div>
+        <div class="gm-tier-perks">Distintivo Petal no teu perfil.</div>
       </div>
     </div>
     <div class="gm-progress-row">
-      <div class="gm-progress-bar"><div class="gm-progress-fill" style="width:0%"></div></div>
+      <div class="gm-progress-bar"><div class="gm-progress-fill" id="gm-pts-fill" style="width:0%"></div></div>
       <div class="gm-progress-meta">
-        <span>Tens <strong id="gm-user-pts">0 pontos</strong></span>
-        <span>Faltam <strong>1 000</strong> para o tier Bud</span>
+        <span id="gm-user-pts-linha">Cria conta (grátis) para começares a ganhar</span>
+        <span id="gm-pts-falta"></span>
       </div>
     </div>
     <div class="gm-points-cta">
-      <button class="gm-btn-dark" onclick="openProfile()">Ver o meu perfil</button>
-      <button class="gm-btn-light" onclick="openProfile()">Ver histórico</button>
+      <button class="gm-btn-dark" id="gm-pts-cta" onclick="openProfile()">Criar conta grátis</button>
     </div>
   </div>
 </section>
@@ -12131,6 +12133,7 @@ function trkToggle(id, dayKey) {
   set.has(id) ? set.delete(id) : set.add(id);
   if (set.size) log.days[day] = [...set]; else delete log.days[day];
   trkSaveLog(log);
+  if (set.size && day === trkDayKey()) { try { pontosGanhar('rotina_dia', day); } catch (e) {} }
   trkRender();
 }
 
@@ -14562,6 +14565,7 @@ async function prCloudUpsertProduct(item) {
     uses_per_week: item.uses_per_week,
     repurchased_at: item.repurchased_at || null,
   }, { onConflict: 'user_id,ean' });
+  if (!error) pontosGanhar('prateleira', item.ean);   // o servidor confirma e limita a 10
   if (error) {
     console.warn('upsert product failed', error);
     if (!window.__prSyncWarned) {
@@ -14786,6 +14790,7 @@ async function signOut() {
   try { closeProfile(); } catch (e) {}
   try { prRefreshBadge(); } catch (e) {}
   toast('Sessão terminada');
+  try { pontosPintar(); } catch (e) {}
 }
 
 // ============================================================
@@ -16724,28 +16729,16 @@ function prv3BdayPanelHTML(p) {
 async function prv3SaveProfileExtra(patch, rewardKey) {
   if (!SUPABASE || !CURRENT_USER) { toast('Precisas de sessão iniciada.'); return false; }
   try {
-    const { data: prof, error: readErr } = await SUPABASE.from('profiles')
-      .select('points, points_lifetime, quiz_rewarded_steps').eq('id', CURRENT_USER.id).maybeSingle();
-    if (readErr || !prof) { toast('Não consegui ler o perfil — tenta outra vez.'); return false; }
-    const rewarded = new Set(prof.quiz_rewarded_steps || []);
-    let gained = 0;
-    if (rewardKey && !rewarded.has(rewardKey)) {
-      gained = 10;
-      rewarded.add(rewardKey);
-      patch.quiz_rewarded_steps = Array.from(rewarded);
-      patch.points = (prof.points || 0) + gained;
-      patch.points_lifetime = (prof.points_lifetime || 0) + gained;
-    }
     const { error } = await SUPABASE.from('profiles').update(patch).eq('id', CURRENT_USER.id);
     if (error) { toast('Erro ao guardar: ' + error.message); return false; }
     if (PR_STATE && PR_STATE.profile) {
       Object.keys(patch).forEach(k => { PR_STATE.profile[k] = patch[k]; });
       try { prSave(); } catch (e) {}
     }
-    if (gained > 0) {
-      if (typeof refreshPointsBadge === 'function') refreshPointsBadge();
-      toast(`+${gained} pts! ✦`, 2000);
-    } else toast('Guardado ✓', 1500);
+    // Os +10 são dados pelo servidor, que confirma o campo (migração 016).
+    const r = rewardKey ? await pontosGanhar('perfil', rewardKey, { silencioso: true }) : null;
+    if (r && r.ganhos > 0) toast(`+${r.ganhos} pts! ✦`, 2000);
+    else toast('Guardado ✓', 1500);
     return true;
   } catch (e) { console.error('[perfil] save extra failed:', e); return false; }
 }
@@ -16961,7 +16954,7 @@ function prRenderDashboard() {
     ? `<div class="pr-avatar" style="background:#fff;padding:0;overflow:hidden"><img src="${avatarUrl}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>`
     : `<div class="pr-avatar">${(displayName||'?').charAt(0).toUpperCase()}</div>`;
   const pointsBadge = (p.points != null && p.points > 0)
-    ? `<span style="display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#d8c9ec 0%,#f2f1bb 100%);padding:3px 10px;border-radius:999px;font-weight:600;color:#2a2f3a;font-size:11px;margin-left:6px">✦ ${p.points} pts</span>`
+    ? `<span style="display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#d8c9ec 0%,#f2f1bb 100%);padding:3px 10px;border-radius:999px;font-weight:600;color:#2a2f3a;font-size:11px;margin-left:6px">✦ ${p.points} pts · ${pontosEscalao(p.points).atual.nome}</span>`
     : '';
   const userCardHTML = `<div class="pr-user-card">
         <div id="prv3-user-avatar" style="cursor:pointer" title="Mudar avatar">${avatarHtml}</div>
@@ -17904,50 +17897,30 @@ async function gmqSaveCurrentStep() {
     else if (step.key === 'skincare_goal') patch.skincare_goal = ans;
     else if (step.key === 'hair_type') patch.hair_type = ans;
 
-    // Atribui pts se key ainda não estava rewarded
-    let earned = 0;
-    const updatedRewardedArr = Array.from(alreadyRewarded);
-    if (!alreadyRewarded.has(step.key)) {
-      earned = QUIZ_PTS_PER_STEP;
-      updatedRewardedArr.push(step.key);
-      patch.quiz_rewarded_steps = updatedRewardedArr;
-      QUIZ_REWARDED_KEYS.add(step.key);
-    }
-
-    // BÓNUS + last_quiz_at: se chegamos aos 10/10 pela primeira vez.
-    // Conta SÓ as chaves do quiz — 'avatar'/'birthday' (extras do perfil)
-    // também vivem em quiz_rewarded_steps mas não valem para o bónus.
-    let bonusGranted = 0;
-    const quizKeysDone = QUIZ_STEPS.every(s => updatedRewardedArr.includes(s.key));
-    if (quizKeysDone && !prof.last_quiz_at) {
-      bonusGranted = 40;
+    // Os pontos já NÃO se calculam aqui (migração 016): guarda-se a resposta e
+    // pede-se ao servidor, que confirma que o campo ficou preenchido e dá os
+    // pontos — e o bónus dos 10/10, sozinho. O utilizador deixou de poder
+    // escrever points e quiz_rewarded_steps.
+    const jaContava = alreadyRewarded.has(step.key);
+    const respondidas = Array.from(new Set([...alreadyRewarded, step.key]));
+    if (QUIZ_STEPS.every(s => respondidas.includes(s.key)) && !prof.last_quiz_at) {
       patch.last_quiz_at = new Date().toISOString();
-      console.log('[quiz] 🎉 Atingiste 10/10 perguntas — +40 pts bónus + marca como completo!');
     }
-
-    const totalGain = earned + bonusGranted;
-    if (totalGain > 0) {
-      patch.points = (prof.points || 0) + totalGain;
-      patch.points_lifetime = (prof.points_lifetime || 0) + totalGain;
-    }
-
-    console.log('[quiz] auto-save step', step.key, '→ +' + earned + ' pts (step)' + (bonusGranted ? ' +' + bonusGranted + ' pts (bónus 10/10)' : '') + '. Patch:', patch);
     const { error } = await getSB().from('profiles').update(patch).eq('id', userId);
     if (error) {
       console.error('[quiz] auto-save error:', error);
       if (typeof toast === 'function') toast('Erro ao guardar: ' + error.message);
       return;
     }
-    console.log('[quiz] ✓ guardado com sucesso na BD. Pontos totais agora:', patch.points || prof.points);
 
     // Sync local PR_STATE
     if (typeof PR_STATE !== 'undefined' && PR_STATE && PR_STATE.profile) {
       Object.keys(patch).forEach(k => { PR_STATE.profile[k] = patch[k]; });
       if (typeof prSave === 'function') { try { prSave(); } catch(e){} }
     }
-    if (totalGain > 0) {
-      if (typeof refreshPointsBadge === 'function') refreshPointsBadge();
-      if (typeof toast === 'function') toast(`+${totalGain} pts!`, 2000);
+    if (!jaContava) {
+      QUIZ_REWARDED_KEYS.add(step.key);
+      await pontosGanhar('perfil', step.key);   // o aviso "+N pontos" aparece se o servidor os der
     }
   } catch (e) { console.error('[quiz] gmqSaveCurrentStep failed:', e); }
 }
@@ -17981,22 +17954,9 @@ async function gmqFinish() {
         .filter(k => isAnswered(k) && !alreadyRewarded.has(k));
       stepPts = newlyRewardedKeys.length * QUIZ_PTS_PER_STEP;
 
-      // 3) Bónus de conclusão só na PRIMEIRA vez completa — depois não dá mais
-      const wasNeverCompleted = !prof?.last_quiz_at;
-      const allAnsweredNow = QUIZ_STEPS.every(s => isAnswered(s.key));
-      bonusPts = (wasNeverCompleted && allAnsweredNow) ? QUIZ_PTS_BONUS : 0;
-      totalPts = stepPts + bonusPts;
-
-      // 4) Actualiza o set de keys "já contadas" com as novas
-      const updatedRewarded = new Set([...alreadyRewarded, ...newlyRewardedKeys]);
-
-      const newPts = (prof?.points || 0) + totalPts;
-      const newLifetime = (prof?.points_lifetime || 0) + totalPts;
+      // 3) Pontos e bónus: é o servidor que os dá, a seguir a guardar (ver 016).
       const patch = {
         last_quiz_at: new Date().toISOString(),
-        points: newPts,
-        points_lifetime: newLifetime,
-        quiz_rewarded_steps: Array.from(updatedRewarded),
       };
       // Identity — sempre actualizado se respondido (NÃO ligado a pontos)
       if (isAnswered('display_name')) { patch.display_name = QUIZ_ANSWERS.display_name; patch.name = QUIZ_ANSWERS.display_name; }
@@ -18011,14 +17971,15 @@ async function gmqFinish() {
       if (isAnswered('skincare_goal')) patch.skincare_goal = QUIZ_ANSWERS.skincare_goal;
       if (isAnswered('hair_type')) patch.hair_type = QUIZ_ANSWERS.hair_type;
 
-      console.log('[quiz] patch a enviar:', patch);
-      console.log('[quiz] keys novas que dão pontos:', newlyRewardedKeys, '→', stepPts, 'pts +', bonusPts, 'bónus =', totalPts);
 
       const { data: updated, error } = await SUPABASE.from('profiles')
         .update(patch).eq('id', finishUserId)
         .select().single();
       if (error) throw error;
-      console.log('[quiz] Profile actualizado em BD:', updated);
+      for (const k of newlyRewardedKeys) {
+        const r = await pontosGanhar('perfil', k, { silencioso: true });
+        if (r) { totalPts += r.ganhos; updated.points = r.total; }
+      }
 
       await SUPABASE.from('profile_events').insert({
         user_id: finishUserId, event_type: 'quiz_completed',
@@ -18070,7 +18031,7 @@ async function gmqFinish() {
     document.getElementById('gmq-finish-profile').onclick = () => { gmqClose(false); if (typeof openProfile === 'function') openProfile(); };
     document.getElementById('gmq-skip').style.display = 'none';
     document.getElementById('gmq-progress-bar').style.width = '100%';
-    if (typeof toast === 'function') toast(`+${totalPts} pontos ganhos!`);
+    if (totalPts > 0 && typeof toast === 'function') toast(`+${totalPts} pontos ganhos!`);
   } catch (e) {
     console.error('quiz finish failed', e);
     if (typeof toast === 'function') toast('Erro a guardar — ' + (e.message || 'tenta de novo'));
@@ -18547,6 +18508,102 @@ async function apagarConta() {
   await signOut();
   toast('Conta apagada. Obrigado por teres experimentado a CosMath.');
 }
+</script>
+<script>
+/* ══════ PONTOS (2026-09-28) ══════════════════════════════════════════════════
+   Os pontos são contados no SERVIDOR (função ganhar_pontos, migração 016). O site
+   só diz "aconteceu isto" (campo do perfil preenchido, produto na prateleira,
+   rotina marcada hoje); o servidor confirma que é verdade, escreve no livro de
+   pontos e devolve o total. O utilizador não consegue escrever os próprios
+   pontos — até aqui conseguia, bastava um UPDATE.
+
+   Regras (aprovadas pelo dono do site): perfil 10 por campo + 40 ao completar
+   o questionário; prateleira 20 por produto até 10; rotina 5 por dia (só hoje);
+   7 dias seguidos +50. Ver a migração para os pormenores.
+
+   Escalões: SÓ ESTATUTO — um distintivo no perfil. Não valem dinheiro, não se
+   trocam por nada e não expiram. ⚠️ Não anunciar vantagens que não existam: foi
+   precisamente isso que a auditoria de 2026-09-28 tirou do site.
+*/
+const PONTOS_ESCALOES = [
+  { nome: 'Bloom', min: 0 },
+  { nome: 'Bud', min: 300 },
+  { nome: 'Petal', min: 1000 },
+];
+function pontosEscalao(pts) {
+  pts = Number(pts) || 0;
+  let i = 0;
+  PONTOS_ESCALOES.forEach((e, k) => { if (pts >= e.min) i = k; });
+  const atual = PONTOS_ESCALOES[i], proximo = PONTOS_ESCALOES[i + 1] || null;
+  const frac = proximo ? (pts - atual.min) / (proximo.min - atual.min) : 1;
+  return { indice: i, atual, proximo, falta: proximo ? proximo.min - pts : 0, frac: Math.max(0, Math.min(1, frac)) };
+}
+function pontosFormatar(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+const PONTOS_PEDIDOS = new Set();   // não repetir o mesmo pedido na mesma visita
+let PONTOS_A_MOSTRAR = 0, PONTOS_TEMPO = null;
+
+async function pontosGanhar(motivo, chave, opts) {
+  if (typeof SUPABASE === 'undefined' || !SUPABASE || !CURRENT_USER || !chave) return null;
+  const id = motivo + '|' + chave;
+  if (PONTOS_PEDIDOS.has(id)) return null;
+  PONTOS_PEDIDOS.add(id);
+  try {
+    const { data, error } = await SUPABASE.rpc('ganhar_pontos', { p_motivo: motivo, p_chave: String(chave) });
+    if (error || !data) { PONTOS_PEDIDOS.delete(id); return null; }   // ex.: migração 016 por aplicar
+    if (PR_STATE && PR_STATE.profile && typeof data.total === 'number') {
+      PR_STATE.profile.points = data.total;
+      if (motivo === 'perfil' && data.ganhos > 0) {
+        PR_STATE.profile.quiz_rewarded_steps = [...new Set([...(PR_STATE.profile.quiz_rewarded_steps || []), String(chave)])];
+      }
+      try { prSave(); } catch (e) {}
+    }
+    pontosPintar();
+    // Junta os ganhos seguidos (ex.: sincronizar a prateleira toda ao entrar)
+    // num só aviso, em vez de dez.
+    if (data.ganhos > 0 && !(opts && opts.silencioso)) {
+      PONTOS_A_MOSTRAR += data.ganhos;
+      clearTimeout(PONTOS_TEMPO);
+      PONTOS_TEMPO = setTimeout(() => { toast(`✦ +${PONTOS_A_MOSTRAR} pontos`, 2200); PONTOS_A_MOSTRAR = 0; }, 900);
+    }
+    return data;
+  } catch (e) { PONTOS_PEDIDOS.delete(id); return null; }
+}
+
+// A secção «Programa de pontos» da página inicial, com os pontos de quem entrou.
+function pontosPintar() {
+  const sec = document.getElementById('points');
+  if (!sec) return;
+  const comConta = !!(typeof CURRENT_USER !== 'undefined' && CURRENT_USER);
+  const pts = comConta && PR_STATE && PR_STATE.profile ? (Number(PR_STATE.profile.points) || 0) : 0;
+  const e = pontosEscalao(pts);
+  sec.querySelectorAll('[data-escalao]').forEach(el => {
+    const k = Number(el.getAttribute('data-escalao'));
+    el.classList.toggle('gm-tier-active', comConta && k === e.indice);
+    const nome = el.querySelector('.gm-tier-name');
+    if (nome) nome.textContent = PONTOS_ESCALOES[k].nome.toUpperCase() + (comConta && k === e.indice ? ' · ATUAL' : '');
+  });
+  const fill = document.getElementById('gm-pts-fill');
+  if (fill) fill.style.width = (comConta ? Math.round(e.frac * 100) : 0) + '%';
+  const tens = document.getElementById('gm-user-pts-linha');
+  if (tens) tens.innerHTML = comConta ? `Tens <strong>${pontosFormatar(pts)} pontos</strong>` : 'Cria conta (grátis) para começares a ganhar';
+  const falta = document.getElementById('gm-pts-falta');
+  if (falta) falta.innerHTML = !comConta ? '' : e.proximo
+    ? `Faltam <strong>${pontosFormatar(e.falta)}</strong> para ${e.proximo.nome}`
+    : `Chegaste ao escalão mais alto`;
+  const cta = document.getElementById('gm-pts-cta');
+  if (cta) cta.textContent = comConta ? 'Ver o meu perfil' : 'Criar conta grátis';
+}
+document.addEventListener('DOMContentLoaded', pontosPintar);
+// Sempre que o perfil vem da nuvem (ao abrir o site com sessão, ou ao entrar),
+// os pontos da página inicial acompanham. Embrulha-se em vez de mexer lá dentro.
+(function () {
+  const orig = window.prCloudPull;
+  if (typeof orig !== 'function' || orig.__pontos) return;
+  const f = async function () { const r = await orig.apply(this, arguments); try { pontosPintar(); } catch (e) {} return r; };
+  f.__pontos = true;
+  window.prCloudPull = f;
+})();
 </script>
 </body>
 </html>

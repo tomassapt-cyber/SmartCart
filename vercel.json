@@ -23,6 +23,11 @@
       "source": "/demo",
       "destination": "/",
       "permanent": false
+    },
+    {
+      "source": "/account",
+      "destination": "/",
+      "permanent": false
     }
   ],
   "headers": [
