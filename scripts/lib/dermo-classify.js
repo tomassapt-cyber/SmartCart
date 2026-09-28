@@ -39,9 +39,16 @@ const EXCLUDE = new RegExp([
 ].join('|'), 'i');
 
 // Sinais positivos por categoria dermo (testados DEPOIS das exclusões).
-const HAIR = /\b(champ|shampoo|condicion|amaciador|capilar|cabelo|caspa|anti.?queda|leave.?in|hair|madeixa|oleo capilar|mascara capilar|serum capilar|spray capilar|styling|texturiz|alisad|caracol|frizz|keratin|queratin)\b/i;
-const BODY = /\b(corpo|corporal|body|gel de banho|gel duche|sabonete|sabao|loca[oc]ao corporal|leite corporal|maos|pes\b|hidratante corporal|esfoliante corporal|deo|desodoriz|antitranspir|oleo corporal|manteiga corporal|autobronz|after sun|pos.?solar)\b/i;
-const SKIN = /(\b(creme|crema|cream|serum|s[eé]rum|hidratant|rosto|facial|face|pele|solar|fotoprotector|protetor solar|sunscreen|suncreen|sun cream|limpeza|cleanser|micel|tonico|toner|olhos|contorno|antirrug|anti.?idade|anti.?aging|antimanch|peeling|esfoliant|mascara facial|mascara de rosto|\bmask\b|balsamo|baume|fluido|emulsao|bb cream|cc cream|matific|sebo|acne|imperfei|poros|nutritiv|reparador|calmante|barreira|atopic|atopi|eczema|psoriase|rosacea|patch|ampola)\b|\b(spf|fps)\s*\d)/i;
+// ⚠️ SÓ \b À ESQUERDA, nunca à direita (corrigido a 2026-09-28). Estas listas
+// são RADICAIS — "champ", "desodoriz", "hidratant", "condicion" — e com \b dos
+// dois lados só casavam a palavra exacta: "Champô" ("champo" sem acento) não
+// é "champ", "Desodorizante" não é "desodoriz". Resultado: 19.603 nomes dos
+// catálogos recolhidos eram recusados como não-dermo — Effaclar Duo+M, Dercos,
+// Klorane, desodorizantes Dove — e as integrações que criam produtos deitavam-
+// -nos fora. O \b da esquerda continua a impedir casar a meio de outra palavra.
+const HAIR = /\b(champ|shampoo|condicion|amaciador|capilar|cabelo|caspa|anti.?queda|leave.?in|hair|madeixa|oleo capilar|mascara capilar|serum capilar|spray capilar|styling|texturiz|alisad|caracol|frizz|keratin|queratin)/i;
+const BODY = /\b(corpo|corporal|body|gel de banho|gel duche|sabonete|sabao|loca[oc]ao corporal|leite corporal|maos|pes\b|hidratante corporal|esfoliante corporal|deo|desodoriz|antitranspir|oleo corporal|manteiga corporal|autobronz|after sun|pos.?solar)/i;
+const SKIN = /(\b(creme|crema|cream|serum|s[eé]rum|hidratant|rosto|facial|face|pele|solar|fotoprotector|protetor solar|sunscreen|suncreen|sun cream|limpeza|cleanser|micel|tonico|toner|olhos|contorno|antirrug|anti.?idade|anti.?aging|antimanch|peeling|esfoliant|mascara facial|mascara de rosto|\bmask\b|balsamo|baume|fluido|emulsao|bb cream|cc cream|matific|sebo|acne|imperfei|poros|nutritiv|reparador|calmante|barreira|atopic|atopi|eczema|psoriase|rosacea|patch|ampola)|\b(spf|fps)\s*\d)/i;
 
 /**
  * @param {string} name nome do produto
