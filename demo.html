@@ -7084,6 +7084,50 @@
   .gm-tg-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gm-tg-h2, .gm-tg-sub, .gm-stat-n, .gm-stat-l { overflow-wrap: anywhere; }
 
+  /* ══════ ESCONDIDO ATÉ EXISTIR (2026-09-28) ══════════════════════════════
+     Tudo o que tem .cm-oculto é uma função anunciada que ainda não existe. A
+     lei do consumidor trata como prática enganosa prometer o que não se
+     entrega, por isso sai da vista até estar feita. O HTML e o código ficam,
+     para voltarem tirando a classe:
+       - alertas de preço por email (secção #newsletter, rodapé, faixa do topo):
+         não há envio de email. Volta com o domínio próprio + Resend.
+       - fórum (menu, separador do fundo): as publicações ficavam só no
+         dispositivo de quem as escrevia. Volta com fórum partilhado +
+         moderação (obrigatória pelo Regulamento dos Serviços Digitais).
+       - Diário, Como funciona, FAQ (rodapé): ligações que não iam a lado
+         nenhum. Voltam quando as páginas existirem. */
+  .cm-oculto { display: none !important; }
+  /* Com o Fórum escondido a barra do fundo passa a ter 4 separadores: as
+     colunas contam-se sozinhas em vez de estarem fixas em 5. */
+  .cm-tabbar { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+
+  /* ══════ FAVORITOS (2026-09-28) ══════ */
+  .pa-head-acoes { display: flex; gap: 8px; align-items: center; }
+  .pa-fav {
+    width: 34px; height: 34px; border-radius: 50%; border: none;
+    background: #f2ede5; color: #5c554c; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; padding: 0;
+  }
+  .pa-fav svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .pa-fav.on { color: #c2415d; }
+  .pa-fav.on svg { fill: currentColor; }
+  .fav-lista { display: flex; flex-direction: column; gap: 10px; }
+  .fav-item { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 8px 8px 8px 10px; }
+  .fav-abrir { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; background: none; border: none; padding: 0; text-align: left; font-family: inherit; color: inherit; cursor: pointer; }
+  .fav-img { width: 52px; height: 52px; flex-shrink: 0; border-radius: 10px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 22px; }
+  .fav-img img { width: 100%; height: 100%; object-fit: contain; }
+  .fav-txt { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .fav-marca { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-soft); }
+  .fav-nome { font-size: 13.5px; line-height: 1.3; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .fav-preco { font-size: 12.5px; color: var(--text-soft); margin-top: 2px; }
+  .fav-preco strong { color: var(--text); }
+  .fav-desceu { display: inline-block; margin-left: 6px; color: #15803d; font-weight: 700; }
+  .fav-tirar { width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%; border: none; background: none; color: var(--muted); font-size: 20px; cursor: pointer; }
+  .fav-tirar:hover { background: var(--bg-soft); color: var(--text); }
+  /* «O meu espaço» passou de 4 para 5 separadores (Favoritos). */
+  .prv3-tabs { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  @media (max-width: 480px) { .prv3-tab { font-size: 10.5px; padding: 9px 1px; letter-spacing: -.01em; } }
+
 </style>
 </head>
 <body>
@@ -7095,8 +7139,8 @@
 <!-- CosMath top announce strip -->
 <div class="gm-announce">
   <span>Comparação de preços em <span id="announce-stores">17</span> lojas PT + europeias</span><em>·</em>
-  <span>Atualizado diariamente</span><em>·</em>
-  <a href="#newsletter" class="gm-announce-link">↗ Alertas de preço por email</a>
+  <span>Preços atualizados todos os dias</span>
+  <a href="#newsletter" class="gm-announce-link cm-oculto">↗ Alertas de preço por email</a>
 </div>
 
 <!-- CosMath nav (sticky) -->
@@ -7107,7 +7151,7 @@
       <a href="#" onclick="document.getElementById('filter-brand-search')?.focus(); document.getElementById('search-results-section')?.scrollIntoView({behavior:'smooth'}); return false;">Marcas</a>
       <a href="#" onclick="document.getElementById('filter-promo')?.click(); document.getElementById('search-results-section')?.scrollIntoView({behavior:'smooth'}); return false;">Promoções</a>
       <a href="#quizzes">Quizzes</a>
-      <a href="#forum" id="gm-forum-link" title="Fórum da comunidade">Fórum</a>
+      <a href="#forum" id="gm-forum-link" class="cm-oculto" title="Fórum da comunidade">Fórum</a>
     </div>
     <a href="/" class="gm-logo">Cos<em>Math</em></a>
     <div class="gm-nav-right">
@@ -7484,9 +7528,9 @@
     <article class="gm-gift-card">
       <div class="gm-gift-img"></div>
       <div class="gm-gift-body">
-        <div class="gm-gift-brand">Alertas de preço</div>
-        <h3 class="gm-gift-title">Avisamos-te quando um produto desce</h3>
-        <p class="gm-gift-cond"><strong>Por email</strong> · em qualquer produto</p>
+        <div class="gm-gift-brand">A tua prateleira</div>
+        <h3 class="gm-gift-title">Sabe quando um produto vai acabar</h3>
+        <p class="gm-gift-cond"><strong>Pela frequência de uso</strong> · antes de ficares sem ele</p>
       </div>
     </article>
     <article class="gm-gift-card">
@@ -7494,22 +7538,22 @@
       <div class="gm-gift-body">
         <div class="gm-gift-brand">Lista de favoritos</div>
         <h3 class="gm-gift-title">Guarda os produtos que segues</h3>
-        <p class="gm-gift-cond"><strong>No teu perfil</strong> · sincronizada</p>
+        <p class="gm-gift-cond"><strong>Com o preço de hoje</strong> · e quanto desceu</p>
       </div>
     </article>
     <article class="gm-gift-card">
       <div class="gm-gift-img"></div>
       <div class="gm-gift-body">
-        <div class="gm-gift-brand">Comunidade</div>
-        <h3 class="gm-gift-title">Partilha e tira dúvidas no fórum</h3>
-        <p class="gm-gift-cond"><strong>Rosto · Corpo · Cabelo</strong></p>
+        <div class="gm-gift-brand">Em todos os dispositivos</div>
+        <h3 class="gm-gift-title">A tua rotina no telemóvel e no computador</h3>
+        <p class="gm-gift-cond"><strong>Sincronizada</strong> · com a tua conta</p>
       </div>
     </article>
   </div>
 </section>
 
 <!-- ============ TELEGRAM ALERTS LIVE FEED ============ -->
-<section class="gm-telegram-section" id="newsletter">
+<section class="gm-telegram-section cm-oculto" id="newsletter">
   <div class="gm-telegram-shell">
     <div class="gm-tg-left">
       <span class="gm-tg-live"><span class="gm-tg-pulse"></span>ALERTAS DE PREÇO · EMAIL</span>
@@ -7536,7 +7580,7 @@
     <div class="gm-footer-grid">
       <div>
         <div class="gm-logo gm-footer-logo">Cos<em>Math</em></div>
-        <p class="gm-footer-tagline">Comparador de cosmética para o mercado português. <span id="footer-tag-stores">17</span> lojas, actualizadas diariamente às 06h00.</p>
+        <p class="gm-footer-tagline">Comparador de cosmética para o mercado português. <span id="footer-tag-stores">17</span> lojas, com preços atualizados todos os dias.</p>
         <p class="gm-footer-loc">LISBOA · PT</p>
       </div>
       <div>
@@ -7556,15 +7600,15 @@
         <ul class="gm-footer-ul">
           <li><a href="#quizzes">Quizzes</a></li>
           <li><a href="#points">Programa de pontos</a></li>
-          <li><a href="#newsletter">Alertas por email</a></li>
-          <li><a href="#">Diário CosMath</a></li>
+          <li class="cm-oculto"><a href="#newsletter">Alertas por email</a></li>
+          <li class="cm-oculto"><a href="#">Diário CosMath</a></li>
         </ul>
       </div>
       <div>
         <h4 class="gm-footer-h">Sobre</h4>
         <ul class="gm-footer-ul">
-          <li><a href="#">Como funciona</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li class="cm-oculto"><a href="#">Como funciona</a></li>
+          <li class="cm-oculto"><a href="#">FAQ</a></li>
           <li><a href="#">Privacidade</a></li>
           <li><a href="#">Termos</a></li>
         </ul>
@@ -7572,7 +7616,7 @@
     </div>
     <div class="gm-footer-bottom">
       <span>© 2026 CosMath · Todos os direitos reservados.</span>
-      <span class="gm-footer-mini">Preços actualizados às 06h00 · <span id="footer-mini-products">—</span> produtos · <span id="footer-mini-stores">17</span> lojas</span>
+      <span class="gm-footer-mini">Preços atualizados todos os dias · <span id="footer-mini-products">—</span> produtos · <span id="footer-mini-stores">17</span> lojas</span>
     </div>
   </div>
 </footer>
@@ -7586,7 +7630,10 @@
       <div class="pa-product-brand" id="pa-brand"></div>
       <div class="pa-product-name" id="pa-name"></div>
     </div>
+    <div class="pa-head-acoes">
+    <button class="pa-fav" id="pa-fav" type="button" aria-pressed="false" aria-label="Guardar nos favoritos" title="Guardar nos favoritos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.4C1.4 7.6 3.6 4 7.2 4c2 0 3.4 1.1 4.8 2.8C13.4 5.1 14.8 4 16.8 4c3.6 0 5.8 3.6 4.5 7.1-1.8 4.8-9.3 9.4-9.3 9.4z"/></svg></button>
     <button class="pa-close" id="pa-close" aria-label="Fechar">×</button>
+    </div>
   </div>
   <div class="pa-body" id="pa-body"></div>
 </div>
@@ -7608,7 +7655,7 @@
 <!-- Tab bar mobile (só ≤760px) — divide comparador vs espaço pessoal -->
 <nav class="cm-tabbar" id="cm-tabbar" aria-label="Navegação rápida">
   <button data-tab="scan" class="cm-tab-scan" aria-label="Scan de código de barras" title="Aponta ao código de barras — comparamos o preço"><span>📷</span>Scan</button>
-  <button data-tab="forum"><span>💬</span>Fórum</button>
+  <button data-tab="forum" class="cm-oculto"><span>💬</span>Fórum</button>
   <button data-tab="home" class="active"><span>🛍️</span>Comparar</button>
   <button data-tab="cart"><span>🧺</span>Carrinho</button>
   <button data-tab="me"><span>👤</span>O meu espaço</button>
@@ -7677,8 +7724,8 @@
   <div class="ai-head">
     <div class="ai-avatar">✦</div>
     <div class="ai-head-info">
-      <div class="ai-head-name">Sofia · Beauty Advisor</div>
-      <div class="ai-head-status"><span class="ai-status-dot"></span>Online · responde em segundos</div>
+      <div class="ai-head-name">Sofia · assistente automática</div>
+      <div class="ai-head-status"><span class="ai-status-dot"></span>Respostas automáticas · não substitui um profissional</div>
     </div>
     <button class="ai-close" id="ai-close" aria-label="Fechar">×</button>
   </div>
@@ -9853,6 +9900,7 @@ async function openPriceAnalyzer(ean) {
   // seedVolume = volume "original" deste EAN, fixo durante a sessão do modal
   // volume = volume actualmente seleccionado (muda com chips)
   PA_STATE = { ean, volume: seedVolume, seedVolume };
+  try { favPintarBotao(); } catch (e) {}
   // endereco proprio + meta + dados estruturados desta ficha
   try { seoAbrirProduto(ean); } catch (e) { console.warn("SEO:", e && e.message); }
 
@@ -12554,7 +12602,7 @@ function aiBuildResponse(text) {
   // greeting
   if (intents.includes('greet') && intents.length === 1) {
     return {
-      text: `Olá! Sou a Sofia, a tua beauty advisor da CosMath. Posso ajudar-te a encontrar produtos do nosso catálogo, dar conselhos básicos de skincare e alertar quando faz sentido consultar um profissional. <br><br>O que precisas hoje?`,
+      text: `Olá! Sou a Sofia, a assistente automática da CosMath — não sou uma pessoa. Posso ajudar-te a encontrar produtos do nosso catálogo, dar conselhos básicos de skincare e alertar quando faz sentido consultar um profissional. <br><br>O que precisas hoje?`,
       suggestions: ['Tenho pele oleosa com acne', 'Que sérum para manchas?', 'Pele sensível desidratada', 'Anti-aging para os 30s'],
     };
   }
@@ -14331,7 +14379,7 @@ async function prCloudPull() {
 //
 // Voltar a pô-las aqui exige, antes, um ecra de consentimento explicito e a
 // revisao da politica de privacidade.
-const US_KEYS = ['cm.routine.v1', 'cm.trackerlog.v1', 'cm.streak.v1', 'cm.feedback.v1', 'cm.shelftomb.v1'];
+const US_KEYS = ['cm.routine.v1', 'cm.trackerlog.v1', 'cm.streak.v1', 'cm.feedback.v1', 'cm.shelftomb.v1', 'cm.favoritos.v1'];
 const US_TS_KEY = 'cm.us_ts'; // fora de US_KEYS de propósito (evita loop no hook)
 let US_TIMER = null, US_PUSHING = false, US_LAST_PULL = 0;
 
@@ -14436,6 +14484,8 @@ async function usPull(force) {
         }
         usWrite(SHELF_TOMB_KEY, { v: 2, eans });
       }
+      // favoritos: por produto ganha a entrada mais recente (ver FAVORITOS)
+      try { favFundir(cloud); } catch (e) {}
     }
     usMarkDirty(); // sobe o resultado do merge (auto-repara a cloud)
     try {
@@ -14642,7 +14692,7 @@ function prRenderAuthInsideProfileModal() {
     document.getElementById('pr-auth-submit').disabled = true;
     document.getElementById('pr-auth-submit').textContent = 'A processar…';
     try {
-      console.log('[auth] Submit iniciado — view:', AUTH_VIEW, 'email:', email);
+      console.log('[auth] Submit iniciado — view:', AUTH_VIEW);
       // Timeout de 25s para evitar "A processar..." infinito
       const timeoutPromise = new Promise((_, reject) => setTimeout(
         () => reject(new Error('Timeout (25s) — Verifica a tua ligação à internet e tenta de novo.')),
@@ -16255,7 +16305,7 @@ function medsAdherence7d() {
 }
 
 function prv3TabsHTML() {
-  const tabs = [['rotina', 'Rotina'], ['progresso', 'Progresso'], ['calendario', 'Calendário'], ['prateleira', 'Prateleira']];
+  const tabs = [['rotina', 'Rotina'], ['progresso', 'Progresso'], ['calendario', 'Calendário'], ['prateleira', 'Prateleira'], ['favoritos', 'Favoritos']];
   return `<div class="prv3-tabs">${tabs.map(([k, l]) =>
     `<button class="prv3-tab${PRV3_TAB === k ? ' active' : ''}" data-prv3tab="${k}">${l}</button>`).join('')}</div>`;
 }
@@ -16596,7 +16646,7 @@ const PRV3_PROF_EXTRAS = ['avatar', 'birthday'];
 const PRV3_PROF_LABELS = {
   display_name: 'Nome', gender: 'Género', birth_year: 'Ano de nascimento',
   district: 'Distrito', skin_type: 'Tipo de pele', skin_concerns: 'Preocupações',
-  skin_allergies: 'Alergias', routine_steps: 'Passos da rotina',
+  skin_allergies: 'Ingredientes a evitar', routine_steps: 'Passos da rotina',
   skincare_goal: 'Objetivo', hair_type: 'Cabelo',
   avatar: 'Avatar', birthday: 'Dia de anos',
 };
@@ -16927,6 +16977,7 @@ function prRenderDashboard() {
         <div style="display:flex;gap:6px;flex-direction:column;align-items:flex-end">
           <button class="pr-btn-secondary" onclick="openOnboardingQuiz()" style="padding:8px 14px;font-size:12px">Editar perfil →</button>
           ${CURRENT_USER ? `<button class="pr-btn-ghost" onclick="if(confirm('Terminar sessão?')) signOut()" style="font-size:11px">Terminar sessão</button>` : ''}
+          ${CURRENT_USER ? `<button class="pr-btn-ghost" onclick="apagarConta()" style="font-size:11px;color:var(--danger)">Apagar conta</button>` : ''}
         </div>
       </div>`;
   document.getElementById('pr-body').innerHTML = `
@@ -16940,6 +16991,7 @@ function prRenderDashboard() {
         const steps3 = (rt3 && rt3.steps) || [];
         if (PRV3_TAB === 'progresso') return prv3RingsHTML(steps3) + prv3StatsHTML(steps3);
         if (PRV3_TAB === 'calendario') return prv3CalendarTabHTML(steps3);
+        if (PRV3_TAB === 'favoritos') return favTabHTML();
         if (PRV3_TAB === 'prateleira') return `<div>
           <div class="pr-section-head">
             <div>
@@ -17387,13 +17439,11 @@ function cmEsc(s) { return (typeof escapeHtml === 'function') ? escapeHtml(s) : 
 function cmInitial(n) { return ((n || '?').trim()[0] || '?').toUpperCase(); }
 function cmTimeAgo(ts) { const d = (Date.now() - ts) / 1000; if (d < 60) return 'agora'; if (d < 3600) return `há ${Math.floor(d / 60)} min`; if (d < 86400) return `há ${Math.floor(d / 3600)} h`; return `há ${Math.floor(d / 86400)} d`; }
 function cmSave() { try { localStorage.setItem(CM_KEY, JSON.stringify({ posts: CM_STATE.posts })); } catch (e) {} }
+// Sem publicações de exemplo. Havia três (Marta, Rita, João) inventadas e
+// mostradas como se fossem de pessoas reais — publicidade enganosa. O fórum
+// começa vazio quando voltar a existir.
 function cmSeed() {
-  const n = Date.now();
-  return [
-    { id: 'p1', author: 'Marta', category: 'rosto', title: 'Niacinamida + Vitamina C — posso usar os dois?', body: 'Tenho a niacinamida e queria juntar vitamina C. Uso de manhã e à noite ou dá conflito?', ts: n - 36e5 * 5, comments: [{ author: 'Sofia', body: 'Vit C de manhã, niacinamida à noite — sem problema 😊', ts: n - 36e5 * 4 }] },
-    { id: 'p2', author: 'Rita', category: 'cabelo', title: 'Champô anticaspa que não resseque?', body: 'O que uso resolve a caspa mas deixa o cabelo seco. Alguma alternativa mais suave?', ts: n - 36e5 * 30, comments: [] },
-    { id: 'p3', author: 'João', category: 'corpo', title: 'Creme para pele atópica no inverno', body: 'A pele fica muito seca nos braços. O Lipikar Baume ajudou imenso, recomendo!', ts: n - 36e5 * 50, comments: [{ author: 'Ana', body: 'Também uso, é o melhor para a minha pele.', ts: n - 36e5 * 48 }] },
-  ];
+  return [];
 }
 function cmLoad() { try { const r = localStorage.getItem(CM_KEY); if (r) CM_STATE.posts = JSON.parse(r).posts || []; } catch (e) {} if (!CM_STATE.posts.length) { CM_STATE.posts = cmSeed(); cmSave(); } }
 function cmRender() { cmRenderComposer(); cmRenderFeed(); }
@@ -17542,7 +17592,7 @@ const QUIZ_STEPS = [
       { v: 'outro', label: 'Outro' },
       { v: 'nao_dizer', label: 'Prefiro não dizer' },
     ] },
-  { key: 'birth_year', icon: '◷', title: 'Em que <em>ano</em> nasceste?', sub: 'Usamos só para personalizar conteúdo por faixa etária.', type: 'slider', min: 1940, max: 2015, default: 1998, unit: '', required: true },
+  { key: 'birth_year', icon: '◷', title: 'Em que <em>ano</em> nasceste?', sub: 'Usamos só para personalizar conteúdo por faixa etária.', type: 'slider', min: 1940, max: 2013, default: 1998, unit: '', required: true },
   { key: 'district', icon: '⌖', title: 'De que <em>distrito</em> és?', sub: 'Ajuda-nos a sugerir lojas com entregas mais rápidas.', type: 'select', required: true,
     options: [
       { v: 'PT-01', label: 'Aveiro' }, { v: 'PT-02', label: 'Beja' }, { v: 'PT-03', label: 'Braga' },
@@ -17567,7 +17617,7 @@ const QUIZ_STEPS = [
       { v: 'poros', label: 'Poros dilatados' }, { v: 'olheiras', label: 'Olheiras' },
       { v: 'vermelhidao', label: 'Vermelhidão' },
     ] },
-  { key: 'skin_allergies', icon: '⚠', title: 'Algum ingrediente que <em>te dá problemas</em>?', sub: 'Podes saltar se não souberes — adicionas depois no perfil.', type: 'chips-multi', skippable: true,
+  { key: 'skin_allergies', icon: '⚠', title: 'Há ingredientes que <em>preferes evitar</em>?', sub: 'Não mostramos sugestões com eles. Podes saltar e escolher depois no perfil.', type: 'chips-multi', skippable: true,
     options: [
       { v: 'fragrancia', label: 'Fragrância' }, { v: 'alcool', label: 'Álcool' },
       { v: 'retinol', label: 'Retinol' }, { v: 'aha', label: 'AHA' },
@@ -18348,6 +18398,155 @@ if (!hookOldProfileFlow()) {
   document.getElementById('cm-a2hs-ok').onclick = function () { sheet.hidden = true; };
   sheet.addEventListener('click', function (e) { if (e.target === sheet) sheet.hidden = true; });
 })();
+</script>
+<script>
+/* ══════ FAVORITOS E APAGAR CONTA (2026-09-28) ═══════════════════════════════
+   FAVORITOS: o coração na ficha de produto guarda-o; a lista vive em «O meu
+   espaço» → Favoritos, com o preço atual e quanto desceu desde que se guardou.
+   Existia só como promessa na página inicial («Lista de favoritos · no teu
+   perfil · sincronizada») — agora existe.
+
+   Formato de cm.favoritos.v1: {v:1, eans: {<ean>: {ts, on, p}}}
+     on = está nos favoritos; p = preço mais baixo quando se guardou (ou null).
+   Remover NÃO apaga a entrada: marca on:false com ts novo. É o mesmo truque das
+   lápides da prateleira — sem isto, remover num dispositivo não propagava, e o
+   outro voltava a subi-lo. Na fusão entre dispositivos ganha, por produto, a
+   entrada mais RECENTE (favFundir, chamado pelo usPull).
+
+   Sincroniza pelo user_state (está em US_KEYS). Não é dado de saúde.
+
+   APAGAR CONTA: chama a função apagar_a_minha_conta() (migração 015), que apaga
+   a conta e, em cascata, tudo o que está ligado a ela. Direito do RGPD (art.
+   17.º) — até aqui só por email.
+*/
+const FAV_KEY = 'cm.favoritos.v1';
+
+function favMapa() { const f = usRead(FAV_KEY); return (f && f.eans) || {}; }
+function favTem(ean) { const x = favMapa()[ean]; return !!(x && x.on); }
+function favLista() {
+  return Object.entries(favMapa())
+    .filter(([e, x]) => x && x.on && PRODUCT_BY_EAN[e])
+    .sort((a, b) => (b[1].ts || 0) - (a[1].ts || 0))
+    .map(([e, x]) => ({ ean: e, ts: x.ts, p: x.p }));
+}
+function favPrecoAgora(ean) { try { return similarMinPrice(ean); } catch (e) { return null; } }
+
+function favAlternar(ean) {
+  if (!ean) return false;
+  const f = usRead(FAV_KEY) || { v: 1, eans: {} };
+  f.v = 1; f.eans = f.eans || {};
+  const on = !favTem(ean);
+  const antes = f.eans[ean] || {};
+  f.eans[ean] = { ts: Date.now(), on, p: on ? favPrecoAgora(ean) : (antes.p != null ? antes.p : null) };
+  const corte = Date.now() - 90 * 864e5;     // removidos há mais de 90 dias: esquecer
+  for (const e in f.eans) { const x = f.eans[e]; if (x && !x.on && (x.ts || 0) < corte) delete f.eans[e]; }
+  usWrite(FAV_KEY, f);
+  favPintarBotao();
+  if (on) toast(CURRENT_USER ? '♥ Guardado nos favoritos' : '♥ Guardado. Entra na tua conta para veres a lista em qualquer dispositivo.');
+  else toast('Removido dos favoritos');
+  try { if (PRV3_TAB === 'favoritos' && document.getElementById('pr-modal')?.classList.contains('open')) prRenderDashboard(); } catch (e) {}
+  return on;
+}
+
+// Fusão com a nuvem: por produto, ganha a entrada mais recente.
+function favFundir(cloud) {
+  const c = cloud && cloud[FAV_KEY], l = usRead(FAV_KEY);
+  if (!c && !l) return;
+  const eans = {};
+  for (const src of [l, c]) {
+    for (const e in (((src || {}).eans) || {})) {
+      const v = src.eans[e];
+      if (v && (!eans[e] || (v.ts || 0) > (eans[e].ts || 0))) eans[e] = v;
+    }
+  }
+  usWrite(FAV_KEY, { v: 1, eans });
+}
+
+function favPintarBotao() {
+  const b = document.getElementById('pa-fav');
+  if (!b) return;
+  const on = !!(PA_STATE && PA_STATE.ean && favTem(PA_STATE.ean));
+  b.classList.toggle('on', on);
+  b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  b.setAttribute('aria-label', on ? 'Remover dos favoritos' : 'Guardar nos favoritos');
+  b.title = on ? 'Remover dos favoritos' : 'Guardar nos favoritos';
+}
+document.getElementById('pa-fav')?.addEventListener('click', () => { if (PA_STATE && PA_STATE.ean) favAlternar(PA_STATE.ean); });
+
+function favEuros(v) { return v == null ? '' : v.toFixed(2).replace('.', ',') + ' €'; }
+
+let FAV_PEDIDOS = false;
+function favTabHTML() {
+  const lista = favLista();
+  // Preços e imagens: desenha-se já e volta-se a desenhar quando chegarem. Sem
+  // ciclo: o carregarOfertas e o garantirImagens só pedem o que ainda não têm.
+  if (lista.length && !FAV_PEDIDOS) {
+    FAV_PEDIDOS = true;
+    const eans = lista.map(x => x.ean);
+    Promise.all([carregarOfertas(eans), garantirImagens(eans)]).then(([a, b]) => {
+      FAV_PEDIDOS = false;
+      if ((a || b) && PRV3_TAB === 'favoritos' && document.getElementById('pr-modal')?.classList.contains('open')) prRenderDashboard();
+    }, () => { FAV_PEDIDOS = false; });
+  }
+  const itens = lista.map(x => {
+    const pr = PRODUCT_BY_EAN[x.ean];
+    const agora = favPrecoAgora(x.ean);
+    const desceu = (x.p != null && agora != null && agora < x.p - 0.009) ? x.p - agora : 0;
+    const img = pr.image_url
+      ? `<img src="${escapeHtml(pr.image_url)}" alt="" loading="lazy">`
+      : '<span aria-hidden="true">🧴</span>';
+    return `<div class="fav-item">
+      <button type="button" class="fav-abrir" data-fav-abrir="${escapeHtml(x.ean)}">
+        <span class="fav-img">${img}</span>
+        <span class="fav-txt">
+          <span class="fav-marca">${escapeHtml(pr.brand || '')}</span>
+          <span class="fav-nome">${escapeHtml(pr.name || '')}</span>
+          <span class="fav-preco">${agora != null ? 'desde <strong>' + favEuros(agora) + '</strong>' : 'a ver preços…'}
+            ${desceu ? `<span class="fav-desceu">↓ ${favEuros(desceu)} desde que guardaste</span>` : ''}</span>
+        </span>
+      </button>
+      <button type="button" class="fav-tirar" data-fav-tirar="${escapeHtml(x.ean)}" aria-label="Remover dos favoritos">×</button>
+    </div>`;
+  }).join('');
+  return `<div>
+    <div class="pr-section-head"><div>
+      <div class="pr-section-title">Os meus favoritos</div>
+      <div class="pr-section-sub">${lista.length ? `${lista.length} produto${lista.length === 1 ? '' : 's'} guardado${lista.length === 1 ? '' : 's'}` : 'Os produtos que queres acompanhar'}</div>
+    </div></div>
+    ${lista.length ? `<div class="fav-lista">${itens}</div>`
+      : '<div class="pr-routine-empty">Ainda não guardaste nada. Na ficha de um produto, toca no ♡ para o guardares aqui — e vês quando o preço desce.</div>'}
+  </div>`;
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-fav-abrir]');
+  if (a) { openPriceAnalyzer(a.getAttribute('data-fav-abrir')); return; }
+  const t = e.target.closest('[data-fav-tirar]');
+  if (t) favAlternar(t.getAttribute('data-fav-tirar'));
+});
+
+// ── Apagar conta ───────────────────────────────────────────────────────────
+async function apagarConta() {
+  if (!SUPABASE || !CURRENT_USER) return;
+  const r = prompt('Isto apaga a tua conta e tudo o que está guardado nela: perfil, rotina, prateleira, favoritos e registos. ' +
+                   'Cancela também os alertas por email deste endereço. Não dá para desfazer.\n\nPara confirmar, escreve APAGAR:');
+  if (r === null) return;
+  if (r.trim().toUpperCase() !== 'APAGAR') { toast('A conta não foi apagada — não escreveste APAGAR.'); return; }
+  const { error } = await SUPABASE.rpc('apagar_a_minha_conta');
+  if (error) {
+    console.warn('[conta] apagar falhou:', error.message);
+    toast('Não consegui apagar a conta. Tenta de novo; se continuar, escreve-nos.');
+    return;
+  }
+  // Os dados da conta que ficaram neste dispositivo vão também. A escolha de
+  // privacidade e o identificador de estatísticas NÃO: são do navegador, não da
+  // conta (e o identificador nunca esteve ligado a ela).
+  try {
+    [...US_KEYS, 'cm.meds.v1', 'cm.medslog.v1', 'cm.us_ts', 'cm.last_uid', 'cm.pending_name',
+     'smartcart.profile.v1', 'cosmath_newsletter', FAV_KEY].forEach(k => localStorage.removeItem(k));
+  } catch (e) {}
+  await signOut();
+  toast('Conta apagada. Obrigado por teres experimentado a CosMath.');
+}
 </script>
 </body>
 </html>
