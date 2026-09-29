@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-28T11:39:44.226Z",
-  "seed_total_products": 65252,
+  "generated_at": "2026-09-29T11:23:17.251Z",
+  "seed_total_products": 70408,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.94,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
+      "best_price": 17.93,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
     },
     {
       "ean": "8429420158399",
@@ -117,16 +117,6 @@
       "best_url": "https://www.farmaciadocostume.pt/neutrogena-formula-norueguesa-maos-promo-creme-concentrado-stick-labial.html"
     },
     {
-      "ean": "3522930006343",
-      "name": "Caudalie Vinoperfect Sérum + Espuma Micro-Peeling Pack",
-      "brand": "Caudalie",
-      "image_url": "https://1630763059.rsc.cdn77.org/temp/1787652226_307f07976e1711a5b65506faaeaa7296.jpg",
-      "best_price": 38.84,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/caudalie-vinoperfect-serum-+-espuma-micro-peeling-pack_p87212.html"
-    },
-    {
       "ean": "3574661874951",
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
@@ -137,11 +127,21 @@
       "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
     },
     {
+      "ean": "3522930006343",
+      "name": "Caudalie Vinoperfect Sérum + Espuma Micro-Peeling Pack",
+      "brand": "Caudalie",
+      "image_url": "https://1630763059.rsc.cdn77.org/temp/1787652226_307f07976e1711a5b65506faaeaa7296.jpg",
+      "best_price": 38.84,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/caudalie-vinoperfect-serum-+-espuma-micro-peeling-pack_p87212.html"
+    },
+    {
       "ean": "3574661540887",
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 14.54,
+      "best_price": 14.5,
       "best_store": "Aveiro Farma",
       "best_store_slug": "aveirofarma",
       "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
@@ -187,11 +187,25 @@
       "verified_live": true
     },
     {
+      "ean": "3600531638948",
+      "name": "Maybelline Tattoo Liner Lápis de Olhos Smokey Black",
+      "brand": "Maybelline",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/maybelline/34137_main-800x800.jpg",
+      "best_price": 6.99,
+      "best_store": "Continente Online",
+      "best_store_slug": "continente",
+      "best_url": "https://www.continente.pt/produto/lapis-de-olhos-tattoo-liner-smokey-black-maybelline-new-york-maybelline-new-york-7368679.html",
+      "previous_price": 9.99,
+      "discount_pct": 30,
+      "dropped_day": 20718,
+      "verified_live": true
+    },
+    {
       "ean": "4005800355998",
       "name": "Eucerin pH5 Gel &amp; Óleo Duche -",
       "brand": "Eucerin",
       "image_url": "https://www.farmaciabarreiros.com/36741/eucerin-ph5-gel-e-oleo-duche-400-ml.jpg",
-      "best_price": 8.72,
+      "best_price": 8.7,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/gel-banho-e-oleo-rosto-e-corpo",
@@ -202,66 +216,51 @@
       "verified_live": true
     },
     {
-      "ean": "3282770148275",
-      "name": "Ducray Champô Equilibrante",
-      "brand": "Ducray",
-      "image_url": "https://images.openbeautyfacts.org/images/products/328/277/014/8275/front_fr.8.400.jpg",
-      "best_price": 4.46,
-      "best_store": "SweetCare",
-      "best_store_slug": "sweetcare",
-      "best_url": "https://www.sweetcare.pt/ducray-extra-doux-shampoo-dermoprotetor-uso-frequente-p-001444du",
-      "volume_ml": 100,
-      "previous_price": 6.49,
-      "discount_pct": 31,
-      "dropped_day": 20714
-    },
-    {
-      "ean": "3282770152715",
-      "name": "René Furterer Naturia Shampoo Seco Sem Enxágue",
-      "brand": "René Furterer",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/1/7100040_renefurterernaturiashampooseco200ml.jpeg",
-      "best_price": 5.82,
-      "best_store": "SweetCare",
-      "best_store_slug": "sweetcare",
-      "best_url": "https://www.sweetcare.pt/rene-furterer-naturia-shampoo-seco-uso-frequente-p-002126rf",
-      "volume_ml": 75,
-      "previous_price": 7.76,
+      "ean": "8470001691880",
+      "name": "Isdin Ureadin Fusion Soro Antirrugas Lift",
+      "brand": "Isdin",
+      "image_url": "https://assets.atida.com/transform/accba0d5-13ad-482b-98f6-1507d260c2ad/Isdin-Ureadin-Fusion-Serum-Lift-Antiarrugas-30-ml",
+      "best_price": 30.22,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/isdin/ureadin-fusion-antiarrugas-serum-lift/p_918800/",
+      "previous_price": 41.26,
       "discount_pct": 25,
-      "dropped_day": 20720
+      "dropped_day": 20719
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 1959
-    },
-    {
-      "name": "Clarins",
-      "products": 787
+      "products": 2219
     },
     {
       "name": "Isdin",
-      "products": 776
+      "products": 805
     },
     {
-      "name": "Avène",
-      "products": 696
-    },
-    {
-      "name": "Nivea",
-      "products": 653
+      "name": "Clarins",
+      "products": 794
     },
     {
       "name": "undefined",
-      "products": 640
+      "products": 783
     },
     {
-      "name": "Eucerin",
-      "products": 636
+      "name": "Nivea",
+      "products": 764
+    },
+    {
+      "name": "Avène",
+      "products": 735
     },
     {
       "name": "L'Oréal Paris",
-      "products": 631
+      "products": 698
+    },
+    {
+      "name": "Eucerin",
+      "products": 673
     }
   ],
   "telegram_alerts": [
