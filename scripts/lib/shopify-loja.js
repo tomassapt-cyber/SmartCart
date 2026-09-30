@@ -68,6 +68,7 @@ function paraProduto(base, j, limpaNome) {
       status: 'ok',
       scraped_at: new Date().toISOString(),
       name: limpaNome(`${j.title}${nomeVar}`),
+      _tituloOriginal: j.title,   // antes da limpeza: há lojas que põem a marca no título (ver scrape-mitso)
       brand: (j.vendor || '').trim() || null,
       ean,
       cnp: /^\d{7}$/.test(String(v.sku || '').trim()) ? String(v.sku).trim() : null,
