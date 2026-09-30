@@ -30,7 +30,10 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # 90 -> 150 a 2026-09-30: a mesma recolha levou 12 min, 72 min e >90 min
+    # (4 corridas seguidas canceladas a meio do scrape, 28-29/09). O site da
+    # loja fica lento a certas horas; o limite nao pode ser o caso normal.
+    timeout-minutes: 150
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
