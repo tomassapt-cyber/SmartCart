@@ -7190,7 +7190,7 @@
     </div>
     <div class="hero-ctas">
       <button class="hero-cta-primary" onclick="document.getElementById('categories-visual').scrollIntoView({behavior:'smooth'})">Comprar agora →</button>
-      <button class="hero-cta-secondary" onclick="document.getElementById('how-it-works')?.scrollIntoView({behavior:'smooth'}) || alert('Comparamos preços em 17 lojas. Adicionas produtos à tua selecção e fazemos as contas: mostramos-te a combinação de lojas que custa menos, já com portes incluídos.')">Como funciona</button>
+      <button class="hero-cta-secondary" onclick="document.getElementById('how-it-works')?.scrollIntoView({behavior:'smooth'}) || alert('Comparamos preços em ' + ((typeof STORES !== 'undefined' && STORES.length) || 'várias') + ' lojas. Adicionas produtos à tua selecção e fazemos as contas: mostramos-te a combinação de lojas que custa menos, já com portes incluídos.')">Como funciona</button>
     </div>
     <!-- Aqui esteve, de 2026-07-24 a 2026-08-05, um link "Catálogo novo, mais
          rápido · beta" para /app.html. Removido a pedido do dono do site, e a
@@ -10779,8 +10779,12 @@ function seoAbrirProduto(ean) {
     try { history.pushState({ seoEan: ean }, '', caminho); } catch (e) {}
   }
 
-  const titulo = p.name + (p.brand ? ' — ' + p.brand : '') + ' | preco em 74 lojas | CosMath';
-  const desc = 'Compara o preco de ' + p.name + ' em 74 lojas portuguesas. Preco verificado todos os dias.';
+  // O número de lojas vem da lista carregada — estava escrito à mão ("74") desde
+  // 2026-09-26 e ficou para trás quando o catálogo passou a 79 lojas.
+  const nLojas = (typeof STORES !== 'undefined' && STORES.length) || 0;
+  const emLojas = nLojas ? ' em ' + nLojas + ' lojas' : '';
+  const titulo = p.name + (p.brand ? ' — ' + p.brand : '') + ' | preco' + emLojas + ' | CosMath';
+  const desc = 'Compara o preco de ' + p.name + (emLojas || ' em lojas') + ' portuguesas. Preco verificado todos os dias.';
   document.title = titulo;
   seoDefinir('seo-canonical', 'href', abs);
   seoDefinir('seo-og-type', 'content', 'product');
@@ -10835,7 +10839,8 @@ function seoFecharProduto(mexerNoHistorico) {
   seoDefinir('seo-canonical', 'href', SEO_BASE.url);
   seoDefinir('seo-og-type', 'content', 'website');
   seoDefinir('seo-og-title', 'content', SEO_BASE.titulo);
-  seoDefinir('seo-og-desc', 'content', 'Compara o preco do mesmo produto de cosmetica em 74 lojas portuguesas.');
+  const nLojasPag = (typeof STORES !== 'undefined' && STORES.length) || 0;
+  seoDefinir('seo-og-desc', 'content', 'Compara o preco do mesmo produto de cosmetica em ' + (nLojasPag ? nLojasPag + ' ' : '') + 'lojas portuguesas.');
   seoDefinir('seo-og-url', 'content', SEO_BASE.url);
   seoJsonLd(null);
   if (mexerNoHistorico !== false && /^\/produto\//.test(location.pathname)) {

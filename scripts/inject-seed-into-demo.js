@@ -380,6 +380,14 @@ const html = html0;
 // e/ou build do Vercel) e nunca committado — ver .gitignore + vercel.json.
 const INDEX = path.join(ROOT, 'index.html');
 const CATALOGO = path.join(ROOT, 'catalogo.html');
+// O número de lojas nas meta tags (descrição do Google, pré-visualização das
+// partilhas) é escrito AQUI, a partir do seed: no template estava "74" à mão
+// e ficou para trás quando o catálogo cresceu (2026-09-30). O HTML servido é o
+// que o Google e as redes sociais lêem, antes de qualquer JavaScript.
+{
+  const nLojas = (seedJson.stores || []).length;
+  if (nLojas) next = next.replace(/(cosmetica em )\d+( lojas portuguesas)/g, `$1${nLojas}$2`);
+}
 fs.writeFileSync(INDEX, next, 'utf8');
 fs.writeFileSync(CATALOGO, next, 'utf8');
 
