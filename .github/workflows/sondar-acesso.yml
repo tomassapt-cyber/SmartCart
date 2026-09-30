@@ -1,0 +1,40 @@
+# CosMath — sondar o acesso a partir dos runners do GitHub
+# ============================================================
+# Ferramenta de diagnóstico (só disparo manual). Pede cada endereço a partir de
+# um runner — um IP de datacenter, que é o que as lojas bloqueiam — e diz o que
+# veio: estado HTTP, tipo, tamanho, sinais de bloqueio e o início do corpo.
+#
+# Serve para decidir se uma loja pode correr na nuvem ANTES de escrever o
+# scraper, e para testar se uma loja só-PC passou a deixar entrar (ou se a API
+# JSON dela deixa, mesmo quando as páginas HTML bloqueiam). Não escreve nada.
+#
+# Criada a 2026-09-30.
+
+name: Sondar acesso (runners)
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Endereços separados por espaço'
+        required: true
+
+permissions:
+  contents: read
+jobs:
+  sondar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Sondar
+        env:
+          URLS: ${{ github.event.inputs.urls }}
+        run: |
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36'
+          for u in $URLS; do
+            code=$(curl -s -m 30 -L -A "$UA" -H 'accept-language: pt-PT,pt;q=0.9' -o /tmp/r -w '%{http_code} %{content_type} %{size_download}' "$u" || echo "000 - 0")
+            bloq=$(grep -ciE 'just a moment|cf-chl|challenge-platform|captcha|access denied|_fs-ch-|datadome|incapsula' /tmp/r 2>/dev/null || true)
+            inicio=$(head -c 160 /tmp/r 2>/dev/null | tr -d '\n\r' | tr -s ' ')
+            echo "RESULTADO | $code | sinais de bloqueio: ${bloq:-0} | $u"
+            echo "           início: $inicio"
+          done
