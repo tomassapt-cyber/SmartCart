@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-30T10:04:39.977Z",
-  "seed_total_products": 71085,
+  "generated_at": "2026-10-01T10:30:58.819Z",
+  "seed_total_products": 85456,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.93,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
+      "best_price": 17.94,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
     },
     {
       "ean": "8429420158399",
@@ -107,16 +107,6 @@
   ],
   "skincare_kits": [
     {
-      "ean": "3574661087054",
-      "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 4.3,
-      "best_store": "Farmácia do Costume",
-      "best_store_slug": "farmaciadocostume",
-      "best_url": "https://www.farmaciadocostume.pt/neutrogena-formula-norueguesa-maos-promo-creme-concentrado-stick-labial.html"
-    },
-    {
       "ean": "3574661874951",
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
@@ -127,34 +117,44 @@
       "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
     },
     {
+      "ean": "3574661087054",
+      "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
+      "best_price": 4.3,
+      "best_store": "Farmácia do Costume",
+      "best_store_slug": "farmaciadocostume",
+      "best_url": "https://www.farmaciadocostume.pt/neutrogena-formula-norueguesa-maos-promo-creme-concentrado-stick-labial.html"
+    },
+    {
       "ean": "3574661879185",
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 8.63,
+      "best_price": 12.6,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
+    },
+    {
+      "ean": "3574661540887",
+      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
+      "brand": "Aveeno",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
+      "best_price": 15.33,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
     },
     {
       "ean": "3522930006343",
       "name": "Caudalie Vinoperfect Sérum + Espuma Micro-Peeling Pack",
       "brand": "Caudalie",
       "image_url": "https://1630763059.rsc.cdn77.org/temp/1787652226_307f07976e1711a5b65506faaeaa7296.jpg",
-      "best_price": 38.84,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/caudalie-vinoperfect-serum-+-espuma-micro-peeling-pack_p87212.html"
-    },
-    {
-      "ean": "3662361005949",
-      "name": "SVR Coffret Densitium Creme + SVR Ampoule C - + - Farmá...",
-      "brand": "SVR",
-      "image_url": "https://www.farmaciabarreiros.com/38185/svr-coffret-densitium-creme-svr-ampoule-c-50-ml-10-ml.jpg",
-      "best_price": 22.75,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/svr-densitium-creme-50ml-oferta-ampoule-c10ml-bolsa"
+      "best_price": 42.21,
+      "best_store": "Unifarma",
+      "best_store_slug": "unifarma",
+      "best_url": "https://www.unifarma.pt/products/caudalie-vinoperf-ser-eclat30-ofmouss50"
     }
   ],
   "em_alta": [
@@ -173,16 +173,17 @@
       "verified_live": true
     },
     {
-      "ean": "4005800036798",
-      "name": "Eucerin Dermo Capillaire Champô Apaziguante 5% Ureia",
-      "brand": "Eucerin",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/VOEkW2.png?v=1778934575",
-      "best_price": 9.99,
-      "best_store": "Cocooncenter",
-      "best_store_slug": "cocooncenter",
-      "best_url": "https://www.cocooncenter.pt/eucerin-dermocapillaire-champo-suave-com-ureia-calmante-250-ml/13743.html",
-      "previous_price": 20.25,
-      "discount_pct": 15,
+      "ean": "3282770108965",
+      "name": "René Furterer Forticea Champô Energizante",
+      "brand": "René Furterer",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/r/f/rfforticea500ml.jpg",
+      "best_price": 4.43,
+      "best_store": "Farmaciasdirect",
+      "best_store_slug": "farmaciasdirect",
+      "best_url": "https://www.farmaciasdirect.pt/products/rene-furterer-forticea-energizing-shampoo-50-ml",
+      "volume_ml": 50,
+      "previous_price": 6.85,
+      "discount_pct": 25,
       "dropped_day": 20720,
       "verified_live": true
     },
@@ -191,12 +192,26 @@
       "name": "Eucerin pH5 Gel &amp; Óleo Duche -",
       "brand": "Eucerin",
       "image_url": "https://www.farmaciabarreiros.com/36741/eucerin-ph5-gel-e-oleo-duche-400-ml.jpg",
-      "best_price": 8.7,
+      "best_price": 9.82,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/gel-banho-e-oleo-rosto-e-corpo",
       "volume_ml": 400,
       "previous_price": 15.99,
+      "discount_pct": 15,
+      "dropped_day": 20720,
+      "verified_live": true
+    },
+    {
+      "ean": "4006000188096",
+      "name": "Sérum Reafirmante Hyaluron-Filler",
+      "brand": "Eucerin",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809895.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 26.34,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/eucerin-hyaluron-filler-3-effect-serum-efeito-lifting-e-firmeza",
+      "previous_price": 50.65,
       "discount_pct": 15,
       "dropped_day": 20720,
       "verified_live": true
@@ -213,54 +228,40 @@
       "previous_price": 41.26,
       "discount_pct": 25,
       "dropped_day": 20719
-    },
-    {
-      "ean": "3282770152715",
-      "name": "René Furterer Naturia Shampoo Seco Sem Enxágue",
-      "brand": "René Furterer",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/1/7100040_renefurterernaturiashampooseco200ml.jpeg",
-      "best_price": 5.82,
-      "best_store": "SweetCare",
-      "best_store_slug": "sweetcare",
-      "best_url": "https://www.sweetcare.pt/rene-furterer-naturia-shampoo-seco-uso-frequente-p-002126rf",
-      "volume_ml": 75,
-      "previous_price": 7.76,
-      "discount_pct": 25,
-      "dropped_day": 20720
     }
   ],
   "top_brands": [
     {
       "name": "null",
-      "products": 2224
+      "products": 2214
     },
     {
       "name": "undefined",
-      "products": 889
-    },
-    {
-      "name": "Isdin",
-      "products": 807
-    },
-    {
-      "name": "Clarins",
-      "products": 797
-    },
-    {
-      "name": "Nivea",
-      "products": 765
+      "products": 916
     },
     {
       "name": "Avène",
-      "products": 735
+      "products": 822
     },
     {
-      "name": "L'Oréal Paris",
-      "products": 698
+      "name": "Isdin",
+      "products": 817
+    },
+    {
+      "name": "Clarins",
+      "products": 809
+    },
+    {
+      "name": "Nivea",
+      "products": 775
+    },
+    {
+      "name": "La Roche-Posay",
+      "products": 758
     },
     {
       "name": "Eucerin",
-      "products": 669
+      "products": 726
     }
   ],
   "telegram_alerts": [
@@ -293,8 +294,8 @@
     }
   ],
   "stats": {
-    "stores": 79,
-    "products": 57905,
+    "stores": 97,
+    "products": 69058,
     "avg_savings_pct": 30
   },
   "shard_version": "",
