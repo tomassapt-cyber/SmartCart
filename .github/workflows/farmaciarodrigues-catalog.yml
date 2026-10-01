@@ -1,18 +1,17 @@
-# CosMath — MegaFarma (loja 85) · refresh 2x/dia
+# CosMath — Farmácia Rodrigues (loja 97) · refresh 2x/dia
 # ============================================================
-# Farmácia PT, ~8.000 fichas com JSON-LD (EAN + CNP), recolha genérica
-# (scripts/lib/fichas-jsonld.js) DEVAGAR — 2 em paralelo, 600 ms: é a mesma
-# plataforma da Fastpharma e da Farmácia Portugal, que cortam quem pede depressa.
-# Entrou a 2026-10-01: 0,99x a mediana, a mais barata em 12% dos comuns.
+# Farmácia AppsFarma (mesma plataforma da MegaFarma), ~1.900 fichas, recolha
+# genérica devagar (2 em paralelo, 600 ms). Entrou a 2026-10-01.
+# Braga; 1,05× a mediana (amostra de 110 fichas, 74 com EAN), a mais barata em 12%, 43% de produtos novos.
 
-name: MegaFarma daily refresh
+name: Farmacia Rodrigues daily refresh
 
 on:
   schedule:
     # 2x/dia (catálogo grande, ver o cabeçalho). Os crons deste repo atrasam horas
     # (ver deploy-branch.yml) — o que conta é o espaçamento, não a hora.
-    - cron: '55 2 * * *'
-    - cron: '55 14 * * *'
+    - cron: '35 3 * * *'
+    - cron: '35 15 * * *'
   workflow_dispatch:
     inputs:
       limite:
@@ -25,9 +24,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    # 1.ª corrida completa (2026-10-01): 127 min para 8.005 fichas, sem falhas — a
-    # plataforma obriga a ir devagar. 150 ficava à justa.
-    timeout-minutes: 200
+    timeout-minutes: 90
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -57,27 +54,27 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
-      - name: Scrape MegaFarma
+      - name: Scrape Farmacia Rodrigues
         run: |
           if [ -n "${{ github.event.inputs.limite }}" ]; then
-            node scripts/scrape-megafarma-catalog.js --limite=${{ github.event.inputs.limite }}
+            node scripts/scrape-farmaciarodrigues-catalog.js --limite=${{ github.event.inputs.limite }}
           else
-            node scripts/scrape-megafarma-catalog.js
+            node scripts/scrape-farmaciarodrigues-catalog.js
           fi
 
       - name: Upload scrape artifact (safety-net)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: megafarma-catalog-${{ github.run_id }}
-          path: data/catalog/megafarma-full.json
+          name: farmaciarodrigues-catalog-${{ github.run_id }}
+          path: data/catalog/farmaciarodrigues-full.json
           retention-days: 14
 
       # Um teste com limite NÃO publica: ~40 produtos no seed apagariam as
       # ofertas das outras ~800 até à corrida seguinte.
       - name: Integrate into seed
         if: github.event.inputs.limite == ''
-        run: node scripts/integrate-megafarma-catalog.js
+        run: node scripts/integrate-farmaciarodrigues-catalog.js
 
       - name: Commit changes
         if: github.event.inputs.limite == ''
@@ -96,8 +93,8 @@ jobs:
             exit 0
           fi
           git add data/seed-bundle.json.gz demo.html
-          git add -f data/catalog/megafarma-full.json 2>/dev/null || true
-          git commit -m "chore: MegaFarma daily refresh ($(date -u +%Y-%m-%d))" \
+          git add -f data/catalog/farmaciarodrigues-full.json 2>/dev/null || true
+          git commit -m "chore: Farmacia Rodrigues daily refresh ($(date -u +%Y-%m-%d))" \
             -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
 
       - name: Push to main (resilient — re-integra sobre origin em conflito)
@@ -105,6 +102,6 @@ jobs:
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/integrate-megafarma-catalog.js" \
-            "chore: MegaFarma daily refresh ($(date -u +%Y-%m-%d))" \
-            data/catalog/megafarma-full.json
+            "node scripts/integrate-farmaciarodrigues-catalog.js" \
+            "chore: Farmacia Rodrigues daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/farmaciarodrigues-full.json
