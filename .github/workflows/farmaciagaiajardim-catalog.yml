@@ -1,18 +1,17 @@
-# CosMath — Farmácia 24 (loja 88) · refresh 3x/dia
+# CosMath — Farmácia Gaia Jardim (loja 90) · refresh 2x/dia
 # ============================================================
 # Shopify (scripts/lib/shopify-loja.js) + integração partilhada
 # (scripts/lib/integrar-farmacia.js). Entrou a 2026-10-01.
-# farmácia online (Shopify, site em pt-PT), ~3.080 produtos; EAN no barcode em ~79% e CNP no sku em todos. 1,04× a mediana — preço de mercado; entra para alargar a comparação.
+# farmácia de Gaia (Shopify), ~7.500 produtos; CNP no sku em ~99% e EAN no barcode em ~2/3. 0,98× a mediana (amostra de 101 com EAN, 55 em comum), 46% de EAN novos.
 
-name: Farmacia 24 daily refresh
+name: Farmacia Gaia Jardim daily refresh
 
 on:
   schedule:
     # 3x/dia, a cadência-padrão do projeto. Os crons deste repo atrasam horas
     # (ver deploy-branch.yml) — o que conta é o espaçamento, não a hora.
-    - cron: '45 5 * * *'
-    - cron: '45 13 * * *'
-    - cron: '45 21 * * *'
+    - cron: '5 4 * * *'
+    - cron: '5 16 * * *'
   workflow_dispatch:
     inputs:
       limite:
@@ -25,7 +24,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 150
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -55,27 +54,27 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
-      - name: Scrape Farmacia 24
+      - name: Scrape Farmacia Gaia Jardim
         run: |
           if [ -n "${{ github.event.inputs.limite }}" ]; then
-            node scripts/scrape-farmacia24-catalog.js --limite=${{ github.event.inputs.limite }}
+            node scripts/scrape-farmaciagaiajardim-catalog.js --limite=${{ github.event.inputs.limite }}
           else
-            node scripts/scrape-farmacia24-catalog.js
+            node scripts/scrape-farmaciagaiajardim-catalog.js
           fi
 
       - name: Upload scrape artifact (safety-net)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: farmacia24-catalog-${{ github.run_id }}
-          path: data/catalog/farmacia24-full.json
+          name: farmaciagaiajardim-catalog-${{ github.run_id }}
+          path: data/catalog/farmaciagaiajardim-full.json
           retention-days: 14
 
       # Um teste com limite NÃO publica: ~40 produtos no seed apagariam as
       # ofertas das outras ~800 até à corrida seguinte.
       - name: Integrate into seed
         if: github.event.inputs.limite == ''
-        run: node scripts/integrate-farmacia24-catalog.js
+        run: node scripts/integrate-farmaciagaiajardim-catalog.js
 
       - name: Commit changes
         if: github.event.inputs.limite == ''
@@ -94,8 +93,8 @@ jobs:
             exit 0
           fi
           git add data/seed-bundle.json.gz demo.html
-          git add -f data/catalog/farmacia24-full.json 2>/dev/null || true
-          git commit -m "chore: Farmacia 24 daily refresh ($(date -u +%Y-%m-%d))" \
+          git add -f data/catalog/farmaciagaiajardim-full.json 2>/dev/null || true
+          git commit -m "chore: Farmacia Gaia Jardim daily refresh ($(date -u +%Y-%m-%d))" \
             -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
 
       - name: Push to main (resilient — re-integra sobre origin em conflito)
@@ -103,6 +102,6 @@ jobs:
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/integrate-farmacia24-catalog.js" \
-            "chore: Farmacia 24 daily refresh ($(date -u +%Y-%m-%d))" \
-            data/catalog/farmacia24-full.json
+            "node scripts/integrate-farmaciagaiajardim-catalog.js" \
+            "chore: Farmacia Gaia Jardim daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/farmaciagaiajardim-full.json

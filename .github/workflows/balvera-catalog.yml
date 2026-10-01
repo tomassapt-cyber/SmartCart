@@ -1,18 +1,19 @@
-# CosMath — Farmácia 24 (loja 88) · refresh 3x/dia
+# CosMath — Balvera (loja 91) · refresh 2x/dia
 # ============================================================
-# Shopify (scripts/lib/shopify-loja.js) + integração partilhada
-# (scripts/lib/integrar-farmacia.js). Entrou a 2026-10-01.
-# farmácia online (Shopify, site em pt-PT), ~3.080 produtos; EAN no barcode em ~79% e CNP no sku em todos. 1,04× a mediana — preço de mercado; entra para alargar a comparação.
+# Perfumaria portuguesa (Pombal), loja online Next.js: ~2.750 fichas com
+# JSON-LD Product (gtin = EAN), lidas pela recolha genérica
+# (scripts/lib/fichas-jsonld.js), 2 em paralelo, ~20 min por passagem.
+# Entrou a 2026-10-01: 1,00x a mediana, a mais barata em 20% dos comuns, 49% de
+# EAN novos.
 
-name: Farmacia 24 daily refresh
+name: Balvera daily refresh
 
 on:
   schedule:
-    # 3x/dia, a cadência-padrão do projeto. Os crons deste repo atrasam horas
+    # 2x/dia. Os crons deste repo atrasam horas
     # (ver deploy-branch.yml) — o que conta é o espaçamento, não a hora.
-    - cron: '45 5 * * *'
-    - cron: '45 13 * * *'
-    - cron: '45 21 * * *'
+    - cron: '35 6 * * *'
+    - cron: '35 18 * * *'
   workflow_dispatch:
     inputs:
       limite:
@@ -55,27 +56,27 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
-      - name: Scrape Farmacia 24
+      - name: Scrape Balvera
         run: |
           if [ -n "${{ github.event.inputs.limite }}" ]; then
-            node scripts/scrape-farmacia24-catalog.js --limite=${{ github.event.inputs.limite }}
+            node scripts/scrape-balvera-catalog.js --limite=${{ github.event.inputs.limite }}
           else
-            node scripts/scrape-farmacia24-catalog.js
+            node scripts/scrape-balvera-catalog.js
           fi
 
       - name: Upload scrape artifact (safety-net)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: farmacia24-catalog-${{ github.run_id }}
-          path: data/catalog/farmacia24-full.json
+          name: balvera-catalog-${{ github.run_id }}
+          path: data/catalog/balvera-full.json
           retention-days: 14
 
       # Um teste com limite NÃO publica: ~40 produtos no seed apagariam as
-      # ofertas das outras ~800 até à corrida seguinte.
+      # ofertas das outras até à corrida seguinte.
       - name: Integrate into seed
         if: github.event.inputs.limite == ''
-        run: node scripts/integrate-farmacia24-catalog.js
+        run: node scripts/integrate-balvera-catalog.js
 
       - name: Commit changes
         if: github.event.inputs.limite == ''
@@ -94,8 +95,8 @@ jobs:
             exit 0
           fi
           git add data/seed-bundle.json.gz demo.html
-          git add -f data/catalog/farmacia24-full.json 2>/dev/null || true
-          git commit -m "chore: Farmacia 24 daily refresh ($(date -u +%Y-%m-%d))" \
+          git add -f data/catalog/balvera-full.json 2>/dev/null || true
+          git commit -m "chore: Balvera daily refresh ($(date -u +%Y-%m-%d))" \
             -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
 
       - name: Push to main (resilient — re-integra sobre origin em conflito)
@@ -103,6 +104,6 @@ jobs:
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/integrate-farmacia24-catalog.js" \
-            "chore: Farmacia 24 daily refresh ($(date -u +%Y-%m-%d))" \
-            data/catalog/farmacia24-full.json
+            "node scripts/integrate-balvera-catalog.js" \
+            "chore: Balvera daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/balvera-full.json
