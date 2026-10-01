@@ -1,0 +1,128 @@
+# CosMath — Farma2Go (loja 86) · refresh 3x/dia
+# ============================================================
+# Farmácia espanhola com site PT (Shopify, ~170 mil produtos no total). Preços
+# em bloco pelas subcoleções de beleza do /pt (~7.700 produtos, ~80 pedidos);
+# o EAN lê-se uma vez por produto (/pt/products/<handle>.js) e guarda-se — cada
+# corrida só lê os novos, até 4.000. Enrich-only: nomes em espanhol/português
+# misturados, não cria produtos. Entrou a 2026-10-01: 0,86x a mediana.
+
+name: Farma2Go daily refresh
+
+on:
+  schedule:
+    - cron: '30 7 * * *'
+    - cron: '30 15 * * *'
+    - cron: '30 23 * * *'
+  workflow_dispatch:
+    inputs:
+      max_fichas:
+        description: 'Máximo de EAN a ler nesta corrida (vazio = 4000)'
+        required: false
+        default: ''
+      teste:
+        description: '1 = só recolher, não publicar nada (teste de acesso)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+      COSMATH_SKIP_HP: '1'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Farma2Go
+        run: |
+          MAX="${{ github.event.inputs.max_fichas }}"
+          node scripts/scrape-farma2go-catalog.js --max-ean=${MAX:-4000}
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: farma2go-catalog-${{ github.run_id }}
+          path: data/catalog/farma2go-full.json
+          retention-days: 14
+
+      # O mapa pid → EAN é o que custa tempo a construir (uma ficha por produto).
+      # Guardá-lo ANTES de integrar faz com que nunca se perca — ver o mesmo passo
+      # e a razão em caretobeauty-catalog.yml.
+      - name: Guardar o catalogo recolhido (antes de integrar)
+        if: github.event.inputs.teste == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          git add -f data/catalog/farma2go-full.json
+          if git diff --cached --quiet; then echo "catalogo sem alteracoes"; exit 0; fi
+          git commit -m "chore: Farma2Go catalogo ($(date -u +%Y-%m-%d))" \
+            -m "So o catalogo recolhido; a integracao no seed vem no passo seguinte."
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then echo "catalogo guardado"; exit 0; fi
+            git fetch origin main && git rebase origin/main || git rebase --abort || true
+            # OBRIGATORIO depois de a arvore andar — ver caretobeauty-catalog.yml
+            bash scripts/ci/seed.sh unpack
+            sleep $((i * 10))
+          done
+          echo "AVISO: nao consegui guardar o catalogo; fica o artefacto"
+
+      - name: Integrate into seed
+        if: github.event.inputs.teste == ''
+        run: node scripts/integrate-farma2go-catalog.js
+
+      - name: Commit changes
+        if: github.event.inputs.teste == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          bash scripts/ci/seed.sh pack
+          if git diff --quiet -- data/seed-bundle.json.gz demo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json.gz demo.html
+          git add -f data/catalog/farma2go-full.json 2>/dev/null || true
+          git commit -m "chore: Farma2Go daily refresh ($(date -u +%Y-%m-%d))" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        if: github.event.inputs.teste == ''
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-farma2go-catalog.js" \
+            "chore: Farma2Go daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/farma2go-full.json
