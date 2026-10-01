@@ -18,6 +18,10 @@
 #   429 no 1.º pedido        farmaciaportugal
 #   mapa do site vazio       aminhafarmaciaonline  (do PC: 1.338 produtos)
 #
+# E para 12 a 2026-10-01:
+#   403 "Just a moment..."   balvera  (perfumaria de Pombal, loja 91 — entrou
+#                                      já como só-PC)
+#
 # Falta a skin.pt: tem integrate-skin-catalog.js mas NÃO tem scraper nenhum —
 # as 3.834 ofertas dela nunca foram automatizadas. Enquanto não houver scraper,
 # não entra aqui.
@@ -73,6 +77,7 @@ declare -A SCRAPE=(
   [docmorris]="node scripts/scrape-docmorris-catalog.js"
   [farmaciaportugal]="node scripts/scrape-farmaciaportugal-catalog.js --concurrency=5 --delay=250"
   [aminhafarmaciaonline]="node scripts/scrape-aminhafarmaciaonline-catalog.js --concurrency=5 --delay=250"
+  [balvera]="node scripts/scrape-balvera-catalog.js"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 
@@ -80,7 +85,7 @@ declare -A SCRAPE=(
 # lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
 # e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
 # aterrou o mais barato de obter.
-ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline docmorris farmaciaportugal aminhafarmaciaonline)
+ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline docmorris farmaciaportugal aminhafarmaciaonline balvera)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"

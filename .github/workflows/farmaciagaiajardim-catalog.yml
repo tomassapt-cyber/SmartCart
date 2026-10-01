@@ -8,7 +8,7 @@ name: Farmacia Gaia Jardim daily refresh
 
 on:
   schedule:
-    # 3x/dia, a cadência-padrão do projeto. Os crons deste repo atrasam horas
+    # 2x/dia (catálogo de ~7.500 fichas, ~1 h cada). Os crons deste repo atrasam horas
     # (ver deploy-branch.yml) — o que conta é o espaçamento, não a hora.
     - cron: '5 4 * * *'
     - cron: '5 16 * * *'

@@ -3,17 +3,20 @@
 # Perfumaria portuguesa (Pombal), loja online Next.js: ~2.750 fichas com
 # JSON-LD Product (gtin = EAN), lidas pela recolha genérica
 # (scripts/lib/fichas-jsonld.js), 2 em paralelo, ~20 min por passagem.
+# SÓ-PC: a Cloudflare bloqueia os runners (ver o schedule abaixo).
 # Entrou a 2026-10-01: 1,00x a mediana, a mais barata em 20% dos comuns, 49% de
 # EAN novos.
 
 name: Balvera daily refresh
 
 on:
-  schedule:
-    # 2x/dia. Os crons deste repo atrasam horas
-    # (ver deploy-branch.yml) — o que conta é o espaçamento, não a hora.
-    - cron: '35 6 * * *'
-    - cron: '35 18 * * *'
+  # ⚠️ SEM AGENDAMENTO NA NUVEM desde o 1.º dia (2026-10-01) — loja SÓ-PC
+  # (scripts/refresh-pc-only.sh). Aos runners do GitHub a Cloudflare responde
+  # 403 "Just a moment..." logo ao mapa do site; do PC responde 200. O botão
+  # manual fica, para testar se o bloqueio passou.
+  # schedule:
+  #   - cron: '35 6 * * *'
+  #   - cron: '35 18 * * *'
   workflow_dispatch:
     inputs:
       limite:
