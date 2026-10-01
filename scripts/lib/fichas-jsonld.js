@@ -36,7 +36,7 @@ async function urlsDoSitemap(raiz, filtroUrl, filtroFilho) {
   while (fila.length) {
     const sm = fila.shift(); if (vistos.has(sm)) continue; vistos.add(sm);
     const x = await texto(sm, 'xml');
-    const locs = [...String(x || '').matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map(m => m[1].replace(/&amp;/g, '&'));
+    const locs = [...String(x || '').matchAll(/<loc>\s*(?:<!\[CDATA\[)?\s*([^<\]\s]+)\s*(?:\]\]>)?\s*<\/loc>/g)].map(m => m[1].replace(/&amp;/g, '&'));
     if (/<sitemapindex/i.test(x)) fila.push(...locs.filter(u => !filtroFilho || filtroFilho.test(u)));
     else for (const u of locs) if (!filtroUrl || filtroUrl.test(u)) urls.add(u);
     await dorme(300);
@@ -80,7 +80,7 @@ function normalizar(url, p) {
 
 /**
  * @param {{sitemap:string, filtroUrl?:RegExp, filtroFilho?:RegExp, concorrencia?:number, pausaMs?:number,
- *          limite?:number, extrair?:(url:string, html:string)=>object|null, aoProgresso?:(feitos:number,total:number,n:number)=>void}} o
+ *          limite?:number, extrair?:(url:string, html:string)=>object|object[]|null, aoProgresso?:(feitos:number,total:number,n:number)=>void}} o
  */
 async function recolherFichas(o) {
   let urls = await urlsDoSitemap(o.sitemap, o.filtroUrl, o.filtroFilho);
@@ -92,7 +92,13 @@ async function recolherFichas(o) {
   async function trabalhador() {
     while (fila.length) {
       const u = fila.shift();
-      try { const p = extrair(u, await texto(u)); if (p) produtos.push(p); else semProduto++; }
+      try {
+        // `extrair` pode devolver uma lista (uma entrada por variante com EAN
+        // próprio — ver scrape-parfumdreams-catalog.js)
+        const p = extrair(u, await texto(u));
+        if (Array.isArray(p) ? p.length : p) { if (Array.isArray(p)) for (const x of p) produtos.push(x); else produtos.push(p); }
+        else semProduto++;
+      }
       catch (e) { if (/HTTP 404|HTTP 410/.test(String(e.message))) semProduto++; else falhas++; }
       if (++feitos % 500 === 0 && o.aoProgresso) o.aoProgresso(feitos, urls.length, produtos.length);
       await dorme(o.pausaMs ?? 400);

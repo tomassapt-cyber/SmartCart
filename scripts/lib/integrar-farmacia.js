@@ -54,6 +54,11 @@ function integrarFarmacia(cfg) {
 
   const productByEan = {};
   for (const p of seed.products) productByEan[p.ean] = p;
+  // O mesmo código em duas grafias: UPC-A de 12 dígitos ("729238500969") e o
+  // seu EAN-13 com zero à esquerda ("0729238500969"). O seed tem as duas (3.240
+  // de 12 e 1.216 com zero, 2026-10-01), conforme a loja que criou o produto.
+  const eanGemeo = e => /^\d{12}$/.test(e) ? '0' + e : /^0\d{12}$/.test(e) ? e.slice(1) : null;
+  const porEan = e => productByEan[e] || (eanGemeo(e) && productByEan[eanGemeo(e)]) || null;
 
   // ── CNP → produtos existentes: catálogos das OUTRAS lojas (url → cnp) juntos
   // ao seed pelos itens de cada loja. É o sinal forte entre farmácias PT.
@@ -118,7 +123,7 @@ function integrarFarmacia(cfg) {
     const nb = normalizeBrand(brand);
     let target = null;
 
-    if (isRealEan(ep.ean) && productByEan[ep.ean]) { target = productByEan[ep.ean]; n.ean++; }
+    if (isRealEan(ep.ean) && porEan(ep.ean)) { target = porEan(ep.ean); n.ean++; }
     if (!target && isCnp(ep.cnp) && cnpToProducts[ep.cnp]) {
       const cands = [...cnpToProducts[ep.cnp]];
       const ok = cands.filter(c => { const cb = normalizeBrand(c.brand); return !cb || !nb || cb === nb || GENERIC_BRAND_LABELS.has(cb); });

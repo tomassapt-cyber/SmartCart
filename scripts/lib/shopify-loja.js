@@ -32,13 +32,13 @@ async function texto(url, expect) {
 
 async function handlesDoSitemap(base) {
   const raiz = await texto(`${base}/sitemap.xml`, 'xml');
-  const filhos = [...String(raiz || '').matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map(m => m[1].replace(/&amp;/g, '&'))
+  const filhos = [...String(raiz || '').matchAll(/<loc>\s*(?:<!\[CDATA\[)?\s*([^<\]\s]+)\s*(?:\]\]>)?\s*<\/loc>/g)].map(m => m[1].replace(/&amp;/g, '&'))
     .filter(u => /sitemap_products_/i.test(u));
   if (!filhos.length) throw new Error(`sem sitemap_products_* em ${base}/sitemap.xml`);
   const handles = new Set();
   for (const f of filhos) {
     const x = await texto(f, 'xml');
-    for (const m of String(x || '').matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)) {
+    for (const m of String(x || '').matchAll(/<loc>\s*(?:<!\[CDATA\[)?\s*([^<\]\s]+)\s*(?:\]\]>)?\s*<\/loc>/g)) {
       const h = (m[1].match(/\/products\/([^/?#]+)/) || [])[1];
       if (h) handles.add(decodeURIComponent(h));
     }
