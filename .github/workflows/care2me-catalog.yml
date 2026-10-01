@@ -14,10 +14,13 @@
 name: Care2Me daily refresh
 
 on:
-  schedule:
-    - cron: '40 4 * * *'
-    - cron: '40 12 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '40 20 * * *'   # 3x/dia
+  # ⚠️ SEM AGENDAMENTO NA NUVEM desde 2026-10-02 — loja SÓ-PC (scripts/refresh-pc-only.sh).
+  # Os 3 crons diários falhavam sempre: 403 "Just a moment..." da Cloudflare aos runners. O botão manual fica,
+  # para testar se o bloqueio passou.
+  # schedule:
+  #   - cron: '40 4 * * *'
+  #   - cron: '40 12 * * *'   # 3x/dia (regra do user 2026-07-03)
+  #   - cron: '40 20 * * *'   # 3x/dia
   workflow_dispatch:
     inputs:
       limit:

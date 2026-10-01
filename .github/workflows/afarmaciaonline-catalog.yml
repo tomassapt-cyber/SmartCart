@@ -13,11 +13,14 @@
 name: A Farmácia Online daily refresh
 
 on:
-  schedule:
-    # 18h UTC — depois de Farmácia.pt (17h)
-    - cron: '0 18 * * *'
-    - cron: '0 2 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '0 10 * * *'   # 3x/dia
+  # ⚠️ SEM AGENDAMENTO NA NUVEM desde 2026-10-02 — loja SÓ-PC (scripts/refresh-pc-only.sh).
+  # Os 3 crons diários falhavam sempre: 403 "Just a moment..." da Cloudflare aos runners. O botão manual fica,
+  # para testar se o bloqueio passou.
+  # schedule:
+  #   # 18h UTC — depois de Farmácia.pt (17h)
+  #   - cron: '0 18 * * *'
+  #   - cron: '0 2 * * *'   # 3x/dia (regra do user 2026-07-03)
+  #   - cron: '0 10 * * *'   # 3x/dia
   workflow_dispatch:
     inputs:
       limit:

@@ -16,10 +16,13 @@
 name: FastPharma daily refresh
 
 on:
-  schedule:
-    - cron: '15 1 * * *'
-    - cron: '15 9 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '15 17 * * *'
+  # ⚠️ SEM AGENDAMENTO NA NUVEM desde 2026-10-02 — loja SÓ-PC (scripts/refresh-pc-only.sh).
+  # Os 3 crons diários falhavam sempre: 403 aos runners (e, desde 2026-09-30, também ao PC). O botão manual fica,
+  # para testar se o bloqueio passou.
+  # schedule:
+  #   - cron: '15 1 * * *'
+  #   - cron: '15 9 * * *'   # 3x/dia (regra do user 2026-07-03)
+  #   - cron: '15 17 * * *'
   workflow_dispatch:
     inputs:
       limit:

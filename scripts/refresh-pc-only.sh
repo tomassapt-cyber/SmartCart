@@ -18,6 +18,9 @@
 #   429 no 1.º pedido        farmaciaportugal
 #   mapa do site vazio       aminhafarmaciaonline  (do PC: 1.338 produtos)
 #
+# E saiu a DocMorris a 2026-10-02: voltou a funcionar na nuvem (o workflow
+# agendado publica sozinho desde 2026-09-30) → 11 lojas.
+#
 # E para 12 a 2026-10-01:
 #   403 "Just a moment..."   balvera  (perfumaria de Pombal, loja 91 — entrou
 #                                      já como só-PC)
@@ -74,7 +77,6 @@ declare -A SCRAPE=(
   [care2me]="node scripts/scrape-care2me-catalog.js"
   [fastpharma]="node scripts/scrape-fastpharma-catalog.js"
   [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
-  [docmorris]="node scripts/scrape-docmorris-catalog.js"
   [farmaciaportugal]="node scripts/scrape-farmaciaportugal-catalog.js --concurrency=5 --delay=250"
   [aminhafarmaciaonline]="node scripts/scrape-aminhafarmaciaonline-catalog.js --concurrency=5 --delay=250"
   [balvera]="node scripts/scrape-balvera-catalog.js"
@@ -85,7 +87,7 @@ declare -A SCRAPE=(
 # lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
 # e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
 # aterrou o mais barato de obter.
-ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline docmorris farmaciaportugal aminhafarmaciaonline balvera)
+ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline farmaciaportugal aminhafarmaciaonline balvera)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"
