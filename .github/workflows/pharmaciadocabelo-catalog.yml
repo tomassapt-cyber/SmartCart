@@ -1,0 +1,107 @@
+# CosMath — Pharmácia do Cabelo (loja 92) · refresh 2x/dia
+# ============================================================
+# Shopify (scripts/lib/shopify-loja.js) + integração partilhada
+# (scripts/lib/integrar-farmacia.js). Entrou a 2026-10-01.
+# cabelo profissional (Kérastase, L'Oréal Professionnel, Redken, Wella, Moroccanoil…), Shopify, ~1.460 produtos; EAN no barcode, vendor = marca. 0,87× a mediana, a mais barata em 51% dos comuns, 59% de EAN novos (amostra de 111, 2026-10-01). ⚠️ Corta quem pede depressa (429 «Verifying your connection») — pausa de 1,5 s.
+
+name: Pharmacia do Cabelo daily refresh
+
+on:
+  schedule:
+    # 2x/dia (loja que corta quem pede depressa: 1,5 s por produto). Os crons deste repo atrasam horas
+    # (ver deploy-branch.yml) — o que conta é o espaçamento, não a hora.
+    - cron: '15 7 * * *'
+    - cron: '15 19 * * *'
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: 'Limite de produtos (vazio = todos) — para testar'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+      # sem isto cada integração gasta ~5 min a regenerar a homepage (ver
+      # caretobeauty-catalog.yml); a homepage é refeita 1x/dia noutro workflow
+      COSMATH_SKIP_HP: '1'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Scrape Pharmacia do Cabelo
+        run: |
+          if [ -n "${{ github.event.inputs.limite }}" ]; then
+            node scripts/scrape-pharmaciadocabelo-catalog.js --limite=${{ github.event.inputs.limite }}
+          else
+            node scripts/scrape-pharmaciadocabelo-catalog.js
+          fi
+
+      - name: Upload scrape artifact (safety-net)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pharmaciadocabelo-catalog-${{ github.run_id }}
+          path: data/catalog/pharmaciadocabelo-full.json
+          retention-days: 14
+
+      # Um teste com limite NÃO publica: ~40 produtos no seed apagariam as
+      # ofertas das outras ~800 até à corrida seguinte.
+      - name: Integrate into seed
+        if: github.event.inputs.limite == ''
+        run: node scripts/integrate-pharmaciadocabelo-catalog.js
+
+      - name: Commit changes
+        if: github.event.inputs.limite == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          # Comprimir PRIMEIRO e testar o .gz: o .json está no .gitignore (ver
+          # scripts/ci/seed.sh e caretobeauty-catalog.yml).
+          bash scripts/ci/seed.sh pack
+          if git diff --quiet -- data/seed-bundle.json.gz demo.html; then
+            echo "Nenhuma alteração — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json.gz demo.html
+          git add -f data/catalog/pharmaciadocabelo-full.json 2>/dev/null || true
+          git commit -m "chore: Pharmacia do Cabelo daily refresh ($(date -u +%Y-%m-%d))" \
+            -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
+
+      - name: Push to main (resilient — re-integra sobre origin em conflito)
+        if: github.event.inputs.limite == ''
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-pharmaciadocabelo-catalog.js" \
+            "chore: Pharmacia do Cabelo daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/pharmaciadocabelo-full.json
