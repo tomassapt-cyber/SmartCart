@@ -277,7 +277,11 @@ async function upsert(table, rows, onConflict) {
         }
       }
     }
-    variants.push(...bestVar.values());
+    // ⚠️ NUNCA variants.push(...bestVar.values()): o "..." passa cada elemento
+    // como um argumento, e acima de ~120 mil o V8 rebenta com "Maximum call
+    // stack size exceeded". Foi o que parou o db-sync a 2026-09-30, quando a
+    // Loja do Shampoo (+11 mil ofertas) levou as variantes para lá do limite.
+    for (const v of bestVar.values()) variants.push(v);
   }
 
   // DEDUPE por PK antes de enviar (auditoria 2026-07-24): uma PK repetida no
