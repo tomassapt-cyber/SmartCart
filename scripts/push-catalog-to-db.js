@@ -73,6 +73,20 @@ async function upsert(table, rows, onConflict) {
 }
 
 (async function main() {
+  // ⏸ PAUSA PREVISTA (2026-10-02): o projeto Supabase está restringido por quota de
+  // Storage até 15/10 (registo de correções #26) e TODOS os pedidos dão 402. Sem
+  // isto, cada corrida (12×/dia) falhava e mandava um email de "workflow failed".
+  // Só vale para ESSE erro e só até 16/10: depois, um 402 volta a fazer o
+  // workflow falhar alto, como deve.
+  if (URL_ && KEY && Date.now() < Date.parse('2026-10-16T00:00:00Z')) {
+    try {
+      const r = await fetch(`${URL_}/rest/v1/stores?select=slug&limit=1`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY }, signal: AbortSignal.timeout(20000) });
+      if (r.status === 402 && /exceed_storage_size_quota/.test(await r.text())) {
+        console.log('⏸ Supabase restringido (quota de Storage, até 15/10) — sync adiado. O catálogo está todo no git e entra completo na 1.ª corrida depois do desbloqueio.');
+        return;
+      }
+    } catch { /* segue: o resto do script trata dos erros como sempre */ }
+  }
   const seed = JSON.parse(fs.readFileSync(SEED, 'utf8'));
   const blocked = new Set((() => { try { return (JSON.parse(fs.readFileSync(BL, 'utf8')).blocked || []).map(b => b.store_slug + '|' + b.ean); } catch { return []; } })());
   const runTs = new Date().toISOString();
