@@ -26,6 +26,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -86,13 +87,20 @@ function isRealEan(ean) {
   console.log(`📦 Seed actual: ${seed.products.length} produtos, ${seed.stores.length} lojas\n`);
 
   // ── Filtrar Druni produtos válidos ──
-  const druniOk = druniData.products.filter(p =>
-    p.status === 'ok' &&
-    p.name &&
-    p.price != null &&
-    CATEGORIES_FILTER.includes(p.category) &&
-    CATEGORY_MAP[p.category] != null
-  );
+  // Produto que JÁ está no site passa sempre (o filtro de foco só manda na
+  // CRIAÇÃO) — ver scripts/lib/ja-no-seed.js. Antes deitava-se fora a oferta
+  // de um produto existente só porque a categoria no catálogo vinha vazia.
+  const jaNoSeed = criarJaNoSeed(seed, isRealEan);
+  let jaExistentes = 0;
+  const druniOk = druniData.products.filter(p => {
+    if (!(p.status === 'ok' && p.name && p.price != null)) return false;
+    if (CATEGORIES_FILTER.includes(p.category) && CATEGORY_MAP[p.category] != null) return true;
+    // só ofertas vivas: uma esgotada não acrescenta nada à comparação e ocupa
+    // espaço na BD; se voltar a stock, entra na corrida seguinte
+    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { jaExistentes++; return true; }  // só junta oferta, nunca cria
+    return false;
+  });
+  if (jaExistentes) console.log(`   ＋ ${jaExistentes} fora do filtro mas JÁ no site (EAN/fingerprint) — oferta juntada, nenhum produto criado`);
   console.log(`✓ Druni válidos: ${druniOk.length}`);
 
   const druniToIntegrate = druniOk.slice(0, MAX_PRODUCTS);
