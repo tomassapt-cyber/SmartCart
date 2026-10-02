@@ -13,7 +13,11 @@
  * trocou o produto naquela ficha — às vezes porque o EAN foi renovado (mesmo
  * produto), às vezes porque o produto foi substituído (Bariésun SPF30 →
  * SPF50+, não é o mesmo). As regras separam os dois:
- *   • mesma marca canónica e mesmo volume (±3%) no nome dos dois;
+ *   • mesma marca canónica e mesmo volume (±3%). O volume vem do nome; se o nome
+ *     não o tiver (perfumesclub, notino, druni: "Sébium Gel Gommant"), vem das
+ *     ofertas desse cartão — ≥ 2 lojas a concordar e nenhuma com vários tamanhos —
+ *     e aí exige-se mais: prova de ≥ 2 lojas, ou Jaccard ≥ 0,6 sem nenhuma palavra
+ *     distintiva só de um lado (Sensai Cellular Performance "Cream" ≠ "Fresh Cream");
  *   • os MESMOS números no nome, tirando o volume (SPF, %, nº de tom, 1º, 2x…);
  *   • as MESMAS palavras de tom/cor (Heliocare Color "Bronze" ≠ "Bege");
  *   • os mesmos volumes no nome, todos ("50 ml + Recarga 50 ml" ≠ "Recarga 50 ml";
@@ -43,7 +47,7 @@ const { decodeEntities } = require('./name-cleanup');
 const FICHEIRO = { 'loja-farmacia': 'lojafarmacia', 'pharma-gdd': 'pharmagdd' };
 const PARIDADE = /\b(recarga|refill|recharge|coffret|pack|kit|duo|trio|conjunto|set|mini|travel|viagem|amostra|tester)\b/i;
 const SEM_PERFUME = /\b(sem perfume|sem fragrancia|sans parfum|fragrance[- ]free|unscented|sin perfume)\b/i;
-const VOLUME_RE = /\d+(?:[.,]\d+)?\s*(?:ml|g|gr|grs|kg|l|cl|mg|un|unid|unidades|uds)\b/gi;
+const VOLUME_RE = /\d+(?:[.,]\d+)?\s*(?:ml|g|gr|grs|kg|l|cl|mg)\b/gi;   // unidades (x10, x30) ficam como números
 const TONS = new Set(['claro', 'clara', 'escuro', 'escura', 'medio', 'media', 'light', 'dark', 'medium', 'fair', 'bronze',
   'bege', 'beige', 'natural', 'golden', 'dourado', 'dourada', 'sand', 'areia', 'ivory', 'marfim', 'tan', 'caramel',
   'nude', 'rose', 'rosa', 'pink', 'coral', 'red', 'vermelho', 'preto', 'black', 'brown', 'castanho', 'blond', 'louro',
@@ -78,6 +82,9 @@ const TIPOS = [
   ['homem', /\b(homem|men|homme|hombre)\b/], ['mulher', /\b(mulher|women|femme|woman)\b/],
   ['rugas', /\b(anti-?rugas|rugas|wrinkles?|rides)\b/], ['fadiga', /\b(anti-?fadiga|fadiga|fatigue)\b/],
 ];
+const GENERO = [['homem', /\b(homem|men|homme|hombre|for men)\b/], ['mulher', /\b(mulher|women|femme|woman)\b/]];
+// palavras que não distinguem produtos (forma, ligação, descrição genérica, tradução)
+const GENERICAS = /^(de|da|do|das|dos|e|em|com|para|the|and|a|o|as|os|au|du|des|le|la|les|et|pour|con|y|el|creme|cream|crema|gel|serum|soro|oleo|oil|locao|lotion|leite|milk|lait|balsamo|baume|balm|mascara|mask|masque|champo|shampoo|champu|spray|fluido|fluide|fluid|agua|water|eau|tonico|toner|stick|espuma|foam|mousse|cuidado|care|soin|hidratante|hydrating|moisturising|moisturizing|hydratant|hidratacion|facial|rosto|face|visage|corpo|body|corps|cabelo|hair|cheveux|olhos|eyes|eye|yeux|labios|lips|levres|maos|hands|mains|pes|feet|pieds|limpeza|cleansing|nettoyant|limpieza|intensivo|intensive|intense|ultra|novo|new|nouveau|farmacia|preco|especial|promo|oferta|spf|fps|pele|skin|peau|sensivel|sensitive|seca|dry|oleosa|oily|normal|mista|anti|antienvelhecimento|reparador|repair|reparadora|calmante|soothing)$/;
 const chaves = (lista, nome) => { const t = semAcentos(nome); return lista.filter(([, re]) => re.test(t)).map(([k]) => k); };
 // todos os volumes do nome, em ml, ordenados
 const volumes = nome => (texto(nome).match(VOLUME_RE) || []).map(v => F.extractVolumeMl(v)).filter(Boolean).sort((x, y) => x - y);
@@ -102,10 +109,28 @@ function criarGamas(seed) {
   return (marca, w) => (conta.get(marca + '|' + w) || 0) >= 3;
 }
 
-function mesmoProduto(a, b, eGama) {
+// volume de cada cartão pelas ofertas, quando o nome não o tem
+function criarVolumePorOfertas(seed) {
+  const porEan = new Map();
+  for (const sp of seed.store_products) for (const it of sp.items) {
+    const vs = (it.variants || []).map(v => v.volume_ml).filter(Boolean);
+    if (!vs.length) continue;
+    (porEan.get(it.ean) || porEan.set(it.ean, []).get(it.ean)).push(vs.length === 1 ? vs[0] : null);
+  }
+  return p => {
+    const vs = porEan.get(p.ean) || [];
+    if (vs.length < 2 || vs.includes(null)) return [];
+    const ord = [...vs].sort((x, y) => x - y), med = ord[Math.floor(ord.length / 2)];
+    return ord.every(v => Math.abs(v - med) / Math.max(v, med) <= 0.03) ? [med] : [];
+  };
+}
+
+function mesmoProduto(a, b, eGama, volumePorOfertas, nProvas = 1) {
   const marca = F.normalizeBrand(a.brand);
   if (!marca || F.normalizeBrand(b.brand) !== marca) return false;
-  if (!mesmosVolumes(volumes(a.name), volumes(b.name))) return false;
+  const va = volumes(a.name), vb = volumes(b.name);
+  const peloNome = va.length > 0 && vb.length > 0;
+  if (!mesmosVolumes(va.length || !volumePorOfertas ? va : volumePorOfertas(a), vb.length || !volumePorOfertas ? vb : volumePorOfertas(b))) return false;
   if (numeros(a.name) !== numeros(b.name) || tons(a.name) !== tons(b.name)) return false;
   const ta = tipos(a.name), tb = tipos(b.name);
   if (ta && tb && ta !== tb) return false;
@@ -113,12 +138,21 @@ function mesmoProduto(a, b, eGama) {
   if (fa.length && fb.length && !fa.some(f => fb.includes(f))) return false;
   if (PARIDADE.test(semAcentos(a.name)) !== PARIDADE.test(semAcentos(b.name))) return false;
   if (SEM_PERFUME.test(semAcentos(a.name)) !== SEM_PERFUME.test(semAcentos(b.name))) return false;
+  const ga = chaves(GENERO, a.name).join('|'), gb = chaves(GENERO, b.name).join('|');
+  if (ga !== gb) return false;
+  const wa = new Set(palavras(texto(a.name), a.brand || '').filter(w => !GENERICAS.test(w)));
+  const wb = new Set(palavras(texto(b.name), b.brand || '').filter(w => !GENERICAS.test(w)));
+  const soDeA = [...wa].filter(w => !wb.has(w)).length, soDeB = [...wb].filter(w => !wa.has(w)).length;
+  if (soDeA >= 2 && soDeB >= 2) return false;
   if (eGama) {
     const wa = new Set(palavras(texto(a.name), a.brand || '')), wb = new Set(palavras(texto(b.name), b.brand || ''));
     const soA = [...wa].some(w => !wb.has(w) && eGama(marca, w)), soB = [...wb].some(w => !wa.has(w) && eGama(marca, w));
     if (soA && soB) return false;
   }
-  return F.jaccard(F.nameTokenSet(texto(a.name), a.brand), F.nameTokenSet(texto(b.name), b.brand)) >= 0.5;
+  const j = F.jaccard(F.nameTokenSet(texto(a.name), a.brand), F.nameTokenSet(texto(b.name), b.brand));
+  if (peloNome) return j >= 0.5;
+  // sem tamanho no nome: uma palavra distintiva de um lado só ("Fresh") pede 2 lojas de prova
+  return nProvas >= 2 ? j >= 0.5 : (j >= 0.6 && soDeA === 0 && soDeB === 0);
 }
 
 // junta `de` em `para`: as ofertas mudam de EAN (numa loja com as duas fica a
@@ -212,8 +246,9 @@ function juntarEansRenovados(seed, opts = {}) {
   for (let volta = 0; volta < 6; volta++) {
     const daVolta = [];
     const usados = new Set();
+    const volumePorOfertas = criarVolumePorOfertas(seed);
     for (const { a, b, lojas: ev } of paresComEvidencia(seed, catalogos)) {
-      if (usados.has(a.ean) || usados.has(b.ean) || !mesmoProduto(a, b, eGama)) continue;
+      if (usados.has(a.ean) || usados.has(b.ean) || !mesmoProduto(a, b, eGama, volumePorOfertas, ev.length)) continue;
       // fica o que tem mais lojas; empate → o EAN novo (o que a loja usa agora)
       const [de, para] = (lojas.get(a.ean) || 0) > (lojas.get(b.ean) || 0) ? [b, a] : [a, b];
       daVolta.push([de, para, ev]);
