@@ -99,6 +99,23 @@ function collapseByEan(seed) {
 const eanCollapsed = collapseByEan(seed);
 if (eanCollapsed) console.log(`🧹 EAN-collapse: ${eanCollapsed} registos com EAN duplicado fundidos (mesmo EAN = mesmo produto)\n`);
 
+// 0b) MARCA EM FALTA (2026-10-02): sem marca o fingerprint dá null e o produto
+//     nunca é agrupado — medido: 426 duplicados visíveis assim ("Sensibio
+//     Defensive Sérum" sem marca, 1 loja, ao lado do da Bioderma, 46 lojas).
+//     Deduz-se a marca do código da loja ou do início do nome, só para marcas
+//     já conhecidas (regras em scripts/lib/inferir-marca.js). Corre ANTES do
+//     agrupamento para que estes produtos entrem nos grupos abaixo.
+const { criarInferidorDeMarca } = require('./lib/inferir-marca');
+let marcasDeduzidas = 0;
+{
+  const inferirMarca = criarInferidorDeMarca(seed);
+  for (const p of seed.products) {
+    const m = inferirMarca(p);
+    if (m) { p.brand = m; marcasDeduzidas++; }
+  }
+  if (marcasDeduzidas) console.log(`🏷️  Marca deduzida (código da loja / início do nome): ${marcasDeduzidas} produtos sem marca\n`);
+}
+
 // 1) Agrupar products por fingerprint
 const groups = {};
 for (const p of seed.products) {
@@ -117,9 +134,9 @@ if (dupGroups.length === 0) {
   console.log('✅ Nenhum duplicado por fingerprint.');
   // Mesmo sem dups de fingerprint, se o EAN-collapse fundiu registos e
   // estamos em --apply, é preciso persistir o resultado.
-  if (APPLY && !DRY_RUN && eanCollapsed) {
+  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas)) {
     fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
-    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (apenas EAN-collapse: ${eanCollapsed} registos).`);
+    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas}).`);
   }
   process.exit(0);
 }
