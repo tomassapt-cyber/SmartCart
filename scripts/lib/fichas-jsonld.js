@@ -16,6 +16,7 @@
 const zlib = require('zlib');
 const { fetchTextResilient } = require('./resilient-fetch');
 const { decodeEntities } = require('./name-cleanup');
+const { imagemValida } = require('./imagem-valida');
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
 const dorme = ms => new Promise(r => setTimeout(r, ms));
@@ -63,14 +64,13 @@ function normalizar(url, p) {
   const gtin = [p.gtin13, p.gtin, p.gtin12, p.gtin14, p.ean, o.gtin13, o.gtin].map(x => String(x || '').trim()).find(eanOk) || null;
   const sku = String(p.sku || '').trim();
   const marca = typeof p.brand === 'string' ? p.brand : (p.brand && p.brand.name) || null;
-  const img = [].concat(p.image || [])[0];
   return {
     url, status: 'ok', scraped_at: new Date().toISOString(),
     name: decodeEntities(String(p.name || '')).trim(),
     brand: marca ? decodeEntities(String(marca)).trim() : null,
     ean: gtin ? gtin : null,
     cnp: /^\d{7}$/.test(sku) ? sku : null,
-    image_url: typeof img === 'string' ? img : (img && img.url) || null,
+    image_url: imagemValida(p.image, url),   // ImageObject, relativo, placeholder → ver lib/imagem-valida
     price: preco,
     previous_price: null,
     in_stock: !o.availability || /InStock|LimitedAvailability|PreOrder/i.test(String(o.availability)),

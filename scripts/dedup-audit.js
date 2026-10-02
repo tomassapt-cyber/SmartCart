@@ -126,6 +126,16 @@ const { refrescarOfertasPorUrl } = require('./lib/refrescar-por-url');
 const refrescadas = refrescarOfertasPorUrl(seed);
 if (refrescadas.total) console.log(`🔄 Ofertas presas refrescadas pelo URL (catálogo fresco da loja): ${refrescadas.total} · ${Object.entries(refrescadas.porLoja).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => k + ':' + v).join(' ')}\n`);
 
+// 0d) IMAGENS ESTRAGADAS (2026-10-02): "[object Object]", relativas
+//     ("/api/api.php/getImage/…"), placeholders e com espaços — o cartão ficava
+//     sem foto. Codifica-se, ou vai-se buscar a imagem ao catálogo de uma loja
+//     que vende o produto (pelo URL da oferta), ou fica null para outra fonte
+//     preencher. Ver scripts/lib/imagem-valida.js.
+const { repararImagens } = require('./lib/imagem-valida');
+const imagens = repararImagens(seed);
+const imagensMexidas = imagens.codificadas + imagens.doCatalogo + imagens.retiradas;
+if (imagensMexidas) console.log(`🖼️  Imagens estragadas: ${imagens.codificadas} codificadas · ${imagens.doCatalogo} do catálogo da loja · ${imagens.retiradas} retiradas\n`);
+
 // 1) Agrupar products por fingerprint
 const groups = {};
 for (const p of seed.products) {
@@ -144,9 +154,9 @@ if (dupGroups.length === 0) {
   console.log('✅ Nenhum duplicado por fingerprint.');
   // Mesmo sem dups de fingerprint, se o EAN-collapse fundiu registos e
   // estamos em --apply, é preciso persistir o resultado.
-  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total)) {
+  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total || imagensMexidas)) {
     fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
-    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total}).`);
+    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total} · imagens: ${imagensMexidas}).`);
   }
   process.exit(0);
 }

@@ -21,6 +21,7 @@
  */
 
 const fs = require('fs');
+const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -82,7 +83,7 @@ function extractProductData(html) {
       if (price == null || !isFinite(price) || price <= 0) return null;
       const in_stock = offer ? /InStock/i.test(offer.availability || '') : true;
       const brand = n.brand ? (typeof n.brand === 'string' ? n.brand : (n.brand.name || null)) : null;
-      const image_url = Array.isArray(n.image) ? n.image[0] : (typeof n.image === 'string' ? n.image : (n.image && n.image.url) || null);
+      const image_url = imagemDoJsonLd(n.image);
       // SEM gtin no Continente — ean fica null; o integrador casa por
       // fingerprint exato (enrich-only, nunca cria).
       return { name, brand, ean: null, sku: n.sku ? String(n.sku) : null, image_url, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };

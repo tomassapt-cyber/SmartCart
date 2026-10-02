@@ -20,6 +20,7 @@
  */
 
 const fs = require('fs');
+const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -73,7 +74,7 @@ function extractProductData(html) {
       const price = offPrice(offer);
       if (!in_stock) return { status: 'oos', name, cnp };   // esgotado → sem preço comparável
       if (price == null) return null;
-      const image_url = Array.isArray(n.image) ? n.image[0] : (typeof n.image === 'string' ? n.image : (n.image && n.image.url) || null);
+      const image_url = imagemDoJsonLd(n.image);
       return {
         status: 'ok', name, brand: null, ean: null, cnp, sku: cnp,
         image_url: image_url ? String(image_url).replace(/\\\//g, '/') : null,
