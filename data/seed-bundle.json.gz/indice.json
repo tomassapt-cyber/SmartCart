@@ -1,0 +1,1012 @@
+{
+ "formato": "cosmath-seed-v1",
+ "chaves": [
+  "stores",
+  "products",
+  "store_products"
+ ],
+ "lojas": "lojas.jsonl",
+ "produtos": [
+  "produtos/0000.jsonl",
+  "produtos/0001.jsonl",
+  "produtos/0002.jsonl",
+  "produtos/0003.jsonl",
+  "produtos/0004.jsonl",
+  "produtos/0005.jsonl",
+  "produtos/0006.jsonl",
+  "produtos/0007.jsonl",
+  "produtos/0008.jsonl",
+  "produtos/0009.jsonl",
+  "produtos/0010.jsonl",
+  "produtos/0011.jsonl",
+  "produtos/0012.jsonl",
+  "produtos/0013.jsonl",
+  "produtos/0014.jsonl",
+  "produtos/0015.jsonl",
+  "produtos/0016.jsonl",
+  "produtos/0017.jsonl"
+ ],
+ "ofertas": [
+  {
+   "ficheiro": "ofertas/druni.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "druni"
+   }
+  },
+  {
+   "ficheiro": "ofertas/wells.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "wells"
+   }
+  },
+  {
+   "ficheiro": "ofertas/easyfarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "easyfarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/sweetcare.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "sweetcare"
+   }
+  },
+  {
+   "ficheiro": "ofertas/bairro-saude.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "bairro-saude"
+   }
+  },
+  {
+   "ficheiro": "ofertas/atida.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "atida"
+   }
+  },
+  {
+   "ficheiro": "ofertas/byfarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "byfarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmacia365.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmacia365"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciapt.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciapt"
+   }
+  },
+  {
+   "ficheiro": "ofertas/afarmaciaonline.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "afarmaciaonline"
+   }
+  },
+  {
+   "ficheiro": "ofertas/loja-farmacia.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "loja-farmacia"
+   }
+  },
+  {
+   "ficheiro": "ofertas/haemiskin.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "haemiskin"
+   }
+  },
+  {
+   "ficheiro": "ofertas/asuafarmaciaonline.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "asuafarmaciaonline"
+   }
+  },
+  {
+   "ficheiro": "ofertas/aminhafarmaciaonline.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "aminhafarmaciaonline"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharma-gdd.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharma-gdd"
+   }
+  },
+  {
+   "ficheiro": "ofertas/barreiros.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "barreiros"
+   }
+  },
+  {
+   "ficheiro": "ofertas/manuelaserra.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "manuelaserra"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharma2you.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharma2you"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciasportuguesas.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciasportuguesas"
+   }
+  },
+  {
+   "ficheiro": "ofertas/cocooncenter.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "cocooncenter"
+   }
+  },
+  {
+   "ficheiro": "ofertas/notino.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "notino"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciavirtual.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciavirtual"
+   }
+  },
+  {
+   "ficheiro": "ofertas/saudemayor.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "saudemayor"
+   }
+  },
+  {
+   "ficheiro": "ofertas/mycosmetics.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "mycosmetics"
+   }
+  },
+  {
+   "ficheiro": "ofertas/aveirofarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "aveirofarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/perfumesclub.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "perfumesclub"
+   }
+  },
+  {
+   "ficheiro": "ofertas/primor.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "primor"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciaideal.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciaideal"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharmascalabis.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharmascalabis"
+   }
+  },
+  {
+   "ficheiro": "ofertas/continente.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "continente"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pluricosmetica.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pluricosmetica"
+   }
+  },
+  {
+   "ficheiro": "ofertas/docmorris.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "docmorris"
+   }
+  },
+  {
+   "ficheiro": "ofertas/atuafarmacia.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "atuafarmacia"
+   }
+  },
+  {
+   "ficheiro": "ofertas/unifarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "unifarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/poupafarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "poupafarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/quickfarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "quickfarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/shopcosmetics.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "shopcosmetics"
+   }
+  },
+  {
+   "ficheiro": "ofertas/wowfarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "wowfarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/gofarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "gofarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/hiperfarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "hiperfarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/fastpharma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "fastpharma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/powerbeauty.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "powerbeauty"
+   }
+  },
+  {
+   "ficheiro": "ofertas/nossafarmacia.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "nossafarmacia"
+   }
+  },
+  {
+   "ficheiro": "ofertas/sobeauty.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "sobeauty"
+   }
+  },
+  {
+   "ficheiro": "ofertas/perfumes4you.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "perfumes4you"
+   }
+  },
+  {
+   "ficheiro": "ofertas/smartbeauty.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "smartbeauty"
+   }
+  },
+  {
+   "ficheiro": "ofertas/beleza37.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "beleza37"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharmavida.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharmavida"
+   }
+  },
+  {
+   "ficheiro": "ofertas/cosmeticfan.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "cosmeticfan"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharmee.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharmee"
+   }
+  },
+  {
+   "ficheiro": "ofertas/care2me.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "care2me"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmatogo.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmatogo"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaoli.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaoli"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciadocostume.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciadocostume"
+   }
+  },
+  {
+   "ficheiro": "ofertas/bemecare.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "bemecare"
+   }
+  },
+  {
+   "ficheiro": "ofertas/vallispharma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "vallispharma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/lovemypharma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "lovemypharma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciaportugal.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciaportugal"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciagarcia.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciagarcia"
+   }
+  },
+  {
+   "ficheiro": "ofertas/atcosmetics.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "atcosmetics"
+   }
+  },
+  {
+   "ficheiro": "ofertas/skpro.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "skpro"
+   }
+  },
+  {
+   "ficheiro": "ofertas/vidamais.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "vidamais"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmacia2u.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmacia2u"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharmia.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharmia"
+   }
+  },
+  {
+   "ficheiro": "ofertas/lowcost.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "lowcost"
+   }
+  },
+  {
+   "ficheiro": "ofertas/camelo.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "camelo"
+   }
+  },
+  {
+   "ficheiro": "ofertas/storekbeauty.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "storekbeauty"
+   }
+  },
+  {
+   "ficheiro": "ofertas/miin.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "miin"
+   }
+  },
+  {
+   "ficheiro": "ofertas/dermis.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "dermis"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciasprogresso.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciasprogresso"
+   }
+  },
+  {
+   "ficheiro": "ofertas/skin.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "skin"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmacentral.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmacentral"
+   }
+  },
+  {
+   "ficheiro": "ofertas/caretobeauty.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "caretobeauty"
+   }
+  },
+  {
+   "ficheiro": "ofertas/sofarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "sofarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/mypharmaspot.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "mypharmaspot"
+   }
+  },
+  {
+   "ficheiro": "ofertas/santamarta.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "santamarta"
+   }
+  },
+  {
+   "ficheiro": "ofertas/auchan.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "auchan"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharma24.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharma24"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciabarata.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciabarata"
+   }
+  },
+  {
+   "ficheiro": "ofertas/glowthie.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "glowthie"
+   }
+  },
+  {
+   "ficheiro": "ofertas/mitso.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "mitso"
+   }
+  },
+  {
+   "ficheiro": "ofertas/lojashampoo.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "lojashampoo"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciaemcasa.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciaemcasa"
+   }
+  },
+  {
+   "ficheiro": "ofertas/orientperfumes.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "orientperfumes"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciasdirect.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciasdirect"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farma2go.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farma2go"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmacia24.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmacia24"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciadaliga.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciadaliga"
+   }
+  },
+  {
+   "ficheiro": "ofertas/koreanbeauty.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "koreanbeauty"
+   }
+  },
+  {
+   "ficheiro": "ofertas/megafarma.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "megafarma"
+   }
+  },
+  {
+   "ficheiro": "ofertas/pharmaciadocabelo.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "pharmaciadocabelo"
+   }
+  },
+  {
+   "ficheiro": "ofertas/parfumdreams.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "parfumdreams"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciarodrigues.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciarodrigues"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciapertodemim.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciapertodemim"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciagaiajardim.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciagaiajardim"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciamarquesbraga.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciamarquesbraga"
+   }
+  },
+  {
+   "ficheiro": "ofertas/farmaciabemestar.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciabemestar"
+   }
+  },
+  {
+   "ficheiro": "ofertas/balvera.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "balvera"
+   }
+  }
+ ],
+ "outros": {}
+}

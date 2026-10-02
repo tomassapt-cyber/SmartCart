@@ -50,3 +50,15 @@ node $MEM scripts/build-sitemap.js
 #    Também sem guarda: se falhar, não há site para servir, e é preferível o
 #    deploy falhar do que publicar uma página vazia.
 COSMATH_DEPLOY_BUILD=1 node $MEM scripts/inject-seed-into-demo.js
+
+# 4. Tirar do que fica PUBLICADO o que o site nunca lê (2026-10-02). O
+#    `outputDirectory` é a raiz do repositório, logo tudo o que está aqui era
+#    servido como ficheiro público: o catálogo inteiro (data/seed-bundle.json,
+#    132 MB — cada descarga gastava 132 MB da quota de tráfego da Vercel), os
+#    catálogos crus das lojas (data/catalog/, 267 MB), os scripts, os
+#    workflows e o esquema da base de dados. Nenhum é pedido pelo site
+#    (verificado: os fetch() do demo/app/account só pedem data/idx, data/p,
+#    descriptions, scan-index, recommendations, price-history e
+#    preview-arranque). Fica como ÚLTIMO passo: tudo o que está acima precisa
+#    deles.
+rm -rf data/seed-bundle.json data/seed-bundle.json.gz data/catalog scripts database .github

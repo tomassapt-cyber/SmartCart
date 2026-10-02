@@ -1,0 +1,3 @@
+# O catálogo em pedaços de texto (scripts/ci/seed-shards.js): sempre LF, também em
+# clones Windows com core.autocrlf — o unpack tem de reconstruir o JSON byte a byte.
+data/seed-bundle.json.gz/** text eol=lf
