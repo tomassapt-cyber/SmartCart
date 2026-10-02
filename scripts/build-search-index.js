@@ -151,6 +151,29 @@ function construirArranque(indice, seed) {
     const m = indice.brands[indice.b[i]] || '';
     if (m) porMarca[m] = (porMarca[m] || 0) + 1;
   }
+  // ── coleções da página inicial ("N produtos comparados") ──────────────────
+  // (2026-10-02) O cliente contava-as varrendo o catálogo inteiro, e por isso
+  // pedia o índice (1,3 MB) logo ao abrir a página — só para estes 4 números.
+  // Contam-se aqui com a MESMA regra do initCollections do demo.html (todas as
+  // palavras da consulta em _hnorm(nome + marca + categoria)), e as consultas
+  // vêm dos data-colq do próprio demo.html, para nunca desacertarem.
+  const hnorm = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  const colecoes = {};
+  try {
+    const consultas = [...new Set([...fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8')
+      .matchAll(/data-colq="([^"]+)"/g)].map(m => m[1]))];
+    for (const q of consultas) {
+      const toks = hnorm(q).split(/\s+/).filter(Boolean);
+      if (!toks.length) continue;
+      let n = 0;
+      for (let i = 0; i < indice.n; i++) {
+        const hay = hnorm(indice.nm[i] + ' ' + (indice.brands[indice.b[i]] || '') + ' ' + (indice.cats[indice.c[i]] || ''));
+        if (toks.every(t => hay.includes(t))) n++;
+      }
+      colecoes[q] = n;
+    }
+  } catch { /* sem demo.html → o cliente conta como antes */ }
+
   const marcasTop = Object.entries(porMarca)
     .sort((a, b) => b[1] - a[1]).slice(0, 40)
     .map(([nome, n]) => ({ nome, n }));
@@ -190,6 +213,7 @@ function construirArranque(indice, seed) {
     categorias: porCategoria,
     marcas: marcasTop,
     highlights,
+    colecoes,
     primeiros,
   };
 }

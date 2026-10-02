@@ -8715,6 +8715,42 @@ function garantirIndice() {
 }
 
 /**
+ * Pede o índice só quando faz falta (2026-10-02). Até aqui era pedido logo a
+ * seguir à primeira pintura — 1,3 MB comprimidos, mais o JSON.parse e a
+ * reconstrução, a competir com a página que ainda estava a abrir — e quem
+ * entrava e saía sem mexer pagava-o na mesma. A primeira vista não precisa
+ * dele: a ponte (bloco de arranque) serve a montra, os números e as contagens
+ * das coleções (vêm feitas do build).
+ *
+ * Dispara à PRIMEIRA interação — toque, clique, tecla, scroll, foco num campo
+ * (a pesquisa ganha o tempo entre o foco e a 1.ª letra). Para quem fica a ler
+ * sem mexer, dispara quando o navegador está livre, ao fim de ~12 s. Tudo o
+ * que precisa do catálogo inteiro antes disso (ficha aberta por link, a
+ * sugestão da pesquisa, a prateleira) já chama o garantirIndice() por si.
+ * @param {function(boolean)} depois  corre quando o índice chega (ou falha)
+ */
+function garantirIndiceQuandoPreciso(depois) {
+  // Em captura, para nenhum stopPropagation os esconder. O scroll NÃO: os
+  // carrosséis horizontais (kits, quiz) deslocam-se sozinhos ao abrir no
+  // telemóvel e, apanhados em captura, disparavam o pedido sem ninguém mexer.
+  // Só conta o scroll da própria página (que chega à window sem captura).
+  const EVENTOS = ['pointerdown', 'keydown', 'touchstart', 'wheel', 'focusin'];
+  let disparado = false;
+  const disparar = ev => {
+    if (disparado) return;
+    disparado = true;
+    garantirIndiceQuandoPreciso.motivo = ev && ev.type ? ev.type : 'navegador livre';
+    EVENTOS.forEach(e => window.removeEventListener(e, disparar, true));
+    window.removeEventListener('scroll', disparar);
+    garantirIndice().then(depois);
+  };
+  EVENTOS.forEach(e => window.addEventListener(e, disparar, { capture: true, passive: true }));
+  window.addEventListener('scroll', disparar, { passive: true });
+  const livre = window.requestIdleCallback ? fn => requestIdleCallback(fn, { timeout: 4000 }) : fn => fn();
+  setTimeout(() => livre(disparar), 12000);
+}
+
+/**
  * Espera que o cliente Supabase exista.
  * O initApp() corre ANTES do initSupabase() (fim do ficheiro) e o SDK ainda é
  * carregado de um CDN — sem isto, tudo o que a primeira pintura pedisse saía
@@ -8855,7 +8891,9 @@ async function loadLiveCatalog() {
       // fazer toda a gente pagar 1,25 MB antes de ver o primeiro pixel, que é
       // exactamente o que esta fase veio acabar. O índice chega em fundo e a
       // página volta a desenhar-se com o catálogo completo.
-      garantirIndice().then(ok => {
+      // (2026-10-02) E já nem chega logo: só à primeira interação, ou quando o
+      // navegador está livre ao fim de ~12 s — ver garantirIndiceQuandoPreciso.
+      garantirIndiceQuandoPreciso(ok => {
         if (!ok) { console.error('Fase 4b: o índice não carregou; fica só o bloco de arranque.'); return; }
         try {
           renderCatalog();
@@ -15957,6 +15995,19 @@ async function gmReceiptFromRoutine() {
     const sec = document.getElementById('search-results-section');
     if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }));
+  // (2026-10-02) As contagens vêm feitas do build (arranque.colecoes, mesma
+  // regra de match, contadas sobre o mesmo índice) — contar aqui obrigava a
+  // pedir o índice inteiro logo ao abrir a página só para estes 4 números.
+  const doBuild = (_dadosDaPagina().arranque || {}).colecoes;
+  if (doBuild && typeof doBuild === 'object') {
+    cards.forEach(c => {
+      const n = doBuild[c.dataset.colq];
+      const el = c.querySelector('[data-colcount]');
+      if (el && n) el.textContent = n.toLocaleString('pt-PT') + ' produtos comparados';
+    });
+    return;
+  }
+  // build antigo, sem as contagens: conta como antes
   // contagens quando o browser estiver livre (mesma lógica de match do catálogo)
   const later = window.requestIdleCallback || (fn => setTimeout(fn, 900));
   const contar = () => {
