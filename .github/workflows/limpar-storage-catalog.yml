@@ -7,6 +7,12 @@
 name: Limpar Storage (bucket catalog)
 
 on:
+  # De 30 em 30 min: enquanto o projeto estiver restringido dá 402 e sai sem
+  # erro; no momento em que o bloqueio sair (suporte ou 15/10) apaga o bucket,
+  # antes que o Supabase volte a medir. Depois de limpo, cada corrida é um no-op
+  # (bucket inexistente) — desligar este schedule quando o log disser "já está limpo".
+  schedule:
+    - cron: '*/30 * * * *'
   workflow_dispatch:
     inputs:
       apagar:
@@ -33,7 +39,9 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          if [ "${{ github.event.inputs.apagar }}" = "APAGAR" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            node scripts/limpar-storage-catalog.js --apagar --auto
+          elif [ "${{ github.event.inputs.apagar }}" = "APAGAR" ]; then
             node scripts/limpar-storage-catalog.js --apagar
           else
             node scripts/limpar-storage-catalog.js

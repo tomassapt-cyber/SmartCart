@@ -17,12 +17,18 @@ const URL_ = process.env.SUPABASE_URL;
 const KEY = process.env.SUPABASE_SERVICE_KEY;
 const BUCKET = 'catalog';
 const APAGAR = process.argv.includes('--apagar');
+// --auto (corrida agendada): 402 = ainda bloqueado → sai sem erro e tenta na próxima;
+// bucket inexistente = já está limpo → sai sem erro.
+const AUTO = process.argv.includes('--auto');
+class Bloqueado extends Error {}
+class NaoExiste extends Error {}
 const H = { apikey: KEY, Authorization: `Bearer ${KEY}`, 'content-type': 'application/json' };
 
 async function api(metodo, caminho, corpo) {
   const r = await fetch(`${URL_}/storage/v1/${caminho}`, { method: metodo, headers: H, body: corpo ? JSON.stringify(corpo) : undefined, signal: AbortSignal.timeout(60000) });
   const t = await r.text();
-  if (r.status === 402) throw new Error('402 — o projeto continua restringido (exceed_storage_size_quota). Tentar outra vez depois de o suporte levantar o bloqueio ou a 15/10.');
+  if (r.status === 402) throw new Bloqueado('402 — o projeto continua restringido (exceed_storage_size_quota). Tentar outra vez depois de o suporte levantar o bloqueio ou a 15/10.');
+  if ((r.status === 404 || r.status === 400) && /not.?found/i.test(t)) throw new NaoExiste(`bucket "${BUCKET}" não existe — já está limpo`);
   if (!r.ok) throw new Error(`${metodo} ${caminho}: HTTP ${r.status} ${t.slice(0, 200)}`);
   return t ? JSON.parse(t) : null;
 }
@@ -54,4 +60,7 @@ async function listar(prefixo = '') {
   }
   await api('DELETE', `bucket/${BUCKET}`);
   console.log(`✓ bucket "${BUCKET}" apagado (${mb.toFixed(0)} MB libertados)`);
-})().catch(e => { console.error('✗', e.message); process.exit(1); });
+})().catch(e => {
+  if (AUTO && (e instanceof Bloqueado || e instanceof NaoExiste)) { console.log('ℹ', e.message); return; }
+  console.error('✗', e.message); process.exit(1);
+});
