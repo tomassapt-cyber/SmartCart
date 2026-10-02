@@ -136,6 +136,15 @@ const imagens = repararImagens(seed);
 const imagensMexidas = imagens.codificadas + imagens.doCatalogo + imagens.retiradas;
 if (imagensMexidas) console.log(`🖼️  Imagens estragadas: ${imagens.codificadas} codificadas · ${imagens.doCatalogo} do catálogo da loja · ${imagens.retiradas} retiradas\n`);
 
+// 0e) LOJAS SEM CÓDIGO DE BARRAS (2026-10-02): produtos que só a Wells ou a
+//     SweetCare vendem, com um gémeo noutras lojas que o nome não apanha
+//     ("Aminexil Clinical REGEN Booster Hair Serum" ↔ "Dercos Aminexil Clinical
+//     Regen Booster Sérum 90mL"). Só se junta quando o tamanho e o preço batem
+//     com o das outras lojas. Medido: 40 produtos. Ver scripts/lib/juntar-sem-codigo.js.
+const { juntarSemCodigo } = require('./lib/juntar-sem-codigo');
+const semCodigo = juntarSemCodigo(seed);
+if (semCodigo.total) console.log(`🔗 Juntados pelo nome+preço (lojas sem EAN): ${semCodigo.total} · ${Object.entries(semCodigo.porLoja).map(([k, v]) => k + ':' + v).join(' ')}\n`);
+
 // 1) Agrupar products por fingerprint
 const groups = {};
 for (const p of seed.products) {
@@ -154,9 +163,9 @@ if (dupGroups.length === 0) {
   console.log('✅ Nenhum duplicado por fingerprint.');
   // Mesmo sem dups de fingerprint, se o EAN-collapse fundiu registos e
   // estamos em --apply, é preciso persistir o resultado.
-  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total || imagensMexidas)) {
+  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total || imagensMexidas || semCodigo.total)) {
     fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
-    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total} · imagens: ${imagensMexidas}).`);
+    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total} · imagens: ${imagensMexidas} · sem código: ${semCodigo.total}).`);
   }
   process.exit(0);
 }
