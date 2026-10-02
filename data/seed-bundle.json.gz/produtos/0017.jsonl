@@ -468,7 +468,7 @@
 {"ean":"5601653024716","name":"Creme Fixador Advancis Próteses Dm 40 g","brand":"Advancis","category":"skincare","image_url":"https://www.auchan.pt/dw/image/v2/BFRC_PRD/on/demandware.static/-/Sites-auchan-pt-master-catalog/default/dw8944f8d5/images/hi-res/004065979.jpg?sw=250&amp;sh=250&amp;sm=fit&amp;bgcolor=FFFFFF","_source":"auchan-catalog"}
 {"ean":"8436097096916","name":"Leite Corporal Byphasse Óleo De Argão 500 ml","brand":"Byphasse","category":"body","image_url":"https://www.auchan.pt/dw/image/v2/BFRC_PRD/on/demandware.static/-/Sites-auchan-pt-master-catalog/default/dw97e5f618/images/hi-res/004066094.jpg?sw=250&amp;sh=250&amp;sm=fit&amp;bgcolor=FFFFFF","_source":"auchan-catalog"}
 {"ean":"farmaciabemestar-2671089","name":"Fenivir 10mg/g-2g Creme Bisnaga Penciclovir","brand":"Fenivir","category":"skincare","image_url":"https://media.appsfarma.com/wemakeit/pt/267108937676.jpg","_source":"farmaciabemestar-catalog"}
-{"ean":"8888650407569","name":"Tiger Balm Neck & Shoulder Bálsamo 50g","brand":"Tiger Balm","category":"skincare","image_url":"https://www.lojashampoo.pt/image/cache/catalog/products/tiger_balm/8888650407569_main-800x800.jpg","_source":"lojashampoo-catalog"}
+{"ean":"8888650407569","name":"Tiger Balm Neck & Shoulder Bálsamo 50g","brand":"Tiger Balm","category":"skincare","image_url":"https://www.lojashampoo.pt/image/cache/catalog/products/tiger_balm/8888650407569_main-800x800.jpg","_source":"lojashampoo-catalog","description":"Bálsamo para aliviar dores musculares e desconforto no pescoço e ombros","description_source":"farmaciapt"}
 {"ean":"megafarma-7597427","name":"Carmex Stick Hid Lab Spf15 Banana 4.25g   X 1","brand":"Carmex","category":"skincare","image_url":"https://media.appsfarma.com/mendonca/2026/09/20260930181708_93000.webp","_source":"megafarma-catalog"}
 {"ean":"8008698001905","name":"Schär Wafers Creme Baunilha Sem Glúten 125g","brand":"Schar","category":"skincare","image_url":"https://media.appsfarma.com/mendonca/2024/08/20240814164443_13322.webp","_source":"megafarma-catalog"}
 {"ean":"3661434035128","name":"Pomada isolante e reparadora Uriage Bariederm 40 g","brand":"Uriage","category":"skincare","image_url":"https://assets.atida.com/transform/0a522095-0c59-4a3d-9c87-1ff46aa32278/Uriage-Bariederm-Unguento-Aislante-y-Reparador-40-gr","_source":"atida-catalog","description":"Pomada isolante e reparadora Uriage Bariederm 40 g Bálsamo reparador extra rico para calcanhares, joelhos, mãos e pele áspera nas mãos, dedos e calcanhares, bem como para fissuras e gretas nos mamilos durante a amamentação.","description_source":"atida"}
@@ -543,7 +543,6 @@
 {"ean":"farmaciapt-babaria-retinol-serum-anti-rugas-30ml","image_url":null,"_source":"farmaciapt-catalog"}
 {"ean":"farmaciapt-rilastil-sun-system-spray-transparente-spf50-200ml","image_url":null,"_source":"farmaciapt-catalog"}
 {"ean":"farmaciapt-bioderma-photoderm-ar-ultra-fluido-spf50-40ml","image_url":null,"_source":"farmaciapt-catalog"}
-{"ean":"farmaciapt-la-roche-posay-anthelios-dermo-pediatrics-spf50-le","image_url":null,"_source":"farmaciapt-catalog"}
 {"ean":"farmaciapt-beauty-of-joseon-glow-propolis-niacinamide-serum-i","image_url":null,"_source":"farmaciapt-catalog"}
 {"ean":"farmaciapt-svr-sebiaclear-agua-micelar-purificante-100ml","image_url":null,"_source":"farmaciapt-catalog"}
 {"ean":"farmaciapt-medi-peel-peptide-9-volume-tension-tox-creme-refir","image_url":null,"_source":"farmaciapt-catalog"}
@@ -559,7 +558,6 @@
 {"ean":"farmaciapt-medik8-advanced-night-restore-creme-de-noite-rejuv","image_url":null,"_source":"farmaciapt-catalog"}
 {"ean":"wells-7637916","name":"Condicionador Super Babosão Aloe Vera","brand":"Novex","category":"hair","image_url":"https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwba64df56/images/7637916-CORPO-CONDICIONADOR-SUPER-BABOSAO-ALOE-VERA-NOVEX-P-01.jpg","_source":"wells-catalog","_wells_product_id":"7637916","description":"O Condicionador Super Babosão Aloe Vera garante a nutrição necessária para um cabelo suave e saudável, para além de proporcionar um pentear fácil. Benefícios:. - Hidratação. - Repara&c","description_source":"wells"}
 {"ean":"wells-7753201","name":"Nutritive Masquintense Riche","brand":"Kérastase","category":"skincare","image_url":"https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwf8e9fa73/images/wells/775/7753201-OUTROS-MASCARA-CAPILAR-MASQUINTENSE-RICHE-KERASTASE-P-01.jpg","_source":"wells-catalog","_wells_product_id":"7753201","description":"Os cabelos grossos e secos precisam de um cuidado nutritivo de exceção, que consiga hidratar e reforçar a fibra capilar. Para estes cabelos, a Kerastase desenvolveu a Nutritive irisome masquintense máscara para cabelos grossos, que deixa os seus cabelos sedosos, brilhantes e sem…","description_source":"sweetcare"}
-{"ean":"vallispharma-a-derma-exomega-control-creme-de-noite-400ml","name":"A-Derma Exomega Control Creme de Noite 400ml","brand":"A-Derma","category":"skincare","image_url":"https://www.vallispharma.pt/uploads/produtos/A-Derma/260421-182342.png","_source":"vallispharma-catalog","description":"Creme hidratante e calmante de noite para pele seca ou atópica.","description_source":"farmaciapt"}
 {"ean":"3474637089719","name":"Redken Acidic Bonding Concentrate Shampoo 1000ml","brand":"Redken","category":"hair","image_url":"https://cdn.shopify.com/s/files/1/2203/9139/files/redken-acidic-bonding-concentrate-shampoo-1000ml.jpg?v=1700144540","_source":"pharmaciadocabelo-catalog","description":"Shampoo que repara, hidrata e protege o cabelo danificado em profundidade. Graças à sua fórmula com pH ácido e uma mistura de Ácido Cítrico e Tecnologia Bonding, o shampoo Acidic Bonding Concentrate oferece limpeza, uma reparação profunda, hidratação intensa e proteção contra…","description_source":"wells"}
 {"ean":"byfarma-absorvit-smart-neuro-30-ampolas","name":"Absorvit Smart Neuro 30 Ampolas","brand":"Absorvit","category":"skincare","image_url":"https://byfarma.pt/assets/captura20de20ecrc3a3202023-11-2820131135__02.png","_source":"byfarma-catalog","description":"Suplemento alimentar que ajuda na redução do cansaço e da fadiga e contribui para um desempenho mental normal.","description_source":"byfarma"}
 {"ean":"byfarma-absorvit-smart-extra-forte-30-ampolas","name":"Absorvit Smart Extra Forte 30 Ampolas ","brand":"Absorvit","category":"skincare","image_url":"https://byfarma.pt/assets/79327_3_farmodietica-absorvit-smart-extra-forte-30x10ml.jpg","_source":"byfarma-catalog","description":"Suplemento alimentar com vitamina B5 que contribui para um desempenho mental normal.","description_source":"byfarma"}
@@ -701,3 +699,69 @@
 {"ean":"farmaciasprogresso-mustela-bebe-promo-gigantes-leite-hidrat-corpo-pn-","name":"MUSTELA BEBÉ MOCHILA ZEBRA GIGANTES LEITE CORPO 750ML","brand":"Mustela","category":"body","image_url":"https://assets.farmaciasprogresso.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciasprogresso.pt/images/originals/6415228-higiene-mochila-verde-pinguins-com-creme-hidratante-mustela-p-01.webp","_source":"farmaciasprogresso-catalog"}
 {"ean":"farmacia365-svr-topialyse-creme-maos-50ml-stick-labial-48g","name":"SVR Topialyse Creme Mãos 50mL + Stick Labial 4,8g","brand":null,"category":"skincare","image_url":"https://www.farmacia365.pt/images/no-image.png","_source":"farmacia365-catalog"}
 {"ean":"lovemypharma-isdin-acniben-cc-cream-spf30","name":"Acniben CC+ Cream SPF30 Medium","brand":"Isdin","category":"skincare","image_url":"https://cdn.shopify.com/s/files/1/0601/5123/4757/files/7500173.jpg?v=1790591359","_source":"lovemypharma-catalog"}
+{"ean":"farmaciapt-apivita-aqua-beelicious-gel-creme-40ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-skinceuticals-blemish-age-defense-serum-30ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-weleda-citrus-o-leo-corporal-refrescante-100ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-ducray-keracnyl-repair-creme-hidratante-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-esthederm-excellage-creme-olhos-redensificante-15m","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-martiderm-pure-mask-mascara-purificante-75ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-sesderma-acglicolic-classic-leite-corporal-200ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-neostrata-redness-neutralising-serum-antivermelhid","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-sesderma-reti-age-creme-antienvelhecimento-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-vichy-homme-desodorizante-antitranspirante-control","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-mustela-creme-hidratante-calmante-rosto-sem-perfum","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-aveeno-skin-relief-loc-o-corporal-hidratante-500ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-nuxe-sun-leite-corpo-e-rosto-spf30-150ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-uriage-bariesun-bruma-solar-toque-seco-spf50-200ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-uriage-roseliane-creme-anti-vermelhid-o-spf30-40ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-heliocare-360-fluid-spf50-spray-solar-250ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-isdin-fotoprotetor-extrem-90-creme-solar-fps50-50m","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-lazartigue-serum-fortalecedor-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-sensilis-gentle-cleansing-mousse-espuma-de-limpeza","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-rene-furterer-neopur-shampoo-anticaspa-equilibrant","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-caudalie-vinergetic-c-oleo-de-noite-detox-30ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-heliocare-360-md-a-r-emulsion-spf50-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-isdin-psorisdin-smooth-creme-especifico-psoriase-5","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-martiderm-sun-care-spf50-active-d-locao-200ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-phyto-volume-condicionador-175ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-sensilis-supreme-booster-fece-serum-antioxidante-3","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-dexeryl-oleo-lavante-500ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-d-aveia-ceutics-hyaluronic-glow-spf15-creme-dia-50","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-skin-resist-sensage-serum-pele-reativa-30ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-rene-furterer-sublime-curl-shampoo-edicao-limitada","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-lierac-lift-integral-creme-pescoco-e-decote-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-phyto-esfoliante-capilar-purificante-200g","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-nuxe-hair-prodigieux-spray-leite-leave-in-100ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-rilastil-neoviderm-100-emuls-o-spf50-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-saforelle-gel-ultra-hidratante-recarga-400ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-iraltone-shampoo-fortificante","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-roger-gallet-fleur-de-figuier-creme-maos-e-unhas-3","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-nivea-men-creme-dia-power-anti-age-spf30-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-roger-gallet-jean-marie-farina-desodorizante-spray","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-lola-morte-subita-mascara-super-hidratante-cabelos","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-lola-densidade-shampoo-volumizador-250ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-dr-grandel-eye-make-up-remover-gel-desmaquilhante-","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-freshly-pacific-ocean-moisturizing-gel-hidratante-","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-erborian-bb-cream-clair-40ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-dr-grandel-timeless-nourishing-creme-anti-idade-nu","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-nivea-sun-anti-age-q10-protetor-solar-antienvelhec","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-erborian-cc-eye-cream-creme-corretor-olhos-tom-dou","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-reuzel-aftershave-locao-pos-barbear-wood-spice-100","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-the-ordinary-amino-acids-b5-serum-30ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-kerastase-gloss-absolu-coffret-anti-frizz-shampoo-","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-kerastase-nutritive-coffret-cabelos-secos-shampoo-","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-eucerin-dermo-capillaire-gel-shampoo-anti-caspa","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-anua-heartleaf-70-daily-lotion-locao-facial-hidrat","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-elmex-anti-caries-professional-junior-pasta-de-den","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-isdin-nutratopic-pro-amp-locao-corporal-emoliente-","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-bioderma-photoderm-spot-age-spf50-gel-creme","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-nivea-men-anti-age-hyaluron-spf30-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-celimax-dual-barrier-creamy-toner-hidratacao-inten","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-haruharu-wonder-black-rice-moisture-airyfit-protet","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-tocobo-multi-ceramide-cream-50ml","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-la-roche-posay-mela-b3-creme-de-olhos-anti-manchas","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-torriden-dive-in-agua-micelar-limpeza-e-hidratacao","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-vichy-neovadiol-longevity-serum-regenerador-anti-i","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-beauty-of-joseon-red-bean-pdrn-serum-de-poros-e-el","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-lierac-premium-creme-sedoso-50ml-oferta-creme-olho","image_url":null,"_source":"farmaciapt-catalog"}
+{"ean":"farmaciapt-invisibobble-everclaw-rosy-plateau-gancho-de-cabel","image_url":null,"_source":"farmaciapt-catalog"}
