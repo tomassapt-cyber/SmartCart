@@ -170,9 +170,16 @@ jobs:
     needs: catalog
     if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      # ⚠️ Faltava aqui (só estava no job dos chunks). Sem ele, cada integrate
+      # reconstruía a montra da homepage (+5-7 min) → 17 min por integrate; à
+      # 1.ª colisão no push o resilient-push re-integra e os 45 min acabavam a
+      # meio do 2.º. Resultado: de 30/09 a 02/10, 9 corridas seguidas (5 druni,
+      # 4 sweetcare) canceladas no "Commit" e nada chegou ao main. Os outros
+      # 96 workflows de loja já o tinham. Timeout 45 → 60 como margem.
+      COSMATH_SKIP_HP: '1'
 
     steps:
       - uses: actions/checkout@v4

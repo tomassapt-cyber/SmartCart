@@ -22,6 +22,8 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
+const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -68,11 +70,20 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
   console.log(`📦 Sweetcare full: ${swData.products.length} produtos`);
   console.log(`📦 Seed: ${seed.products.length} produtos, ${seed.stores.length} lojas\n`);
 
-  const swOk = swData.products.filter(p =>
-    p.status === 'ok' && p.name && p.price != null &&
-    CATEGORIES_FILTER.includes(p.category) &&
-    CATEGORY_MAP[p.category] != null
-  );
+  // Produto que JÁ está no site passa sempre (o filtro de foco só manda na
+  // CRIAÇÃO) — ver scripts/lib/ja-no-seed.js. Antes deitava-se fora a oferta
+  // de um produto existente só porque a categoria no catálogo vinha vazia.
+  const jaNoSeed = criarJaNoSeed(seed, isRealEan);
+  let jaExistentes = 0;
+  const swOk = swData.products.filter(p => {
+    if (!(p.status === 'ok' && p.name && p.price != null)) return false;
+    if (CATEGORIES_FILTER.includes(p.category) && CATEGORY_MAP[p.category] != null) return true;
+    // só ofertas vivas: uma esgotada não acrescenta nada à comparação e ocupa
+    // espaço na BD; se voltar a stock, entra na corrida seguinte
+    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { jaExistentes++; return true; }  // só junta oferta, nunca cria
+    return false;
+  });
+  if (jaExistentes) console.log(`   ＋ ${jaExistentes} fora do filtro mas JÁ no site (EAN/fingerprint) — oferta juntada, nenhum produto criado`);
   console.log(`✓ Sweetcare válidos: ${swOk.length}`);
   const toIntegrate = swOk.slice(0, MAX_PRODUCTS);
   if (MAX_PRODUCTS !== Infinity && toIntegrate.length < swOk.length) {
@@ -106,6 +117,8 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
   let upgradedEan = 0;
   const productsBefore = seed.products.length;
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'sweetcare');
+  let matchedByUrl = 0;
   for (const sp of toIntegrate) {
     let targetProduct = null;
     let matchSource = 'new';
@@ -140,6 +153,8 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
         }
       }
     }
+    // O URL já é oferta desta loja → é esse o produto (ver scripts/lib/produto-por-url.js)
+    if (!targetProduct) { const viaUrl = produtoPorUrl(sp.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
     if (!targetProduct) {
       const newEan = wantEan;
       targetProduct = {
@@ -172,6 +187,7 @@ function isRealEan(ean) { return /^\d{8,14}$/.test(ean || ''); }
   console.log('\n══════ Resumo ══════');
   console.log(`  Match por EAN real:                    ${matchedByEan}`);
   console.log(`  Match por fingerprint:                 ${matchedByFp}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                ${createdNew}`);
   console.log(`  EANs placeholder upgraded → GTIN:      ${upgradedEan}`);
   console.log(`  Sweetcare store_products: ${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);

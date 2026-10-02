@@ -151,6 +151,29 @@ function construirArranque(indice, seed) {
     const m = indice.brands[indice.b[i]] || '';
     if (m) porMarca[m] = (porMarca[m] || 0) + 1;
   }
+  // ── coleções da página inicial ("N produtos comparados") ──────────────────
+  // (2026-10-02) O cliente contava-as varrendo o catálogo inteiro, e por isso
+  // pedia o índice (1,3 MB) logo ao abrir a página — só para estes 4 números.
+  // Contam-se aqui com a MESMA regra do initCollections do demo.html (todas as
+  // palavras da consulta em _hnorm(nome + marca + categoria)), e as consultas
+  // vêm dos data-colq do próprio demo.html, para nunca desacertarem.
+  const hnorm = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  const colecoes = {};
+  try {
+    const consultas = [...new Set([...fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8')
+      .matchAll(/data-colq="([^"]+)"/g)].map(m => m[1]))];
+    for (const q of consultas) {
+      const toks = hnorm(q).split(/\s+/).filter(Boolean);
+      if (!toks.length) continue;
+      let n = 0;
+      for (let i = 0; i < indice.n; i++) {
+        const hay = hnorm(indice.nm[i] + ' ' + (indice.brands[indice.b[i]] || '') + ' ' + (indice.cats[indice.c[i]] || ''));
+        if (toks.every(t => hay.includes(t))) n++;
+      }
+      colecoes[q] = n;
+    }
+  } catch { /* sem demo.html → o cliente conta como antes */ }
+
   const marcasTop = Object.entries(porMarca)
     .sort((a, b) => b[1] - a[1]).slice(0, 40)
     .map(([nome, n]) => ({ nome, n }));
@@ -190,6 +213,7 @@ function construirArranque(indice, seed) {
     categorias: porCategoria,
     marcas: marcasTop,
     highlights,
+    colecoes,
     primeiros,
   };
 }
@@ -287,11 +311,25 @@ if (require.main === module) {
   vf.dropWrongProductVariants(seed);
   require('./dedup-ean-variants').mergeEanVariants(seed);
   require('./lib/promo-fold').foldPromoVariants(seed);
+  // blocklist de EAN errado — faltava aqui (2026-10-02): o inject esconde-as,
+  // mas o índice contava-as no nº de lojas e no "desde X€" do cartão
+  // (ex.: vaselina a 0,89 € no EAN da Filorga Time-Filler Mask).
+  try {
+    const bl = new Set((JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'offer-ean-blocklist.json'), 'utf8')).blocked || [])
+      .map(b => `${b.store_slug}|${b.ean}`));
+    for (const sp of seed.store_products) sp.items = sp.items.filter(it => !bl.has(`${sp.store_slug}|${it.ean}`));
+  } catch { /* sem blocklist → nada a esconder */ }
   require('./lib/ghost-offers').dropGhostOffers(seed);
   const cv = require('./lib/catalog-visibility');
   cv.dropRottenOffers(seed);
   cv.applyVisibilityFilter(seed, isNonCosmetic);
   require('./lib/name-cleanup').applyNameCleanup(seed);
+  // nomes PT (data/translations.json) — faltava aqui (2026-10-02): a BD e a
+  // ficha já os mostravam, mas os CARTÕES e a PESQUISA vêm deste índice e
+  // mostravam o nome original em espanhol/francês. Mesma ordem do inject
+  // (limpeza → tradução). As traduções nunca acrescentam um volume que o
+  // nome não tinha, por isso o volume de referência não muda.
+  require('./lib/name-translations').applyNameTranslations(seed, ROOT);
 
   const { indice, semOfertas } = construirIndice(seed);
 

@@ -209,6 +209,111 @@
       "ean": "3282770140781",
       "reason": "René Furterer Tonucia champô formato VIAGEM 50ml (5.01€ promo, verificado ao vivo) colado ao EAN do 500ml (crowd 14.51-18.95€) — auditoria de estreia da loja 70, 2026-07-23.",
       "added_at": "2026-07-23"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "3666057217296",
+      "reason": "Saro babete de silicone rosa (9.98€) publicado com o EAN da Clarins Loção Tónica Purificante (~30€).",
+      "url": "https://www.saudemayor.pt/saro-babete-silicone-liso-rosa-6m.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "3666057217272",
+      "reason": "Saro babete de silicone dinossauro (9.98€) publicado com o EAN da recarga Clarins Óleo Desmaquilhante (~30€).",
+      "url": "https://www.saudemayor.pt/saro-babete-silicone-bege-dinossauro.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "3666057217265",
+      "reason": "Saro babete de silicone mostarda (9.98€) publicado com o EAN da recarga Clarins Velvet Cleansing Milk.",
+      "url": "https://www.saudemayor.pt/saro-babete-silicone-mostarda-dinossauro.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "3574669909860",
+      "reason": "Olmitos kit 3 caixas (20.52€) publicado com o EAN do Johnson's Baby Spray Penteia Fácil 200ml (~6€).",
+      "url": "https://www.saudemayor.pt/olmitos-kit-3-caixas-lilas-gansos.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "7350092139304",
+      "reason": "Chupeta Bibs Lux (7.60€) publicada com o EAN de uma máscara facial de manuka honey.",
+      "url": "https://www.saudemayor.pt/bibs-lux-pacifier-chup-latex-0-m-cinza-rosa-.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "farmaciavirtual",
+      "ean": "3666057059896",
+      "reason": "Suavinex conjunto de esponjas konjac (10€) ligado ao EAN do Clarins Peeling Beauté Éclair (~36€).",
+      "url": "https://farmaciavirtual.pt/produto/suavinex-conjunto-esponjas-konjac/",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "farmaciavirtual",
+      "ean": "3666057012853",
+      "reason": "IDC Institute conjunto lima/tesoura/pinça (6.20€) ligado ao EAN do Clarins Total Eye Smooth 15ml (~48€).",
+      "url": "https://farmaciavirtual.pt/produto/idc-institute-conjunto-de-lima-tesoura-e-pinca/",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "farmaciavirtual",
+      "ean": "3380810228762",
+      "reason": "Nuvita biberão 250ml (9.50€) ligado ao EAN do Clarins Pinceau Poudre.",
+      "url": "https://farmaciavirtual.pt/produto/nuvita-mimic-cool-biberao-250-ml/",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "farmaciasprogresso",
+      "ean": "3264680043437",
+      "reason": "Nuxe Rêve de Miel/Rose sérum labial (23.49€) publicado com o EAN da Nuxe Água Micelar Very Rose 100ml (~7.60€).",
+      "url": "https://www.farmaciasprogresso.pt/nuxe-rese-serum-repulpante-labial-com-bolsa",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "pharmascalabis",
+      "ean": "3504105042691",
+      "reason": "Mustela Maternidade Creme Multifunções 200ml publicado com o EAN do Mustela BIO Leite Corporal.",
+      "url": "https://www.pharmascalabis.com/store/mustela-maternidade-creme-multifuncoes-200ml/",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "pharmascalabis",
+      "ean": "3578836119199",
+      "reason": "Arkofluido LipoPIC pó 3x270g (67€) publicado com o EAN do Arkofluido BIO Programa (~25€).",
+      "url": "https://www.pharmascalabis.com/store/arkofluido-lipopic-em-po-3x270g/",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "pharmee",
+      "ean": "8058664169221",
+      "reason": "Chicco Roca Panda publicado com o EAN do brinquedo Chicco Van Life.",
+      "url": "https://www.pharmeestore.com/pt/crianca/brinquedos/chicco-roca-panda-0-18m_p85794.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "3401325006444",
+      "reason": "Vaselina Basi Gel 20g (0.89€) publicada com o EAN da Filorga Time-Filler Mask (~13€).",
+      "url": "https://www.afarmaciaonline.pt/vaselina-basi-gel-20g.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "8470001568274",
+      "reason": "Seringas de insulina BD Micro Fine+ (9.02€) publicadas com o EAN do Clearblue Teste de Gravidez.",
+      "url": "https://www.afarmaciaonline.pt/bd-micro-fine-pl-ser-insul-0-5-ml-x-10.html",
+      "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "gofarma",
+      "ean": "3372290180524",
+      "reason": "Lazartigue Curl Specialist creme 250ml (23.14€) publicado com o EAN da Lazartigue Coloração Permanente 6.30 (~11€).",
+      "url": "https://www.go-farma.com/pt/cabelo/lazartigue/lazartigue-curl-specialist-creme-e-protecao-250ml_p1539.html",
+      "added_at": "2026-10-02"
     }
   ]
 }

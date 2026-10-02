@@ -8,6 +8,7 @@
  * Uso: node scripts/scrape-pharmee-catalog.js [--limit=N] [--resume]
  */
 const fs = require('fs');
+const { imagemDoJsonLd, imagemValida } = require('./lib/imagem-valida');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 const { fetchTextResilient } = require('./lib/resilient-fetch');
@@ -58,7 +59,7 @@ function extractProductData(html) {
       if (price == null || !isFinite(price) || price <= 0) return null;
       const in_stock = offer ? /InStock/i.test(offer.availability || '') : true;
       const brand = n.brand ? (typeof n.brand === 'string' ? n.brand : (n.brand.name || null)) : null;
-      const image_url = Array.isArray(n.image) ? n.image[0] : (typeof n.image === 'string' ? n.image : (n.image && n.image.url) || null);
+      const image_url = imagemDoJsonLd(n.image);
       return { name, brand, ean: gtin, cnp: skuRaw, image_url: image_url ? String(image_url).replace(/\\\//g, '/') : null, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
     }
   }
@@ -119,7 +120,8 @@ async function main() {
     while (i < queue.length) {
       const url = queue[i++];
       const r = await fetchPage(url); const scraped_at = new Date().toISOString();
-      if (r.status === 'ok') { const d = extractProductData(r.html); if (d) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; } else stats.skipped++; }
+      // a imagem vem relativa ("/api/api.php/getImage/…") → absoluta pelo URL da ficha
+      if (r.status === 'ok') { const d = extractProductData(r.html); if (d) { d.image_url = imagemValida(d.image_url, url); products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; } else stats.skipped++; }
       else if (r.status === 'not_found') stats.not_found++; else stats.error++;
       const total = stats.ok + stats.skipped + stats.not_found + stats.error;
       if (total % CHECKPOINT_EVERY === 0) { saveCheckpoint(products); const rate = total / ((Date.now() - start) / 1000); console.log(`  [${total}/${queue.length}] ok:${stats.ok} skip:${stats.skipped} 404:${stats.not_found} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round((queue.length - total) / rate / 60)}m`); }

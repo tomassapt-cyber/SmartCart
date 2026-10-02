@@ -134,8 +134,23 @@ function extractProductData(html, url) {
   const previous_price = (oldPrice && price && oldPrice > price * 1.01) ? oldPrice : null;
 
   // 5. Stock — Magento mostra 'In stock' ou 'Out of stock' em product-info-stock-sku
-  const inStock = /class="stock available"|in_stock|InStock/i.test(html) &&
-                  !/class="stock unavailable"|OutOfStock/i.test(html);
+  // ⚠️ (2026-10-02) Antes: "esgotado se aparecer OutOfStock em QUALQUER sítio
+  // da página". Os blocos de produtos relacionados trazem os seus próprios
+  // OutOfStock, e 81% do catálogo saía esgotado (3.616 de 4.476; 2.907 deles
+  // em stock em 3+ outras lojas). Confirmado ao vivo pelo sondar-acesso:
+  // Sesderma Resveraderm e Mustela óleo anti-estrias com product:availability
+  // "instock" e JSON-LD InStock, marcados esgotados.
+  // Agora manda o sinal do PRÓPRIO produto, por esta ordem:
+  //   1. <meta property="product:availability"> (só existe para o produto da página)
+  //   2. a 1.ª "availability" do JSON-LD (é a da oferta do produto principal)
+  //   3. a regra antiga, como último recurso
+  const metaAvail = html.match(/<meta property="product:availability" content="([^"]*)"/i);
+  const ldAvail = html.match(/"availability"\s*:\s*"[^"]*?(InStock|OutOfStock|PreOrder|BackOrder|Discontinued|SoldOut)"/i);
+  const inStock = metaAvail
+    ? /^\s*in\s*_?stock\s*$/i.test(metaAvail[1])
+    : ldAvail
+      ? /^(InStock|PreOrder|BackOrder)$/i.test(ldAvail[1])
+      : (/class="stock available"|in_stock|InStock/i.test(html) && !/class="stock unavailable"|OutOfStock/i.test(html));
 
   // 6. EAN — Farmácia.pt geralmente não expõe GTIN público
   // Tentamos meta product:retailer_item_id ou descrição

@@ -32,6 +32,8 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
+const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 const { classifyDermo } = require('./lib/dermo-classify');
 
@@ -115,15 +117,25 @@ function loadJSON(file) {
   //    SÃO dermo (Vichy Neovadiol, ISDIN Fotoprotector, géis de limpeza…) — a
   //    classifyDermo recupera-os pelo NOME. Aditivo: não remove nada do que já
   //    passava por slug; só ACRESCENTA os 'other' que o nome confirma dermo.
-  let recoveredByName = 0;
+  // Produto que JÁ está no site passa sempre (o filtro de foco só manda na
+  // CRIAÇÃO) — ver scripts/lib/ja-no-seed.js. Antes deitava-se fora a oferta
+  // de um produto existente só porque a categoria no catálogo vinha vazia.
+  // (Wells não dá EAN: o loop casa por fingerprint e depois por p.ean em
+  // qualquer formato — daí o eanValido que aceita tudo.)
+  const jaNoSeed = criarJaNoSeed(seed, () => true);
+  let recoveredByName = 0, jaExistentes = 0;
   const wellsOk = wellsData.products.filter(p => {
     if (p.status !== 'ok' || !p.name || p.price == null) return false;
     const slugCat = CATEGORIES_FILTER.includes(p.category) ? CATEGORY_MAP[p.category] : null;
     if (slugCat) { p._cat = slugCat; return true; }
     const nameCat = classifyDermo(p.name);   // 'skincare'|'hair'|'body'|null (dermo-only)
     if (nameCat) { p._cat = nameCat; recoveredByName++; return true; }
+    // só ofertas vivas: uma esgotada não acrescenta nada à comparação e ocupa
+    // espaço na BD; se voltar a stock, entra na corrida seguinte
+    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { jaExistentes++; return true; }  // só junta oferta, nunca cria
     return false;
   });
+  if (jaExistentes) console.log(`   ＋ ${jaExistentes} fora do filtro mas JÁ no site (fingerprint) — oferta juntada, nenhum produto criado`);
   console.log(`✓ Wells produtos válidos (dermo): ${wellsOk.length}  (recuperados por nome: ${recoveredByName})`);
 
   // 3) Ordenar: popular brands primeiro, depois por categoria
@@ -169,12 +181,16 @@ function loadJSON(file) {
   let storeProductsAdded = 0;
   let storeProductsUpdated = 0;
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'wells');
+  let matchedByUrl = 0;
   for (const wp of wellsToIntegrate) {
     // Determinar produto destino: prefer match fingerprint > EAN > criar novo
     const fp = productFingerprint(wp);
     let targetProduct = (fp && fpIndex[fp]) ||
                         (wp.ean && eanIndex[wp.ean]) ||
                         null;
+    // O URL já é oferta da Wells → é esse o produto (ver scripts/lib/produto-por-url.js)
+    if (!targetProduct) { const viaUrl = produtoPorUrl(wp.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
 
     if (!targetProduct) {
       // Criar novo product no seed
@@ -217,6 +233,7 @@ function loadJSON(file) {
   }
 
   console.log(`✓ Wells products matched existing (via fingerprint): ${mergedExisting}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`✓ Wells products novos criados: ${createdNew}`);
   console.log(`✓ Wells store_products: ${storeProductsAdded} added, ${storeProductsUpdated} updated`);
 

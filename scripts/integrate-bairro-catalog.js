@@ -30,6 +30,8 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand, fuzzyMatch, normalizeBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
+const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -93,12 +95,20 @@ function syntheticEan(p) {
   // Ofertas EXISTENTES nunca ficam presas ao filtro dermo (auditoria
   // 2026-07-03): URL com oferta nesta loja passa sempre — update de preço.
   const _existingUrls = new Set(((seed.store_products.find(g => g.store_slug === 'bairro-saude') || {}).items || []).map(it => it.url).filter(Boolean));
-  let keptKnown = 0;
+  // Produto que JÁ está no site passa sempre (o filtro de foco só manda na
+  // CRIAÇÃO) — ver scripts/lib/ja-no-seed.js. Antes deitava-se fora a oferta
+  // de um produto existente só porque a categoria no catálogo vinha vazia.
+  const jaNoSeed = criarJaNoSeed(seed, isRealEan);
+  let keptKnown = 0, jaExistentes = 0;
   let efToIntegrate = efData.products.filter(p => {
     if (ALLOWED_CATEGORIES.has(p.category)) return true;
     if (p.url && _existingUrls.has(p.url)) { keptKnown++; return true; }
+    // só ofertas vivas: uma esgotada não acrescenta nada à comparação e ocupa
+    // espaço na BD; se voltar a stock, entra na corrida seguinte
+    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { jaExistentes++; return true; }  // só junta oferta, nunca cria
     return false;
   });
+  if (jaExistentes) console.log(`   ＋ ${jaExistentes} fora do filtro mas JÁ no site (EAN/fingerprint) — oferta juntada, nenhum produto criado`);
   if (keptKnown) console.log(`   ↻ ${keptKnown} fora do filtro mas com oferta existente — mantidos p/ refresh`);
   console.log(`🎯 Filtro categoria (dermo focus): ${beforeFilter} → ${efToIntegrate.length} produtos`);
   console.log(`   (skip ${beforeFilter - efToIntegrate.length} de makeup/perfume/outros)\n`);
@@ -153,6 +163,8 @@ function syntheticEan(p) {
   // Para debug — guardar 20 amostras de fuzzy match para o user inspeccionar
   const fuzzySamples = [];
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'bairro-saude');
+  let matchedByUrl = 0;
   for (const ep of efToIntegrate) {
     let targetProduct = null;
     const fp = productFingerprint(ep);
@@ -189,6 +201,10 @@ function syntheticEan(p) {
     //   const fz = fuzzyMatch(ep, productsByBrand[normalizeBrand(ep.brand)] || [], 0.65);
     //   if (fz) { targetProduct = fz.product; matchedByFuzzy++; }
     // }
+
+    // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
+    //      ver scripts/lib/produto-por-url.js) ──
+    if (!targetProduct) { const viaUrl = produtoPorUrl(ep.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
 
     // ── 3. Não match → criar como novo (preferir EAN real do Bairro) ──
     if (!targetProduct) {
@@ -232,6 +248,7 @@ function syntheticEan(p) {
   console.log(`  Match por EAN real (GTIN):              ${matchedByEan}  (upgrades sintético→real: ${upgraded})`);
   console.log(`  Match por fingerprint exacto:           ${matchedByFp}`);
   console.log(`  Match por fuzzy (mesma marca + Jaccard):${matchedByFuzzy}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);
   console.log(`  Bairro da Saúde store_products:               +${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);
   console.log('');

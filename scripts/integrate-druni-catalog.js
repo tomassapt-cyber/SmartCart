@@ -26,6 +26,8 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
+const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -86,13 +88,20 @@ function isRealEan(ean) {
   console.log(`📦 Seed actual: ${seed.products.length} produtos, ${seed.stores.length} lojas\n`);
 
   // ── Filtrar Druni produtos válidos ──
-  const druniOk = druniData.products.filter(p =>
-    p.status === 'ok' &&
-    p.name &&
-    p.price != null &&
-    CATEGORIES_FILTER.includes(p.category) &&
-    CATEGORY_MAP[p.category] != null
-  );
+  // Produto que JÁ está no site passa sempre (o filtro de foco só manda na
+  // CRIAÇÃO) — ver scripts/lib/ja-no-seed.js. Antes deitava-se fora a oferta
+  // de um produto existente só porque a categoria no catálogo vinha vazia.
+  const jaNoSeed = criarJaNoSeed(seed, isRealEan);
+  let jaExistentes = 0;
+  const druniOk = druniData.products.filter(p => {
+    if (!(p.status === 'ok' && p.name && p.price != null)) return false;
+    if (CATEGORIES_FILTER.includes(p.category) && CATEGORY_MAP[p.category] != null) return true;
+    // só ofertas vivas: uma esgotada não acrescenta nada à comparação e ocupa
+    // espaço na BD; se voltar a stock, entra na corrida seguinte
+    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { jaExistentes++; return true; }  // só junta oferta, nunca cria
+    return false;
+  });
+  if (jaExistentes) console.log(`   ＋ ${jaExistentes} fora do filtro mas JÁ no site (EAN/fingerprint) — oferta juntada, nenhum produto criado`);
   console.log(`✓ Druni válidos: ${druniOk.length}`);
 
   const druniToIntegrate = druniOk.slice(0, MAX_PRODUCTS);
@@ -126,6 +135,8 @@ function isRealEan(ean) {
   let upgradedFromWellsEan = 0;
   const productsBefore = seed.products.length;
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'druni');
+  let matchedByUrl = 0;
   for (const dp of druniToIntegrate) {
     // 1) Match by real EAN (preferred)
     let targetProduct = null;
@@ -162,6 +173,10 @@ function isRealEan(ean) {
         }
       }
     }
+
+    // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
+    //      ver scripts/lib/produto-por-url.js) ──
+    if (!targetProduct) { const viaUrl = produtoPorUrl(dp.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
 
     // 3) Não existe → criar
     if (!targetProduct) {
@@ -205,6 +220,7 @@ function isRealEan(ean) {
   console.log('\n══════ Resumo da integração ══════');
   console.log(`  Match por EAN real (cross-store):       ${matchedByEan}`);
   console.log(`  Match por fingerprint (brand+name):     ${matchedByFp}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);
   console.log(`  Wells EANs upgraded → real GTIN:        ${upgradedFromWellsEan}`);
   console.log(`  Druni store_products: ${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);

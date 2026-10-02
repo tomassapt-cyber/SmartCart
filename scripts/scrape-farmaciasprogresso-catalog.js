@@ -11,6 +11,7 @@
  * Uso: node scripts/scrape-farmaciasprogresso-catalog.js [--limit=N] [--resume]
  */
 const fs = require('fs');
+const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 
@@ -71,7 +72,7 @@ function extractProductData(html) {
       const in_stock = offer ? /InStock/i.test(offer.availability || '') : true;
       const brand = n.brand ? (typeof n.brand === 'string' ? n.brand : (n.brand.name || null)) : null;
       let image_url = null;
-      { const im = Array.isArray(n.image) ? n.image[0] : (typeof n.image === 'string' ? n.image : (n.image && n.image.url) || null); image_url = im ? String(im) : null; }
+      { const im = imagemDoJsonLd(n.image); image_url = im ? String(im) : null; }
       return { name, brand, ean: gtin, cnp: skuRaw, image_url, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
     }
   }

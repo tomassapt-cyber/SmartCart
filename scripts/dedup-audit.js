@@ -99,6 +99,65 @@ function collapseByEan(seed) {
 const eanCollapsed = collapseByEan(seed);
 if (eanCollapsed) console.log(`🧹 EAN-collapse: ${eanCollapsed} registos com EAN duplicado fundidos (mesmo EAN = mesmo produto)\n`);
 
+// 0b) MARCA EM FALTA (2026-10-02): sem marca o fingerprint dá null e o produto
+//     nunca é agrupado — medido: 426 duplicados visíveis assim ("Sensibio
+//     Defensive Sérum" sem marca, 1 loja, ao lado do da Bioderma, 46 lojas).
+//     Deduz-se a marca do código da loja ou do início do nome, só para marcas
+//     já conhecidas (regras em scripts/lib/inferir-marca.js). Corre ANTES do
+//     agrupamento para que estes produtos entrem nos grupos abaixo.
+const { criarInferidorDeMarca } = require('./lib/inferir-marca');
+let marcasDeduzidas = 0;
+{
+  const inferirMarca = criarInferidorDeMarca(seed);
+  for (const p of seed.products) {
+    const m = inferirMarca(p);
+    if (m) { p.brand = m; marcasDeduzidas++; }
+  }
+  if (marcasDeduzidas) console.log(`🏷️  Marca deduzida (código da loja / início do nome): ${marcasDeduzidas} produtos sem marca\n`);
+}
+
+// 0c) OFERTAS PRESAS (2026-10-02): ofertas cujo URL o catálogo fresco da loja
+//     ainda tem (em stock, com preço) mas que ficaram >2 dias por refrescar —
+//     o catálogo deixou de trazer EAN para a ficha e o integrador já não a
+//     reconhecia; o site escondia-as por "podres". Medido: 3.801 ofertas,
+//     1.693 produtos com mais lojas. Ver scripts/lib/refrescar-por-url.js.
+//     Corre aqui porque o dedup-audit corre no fim de TODAS as integrações.
+const { refrescarOfertasPorUrl } = require('./lib/refrescar-por-url');
+const refrescadas = refrescarOfertasPorUrl(seed);
+if (refrescadas.total) console.log(`🔄 Ofertas presas refrescadas pelo URL (catálogo fresco da loja): ${refrescadas.total} · ${Object.entries(refrescadas.porLoja).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => k + ':' + v).join(' ')}\n`);
+
+// 0d) IMAGENS ESTRAGADAS (2026-10-02): "[object Object]", relativas
+//     ("/api/api.php/getImage/…"), placeholders e com espaços — o cartão ficava
+//     sem foto. Codifica-se, ou vai-se buscar a imagem ao catálogo de uma loja
+//     que vende o produto (pelo URL da oferta), ou fica null para outra fonte
+//     preencher. Ver scripts/lib/imagem-valida.js.
+const { repararImagens } = require('./lib/imagem-valida');
+const imagens = repararImagens(seed);
+const imagensMexidas = imagens.codificadas + imagens.doCatalogo + imagens.retiradas;
+if (imagensMexidas) console.log(`🖼️  Imagens estragadas: ${imagens.codificadas} codificadas · ${imagens.doCatalogo} do catálogo da loja · ${imagens.retiradas} retiradas\n`);
+
+// 0e) LOJAS SEM CÓDIGO DE BARRAS (2026-10-02): produtos que só a Wells ou a
+//     SweetCare vendem, com um gémeo noutras lojas que o nome não apanha
+//     ("Aminexil Clinical REGEN Booster Hair Serum" ↔ "Dercos Aminexil Clinical
+//     Regen Booster Sérum 90mL"). Só se junta quando o tamanho e o preço batem
+//     com o das outras lojas. Medido: 40 produtos. Ver scripts/lib/juntar-sem-codigo.js.
+const { juntarSemCodigo } = require('./lib/juntar-sem-codigo');
+const semCodigo = juntarSemCodigo(seed);
+if (semCodigo.total) console.log(`🔗 Juntados pelo nome+preço (lojas sem EAN): ${semCodigo.total} · ${Object.entries(semCodigo.porLoja).map(([k, v]) => k + ':' + v).join(' ')}\n`);
+
+// 0f) EAN RENOVADO (2026-10-02): o mesmo produto com dois EANs (a marca trocou
+//     o código; umas lojas listam o velho, outras o novo) aparecia em DOIS
+//     cartões, cada um com metade das lojas. A prova vem da própria loja: o URL
+//     da nossa oferta com o EAN velho dá agora o EAN novo no catálogo dela.
+//     Junta-se só quando marca, volumes, números (SPF, %), tom, forma, tipo e
+//     gama batem. Medido: 209 pares, 195 cartões com +1.369 lojas. O produto
+//     que fica guarda `eans_antigos` para absorver o velho se renascer.
+//     Ver scripts/lib/ean-renovado.js.
+const { juntarEansRenovados } = require('./lib/ean-renovado');
+const renovados = juntarEansRenovados(seed);
+const renovadosTotal = renovados.persistentes + renovados.novas;
+if (renovadosTotal) console.log(`♻️  EAN renovado: ${renovados.novas} pares novos (prova no catálogo da loja) · ${renovados.persistentes} reabsorvidos por eans_antigos\n`);
+
 // 1) Agrupar products por fingerprint
 const groups = {};
 for (const p of seed.products) {
@@ -117,9 +176,9 @@ if (dupGroups.length === 0) {
   console.log('✅ Nenhum duplicado por fingerprint.');
   // Mesmo sem dups de fingerprint, se o EAN-collapse fundiu registos e
   // estamos em --apply, é preciso persistir o resultado.
-  if (APPLY && !DRY_RUN && eanCollapsed) {
+  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total || imagensMexidas || semCodigo.total || renovadosTotal)) {
     fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
-    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (apenas EAN-collapse: ${eanCollapsed} registos).`);
+    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total} · imagens: ${imagensMexidas} · sem código: ${semCodigo.total} · EAN renovado: ${renovadosTotal}).`);
   }
   process.exit(0);
 }
@@ -187,6 +246,10 @@ for (const [fp, group] of dupGroups) {
     if (p === canonical) continue;
     eanRemap[p.ean] = canonical.ean;
     if (!canonical.image_url && p.image_url) canonical.image_url = p.image_url;
+    // EANs antigos (scripts/lib/ean-renovado.js) passam para o que fica
+    if (p.eans_antigos?.length) {
+      canonical.eans_antigos = [...new Set([...(canonical.eans_antigos || []), ...p.eans_antigos])].filter(e => e !== canonical.ean).sort();
+    }
   }
 }
 

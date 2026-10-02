@@ -18,6 +18,10 @@ on:
       urls:
         description: 'Endereços separados por espaço'
         required: true
+      procurar:
+        description: 'Opcional: padrão (regex grep -E, sem maiúsculas) — mostra até 6 ocorrências com o texto à volta'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -29,6 +33,7 @@ jobs:
       - name: Sondar
         env:
           URLS: ${{ github.event.inputs.urls }}
+          PROCURAR: ${{ github.event.inputs.procurar }}
         run: |
           UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36'
           for u in $URLS; do
@@ -37,4 +42,16 @@ jobs:
             inicio=$(head -c 160 /tmp/r 2>/dev/null | tr -d '\n\r' | tr -s ' ')
             echo "RESULTADO | $code | sinais de bloqueio: ${bloq:-0} | $u"
             echo "           início: $inicio"
+            # (2026-10-02) diagnóstico de extração: o texto à volta de cada
+            # ocorrência do padrão — ex.: ver que marcador de stock a página traz.
+            if [ -n "$PROCURAR" ]; then
+              # posição de cada ocorrência (grep -ob, rápido mesmo em páginas de
+              # vários MB) e depois o texto à volta com cut — o grep com contexto
+              # ".{0,140}(…).{0,140}" levava minutos por página e estourava o tempo.
+              tr -d '\n\r' < /tmp/r > /tmp/r1
+              grep -obiE "$PROCURAR" /tmp/r1 | head -6 | while IFS=: read -r pos achado; do
+                ini=$(( pos > 140 ? pos - 139 : 1 )); fim=$(( pos + ${#achado} + 140 ))
+                echo "           ▸ $(cut -c${ini}-${fim} /tmp/r1)"
+              done || true
+            fi
           done

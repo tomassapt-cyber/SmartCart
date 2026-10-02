@@ -183,6 +183,90 @@ function translateName(name, brandToks, esCtx) {
   return parts.join('');
 }
 
+// ── NOME PT DE OUTRA LOJA (2026-10-02) ─────────────────────────────────────
+// A passagem de cima só traduz quando reconhece TODAS as palavras; ficavam
+// 2.139 nomes visíveis em espanhol/francês (druni, primor, pharma-gdd…). Mas o
+// mesmo produto é vendido, muitas vezes, por lojas portuguesas — com o nome em
+// português. Escolhe-se o nome PT mais PARECIDO com o original (depois de
+// traduzido pelo DICT), para não herdar o nome de uma oferta mal ligada (ex.:
+// "Aceite Extraordinario 6 Flores" tinha uma oferta de um condicionador).
+//   • candidatos: nomes dos catálogos (data/catalog) das ofertas do produto;
+//   • o candidato tem de ser PT e não ES/FR; entidades HTML e "- Farmácia X"
+//     limpos; se o original não começa pela marca, tira-se a marca do início;
+//   • semelhança (Jaccard de tokens, sem marca nem conectores) ≥ 0,34 e, se
+//     ambos têm volume, o mesmo volume.
+const _sa = x => String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const RE_ES = /\b(crema|champu|leche|mascarilla|acondicionador|limpiador|aceite|jabon|locion|desmaquillante|cuerpo|piel|cabello|ojos|labios hidratante de|con|sin|y|del|los|las|para el|para la)\b/;
+const RE_FR = /\b(soin|lait|nettoyant|demaquillant|visage|corps|peaux?|cheveux|shampooing|masque|huile|baume|levres|apaisant|hydratante?|pour|sans|et|nuit|jour|eau)\b/;
+const RE_PT = /\b(creme|champo|leite|mascara|condicionador|limpeza|protetor|olhos|corpo|pele|cabelo|oleo|sabonete|locao|desmaquilhante|hidratante|para|com|sem|rosto|labios|gel|serum|agua|corporal|capilar|solar)\b/;
+const RE_PT_FORTE = /\b(champo|oleo|locao|labios|cabelo|mascara|olhos|limpeza|com|sem)\b/;
+function linguaDoNome(n) {
+  const t = _sa(n);
+  if (RE_ES.test(t) && !RE_PT_FORTE.test(t)) return 'es';
+  if (RE_FR.test(t) && !RE_PT_FORTE.test(t)) return 'fr';
+  return RE_PT.test(t) ? 'pt' : '?';
+}
+const FR_PT = { soin: 'cuidado', creme: 'creme', lait: 'leite', nettoyant: 'limpeza', demaquillant: 'desmaquilhante', visage: 'rosto', corps: 'corpo', cheveux: 'cabelo', shampooing: 'champo', masque: 'mascara', huile: 'oleo', baume: 'balsamo', levres: 'labios', hydratant: 'hidratante', hydratante: 'hidratante', apaisant: 'calmante', nuit: 'noite', jour: 'dia', eau: 'agua' };
+const CONECT = new Set(['de', 'do', 'da', 'dos', 'das', 'e', 'com', 'sem', 'para', 'en', 'el', 'la', 'los', 'las', 'del', 'y', 'con', 'sin', 'pour', 'et', 'le', 'les', 'des', 'du', 'au', 'a', 'o', 'ml', 'g', 'gr']);
+function tokensComparaveis(nome, marcaToks) {
+  const out = new Set();
+  for (const t0 of _sa(nome).split(/[^a-z0-9]+/)) {
+    if (!t0 || /^\d/.test(t0) || CONECT.has(t0) || marcaToks.has(t0)) continue;
+    const es = DICT[t0] ? _sa(DICT[t0]) : null;
+    out.add(es || FR_PT[t0] || t0);
+  }
+  return out;
+}
+function decodificar(n) {
+  return String(n || '').replace(/&#(\d+);/g, (_, d) => String.fromCharCode(+d))
+    .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
+    .replace(/\s+-\s+Farm[áa]cia\b.*$/i, '').replace(/\s*\.{3,}$|…$/, '').replace(/\s+/g, ' ').trim();
+}
+const _volNome = n => { const m = _sa(n).match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/); if (!m) return null; const v = parseFloat(m[1].replace(',', '.')); return (m[2] === 'l' || m[2] === 'kg') ? v * 1000 : v; };
+function nomesPtDeOutrasLojas(seed, jaTraduzidos, desta) {
+  const CAT = path.join(ROOT, 'data', 'catalog');
+  const nomePorUrl = new Map();
+  for (const f of fs.readdirSync(CAT)) {
+    if (!f.endsWith('-full.json')) continue;
+    let c; try { c = JSON.parse(fs.readFileSync(path.join(CAT, f), 'utf8')); } catch { continue; }
+    for (const p of c.products || []) if (p && p.url && p.name) nomePorUrl.set(p.url, p.name);
+  }
+  const cands = new Map();
+  for (const g of seed.store_products) for (const it of g.items) {
+    const n = nomePorUrl.get(it.url); if (n) (cands.get(it.ean) || cands.set(it.ean, []).get(it.ean)).push(n);
+  }
+  const emitir = {}; const amostra = []; let alvo = 0, semCandidato = 0, fracos = 0;
+  for (const p of seed.products) {
+    if (!p.name || !cands.has(p.ean) && !p.name) continue;
+    const mostrado = desta[p.ean] || jaTraduzidos[p.ean] || p.name;
+    const l = linguaDoNome(mostrado); if (l !== 'es' && l !== 'fr') continue;
+    alvo++;
+    const marca = decodificar(p.brand || '');
+    const marcaToks = new Set(_sa(marca).split(/[^a-z0-9]+/).filter(Boolean));
+    const base = tokensComparaveis(mostrado, marcaToks);
+    const vp = _volNome(mostrado);
+    let melhor = null, score = 0;
+    for (const c0 of new Set(cands.get(p.ean) || [])) {
+      let c = decodificar(c0);
+      if (linguaDoNome(c) !== 'pt' || c === mostrado) continue;
+      const vc = _volNome(c); if (vp && vc && Math.abs(vp - vc) / Math.max(vp, vc) > 0.06) continue;
+      const ct = tokensComparaveis(c, marcaToks); let i = 0; for (const t of ct) if (base.has(t)) i++;
+      const j = i / ((ct.size + base.size - i) || 1);
+      if (j > score) { score = j; melhor = c; }
+    }
+    if (!melhor) { semCandidato++; continue; }
+    if (score < 0.34) { fracos++; continue; }
+    // o volume do nome decide o volume de referência da comparação: nunca
+    // acrescentar um que o nome original não tinha
+    if (!vp) melhor = melhor.replace(/\s*[,\-–]?\s*\d+(?:[.,]\d+)?\s*(ml|gr|g|kg|l)\b\.?/gi, '').replace(/[\s,\-–]+$/, '').trim();
+    // estilo do original: se não começava pela marca, não a pôr
+    if (marca && !_sa(mostrado).startsWith(_sa(marca)) && _sa(melhor).startsWith(_sa(marca) + ' ')) melhor = melhor.slice(marca.length).trim();
+    emitir[p.ean] = melhor;
+    if (amostra.length < 40) amostra.push(`${mostrado}  →  ${melhor}   (${score.toFixed(2)})`);
+  }
+  return { emitir, amostra, alvo, semCandidato, fracos };
+}
+
 (function main() {
   const seed = JSON.parse(fs.readFileSync(SEED, 'utf8'));
   const overlay = JSON.parse(fs.readFileSync(TR, 'utf8'));
@@ -240,6 +324,12 @@ function translateName(name, brandToks, esCtx) {
   const topUnknown = Object.entries(unknownFreq).sort((a, b) => b[1] - a[1]).slice(0, 60);
   console.log('\n── Top 60 tokens DESCONHECIDOS (candidatos a DICT/SAFE) ──');
   console.log(topUnknown.map(([t, c]) => `${t}:${c}`).join('  '));
+
+  // ── 2.ª passagem (2026-10-02): NOME PT DE OUTRA LOJA ──────────────────────
+  const outras = nomesPtDeOutrasLojas(seed, overlay.names, clean);
+  console.log(`\n── Nome PT de outra loja do mesmo produto: ${Object.keys(outras.emitir).length} (de ${outras.alvo} nomes ES/FR; ${outras.semCandidato} sem nome PT noutra loja; ${outras.fracos} com candidatos pouco parecidos, ignorados) ──`);
+  for (const s of outras.amostra) console.log('  ' + s);
+  Object.assign(clean, outras.emitir);
 
   if (DRY_RUN) { console.log('\n[DRY-RUN] translations.json NÃO escrito.'); return; }
   let added = 0;

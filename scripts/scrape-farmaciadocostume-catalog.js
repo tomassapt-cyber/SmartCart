@@ -12,6 +12,7 @@
  * Uso: node scripts/scrape-farmaciadocostume-catalog.js [--limit=N] [--resume]
  */
 const fs = require('fs');
+const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 
@@ -73,7 +74,7 @@ function extractProductData(html) {
       const orig = html.match(/(https?:\/\/[^"'\s)]*images\/originals\/[^"'\s)]+\.(?:webp|jpe?g|png))/i);
       if (orig) image_url = orig[1];
       else if (skuRaw) image_url = BASE + '/images/originals/' + skuRaw + '.webp';
-      else { const im = Array.isArray(n.image) ? n.image[0] : (typeof n.image === 'string' ? n.image : (n.image && n.image.url) || null); image_url = im ? String(im) : null; }
+      else { const im = imagemDoJsonLd(n.image); image_url = im ? String(im) : null; }
       return { name, brand, ean: gtin, cnp: skuRaw, image_url, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
     }
   }

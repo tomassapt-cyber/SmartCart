@@ -20,6 +20,7 @@
  */
 
 const fs = require('fs');
+const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 
@@ -87,7 +88,7 @@ function extractProductData(html) {
       if (price == null || !isFinite(price) || price <= 0) return null;
       const in_stock = offer ? /InStock/i.test(offer.availability || '') : true;
       const brand = n.brand ? (typeof n.brand === 'string' ? n.brand : (n.brand.name || null)) : null;
-      let image_url = Array.isArray(n.image) ? n.image[0] : (typeof n.image === 'string' ? n.image : (n.image && n.image.url) || null);
+      let image_url = imagemDoJsonLd(n.image);
       if (!image_url) image_url = ((html.match(/property=["']og:image["'][^>]*content=["']([^"']+)/i) || [])[1]) || null;
       return { name, brand, ean, cnp: cnpFinal, image_url: image_url ? String(image_url).replace(/\\\//g, '/') : null, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
     }

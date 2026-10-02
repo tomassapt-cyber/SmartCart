@@ -30,6 +30,8 @@ if (chunkFiles.length === 0) {
 console.log(`📦 Merge de ${chunkFiles.length} chunk(s):`);
 
 const byUrl = new Map();
+const chunkScrapedAt = [];   // scraped_at de cada chunk (ver output abaixo)
+let chunkInProgress = false;
 let totalStats = { ok: 0, blocked: 0, no_jsonld: 0, error: 0 };
 
 for (const f of chunkFiles) {
@@ -41,6 +43,8 @@ for (const f of chunkFiles) {
     continue;
   }
   const products = data.products || [];
+  if (data.scraped_at) chunkScrapedAt.push(data.scraped_at);
+  if (data.in_progress === true) chunkInProgress = true;
   console.log(`  ${path.basename(f)}: ${products.length} produtos`);
 
   for (const p of products) {
@@ -67,7 +71,15 @@ Object.entries(byCat).sort((a, b) => b[1] - a[1]).forEach(([c, n]) =>
   console.log(`  ${String(c).padEnd(15)} ${n}`)
 );
 
+// scraped_at + in_progress (2026-10-02): sem eles o detetor de ofertas-
+// fantasma (scripts/lib/ghost-offers.js) saltava esta loja inteira ("catálogo
+// sem scraped_at") — uma das maiores do site. Conservador: o catálogo é tão
+// fresco como o chunk MAIS ANTIGO, e fica "em progresso" se algum chunk estiver
+// (ou se faltar a data a algum, por precaução).
+chunkScrapedAt.sort();
 const output = {
+  scraped_at: chunkScrapedAt.length === chunkFiles.length ? chunkScrapedAt[0] : null,
+  in_progress: chunkInProgress || chunkScrapedAt.length !== chunkFiles.length,
   merged_at: new Date().toISOString(),
   source_chunks: chunkFiles.map(f => path.basename(f)),
   total: merged.length,

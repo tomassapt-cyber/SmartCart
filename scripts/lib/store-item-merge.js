@@ -32,6 +32,28 @@ function isBlockedOffer(storeSlug, ean) {
 }
 
 /**
+ * Volume escrito no endereço da ficha ("…-creme-banho-500ml", "…-0-5l-rosa"),
+ * em ml/g. Só um número seguido de unidade e de separador — nunca IDs soltos
+ * (ex.: o "28800" de um URL da powerbeauty) — e só entre 1 e 5000.
+ */
+function volumeDoUrl(url) {
+  let u;
+  try { u = decodeURIComponent(String(url || '')); } catch { u = String(url || ''); }
+  u = u.toLowerCase();
+  // litros com decimal escrito por hífen nos slugs: "…-0-5l-…" = 0,5 L, "1-5l" = 1,5 L
+  const lt = u.match(/[-_/](\d)[-_.,](\d{1,2})[-_]?l(?=[-_./?#]|$)/);
+  if (lt) { const n = parseFloat(lt[1] + '.' + lt[2]) * 1000; return n > 0 && n <= 5000 ? n : null; }
+  const m = u.match(/[-_/](\d{1,4}(?:[.,]\d+)?)[-_]?(ml|gr|g|l)(?=[-_./?#]|$)/);
+  if (!m) return null;
+  // "…-7-5ml", "…-4-25g": decimal escrito por hífen OU dois números seguidos —
+  // ambíguo. Melhor sem variante do que com um volume errado.
+  if (/\d/.test(u[m.index - 1] || '')) return null;
+  let n = parseFloat(m[1].replace(',', '.'));
+  if (m[2] === 'l') n *= 1000;
+  return n > 0 && n <= 5000 ? n : null;
+}
+
+/**
  * Constrói o array de variants base a partir de um scraped product.
  * Inclui variants[] da página + a "main" variant (volume extraído do nome).
  */
@@ -52,8 +74,14 @@ function buildBaseVariants(sp) {
       url: v.url || sp.url || null,
     }));
 
-  // Garantir que a variant "main" (volume do nome + preço principal) está incluída
-  const mainVolume = extractVolumeMl(sp.name);
+  // Garantir que a variant "main" (volume do nome + preço principal) está incluída.
+  // Sem volume no nome, usa-se o do ENDEREÇO da ficha (2026-10-02): muitas lojas
+  // dão nomes curtos ("Phyto Volume", "Barral BabyProtect") mas o URL diz
+  // "…-500ml". Sem variante, a oferta entrava na comparação pelo preço tal como
+  // vinha — medido: 175 ofertas de OUTRO tamanho comparadas como se fossem do
+  // produto (Barral Creme Banho 100 ml com o preço do frasco de 500 ml), 81
+  // cartões com o intervalo de preço errado.
+  const mainVolume = extractVolumeMl(sp.name) || volumeDoUrl(sp.url);
   if (mainVolume && sp.price > 0 && !baseVariants.some(v => v.volume_ml === mainVolume)) {
     baseVariants.push({
       volume_ml: mainVolume,
@@ -275,4 +303,4 @@ function urlRefreshPass(state, products, scrapedAt, skip) {
   return { refreshed, usedUrls };
 }
 
-module.exports = { buildBaseVariants, upsertStoreItem, isBlockedOffer, urlRefreshPass };
+module.exports = { buildBaseVariants, upsertStoreItem, isBlockedOffer, urlRefreshPass, volumeDoUrl };

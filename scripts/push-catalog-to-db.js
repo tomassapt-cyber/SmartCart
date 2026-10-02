@@ -216,11 +216,14 @@ async function upsert(table, rows, onConflict) {
   // limpeza de nomes (2026-07-29): entidades HTML, loja colada no fim e
   // reticências — o mesmo overlay que o site aplica. Corre ANTES da tradução e
   // do search_norm, para a BD guardar (e indexar) o nome já limpo.
-  const { cleanNameSafe } = require("./lib/name-cleanup");
+  // (2026-10-02) com o contexto do catálogo: repara "�" e MAIÚSCULAS como o
+  // índice dos cartões, para a ficha mostrar o mesmo nome. A categoria e o
+  // filtro de cosmética continuam a ler o nome original.
+  const limparNome = require("./lib/name-cleanup").criarLimpezaDeNomes(seed);
   const nomesPT = loadNameTranslations(ROOT);
   let traduzidos = 0;
   const products = (seed.products || []).filter(p => p.ean && p.name && !isNonCosmetic(p.name)).map(p => {
-    const nomeLimpo = cleanNameSafe(p.name);
+    const nomeLimpo = limparNome(p.name);
     const nomePT = nomesPT[p.ean] && nomesPT[p.ean] !== nomeLimpo ? (traduzidos++, nomesPT[p.ean]) : nomeLimpo;
     const base = {
       ean: p.ean, name: nomePT, brand: p.brand || null, category: fixCategory(p.name, p.category),

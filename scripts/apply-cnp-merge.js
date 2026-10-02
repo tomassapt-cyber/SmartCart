@@ -73,13 +73,60 @@ const eanRemap = {};           // synth ean → canonical ean
 const refused = [];            // grupos-CNP recusados (conflito de EANs reais)
 const skippedBrand = [];       // grupos saltados por marca divergente
 const accepted = [];           // [cnp, canonicalEan, [mergedEans]]
+const rescuedInRefused = [];   // [cnp, eanReal, sintético] — resgates dentro de grupos recusados
+
+// Resgate de um sintético num grupo-CNP com ≥2 EANs reais. Só quando:
+//   • TODOS os EANs reais do grupo têm volume no nome (senão não há como excluir);
+//   • exatamente UM tem o mesmo volume (±6%) e marca compatível;
+//   • o nome é parecido (Jaccard dos tokens ≥ 0,4);
+//   • nenhum dos dois nomes fala de tom/cor (tons partilham CNP e volume);
+//   • os dois são pack ou os dois são unidade ("Duo 2x50ml" ≠ o de 50 ml).
+const { extractVolumeMl, canonicalName } = require('./lib/product-fingerprint');
+const TOM = /\b(tom|tons?|cor|cores|shade|teinte|escuro|claro|medio|médio|bronze|light|medium|dark|beige|ivory|nude|natural|n\.?º|nº)\b/i;
+const PACK = /\b(duo|trio|pack|kit|coffret|lote|conjunto)\b|\d\s*x\s*\d/i;
+const tokens = n => new Set(canonicalName(n || '', '').split('-').filter(t => t.length >= 3 && !/^\d+$/.test(t)));
+function jaccardNomes(a, b) {
+  const A = tokens(a), B = tokens(b); let i = 0;
+  for (const t of A) if (B.has(t)) i++;
+  return i / ((A.size + B.size - i) || 1);
+}
+function resgatarDentroDeRecusado(synth, realEans) {
+  const ps = productByEan[synth]; if (!ps) return null;
+  const vs = extractVolumeMl(ps.name || ''); if (!vs) return null;
+  const vols = realEans.map(r => extractVolumeMl((productByEan[r] || {}).name || ''));
+  if (vols.some(v => !v)) return null;
+  const bs = normalizeBrand(ps.brand);
+  const cands = realEans.filter((r, i) => {
+    const br = normalizeBrand((productByEan[r] || {}).brand);
+    return (!bs || !br || br === bs) && Math.abs(vols[i] - vs) / Math.max(vols[i], vs) <= 0.06;
+  });
+  if (cands.length !== 1) return null;
+  const pr = productByEan[cands[0]];
+  if (TOM.test(ps.name || '') || TOM.test(pr.name || '')) return null;
+  if (PACK.test(ps.name || '') !== PACK.test(pr.name || '')) return null;   // pack ≠ unidade
+  return jaccardNomes(ps.name, pr.name) >= 0.4 ? cands[0] : null;
+}
 
 for (const [cnp, set] of Object.entries(eansByCnp)) {
   if (set.size < 2) continue;
   const eans = [...set];
   const realEans = eans.filter(isRealEan);
-  // Regra 1: ≥2 EANs reais distintos → RECUSAR
-  if (realEans.length >= 2) { refused.push([cnp, eans]); continue; }
+  // Regra 1: ≥2 EANs reais distintos → RECUSAR o grupo…
+  if (realEans.length >= 2) {
+    refused.push([cnp, eans]);
+    // …mas (2026-10-02) um SINTÉTICO do grupo ainda pode ser resgatado se
+    // apontar para UM SÓ dos EANs reais sem ambiguidade. Medido: 2.324 grupos
+    // recusados com 1.912 sintéticos lá dentro — ex.: "Água Termal Calmante
+    // Refrescante 150 ml" (1 loja) ficava fora do Avène Água Termal 150 ml (44
+    // lojas) só porque o CNP também tinha os EANs de 50 e 300 ml. Ver
+    // resgatarDentroDeRecusado() para as guardas.
+    for (const e of eans) {
+      if (isRealEan(e) || eanRemap[e]) continue;
+      const alvo = resgatarDentroDeRecusado(e, realEans);
+      if (alvo) { eanRemap[e] = alvo; rescuedInRefused.push([cnp, alvo, e]); }
+    }
+    continue;
+  }
 
   // Regra 3: guarda de marca — todos os produtos têm de partilhar marca canónica.
   // Marcas GENÉRICAS (fabricante diversificado, "Sem Marca", etc.) são wildcard:
@@ -146,6 +193,10 @@ console.log(`  CNPs com ≥2 EANs:  ${Object.values(eansByCnp).filter(s => s.siz
 console.log(`    ├─ aceites (resgate seguro):  ${accepted.length}  → ${Object.keys(eanRemap).length} sintéticos remapeados`);
 console.log(`    ├─ recusados (≥2 EANs reais): ${refused.length}`);
 console.log(`    └─ saltados (marca divergente): ${skippedBrand.length}`);
+console.log(`  Sintéticos resgatados DENTRO de grupos recusados (1 só EAN real com o mesmo volume): ${rescuedInRefused.length}`);
+for (const [cnp, alvo, synth] of rescuedInRefused.slice(0, process.env.CNP_TODOS ? 1e9 : 8)) {
+  console.log(`    ${cnp}: "${((productByEan[synth] || {}).name || '').slice(0, 40)}" → ${alvo} "${((productByEan[alvo] || {}).name || '').slice(0, 40)}"`);
+}
 console.log('\n  Amostra de resgates aceites:');
 for (const [cnp, canon, merged] of accepted.slice(0, 15)) {
   const cn = (productByEan[canon] || {}).name || '?';

@@ -30,6 +30,8 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand, fuzzyMatch, normalizeBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
+const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 const { classifyDermo } = require('./lib/dermo-classify');
 
@@ -97,14 +99,22 @@ function syntheticEan(p) {
   // está no site (URL conhecido nesta loja), o preço TEM de continuar a
   // atualizar (auditoria 2026-07-03: 239 ofertas atida presas >7d por isto).
   const _existingUrls = new Set(((seed.store_products.find(g => g.store_slug === 'atida') || {}).items || []).map(it => it.url).filter(Boolean));
-  let keptKnown = 0;
+  // Produto que JÁ está no site passa sempre (o filtro de foco só manda na
+  // CRIAÇÃO) — ver scripts/lib/ja-no-seed.js. Antes deitava-se fora a oferta
+  // de um produto existente só porque a categoria no catálogo vinha vazia.
+  const jaNoSeed = criarJaNoSeed(seed, isRealEan);
+  let keptKnown = 0, jaExistentes = 0;
   let efToIntegrate = efData.products.filter(p => {
     if (ALLOWED_CATEGORIES.has(p.category)) { p._cat = p.category === 'haircare' ? 'hair' : p.category; return true; }
     const nameCat = classifyDermo(p.name);
     if (nameCat) { p._cat = nameCat; recoveredByName++; return true; }
     if (p.url && _existingUrls.has(p.url)) { p._cat = null; keptKnown++; return true; }  // update-only
+    // só ofertas vivas: uma esgotada não acrescenta nada à comparação e ocupa
+    // espaço na BD; se voltar a stock, entra na corrida seguinte
+    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { p._cat = null; jaExistentes++; return true; }  // só junta oferta, nunca cria
     return false;
   });
+  if (jaExistentes) console.log(`   ＋ ${jaExistentes} fora do filtro mas JÁ no site (EAN/fingerprint) — oferta juntada, nenhum produto criado`);
   if (keptKnown) console.log(`   ↻ ${keptKnown} produtos fora do filtro mas com oferta existente — mantidos p/ refresh de preço`);
   console.log(`🎯 Filtro categoria (dermo focus): ${beforeFilter} → ${efToIntegrate.length} produtos (recuperados por nome: ${recoveredByName})`);
   console.log(`   (skip ${beforeFilter - efToIntegrate.length} de makeup/perfume/outros)\n`);
@@ -161,6 +171,8 @@ function syntheticEan(p) {
   let matchedByEan = 0;
   let upgradedFromSynthetic = 0;
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'atida');
+  let matchedByUrl = 0;
   for (const ep of efToIntegrate) {
     // ── 0. Match por EAN real (preferencial — Atida dá GTIN-13) ──
     let targetProduct = null;
@@ -208,6 +220,10 @@ function syntheticEan(p) {
     //   if (fz) { targetProduct = fz.product; matchedByFuzzy++; }
     // }
 
+    // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
+    //      ver scripts/lib/produto-por-url.js) ──
+    if (!targetProduct) { const viaUrl = produtoPorUrl(ep.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
+
     // ── 3. Não match → criar como novo (preferir EAN real Atida) ──
     if (!targetProduct) {
       const newEan = isRealEan(ep.ean) ? ep.ean : syntheticEan(ep);
@@ -250,6 +266,7 @@ function syntheticEan(p) {
   console.log('══════ Resumo da integração ══════');
   console.log(`  Match por fingerprint exacto:           ${matchedByFp}`);
   console.log(`  Match por fuzzy (mesma marca + Jaccard):${matchedByFuzzy}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);
   console.log(`  Atida store_products:               +${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);
   console.log('');
