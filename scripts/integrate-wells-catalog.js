@@ -32,6 +32,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
 const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 const { classifyDermo } = require('./lib/dermo-classify');
@@ -180,12 +181,16 @@ function loadJSON(file) {
   let storeProductsAdded = 0;
   let storeProductsUpdated = 0;
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'wells');
+  let matchedByUrl = 0;
   for (const wp of wellsToIntegrate) {
     // Determinar produto destino: prefer match fingerprint > EAN > criar novo
     const fp = productFingerprint(wp);
     let targetProduct = (fp && fpIndex[fp]) ||
                         (wp.ean && eanIndex[wp.ean]) ||
                         null;
+    // O URL já é oferta da Wells → é esse o produto (ver scripts/lib/produto-por-url.js)
+    if (!targetProduct) { const viaUrl = produtoPorUrl(wp.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
 
     if (!targetProduct) {
       // Criar novo product no seed
@@ -228,6 +233,7 @@ function loadJSON(file) {
   }
 
   console.log(`✓ Wells products matched existing (via fingerprint): ${mergedExisting}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`✓ Wells products novos criados: ${createdNew}`);
   console.log(`✓ Wells store_products: ${storeProductsAdded} added, ${storeProductsUpdated} updated`);
 

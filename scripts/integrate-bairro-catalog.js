@@ -30,6 +30,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand, fuzzyMatch, normalizeBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
 const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
@@ -162,6 +163,8 @@ function syntheticEan(p) {
   // Para debug — guardar 20 amostras de fuzzy match para o user inspeccionar
   const fuzzySamples = [];
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'bairro-saude');
+  let matchedByUrl = 0;
   for (const ep of efToIntegrate) {
     let targetProduct = null;
     const fp = productFingerprint(ep);
@@ -198,6 +201,10 @@ function syntheticEan(p) {
     //   const fz = fuzzyMatch(ep, productsByBrand[normalizeBrand(ep.brand)] || [], 0.65);
     //   if (fz) { targetProduct = fz.product; matchedByFuzzy++; }
     // }
+
+    // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
+    //      ver scripts/lib/produto-por-url.js) ──
+    if (!targetProduct) { const viaUrl = produtoPorUrl(ep.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
 
     // ── 3. Não match → criar como novo (preferir EAN real do Bairro) ──
     if (!targetProduct) {
@@ -241,6 +248,7 @@ function syntheticEan(p) {
   console.log(`  Match por EAN real (GTIN):              ${matchedByEan}  (upgrades sintético→real: ${upgraded})`);
   console.log(`  Match por fingerprint exacto:           ${matchedByFp}`);
   console.log(`  Match por fuzzy (mesma marca + Jaccard):${matchedByFuzzy}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);
   console.log(`  Bairro da Saúde store_products:               +${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);
   console.log('');

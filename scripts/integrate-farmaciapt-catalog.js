@@ -30,6 +30,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand, fuzzyMatch, normalizeBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
 const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
@@ -192,6 +193,8 @@ function syntheticEan(p) {
   let matchedByEan = 0;
   let upgradedFromSynthetic = 0;
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'farmaciapt');
+  let matchedByUrl = 0;
   for (const ep of efToIntegrate) {
     // ── 0. Match por EAN real (preferencial — Farmácia.pt dá GTIN-13) ──
     let targetProduct = null;
@@ -239,6 +242,10 @@ function syntheticEan(p) {
     //   if (fz) { targetProduct = fz.product; matchedByFuzzy++; }
     // }
 
+    // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
+    //      ver scripts/lib/produto-por-url.js) ──
+    if (!targetProduct) { const viaUrl = produtoPorUrl(ep.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
+
     // ── 3. Não match → criar como novo (preferir EAN real Farmácia.pt) ──
     if (!targetProduct) {
       const newEan = isRealEan(ep.ean) ? ep.ean : syntheticEan(ep);
@@ -281,6 +288,7 @@ function syntheticEan(p) {
   console.log('══════ Resumo da integração ══════');
   console.log(`  Match por fingerprint exacto:           ${matchedByFp}`);
   console.log(`  Match por fuzzy (mesma marca + Jaccard):${matchedByFuzzy}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);
   console.log(`  Farmácia.pt store_products:               +${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);
   console.log('');

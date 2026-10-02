@@ -26,6 +26,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { criarProdutoPorUrl } = require('./lib/produto-por-url');
 const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
 
@@ -134,6 +135,8 @@ function isRealEan(ean) {
   let upgradedFromWellsEan = 0;
   const productsBefore = seed.products.length;
 
+  const produtoPorUrl = criarProdutoPorUrl(seed, 'druni');
+  let matchedByUrl = 0;
   for (const dp of druniToIntegrate) {
     // 1) Match by real EAN (preferred)
     let targetProduct = null;
@@ -170,6 +173,10 @@ function isRealEan(ean) {
         }
       }
     }
+
+    // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
+    //      ver scripts/lib/produto-por-url.js) ──
+    if (!targetProduct) { const viaUrl = produtoPorUrl(dp.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
 
     // 3) Não existe → criar
     if (!targetProduct) {
@@ -213,6 +220,7 @@ function isRealEan(ean) {
   console.log('\n══════ Resumo da integração ══════');
   console.log(`  Match por EAN real (cross-store):       ${matchedByEan}`);
   console.log(`  Match por fingerprint (brand+name):     ${matchedByFp}`);
+  console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);
   console.log(`  Wells EANs upgraded → real GTIN:        ${upgradedFromWellsEan}`);
   console.log(`  Druni store_products: ${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);
