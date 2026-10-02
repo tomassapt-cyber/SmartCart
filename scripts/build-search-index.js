@@ -287,6 +287,14 @@ if (require.main === module) {
   vf.dropWrongProductVariants(seed);
   require('./dedup-ean-variants').mergeEanVariants(seed);
   require('./lib/promo-fold').foldPromoVariants(seed);
+  // blocklist de EAN errado — faltava aqui (2026-10-02): o inject esconde-as,
+  // mas o índice contava-as no nº de lojas e no "desde X€" do cartão
+  // (ex.: vaselina a 0,89 € no EAN da Filorga Time-Filler Mask).
+  try {
+    const bl = new Set((JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'offer-ean-blocklist.json'), 'utf8')).blocked || [])
+      .map(b => `${b.store_slug}|${b.ean}`));
+    for (const sp of seed.store_products) sp.items = sp.items.filter(it => !bl.has(`${sp.store_slug}|${it.ean}`));
+  } catch { /* sem blocklist → nada a esconder */ }
   require('./lib/ghost-offers').dropGhostOffers(seed);
   const cv = require('./lib/catalog-visibility');
   cv.dropRottenOffers(seed);
