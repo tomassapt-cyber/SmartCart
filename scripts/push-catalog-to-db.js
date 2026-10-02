@@ -14,8 +14,11 @@
  *   • headline apenas (variantes = Fase 2);
  *   • lotes de 1000 linhas; retry simples; --dry-run valida payloads local.
  *
+ * Desde 2026-10-02 é INCREMENTAL: só envia o que mudou e apaga pelo nome o
+ * que saiu (scripts/lib/db-sync-estado.js; o estado vive na cache do Actions).
+ *
  * Uso:
- *   node scripts/push-catalog-to-db.js [--dry-run] [--batch=1000]
+ *   node scripts/push-catalog-to-db.js [--dry-run [--gravar-estado]] [--completo] [--batch=1000]
  */
 const fs = require('fs');
 const path = require('path');
@@ -300,7 +303,37 @@ async function upsert(table, rows, onConflict) {
 
   if (semLoja) console.log(`  ⚠ ${semLoja} ofertas de lojas ausentes de seed.stores — ignoradas (FK)`);
   console.log(`📦 payloads: ${stores2.length} lojas · ${products2.length} produtos · ${offers2.length} ofertas · ${variants2.length} variantes (blocklist aplicada)`);
-  if (DRY) { console.log('🧪 --dry-run: nada enviado.'); return; }
+  // ── SYNC INCREMENTAL (2026-10-02) ───────────────────────────────────────
+  // Só se envia o que mudou desde o último sync bem-sucedido e apaga-se PELO
+  // NOME o que saiu (ver scripts/lib/db-sync-estado.js). --completo força o
+  // comportamento antigo (reescrever tudo + limpar por carimbo).
+  const E = require('./lib/db-sync-estado');
+  const projeto = URL_ || 'sem-projeto';
+  const payloads = { stores: stores2, products: products2, offers: offers2, offer_variants: hasVariants ? variants2 : null };
+  const PK = { stores: 'slug', products: 'ean', offers: 'store_slug,ean', offer_variants: 'store_slug,ean,volume_ml' };
+  let anterior = null, criadoEm = null, modo = 'COMPLETO';
+  if (!args.completo) {
+    const { estado, motivo } = E.carregar(projeto);
+    if (estado) { anterior = estado.tabelas; criadoEm = estado.criado_em; modo = 'incremental (estado do último sync)'; }
+    else {
+      console.log(`  estado: ${motivo}`);
+      if (!DRY && URL_ && KEY) {
+        try {
+          const colunas = Object.fromEntries(Object.entries(payloads).map(([t, rows]) => [t, rows && rows.length ? Object.keys(rows[0]) : null]));
+          anterior = await E.lerDaBD(URL_, KEY, colunas);
+          criadoEm = new Date().toISOString(); modo = 'incremental (estado lido da BD)';
+        } catch (e) { console.warn(`  ⚠ não consegui ler o estado da BD (${e.message}) — sync COMPLETO desta vez.`); anterior = null; }
+      }
+    }
+  }
+  const dif = {};
+  for (const [t, rows] of Object.entries(payloads)) if (rows) dif[t] = E.diferencas(t, rows, anterior && anterior[t] ? anterior[t] : null);
+  console.log(`🔁 sync ${modo}: ` + Object.entries(dif).map(([t, d]) => `${t} ${d.enviar.length}/${payloads[t].length} a enviar · ${d.apagar.length} a apagar`).join(' | '));
+
+  if (DRY) {
+    if (args['gravar-estado']) console.log(`  estado gravado (${(E.guardar(projeto, Object.fromEntries(Object.entries(dif).map(([t, d]) => [t, d.atual]))) / 1048576).toFixed(1)} MB)`);
+    console.log('🧪 --dry-run: nada enviado.'); return;
+  }
   if (!URL_ || !KEY) { console.log('ℹ Sem SUPABASE_URL/SERVICE_KEY — sync saltado (Fase 1 ainda não ativada).'); return; }
 
   // GUARDRAIL anti-apagão (auditoria): se o seed vier truncado (scraper de uma
@@ -308,12 +341,8 @@ async function upsert(table, rows, onConflict) {
   // de ofertas vivas da BD pública. Se o payload tem < 80% do que a BD já tem,
   // fazemos os UPSERTS mas SALTAMOS as limpezas (ofertas stale sobrevivem 1
   // ciclo — muito melhor que apagar uma loja inteira).
-  // FALHA FECHADA (auditoria 2026-07-25): antes, QUALQUER falha a obter o count
-  // (5xx, timeout, rede) deixava countBD=0 → a condição não disparava → o
-  // guardrail desligava-se em SILÊNCIO e a purga corria à mesma. E não é
-  // teórico: este endpoint já devolveu 500 (statement timeout do PostgREST) —
-  // ou seja, o guardrail desarmava-se exactamente quando a BD está com
-  // problemas. Agora: sem count fiável → NÃO se limpa nada e diz-se porquê.
+  // FALHA FECHADA (auditoria 2026-07-25): sem count fiável → NÃO se limpa nada
+  // e diz-se porquê (este endpoint já devolveu 500 com a BD em apuros).
   // (select=ean em vez de select=count: o agregado obriga a dois varrimentos
   // completos da tabela e é o que provoca os timeouts.)
   let skipPurge = false;
@@ -333,34 +362,57 @@ async function upsert(table, rows, onConflict) {
     console.warn(`  ⛔ GUARDRAIL: falha a contar as ofertas na BD (${e.message}) — limpezas SALTADAS por precaução.`);
   }
 
-  await upsert('stores', stores2, 'slug');
-  await upsert('products', products2, 'ean');
-  await upsert('offers', offers2, 'store_slug,ean');
-  if (hasVariants && variants2.length) await upsert('offer_variants', variants2, 'store_slug,ean,volume_ml');
-
-  // apagar o que saiu do seed (não tocado neste run). Ordem por FK: variantes →
-  // ofertas → produtos. Status VERIFICADO (auditoria 2026-07-24: uma limpeza
-  // falhada terminava com "✓ completo"); um DELETE que falha aborta o sync.
-  async function purge(table) {
-    const r = await fetch(`${URL_}/rest/v1/${table}?synced_at=lt.${encodeURIComponent(runTs)}`, {
-      method: 'DELETE', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' }, signal: AbortSignal.timeout(60000),
-    });
-    if (r.status >= 400) throw new Error(`limpeza ${table}: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
-    console.log(`  limpeza ${table} saídas: HTTP ${r.status} ✓`);
+  for (const t of ['stores', 'products', 'offers', 'offer_variants']) {
+    if (dif[t] && dif[t].enviar.length) await upsert(t, dif[t].enviar, PK[t]);
+    else if (dif[t]) console.log(`  = ${t}: nada mudou`);
   }
-  if (skipPurge) {
-    console.log('  ⛔ limpezas saltadas pelo guardrail (ofertas stale sobrevivem 1 ciclo).');
+
+  // o estado a guardar no fim: o que ficou na BD
+  const novo = Object.fromEntries(Object.entries(dif).map(([t, d]) => [t, d.atual]));
+  const manter = (t, chaves) => { for (const k of chaves) novo[t][k] = anterior[t][k]; };   // continuam na BD
+
+  if (anterior) {
+    // incremental: apagar pelo nome. Ordem por FK: variantes → ofertas → produtos.
+    // As lojas nunca se apagam (o ON DELETE CASCADE levaria as ofertas todas).
+    if (dif.stores) manter('stores', dif.stores.apagar);
+    if (skipPurge) {
+      console.log('  ⛔ limpezas saltadas pelo guardrail — ficam no estado para a próxima corrida.');
+      for (const t of ['offer_variants', 'offers', 'products']) if (dif[t] && anterior[t]) manter(t, dif[t].apagar);
+    } else {
+      for (const t of ['offer_variants', 'offers', 'products']) {
+        if (!dif[t] || !dif[t].apagar.length) continue;
+        const n = await E.apagarPorChave(URL_, KEY, t, dif[t].apagar);
+        console.log(`  ✓ apagadas de ${t}: ${dif[t].apagar.length} linhas que saíram (${n} pedidos)`);
+      }
+    }
   } else {
-    if (hasVariants) await purge('offer_variants');
-    await purge('offers');
-    // produtos-fantasma: um produto que saiu do seed nunca era apagado e ficava
-    // no topo do catálogo com n_stores/min_price congelados (auditoria). products
-    // usa updated_at (é o carimbo do upsert deste run).
-    const r = await fetch(`${URL_}/rest/v1/products?updated_at=lt.${encodeURIComponent(runTs)}`, {
-      method: 'DELETE', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' }, signal: AbortSignal.timeout(60000),
-    });
-    if (r.status >= 400) throw new Error(`limpeza products: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
-    console.log(`  limpeza products fantasma: HTTP ${r.status} ✓`);
+    // completo: tudo foi reescrito com o carimbo deste run → limpar pelo carimbo,
+    // como antes. Status VERIFICADO (auditoria 2026-07-24): um DELETE que falha
+    // aborta o sync em vez de terminar com "✓ completo".
+    async function purge(table, col) {
+      const r = await fetch(`${URL_}/rest/v1/${table}?${col}=lt.${encodeURIComponent(runTs)}`, {
+        method: 'DELETE', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'return=minimal' }, signal: AbortSignal.timeout(60000),
+      });
+      if (r.status >= 400) throw new Error(`limpeza ${table}: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
+      console.log(`  limpeza ${table} saídas: HTTP ${r.status} ✓`);
+    }
+    if (skipPurge) {
+      console.log('  ⛔ limpezas saltadas pelo guardrail (ofertas stale sobrevivem 1 ciclo).');
+    } else {
+      if (hasVariants) await purge('offer_variants', 'synced_at');
+      await purge('offers', 'synced_at');
+      // produtos-fantasma: um produto que saiu do seed nunca era apagado e ficava
+      // no topo do catálogo com n_stores/min_price congelados (auditoria).
+      await purge('products', 'updated_at');
+    }
+  }
+
+  // Guardar o estado SÓ no fim de um sync que correu todo. Num sync completo com
+  // as limpezas saltadas a BD tem linhas que o estado não conhece — não guardar,
+  // e a próxima corrida volta a ler a BD.
+  if (anterior || !skipPurge) {
+    const bytes = E.guardar(projeto, novo, criadoEm);
+    console.log(`  estado guardado para o próximo sync: ${(bytes / 1048576).toFixed(1)} MB`);
   }
 
   // verificação: contagens na BD

@@ -66,11 +66,33 @@ jobs:
         with:
           node-version: '22'
 
+      # Sync INCREMENTAL (2026-10-02): o estado do último sync bem-sucedido
+      # (impressão digital de cada linha que ficou na BD, ~5 MB) passa de corrida
+      # em corrida pela cache do Actions. Com ele o sync envia só o que mudou
+      # (~1% das ofertas) em vez de reescrever 470 mil linhas 12x/dia, que era o
+      # que inchava a BD. Sem ele (cache expirada, 1.ª corrida) o script lê a BD
+      # uma vez e continua incremental. Ver scripts/lib/db-sync-estado.js.
+      - name: Estado do último sync (cache)
+        uses: actions/cache/restore@v4
+        with:
+          path: .db-sync-estado
+          key: db-sync-estado-${{ github.run_id }}
+          restore-keys: db-sync-estado-
+
       - name: Push catalog to DB
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: node scripts/push-catalog-to-db.js
+
+      # Só depois de um sync que correu todo — um estado de um sync falhado
+      # diria que estão na BD linhas que não chegaram lá.
+      - name: Guardar o estado do sync (cache)
+        if: success() && hashFiles('.db-sync-estado/estado.json.gz') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .db-sync-estado
+          key: db-sync-estado-${{ github.run_id }}
 
       # ── Fase 2b (snapshot no Supabase Storage): DESLIGADA a 2026-10-02 ──────
       # Cada sync enviava ~110 MB com nomes novos (hash) e NUNCA apagava as
