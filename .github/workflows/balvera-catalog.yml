@@ -23,6 +23,10 @@ on:
         description: 'Limite de produtos (vazio = todos) — para testar'
         required: false
         default: ''
+      so_integrar:
+        description: 'sim = NÃO raspar; integrar o data/catalog/balvera-full.json que o PC empurrou'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -59,7 +63,13 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      # SÓ-PC: a Cloudflare bloqueia a recolha nos runners. O PC recolhe e empurra
+      # só o ficheiro cru (1 MB, pela API — um instante); a integração e a
+      # publicação correm aqui. No PC a re-integração demorava ~10 min por
+      # tentativa e perdia sempre a corrida contra os ~12 commits/hora dos bots
+      # (2026-10-02: 3 rejeições seguidas).
       - name: Scrape Balvera
+        if: github.event.inputs.so_integrar == ''
         run: |
           if [ -n "${{ github.event.inputs.limite }}" ]; then
             node scripts/scrape-balvera-catalog.js --limite=${{ github.event.inputs.limite }}
