@@ -300,6 +300,12 @@ if (require.main === module) {
   cv.dropRottenOffers(seed);
   cv.applyVisibilityFilter(seed, isNonCosmetic);
   require('./lib/name-cleanup').applyNameCleanup(seed);
+  // nomes PT (data/translations.json) — faltava aqui (2026-10-02): a BD e a
+  // ficha já os mostravam, mas os CARTÕES e a PESQUISA vêm deste índice e
+  // mostravam o nome original em espanhol/francês. Mesma ordem do inject
+  // (limpeza → tradução). As traduções nunca acrescentam um volume que o
+  // nome não tinha, por isso o volume de referência não muda.
+  require('./lib/name-translations').applyNameTranslations(seed, ROOT);
 
   const { indice, semOfertas } = construirIndice(seed);
 

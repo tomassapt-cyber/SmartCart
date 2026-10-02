@@ -61,11 +61,17 @@ vf.fixTruncatedVariantPrices(seed);
 vf.dropWrongProductVariants(seed);
 require('./dedup-ean-variants').mergeEanVariants(seed);
 require('./lib/promo-fold').foldPromoVariants(seed);
+// blocklist — a mesma do build-search-index (2026-10-02)
+try {
+  const bl = new Set((JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'offer-ean-blocklist.json'), 'utf8')).blocked || []).map(b => `${b.store_slug}|${b.ean}`));
+  for (const sp of seed.store_products) sp.items = sp.items.filter(it => !bl.has(`${sp.store_slug}|${it.ean}`));
+} catch { /* sem blocklist */ }
 require('./lib/ghost-offers').dropGhostOffers(seed);
 const cv = require('./lib/catalog-visibility');
 cv.dropRottenOffers(seed);
 cv.applyVisibilityFilter(seed, isNonCosmetic);
 require('./lib/name-cleanup').applyNameCleanup(seed);
+require('./lib/name-translations').applyNameTranslations(seed, ROOT);   // idem
 
 // ── correr as funções do SITE ──────────────────────────────────────────────
 const ctx = {
