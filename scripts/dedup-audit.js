@@ -116,6 +116,16 @@ let marcasDeduzidas = 0;
   if (marcasDeduzidas) console.log(`🏷️  Marca deduzida (código da loja / início do nome): ${marcasDeduzidas} produtos sem marca\n`);
 }
 
+// 0c) OFERTAS PRESAS (2026-10-02): ofertas cujo URL o catálogo fresco da loja
+//     ainda tem (em stock, com preço) mas que ficaram >2 dias por refrescar —
+//     o catálogo deixou de trazer EAN para a ficha e o integrador já não a
+//     reconhecia; o site escondia-as por "podres". Medido: 3.801 ofertas,
+//     1.693 produtos com mais lojas. Ver scripts/lib/refrescar-por-url.js.
+//     Corre aqui porque o dedup-audit corre no fim de TODAS as integrações.
+const { refrescarOfertasPorUrl } = require('./lib/refrescar-por-url');
+const refrescadas = refrescarOfertasPorUrl(seed);
+if (refrescadas.total) console.log(`🔄 Ofertas presas refrescadas pelo URL (catálogo fresco da loja): ${refrescadas.total} · ${Object.entries(refrescadas.porLoja).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => k + ':' + v).join(' ')}\n`);
+
 // 1) Agrupar products por fingerprint
 const groups = {};
 for (const p of seed.products) {
@@ -134,9 +144,9 @@ if (dupGroups.length === 0) {
   console.log('✅ Nenhum duplicado por fingerprint.');
   // Mesmo sem dups de fingerprint, se o EAN-collapse fundiu registos e
   // estamos em --apply, é preciso persistir o resultado.
-  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas)) {
+  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total)) {
     fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
-    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas}).`);
+    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total}).`);
   }
   process.exit(0);
 }
