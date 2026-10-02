@@ -145,6 +145,19 @@ const { juntarSemCodigo } = require('./lib/juntar-sem-codigo');
 const semCodigo = juntarSemCodigo(seed);
 if (semCodigo.total) console.log(`🔗 Juntados pelo nome+preço (lojas sem EAN): ${semCodigo.total} · ${Object.entries(semCodigo.porLoja).map(([k, v]) => k + ':' + v).join(' ')}\n`);
 
+// 0f) EAN RENOVADO (2026-10-02): o mesmo produto com dois EANs (a marca trocou
+//     o código; umas lojas listam o velho, outras o novo) aparecia em DOIS
+//     cartões, cada um com metade das lojas. A prova vem da própria loja: o URL
+//     da nossa oferta com o EAN velho dá agora o EAN novo no catálogo dela.
+//     Junta-se só quando marca, volumes, números (SPF, %), tom, forma, tipo e
+//     gama batem. Medido: 209 pares, 195 cartões com +1.369 lojas. O produto
+//     que fica guarda `eans_antigos` para absorver o velho se renascer.
+//     Ver scripts/lib/ean-renovado.js.
+const { juntarEansRenovados } = require('./lib/ean-renovado');
+const renovados = juntarEansRenovados(seed);
+const renovadosTotal = renovados.persistentes + renovados.novas;
+if (renovadosTotal) console.log(`♻️  EAN renovado: ${renovados.novas} pares novos (prova no catálogo da loja) · ${renovados.persistentes} reabsorvidos por eans_antigos\n`);
+
 // 1) Agrupar products por fingerprint
 const groups = {};
 for (const p of seed.products) {
@@ -163,9 +176,9 @@ if (dupGroups.length === 0) {
   console.log('✅ Nenhum duplicado por fingerprint.');
   // Mesmo sem dups de fingerprint, se o EAN-collapse fundiu registos e
   // estamos em --apply, é preciso persistir o resultado.
-  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total || imagensMexidas || semCodigo.total)) {
+  if (APPLY && !DRY_RUN && (eanCollapsed || marcasDeduzidas || refrescadas.total || imagensMexidas || semCodigo.total || renovadosTotal)) {
     fs.writeFileSync(SEED_BUNDLE, JSON.stringify(seed), 'utf8');
-    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total} · imagens: ${imagensMexidas} · sem código: ${semCodigo.total}).`);
+    console.log(`\n✓ Escrito ${SEED_BUNDLE.replace(ROOT, '.')} (EAN-collapse: ${eanCollapsed} registos · marcas deduzidas: ${marcasDeduzidas} · ofertas refrescadas: ${refrescadas.total} · imagens: ${imagensMexidas} · sem código: ${semCodigo.total} · EAN renovado: ${renovadosTotal}).`);
   }
   process.exit(0);
 }
@@ -233,6 +246,10 @@ for (const [fp, group] of dupGroups) {
     if (p === canonical) continue;
     eanRemap[p.ean] = canonical.ean;
     if (!canonical.image_url && p.image_url) canonical.image_url = p.image_url;
+    // EANs antigos (scripts/lib/ean-renovado.js) passam para o que fica
+    if (p.eans_antigos?.length) {
+      canonical.eans_antigos = [...new Set([...(canonical.eans_antigos || []), ...p.eans_antigos])].filter(e => e !== canonical.ean).sort();
+    }
   }
 }
 
