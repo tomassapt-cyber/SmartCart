@@ -1,0 +1,40 @@
+# CosMath — apagar o bucket "catalog" do Supabase Storage (manual)
+# ============================================================
+# O snapshot do db-sync encheu o Storage (1.703 ficheiros, 1.952 MB) e o
+# Supabase restringiu o projeto a 2026-10-02. Ver scripts/limpar-storage-catalog.js.
+# Só funciona quando a API de Storage voltar a responder (o bloqueio dá 402).
+
+name: Limpar Storage (bucket catalog)
+
+on:
+  workflow_dispatch:
+    inputs:
+      apagar:
+        description: 'Escrever APAGAR para apagar mesmo (vazio = só contar)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  limpar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Limpar
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.apagar }}" = "APAGAR" ]; then
+            node scripts/limpar-storage-catalog.js --apagar
+          else
+            node scripts/limpar-storage-catalog.js
+          fi
