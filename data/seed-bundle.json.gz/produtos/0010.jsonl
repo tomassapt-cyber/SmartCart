@@ -4400,7 +4400,6 @@
 {"ean":"bemecare-photoderm-bioderm-aquaf-spf50scor40ml","name":"Photoderm Bioderma Aquafluide SPF50+ S/Cor 40ml","brand":null,"category":"skincare","image_url":null,"_source":"bemecare-catalog"}
 {"ean":"bemecare-dexeryl-cr-500gdesc-25","name":"Dexeryl Creme Emoliente 500g + Desconto 25% (incluido no pvp)","brand":"Dexeryl","category":"skincare","image_url":null,"_source":"bemecare-catalog"}
 {"ean":"bemecare-caudalie-vinosun-agua-sol-spf50150ml","name":"Caudalie Vinosun Agua Solar SPF50+ 150ml","brand":"Caudalie","category":"skincare","image_url":"https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwb88bee1c/images/wells/774/7741365-SOLARES-CORPO-AGUA-SOLAR-SPF50-VINOSUN-CAUDALIE-P-01.jpg","_source":"bemecare-catalog"}
-{"ean":"bemecare-caudalie-vinosun-spray-inv-spf3050ml","name":"Caudalie Vinosun Spray Invisivel Spf30 150ml","brand":"Caudalie","category":"skincare","image_url":null,"_source":"bemecare-catalog"}
 {"ean":"bemecare-nuxe-sun-spray-spf5050ml","name":"Nuxe Sun Spray Solar Spf 50+ 150ml","brand":"Nuxe","category":"skincare","image_url":null,"_source":"bemecare-catalog"}
 {"ean":"bemecare-svr-spirial-gel-deo-duche-400ml","name":"Svr Spirial Gel Deo Duche 400ml","brand":null,"category":"body","image_url":null,"_source":"bemecare-catalog"}
 {"ean":"bemecare-apivita-capilar-ch-tonific-homem-250ml","name":"Apivita Capilar Champo Tonificante Homem 250ml","brand":"Apivita","category":"hair","image_url":null,"_source":"bemecare-catalog"}
@@ -4998,3 +4997,4 @@
 {"ean":"camelo-uriage-bariesun-cr-minerale-spf50-100ml","name":"Uriage Bariesun Cr Minerale Spf50+ 100ml","brand":"Uriage","category":"skincare","image_url":"https://www.farmaciacamelo.pt/files/products/prod-6880773.png","_source":"camelo-catalog"}
 {"ean":"camelo-uriage-ds-champo-suave-equilibrio-500ml","name":"URIAGE DS Champ&ocirc; Suave Equilíbrio - 500ml","brand":"Uriage","category":"hair","image_url":"https://www.farmaciacamelo.pt/files/products/prod-6337360.png","_source":"camelo-catalog"}
 {"ean":"camelo-uriage-hyseac-tonico-purificante-250-ml","name":"Uriage Hyseac &ndash; Tónico Purificante 250 mL","brand":"Uriage","category":"skincare","image_url":"https://www.farmaciacamelo.pt/files/products/prod-6457754.png","_source":"camelo-catalog"}
+{"ean":"camelo-uriage-hyseac-hydra-creme-apaziguante-40ml","name":"URIAGE Hyseac Hydra Creme Apaziguante - 40ml","brand":"Uriage","category":"skincare","image_url":"https://www.farmaciacamelo.pt/files/products/prod-6610915.png","_source":"camelo-catalog"}
