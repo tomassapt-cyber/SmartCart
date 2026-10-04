@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-03T09:31:47.805Z",
-  "seed_total_products": 84721,
+  "generated_at": "2026-10-04T10:08:53.306Z",
+  "seed_total_products": 84764,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -111,10 +111,10 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 4.3,
-      "best_store": "Farmácia do Costume",
-      "best_store_slug": "farmaciadocostume",
-      "best_url": "https://www.farmaciadocostume.pt/neutrogena-formula-norueguesa-maos-promo-creme-concentrado-stick-labial.html"
+      "best_price": 3.96,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-creme-maos-concentrado-+-stick-labial_p13679.html"
     },
     {
       "ean": "3574661874951",
@@ -147,14 +147,14 @@
       "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
     },
     {
-      "ean": "8431567751968",
-      "name": "La Roche-Posay Mela B3 Coffret Cuidado Anti-Manchas Sérum + Creme + Protetor Solar",
+      "ean": "8431567752002",
+      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a87361f588e4_la-roche-posay-mela-b3-coffret-1_1.jpg",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
       "best_price": 37.25,
       "best_store": "Farmácia 365",
       "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-mela-b3-serum-coffret-natal-2026"
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-suractivated-serum-coffret-natal-2026"
     }
   ],
   "em_alta": [
@@ -172,19 +172,6 @@
       "discount_pct": 25,
       "dropped_day": 20720,
       "verified_live": true
-    },
-    {
-      "ean": "8470001691880",
-      "name": "Isdin Ureadin Fusion Soro Antirrugas Lift",
-      "brand": "Isdin",
-      "image_url": "https://assets.atida.com/transform/accba0d5-13ad-482b-98f6-1507d260c2ad/Isdin-Ureadin-Fusion-Serum-Lift-Antiarrugas-30-ml",
-      "best_price": 30.22,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/isdin/ureadin-fusion-antiarrugas-serum-lift/p_918800/",
-      "previous_price": 41.26,
-      "discount_pct": 25,
-      "dropped_day": 20719
     },
     {
       "ean": "3282770152715",
@@ -229,11 +216,11 @@
     },
     {
       "name": "Nivea",
-      "products": 789
+      "products": 790
     },
     {
       "name": "La Roche-Posay",
-      "products": 785
+      "products": 786
     },
     {
       "name": "Eucerin",
@@ -279,7 +266,7 @@
   ],
   "stats": {
     "stores": 98,
-    "products": 69015,
+    "products": 68917,
     "avg_savings_pct": 30
   },
   "shard_version": "",
