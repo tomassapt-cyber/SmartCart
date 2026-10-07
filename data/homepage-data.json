@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-04T10:08:53.306Z",
-  "seed_total_products": 84764,
+  "generated_at": "2026-10-07T10:09:09.860Z",
+  "seed_total_products": 84890,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
@@ -27,10 +27,10 @@
       "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
       "brand": "Vichy",
       "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 8.84,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/dercos-champo-anticaspa-para-cabelos-secos-200-ml"
+      "best_price": 9.04,
+      "best_store": "MegaFarma",
+      "best_store_slug": "megafarma",
+      "best_url": "https://megafarma.pt/pt-pt/product/vichy-dercos-champo-anti-caspa-caspa-seca-200ml"
     },
     {
       "ean": "3606000560833",
@@ -141,7 +141,7 @@
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 12.62,
+      "best_price": 12.65,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
@@ -159,52 +159,60 @@
   ],
   "em_alta": [
     {
-      "ean": "3282770108965",
-      "name": "René Furterer Forticea Champô Energizante",
-      "brand": "René Furterer",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/r/f/rfforticea500ml.jpg",
-      "best_price": 4.43,
-      "best_store": "Farmaciasdirect",
-      "best_store_slug": "farmaciasdirect",
-      "best_url": "https://www.farmaciasdirect.pt/products/rene-furterer-forticea-energizing-shampoo-50-ml",
-      "volume_ml": 50,
-      "previous_price": 6.85,
-      "discount_pct": 25,
-      "dropped_day": 20720,
-      "verified_live": true
-    },
-    {
-      "ean": "3282770152715",
-      "name": "René Furterer Naturia Shampoo Seco Sem Enxágue",
-      "brand": "René Furterer",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/1/7100040_renefurterernaturiashampooseco200ml.jpeg",
-      "best_price": 5.82,
-      "best_store": "SweetCare",
-      "best_store_slug": "sweetcare",
-      "best_url": "https://www.sweetcare.pt/rene-furterer-naturia-shampoo-seco-uso-frequente-p-002126rf",
-      "volume_ml": 75,
-      "previous_price": 7.76,
-      "discount_pct": 25,
-      "dropped_day": 20720
-    },
-    {
-      "ean": "8029352355943",
-      "name": "Hydration Nourishing Hair Mask",
-      "brand": "Sendo",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638233396801610253/sendo-018254sc_01.jpg",
-      "best_price": 10.44,
+      "ean": "3401395614172",
+      "name": "Bioderma Sensibio H2O Água Micelar",
+      "brand": "Bioderma",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
+      "best_price": 3.32,
       "best_store": "Atida | Mifarma PT",
       "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/sendo-mascara-nutritiva-200-ml",
-      "previous_price": 13.05,
-      "discount_pct": 16,
-      "dropped_day": 20720
+      "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
+    },
+    {
+      "ean": "3337875798181",
+      "name": "Anthelios 100 Ka+Med",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797854.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 19.26,
+      "best_store": "A Farmácia Online",
+      "best_store_slug": "afarmaciaonline",
+      "best_url": "https://www.afarmaciaonline.pt/lrposay-anthelios-ka-med-creme-50ml.html"
+    },
+    {
+      "ean": "8431567644116",
+      "name": "Cofre Mineral 89",
+      "brand": "Vichy",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802259.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 19.95,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/cofre-mineral-89-vichy-hidratacao-profunda"
+    },
+    {
+      "ean": "3337875549493",
+      "name": "Effaclar Duo+ SPF30",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 11.66,
+      "best_store": "Cocooncenter",
+      "best_store_slug": "cocooncenter",
+      "best_url": "https://www.cocooncenter.pt/la-roche-posay-effaclar-duo-spf30-40-ml/30944.html"
+    },
+    {
+      "ean": "3337875863377",
+      "name": "Effaclar Duo +M",
+      "brand": "La Roche-Posay",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 11.99,
+      "best_store": "Pharma GDD",
+      "best_store_slug": "pharma-gdd",
+      "best_url": "https://www.pharma-gdd.com/fr/la-roche-posay-effaclar-duo-soin-anti-imperfections"
     }
   ],
   "top_brands": [
     {
       "name": "Avène",
-      "products": 862
+      "products": 863
     },
     {
       "name": "Isdin",
@@ -212,11 +220,11 @@
     },
     {
       "name": "Clarins",
-      "products": 823
+      "products": 824
     },
     {
       "name": "Nivea",
-      "products": 790
+      "products": 791
     },
     {
       "name": "La Roche-Posay",
@@ -224,15 +232,15 @@
     },
     {
       "name": "Eucerin",
-      "products": 750
+      "products": 751
     },
     {
       "name": "L'Oréal Paris",
-      "products": 725
+      "products": 724
     },
     {
       "name": "Bioderma",
-      "products": 687
+      "products": 683
     }
   ],
   "telegram_alerts": [
@@ -266,7 +274,7 @@
   ],
   "stats": {
     "stores": 98,
-    "products": 68917,
+    "products": 68736,
     "avg_savings_pct": 30
   },
   "shard_version": "",
