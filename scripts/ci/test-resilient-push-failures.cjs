@@ -4,7 +4,7 @@ const cp=require('node:child_process');
 const assert=require('node:assert/strict');
 const root=__dirname;
 const target=path.resolve(process.argv[2]||path.join(root,'resilient-push.sh')).replaceAll('\\','/');
-const bash=process.env.TEST_BASH || 'C:/Program Files/Git/bin/bash.exe';
+const bash=process.env.TEST_BASH || (process.platform==='win32'?'C:/Program Files/Git/bin/bash.exe':'bash');
 let failures=0;
 for(const fail of ['none','fetch','reset','unpack','integrate','pack','add','commit']){
   const runner=`
@@ -33,6 +33,7 @@ for(const fail of ['none','fetch','reset','unpack','integrate','pack','add','com
     else assert.ok(result.status !== null && result.status !== 0,`${fail}: unexpected exit ${result.status}`);
     if(fail!=='none'){
       const marker=fail==='unpack'||fail==='pack'?`seed:${fail}`:fail==='integrate'?'integrate':`git:${fail}`;
+      assert.ok(result.stderr.includes(marker),'failure operation was not reached');
       const after=result.stderr.split(marker).slice(1).join(marker);
       assert.ok(!after.includes('git:push'),`${fail}: published after failed operation`);
     }
