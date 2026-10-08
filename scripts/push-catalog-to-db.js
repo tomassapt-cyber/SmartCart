@@ -441,3 +441,4 @@ async function upsert(table, rows, onConflict) {
   }
   console.log('✓ sync completo.');
 })().catch(e => { console.error('✗ sync falhou:', e.message); process.exit(1); });
+
