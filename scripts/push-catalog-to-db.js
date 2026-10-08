@@ -424,18 +424,21 @@ async function upsert(table, rows, onConflict) {
     }
   }
 
-  // Guardar o estado SÓ no fim de um sync que correu todo. Num sync completo com
+  // Confirmar as contagens antes de guardar o estado. Um HTTP 402/500 ou uma
+  // resposta sem contagem não pode terminar como sync verde com cache nova.
+  const { verificarContagens } = require('./lib/db-sync-contagens');
+  const contagens = await verificarContagens(URL_, KEY, {
+    stores: stores2.length, products: products2.length, offers: offers2.length,
+  });
+  for (const [t, n] of Object.entries(contagens)) console.log(`  BD ${t}: ${n} linhas`);
+
+  // Guardar o estado SÓ no fim de um sync verificado. Num sync completo com
   // as limpezas saltadas a BD tem linhas que o estado não conhece — não guardar,
   // e a próxima corrida volta a ler a BD.
   if (anterior || !skipPurge) {
     const bytes = E.guardar(projeto, novo, criadoEm);
     console.log(`  estado guardado para o próximo sync: ${(bytes / 1048576).toFixed(1)} MB`);
   }
-
-  // verificação: contagens na BD
-  for (const t of ['stores', 'products', 'offers']) {
-    const r = await fetch(`${URL_}/rest/v1/${t}?select=count`, { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, Prefer: 'count=exact', Range: '0-0' } });
-    console.log(`  BD ${t}: ${r.headers.get('content-range')}`);
-  }
   console.log('✓ sync completo.');
 })().catch(e => { console.error('✗ sync falhou:', e.message); process.exit(1); });
+
