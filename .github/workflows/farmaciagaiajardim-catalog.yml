@@ -74,7 +74,7 @@ jobs:
       # ofertas das outras ~800 até à corrida seguinte.
       - name: Integrate into seed
         if: github.event.inputs.limite == ''
-        run: node scripts/integrate-farmaciagaiajardim-catalog.js
+        run: node scripts/integrate-farmaciagaiajardim-catalog.js --no-inject
 
       - name: Commit changes
         if: github.event.inputs.limite == ''
@@ -102,6 +102,6 @@ jobs:
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/integrate-farmaciagaiajardim-catalog.js" \
+            "node scripts/integrate-farmaciagaiajardim-catalog.js --no-inject" \
             "chore: Farmacia Gaia Jardim daily refresh ($(date -u +%Y-%m-%d))" \
             data/catalog/farmaciagaiajardim-full.json

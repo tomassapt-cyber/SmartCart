@@ -32,7 +32,7 @@
 #     "chore: Farmácia.pt daily refresh ($(date -u +%F))" \
 #     data/catalog/farmaciapt-full.json
 # ============================================================================
-set -uo pipefail
+set -euo pipefail
 
 INTEGRATE_CMD="${1:?integrate-cmd em falta}"; shift
 COMMIT_MSG="${1:?commit-msg em falta}"; shift
@@ -82,8 +82,8 @@ push_burst() {
 stage_all() {
   # o .json de trabalho vira .gz antes de entrar no commit
   bash scripts/ci/seed.sh pack
-  git add "${SEED_AND_HTML[@]}" 2>/dev/null || true
-  for f in "${RAW_FILES[@]}"; do git add -f "$f" 2>/dev/null || true; done
+  git add "${SEED_AND_HTML[@]}"
+  for f in "${RAW_FILES[@]}"; do git add -f "$f"; done
 }
 
 for i in "${!BACKOFFS[@]}"; do
@@ -106,7 +106,7 @@ for i in "${!BACKOFFS[@]}"; do
   done
 
   # 2) Adoptar o seed mais recente do main
-  git fetch origin "${BRANCH}" || true
+  git fetch origin "${BRANCH}"
   git reset --hard "origin/${BRANCH}"
 
   # ⚠️ OBRIGATORIO. O reset trouxe o .gz de origin, mas o .json em disco e'
@@ -122,7 +122,7 @@ for i in "${!BACKOFFS[@]}"; do
   rm -rf "$TMP"
 
   echo "▶ ${INTEGRATE_CMD}"
-  eval "${INTEGRATE_CMD}" || echo "⚠ integrate devolveu erro — continuar para tentar push à mesma"
+  eval "${INTEGRATE_CMD}"
 
   # 4) Re-commit
   stage_all

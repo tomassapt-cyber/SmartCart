@@ -90,7 +90,7 @@ jobs:
           retention-days: 14
 
       - name: Integrate into seed
-        run: node scripts/integrate-farmaciavirtual-catalog.js
+        run: node scripts/integrate-farmaciavirtual-catalog.js --no-inject
 
       - name: Commit changes
         env:
@@ -120,6 +120,6 @@ jobs:
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/integrate-farmaciavirtual-catalog.js" \
+            "node scripts/integrate-farmaciavirtual-catalog.js --no-inject" \
             "chore: Farmácia Virtual daily refresh ($(date -u +%Y-%m-%d))" \
             data/catalog/farmaciavirtual-full.json
