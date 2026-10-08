@@ -158,6 +158,7 @@ function loadCheckpoint() {
   } catch { return null; }
 }
 function saveCheckpoint(products, inProgress = true) {
+  if (products.length === 0) return; // Preserva o catálogo anterior durante uma recolha sem produtos.
   if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
   fs.writeFileSync(OUT_FILE, JSON.stringify({
     scraped_at: new Date().toISOString(),
