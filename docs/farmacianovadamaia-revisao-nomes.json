@@ -1,0 +1,752 @@
+{
+  "unmatched_identifiers": 323,
+  "unmatched_with_name_candidates": [
+    {
+      "ean": "3282770142358",
+      "name": "A-Derma Creme Hidratante Universal 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/12938-a-derma-creme-hidratante-universal-150ml-3282770142358.html",
+      "candidates": [
+        {
+          "ean": "3282770142341",
+          "name": "A-Derma Creme Hidratante Universal 150ml",
+          "brand": "A-Derma",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3282770149777",
+      "name": "A-Derma Exomega Control Spray Emoliente 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/925-a-derma-exomega-control-spray-emoliente-200ml-3282770149777.html",
+      "candidates": [
+        {
+          "ean": "3282770149784",
+          "name": "A-Derma Exomega Control Spray Emoliente 200ml",
+          "brand": "A-Derma",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3323030001258",
+      "name": "Akileïne Gel Frescura Viva 125ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/2212-akileine-gel-frescura-viva-125ml-3323030001258.html",
+      "candidates": [
+        {
+          "ean": "3323034408763",
+          "name": "Akileine Gel Frescura Viva 125ml",
+          "brand": "Akileïne",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382305286",
+      "name": "Alvita Algodão Zig Zag 100g",
+      "url": "https://farmacianovadamaia.pt/pt/rosto/12670-alvita-algodao-zig-zag-100g-5055382305286.html",
+      "candidates": [
+        {
+          "ean": "5055382305279",
+          "name": "Alvita Algodao Zig Zag 100g",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382307891",
+      "name": "Alvita Gel de Banho Aveia 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1188-alvita-gel-de-banho-aveia-750ml-5055382307891.html",
+      "candidates": [
+        {
+          "ean": "8430291001264",
+          "name": "Alvita Gel Banho Aveia 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382307945",
+      "name": "Alvita Gel de Banho Coco 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/11420-alvita-gel-de-banho-coco-750ml-5055382307945.html",
+      "candidates": [
+        {
+          "ean": "8430291002001",
+          "name": "Alvita Gel de Banho Coco 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8430291002353",
+      "name": "Alvita Gel de Banho Dermo 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1192-alvita-gel-de-banho-dermo-750ml-8430291002353.html",
+      "candidates": [
+        {
+          "ean": "5055382307884",
+          "name": "Alvita Gel de Banho Dermo 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382316978",
+      "name": "Alvita Gel de Banho Laranja e Canela 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/3478-alvita-gel-de-banho-laranja-e-canela-750ml-5055382316978.html",
+      "candidates": [
+        {
+          "ean": "8430291002636",
+          "name": "Alvita Gel Banho Laranja Canela 750Ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382307822",
+      "name": "Alvita Gel de Banho Mel e Iogurte 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/40-gel-de-banho-mel-e-iogurte-750ml-5055382307822.html",
+      "candidates": [
+        {
+          "ean": "8430291001257",
+          "name": "Alvita Gel Banho Mel Iogurte 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382307952",
+      "name": "Alvita Gel de Banho Micelar 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1454-alvita-gel-de-banho-micelar-750ml-5055382307952.html",
+      "candidates": [
+        {
+          "ean": "farmaciagarcia-alvita-gel-de-banho-micelar-750ml",
+          "name": "Alvita Gel de Banho Micelar 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3282770147919",
+      "name": "Avène Men Espuma de Barbear 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/produtos-barbear/18693-avene-men-espuma-de-barbear-200ml-3282770147919.html",
+      "candidates": [
+        {
+          "ean": "3282779062633",
+          "name": "Avène Men Espuma de Barbear 200ml",
+          "brand": "Avène",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8429420147546",
+      "name": "Betalfatrus Verniz para Unhas 3,3ml",
+      "url": "https://farmacianovadamaia.pt/pt/maos/1913-betalfatrus-verniz-para-unhas-33ml-8429420147546.html",
+      "candidates": [
+        {
+          "ean": "8470001516176",
+          "name": "Verniz para Unhas Betalfatrus 3,3ml",
+          "brand": "Betalfatrus",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3522930005650",
+      "name": "Caudalie Vinoclean Óleo Desmaquilhante 75ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/18042-caudalie-vinoclean-oleo-desmaquilhante-75ml-3522930005650.html",
+      "candidates": [
+        {
+          "ean": "3522930004004",
+          "name": "Caudalie Vinoclean Óleo Desmaquilhante 75mL",
+          "brand": "Caudalie",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3522931005055",
+      "name": "Caudalie Vinopure Geleia de Limpeza Purificante 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/18063-caudalie-vinopure-geleia-de-limpeza-purificante-150ml-3522931005055.html",
+      "candidates": [
+        {
+          "ean": "3522930003465",
+          "name": "Caudalie Vinopure Geleia de Limpeza Purificante 150ml",
+          "brand": "Caudalie",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5600060023374",
+      "name": "Hidrolact Body Milk 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7793-hidrolact-body-milk-200ml-5600060023374.html",
+      "candidates": [
+        {
+          "ean": "vidamais-hidrolact-body-milk-200ml",
+          "name": "HidroLact Body Milk 200ml",
+          "brand": "Hidrolact",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8430321717431",
+      "name": "Interapothek Gel de Banho Aloé Vera 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/13278-interapothek-gel-de-banho-aloe-vera-750ml-8430321717431.html",
+      "candidates": [
+        {
+          "ean": "8430321007914",
+          "name": "Interapothek Gel de Banho Aloé Vera 750ml",
+          "brand": "Interapothek",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8430321717486",
+      "name": "Interapothek Gel de Banho Aveia e Trigo 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24386-interapothek-gel-de-banho-aveia-e-trigo-750ml-8430321717486.html",
+      "candidates": [
+        {
+          "ean": "8430321007969",
+          "name": "Interapothek Gel Banho Aveia e Trigo 750ml",
+          "brand": "Interapothek",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8470001650443",
+      "name": "Isdin Nutratopic Pro-AMP Gel de Banho Emoliente 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/higiene/3445-isdin-nutratopic-pro-amp-gel-de-banho-emoliente-400ml-8470001650443.html",
+      "candidates": [
+        {
+          "ean": "8429420166561",
+          "name": "Isdin Nutratopic Pro-AMP Gel de Banho Emoliente 400 ml",
+          "brand": "Isdin",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "30106659",
+      "name": "La Roche-Posay Cicaplast Lábios 7,5ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/200-la-roche-posay-cicaplast-labios-75ml-30106659.html",
+      "candidates": [
+        {
+          "ean": "3337872414060",
+          "name": "La Roche Posay Cicaplast Lábios 7,5ml",
+          "brand": "La Roche-Posay",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5604172000766",
+      "name": "Monchique Água Termal Alcalina Spray 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/21399-monchique-agua-termal-alcalina-spray-200ml-5604172000766.html",
+      "candidates": [
+        {
+          "ean": "bairro-saude-monchique-gua-termal-alcalina-spray-200-ml",
+          "name": "Monchique Água Termal Alcalina Spray 200ml",
+          "brand": "Monchique",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8718309703479",
+      "name": "Mycosana Bálsamo Calcanhares Gretados 75ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/24496-mycosana-balsamo-calcanhares-gretados-75ml-8718309703479.html",
+      "candidates": [
+        {
+          "ean": "cosmeticfan-mycosana-balsamo-calcanhares-gretados-75-ml",
+          "name": "Mycosana Balsamo Calcanhares Gretados 75 mL",
+          "brand": "Mycosana",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3264680022067",
+      "name": "Nuxe Very Rose Óleo Desmaquilhante Delicado 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/9044-nuxe-very-rose-oleo-desmaquilhante-delicado-150ml-3264680022067.html",
+      "candidates": [
+        {
+          "ean": "3264680043475",
+          "name": "Nuxe Very Rose Oleo Delicado Desmaquilhante 150ml",
+          "brand": "Nuxe",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5600903501472",
+      "name": "Oleoban Gel de Banho 950ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/22552-oleoban-gel-de-banho-950ml-5600903501472.html",
+      "candidates": [
+        {
+          "ean": "5600903501465",
+          "name": "Oleoban Gel de Banho 950ml",
+          "brand": "Oleoban",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3573994008002",
+      "name": "Pédi Relax Creme Pé Diabético 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/241-pedi-relax-creme-pe-diabetico-100ml-3573994008002.html",
+      "candidates": [
+        {
+          "ean": "3577056009075",
+          "name": "Pedi Relax Creme Pé Diabético 100ml",
+          "brand": "Pédi Relax",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3661434000522",
+      "name": "Uriage Água Termal 300ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/2629-uriage-agua-termal-300ml-3661434000522.html",
+      "candidates": [
+        {
+          "ean": "3661434000539",
+          "name": "Uriage Água Termal 300ml",
+          "brand": "Uriage",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3337875708937",
+      "name": "Vichy Desodorizante Roll On Mineral 48h 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/desodorizantes/17639-vichy-desodorizante-roll-on-mineral-48h-50ml-3337875708937.html",
+      "candidates": [
+        {
+          "ean": "3337875553278",
+          "name": "Vichy Desodorizante Mineral 48H Roll-On 50 ml",
+          "brand": "Vichy",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    }
+  ],
+  "rejected_rows_with_name_candidates": [
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24088-atl-creme-hidratante-400g.html",
+      "name": "ATL Creme Hidratante 400g",
+      "candidates": [
+        {
+          "ean": "5600065763220",
+          "name": "ATL Creme Hidratante 400g",
+          "brand": "Atl",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24089-atl-gel-de-banho-400g.html",
+      "name": "ATL Gel de Banho 400g",
+      "candidates": [
+        {
+          "ean": "5600837241451",
+          "name": "ATL Gel de Banho 400mL",
+          "brand": "Atl",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24176-atl-sabonete-diario-105g.html",
+      "name": "ATL Sabonete Diário 105g",
+      "candidates": [
+        {
+          "ean": "farmaciagarcia-atl-sabonete-diario-105g",
+          "name": "ATL Sabonete Diário 105g",
+          "brand": "Atl",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/maos/24302-alvita-acetona-suavizada-60ml.html",
+      "name": "Alvita Acetona Suavizada 60ml",
+      "candidates": [
+        {
+          "ean": "easyfarma-alvita-acetona-suavizada-60ml",
+          "name": "Alvita Acetona Suavizada 60ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1190-alvita-gel-de-banho-aloe-vera-750ml.html",
+      "name": "Alvita Gel de Banho Aloe Vera 750ml",
+      "candidates": [
+        {
+          "ean": "5055382307860",
+          "name": "Alvita Gel de Banho Aloe Vera 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/19872-alvita-leite-corporal-de-laranja-e-canela-400ml.html",
+      "name": "Alvita Leite Corporal de Laranja e Canela 400ml",
+      "candidates": [
+        {
+          "ean": "5055382304951",
+          "name": "Leite corporal Alvita Laranja & Canela, 400 ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/12972-alvita-agua-de-rosas-250ml.html",
+      "name": "Alvita Água De Rosas 250ml",
+      "candidates": [
+        {
+          "ean": "easyfarma-alvita-agua-de-rosas-250ml",
+          "name": "Alvita Água de Rosas 250ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/23977-d-aveia-ds-creme-lavante-200ml.html",
+      "name": "D'Aveia DS Creme Lavante 200ml",
+      "candidates": [
+        {
+          "ean": "5600254219743",
+          "name": "D'Aveia Creme Lavante DS 200ml",
+          "brand": "D'Aveia",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24017-farline-gel-de-banho-baunilha-750ml.html",
+      "name": "Farline Gel de Banho Baunilha 750ml",
+      "candidates": [
+        {
+          "ean": "8470001948694",
+          "name": "Gel de Banho Farline Baunilha , 750 ml",
+          "brand": "Farline",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24018-farline-gel-de-banho-maca-e-pepino-750ml.html",
+      "name": "Farline Gel de Banho Maça e Pepino 750ml",
+      "candidates": [
+        {
+          "ean": "8470002110045",
+          "name": "Gel de Banho de Pepino e Maçã Farline, 750 ml",
+          "brand": "Farline",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24020-farline-gel-de-banho-toranja-750ml.html",
+      "name": "Farline Gel de Banho Toranja 750ml",
+      "candidates": [
+        {
+          "ean": "8470002110052",
+          "name": "Gel de Banho de Toranja Farline, 750 ml",
+          "brand": "Farline",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/1199-farmoz-creme-gordo-100ml.html",
+      "name": "Farmoz Derm Creme Gordo 100ml",
+      "candidates": [
+        {
+          "ean": "byfarma-farmoz-derm-creme-gordo-100-ml",
+          "name": "Farmoz Derm Creme Gordo 100 mL ",
+          "brand": "Farmoz",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7794-hidrolact-hidratante-corporal-1kg.html",
+      "name": "Hidrolact Hidratante Corporal 1kg",
+      "candidates": [
+        {
+          "ean": "camelo-hidrolact-hidratante-corporal-1kg",
+          "name": "Hidrolact Hidratante Corporal - 1kg",
+          "brand": "Hidrolact",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/15936-ketopan-espuma-limpeza-200ml.html",
+      "name": "Ketopan Espuma Limpeza 200ml",
+      "candidates": [
+        {
+          "ean": "farmaciagarcia-ketopan-espuma-limpeza-200ml",
+          "name": "Ketopan Espuma Limpeza 200ml",
+          "brand": "Ketopan",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/337-oleoban-creme-gordo-170ml.html",
+      "name": "Oleoban Creme Gordo 170ml",
+      "candidates": [
+        {
+          "ean": "5600719103297",
+          "name": "Oleoban Creme Gordo - 170ml",
+          "brand": "Oleoban",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "reason": "missing/invalid GTIN in URL",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24191-sativa-xero-tex-emulsao-corporal-200ml.html",
+      "name": "Sativa Xero-Tex Emulsão Corporal 200ml",
+      "candidates": [
+        {
+          "ean": "8470001830524",
+          "name": "Sativa Emulsão Corporal Xero-Tex 200 ml",
+          "brand": "Sativa",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    }
+  ],
+  "identity_conflicts": [
+    {
+      "ean": "3282770393712",
+      "canonical": "3282770393712",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3323030001180",
+      "canonical": "3323030001180",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3282779292238",
+      "canonical": "3282779292238",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "5601348111035",
+      "canonical": "5601348111035",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5606890408831",
+      "canonical": "5606890408831",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3522930005605",
+      "canonical": "3522930005605",
+      "reason": "multiple conflicting offers for the same existing volume",
+      "previous": {
+        "volume_ml": 400,
+        "unit": "ml",
+        "price": 21.05,
+        "previous_price": null,
+        "in_stock": false,
+        "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/22741-caudalie-vinoclean-agua-micelar-desmaquilhante-400ml-3522930003106.html"
+      },
+      "incoming": {
+        "volume_ml": 400,
+        "unit": "ml",
+        "price": 18.9,
+        "previous_price": null,
+        "in_stock": true,
+        "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/24588-caudalie-vinoclean-agua-de-uva-micelar-desmaquilhante-400ml-3522930005605.html"
+      }
+    },
+    {
+      "ean": "3522930003625",
+      "canonical": "3522930003625",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3337875597227",
+      "canonical": "3337875597227",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3337875684095",
+      "canonical": "3337875684095",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3337875952903",
+      "canonical": "3337875952903",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8470002113916",
+      "canonical": "8470002113916",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3573994006299",
+      "canonical": "3573994006299",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3282770389234",
+      "canonical": "3282770389234",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "5600066113192",
+      "canonical": "5600066113192",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8429420202924",
+      "canonical": "8429420202924",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8429420175341",
+      "canonical": "8429420175341",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8429420175303",
+      "canonical": "8429420175303",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8437015942704",
+      "canonical": "8437015942704",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661838571",
+      "canonical": "3574661838571",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661838595",
+      "canonical": "3574661838595",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661903729",
+      "canonical": "3574661903729",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661878706",
+      "canonical": "3574661878706",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661848686",
+      "canonical": "3574661848686",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661864297",
+      "canonical": "3574661864297",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3401374911270",
+      "canonical": "3401374911270",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3264680042188",
+      "canonical": "3264680042201",
+      "reason": "multiple conflicting offers for the same existing volume",
+      "previous": {
+        "volume_ml": 60,
+        "unit": "ml",
+        "price": 27.39,
+        "previous_price": null,
+        "in_stock": true,
+        "url": "https://farmacianovadamaia.pt/pt/hidratantes/22704-nuxe-huile-prodigieuse-or-roll-on-oleo-seco-multifuncoes-60ml-3264680042201.html"
+      },
+      "incoming": {
+        "volume_ml": 60,
+        "unit": "ml",
+        "price": 22.08,
+        "previous_price": null,
+        "in_stock": true,
+        "url": "https://farmacianovadamaia.pt/pt/hidratantes/22702-nuxe-huile-prodigieuse-roll-on-oleo-seco-multifuncoes-60ml-3264680042188.html"
+      }
+    },
+    {
+      "ean": "3264680034718",
+      "canonical": "3264680034718",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5600719103303",
+      "canonical": "5600719103303",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5200375300414",
+      "canonical": "5200375300414",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3662361001859",
+      "canonical": "3662361001859",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3662361001033",
+      "canonical": "3662361001033",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3661434035128",
+      "canonical": "3661434035128",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "0000030065949",
+      "canonical": "0000030065949",
+      "reason": "mass/volume units differ"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "ean": "3461020013178",
+    "before": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/EeztRI.jpg?v=1779412344",
+    "after": "https://farmacianovadamaia.pt/50350-large_default/esthederm-osmoclean-espuma-purete-limpeza-150ml.jpg",
+    "verified": true,
+    "verified_at": "2026-10-08T12:04:41.991373+00:00",
+    "image_sha256": "e282c2886fd7cdb4916c00e2909d0dc15458a947815e8397b74b2e1549f10903",
+    "source_url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/18840-esthederm-osmoclean-espuma-purete-limpeza-150ml-3461020013178.html",
+    "reason": "visual review passed; previous audit: distorted"
+  },
+  {
+    "ean": "4005800151842",
+    "before": null,
+    "after": "https://farmacianovadamaia.pt/71111-large_default/hansaplast-desodorizante-de-pes-2-em-1-150ml.jpg",
+    "verified": true,
+    "verified_at": "2026-10-08T12:04:41.991373+00:00",
+    "image_sha256": "85478d86f3558bcf4b23b218eda585c7cfb1ccd0406f5ebc25a811d184b826bc",
+    "source_url": "https://farmacianovadamaia.pt/pt/pes/23510-hansaplast-desodorizante-de-pes-2-em-1-150ml-4005800151842.html",
+    "reason": "visual review passed; missing"
+  }
+]

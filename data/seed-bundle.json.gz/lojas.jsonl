@@ -96,3 +96,4 @@
 {"slug":"farmaciamarquesbraga","logo_url":null,"name":"Farmácia Marques Braga","base_url":"https://farmaciamarquesbraga.pt","free_shipping_threshold":35,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"farmaciabemestar","logo_url":null,"name":"Farmácia BemEstar","base_url":"https://farmaciabemestar.pt","free_shipping_threshold":38.6,"shipping_zones":{"mainland":3.94,"madeira":3.94,"acores":3.94}}
 {"slug":"balvera","logo_url":null,"name":"Balvera","base_url":"https://balvera.pt","free_shipping_threshold":25,"shipping_zones":{"mainland":3,"madeira":15,"acores":15}}
+{"slug":"farmacianovadamaia","name":"Farmácia Nova da Maia","base_url":"https://farmacianovadamaia.pt","logo_url":null}

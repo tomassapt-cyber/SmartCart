@@ -1005,6 +1005,16 @@
    "outros": {
     "store_slug": "balvera"
    }
+  },
+  {
+   "ficheiro": "ofertas/farmacianovadamaia.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmacianovadamaia"
+   }
   }
  ],
  "outros": {}

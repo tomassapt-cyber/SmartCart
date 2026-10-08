@@ -1,0 +1,2329 @@
+{
+  "products_created": 0,
+  "offers": 3010,
+  "active_offers": 2701,
+  "inactive_offers": 309,
+  "images": 2,
+  "unmatched": [
+    {
+      "ean": "3282770142358",
+      "name": "A-Derma Creme Hidratante Universal 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/12938-a-derma-creme-hidratante-universal-150ml-3282770142358.html",
+      "candidates": [
+        {
+          "ean": "3282770142341",
+          "name": "A-Derma Creme Hidratante Universal 150ml",
+          "brand": "A-Derma",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3282779451086",
+      "name": "A-Derma Exomega Control Gel Lavante Emoliente 2 em 1 Corpo e Cabelo 2x500ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/9448-a-derma-exomega-control-gel-lavante-emoliente-2-em-1-corpo-e-cabelo-2x500ml-3282779451086.html",
+      "candidates": []
+    },
+    {
+      "ean": "3282770149777",
+      "name": "A-Derma Exomega Control Spray Emoliente 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/925-a-derma-exomega-control-spray-emoliente-200ml-3282770149777.html",
+      "candidates": [
+        {
+          "ean": "3282770149784",
+          "name": "A-Derma Exomega Control Spray Emoliente 200ml",
+          "brand": "A-Derma",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8436613240137",
+      "name": "AOK Labs Eternal Summer Kusafisha Água Micelar 250ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/19117-aok-labs-eternal-summer-kusafisha-agua-micelar-250ml-8436613240137.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436613240144",
+      "name": "AOK Labs Eternal Summer Kusugua Gel Esfoliante 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/19118-aok-labs-eternal-summer-kusugua-gel-esfoliante-100ml-8436613240144.html",
+      "candidates": []
+    },
+    {
+      "ean": "8415001342011",
+      "name": "AOK Labs Oro Africano Creme Manteiga Karité 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/19113-aok-labs-oro-africano-creme-manteiga-karite-100ml-8415001342011.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572546073",
+      "name": "AOK Labs Oro Negro Sabão Sólido 100g",
+      "url": "https://farmacianovadamaia.pt/pt/banho/19111-aok-labs-oro-negro-sabao-solido-100g-8436572546073.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572546080",
+      "name": "AOK Labs Perfect Night 15 ampolas",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/19103-aok-labs-perfect-night-15-ampolas-8436572546080.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572541351",
+      "name": "AOK Labs Pure Life Black Radiance Creme SPF30+ 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-30/19106-aok-labs-pure-life-black-radiance-creme-spf30-50ml-8436572541351.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572541344",
+      "name": "AOK Labs Pure Life Creme Contorno de Olhos 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/19107-aok-labs-pure-life-creme-contorno-de-olhos-30ml-8436572541344.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572541238",
+      "name": "AOK Labs Pure Life Leite Corpo Refirmante 250ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/19108-aok-labs-pure-life-leite-corpo-refirmante-250ml--8436572541238.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572541092",
+      "name": "AOK Labs Pure Life Sérum de Moringa 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/19109-aok-labs-pure-life-serum-de-moringa-30ml-8436572541092.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572546059",
+      "name": "AOK Labs Pure Life Óleo Limpeza Facial 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/19105-aok-labs-pure-life-oleo-limpeza-facial-100ml-8436572546059.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572546066",
+      "name": "AOK Labs Pure Life Óleo Limpeza Facial 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/19104-aok-labs-pure-life-oleo-limpeza-facial-200ml-8436572546066.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436572541085",
+      "name": "AOK Labs Pure Life Óleo de Baobá Sérum 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/19110-aok-labs-pure-life-oleo-de-baoba-serum-30ml-8436572541085.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600837240638",
+      "name": "ATL Creme Hidratante 100g",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/17034-atl-creme-hidratante-100g-5600837240638.html",
+      "candidates": []
+    },
+    {
+      "ean": "5703538456930",
+      "name": "Abena Creme Dermoprotetor com Zinco 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/12630-abena-creme-dermoprotetor-com-zinco-100ml-5703538456930.html",
+      "candidates": []
+    },
+    {
+      "ean": "5703538462283",
+      "name": "Abena Gel Banho e Duche 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/12632-abena-gel-banho-e-duche-500ml-5703538462283.html",
+      "candidates": []
+    },
+    {
+      "ean": "5703538223914",
+      "name": "Abena Toalhetes 27x20cm 80 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/12638-abena-toalhetes-27x20cm-80-unidades-5703538223914.html",
+      "candidates": []
+    },
+    {
+      "ean": "5200375399029",
+      "name": "Acnaid Gel 30g",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/17516-acnaid-gel-30g-5200375399029.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220067",
+      "name": "Activozone Creme Ozonizado 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/8390-activozone-creme-ozonizado-50ml-5600493220067.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220111",
+      "name": "Activozone Gel de Banho 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/8393-activozone-gel-de-banho-500ml-5600493220111.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220128",
+      "name": "Activozone Oil 400IP 20ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/17336-activozone-oil-400ip-20ml-5600493220128.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220050",
+      "name": "Activozone Sabonete Ozonizado 100g",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/17268-activozone-sabonete-ozonizado-100g-5600493220050.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220036",
+      "name": "Activozone Óleo Ozonizado 20ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/8388-activozone-oleo-ozonizado-20ml-5600493220036.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220197",
+      "name": "Activozone Óleo Ozonizado 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/17267-activozone-oleo-ozonizado-50ml-5600493220197.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220043",
+      "name": "Activozone Óleo Ozonizado 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/8389-activozone-oleo-ozonizado-100ml-5600493220043.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600493220142",
+      "name": "Activozone Óleo Ozonizado 1200IP 20ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/17338-activozone-oleo-ozonizado-1200ip-20ml-5600493220142.html",
+      "candidates": []
+    },
+    {
+      "ean": "5601653019804",
+      "name": "Advancis Delicate Protect 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/pele-sensivel/18772-advancis-delicate-protect-100ml-5601653019804.html",
+      "candidates": []
+    },
+    {
+      "ean": "5601653023818",
+      "name": "Advancis Footmax Gotas 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/23471-advancis-footmax-gotas-30ml-5601653023818.html",
+      "candidates": []
+    },
+    {
+      "ean": "5601653016179",
+      "name": "Advancis Verrumax 2ml",
+      "url": "https://farmacianovadamaia.pt/pt/maos/17931-advancis-verrumax-2ml--5601653016179.html",
+      "candidates": []
+    },
+    {
+      "ean": "3323030001258",
+      "name": "Akileïne Gel Frescura Viva 125ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/2212-akileine-gel-frescura-viva-125ml-3323030001258.html",
+      "candidates": [
+        {
+          "ean": "3323034408763",
+          "name": "Akileine Gel Frescura Viva 125ml",
+          "brand": "Akileïne",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5600795287256",
+      "name": "Alifar Vaselina Purificada 100g",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/1500-alifar-vaselina-purificada-100g-5600795287256.html",
+      "candidates": []
+    },
+    {
+      "ean": "5055382305286",
+      "name": "Alvita Algodão Zig Zag 100g",
+      "url": "https://farmacianovadamaia.pt/pt/rosto/12670-alvita-algodao-zig-zag-100g-5055382305286.html",
+      "candidates": [
+        {
+          "ean": "5055382305279",
+          "name": "Alvita Algodao Zig Zag 100g",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382305262",
+      "name": "Alvita Discos Desmaquilhantes 100 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/olhos/12773-alvita-discos-desmaquilhantes-100-unidades-5055382305262.html",
+      "candidates": []
+    },
+    {
+      "ean": "5055382305255",
+      "name": "Alvita Discos de Algodão Grandes 50 Unidades",
+      "url": "https://farmacianovadamaia.pt/pt/olhos/12774-alvita-discos-de-algodao-grandes-50-unidades-5055382305255.html",
+      "candidates": []
+    },
+    {
+      "ean": "5055382307891",
+      "name": "Alvita Gel de Banho Aveia 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1188-alvita-gel-de-banho-aveia-750ml-5055382307891.html",
+      "candidates": [
+        {
+          "ean": "8430291001264",
+          "name": "Alvita Gel Banho Aveia 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382307945",
+      "name": "Alvita Gel de Banho Coco 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/11420-alvita-gel-de-banho-coco-750ml-5055382307945.html",
+      "candidates": [
+        {
+          "ean": "8430291002001",
+          "name": "Alvita Gel de Banho Coco 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8430291002353",
+      "name": "Alvita Gel de Banho Dermo 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1192-alvita-gel-de-banho-dermo-750ml-8430291002353.html",
+      "candidates": [
+        {
+          "ean": "5055382307884",
+          "name": "Alvita Gel de Banho Dermo 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382304203",
+      "name": "Alvita Gel de Banho Frutos Vermelhos 300ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/15227-alvita-gel-de-banho-frutos-vermelhos-300ml-5055382304203.html",
+      "candidates": []
+    },
+    {
+      "ean": "5055382316978",
+      "name": "Alvita Gel de Banho Laranja e Canela 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/3478-alvita-gel-de-banho-laranja-e-canela-750ml-5055382316978.html",
+      "candidates": [
+        {
+          "ean": "8430291002636",
+          "name": "Alvita Gel Banho Laranja Canela 750Ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382307822",
+      "name": "Alvita Gel de Banho Mel e Iogurte 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/40-gel-de-banho-mel-e-iogurte-750ml-5055382307822.html",
+      "candidates": [
+        {
+          "ean": "8430291001257",
+          "name": "Alvita Gel Banho Mel Iogurte 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382307952",
+      "name": "Alvita Gel de Banho Micelar 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1454-alvita-gel-de-banho-micelar-750ml-5055382307952.html",
+      "candidates": [
+        {
+          "ean": "farmaciagarcia-alvita-gel-de-banho-micelar-750ml",
+          "name": "Alvita Gel de Banho Micelar 750ml",
+          "brand": "Alvita",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5055382316664",
+      "name": "Alvita Gel de Banho Zero 1L",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/24300-alvita-gel-de-banho-zero-1l-5055382316664.html",
+      "candidates": []
+    },
+    {
+      "ean": "5055382303893",
+      "name": "Alvita Toalhitas com Glitter 12unidades",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/15229-alvita-toalhitas-com-glitter-12unidades--5055382303893.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600265217776",
+      "name": "Andina Creme Descolorante para Rosto e Corpo 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/17470-andina-creme-descolorante-para-rosto-e-corpo-100ml-5600265217776.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600372741768",
+      "name": "Arkoflex Flash Creme Massagem 60ml + 10 cápsulas",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/18851-arkoflex-flash-creme-massagem-60ml-10-capsulas-5600372741768.html",
+      "candidates": []
+    },
+    {
+      "ean": "8715345003785",
+      "name": "Arkoflex Ice3Gel Gel Frio 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/18325-arkoflex-ice3gel-gel-frio-100ml-8715345003785.html",
+      "candidates": []
+    },
+    {
+      "ean": "3282779452410",
+      "name": "Avène Cicalfate+ Creme Reparador Multiprotetor FPS50+ 2x30ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/23993-avene-cicalfate-creme-reparador-multiprotetor-fps50-2x30ml-3282779452410.html",
+      "candidates": []
+    },
+    {
+      "ean": "3282770147919",
+      "name": "Avène Men Espuma de Barbear 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/produtos-barbear/18693-avene-men-espuma-de-barbear-200ml-3282770147919.html",
+      "candidates": [
+        {
+          "ean": "3282779062633",
+          "name": "Avène Men Espuma de Barbear 200ml",
+          "brand": "Avène",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3282770202106",
+      "name": "Avène Protetor Solar Leite Criança FPS50+ 250ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-criancas/19102-avene-protetor-solar-leite-crianca-fps50-250ml-3282770202106.html",
+      "candidates": []
+    },
+    {
+      "ean": "108470001807",
+      "name": "BBraun Linovera Spray 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/481-bbraun-linovera-spray-30ml-108470001807.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437011329844",
+      "name": "Babé Aloé Vera Gel 90ml",
+      "url": "https://farmacianovadamaia.pt/pt/pos-solares/6016-babe-aloe-vera-gel-90ml-8437011329844.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436571632449",
+      "name": "Babé Fotoproteção Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/21403-babe-fotoprotecao-coffret-8436571632449.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436571632913",
+      "name": "Babé Stop AKN Cuidado para Pele Oleosa e Tendência Acneica Pack",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/22834-babe-stop-akn-cuidado-para-pele-oleosa-e-tendencia-acneica-pack-8436571632913.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437014389289",
+      "name": "Babé Stop AKN Fluido Queratolítico 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/3204-babe-stop-akn-fluido-queratolitico-30ml-8437014389289.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436571632272",
+      "name": "Babé Stop AKN Gel de Limpeza Purificante 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/3200-babe-stop-akn-gel-de-limpeza-purificante-200ml-8436571632272.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436571632265",
+      "name": "Babé Stop AKN Gel de Limpeza Purificante 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/20949-babe-stop-akn-gel-de-limpeza-purificante-400ml-8436571632265.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436571632296",
+      "name": "Babé Stop AKN Spot Control Gel 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/21413-babe-stop-akn-spot-control-gel-10ml-8436571632296.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600951723505",
+      "name": "Benaderma Pruri Suspensão Tópica 8% 100g",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/21011-benaderma-pruri-suspensao-topica-8-100g-5600951723505.html",
+      "candidates": []
+    },
+    {
+      "ean": "8429420147546",
+      "name": "Betalfatrus Verniz para Unhas 3,3ml",
+      "url": "https://farmacianovadamaia.pt/pt/maos/1913-betalfatrus-verniz-para-unhas-33ml-8429420147546.html",
+      "candidates": [
+        {
+          "ean": "8470001516176",
+          "name": "Verniz para Unhas Betalfatrus 3,3ml",
+          "brand": "Betalfatrus",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8470002428423",
+      "name": "Beter Lima 4 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/unhas/1270-beter-lima-4-unidades-8470002428423.html",
+      "candidates": []
+    },
+    {
+      "ean": "6009803459019",
+      "name": "Bio-Oil 125ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/3049-bio-oil-125ml-6009803459019.html",
+      "candidates": []
+    },
+    {
+      "ean": "6009803459026",
+      "name": "Bio-Oil 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/6717-bio-oil-200ml-6009803459026.html",
+      "candidates": []
+    },
+    {
+      "ean": "6001159118558",
+      "name": "Bio-Oil Gel Pele Seca 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/41-bio-oil-gel-pele-seca-200ml-6001159118558.html",
+      "candidates": []
+    },
+    {
+      "ean": "6001159127659",
+      "name": "Bio-Oil Óleo Corpo Natural 60ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/13676-bio-oil-oleo-corpo-natural-60ml-6001159127659.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600714563737",
+      "name": "Bioderma Atoderm Creme Mãos e Unhas 2x50ml",
+      "url": "https://farmacianovadamaia.pt/pt/maos/20557-bioderma-atoderm-creme-maos-e-unhas-2x50ml-5600714563737.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401399373237",
+      "name": "Bioderma Atoderm Gel de Duche 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/2055-bioderma-atoderm-gel-de-duche-200ml-3401399373237.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401399373817",
+      "name": "Bioderma Atoderm PP Baume 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/2062-bioderma-atoderm-pp-baume-200ml-3401399373817.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600714563959",
+      "name": "Bioderma Pigmentbio Áreas Sensíveis + Cuidado Esfoliante Pack",
+      "url": "https://farmacianovadamaia.pt/pt/-manchas-cutaneas/21821-bioderma-pigmentbio-areas-sensiveis-cuidado-esfoliante-pack-5600714563959.html",
+      "candidates": []
+    },
+    {
+      "ean": "3701129800850",
+      "name": "Bioderma Sensibio Gel Moussant 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/22696-bioderma-sensibio-gel-moussant-100ml-3701129800850.html",
+      "candidates": []
+    },
+    {
+      "ean": "3701129812075",
+      "name": "Bioderma Sensibio H2O Água Micelar 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/2568-bioderma-sensibio-h2o-agua-micelar-100ml-3701129812075.html",
+      "candidates": []
+    },
+    {
+      "ean": "3701129812068",
+      "name": "Bioderma Sensibio H2O Água Micelar 250ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/2571-bioderma-sensibio-h2o-agua-micelar-250ml-3701129812068.html",
+      "candidates": []
+    },
+    {
+      "ean": "3701129812792",
+      "name": "Bioderma Sébium Gel Moussant 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/17717-bioderma-sebium-gel-moussant-200ml-3701129812792.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600109489918",
+      "name": "Biofeet Spray 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/13665-biofeet-spray-50ml-5600109489918.html",
+      "candidates": []
+    },
+    {
+      "ean": "5293011000564",
+      "name": "Cantalin Gel Refrescante Pernas 100g",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/13563-cantalin-gel-refrescante-pernas-100g--5293011000564.html",
+      "candidates": []
+    },
+    {
+      "ean": "3522930005940",
+      "name": "Caudalie Rose de Vigne Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/banho/22819-caudalie-rose-de-vigne-coffret-3522930005940.html",
+      "candidates": []
+    },
+    {
+      "ean": "3522930003113",
+      "name": "Caudalie Vinoclean Leite de Amêndoas Desmaquilhante 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/11709-caudalie-vinoclean-leite-de-amendoas-desmaquilhante-100ml-3522930003113.html",
+      "candidates": []
+    },
+    {
+      "ean": "3522930004486",
+      "name": "Caudalie Vinoclean Máscara Instant Détox 35ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/20173-caudalie-vinoclean-mascara-instant-detox-35ml-3522930004486.html",
+      "candidates": []
+    },
+    {
+      "ean": "3522930005650",
+      "name": "Caudalie Vinoclean Óleo Desmaquilhante 75ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/18042-caudalie-vinoclean-oleo-desmaquilhante-75ml-3522930005650.html",
+      "candidates": [
+        {
+          "ean": "3522930004004",
+          "name": "Caudalie Vinoclean Óleo Desmaquilhante 75mL",
+          "brand": "Caudalie",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3522931005055",
+      "name": "Caudalie Vinopure Geleia de Limpeza Purificante 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/18063-caudalie-vinopure-geleia-de-limpeza-purificante-150ml-3522931005055.html",
+      "candidates": [
+        {
+          "ean": "3522930003465",
+          "name": "Caudalie Vinopure Geleia de Limpeza Purificante 150ml",
+          "brand": "Caudalie",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8470001597618",
+      "name": "Cavilon Creme Longa Duração 92g",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/13281-cavilon-creme-longa-duracao-92g-8470001597618.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567700669",
+      "name": "CeraVe Rotina Pele Mista e Oleosa Pack",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/22603-cerave-rotina-pele-mista-e-oleosa-pack-8431567700669.html",
+      "candidates": []
+    },
+    {
+      "ean": "2545101651341",
+      "name": "Clique One A15 28 Monodoses",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/4662-clique-one-a15-28-monodoses-2545101651341.html",
+      "candidates": []
+    },
+    {
+      "ean": "2401713922579",
+      "name": "Clique One E5 28 Monodoses",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/4664-clique-one-e5-28-monodoses-2401713922579.html",
+      "candidates": []
+    },
+    {
+      "ean": "3468080155183",
+      "name": "Corine de Farme Eau de Toilette Wonder Woman 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17989-corine-de-farme-eau-de-toilette-wonder-woman-30ml-3468080155183.html",
+      "candidates": []
+    },
+    {
+      "ean": "3546895526043",
+      "name": "Corpitol Emulsão 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/18241-corpitol-emulsao-100ml-3546895526043.html",
+      "candidates": []
+    },
+    {
+      "ean": "3546890040520",
+      "name": "Corpitol Óleo 20ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/19780-corpitol-oleo-20ml-3546890040520.html",
+      "candidates": []
+    },
+    {
+      "ean": "3546890049608",
+      "name": "Corpitol Óleo 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/18240-corpitol-oleo-50ml-3546890049608.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417810302",
+      "name": "Crescina HFSC Transdermic Homem 200 20 ampolas",
+      "url": "https://farmacianovadamaia.pt/pt/queda-/20753-crescina-hfsc-transdermic-homem-200-20-ampolas-8051417810302.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417811309",
+      "name": "Crescina HFSC Transdermic Homem 500 20 ampolas",
+      "url": "https://farmacianovadamaia.pt/pt/queda-/20754-crescina-hfsc-transdermic-homem-500-20-ampolas-8051417811309.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417812306",
+      "name": "Crescina HFSC Transdermic Homem 1300 20 ampolas",
+      "url": "https://farmacianovadamaia.pt/pt/queda-/20755-crescina-hfsc-transdermic-homem-1300-20-ampolas-8051417812306.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417816304",
+      "name": "Crescina HFSC Transdermic Tratamento Completo Homem 200 10+10 ampolas",
+      "url": "https://farmacianovadamaia.pt/pt/queda-/20760-crescina-hfsc-transdermic-tratamento-completo-homem-200-1010-ampolas-8051417816304.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417817301",
+      "name": "Crescina HFSC Transdermic Tratamento Completo Homem 500 10+10 ampolas",
+      "url": "https://farmacianovadamaia.pt/pt/queda-/20761-crescina-hfsc-transdermic-tratamento-completo-homem-500-1010-ampolas-8051417817301.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417818308",
+      "name": "Crescina HFSC Transdermic Tratamento Completo Homem 1300 10+10 ampolas",
+      "url": "https://farmacianovadamaia.pt/pt/queda-/20762-crescina-hfsc-transdermic-tratamento-completo-homem-1300-1010-ampolas-8051417818308.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600254221968",
+      "name": "D'Aveia Ceutics Absolute Sérum 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/20247-d-aveia-ceutics-absolute-serum-30ml-5600254221968.html",
+      "candidates": []
+    },
+    {
+      "ean": "3323030000398",
+      "name": "D'âme Nature Néctar Nutritivo 75ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/10986-d-ame-nature-nectar-nutritivo-75ml-3323030000398.html",
+      "candidates": []
+    },
+    {
+      "ean": "5606956000436",
+      "name": "Dafarmácia Gel Aloé Vera 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/23214-dafarmacia-gel-aloe-vera-500ml-5606956000436.html",
+      "candidates": []
+    },
+    {
+      "ean": "5606956000627",
+      "name": "Dafarmácia Óleo Amêndoas Doces 1L",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/23161-dafarmacia-oleo-amendoas-doces-1l-5606956000627.html",
+      "candidates": []
+    },
+    {
+      "ean": "5391132000071",
+      "name": "De Facto Óleo de Barbear 25ml",
+      "url": "https://farmacianovadamaia.pt/pt/produtos-barbear/21970-de-facto-oleo-de-barbear-25ml-5391132000071.html",
+      "candidates": []
+    },
+    {
+      "ean": "3573994006350",
+      "name": "Dexeryl Creme Emoliente 500g",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/1202-dexeryl-creme-emoliente-500g-3573994006350.html",
+      "candidates": []
+    },
+    {
+      "ean": "3760095253312",
+      "name": "Dépiwhite Active Gel 40ml",
+      "url": "https://farmacianovadamaia.pt/pt/-manchas-cutaneas/21265-depiwhite-active-gel-40ml-3760095253312.html",
+      "candidates": []
+    },
+    {
+      "ean": "3760095250106",
+      "name": "Dépiwhite Whitening Máscara Peel-Off 40ml",
+      "url": "https://farmacianovadamaia.pt/pt/-manchas-cutaneas/21264-depiwhite-whitening-mascara-peel-off-40ml-3760095250106.html",
+      "candidates": []
+    },
+    {
+      "ean": "3282770107715",
+      "name": "Elancyl Slim Gel Massagem Adelgaçante 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/adelgacantes/4516-elancyl-slim-gel-massagem-adelgacante-200ml-3282770107715.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470002327511",
+      "name": "Elancyl Slim Massage + Gel Concentrado 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/anti-celuliticos/5521-elancyl-slim-massage-gel-concentrado-200ml-8470002327511.html",
+      "candidates": []
+    },
+    {
+      "ean": "8718819550334",
+      "name": "Enecta C300 Óleo de Cânhamo 300mg CBD 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/13951-enecta-c300-oleo-de-canhamo-300mg-cbd-10ml--8718819550334.html",
+      "candidates": []
+    },
+    {
+      "ean": "8718819550051",
+      "name": "Enecta C1000 Óleo de Cânhamo 1000mg CBD 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/13952-enecta-c1000-oleo-de-canhamo-1000mg-cbd-10ml-8718819550051.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470002079397",
+      "name": "Epicyn Hidrogel 45g",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/21812-epicyn-hidrogel-45g-8470002079397.html",
+      "candidates": []
+    },
+    {
+      "ean": "3461020002455",
+      "name": "Esthederm Adaptasun Spray Lácteo Corporal Moderado 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-30/21325-esthederm-adaptasun-spray-lacteo-corporal-moderado-150ml-3461020002455.html",
+      "candidates": []
+    },
+    {
+      "ean": "4005800354625",
+      "name": "Eucerin Aquaphor Pomada Reparadora 80ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/18929-eucerin-aquaphor-pomada-reparadora-80ml-4005800354625.html",
+      "candidates": []
+    },
+    {
+      "ean": "4005800119262",
+      "name": "Eucerin Sun Spray Transparente SPF30+ 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-30/8239-eucerin-sun-spray-transparente-spf30-200ml-4005800119262.html",
+      "candidates": []
+    },
+    {
+      "ean": "4005800399503",
+      "name": "Eucerin Urea Repair Gel de Banho Suave 5% Ureia 2x400ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24379-eucerin-urea-repair-gel-de-banho-suave-5-ureia-2x400ml-4005800399503.html",
+      "candidates": []
+    },
+    {
+      "ean": "4005800194924",
+      "name": "Eucerin pH5 Óleo Duche Eco Refill 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/15021-eucerin-ph5-oleo-duche-eco-refill-400ml-4005800194924.html",
+      "candidates": []
+    },
+    {
+      "ean": "8032738386851",
+      "name": "Excilor 3 Ações Solução Antifúngica 7ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/23896-excilor-3-acoes-solucao-antifungica-7ml-8032738386851.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470001904072",
+      "name": "Farline Colagénio Creme Facial Dia SPF15 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/2132-farline-colagenio-creme-facial-dia-spf15-50ml-8470001904072.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470001729880",
+      "name": "Farline Creme Premium Noite 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/2133-farline-creme-premium-noite-50ml-8470001729880.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470002669406",
+      "name": "Farline Gel de Banho de Aveia 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1969-farline-gel-de-banho-de-aveia-750ml-8470002669406.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600315071242",
+      "name": "Fharmonat Vitality Baba de Caracol Creme de Rosto 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/1386-fharmonat-vitality-baba-de-caracol-creme-de-rosto-50ml-5600315071242.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417836302",
+      "name": "Fillerina 12HA Creme de Contorno de Lábios Grau 5 15ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/20789-fillerina-12ha-creme-de-contorno-de-labios-grau-5-15ml-8051417836302.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417833301",
+      "name": "Fillerina 12HA Creme de Contorno de Olhos Grau 5 15ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/20785-fillerina-12ha-creme-de-contorno-de-olhos-grau-5-15ml-8051417833301.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417822305",
+      "name": "Fillerina 12HA Densifying-Filler Tratamento Intensivo Grau 3 14+14 doses",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/20775-fillerina-12ha-densifying-filler-tratamento-intensivo-grau-3-1414-doses-8051417822305.html",
+      "candidates": []
+    },
+    {
+      "ean": "8051417824309",
+      "name": "Fillerina 12HA Densifying-Filler Tratamento Intensivo Grau 5 14+14 doses",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/20777-fillerina-12ha-densifying-filler-tratamento-intensivo-grau-5-1414-doses-8051417824309.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437002581015",
+      "name": "Fito Cold Gel Pernas Cansadas 250ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/15154-fito-cold-gel-pernas-cansadas-250ml-8437002581015.html",
+      "candidates": []
+    },
+    {
+      "ean": "5420013501328",
+      "name": "Flamigel RT 100g",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/21899-flamigel-rt-100g-5420013501328.html",
+      "candidates": []
+    },
+    {
+      "ean": "8720618589989",
+      "name": "FungeX Caneta Fungos Unhas + Crescimento 4ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/24108-fungex-caneta-fungos-unhas-crescimento-4ml-8720618589989.html",
+      "candidates": []
+    },
+    {
+      "ean": "8721161731689",
+      "name": "FungeX Caneta Reparadora de Unhas 3ml",
+      "url": "https://farmacianovadamaia.pt/pt/maos/22217-fungex-caneta-reparadora-de-unhas-3ml-8721161731689.html",
+      "candidates": []
+    },
+    {
+      "ean": "8720618589729",
+      "name": "FungeX Pincel para Onicomicoses 3 em 1 5ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/15149-fungex-pincel-para-onicomicoses-3-em-1-5ml-8720618589729.html",
+      "candidates": []
+    },
+    {
+      "ean": "8424730030564",
+      "name": "Green Botanic Bomba de Banho 100g",
+      "url": "https://farmacianovadamaia.pt/pt/banho/14119-green-botanic-bomba-de-banho-100g-8424730030564.html",
+      "candidates": []
+    },
+    {
+      "ean": "4897128661871",
+      "name": "Hartmann DermaPlast Active Instant Ice 15x25cm",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/11332-hartmann-dermaplast-active-instant-ice-15x25cm-4897128661871.html",
+      "candidates": []
+    },
+    {
+      "ean": "4052199283685",
+      "name": "Hartmann DermaPlast Active Warm Cream 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/11331-hartmann-dermaplast-active-warm-cream-100ml-4052199283685.html",
+      "candidates": []
+    },
+    {
+      "ean": "4105170694441",
+      "name": "Hartmann Dermaplast Active Cool Gel 100 ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/11330-hartmann-dermaplast-active-cool-gel-100-ml-4105170694441.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600200138036",
+      "name": "Hemopropin Pomada 20g",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/14577-hemopropin-pomada-20g-5600200138036.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600068123212",
+      "name": "Hidrolact Aveia e Amido de Milho Gel de Banho 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/651-hidrolact-aveia-e-amido-de-milho-gel-de-banho-500ml-5600068123212.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600060023374",
+      "name": "Hidrolact Body Milk 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7793-hidrolact-body-milk-200ml-5600060023374.html",
+      "candidates": [
+        {
+          "ean": "vidamais-hidrolact-body-milk-200ml",
+          "name": "HidroLact Body Milk 200ml",
+          "brand": "Hidrolact",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5600068123397",
+      "name": "Hidrolact Emoliente Corporal 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7772-hidrolact-emulsao-hidratante-500ml-5600068123397.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600065717032",
+      "name": "Hidrolact Gel de Banho 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7736-hidrolact-gel-de-banho-500ml-5600065717032.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600067528247",
+      "name": "Hidrolact Sólido 125g",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7767-hidrolact-solido-125g-5600067528247.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321717431",
+      "name": "Interapothek Gel de Banho Aloé Vera 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/13278-interapothek-gel-de-banho-aloe-vera-750ml-8430321717431.html",
+      "candidates": [
+        {
+          "ean": "8430321007914",
+          "name": "Interapothek Gel de Banho Aloé Vera 750ml",
+          "brand": "Interapothek",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8430321717486",
+      "name": "Interapothek Gel de Banho Aveia e Trigo 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24386-interapothek-gel-de-banho-aveia-e-trigo-750ml-8430321717486.html",
+      "candidates": [
+        {
+          "ean": "8430321007969",
+          "name": "Interapothek Gel Banho Aveia e Trigo 750ml",
+          "brand": "Interapothek",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8430321706572",
+      "name": "Interapothek Gel de Banho Flor de Algodão 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24390-interapothek-gel-de-banho-flor-de-algodao-750ml-8430321706572.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321717493",
+      "name": "Interapothek Gel de Banho Proteínas de Leite 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24388-interapothek-gel-de-banho-proteinas-de-leite-750ml-8430321717493.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321724798",
+      "name": "Interapothek Gel de Banho Romã e Provitamina B5 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24392-interapothek-gel-de-banho-roma-e-provitamina-b5-750ml-8430321724798.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321718735",
+      "name": "Interapothek Leite Hidratante Corporal Aloé Vera 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24376-interapothek-leite-hidratante-corporal-aloe-vera-500ml-8430321718735.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321718742",
+      "name": "Interapothek Leite Hidratante Corporal Aveia e Trigo 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24380-interapothek-leite-hidratante-corporal-aveia-e-trigo-500ml-8430321718742.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321730645",
+      "name": "Interapothek Leite Hidratante Corporal Leite de Coco 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24378-interapothek-leite-hidratante-corporal-leite-de-coco-500ml-8430321730645.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321719244",
+      "name": "Interapothek Protetor Labial FPS15 Morango 4g",
+      "url": "https://farmacianovadamaia.pt/pt/labios/24348-interapothek-protetor-labial-fps15-morango-4g-8430321719244.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321719268",
+      "name": "Interapothek Protetor Labial FPS30 Baunilha e Lima 4g",
+      "url": "https://farmacianovadamaia.pt/pt/labios/24349-interapothek-protetor-labial-fps30-baunilha-e-lima-4g-8430321719268.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430321008157",
+      "name": "Interapothek Sabonete Cremoso Aloé Vera 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24493-interapothek-sabonete-cremoso-aloe-vera-500ml-8430321008157.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600068699410",
+      "name": "Ioox Avena Gel de Banho 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/21065-ioox-avena-gel-de-banho-500ml-5600068699410.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470001727268",
+      "name": "Ioox Lacadura 15ml",
+      "url": "https://farmacianovadamaia.pt/pt/maos/21058-ioox-lacadura-15ml-8470001727268.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470001543691",
+      "name": "Ioox Pulcral Solução + Spray 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/21068-ioox-pulcral-solucao-spray-150ml-8470001543691.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470001557865",
+      "name": "Ioox Solderm FPS50+ 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/21060-ioox-solderm-fps50-100ml-8470001557865.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470001650443",
+      "name": "Isdin Nutratopic Pro-AMP Gel de Banho Emoliente 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/higiene/3445-isdin-nutratopic-pro-amp-gel-de-banho-emoliente-400ml-8470001650443.html",
+      "candidates": [
+        {
+          "ean": "8429420166561",
+          "name": "Isdin Nutratopic Pro-AMP Gel de Banho Emoliente 400 ml",
+          "brand": "Isdin",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "30106659",
+      "name": "La Roche-Posay Cicaplast Lábios 7,5ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/200-la-roche-posay-cicaplast-labios-75ml-30106659.html",
+      "candidates": [
+        {
+          "ean": "3337872414060",
+          "name": "La Roche Posay Cicaplast Lábios 7,5ml",
+          "brand": "La Roche-Posay",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "3337872418815",
+      "name": "La Roche-Posay Lipikar Gel Lavante 750ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1362-la-roche-posay-lipikar-gel-lavante-750ml-3337872418815.html",
+      "candidates": []
+    },
+    {
+      "ean": "30077263",
+      "name": "La Roche-Posay Silicium 02 Rose 7ml",
+      "url": "https://farmacianovadamaia.pt/pt/unhas/14409-la-roche-posay-silicium-02-rose-7ml--30077263.html",
+      "candidates": []
+    },
+    {
+      "ean": "30076815",
+      "name": "La Roche-Posay Silicium 24 Rouge Parfait 7ml",
+      "url": "https://farmacianovadamaia.pt/pt/unhas/14413-la-roche-posay-silicium-24-rouge-parfait-7ml-30076815.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600061010489",
+      "name": "La Roche-Posay Silicium Top Coat 7ml",
+      "url": "https://farmacianovadamaia.pt/pt/unhas/3515-la-roche-posay-silicium-top-coat-7ml-5600061010489.html",
+      "candidates": []
+    },
+    {
+      "ean": "30102415",
+      "name": "La Roche-Posay Toleriane Teint Blush 02 Ouro Rosa 5g",
+      "url": "https://farmacianovadamaia.pt/pt/rosto/3513-la-roche-posay-toleriane-teint-blush-02-ouro-rosa-5g-30102415.html",
+      "candidates": []
+    },
+    {
+      "ean": "4005900990181",
+      "name": "Labello Original Batom 4,8g",
+      "url": "https://farmacianovadamaia.pt/pt/labios/143-labello-original-batom-5g-4005900990181.html",
+      "candidates": []
+    },
+    {
+      "ean": "5601135096460",
+      "name": "Lavanda Água de Colónia 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/21677-lavanda-agua-de-colonia-200ml-5601135096460.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431166120240",
+      "name": "Letibalm Junior 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/labios/7382-letibalm-junior-10ml-8431166120240.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600068917545",
+      "name": "Letifem Woman Creme Antiestrias 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/gravidez/3580-letifem-woman-creme-antiestrias-200ml-5600068917545.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436589053670",
+      "name": "Martiderm Acniover Protocolo Pele Mista e Oleosa Pack",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/24422-martiderm-acniover-protocolo-pele-mista-e-oleosa-pack-8436589053670.html",
+      "candidates": []
+    },
+    {
+      "ean": "7333350502522",
+      "name": "Mepiform Pensos Silicone 4x30cm 5 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/6694-mepiform-pensos-silicone-4x30cm-5-unidades-7333350502522.html",
+      "candidates": []
+    },
+    {
+      "ean": "7333350943417",
+      "name": "Mepiform Pensos Silicone 5x7,5cm 5 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/6689-mepiform-pensos-silicone-5x75cm-5-unidades-7333350943417.html",
+      "candidates": []
+    },
+    {
+      "ean": "7333350351328",
+      "name": "Mepiform Pensos Silicone 10x18cm 5 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/6682-mepiform-pensos-silicone-10x18cm-5-unidades-7333350351328.html",
+      "candidates": []
+    },
+    {
+      "ean": "5604172000766",
+      "name": "Monchique Água Termal Alcalina Spray 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/21399-monchique-agua-termal-alcalina-spray-200ml-5604172000766.html",
+      "candidates": [
+        {
+          "ean": "bairro-saude-monchique-gua-termal-alcalina-spray-200-ml",
+          "name": "Monchique Água Termal Alcalina Spray 200ml",
+          "brand": "Monchique",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8430442010497",
+      "name": "Mussvital Botanics Monoi Loção Corporal 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/20326-mussvital-botanics-monoi-locao-corporal-400ml-8430442010497.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430442010060",
+      "name": "Mussvital Botanics Stick Labial FPS15 4g",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-labios/20216-mussvital-botanics-stick-labial-fps15-4g-8430442010060.html",
+      "candidates": []
+    },
+    {
+      "ean": "8430442009644",
+      "name": "Mussvital Desodorizante Sensible Botanics 2x75ml",
+      "url": "https://farmacianovadamaia.pt/pt/desodorizantes/17220-mussvital-desodorizante-sensible-botanics-2x75ml-8430442009644.html",
+      "candidates": []
+    },
+    {
+      "ean": "8718309703479",
+      "name": "Mycosana Bálsamo Calcanhares Gretados 75ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/24496-mycosana-balsamo-calcanhares-gretados-75ml-8718309703479.html",
+      "candidates": [
+        {
+          "ean": "cosmeticfan-mycosana-balsamo-calcanhares-gretados-75-ml",
+          "name": "Mycosana Balsamo Calcanhares Gretados 75 mL",
+          "brand": "Mycosana",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8718053575155",
+      "name": "Nailner Verniz Respirável Vivid Pink",
+      "url": "https://farmacianovadamaia.pt/pt/unhas/10509-nailner-verniz-respiravel-vivid-pink-8718053575155.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100436",
+      "name": "Natur Botanic Ambientador Aromatic Oregano",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17076-natur-botanic-ambientador-aromatic-oregano-8423564100436.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100573",
+      "name": "Natur Botanic Ambientador Cannabis",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17069-natur-botanic-ambientador-cannabis--8423564100573.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100399",
+      "name": "Natur Botanic Ambientador Cedar Storm",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17065-natur-botanic-ambientador-cedar-storm-8423564100399.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100498",
+      "name": "Natur Botanic Ambientador Delicate Tuberose",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17074-natur-botanic-ambientador-delicate-tuberose--8423564100498.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100474",
+      "name": "Natur Botanic Ambientador Enigmatic Palo Santo",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17066-natur-botanic-ambientador-enigmatic-palo-santo--8423564100474.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100634",
+      "name": "Natur Botanic Ambientador Gingerbread",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17067-natur-botanic-ambientador-gingerbread--8423564100634.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100412",
+      "name": "Natur Botanic Ambientador Soft Cream",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17072-natur-botanic-ambientador-soft-cream--8423564100412.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100511",
+      "name": "Natur Botanic Ambientador Tomato Leaves",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17071-natur-botanic-ambientador-tomato-leaves--8423564100511.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423564100597",
+      "name": "Natur Botanic Ambientador True Leather",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17070-natur-botanic-ambientador-true-leather--8423564100597.html",
+      "candidates": []
+    },
+    {
+      "ean": "8413224040547",
+      "name": "Newell Aftersun Repelente 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/repelentes-e-pos-picada/22984-newell-aftersun-repelente-100ml-8413224040547.html",
+      "candidates": []
+    },
+    {
+      "ean": "8413224041322",
+      "name": "Newell Protetor Solar Adulto FPS50 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/repelentes-e-pos-picada/22982-newell-protetor-solar-adulto-fps50-100ml-8413224041322.html",
+      "candidates": []
+    },
+    {
+      "ean": "8413224041384",
+      "name": "Newell Protetor Solar Criança FPS50 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/repelentes-e-pos-picada/22983-newell-protetor-solar-crianca-fps50-100ml-8413224041384.html",
+      "candidates": []
+    },
+    {
+      "ean": "3571940000346",
+      "name": "Noreva Alpha KM Creme Dia Antirrugas 40ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/15321-noreva-alpha-km-creme-dia-antirrugas-40ml-3571940000346.html",
+      "candidates": []
+    },
+    {
+      "ean": "3571940002975",
+      "name": "Noreva Alpha KM Creme de Olhos Antirrugas 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/15324-noreva-alpha-km-creme-de-olhos-antirrugas-10ml-3571940002975.html",
+      "candidates": []
+    },
+    {
+      "ean": "3571940003446",
+      "name": "Noreva Bergasol Expert Bruma FPS50+ 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/15391-noreva-bergasol-expert-bruma-fps50-150ml-3571940003446.html",
+      "candidates": []
+    },
+    {
+      "ean": "3571940001794",
+      "name": "Noreva Bergasol Expert Fluido FPS50+ 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/15397-noreva-bergasol-expert-fluido-fps50-50ml-3571940001794.html",
+      "candidates": []
+    },
+    {
+      "ean": "3571940001817",
+      "name": "Noreva Bergasol Expert Leite Confort FPS50+ 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/15394-noreva-bergasol-expert-leite-confort-fps50-150ml-3571940001817.html",
+      "candidates": []
+    },
+    {
+      "ean": "3571940003026",
+      "name": "Noreva Bergasol Expert Spray Criança FPS50+ 125ml",
+      "url": "https://farmacianovadamaia.pt/pt/protetores-criancas/21991-noreva-bergasol-expert-spray-crianca-fps50-125ml-3571940003026.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401561506340",
+      "name": "Noreva Iklen+ Mélano-Expert Corretor Localizado Antimanchas 15ml",
+      "url": "https://farmacianovadamaia.pt/pt/-manchas-cutaneas/15332-noreva-iklen-melano-expert-corretor-localizado-antimanchas-15ml-3401561506340.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401374835262",
+      "name": "Noreva Lipoleum Gel Lavante 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/15305-noreva-lipoleum-gel-lavante-400ml-3401374835262.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401360060791",
+      "name": "Noreva Xerodiane AP+ Creme Emoliente 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/15315-noreva-xerodiane-ap-creme-emoliente-200ml-3401360060791.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401551598287",
+      "name": "Nutreov Sunsublim Autobronzeador 3x28 cápsulas",
+      "url": "https://farmacianovadamaia.pt/pt/suplementos-para-o-sol/10059-nutreov-sunsublim-autobronzeador-3x28-capsulas-3401551598287.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401560087727",
+      "name": "Nutreov Sunsublim Autobronzeador 28 cápsulas",
+      "url": "https://farmacianovadamaia.pt/pt/suplementos-para-o-sol/21992-nutreov-sunsublim-autobronzeador-28-capsulas-3401560087727.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401598269607",
+      "name": "Nutreov Sunsublim Bronzeado Integral 3x30 cápsulas",
+      "url": "https://farmacianovadamaia.pt/pt/suplementos-para-o-sol/21604-nutreov-sunsublim-bronzeado-integral-3x30-capsulas-3401598269607.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401551476769",
+      "name": "Nutreov Sunsublim Bronzeado Pele Clara 3x28 cápsulas",
+      "url": "https://farmacianovadamaia.pt/pt/suplementos-para-o-sol/21605-nutreov-sunsublim-bronzeado-pele-clara-3x28-capsulas-3401551476769.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680050916",
+      "name": "Nuxe Calendário do Advento",
+      "url": "https://farmacianovadamaia.pt/pt/dermocosmetica/22781-nuxe-calendario-do-advento-3264680050916.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680042171",
+      "name": "Nuxe Huile Prodigieuse OR Florale Roll-On Óleo Seco Multifunções 60ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24074-nuxe-huile-prodigieuse-or-florale-roll-on-oleo-seco-multifuncoes-60ml-3264680042171.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680005305",
+      "name": "Nuxe Prodigieux Le Parfum 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/17965-nuxe-prodigieux-le-parfum-50ml-3264680005305.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680023286",
+      "name": "Nuxe Very Rose Água Micelar Desmaquilhante Calmante 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/20359-nuxe-very-rose-agua-micelar-desmaquilhante-calmante-100ml-3264680023286.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680022067",
+      "name": "Nuxe Very Rose Óleo Desmaquilhante Delicado 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/9044-nuxe-very-rose-oleo-desmaquilhante-delicado-150ml-3264680022067.html",
+      "candidates": [
+        {
+          "ean": "3264680043475",
+          "name": "Nuxe Very Rose Oleo Delicado Desmaquilhante 150ml",
+          "brand": "Nuxe",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "4032651216116",
+      "name": "Octenisept Gel 20ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/22066-octenisept-gel-20ml-4032651216116.html",
+      "candidates": []
+    },
+    {
+      "ean": "8713304956899",
+      "name": "Oenobiol Autobronzeador 2x30 cápsulas",
+      "url": "https://farmacianovadamaia.pt/pt/suplementos-para-o-sol/19623-oenobiol-autobronzeador-2x30-capsulas-8713304956899.html",
+      "candidates": []
+    },
+    {
+      "ean": "2006920673728",
+      "name": "Oleoban Creme Diário 200g",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/325-oleoban-creme-diario-200g-2006920673728.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600719103242",
+      "name": "Oleoban Duche Diário 300ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/1472-oleoban-duche-diario-300ml-5600719103242.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600903501472",
+      "name": "Oleoban Gel de Banho 950ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/22552-oleoban-gel-de-banho-950ml-5600903501472.html",
+      "candidates": [
+        {
+          "ean": "5600903501465",
+          "name": "Oleoban Gel de Banho 950ml",
+          "brand": "Oleoban",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8422037025115",
+      "name": "Original Botanic Gel Corporal 1L",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/16879-original-botanic-gel-corporal-1l-8422037025115.html",
+      "candidates": []
+    },
+    {
+      "ean": "8422037028031",
+      "name": "Original Botanic Óleo para Barba 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/produtos-barbear/16898-original-botanic-oleo-para-barba-30ml-8422037028031.html",
+      "candidates": []
+    },
+    {
+      "ean": "8032715360027",
+      "name": "P.O.L. Fluído 300ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7927-pol-fluido-300ml-8032715360027.html",
+      "candidates": []
+    },
+    {
+      "ean": "8032715360034",
+      "name": "P.O.L. Solução de Higiene 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/corpo/7926-pol-solucao-de-higiene-200ml-8032715360034.html",
+      "candidates": []
+    },
+    {
+      "ean": "8608808146603",
+      "name": "Panthenol Creme 30g",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/21242-panthenol-creme-30g-8608808146603.html",
+      "candidates": []
+    },
+    {
+      "ean": "5701943103241",
+      "name": "Perspirex Comfort Roll-On 20ml",
+      "url": "https://farmacianovadamaia.pt/pt/desodorizantes/2551-perspirex-comfort-roll-on-20ml-5701943103241.html",
+      "candidates": []
+    },
+    {
+      "ean": "8424730017138",
+      "name": "Pharma Iap Ambientador Verbana Felicidade 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/18736-pharma-iap-ambientador-verbana-felicidade-50ml-8424730017138.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436566189484",
+      "name": "Phiero Inside Out Perfume 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/20667-phiero-inside-out-perfume-50ml-8436566189484.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437012718357",
+      "name": "Phiero Night Woman Roll-on 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/15267-phiero-night-woman-roll-on-10ml-8437012718357.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437012718203",
+      "name": "Phiero Noite Man 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/15263-phiero-noite-man-30ml-8437012718203.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437012718227",
+      "name": "Phiero Premium 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/15265-phiero-premium-30ml-8437012718227.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436566180931",
+      "name": "Phiero Secret Roll-On 15ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/20747-phiero-secret-roll-on-15ml-8436566180931.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437012718210",
+      "name": "Phiero Woman Perfume 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/15264-phiero-woman-perfume-30ml--8437012718210.html",
+      "candidates": []
+    },
+    {
+      "ean": "8058090046370",
+      "name": "Pic Solution Silvergen Plus Spray 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/18507-pic-solution-silvergen-plus-spray-50ml-8058090046370.html",
+      "candidates": []
+    },
+    {
+      "ean": "8423372025051",
+      "name": "Pilopeptan Woman Gel Reparador de Unhas 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/unhas/3380-pilopeptan-woman-gel-reparador-de-unhas-10ml-8423372025051.html",
+      "candidates": []
+    },
+    {
+      "ean": "3573994008002",
+      "name": "Pédi Relax Creme Pé Diabético 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/241-pedi-relax-creme-pe-diabetico-100ml-3573994008002.html",
+      "candidates": [
+        {
+          "ean": "3577056009075",
+          "name": "Pedi Relax Creme Pé Diabético 100ml",
+          "brand": "Pédi Relax",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "5425012535398",
+      "name": "Remescar Corretor Papos e Olheiras 8ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/23151-remescar-corretor-papos-e-olheiras-8ml-5425012535398.html",
+      "candidates": []
+    },
+    {
+      "ean": "3574660536850",
+      "name": "RoC Solução Micelar 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/6733-roc-solucao-micelar-400ml-3574660536850.html",
+      "candidates": []
+    },
+    {
+      "ean": "3662361006045",
+      "name": "SVR Sebiaclear Active Gel 40ml + SVR Sebiaclear Gel Moussant 50ml Pack",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/23121-svr-sebiaclear-active-gel-40ml-svr-sebiaclear-gel-moussant-50ml-pack-3662361006045.html",
+      "candidates": []
+    },
+    {
+      "ean": "3401360060722",
+      "name": "SVR Topialyse Bálsamo Protect+ 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/4207-svr-topialyse-balsamo-protect-200ml-3401360060722.html",
+      "candidates": []
+    },
+    {
+      "ean": "3662361006403",
+      "name": "SVR Topialyse Gel Lavante 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/24309-svr-topialyse-gel-lavante-100ml-3662361006403.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470003248211",
+      "name": "Sativa Gy-Tex Creme Dermoprotetor 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24185-sativa-gy-tex-creme-dermoprotetor-100ml-8470003248211.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470001866349",
+      "name": "Sativa Kera-Tex Creme de Unhas 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/maos/24186-sativa-kera-tex-creme-de-unhas-30ml-8470001866349.html",
+      "candidates": []
+    },
+    {
+      "ean": "8470003968874",
+      "name": "Sativa Syndet Sabão para Banho 400ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/24190-sativa-syndet-sabao-para-banho-400ml-8470003968874.html",
+      "candidates": []
+    },
+    {
+      "ean": "3700343901596",
+      "name": "Saugella You Fresh 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/11277-saugella-you-fresh-200ml-3700343901596.html",
+      "candidates": []
+    },
+    {
+      "ean": "5056585800967",
+      "name": "Scholl Pensos para Bolhas Mix 5 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/pes/18923-scholl-pensos-para-bolhas-mix-5-unidades-5056585800967.html",
+      "candidates": []
+    },
+    {
+      "ean": "5056585800943",
+      "name": "Scholl Pensos para Bolhas Pequenas 6 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/pes/18922-scholl-pensos-para-bolhas-pequenas-6-unidades-5056585800943.html",
+      "candidates": []
+    },
+    {
+      "ean": "8429979463883",
+      "name": "Sesderma Hidraloe Gel de Aloe 500ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/21221-sesderma-hidraloe-gel-de-aloe-500ml-8429979463883.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567769147",
+      "name": "SkinCeuticals Advanced RGN-6 Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/24678-skinceuticals-advanced-rgn-6-coffret-8431567769147.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567769109",
+      "name": "SkinCeuticals Age Interrupter Sérum + Age Advanced Eye Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/22877-skinceuticals-age-interrupter-serum-age-advanced-eye-coffret-8431567769109.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567704438",
+      "name": "SkinCeuticals C E Ferulic + Advanced RGN-6 Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/22878-skinceuticals-c-e-ferulic-advanced-rgn-6-coffret-8431567704438.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567768980",
+      "name": "SkinCeuticals C E Ferulic + Age Interrupter Advanced Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/22880-skinceuticals-c-e-ferulic-age-interrupter-advanced-coffret-8431567768980.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567768867",
+      "name": "SkinCeuticals C E Ferulic + P-Tiox Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/22881-skinceuticals-c-e-ferulic-p-tiox-coffret-8431567768867.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567768904",
+      "name": "SkinCeuticals HA Intensifier Multi-Glycan + Age Advanced Eye Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/22882-skinceuticals-ha-intensifier-multi-glycan-age-advanced-eye-coffret-8431567768904.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567769024",
+      "name": "SkinCeuticals P-Tiox Sérum + Creme Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/22879-skinceuticals-p-tiox-age-advanced-eye-coffret-8431567769024.html",
+      "candidates": []
+    },
+    {
+      "ean": "883140020493",
+      "name": "SkinCeuticals Redness Neutralizer 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/pele-sensivel/8764-skinceuticals-redness-neutralizer-50ml-883140020493.html",
+      "candidates": []
+    },
+    {
+      "ean": "4011353000773",
+      "name": "Spirularin N Spray Ungueal 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/spray/23143-spirularin-n-spray-ungueal-50ml-4011353000773.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600267065054",
+      "name": "SterilOPS FeetClean Spray Desinfetante Calçado 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/24145-sterilops-feetclean-spray-desinfetante-calcado-100ml-5600267065054.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600074696922",
+      "name": "Stop Frieiras Creme 75ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/13636-stop-frieiras-creme-75ml-5600074696922.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437019515003",
+      "name": "The Beemine Lab Hani+ Máscara de Mel de Alecrim e CBD 140gr",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/12897-the-beemine-lab-hani-mascara-de-mel-de-alecrim-e-cbd-140gr-8437019515003.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437019515171",
+      "name": "The Beemine Lab Óleo Corporal CBD 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/12907-the-beemine-lab-oleo-corporal-cbd-100ml-8437019515171.html",
+      "candidates": []
+    },
+    {
+      "ean": "8437019515072",
+      "name": "The Beemine Lab Óleo De CBD Básico 3% 10ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/12905-the-beemine-lab-oleo-de-cbd-basico-3-10ml-8437019515072.html",
+      "candidates": []
+    },
+    {
+      "ean": "8002140106026",
+      "name": "Timodore Pó Desodorizante Pés 250g",
+      "url": "https://farmacianovadamaia.pt/pt/pes/22433-timodore-po-desodorizante-pes-250g-8002140106026.html",
+      "candidates": []
+    },
+    {
+      "ean": "3700281702798",
+      "name": "Topicrem AC Cuidado Ativo 40ml",
+      "url": "https://farmacianovadamaia.pt/pt/pele-sensivel/12687-topicrem-ac-cuidado-ativo-40ml-3700281702798.html",
+      "candidates": []
+    },
+    {
+      "ean": "3700281702774",
+      "name": "Topicrem AC Gel de Limpeza Purificante 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/12689-topicrem-ac-gel-de-limpeza-purificante-200ml-3700281702774.html",
+      "candidates": []
+    },
+    {
+      "ean": "3700281703344",
+      "name": "Topicrem HYDRA+ Água Micelar Suave 100 ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/12678-topicrem-hydra-agua-micelar-suave-100-ml-3700281703344.html",
+      "candidates": []
+    },
+    {
+      "ean": "3700281702361",
+      "name": "Topicrem UH Leite de Corpo Ultra-Hidratante 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/12691-topicrem-uh-leite-de-corpo-ultra-hidratante-200ml-3700281702361.html",
+      "candidates": []
+    },
+    {
+      "ean": "3664492019727",
+      "name": "Urgo Antifungos Treat & Color Filmogel Vermelho 4ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/21535-urgo-antifungos-treat-color-filmogel-vermelho-4ml-3664492019727.html",
+      "candidates": []
+    },
+    {
+      "ean": "3664492015200",
+      "name": "Urgo Filmogel Spots Borbulhas 2ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/1981-urgo-filmogel-spots-borbulhas-2ml-3664492015200.html",
+      "candidates": []
+    },
+    {
+      "ean": "3664492021973",
+      "name": "Urgo Spray Fungicida 125ml",
+      "url": "https://farmacianovadamaia.pt/pt/pes/23290-urgo-spray-fungicida-125ml-3664492021973.html",
+      "candidates": []
+    },
+    {
+      "ean": "3661434035029",
+      "name": "Uriage Bariéderm CICA+ Creme Reparador 40ml",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/2955-uriage-bariederm-cica-creme-reparador-40ml-3661434035029.html",
+      "candidates": []
+    },
+    {
+      "ean": "3661434008795",
+      "name": "Uriage Eau Thermale Creme Lavante 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/banho/2721-uriage-eau-thermale-creme-lavante-200ml-3661434008795.html",
+      "candidates": []
+    },
+    {
+      "ean": "3661434036729",
+      "name": "Uriage Eau Thermale Leite Aveludado de Corpo + Derm-Phy Creme Lavante Pack",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/22206-uriage-eau-thermale-leite-aveludado-de-corpo-derm-phy-creme-lavante-pack-3661434036729.html",
+      "candidates": []
+    },
+    {
+      "ean": "3661434010064",
+      "name": "Uriage Hyséac Máscara Purificante Peel-Off 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/3588-uriage-hyseac-mascara-purificante-peel-off-50ml-3661434010064.html",
+      "candidates": []
+    },
+    {
+      "ean": "3661434000515",
+      "name": "Uriage Água Termal 150ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/2628-uriage-agua-termal-150ml-3661434000515.html",
+      "candidates": []
+    },
+    {
+      "ean": "3661434000522",
+      "name": "Uriage Água Termal 300ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/2629-uriage-agua-termal-300ml-3661434000522.html",
+      "candidates": [
+        {
+          "ean": "3661434000539",
+          "name": "Uriage Água Termal 300ml",
+          "brand": "Uriage",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "768455901005",
+      "name": "Varihesive Hidrogel Pomada 10x15g",
+      "url": "https://farmacianovadamaia.pt/pt/cicatrizantes/22651-varihesive-hidrogel-pomada-10x15g-768455901005.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600257928260",
+      "name": "Vaseline Lip Therapy Original + Rosy Lips 2x20g",
+      "url": "https://farmacianovadamaia.pt/pt/labios/22396-vaseline-lip-therapy-original-rosy-lips-2x20g-5600257928260.html",
+      "candidates": []
+    },
+    {
+      "ean": "5600742320890",
+      "name": "Velvetmed Velderma Creme Hidratante 1kg",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/9747-velvetmed-velderma-creme-hidratante-1kg-5600742320890.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350281",
+      "name": "Verset Parfums Andrea for Her 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6188-verset-parfums-andrea-for-her-100ml-8436022350281.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436615701056",
+      "name": "Verset Parfums Be Amy 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/20190-verset-parfums-be-amy-100ml-8436615701056.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351820",
+      "name": "Verset Parfums Ceix for Him 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6205-verset-parfums-ceix-for-him-100ml-8436022351820.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436615701001",
+      "name": "Verset Parfums Cen 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/20133-verset-parfums-cen-100ml-8436615701001.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022355965",
+      "name": "Verset Parfums Choice For Him 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/12549-verset-parfums-choice-for-him-100ml-8436022355965.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351509",
+      "name": "Verset Parfums Classy 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6204-verset-parfums-classy-100ml-8436022351509.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351486",
+      "name": "Verset Parfums Claudia 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6194-verset-parfums-claudia-100ml-8436022351486.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350298",
+      "name": "Verset Parfums Coquette 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6186-verset-parfums-coquette-100ml-8436022350298.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350427",
+      "name": "Verset Parfums Cuero 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6202-verset-parfums-cuero-100ml-8436022350427.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022355972",
+      "name": "Verset Parfums D'Arte for Him 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/12546-verset-parfums-d-arte-for-him-100ml-8436022355972.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351479",
+      "name": "Verset Parfums Frenesí 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6191-verset-parfums-frenesi-100ml-8436022351479.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350311",
+      "name": "Verset Parfums Glam 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/30-verset-parfums-glam-100ml-8436022350311.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351493",
+      "name": "Verset Parfums Helena 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/8263-verset-parfums-helena-100ml-8436022351493.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351905",
+      "name": "Verset Parfums Ikal 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6206-verset-parfums-ikal-100ml-8436022351905.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351257",
+      "name": "Verset Parfums Island 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/22933-verset-parfums-island-100ml-8436022351257.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351929",
+      "name": "Verset Parfums It's Done 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6207-verset-parfums-it-s-done-100ml-8436022351929.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351943",
+      "name": "Verset Parfums It's Mine 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6192-verset-parfums-it-s-mine-100ml-8436022351943.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351967",
+      "name": "Verset Parfums Jana 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6195-verset-parfums-jana-100ml-8436022351967.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350328",
+      "name": "Verset Parfums Lia 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6187-verset-parfums-lia-100ml-8436022350328.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436615706617",
+      "name": "Verset Parfums Look This 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/7674-verset-parfums-stone-100ml-8436615706617.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351448",
+      "name": "Verset Parfums Luz Adriana (Stella) 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6189-verset-parfums-luz-adriana-stella-100ml-8436022351448.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022355989",
+      "name": "Verset Parfums Majesty for Her 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/12548-verset-parfums-masjesty-for-her-100ml-8436022355989.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436615702701",
+      "name": "Verset Parfums Nela 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/20137-verset-parfums-nela-100ml-8436615702701.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350458",
+      "name": "Verset Parfums Ocean 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6199-verset-parfums-ocean-100ml-8436022350458.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436615702718",
+      "name": "Verset Parfums Opal 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/20136-verset-parfums-opal-100ml-8436615702718.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351424",
+      "name": "Verset Parfums Petite 15ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/13790-verset-parfums-petite-15ml-8436022351424.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351417",
+      "name": "Verset Parfums Petite 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/7673-verset-parfums-sensi-piu-100ml-8436022351417.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350472",
+      "name": "Verset Parfums Pour Toi 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6200-verset-parfums-pour-toi-100ml-8436022350472.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022355996",
+      "name": "Verset Parfums Preziose 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/22932-verset-parfums-preziose-100ml-8436022355996.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436615701070",
+      "name": "Verset Parfums Purpurine 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/20189-verset-parfums-purpurine-100ml-8436615701070.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351981",
+      "name": "Verset Parfums Radiance 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6196-verset-parfums-radiance-100ml-8436022351981.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022352001",
+      "name": "Verset Parfums Sensi Piú 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6198-verset-parfums-sensi-piu-100ml-8436022352001.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022350366",
+      "name": "Verset Parfums Sofia 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6190-verset-parfums-sofia-100ml-8436022350366.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022352049",
+      "name": "Verset Parfums Stone 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6208-verset-parfums-stone-100ml-8436022352049.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022356009",
+      "name": "Verset Parfums Sunshine for Her 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/12547-verset-parfums-sunshine-for-her-100ml-8436022356009.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022353015",
+      "name": "Verset Parfums Together 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/22935-verset-parfums-together-100ml-8436022353015.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351516",
+      "name": "Verset Parfums Urban 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/22934-verset-parfums-urban-100ml-8436022351516.html",
+      "candidates": []
+    },
+    {
+      "ean": "8436022351462",
+      "name": "Verset Parfums Vivian 100ml",
+      "url": "https://farmacianovadamaia.pt/pt/perfumes/6193-verset-parfums-vivian-100ml-8436022351462.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567585358",
+      "name": "Vichy Desodorizante 48h Cuidado Antitranspirante Roll-On 2x50ml",
+      "url": "https://farmacianovadamaia.pt/pt/desodorizantes/18394-vichy-desodorizante-48h-cuidado-antitranspirante-roll-on-2x50ml-8431567585358.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567585396",
+      "name": "Vichy Desodorizante Roll On Mineral 48h 2x50ml",
+      "url": "https://farmacianovadamaia.pt/pt/desodorizantes/17727-vichy-desodorizante-roll-on-mineral-48h-2x50ml-8431567585396.html",
+      "candidates": []
+    },
+    {
+      "ean": "3337875708937",
+      "name": "Vichy Desodorizante Roll On Mineral 48h 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/desodorizantes/17639-vichy-desodorizante-roll-on-mineral-48h-50ml-3337875708937.html",
+      "candidates": [
+        {
+          "ean": "3337875553278",
+          "name": "Vichy Desodorizante Mineral 48H Roll-On 50 ml",
+          "brand": "Vichy",
+          "reason": "same fingerprint and volume; physical identity requires verification"
+        }
+      ]
+    },
+    {
+      "ean": "8431567448493",
+      "name": "Vichy Homme Espuma de Barbear Anti-Irritações 2x200ml",
+      "url": "https://farmacianovadamaia.pt/pt/produtos-barbear/14475-vichy-homme-espuma-de-barbear-anti-irritacoes-2x200ml-8431567448493.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567588328",
+      "name": "Vichy Homme Rotina Anti-Idade Hydra Mag C+",
+      "url": "https://farmacianovadamaia.pt/pt/produtos-barbear/17363-vichy-homme-rotina-anti-idade-hydra-mag-c-8431567588328.html",
+      "candidates": []
+    },
+    {
+      "ean": "3337871321543",
+      "name": "Vichy Liftactiv Flexiteint 15 Opal 30ml",
+      "url": "https://farmacianovadamaia.pt/pt/rosto/3353-vichy-liftactiv-flexiteint-15-opal-30ml-3337871321543.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567746353",
+      "name": "Vichy Protocolo Colagénio Pack",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/24669-vichy-protocolo-colagenio-pack-8431567746353.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567746315",
+      "name": "Vichy Protocolo Hidratação Pack",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24670-vichy-protocolo-hidratacao-pack-8431567746315.html",
+      "candidates": []
+    },
+    {
+      "ean": "8431567746834",
+      "name": "Vichy Protocolo Volumizador Pack",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24673-vichy-protocolo-volumizador-pack-8431567746834.html",
+      "candidates": []
+    },
+    {
+      "ean": "5099514400210",
+      "name": "WaterWipes Adult Care Toalhitas de Limpeza Pele Sensível 30 unidades",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/20656-waterwipes-adult-care-toalhitas-de-limpeza-pele-sensivel-30-unidades-5099514400210.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007739",
+      "name": "Youth Lab. Check-Matte Solution 12ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/66-youth-lab-check-matte-solution-12ml-5201062007739.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007746",
+      "name": "Youth Lab. Check-Matte Solution Recarga 12ml",
+      "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/7390-youth-lab-check-matte-solution-recarga-12ml-5201062007746.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007074",
+      "name": "Youth Lab. Creme Antirrugas 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/2265-youth-lab-creme-antirrugas-50ml-5201062007074.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007029",
+      "name": "Youth Lab. Gel Limpeza Pele Normal e Seca 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/2278-youth-lab-gel-limpeza-pele-normal-e-seca-200ml-5201062007029.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007012",
+      "name": "Youth Lab. Gel Limpeza Pele Oleosa 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/2277-youth-lab-gel-limpeza-pele-oleosa-200ml-5201062007012.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007296",
+      "name": "Youth Lab. Máscara de Hidratação 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/2274-youth-lab-mascara-de-hidratacao-50ml-5201062007296.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007289",
+      "name": "Youth Lab. Máscara de Limpeza e Luminosidade 50ml",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/2275-youth-lab-mascara-de-limpeza-e-luminosidade-50ml-5201062007289.html",
+      "candidates": []
+    },
+    {
+      "ean": "5201062007401",
+      "name": "Youth Lab. Oxygen Leite de Limpeza 200ml",
+      "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/3074-youth-lab-oxygen-leite-de-limpeza-200ml-5201062007401.html",
+      "candidates": []
+    }
+  ],
+  "conflicts": [
+    {
+      "ean": "3282770393712",
+      "canonical": "3282770393712",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3323030001180",
+      "canonical": "3323030001180",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3282779292238",
+      "canonical": "3282779292238",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "5601348111035",
+      "canonical": "5601348111035",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5606890408831",
+      "canonical": "5606890408831",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3522930005605",
+      "canonical": "3522930005605",
+      "reason": "multiple conflicting offers for the same existing volume",
+      "previous": {
+        "volume_ml": 400,
+        "unit": "ml",
+        "price": 21.05,
+        "previous_price": null,
+        "in_stock": false,
+        "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/22741-caudalie-vinoclean-agua-micelar-desmaquilhante-400ml-3522930003106.html"
+      },
+      "incoming": {
+        "volume_ml": 400,
+        "unit": "ml",
+        "price": 18.9,
+        "previous_price": null,
+        "in_stock": true,
+        "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/24588-caudalie-vinoclean-agua-de-uva-micelar-desmaquilhante-400ml-3522930005605.html"
+      }
+    },
+    {
+      "ean": "3522930003625",
+      "canonical": "3522930003625",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3337875597227",
+      "canonical": "3337875597227",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3337875684095",
+      "canonical": "3337875684095",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3337875952903",
+      "canonical": "3337875952903",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8470002113916",
+      "canonical": "8470002113916",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3573994006299",
+      "canonical": "3573994006299",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3282770389234",
+      "canonical": "3282770389234",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "5600066113192",
+      "canonical": "5600066113192",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8429420202924",
+      "canonical": "8429420202924",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8429420175341",
+      "canonical": "8429420175341",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8429420175303",
+      "canonical": "8429420175303",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8437015942704",
+      "canonical": "8437015942704",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661838571",
+      "canonical": "3574661838571",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661838595",
+      "canonical": "3574661838595",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661903729",
+      "canonical": "3574661903729",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661878706",
+      "canonical": "3574661878706",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661848686",
+      "canonical": "3574661848686",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3574661864297",
+      "canonical": "3574661864297",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3401374911270",
+      "canonical": "3401374911270",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3264680042188",
+      "canonical": "3264680042201",
+      "reason": "multiple conflicting offers for the same existing volume",
+      "previous": {
+        "volume_ml": 60,
+        "unit": "ml",
+        "price": 27.39,
+        "previous_price": null,
+        "in_stock": true,
+        "url": "https://farmacianovadamaia.pt/pt/hidratantes/22704-nuxe-huile-prodigieuse-or-roll-on-oleo-seco-multifuncoes-60ml-3264680042201.html"
+      },
+      "incoming": {
+        "volume_ml": 60,
+        "unit": "ml",
+        "price": 22.08,
+        "previous_price": null,
+        "in_stock": true,
+        "url": "https://farmacianovadamaia.pt/pt/hidratantes/22702-nuxe-huile-prodigieuse-roll-on-oleo-seco-multifuncoes-60ml-3264680042188.html"
+      }
+    },
+    {
+      "ean": "3264680034718",
+      "canonical": "3264680034718",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5600719103303",
+      "canonical": "5600719103303",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5200375300414",
+      "canonical": "5200375300414",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3662361001859",
+      "canonical": "3662361001859",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3662361001033",
+      "canonical": "3662361001033",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3661434035128",
+      "canonical": "3661434035128",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "0000030065949",
+      "canonical": "0000030065949",
+      "reason": "mass/volume units differ"
+    }
+  ],
+  "seed_bytes_delta": 1481275
+}
