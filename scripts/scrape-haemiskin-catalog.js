@@ -21,12 +21,14 @@
  *   node scripts/scrape-haemiskin-catalog.js --resume
  */
 
+const { fetch, reportEmptyProduct } = require('./lib/catalog-http').createCatalogClient();
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'haemiskin-full.json');
+const CHECKPOINT_FILE = OUT_FILE + '.checkpoint';
 const BASE = 'https://www.haemiskin.pt';
 
 const args = Object.fromEntries(
@@ -132,6 +134,7 @@ async function fetchPage(url, attempt = 1) {
     }
     return { status: 'ok', html: await r.text() };
   } catch (e) {
+    if (e.catalogFatal) throw e;
     if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); }
     return { status: 'fetch_error', error: e.message };
   }
@@ -139,32 +142,33 @@ async function fetchPage(url, attempt = 1) {
 
 async function discoverProductUrls() {
   const idx = await fetchPage(BASE + '/sitemap.xml');
-  if (idx.status !== 'ok') return [];
+  if (idx.status !== 'ok') throw new Error('Índice de sitemaps indisponível');
   const subs = locs(idx.html).filter(u => /sitemap_products/i.test(u));
   const urls = new Set();
   for (const s of subs) {
     const r = await fetchPage(s);
-    if (r.status === 'ok') for (const u of locs(r.html)) if (isProductUrl(u)) urls.add(u.split('?')[0]);
+    if (r.status !== 'ok') throw new Error('Sitemap de produtos indisponível');
+    for (const u of locs(r.html)) if (isProductUrl(u)) urls.add(u.split('?')[0]);
   }
   return [...urls];
 }
 
 function loadCheckpoint() {
-  if (!RESUME || !fs.existsSync(OUT_FILE)) return null;
+  if (!RESUME || !fs.existsSync(CHECKPOINT_FILE)) return null;
   try {
-    const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+    const d = JSON.parse(fs.readFileSync(CHECKPOINT_FILE, 'utf8'));
     if (!Array.isArray(d.products)) return null;
     return { products: d.products, done: new Set(d.products.map(p => p.url)) };
   } catch { return null; }
 }
 function saveCheckpoint(products, inProgress = true) {
-  if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
-  fs.writeFileSync(OUT_FILE, JSON.stringify({
+  if (LIMIT !== Infinity || products.length === 0) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
+  fs.writeFileSync(CHECKPOINT_FILE, JSON.stringify({
     scraped_at: new Date().toISOString(),
     source: 'haemiskin.pt (Shopify, HTTP + JSON-LD gtin13)',
     in_progress: inProgress,
     products,
-  }), 'utf8');
+  }), 'utf8'); if (!inProgress) fs.renameSync(CHECKPOINT_FILE, OUT_FILE);
 }
 
 async function main() {
@@ -175,6 +179,7 @@ async function main() {
   console.log(`  ${urls.length} URLs /products/`);
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 
+  if (urls.length === 0) throw new Error('Descoberta sem URLs; catálogo anterior preservado.');
   const cp = loadCheckpoint();
   const products = cp ? cp.products : [];
   const done = cp ? cp.done : new Set();
@@ -195,7 +200,7 @@ async function main() {
       if (r.status === 'ok') {
         const data = extractProductData(r.html, url);
         if (data) { products.push({ url, status: 'ok', scraped_at, ...data }); stats.ok++; }
-        else { stats.skipped++; }
+        else { reportEmptyProduct(r.html); stats.skipped++; }
       } else if (r.status === 'not_found') { stats.not_found++; }
       else { stats.error++; }
 
@@ -210,6 +215,7 @@ async function main() {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (stats.error > 0) throw new Error(`Recolha incompleta: ${stats.error} erros; catálogo anterior preservado.`);
   if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
 

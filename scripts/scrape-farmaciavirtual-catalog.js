@@ -19,6 +19,7 @@
  *   node scripts/scrape-farmaciavirtual-catalog.js --limit=300 --resume
  */
 
+const { fetch, reportEmptyProduct } = require('./lib/catalog-http').createCatalogClient();
 const fs = require('fs');
 const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
@@ -26,6 +27,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'farmaciavirtual-full.json');
+const CHECKPOINT_FILE = OUT_FILE + '.checkpoint';
 const BASE = 'https://farmaciavirtual.pt';
 const SITEMAP_INDEX = BASE + '/wp-sitemap.xml';
 
@@ -88,16 +90,16 @@ function extractProductData(html) {
 async function fetchPage(url, attempt = 1) {
   let r;
   try { r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' }, redirect: 'follow' }); }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error' }; }
+  catch (e) { if (e.catalogFatal) throw e; if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error' }; }
   const drop = () => { try { return r.body ? r.body.cancel().catch(() => {}) : undefined; } catch { return undefined; } };
   if (r.status === 404 || r.status === 410) { await drop(); return { status: 'not_found' }; }
   if (r.status === 429 || r.status >= 500) { await drop(); if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'http_error' }; }
   try { return { status: 'ok', html: await r.text() }; }
-  catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 1500 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error' }; }
+  catch (e) { if (e.catalogFatal) throw e; if (attempt < 3) { await new Promise(s => setTimeout(s, 1500 * attempt)); return fetchPage(url, attempt + 1); } return { status: 'fetch_error' }; }
 }
 
-function loadCheckpoint() { if (!RESUME || !fs.existsSync(OUT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
-function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) return; /* smoke-test (--limit) NÃO sobrescreve o catálogo de produção */ fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'farmaciavirtual.pt (WooCommerce; SEM EAN, sku=CNP)', in_progress: inProgress, products }), 'utf8'); }
+function loadCheckpoint() { if (!RESUME || !fs.existsSync(CHECKPOINT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(CHECKPOINT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
+function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity || products.length === 0) return; /* smoke-test (--limit) NÃO sobrescreve o catálogo de produção */ fs.writeFileSync(CHECKPOINT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'farmaciavirtual.pt (WooCommerce; SEM EAN, sku=CNP)', in_progress: inProgress, products }), 'utf8'); if (!inProgress) fs.renameSync(CHECKPOINT_FILE, OUT_FILE); }
 
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
@@ -106,13 +108,14 @@ async function main() {
   const productSitemaps = locs(idx).filter(u => /wp-sitemap-posts-product-\d+\.xml/.test(u));
   let urls = [];
   for (const sm of productSitemaps) {
-    try { const xml = await (await fetch(sm, { headers: { 'User-Agent': UA } })).text(); urls.push(...locs(xml)); } catch (e) { /* skip */ }
+    try { const xml = await (await fetch(sm, { headers: { 'User-Agent': UA } })).text(); urls.push(...locs(xml)); } catch (e) { throw e; }
   }
   urls = [...new Set(urls.filter(u => /\/produto\//.test(u)))];
   console.log(`  ${productSitemaps.length} sitemaps · ${urls.length} produtos`);
   if (CHUNK) { const [n, mm] = CHUNK.split('/').map(Number); const sorted = [...urls].sort(); const size = Math.ceil(sorted.length / mm); urls = sorted.slice((n - 1) * size, n * size); console.log(`  Chunk ${CHUNK}: ${urls.length}`); }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 
+  if (urls.length === 0) throw new Error('Descoberta sem URLs; catálogo anterior preservado.');
   const cp = loadCheckpoint();
   const products = cp ? cp.products : [];
   const done = cp ? cp.done : new Set();
@@ -130,7 +133,7 @@ async function main() {
         const d = extractProductData(r.html);
         if (d && d.status === 'ok') { products.push(JSON.parse(JSON.stringify({ url, scraped_at, ...d }))); stats.ok++; }
         else if (d && d.status === 'oos') stats.oos++;
-        else stats.skipped++;
+        else { reportEmptyProduct(r.html); stats.skipped++; }
       } else if (r.status === 'not_found') stats.not_found++; else stats.error++;
       const total = stats.ok + stats.oos + stats.skipped + stats.not_found + stats.error;
       if (total % CHECKPOINT_EVERY === 0) { saveCheckpoint(products); const rate = total / ((Date.now() - start) / 1000); console.log(`  [${total}/${queue.length}] ok:${stats.ok} esgotado:${stats.oos} 404:${stats.not_found} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round((queue.length - total) / rate / 60)}m`); }
@@ -138,6 +141,7 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (stats.error > 0) throw new Error(`Recolha incompleta: ${stats.error} erros; catálogo anterior preservado.`);
   if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
   console.log(`\n══════ farmaciavirtual scrape ══════`);
