@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-08T15:24:06.199Z",
+  "scraped_at": "2026-10-08T19:44:17.976Z",
   "source": "/home/runner/work/SmartCart/SmartCart/data/catalog/druni-urls.json",
   "in_progress": false,
   "stats": {
@@ -39066,105 +39066,6 @@
       "latency_ms": 3245
     },
     {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/alisadores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/alisadores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2984
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/modeladores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/modeladores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2788
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/secadores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/secadores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2782
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/condicionadores/sem-sulfatos-ou-silicones",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/condicionadores/sem-sulfatos-ou-silicones",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2967
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/mascaras/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/mascaras/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3110
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-cacheado",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-cacheado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3137
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/shampoos/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/shampoos/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4523
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-danificado",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-danificado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3701
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-seco",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-seco",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3138
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4053
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-tingido",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-tingido",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3250
-    },
-    {
       "url": "https://www.druni.pt/cacao-sense-elifexir-gel-esfoliante-redutor",
       "lastmod": "2026-10-06T03:56:42+00:00",
       "priority": 1,
@@ -39185,15 +39086,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 2489
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/pelo-normal",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/pelo-normal",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3982
     },
     {
       "url": "https://www.druni.pt/cactus-hyaluronic-acid-gskin-creme-facial-hidratante",
@@ -82338,24 +82230,6 @@
       "latency_ms": 2776
     },
     {
-      "url": "https://www.druni.pt/ecologico/cabelo-natural/pentes-y-escovas",
-      "lastmod": "2026-07-15T14:21:29+00:00",
-      "priority": 1,
-      "slug": "ecologico/cabelo-natural/pentes-y-escovas",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3546
-    },
-    {
-      "url": "https://www.druni.pt/ecologico/protetor-solar/after-sun",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "ecologico/protetor-solar/after-sun",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3265
-    },
-    {
       "url": "https://www.druni.pt/ecran-aftersun-leche-hidratante-reparadora-ecran-leite-hidratante-reparador",
       "lastmod": "2026-10-06T03:57:58+00:00",
       "priority": 1,
@@ -92833,15 +92707,6 @@
       "latency_ms": 3326
     },
     {
-      "url": "https://www.druni.pt/extra-superior-romero-crusellas-tonico-capilar-fortificante",
-      "lastmod": "2026-10-06T03:59:15+00:00",
-      "priority": 1,
-      "slug": "extra-superior-romero-crusellas-tonico-capilar-fortificante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 4593
-    },
-    {
       "url": "https://www.druni.pt/extra-volume-shampoo-moroccanoil-shampoo-extra-volume",
       "lastmod": "2026-10-06T03:57:00+00:00",
       "priority": 1,
@@ -98891,15 +98756,6 @@
       "latency_ms": 2705
     },
     {
-      "url": "https://www.druni.pt/formato-viagem/mini-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "formato-viagem/mini-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3876
-    },
-    {
       "url": "https://www.druni.pt/forte-kerzo-shampoo-anti-queda",
       "lastmod": "2026-10-06T03:55:29+00:00",
       "priority": 1,
@@ -101716,51 +101572,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 2644
-    },
-    {
-      "url": "https://www.druni.pt/gel-bano-fresas-dicora-dosificador-corporal-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "gel-bano-fresas-dicora-dosificador-corporal-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3190
-    },
-    {
-      "url": "https://www.druni.pt/gel-bano-almendras-dicora-dosificador-corporal-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "gel-bano-almendras-dicora-dosificador-corporal-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 4514
-    },
-    {
-      "url": "https://www.druni.pt/gel-bano-mango-y-aguacate-dicora-dosificador-corporal-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "gel-bano-mango-y-aguacate-dicora-dosificador-corporal-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3036
-    },
-    {
-      "url": "https://www.druni.pt/gel-bano-melocoton-dicora-dosificador-corporal-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "gel-bano-melocoton-dicora-dosificador-corporal-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2910
-    },
-    {
-      "url": "https://www.druni.pt/gel-bano-melon-dicora-dosificador-corporal-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "gel-bano-melon-dicora-dosificador-corporal-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2892
     },
     {
       "url": "https://www.druni.pt/gel-bano-nenuco-gel-bebe-corpo-e-cabelo",
@@ -124312,42 +124123,6 @@
       "latency_ms": 3302
     },
     {
-      "url": "https://www.druni.pt/jabon-de-manos-aguacate-y-mango-dicora-dosificador-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "jabon-de-manos-aguacate-y-mango-dicora-dosificador-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3964
-    },
-    {
-      "url": "https://www.druni.pt/jabon-de-manos-almendras-dicora-dosador-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "jabon-de-manos-almendras-dicora-dosador-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3009
-    },
-    {
-      "url": "https://www.druni.pt/jabon-de-manos-leche-y-melon-dicora-dispenser-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "jabon-de-manos-leche-y-melon-dicora-dispenser-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 2768
-    },
-    {
-      "url": "https://www.druni.pt/jabon-de-manos-melocoton-dicora-dosificador-citrico-hidratante",
-      "lastmod": "2026-10-06T03:59:49+00:00",
-      "priority": 1,
-      "slug": "jabon-de-manos-melocoton-dicora-dosificador-citrico-hidratante",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3293
-    },
-    {
       "url": "https://www.druni.pt/jabon-exfoliante-menta-y-cafe-caravela-barra-de-sabonete-esfoliante-natural",
       "lastmod": "2026-10-06T03:59:48+00:00",
       "priority": 1,
@@ -124780,6 +124555,231 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3354
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/secadores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/secadores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 5304
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/alisadores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/alisadores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 5327
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/modeladores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/modeladores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 5729
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/condicionadores/sem-sulfatos-ou-silicones",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/condicionadores/sem-sulfatos-ou-silicones",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3769
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/mascaras/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/mascaras/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3736
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/shampoos/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/shampoos/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4765
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-danificado",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-danificado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3987
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-cacheado",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-cacheado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4376
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3439
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-tingido",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-tingido",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3139
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/pelo-normal",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/pelo-normal",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3671
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-seco",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-seco",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4456
+    },
+    {
+      "url": "https://www.druni.pt/ecologico/cabelo-natural/pentes-y-escovas",
+      "lastmod": "2026-07-15T14:21:29+00:00",
+      "priority": 1,
+      "slug": "ecologico/cabelo-natural/pentes-y-escovas",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3797
+    },
+    {
+      "url": "https://www.druni.pt/ecologico/protetor-solar/after-sun",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "ecologico/protetor-solar/after-sun",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 4060
+    },
+    {
+      "url": "https://www.druni.pt/extra-superior-romero-crusellas-tonico-capilar-fortificante",
+      "lastmod": "2026-10-06T03:59:15+00:00",
+      "priority": 1,
+      "slug": "extra-superior-romero-crusellas-tonico-capilar-fortificante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 6074
+    },
+    {
+      "url": "https://www.druni.pt/gel-bano-almendras-dicora-dosificador-corporal-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "gel-bano-almendras-dicora-dosificador-corporal-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3493
+    },
+    {
+      "url": "https://www.druni.pt/formato-viagem/mini-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "formato-viagem/mini-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 5204
+    },
+    {
+      "url": "https://www.druni.pt/gel-bano-fresas-dicora-dosificador-corporal-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "gel-bano-fresas-dicora-dosificador-corporal-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3866
+    },
+    {
+      "url": "https://www.druni.pt/gel-bano-mango-y-aguacate-dicora-dosificador-corporal-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "gel-bano-mango-y-aguacate-dicora-dosificador-corporal-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3864
+    },
+    {
+      "url": "https://www.druni.pt/gel-bano-melocoton-dicora-dosificador-corporal-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "gel-bano-melocoton-dicora-dosificador-corporal-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3943
+    },
+    {
+      "url": "https://www.druni.pt/gel-bano-melon-dicora-dosificador-corporal-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "gel-bano-melon-dicora-dosificador-corporal-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3754
+    },
+    {
+      "url": "https://www.druni.pt/jabon-de-manos-aguacate-y-mango-dicora-dosificador-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "jabon-de-manos-aguacate-y-mango-dicora-dosificador-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 4085
+    },
+    {
+      "url": "https://www.druni.pt/jabon-de-manos-almendras-dicora-dosador-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "jabon-de-manos-almendras-dicora-dosador-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3773
+    },
+    {
+      "url": "https://www.druni.pt/jabon-de-manos-leche-y-melon-dicora-dispenser-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "jabon-de-manos-leche-y-melon-dicora-dispenser-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3806
+    },
+    {
+      "url": "https://www.druni.pt/jabon-de-manos-melocoton-dicora-dosificador-citrico-hidratante",
+      "lastmod": "2026-10-06T03:59:49+00:00",
+      "priority": 1,
+      "slug": "jabon-de-manos-melocoton-dicora-dosificador-citrico-hidratante",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3105
     }
   ]
 }
