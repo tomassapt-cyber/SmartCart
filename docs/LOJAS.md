@@ -228,7 +228,14 @@ tudo dá timeout) — pausar ≥30 min e retomar só a cauda em falta.
 | shop-apotheke.com | Só envia DE |
 | newpharma.com | Inalcançável (curl 000) |
 | ~~farmaciaportugal.pt~~ | RESOLVIDO 2026-07-17: a loja real é **loja.**farmaciaportugal.pt (integrada como loja 58) — o domínio raiz é só institucional |
-| parafarma24.com | Site em ES por default, sem sinal de envio PT / rota /pt |
+| parafarma24.com | Site em ES por default, sem sinal de envio PT / rota /pt. Reconfirmado 2026-10-09: a página de ajuda diz que as tarifas «son para España» (3,95 €, grátis ≥149 €); GTIN no JSON-LD, mas sem preço nem envio para PT |
+| primehair.pt | 2026-10-09: WooCommerce, ~414 fichas, só SKU interno (LB9804, 9525…), sem GTIN; marcas brasileiras |
+| organii.com | 2026-10-09: JSON-LD e Store API só com SKU interno; 1 de 20 fichas com GTIN (avaliação do Codex confirmada) |
+| mundodocabelo.pt | 2026-10-09: 25 produtos, extensões de cabelo, sem código de barras |
+| farmaciasacoor.pt | 2026-10-09: encomenda assistida, sem catálogo nem preços online (o .com não resolve) |
+| hairas.com | 2026-10-09: domínio estacionado (/lander dá 403) |
+| ocabeleireiro.pt | 2026-10-09: site de salão (WordPress), sem loja |
+| secretodigital.com | 2026-10-09: sem robots, mapa do site nem catálogo legível |
 
 ### Varrimento COMPLETO da Google Sheet (2026-07-03)
 91 domínios sondados (script probe em massa): **67 mortos** (DNS nem resolve),
@@ -250,3 +257,9 @@ pharmascalabis.com.pt (WooCommerce), farmaciaideal.pt (Magento).
 - Mais parafarmácias EU com storefront PT/EAN (como Cocooncenter): Easyparapharmacie, Cocooncenter .es/.it, etc.
 - Re-sondar (falharam por erro de servidor no scouting): farmacias-progresso, vilapharma, farmaciasspt.
 - koreanbeautyshopeu.com = dermis.pt (mesmo dono; redireciona) — já coberta pela loja 69.
+
+### Sondagem de 2026-10-09 (regra «só produtos existentes»)
+- **Preparadas (PR à parte):** SkinLovers (skinlovers.com/pt-pt, Skinlovers Lda, Braga) e Ilha dos Cosméticos (ilhadoscosmeticos.pt, Sugestão Bronzeada Lda, Azeitão) — Shopify com código de barras; ver `docs/LOJAS-SHOPIFY-SO-EXISTENTES.md`.
+- **beautytheshop.com/pt** (BUYIN EXCLUSIVE S.L., Albolote — mesmo polígono da Parafarma24): ~22 000 fichas /pt com gtin13 no JSON-LD, envio PT 4,90 €, grátis ≥199 €. Amostra de 75: 31% casam com produtos existentes, **1,34× a mediana**, nunca a mais barata. Possível, mas de valor baixo.
+- **365farma.pt**: ~3 800 URLs, sem JSON-LD (Ref = CNP no HTML); 1,18× na sondagem de 2026-10-01. Não prioritária.
+- **Shopify e 429:** a 2 pedidos/s ao `/products/<handle>.js`, duas lojas Shopify em paralelo deram 429 antes dos 200 produtos. O `/products.json` em bloco (250 por pedido, 1 pedido a cada 3 s) não deu nenhum.
