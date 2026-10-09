@@ -24,9 +24,12 @@
  *     dia substituem a entrada do dia (idempotente).
  *   • ~5-10% dos preços mudam por dia → ficheiro cresce devagar.
  *
- * MELHOR PREÇO = mínimo absoluto entre ofertas/variantes EM STOCK, FRESCAS
- * (verified_at ≤72h — exclui podres/fantasmas na prática) e fora da blocklist
- * — consistente com o "desde X€" do site (decisão de marketing do user).
+ * MELHOR PREÇO = mínimo absoluto entre ofertas/variantes EM STOCK, fora da
+ * blocklist e PUBLICADAS — a mesma regra de ofertas podres que o site e a BD
+ * aplicam (dropRottenOffers, scripts/lib/catalog-visibility.js). Assim a linha
+ * do gráfico é o "Melhor preço" que a ficha mostrou nesse dia. (Até 09/10 era
+ * "verificada há ≤72h": a ficha mostrava ofertas de 3–14 dias — notino e lojas
+ * só-PC — que a linha ignorava; 90,7% de coincidência contra 99,1% agora.)
  *
  * Uso:
  *   node scripts/record-price-history.js            # grava o dia de hoje
@@ -40,6 +43,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isBlockedOffer } = require('./lib/store-item-merge');
+const { dropRottenOffers } = require('./lib/catalog-visibility');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED_BUNDLE = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -49,8 +53,6 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.mat
 const DRY_RUN = !!args['dry-run'];
 const AS_OF = args['as-of'] ? new Date(args['as-of']) : null;
 if (AS_OF && isNaN(AS_OF)) { console.error(`✗ --as-of inválido: ${args['as-of']}`); process.exit(1); }
-
-const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
 
 (function main() {
   const seed = JSON.parse(fs.readFileSync(SEED_BUNDLE, 'utf8'));
@@ -78,12 +80,11 @@ const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
   //   sem isto o gráfico mostrava o preço do volume mais pequeno em fichas multi-volume)
   const best = {};      // ean -> {cents, slug}
   const bestVol = {};   // ean -> { ml -> {cents, slug} }  (só de variantes com volume_ml)
+  dropRottenOffers(seed, now);   // em memória: fica só o que o site publica
   for (const g of seed.store_products) {
     for (const it of g.items) {
       if (!it.ean) continue;
       if (isBlockedOffer(g.store_slug, it.ean)) continue;
-      const fresh = it.verified_at && (now - new Date(it.verified_at).getTime()) <= FRESH_MS;
-      if (!fresh) continue;
       const candidates = [];
       if (it.in_stock !== false && it.price > 0) candidates.push(it.price);
       for (const v of (it.variants || [])) {
