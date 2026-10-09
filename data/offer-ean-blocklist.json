@@ -314,6 +314,13 @@
       "reason": "Lazartigue Curl Specialist creme 250ml (23.14€) publicado com o EAN da Lazartigue Coloração Permanente 6.30 (~11€).",
       "url": "https://www.go-farma.com/pt/cabelo/lazartigue/lazartigue-curl-specialist-creme-e-protecao-250ml_p1539.html",
       "added_at": "2026-10-02"
+    },
+    {
+      "store_slug": "farmaciarodrigues",
+      "ean": "farmacia365-olistic-hair-mist-presence-30ml",
+      "reason": "Ficha de Oculos Nordic Vision Alingsas +3.00 ligada ao perfume capilar Olistic Hair Mist Presence 30mL. Ambas as lojas usam a referencia interna 1000964 para produtos diferentes; identidade confirmada em H1 e JSON-LD das duas fichas em 2026-10-09.",
+      "url": "https://farmaciarodrigues.pt/pt-pt/product/oculos-nordic-vision-alingsas-3-00",
+      "added_at": "2026-10-09"
     }
   ]
 }

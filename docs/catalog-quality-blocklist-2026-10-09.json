@@ -1,0 +1,60 @@
+{
+  "checked_at": [
+    "2026-10-09T01:17:11.963906+00:00",
+    "2026-10-09T01:17:14.572372+00:00"
+  ],
+  "baseline_sha": "07e80058c322893afe5cad5eff3730e7ecb10a51",
+  "case": {
+    "ean": "farmacia365-olistic-hair-mist-presence-30ml",
+    "confirmed_problem": "same internal reference 1000964, different products across stores",
+    "action": "block only farmaciarodrigues offer",
+    "sources": [
+      {
+        "store": "farmacia365",
+        "url": "https://www.farmacia365.pt/olistic-hair-mist-presence-30ml",
+        "checked_at": "2026-10-09T01:17:11.963906+00:00",
+        "http": 200,
+        "page_sha256": "594668cda46eb549d1fab1c240efc49343d169fa632fa6add0cf6261a6924ed8",
+        "h1": [
+          "Olistic Hair Mist Presence 30mL"
+        ],
+        "json_ld": [
+          {
+            "name": "Olistic Hair Mist Presence 30mL",
+            "sku": "1000964",
+            "mpn": "",
+            "image": [
+              "https://www.farmacia365.pt/images/no-image.png"
+            ]
+          }
+        ]
+      },
+      {
+        "store": "farmaciarodrigues",
+        "url": "https://farmaciarodrigues.pt/pt-pt/product/oculos-nordic-vision-alingsas-3-00",
+        "checked_at": "2026-10-09T01:17:14.572372+00:00",
+        "http": 200,
+        "page_sha256": "00e29a096bd49992a2561b85bfcfcd82b803c5a36f9845f23f66cac352adcb9d",
+        "h1": [
+          "Oculos Nordic Vision Alingsas +3.00"
+        ],
+        "json_ld": [
+          {
+            "name": "Oculos Nordic Vision Alingsas +3.00",
+            "sku": "1000964",
+            "mpn": "1000964",
+            "image": "/image-not-available.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "impact": {
+    "stores_changed": 1,
+    "products_added": 0,
+    "products_removed": 0,
+    "offers_removed_from_render_and_payload": 1,
+    "images_changed": 0,
+    "database_access": false
+  }
+}
