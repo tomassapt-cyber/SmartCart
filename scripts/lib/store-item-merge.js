@@ -186,6 +186,18 @@ function upsertStoreItem(state, targetEan, sp, sourceTimestamp) {
       // Promover URL: se existing não tem mas nova tem, copia
       if (!dup.url && v.url) dup.url = v.url;
     }
+    // Leitura fresca SEM variante (a página não diz o tamanho) numa oferta com
+    // UMA só variante, lida desta MESMA página: o preço de hoje é o dessa
+    // variante. Sem isto o headline passava a spPrice mas a variante ficava com
+    // o preço antigo — e a ficha lê a variante (registo de correções #30: 692
+    // ofertas da Wells mostravam 22,95€ sem a promoção, a loja vendia a 13,77€).
+    // Com várias variantes, ou de outro URL, não se sabe qual é: não se mexe.
+    if (batch.length === 0 && mergedVariants.length === 1 && sp.url && mergedVariants[0].url === sp.url) {
+      const v = mergedVariants[0];
+      v.price = Number(spPrice.toFixed(2));
+      v.in_stock = sp.in_stock !== false;
+      v.previous_price = sp.previous_price && sp.previous_price > spPrice ? Number(sp.previous_price.toFixed(2)) : null;
+    }
     mergedVariants.sort((a, b) => a.volume_ml - b.volume_ml);
     // Headline = variante mais barata EM STOCK (senão a mais barata; senão o
     // preço fresco do scrape — nunca o headline antigo, que pode estar stale).
