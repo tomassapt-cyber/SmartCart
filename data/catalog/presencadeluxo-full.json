@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-09T01:57:04.584413+00:00",
-  "completed_at": "2026-10-09T02:50:59.190539+00:00",
+  "scraped_at": "2026-10-09T12:46:53.120307+00:00",
+  "completed_at": "2026-10-09T14:00:44.932259+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -8652,6 +8652,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4064666316208",
+      "name": "Máscara Intensa Fusion 150ml - Wella",
+      "price": 25.83,
+      "net_price": 21.0,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-fusion/81563-mascara-intensa-fusion-150ml-wella-4064666316208.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/126093-thickbox_default/mascara-intensa-fusion-150ml-wella.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "7908458310517",
       "name": "Condicionador Todecacho Coco 300ml - Salon Line",
       "price": 6.83,
@@ -14301,14 +14314,6 @@
       "existing_name": "L&#39;Oréal Professionnel Condicionador Absolut Repair Gold 500 ml",
       "method": "GTIN",
       "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/wella-fusion/81563-mascara-intensa-fusion-150ml-wella-4064666316208.html",
-      "ean": "4064666316208",
-      "canonical": "4064666316208",
-      "existing_name": "FUSION Masque Réparateur Intense pour Cheveux Abîmés 150 ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/haskell/81909-condicionador-mandioca-pcabelos-ressecados-e-opacos-300ml-haskell-7898610372005.html",
