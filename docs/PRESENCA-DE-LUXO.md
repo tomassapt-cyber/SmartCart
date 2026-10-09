@@ -24,10 +24,10 @@ Os preços principais do JSON-LD desta loja são sem IVA. O scraper utiliza excl
 
 Comparação de preços: 476 produtos ativos com identidade, quantidade e unidade iguais a outras ofertas. Rácio mediano da loja face à mediana das outras lojas: 1.020537132149628; 149 abaixo do menor preço comparável. Valores incluem IVA e excluem portes.
 
-## Portes — bloqueio de integração final
+## Portes — custo desconhecido, sem valor inventado
 A [página oficial de envios](https://presencadeluxo.pt/content/21--condicoes-de-envios-e-recolhas) declara 3,05 € **mais IVA** abaixo de 39 € no continente, com exceções para peso acrescido. Não publica um valor final inequívoco nem a tabela por peso para as ilhas. Os portes adicionais por artigo permanecem aplicáveis acima do limiar. Não se inventa uma tarifa com IVA nem se transforma esta regra numa taxa única.
 
-O `robots.txt` proíbe carrinho/checkout. A recolha usa apenas sitemap e fichas permitidas, com intervalo de dois segundos, sem conta, morada ou checkout. A representação atual de portes desconhecidos no frontend pode produzir zero; esse problema deve ser resolvido antes da integração efetiva. `demo.html` não foi alterado.
+O `robots.txt` proíbe carrinho/checkout. A recolha usa apenas sitemap e fichas permitidas, com intervalo de dois segundos, sem conta, morada ou checkout. A base atual já inclui a correção #36: portes desconhecidos são representados por `null`, excluídos dos totais entregues do otimizador e assinalados como calculados no checkout. Não se repete o antigo erro de os interpretar como grátis. O template `demo.html` foi apenas lido; esta proposta não o altera.
 
 ## Validação
 Passaram os testes Node de descoberta e integração apenas de existentes, as verificações reais de extração com IVA e os casos negativos de preço/stock/atributo/portes. Passaram quatro guardas do scraper (completo, 403, seleção vazia e robots) e oito casos do helper de publicação/recuperação. Feed completo, produtos anteriores preservados integralmente, roundtrip pack/unpack byte a byte.
