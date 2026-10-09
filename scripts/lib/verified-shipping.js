@@ -57,9 +57,15 @@ function applyVerifiedShipping(seedJson, root) {
       st.pickup_note = v.ponto_txt || null;
       tocada = true;
     }
+    // A nota pode mudar sem mudar o custo (ex.: novo limiar gratuito).
+    if (v.ponto != null && st.pickup_note !== (v.ponto_txt || null)) {
+      st.pickup_note = v.ponto_txt || null;
+      tocada = true;
+    }
     if (tocada) aplicadas++;
   }
   return { aplicadas, total };
 }
 
 module.exports = { applyVerifiedShipping };
+
