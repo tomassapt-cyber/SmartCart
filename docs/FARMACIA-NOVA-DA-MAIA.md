@@ -1,33 +1,11 @@
-# Farmácia Nova da Maia — preparação de 8/10/2026
+# Farmácia Nova da Maia — revalidação de 9/10/2026
 
-Esta adição compara apenas produtos já existentes. O integrador nunca cria produtos, altera identificadores ou substitui nomes. GTIN direto, equivalência UPC/EAN e aliases documentados permitem reconhecer um produto mesmo quando o nome da loja difere. Artigos sem correspondência segura são revistos por marca, nome e volume e ficam fora da integração.
+Revalidação de 9/10/2026 contra `main` `6a1174b35dab25bb3705b29082b92976b50a1132`. As 3 010 ofertas anteriores continuam a identificar produtos existentes. A recolha nova percorreu 150 páginas públicas e prepara 3 010 ofertas (2 699 com stock e 311 indisponíveis), com zero produtos novos; preserva os 85 113 produtos do catálogo e todas as ofertas/lojas anteriores. Dois URLs de imagem oficiais revistos ao vivo e visualmente: Esthederm 150 ml (anterior 404) e Hansaplast pés 150 ml (anterior ausente).
 
-## Recolha e validação
+**Rascunho — não fazer merge.** A [fonte oficial](https://farmacianovadamaia.pt/pt/content/3-termos-e-condicoes), secção 10.2.1, voltou a confirmar portes por peso. Não há tabela fiável para fixar uma tarifa, nem limiar grátis confirmado. O teste do código do main reproduz o custo desconhecido convertido em zero. Falta resolver esta representação; nenhuma tarifa foi inventada. `demo.html`, main, deploy e Supabase não foram alterados.
 
-- Categoria pública: https://farmacianovadamaia.pt/pt/21-dermocosmetica
-- Bot declarado, pedidos sequenciais separados por 2 segundos; robots.txt verificado. 403/429 e desafios interrompem a recolha sem sobrescrever o último feed completo.
-- 150 páginas, 3 588 entradas: 188 rejeitadas por identificação/variante/extração e 22 entradas de 11 GTIN com informação conflituosa colocadas em revisão. Feed: 3 378 entradas únicas elegíveis para matching.
-- Preços correntes em EUR; preços riscados guardados apenas quando superiores ao corrente. Estados de stock separados. A listagem foi confrontada com 29 fichas JSON-LD e 10 preços renderizados no navegador no ensaio inicial.
-- Matching final: 3 010 ofertas canónicas, 2 701 com algum tamanho disponível e 309 indisponíveis. Zero produtos novos. Tamanhos são mantidos separados nas variantes; diferenças de massa/volume e tamanhos não representados são rejeitados.
-- 323 artigos sem correspondência segura, incluindo 26 possíveis equivalências por nome/volume, não foram criados nem automaticamente associados. A revisão dos rejeitados encontrou mais 16 possíveis equivalências. Também ficam fora os 33 conflitos posteriores ao matching.
-- Duas imagens verificadas a 8/10: Esthederm Osmoclean 150 ml (URL anterior 404) e Hansaplast desodorizante pés 150 ml (imagem ausente). Substitutas oficiais 800×800, resposta 200 e inspeção visual. Não houve revalidação ao vivo de todas as imagens do catálogo.
+Matching por GTIN com checksum, equivalência UPC/EAN e aliases documentados. 325 identificadores sem par seguro e 33 conflitos ficam excluídos; revisão de equivalências por nome/tamanho incluída. Mudanças desde a recolha anterior: 109 preços e 5 estados de stock.
 
-## Validação local
+Validação em Node 24.19.0: integrador contra a biblioteca atual, cinco cenários offline do scraper e oito cenários simulados de push. Ensaio sem escrita, integração local e pack/unpack byte a byte. Build local passou os quatro passos de geração da Vercel (pedaços, pesquisa, sitemap e páginas), sem alterar template ou seed. Retenção dos ficheiros fonte local em vez do passo final de limpeza. Não se usou o antigo `npm run build`, que gera preços sintéticos. Recolha nos servidores GitHub continua por validar.
 
-Node 24.19.0. Testes do integrador cobrem zero criações, títulos diferentes com o mesmo GTIN, aliases, tamanhos existentes, stock, conflitos e feeds incompletos/vazios/antigos. Cinco cenários do scraper sobre HTML real guardado incluem recolha completa, 403, descoberta vazia, página repetida e robots. Oito cenários simulados do push cobrem recuperação e falhas de fetch/reset/unpack/integração/pack/staging. Não se publicam ficheiros HTML nem cookies.
-
-Ensaio sem escrita antes da integração local e pack/unpack com identidade byte a byte. As lojas/ofertas anteriores são preservadas; os produtos anteriores só recebem as duas imagens verificadas. Workflow novo: três recolhas/dia, sem alterar as cadências das outras lojas, sem demo.html e sem chamadas ao Supabase. A execução de rede nos servidores GitHub ainda não foi validada.
-
-## Portes — resolver antes de integrar em produção
-
-As [condições atuais](https://farmacianovadamaia.pt/pt/content/3-termos-e-condicoes), secção 10.2, indicam portes calculados por peso para os restantes produtos. A [página de entrega](https://farmacianovadamaia.pt/pt/content/1-entrega-e-pagamento) confirma cobertura do continente, Madeira e Açores, mas não uma tarifa fixa.
-
-O calculador público de uma ficha mostrou transportadoras grátis e CTT 1,50 € para Lisboa; o carrinho real com esse artigo avisou que os portes dependem da morada. Não se assumiu portes grátis nem se usou essa simulação como tarifa fixa. O artigo de teste foi removido e o carrinho ficou vazio; não houve checkout, conta ou dados pessoais.
-
-**O rascunho não está pronto para merge:** falta representar estes portes variáveis sem o carrinho do site tratar os campos ausentes como zero. Nenhum valor de portes foi inventado. Não alterar demo.html sem autorização; este PR não o modifica.
-
-## Impacto e Excel
-
-Proposta no rascunho: +1 loja, 0 produtos novos, +3 010 ofertas e 2 imagens corrigidas. BD: zero pedidos e zero bytes escritos; crescimento físico não medido. O crescimento do JSON do seed é uma medida distinta da ocupação PostgreSQL.
-
-O main e a produção permanecem inalterados. Avisar o Tomás para adicionar a loja ao Excel apenas depois de resolver os portes, integrar e confirmar o funcionamento. Nome: Farmácia Nova da Maia; domínio: farmacianovadamaia.pt; matching: GTIN/UPC/aliases existentes; ofertas de 8/10: 3 010, das quais 2 701 com stock.
+Proposta: +1 loja, 0 produtos novos, +3 010 ofertas, 2 imagens; seed compacto +1 481 288 bytes. BD: zero pedidos/escritas, crescimento PostgreSQL não medido. **Não acrescentar ao Excel como integrada** enquanto estes pontos estiverem pendentes. Evidência estruturada em `docs/farmacianovadamaia-validacao-2026-10-09.json`.

@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-08T11:51:21.856539+00:00",
-  "completed_at": "2026-10-08T11:58:54.577217+00:00",
+  "scraped_at": "2026-10-09T01:03:00.942235+00:00",
+  "completed_at": "2026-10-09T01:10:42.775568+00:00",
   "source": "https://farmacianovadamaia.pt/pt/21-dermocosmetica",
   "in_progress": false,
   "pages": 150,
@@ -8,7 +8,7 @@
     {
       "ean": "5600215160084",
       "name": "444 Cutoline Lápis Hemostático 10g",
-      "price": 4.87,
+      "price": 3.95,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/produtos-barbear/2219-444-cutoline-lapis-hemostatico-10g-5600215160084.html",
       "image_url": "https://farmacianovadamaia.pt/2977-large_default/444-cutoline-lapis-hemostatico-10g.jpg",
@@ -639,7 +639,7 @@
       "ean": "3282779451086",
       "name": "A-Derma Exomega Control Gel Lavante Emoliente 2 em 1 Corpo e Cabelo 2x500ml",
       "price": 23.9,
-      "in_stock": true,
+      "in_stock": false,
       "url": "https://farmacianovadamaia.pt/pt/banho/9448-a-derma-exomega-control-gel-lavante-emoliente-2-em-1-corpo-e-cabelo-2x500ml-3282779451086.html",
       "image_url": "https://farmacianovadamaia.pt/58294-large_default/a-derma-exomega-control-gel-lavante-emoliente-2-em-1-corpo-e-cabelo-2x500ml.jpg",
       "source": "category-html",
@@ -1458,7 +1458,7 @@
     {
       "ean": "3323030000046",
       "name": "Akileine Bálsamo Querato-Alisante 75ml",
-      "price": 14.32,
+      "price": 13.91,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/2456-akileine-balsamo-querato-alisante-75ml-3323030000046.html",
       "image_url": "https://farmacianovadamaia.pt/10681-large_default/akileine-balsamo-querato-alisante-75ml.jpg",
@@ -1478,7 +1478,7 @@
     {
       "ean": "3323030001005",
       "name": "Akileine Creme Antitranspirante 75ml",
-      "price": 13.68,
+      "price": 13.04,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/19280-akileine-creme-antitranspirante-75ml-3323030001005.html",
       "image_url": "https://farmacianovadamaia.pt/51765-large_default/akileine-creme-antitranspirante-75ml.jpg",
@@ -1508,7 +1508,7 @@
     {
       "ean": "3323030001173",
       "name": "Akileine Máscara de Noite Revitalizante 100ml",
-      "price": 14.39,
+      "price": 9.99,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/8123-akileine-mascara-de-noite-revitalizante-100ml-3323030001173.html",
       "image_url": "https://farmacianovadamaia.pt/71093-large_default/akileine-mascara-de-noite-revitalizante-100ml.jpg",
@@ -1518,7 +1518,7 @@
     {
       "ean": "3323039623024",
       "name": "Akileine Onykoleine Reparador de Unhas Fragilizadas 10ml",
-      "price": 15.87,
+      "price": 16.76,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/unhas/15874-akileine-onykoleine-reparador-de-unhas-fragilizadas-10ml-3323039623024.html",
       "image_url": "https://farmacianovadamaia.pt/57949-large_default/akileine-onykoleine-reparador-de-unhas-fragilizadas-10ml.jpg",
@@ -1548,7 +1548,7 @@
     {
       "ean": "3323034898403",
       "name": "Akileine Sports Kimas Óleo de Massagem 200ml",
-      "price": 15.9,
+      "price": 17.76,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/15875-akileine-sports-kimas-oleo-de-massagem-200ml-3323034898403.html",
       "image_url": "https://farmacianovadamaia.pt/43013-large_default/akileine-sports-kimas-oleo-de-massagem-200ml.jpg",
@@ -1618,7 +1618,7 @@
     {
       "ean": "3323034408664",
       "name": "Akileïne Gel Deo Antitranspirante 75ml",
-      "price": 13.04,
+      "price": 12.65,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/1857-akileine-gel-deo-antitranspirante-75ml-3323034408664.html",
       "image_url": "https://farmacianovadamaia.pt/23282-large_default/akileine-gel-deo-antitranspirante-75ml.jpg",
@@ -1638,7 +1638,7 @@
     {
       "ean": "3323030000077",
       "name": "Akileïne Gel Pernas Cansadas 150ml",
-      "price": 14.9,
+      "price": 14.73,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/1851-akileine-gel-pernas-cansadas-150ml-3323030000077.html",
       "image_url": "https://farmacianovadamaia.pt/50122-large_default/akileine-gel-pernas-cansadas-150ml.jpg",
@@ -1998,7 +1998,7 @@
     {
       "ean": "5055382303893",
       "name": "Alvita Toalhitas com Glitter 12unidades",
-      "price": 4.16,
+      "price": 3.0,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/corpo/15229-alvita-toalhitas-com-glitter-12unidades--5055382303893.html",
       "image_url": "https://farmacianovadamaia.pt/41536-large_default/alvita-toalhitas-com-glitter-12unidades-.jpg",
@@ -2038,7 +2038,7 @@
     {
       "ean": "3660398501274",
       "name": "Apaisac Repair Balsámo Labial 15ml",
-      "price": 13.59,
+      "price": 14.54,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/3950-apaisac-repair-balsamo-labial-15ml-3660398501274.html",
       "image_url": "https://farmacianovadamaia.pt/63101-large_default/apaisac-repair-balsamo-labial-15ml.jpg",
@@ -2698,7 +2698,7 @@
     {
       "ean": "3574661016320",
       "name": "Aveeno Creme Lenitivo 2x200ml",
-      "price": 18.18,
+      "price": 18.73,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19609-aveeno-creme-lenitivo-2x200ml-3574661016320.html",
       "image_url": "https://farmacianovadamaia.pt/53658-large_default/aveeno-creme-lenitivo-2x200ml.jpg",
@@ -2818,7 +2818,7 @@
     {
       "ean": "3574661540894",
       "name": "Aveeno Dermexa Gel de Banho Emoliente Diário 2x300ml",
-      "price": 17.29,
+      "price": 18.02,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/banho/19631-aveeno-dermexa-gel-de-banho-emoliente-diario-2x300ml-3574661540894.html",
       "image_url": "https://farmacianovadamaia.pt/53743-large_default/aveeno-dermexa-gel-de-banho-emoliente-diario-2x300ml.jpg",
@@ -4008,7 +4008,7 @@
     {
       "ean": "3282770396881",
       "name": "Avène Protetor Solar Leite Toque Seco FPS50 250ml",
-      "price": 26.9,
+      "price": 22.08,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/21811-avene-protetor-solar-leite-toque-seco-fps50-250ml-3282770396881.html",
       "image_url": "https://farmacianovadamaia.pt/62951-large_default/avene-protetor-solar-leite-toque-seco-fps50-250ml.jpg",
@@ -4059,7 +4059,7 @@
       "ean": "3282770114669",
       "name": "Avène Solar Bruma SPF30 150ml",
       "price": 12.85,
-      "in_stock": true,
+      "in_stock": false,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-30/5797-avene-solar-bruma-spf30-150ml-3282770114669.html",
       "image_url": "https://farmacianovadamaia.pt/30200-large_default/avene-solar-bruma-spf30-150ml.jpg",
       "source": "category-html",
@@ -4488,7 +4488,7 @@
     {
       "ean": "3282779035576",
       "name": "Avène Água Termal Spray 50ml",
-      "price": 6.97,
+      "price": 5.31,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pele-sensivel/947-avene-agua-termal-spray-50ml-3282779035576.html",
       "image_url": "https://farmacianovadamaia.pt/42978-large_default/avene-agua-termal-spray-50ml.jpg",
@@ -4498,7 +4498,7 @@
     {
       "ean": "3282779003124",
       "name": "Avène Água Termal Spray 150ml",
-      "price": 9.99,
+      "price": 13.26,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pele-sensivel/948-avene-agua-termal-spray-150ml-3282779003124.html",
       "image_url": "https://farmacianovadamaia.pt/68579-large_default/avene-agua-termal-spray-150ml.jpg",
@@ -5058,7 +5058,7 @@
     {
       "ean": "8436571632685",
       "name": "Babé Lip & Cheek Bálsamo com Cor FPS50 Cherry 20ml",
-      "price": 6.9,
+      "price": 7.63,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/23094-babe-lip-cheek-balsamo-com-cor-fps50-cherry-20ml-8436571632685.html",
       "image_url": "https://farmacianovadamaia.pt/69307-large_default/babe-lip-cheek-balsamo-com-cor-fps50-cherry-20ml.jpg",
@@ -5068,7 +5068,7 @@
     {
       "ean": "8436571632715",
       "name": "Babé Lip & Cheek Bálsamo com Cor FPS50 Coral 20ml",
-      "price": 6.9,
+      "price": 7.63,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/24006-babe-lip-cheek-balsamo-com-cor-fps50-coral-20ml-8436571632715.html",
       "image_url": "https://farmacianovadamaia.pt/73308-large_default/babe-lip-cheek-balsamo-com-cor-fps50-coral-20ml.jpg",
@@ -5078,7 +5078,7 @@
     {
       "ean": "8436571632678",
       "name": "Babé Lip & Cheek Bálsamo com Cor FPS50 Mocha 20ml",
-      "price": 7.63,
+      "price": 6.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/23092-babe-lip-cheek-balsamo-com-cor-fps50-mocha-20ml-8436571632678.html",
       "image_url": "https://farmacianovadamaia.pt/69296-large_default/babe-lip-cheek-balsamo-com-cor-fps50-mocha-20ml.jpg",
@@ -5088,7 +5088,7 @@
     {
       "ean": "8436571632555",
       "name": "Babé Lip & Cheek Bálsamo com Cor FPS50 Nude 20ml",
-      "price": 7.63,
+      "price": 6.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/21588-babe-lip-cheek-balsamo-com-cor-fps50-nude-20ml-8436571632555.html",
       "image_url": "https://farmacianovadamaia.pt/62302-large_default/babe-lip-cheek-balsamo-com-cor-fps50-nude-20ml.jpg",
@@ -5098,7 +5098,7 @@
     {
       "ean": "8436571632746",
       "name": "Babé Lip & Cheek Bálsamo com Cor FPS50 Peach 20ml",
-      "price": 7.63,
+      "price": 6.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/24008-babe-lip-cheek-balsamo-com-cor-fps50-peach-20ml-8436571632746.html",
       "image_url": "https://farmacianovadamaia.pt/73316-large_default/babe-lip-cheek-balsamo-com-cor-fps50-peach-20ml.jpg",
@@ -5138,7 +5138,7 @@
     {
       "ean": "8436571632524",
       "name": "Babé Mineral Stick Corretor Contorno de Olhos FPS50 4g",
-      "price": 14.67,
+      "price": 13.93,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/22119-babe-mineral-stick-corretor-contorno-de-olhos-fps50-4g-8436571632524.html",
       "image_url": "https://farmacianovadamaia.pt/64426-large_default/babe-mineral-stick-corretor-contorno-de-olhos-fps50-4g.jpg",
@@ -5868,7 +5868,7 @@
     {
       "ean": "6001159118534",
       "name": "Bio-Oil Gel Pele Seca 50ml",
-      "price": 9.59,
+      "price": 10.92,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/12803-bio-oil-gel-pele-seca-50ml-6001159118534.html",
       "image_url": "https://farmacianovadamaia.pt/34013-large_default/bio-oil-gel-pele-seca-50ml.jpg",
@@ -6258,7 +6258,7 @@
     {
       "ean": "3701129811399",
       "name": "Bioderma Cicabio Arnica+ Creme 40ml",
-      "price": 10.54,
+      "price": 10.8,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/17902-bioderma-cicabio-arnica-creme-40ml-3701129811399.html",
       "image_url": "https://farmacianovadamaia.pt/71268-large_default/bioderma-cicabio-arnica-creme-40ml.jpg",
@@ -6308,7 +6308,7 @@
     {
       "ean": "3701129804711",
       "name": "Bioderma Cicabio Creme de Mãos Reparador 50ml",
-      "price": 10.41,
+      "price": 10.28,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/maos/14048-bioderma-cicabio-creme-de-maos-reparador-50ml-3701129804711.html",
       "image_url": "https://farmacianovadamaia.pt/37258-large_default/bioderma-cicabio-creme-de-maos-reparador-50ml.jpg",
@@ -6519,7 +6519,7 @@
       "ean": "3701129807385",
       "name": "Bioderma Photoderm Aquafluide SPF50+ Sem cor",
       "price": 13.99,
-      "in_stock": true,
+      "in_stock": false,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/17429-bioderma-photoderm-aquafluide-spf50-sem-cor--3701129807385.html",
       "image_url": "https://farmacianovadamaia.pt/47098-large_default/bioderma-photoderm-aquafluide-spf50-sem-cor-.jpg",
       "source": "category-html",
@@ -6929,7 +6929,7 @@
       "ean": "3701129807880",
       "name": "Bioderma Photoderm Água Solar Bronze FPS30 200ml",
       "price": 15.44,
-      "in_stock": true,
+      "in_stock": false,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-30/21309-bioderma-photoderm-agua-solar-bronze-fps30-200ml-3701129807880.html",
       "image_url": "https://farmacianovadamaia.pt/61325-large_default/bioderma-photoderm-agua-solar-bronze-fps30-200ml.jpg",
       "source": "category-html",
@@ -7068,7 +7068,7 @@
     {
       "ean": "3701129813430",
       "name": "Bioderma Sensibio AR+ SOS Spray 70ml",
-      "price": 16.28,
+      "price": 16.22,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pele-sensivel/21809-bioderma-sensibio-ar-sos-spray-70ml-3701129813430.html",
       "image_url": "https://farmacianovadamaia.pt/62945-large_default/bioderma-sensibio-ar-sos-spray-70ml.jpg",
@@ -7518,7 +7518,7 @@
     {
       "ean": "5600757718453",
       "name": "Bioderma Sébium Mat Control + Gel de Limpeza Pack",
-      "price": 16.9,
+      "price": 17.36,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/23479-bioderma-sebium-mat-control-gel-de-limpeza-pack-5600757718453.html",
       "image_url": "https://farmacianovadamaia.pt/70876-large_default/bioderma-sebium-mat-control-gel-de-limpeza-pack.jpg",
@@ -7778,7 +7778,7 @@
     {
       "ean": "5600880000883",
       "name": "Biretix Pack Rotina Anti-Imperfeições Cleanser e Tri-Active",
-      "price": 21.6,
+      "price": 24.83,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/16105-biretix-pack-rotina-imperfeicoes-cleanser-e-tri-active-5600880000883.html",
       "image_url": "https://farmacianovadamaia.pt/43795-large_default/biretix-pack-rotina-imperfeicoes-cleanser-e-tri-active.jpg",
@@ -7998,7 +7998,7 @@
     {
       "ean": "0083078511173",
       "name": "Carmex Bálsamo Labial SPF15 Stick 4,25g",
-      "price": 6.99,
+      "price": 6.82,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/12820-carmex-balsamo-labial-spf15-stick-425g-0083078511173.html",
       "image_url": "https://farmacianovadamaia.pt/34053-large_default/carmex-balsamo-labial-spf15-stick-425g.jpg",
@@ -8038,7 +8038,7 @@
     {
       "ean": "3522930004417",
       "name": "Caudalie Ange des Vignes Gel Duche 200ml",
-      "price": 9.4,
+      "price": 6.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/banho/21145-caudalie-ange-des-vignes-gel-duche-200ml-3522930004417.html",
       "image_url": "https://farmacianovadamaia.pt/59293-large_default/caudalie-ange-des-vignes-gel-duche-200ml.jpg",
@@ -8226,11 +8226,11 @@
       "status": "ok"
     },
     {
-      "ean": "3522930004264",
+      "ean": "3522930005735",
       "name": "Caudalie Resveratrol-Lift Creme Tisana de Noite Recarga 50ml",
       "price": 33.21,
       "in_stock": false,
-      "url": "https://farmacianovadamaia.pt/pt/hidratantes/18150-caudalie-resveratrol-lift-creme-tisana-de-noite-recarga-50ml-3522930004264.html",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/18150-caudalie-resveratrol-lift-creme-tisana-de-noite-recarga-50ml-3522930005735.html",
       "image_url": "https://farmacianovadamaia.pt/48528-large_default/caudalie-resveratrol-lift-creme-tisana-de-noite-recarga-50ml.jpg",
       "source": "category-html",
       "status": "ok"
@@ -8298,7 +8298,7 @@
     {
       "ean": "3522930003847",
       "name": "Caudalie Rose de Vigne Gel Duche 200ml",
-      "price": 9.4,
+      "price": 6.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/banho/18110-caudalie-rose-de-vigne-gel-duche-200ml-3522930003847.html",
       "image_url": "https://farmacianovadamaia.pt/48426-large_default/caudalie-rose-de-vigne-gel-duche-200ml.jpg",
@@ -8328,7 +8328,7 @@
     {
       "ean": "3522930003854",
       "name": "Caudalie Soleil des Vignes Gel Duche 200ml",
-      "price": 9.4,
+      "price": 6.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/banho/18112-caudalie-soleil-des-vignes-gel-duche-200ml-3522930003854.html",
       "image_url": "https://farmacianovadamaia.pt/48429-large_default/caudalie-soleil-des-vignes-gel-duche-200ml.jpg",
@@ -8338,7 +8338,7 @@
     {
       "ean": "3522930003717",
       "name": "Caudalie Thé des Vignes Creme Reparador Mãos e Unhas 75ml",
-      "price": 14.39,
+      "price": 9.5,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/maos/18086-caudalie-the-des-vignes-creme-reparador-maos-e-unhas-75ml-3522930003717.html",
       "image_url": "https://farmacianovadamaia.pt/48396-large_default/caudalie-the-des-vignes-creme-reparador-maos-e-unhas-75ml.jpg",
@@ -8388,7 +8388,7 @@
     {
       "ean": "3522930003823",
       "name": "Caudalie Thé des Vignes Gel Duche 200ml",
-      "price": 9.4,
+      "price": 6.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/banho/18084-caudalie-the-des-vignes-gel-duche-200ml-3522930003823.html",
       "image_url": "https://farmacianovadamaia.pt/48392-large_default/caudalie-the-des-vignes-gel-duche-200ml.jpg",
@@ -8738,7 +8738,7 @@
     {
       "ean": "3522930004639",
       "name": "Caudalie Vinoperfect Creme de Mãos Antimanchas 50ml",
-      "price": 8.5,
+      "price": 13.41,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/maos/13259-caudalie-vinoperfect-creme-de-maos-antimanchas-50ml-3522930004639.html",
       "image_url": "https://farmacianovadamaia.pt/35439-large_default/caudalie-vinoperfect-creme-de-maos-antimanchas-50ml.jpg",
@@ -9078,7 +9078,7 @@
     {
       "ean": "3522930003977",
       "name": "Caudalie Vinotherapist Creme de Beleza dos Pés 75ml",
-      "price": 15.37,
+      "price": 10.5,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/18093-caudalie-vinotherapist-creme-de-beleza-dos-pes-75ml-3522930003977.html",
       "image_url": "https://farmacianovadamaia.pt/48404-large_default/caudalie-vinotherapist-creme-de-beleza-dos-pes-75ml.jpg",
@@ -9108,7 +9108,7 @@
     {
       "ean": "3522930003595",
       "name": "Caudalie Vinotherapist Cuidado de lábios 4.5g",
-      "price": 4.5,
+      "price": 6.84,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/18095-caudalie-vinotherapist-cuidado-de-labios-45g-3522930003595.html",
       "image_url": "https://farmacianovadamaia.pt/48406-large_default/caudalie-vinotherapist-cuidado-de-labios-45g.jpg",
@@ -9298,7 +9298,7 @@
     {
       "ean": "3337875905602",
       "name": "CeraVe Creme de Limpeza Facial Hidratante Recarga 473ml",
-      "price": 13.17,
+      "price": 12.25,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/21340-cerave-creme-de-limpeza-facial-hidratante-recarga-473ml-3337875905602.html",
       "image_url": "https://farmacianovadamaia.pt/61398-large_default/cerave-creme-de-limpeza-facial-hidratante-recarga-473ml.jpg",
@@ -9398,7 +9398,7 @@
     {
       "ean": "3337875597210",
       "name": "CeraVe Loção Hidratante 236ml",
-      "price": 12.98,
+      "price": 12.09,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/5781-cerave-locao-hidratante-236ml-3337875597210.html",
       "image_url": "https://farmacianovadamaia.pt/75373-large_default/cerave-locao-hidratante-236ml.jpg",
@@ -9708,7 +9708,7 @@
     {
       "ean": "3337875598996",
       "name": "Cerave Creme Hidratante Diário 170g",
-      "price": 9.4,
+      "price": 9.76,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/rosto/5770-cerave-creme-hidratante-diario-170g-3337875598996.html",
       "image_url": "https://farmacianovadamaia.pt/39142-large_default/cerave-creme-hidratante-diario-170g.jpg",
@@ -9838,7 +9838,7 @@
     {
       "ean": "3499320008006",
       "name": "Cetaphil Hidratante Facial de Noite 48ml",
-      "price": 20.94,
+      "price": 19.76,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/23618-cetaphil-hidratante-facial-de-noite-48ml-3499320008006.html",
       "image_url": "https://farmacianovadamaia.pt/71674-large_default/cetaphil-hidratante-facial-de-noite-48ml.jpg",
@@ -9988,7 +9988,7 @@
     {
       "ean": "8058664155644",
       "name": "Chicco Baby Moments Solar FPS50+ Spray 150ml",
-      "price": 14.34,
+      "price": 14.93,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-criancas/19504-chicco-baby-moments-solar-fps50-spray-150ml-8058664155644.html",
       "image_url": "https://farmacianovadamaia.pt/52958-large_default/chicco-baby-moments-solar-fps50-spray-150ml.jpg",
@@ -10828,7 +10828,7 @@
     {
       "ean": "3282770390025",
       "name": "Ducray Hidrosis Control Creme Antitranspirante Rosto Mãos e Pés 50ml",
-      "price": 16.48,
+      "price": 15.46,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/110-ducray-hidrosis-control-creme-antitranspirante-rosto-maos-e-pes-50ml-3282770390025.html",
       "image_url": "https://farmacianovadamaia.pt/66973-large_default/ducray-hidrosis-control-creme-antitranspirante-rosto-maos-e-pes-50ml.jpg",
@@ -10868,7 +10868,7 @@
     {
       "ean": "3282770141351",
       "name": "Ducray Keracnyl Gel Espuma 200ml",
-      "price": 17.36,
+      "price": 18.33,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/9976-ducray-keracnyl-gel-espuma-200ml-3282770141351.html",
       "image_url": "https://farmacianovadamaia.pt/32708-large_default/ducray-keracnyl-gel-espuma-200ml.jpg",
@@ -10928,7 +10928,7 @@
     {
       "ean": "3282770391251",
       "name": "Ducray Keracnyl Repair Creme 50ml",
-      "price": 20.33,
+      "price": 19.25,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/9978-ducray-keracnyl-repair-creme-50ml-3282770391251.html",
       "image_url": "https://farmacianovadamaia.pt/26021-large_default/ducray-keracnyl-repair-creme-50ml.jpg",
@@ -11158,7 +11158,7 @@
     {
       "ean": "3760095250205",
       "name": "Dépiwhite Gel Contorno de Olhos 15ml",
-      "price": 19.36,
+      "price": 19.93,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19813-depiwhite-gel-contorno-de-olhos-15ml-3760095250205.html",
       "image_url": "https://farmacianovadamaia.pt/54382-large_default/depiwhite-gel-contorno-de-olhos-15ml.jpg",
@@ -11998,7 +11998,7 @@
     {
       "ean": "5600358010581",
       "name": "Esthederm Age Proteom Longevidade Celular Coffret",
-      "price": 72.19,
+      "price": 76.95,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/22737-esthederm-age-proteom-longevidade-celular-coffret-5600358010581.html",
       "image_url": "https://farmacianovadamaia.pt/75620-large_default/esthederm-age-proteom-longevidade-celular-coffret.jpg",
@@ -12608,7 +12608,7 @@
     {
       "ean": "3461020012362",
       "name": "Esthederm L'Huile Solaire Óleo Corpo e Cabelo Forte 150ml",
-      "price": 31.98,
+      "price": 32.19,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/21329-esthederm-l-huile-solaire-oleo-corpo-e-cabelo-forte-150ml-3461020012362.html",
       "image_url": "https://farmacianovadamaia.pt/61370-large_default/esthederm-l-huile-solaire-oleo-corpo-e-cabelo-forte-150ml.jpg",
@@ -12708,7 +12708,7 @@
     {
       "ean": "3461020013550",
       "name": "Esthederm Osmoclean Creme Suave Desincrustante 75ml",
-      "price": 25.89,
+      "price": 26.18,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/18838-esthederm-osmoclean-creme-suave-desincrustante-75ml-3461020013550.html",
       "image_url": "https://farmacianovadamaia.pt/50346-large_default/esthederm-osmoclean-creme-suave-desincrustante-75ml.jpg",
@@ -13669,7 +13669,7 @@
       "ean": "4005800404986",
       "name": "Eucerin Hyaluron-Filler + Elasticity Creme Dia Ultraligeiro FPS50 Pack",
       "price": 37.22,
-      "in_stock": true,
+      "in_stock": false,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/24629-eucerin-hyaluron-filler-elasticity-creme-dia-ultraligeiro-fps50-pack-4005800404986.html",
       "image_url": "https://farmacianovadamaia.pt/75527-large_default/eucerin-hyaluron-filler-elasticity-creme-dia-ultraligeiro-fps50-pack.jpg",
       "source": "category-html",
@@ -13739,7 +13739,7 @@
       "ean": "4005800404733",
       "name": "Eucerin Hyaluron-Filler + Longevity Sérum Epigenetic Pack",
       "price": 36.9,
-      "in_stock": false,
+      "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/24628-eucerin-hyaluron-filler-longevity-serum-epigenetic-pack-4005800404733.html",
       "image_url": "https://farmacianovadamaia.pt/75524-large_default/eucerin-hyaluron-filler-longevity-serum-epigenetic-pack.jpg",
       "source": "category-html",
@@ -13898,7 +13898,7 @@
     {
       "ean": "4005800178603",
       "name": "Eucerin Lip Active 4,8g",
-      "price": 6.92,
+      "price": 7.08,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/labios/4448-eucerin-lip-active-48g-4005800178603.html",
       "image_url": "https://farmacianovadamaia.pt/37279-large_default/eucerin-lip-active-48g.jpg",
@@ -14138,7 +14138,7 @@
     {
       "ean": "4005800126550",
       "name": "Eucerin Sun Sensitive Protect Spray Transparente Toque Seco FPS30 200ml",
-      "price": 14.9,
+      "price": 22.03,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-30/16969-eucerin-sun-sensitive-protect-spray-transparente-toque-seco-fps30-200ml-4005800126550.html",
       "image_url": "https://farmacianovadamaia.pt/52340-large_default/eucerin-sun-sensitive-protect-spray-transparente-toque-seco-fps30-200ml.jpg",
@@ -17188,7 +17188,7 @@
     {
       "ean": "8470001863751",
       "name": "Kelador Creme Unidoses 5x5ml",
-      "price": 31.16,
+      "price": 32.94,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/olhos/8121-kelador-creme-unidoses-5x5ml-8470001863751.html",
       "image_url": "https://farmacianovadamaia.pt/42908-large_default/kelador-creme-unidoses-5x5ml.jpg",
@@ -17578,7 +17578,7 @@
     {
       "ean": "3337875932264",
       "name": "La Roche-Posay Anthelios UVAir Sérum Protetor Solar Com Cor FPS50+ Médio 50ml",
-      "price": 21.2,
+      "price": 28.54,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/23401-la-roche-posay-anthelios-uvair-serum-protetor-solar-com-cor-fps50-medio-50ml-3337875932264.html",
       "image_url": "https://farmacianovadamaia.pt/70666-large_default/la-roche-posay-anthelios-uvair-serum-protetor-solar-com-cor-fps50-medio-50ml.jpg",
@@ -17588,7 +17588,7 @@
     {
       "ean": "3337875932349",
       "name": "La Roche-Posay Anthelios UVAir Sérum Protetor Solar FPS50+ 50ml",
-      "price": 21.2,
+      "price": 28.54,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/23400-la-roche-posay-anthelios-uvair-serum-protetor-solar-fps50-50ml-3337875932349.html",
       "image_url": "https://farmacianovadamaia.pt/70662-large_default/la-roche-posay-anthelios-uvair-serum-protetor-solar-fps50-50ml.jpg",
@@ -17718,7 +17718,7 @@
     {
       "ean": "3337875797719",
       "name": "La Roche-Posay Anthelios Uvmune 400 SPF50+ 50ml",
-      "price": 28.4,
+      "price": 26.7,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/14335-la-roche-posay-anthelios-uvmune-400-spf50-50ml-3337875797719.html",
       "image_url": "https://farmacianovadamaia.pt/38004-large_default/la-roche-posay-anthelios-uvmune-400-spf50-50ml.jpg",
@@ -18198,7 +18198,7 @@
     {
       "ean": "3337875941143",
       "name": "La Roche-Posay Hydraphase HA Creme Rico 40ml",
-      "price": 23.28,
+      "price": 22.89,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/23268-la-roche-posay-hydraphase-ha-creme-rico-40ml-3337875941143.html",
       "image_url": "https://farmacianovadamaia.pt/70007-large_default/la-roche-posay-hydraphase-ha-creme-rico-40ml.jpg",
@@ -18948,7 +18948,7 @@
     {
       "ean": "3337875725897",
       "name": "La Roche-Posay Toleriane Água Micelar Bifásica 400ml",
-      "price": 19.37,
+      "price": 18.37,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/5306-la-roche-posay-toleriane-agua-micelar-bifasica-400ml-3337875725897.html",
       "image_url": "https://farmacianovadamaia.pt/71149-large_default/la-roche-posay-toleriane-agua-micelar-bifasica-400ml.jpg",
@@ -19758,7 +19758,7 @@
     {
       "ean": "8436589051836",
       "name": "Martiderm Amatist Sérum 30ml",
-      "price": 29.38,
+      "price": 29.73,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/19052-martiderm-amatist-serum-30ml-8436589051836.html",
       "image_url": "https://farmacianovadamaia.pt/51055-large_default/martiderm-amatist-serum-30ml.jpg",
@@ -19858,7 +19858,7 @@
     {
       "ean": "8437000435839",
       "name": "Martiderm Black Diamond Skin Complex Advanced 10x2ml",
-      "price": 32.32,
+      "price": 33.43,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/16996-martiderm-black-diamond-skin-complex-advanced-10x2ml-8437000435839.html",
       "image_url": "https://farmacianovadamaia.pt/51079-large_default/martiderm-black-diamond-skin-complex-advanced-10x2ml.jpg",
@@ -19898,7 +19898,7 @@
     {
       "ean": "8437000435204",
       "name": "Martiderm Body Care Creme Esfoliante 200ml",
-      "price": 19.9,
+      "price": 19.83,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/banho/19141-martiderm-body-care-creme-esfoliante-200ml-8437000435204.html",
       "image_url": "https://farmacianovadamaia.pt/51329-large_default/martiderm-body-care-creme-esfoliante-200ml.jpg",
@@ -20038,7 +20038,7 @@
     {
       "ean": "8437000435877",
       "name": "Martiderm Essentials Solução Micelar 75ml",
-      "price": 5.99,
+      "price": 6.26,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/19138-martiderm-essentials-solucao-micelar-75ml-8437000435877.html",
       "image_url": "https://farmacianovadamaia.pt/51322-large_default/martiderm-essentials-solucao-micelar-75ml.jpg",
@@ -20268,7 +20268,7 @@
     {
       "ean": "8437000435372",
       "name": "Martiderm Platinum Photo-Age HA+ 10x2ml",
-      "price": 27.99,
+      "price": 28.93,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19070-martiderm-platinum-photo-age-ha-10x2ml-8437000435372.html",
       "image_url": "https://farmacianovadamaia.pt/51115-large_default/martiderm-platinum-photo-age-ha-10x2ml.jpg",
@@ -20598,7 +20598,7 @@
     {
       "ean": "8437000435167",
       "name": "Martiderm The Originals Proteos Hydra Plus SP 30x2ml",
-      "price": 35.64,
+      "price": 35.93,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/19081-martiderm-the-originals-proteos-hydra-plus-sp-30x2ml-8437000435167.html",
       "image_url": "https://farmacianovadamaia.pt/51152-large_default/martiderm-the-originals-proteos-hydra-plus-sp-30x2ml.jpg",
@@ -20608,7 +20608,7 @@
     {
       "ean": "8437000435105",
       "name": "Martiderm The Originals Proteos Liposome 10 ampolas",
-      "price": 17.67,
+      "price": 17.65,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19084-martiderm-the-originals-proteos-liposome-10-ampolas--8437000435105.html",
       "image_url": "https://farmacianovadamaia.pt/51157-large_default/martiderm-the-originals-proteos-liposome-10-ampolas-.jpg",
@@ -20618,7 +20618,7 @@
     {
       "ean": "8437000435112",
       "name": "Martiderm The Originals Proteos Liposome 30 ampolas",
-      "price": 36.78,
+      "price": 37.03,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19085-martiderm-the-originals-proteos-liposome-30-ampolas-8437000435112.html",
       "image_url": "https://farmacianovadamaia.pt/51158-large_default/martiderm-the-originals-proteos-liposome-30-ampolas.jpg",
@@ -21538,7 +21538,7 @@
     {
       "ean": "3574660558913",
       "name": "Neutrogena Hidratação Profunda Loção Absorção Imediata 750ml",
-      "price": 12.9,
+      "price": 18.3,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/6696-neutrogena-hidratacao-profunda-locao-absorcao-imediata-750ml-3574660558913.html",
       "image_url": "https://farmacianovadamaia.pt/61786-large_default/neutrogena-hidratacao-profunda-locao-absorcao-imediata-750ml.jpg",
@@ -21558,7 +21558,7 @@
     {
       "ean": "3574661755168",
       "name": "Neutrogena Hidratação Profunda Loção Hipoalergénica 750ml",
-      "price": 11.99,
+      "price": 18.3,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/21442-neutrogena-hidratacao-profunda-locao-hipoalergenica-750ml-3574661755168.html",
       "image_url": "https://farmacianovadamaia.pt/61791-large_default/neutrogena-hidratacao-profunda-locao-hipoalergenica-750ml.jpg",
@@ -21728,7 +21728,7 @@
     {
       "ean": "3574660533361",
       "name": "Neutrogena Intense Repair Loção Cica 400ml",
-      "price": 8.97,
+      "price": 14.67,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/21440-neutrogena-intense-repair-locao-cica-400ml-3574660533361.html",
       "image_url": "https://farmacianovadamaia.pt/61782-large_default/neutrogena-intense-repair-locao-cica-400ml.jpg",
@@ -21738,7 +21738,7 @@
     {
       "ean": "3574660533408",
       "name": "Neutrogena Intense Repair Loção Cica 750ml",
-      "price": 14.45,
+      "price": 19.37,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/6701-neutrogena-intense-repair-locao-cica-750ml-3574660533408.html",
       "image_url": "https://farmacianovadamaia.pt/61781-large_default/neutrogena-intense-repair-locao-cica-750ml.jpg",
@@ -21748,7 +21748,7 @@
     {
       "ean": "3574661839110",
       "name": "Neutrogena Intense Repair Loção Cica Pack 750ml + 400ml",
-      "price": 15.38,
+      "price": 22.13,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/21441-neutrogena-intense-repair-locao-cica-pack-750ml-400ml-3574661839110.html",
       "image_url": "https://farmacianovadamaia.pt/61784-large_default/neutrogena-intense-repair-locao-cica-pack-750ml-400ml.jpg",
@@ -21778,7 +21778,7 @@
     {
       "ean": "3574661785561",
       "name": "Neutrogena Loção Hidratação Profunda 2x750ml",
-      "price": 19.9,
+      "price": 25.33,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19720-neutrogena-locao-hidratacao-profunda-2x750ml-3574661785561.html",
       "image_url": "https://farmacianovadamaia.pt/54157-large_default/neutrogena-locao-hidratacao-profunda-2x750ml.jpg",
@@ -22068,7 +22068,7 @@
     {
       "ean": "3574661785592",
       "name": "Neutrogena Óleo Loção Hidratação Profunda Pele Seca 2x400ml",
-      "price": 11.28,
+      "price": 17.7,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/20165-neutrogena-oleo-locao-hidratacao-profunda-pele-seca-2x400ml-3574661785592.html",
       "image_url": "https://farmacianovadamaia.pt/55372-large_default/neutrogena-oleo-locao-hidratacao-profunda-pele-seca-2x400ml.jpg",
@@ -22078,7 +22078,7 @@
     {
       "ean": "3574661456713",
       "name": "Neutrogena Óleo Loção Hidratação Profunda Pele Seca 400ml",
-      "price": 8.1,
+      "price": 13.59,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19701-neutrogena-oleo-locao-hidratacao-profunda-pele-seca-400ml-3574661456713.html",
       "image_url": "https://farmacianovadamaia.pt/70199-large_default/neutrogena-oleo-locao-hidratacao-profunda-pele-seca-400ml.jpg",
@@ -22118,7 +22118,7 @@
     {
       "ean": "4005808801039",
       "name": "Nivea Creme 75ml",
-      "price": 3.85,
+      "price": 3.97,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/1307-nivea-creme-75ml-4005808801039.html",
       "image_url": "https://farmacianovadamaia.pt/47093-large_default/nivea-creme-75ml.jpg",
@@ -22946,6 +22946,16 @@
       "status": "ok"
     },
     {
+      "ean": "3264680050534",
+      "name": "Nuxe A Coleção Prodigieux Coffret",
+      "price": 34.9,
+      "in_stock": true,
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/22789-nuxe-a-colecao-prodigieux-coffret-3264680050534.html",
+      "image_url": "https://farmacianovadamaia.pt/75743-large_default/nuxe-a-colecao-prodigieux-coffret.jpg",
+      "source": "category-html",
+      "status": "ok"
+    },
+    {
       "ean": "3264680042980",
       "name": "Nuxe A Minha Rotina Anti-Imperfeições Pack",
       "price": 16.31,
@@ -22968,7 +22978,7 @@
     {
       "ean": "3264680050916",
       "name": "Nuxe Calendário do Advento",
-      "price": 90.5,
+      "price": 96.7,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/dermocosmetica/22781-nuxe-calendario-do-advento-3264680050916.html",
       "image_url": "https://farmacianovadamaia.pt/75734-large_default/nuxe-calendario-do-advento.jpg",
@@ -23626,6 +23636,16 @@
       "status": "ok"
     },
     {
+      "ean": "3264680050503",
+      "name": "Nuxe O Brilho Supremo Coffret",
+      "price": 29.9,
+      "in_stock": true,
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24681-nuxe-o-brilho-supremo-coffret-3264680050503.html",
+      "image_url": "https://farmacianovadamaia.pt/75748-large_default/nuxe-o-brilho-supremo-coffret.jpg",
+      "source": "category-html",
+      "status": "ok"
+    },
+    {
       "ean": "3264680044755",
       "name": "Nuxe Os Icónicos Coffret",
       "price": 23.93,
@@ -23796,19 +23816,9 @@
       "status": "ok"
     },
     {
-      "ean": "3264680044823",
-      "name": "Nuxe Prodigieux Fragrância Icónica Coffret",
-      "price": 27.29,
-      "in_stock": false,
-      "url": "https://farmacianovadamaia.pt/pt/hidratantes/22789-nuxe-prodigieux-fragrancia-iconica-coffret-3264680044823.html",
-      "image_url": "https://farmacianovadamaia.pt/67879-large_default/nuxe-prodigieux-fragrancia-iconica-coffret.jpg",
-      "source": "category-html",
-      "status": "ok"
-    },
-    {
       "ean": "3264680008320",
       "name": "Nuxe Prodigieux Le Parfum 30ml",
-      "price": 28.78,
+      "price": 29.7,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/perfumes/8090-nuxe-prodigieux-le-parfum-30ml-3264680008320.html",
       "image_url": "https://farmacianovadamaia.pt/47717-large_default/nuxe-prodigieux-le-parfum-30ml.jpg",
@@ -23928,7 +23938,7 @@
     {
       "ean": "3264680019159",
       "name": "Nuxe Rêve de Miel Bálsamo Ultra Reconfortante 50ml",
-      "price": 28.11,
+      "price": 25.38,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/17025-nuxe-reve-de-miel-balsamo-ultra-reconfortante-50ml-3264680019159.html",
       "image_url": "https://farmacianovadamaia.pt/46054-large_default/nuxe-reve-de-miel-balsamo-ultra-reconfortante-50ml.jpg",
@@ -24076,6 +24086,16 @@
       "status": "ok"
     },
     {
+      "ean": "3264680050435",
+      "name": "Nuxe Rêve de Miel Glossy Glow Coffret",
+      "price": 18.8,
+      "in_stock": true,
+      "url": "https://farmacianovadamaia.pt/pt/labios/24680-copia-de-nuxe-reve-de-miel-cuidado-de-labios-com-mel-dourado-10ml-3264680050435.html",
+      "image_url": "https://farmacianovadamaia.pt/75740-large_default/copia-de-nuxe-reve-de-miel-cuidado-de-labios-com-mel-dourado-10ml.jpg",
+      "source": "category-html",
+      "status": "ok"
+    },
+    {
       "ean": "3264680004117",
       "name": "Nuxe Rêve de Miel Stick Labial 4g",
       "price": 7.29,
@@ -24168,7 +24188,7 @@
     {
       "ean": "3264680021985",
       "name": "Nuxe Rêve de Thé Água Perfumada Exultante 100ml",
-      "price": 27.78,
+      "price": 28.87,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/perfumes/10671-nuxe-reve-de-the-agua-perfumada-exultante-100ml-3264680021985.html",
       "image_url": "https://farmacianovadamaia.pt/27770-large_default/nuxe-reve-de-the-agua-perfumada-exultante-100ml.jpg",
@@ -26388,7 +26408,7 @@
     {
       "ean": "3662361005949",
       "name": "SVR Duo Redensificante Iluminador Pack",
-      "price": 30.93,
+      "price": 30.87,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/23909-svr-duo-redensificante-iluminador-pack-3662361005949.html",
       "image_url": "https://farmacianovadamaia.pt/72947-large_default/svr-duo-redensificante-iluminador-pack.jpg",
@@ -26558,7 +26578,7 @@
     {
       "ean": "3662361000890",
       "name": "SVR Sebiaclear Active Teinté 40ml",
-      "price": 13.91,
+      "price": 16.88,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/18968-svr-sebiaclear-active-teinte-40ml-3662361000890.html",
       "image_url": "https://farmacianovadamaia.pt/50794-large_default/svr-sebiaclear-active-teinte-40ml.jpg",
@@ -26578,7 +26598,7 @@
     {
       "ean": "3662361002450",
       "name": "SVR Sebiaclear Ampoule AZ Sérum 30ml",
-      "price": 21.78,
+      "price": 27.31,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/18986-svr-sebiaclear-ampoule-az-serum-30ml-3662361002450.html",
       "image_url": "https://farmacianovadamaia.pt/50839-large_default/svr-sebiaclear-ampoule-az-serum-30ml.jpg",
@@ -26588,7 +26608,7 @@
     {
       "ean": "3662361003372",
       "name": "SVR Sebiaclear Creme Lavante 400ml",
-      "price": 14.28,
+      "price": 17.75,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/18977-svr-sebiaclear-creme-lavante-400ml-3662361003372.html",
       "image_url": "https://farmacianovadamaia.pt/50819-large_default/svr-sebiaclear-creme-lavante-400ml.jpg",
@@ -26598,7 +26618,7 @@
     {
       "ean": "3662361003884",
       "name": "SVR Sebiaclear Creme Lavante Recarga 400ml",
-      "price": 12.87,
+      "price": 14.91,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/22961-svr-sebiaclear-creme-lavante-recarga-400ml-3662361003884.html",
       "image_url": "https://farmacianovadamaia.pt/68666-large_default/svr-sebiaclear-creme-lavante-recarga-400ml.jpg",
@@ -26608,7 +26628,7 @@
     {
       "ean": "3662361002382",
       "name": "SVR Sebiaclear Creme Protetor SPF50+ 40ml",
-      "price": 11.48,
+      "price": 17.99,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/15498-svr-sebiaclear-creme-protetor-spf50-40ml-3662361002382.html",
       "image_url": "https://farmacianovadamaia.pt/50438-large_default/svr-sebiaclear-creme-protetor-spf50-40ml.jpg",
@@ -26618,7 +26638,7 @@
     {
       "ean": "3662361004676",
       "name": "SVR Sebiaclear Gel Flash AZ 15ml",
-      "price": 11.81,
+      "price": 14.71,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/23118-svr-sebiaclear-gel-flash-az-15ml-3662361004676.html",
       "image_url": "https://farmacianovadamaia.pt/69418-large_default/svr-sebiaclear-gel-flash-az-15ml.jpg",
@@ -26628,7 +26648,7 @@
     {
       "ean": "3662361006243",
       "name": "SVR Sebiaclear Gel Moussant 100ml",
-      "price": 7.22,
+      "price": 7.5,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/24308-svr-sebiaclear-gel-moussant-100ml-3662361006243.html",
       "image_url": "https://farmacianovadamaia.pt/74466-large_default/svr-sebiaclear-gel-moussant-100ml.jpg",
@@ -26638,7 +26658,7 @@
     {
       "ean": "3662361003396",
       "name": "SVR Sebiaclear Gel Moussant 200ml",
-      "price": 11.26,
+      "price": 14.16,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/18860-svr-sebiaclear-gel-moussant-200ml-3662361003396.html",
       "image_url": "https://farmacianovadamaia.pt/68478-large_default/svr-sebiaclear-gel-moussant-200ml.jpg",
@@ -26648,7 +26668,7 @@
     {
       "ean": "3662361003402",
       "name": "SVR Sebiaclear Gel Moussant 400ml",
-      "price": 14.45,
+      "price": 17.58,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/4175-svr-sebiaclear-gel-moussant-400ml-3662361003402.html",
       "image_url": "https://farmacianovadamaia.pt/50429-large_default/svr-sebiaclear-gel-moussant-400ml.jpg",
@@ -26668,7 +26688,7 @@
     {
       "ean": "3662361003419",
       "name": "SVR Sebiaclear Gel Moussant Eco-Refill 400ml",
-      "price": 12.83,
+      "price": 15.78,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/18975-svr-sebiaclear-gel-moussant-eco-refill-400ml-3662361003419.html",
       "image_url": "https://farmacianovadamaia.pt/50813-large_default/svr-sebiaclear-gel-moussant-eco-refill-400ml.jpg",
@@ -26678,7 +26698,7 @@
     {
       "ean": "3662361003594",
       "name": "SVR Sebiaclear Hydra 40ml",
-      "price": 14.43,
+      "price": 17.58,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/4178-svr-sebiaclear-hydra-40ml-3662361003594.html",
       "image_url": "https://farmacianovadamaia.pt/50439-large_default/svr-sebiaclear-hydra-40ml.jpg",
@@ -26698,7 +26718,7 @@
     {
       "ean": "3662361002726",
       "name": "SVR Sebiaclear Mat+Pores 40ml",
-      "price": 13.5,
+      "price": 15.98,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/4176-svr-sebiaclear-matpores-40ml-3662361002726.html",
       "image_url": "https://farmacianovadamaia.pt/50436-large_default/svr-sebiaclear-matpores-40ml.jpg",
@@ -26708,7 +26728,7 @@
     {
       "ean": "3662361001590",
       "name": "SVR Sebiaclear Micro-Peel 150ml",
-      "price": 12.3,
+      "price": 15.25,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/18985-svr-sebiaclear-micro-peel-150ml-3662361001590.html",
       "image_url": "https://farmacianovadamaia.pt/50837-large_default/svr-sebiaclear-micro-peel-150ml.jpg",
@@ -26718,7 +26738,7 @@
     {
       "ean": "3662361003853",
       "name": "SVR Sebiaclear Spray Corporal 150ml",
-      "price": 13.88,
+      "price": 17.04,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/22962-svr-sebiaclear-spray-corporal-150ml-3662361003853.html",
       "image_url": "https://farmacianovadamaia.pt/68667-large_default/svr-sebiaclear-spray-corporal-150ml.jpg",
@@ -26728,7 +26748,7 @@
     {
       "ean": "3662361000364",
       "name": "SVR Sebiaclear Sérum 30ml",
-      "price": 17.73,
+      "price": 23.32,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/acne-e-pele-oleosa/18981-svr-sebiaclear-serum-30ml-3662361000364.html",
       "image_url": "https://farmacianovadamaia.pt/50825-large_default/svr-sebiaclear-serum-30ml.jpg",
@@ -26758,7 +26778,7 @@
     {
       "ean": "3662361003105",
       "name": "SVR Sebiaclear Água Micelar Eco-Refill 400ml",
-      "price": 11.81,
+      "price": 14.71,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/desmaquilhantes-e-limpeza/18972-svr-sebiaclear-agua-micelar-eco-refill-400ml-3662361003105.html",
       "image_url": "https://farmacianovadamaia.pt/50807-large_default/svr-sebiaclear-agua-micelar-eco-refill-400ml.jpg",
@@ -27048,7 +27068,7 @@
     {
       "ean": "3662361005772",
       "name": "SVR Sun Secure Aqua Fluido FPS50+ 50ml",
-      "price": 17.1,
+      "price": 23.99,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/23495-svr-sun-secure-aqua-fluido-fps50-50ml-3662361005772.html",
       "image_url": "https://farmacianovadamaia.pt/70971-large_default/svr-sun-secure-aqua-fluido-fps50-50ml.jpg",
@@ -27368,7 +27388,7 @@
     {
       "ean": "3662361002436",
       "name": "SVR Topialyse Creme 200ml",
-      "price": 12.58,
+      "price": 12.92,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/18992-svr-topialyse-creme-200ml-3662361002436.html",
       "image_url": "https://farmacianovadamaia.pt/50851-large_default/svr-topialyse-creme-200ml.jpg",
@@ -27948,7 +27968,7 @@
     {
       "ean": "8410104610227",
       "name": "Scholl Velvet Smooth Lima Electrónica Esfoliante",
-      "price": 30.57,
+      "price": 36.83,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/8532-scholl-velvet-smooth-lima-electronica-esfoliante-8410104610227.html",
       "image_url": "https://farmacianovadamaia.pt/45563-large_default/scholl-velvet-smooth-lima-electronica-esfoliante.jpg",
@@ -28448,7 +28468,7 @@
     {
       "ean": "8429979483416",
       "name": "Sesderma Ferulac Liposomal Sérum 30ml",
-      "price": 38.66,
+      "price": 38.73,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/19235-sesderma-ferulac-liposomal-serum-30ml-8429979483416.html",
       "image_url": "https://farmacianovadamaia.pt/57734-large_default/sesderma-ferulac-liposomal-serum-30ml.jpg",
@@ -28488,7 +28508,7 @@
     {
       "ean": "8429979417244",
       "name": "Sesderma Hidraderm Hyal Liposomal Sérum 30ml",
-      "price": 31.43,
+      "price": 28.9,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/4410-sesderma-hidraderm-hyal-liposomal-serum-30ml-8429979417244.html",
       "image_url": "https://farmacianovadamaia.pt/51547-large_default/sesderma-hidraderm-hyal-liposomal-serum-30ml.jpg",
@@ -28598,7 +28618,7 @@
     {
       "ean": "8429979458735",
       "name": "Sesderma Oceanskin Creme Facial Nutritivo 50ml",
-      "price": 32.68,
+      "price": 32.72,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19218-sesderma-oceanskin-creme-facial-nutritivo-50ml-8429979458735.html",
       "image_url": "https://farmacianovadamaia.pt/51585-large_default/sesderma-oceanskin-creme-facial-nutritivo-50ml.jpg",
@@ -28618,7 +28638,7 @@
     {
       "ean": "8429979458742",
       "name": "Sesderma Oceanskin Sérum Liposomal Hidratante 30ml",
-      "price": 32.68,
+      "price": 36.74,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/19217-sesderma-oceanskin-serum-liposomal-hidratante-30ml-8429979458742.html",
       "image_url": "https://farmacianovadamaia.pt/51582-large_default/sesderma-oceanskin-serum-liposomal-hidratante-30ml.jpg",
@@ -28838,7 +28858,7 @@
     {
       "ean": "8429979479440",
       "name": "Sesderma Retisil Sérum Intensivo Pro-Aging 30ml",
-      "price": 41.67,
+      "price": 40.53,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/19301-sesderma-retisil-serum-intensivo-pro-aging-30ml-8429979479440.html",
       "image_url": "https://farmacianovadamaia.pt/51837-large_default/sesderma-retisil-serum-intensivo-pro-aging-30ml.jpg",
@@ -28898,7 +28918,7 @@
     {
       "ean": "8429979446961",
       "name": "Sesderma Samay Sérum Antienvelhecimento 30ml",
-      "price": 28.86,
+      "price": 29.99,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/19310-sesderma-samay-serum-antienvelhecimento-30ml-8429979446961.html",
       "image_url": "https://farmacianovadamaia.pt/51852-large_default/sesderma-samay-serum-antienvelhecimento-30ml.jpg",
@@ -29058,7 +29078,7 @@
     {
       "ean": "8429979252180",
       "name": "Sesderma Sesgen 32 Sérum Facial Ativador Celular 30ml",
-      "price": 31.45,
+      "price": 33.79,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/265-sesderma-sesgen-32-serum-facial-ativador-celular-30ml-8429979252180.html",
       "image_url": "https://farmacianovadamaia.pt/50392-large_default/sesderma-sesgen-32-serum-facial-ativador-celular-30ml.jpg",
@@ -29298,7 +29318,7 @@
     {
       "ean": "635494363210",
       "name": "SkinCeuticals C E Ferulic 30ml",
-      "price": 131.94,
+      "price": 130.94,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/8751-skinceuticals-c-e-ferulic-30ml-635494363210.html",
       "image_url": "https://farmacianovadamaia.pt/20146-large_default/skinceuticals-c-e-ferulic-30ml.jpg",
@@ -29488,7 +29508,7 @@
     {
       "ean": "3337875898485",
       "name": "SkinCeuticals P-Tiox Sérum 30ml",
-      "price": 111.66,
+      "price": 109.8,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/20250-skinceuticals-p-tiox-serum-30ml-3337875898485.html",
       "image_url": "https://farmacianovadamaia.pt/55717-large_default/skinceuticals-p-tiox-serum-30ml.jpg",
@@ -29508,7 +29528,7 @@
     {
       "ean": "635494328202",
       "name": "SkinCeuticals Phloretin CF 30ml",
-      "price": 130.95,
+      "price": 130.94,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/antienvelhecimento/8752-skinceuticals-phloretin-cf-30ml-635494328202.html",
       "image_url": "https://farmacianovadamaia.pt/36974-large_default/skinceuticals-phloretin-cf-30ml.jpg",
@@ -30178,7 +30198,7 @@
     {
       "ean": "3664492019727",
       "name": "Urgo Antifungos Treat & Color Filmogel Vermelho 4ml",
-      "price": 17.57,
+      "price": 17.51,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pes/21535-urgo-antifungos-treat-color-filmogel-vermelho-4ml-3664492019727.html",
       "image_url": "https://farmacianovadamaia.pt/62210-large_default/urgo-antifungos-treat-color-filmogel-vermelho-4ml.jpg",
@@ -30528,7 +30548,7 @@
     {
       "ean": "3661434035029",
       "name": "Uriage Bariéderm CICA+ Creme Reparador 40ml",
-      "price": 12.07,
+      "price": 12.96,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/cuidados-especificos/2955-uriage-bariederm-cica-creme-reparador-40ml-3661434035029.html",
       "image_url": "https://farmacianovadamaia.pt/75463-large_default/uriage-bariederm-cica-creme-reparador-40ml.jpg",
@@ -30588,7 +30608,7 @@
     {
       "ean": "3661434001475",
       "name": "Uriage Bariésun Bruma Refrescante Pós-Solar 150ml",
-      "price": 22.82,
+      "price": 17.25,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pos-solares/5117-uriage-bariesun-bruma-refrescante-pos-solar-150ml-3661434001475.html",
       "image_url": "https://farmacianovadamaia.pt/66522-large_default/uriage-bariesun-bruma-refrescante-pos-solar-150ml.jpg",
@@ -30628,7 +30648,7 @@
     {
       "ean": "3661434008368",
       "name": "Uriage Bariésun Creme Hidratante FPS50+ sem Perfume 50ml",
-      "price": 24.34,
+      "price": 18.28,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/protetores-fps-50/5174-uriage-bariesun-creme-hidratante-fps50-sem-perfume-50ml-3661434008368.html",
       "image_url": "https://farmacianovadamaia.pt/54299-large_default/uriage-bariesun-creme-hidratante-fps50-sem-perfume-50ml.jpg",
@@ -32448,7 +32468,7 @@
     {
       "ean": "3337871322724",
       "name": "Vichy Capital Soleil Leite Apaziguante Pós-Solar 300ml",
-      "price": 16.48,
+      "price": 17.15,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/pos-solares/3554-vichy-capital-soleil-leite-apaziguante-pos-solar-300ml-3337871322724.html",
       "image_url": "https://farmacianovadamaia.pt/60938-large_default/vichy-capital-soleil-leite-apaziguante-pos-solar-300ml.jpg",
@@ -33428,7 +33448,7 @@
     {
       "ean": "8431567746599",
       "name": "Vichy Protocolo Antimanchas Pack",
-      "price": 44.9,
+      "price": 44.48,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/24668-vichy-protocolo-antimanchas-pack-8431567746599.html",
       "image_url": "https://farmacianovadamaia.pt/75638-large_default/vichy-protocolo-antimanchas-pack.jpg",
@@ -33458,7 +33478,7 @@
     {
       "ean": "8431567746315",
       "name": "Vichy Protocolo Hidratação Pack",
-      "price": 31.9,
+      "price": 31.64,
       "in_stock": true,
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/24670-vichy-protocolo-hidratacao-pack-8431567746315.html",
       "image_url": "https://farmacianovadamaia.pt/75652-large_default/vichy-protocolo-hidratacao-pack.jpg",

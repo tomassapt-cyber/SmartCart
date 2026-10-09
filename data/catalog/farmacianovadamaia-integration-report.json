@@ -1,8 +1,8 @@
 {
   "products_created": 0,
   "offers": 3010,
-  "active_offers": 2701,
-  "inactive_offers": 309,
+  "active_offers": 2699,
+  "inactive_offers": 311,
   "images": 2,
   "unmatched": [
     {
@@ -1353,9 +1353,21 @@
       "candidates": []
     },
     {
+      "ean": "3264680050503",
+      "name": "Nuxe O Brilho Supremo Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24681-nuxe-o-brilho-supremo-coffret-3264680050503.html",
+      "candidates": []
+    },
+    {
       "ean": "3264680005305",
       "name": "Nuxe Prodigieux Le Parfum 50ml",
       "url": "https://farmacianovadamaia.pt/pt/perfumes/17965-nuxe-prodigieux-le-parfum-50ml-3264680005305.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680050435",
+      "name": "Nuxe Rêve de Miel Glossy Glow Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/labios/24680-copia-de-nuxe-reve-de-miel-cuidado-de-labios-com-mel-dourado-10ml-3264680050435.html",
       "candidates": []
     },
     {
@@ -2325,5 +2337,5 @@
       "reason": "mass/volume units differ"
     }
   ],
-  "seed_bytes_delta": 1481275
+  "seed_bytes_delta": 1481288
 }
