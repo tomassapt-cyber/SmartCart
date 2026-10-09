@@ -11,7 +11,7 @@ Duas lojas portuguesas em Shopify, com código de barras por variante, preparada
 | Amostra de 9/10 contra o `main` | 90% dos GTIN casam com produtos existentes; **1,11×** a mediana; a mais barata em 3% | 22% casam; **0,91×** a mediana; a mais barata em 38% |
 | Portes ([SkinLovers](https://www.skinlovers.com/pt-pt/policies/shipping-policy), [Ilha](https://ilhadoscosmeticos.pt/policies/shipping-policy)) | continente: grátis acima de 50 €, abaixo «a partir de 3,50 €» | «calculado no checkout, pelo peso da encomenda e destino» |
 | Acesso dos runners (`sondar-acesso.yml`, corrida 37878515263) | 200 em `robots.txt` e `.js` | 200 em `robots.txt` e `.js` |
-| Ensaio sobre o `main` `b897450` (9/10, 12h), com a cache parcial | 155 variantes lidas → 60 com GTIN → **54 ofertas** (52 em stock), 1 conflito de volume, 0 produtos novos | 855 produtos lidos → 1 582 variantes com GTIN → **592 ofertas** (371 em stock), 37 conflitos (35 de unidade ml/g), 0 produtos novos, seed +269 KB |
+| Ensaio sobre o `main` `f1f0f43` (9/10, 14h) | cache com 1 875 de 4 491 produtos → 1 302 variantes com GTIN → **796 ofertas, só 220 em stock**; 29 conflitos; 0 produtos novos; seed +338 KB. Em stock: **1,13×** a mediana, a mais barata em 2% | cache completa (3 628 variantes) → 3 528 com GTIN → **1 051 ofertas, 725 em stock**; 63 conflitos (52 de unidade ml/g); 0 produtos novos; seed +472 KB. Em stock: **0,95×** a mediana, a mais barata em 39% (710 comparáveis) |
 
 ## Como recolhe
 
@@ -45,7 +45,7 @@ Duas lojas portuguesas em Shopify, com código de barras por variante, preparada
 
 ## Notas dos ensaios
 
-- **Caches parciais neste PR.** A 9/10 enchiam-se do PC a 1 pedido a cada 2 s (~25 produtos/min por loja); faltam as que os runners leem, 600 produtos por corrida (Ilha: ~3 corridas; SkinLovers: ~7). As ofertas crescem a cada corrida; a guarda de cobertura só trava descidas.
+- **Caches.** Ilha: completa (lida do PC a 9/10). SkinLovers: 1 875 de 4 491 produtos; os runners leem os restantes 2 616 a 600 por corrida (~5 corridas, ~2,5 dias a 2×/dia). As ofertas da SkinLovers crescem a cada corrida; a guarda de cobertura só trava descidas.
 - **SkinLovers:** os produtos criados em agosto de 2026 vêm sem código de barras na Shopify, mas todos têm SKU de 7 dígitos (CNP provável). O catálogo não guarda CNP, por isso ficam de fora; casar por CNP exigiria o mapa CNP→EAN, que tem conflitos.
 - **Ilha:** a coloração L'Oréal iNOA vem como «60 ml» na loja e «60 g» no catálogo, com o mesmo GTIN. O integrador recusa-a como conflito de unidade (35 casos) e deixa-a no relatório para revisão; pode entrar depois por regra ou alias, se se confirmar que é o mesmo artigo.
 
