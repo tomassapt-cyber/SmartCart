@@ -8,11 +8,18 @@ on:
       - 'scripts/*presencadeluxo*'
       - 'scripts/test-existing-store-proposals.js'
       - 'data/catalog/presencadeluxo-full.json'
+      - 'data/catalog/farmacianovadamaia-full.json'
   workflow_dispatch:
+    inputs:
+      diagnose_maia:
+        description: 'One declared-bot robots request after access conditions change'
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
   maia-access:
+    if: github.event_name == 'workflow_dispatch' && inputs.diagnose_maia
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
@@ -48,6 +55,7 @@ jobs:
           node scripts/test-discover-presencadeluxo.js
           node scripts/test-presencadeluxo-existing-only.js
           node scripts/test-existing-store-proposals.js
+          python scripts/test-refresh-farmacianovadamaia-pc.py
       - name: Verify public Luxo access from runner
         run: python scripts/test-presencadeluxo-cloud.py
       - name: Check seed roundtrip and production generation

@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
     inputs:
       so_integrar:
-        description: 'sim = integrar o ficheiro completo do PC; nao = recolher na nuvem'
+        description: 'sim = integrar recolha do PC; nao = ensaio de recolha na nuvem'
         type: choice
-        options: ['nao', 'sim']
-        default: 'nao'
+        options: ['sim', 'nao']
+        default: 'sim'
 
 permissions:
   contents: write
@@ -40,7 +40,10 @@ jobs:
       - name: Test existing-only integration
         run: node scripts/test-farmacianovadamaia-existing-only.js
       - name: Scrape public dermocosmetics category
-        if: inputs.so_integrar != 'sim'
+        # Cloudflare challenged the declared bot on robots.txt in runs
+        # 37919144641 and 37930339207. Scheduled runs integrate PC data only;
+        # a manual cloud test remains available after the store permits it.
+        if: github.event_name == 'workflow_dispatch' && inputs.so_integrar == 'nao'
         run: python scripts/scrape-farmacianovadamaia-catalog.py
       - name: Save collection evidence
         if: always()

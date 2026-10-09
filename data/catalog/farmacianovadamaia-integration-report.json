@@ -1,9 +1,9 @@
 {
   "products_created": 0,
-  "offers": 3010,
-  "active_offers": 2699,
-  "inactive_offers": 311,
-  "images": 2,
+  "offers": 3011,
+  "active_offers": 2704,
+  "inactive_offers": 307,
+  "images": 0,
   "unmatched": [
     {
       "ean": "3282770142358",
@@ -1341,6 +1341,18 @@
       "candidates": []
     },
     {
+      "ean": "3264680050565",
+      "name": "Nuxe A Coleção Exclusiva Para Homem Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/cuidados-rosto/24684-nuxe-a-colecao-exclusiva-para-homem-coffret-3264680050565.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680050596",
+      "name": "Nuxe A Rotina De Beleza Glow Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24682-nuxe-a-rotina-de-beleza-glow-coffret-3264680050596.html",
+      "candidates": []
+    },
+    {
       "ean": "3264680050916",
       "name": "Nuxe Calendário do Advento",
       "url": "https://farmacianovadamaia.pt/pt/dermocosmetica/22781-nuxe-calendario-do-advento-3264680050916.html",
@@ -1356,6 +1368,18 @@
       "ean": "3264680050503",
       "name": "Nuxe O Brilho Supremo Coffret",
       "url": "https://farmacianovadamaia.pt/pt/hidratantes/24681-nuxe-o-brilho-supremo-coffret-3264680050503.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680050510",
+      "name": "Nuxe O Brilho Supremo Em Rosa Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/hidratantes/24683-nuxe-o-brilho-supremo-em-rosa-coffret-3264680050510.html",
+      "candidates": []
+    },
+    {
+      "ean": "3264680050480",
+      "name": "Nuxe Os Icónicos Coffret",
+      "url": "https://farmacianovadamaia.pt/pt/labios/24685-nuxe-os-iconicos-coffret-3264680050480.html",
       "candidates": []
     },
     {
@@ -2337,5 +2361,5 @@
       "reason": "mass/volume units differ"
     }
   ],
-  "seed_bytes_delta": 1481288
+  "seed_bytes_delta": 265
 }

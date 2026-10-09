@@ -1,35 +1,17 @@
-# Presença de Luxo — proposta de integração
+# Presença de Luxo — validação final
 
-## Estado
-Proposta em rascunho. Não integrada no `main` nem em produção; ainda não deve ser acrescentada ao Excel como concluída. Nenhuma chamada ou escrita no Supabase.
+Proposta revalidada em `main` `99e8ef8ef47a7bda112a3118277837b870296aad`: **1047 ofertas**, 1047 ativas, 0 inativas; **zero produtos novos**. A recolha completa do PC terminou em 9 outubro 2026 e permanece dentro do limite de frescura de 24h. 23 conflitos de unidade/quantidade foram excluídos; nomes alternativos sem identidade física comprovada não são associados. O gel Inocos 5600355751449 continua apenas candidato ao existente 5600355736804, sem criação nem associação automática.
 
-Base revalidada: `477a76354d529d91eded10d7249784d4f2201759`. Os 823 ficheiros da base foram verificados contra os hashes Git oficiais. Preservados todos os produtos, lojas e ofertas anteriores.
+O scraper lê o preço explícito **com IVA**: o preço principal e o JSON-LD da loja são líquidos. Confirma GTIN, URL, dados visíveis, stock e ausência de suplementos por artigo. Não publica um catálogo parcial. Robots, 403, 429 ou desafios impedem a recolha, sem contorno.
 
-## Contagens verificadas
-- Produtos existentes antes/depois: 85149 / 85149; **zero produtos novos**.
-- Lojas antes/depois da proposta: 99 / 100.
-- Ofertas acrescentadas na proposta: **1047**, 1047 ativas e 0 inativas.
-- Ofertas totais antes/depois: 286609 / 287656.
-- Imagens alteradas: 0. A auditoria disponível não sinalizou imagens ausentes, placeholders ou erros nos produtos correspondentes; não se afirma uma verificação HTTP nova de todas as imagens.
-- Crescimento do JSON compacto: 470265 bytes. Escritas na BD: **0**; não representa crescimento físico do Postgres.
+[Teste no GitHub](https://github.com/tomassapt-cyber/SmartCart/actions/runs/37930339207): acesso público a três fichas com o robô declarado passou, assim como descoberta, integração, preservação de produtos/outras lojas, portes desconhecidos, roundtrip do seed e os quatro passos de geração de produção. A recolha completa agendada continua no GitHub, **três vezes por dia**.
 
-## Recolha e identidade
-Recolha pública entre 2026-10-09T01:57:04.584413+00:00 e 2026-10-09T02:50:59.190539+00:00: 1198 URLs alvo, 1070 linhas válidas com IVA, 124 exclusões na extração. Motivos: `{"visible product data disagree with schema": 75, "stock/order contradiction": 34, "unverified price/currency/URL": 10, "ambiguous/missing Product schema": 1, "conflicting duplicate GTIN": 4}`.
+A [fonte oficial de portes](https://presencadeluxo.pt/content/21--condicoes-de-envios-e-recolhas) apresenta 3,05 € mais IVA no continente abaixo de 39 €, exceções por peso e tarifas das ilhas não publicadas. Não foi inventado um valor com IVA nem uma taxa única. O frontend já inclui #36: custo desconhecido fica `null`, é assinalado como calculado no checkout e não entra em totais entregues fictícios.
 
-Revalidação contra a base atual: 0 identificadores sem correspondência, 23 conflitos excluídos na integração. O sitemap inclui 7076 identificadores não encontrados e 113 códigos inválidos. Não se criam produtos por falta de correspondência.
+Imagens alteradas nesta proposta: **0**. A auditoria disponível não sinalizou ausência/placeholder/erro nos produtos correspondentes; não equivale a uma nova verificação HTTP de todas as imagens. As duas imagens oficiais Maia já presentes no main foram reconfirmadas com HTTP 200, 800×800 e hashes iguais à revisão visual anterior.
 
-O índice verifica EAN exato, UPC normalizado, identificadores antigos e aliases documentados; nomes alternativos são avaliados pela impressão marca/nome/quantidade. Candidatos incertos ficam em `presencadeluxo-revisao-identidade.json`. O gel Inocos `5600355751449` é candidato ao existente `5600355736804`; a [fonte oficial](https://www.inocos.com/product/builder-gel-classic-inocos-transparente-de-media-viscosidade-50g) confirma nome/quantidade e referência 81.01.077, mas não a equivalência dos dois códigos. Foi excluído, sem criar outro produto.
+Esta revisão também atualiza a recolha Maia para 3011 ofertas (2704 ativas, 307 inativas), sem produtos novos. As restantes lojas são preservadas integralmente. Snapshot antes/depois: 99/100 lojas, 85150/85150 produtos e 286614/287662 ofertas. JSON compacto +470530 bytes; chamadas/escritas Supabase **0**, crescimento físico Postgres não medido.
 
-Os preços principais do JSON-LD desta loja são sem IVA. O scraper utiliza exclusivamente o valor explícito «com IVA», confrontando EAN, URL, preço líquido e dados da ficha. Exemplo verificado: Rickiparodi B39 `5600482307885`, 3,88 € líquidos / **4,77 € com IVA**. Dez fichas foram confirmadas no browser. Artigos com variantes de atributo não validadas, portes suplementares ou contradições ficam excluídos.
+O teste cloud Maia respondeu **403, servidor Cloudflare, `cf-mitigated: challenge`, título “Just a moment…”**, no primeiro pedido a robots.txt. Isto não foi confundido com sucesso de scraping. Enquanto a loja não permitir o robô, as execuções agendadas apenas integram um ficheiro completo/fresco fornecido pelo PC; o integrador rejeita mais de 24h e preserva o catálogo. Um ensaio manual de recolha cloud continua disponível após alteração das condições de acesso. O helper `scripts/refresh-farmacianovadamaia-pc.py` recolhe, publica apenas o ficheiro cru com recuperação de conflito sem force e desencadeia a integração na cloud. Máximo três tentativas locais por 24h. **Não foi instalado agendamento Windows**.
 
-Comparação de preços: 476 produtos ativos com identidade, quantidade e unidade iguais a outras ofertas. Rácio mediano da loja face à mediana das outras lojas: 1.020537132149628; 149 abaixo do menor preço comparável. Valores incluem IVA e excluem portes.
-
-## Portes — custo desconhecido, sem valor inventado
-A [página oficial de envios](https://presencadeluxo.pt/content/21--condicoes-de-envios-e-recolhas) declara 3,05 € **mais IVA** abaixo de 39 € no continente, com exceções para peso acrescido. Não publica um valor final inequívoco nem a tabela por peso para as ilhas. Os portes adicionais por artigo permanecem aplicáveis acima do limiar. Não se inventa uma tarifa com IVA nem se transforma esta regra numa taxa única.
-
-O `robots.txt` proíbe carrinho/checkout. A recolha usa apenas sitemap e fichas permitidas, com intervalo de dois segundos, sem conta, morada ou checkout. A base atual já inclui a correção #36: portes desconhecidos são representados por `null`, excluídos dos totais entregues do otimizador e assinalados como calculados no checkout. Não se repete o antigo erro de os interpretar como grátis. O template `demo.html` foi apenas lido; esta proposta não o altera.
-
-## Validação
-Passaram os testes Node de descoberta e integração apenas de existentes, as verificações reais de extração com IVA e os casos negativos de preço/stock/atributo/portes. Passaram quatro guardas do scraper (completo, 403, seleção vazia e robots) e oito casos do helper de publicação/recuperação. Feed completo, produtos anteriores preservados integralmente, roundtrip pack/unpack byte a byte.
-
-Passaram os quatro passos de geração usados pelo build de produção: `build-product-shards.js, build-search-index.js, build-sitemap.js, inject-seed-into-demo.js`. Seed e template preservados. A limpeza final de fontes não foi executada na área local; não foi usado o build legado que gera produtos/preços sintéticos. Workflow cloud ainda não executado. Cadência proposta: três recolhas diárias, sem aumento das rotinas existentes.
+Portes desconhecidos não foram inventados, demo.html não foi alterado e não foi acedido ao Supabase. O painel de ofertas e as contagens reais da BD só podem ser verificados quando terminar a restrição do Supabase. Distinguir integração no código/seed de disponibilidade confirmada no painel antes de marcar a loja como concluída no Excel.
