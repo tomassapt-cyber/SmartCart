@@ -1,0 +1,70 @@
+name: Existing store proposal verification
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/existing-store-proposals.yml'
+      - '.github/workflows/presencadeluxo-catalog.yml'
+      - '.github/workflows/farmacianovadamaia-catalog.yml'
+      - 'scripts/*presencadeluxo*'
+      - 'scripts/test-existing-store-proposals.js'
+      - 'data/catalog/presencadeluxo-full.json'
+      - 'data/catalog/farmacianovadamaia-full.json'
+  workflow_dispatch:
+    inputs:
+      diagnose_maia:
+        description: 'One declared-bot robots request after access conditions change'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  maia-access:
+    if: github.event_name == 'workflow_dispatch' && inputs.diagnose_maia
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Diagnose one declared-bot request without retry or bypass
+        run: python scripts/diagnose-maia-cloud.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: maia-cloud-access-${{ github.run_id }}
+          path: maia-cloud-access.json
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NODE_OPTIONS: '--max-old-space-size=4096'
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      COSMATH_DEPLOY_BUILD: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unpack and test both existing-only integrations
+        run: |
+          bash scripts/ci/seed.sh unpack
+          node scripts/test-farmacianovadamaia-existing-only.js
+          node scripts/test-discover-presencadeluxo.js
+          node scripts/test-presencadeluxo-existing-only.js
+          node scripts/test-existing-store-proposals.js
+          python scripts/test-refresh-farmacianovadamaia-pc.py
+      - name: Verify public Luxo access from runner
+        run: python scripts/test-presencadeluxo-cloud.py
+      - name: Check seed roundtrip and production generation
+        run: |
+          sha256sum demo.html data/seed-bundle.json > /tmp/store-proposal-before.sha256
+          bash scripts/ci/seed.sh pack
+          bash scripts/ci/seed.sh unpack
+          node scripts/build-product-shards.js --quiet
+          node scripts/build-search-index.js
+          node scripts/build-sitemap.js
+          node scripts/inject-seed-into-demo.js
+          sha256sum -c /tmp/store-proposal-before.sha256

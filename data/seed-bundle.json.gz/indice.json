@@ -1016,6 +1016,16 @@
    "outros": {
     "store_slug": "farmacianovadamaia"
    }
+  },
+  {
+   "ficheiro": "ofertas/presencadeluxo.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "presencadeluxo"
+   }
   }
  ],
  "outros": {}
