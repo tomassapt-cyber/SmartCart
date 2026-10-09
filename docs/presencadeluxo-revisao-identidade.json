@@ -1,0 +1,137 @@
+{
+  "unmatched_identifiers": 7076,
+  "name_candidates": [
+    {
+      "url": "https://presencadeluxo.pt/gel-construcao-media-viscosidade/92010-inocos-gel-de-construcao-transparente-50g-media-viscosidade-5600355751449.html",
+      "ean": "5600355751449",
+      "name": "inocos gel de construcao transparente 50g media viscosidade",
+      "candidates": [
+        {
+          "ean": "5600355736804",
+          "name": "Gel Construção Inocos - Transparente Média Viscosidade 50g",
+          "brand": "Inocos",
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
+        }
+      ]
+    }
+  ],
+  "integration_unmatched": [],
+  "identity_conflicts": [
+    {
+      "ean": "3474637128630",
+      "canonical": "3474637128630",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637128579",
+      "canonical": "3474637128579",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637129507",
+      "canonical": "3474637129507",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637129200",
+      "canonical": "3474637129200",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637131593",
+      "canonical": "3474637131593",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637134518",
+      "canonical": "3474637134518",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637134419",
+      "canonical": "3474637134419",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637134310",
+      "canonical": "3474637134310",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637134365",
+      "canonical": "3474637134365",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637134464",
+      "canonical": "3474637134464",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637134563",
+      "canonical": "3474637134563",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637130282",
+      "canonical": "3474637130282",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "4064666585321",
+      "canonical": "4064666585321",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "9003877901143",
+      "canonical": "9003877901143",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3474637130947",
+      "canonical": "3474637130947",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "3474637280109",
+      "canonical": "3474637280109",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "3474637131791",
+      "canonical": "3474637131791",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "7908458316908",
+      "canonical": "7908458316908",
+      "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "7898610376324",
+      "canonical": "7898610376324",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5603927892359",
+      "canonical": "5603927892359",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5603927892366",
+      "canonical": "5603927892366",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "5603927892373",
+      "canonical": "5603927892373",
+      "reason": "mass/volume units differ"
+    },
+    {
+      "ean": "8028483270170",
+      "canonical": "8028483270170",
+      "reason": "volume not already represented in the product"
+    }
+  ],
+  "invalid_gtin": 113
+}
