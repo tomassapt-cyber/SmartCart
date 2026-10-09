@@ -32,7 +32,7 @@
 #     "chore: Farmácia.pt daily refresh ($(date -u +%F))" \
 #     data/catalog/farmaciapt-full.json
 # ============================================================================
-set -uo pipefail
+set -euo pipefail
 
 INTEGRATE_CMD="${1:?integrate-cmd em falta}"; shift
 COMMIT_MSG="${1:?commit-msg em falta}"; shift
