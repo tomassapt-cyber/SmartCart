@@ -1036,6 +1036,16 @@
    "outros": {
     "store_slug": "ilhadoscosmeticos"
    }
+  },
+  {
+   "ficheiro": "ofertas/skinlovers.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "skinlovers"
+   }
   }
  ],
  "outros": {}
