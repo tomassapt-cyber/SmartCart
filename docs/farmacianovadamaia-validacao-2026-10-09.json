@@ -1,0 +1,163 @@
+{
+  "verified_at": "2026-10-09T01:12:08.679994+00:00",
+  "main_sha": "6a1174b35dab25bb3705b29082b92976b50a1132",
+  "historical_identity_revalidation": {
+    "main": "6a1174b35dab25bb3705b29082b92976b50a1132",
+    "previous_offers": 3010,
+    "still_matched": 3010,
+    "excluded": [],
+    "current_matches": 3010,
+    "products_created": 0,
+    "unmatched": 323,
+    "conflicts": 33
+  },
+  "current_collection": {
+    "offers": 3010,
+    "active": 2699,
+    "inactive": 311,
+    "unmatched": 325,
+    "conflicts": 33,
+    "price_changes": 109,
+    "stock_changes": 5,
+    "added_offer_keys": [
+      "3264680050534"
+    ],
+    "removed_offer_keys": [
+      "3264680044823"
+    ]
+  },
+  "invariants": {
+    "before": {
+      "stores": 98,
+      "products": 85113,
+      "offers": 283454
+    },
+    "after": {
+      "stores": 99,
+      "products": 85113,
+      "offers": 286464
+    },
+    "products_created": 0,
+    "images_changed": [
+      "3461020013178",
+      "4005800151842"
+    ],
+    "active_offers": 2699,
+    "inactive_offers": 311,
+    "seed_bytes_delta": 1481288,
+    "unrelated_data_preserved": true,
+    "supabase_requests": 0
+  },
+  "build": {
+    "steps": [
+      {
+        "step": "build-product-shards.js",
+        "exit_code": 0
+      },
+      {
+        "step": "build-search-index.js",
+        "exit_code": 0
+      },
+      {
+        "step": "build-sitemap.js",
+        "exit_code": 0
+      },
+      {
+        "step": "inject-seed-into-demo.js",
+        "exit_code": 0
+      }
+    ],
+    "template_unchanged": true,
+    "seed_unchanged": true,
+    "source_pruning_skipped": true,
+    "production_deploy": false
+  },
+  "shipping": {
+    "verified_at": "2026-10-09T01:08:41.985Z",
+    "source_url": "https://farmacianovadamaia.pt/pt/content/3-termos-e-condicoes",
+    "section": "10.2.1",
+    "shipping_basis": "order weight",
+    "reliable_fixed_rate": null,
+    "free_shipping_threshold": null,
+    "free_shipping_threshold_verified": false,
+    "official_page_sha256": "623ebade316f175988af4b6e58a6c0817b08d4b5714d1bd3f5bc3eef90e13e1c",
+    "main_template_unknown_shipping_result": 0,
+    "merge_blocked": true,
+    "reason": "Unknown shipping currently becomes zero; no verified weight tariff available"
+  },
+  "tests": {
+    "integrator": "passed against current main library",
+    "scraper_offline": [
+      {
+        "case": "complete",
+        "requests_stubbed": 151,
+        "passed": true
+      },
+      {
+        "case": "blocked",
+        "requests_stubbed": 3,
+        "passed": true
+      },
+      {
+        "case": "zero",
+        "requests_stubbed": 2,
+        "passed": true
+      },
+      {
+        "case": "repeated",
+        "requests_stubbed": 3,
+        "passed": true
+      },
+      {
+        "case": "robots",
+        "requests_stubbed": 1,
+        "passed": true
+      }
+    ],
+    "push_stubbed": [
+      {
+        "case": "success",
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "recovery",
+        "exit_code": 0,
+        "passed": true
+      },
+      {
+        "case": "fetch",
+        "exit_code": 42,
+        "passed": true
+      },
+      {
+        "case": "reset",
+        "exit_code": 43,
+        "passed": true
+      },
+      {
+        "case": "unpack",
+        "exit_code": 44,
+        "passed": true
+      },
+      {
+        "case": "integrate",
+        "exit_code": 45,
+        "passed": true
+      },
+      {
+        "case": "pack",
+        "exit_code": 46,
+        "passed": true
+      },
+      {
+        "case": "add",
+        "exit_code": 47,
+        "passed": true
+      }
+    ]
+  },
+  "cloud_scrape_validated": false,
+  "production_integrated": false,
+  "excel_ready": false
+}
