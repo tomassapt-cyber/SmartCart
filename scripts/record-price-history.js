@@ -31,6 +31,10 @@
  * Uso:
  *   node scripts/record-price-history.js            # grava o dia de hoje
  *   node scripts/record-price-history.js --dry-run  # só mostra o que faria
+ *   node scripts/record-price-history.js --as-of=2026-09-25T23:40:00Z
+ *       # recuperar um dia perdido: corre como se fosse aquele momento, sobre o
+ *       # seed desse momento (posto em data/seed-bundle.json por quem chama).
+ *       # Só aceita dias a partir do último gravado — as séries são por ordem.
  */
 
 const fs = require('fs');
@@ -43,6 +47,8 @@ const HISTORY_FILE = path.join(ROOT, 'data', 'price-history.json');
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const DRY_RUN = !!args['dry-run'];
+const AS_OF = args['as-of'] ? new Date(args['as-of']) : null;
+if (AS_OF && isNaN(AS_OF)) { console.error(`✗ --as-of inválido: ${args['as-of']}`); process.exit(1); }
 
 const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
 
@@ -59,8 +65,13 @@ const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
     return storeIdx.get(slug);
   }
 
-  const now = Date.now();
+  const now = AS_OF ? AS_OF.getTime() : Date.now();
   const day = Math.floor(now / 86400000);
+  if (AS_OF) {
+    let lastDay = -1;
+    for (const s of [...Object.values(hist.series), ...Object.values(hist.vseries || {})]) if (s.length) lastDay = Math.max(lastDay, s[s.length - 1][0]);
+    if (day < lastDay) { console.error(`✗ --as-of ${args['as-of']} é anterior ao último dia gravado (${new Date(lastDay * 86400000).toISOString().slice(0, 10)}) — as séries ficariam fora de ordem.`); process.exit(1); }
+  }
 
   // melhor preço vivo por ean (mínimo absoluto — série legada/"desde")
   // + melhor preço POR VOLUME (vseries — cada volume tem o SEU mínimo/média/hoje;
