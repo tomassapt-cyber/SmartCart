@@ -58,7 +58,7 @@ jobs:
           git commit -m "chore: price history ($(date -u +%Y-%m-%d))"
           for i in 1 2 3 4 5; do
             git push origin main && exit 0
-            git fetch origin
+            git fetch origin main   # só o main: `git fetch origin` num clone raso puxa o histórico inteiro dos outros ramos (deploy = GBs) e esgotava os 20 min
             git rebase origin/main || { git rebase --abort; git reset --hard origin/main; bash scripts/ci/seed.sh unpack; node scripts/record-price-history.js; git add data/price-history.json; git commit -m "chore: price history ($(date -u +%Y-%m-%d))"; }
             sleep $((i * 20))
           done
