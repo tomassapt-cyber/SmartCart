@@ -1,0 +1,62 @@
+{
+  "baseline_sha": "58be20af9befe35c962d1d393c4cb7f158795dde",
+  "changes": [
+    {
+      "ean": "3337875597272",
+      "name_in_catalog": "CeraVe Creme Reparador Contorno de Olhos 14ml",
+      "before": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/HVatwY.jpg?v=1779239226",
+      "before_probe": {
+        "checked_at": "2026-10-09T12:27:03Z",
+        "http": 404,
+        "type": "text/html; charset=utf-8"
+      },
+      "after": "https://farmacianovadamaia.pt/22509-large_default/cerave-creme-reparador-olhos-14ml.jpg",
+      "source_page": "https://farmacianovadamaia.pt/pt/hidratantes/5779-cerave-creme-reparador-olhos-14ml-3337875597272.html",
+      "page_checked_at": "2026-10-09T12:27:04Z",
+      "page_http": 200,
+      "page_sha256": "3aaa47b5c16218a6077e43b88fddf57d4e57b9463fb7b6eefd243a908481568d",
+      "identity": [
+        {
+          "name": "CeraVe Creme Reparador Olhos 14ml",
+          "gtin13_in_page_url": true,
+          "gtin13_occurrences_in_page": 27,
+          "image_id_in_page": "22509 (large/medium/small/home variants referenced by the page)",
+          "store_in_catalog": "farmacianovadamaia — already has an offer for this EAN (PR #40)"
+        }
+      ],
+      "image_probe": {
+        "checked_at": "2026-10-09T12:27:04Z",
+        "http": 200,
+        "type_header": "image/jpeg",
+        "format": "png",
+        "width": 800,
+        "height": 800,
+        "bytes": 214914,
+        "sha256": "2d97549ffe1da353919c558bdf13f874aa4896b7211820519be92d227d4923a9",
+        "http_with_site_referer": 200
+      },
+      "visual_check": "Reviewed downloaded original: CeraVe Eye Repair Cream tube + Portuguese/French box (Creme Reparador para os Olhos), .5 OZ/14 ml; white background, no placeholder or stretching. Bytes are PNG although served as image/jpeg; browsers render it.",
+      "reserve_candidate": {
+        "url": "https://static.sweetcare.pt/img/prd/max/v-638520822377573670/cerave-007781ve-1.jpg",
+        "checked_at": "2026-10-09T12:27:05Z",
+        "http": 200,
+        "format": "jpeg",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 60228,
+        "sha256": "d420f2ada34713fba630b602eac50686ece4fe1e96ff5535d1f34990c26b9f93",
+        "note": "Sweetcare CDN (7354 catalog images); same product visually (ES/EN box, 14 ml). Not chosen: the Sweetcare page publishes no GTIN, the catalog link is by name."
+      }
+    }
+  ],
+  "impact": {
+    "products_changed": 1,
+    "products_added": 0,
+    "products_removed": 0,
+    "offers_changed": 0,
+    "stores_changed": 0,
+    "images_replaced": 1,
+    "database_access": false
+  },
+  "related_finding": "Same day: 371 of 487 catalog images hosted on the Easyfarma Shopify CDN (cdn.shopify.com/s/files/1/0542/5299/4747/) return 404; 265 belong to products visible on the site. Not changed here."
+}
