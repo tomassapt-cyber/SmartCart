@@ -14,7 +14,7 @@
           "ean": "3282770142341",
           "name": "A-Derma Creme Hidratante Universal 150ml",
           "brand": "A-Derma",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -33,7 +33,7 @@
           "ean": "3282770149784",
           "name": "A-Derma Exomega Control Spray Emoliente 200ml",
           "brand": "A-Derma",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -214,7 +214,7 @@
           "ean": "3323034408763",
           "name": "Akileine Gel Frescura Viva 125ml",
           "brand": "Akileïne",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -233,7 +233,7 @@
           "ean": "5055382305279",
           "name": "Alvita Algodao Zig Zag 100g",
           "brand": "Alvita",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -258,7 +258,7 @@
           "ean": "8430291001264",
           "name": "Alvita Gel Banho Aveia 750ml",
           "brand": "Alvita",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -271,7 +271,7 @@
           "ean": "8430291002001",
           "name": "Alvita Gel de Banho Coco 750ml",
           "brand": "Alvita",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -284,7 +284,7 @@
           "ean": "5055382307884",
           "name": "Alvita Gel de Banho Dermo 750ml",
           "brand": "Alvita",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -303,7 +303,7 @@
           "ean": "8430291002636",
           "name": "Alvita Gel Banho Laranja Canela 750Ml",
           "brand": "Alvita",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -316,7 +316,7 @@
           "ean": "8430291001257",
           "name": "Alvita Gel Banho Mel Iogurte 750ml",
           "brand": "Alvita",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -329,7 +329,7 @@
           "ean": "farmaciagarcia-alvita-gel-de-banho-micelar-750ml",
           "name": "Alvita Gel de Banho Micelar 750ml",
           "brand": "Alvita",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -378,7 +378,7 @@
           "ean": "3282779062633",
           "name": "Avène Men Espuma de Barbear 200ml",
           "brand": "Avène",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -451,7 +451,7 @@
           "ean": "8470001516176",
           "name": "Verniz para Unhas Betalfatrus 3,3ml",
           "brand": "Betalfatrus",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -572,7 +572,7 @@
           "ean": "3522930004004",
           "name": "Caudalie Vinoclean Óleo Desmaquilhante 75mL",
           "brand": "Caudalie",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -585,7 +585,7 @@
           "ean": "3522930003465",
           "name": "Caudalie Vinopure Geleia de Limpeza Purificante 150ml",
           "brand": "Caudalie",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -910,7 +910,7 @@
           "ean": "vidamais-hidrolact-body-milk-200ml",
           "name": "HidroLact Body Milk 200ml",
           "brand": "Hidrolact",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -941,7 +941,7 @@
           "ean": "8430321007914",
           "name": "Interapothek Gel de Banho Aloé Vera 750ml",
           "brand": "Interapothek",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -954,7 +954,7 @@
           "ean": "8430321007969",
           "name": "Interapothek Gel Banho Aveia e Trigo 750ml",
           "brand": "Interapothek",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1045,7 +1045,7 @@
           "ean": "8429420166561",
           "name": "Isdin Nutratopic Pro-AMP Gel de Banho Emoliente 400 ml",
           "brand": "Isdin",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1058,7 +1058,7 @@
           "ean": "3337872414060",
           "name": "La Roche Posay Cicaplast Lábios 7,5ml",
           "brand": "La Roche-Posay",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1149,7 +1149,7 @@
           "ean": "bairro-saude-monchique-gua-termal-alcalina-spray-200-ml",
           "name": "Monchique Água Termal Alcalina Spray 200ml",
           "brand": "Monchique",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1180,7 +1180,7 @@
           "ean": "cosmeticfan-mycosana-balsamo-calcanhares-gretados-75-ml",
           "name": "Mycosana Balsamo Calcanhares Gretados 75 mL",
           "brand": "Mycosana",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1409,7 +1409,7 @@
           "ean": "3264680043475",
           "name": "Nuxe Very Rose Oleo Delicado Desmaquilhante 150ml",
           "brand": "Nuxe",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1446,7 +1446,7 @@
           "ean": "5600903501465",
           "name": "Oleoban Gel de Banho 950ml",
           "brand": "Oleoban",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1549,7 +1549,7 @@
           "ean": "3577056009075",
           "name": "Pedi Relax Creme Pé Diabético 100ml",
           "brand": "Pédi Relax",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -1796,7 +1796,7 @@
           "ean": "3661434000539",
           "name": "Uriage Água Termal 300ml",
           "brand": "Uriage",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -2067,7 +2067,7 @@
           "ean": "3337875553278",
           "name": "Vichy Desodorizante Mineral 48H Roll-On 50 ml",
           "brand": "Vichy",
-          "reason": "same fingerprint and volume; physical identity requires verification"
+          "reason": "same fingerprint, quantity and unit; physical identity requires verification"
         }
       ]
     },
@@ -2177,6 +2177,11 @@
       "ean": "3282779292238",
       "canonical": "3282779292238",
       "reason": "volume not already represented in the product"
+    },
+    {
+      "ean": "5600360018704",
+      "canonical": "5600360018704",
+      "reason": "mass/volume units differ"
     },
     {
       "ean": "5601348111035",
@@ -2300,11 +2305,6 @@
       "reason": "mass/volume units differ"
     },
     {
-      "ean": "3401374911270",
-      "canonical": "3401374911270",
-      "reason": "volume not already represented in the product"
-    },
-    {
       "ean": "3264680042188",
       "canonical": "3264680042201",
       "reason": "multiple conflicting offers for the same existing volume",
@@ -2361,5 +2361,5 @@
       "reason": "mass/volume units differ"
     }
   ],
-  "seed_bytes_delta": 265
+  "seed_bytes_delta": -12
 }

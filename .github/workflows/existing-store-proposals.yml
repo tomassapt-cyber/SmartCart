@@ -7,6 +7,9 @@ on:
       - '.github/workflows/farmacianovadamaia-catalog.yml'
       - 'scripts/*presencadeluxo*'
       - 'scripts/test-existing-store-proposals.js'
+      - 'scripts/test-existing-offer-quantity.js'
+      - 'scripts/lib/existing-offer-quantity.js'
+      - 'scripts/integrate-farmacianovadamaia-catalog.js'
       - 'data/catalog/presencadeluxo-full.json'
       - 'data/catalog/farmacianovadamaia-full.json'
   workflow_dispatch:
@@ -55,6 +58,7 @@ jobs:
           node scripts/test-discover-presencadeluxo.js
           node scripts/test-presencadeluxo-existing-only.js
           node scripts/test-existing-store-proposals.js
+          node scripts/test-existing-offer-quantity.js
           python scripts/test-refresh-farmacianovadamaia-pc.py
       - name: Verify public Luxo access from runner
         run: python scripts/test-presencadeluxo-cloud.py

@@ -1,11 +1,11 @@
 'use strict';
 const fs=require('fs'),path=require('path');
-const {productFingerprint,extractVolumeMl}=require('./lib/product-fingerprint');
+const {productFingerprint}=require('./lib/product-fingerprint');
+const {quantityFromName,unitFromName,knownVariantKey}=require('./lib/existing-offer-quantity');
 const SLUG='farmacianovadamaia';
 const norm=e=>/^0\d{12}$/.test(String(e))?String(e).slice(1):String(e);
 const validGtin=e=>/^(?:\d{8}|\d{12}|\d{13}|\d{14})$/.test(String(e))&&[...String(e).slice(0,-1)].reverse().reduce((s,d,i)=>s+Number(d)*(i%2?1:3),Number(String(e).at(-1)))%10===0;
 const normalized=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-const unitFromName=name=>{const m=String(name||'').match(/\d(?:[.,]\d+)?\s*(ml|l|gr|g)\b/i);return m?(/g/i.test(m[1])?'g':'ml'):null;};
 function identityIndex(seed,aliases={}){
  const exact=new Map(),known=new Map();
  const add=(k,p)=>{k=norm(k);if(!known.has(k))known.set(k,new Set());known.get(k).add(p);};
@@ -14,21 +14,22 @@ function identityIndex(seed,aliases={}){
  const brands=[...new Set(seed.products.map(p=>p.brand).filter(Boolean))].map(b=>({brand:b,text:normalized(b)})).sort((a,b)=>b.text.length-a.text.length);
  const fingerprints=new Map();
  for(const p of seed.products){const key=productFingerprint(p);if(!key)continue;if(!fingerprints.has(key))fingerprints.set(key,[]);fingerprints.get(key).push(p);}
- return {resolve(e){const direct=exact.get(String(e));if(direct)return {product:direct,method:'GTIN'};const list=[...(known.get(norm(e))||[])];return list.length===1?{product:list[0],method:'documented alias/UPC'}:null;},review(item){const name=normalized(item.name);const brand=brands.find(b=>name===b.text||name.startsWith(b.text+' '))?.brand;if(!brand)return [];const fp=productFingerprint({name:item.name,brand});const vol=extractVolumeMl(item.name);return (fingerprints.get(fp)||[]).filter(p=>{const pv=extractVolumeMl(p.name);return !!vol&&!!pv&&vol===pv;}).map(p=>({ean:p.ean,name:p.name,brand:p.brand,reason:'same fingerprint and volume; physical identity requires verification'}));}};
+ return {resolve(e){const direct=exact.get(String(e));if(direct)return {product:direct,method:'GTIN'};const list=[...(known.get(norm(e))||[])];return list.length===1?{product:list[0],method:'documented alias/UPC'}:null;},review(item){const name=normalized(item.name);const brand=brands.find(b=>name===b.text||name.startsWith(b.text+' '))?.brand;if(!brand)return [];const fp=productFingerprint({name:item.name,brand});const vol=quantityFromName(item.name);return (fingerprints.get(fp)||[]).filter(p=>{const pv=quantityFromName(p.name);return !!vol&&!!pv&&vol===pv&&unitFromName(item.name)===unitFromName(p.name);}).map(p=>({ean:p.ean,name:p.name,brand:p.brand,reason:'same fingerprint, quantity and unit; physical identity requires verification'}));}};
 }
 function integrate(seed,feed,aliases={},imagePlan=[]){
  if(!feed||feed.in_progress!==false||!Array.isArray(feed.products)||!feed.products.length||!feed.completed_at)throw Error('Incomplete/empty feed');
  const age=Date.now()-Date.parse(feed.completed_at);if(!Number.isFinite(age)||age<0||age>24*3600000)throw Error('Feed older than 24h or invalid date');
  const originalKeys=seed.products.map(p=>p.ean);const index=identityIndex(seed,aliases);const unmatched=[],conflicts=[],buckets=new Map(),blocked=new Set(),knownVolumes=new Map();
- for(const group of seed.store_products)for(const offer of group.items||[])for(const variant of offer.variants||[]){if(variant.volume_ml>0){if(!knownVolumes.has(offer.ean))knownVolumes.set(offer.ean,new Set());knownVolumes.get(offer.ean).add(variant.volume_ml);}}
+ const productsByEan=new Map(seed.products.map(p=>[p.ean,p]));
+ for(const group of seed.store_products)for(const offer of group.items||[])for(const variant of offer.variants||[]){const key=knownVariantKey(variant,productsByEan.get(offer.ean)?.name);if(key){if(!knownVolumes.has(offer.ean))knownVolumes.set(offer.ean,new Set());knownVolumes.get(offer.ean).add(key);}}
  for(const row of feed.products){
   if(row.status!=='ok'||!validGtin(row.ean)||!Number.isFinite(row.price)||row.price<=0||typeof row.in_stock!=='boolean'||!/^https:\/\/farmacianovadamaia\.pt\/pt\//.test(row.url))throw Error('Invalid feed row');
   const resolved=index.resolve(row.ean);
   if(!resolved){unmatched.push({ean:row.ean,name:row.name,url:row.url,candidates:index.review(row)});continue;}
-  const p=resolved.product;const incomingVolume=extractVolumeMl(row.name),existingVolume=extractVolumeMl(p.name);
+  const p=resolved.product;const incomingVolume=quantityFromName(row.name),existingVolume=quantityFromName(p.name);
   const incomingUnit=unitFromName(row.name),existingUnit=unitFromName(p.name);
   if(incomingUnit&&existingUnit&&incomingUnit!==existingUnit){conflicts.push({ean:row.ean,canonical:p.ean,reason:'mass/volume units differ'});continue;}
-  if(incomingVolume&&existingVolume&&incomingVolume!==existingVolume&&!knownVolumes.get(p.ean)?.has(incomingVolume)){conflicts.push({ean:row.ean,canonical:p.ean,reason:'volume not already represented in the product'});continue;}
+  if(incomingVolume&&existingVolume&&incomingVolume!==existingVolume&&!knownVolumes.get(p.ean)?.has(incomingVolume+'|'+(incomingUnit||'ml'))){conflicts.push({ean:row.ean,canonical:p.ean,reason:'volume not already represented in the product'});continue;}
   const unit=incomingUnit||'ml';const key=p.ean+'|'+(incomingVolume||'unspecified')+'|'+unit;
   if(blocked.has(key))continue;
   if(!buckets.has(p.ean))buckets.set(p.ean,new Map());const variants=buckets.get(p.ean);
