@@ -7,10 +7,11 @@ Duas lojas portuguesas em Shopify, com código de barras por variante, preparada
 | Domínio | `skinlovers.com/pt-pt` (mercado Portugal) | `ilhadoscosmeticos.pt` |
 | Empresa | Skinlovers Lda — Largo da Estação 11, Nine, 4775-446 Braga ([aviso legal](https://www.skinlovers.com/pt-pt/policies/legal-notice)) | Sugestão Bronzeada Lda, NIF 519 166 167 — Azeitão ([termos](https://ilhadoscosmeticos.pt/policies/terms-of-service)) |
 | Ramo | dermocosmética (CeraVe, Bioderma, Avène, Isdin…) | cabelo e cosmética, muitas marcas brasileiras (Lola, Salon Line, Widi Care…) |
-| Produtos (`/products.json`) | 4 491 produtos, 4 491 variantes | 2 636 produtos, 3 601 variantes |
+| Produtos (`/products.json`, 9/10 às 12h) | 4 491 produtos, 4 491 variantes; cobertura do mapa do site 100% | 2 651 produtos, 3 628 variantes; cobertura 100% |
 | Amostra de 9/10 contra o `main` | 90% dos GTIN casam com produtos existentes; **1,11×** a mediana; a mais barata em 3% | 22% casam; **0,91×** a mediana; a mais barata em 38% |
 | Portes ([SkinLovers](https://www.skinlovers.com/pt-pt/policies/shipping-policy), [Ilha](https://ilhadoscosmeticos.pt/policies/shipping-policy)) | continente: grátis acima de 50 €, abaixo «a partir de 3,50 €» | «calculado no checkout, pelo peso da encomenda e destino» |
 | Acesso dos runners (`sondar-acesso.yml`, corrida 37878515263) | 200 em `robots.txt` e `.js` | 200 em `robots.txt` e `.js` |
+| Ensaio sobre o `main` `b897450` (9/10, 12h), com a cache parcial | 155 variantes lidas → 60 com GTIN → **54 ofertas** (52 em stock), 1 conflito de volume, 0 produtos novos | 855 produtos lidos → 1 582 variantes com GTIN → **592 ofertas** (371 em stock), 37 conflitos (35 de unidade ml/g), 0 produtos novos, seed +269 KB |
 
 ## Como recolhe
 
@@ -19,7 +20,7 @@ Duas lojas portuguesas em Shopify, com código de barras por variante, preparada
 1. Lê o `robots.txt` e cumpre-o. O bot identifica-se (`GirlMath-Catalog-Bot/1.0`), como a recolha da Farmácia Nova da Maia.
 2. Lê o mapa do site (só os `sitemap_products_*` da raiz) para medir a cobertura.
 3. Lê preço, preço barrado e stock **em bloco** pelo `/products.json?limit=250&page=N` (um pedido a cada 2,5 s). Na SkinLovers usa o prefixo `/pt-pt`: são os preços que a loja mostra a quem compra de Portugal. A 9/10, os preços e o stock do bloco coincidiram com os das fichas `.js` em 90 de 90 produtos (SkinLovers) e 113 de 113 (Ilha).
-4. O `/products.json` público não traz o código de barras. O GTIN de cada variante lê-se **uma vez** no `/products/<handle>.js` e fica em `data/catalog/<loja>-gtin.json` (id da variante → código; uma linha por variante). Cada corrida lê no máximo 600 produtos com variantes novas, a um pedido a cada 2 s.
+4. O `/products.json` público não traz o código de barras. O GTIN de cada variante lê-se **uma vez** no `/products/<handle>.js` e fica em `data/catalog/<loja>-gtin.json` (id da variante → código; uma linha por variante). Cada corrida lê no máximo 600 produtos com variantes novas (`--max-gtin=N` muda o limite), a um pedido a cada 2 s. A cache grava-se de forma atómica (temporário + renomear) e também quando a recolha para a meio.
 5. Só passam variantes com GTIN-12/13/14 de dígito de controlo certo. Pára sem gravar ao primeiro 403/429, página de desafio, redireção para outro domínio ou caminho proibido pelo `robots.txt`. Também não grava se o bloco cobrir menos de 90% do mapa do site, se houver menos variantes do que o mínimo ou se mais de 10% das leituras de GTIN falharem.
 
 **Porque não `scripts/lib/shopify-loja.js`:** essa biblioteca lê o `.js` de todos os produtos em todas as corridas. A 9/10, a 2 pedidos/s, as duas lojas responderam 429 antes dos 200 produtos. A 1 pedido a cada 2 s seriam ~2 h por corrida e ~9 000 pedidos/dia à SkinLovers. Com o bloco e a cache: ~25 pedidos por corrida, mais as variantes novas.
@@ -41,6 +42,12 @@ Duas lojas portuguesas em Shopify, com código de barras por variante, preparada
 ## Testes
 
 `node scripts/test-integrar-existentes.js` (sem rede): robots, GTIN, linhas a partir do bloco e da cache, a cache poupa leituras, limite de leituras por corrida, cobertura do bloco, paragem em 403/429/desafio/robots, ensaio parcial, mínimo; e, com a configuração real de cada loja: sem criar produtos, EAN antigo, UPC, alias, preço barrado, feeds inválidos/velhos/vazios/parciais, URL de outra loja, conflitos de preço/volume/unidade, outras lojas intactas, idempotência e cobertura.
+
+## Notas dos ensaios
+
+- **Caches parciais neste PR.** A 9/10 enchiam-se do PC a 1 pedido a cada 2 s (~25 produtos/min por loja); faltam as que os runners leem, 600 produtos por corrida (Ilha: ~3 corridas; SkinLovers: ~7). As ofertas crescem a cada corrida; a guarda de cobertura só trava descidas.
+- **SkinLovers:** os produtos criados em agosto de 2026 vêm sem código de barras na Shopify, mas todos têm SKU de 7 dígitos (CNP provável). O catálogo não guarda CNP, por isso ficam de fora; casar por CNP exigiria o mapa CNP→EAN, que tem conflitos.
+- **Ilha:** a coloração L'Oréal iNOA vem como «60 ml» na loja e «60 g» no catálogo, com o mesmo GTIN. O integrador recusa-a como conflito de unidade (35 casos) e deixa-a no relatório para revisão; pode entrar depois por regra ou alias, se se confirmar que é o mesmo artigo.
 
 ## Portes — proposta para a frente de portes (não incluída aqui)
 

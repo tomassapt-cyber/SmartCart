@@ -99,6 +99,8 @@ const { LOJA: ILHA } = require('./integrate-ilhadoscosmeticos-catalog');
     assert.equal(r.inactive_offers, 1); assert.equal(s.store_products[0].items[0].ean, '3282770146691'); assert.equal(r.matched_by_alias, 1);
     s = seed(); s.products.push({ ean: '012345678905', name: 'Produto UPC 30ml', brand: 'X' });
     r = integrar(s, feed([{ ...row, ean: '0012345678905', name: 'Produto UPC 30ml' }]), LOJA); assert.equal(r.offers, 1);
+    // GTIN-14 com zero à esquerda = EAN-13 do catálogo
+    s = seed(); r = integrar(s, feed([{ ...row, ean: '03282770146691' }]), LOJA); assert.equal(r.offers, 1); assert.equal(s.store_products[0].items[0].ean, '3282770146691');
     // alias documentado em data/product-aliases.json
     s = seed(); r = integrar(s, feed([{ ...row, ean: '5000000000012' }]), LOJA, { '3282770146691': { aliases: ['5000000000012'] } }); assert.equal(r.offers, 1);
     // preço barrado só quando é maior

@@ -19,7 +19,8 @@
 const fs = require('fs'), path = require('path');
 const { productFingerprint, extractVolumeMl } = require('./product-fingerprint');
 
-const semZero = e => /^0\d{12}$/.test(String(e)) ? String(e).slice(1) : String(e);
+// zeros à esquerda não mudam o GTIN: "0"+EAN-13 (GTIN-14) = EAN-13 e "0"+UPC-A (EAN-13) = UPC-A
+const semZero = e => { let s = String(e); while (s.length > 12 && s[0] === '0' && /^\d+$/.test(s)) s = s.slice(1); return s; };
 const gtinValido = e => /^(?:\d{12}|\d{13}|\d{14})$/.test(String(e)) && [...String(e).slice(0, -1)].reverse().reduce((s, d, i) => s + Number(d) * (i % 2 ? 1 : 3), Number(String(e).at(-1))) % 10 === 0;
 const normalizado = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const unidade = nome => { const m = String(nome || '').match(/\d(?:[.,]\d+)?\s*(ml|l|gr|g|kg)\b/i); return m ? (/g/i.test(m[1]) ? 'g' : 'ml') : null; };
