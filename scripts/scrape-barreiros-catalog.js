@@ -21,12 +21,14 @@
  *   node scripts/scrape-barreiros-catalog.js --all        # catálogo todo
  *   node scripts/scrape-barreiros-catalog.js --limit=100
  */
+const { fetch, reportEmptyProduct } = require('./lib/catalog-http').createCatalogClient();
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'barreiros-full.json');
+const CHECKPOINT_FILE = OUT_FILE + '.checkpoint';
 const BASE = 'https://www.farmaciabarreiros.com';
 const SITEMAP_INDEX = BASE + '/1_index_sitemap.xml';
 
@@ -122,23 +124,14 @@ async function fetchText(url, attempt = 1) {
     if (r.status === 404) return { status: 'not_found' };
     if (r.status === 429 || r.status >= 500) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } return { status: 'http_error', http: r.status }; }
     return { status: 'ok', html: await r.text() };
-  } catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
+  } catch (e) { if (e.catalogFatal) throw e; if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } return { status: 'fetch_error', error: e.message }; }
 }
 
-// O WAF serve os sitemaps VAZIOS ao fetch do Node a partir de IPs de datacenter
-// (GitHub Actions) — mas deixa passar o curl (TLS fingerprint tipo-browser;
-// mesmo padrão do Notino/afarmaciaonline). Fallback por XML individual.
-function curlText(url) {
-  const { spawnSync } = require('child_process');
-  const r = spawnSync('curl', ['-s', '-L', '-A', UA, '-H', 'Accept-Language: pt-PT,pt;q=0.9', '--max-time', '60', url], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
-  return r.stdout || '';
-}
+// Um bloqueio HTTP ou página de proteção aborta sem tentar outro cliente.
 async function fetchXml(url) {
   const r = await fetchText(url);
-  if (r.status === 'ok' && /<loc>/i.test(r.html)) return r.html;
-  const viaCurl = curlText(url);
-  if (/<loc>/i.test(viaCurl)) { console.log(`  (sitemap via curl — fetch bloqueado: ${url.split('/').pop()})`); return viaCurl; }
-  return r.status === 'ok' ? r.html : '';
+  if (r.status !== 'ok') throw new Error(`Sitemap indisponível: ${url}`);
+  return r.html;
 }
 async function discoverProductUrls() {
   const idxHtml = await fetchXml(SITEMAP_INDEX);
@@ -155,12 +148,12 @@ async function discoverProductUrls() {
 }
 
 function loadCheckpoint() {
-  if (!RESUME || !fs.existsSync(OUT_FILE)) return null;
-  try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; }
+  if (!RESUME || !fs.existsSync(CHECKPOINT_FILE)) return null;
+  try { const d = JSON.parse(fs.readFileSync(CHECKPOINT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; }
 }
 function saveCheckpoint(products, inProgress = true) {
-  if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
-  fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'farmaciabarreiros.com (PrestaShop, ean13 + price_amount)', in_progress: inProgress, products }), 'utf8');
+  if (LIMIT !== Infinity || products.length === 0) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
+  fs.writeFileSync(CHECKPOINT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'farmaciabarreiros.com (PrestaShop, ean13 + price_amount)', in_progress: inProgress, products }), 'utf8'); if (!inProgress) fs.renameSync(CHECKPOINT_FILE, OUT_FILE);
 }
 
 async function main() {
@@ -181,6 +174,7 @@ async function main() {
   }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 
+  if (urls.length === 0) throw new Error('Descoberta sem URLs; catálogo anterior preservado.');
   const cp = loadCheckpoint();
   const products = cp ? cp.products : [];
   const done = cp ? cp.done : new Set();
@@ -194,7 +188,7 @@ async function main() {
     while (idx < queue.length) {
       const url = queue[idx++];
       const r = await fetchText(url); const scraped_at = new Date().toISOString();
-      if (r.status === 'ok') { const d = extractProductData(r.html, url); if (d) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; if (d.ean) stats.ok_ean++; } else stats.skipped++; }
+      if (r.status === 'ok') { const d = extractProductData(r.html, url); if (d) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; if (d.ean) stats.ok_ean++; } else { reportEmptyProduct(r.html); stats.skipped++; } }
       else if (r.status === 'not_found') stats.not_found++; else stats.error++;
       const total = stats.ok + stats.skipped + stats.not_found + stats.error;
       if (total % CHECKPOINT_EVERY === 0) { saveCheckpoint(products); const rate = total / ((Date.now() - start) / 1000); console.log(`  [${total}/${queue.length}] ok:${stats.ok} (c/ean:${stats.ok_ean}) skip:${stats.skipped} 404:${stats.not_found} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round((queue.length - total) / rate / 60)}m`); }
@@ -202,6 +196,7 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (stats.error > 0) throw new Error(`Recolha incompleta: ${stats.error} erros; catálogo anterior preservado.`);
   if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
   console.log(`\n══════ Barreiros scrape ══════`);
