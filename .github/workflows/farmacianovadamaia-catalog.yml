@@ -1,0 +1,62 @@
+name: Farmacia Nova da Maia daily refresh
+
+on:
+  schedule:
+    - cron: '17 3,11,19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: farmacianovadamaia-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unpack current seed
+        run: bash scripts/ci/seed.sh unpack
+      - name: Test existing-only integration
+        run: node scripts/test-farmacianovadamaia-existing-only.js
+      - name: Scrape public dermocosmetics category
+        run: python scripts/scrape-farmacianovadamaia-catalog.py
+      - name: Save collection evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: farmacianovadamaia-${{ github.run_id }}
+          path: data/catalog/farmacianovadamaia-full.json
+          retention-days: 14
+      - name: Validate and integrate existing products
+        run: |
+          node scripts/integrate-farmacianovadamaia-catalog.js --dry-run
+          node scripts/integrate-farmacianovadamaia-catalog.js
+          bash scripts/ci/seed.sh pack
+      - name: Commit and publish collection
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -euo pipefail
+          git add data/seed-bundle.json.gz
+          git add -f data/catalog/farmacianovadamaia-full.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore: Farmacia Nova da Maia daily refresh"
+          bash scripts/ci/push-farmacianovadamaia.sh
