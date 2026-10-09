@@ -1,54 +1,54 @@
 {
-  "generated_at": "2026-09-24T10:22:21.698Z",
+  "generated_at": "2026-10-09T13:28:44.602Z",
   "source": "google-suggest-pt",
   "products": [
-    {
-      "ean": "7427244506335",
-      "name": "Papillon Creme de Rosto Vitamina C",
-      "brand": "Papillon",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.94,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html",
-      "search_term": "vitamina c rosto melhores",
-      "pop_score": 66
-    },
     {
       "ean": "8429420158399",
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
       "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 18.25,
-      "best_store": "Saúde Mayor",
-      "best_store_slug": "saudemayor",
-      "best_url": "https://www.saudemayor.pt/fotoprotetor-isdin-fusion-water-magic-spf50-50ml.html",
+      "best_price": 17.94,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml",
       "search_term": "isdin protetor solar",
-      "pop_score": 57
-    },
-    {
-      "ean": "3337875492799",
-      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 8.92,
-      "best_store": "Farmaoli",
-      "best_store_slug": "farmaoli",
-      "best_url": "https://farmaoli.pt/cabelo-seco-ou-muito-seco/1110136-vichy-dercos-champo-anticaspa-seca-200ml-3337871330262.html",
-      "search_term": "shampoo anticaspa",
-      "pop_score": 50
+      "pop_score": 53
     },
     {
       "ean": "3606000560833",
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.58,
+      "best_price": 13.86,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 40
+      "pop_score": 41
+    },
+    {
+      "ean": "7427244506335",
+      "name": "Papillon Creme de Rosto Vitamina C",
+      "brand": "Papillon",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
+      "best_price": 15.28,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c",
+      "search_term": "vitamina c rosto melhores",
+      "pop_score": 41
+    },
+    {
+      "ean": "3372290001805",
+      "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
+      "brand": "Lazartigue",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
+      "best_price": 8.86,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml",
+      "search_term": "shampoo anticaspa",
+      "pop_score": 34
     },
     {
       "ean": "5201279072193",
@@ -79,7 +79,7 @@
       "name": "Sérum Facial Skin D-Pigment",
       "brand": "Sensilis",
       "image_url": "https://www.druni.pt/media/catalog/product/5/7/5799459.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 30,
+      "best_price": 28,
       "best_store": "Sofarma",
       "best_store_slug": "sofarma",
       "best_url": "https://www.sofarma.com/pt/beleza/sensilis-skin-d-pigment-[serum-atx-b3]_p15575.html",
@@ -87,16 +87,16 @@
       "pop_score": 26
     },
     {
-      "ean": "0717334253124",
-      "name": "Esfoliante Facial Origins Checks and Balances",
-      "brand": "Origins",
-      "image_url": "https://assets.atida.com/transform/90aa78ee-7801-4477-875b-e1bdfa1ff5da/Origins-Checks-and-Balances-Exfoliante-Facial-75-ml",
-      "best_price": 18.94,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/origins-esfoliante-facial-checks-and-balance-17815.html",
-      "search_term": "esfoliante facial caseiro",
-      "pop_score": 26
+      "ean": "3701129804193",
+      "name": "Bioderma Atoderm Creme de Mãos",
+      "brand": "Bioderma",
+      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/5hroye.png?v=1778932803",
+      "best_price": 3.99,
+      "best_store": "Farmaciasdirect",
+      "best_store_slug": "farmaciasdirect",
+      "best_url": "https://www.farmaciasdirect.pt/products/creme-de-maos-bioderma-atoderm-50-ml",
+      "search_term": "creme de maos loccitane",
+      "pop_score": 25
     }
   ]
 }
