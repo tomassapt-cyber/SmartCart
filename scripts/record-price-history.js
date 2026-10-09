@@ -24,18 +24,26 @@
  *     dia substituem a entrada do dia (idempotente).
  *   • ~5-10% dos preços mudam por dia → ficheiro cresce devagar.
  *
- * MELHOR PREÇO = mínimo absoluto entre ofertas/variantes EM STOCK, FRESCAS
- * (verified_at ≤72h — exclui podres/fantasmas na prática) e fora da blocklist
- * — consistente com o "desde X€" do site (decisão de marketing do user).
+ * MELHOR PREÇO = mínimo absoluto entre ofertas/variantes EM STOCK, fora da
+ * blocklist e PUBLICADAS — a mesma regra de ofertas podres que o site e a BD
+ * aplicam (dropRottenOffers, scripts/lib/catalog-visibility.js). Assim a linha
+ * do gráfico é o "Melhor preço" que a ficha mostrou nesse dia. (Até 09/10 era
+ * "verificada há ≤72h": a ficha mostrava ofertas de 3–14 dias — notino e lojas
+ * só-PC — que a linha ignorava; 90,7% de coincidência contra 99,1% agora.)
  *
  * Uso:
  *   node scripts/record-price-history.js            # grava o dia de hoje
  *   node scripts/record-price-history.js --dry-run  # só mostra o que faria
+ *   node scripts/record-price-history.js --as-of=2026-09-25T23:40:00Z
+ *       # recuperar um dia perdido: corre como se fosse aquele momento, sobre o
+ *       # seed desse momento (posto em data/seed-bundle.json por quem chama).
+ *       # Só aceita dias a partir do último gravado — as séries são por ordem.
  */
 
 const fs = require('fs');
 const path = require('path');
 const { isBlockedOffer } = require('./lib/store-item-merge');
+const { dropRottenOffers } = require('./lib/catalog-visibility');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED_BUNDLE = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -43,8 +51,8 @@ const HISTORY_FILE = path.join(ROOT, 'data', 'price-history.json');
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const DRY_RUN = !!args['dry-run'];
-
-const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
+const AS_OF = args['as-of'] ? new Date(args['as-of']) : null;
+if (AS_OF && isNaN(AS_OF)) { console.error(`✗ --as-of inválido: ${args['as-of']}`); process.exit(1); }
 
 (function main() {
   const seed = JSON.parse(fs.readFileSync(SEED_BUNDLE, 'utf8'));
@@ -59,20 +67,24 @@ const FRESH_MS = 72 * 3600e3;   // oferta conta se verificada nas últimas 72h
     return storeIdx.get(slug);
   }
 
-  const now = Date.now();
+  const now = AS_OF ? AS_OF.getTime() : Date.now();
   const day = Math.floor(now / 86400000);
+  if (AS_OF) {
+    let lastDay = -1;
+    for (const s of [...Object.values(hist.series), ...Object.values(hist.vseries || {})]) if (s.length) lastDay = Math.max(lastDay, s[s.length - 1][0]);
+    if (day < lastDay) { console.error(`✗ --as-of ${args['as-of']} é anterior ao último dia gravado (${new Date(lastDay * 86400000).toISOString().slice(0, 10)}) — as séries ficariam fora de ordem.`); process.exit(1); }
+  }
 
   // melhor preço vivo por ean (mínimo absoluto — série legada/"desde")
   // + melhor preço POR VOLUME (vseries — cada volume tem o SEU mínimo/média/hoje;
   //   sem isto o gráfico mostrava o preço do volume mais pequeno em fichas multi-volume)
   const best = {};      // ean -> {cents, slug}
   const bestVol = {};   // ean -> { ml -> {cents, slug} }  (só de variantes com volume_ml)
+  dropRottenOffers(seed, now);   // em memória: fica só o que o site publica
   for (const g of seed.store_products) {
     for (const it of g.items) {
       if (!it.ean) continue;
       if (isBlockedOffer(g.store_slug, it.ean)) continue;
-      const fresh = it.verified_at && (now - new Date(it.verified_at).getTime()) <= FRESH_MS;
-      if (!fresh) continue;
       const candidates = [];
       if (it.in_stock !== false && it.price > 0) candidates.push(it.price);
       for (const v of (it.variants || [])) {

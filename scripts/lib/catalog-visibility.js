@@ -20,15 +20,16 @@
  * inteiro não tem nada mais fresco com que comparar, e nada seria escondido;
  * medidas 2.964 ofertas assim, todas de 4 lojas paradas). 14d é folgado de
  * propósito: as lojas SÓ-PC refrescam à mão.
+ * `agora` só muda para recuperar dias passados (record-price-history --as-of).
  */
-function dropRottenOffers(seedJson) {
+function dropRottenOffers(seedJson, agora = Date.now()) {
   const DAY = 864e5, MAX_LAG_DAYS = 7, MAX_ABS_DAYS = 14;
   const ageOf = (it) => {
     let t = +new Date(it.verified_at || 0);
     for (const v of (it.variants || [])) { const tv = +new Date(v.verified_at || 0); if (tv > t) t = tv; }
     return t;
   };
-  const AGORA = Date.now();
+  const AGORA = agora;
   let hidden = 0, hiddenAbs = 0; const perStore = [], perStoreAbs = [];
   for (const sp of seedJson.store_products) {
     let freshest = 0;

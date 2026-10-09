@@ -39,6 +39,11 @@ jobs:
         with:
           fetch-depth: 1
 
+      # O catálogo vive comprimido no git desde 24/09 (scripts/ci/seed.sh).
+      # Sem isto o script não encontra data/seed-bundle.json.
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -73,7 +78,7 @@ jobs:
           for i in 1 2 3 4 5; do
             git push origin main && exit 0
             git fetch origin
-            git rebase origin/main || { git rebase --abort; git reset --hard origin/main; node scripts/build-popular-searches.js; git add data/popular-searches.json; git commit -m "chore: popular searches ($(date -u +%Y-%m-%d))"; }
+            git rebase origin/main || { git rebase --abort; git reset --hard origin/main; bash scripts/ci/seed.sh unpack; node scripts/build-popular-searches.js; git add data/popular-searches.json; git commit -m "chore: popular searches ($(date -u +%Y-%m-%d))"; }
             sleep $((i * 20))
           done
           echo "push falhou após 5 tentativas" && exit 1
