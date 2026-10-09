@@ -1,9 +1,9 @@
 # CosMath — Sync do catálogo para a BD (Fase 1 do backend)
 # ============================================================
 # Corre 3×/dia DEPOIS das vagas de refresh e faz upsert do seed-bundle na BD
-# Supabase (stores/products/offers). Sem secrets configurados, o script sai
-# em silêncio — o workflow nunca fica vermelho por a Fase 1 não estar ativa.
-# O site ainda NÃO lê da BD (isso é a Fase 2); isto é o dual-write.
+# Supabase (stores/products/offers). A entrada do CI exige secrets e distingue
+# sync verificado de adiamento por quota; a cache só é publicada se for nova.
+# O painel de preços do site lê ofertas da BD.
 
 name: DB sync (Fase 1)
 
@@ -80,15 +80,16 @@ jobs:
           restore-keys: db-sync-estado-
 
       - name: Push catalog to DB
+        id: db_sync
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: node scripts/push-catalog-to-db.js
+        run: node scripts/run-db-sync.js
 
       # Só depois de um sync que correu todo — um estado de um sync falhado
       # diria que estão na BD linhas que não chegaram lá.
       - name: Guardar o estado do sync (cache)
-        if: success() && hashFiles('.db-sync-estado/estado.json.gz') != ''
+        if: success() && steps.db_sync.outputs.status == 'verified' && steps.db_sync.outputs.cache_updated == 'true'
         uses: actions/cache/save@v4
         with:
           path: .db-sync-estado
@@ -101,3 +102,4 @@ jobs:
       # até 15/10. O site nunca leu estes ficheiros (Fase 2b abandonada a
       # 2026-07-30, ver scripts/build-catalog-snapshot.js). Os scripts ficam no
       # repo; se um dia voltarem, o publish TEM de apagar as versões antigas.
+
