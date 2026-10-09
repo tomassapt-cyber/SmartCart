@@ -8064,8 +8064,8 @@ function normalizeSeedFromLive(payload) {
       name: s.name,
       base_url: s.base_url,
       logo_url: s.logo_url || null,
-      free_shipping_threshold: Number(s.free_shipping_threshold || 0),
-      shipping_zones: s.shipping_zones || { mainland: 0, madeira: 0, acores: 0 }
+      free_shipping_threshold: s.free_shipping_threshold == null ? null : Number(s.free_shipping_threshold),
+      shipping_zones: s.shipping_zones ?? null
     })),
     products: (payload.products || []).map((p) => ({
       ean: p.ean,
@@ -9046,8 +9046,9 @@ function shippingForStore(slug, zone) {
   // nas ofertas e não existe aqui. Sem isto era um TypeError no meio do
   // optimizador — e o "Ver as melhores combinações" deixava de fazer o que
   // quer que fosse, sem mensagem nenhuma.
-  if (!store || !store.shipping_zones) return 0;
-  return store.shipping_zones[zone === 'Madeira' ? 'madeira' : zone === 'Açores' ? 'acores' : 'mainland'] ??0;
+  if (!store || !store.shipping_zones) return null;
+  const value = store.shipping_zones[zone === 'Madeira' ? 'madeira' : zone === 'Açores' ? 'acores' : 'mainland'];
+  return value == null || !Number.isFinite(Number(value)) || Number(value) < 0 ? null : Number(value);
 }
 
 // ============================================================
@@ -13407,9 +13408,10 @@ async function bundleLiveNow() {
     if (!bundleState.items.size) { box.innerHTML = ''; return; }
   }
 
-  let best = null, saved = 0;
+  let best = null, saved = 0, shippingUnknown = [];
   try {
-    const { solutions } = optimizeBundle(items, bundleState.zone);
+    const { solutions, shippingUnknown: unknown } = optimizeBundle(items, bundleState.zone);
+    shippingUnknown = unknown;
     best = solutions && solutions[0];
     if (best) {
       const avgSub = items.reduce((s, it) => {
@@ -13420,7 +13422,10 @@ async function bundleLiveNow() {
     }
   } catch (e) { console.warn('[carrinho] resumo vivo falhou:', e); }
   if (!best) {
-    box.innerHTML = '<div class="bundle-live-warn">⚠️ Alguns itens estão sem stock — vê o detalhe em baixo.</div>';
+    window.RECEIPT_LAST_BUNDLE = null;
+    box.innerHTML = shippingUnknown.length
+      ? '<div class="bundle-live-warn">⚠️ Há ofertas, mas os portes são calculados no checkout. Não é possível calcular o total deste cabaz.</div>'
+      : '<div class="bundle-live-warn">⚠️ Alguns itens estão sem stock — vê o detalhe em baixo.</div>';
     return;
   }
   // fatura pronta a partir daqui — total COM portes (portes verificados loja-a-loja)
@@ -13566,7 +13571,7 @@ document.getElementById('bundle-body').addEventListener('click', (e) => {
 // OPTIMIZER — bitmask sobre subsets de lojas
 // ============================================================
 function optimizeBundle(items, zone = 'nacional') {
-  if (!items.length) return { solutions: [], uncovered: [] };
+  if (!items.length) return { solutions: [], uncovered: [], shippingUnknown: [] };
 
   // offers in stock por produto — respeitando volume escolhido no modal
   const offersByEan = {};
@@ -13600,9 +13605,14 @@ function optimizeBundle(items, zone = 'nacional') {
       .filter(Boolean);
   }
 
-  const uncovered = items.filter(it => !offersByEan[it.ean].length).map(it => it.ean);
+  const shippingUnknown = items.filter(it => offersByEan[it.ean].length &&
+    !offersByEan[it.ean].some(o => shippingForStore(o.slug, zone) != null)).map(it => it.ean);
+  for (const { ean } of items) {
+    offersByEan[ean] = offersByEan[ean].filter(o => shippingForStore(o.slug, zone) != null);
+  }
+  const uncovered = items.filter(it => !offersByEan[it.ean].length && !shippingUnknown.includes(it.ean)).map(it => it.ean);
   const coverable = items.filter(it => offersByEan[it.ean].length);
-  if (!coverable.length) return { solutions: [], uncovered };
+  if (!coverable.length || shippingUnknown.length) return { solutions: [], uncovered, shippingUnknown };
 
   // candidate stores
   const candidates = [...new Set(coverable.flatMap(it => offersByEan[it.ean].map(o => o.slug)))];
@@ -13632,7 +13642,7 @@ function optimizeBundle(items, zone = 'nacional') {
     const sub = buildSubsetSolution(subset, coverable, offersByEan, zone);
     if (sub) all.push(sub);
   }
-  if (!all.length) return { solutions: [], uncovered };
+  if (!all.length) return { solutions: [], uncovered, shippingUnknown };
 
   all.sort((a, b) => a.total - b.total);
 
@@ -13652,7 +13662,7 @@ function optimizeBundle(items, zone = 'nacional') {
     s.saved_vs_worst = +(worst - s.total).toFixed(2);
     s.rank = i + 1;
   });
-  return { solutions: top, uncovered };
+  return { solutions: top, uncovered, shippingUnknown };
 }
 
 function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
@@ -13684,6 +13694,7 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
     const store = STORE_BY_SLUG[slug] || { slug, name: slug };
     const subtotal = lines.reduce((s, l) => s + l.line, 0);
     const ship = shippingForStore(slug, zone);
+    if (ship == null) return null;
     // uma loja desconhecida nunca oferece portes: sem limiar conhecido, cobra-se
     const free = subtotal >= (store.free_shipping_threshold ?? Infinity);
     const shipping = free ? 0 : ship;
@@ -13730,7 +13741,7 @@ async function runAnalysis() {
   // aqui dentro. Sem isto, o botão passa a não fazer NADA e o utilizador não
   // recebe explicação nenhuma.
   try {
-    const { solutions, uncovered } = optimizeBundle(items, bundleState.zone);
+    const { solutions, uncovered, shippingUnknown } = optimizeBundle(items, bundleState.zone);
     // Os candidatos ao "junta mais um e tens portes grátis" TÊM de estar cá
     // antes de desenhar: o freeShippingUpsellHTML corre dentro de um template
     // síncrono e não pode esperar por nada.
@@ -13748,7 +13759,7 @@ async function runAnalysis() {
       }
     }
     if (pedidos.length) await carregarCandidatosUpsell(pedidos);
-    renderResults(solutions, uncovered, items);
+    renderResults(solutions, uncovered, shippingUnknown, items);
   } catch (e) {
     console.error('[carrinho] análise falhou:', e);
     toast('Não consegui calcular as combinações. Tenta outra vez.');
@@ -13760,9 +13771,10 @@ async function runAnalysis() {
   bundleClose();
 }
 
-function renderResults(solutions, uncovered, items) {
+function renderResults(solutions, uncovered, shippingUnknown, items) {
   const body = document.getElementById('results-body');
   const summary = document.getElementById('results-summary');
+  if (!solutions.length) window.RECEIPT_LAST_BUNDLE = null;
   const totalProducts = items.reduce((s, i) => s + i.qty, 0);
   summary.textContent = `${items.length} produto${items.length===1?'':'s'} · ${totalProducts} unidade${totalProducts===1?'':'s'} · preços e portes incluídos`;
 
@@ -13771,8 +13783,12 @@ function renderResults(solutions, uncovered, items) {
     const names = uncovered.map(ean => PRODUCT_BY_EAN[ean]?.name || ean).join(', ');
     html += `<div class="results-uncovered">⚠️ Sem stock em qualquer loja: <strong>${names}</strong>. Esses produtos foram excluídos da análise.</div>`;
   }
+  if (shippingUnknown.length) {
+    const names = shippingUnknown.map(ean => PRODUCT_BY_EAN[ean]?.name || ean).join(', ');
+    html += `<div class="results-uncovered">⚠️ Há ofertas para <strong>${escapeHtml(names)}</strong>, mas os portes são calculados no checkout. Não é possível calcular um total entregue para este cabaz.</div>`;
+  }
   if (!solutions.length) {
-    html += `<div class="bundle-empty"><div class="bundle-empty-icon">😔</div><p>Não conseguimos formar nenhuma combinação completa com stock.</p></div>`;
+    html += `<div class="bundle-empty"><div class="bundle-empty-icon">😔</div><p>${shippingUnknown.length ? 'Não conseguimos calcular uma combinação completa com portes conhecidos.' : 'Não conseguimos formar nenhuma combinação completa com stock.'}</p></div>`;
   } else {
     // ── HERO de poupança — vs PREÇO MÉDIO atual dos produtos (honesto) ──
     const best = solutions[0];
@@ -13820,6 +13836,10 @@ function renderResults(solutions, uncovered, items) {
       html += `<div class="results-section-title" style="margin-top:32px;"><span>Análise individual por produto</span></div>`;
       html += items.map(({ ean }) => productPodiumMiniHTML(ean)).join('');
     }
+  }
+  if (!solutions.length && shippingUnknown.length) {
+    html += `<div class="results-section-title" style="margin-top:32px;"><span>Preços dos produtos</span></div>`;
+    html += items.map(({ ean }) => productPodiumMiniHTML(ean)).join('');
   }
   body.innerHTML = html;
   const rbtn = document.getElementById('receipt-bundle-btn');
@@ -13879,7 +13899,7 @@ function productPodiumMiniHTML(ean) {
       <div class="mini-best-offer">
         <div class="mini-best-info">
           <div class="mini-best-label">Melhor preço</div>
-          <div class="mini-best-store">${best.store.name}</div>
+            <div class="mini-best-store">${best.store.name}${shippingForStore(best.slug, bundleState.zone) == null ? ' · Portes calculados no checkout' : ''}</div>
         </div>
         <div class="mini-best-price-block">
           <span class="mini-best-price">${best.price.toFixed(2)}€</span>
@@ -13890,7 +13910,7 @@ function productPodiumMiniHTML(ean) {
       <div class="mini-others">
         ${others.map(r => `
           <div class="mini-other-row">
-            <span class="mini-other-store">${r.store.name}</span>
+            <span class="mini-other-store">${r.store.name}${shippingForStore(r.slug, bundleState.zone) == null ? ' · Portes calculados no checkout' : ''}</span>
             <span class="mini-other-price">${r.price.toFixed(2)}€ <span class="mini-other-delta">+${(r.price - minP).toFixed(2)}€</span></span>
             <a class="mini-other-link" href="${r.url}" target="_blank" rel="noopener">Abrir ↗</a>
           </div>
