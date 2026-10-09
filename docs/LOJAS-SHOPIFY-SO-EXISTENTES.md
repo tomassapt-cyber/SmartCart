@@ -49,10 +49,10 @@ Duas lojas portuguesas em Shopify, com código de barras por variante, preparada
 - **SkinLovers:** os produtos criados em agosto de 2026 vêm sem código de barras na Shopify, mas todos têm SKU de 7 dígitos (CNP provável). O catálogo não guarda CNP, por isso ficam de fora; casar por CNP exigiria o mapa CNP→EAN, que tem conflitos.
 - **Ilha:** a coloração L'Oréal iNOA vem como «60 ml» na loja e «60 g» no catálogo, com o mesmo GTIN. O integrador recusa-a como conflito de unidade (35 casos) e deixa-a no relatório para revisão; pode entrar depois por regra ou alias, se se confirmar que é o mesmo artigo.
 
-## Portes — proposta para a frente de portes (não incluída aqui)
+## Portes
 
-- `skinlovers`: `{"gratis": 50}` — o «a partir de 3,50 €» não é uma tarifa fixa, por isso a `casa` fica vazia e o carrinho mostra «Portes calculados no checkout» (#36).
-- `ilhadoscosmeticos`: nenhuma entrada (peso e destino só no checkout).
+- `skinlovers`: `{"gratis": 50}` em `data/store-shipping.json` (só acrescenta 3 linhas). O «a partir de 3,50 €» não é uma tarifa fixa: a `casa` fica vazia e o carrinho mostra «Portes calculados no checkout» (#36), com o limiar de grátis a 50 €.
+- `ilhadoscosmeticos`: nenhuma entrada (peso e destino só no checkout) → custo desconhecido.
 
 ## Depois do merge
 
