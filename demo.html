@@ -14316,17 +14316,25 @@ async function initSupabase() {
     CURRENT_USER = session?.user || null;
     window.CURRENT_USER = CURRENT_USER;
     if (event === 'SIGNED_IN' && CURRENT_USER) {
-      // dispositivo partilhado: se entrou uma conta DIFERENTE da última,
-      // limpa os dados pessoais locais (rotina/tracker/streak/medicação/feedback)
+      // dispositivo partilhado: se entrou uma conta DIFERENTE da última, os
+      // dados locais da anterior saem daqui — favoritos, lápides, rotina,
+      // registo, prateleira, perfil (US_KEYS inteiro, não uma lista à parte que
+      // se desatualiza); o que ainda não tinha subido vai para o cofre dessa
+      // conta (ver CONTA NO DISPOSITIVO). A medicação sai como antes.
       try {
         const lastUid = localStorage.getItem('cm.last_uid');
+        const dono = contaDonoLocal();
+        if (dono && dono !== CURRENT_USER.id && contaLargarLocal(dono, { seNaoGuardar: 'retirar' }) === 'guardado') {
+          toast('Havia alterações de outra conta por sincronizar neste dispositivo. Ficaram guardadas à parte, para essa conta.');
+        }
         if (lastUid && lastUid !== CURRENT_USER.id) {
-          ['cm.routine.v1', 'cm.trackerlog.v1', 'cm.streak.v1', 'cm.meds.v1', 'cm.medslog.v1', 'cm.feedback.v1']
-            .forEach(k => localStorage.removeItem(k));
+          ['cm.meds.v1', 'cm.medslog.v1'].forEach(k => localStorage.removeItem(k));
           localStorage.removeItem('cm.us_ts'); // o _ts era da conta anterior
         }
         localStorage.setItem('cm.last_uid', CURRENT_USER.id);
-      } catch (e) {}
+        localStorage.setItem(CONTA_DONO_KEY, CURRENT_USER.id);
+        contaRecuperar(CURRENT_USER.id);
+      } catch (e) { console.warn('[conta] troca de conta:', e); }
       await usPull(true); // PRIMEIRO: lápides/estado pessoal — o merge da prateleira depende delas
       await prCloudPull();
       // nome dado no registo → cria o perfil mínimo (o resto completa-se depois, com pontos)
@@ -14354,7 +14362,16 @@ async function initSupabase() {
       prRender();
       prRefreshBadge();
     } else if (event === 'SIGNED_OUT') {
-      PR_STATE = { profile: null, products: [], actions: [] };
+      // sessão que acabou sem o «Terminar sessão» (expirou, foi revogada): os
+      // dados da conta saem na mesma; o que não subiu vai para o cofre dela
+      let largou = 'limpo';
+      try {
+        const dono = contaDonoLocal();
+        if (dono) largou = contaLargarLocal(dono);
+        if (largou === 'guardado') toast('A sessão terminou. O que faltava sincronizar ficou guardado neste dispositivo e sobe quando voltares a entrar.');
+        if (largou === 'mantido') toast('A sessão terminou com alterações por sincronizar que não consegui guardar à parte. Ficam neste dispositivo e sobem quando voltares a entrar.');
+      } catch (e) {}
+      if (largou !== 'mantido') PR_STATE = { profile: null, products: [], actions: [] };
       prSave();
       prRender();
       prRefreshBadge();
@@ -14367,10 +14384,11 @@ let PR_CLOUD_HAS_PROFILE = false;
 async function prCloudPull() {
   if (!SUPABASE || !CURRENT_USER) return;
   try {
+    await contaSubirPerfilPendente(CURRENT_USER.id);
     const { data: prof } = await SUPABASE.from('profiles').select('*').eq('id', CURRENT_USER.id).maybeSingle();
     const { data: prods } = await SUPABASE.from('routine_products').select('*').eq('user_id', CURRENT_USER.id);
     PR_CLOUD_HAS_PROFILE = !!prof;
-    if (prof) {
+    if (prof && !contaMarca('perfil', CURRENT_USER.id)) {
       PR_STATE.profile = {
         // Legacy fields
         name: prof.name, skin_type: prof.skin_type,
@@ -14503,6 +14521,49 @@ function usMergeDays(k, cloud) {
   usWrite(k, out);
 }
 
+// Funde um estado vindo de fora (a nuvem, ou o cofre da conta) com o local.
+function usFundir(cloud) {
+  const cloudNewer = Number(cloud._ts || 0) > Number(localStorage.getItem(US_TS_KEY) || 0);
+  // rotina + medicação: um TODO editável — ganha o lado mais recente
+  for (const k of ['cm.routine.v1']) {   // sem cm.meds.v1: fica so' no dispositivo (ver US_KEYS)
+    if (cloud[k] !== undefined && (cloudNewer || usRead(k) == null)) usWrite(k, cloud[k]);
+  }
+  // acumulativos: união (dias marcados, tomas, conquistas, feedback)
+  usMergeDays('cm.trackerlog.v1', cloud);
+  // cm.medslog.v1 NAO se funde da nuvem: dado de saude, fica no dispositivo (ver US_KEYS)
+  const cs = cloud['cm.streak.v1'], ls = usRead('cm.streak.v1');
+  if (cs || ls) usWrite('cm.streak.v1', {
+    v: 1,
+    best: Math.max((cs || {}).best || 0, (ls || {}).best || 0),
+    unlocked: [...new Set([...(((cs || {}).unlocked) || []), ...(((ls || {}).unlocked) || [])])],
+  });
+  const cf = cloud['cm.feedback.v1'], lf = usRead('cm.feedback.v1');
+  if (cf || lf) {
+    const evs = [...(((lf || {}).events) || []), ...(((cf || {}).events) || [])];
+    const seen = new Set(); const uniq = [];
+    for (const e of evs) {
+      const id = ((e && e.ts) || '') + '|' + ((e && e.action) || '') + '|' + ((e && e.ean) || '');
+      if (!seen.has(id)) { seen.add(id); uniq.push(e); }
+    }
+    usWrite('cm.feedback.v1', { v: 1, events: uniq.slice(-500) });
+  }
+  // lápides da prateleira: por EAN ganha a entrada {ts,dead} mais RECENTE
+  const ctb = cloud[SHELF_TOMB_KEY], ltb = usRead(SHELF_TOMB_KEY);
+  if (ctb || ltb) {
+    const norm = x => (typeof x === 'number') ? { ts: x, dead: true } : (x || { ts: 0, dead: true });
+    const eans = {};
+    for (const src of [ltb, ctb]) {
+      for (const e in (((src || {}).eans) || {})) {
+        const v = norm(src.eans[e]);
+        if (!eans[e] || v.ts > eans[e].ts) eans[e] = v;
+      }
+    }
+    usWrite(SHELF_TOMB_KEY, { v: 2, eans });
+  }
+  // favoritos: por produto ganha a entrada mais recente (ver FAVORITOS)
+  try { favFundir(cloud); } catch (e) {}
+}
+
 async function usPull(force) {
   if (!SUPABASE || !CURRENT_USER) return;
   if (!force && Date.now() - US_LAST_PULL < 60000) return;
@@ -14512,47 +14573,7 @@ async function usPull(force) {
       .select('state').eq('user_id', CURRENT_USER.id).maybeSingle();
     if (error) { console.warn('[sync] pull user_state falhou:', error.message); return; }
     const cloud = (data && data.state) || null;
-    if (cloud) {
-      const cloudNewer = Number(cloud._ts || 0) > Number(localStorage.getItem(US_TS_KEY) || 0);
-      // rotina + medicação: um TODO editável — ganha o lado mais recente
-      for (const k of ['cm.routine.v1']) {   // sem cm.meds.v1: fica so' no dispositivo (ver US_KEYS)
-        if (cloud[k] !== undefined && (cloudNewer || usRead(k) == null)) usWrite(k, cloud[k]);
-      }
-      // acumulativos: união (dias marcados, tomas, conquistas, feedback)
-      usMergeDays('cm.trackerlog.v1', cloud);
-      // cm.medslog.v1 NAO se funde da nuvem: dado de saude, fica no dispositivo (ver US_KEYS)
-      const cs = cloud['cm.streak.v1'], ls = usRead('cm.streak.v1');
-      if (cs || ls) usWrite('cm.streak.v1', {
-        v: 1,
-        best: Math.max((cs || {}).best || 0, (ls || {}).best || 0),
-        unlocked: [...new Set([...(((cs || {}).unlocked) || []), ...(((ls || {}).unlocked) || [])])],
-      });
-      const cf = cloud['cm.feedback.v1'], lf = usRead('cm.feedback.v1');
-      if (cf || lf) {
-        const evs = [...(((lf || {}).events) || []), ...(((cf || {}).events) || [])];
-        const seen = new Set(); const uniq = [];
-        for (const e of evs) {
-          const id = ((e && e.ts) || '') + '|' + ((e && e.action) || '') + '|' + ((e && e.ean) || '');
-          if (!seen.has(id)) { seen.add(id); uniq.push(e); }
-        }
-        usWrite('cm.feedback.v1', { v: 1, events: uniq.slice(-500) });
-      }
-      // lápides da prateleira: por EAN ganha a entrada {ts,dead} mais RECENTE
-      const ctb = cloud[SHELF_TOMB_KEY], ltb = usRead(SHELF_TOMB_KEY);
-      if (ctb || ltb) {
-        const norm = x => (typeof x === 'number') ? { ts: x, dead: true } : (x || { ts: 0, dead: true });
-        const eans = {};
-        for (const src of [ltb, ctb]) {
-          for (const e in (((src || {}).eans) || {})) {
-            const v = norm(src.eans[e]);
-            if (!eans[e] || v.ts > eans[e].ts) eans[e] = v;
-          }
-        }
-        usWrite(SHELF_TOMB_KEY, { v: 2, eans });
-      }
-      // favoritos: por produto ganha a entrada mais recente (ver FAVORITOS)
-      try { favFundir(cloud); } catch (e) {}
-    }
+    if (cloud) usFundir(cloud);
     usMarkDirty(); // sobe o resultado do merge (auto-repara a cloud)
     try {
       if (document.getElementById('pr-modal')?.classList.contains('open') && typeof prRenderDashboard === 'function' && PR_STATE && PR_STATE.profile) prRenderDashboard();
@@ -14563,17 +14584,21 @@ async function usPull(force) {
 async function usPush() {
   if (!SUPABASE || !CURRENT_USER || US_PUSHING) return;
   US_PUSHING = true;
+  const uid = CURRENT_USER.id;
+  const marca = contaMarca('us', uid); // o que estava por subir quando o push começou
   try {
     const state = usCollect();
     try { localStorage.setItem(US_TS_KEY, String(state._ts)); } catch (e) {}
-    const { error } = await SUPABASE.from('user_state').upsert({ user_id: CURRENT_USER.id, state });
+    const { error } = await SUPABASE.from('user_state').upsert({ user_id: uid, state });
     if (error) console.warn('[sync] push user_state falhou:', error.message);
+    else contaLimparPendente('us', uid, marca);
   } catch (e) { console.warn('[sync] push user_state:', e); }
   US_PUSHING = false;
 }
 
 function usMarkDirty() {
   if (typeof CURRENT_USER === 'undefined' || !CURRENT_USER) return; // sem sessão não há para onde subir
+  contaMarcarPendente('us');
   clearTimeout(US_TIMER);
   US_TIMER = setTimeout(usPush, 2500);
 }
@@ -14593,21 +14618,225 @@ document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden' && US_TIMER) { clearTimeout(US_TIMER); US_TIMER = null; usPush(); }
 });
 
+// ── CONTA NO DISPOSITIVO (2026-10-09) ──────────────────────────────────────
+// O que sincroniza com a conta (US_KEYS: favoritos, lápides da prateleira,
+// rotina, registo, sequência, feedback), a prateleira e o perfil (PR_STATE)
+// são DESSA conta. Antes: ao entrar outra conta no mesmo dispositivo, os
+// favoritos e as lápides ficavam cá e o usPull/usPush mandava-os para a conta
+// nova; o «Terminar sessão» deixava tudo à vista de quem viesse a seguir e
+// perdia a última alteração (o push espera 2,5 s e saía-se antes).
+//   · Terminar sessão: sobe já o que está à espera e tira do dispositivo os
+//     dados da conta.
+//   · Sessão que acaba sem o botão (expirou, revogada) ou outra conta que entra
+//     sem a anterior ter saído: os dados da anterior saem na mesma.
+//   · O que ainda NÃO chegou à nuvem (sem rede, Supabase em baixo) — favoritos,
+//     rotina, lápides, produtos da prateleira e o perfil — não se apaga em
+//     silêncio: no «Terminar sessão» pergunta-se; nos outros casos vai para um
+//     cofre dessa conta, fora da vista, e volta quando ela entrar outra vez.
+//     O cofre dura 60 dias. A medicação nunca entra no cofre nem na nuvem.
+//   · Se nem o cofre se conseguir gravar (sem espaço, armazenamento bloqueado):
+//     no «Terminar sessão» a sessão continua; se a sessão expirou, os dados
+//     ficam onde estão; se entrou outra conta, saem com aviso explícito.
+//   · O que se faz sem sessão depois de sair junta-se à conta que entrar a
+//     seguir, como no primeiro login.
+// NÃO cobre (como antes desta alteração): os registos routine_actions e
+// profile_events que falham sem rede, e o histórico local PR_STATE.actions.
+const CONTA_PEND_KEY = 'cm.sync_pendente.v1'; // {uid, us: ts, perfil: ts, prateleira: {ean: ts}} — o que falta subir
+const CONTA_COFRE_KEY = 'cm.cofre.v1';        // {uid: {ts, us_ts, chaves: {k: v}, produtos: [...], perfil}}
+const CONTA_DONO_KEY = 'cm.us_dono';          // de quem são os dados locais; '' = de ninguém (sem sessão)
+const CONTA_COFRE_DIAS = 60;
+let CONTA_PEND_RAM = null; // cópia em memória da marca: vale mesmo que o localStorage recuse gravá-la
+
+function contaDonoLocal() {
+  const d = localStorage.getItem(CONTA_DONO_KEY);
+  return d === null ? localStorage.getItem('cm.last_uid') : d; // dispositivos de antes desta versão
+}
+function contaPendente(uid) {
+  if (!uid) return null;
+  if (CONTA_PEND_RAM && CONTA_PEND_RAM.uid === uid) return CONTA_PEND_RAM;
+  const p = usRead(CONTA_PEND_KEY);
+  return (p && p.uid === uid) ? (CONTA_PEND_RAM = p) : null;
+}
+function contaGravarPendente(p) { CONTA_PEND_RAM = p; usWrite(CONTA_PEND_KEY, p); }
+function contaMarcarPendente(tipo, ean, uid) {   // tipo: 'us' | 'perfil' | 'prateleira'
+  uid = uid || (CURRENT_USER && CURRENT_USER.id);
+  if (!uid) return;
+  const p = contaPendente(uid) || { uid, us: 0, perfil: 0, prateleira: {} };
+  if (tipo === 'prateleira') (p.prateleira = p.prateleira || {})[ean] = Date.now();
+  else p[tipo] = Date.now();
+  contaGravarPendente(p);
+}
+function contaMarca(tipo, uid) { const p = contaPendente(uid); return (p && p[tipo]) || 0; }
+function contaLimparPendente(tipo, uid, x) {
+  const p = contaPendente(uid);
+  if (!p) return;
+  if (tipo === 'prateleira') { if (p.prateleira) delete p.prateleira[x]; }
+  else if ((p[tipo] || 0) <= x) p[tipo] = 0; // x = marca do início do envio; se mexeram depois, continua por subir
+  contaGravarPendente(p);
+}
+function contaTemPendente(uid) {
+  const p = contaPendente(uid);
+  return !!(p && (p.us || p.perfil || Object.keys(p.prateleira || {}).length));
+}
+function contaCofre() {
+  const c = usRead(CONTA_COFRE_KEY) || {};
+  const corte = Date.now() - CONTA_COFRE_DIAS * 864e5;
+  for (const u in c) if (!c[u] || (c[u].ts || 0) < corte) delete c[u];
+  return c;
+}
+// Grava o cofre e CONFIRMA lendo de volta. (O usWrite engole o erro — sem
+// espaço, armazenamento bloqueado — e dava-se por guardado o que não estava.)
+function contaGravarCofre(c) {
+  try {
+    if (!Object.keys(c).length) { localStorage.removeItem(CONTA_COFRE_KEY); return localStorage.getItem(CONTA_COFRE_KEY) === null; }
+    const txt = JSON.stringify(c);
+    localStorage.setItem(CONTA_COFRE_KEY, txt);
+    return localStorage.getItem(CONTA_COFRE_KEY) === txt;
+  } catch (e) { console.warn('[conta] o cofre não ficou gravado:', e); return false; }
+}
+function contaTirarDoCofre(uid) { const c = contaCofre(); if (uid) delete c[uid]; contaGravarCofre(c); }
+// O que falta subir da conta uid, em memória (null se não há nada).
+function contaEntradaCofre(uid) {
+  const p = contaPendente(uid);
+  if (!p) return null;
+  const e = { ts: Date.now(), us_ts: Math.max(p.us || 0, Number(localStorage.getItem(US_TS_KEY) || 0)), chaves: {}, produtos: [], perfil: null };
+  if (p.us) for (const k of US_KEYS) { const v = usRead(k); if (v != null) e.chaves[k] = v; }
+  const eans = p.prateleira || {};
+  e.produtos = (PR_STATE.products || []).filter(it => it && eans[it.ean]);
+  if (p.perfil && PR_STATE.profile) e.perfil = Object.assign({}, PR_STATE.profile);
+  return (Object.keys(e.chaves).length || e.produtos.length || e.perfil) ? e : null;
+}
+function contaPorNoCofre(uid, e) { const c = contaCofre(); c[uid] = e; return contaGravarCofre(c); }
+function contaLimparChaves(uid) {
+  clearTimeout(US_TIMER); US_TIMER = null;
+  [...US_KEYS, US_TS_KEY, CONTA_PEND_KEY].forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
+  if (CONTA_PEND_RAM && CONTA_PEND_RAM.uid === uid) CONTA_PEND_RAM = null;
+  PR_STATE = { profile: null, products: [], actions: [] };
+  prSave();
+  try { localStorage.setItem(CONTA_DONO_KEY, ''); } catch (e) {}
+}
+// Tira deste dispositivo os dados da conta uid, guardando à parte o que ainda
+// não subiu. Devolve:
+//   'limpo'    nada por subir (ou guardar: false) — saiu tudo
+//   'guardado' o que faltava ficou no cofre (confirmado) — saiu tudo
+//   'mantido'  o cofre não gravou: NADA saiu (o normal)
+//   'perdido'  o cofre não gravou nem depois de libertar espaço, e os dados
+//              tinham de sair (seNaoGuardar: 'retirar' — entrou outra conta):
+//              saíram, com aviso explícito a quem está no dispositivo
+function contaLargarLocal(uid, opcoes) {
+  opcoes = opcoes || {};
+  const e = opcoes.guardar === false ? null : contaEntradaCofre(uid);
+  if (!e) { contaLimparChaves(uid); return 'limpo'; }
+  if (contaPorNoCofre(uid, e)) { contaLimparChaves(uid); return 'guardado'; }
+  if (opcoes.seNaoGuardar !== 'retirar') return 'mantido';
+  contaLimparChaves(uid); // liberta espaço (o cofre é um subconjunto disto) e tenta outra vez
+  if (contaPorNoCofre(uid, e)) return 'guardado';
+  alert('Havia alterações de outra conta por sincronizar neste dispositivo e não houve espaço para as guardar à parte. ' +
+        'Para não passarem para a tua conta, foram retiradas deste dispositivo.');
+  return 'perdido';
+}
+// A conta uid entrou: o que tinha ficado no cofre volta (fundido como se viesse
+// da nuvem; ganha o mais recente) e fica marcado para subir. O perfil sobe no
+// prCloudPull, que a seguir confirma que a nuvem não tem uma versão mais nova.
+function contaRecuperar(uid) {
+  const c = contaCofre();
+  const e = c[uid];
+  if (!e) return false;
+  try {
+    const chaves = {};
+    for (const k of US_KEYS) if (e.chaves && e.chaves[k] != null) chaves[k] = e.chaves[k];
+    if (Object.keys(chaves).length) {
+      usFundir(Object.assign(chaves, { _ts: e.us_ts || e.ts }));
+      localStorage.setItem(US_TS_KEY, String(Math.max(Number(localStorage.getItem(US_TS_KEY) || 0), e.us_ts || 0)));
+      contaMarcarPendente('us', null, uid);
+    }
+    for (const it of (e.produtos || [])) {
+      if (!PR_STATE.products.some(x => x.ean === it.ean)) PR_STATE.products.push(it);
+      contaMarcarPendente('prateleira', it.ean, uid);
+    }
+    if (e.perfil) {
+      PR_STATE.profile = Object.assign({}, PR_STATE.profile || {}, e.perfil);
+      contaMarcarPendente('perfil', null, uid);
+    }
+    prSave();
+  } catch (err) { console.warn('[conta] recuperar do cofre:', err); return false; }
+  contaTirarDoCofre(uid);
+  toast('Recuperámos alterações que ainda não tinham chegado à tua conta.');
+  return true;
+}
+// Perfil editado sem rede: sobe-o, a não ser que a nuvem tenha uma versão MAIS
+// RECENTE (editada noutro dispositivo depois) — aí fica essa, e diz-se.
+async function contaSubirPerfilPendente(uid) {
+  const marca = contaMarca('perfil', uid);
+  if (!marca || !SUPABASE || !PR_STATE.profile) return;
+  try {
+    const { data, error } = await SUPABASE.from('profiles').select('updated_at').eq('id', uid).maybeSingle();
+    if (error) return; // sem rede: continua por subir
+    const nuvem = data && data.updated_at ? +new Date(data.updated_at) : 0;
+    const local = +new Date(PR_STATE.profile.updated_at || 0) || marca;
+    if (nuvem > local) {
+      contaLimparPendente('perfil', uid, marca);
+      toast('O teu perfil foi alterado noutro dispositivo depois desta edição; ficou a versão mais recente.');
+      return;
+    }
+  } catch (e) { return; }
+  await prCloudUpsertProfile();
+}
+// Antes do «Terminar sessão». Devolve false se a sessão continua (a pessoa
+// preferiu não sair, ou não havia onde guardar), 'guardado' se ficou alguma
+// coisa no cofre, true no caso normal.
+async function contaAntesDeSair(uid) {
+  const prazo = (p, ms) => Promise.race([p, new Promise(r => setTimeout(r, ms))]);
+  if (US_TIMER || contaMarca('us', uid)) {
+    clearTimeout(US_TIMER); US_TIMER = null;
+    await prazo((async () => {
+      while (US_PUSHING) await new Promise(r => setTimeout(r, 50));
+      await usPush();
+    })(), 6000);
+  }
+  if (contaMarca('perfil', uid)) await prazo(contaSubirPerfilPendente(uid).catch(() => {}), 6000);
+  const p = contaPendente(uid);
+  for (const ean of Object.keys((p && p.prateleira) || {})) {
+    const it = (PR_STATE.products || []).find(x => x.ean === ean);
+    if (it) await prazo(prCloudUpsertProduct(it).catch(() => {}), 6000);
+    else contaLimparPendente('prateleira', uid, ean); // já saiu da prateleira: a lápide trata disso
+  }
+  if (contaTemPendente(uid)) {
+    const ok = confirm('Há alterações que ainda não chegaram à tua conta (parece não haver ligação): favoritos, rotina, prateleira ou perfil.\n\n' +
+      'OK — terminar sessão e guardá-las neste dispositivo, à parte, até voltares a entrar.\n' +
+      'Cancelar — continuar com a sessão iniciada e tentar mais tarde.');
+    if (!ok) { usMarkDirty(); return false; }
+    const r = contaLargarLocal(uid);
+    if (r === 'mantido') {
+      alert('Não consegui guardar as alterações neste dispositivo (pode estar sem espaço). ' +
+            'A sessão continua iniciada para não as perderes; tenta terminar sessão quando houver ligação.');
+      usMarkDirty();
+      return false;
+    }
+    return r === 'guardado' ? 'guardado' : true;
+  }
+  contaLargarLocal(uid, { guardar: false });
+  return true;
+}
+
 async function prCloudUpsertProfile() {
   if (!SUPABASE || !CURRENT_USER || !PR_STATE.profile) return;
   const p = PR_STATE.profile;
+  const uid = CURRENT_USER.id;
+  const marca = contaMarca('perfil', uid);
   const { error } = await SUPABASE.from('profiles').upsert({
-    id: CURRENT_USER.id,
+    id: uid,
     name: p.name, skin_type: p.skin_type,
     skin_concerns: p.skin_concerns || [],
     age_range: p.age_range,
   });
-  if (error) console.warn('upsert profile failed', error);
-  else PR_CLOUD_HAS_PROFILE = true;
+  if (error) { console.warn('upsert profile failed', error); contaMarcarPendente('perfil', null, uid); }
+  else { PR_CLOUD_HAS_PROFILE = true; contaLimparPendente('perfil', uid, marca); }
 }
 
 async function prCloudUpsertProduct(item) {
   if (!SUPABASE || !CURRENT_USER) return;
+  const uid = CURRENT_USER.id;
   try { shelfTombRevive(item.ean); } catch (e) {} // (re-)adicionar anula a lápide em todos os dispositivos
   const product = PRODUCT_BY_EAN[item.ean];
   // ⚠️ Se o produto não estiver em memória, NÃO se mandam estas duas colunas.
@@ -14629,6 +14858,8 @@ async function prCloudUpsertProduct(item) {
     repurchased_at: item.repurchased_at || null,
   }, { onConflict: 'user_id,ean' });
   if (!error) pontosGanhar('prateleira', item.ean);   // o servidor confirma e limita a 10
+  if (!error) contaLimparPendente('prateleira', uid, item.ean);
+  else contaMarcarPendente('prateleira', item.ean, uid);
   if (error) {
     console.warn('upsert product failed', error);
     if (!window.__prSyncWarned) {
@@ -14833,7 +15064,18 @@ function prRenderAuthInsideProfileModal() {
   }
 }
 
-async function signOut() {
+async function signOut(opcoes) {
+  // Antes de sair: sobe o que está à espera e tira deste dispositivo os dados
+  // da conta. Sem ligação e com alguma coisa por subir, pergunta primeiro; se
+  // nem assim houver onde guardar, a sessão continua (ver CONTA NO
+  // DISPOSITIVO). Apagar a conta passa { semGuardar: true }.
+  const uidSai = CURRENT_USER && CURRENT_USER.id;
+  let guardado = false;
+  if (uidSai && !(opcoes && opcoes.semGuardar)) {
+    const r = await contaAntesDeSair(uidSai);
+    if (r === false) return; // a sessão continua
+    guardado = r === 'guardado';
+  } else if (uidSai) contaLargarLocal(uidSai, { guardar: false });
   try { if (SUPABASE) await SUPABASE.auth.signOut({ scope: 'local' }); }
   catch (e) { console.warn('[auth] signOut falhou no servidor — a limpar localmente', e); }
   // limpeza DURA: remove os tokens sb-* dos dois storages — garante o logout
@@ -14852,7 +15094,7 @@ async function signOut() {
   try { prSave(); } catch (e) {}
   try { closeProfile(); } catch (e) {}
   try { prRefreshBadge(); } catch (e) {}
-  toast('Sessão terminada');
+  toast(guardado ? 'Sessão terminada. O que faltava sincronizar ficou guardado neste dispositivo e sobe quando voltares a entrar.' : 'Sessão terminada');
   try { pontosPintar(); } catch (e) {}
 }
 
@@ -18579,9 +18821,10 @@ async function apagarConta() {
   // conta (e o identificador nunca esteve ligado a ela).
   try {
     [...US_KEYS, 'cm.meds.v1', 'cm.medslog.v1', 'cm.us_ts', 'cm.last_uid', 'cm.pending_name',
-     'smartcart.profile.v1', 'cosmath_newsletter', FAV_KEY].forEach(k => localStorage.removeItem(k));
+     'smartcart.profile.v1', 'cosmath_newsletter', FAV_KEY, CONTA_PEND_KEY, CONTA_DONO_KEY].forEach(k => localStorage.removeItem(k));
+    contaTirarDoCofre(CURRENT_USER && CURRENT_USER.id);
   } catch (e) {}
-  await signOut();
+  await signOut({ semGuardar: true });
   toast('Conta apagada. Obrigado por teres experimentado a CosMath.');
 }
 </script>
