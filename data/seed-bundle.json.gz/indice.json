@@ -1026,6 +1026,16 @@
    "outros": {
     "store_slug": "presencadeluxo"
    }
+  },
+  {
+   "ficheiro": "ofertas/ilhadoscosmeticos.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "ilhadoscosmeticos"
+   }
   }
  ],
  "outros": {}
