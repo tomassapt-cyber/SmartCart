@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '17 3,11,19 * * *'
   workflow_dispatch:
+    inputs:
+      so_integrar:
+        description: 'sim = integrar o ficheiro completo do PC; nao = recolher na nuvem'
+        type: choice
+        options: ['nao', 'sim']
+        default: 'nao'
 
 permissions:
   contents: write
@@ -34,6 +40,7 @@ jobs:
       - name: Test existing-only integration
         run: node scripts/test-farmacianovadamaia-existing-only.js
       - name: Scrape public dermocosmetics category
+        if: inputs.so_integrar != 'sim'
         run: python scripts/scrape-farmacianovadamaia-catalog.py
       - name: Save collection evidence
         if: always()

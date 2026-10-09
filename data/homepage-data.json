@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-07T10:09:09.860Z",
-  "seed_total_products": 84890,
+  "generated_at": "2026-10-09T10:19:12.453Z",
+  "seed_total_products": 85131,
   "hero_sponsored": [
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.94,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
+      "best_price": 15.28,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
     },
     {
       "ean": "8429420158399",
@@ -37,7 +37,7 @@
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.52,
+      "best_price": 13.86,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
@@ -203,16 +203,16 @@
       "name": "Effaclar Duo +M",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 11.99,
-      "best_store": "Pharma GDD",
-      "best_store_slug": "pharma-gdd",
-      "best_url": "https://www.pharma-gdd.com/fr/la-roche-posay-effaclar-duo-soin-anti-imperfections"
+      "best_price": 12.99,
+      "best_store": "Druni PT",
+      "best_store_slug": "druni",
+      "best_url": "https://www.druni.pt/effaclar-duo-m-roche-posay-creme-corretor-anti-imperfeicoes"
     }
   ],
   "top_brands": [
     {
       "name": "Avène",
-      "products": 863
+      "products": 862
     },
     {
       "name": "Isdin",
@@ -228,15 +228,15 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 786
+      "products": 785
     },
     {
       "name": "Eucerin",
-      "products": 751
+      "products": 753
     },
     {
       "name": "L'Oréal Paris",
-      "products": 724
+      "products": 730
     },
     {
       "name": "Bioderma",
@@ -273,8 +273,8 @@
     }
   ],
   "stats": {
-    "stores": 98,
-    "products": 68799,
+    "stores": 99,
+    "products": 69013,
     "avg_savings_pct": 30
   },
   "shard_version": "",

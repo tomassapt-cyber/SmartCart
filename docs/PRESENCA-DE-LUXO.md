@@ -3,13 +3,13 @@
 ## Estado
 Proposta em rascunho. Não integrada no `main` nem em produção; ainda não deve ser acrescentada ao Excel como concluída. Nenhuma chamada ou escrita no Supabase.
 
-Base revalidada: `4f913ae83196cc8ca6f3b1ff3ab0f0560d93c475`. Os 823 ficheiros da base foram verificados contra os hashes Git oficiais. Preservados todos os produtos, lojas e ofertas anteriores.
+Base revalidada: `477a76354d529d91eded10d7249784d4f2201759`. Os 823 ficheiros da base foram verificados contra os hashes Git oficiais. Preservados todos os produtos, lojas e ofertas anteriores.
 
 ## Contagens verificadas
-- Produtos existentes antes/depois: 85105 / 85105; **zero produtos novos**.
+- Produtos existentes antes/depois: 85149 / 85149; **zero produtos novos**.
 - Lojas antes/depois da proposta: 99 / 100.
 - Ofertas acrescentadas na proposta: **1047**, 1047 ativas e 0 inativas.
-- Ofertas totais antes/depois: 286477 / 287524.
+- Ofertas totais antes/depois: 286609 / 287656.
 - Imagens alteradas: 0. A auditoria disponível não sinalizou imagens ausentes, placeholders ou erros nos produtos correspondentes; não se afirma uma verificação HTTP nova de todas as imagens.
 - Crescimento do JSON compacto: 470265 bytes. Escritas na BD: **0**; não representa crescimento físico do Postgres.
 
