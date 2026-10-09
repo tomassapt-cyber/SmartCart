@@ -81,9 +81,9 @@ push_burst() {
 
 stage_all() {
   # o .json de trabalho vira .gz antes de entrar no commit
-  bash scripts/ci/seed.sh pack
-  git add "${SEED_AND_HTML[@]}" 2>/dev/null || true
-  for f in "${RAW_FILES[@]}"; do git add -f "$f" 2>/dev/null || true; done
+  bash scripts/ci/seed.sh pack || return 1
+  git add "${SEED_AND_HTML[@]}" || return 1
+  for f in "${RAW_FILES[@]}"; do git add -f "$f" || return 1; done
 }
 
 for i in "${!BACKOFFS[@]}"; do
@@ -100,32 +100,44 @@ for i in "${!BACKOFFS[@]}"; do
   echo "↻ Push rejeitado (tentativa ${attempt}) — re-integrar sobre origin/${BRANCH}…"
 
   # 1) Preservar ficheiros raw num tmp (sobrevivem ao reset --hard)
-  TMP="$(mktemp -d)"
+  TMP="$(mktemp -d)" || exit 1
   for f in "${RAW_FILES[@]}"; do
-    if [ -f "$f" ]; then mkdir -p "$TMP/$(dirname "$f")"; cp "$f" "$TMP/$f"; fi
+    if [ ! -f "$f" ]; then
+      echo "❌ ficheiro raw em falta: $f; não reintegrar." >&2
+      exit 1
+    fi
+    mkdir -p "$TMP/$(dirname "$f")" || exit 1
+    cp "$f" "$TMP/$f" || exit 1
   done
 
   # 2) Adoptar o seed mais recente do main
-  git fetch origin "${BRANCH}" || true
-  git reset --hard "origin/${BRANCH}"
+  if ! git fetch origin "${BRANCH}"; then
+    echo "❌ fetch falhou; não usar uma cópia local potencialmente antiga." >&2
+    exit 1
+  fi
+  git reset --hard "origin/${BRANCH}" || exit 1
 
   # ⚠️ OBRIGATORIO. O reset trouxe o .gz de origin, mas o .json em disco e'
   # o nosso, de antes -- esta' ignorado pelo git e o reset nao lhe toca. Sem
   # este unpack, o re-integrate correria sobre o seed VELHO e o commit
   # seguinte desfazia o trabalho das outras lojas em silencio.
-  bash scripts/ci/seed.sh unpack
+  bash scripts/ci/seed.sh unpack || exit 1
 
   # 3) Restaurar raw e re-integrar (idempotente)
   for f in "${RAW_FILES[@]}"; do
-    if [ -f "$TMP/$f" ]; then mkdir -p "$(dirname "$f")"; cp "$TMP/$f" "$f"; fi
+    mkdir -p "$(dirname "$f")" || exit 1
+    cp "$TMP/$f" "$f" || exit 1
   done
   rm -rf "$TMP"
 
   echo "▶ ${INTEGRATE_CMD}"
-  eval "${INTEGRATE_CMD}" || echo "⚠ integrate devolveu erro — continuar para tentar push à mesma"
+  if ! eval "${INTEGRATE_CMD}"; then
+    echo "❌ re-integração falhou; não publicar dados parciais." >&2
+    exit 1
+  fi
 
   # 4) Re-commit
-  stage_all
+  stage_all || { echo "❌ pack ou staging falhou; não publicar." >&2; exit 1; }
   if git diff --staged --quiet; then
     echo "ℹ Nada novo após re-integrar (loja já no main mais recente) — terminar ok."
     exit 0

@@ -8,7 +8,7 @@ name: Deploy branch sync (Vercel)
 #   - imediatamente após pushes MANUAIS (commit que NÃO começa por "chore:" —
 #     os bots dos refreshes usam sempre "chore: <Loja> daily refresh")
 #   - à mão via workflow_dispatch
-# O update é feito via API (PATCH da ref) — não descarrega os HTMLs de 60MB.
+# O update é feito via API (PATCH da ref, só fast-forward) — não descarrega os HTMLs de 60MB.
 
 on:
   # O GATILHO PRINCIPAL e' o fim do db-sync, nao o relogio. Razao medida a
@@ -77,14 +77,61 @@ jobs:
       - name: Apontar deploy → main (via API, sem checkout)
         env:
           GH_TOKEN: ${{ github.token }}
+          DEPLOY_SYNC_SHA: ${{ github.event.workflow_run.head_sha }}
+          DEPLOY_EVENT: ${{ github.event_name }}
+          DEPLOY_REPO: ${{ github.repository }}
         run: |
-          set -e
-          # No gatilho workflow_run, o commit que o db-sync usou; nos outros, o tip.
-          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
-          echo "A apontar refs/heads/deploy → $SHA"
-          gh api "repos/${{ github.repository }}/git/refs/heads/deploy" \
-            -X PATCH -f sha="$SHA" -F force=true \
-          || gh api "repos/${{ github.repository }}/git/refs" \
-            -X POST -f ref=refs/heads/deploy -f sha="$SHA"
-          echo "deploy agora em:"
-          gh api "repos/${{ github.repository }}/branches/deploy" --jq '.commit.sha'
+          #!/usr/bin/env bash
+          # Avança deploy sem nunca recuar o branch. No workflow_run preserva o SHA do
+          # db-sync; nos outros gatilhos lê o main atual para não usar um evento antigo.
+          set -euo pipefail
+          
+          : "${DEPLOY_REPO:?DEPLOY_REPO em falta}"
+          : "${DEPLOY_EVENT:?DEPLOY_EVENT em falta}"
+          repo="repos/${DEPLOY_REPO}"
+          
+          for attempt in 1 2 3 4 5; do
+            if [ "$DEPLOY_EVENT" = workflow_run ]; then
+              target="${DEPLOY_SYNC_SHA:?DEPLOY_SYNC_SHA em falta}"
+            else
+              target="$(gh api "$repo/git/refs/heads/main" --jq '.object.sha')"
+            fi
+            [[ "$target" =~ ^[0-9a-fA-F]{40}$ ]] || { echo "SHA alvo inválido: $target" >&2; exit 1; }
+          
+            if ! current="$(gh api "$repo/git/refs/heads/deploy" --jq '.object.sha' 2>/dev/null)"; then
+              if gh api "$repo/git/refs" -X POST -f ref=refs/heads/deploy -f sha="$target"; then
+                echo "deploy criado em $target"
+                exit 0
+              fi
+              echo 'Não foi possível criar deploy; reler a ref após possível corrida.' >&2
+              continue
+            fi
+            if [ "$current" = "$target" ]; then
+              echo "deploy já está em $target"
+              exit 0
+            fi
+          
+            # compare BASE...HEAD: ahead significa que target descende de current.
+            relation="$(gh api "$repo/compare/${current}...${target}" --jq '.status')"
+            case "$relation" in
+              behind)
+                echo "Sincronização antiga ignorada: deploy=$current, alvo=$target"
+                exit 0 ;;
+              identical)
+                echo "deploy já está em $target"
+                exit 0 ;;
+              ahead)
+                # A API recusa um recuo mesmo se outra corrida mexer na ref entretanto.
+                if gh api "$repo/git/refs/heads/deploy" -X PATCH -f sha="$target" -F force=false; then
+                  echo "deploy avançou para $target"
+                  exit 0
+                fi
+                echo "deploy mudou durante a atualização; nova leitura ($attempt/5)." >&2 ;;
+              *)
+                echo "Histórico divergente entre deploy=$current e alvo=$target ($relation); intervenção necessária." >&2
+                exit 1 ;;
+            esac
+          done
+          
+          echo 'Não foi possível avançar deploy após 5 tentativas.' >&2
+          exit 1
