@@ -1,0 +1,64 @@
+{
+  "baseline_sha": "07e80058c322893afe5cad5eff3730e7ecb10a51",
+  "changes": [
+    {
+      "ean": "8809925186064",
+      "before": null,
+      "after": "https://farmacia.pt/media/catalog/product/6/9/69ba7b300e1c5_LaneigeBouncFirSerum30ml3_1.jpg",
+      "source_page": "https://farmacia.pt/laneige-bouncy-firm-serum-serum-de-firmeza-e-brilho-30ml",
+      "page_checked_at": "2026-10-09T01:17:16.015893+00:00",
+      "page_sha256": "bb9b71ed8618845b027cc941192cda0060a5fcc79f8b44a278d82a4fec1a5944",
+      "identity": [
+        {
+          "name": "Laneige Bouncy &amp; Firm Serum Sérum de Firmeza e Brilho 30ml",
+          "gtin8": "8809925186064",
+          "sku": "1134247322"
+        }
+      ],
+      "image_probe": {
+        "checked_at": "2026-10-09T01:22:31.593545+00:00",
+        "http": 200,
+        "type": "image/jpeg",
+        "width": 1300,
+        "height": 1300,
+        "bytes": 38935,
+        "sha256": "8139aa4f9c3ec7a1735da4a64926ca99765ae40d20ccee844436987ab0f5dae8"
+      },
+      "visual_check": "Reviewed downloaded original: correct brand, product and 30 ml label; no placeholder or stretching"
+    },
+    {
+      "ean": "7427244505987",
+      "before": null,
+      "after": "https://static.dermis.pt/6507/bow-mamie-eau-parfum-30ml.png",
+      "source_page": "https://dermis.pt/pt/artigo/bow-mamie-eau-parfum-30ml",
+      "page_checked_at": "2026-10-09T01:17:25.796669+00:00",
+      "page_sha256": "921a6df0a797d175ccbd706a289f2e39d7dde569d882f37eb9fe98e6370bed95",
+      "identity": [
+        {
+          "name": "Bow Eau Parfum Mamie 30ml",
+          "sku": "7494146",
+          "mpn": "7494146"
+        }
+      ],
+      "image_probe": {
+        "checked_at": "2026-10-09T01:22:32.705411+00:00",
+        "http": 200,
+        "type": "image/png",
+        "width": 288,
+        "height": 462,
+        "bytes": 178229,
+        "sha256": "6978ccf6882f42eb7ef8d8aa99a65d1cce612ed628ae64554d65853fdf43085e"
+      },
+      "visual_check": "Reviewed downloaded original: correct brand, product and 30 ml label; no placeholder or stretching"
+    }
+  ],
+  "impact": {
+    "products_changed": 2,
+    "products_added": 0,
+    "products_removed": 0,
+    "offers_changed": 0,
+    "stores_changed": 0,
+    "images_added": 2,
+    "database_access": false
+  }
+}
