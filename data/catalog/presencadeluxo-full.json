@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-12T11:03:25.138623+00:00",
-  "completed_at": "2026-10-12T12:13:50.922427+00:00",
+  "scraped_at": "2026-10-12T20:20:08.874207+00:00",
+  "completed_at": "2026-10-12T21:42:58.888183+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -8381,8 +8381,8 @@
     {
       "ean": "8423029008819",
       "name": "Elásticos c/Ganchos Pack 12 Pretos",
-      "price": 11.41,
-      "net_price": 9.28,
+      "price": 9.13,
+      "net_price": 7.43,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/frizetes-ganchos-molas-/80793-elasticos-c-ganchos-pack-12-pretos-8423029008819.html",
@@ -11148,19 +11148,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600482307045",
-      "name": "Prancha de Cabelo Techshen Epic L 230ºC",
-      "price": 36.53,
-      "net_price": 29.7,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/pranchas-de-cabelo/87091-prancha-de-cabelo-techshen-epic-l-230c-5600482307045.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/145534-thickbox_default/prancha-de-cabelo-techshen-epic-l-230c.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "4064666599533",
       "name": "Máscara Wella Ultimate Repair 150ml Acção Reparadora",
       "price": 27.55,
@@ -13093,7 +13080,7 @@
       "in_stock": true,
       "url": "https://presencadeluxo.pt/maquina-de-cortar-cabelo/90844-maquina-contornos-techshen-sharpcut-verde-precisao-e-potencia-profissional-5600482307182.html",
       "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156130-thickbox_default/maquina-contornos-techshen-sharpcut-verde-precisao-e-potencia-profissional.jpg",
+      "image_url": "https://presencadeluxo.pt/156131-thickbox_default/maquina-contornos-techshen-sharpcut-verde-precisao-e-potencia-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13969,7 +13956,7 @@
       "canonical": "8423029016821",
       "existing_name": "Espanador Pó Talco",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/wella-balance/3590-shampoo-purificante-cabelos-oleosos-invigo-balance-250ml-wella-invigo-aqua-pure--4064666585246.html",
@@ -14530,6 +14517,14 @@
       "existing_name": "INOCOS Nailed It Verniz Gel NL5 Bull's Eye 15ml",
       "method": "GTIN",
       "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/pranchas-de-cabelo/87091-prancha-de-cabelo-techshen-epic-l-230c-5600482307045.html",
+      "ean": "5600482307045",
+      "canonical": "5600482307045",
+      "existing_name": "Techshen Epic Prancha de Cabelo L 230ºC",
+      "method": "GTIN",
+      "reason": "visible product data disagree with schema"
     },
     {
       "url": "https://presencadeluxo.pt/revlon-equave/87534-shampoo-revlon-equave-princess-kids-300ml-criancas-8432225111445.html",
