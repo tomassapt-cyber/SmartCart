@@ -1,17 +1,7 @@
 {
-  "generated_at": "2026-10-09T10:19:12.453Z",
-  "seed_total_products": 85131,
+  "generated_at": "2026-10-12T10:38:23.923Z",
+  "seed_total_products": 85193,
   "hero_sponsored": [
-    {
-      "ean": "7427244506335",
-      "name": "Papillon Creme de Rosto Vitamina C",
-      "brand": "Papillon",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 15.28,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
-    },
     {
       "ean": "8429420158399",
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
@@ -23,16 +13,6 @@
       "best_url": "https://bairrodasaude.pt/products/fotoprotector-isdin-fusion-water-magic-solar-spf-50-50-ml"
     },
     {
-      "ean": "3337875492799",
-      "name": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos",
-      "brand": "Vichy",
-      "image_url": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml",
-      "best_price": 9.04,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/vichy-dercos-champo-anti-caspa-caspa-seca-200ml"
-    },
-    {
       "ean": "3606000560833",
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
@@ -41,6 +21,26 @@
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
+    },
+    {
+      "ean": "7427244506335",
+      "name": "Papillon Creme de Rosto Vitamina C",
+      "brand": "Papillon",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
+      "best_price": 15.28,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
+    },
+    {
+      "ean": "3372290001805",
+      "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
+      "brand": "Lazartigue",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
+      "best_price": 8.86,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
     },
     {
       "ean": "5201279072193",
@@ -141,10 +141,10 @@
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 12.65,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
+      "best_price": 14.28,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/neutrogena-corpo-deep-moisture-duo-locao-corporal-750ml-400ml-com-desconto-de-25"
     },
     {
       "ean": "8431567752002",
@@ -159,60 +159,81 @@
   ],
   "em_alta": [
     {
-      "ean": "3401395614172",
-      "name": "Bioderma Sensibio H2O Água Micelar",
-      "brand": "Bioderma",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw72ab4917/images/wells/851/8518622-LIMPEZA-SENSIBIO-H2O-PEUX-SENSIBLES-EAU-MICELLAIRE-BIODERMA-P-01.jpg",
-      "best_price": 3.32,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/bioderma-sensibio-h2o-agua-solucao-micelar-100ml"
+      "ean": "8436589051133",
+      "name": "Mineral D Fluid Sun Care SPF50",
+      "brand": "Martiderm",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw11fe261b/images/wells/850/8508581-SOLARES-ROSTO-MINERAL-D-FLUID-SUN-CARE-SPF50-MARTIDERM-P-01.jpg",
+      "best_price": 9.12,
+      "best_store": "Farmácia Barata",
+      "best_store_slug": "farmaciabarata",
+      "best_url": "https://www.farmaciabarata.pt/protetor-solar-mineral/martiderm-spf50-mineral-d-fluido.html",
+      "previous_price": 18.25,
+      "discount_pct": 50,
+      "dropped_day": 20732,
+      "verified_live": true
     },
     {
-      "ean": "3337875798181",
-      "name": "Anthelios 100 Ka+Med",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797854.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 19.26,
-      "best_store": "A Farmácia Online",
-      "best_store_slug": "afarmaciaonline",
-      "best_url": "https://www.afarmaciaonline.pt/lrposay-anthelios-ka-med-creme-50ml.html"
+      "ean": "8436589051119",
+      "name": "Active D Fluid Sun Care SPF30",
+      "brand": "Martiderm",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe6237df6/images/wells/850/8508587-SOLARES-ROSTO-ACTIVE-D-FLUID-SUN-CARE-SPF30-MARTIDERM-P-02.jpg",
+      "best_price": 9.12,
+      "best_store": "Farmácia Barata",
+      "best_store_slug": "farmaciabarata",
+      "best_url": "https://www.farmaciabarata.pt/protecao-solar-facial-midia/martiderm-spf30-ativo-d-fluido.html",
+      "previous_price": 18.25,
+      "discount_pct": 50,
+      "dropped_day": 20732,
+      "verified_live": true
     },
     {
-      "ean": "8431567644116",
-      "name": "Cofre Mineral 89",
-      "brand": "Vichy",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802259.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 19.95,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/cofre-mineral-89-vichy-hidratacao-profunda"
+      "ean": "3522930003649",
+      "name": "Caudalie Vinoterapeuta Tratamento Corporal Nutritivo",
+      "brand": "Caudalie",
+      "image_url": "https://aminhafarmaciaonline.pt/wp-content/uploads/2024/12/7088369.jpg",
+      "best_price": 9.3,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/caudalie-vinotherapist-cuidado-corporal-nutritivo-hialuronico-200ml",
+      "volume_ml": 200,
+      "previous_price": 15.5,
+      "discount_pct": 40,
+      "dropped_day": 20729,
+      "verified_live": true
     },
     {
-      "ean": "3337875549493",
-      "name": "Effaclar Duo+ SPF30",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 11.66,
-      "best_store": "Cocooncenter",
-      "best_store_slug": "cocooncenter",
-      "best_url": "https://www.cocooncenter.pt/la-roche-posay-effaclar-duo-spf30-40-ml/30944.html"
+      "ean": "4006000066158",
+      "name": "Nivea Creme Tubo",
+      "brand": "Nivea",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/nivea/4006000066158-800x800.jpg",
+      "best_price": 2.04,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/nivea-creme-tubo-151006.html",
+      "previous_price": 2.98,
+      "discount_pct": 32,
+      "dropped_day": 20738,
+      "verified_live": true
     },
     {
-      "ean": "3337875863377",
-      "name": "Effaclar Duo +M",
-      "brand": "La Roche-Posay",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 12.99,
-      "best_store": "Druni PT",
-      "best_store_slug": "druni",
-      "best_url": "https://www.druni.pt/effaclar-duo-m-roche-posay-creme-corretor-anti-imperfeicoes"
+      "ean": "3282770391053",
+      "name": "Klorane bébé Huile multi usages au Calendula bio",
+      "brand": "Klorane",
+      "image_url": "https://static.lojadafarmacia.com/22340/klorane-bebe-oleo-multi-usos-bio-200ml.jpeg",
+      "best_price": 7.63,
+      "best_store": "Farmácia Gaia Jardim",
+      "best_store_slug": "farmaciagaiajardim",
+      "best_url": "https://www.farmaciagaiajardim.com/products/klorane-bebe-ol-multi-usos-bio-200ml",
+      "previous_price": 10.9,
+      "discount_pct": 30,
+      "dropped_day": 20729,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "Avène",
-      "products": 862
+      "products": 865
     },
     {
       "name": "Isdin",
@@ -220,7 +241,7 @@
     },
     {
       "name": "Clarins",
-      "products": 824
+      "products": 826
     },
     {
       "name": "Nivea",
@@ -232,7 +253,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 753
+      "products": 752
     },
     {
       "name": "L'Oréal Paris",
@@ -240,7 +261,7 @@
     },
     {
       "name": "Bioderma",
-      "products": 683
+      "products": 684
     }
   ],
   "telegram_alerts": [
@@ -273,8 +294,8 @@
     }
   ],
   "stats": {
-    "stores": 99,
-    "products": 69013,
+    "stores": 102,
+    "products": 68901,
     "avg_savings_pct": 30
   },
   "shard_version": "",
