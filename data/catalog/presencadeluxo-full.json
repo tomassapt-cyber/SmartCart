@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-10-13T10:46:47.467215+00:00",
-  "completed_at": "2026-10-13T12:06:13.605362+00:00",
+  "scraped_at": "2026-10-13T18:23:14.798275+00:00",
+  "completed_at": "2026-10-13T19:48:18.759345+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1198,
+  "targets": 1199,
   "products": [
     {
       "ean": "5603927872412",
@@ -9850,8 +9850,8 @@
     {
       "ean": "5600482306512",
       "name": "Broca Unhas Micromotor Digital ECOpro 35000 RPM TECHSHEN",
-      "price": 49.35,
-      "net_price": 40.13,
+      "price": 54.84,
+      "net_price": 44.59,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/broca-unhas/83411-broca-unhas-micromotor-digital-ecopro-35000-rpm-techshen-5600482306512.html",
@@ -9883,19 +9883,6 @@
       "url": "https://presencadeluxo.pt/haskell/84056-nectar-murumuru-haskell-35ml-para-hidratacao-cabelo-e-nutricao-capilar-7898610375808.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/135743-thickbox_default/nectar-murumuru-haskell-35ml-para-hidratacao-cabelo-e-nutricao-capilar.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600482306246",
-      "name": "Lima Pedicure Inox Ricki Parodi",
-      "price": 4.88,
-      "net_price": 3.97,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/tratamento-calos/84420-lima-pedicure-inox-ricki-parodi-5600482306246.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/144242-thickbox_default/lima-pedicure-inox-ricki-parodi.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10780,6 +10767,19 @@
       "url": "https://presencadeluxo.pt/kaypro-keratin-reestruturacao-e-reforco/86000-kit-mini-size-kaypro-keratin-reestruturacao-e-reforco-8028483257584.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/142407-thickbox_default/kit-mini-size-kaypro-keratin-reestruturacao-e-reforco.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7897158727117",
+      "name": "Shampoo Gota Dourada Nata de Coco 300ml",
+      "price": 7.53,
+      "net_price": 6.13,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gota-dourada/86124-shampoo-gota-dourada-nata-de-coco-300ml-7897158727117.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/142741-thickbox_default/shampoo-gota-dourada-nata-de-coco-300ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13074,8 +13074,8 @@
     {
       "ean": "5600482307182",
       "name": "Máquina Contornos Techshen SharpCut Verde - Precisão e Potência Profissional",
-      "price": 38.68,
-      "net_price": 31.45,
+      "price": 34.38,
+      "net_price": 27.96,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/maquina-de-cortar-cabelo/90844-maquina-contornos-techshen-sharpcut-verde-precisao-e-potencia-profissional-5600482307182.html",
@@ -14387,6 +14387,14 @@
       "ean": "7898610376423",
       "canonical": "7898610376423",
       "existing_name": "Haskell HidraNutre Shampoo 1000ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/tratamento-calos/84420-lima-pedicure-inox-ricki-parodi-5600482306246.html",
+      "ean": "5600482306246",
+      "canonical": "5600482306246",
+      "existing_name": "RickiParodi Lima de Pedicure de Inox Dupla Face Oval",
       "method": "GTIN",
       "reason": "unverified price/currency/URL"
     },
