@@ -24,10 +24,18 @@ function createCatalogClient() {
     }
     if (response.status === 403 || response.status === 429) stop(`Recolha interrompida: HTTP ${response.status} em ${metadata.url}`);
     if (!response.ok && response.status < 500 && ![404, 410].includes(response.status)) stop(`Resposta HTTP ${response.status} em ${metadata.url}`);
-    if (sitemap && !response.ok) stop(`Sitemap recusado: HTTP ${response.status} em ${metadata.url}`);
+    if (sitemap && !response.ok && response.status !== 404) stop(`Sitemap recusado: HTTP ${response.status} em ${metadata.url}`);
     let html;
     try { html = await response.text(); } catch (error) { if (fatal) throw fatal; throw error; }
     if (/cf-chl-|<title>\s*(?:Just a moment|Attention Required)/i.test(html)) stop(`Página de proteção em ${metadata.url}`);
+    // 2026-10-14: a farmaciavirtual.pt serve as páginas 2–6 do sitemap de
+    // produtos com HTTP 404 mas com o XML completo e atual (lastmod do próprio
+    // dia). Um 404 só passa com XML de sitemap e pelo menos um <loc>; uma
+    // página de erro continua a parar a recolha e a guardar o catálogo anterior.
+    if (sitemap && response.status === 404) {
+      if (!/<(?:[a-z]+:)?(?:urlset|sitemapindex)\b/i.test(html) || !/<(?:[a-z]+:)?loc>/i.test(html)) stop(`Sitemap recusado: HTTP 404 em ${metadata.url}`);
+      console.log('[catalog-http] sitemap com HTTP 404 mas XML válido — aceite', metadata.url);
+    }
     if (sitemap && !/<(?:[a-z]+:)?(?:urlset|sitemapindex)\b/i.test(html)) stop(`Resposta sem XML de sitemap em ${metadata.url} (${metadata.contentType}, ${html.length} caracteres)`);
     // O corpo é lido uma única vez; os consumidores mantêm a interface usada.
     return { status: response.status, ok: response.ok, url: response.url, headers: response.headers, text: async () => html };
