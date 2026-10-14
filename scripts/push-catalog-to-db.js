@@ -121,7 +121,7 @@ async function upsert(table, rows, onConflict) {
   }
   {
     const { mergeEanVariants } = require('./dedup-ean-variants');
-    const r = mergeEanVariants(seed);
+    const r = mergeEanVariants(seed, ROOT);
     if (r.merged) console.log(`  merge de GTIN (UPC-A↔EAN-13): ${r.merged} produtos · ${r.remapped} ofertas`);
   }
   {

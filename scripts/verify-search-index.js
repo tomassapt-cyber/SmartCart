@@ -59,7 +59,7 @@ require('./lib/verified-shipping').applyVerifiedShipping(seed, ROOT);
 const vf = require('./lib/variant-fixes');
 vf.fixTruncatedVariantPrices(seed);
 vf.dropWrongProductVariants(seed);
-require('./dedup-ean-variants').mergeEanVariants(seed);
+require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
 require('./lib/promo-fold').foldPromoVariants(seed);
 // blocklist — a mesma do build-search-index (2026-10-02)
 try {

@@ -80,6 +80,9 @@ if (AS_OF && isNaN(AS_OF)) { console.error(`✗ --as-of inválido: ${args['as-of
   //   sem isto o gráfico mostrava o preço do volume mais pequeno em fichas multi-volume)
   const best = {};      // ean -> {cents, slug}
   const bestVol = {};   // ean -> { ml -> {cents, slug} }  (só de variantes com volume_ml)
+  // o mesmo GTIN com/sem zeros é UM produto, como na página e na BD — senão a
+  // série da ficha perdia as lojas que publicam a outra grafia (2026-10-14)
+  require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
   dropRottenOffers(seed, now);   // em memória: fica só o que o site publica
   for (const g of seed.store_products) {
     for (const it of g.items) {
