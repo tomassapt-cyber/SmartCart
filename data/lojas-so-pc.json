@@ -1,0 +1,16 @@
+{
+  "_nota": "Lojas atualizadas a partir do PC do Tomás (bloqueiam a nuvem). Lista ÚNICA, decidida a 2026-10-14: (1) o site NUNCA as esconde por idade absoluta — scripts/lib/catalog-visibility.js; (2) o freshness-monitor abre uma issue própria quando alguma passa dos avisar_dias e deixa um lembrete a cada 7 dias a mais; fecha-se sozinha quando todas voltam a estar frescas. As que têm o comando do refresh-pc-only.sh têm de estar no ORDER desse script (scripts/test-lojas-so-pc.cjs confirma).",
+  "avisar_dias": 7,
+  "lojas": {
+    "sobeauty": "bash scripts/refresh-pc-only.sh",
+    "smartbeauty": "bash scripts/refresh-pc-only.sh",
+    "beleza37": "bash scripts/refresh-pc-only.sh",
+    "notino": "bash scripts/refresh-pc-only.sh",
+    "powerbeauty": "bash scripts/refresh-pc-only.sh",
+    "care2me": "bash scripts/refresh-pc-only.sh",
+    "afarmaciaonline": "bash scripts/refresh-pc-only.sh",
+    "balvera": "bash scripts/refresh-pc-only.sh",
+    "farmaoli": "bash scripts/refresh-pc-only.sh",
+    "farmacianovadamaia": "python scripts/refresh-farmacianovadamaia-pc.py"
+  }
+}

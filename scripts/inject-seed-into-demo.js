@@ -179,6 +179,7 @@ const seedJson = JSON.parse(seed);
   const r = dropRottenOffers(seedJson);
   if (r.hidden) console.log(`🥀 Ofertas podres escondidas (>${r.MAX_LAG_DAYS}d atrás do refresh da loja): ${r.hidden} · ${r.perStore.join(', ')}`);
   if (r.hiddenAbs) console.log(`⏳ Destas, por tecto absoluto (>${r.MAX_ABS_DAYS}d — loja parada por inteiro): ${r.hiddenAbs} · ${r.perStoreAbs.join(', ')}`);
+  if (r.mantidasPc) console.log(`🖥️  Mantidas apesar de >${r.MAX_ABS_DAYS}d (lojas do PC, data/lojas-so-pc.json): ${r.mantidasPc} · ${r.perStorePc.join(', ')}`);
 })();
 
 // ── Filtro de visibilidade (NÃO-destrutivo) ──────────────────────────────

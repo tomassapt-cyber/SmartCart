@@ -34,6 +34,11 @@
 #   403 (WAF) aos runners    farmaoli  (todas as corridas na nuvem desde
 #                                       10/10; do PC: 200 e o scraper corre)
 #
+# ⚠️ A lista também vive em data/lojas-so-pc.json (2026-10-14): é dali que o
+# site sabe que estas lojas NUNCA saem por idade e que o freshness-monitor
+# abre a issue «Lojas do PC». Mudar o ORDER = mudar o ficheiro; o teste
+# scripts/test-lojas-so-pc.cjs falha se não baterem certo.
+#
 # USO (da raiz do repo ou de qualquer lado):
 #   bash scripts/refresh-pc-only.sh            # refresh normal (known/resume)
 #   bash scripts/refresh-pc-only.sh --full     # powerbeauty faz re-scan completo
