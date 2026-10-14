@@ -13406,6 +13406,12 @@ async function bundleLiveNow() {
     await carregarOfertas(faltam, { variantes: true });
     // o utilizador pode ter esvaziado o carrinho enquanto esperava
     if (!bundleState.items.size) { box.innerHTML = ''; return; }
+    // As linhas do carrinho foram desenhadas ANTES de as ofertas chegarem (ex.:
+    // «Adicionar tudo» do quiz) e ficavam em «sem stock» / «sem 500 ml
+    // disponível» até à mudança seguinte (2026-10-14). Se chegou alguma coisa,
+    // redesenham-se; o bundleRefresh volta a pedir este resumo, que já não tem
+    // nada a carregar. Se nada chegou (BD em baixo), segue como antes, sem ciclo.
+    if (faltam.some(e => ofertasProntasComVariantes(e))) { bundleRefresh(); return; }
   }
 
   let best = null, saved = 0, shippingUnknown = [];
