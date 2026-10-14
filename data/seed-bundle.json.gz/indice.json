@@ -1007,6 +1007,16 @@
    "outros": {
     "store_slug": "lisbonglam"
    }
+  },
+  {
+   "ficheiro": "ofertas/farmaciacuida.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciacuida"
+   }
   }
  ],
  "outros": {}
