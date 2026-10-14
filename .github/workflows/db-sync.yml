@@ -66,6 +66,11 @@ jobs:
         with:
           node-version: '22'
 
+      # A fusão do mesmo GTIN com/sem zeros (scripts/dedup-ean-variants.js) decide
+      # que produtos e ofertas chegam à BD. Se o teste falhar, não se escreve nada.
+      - name: Teste da fusão de GTIN
+        run: node scripts/test-dedup-ean-variants.cjs
+
       # Sync INCREMENTAL (2026-10-02): o estado do último sync bem-sucedido
       # (impressão digital de cada linha que ficou na BD, ~5 MB) passa de corrida
       # em corrida pela cache do Actions. Com ele o sync envia só o que mudou
