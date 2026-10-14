@@ -72,6 +72,13 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      # O guarda HTTP (scripts/lib/catalog-http.js) aceita o sitemap com 404 só
+      # quando traz XML com links — esta loja serve assim as páginas 2–6.
+      - name: Teste do guarda HTTP
+        run: |
+          node scripts/test-catalog-http-404.cjs
+          node scripts/test-catalog-http-preservation.cjs
+
       - name: Scrape Farmácia Virtual
         run: |
           
