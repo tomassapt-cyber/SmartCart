@@ -66,14 +66,11 @@ jobs:
           #   200 "Client Challenge"   docmorris
           #   429 no 1.º pedido        farmaciaportugal      (2026-09-28)
           #   mapa do site vazio       aminhafarmaciaonline  (2026-09-28)
-          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,farmaciaportugal,aminhafarmaciaonline,balvera"
-          # A skin.pt fica fora dos DOIS gates: tem integrate-skin-catalog.js mas
-          # NÃO tem scraper nenhum, logo está condenada a estar stale e mantê-la
-          # em qualquer gate é pedir um vermelho permanente. Volta quando tiver
-          # scraper. O aviso abaixo existe para não ser esquecida.
-          SEM_SCRAPER="skin"
-          echo "::warning::skin.pt nao tem scraper (so integrador) — fora dos gates de frescura ate' ter um."
-          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY,$SEM_SCRAPER" 2>&1 | tee /tmp/rel-cloud.txt
+          #   2026-10-14: saíram do catálogo skin, fastpharma, farmaciaportugal,
+          #   aminhafarmaciaonline e pharmia (bloqueadas na nuvem e no PC, ou sem
+          #   ofertas) — ver docs/LOJAS.md.
+          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera"
+          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY" 2>&1 | tee /tmp/rel-cloud.txt
 
       - name: Gate das lojas SÓ-PC (limiar folgado — refresh é manual)
         id: pc
@@ -82,7 +79,7 @@ jobs:
           set -o pipefail
           # Continuam a ser vigiadas, mas com 7 dias: se o refresh manual for
           # esquecido a sério, isto falha e avisa.
-          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,fastpharma,afarmaciaonline,docmorris 2>&1 | tee /tmp/rel-pc.txt || {
+          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera 2>&1 | tee /tmp/rel-pc.txt || {
               echo "::warning::Lojas SÓ-PC com mais de 7 dias — correr scripts/refresh-pc-only.sh no PC."
               exit 1
             }

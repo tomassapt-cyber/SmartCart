@@ -53,12 +53,6 @@
   "ponto": 3.95,
   "ponto_txt": "3.95"
  },
- "aminhafarmaciaonline": {
-  "gratis": 45,
-  "casa": 3.95,
-  "ponto": 2.95,
-  "ponto_txt": "2.95"
- },
  "haemiskin": {
   "gratis": 50,
   "casa": 4.99,
@@ -181,12 +175,6 @@
  },
  "shopcosmetics": {
   "gratis": 40,
-  "casa": null,
-  "ponto": null,
-  "ponto_txt": null
- },
- "fastpharma": {
-  "gratis": 34.99,
   "casa": null,
   "ponto": null,
   "ponto_txt": null
@@ -341,12 +329,6 @@
   "casa": 3.4,
   "ponto": null,
   "ponto_txt": "Levantamento em loja"
- },
- "farmaciaportugal": {
-  "gratis": 40,
-  "casa": null,
-  "ponto": null,
-  "ponto_txt": null
  },
  "farmaciagarcia": {
   "gratis": null,

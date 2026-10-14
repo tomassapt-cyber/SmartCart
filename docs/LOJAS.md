@@ -214,6 +214,18 @@ tudo dá timeout) — pausar ≥30 min e retomar só a cauda em falta.
 
 ---
 
+## Lojas retiradas do catálogo (2026-10-14)
+
+| Loja | Ofertas | Parada desde | Motivo (medido a 09/10 e 14/10) |
+|------|--------:|---|---|
+| skin.pt | 3 822 | 24/07 | Nunca teve scraper; Cloudflare 403 aos runners e sem resposta do PC |
+| loja.farmaciaportugal.pt | 1 400 | 01/09 | Mapa do site: 429 no 1.º pedido do scraper, na nuvem e no PC (o `curl` da sonda passa, o scraper não) |
+| fastpharma.pt | 2 723 | 07/09 | Mapa do site: 403 ao scraper na nuvem e ao PC desde 30/09 |
+| aminhafarmaciaonline.pt | 276 | 17/09 | 403 aos runners; desafio no mapa do site a partir do PC |
+| pharmia.pt | 1 | — | Uma única oferta |
+
+Todas estavam escondidas no site (ofertas com mais de 14 dias), mas entravam no número de lojas. Os produtos ficaram (403 sem ofertas, escondidos pelo site). Workflows, scrapers e integradores saíram; voltam pelo histórico do git se a loja deixar de bloquear (sem contornar bloqueios).
+
 ## Candidatas SONDADAS e REJEITADAS (não voltar a tentar)
 
 | Loja | Motivo |
