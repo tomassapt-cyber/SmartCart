@@ -86,7 +86,7 @@ diários (regra de cadência de 2026-07-03: lojas rápidas correm 3×/dia).
 | 51 | Care2Me | 827 | CNP+EAN parcial | sitemap + __GA3ProductDetail (JSON embebido) | ✅ 3× 04h40 |
 | 52 | Quickfarma | 772 | CNP + EAN | WooCommerce; sitemap AIOSEO com CDATA | ✅ 3× 05h50 |
 | 53 | Farmácia Vida+Mais | 758 | CNP + EAN parcial | Dynamo/Selenia SEM sitemap: all-products?p=N → data-ref | ✅ 3× 10h05 |
-| 54 | Farmaoli | 752 | EAN (slug+checksum) | PrestaShop CDATA sitemap; slug-EAN vence tracking | ✅ 3× 07h35 |
+| 54 | Farmaoli | 752 | EAN (slug+checksum) | PrestaShop CDATA sitemap; slug-EAN vence tracking; 403 (WAF) aos runners desde 10/10 | ❌ **só PC** (desde 14/10) |
 | 55 | MiiN Cosmetics | 734 | EAN | PrestaShop microdata gtin13; preço meta product:price:amount (COM IVA) | ✅ 3× 05h45 |
 | 56 | ATCosmetics | 700 | EAN | Shopify products.json; EAN = filename da imagem (checksum) | ✅ 3× 11h05 |
 | 57 | Pharma2you | 649 | fingerprint | feed Google Merchant | ✅ 3× 17h |

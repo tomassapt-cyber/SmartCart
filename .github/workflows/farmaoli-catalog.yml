@@ -9,10 +9,14 @@
 name: Farmaoli daily refresh
 
 on:
-  schedule:
-    - cron: '35 7 * * *'
-    - cron: '35 15 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '35 23 * * *'   # 3x/dia
+  # ⚠️ SEM AGENDAMENTO NA NUVEM desde 2026-10-14 — loja SÓ-PC
+  # (scripts/refresh-pc-only.sh). Aos runners do GitHub a loja responde 403
+  # (WAF) em todas as corridas desde 10/10; do PC responde 200 e o scraper
+  # corre. O botão manual fica, para testar se o bloqueio passou.
+  # schedule:
+  #   - cron: '35 7 * * *'
+  #   - cron: '35 15 * * *'   # 3x/dia (regra do user 2026-07-03)
+  #   - cron: '35 23 * * *'   # 3x/dia
   workflow_dispatch:
     inputs:
       limit:
