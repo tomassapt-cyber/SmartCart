@@ -30,6 +30,10 @@
 # (desafio no mapa do site, PC e nuvem). A skin.pt também saiu (nunca teve
 # scraper). Ver docs/LOJAS.md.
 #
+# E voltou a 9 a 2026-10-14:
+#   403 (WAF) aos runners    farmaoli  (todas as corridas na nuvem desde
+#                                       10/10; do PC: 200 e o scraper corre)
+#
 # USO (da raiz do repo ou de qualquer lado):
 #   bash scripts/refresh-pc-only.sh            # refresh normal (known/resume)
 #   bash scripts/refresh-pc-only.sh --full     # powerbeauty faz re-scan completo
@@ -78,6 +82,7 @@ declare -A SCRAPE=(
   [care2me]="node scripts/scrape-care2me-catalog.js"
   [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
   [balvera]="node scripts/scrape-balvera-catalog.js"
+  [farmaoli]="node scripts/scrape-farmaoli-catalog.js"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 
@@ -85,7 +90,7 @@ declare -A SCRAPE=(
 # lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
 # e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
 # aterrou o mais barato de obter.
-ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me afarmaciaonline balvera)
+ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me afarmaciaonline balvera farmaoli)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"

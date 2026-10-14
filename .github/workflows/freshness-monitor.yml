@@ -69,7 +69,8 @@ jobs:
           #   2026-10-14: saíram do catálogo skin, fastpharma, farmaciaportugal,
           #   aminhafarmaciaonline e pharmia (bloqueadas na nuvem e no PC, ou sem
           #   ofertas) — ver docs/LOJAS.md.
-          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera"
+          #   403 (WAF)                farmaoli              (2026-10-14; do PC: 200)
+          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera,farmaoli"
           node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY" 2>&1 | tee /tmp/rel-cloud.txt
 
       - name: Gate das lojas SÓ-PC (limiar folgado — refresh é manual)
@@ -79,7 +80,7 @@ jobs:
           set -o pipefail
           # Continuam a ser vigiadas, mas com 7 dias: se o refresh manual for
           # esquecido a sério, isto falha e avisa.
-          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera 2>&1 | tee /tmp/rel-pc.txt || {
+          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera,farmaoli 2>&1 | tee /tmp/rel-pc.txt || {
               echo "::warning::Lojas SÓ-PC com mais de 7 dias — correr scripts/refresh-pc-only.sh no PC."
               exit 1
             }
