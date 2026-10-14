@@ -272,6 +272,8 @@ pharmascalabis.com.pt (WooCommerce), farmaciaideal.pt (Magento).
 
 ### Sondagem de 2026-10-09 (regra «só produtos existentes»)
 - **Preparadas (PR à parte):** SkinLovers (skinlovers.com/pt-pt, Skinlovers Lda, Braga) e Ilha dos Cosméticos (ilhadoscosmeticos.pt, Sugestão Bronzeada Lda, Azeitão) — Shopify com código de barras; ver `docs/LOJAS-SHOPIFY-SO-EXISTENTES.md`.
+- **Preparadas a seguir (PR à parte, 09/10 tarde):** Farmácia Cuida (farmaciacuida.com) e Lisbon Glam (lisbonglam.com, Mredis III Lda) — Shopify com código de barras, mesmo modelo; ver `docs/LOJAS-SHOPIFY-SO-EXISTENTES.md`. Glammy (glammy.pt, Farmácia de Gualtar) fica para outro PR (JSON-LD em ISO-8859-1).
+- **Postas de lado na prospeção de 09/10 (tarde):** Nutritienda (403 nos runners), Easypara (403), NewGlow (0 produtos em comum), Farmácia Central do Porto e Farmacia Internacional (sem EAN nem mapa do site), Farmácia Mirafoz/Carvalho (sem EAN), Farmaten (expede das Canárias), farmaciasdirect.com/pt (= farmaciasdirect.pt, já integrada). BeautyOn (1 021 GTIN em comum, mas 1,46×) e Pharmashopi (1,03×, IVA para PT por confirmar) ficam em espera.
 - **beautytheshop.com/pt** (BUYIN EXCLUSIVE S.L., Albolote — mesmo polígono da Parafarma24): ~22 000 fichas /pt com gtin13 no JSON-LD, envio PT 4,90 €, grátis ≥199 €. Amostra de 75: 31% casam com produtos existentes, **1,34× a mediana**, nunca a mais barata. Possível, mas de valor baixo.
 - **365farma.pt**: ~3 800 URLs, sem JSON-LD (Ref = CNP no HTML); 1,18× na sondagem de 2026-10-01. Não prioritária.
 - **Shopify e 429:** a 2 pedidos/s ao `/products/<handle>.js`, duas lojas Shopify em paralelo deram 429 antes dos 200 produtos. O `/products.json` em bloco (250 por pedido, 1 pedido a cada 3 s) não deu nenhum.

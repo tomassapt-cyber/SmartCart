@@ -357,5 +357,19 @@
  },
  "skinlovers": {
   "gratis": 50
+ },
+ "farmaciacuida": {
+  "gratis": 47,
+  "casa": 4.2,
+  "ponto": 2.59,
+  "ponto_txt": "2,59 € (DPD Pickup)",
+  "ilhas": 7.5
+ },
+ "lisbonglam": {
+  "gratis": 39.5,
+  "casa": 2.98,
+  "ponto": null,
+  "ponto_txt": null,
+  "ilhas": 6.99
  }
 }
