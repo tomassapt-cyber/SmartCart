@@ -43,8 +43,8 @@
 {"slug":"perfumes4you","name":"Perfumes4you","base_url":"https://perfumes4you.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.5,"madeira":5.99,"acores":5.99}}
 {"slug":"smartbeauty","name":"Smart Beauty","base_url":"https://www.smartbeauty.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.5,"madeira":5.99,"acores":5.99}}
 {"slug":"beleza37","name":"Beleza37","base_url":"https://www.beleza37.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.5,"madeira":5.99,"acores":5.99}}
-{"slug":"pharmavida","name":"Pharmavida","base_url":"https://www.pharmavida (ver header)","logo_url":null,"free_shipping_threshold":39,"shipping_zones":{"mainland":3.99,"madeira":3.99,"acores":3.99}}
-{"slug":"cosmeticfan","name":"CosmeticFan","base_url":"https://www.cosmeticfan (ver header)","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.99,"madeira":3.99,"acores":3.99}}
+{"slug":"pharmavida","name":"Pharmavida","base_url":"https://pharmavida.pt","logo_url":null,"free_shipping_threshold":39,"shipping_zones":{"mainland":3.99,"madeira":3.99,"acores":3.99}}
+{"slug":"cosmeticfan","name":"CosmeticFan","base_url":"https://www.cosmeticfan.com","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.99,"madeira":3.99,"acores":3.99}}
 {"slug":"pharmee","name":"Pharmee","base_url":"https://www.pharmeestore.com","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"care2me","name":"Care2Me","base_url":"https://www.care2me.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"farmatogo","name":"FarmaToGo","base_url":"https://www.farmatogo.com","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
@@ -60,8 +60,8 @@
 {"slug":"farmacia2u","name":"Farmácia2U","base_url":"https://www.farmacia2u.com","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"lowcost","name":"Farmácias LowCost","base_url":"https://www.farmaciaslowcost.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"camelo","name":"Farmácia Camelo","base_url":"https://www.farmaciacamelo.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
-{"slug":"storekbeauty","name":"Store K-Beauty","base_url":"//www.storekbeauty.com","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
-{"slug":"miin","name":"MiiN Cosmetics","base_url":"//miin-cosmetics.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
+{"slug":"storekbeauty","name":"Store K-Beauty","base_url":"https://www.storekbeauty.com","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
+{"slug":"miin","name":"MiiN Cosmetics","base_url":"https://miin-cosmetics.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"dermis","name":"Dermis","base_url":"https://dermis.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"farmaciasprogresso","name":"Farmácias Progresso","base_url":"https://www.farmaciasprogresso.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}
 {"slug":"farmacentral","name":"Farmacentral","base_url":"https://farmacentral.pt","logo_url":null,"free_shipping_threshold":49,"shipping_zones":{"mainland":3.95,"madeira":3.95,"acores":3.95}}

@@ -56,7 +56,7 @@ const isRealEan = e => /^\d{12,14}$/.test(e || '');
   if (!seed.stores.some(s => s.slug === STORE_SLUG)) {
     seed.stores.push({
       slug: STORE_SLUG, name: 'CosmeticFan',
-      base_url: 'https://www.cosmeticfan (ver header)', logo_url: null,
+      base_url: 'https://www.cosmeticfan.com', logo_url: null,
       free_shipping_threshold: 49,
       shipping_zones: { mainland: 3.99, madeira: 3.99, acores: 3.99 },
     });
