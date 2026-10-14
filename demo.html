@@ -13006,6 +13006,11 @@ async function renderSponsoredCarousel() {
 
   slidesEl.innerHTML = items.map((p, i) => {
     const best = bestOfferFor(p.ean);
+    // Sem ofertas da base de dados (a carregar, ou BD em baixo — o 402 de
+    // outubro de 2026), o «desde» vem do índice, como no cartão do catálogo.
+    // Antes ficava «—» nos 5 slides, a primeira coisa que se vê na página.
+    const _st = best ? null : statsByEanMap()[p.ean];
+    const desde = best ? best.price : (_st ? (_st.absBest ?? _st.bestPrice) : null);
     const initial = brandInitial(p.brand);
     return `
       <div class="sponsored-slide ${i === 0 ? 'active' : ''}" data-idx="${i}" data-ean="${p.ean}">
@@ -13020,7 +13025,7 @@ async function renderSponsoredCarousel() {
           <div class="sponsored-slide-meta">
             <div>
               <span class="sponsored-slide-price-from">desde</span>
-              <span class="sponsored-slide-price">${best ? best.price.toFixed(2) + '€' : '—'}</span>
+              <span class="sponsored-slide-price">${desde != null ? Number(desde).toFixed(2) + '€' : '—'}</span>
             </div>
             ${best ? `<span>${best.store.name}</span>` : ''}
           </div>
