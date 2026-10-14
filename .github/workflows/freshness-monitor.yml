@@ -70,20 +70,54 @@ jobs:
           #   aminhafarmaciaonline e pharmia (bloqueadas na nuvem e no PC, ou sem
           #   ofertas) — ver docs/LOJAS.md.
           #   403 (WAF)                farmaoli              (2026-10-14; do PC: 200)
-          PC_ONLY="notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera,farmaoli"
+          #
+          # Desde 2026-10-14 a lista vive SÓ em data/lojas-so-pc.json (inclui a
+          # Maia, recolhida no PC); antes estava copiada à mão em 3 sítios.
+          PC_ONLY=$(node -p "Object.keys(require('./data/lojas-so-pc.json').lojas).join(',')")
           node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY" 2>&1 | tee /tmp/rel-cloud.txt
 
-      - name: Gate das lojas SÓ-PC (limiar folgado — refresh é manual)
-        id: pc
-        continue-on-error: true
+      # ══════════════════════════════════════════════════════════════════════
+      # LOJAS DO PC — aviso PRÓPRIO (2026-10-14). Decisão do Tomás: as lojas do
+      # PC nunca saem do site por idade (scripts/lib/catalog-visibility.js), é
+      # só correr o refresh; em troca quer uma nota quando passar muito tempo.
+      # Antes iam na mesma issue que a nuvem, que por isso nunca fechava e
+      # nunca voltava a notificar. Agora:
+      #   alguma passa dos avisar_dias -> ABRE «Lojas do PC…» com @dono (notifica)
+      #   continua atrasada            -> actualiza o corpo; a cada 7 dias a mais
+      #                                   da mais atrasada, um LEMBRETE (notifica)
+      #   todas em dia                 -> FECHA com comentário
+      # Não pinta o job de vermelho: atraso do PC não é avaria da nuvem.
+      # ══════════════════════════════════════════════════════════════════════
+      - name: Teste das lojas do PC
+        run: node scripts/test-lojas-so-pc.cjs
+
+      - name: Aviso das lojas do PC (issue própria, lembrete semanal)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          set -o pipefail
-          # Continuam a ser vigiadas, mas com 7 dias: se o refresh manual for
-          # esquecido a sério, isto falha e avisa.
-          node scripts/freshness-report.js --strict --stale-days=7             --only=notino,powerbeauty,sobeauty,smartbeauty,beleza37,care2me,afarmaciaonline,balvera,farmaoli 2>&1 | tee /tmp/rel-pc.txt || {
-              echo "::warning::Lojas SÓ-PC com mais de 7 dias — correr scripts/refresh-pc-only.sh no PC."
-              exit 1
-            }
+          set -uo pipefail
+          TITULO='Lojas do PC: está na altura de correr o refresh'
+          node scripts/aviso-lojas-pc.js --md=/tmp/pc.md --estado=/tmp/pc.env
+          . /tmp/pc.env
+          gh issue list --state open --limit 100 --json number,title \
+            --template '{{range .}}{{.number}}|{{.title}}{{"\n"}}{{end}}' > /tmp/issues-pc.txt || true
+          NUM=$(grep -F "|$TITULO" /tmp/issues-pc.txt | head -1 | cut -d"|" -f1 || true)
+          if [ "$ATRASADAS" = '0' ]; then
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --body "Todas as lojas do PC com menos de ${AVISAR_DIAS} dias na corrida de $(date -u '+%F %H:%M') UTC. A fechar."
+              gh issue close "$NUM"
+            fi
+            exit 0
+          fi
+          if [ -z "$NUM" ]; then
+            gh issue create --title "$TITULO" --body-file /tmp/pc.md && echo 'Issue das lojas do PC aberta.'
+          else
+            gh issue edit "$NUM" --body-file /tmp/pc.md
+            if [ "$LEMBRETE" = '1' ]; then
+              gh issue comment "$NUM" --body "@${{ github.repository_owner }} lembrete: a loja do PC mais atrasada já vai em ${MAX_DIAS} dias — corre o refresh (comandos na descrição)."
+            fi
+          fi
 
       # ══════════════════════════════════════════════════════════════════════
       # O AVISO. Sem isto o monitor era mais uma corrida vermelha entre ~200 por
@@ -101,7 +135,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           FALHOU_CLOUD: ${{ steps.cloud.outcome }}
-          FALHOU_PC: ${{ steps.pc.outcome }}
         run: |
           set -uo pipefail
           TITULO='Monitor de frescura: lojas desactualizadas'
@@ -109,7 +142,7 @@ jobs:
 
           HA_PROBLEMA=0
           [ "$FALHOU_CLOUD" = 'failure' ] && HA_PROBLEMA=1
-          [ "$FALHOU_PC" = 'failure' ] && HA_PROBLEMA=1
+          # as lojas do PC têm issue própria (passo anterior) desde 2026-10-14
 
           # a issue aberta, se existir (procura por titulo; nao depende de labels)
           # Sem --search e sem escapes aninhados. Duas razoes: o indice de
@@ -145,10 +178,7 @@ jobs:
             grep -E '^[[:space:]]*(❌|✅|-[[:space:]]*[0-9]+[[:space:]]*loja|ℹ Stale mas IGNORADAS)' /tmp/rel-cloud.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
             echo '```'
             echo
-            echo '## Lojas so-PC (limiar 7 dias — `scripts/refresh-pc-only.sh`)'
-            echo '```'
-            grep -E '^[[:space:]]*(❌|✅|-[[:space:]]*[0-9]+[[:space:]]*loja|ℹ Stale mas IGNORADAS)' /tmp/rel-pc.txt 2>/dev/null | head -20 || echo '(sem relatorio)'
-            echo '```'
+            echo 'As lojas do PC têm issue própria («Lojas do PC: está na altura de correr o refresh»).'
             echo
             echo '<details><summary>Relatorio completo por loja</summary>'
             echo
@@ -172,7 +202,7 @@ jobs:
         run: |
           # O continue-on-error dos gates existe para o aviso poder correr. O
           # desfecho do job tem de continuar a refletir a verdade.
-          if [ '${{ steps.cloud.outcome }}' = 'failure' ] || [ '${{ steps.pc.outcome }}' = 'failure' ]; then
+          if [ '${{ steps.cloud.outcome }}' = 'failure' ]; then
             echo 'Um dos gates falhou — ver a issue.'
             exit 1
           fi
