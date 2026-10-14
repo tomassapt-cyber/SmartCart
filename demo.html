@@ -11023,6 +11023,18 @@ function setSearchQuery(val, fromEl) {
   if (cw) cw.classList.toggle('has-text', !!val);
   catalogPaging.currentPage = 1;
   renderCatalog();
+  // A pesquisa fica no endereço (?q=…) para se poder partilhar e reabrir
+  // (2026-10-14). replaceState: escrever letra a letra não enche o histórico.
+  // Na ficha (/produto/…) o endereço é do produto e não se mexe; o canonical
+  // continua a ser «/», por isso as pesquisas não entram no Google.
+  try {
+    if (!/^\/produto\//.test(location.pathname)) {
+      const u = new URL(location.href);
+      const v = String(val || '').trim();
+      if (v) u.searchParams.set('q', v); else u.searchParams.delete('q');
+      if (u.href !== location.href) history.replaceState(history.state, '', u.pathname + u.search + u.hash);
+    }
+  } catch (e) {}
 }
 // ── Hero search: dropdown de até 5 sugestões + CTA para o quizz ──
 // (substitui o live-filter; a barra do hero "diz o que procuras" e sugere)
@@ -11142,6 +11154,19 @@ document.getElementById('catalog-search-clear')?.addEventListener('click', () =>
   setSearchQuery('', null);
   document.getElementById('catalog-search-input')?.focus();
 });
+// Pesquisa vinda do endereço (?q=…): uma ligação partilhada abre já com os
+// resultados. Pede-se primeiro o índice — sem ele a pesquisa só veria os 150
+// produtos do bloco de arranque e diria «sem resultados» a coisas que existem.
+(function pesquisaDoEndereco() {
+  let q = '';
+  try { q = (new URLSearchParams(location.search).get('q') || '').trim().slice(0, 100); } catch (e) {}
+  if (!q) return;
+  const aplicar = () => {
+    setSearchQuery(q, null);
+    document.getElementById('search-results-section')?.scrollIntoView();
+  };
+  if (typeof garantirIndice === 'function') garantirIndice().then(aplicar, aplicar); else aplicar();
+})();
 document.getElementById('catalog-clear')?.addEventListener('click', () => setCategoryFilter(''));
 
 // Category modal handlers
