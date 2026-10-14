@@ -44,7 +44,13 @@ function applyVerifiedShipping(seedJson, root) {
     }
     if (v.casa != null) {
       st.shipping_zones = st.shipping_zones || {};
-      const ilhas = v.ilhas != null ? v.ilhas : v.casa;
+      // 'ilhas' AUSENTE = a loja não distingue as ilhas → vale a tarifa de casa.
+      // 'ilhas': null PRESENTE (2026-10-14) = verificado que NÃO se sabe o custo
+      // para Madeira/Açores (a loja não envia, ou cobra por peso). Fica null e o
+      // carrinho trata-o como desconhecido (#36): «Portes calculados no
+      // checkout», fora das combinações para essa zona. Antes, estas lojas
+      // apareciam às ilhas com o preço do continente.
+      const ilhas = 'ilhas' in v ? v.ilhas : v.casa;
       if (st.shipping_zones.mainland !== v.casa || st.shipping_zones.madeira !== ilhas || st.shipping_zones.acores !== ilhas) {
         st.shipping_zones.mainland = v.casa;
         st.shipping_zones.madeira = ilhas;
