@@ -25,9 +25,10 @@
 #   403 "Just a moment..."   balvera  (perfumaria de Pombal, loja 91 — entrou
 #                                      já como só-PC)
 #
-# Falta a skin.pt: tem integrate-skin-catalog.js mas NÃO tem scraper nenhum —
-# as 3.834 ofertas dela nunca foram automatizadas. Enquanto não houver scraper,
-# não entra aqui.
+# E desceu para 8 a 2026-10-14: saíram do catálogo fastpharma (403 também do
+# PC), farmaciaportugal (429 no 1.º pedido, PC e nuvem) e aminhafarmaciaonline
+# (desafio no mapa do site, PC e nuvem). A skin.pt também saiu (nunca teve
+# scraper). Ver docs/LOJAS.md.
 #
 # USO (da raiz do repo ou de qualquer lado):
 #   bash scripts/refresh-pc-only.sh            # refresh normal (known/resume)
@@ -75,10 +76,7 @@ declare -A SCRAPE=(
   [notino]="node scripts/scrape-notino-catalog.js --match-seed"
   [powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --known-only"
   [care2me]="node scripts/scrape-care2me-catalog.js"
-  [fastpharma]="node scripts/scrape-fastpharma-catalog.js"
   [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
-  [farmaciaportugal]="node scripts/scrape-farmaciaportugal-catalog.js --concurrency=5 --delay=250"
-  [aminhafarmaciaonline]="node scripts/scrape-aminhafarmaciaonline-catalog.js --concurrency=5 --delay=250"
   [balvera]="node scripts/scrape-balvera-catalog.js"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
@@ -87,7 +85,7 @@ declare -A SCRAPE=(
 # lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
 # e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
 # aterrou o mais barato de obter.
-ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me fastpharma afarmaciaonline farmaciaportugal aminhafarmaciaonline balvera)
+ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me afarmaciaonline balvera)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"
