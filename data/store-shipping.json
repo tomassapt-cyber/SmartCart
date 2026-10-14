@@ -371,5 +371,12 @@
   "ponto": null,
   "ponto_txt": null,
   "ilhas": 6.99
+ },
+ "glammy": {
+  "gratis": 45,
+  "casa": 3.95,
+  "ponto": 2.5,
+  "ponto_txt": "2,50 € (pickup; grátis ≥30 €)",
+  "ilhas": 14
  }
 }
