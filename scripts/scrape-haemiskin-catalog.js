@@ -4,15 +4,22 @@
  * ============================================================
  *
  * haemiskin.pt é Shopify (boutique K-beauty: COSRX, Anua, Heimish,
- * Beauty of Joseon, etc.). Cada PDP (/products/<handle>) expõe um
- * JSON-LD Product limpo com gtin13 (EAN real) + offers (price/availability).
+ * Beauty of Joseon, etc.). Cada produto tem /products/<handle>.js (JSON da
+ * Shopify) com o código de barras (EAN real), preço e stock DE CADA VARIANTE.
+ *
+ * 2026-10-14: o tema novo deixou de pôr o JSON-LD Product com gtin13/offers
+ * na página (só fica o das avaliações Judge.me, sem preço nem EAN) e a recolha
+ * dava 0 produtos desde 28/09. O .js tem poucos KB (a página tem 1,2 MB) e
+ * separa as variantes — o JSON-LD juntava o preço mínimo de todas ao EAN da
+ * primeira (ex.: ampola 55 ml esgotada com o preço dela e «em stock» por causa
+ * da de 100 ml). Uma entrada por variante com EAN; a 2.ª+ leva ?variant=<id>.
  *
  * Sem Playwright/ScrapingBee — fetch HTTP simples basta. EAN global (GTIN-13)
  * → cross-store matching forte com o catálogo existente.
  *
  * Pipeline:
  *  1. /sitemap.xml → sitemap_products_*.xml → URLs /products/
- *  2. Para cada URL: JSON-LD (gtin13/nome/marca/preço/stock/img)
+ *  2. Para cada URL: <url>.js → uma entrada por variante (barcode/preço/stock)
  *  3. Checkpoint a cada 50
  *
  * Uso:
@@ -39,7 +46,9 @@ const args = Object.fromEntries(
 );
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const RESUME = !!args.resume;
-const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 4;
+// Um pedido de cada vez: o guarda HTTP pára a recolha toda ao primeiro 429 da
+// Shopify, e são só ~140 produtos (~2 min).
+const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 1;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 400;
 const CHECKPOINT_EVERY = 50;
 
@@ -121,21 +130,55 @@ function extractProductData(html, url) {
   return null;
 }
 
-async function fetchPage(url, attempt = 1) {
+/** /products/<handle>.js → [{ ean, name, brand, price, in_stock, … }] (uma por variante com EAN) ou null */
+function extractFromShopifyJs(body, url) {
+  let j;
+  try { j = JSON.parse(body); } catch { return null; }
+  if (!j || !Array.isArray(j.variants) || !j.title) return null;
+  const abs = u => (u && String(u).startsWith('//') ? 'https:' + u : u) || null;
+  const brand = j.vendor ? String(j.vendor).trim() : null;
+  const out = [];
+  for (const v of j.variants) {
+    const ean = v.barcode != null ? String(v.barcode).trim() : '';
+    if (!/^\d{12,14}$/.test(ean) || /0{6,}/.test(ean)) continue;
+    const price = Number(v.price) / 100;
+    if (!(price > 0)) continue;
+    const variante = v.title && v.title !== 'Default Title' && j.variants.length > 1 ? ' ' + String(v.title).trim() : '';
+    const name = String(j.title).trim() + variante;
+    out.push({
+      url: out.length === 0 ? url : url + '?variant=' + v.id,
+      page_url: url,
+      name,
+      brand,
+      ean,
+      sku: v.sku ? String(v.sku) : null,
+      image_url: abs(v.featured_image && v.featured_image.src) || abs(j.featured_image),
+      price,
+      previous_price: null,
+      in_stock: !!v.available,
+      volume_ml: volumeFromName(name),
+      category: null,
+      variants: [],
+    });
+  }
+  return out.length ? out : null;
+}
+
+async function fetchPage(url, attempt = 1, accept = 'text/html') {
   try {
     const r = await fetch(url, {
-      headers: { 'User-Agent': UA, 'Accept': 'text/html', 'Accept-Language': 'pt-PT,pt;q=0.9' },
+      headers: { 'User-Agent': UA, 'Accept': accept, 'Accept-Language': 'pt-PT,pt;q=0.9' },
       redirect: 'follow',
     });
     if (r.status === 404) return { status: 'not_found' };
     if (r.status === 429 || r.status >= 500) {
-      if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); }
+      if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1, accept); }
       return { status: 'http_error', http: r.status };
     }
     return { status: 'ok', html: await r.text() };
   } catch (e) {
     if (e.catalogFatal) throw e;
-    if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1); }
+    if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchPage(url, attempt + 1, accept); }
     return { status: 'fetch_error', error: e.message };
   }
 }
@@ -158,14 +201,14 @@ function loadCheckpoint() {
   try {
     const d = JSON.parse(fs.readFileSync(CHECKPOINT_FILE, 'utf8'));
     if (!Array.isArray(d.products)) return null;
-    return { products: d.products, done: new Set(d.products.map(p => p.url)) };
+    return { products: d.products, done: new Set(d.products.map(p => p.page_url || p.url)) };
   } catch { return null; }
 }
 function saveCheckpoint(products, inProgress = true) {
   if (LIMIT !== Infinity || products.length === 0) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
   fs.writeFileSync(CHECKPOINT_FILE, JSON.stringify({
     scraped_at: new Date().toISOString(),
-    source: 'haemiskin.pt (Shopify, HTTP + JSON-LD gtin13)',
+    source: 'haemiskin.pt (Shopify, /products/<handle>.js — barcode por variante)',
     in_progress: inProgress,
     products,
   }), 'utf8'); if (!inProgress) fs.renameSync(CHECKPOINT_FILE, OUT_FILE);
@@ -195,11 +238,11 @@ async function main() {
   async function worker() {
     while (idx < queue.length) {
       const url = queue[idx++];
-      const r = await fetchPage(url);
+      const r = await fetchPage(url + '.js', 1, 'application/json');
       const scraped_at = new Date().toISOString();
       if (r.status === 'ok') {
-        const data = extractProductData(r.html, url);
-        if (data) { products.push({ url, status: 'ok', scraped_at, ...data }); stats.ok++; }
+        const data = extractFromShopifyJs(r.html, url);
+        if (data) { for (const d of data) products.push({ status: 'ok', scraped_at, ...d }); stats.ok++; }
         else { reportEmptyProduct(r.html); stats.skipped++; }
       } else if (r.status === 'not_found') { stats.not_found++; }
       else { stats.error++; }
@@ -228,7 +271,7 @@ async function main() {
   console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
 }
 
-module.exports = { extractProductData, fetchPage, slugFromUrl, isProductUrl, discoverProductUrls };
+module.exports = { extractProductData, extractFromShopifyJs, fetchPage, slugFromUrl, isProductUrl, discoverProductUrls };
 
 if (require.main === module) {
   main().catch(e => { console.error('FATAL', e); process.exit(1); });
