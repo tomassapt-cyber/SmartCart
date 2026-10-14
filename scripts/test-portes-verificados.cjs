@@ -24,13 +24,13 @@ caso('formato: indentação de 1 espaço, LF, \\n final', () => {
 });
 
 caso('cada entrada só tem campos conhecidos, com valores válidos', () => {
-  const CAMPOS = new Set(['gratis', 'casa', 'ilhas', 'ponto', 'ponto_txt']);
+  const CAMPOS = new Set(['gratis', 'casa', 'ilhas', 'gratis_ilhas', 'ponto', 'ponto_txt']);
   const numOuNull = v => v === null || (typeof v === 'number' && Number.isFinite(v) && v >= 0);
   for (const [slug, v] of Object.entries(ship)) {
     assert.equal(typeof v, 'object', slug);
     for (const k of Object.keys(v)) assert.ok(CAMPOS.has(k), `${slug}: campo desconhecido ${k}`);
     // casa: null = «só no checkout» (limiar verificado, tarifa por saber)
-    for (const k of ['gratis', 'casa', 'ilhas', 'ponto']) if (k in v) assert.ok(numOuNull(v[k]), `${slug}.${k}`);
+    for (const k of ['gratis', 'casa', 'ilhas', 'gratis_ilhas', 'ponto']) if (k in v) assert.ok(numOuNull(v[k]), `${slug}.${k}`);
     if ('ponto_txt' in v) assert.ok(v.ponto_txt === null || typeof v.ponto_txt === 'string', `${slug}.ponto_txt`);
   }
 });
@@ -120,6 +120,37 @@ caso('carrinho: loja com ilhas desconhecidas entra no continente e sai das combi
   assert.equal(res.solutions[0].stores_used[0], 'outra');
   assert.equal(res.solutions[0].total, 21);
   assert.ok(res.solutions.every(s => !s.stores_used.includes('liga')));
+});
+
+
+caso('gratis_ilhas: número, null (nunca grátis nas ilhas) e ausente (= o geral)', () => {
+  const r = aplicar({ a: { gratis: 99, casa: 4.95, ilhas: 5.95, gratis_ilhas: 249 }, b: { gratis: 39, casa: 2.99, ilhas: 13, gratis_ilhas: null }, c: { gratis: 25, casa: 3.49, ilhas: 5.99 } },
+    [adivinhada('a'), adivinhada('b'), adivinhada('c')]);
+  assert.equal(r.a.shipping_zones.gratis_ilhas, 249);
+  assert.equal(r.b.shipping_zones.gratis_ilhas, null);
+  assert.ok(!('gratis_ilhas' in r.c.shipping_zones));
+});
+
+caso('carrinho: limiar próprio das ilhas — grátis no continente não promete grátis nas ilhas', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8');
+  const extrair = (ini, fim) => { const a = html.indexOf(ini), b = html.indexOf(fim, a); assert.ok(a >= 0 && b > a, ini); return html.slice(a, b); };
+  const code = extrair('function shippingForStore(', '// STATE') + extrair('function optimizeBundle(', 'function renderResults(');
+  const r = aplicar({ uni: { gratis: 39, casa: 2.99, ilhas: 13, gratis_ilhas: null }, nou: { gratis: 99, casa: 4.95, ilhas: 5.95, gratis_ilhas: 249 } },
+    [adivinhada('uni'), adivinhada('nou')]);
+  const ctx = {
+    STORE_BY_SLUG: { uni: { ...r.uni, name: 'Uni' }, nou: { ...r.nou, name: 'Nou' } },
+    OFFERS_BY_PRODUCT: { a: { uni: { in_stock: true, price: 60, url: 'https://example.invalid/a' } }, b: { nou: { in_stock: true, price: 120, url: 'https://example.invalid/b' } } },
+    PRODUCT_BY_EAN: { a: { name: 'A', brand: 'M' }, b: { name: 'B', brand: 'M' } },
+    bundleState: { volumes: new Map() }, ofertasProntasComVariantes: () => true,
+    Set, Map, Object, Array, Math, Number, Infinity,
+  };
+  vm.createContext(ctx); vm.runInContext(code, ctx);
+  // 60 € na Uni: continente grátis (≥39); Açores paga 13 € (nas ilhas nunca é grátis)
+  assert.equal(ctx.optimizeBundle([{ ean: 'a', qty: 1 }], 'nacional').solutions[0].total, 60);
+  assert.equal(ctx.optimizeBundle([{ ean: 'a', qty: 1 }], 'Açores').solutions[0].total, 73);
+  // 120 € na Nou: continente grátis (≥99); Madeira paga 5,95 € (só grátis ≥249)
+  assert.equal(ctx.optimizeBundle([{ ean: 'b', qty: 1 }], 'nacional').solutions[0].total, 120);
+  assert.equal(ctx.optimizeBundle([{ ean: 'b', qty: 1 }], 'Madeira').solutions[0].total, 125.95);
 });
 
 console.log(`\n${n}/${n} casos passaram`);

@@ -9050,6 +9050,21 @@ function shippingForStore(slug, zone) {
   const value = store.shipping_zones[zone === 'Madeira' ? 'madeira' : zone === 'Açores' ? 'acores' : 'mainland'];
   return value == null || !Number.isFinite(Number(value)) || Number(value) < 0 ? null : Number(value);
 }
+/**
+ * Limiar de portes grátis da loja PARA ESTA ZONA (2026-10-14). Quase todas as
+ * lojas só dão portes grátis no continente; nas ilhas cobram sempre ou a partir
+ * de outro valor (ex.: 249 €). Com um limiar único, o carrinho prometia
+ * «portes grátis» nas ilhas que não existem. shipping_zones.gratis_ilhas:
+ * número = grátis nas ilhas a partir daí; null = nas ilhas nunca é grátis;
+ * ausente = o limiar geral. Devolve Infinity quando nunca é grátis.
+ */
+function limiarGratis(store, zone) {
+  if (!store) return Infinity;
+  const z = store.shipping_zones;
+  const ilhas = zone === 'Madeira' || zone === 'Açores';
+  const v = ilhas && z && Object.prototype.hasOwnProperty.call(z, 'gratis_ilhas') ? z.gratis_ilhas : store.free_shipping_threshold;
+  return v == null || !Number.isFinite(Number(v)) ? Infinity : Number(v);
+}
 
 // ============================================================
 // STATE
@@ -13520,7 +13535,7 @@ async function bundleLiveNow() {
   let nudge = '';
   const perto = best.breakdown
     .filter(b => !b.free_shipping && b.shipping > 0)
-    .map(b => { const st = STORE_BY_SLUG[b.store_slug]; const th = st && st.free_shipping_threshold; return th != null ? { nome: b.store_name, falta: th - b.subtotal, poupa: b.shipping } : null; })
+    .map(b => { const st = STORE_BY_SLUG[b.store_slug]; const th = limiarGratis(st, bundleState.zone); return Number.isFinite(th) ? { nome: b.store_name, falta: th - b.subtotal, poupa: b.shipping } : null; })
     .filter(x => x && x.falta > 0 && x.falta <= 8)
     .sort((a, b) => a.falta - b.falta)[0];
   if (perto) nudge = `<div class="bundle-live-nudge">💡 Faltam <strong>${perto.falta.toFixed(2)}€</strong> para portes grátis na ${perto.nome} (pouparias ${perto.poupa.toFixed(2)}€)</div>`;
@@ -13775,7 +13790,7 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
     const ship = shippingForStore(slug, zone);
     if (ship == null) return null;
     // uma loja desconhecida nunca oferece portes: sem limiar conhecido, cobra-se
-    const free = subtotal >= (store.free_shipping_threshold ?? Infinity);
+    const free = subtotal >= limiarGratis(store, zone);
     const shipping = free ? 0 : ship;
     breakdown.push({
       store_slug: slug,
@@ -13829,7 +13844,7 @@ async function runAnalysis() {
       for (const b of (s.breakdown || [])) {
         if (b.free_shipping) continue;
         const loja = STORE_BY_SLUG[b.store_slug];
-        const limite = (loja && loja.free_shipping_threshold) || 0;
+        const limite = Number.isFinite(limiarGratis(loja, bundleState.zone)) ? limiarGratis(loja, bundleState.zone) : 0;
         if (!limite || limite >= 9999) continue;
         const falta = limite - b.subtotal;
         if (falta > 0 && !pedidos.some(x => x.store_slug === b.store_slug)) {
@@ -14042,7 +14057,7 @@ function storeLineHTML(b) {
     ? `<a class="buy-btn" href="${b.lines[0].url}" target="_blank" rel="noopener">Comprar na ${b.store_name} →</a>`
     : `<button class="buy-btn" data-store-buy='${JSON.stringify({name:b.store_name,urls:b.lines.map(l=>l.url)}).replace(/'/g,"&apos;")}'>Abrir os ${b.lines.length} na ${b.store_name} →</button>`;
 
-  const storeThr = STORE_BY_SLUG[b.store_slug]?.free_shipping_threshold ?? Infinity;
+  const storeThr = limiarGratis(STORE_BY_SLUG[b.store_slug], bundleState.zone);
   const neverFree = storeThr >= 9999;   // sentinela: loja sem portes grátis
   const shippingLabel = b.free_shipping
     ? '<span class="free-ship">Envio grátis ✓</span>'
@@ -14105,7 +14120,7 @@ async function carregarCandidatosUpsell(pedidos) {
 function freeShippingUpsellHTML(b) {
   if (b.free_shipping) return '';
   const store = STORE_BY_SLUG[b.store_slug];
-  const threshold = store?.free_shipping_threshold ?? 0;
+  const threshold = Number.isFinite(limiarGratis(store, bundleState.zone)) ? limiarGratis(store, bundleState.zone) : 0;
   if (!threshold || threshold >= 9999) return '';   // sem limite / nunca grátis (sentinela)
   const gap = threshold - b.subtotal;
   if (gap <= 0) return '';

@@ -57,6 +57,14 @@ function applyVerifiedShipping(seedJson, root) {
         st.shipping_zones.acores = ilhas;
         tocada = true;
       }
+      // 'gratis_ilhas' (2026-10-14): limiar de portes grátis PRÓPRIO das ilhas.
+      // Ausente = o mesmo de 'gratis'; null = nas ilhas nunca é grátis; número =
+      // grátis nas ilhas a partir desse valor. Vai dentro de shipping_zones: o
+      // bloco de arranque leva-o ao site tal como está, e a BD ignora-o.
+      if ('gratis_ilhas' in v && st.shipping_zones.gratis_ilhas !== v.gratis_ilhas) {
+        st.shipping_zones.gratis_ilhas = v.gratis_ilhas;
+        tocada = true;
+      }
     }
     if (v.ponto != null && st.pickup_cost !== v.ponto) {
       st.pickup_cost = v.ponto;

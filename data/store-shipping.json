@@ -144,10 +144,12 @@
   "ponto_txt": null
  },
  "farmatogo": {
-  "gratis": 49,
-  "casa": null,
-  "ponto": null,
-  "ponto_txt": "Pickup CTT disponível"
+  "gratis": 99,
+  "casa": 4.95,
+  "ilhas": 5.95,
+  "gratis_ilhas": 249,
+  "ponto": 2.95,
+  "ponto_txt": "2,95 € (InPost/Nacex; grátis ≥55 €)"
  },
  "docmorris": {
   "gratis": null,
@@ -157,7 +159,8 @@
  },
  "atuafarmacia": {
   "gratis": 55,
-  "casa": null,
+  "casa": 4.11,
+  "ilhas": null,
   "ponto": null,
   "ponto_txt": null
  },
@@ -169,9 +172,11 @@
  },
  "quickfarma": {
   "gratis": 50,
-  "casa": null,
-  "ponto": null,
-  "ponto_txt": null
+  "casa": 3.99,
+  "ilhas": 35.9,
+  "gratis_ilhas": null,
+  "ponto": 3,
+  "ponto_txt": "3,00 € (ponto Nacex, até 2 kg)"
  },
  "shopcosmetics": {
   "gratis": 40,
@@ -181,9 +186,11 @@
  },
  "unifarma": {
   "gratis": 39,
-  "casa": null,
-  "ponto": null,
-  "ponto_txt": null
+  "casa": 2.99,
+  "ilhas": 13,
+  "gratis_ilhas": null,
+  "ponto": 2.99,
+  "ponto_txt": "2,99 € (DPD Pickup)"
  },
  "nossafarmacia": {
   "gratis": 55,
@@ -211,7 +218,8 @@
  },
  "hiperfarma": {
   "gratis": null,
-  "casa": null,
+  "casa": 3.74,
+  "ilhas": 12.5,
   "ponto": null,
   "ponto_txt": null
  },
@@ -223,9 +231,10 @@
  },
  "farmaciapt": {
   "gratis": 40,
-  "casa": null,
-  "ponto": null,
-  "ponto_txt": null
+  "casa": 3.4,
+  "ilhas": null,
+  "ponto": 2.4,
+  "ponto_txt": "2,40 € (InPost; 1,15 € entre 25 € e 39,99 €)"
  },
  "pharmee": {
   "gratis": null,
@@ -235,7 +244,8 @@
  },
  "powerbeauty": {
   "gratis": 49,
-  "casa": null,
+  "casa": 4.95,
+  "ilhas": null,
   "ponto": null,
   "ponto_txt": null
  },
@@ -337,26 +347,31 @@
   "ponto_txt": null
  },
  "skpro": {
-  "gratis": 65,
-  "casa": null,
+  "gratis": 98.4,
+  "casa": 4.5,
+  "ilhas": 11.99,
+  "gratis_ilhas": null,
   "ponto": null,
   "ponto_txt": null
  },
  "vidamais": {
   "gratis": 39,
-  "casa": null,
+  "casa": 3.95,
+  "ilhas": null,
   "ponto": null,
   "ponto_txt": null
  },
  "atcosmetics": {
   "gratis": 25,
-  "casa": null,
+  "casa": 3.49,
+  "ilhas": 5.99,
   "ponto": null,
-  "ponto_txt": null,
-  "ilhas": null
+  "ponto_txt": null
  },
  "skinlovers": {
-  "gratis": 50
+  "gratis": 50,
+  "casa": 4.48,
+  "ilhas": null
  },
  "farmaciacuida": {
   "gratis": 47,
@@ -418,7 +433,11 @@
   "ponto_txt": "3,35 € (ponto de recolha)"
  },
  "megafarma": {
-  "gratis": 39.95
+  "gratis": 39.95,
+  "casa": 4.99,
+  "ilhas": null,
+  "ponto": 3,
+  "ponto_txt": "3,00 € (ponto de recolha)"
  },
  "sofarma": {
   "gratis": 39,
@@ -427,7 +446,9 @@
   "ponto_txt": "4,00 € (ponto de recolha)"
  },
  "pharma24": {
-  "gratis": null
+  "gratis": null,
+  "casa": 3.98,
+  "ilhas": 8.4
  },
  "farmaciabemestar": {
   "gratis": 38.6,
@@ -469,7 +490,9 @@
   "casa": 3.7
  },
  "farmaciamarquesbraga": {
-  "gratis": 35
+  "gratis": 35,
+  "ponto": 2.99,
+  "ponto_txt": "2,99 € (ponto pick-up)"
  },
  "farmaciaemcasa": {
   "gratis": 30,
@@ -521,7 +544,8 @@
  "mitso": {
   "gratis": 50,
   "casa": 4.2,
-  "ilhas": 9.99
+  "ilhas": 9.99,
+  "gratis_ilhas": 100
  },
  "glowthie": {
   "gratis": 44,
@@ -535,5 +559,13 @@
  },
  "farmacia2u": {
   "gratis": 60
+ },
+ "ilhadoscosmeticos": {
+  "gratis": 60,
+  "casa": 3.79,
+  "ilhas": 9.29,
+  "gratis_ilhas": null,
+  "ponto": 3.79,
+  "ponto_txt": "3,79 € (CTT Pickup; DPD Pickup 3,99 €)"
  }
 }
