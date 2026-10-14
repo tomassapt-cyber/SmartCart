@@ -10822,12 +10822,16 @@ function seoAbrirProduto(ean) {
     try { history.pushState({ seoEan: ean }, '', caminho); } catch (e) {}
   }
 
-  // O número de lojas vem da lista carregada — estava escrito à mão ("74") desde
-  // 2026-09-26 e ficou para trás quando o catálogo passou a 79 lojas.
-  const nLojas = (typeof STORES !== 'undefined' && STORES.length) || 0;
-  const emLojas = nLojas ? ' em ' + nLojas + ' lojas' : '';
-  const titulo = p.name + (p.brand ? ' — ' + p.brand : '') + ' | preco' + emLojas + ' | CosMath';
-  const desc = 'Compara o preco de ' + p.name + (emLojas || ' em lojas') + ' portuguesas. Preco verificado todos os dias.';
+  // O número de lojas é o DESTE PRODUTO (o mesmo «N lojas» do cartão, vindo do
+  // índice). Até 2026-10-14 era o total do site — o Mela B3, à venda em 33 lojas,
+  // aparecia no Google como «preco em 102 lojas» — e o texto ia sem acentos.
+  const _st = (typeof statsByEanMap === 'function') ? statsByEanMap()[ean] : null;
+  const nLojas = (_st && _st.storeCount) || 0;
+  const emLojas = nLojas ? ' em ' + nLojas + (nLojas === 1 ? ' loja' : ' lojas') : '';
+  const titulo = p.name + (p.brand ? ' — ' + p.brand : '') + ' | preço' + emLojas + ' | CosMath';
+  const desc = 'Compara o preço de ' + p.name
+    + (nLojas ? emLojas + (nLojas === 1 ? ' portuguesa' : ' portuguesas') : ' em lojas portuguesas')
+    + '. Preço verificado todos os dias.';
   document.title = titulo;
   seoDefinir('seo-canonical', 'href', abs);
   seoDefinir('seo-og-type', 'content', 'product');
