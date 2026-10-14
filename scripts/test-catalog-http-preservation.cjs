@@ -22,7 +22,7 @@ async function scenario(name,mode){
       const index=Number(String(url).match(/item-(\d+)/)[1]);
       if(index===100 && ['403','429','500'].includes(mode)){status=Number(mode);blockedRequests++;}
       if(index===100 && mode==='network')throw new Error('Rede indisponível');
-      body=mode==='empty'?'<html>Sem produto</html>':mode==='challenge' && index===100?'<title>Just a moment...</title><script>cf-chl-token</script>':html;
+      body=mode==='empty'?'<html>Sem produto</html>':mode==='challenge' && index===100?'<title>Just a moment...</title><script>cf-chl-token</script>':name==='haemiskin'?JSON.stringify({title:'Vichy Creme',vendor:'Vichy',variants:[{id:1,title:'Default Title',price:1200,available:true,barcode:'3337871323394',sku:'6887752'}]}):html;
     }
     return {status,ok:status>=200&&status<300,url,headers:{get:()=>sitemap?'application/xml':'text/html'},text:async()=>body,body:{cancel:async()=>{}}};
   }
