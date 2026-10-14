@@ -12,10 +12,10 @@
   "ponto_txt": "2.95"
  },
  "cocooncenter": {
-  "gratis": 79,
-  "casa": 6.95,
+  "gratis": null,
+  "casa": 7.95,
   "ponto": 6.95,
-  "ponto_txt": "6.95"
+  "ponto_txt": "6,95 € (grátis ≥79 €)"
  },
  "pharma-gdd": {
   "gratis": 59,
@@ -375,5 +375,162 @@
  },
  "skinlovers": {
   "gratis": 50
+ },
+ "lojashampoo": {
+  "gratis": null,
+  "casa": 4.5,
+  "ilhas": 6.9,
+  "ponto": 3.5,
+  "ponto_txt": "3,50 € (grátis ≥45 €)"
+ },
+ "farmaciasdirect": {
+  "gratis": 49,
+  "casa": 3.99,
+  "ilhas": null,
+  "ponto": 3.99,
+  "ponto_txt": "3,99 € (InPost)"
+ },
+ "caretobeauty": {
+  "gratis": 51
+ },
+ "parfumdreams": {
+  "gratis": null,
+  "casa": 5.95
+ },
+ "auchan": {
+  "gratis": null,
+  "casa": 5.99,
+  "ponto": 0,
+  "ponto_txt": "Recolha Drive grátis; My Auchan 2,90 €"
+ },
+ "farmaciabarata": {
+  "gratis": 65,
+  "casa": 3.95
+ },
+ "farmaciadaliga": {
+  "gratis": 45,
+  "casa": 4,
+  "ilhas": null,
+  "ponto": 3.35,
+  "ponto_txt": "3,35 € (ponto de recolha)"
+ },
+ "megafarma": {
+  "gratis": 39.95
+ },
+ "sofarma": {
+  "gratis": 39,
+  "casa": 4.5,
+  "ponto": 4,
+  "ponto_txt": "4,00 € (ponto de recolha)"
+ },
+ "pharma24": {
+  "gratis": null
+ },
+ "farmaciabemestar": {
+  "gratis": 38.6,
+  "casa": 3.94,
+  "ilhas": 15
+ },
+ "farmaciagaiajardim": {
+  "gratis": 49,
+  "casa": 3.9,
+  "ilhas": null
+ },
+ "farmaciasprogresso": {
+  "gratis": 39
+ },
+ "farma2go": {
+  "gratis": 69,
+  "casa": 3.5,
+  "ilhas": null,
+  "ponto": 2.99,
+  "ponto_txt": "2,99 € ponto CTT (grátis ≥59 €)"
+ },
+ "dermis": {
+  "gratis": 59,
+  "casa": 3.7
+ },
+ "farmacia24": {
+  "gratis": 40,
+  "casa": 3.99,
+  "ilhas": 7.9
+ },
+ "farmaciapertodemim": {
+  "gratis": 49,
+  "casa": 4.5,
+  "ponto": 0,
+  "ponto_txt": "Grátis (levantamento na farmácia)"
+ },
+ "farmacentral": {
+  "gratis": 40,
+  "casa": 3.7
+ },
+ "farmaciamarquesbraga": {
+  "gratis": 35
+ },
+ "farmaciaemcasa": {
+  "gratis": 30,
+  "casa": 3,
+  "ilhas": 10
+ },
+ "balvera": {
+  "gratis": 25,
+  "casa": 3,
+  "ilhas": 15
+ },
+ "camelo": {
+  "gratis": 45
+ },
+ "santamarta": {
+  "gratis": 45,
+  "casa": 5
+ },
+ "koreanbeauty": {
+  "gratis": 54,
+  "casa": 8.95,
+  "ilhas": null,
+  "ponto": 8.95,
+  "ponto_txt": "8,95 € (DHL)"
+ },
+ "farmaciarodrigues": {
+  "gratis": 39
+ },
+ "pharmaciadocabelo": {
+  "gratis": 55,
+  "casa": 3.9,
+  "ilhas": 8.93,
+  "ponto": 3.4,
+  "ponto_txt": "3,40 € (NACEX)"
+ },
+ "miin": {
+  "gratis": 35,
+  "casa": 2.95
+ },
+ "storekbeauty": {
+  "gratis": 35,
+  "casa": 5.95
+ },
+ "orientperfumes": {
+  "gratis": null,
+  "casa": 6.5,
+  "ilhas": 6.5
+ },
+ "mitso": {
+  "gratis": 50,
+  "casa": 4.2,
+  "ilhas": 9.99
+ },
+ "glowthie": {
+  "gratis": 44,
+  "casa": 3.99,
+  "ilhas": 8.49
+ },
+ "mypharmaspot": {
+  "gratis": null,
+  "casa": 3.8,
+  "ilhas": 12.8
+ },
+ "farmacia2u": {
+  "gratis": 60
  }
 }
