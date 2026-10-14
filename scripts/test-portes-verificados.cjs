@@ -37,10 +37,13 @@ caso('cada entrada só tem campos conhecidos, com valores válidos', () => {
 
 const SEED = path.join(ROOT, 'data', 'seed-bundle.json');
 if (fs.existsSync(SEED)) {
-  caso('todas as lojas do ficheiro existem no seed', () => {
+  // Só as lojas que este ficheiro passou a cobrir a 14/10: uma loja nova pode ter
+  // os portes registados antes da 1.ª integração (ex.: a Glammy, #56).
+  caso('as 33 lojas acrescentadas a 14/10 e a Cocooncenter existem no seed', () => {
     const slugs = new Set(JSON.parse(fs.readFileSync(SEED, 'utf8')).stores.map(s => s.slug));
-    const faltam = Object.keys(ship).filter(s => !slugs.has(s));
-    assert.deepEqual(faltam, []);
+    const DE_14_10 = ['cocooncenter', 'lojashampoo', 'farmaciasdirect', 'caretobeauty', 'parfumdreams', 'auchan', 'farmaciabarata', 'farmaciadaliga', 'megafarma', 'sofarma', 'pharma24', 'farmaciabemestar', 'farmaciagaiajardim', 'farmaciasprogresso', 'farma2go', 'dermis', 'farmacia24', 'farmaciapertodemim', 'farmacentral', 'farmaciamarquesbraga', 'farmaciaemcasa', 'balvera', 'camelo', 'santamarta', 'koreanbeauty', 'farmaciarodrigues', 'pharmaciadocabelo', 'miin', 'storekbeauty', 'orientperfumes', 'mitso', 'glowthie', 'mypharmaspot', 'farmacia2u'];
+    assert.equal(DE_14_10.length, 34);
+    assert.deepEqual(DE_14_10.filter(s => !slugs.has(s) || !ship[s]), []);
   });
 } else console.log('(seed montado ausente: verificação de slugs saltada — corre `bash scripts/ci/seed.sh unpack`)');
 
