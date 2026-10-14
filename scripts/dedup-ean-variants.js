@@ -20,6 +20,14 @@
  * `mergeEanVariants(seed)` opera EM MEMÓRIA (usado pelo overlay do inject, que
  * corre a cada refresh) e o CLI `--apply` grava o seed. Idempotente.
  *
+ * 2026-10-14: também o UPC-A guardado SEM o zero inicial (11 dígitos, quando a
+ * loja trata o código como número — ex.: `18084054970` = `018084054970`): 102
+ * produtos que ficavam em fichas à parte. Só com dígito de controlo GTIN
+ * válido. E `mergeEanVariants(seed, ROOT)` respeita a lista de exclusão
+ * (data/offer-ean-blocklist.json, loja + EAN ORIGINAL): uma oferta excluída
+ * que mudaria de código sai logo — quem aplica a lista depois desta fusão
+ * (o sync da BD, o índice) já não a reconheceria pelo código novo.
+ *
  * Uso:
  *   node scripts/dedup-ean-variants.js            # audit (dry-run)
  *   node scripts/dedup-ean-variants.js --apply
@@ -33,14 +41,21 @@ const SEED_BUNDLE = path.join(ROOT, 'data', 'seed-bundle.json');
 
 // GTIN de retalho: 12-14 díg, sem placeholders. Núcleo (sem zeros à esquerda)
 // tem de manter >= 11 díg (evita fundir por acidente números curtos/corrompidos).
-const isGtin = e => /^\d{12,14}$/.test(String(e || '')) && !/0{6,}/.test(String(e));
+const digitoOk = e => { const d = String(e).padStart(14, '0').split('').map(Number); const c = d.pop(); const s = d.reverse().reduce((t, x, i) => t + x * (i % 2 === 0 ? 3 : 1), 0); return (10 - (s % 10)) % 10 === c; };
+const isGtin = e => !/0{6,}/.test(String(e || '')) && (/^\d{12,14}$/.test(String(e || '')) || (/^\d{11}$/.test(String(e)) && digitoOk(e)));
 const canonCore = e => String(e).replace(/^0+/, '');
 
 /**
  * Funde variantes de GTIN (zeros à esquerda) num objecto seed EM MEMÓRIA.
  * Devolve { merged, remapped, groups, pick } (para relatórios do CLI).
  */
-function mergeEanVariants(seed) {
+function lerExclusoes(root) {
+  if (!root) return new Set();
+  try { return new Set((JSON.parse(fs.readFileSync(path.join(root, 'data', 'offer-ean-blocklist.json'), 'utf8')).blocked || []).map(b => b.store_slug + '|' + b.ean)); }
+  catch { return new Set(); }
+}
+
+function mergeEanVariants(seed, root) {
   const eanCount = {};
   for (const p of seed.products) eanCount[p.ean] = (eanCount[p.ean] || 0) + 1;
   const productByEan = {};
@@ -67,9 +82,11 @@ function mergeEanVariants(seed) {
   if (!Object.keys(eanRemap).length) return { merged: 0, remapped: 0, groups, pick, productByEan, offersByEan };
 
   let remapped = 0;
+  const excluidas = lerExclusoes(root);
   for (const sp of seed.store_products) {
     const seen = new Map(); const out = [];
     for (const item of sp.items) {
+      if (eanRemap[item.ean] && excluidas.has(sp.store_slug + '|' + item.ean)) continue;   // excluída: não muda de código, sai
       const r = eanRemap[item.ean] || item.ean;
       if (seen.has(r)) { const i = seen.get(r); const newer = (item.verified_at || '') > (out[i].verified_at || '') ? item : out[i]; out[i] = { ...newer, ean: r }; remapped++; continue; }
       seen.set(r, out.length); out.push({ ...item, ean: r });

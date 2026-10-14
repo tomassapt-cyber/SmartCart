@@ -309,7 +309,7 @@ if (require.main === module) {
   const vf = require('./lib/variant-fixes');
   vf.fixTruncatedVariantPrices(seed);
   vf.dropWrongProductVariants(seed);
-  require('./dedup-ean-variants').mergeEanVariants(seed);
+  require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
   require('./lib/promo-fold').foldPromoVariants(seed);
   // blocklist de EAN errado — faltava aqui (2026-10-02): o inject esconde-as,
   // mas o índice contava-as no nº de lojas e no "desde X€" do cartão

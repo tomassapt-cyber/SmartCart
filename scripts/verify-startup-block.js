@@ -43,7 +43,7 @@ require('./lib/verified-shipping').applyVerifiedShipping(seed, ROOT);
 const vf = require('./lib/variant-fixes');
 vf.fixTruncatedVariantPrices(seed);
 vf.dropWrongProductVariants(seed);
-require('./dedup-ean-variants').mergeEanVariants(seed);
+require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
 require('./lib/promo-fold').foldPromoVariants(seed);
 require('./lib/ghost-offers').dropGhostOffers(seed);
 const cv = require('./lib/catalog-visibility');

@@ -438,6 +438,8 @@ async function computeEmAlta(seed) {
 
 (async function main() {
   const seed = JSON.parse(fs.readFileSync(SEED, 'utf8'));
+  // o mesmo GTIN com/sem zeros é UM produto, como na página (2026-10-14)
+  require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
 
   // ── UNIFORMIDADE com o render (2026-07-03): aplicar os MESMOS overlays do
   // inject antes de escolher best offers — sem isto a homepage mostrava

@@ -85,7 +85,7 @@ const seedJson = JSON.parse(seed);
 // cada refresh para apanhar variantes novas que os scrapes vão trazendo.
 (function applyEanVariantMerge() {
   const { mergeEanVariants } = require('./dedup-ean-variants');
-  const r = mergeEanVariants(seedJson);
+  const r = mergeEanVariants(seedJson, ROOT);
   if (r.merged) console.log(`🔗 Variantes de GTIN fundidas (UPC-A↔EAN-13): ${r.merged} produtos · ${r.remapped} ofertas`);
 })();
 
