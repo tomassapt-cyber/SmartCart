@@ -10,6 +10,9 @@
  *     aponta para UM produto;
  *   - recusa (fica no relatório) volumes ou unidades diferentes dos que o
  *     produto já tem, e GTIN com duas ofertas diferentes para o mesmo volume;
+ *   - com `loja.semCodigosInternos`, recusa (fica no relatório) os GTIN de
+ *     circulação restrita (EAN-13 começado por 2): são códigos internos de cada
+ *     loja e podem coincidir por acaso com o código interno de outra (14/10/2026);
  *   - não grava com feed incompleto, vazio, com mais de 24 h, ou se a
  *     cobertura cair mais de 20% face à integração anterior;
  *   - idempotente: correr duas vezes sobre o mesmo seed dá o mesmo seed.
@@ -55,7 +58,7 @@ function indiceIdentidade(seed, aliases = {}) {
 /**
  * @param {object} seed   catálogo (alterado no lugar)
  * @param {object} feed   saída do scraper: {in_progress:false, completed_at, products:[{status:'ok', ean, name, price, in_stock, url, previous_price?}]}
- * @param {{slug:string, name:string, base_url:string, urlPrefix:string, maxIdadeH?:number}} loja
+ * @param {{slug:string, name:string, base_url:string, urlPrefix:string, maxIdadeH?:number, semCodigosInternos?:boolean}} loja
  */
 function integrar(seed, feed, loja, aliases = {}) {
   if (!feed || feed.in_progress !== false || !Array.isArray(feed.products) || !feed.products.length || !feed.completed_at) throw Error('Feed incompleto ou vazio');
@@ -71,6 +74,7 @@ function integrar(seed, feed, loja, aliases = {}) {
   }
   for (const linha of feed.products) {
     if (linha.status !== 'ok' || !gtinValido(linha.ean) || !Number.isFinite(linha.price) || linha.price <= 0 || typeof linha.in_stock !== 'boolean' || typeof linha.url !== 'string' || !linha.url.startsWith(loja.urlPrefix)) throw Error('Linha inválida no feed: ' + JSON.stringify(linha).slice(0, 200));
+    if (loja.semCodigosInternos && /^2\d{12}$/.test(semZero(linha.ean))) { conflitos.push({ ean: linha.ean, motivo: 'código interno de circulação restrita (prefixo 2)', loja: linha.name }); continue; }
     const r = indice.resolver(linha.ean);
     if (!r) { semPar.push({ ean: linha.ean, name: linha.name, url: linha.url, candidatos: indice.rever(linha) }); continue; }
     if (r.metodo !== 'GTIN') porAlias++;

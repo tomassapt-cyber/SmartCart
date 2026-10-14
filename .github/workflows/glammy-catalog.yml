@@ -1,0 +1,96 @@
+# CosMath — Glammy · refresh 1x/dia, só ofertas em produtos existentes
+# ============================================================
+# Farmácia de Gualtar (Braga), sem API: mapa do site + JSON-LD de cada ficha (~3.600), com o Crawl-delay
+# da loja (1 s; usamos 1,5 s) → ~110 min por corrida, por isso 1x/dia. Integração sem criar produtos
+# (scripts/lib/integrar-existentes.js). Preparada a 2026-10-14.
+
+name: Glammy daily refresh
+
+on:
+  schedule:
+    - cron: '11 3 * * *'
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: 'Limite de produtos (vazio = todos) — ensaio que não publica'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: glammy-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+      - name: Testes offline (recolha e integração só-existentes)
+        run: |
+          node scripts/test-integrar-existentes.js
+          node scripts/test-fichas-existentes.js
+      - name: Recolher Glammy
+        env:
+          LIMITE: ${{ github.event.inputs.limite }}
+        run: |
+          if [ -n "$LIMITE" ]; then
+            node scripts/scrape-glammy-catalog.js --limite="$LIMITE"
+          else
+            node scripts/scrape-glammy-catalog.js
+          fi
+      - name: Guardar a recolha (artefacto)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: glammy-${{ github.run_id }}
+          path: |
+            data/catalog/glammy-full.json
+          retention-days: 14
+      # Um ensaio com limite NÃO publica (e o integrador recusa feeds parciais).
+      - name: Validar e integrar em produtos existentes
+        if: github.event.inputs.limite == ''
+        run: |
+          node scripts/integrate-glammy-catalog.js --dry-run
+          node scripts/integrate-glammy-catalog.js
+      - name: Commit
+        if: github.event.inputs.limite == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -euo pipefail
+          bash scripts/ci/seed.sh pack
+          git add data/seed-bundle.json.gz
+          git add -f data/catalog/glammy-full.json
+          if git diff --cached --quiet; then echo "Nenhuma alteração."; exit 0; fi
+          git commit -m "chore: Glammy daily refresh ($(date -u +%Y-%m-%d))"
+      - name: Push (resiliente — re-integra sobre origin em conflito)
+        if: github.event.inputs.limite == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -euo pipefail
+          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ]; then echo "Nada para publicar."; exit 0; fi
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-glammy-catalog.js" \
+            "chore: Glammy daily refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/glammy-full.json
