@@ -10734,6 +10734,7 @@ function bindBestOfferCart(ean) {
 function bundleSetVolume(ean, volume_ml) {
   if (!bundleState.volumes) bundleState.volumes = new Map();
   bundleState.volumes.set(ean, Number(volume_ml));
+  if (bundleState.items.has(ean)) bundleGuardar();
 }
 
 function closePriceAnalyzer(mexerNoHistorico) {
@@ -13262,6 +13263,33 @@ document.addEventListener('click', (e) => {
 const bundleState = { items: new Map(), zone: 'nacional' };  // ean -> qty
 // Região de entrega — persistida (tipo "perfil") para ajustar os portes.
 try { const z = localStorage.getItem('gm_zone'); if (z) bundleState.zone = z; } catch (e) {}
+// ── Carrinho guardado NO DISPOSITIVO (2026-10-14) ──
+// Antes vivia só em memória: recarregar a página — ou o Safari do iPhone
+// descarregar o separador em segundo plano — esvaziava o carrinho. Fica em
+// cm.cart.v1 (EAN → quantidade e tamanho escolhido). NÃO é uma chave da conta:
+// está fora de US_KEYS, não sobe para a nuvem e não se mistura com o #39.
+// Um carrinho sem mexer há mais de 30 dias é esquecido.
+const CART_KEY = 'cm.cart.v1', CART_TTL_MS = 30 * 864e5;
+function bundleGuardar() {
+  try {
+    if (!bundleState.items.size) { localStorage.removeItem(CART_KEY); return; }
+    const vols = bundleState.volumes ? [...bundleState.volumes.entries()].filter(([e]) => bundleState.items.has(e)) : [];
+    localStorage.setItem(CART_KEY, JSON.stringify({ v: 1, ts: Date.now(), items: [...bundleState.items.entries()], volumes: vols }));
+  } catch (e) {}
+}
+(function bundleRepor() {
+  try {
+    const c = JSON.parse(localStorage.getItem(CART_KEY) || 'null');
+    if (!c) return;
+    if (c.v !== 1 || !Array.isArray(c.items) || !(Date.now() - c.ts < CART_TTL_MS)) { localStorage.removeItem(CART_KEY); return; }
+    for (const [ean, qty] of c.items) if (typeof ean === 'string' && ean && qty > 0) bundleState.items.set(ean, Math.min(99, Math.floor(qty)));
+    for (const [ean, vol] of (Array.isArray(c.volumes) ? c.volumes : [])) {
+      if (!bundleState.items.has(ean) || !(Number(vol) > 0)) continue;
+      if (!bundleState.volumes) bundleState.volumes = new Map();
+      bundleState.volumes.set(ean, Number(vol));
+    }
+  } catch (e) {}
+})();
 function setDeliveryZone(zone) {
   bundleState.zone = zone;
   try { localStorage.setItem('gm_zone', zone); } catch (e) {}
@@ -13295,6 +13323,7 @@ function bundleClear() { bundleState.items.clear(); bundleRefresh(); }
 
 function bundleRefresh() {
   const count = bundleState.items.size;
+  bundleGuardar();
   const badge = document.getElementById('bundle-badge');
   badge.textContent = count;
   badge.classList.toggle('hidden', count === 0);
@@ -13575,6 +13604,13 @@ document.getElementById('bundle-body').addEventListener('click', (e) => {
   const rBtn = e.target.closest('[data-bundle-remove]');
   if (rBtn) bundleToggle(rBtn.dataset.ean);
 });
+// Carrinho reposto do dispositivo: o contador aparece já; as linhas precisam do
+// catálogo inteiro (o bloco de arranque só traz 150 produtos), por isso pede-se
+// o índice e redesenha-se quando ele chegar.
+if (bundleState.items.size) {
+  bundleRefresh();
+  garantirIndice().then(ok => { if (ok) bundleRefresh(); });
+}
 
 // ============================================================
 // OPTIMIZER — bitmask sobre subsets de lojas
