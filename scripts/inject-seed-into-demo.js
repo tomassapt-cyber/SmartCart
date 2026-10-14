@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { escreverNumerosNoHtml, escreverNumeroNoManifest } = require('./lib/numeros-servidos');
 
 const ROOT = path.resolve(__dirname, '..');
 const DEMO = path.join(ROOT, 'demo.html');       // TEMPLATE versionado (shell, seed vazio) — só LEITURA
@@ -287,12 +288,17 @@ const jsonSeguro = o => JSON.stringify(o)
 // ─────────────────────────────────────────────────────────────────────────────
 const EMBEBER_CATALOGO = false;
 
-const newBlock = EMBEBER_CATALOGO ? '\n' + jsonSeguro(seedJson) + '\n' : '\n';
+// Sem catálogo, o bloco fica VAZIO de verdade (2026-10-14). Com um '\n' lá
+// dentro, o JSON.parse(textContent || 'null') do cliente recebia "\n", falhava,
+// e cada visita escrevia na consola "seed embebido ilegível: Unexpected end
+// of JSON input" — ruído que esconde os erros verdadeiros.
+const newBlock = EMBEBER_CATALOGO ? '\n' + jsonSeguro(seedJson) + '\n' : '';
 let next = html0.slice(0, afterOpen) + newBlock + html0.slice(closeIdx);
 
 // Injectar também homepage-data (10KB) no <script id="hp-data"> se existir
 const HP_DATA = path.join(ROOT, 'data', 'homepage-data.json');
 const HP_OPEN = '<script type="application/json" id="hp-data">';
+let STATS_DO_HERO = null;   // também vão para o HTML servido (ver o fim do ficheiro)
 if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
   // ── Números do hero, calculados AQUI e não no build-homepage-data ────────
   // [2026-07-30] O hero mostra "X lojas / Y produtos / poupança média −Z%".
@@ -327,6 +333,7 @@ if (fs.existsSync(HP_DATA) && next.indexOf(HP_OPEN) !== -1) {
       products: (seedJson.products || []).length,
       avg_savings_pct: n ? Math.round(soma / n * 100) : null,
     };
+    STATS_DO_HERO = stats;
     try {
       const hp = JSON.parse(fs.readFileSync(HP_DATA, 'utf8'));
       hp.stats = stats;
@@ -388,6 +395,22 @@ const CATALOGO = path.join(ROOT, 'catalogo.html');
 {
   const nLojas = (seedJson.stores || []).length;
   if (nLojas) next = next.replace(/(cosmetica em )\d+( lojas portuguesas)/g, `$1${nLojas}$2`);
+  // Os contadores do topo, da tagline e do rodapé (2026-10-14, pendência 8): o
+  // template traz "17" lojas e "46 / 23+ / −38%" de exemplo, que só o JS
+  // corrigia. Escreve-se aqui o mesmo que o cliente escreve a partir do hp.stats.
+  if (STATS_DO_HERO) {
+    const r = escreverNumerosNoHtml(next, STATS_DO_HERO);
+    next = r.html;
+    console.log(`🔢 Números do catálogo no HTML servido: ${r.trocas} contadores`);
+  }
+  // manifest.webmanifest ("em 70 lojas portuguesas"): só no build de deploy.
+  // Fora dele o ficheiro é o versionado e não se reescreve.
+  const MANIFEST = path.join(ROOT, 'manifest.webmanifest');
+  if (DEPLOY && nLojas && fs.existsSync(MANIFEST)) {
+    const m0 = fs.readFileSync(MANIFEST, 'utf8');
+    const m1 = escreverNumeroNoManifest(m0, nLojas);
+    if (m1 !== m0) { fs.writeFileSync(MANIFEST, m1, 'utf8'); console.log(`🔢 manifest: ${nLojas} lojas`); }
+  }
 }
 fs.writeFileSync(INDEX, next, 'utf8');
 fs.writeFileSync(CATALOGO, next, 'utf8');
