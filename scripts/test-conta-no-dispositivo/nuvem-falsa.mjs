@@ -155,12 +155,13 @@ export async function abrirBrowser() {
 }
 
 // Um "dispositivo": contexto de browser próprio (localStorage próprio).
-export async function dispositivo(browser, url, nuvem, { localStorageInicial } = {}) {
+export async function dispositivo(browser, url, nuvem, { localStorageInicial, scriptInicial } = {}) {
   const ctx = await browser.newContext({ serviceWorkers: 'block' });
   await ctx.route(u => !u.href.startsWith(url), r => r.abort());
   await ctx.exposeFunction('__nuvem', s => JSON.stringify(atender(nuvem, JSON.parse(s))));
   await ctx.addInitScript(FALHAS);
   await ctx.addInitScript(CLIENTE);
+  if (scriptInicial) await ctx.addInitScript(scriptInicial);   // ex.: emular outro browser
   if (localStorageInicial) await ctx.addInitScript(v => { for (const [k, x] of Object.entries(v)) localStorage.setItem(k, x); }, localStorageInicial);
   const page = await ctx.newPage();
   const prontoEToasts = async () => {

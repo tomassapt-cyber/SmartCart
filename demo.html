@@ -14655,11 +14655,19 @@ function usMarkDirty() {
 // hook: QUALQUER escrita às chaves pessoais agenda um push — cobre todos os
 // call-sites (rotina/tracker/meds/feedback) sem tocar em cada um
 (function usHookStorage() {
+  // No PROTÓTIPO, e só quando a escrita é no localStorage (2026-10-14). Antes
+  // fazia-se `localStorage.setItem = function…`: no Chrome substitui o método,
+  // mas pela norma (WebIDL: o Storage tem um «named property setter») essa
+  // atribuição grava um ITEM chamado «setItem» e o método fica o original — é o
+  // que o Firefox faz, e no Safari do iPhone não estava provado. Aí o gancho
+  // nunca corria: favoritos e rotina só subiam no arranque seguinte. Um método
+  // do protótipo é uma propriedade normal e substitui-se igual em todo o lado.
   try {
-    const orig = localStorage.setItem.bind(localStorage);
-    localStorage.setItem = function (k, v) {
-      orig(k, v);
-      if (US_KEYS.indexOf(k) >= 0) usMarkDirty();
+    const proto = Object.getPrototypeOf(localStorage);
+    const orig = proto.setItem;
+    proto.setItem = function (k, v) {
+      orig.call(this, k, v);
+      if (this === localStorage && US_KEYS.indexOf(k) >= 0) usMarkDirty();
     };
   } catch (e) {}
 })();
