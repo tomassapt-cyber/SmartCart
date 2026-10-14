@@ -1,6 +1,6 @@
-# SkinLovers e Ilha dos Cosméticos — lojas «só produtos existentes» (preparadas a 9/10/2026)
+# Lojas Shopify «só produtos existentes»: SkinLovers e Ilha dos Cosméticos (#43, 9/10/2026), Farmácia Cuida e Lisbon Glam (14/10/2026)
 
-Duas lojas portuguesas em Shopify, com código de barras por variante, preparadas segundo a regra de 8/10/2026: **acrescentam apenas ofertas a produtos que o catálogo já tem**. Não criam produtos, não mudam nomes nem imagens e não tocam nas ofertas das outras lojas. Estado: **rascunho**. Nada foi publicado no `main` nem escrito no Supabase.
+Lojas portuguesas em Shopify, com código de barras por variante, preparadas segundo a regra de 8/10/2026: **acrescentam apenas ofertas a produtos que o catálogo já tem**. Não criam produtos, não mudam nomes nem imagens e não tocam nas ofertas das outras lojas. SkinLovers e Ilha: integradas no `main` pelo #43. Farmácia Cuida e Lisbon Glam: secção própria mais abaixo.
 
 | | SkinLovers | Ilha dos Cosméticos |
 |---|---|---|
@@ -53,6 +53,24 @@ Duas lojas portuguesas em Shopify, com código de barras por variante, preparada
 
 - `skinlovers`: `{"gratis": 50}` em `data/store-shipping.json` (só acrescenta 3 linhas). O «a partir de 3,50 €» não é uma tarifa fixa: a `casa` fica vazia e o carrinho mostra «Portes calculados no checkout» (#36), com o limiar de grátis a 50 €.
 - `ilhadoscosmeticos`: nenhuma entrada (peso e destino só no checkout) → custo desconhecido.
+
+## Farmácia Cuida e Lisbon Glam (preparadas a 14/10/2026, mesmo modelo)
+
+Escolhidas na prospeção de 9/10 (relatório local `Desktop\duo\prospecao-lojas-2026-10-09\RELATORIO.md`). As duas têm acesso confirmado a partir dos runners: `robots.txt`, `products.json`, `.js` com `barcode` e `sitemap.xml` deram 200 nas corridas 37944661809 e 37944881266 do `sondar-acesso.yml`.
+
+| | Farmácia Cuida | Lisbon Glam |
+|---|---|---|
+| Domínio | `farmaciacuida.com` (raiz = mercado PT) | `lisbonglam.com` (raiz = PT; o `/es` tem mapas próprios, ignorados) |
+| Empresa | Farmácia Cuida (empresa e morada não encontradas nas páginas lidas) | Mredis III, Lda ([termos](https://lisbonglam.com/policies/terms-of-service)) |
+| Produtos no mapa (9/10) | 5 762 | 1 212 |
+| Amostra de 9/10 | 50 fichas: 66% com EAN (as restantes só têm CNP no `sku`); 16 casam com GTIN + marca + tamanho e 10 são prováveis; **0,99×** a mediana; 82% em stock | 51 fichas: EAN em 100%; 17 confirmadas e 12 prováveis; 0,83× (só 6 comparáveis); **só 33% em stock** |
+| Portes (`store-shipping.json`) | casa 4,20 €, ponto DPD 2,59 €, grátis ≥47 € (faixa do site; o carrinho confirmou entre 42,75 € e 57 €), ilhas 7,50 € | casa 2,98 €, grátis ≥39,50 €, ilhas 6,99 € ([política de envios](https://lisbonglam.com/policies/shipping-policy)) |
+| Workflow | `farmaciacuida-catalog.yml` (06:23 e 18:23 UTC) | `lisbonglam-catalog.yml` (08:47 e 20:47 UTC) |
+
+- **Ensaio de 14/10** (recolha completa no PC, integração `--dry-run` sobre o `main` `3cbe050`): Farmácia Cuida **3 297 ofertas (2 873 em stock)**, 0,93× a mediana, a mais barata em 8%, 57 conflitos, seed +1,3 MB; Lisbon Glam **786 ofertas (262 em stock)**, 0,89×, a mais barata em 16%, 5 conflitos, seed +0,35 MB. 0 produtos novos nas duas.
+- **Códigos internos (prefixo 2):** as duas lojas recusam-nos (`semCodigosInternos`). Na Cuida são 16 linhas; 10 existem no catálogo e quase todas são o mesmo produto, mas há coffrets SVR que casam com conjuntos diferentes. Por isso a regra é recusar e deixar no relatório.
+- **Limite do formato dos portes:** nas ilhas, a Cuida nunca dá portes grátis e a Lisbon Glam só a partir de 99,50 €, mas o `store-shipping.json` tem um único limiar `gratis`. Nas ilhas o site pode mostrar portes grátis acima de 47 € / 39,50 €, quando na verdade não há.
+- **Cache gravada a cada 100 leituras:** os dois scrapers gravam a cache de GTIN ao longo da recolha, não só no fim. A 9/10 o PC fechou a sessão a meio e perderam-se ~1 000 leituras de cada loja, porque o `finally` não corre quando o processo é morto.
 
 ## Depois do merge
 

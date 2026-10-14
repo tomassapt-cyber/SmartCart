@@ -1,6 +1,6 @@
 'use strict';
-// Testes offline das lojas "só produtos existentes" em Shopify (SkinLovers e Ilha
-// dos Cosméticos): recolha (robots, GTIN, bloco + cache de GTIN, cobertura,
+// Testes offline das lojas "só produtos existentes" em Shopify (SkinLovers, Ilha
+// dos Cosméticos, Farmácia Cuida e Lisbon Glam): recolha (robots, GTIN, bloco + cache de GTIN, cobertura,
 // paragem em 403/429/desafio, ensaio parcial) e integração (sem criar produtos,
 // aliases, volumes, feeds velhos, conflitos, cobertura, idempotência, outras
 // lojas intactas). Sem rede. Uso: node scripts/test-integrar-existentes.js
@@ -9,6 +9,8 @@ const { integrar } = require('./lib/integrar-existentes');
 const { recolher, linhas, gtinValido, regrasRobots, permitido } = require('./lib/shopify-existentes');
 const { LOJA: SKL } = require('./integrate-skinlovers-catalog');
 const { LOJA: ILHA } = require('./integrate-ilhadoscosmeticos-catalog');
+const { LOJA: CUIDA } = require('./integrate-farmaciacuida-catalog');
+const { LOJA: LGLAM } = require('./integrate-lisbonglam-catalog');
 
 (async () => {
   // ---------- GTIN e robots
@@ -81,7 +83,7 @@ const { LOJA: ILHA } = require('./integrate-ilhadoscosmeticos-catalog');
   } finally { globalThis.fetch = fetchOriginal; }
 
   // ---------- integração só-existentes, com a configuração real de cada loja
-  for (const LOJA of [SKL, ILHA]) {
+  for (const LOJA of [SKL, ILHA, CUIDA, LGLAM]) {
     const url = LOJA.urlPrefix + 'creme-reparador';
     const seed = () => ({ stores: [], products: [
       { ean: '3282770146691', name: 'Biology A-R Creme 40ml', brand: 'A-Derma', image_url: 'x.jpg', eans_antigos: ['3282770146677'] },
@@ -103,6 +105,11 @@ const { LOJA: ILHA } = require('./integrate-ilhadoscosmeticos-catalog');
     s = seed(); r = integrar(s, feed([{ ...row, ean: '03282770146691' }]), LOJA); assert.equal(r.offers, 1); assert.equal(s.store_products[0].items[0].ean, '3282770146691');
     // alias documentado em data/product-aliases.json
     s = seed(); r = integrar(s, feed([{ ...row, ean: '5000000000012' }]), LOJA, { '3282770146691': { aliases: ['5000000000012'] } }); assert.equal(r.offers, 1);
+    // códigos internos (prefixo 2): recusados só nas lojas com semCodigosInternos; as outras ficam como estavam
+    s = seed(); s.products.push({ ean: '2005199096351', name: 'Produto Interno 30ml', brand: 'X' });
+    r = integrar(s, feed([row, { ...row, ean: '2005199096351', name: 'Produto Interno 30ml', url: url + '-i' }]), LOJA);
+    if (LOJA.semCodigosInternos) { assert.equal(r.offers, 1); assert.match(r.conflicts[0].motivo, /circulação restrita/); }
+    else assert.equal(r.offers, 2);
     // preço barrado só quando é maior
     s = seed(); integrar(s, feed([{ ...row, previous_price: 25 }]), LOJA); assert.equal(s.store_products[0].items[0].previous_price, 25);
     s = seed(); integrar(s, feed([{ ...row, previous_price: 10 }]), LOJA); assert.equal(s.store_products[0].items[0].previous_price, undefined);
@@ -132,5 +139,5 @@ const { LOJA: ILHA } = require('./integrate-ilhadoscosmeticos-catalog');
     integrar(s, f2, LOJA); const uma = JSON.stringify(s); integrar(s, f2, LOJA); assert.equal(JSON.stringify(s), uma); assert.equal(s.stores.length, 1);
     assert.throws(() => integrar(s, feed([row]), LOJA), /Cobertura caiu/);
   }
-  console.log('Lojas só-existentes (SkinLovers, Ilha dos Cosméticos): GTIN, robots, linhas, bloco + cache de GTIN, limite de leituras, cobertura do bloco, paragem em 403/429/desafio/robots, ensaio parcial, mínimo, sem criar produtos, EAN antigo, UPC, alias, preço barrado, feeds inválidos/velhos/vazios, URL de outra loja, conflitos de preço/volume/unidade, outras lojas intactas, idempotência e cobertura — tudo passou');
+  console.log('Lojas só-existentes (SkinLovers, Ilha dos Cosméticos, Farmácia Cuida, Lisbon Glam): GTIN, robots, linhas, bloco + cache de GTIN, limite de leituras, cobertura do bloco, paragem em 403/429/desafio/robots, ensaio parcial, mínimo, sem criar produtos, EAN antigo, UPC, alias, preço barrado, feeds inválidos/velhos/vazios, URL de outra loja, conflitos de preço/volume/unidade, outras lojas intactas, idempotência, cobertura e códigos internos — tudo passou');
 })().catch(e => { console.error(e); process.exit(1); });
