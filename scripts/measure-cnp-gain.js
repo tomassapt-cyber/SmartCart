@@ -23,7 +23,6 @@ const isRealEan = s => /^\d{12,14}$/.test(String(s || '').trim());
 const CNP_STORES = [
   ['loja-farmacia', 'lojafarmacia-full.json'],
   ['asuafarmaciaonline', 'asuafarmaciaonline-full.json'],
-  ['aminhafarmaciaonline', 'aminhafarmaciaonline-full.json'],
 ];
 
 // ean → nº de lojas que o oferecem (para saber o que é single-store hoje)

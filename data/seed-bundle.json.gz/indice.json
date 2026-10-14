@@ -159,16 +159,6 @@
    }
   },
   {
-   "ficheiro": "ofertas/aminhafarmaciaonline.jsonl",
-   "campos": [
-    "store_slug",
-    "items"
-   ],
-   "outros": {
-    "store_slug": "aminhafarmaciaonline"
-   }
-  },
-  {
    "ficheiro": "ofertas/pharma-gdd.jsonl",
    "campos": [
     "store_slug",
@@ -429,16 +419,6 @@
    }
   },
   {
-   "ficheiro": "ofertas/fastpharma.jsonl",
-   "campos": [
-    "store_slug",
-    "items"
-   ],
-   "outros": {
-    "store_slug": "fastpharma"
-   }
-  },
-  {
    "ficheiro": "ofertas/powerbeauty.jsonl",
    "campos": [
     "store_slug",
@@ -599,16 +579,6 @@
    }
   },
   {
-   "ficheiro": "ofertas/farmaciaportugal.jsonl",
-   "campos": [
-    "store_slug",
-    "items"
-   ],
-   "outros": {
-    "store_slug": "farmaciaportugal"
-   }
-  },
-  {
    "ficheiro": "ofertas/farmaciagarcia.jsonl",
    "campos": [
     "store_slug",
@@ -656,16 +626,6 @@
    ],
    "outros": {
     "store_slug": "farmacia2u"
-   }
-  },
-  {
-   "ficheiro": "ofertas/pharmia.jsonl",
-   "campos": [
-    "store_slug",
-    "items"
-   ],
-   "outros": {
-    "store_slug": "pharmia"
    }
   },
   {
@@ -726,16 +686,6 @@
    ],
    "outros": {
     "store_slug": "farmaciasprogresso"
-   }
-  },
-  {
-   "ficheiro": "ofertas/skin.jsonl",
-   "campos": [
-    "store_slug",
-    "items"
-   ],
-   "outros": {
-    "store_slug": "skin"
    }
   },
   {
