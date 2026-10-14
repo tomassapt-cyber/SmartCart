@@ -9477,7 +9477,10 @@ function avgPriceFor(ean) {
 // para "A Sua/A Minha/A Farmácia Online" (3 lojas indistinguíveis e invisíveis
 // ao utilizador) e "My" para My Cosmetics; nomes começados por "Farmácia(s)"
 // colapsavam todos em "Farmácia". Mapa explícito p/ os ambíguos; fallback:
-// primeira palavra (sem sufixo PT).
+// nome COMPLETO sem « PT», com «Farmácia(s) » abreviado para «F. » (o CSS corta
+// com reticências o que não couber). O fallback antigo — 1.ª palavra — ainda
+// mostrava «Farmácia» em 18 lojas, «A» na A Tua Farmácia, «Love», «Care»,
+// «Nossa», «GO», «My»… (2026-10-14, inventário de 09/10, item 21).
 const STORE_SHORT_NAMES = {
   'asuafarmaciaonline': 'A Sua Farmácia',
   'afarmaciaonline': 'A Farmácia Onl.',
@@ -9496,7 +9499,7 @@ const STORE_SHORT_NAMES = {
 function storeShortName(slug) {
   if (STORE_SHORT_NAMES[slug]) return STORE_SHORT_NAMES[slug];
   const store = STORE_BY_SLUG[slug];
-  return (store?.name || slug).replace(/\s+PT$/, '').split(/[\s-]/)[0];
+  return (store?.name || slug).replace(/\s+PT$/, '').replace(/^Farm[áa]cias?\s+/i, 'F. ');
 }
 function productCard(p) {
   const offers = OFFERS_BY_PRODUCT[p.ean] || {};
