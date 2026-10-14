@@ -4,7 +4,7 @@ async function scenario(name,mode){
   const total=101,files=new Map(),logs=[];
   const scripts=path.join(root,'scripts'),out=path.join(root,'data/catalog',`${name}-full.json`);
   files.set(out,'CATALOGO ANTERIOR');
-  const part=name==='haemiskin'?'products':name==='pharmagdd'?'fr':name==='quickfarma'?'product':name==='farmaciavirtual'?'produto':'beleza/cabelo';
+  const part=name==='haemiskin'?'products':name==='pharmagdd'?'fr':name==='quickfarma'?'product':name==='farmaciavirtual'?'produto':name==='pharmascalabis'?'store':'beleza/cabelo';
   const urls=Array.from({length:total},(_,i)=>`https://example.test/${part}/item-${i}`);
   const xml=links=>'<urlset>'+links.map(u=>`<loc>${u}</loc>`).join('')+'</urlset>';
   const html=name==='barreiros'?'<meta property="og:title" content="Vichy Creme"><script>{"ean13":"3337871323394","price_amount":12,"availability":"InStock"}</script>':'<script type="application/ld+json">'+JSON.stringify({'@type':'Product',name:'Vichy Creme',gtin13:'3337871323394',sku:'6887752',offers:{price:12,availability:'https://schema.org/InStock'}})+'</script>';
@@ -16,7 +16,7 @@ async function scenario(name,mode){
     if(sitemap){
       if(mode==='bad-sitemap')body='<html>Erro da loja</html>';
       else if(String(url).includes('sitemap-product.xml')||String(url).includes('sitemap_products_')||String(url).includes('product-sitemap.xml')||String(url).includes('wp-sitemap-posts-product')||String(url).includes('1_pt_0_sitemap'))body=xml(urls);
-      else body=xml(['https://example.test/'+(name==='haemiskin'?'sitemap_products_1.xml':name==='quickfarma'?'product-sitemap.xml':name==='farmaciavirtual'?'wp-sitemap-posts-product-1.xml':'1_pt_0_sitemap.xml')]);
+      else body=xml(['https://example.test/'+(name==='haemiskin'?'sitemap_products_1.xml':name==='quickfarma'?'product-sitemap.xml':name==='farmaciavirtual'?'wp-sitemap-posts-product-1.xml':name==='pharmascalabis'?'product-sitemap.xml':'1_pt_0_sitemap.xml')]);
     }else{
       productRequests++;
       const index=Number(String(url).match(/item-(\d+)/)[1]);
@@ -54,7 +54,7 @@ async function scenario(name,mode){
 }
 (async()=>{
   let failed=0;
-  for(const name of ['pharmagdd','haemiskin','barreiros','quickfarma','farmaciavirtual'])for(const mode of ['valid','empty','403','429','500','bad-sitemap','limit','network','challenge','rename-failure','resume']){
+  for(const name of ['pharmagdd','haemiskin','barreiros','quickfarma','farmaciavirtual','pharmascalabis'])for(const mode of ['valid','empty','403','429','500','bad-sitemap','limit','network','challenge','rename-failure','resume']){
     try{await scenario(name,mode);}catch(error){console.error(`FAIL ${name} ${mode}: ${error.message}`);failed++;}
   }
   process.exitCode=failed?1:0;

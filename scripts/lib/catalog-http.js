@@ -1,5 +1,7 @@
 // Diagnóstico limitado: nunca imprime o corpo ou parâmetros dos pedidos.
-function createCatalogClient() {
+// timeoutMs: limite por pedido (30 s por omissão). Há lojas cujos sitemaps demoram
+// mais a gerar (Pharma Scalabis: 35–56 s cada, medido a 14/10) e precisam de mais.
+function createCatalogClient({ timeoutMs = 30000 } = {}) {
   const controller = new AbortController();
   let fatal = null, samples = 0;
   const seen = new Set();
@@ -11,7 +13,7 @@ function createCatalogClient() {
   const safeUrl = value => { const u = new URL(value); return u.origin + u.pathname; };
   async function catalogFetch(url, options = {}) {
     if (fatal) throw fatal;
-    const signals = [controller.signal, AbortSignal.timeout(30000)];
+    const signals = [controller.signal, AbortSignal.timeout(timeoutMs)];
     if (options.signal) signals.push(options.signal);
     let response;
     try { response = await globalThis.fetch(url, { ...options, signal: AbortSignal.any(signals) }); }
