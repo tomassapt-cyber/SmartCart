@@ -1,0 +1,70 @@
+# CosMath — vigia dos portes (fase 6 do plano dos portes, 2026-10-15)
+# ============================================================
+# Os portes verificados (data/store-shipping.json) vêm das páginas de envios
+# das lojas, registadas em data/portes-fontes.json com a data e os valores que
+# o carrinho usa. As lojas mudam-nos sem avisar (só a 14–15/10: Druni,
+# SweetCare, Wells, Primor, Notino…). Uma vez por semana este workflow relê as
+# páginas — um pedido por loja, um de cada vez, com 2 s de intervalo — e
+# mantém UMA issue:
+#   um valor do carrinho desapareceu da página → ABRE/atualiza «Portes: rever lojas» (com @dono)
+#   loja verificada há mais de dias_revisao (90) dias → entra na mesma issue
+#   nada para rever → FECHA com comentário
+# Depois de re-verificar uma loja: node scripts/portes-vigia.js --gravar=<loja>
+# (grava os valores e a data novos) e commit do data/portes-fontes.json.
+name: Portes — vigia semanal
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # segunda-feira, 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  vigia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Teste da vigia
+        run: node scripts/test-portes-vigia.cjs
+
+      - name: Reler as páginas de portes
+        run: node scripts/portes-vigia.js --md=/tmp/portes.md --estado=/tmp/portes.env
+
+      - name: Avisar por issue (abre, atualiza ou fecha)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          TITULO='Portes: rever lojas'
+          . /tmp/portes.env
+          gh issue list --state open --limit 100 --json number,title \
+            --template '{{range .}}{{.number}}|{{.title}}{{"\n"}}{{end}}' > /tmp/issues-portes.txt || true
+          NUM=$(grep -F "|$TITULO" /tmp/issues-portes.txt | head -1 | cut -d"|" -f1 || true)
+          if [ "$MUDARAM" = '0' ] && [ "$ANTIGAS" = '0' ]; then
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --body "Nada para rever na vigia de $(date -u '+%F %H:%M') UTC (${INACESSIVEIS} lojas não vigiáveis daqui — ver a descrição anterior). A fechar."
+              gh issue close "$NUM"
+            fi
+            exit 0
+          fi
+          if [ -z "$NUM" ]; then
+            gh issue create --title "$TITULO" --body-file /tmp/portes.md && echo 'Issue aberta.'
+          else
+            gh issue edit "$NUM" --body-file /tmp/portes.md
+            # um comentário quando há mudanças novas nesta semana (notifica); revisões a 90 d não
+            if [ "$MUDARAM" != '0' ]; then
+              gh issue comment "$NUM" --body "@${{ github.repository_owner }} vigia de $(date -u '+%F'): ${MUDARAM} loja(s) com valores de portes que já não aparecem na página — ver a descrição."
+            fi
+          fi

@@ -1,0 +1,357 @@
+{
+ "_nota": "Fontes dos portes verificados (data/store-shipping.json): a página de cada loja, a data da última verificação e a assinatura (valores em € junto de palavras de portes). O scripts/portes-vigia.js relê-as todas as semanas (.github/workflows/portes-vigia.yml) e abre uma issue quando mudam ou passam dias_revisao dias. Depois de re-verificar: node scripts/portes-vigia.js --gravar=<loja>. Regras e citações: Desktop\\duo\\portes\\FONTES-PORTES.md.",
+ "dias_revisao": 90,
+ "lojas": {
+  "druni": {
+   "url": "https://www.druni.pt/condicoes-gerais-de-venda",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.95",
+    "20"
+   ]
+  },
+  "atida": {
+   "url": "https://support.atida.com/hc/pt/articles/4417452950417",
+   "verificado": "2026-10-14",
+   "valores": []
+  },
+  "parfumdreams": {
+   "url": "https://www.parfumdreams.pt/custos-de-envio",
+   "verificado": "2026-10-15",
+   "valores": [
+    "5.95"
+   ]
+  },
+  "sweetcare": {
+   "url": "https://www.sweetcare.pt/pt/help/porte-envio-entrega-questoes-frequentes-i-26",
+   "verificado": "2026-10-14",
+   "valores": []
+  },
+  "auchan": {
+   "url": "https://www.auchan.pt/pt/taxas-de-entrega/",
+   "verificado": "2026-10-15",
+   "valores": [
+    "5.99"
+   ]
+  },
+  "primor": {
+   "url": "https://pt.primor.eu/pt_pt/condicoes-gerais",
+   "verificado": "2026-10-15",
+   "valores": [
+    "1.95",
+    "2.95",
+    "25"
+   ]
+  },
+  "wells": {
+   "url": "https://wells.pt/metodos-custos-entregas.html",
+   "verificado": "2026-10-15",
+   "valores": [
+    "1.99",
+    "2.99",
+    "6.99",
+    "39"
+   ]
+  },
+  "aveirofarma": {
+   "url": "https://aveirofarma.pt/envio-entrega",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.5",
+    "4.5",
+    "6.9",
+    "55",
+    "75"
+   ]
+  },
+  "farmaciabarata": {
+   "url": "https://www.farmaciabarata.pt/content/envio-gratuito.html",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.95",
+    "65"
+   ]
+  },
+  "pharmascalabis": {
+   "url": "https://www.pharmascalabis.com/como-funciona/",
+   "verificado": "2026-10-15",
+   "valores": [
+    "40",
+    "50"
+   ]
+  },
+  "cocooncenter": {
+   "url": "https://www.cocooncenter.pt/entrega.html",
+   "verificado": "2026-10-15",
+   "valores": [
+    "6.95",
+    "7.95"
+   ]
+  },
+  "bairro-saude": {
+   "url": "https://bairrodasaude.pt/pages/envios-e-custos",
+   "verificado": "2026-10-15",
+   "valores": [
+    "4.5",
+    "39"
+   ]
+  },
+  "notino": {
+   "url": "https://www.notino.pt/transporte-e-pagamento/",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "pharmee": {
+   "url": "https://www.pharmeestore.com/pt/informacoes/envios_245.html",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "farmacia2u": {
+   "url": "https://www.farmacia2u.com/pt/perguntas-frequentes",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "gofarma": {
+   "url": "https://www.go-farma.com/pt/mais-informacoes/termos-e-condicoes_207.html",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "bemecare": {
+   "url": "https://bemecare.com/pt/pagina/envios-de-encomendas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "49.9"
+   ]
+  },
+  "farmaciasprogresso": {
+   "url": "https://www.farmaciasprogresso.pt/prazos-e-custos-de-entrega",
+   "verificado": "2026-10-15",
+   "valores": [
+    "11.55",
+    "39"
+   ]
+  },
+  "camelo": {
+   "url": "https://www.farmaciacamelo.pt/pt/entregas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "45"
+   ]
+  },
+  "perfumes4you": {
+   "url": "https://perfumes4you.pt/termos-condicoes",
+   "verificado": "2026-10-15",
+   "valores": [
+    "50"
+   ]
+  },
+  "pharmavida": {
+   "url": "https://pharmavida.pt/content/1-entregas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "39"
+   ]
+  },
+  "sofarma": {
+   "url": "https://www.sofarma.com/pt/informacoes/metodos-de-envio_450.html",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "afarmaciaonline": {
+   "url": "https://www.afarmaciaonline.pt/ajuda/entregas-ao-domicilio-gratis-e-rapidas.html",
+   "verificado": "2026-10-15",
+   "valores": [
+    "4.99",
+    "6.69",
+    "25"
+   ]
+  },
+  "dermis": {
+   "url": "https://dermis.pt/pt/pagina/termos-e-condicoes",
+   "verificado": "2026-10-15",
+   "valores": [
+    "59"
+   ]
+  },
+  "farmaciadocostume": {
+   "url": "https://www.farmaciadocostume.pt/entregas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "50"
+   ]
+  },
+  "saudemayor": {
+   "url": "https://www.saudemayor.pt/termos-e-condicoes.html",
+   "verificado": "2026-10-15",
+   "valores": [
+    "44.5"
+   ]
+  },
+  "easyfarma": {
+   "url": "https://easyfarma.pt/pages/termos-e-condicoes",
+   "verificado": "2026-10-15",
+   "valores": [
+    "69"
+   ]
+  },
+  "haemiskin": {
+   "url": "https://www.haemiskin.pt/policies/shipping-policy",
+   "verificado": "2026-10-15",
+   "valores": [
+    "60",
+    "70"
+   ]
+  },
+  "barreiros": {
+   "url": "https://www.farmaciabarreiros.com/conteudo/metodos-de-envio-pagamento",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "wowfarma": {
+   "url": "https://www.wowfarma.pt/condicoes-de-envio",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "asuafarmaciaonline": {
+   "url": "https://www.asuafarmaciaonline.pt/envio-de-encomendas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.7",
+    "6.8"
+   ]
+  },
+  "farmacia365": {
+   "url": "https://www.farmacia365.pt/entregas-trocas-e-devolucoes",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.3",
+    "6.8",
+    "49.9"
+   ]
+  },
+  "byfarma": {
+   "url": "https://byfarma.pt/envios",
+   "verificado": "2026-10-15",
+   "valores": [
+    "59.99"
+   ]
+  },
+  "mycosmetics": {
+   "url": "https://www.mycosmetics.pt/pages/condicoes-de-envio",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.8",
+    "50",
+    "100"
+   ]
+  },
+  "vallispharma": {
+   "url": "https://www.vallispharma.pt/faqs?default=encomendas-e-entregas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.99",
+    "13",
+    "40",
+    "200"
+   ]
+  },
+  "cosmeticfan": {
+   "url": "https://www.cosmeticfan.com/ajuda/envio-encomendas.html",
+   "verificado": "2026-10-15",
+   "valores": []
+  },
+  "farmatogo": {
+   "url": "https://nouxis.com/policies/shipping-policy",
+   "verificado": "2026-10-15",
+   "valores": [
+    "2.95",
+    "4.95",
+    "99",
+    "249"
+   ]
+  },
+  "atuafarmacia": {
+   "url": "https://www.atuafarmacia.pt/pages/metodos-de-envio",
+   "verificado": "2026-10-15",
+   "valores": [
+    "55"
+   ]
+  },
+  "ilhadoscosmeticos": {
+   "url": "https://ilhadoscosmeticos.pt/policies/shipping-policy",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.79",
+    "60"
+   ]
+  },
+  "quickfarma": {
+   "url": "https://www.quickfarma.pt/termos-e-condicoes/",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3",
+    "3.99",
+    "35.9",
+    "50"
+   ]
+  },
+  "farmaciapt": {
+   "url": "https://farmacia.pt/termos-e-condicoes/",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.4",
+    "40",
+    "65"
+   ]
+  },
+  "powerbeauty": {
+   "url": "https://powerbeauty.pt/content/1-termos-e-condicoes",
+   "verificado": "2026-10-15",
+   "valores": [
+    "4.95",
+    "49"
+   ]
+  },
+  "skpro": {
+   "url": "https://skpro.pt/pt/content/1-entregas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "4.5",
+    "11.99"
+   ]
+  },
+  "vidamais": {
+   "url": "https://www.farmaciavidamais.pt/pt/entregas",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.95",
+    "39"
+   ]
+  },
+  "megafarma": {
+   "url": "https://megafarma.pt/pt-pt/terms-conditions",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3",
+    "4.99",
+    "39.95"
+   ]
+  },
+  "pharma24": {
+   "url": "https://www.pharma24.pt/termos-e-condicoes",
+   "verificado": "2026-10-15",
+   "valores": [
+    "3.98"
+   ]
+  },
+  "farmaciamarquesbraga": {
+   "url": "https://farmaciamarquesbraga.pt/pt-pt/terms-conditions",
+   "verificado": "2026-10-15",
+   "valores": [
+    "2.99",
+    "10",
+    "35"
+   ]
+  }
+ }
+}
