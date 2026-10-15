@@ -84,9 +84,19 @@ function brandsIn(text) {
 const isKit = (name) => /\b(kit|pack|conjunto|coffret|trio|duo|set|bundle|presente|oferta|miniatura|mini\b)/i.test(name || '') || /\s\+\s/.test(name || '');
 
 const seed = JSON.parse(fs.readFileSync(SEED, 'utf8'));
+// Ofertas já na offer-ean-blocklist.json não contam (2026-10-16): o site já as
+// esconde e os integradores não as voltam a pôr, por isso uma ficha cujas
+// ofertas erradas estão todas bloqueadas já está curada. Sem isto o monitor
+// listava-a para sempre e a issue dele nunca fechava.
+let bloqueadas = new Set();
+try {
+  const BL = path.join(__dirname, '..', 'data', 'offer-ean-blocklist.json');
+  bloqueadas = new Set((JSON.parse(fs.readFileSync(BL, 'utf8')).blocked || []).map(b => `${b.store_slug}|${b.ean}`));
+} catch { /* sem blocklist */ }
 // índice ean -> [offers]
 const offersByEan = {};
 for (const g of seed.store_products) for (const it of g.items) {
+  if (bloqueadas.has(`${g.store_slug}|${it.ean}`)) continue;
   (offersByEan[it.ean] ||= []).push({ store: g.store_slug, url: it.url || '', price: it.price });
 }
 

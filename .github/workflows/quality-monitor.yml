@@ -1,16 +1,22 @@
-# CosMath — Monitor de qualidade das comparações (auto-cura de ímanes)
+# CosMath — Monitor de qualidade das comparações (ímanes)
 # ============================================================
 # Os "ímanes" (um EAN com ofertas de ≥2 marcas distintas — ex.: Klorane/Uriage
 # colados num Olaplex) davam comparações erradas. A causa raiz (dedup-store-url
 # a fundir 2 GTINs reais) foi corrigida em 2026-07-04, mas este monitor é a
 # rede de segurança: corre DEPOIS das janelas de scraping, deteta ímanes com o
-# detector curado (purge-corrupt-merges) e AUTO-CURA (purga → inject → push).
-# Como o merge legado está OFF, o próximo scrape recria os produtos corretos e
-# separados. Se não houver ímanes, não faz nada (sai limpo).
+# detector curado (purge-corrupt-merges) e AVISA numa issue.
+#
+# SÓ DETETA, NÃO CURA (2026-10-16). Antes fazia "auto-cura": purge --apply,
+# inject e push. A purga apaga a FICHA INTEIRA — a Mela B3, com ~25 lojas
+# certas, desaparecia do site por causa de 3 ofertas de outro produto. Na
+# prática nunca chegou a apagar nada (8 de 8 corridas canceladas por tempo
+# entre 08 e 15/10, a re-integrar no push), mas não é isso que queremos que
+# aconteça no dia em que acabar a tempo. A correção certa é bloquear as ofertas
+# erradas (data/offer-ean-blocklist.json), uma a uma, com prova — e a ficha fica.
 #
 # Precisão: o detector só marca produtos cujas ofertas revelam ≥2 MARCAS
-# bem-conhecidas distintas (lista curada, famílias agrupadas). Teto de
-# segurança (--max) aborta se marcar demais (sinal de detector partido).
+# bem-conhecidas distintas (lista curada, famílias agrupadas). As ofertas que
+# já estão na blocklist não contam.
 
 name: Quality monitor (imanes)
 
@@ -20,13 +26,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  issues: write   # o aviso é uma issue (ver o passo "Avisar por issue")
 
 jobs:
-  heal:
-    name: Deteta e auto-cura ímanes
+  detect:
+    name: Deteta ímanes e avisa
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
@@ -43,48 +50,98 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install deps
-        run: |
-          if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
 
+      # Os dois scripts só usam builtins do Node: sem npm install.
+
+      # continue-on-error para o aviso dos ímanes correr na mesma; o vermelho
+      # é reposto no último passo.
       - name: Auditoria de preços truncados (vírgula-decimal)
+        id: truncados
+        continue-on-error: true
         run: node scripts/audit-truncated-prices.js
 
       - name: Detetar ímanes (dry-run)
         id: detect
         run: |
-          if node scripts/purge-corrupt-merges.js; then
+          RC=0
+          node scripts/purge-corrupt-merges.js > /tmp/imanes.txt 2>&1 || RC=$?
+          head -400 /tmp/imanes.txt
+          # 0 = limpo, 1 = há ímanes. Um 1 sem a linha final do dry-run é o
+          # script a rebentar, não ímanes: aí o job fica vermelho.
+          if [ "$RC" = '0' ]; then
             echo "found=0" >> "$GITHUB_OUTPUT"
             echo "✅ Sem ímanes."
-          else
+          elif [ "$RC" = '1' ] && grep -q '^🧪 dry-run' /tmp/imanes.txt; then
             echo "found=1" >> "$GITHUB_OUTPUT"
-            echo "⚠ Ímanes detetados — a auto-curar."
+            echo "⚠ Ímanes detetados — ver a issue."
+          else
+            echo "❌ O detector falhou (código $RC)."
+            exit 1
           fi
 
-      - name: Auto-curar (purga + inject + commit + push resiliente)
-        if: steps.detect.outputs.found == '1'
+      # Como no freshness-monitor: no máximo UMA issue aberta.
+      #   problema novo      -> ABRE a issue          (notifica)
+      #   problema que dura  -> actualiza o corpo     (não notifica; não há spam)
+      #   problema resolvido -> FECHA com comentário  (notifica)
+      - name: Avisar por issue (abre, actualiza ou fecha)
         env:
-          GIT_AUTHOR_NAME: CosMath Bot
-          GIT_AUTHOR_EMAIL: bot@cosmath.pt
-          GIT_COMMITTER_NAME: CosMath Bot
-          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+          GH_TOKEN: ${{ github.token }}
+          FOUND: ${{ steps.detect.outputs.found }}
         run: |
-          set -e
-          node scripts/purge-corrupt-merges.js --apply
-          node scripts/inject-seed-into-demo.js
-          # O .json é ignorado pelo git — só o .gz é rastreado. Um `git diff`
-          # do .json diria SEMPRE "sem alterações", e loja nenhuma publicava nada.
-          # Comprimir PRIMEIRO e testar o .gz, que é byte-a-byte determinístico
-          # graças ao `gzip -n` (sem -n, o cabeçalho leva a data e o teste dava
-          # sempre alteração — 13,4 MB de commit por dia e por loja, sem dados novos).
-          bash scripts/ci/seed.sh pack
-          if git diff --quiet -- data/seed-bundle.json.gz demo.html; then
-            echo "Nada mudou — nada a fazer."
+          set -uo pipefail
+          TITULO='Monitor de qualidade: fichas com ofertas de outro produto (ímanes)'
+          CORPO=/tmp/corpo.md
+
+          gh issue list --state open --limit 100 --json number,title \
+            --template '{{range .}}{{.number}}|{{.title}}{{"\n"}}{{end}}' > /tmp/issues.txt || true
+          NUM=$(grep -F "|$TITULO" /tmp/issues.txt | head -1 | cut -d"|" -f1 || true)
+
+          if [ "$FOUND" = '0' ]; then
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --body "Resolvido: o detector não encontrou ímanes na corrida de $(date -u '+%F %H:%M') UTC. A fechar."
+              gh issue close "$NUM"
+              echo "Issue #$NUM fechada."
+            else
+              echo 'Sem ímanes e nenhuma issue aberta: nada a fazer.'
+            fi
             exit 0
           fi
-          git add data/seed-bundle.json.gz demo.html
-          git commit -m "fix: auto-cura de imanes (quality-monitor $(date -u +%Y-%m-%d))"
-          # resilient-push re-corre purga+inject sobre o origin mais recente em conflito
-          bash scripts/ci/resilient-push.sh \
-            "node scripts/purge-corrupt-merges.js --apply && node scripts/inject-seed-into-demo.js" \
-            "fix: auto-cura de imanes (quality-monitor $(date -u +%Y-%m-%d))"
+
+          N=$(grep -c '^■' /tmp/imanes.txt || true)
+          {
+            echo "Actualizado: **$(date -u '+%F %H:%M') UTC** · [corrida](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+            echo
+            echo 'Esta issue é mantida pelo `quality-monitor.yml`. Fecha-se sozinha quando o detector deixar de encontrar ímanes — não a feches à mão.'
+            echo
+            echo "## $N fichas com ofertas de marcas diferentes"
+            echo
+            echo 'Quase sempre a ficha está certa e uma ou duas lojas publicam o EAN para outro produto. A correção é pôr cada par (loja, EAN) errado em `data/offer-ean-blocklist.json`, com a prova no `reason`. **Não** apagar a ficha: era o que a antiga auto-cura fazia, e foi desligada a 2026-10-16.'
+            echo
+            echo '```'
+            grep '^■' /tmp/imanes.txt | cut -c1-200
+            echo '```'
+            echo
+            echo '<details><summary>Ofertas de cada ficha (loja, preço, endereço)</summary>'
+            echo
+            echo '```'
+            # o corpo de uma issue tem um limite de 65 536 caracteres
+            sed -n '/^■/,/^🧪/p' /tmp/imanes.txt | grep -v '^🧪' | cut -c1-160 | head -300
+            echo '```'
+            echo '</details>'
+          } > "$CORPO"
+
+          if [ -n "$NUM" ]; then
+            gh issue edit "$NUM" --body-file "$CORPO"
+            echo "Issue #$NUM actualizada."
+          else
+            gh issue create --title "$TITULO" --body-file "$CORPO" \
+              && echo 'Issue aberta.'
+          fi
+
+      - name: Repor o vermelho se a auditoria falhou
+        if: always()
+        run: |
+          if [ '${{ steps.truncados.outcome }}' = 'failure' ]; then
+            echo 'A auditoria de preços truncados falhou — ver o passo acima.'
+            exit 1
+          fi

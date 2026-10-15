@@ -162,12 +162,26 @@ function bestOfferFor(seed, ean) {
   return best;
 }
 
+// Nº de lojas com o EAN em stock. A contagem faz-se UMA vez por seed e fica
+// guardada (2026-10-16): antes percorria todas as ofertas para cada produto
+// (94 mil × 275 mil), só os Bestsellers levavam 26 min no CI e o Content
+// recommendations morria por tempo todos os dias, com o "Em alta" parado.
+const lojasPorEan = new WeakMap();
 function countStores(seed, ean) {
-  let n = 0;
-  for (const sp of seed.store_products) {
-    if (sp.items.some(i => i.ean === ean && i.in_stock)) n++;
+  let m = lojasPorEan.get(seed);
+  if (!m) {
+    m = new Map();
+    for (const sp of seed.store_products) {
+      const vistos = new Set();
+      for (const i of sp.items) {
+        if (!i.in_stock || vistos.has(i.ean)) continue;
+        vistos.add(i.ean);
+        m.set(i.ean, (m.get(i.ean) || 0) + 1);
+      }
+    }
+    lojasPorEan.set(seed, m);
   }
-  return n;
+  return m.get(ean) || 0;
 }
 
 function condenseProduct(seed, p) {
