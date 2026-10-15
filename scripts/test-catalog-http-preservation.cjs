@@ -54,7 +54,8 @@ async function scenario(name,mode){
 }
 (async()=>{
   let failed=0;
-  for(const name of ['pharmagdd','haemiskin','barreiros','quickfarma','farmaciavirtual','pharmascalabis'])for(const mode of ['valid','empty','403','429','500','bad-sitemap','limit','network','challenge','rename-failure','resume']){
+  // haemiskin saiu a 2026-10-15: passou para scripts/lib/shopify-existentes.js (testado em test-integrar-existentes.js)
+  for(const name of ['pharmagdd','barreiros','quickfarma','farmaciavirtual','pharmascalabis'])for(const mode of ['valid','empty','403','429','500','bad-sitemap','limit','network','challenge','rename-failure','resume']){
     try{await scenario(name,mode);}catch(error){console.error(`FAIL ${name} ${mode}: ${error.message}`);failed++;}
   }
   process.exitCode=failed?1:0;
