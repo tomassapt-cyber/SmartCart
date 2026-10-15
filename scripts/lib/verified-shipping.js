@@ -17,55 +17,53 @@ const path = require('path');
 
 /**
  * Aplica os portes verificados às lojas do seed (em memória).
+ *
+ * FASE 5 DO PLANO DOS PORTES (2026-10-15, decisão do Tomás): o carrinho só usa
+ * portes VERIFICADOS. Tudo o que não está no store-shipping.json fica null =
+ * «Portes calculados no checkout» — nunca o valor que o integrador adivinhou
+ * (49 €/3,95 €) nem o do continente copiado para as ilhas. Antes desta data,
+ * um campo ausente mantinha o valor adivinhado (gratis, casa) ou copiava o de
+ * casa (ilhas, gratis_ilhas). Campos:
+ *   gratis        número = grátis a partir daí; null = nunca; ausente = não se
+ *                 sabe → null (nunca se promete grátis sem verificação)
+ *   casa          número = tarifa do continente; null/ausente = desconhecida
+ *   ilhas         número = tarifa da Madeira e Açores (vale mesmo sem 'casa');
+ *                 null/ausente = desconhecida
+ *   gratis_ilhas  limiar PRÓPRIO das ilhas, sempre explícito em shipping_zones
+ *                 (o carrinho só cai no limiar geral quando a chave falta):
+ *                 número = grátis nas ilhas a partir daí; null/ausente = nunca
+ * Uma loja com tarifa desconhecida mas limiar verificado continua a entrar no
+ * carrinho quando o cabaz chega ao limiar (portes 0 €, sabidos) — ver
+ * portesCalculaveis() no demo.html.
  * @param {object} seedJson  objeto do seed com .stores
  * @param {string} root      raiz do repo (onde vive data/store-shipping.json)
- * @returns {{aplicadas:number, total:number}}
+ * @returns {{aplicadas:number, total:number, casaDesconhecida:number}}
  */
 function applyVerifiedShipping(seedJson, root) {
   const ficheiro = path.join(root, 'data', 'store-shipping.json');
-  if (!fs.existsSync(ficheiro)) return { aplicadas: 0, total: 0 };
+  if (!fs.existsSync(ficheiro)) return { aplicadas: 0, total: 0, casaDesconhecida: 0 };
   let ship;
-  try { ship = JSON.parse(fs.readFileSync(ficheiro, 'utf8')); } catch { return { aplicadas: 0, total: 0 }; }
+  try { ship = JSON.parse(fs.readFileSync(ficheiro, 'utf8')); } catch { return { aplicadas: 0, total: 0, casaDesconhecida: 0 }; }
 
-  let aplicadas = 0, total = 0;
+  const num = x => typeof x === 'number' && Number.isFinite(x);
+  let aplicadas = 0, total = 0, casaDesconhecida = 0;
   for (const st of (seedJson.stores || [])) {
-    const v = ship[st.slug];
-    if (!v) continue;
-    total++;
+    if (ship[st.slug]) total++;
+    const v = ship[st.slug] || {};   // sem entrada = nada verificado
     let tocada = false;
-    // 'gratis' AUSENTE = não verificado (não mexer).
-    // 'gratis': null PRESENTE = verificado e a loja NUNCA dá portes grátis →
-    // tem de ficar null, senão sobrevive a sentinela do seed (o Continente
-    // tinha 9999 e o /app anunciava "grátis ≥ 9999,00 €", que é absurdo).
-    // São 6 lojas: docmorris, poupafarma, hiperfarma, pharmee, continente,
-    // farmaciagarcia. (2026-07-29)
-    if ('gratis' in v && st.free_shipping_threshold !== v.gratis) {
-      st.free_shipping_threshold = v.gratis; tocada = true;
-    }
-    if (v.casa != null) {
-      st.shipping_zones = st.shipping_zones || {};
-      // 'ilhas' AUSENTE = a loja não distingue as ilhas → vale a tarifa de casa.
-      // 'ilhas': null PRESENTE (2026-10-14) = verificado que NÃO se sabe o custo
-      // para Madeira/Açores (a loja não envia, ou cobra por peso). Fica null e o
-      // carrinho trata-o como desconhecido (#36): «Portes calculados no
-      // checkout», fora das combinações para essa zona. Antes, estas lojas
-      // apareciam às ilhas com o preço do continente.
-      const ilhas = 'ilhas' in v ? v.ilhas : v.casa;
-      if (st.shipping_zones.mainland !== v.casa || st.shipping_zones.madeira !== ilhas || st.shipping_zones.acores !== ilhas) {
-        st.shipping_zones.mainland = v.casa;
-        st.shipping_zones.madeira = ilhas;
-        st.shipping_zones.acores = ilhas;
-        tocada = true;
-      }
-      // 'gratis_ilhas' (2026-10-14): limiar de portes grátis PRÓPRIO das ilhas.
-      // Ausente = o mesmo de 'gratis'; null = nas ilhas nunca é grátis; número =
-      // grátis nas ilhas a partir desse valor. Vai dentro de shipping_zones: o
-      // bloco de arranque leva-o ao site tal como está, e a BD ignora-o.
-      if ('gratis_ilhas' in v && st.shipping_zones.gratis_ilhas !== v.gratis_ilhas) {
-        st.shipping_zones.gratis_ilhas = v.gratis_ilhas;
-        tocada = true;
-      }
-    }
+    // 'gratis': null = verificado que a loja NUNCA dá portes grátis (tem de
+    // ficar null, senão sobrevive a sentinela 9999 do seed, 2026-07-29).
+    const gratis = 'gratis' in v ? v.gratis : null;
+    if (st.free_shipping_threshold !== gratis) { st.free_shipping_threshold = gratis; tocada = true; }
+    // 'ilhas': null = verificado que não se sabe (não envia, ou cobra por peso).
+    const zonas = {
+      mainland: num(v.casa) ? v.casa : null,
+      madeira: num(v.ilhas) ? v.ilhas : null,
+      acores: num(v.ilhas) ? v.ilhas : null,
+      gratis_ilhas: 'gratis_ilhas' in v ? v.gratis_ilhas : null,
+    };
+    if (zonas.mainland == null) casaDesconhecida++;
+    if (JSON.stringify(st.shipping_zones || null) !== JSON.stringify(zonas)) { st.shipping_zones = zonas; tocada = true; }
     if (v.ponto != null && st.pickup_cost !== v.ponto) {
       st.pickup_cost = v.ponto;
       st.pickup_note = v.ponto_txt || null;
@@ -78,7 +76,7 @@ function applyVerifiedShipping(seedJson, root) {
     }
     if (tocada) aplicadas++;
   }
-  return { aplicadas, total };
+  return { aplicadas, total, casaDesconhecida };
 }
 
 module.exports = { applyVerifiedShipping };

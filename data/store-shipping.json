@@ -17,7 +17,9 @@
   "gratis": null,
   "casa": 7.95,
   "ponto": 6.95,
-  "ponto_txt": "6,95 € (grátis ≥79 €)"
+  "ponto_txt": "6,95 € (grátis ≥79 €)",
+  "ilhas": 7.95,
+  "gratis_ilhas": null
  },
  "pharma-gdd": {
   "gratis": 59,
@@ -139,7 +141,9 @@
   "gratis": 20,
   "casa": 3.95,
   "ponto": 0,
-  "ponto_txt": "Grátis em loja Druni"
+  "ponto_txt": "Grátis em loja Druni",
+  "ilhas": 3.95,
+  "gratis_ilhas": 20
  },
  "primor": {
   "gratis": 25,
@@ -163,12 +167,7 @@
   "ponto": 2.95,
   "ponto_txt": "2,95 € (InPost/Nacex; grátis ≥55 €)"
  },
- "docmorris": {
-  "gratis": null,
-  "casa": null,
-  "ponto": null,
-  "ponto_txt": null
- },
+ "docmorris": {},
  "atuafarmacia": {
   "gratis": 55,
   "casa": 4.11,
@@ -226,7 +225,8 @@
   "gratis": 44.9,
   "casa": null,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "gratis_ilhas": 119.9
  },
  "hiperfarma": {
   "gratis": null,
@@ -246,7 +246,8 @@
   "casa": 3.4,
   "ilhas": null,
   "ponto": 2.4,
-  "ponto_txt": "2,40 € (InPost; 1,15 € entre 25 € e 39,99 €)"
+  "ponto_txt": "2,40 € (InPost; 1,15 € entre 25 € e 39,99 €)",
+  "gratis_ilhas": 65
  },
  "pharmee": {
   "gratis": 40,
@@ -429,7 +430,9 @@
  },
  "parfumdreams": {
   "gratis": null,
-  "casa": 5.95
+  "casa": 5.95,
+  "ilhas": 5.95,
+  "gratis_ilhas": null
  },
  "auchan": {
   "gratis": null,
@@ -479,7 +482,9 @@
   "ilhas": null
  },
  "farmaciasprogresso": {
-  "gratis": 39
+  "gratis": 39,
+  "ilhas": 11.55,
+  "gratis_ilhas": null
  },
  "farma2go": {
   "gratis": 69,
@@ -510,7 +515,8 @@
  "farmaciamarquesbraga": {
   "gratis": 35,
   "ponto": 2.99,
-  "ponto_txt": "2,99 € (ponto pick-up)"
+  "ponto_txt": "2,99 € (ponto pick-up)",
+  "ilhas": 10
  },
  "farmaciaemcasa": {
   "gratis": 30,
@@ -537,7 +543,8 @@
   "ponto_txt": "8,95 € (DHL)"
  },
  "farmaciarodrigues": {
-  "gratis": 39
+  "gratis": 39,
+  "ilhas": 10
  },
  "pharmaciadocabelo": {
   "gratis": 55,
