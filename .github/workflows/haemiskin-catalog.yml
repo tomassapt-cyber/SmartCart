@@ -64,6 +64,10 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      # Preços em bloco + GTIN em cache (scripts/lib/shopify-existentes.js), 2026-10-15
+      - name: Testes da recolha Shopify em bloco
+        run: node scripts/test-integrar-existentes.js
+
       - name: Scrape HaemiSkin catalog
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
@@ -97,11 +101,12 @@ jobs:
           # graças ao `gzip -n` (sem -n, o cabeçalho leva a data e o teste dava
           # sempre alteração — 13,4 MB de commit por dia e por loja, sem dados novos).
           bash scripts/ci/seed.sh pack
-          if git diff --quiet -- data/seed-bundle.json.gz demo.html; then
+          if git diff --quiet -- data/seed-bundle.json.gz demo.html data/catalog/haemiskin-gtin.json; then
             echo "Nenhuma alteração — nada a fazer."
             exit 0
           fi
           git add data/seed-bundle.json.gz demo.html
+          git add data/catalog/haemiskin-gtin.json
           git add -f data/catalog/haemiskin-full.json 2>/dev/null || true
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "chore: HaemiSkin daily refresh ($DATE)" \
@@ -113,4 +118,4 @@ jobs:
           bash scripts/ci/resilient-push.sh \
             "node scripts/integrate-haemiskin-catalog.js" \
             "chore: HaemiSkin daily refresh ($(date -u +%Y-%m-%d))" \
-            data/catalog/haemiskin-full.json
+            data/catalog/haemiskin-full.json data/catalog/haemiskin-gtin.json
