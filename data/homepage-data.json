@@ -294,10 +294,3055 @@
     }
   ],
   "stats": {
-    "stores": 102,
-    "products": 66361,
+    "stores": 99,
+    "products": 76229,
     "avg_savings_pct": 29
   },
-  "shard_version": "",
-  "idx_version": ""
+  "shard_version": "93c07bbd",
+  "idx_version": "6d11df07",
+  "arranque": {
+    "v": 1,
+    "lojas": [
+      {
+        "slug": "druni",
+        "nome": "Druni PT",
+        "url": "https://www.druni.pt",
+        "gratis": 20,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": 3.95,
+          "acores": 3.95,
+          "gratis_ilhas": 20
+        }
+      },
+      {
+        "slug": "wells",
+        "nome": "Wells",
+        "url": "https://www.wells.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": 2.99,
+          "madeira": 6.99,
+          "acores": 6.99,
+          "gratis_ilhas": 39
+        }
+      },
+      {
+        "slug": "easyfarma",
+        "nome": "Easyfarma",
+        "url": "https://easyfarma.pt",
+        "gratis": 69,
+        "portes": {
+          "mainland": 3.7,
+          "madeira": 8.9,
+          "acores": 8.9,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "sweetcare",
+        "nome": "SweetCare",
+        "url": "https://sweetcare.pt",
+        "gratis": 65,
+        "portes": {
+          "mainland": 3.42,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "bairro-saude",
+        "nome": "Bairro da Saúde",
+        "url": "https://bairrodasaude.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": 4.5,
+          "madeira": 23.5,
+          "acores": 23.5,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "atida",
+        "nome": "Atida | Mifarma PT",
+        "url": "https://www.atida.com/pt-pt",
+        "gratis": 49,
+        "portes": {
+          "mainland": 3.99,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "byfarma",
+        "nome": "byFarma",
+        "url": "https://byfarma.pt",
+        "gratis": 59.99,
+        "portes": {
+          "mainland": 4.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmacia365",
+        "nome": "Farmácia 365",
+        "url": "https://www.farmacia365.pt",
+        "gratis": 49.9,
+        "portes": {
+          "mainland": 3.3,
+          "madeira": 6.8,
+          "acores": 6.8,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciapt",
+        "nome": "Farmácia.pt",
+        "url": "https://farmacia.pt",
+        "gratis": 40,
+        "portes": {
+          "mainland": 3.4,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": 65
+        }
+      },
+      {
+        "slug": "afarmaciaonline",
+        "nome": "A Farmácia Online",
+        "url": "https://www.afarmaciaonline.pt",
+        "gratis": 25,
+        "portes": {
+          "mainland": 4.99,
+          "madeira": 6.69,
+          "acores": 6.69,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "loja-farmacia",
+        "nome": "Loja da Farmácia",
+        "url": "https://www.lojadafarmacia.com",
+        "gratis": 60,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "haemiskin",
+        "nome": "HaemiSkin",
+        "url": "https://www.haemiskin.pt",
+        "gratis": 60,
+        "portes": {
+          "mainland": 4,
+          "madeira": 7.25,
+          "acores": 7.25,
+          "gratis_ilhas": 70
+        }
+      },
+      {
+        "slug": "asuafarmaciaonline",
+        "nome": "A Sua Farmácia Online",
+        "url": "https://www.asuafarmaciaonline.pt",
+        "gratis": 49,
+        "portes": {
+          "mainland": 3.7,
+          "madeira": 6.8,
+          "acores": 6.8,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pharma-gdd",
+        "nome": "Pharma GDD",
+        "url": "https://www.pharma-gdd.com",
+        "gratis": 59,
+        "portes": {
+          "mainland": 4.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "barreiros",
+        "nome": "Farmácia Barreiros",
+        "url": "https://www.farmaciabarreiros.com",
+        "gratis": 39,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "manuelaserra",
+        "nome": "Manuela Serra",
+        "url": "https://www.manuelaserra.com",
+        "gratis": 50,
+        "portes": {
+          "mainland": 3.4,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pharma2you",
+        "nome": "Pharma2you",
+        "url": "https://pharma2you.pt",
+        "gratis": 49,
+        "portes": {
+          "mainland": 4.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciasportuguesas",
+        "nome": "Farmácias Portuguesas",
+        "url": "https://www.farmaciasportuguesas.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "cocooncenter",
+        "nome": "Cocooncenter",
+        "url": "https://www.cocooncenter.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 7.95,
+          "madeira": 7.95,
+          "acores": 7.95,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "notino",
+        "nome": "Notino",
+        "url": "https://www.notino.pt",
+        "gratis": 45,
+        "portes": {
+          "mainland": 5.95,
+          "madeira": 29.99,
+          "acores": 29.99,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciavirtual",
+        "nome": "Farmácia Virtual",
+        "url": "https://farmaciavirtual.pt",
+        "gratis": 100,
+        "portes": {
+          "mainland": 4.29,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "saudemayor",
+        "nome": "Saúde Mayor",
+        "url": "https://www.saudemayor.pt",
+        "gratis": 44.5,
+        "portes": {
+          "mainland": 4.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": 44.5
+        }
+      },
+      {
+        "slug": "mycosmetics",
+        "nome": "My Cosmetics",
+        "url": "https://www.mycosmetics.pt",
+        "gratis": 50,
+        "portes": {
+          "mainland": 3.8,
+          "madeira": 3.8,
+          "acores": 3.8,
+          "gratis_ilhas": 100
+        }
+      },
+      {
+        "slug": "aveirofarma",
+        "nome": "Aveiro Farma",
+        "url": "https://aveirofarma.pt",
+        "gratis": 55,
+        "portes": {
+          "mainland": 4.5,
+          "madeira": 6.9,
+          "acores": 6.9,
+          "gratis_ilhas": 75
+        }
+      },
+      {
+        "slug": "perfumesclub",
+        "nome": "Perfume's Club",
+        "url": "https://www.perfumesclub.pt",
+        "gratis": 19.95,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "primor",
+        "nome": "Primor",
+        "url": "https://pt.primor.eu",
+        "gratis": 25,
+        "portes": {
+          "mainland": 2.95,
+          "madeira": 4.95,
+          "acores": 4.95,
+          "gratis_ilhas": 50
+        }
+      },
+      {
+        "slug": "farmaciaideal",
+        "nome": "Farmácia Ideal",
+        "url": "https://www.farmaciaideal.pt",
+        "gratis": 60,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pharmascalabis",
+        "nome": "Pharma Scalabis",
+        "url": "https://www.pharmascalabis.com",
+        "gratis": 40,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": 4.5,
+          "acores": 4.5,
+          "gratis_ilhas": 50
+        }
+      },
+      {
+        "slug": "continente",
+        "nome": "Continente Online",
+        "url": "https://www.continente.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 5.99,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pluricosmetica",
+        "nome": "Pluricosmética",
+        "url": "https://www.pluricosmetica.com",
+        "gratis": 39,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": 59
+        }
+      },
+      {
+        "slug": "docmorris",
+        "nome": "DocMorris",
+        "url": "https://www.docmorris.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "atuafarmacia",
+        "nome": "A Tua Farmácia",
+        "url": "https://www.atuafarmacia.pt",
+        "gratis": 55,
+        "portes": {
+          "mainland": 4.11,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "unifarma",
+        "nome": "Unifarma",
+        "url": "https://www.unifarma.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": 2.99,
+          "madeira": 13,
+          "acores": 13,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "poupafarma",
+        "nome": "Poupafarma",
+        "url": "https://www.poupafarma.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 3.25,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "quickfarma",
+        "nome": "Quickfarma",
+        "url": "https://www.quickfarma.pt",
+        "gratis": 50,
+        "portes": {
+          "mainland": 3.99,
+          "madeira": 35.9,
+          "acores": 35.9,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "shopcosmetics",
+        "nome": "ShopCosmetics",
+        "url": "https://shopcosmetics.pt",
+        "gratis": 40,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "wowfarma",
+        "nome": "WOWFARMA",
+        "url": "https://www.wowfarma.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 3.75,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "gofarma",
+        "nome": "GO-farma",
+        "url": "https://www.go-farma.com",
+        "gratis": 44.9,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": 119.9
+        }
+      },
+      {
+        "slug": "hiperfarma",
+        "nome": "Hiper Farma",
+        "url": "https://www.hiperfarma.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 3.74,
+          "madeira": 12.5,
+          "acores": 12.5,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "powerbeauty",
+        "nome": "Power Beauty",
+        "url": "https://powerbeauty.pt",
+        "gratis": 49,
+        "portes": {
+          "mainland": 4.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "nossafarmacia",
+        "nome": "Nossa Farmácia",
+        "url": "https://www.nossafarmacia.pt",
+        "gratis": 55,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "sobeauty",
+        "nome": "SoBeauty",
+        "url": "https://www.sobeauty.pt",
+        "gratis": 49,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "perfumes4you",
+        "nome": "Perfumes4you",
+        "url": "https://perfumes4you.pt",
+        "gratis": 50,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "smartbeauty",
+        "nome": "Smart Beauty",
+        "url": "https://www.smartbeauty.pt",
+        "gratis": 60,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "beleza37",
+        "nome": "Beleza37",
+        "url": "https://www.beleza37.pt",
+        "gratis": 100,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pharmavida",
+        "nome": "Pharmavida",
+        "url": "https://pharmavida.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "cosmeticfan",
+        "nome": "CosmeticFan",
+        "url": "https://www.cosmeticfan.com",
+        "gratis": 49,
+        "portes": {
+          "mainland": 4.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pharmee",
+        "nome": "Pharmee",
+        "url": "https://www.pharmeestore.com",
+        "gratis": 40,
+        "portes": {
+          "mainland": 3.5,
+          "madeira": 8,
+          "acores": 8,
+          "gratis_ilhas": 100
+        }
+      },
+      {
+        "slug": "care2me",
+        "nome": "Care2Me",
+        "url": "https://www.care2me.pt",
+        "gratis": 50,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmatogo",
+        "nome": "FarmaToGo",
+        "url": "https://www.farmatogo.com",
+        "gratis": 99,
+        "portes": {
+          "mainland": 4.95,
+          "madeira": 5.95,
+          "acores": 5.95,
+          "gratis_ilhas": 249
+        }
+      },
+      {
+        "slug": "farmaoli",
+        "nome": "Farmaoli",
+        "url": "https://farmaoli.pt",
+        "gratis": 40,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciadocostume",
+        "nome": "Farmácia do Costume",
+        "url": "https://www.farmaciadocostume.pt",
+        "gratis": 50,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "bemecare",
+        "nome": "BeMeCare",
+        "url": "https://bemecare.com",
+        "gratis": 49.9,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "vallispharma",
+        "nome": "VallisPharma",
+        "url": "https://www.vallispharma.pt",
+        "gratis": 40,
+        "portes": {
+          "mainland": 3.99,
+          "madeira": 13,
+          "acores": 13,
+          "gratis_ilhas": 200
+        }
+      },
+      {
+        "slug": "lovemypharma",
+        "nome": "Love My Pharma",
+        "url": "https://lovemypharma.com",
+        "gratis": 49,
+        "portes": {
+          "mainland": 3.48,
+          "madeira": 6.5,
+          "acores": 6.5,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciagarcia",
+        "nome": "Farmácia Garcia",
+        "url": "https://loja.farmaciagarcia.net",
+        "gratis": null,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "atcosmetics",
+        "nome": "ATCosmetics",
+        "url": "https://www.atcosmetics.pt",
+        "gratis": 25,
+        "portes": {
+          "mainland": 3.49,
+          "madeira": 5.99,
+          "acores": 5.99,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "skpro",
+        "nome": "SKPRO",
+        "url": "https://skpro.pt",
+        "gratis": 98.4,
+        "portes": {
+          "mainland": 4.5,
+          "madeira": 11.99,
+          "acores": 11.99,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "vidamais",
+        "nome": "Farmácia Vida+Mais",
+        "url": "https://www.farmaciavidamais.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmacia2u",
+        "nome": "Farmácia2U",
+        "url": "https://www.farmacia2u.com",
+        "gratis": 60,
+        "portes": {
+          "mainland": 3.9,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "lowcost",
+        "nome": "Farmácias LowCost",
+        "url": "https://www.farmaciaslowcost.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "camelo",
+        "nome": "Farmácia Camelo",
+        "url": "https://www.farmaciacamelo.pt",
+        "gratis": 45,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "storekbeauty",
+        "nome": "Store K-Beauty",
+        "url": "https://www.storekbeauty.com",
+        "gratis": 35,
+        "portes": {
+          "mainland": 5.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "miin",
+        "nome": "MiiN Cosmetics",
+        "url": "https://miin-cosmetics.pt",
+        "gratis": 35,
+        "portes": {
+          "mainland": 2.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "dermis",
+        "nome": "Dermis",
+        "url": "https://dermis.pt",
+        "gratis": 59,
+        "portes": {
+          "mainland": 3.7,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciasprogresso",
+        "nome": "Farmácias Progresso",
+        "url": "https://www.farmaciasprogresso.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": null,
+          "madeira": 11.55,
+          "acores": 11.55,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmacentral",
+        "nome": "Farmacentral",
+        "url": "https://farmacentral.pt",
+        "gratis": 40,
+        "portes": {
+          "mainland": 3.7,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "caretobeauty",
+        "nome": "Care to Beauty",
+        "url": "https://www.caretobeauty.com/pt",
+        "gratis": 51,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "sofarma",
+        "nome": "Sofarma",
+        "url": "https://www.sofarma.com/pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": 4.5,
+          "madeira": 12.9,
+          "acores": 12.9,
+          "gratis_ilhas": 89
+        }
+      },
+      {
+        "slug": "mypharmaspot",
+        "nome": "My Pharma Spot",
+        "url": "https://www.mypharmaspot.com",
+        "gratis": null,
+        "portes": {
+          "mainland": 3.8,
+          "madeira": 12.8,
+          "acores": 12.8,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "santamarta",
+        "nome": "Farmácia Santa Marta",
+        "url": "https://farmaciasantamarta.pt",
+        "gratis": 45,
+        "portes": {
+          "mainland": 5,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "auchan",
+        "nome": "Auchan",
+        "url": "https://www.auchan.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 5.99,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pharma24",
+        "nome": "Pharma24",
+        "url": "https://www.pharma24.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 3.98,
+          "madeira": 8.4,
+          "acores": 8.4,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciabarata",
+        "nome": "Farmácia Barata",
+        "url": "https://www.farmaciabarata.pt",
+        "gratis": 65,
+        "portes": {
+          "mainland": 3.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "glowthie",
+        "nome": "Glowthie",
+        "url": "https://glowthie.com",
+        "gratis": 44,
+        "portes": {
+          "mainland": 3.99,
+          "madeira": 8.49,
+          "acores": 8.49,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "mitso",
+        "nome": "Mitso",
+        "url": "https://occasion2smile.com",
+        "gratis": 50,
+        "portes": {
+          "mainland": 4.2,
+          "madeira": 9.99,
+          "acores": 9.99,
+          "gratis_ilhas": 100
+        }
+      },
+      {
+        "slug": "lojashampoo",
+        "nome": "Loja do Shampoo",
+        "url": "https://www.lojashampoo.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 4.5,
+          "madeira": 6.9,
+          "acores": 6.9,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciaemcasa",
+        "nome": "Farmácia em Casa",
+        "url": "https://farmaciaemcasa.pt",
+        "gratis": 30,
+        "portes": {
+          "mainland": 3,
+          "madeira": 10,
+          "acores": 10,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "orientperfumes",
+        "nome": "Orient Perfumes",
+        "url": "https://orientperfumes.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 6.5,
+          "madeira": 6.5,
+          "acores": 6.5,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciasdirect",
+        "nome": "Farmaciasdirect",
+        "url": "https://www.farmaciasdirect.pt",
+        "gratis": 49,
+        "portes": {
+          "mainland": 3.99,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farma2go",
+        "nome": "Farma2Go",
+        "url": "https://farma2go.com/pt",
+        "gratis": 69,
+        "portes": {
+          "mainland": 3.5,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmacia24",
+        "nome": "Farmácia 24",
+        "url": "https://farmacia24.com",
+        "gratis": 40,
+        "portes": {
+          "mainland": 3.99,
+          "madeira": 7.9,
+          "acores": 7.9,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciadaliga",
+        "nome": "Farmácia da Liga",
+        "url": "https://www.farmaciadaliga.pt",
+        "gratis": 45,
+        "portes": {
+          "mainland": 4,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "koreanbeauty",
+        "nome": "Korean Beauty",
+        "url": "https://www.koreanbeauty.pt",
+        "gratis": 54,
+        "portes": {
+          "mainland": 8.95,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "megafarma",
+        "nome": "MegaFarma",
+        "url": "https://megafarma.pt",
+        "gratis": 39.95,
+        "portes": {
+          "mainland": 4.99,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "pharmaciadocabelo",
+        "nome": "Pharmácia do Cabelo",
+        "url": "https://pharmaciadocabelo.com",
+        "gratis": 55,
+        "portes": {
+          "mainland": 3.9,
+          "madeira": 8.93,
+          "acores": 8.93,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "parfumdreams",
+        "nome": "Parfumdreams",
+        "url": "https://www.parfumdreams.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": 5.95,
+          "madeira": 5.95,
+          "acores": 5.95,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciarodrigues",
+        "nome": "Farmácia Rodrigues",
+        "url": "https://farmaciarodrigues.pt",
+        "gratis": 39,
+        "portes": {
+          "mainland": null,
+          "madeira": 10,
+          "acores": 10,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciapertodemim",
+        "nome": "Farmácia Perto de Mim",
+        "url": "https://farmaciapertodemim.pt",
+        "gratis": 49,
+        "portes": {
+          "mainland": 4.5,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciagaiajardim",
+        "nome": "Farmácia Gaia Jardim",
+        "url": "https://www.farmaciagaiajardim.com",
+        "gratis": 49,
+        "portes": {
+          "mainland": 3.9,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciamarquesbraga",
+        "nome": "Farmácia Marques Braga",
+        "url": "https://farmaciamarquesbraga.pt",
+        "gratis": 35,
+        "portes": {
+          "mainland": null,
+          "madeira": 10,
+          "acores": 10,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciabemestar",
+        "nome": "Farmácia BemEstar",
+        "url": "https://farmaciabemestar.pt",
+        "gratis": 38.6,
+        "portes": {
+          "mainland": 3.94,
+          "madeira": 15,
+          "acores": 15,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "balvera",
+        "nome": "Balvera",
+        "url": "https://balvera.pt",
+        "gratis": 25,
+        "portes": {
+          "mainland": 3,
+          "madeira": 15,
+          "acores": 15,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmacianovadamaia",
+        "nome": "Farmácia Nova da Maia",
+        "url": "https://farmacianovadamaia.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "presencadeluxo",
+        "nome": "Presença de Luxo",
+        "url": "https://presencadeluxo.pt",
+        "gratis": null,
+        "portes": {
+          "mainland": null,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "ilhadoscosmeticos",
+        "nome": "Ilha dos Cosméticos",
+        "url": "https://ilhadoscosmeticos.pt",
+        "gratis": 60,
+        "portes": {
+          "mainland": 3.79,
+          "madeira": 9.29,
+          "acores": 9.29,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "skinlovers",
+        "nome": "SkinLovers",
+        "url": "https://www.skinlovers.com/pt-pt",
+        "gratis": 50,
+        "portes": {
+          "mainland": 4.48,
+          "madeira": null,
+          "acores": null,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "lisbonglam",
+        "nome": "Lisbon Glam",
+        "url": "https://lisbonglam.com",
+        "gratis": 39.5,
+        "portes": {
+          "mainland": 2.98,
+          "madeira": 6.99,
+          "acores": 6.99,
+          "gratis_ilhas": null
+        }
+      },
+      {
+        "slug": "farmaciacuida",
+        "nome": "Farmácia Cuida",
+        "url": "https://farmaciacuida.com",
+        "gratis": 47,
+        "portes": {
+          "mainland": 4.2,
+          "madeira": 7.5,
+          "acores": 7.5,
+          "gratis_ilhas": null
+        }
+      }
+    ],
+    "totais": {
+      "produtos": 76239,
+      "marcas": 3798
+    },
+    "categorias": {
+      "skincare": 52539,
+      "hair": 14167,
+      "body": 7361,
+      "perfume": 1592,
+      "makeup": 558,
+      "haircare": 10
+    },
+    "marcas": [
+      {
+        "nome": "Clarins",
+        "n": 823
+      },
+      {
+        "nome": "L'Oréal Paris",
+        "n": 749
+      },
+      {
+        "nome": "Nivea",
+        "n": 732
+      },
+      {
+        "nome": "Avène",
+        "n": 698
+      },
+      {
+        "nome": "Isdin",
+        "n": 650
+      },
+      {
+        "nome": "La Roche-Posay",
+        "n": 634
+      },
+      {
+        "nome": "Eucerin",
+        "n": 620
+      },
+      {
+        "nome": "Garnier",
+        "n": 586
+      },
+      {
+        "nome": "Apivita",
+        "n": 584
+      },
+      {
+        "nome": "Uriage",
+        "n": 573
+      },
+      {
+        "nome": "Essence",
+        "n": 556
+      },
+      {
+        "nome": "Bioderma",
+        "n": 551
+      },
+      {
+        "nome": "Andreia Professional",
+        "n": 534
+      },
+      {
+        "nome": "Klorane",
+        "n": 531
+      },
+      {
+        "nome": "Chicco",
+        "n": 527
+      },
+      {
+        "nome": "Vichy",
+        "n": 502
+      },
+      {
+        "nome": "Nuxe",
+        "n": 448
+      },
+      {
+        "nome": "Lancôme",
+        "n": 441
+      },
+      {
+        "nome": "Catrice",
+        "n": 437
+      },
+      {
+        "nome": "Sesderma",
+        "n": 435
+      },
+      {
+        "nome": "Revuele",
+        "n": 425
+      },
+      {
+        "nome": "Clinique",
+        "n": 405
+      },
+      {
+        "nome": "Sensilis",
+        "n": 392
+      },
+      {
+        "nome": "Ziaja",
+        "n": 370
+      },
+      {
+        "nome": "SVR",
+        "n": 365
+      },
+      {
+        "nome": "Weleda",
+        "n": 357
+      },
+      {
+        "nome": "Babaria",
+        "n": 340
+      },
+      {
+        "nome": "Caudalie",
+        "n": 336
+      },
+      {
+        "nome": "Shiseido",
+        "n": 330
+      },
+      {
+        "nome": "René Furterer",
+        "n": 301
+      },
+      {
+        "nome": "Collistar",
+        "n": 299
+      },
+      {
+        "nome": "Kérastase",
+        "n": 295
+      },
+      {
+        "nome": "Beter",
+        "n": 274
+      },
+      {
+        "nome": "Natura Siberica",
+        "n": 273
+      },
+      {
+        "nome": "Ducray",
+        "n": 273
+      },
+      {
+        "nome": "Estée Lauder",
+        "n": 270
+      },
+      {
+        "nome": "Goldwell",
+        "n": 270
+      },
+      {
+        "nome": "Lierac",
+        "n": 269
+      },
+      {
+        "nome": "Neutrogena",
+        "n": 267
+      },
+      {
+        "nome": "Mustela",
+        "n": 266
+      }
+    ],
+    "highlights": {
+      "newReleases": [
+        "3337872414145",
+        "3337871323394",
+        "3662361000364",
+        "3401381407179"
+      ],
+      "bestSellers": [
+        "3337872414145",
+        "3337871323394",
+        "3662361000364",
+        "3401381407179"
+      ],
+      "tiktok": [
+        "7611773081504",
+        "4973167501108",
+        "4059729359537",
+        "7611773158923"
+      ]
+    },
+    "colecoes": {
+      "spf": 3863,
+      "hidratante": 3616,
+      "retinol": 503,
+      "niacinamida": 121
+    },
+    "primeiros": [
+      {
+        "ean": "3337872414145",
+        "nome": "Cicaplast",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 56,
+        "min": 6.95,
+        "max": 17.6,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5803197.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3662361000364",
+        "nome": "SVR Sebiaclear Sérum Corretor Global 30ml",
+        "marca": "SVR",
+        "cat": "skincare",
+        "lojas": 55,
+        "min": 12.9,
+        "max": 34.22,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/v/svr_sebiaclears_rum30ml.jpg"
+      },
+      {
+        "ean": "3337871323394",
+        "nome": "Dercos Champô Anti Caspa Sensitive - 200ml",
+        "marca": "Dercos",
+        "cat": "skincare",
+        "lojas": 55,
+        "min": 7.16,
+        "max": 26.78,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/d/e/dercosshampoosensitivecaspa.jpg"
+      },
+      {
+        "ean": "3282770204667",
+        "nome": "Avène Cicalfate+ Creme Reparador 100 mL",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 54,
+        "min": 9.26,
+        "max": 25.4,
+        "promo": true,
+        "img": "https://byfarma.pt/assets/1c6b300b-f707-4be1-9df1-bdc50c2dd502.jpeg"
+      },
+      {
+        "ean": "3401381407179",
+        "nome": "Xérial 30 Crème Pieds",
+        "marca": "LABORATOIRES SVR",
+        "cat": "skincare",
+        "lojas": 54,
+        "min": 5.11,
+        "max": 17.35,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5794780.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282779416139",
+        "nome": "Avène Cicalfate Creme de Mãos 100ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 54,
+        "min": 7.69,
+        "max": 17.8,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene-cicalfate-maos.jpg"
+      },
+      {
+        "ean": "3337875597272",
+        "nome": "CeraVe Creme Reparador Contorno de Olhos 14ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 54,
+        "min": 9.6,
+        "max": 18.23,
+        "promo": true,
+        "img": "https://farmacianovadamaia.pt/22509-large_default/cerave-creme-reparador-olhos-14ml.jpg"
+      },
+      {
+        "ean": "3661434004315",
+        "nome": "Uriage Hyséac Pasta SOS 15g",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 54,
+        "min": 6.02,
+        "max": 13.65,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/5621600-TRATAMENTO-HYSEAC-PATE-SOS-URIAGE-P-01.jpg?v=1765968778"
+      },
+      {
+        "ean": "3337871320300",
+        "nome": "Vichy Desodorizante Roll-On Antitranspirante 48H - 50 mL",
+        "marca": "Vichy",
+        "cat": "body",
+        "lojas": 54,
+        "min": 7.2,
+        "max": 14.4,
+        "promo": true,
+        "img": "https://www.farmaciabarreiros.com/36280/vichy-desodorizante-roll-on-antitranspirante-48h-50-ml.jpg"
+      },
+      {
+        "ean": "3282770153101",
+        "nome": "Hyaluron Activ B3",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 53,
+        "min": 24.3,
+        "max": 48.55,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/1/4/1461730.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401060256340",
+        "nome": "Svr Topialyse Creme Palpebras 15mL",
+        "marca": "SVR",
+        "cat": "skincare",
+        "lojas": 53,
+        "min": 11.99,
+        "max": 26.61,
+        "promo": true,
+        "img": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6963546.webp"
+      },
+      {
+        "ean": "3701129804995",
+        "nome": "Sensibio Defensive Sérum",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 52,
+        "min": 23.67,
+        "max": 42.98,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5799260.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434001932",
+        "nome": "Uriage Hyseac Solaire FPS 50 50ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 52,
+        "min": 8.6,
+        "max": 21.52,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/A8NEgg.png?v=1779326869"
+      },
+      {
+        "ean": "3337875485128",
+        "nome": "Vichy Dercos Shampoo Ultra-Calmante para Cabelos Normais ou Oleosos 200 ml",
+        "marca": "Vichy",
+        "cat": "hair",
+        "lojas": 52,
+        "min": 7.97,
+        "max": 19,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/aa9d730a-6ca7-4c10-b119-6d3e0d8d7d70/Vichy-Dercos-Champu-Ultra-Calmante-Cabello-Normal-o-Graso-200-ml"
+      },
+      {
+        "ean": "3337875586269",
+        "nome": "Cicaplast Gel B5",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 52,
+        "min": 7.59,
+        "max": 18.2,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5800173.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875597449",
+        "nome": "Loção Hidratante De Rosto",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 52,
+        "min": 10.89,
+        "max": 19.89,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5795295.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875597319",
+        "nome": "Cerave Creme Reparador Mãos 50ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 52,
+        "min": 3.9,
+        "max": 10.5,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/3337875597319.jpg?v=1749119370"
+      },
+      {
+        "ean": "3701129801963",
+        "nome": "Bioderma Atoderm Intensive Eyes 100 ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 51,
+        "min": 14,
+        "max": 29,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/dfc13d44-ce29-46ba-8347-f6100bff6a31/Bioderma-Atoderm-Intensive-Ojos-100-ml"
+      },
+      {
+        "ean": "3401381382353",
+        "nome": "SVR Xerial 50 Creme Extremo para Pés 50 ml",
+        "marca": "Laboratorios SVR",
+        "cat": "skincare",
+        "lojas": 51,
+        "min": 11,
+        "max": 22.55,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/e6624dd8-eb90-478b-b0e6-5c5b3dab74f1/SVR-Xerial-50-Extreme-Creme-Pieds-50ml"
+      },
+      {
+        "ean": "3401381682361",
+        "nome": "Bioderma Sébium Mat Control Cream 30ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 51,
+        "min": 11.74,
+        "max": 20.95,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/5F4naz.png?v=1779412002"
+      },
+      {
+        "ean": "3337875597197",
+        "nome": "Cerave Gel Espuma de Limpeza 473ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 51,
+        "min": 10.69,
+        "max": 19.39,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Designsemnome_10_8afea3cc-f88b-4734-b811-fd680c76d532.jpg?v=1749120022"
+      },
+      {
+        "ean": "3701129800072",
+        "nome": "Pigmentbio Daily Care Spf50+",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 18.99,
+        "max": 37.5,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797484.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3701129809334",
+        "nome": "Hydrabio Hyalu+ Serum",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 24.59,
+        "max": 41.8,
+        "promo": true,
+        "img": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwe56bbe21/images/wells/796/7969667-CUIDADOS-SERUM-ROSTO-HYDRABIO-HYALU-ANTI-IDADE-BIODERMA-P-08.png"
+      },
+      {
+        "ean": "3701129804452",
+        "nome": "Sensibio Defensive",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 13.91,
+        "max": 27.72,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797438.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875829007",
+        "nome": "Serum Retinol Acné",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 14.26,
+        "max": 27.97,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5798541.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434000973",
+        "nome": "Uriage Hyséac Gel Limpeza Suave 500ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 11.38,
+        "max": 24.9,
+        "promo": true,
+        "img": "https://static.sweetcare.pt/img/prd/max/v-637486602182046571/uriage-000456ur_01.jpg"
+      },
+      {
+        "ean": "3661434008771",
+        "nome": "Uriage Creme Lavante 1000ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 13.29,
+        "max": 26.49,
+        "promo": true,
+        "img": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6826941a.webp"
+      },
+      {
+        "ean": "3337875613491",
+        "nome": "Effaclar K(+)",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 14.49,
+        "max": 27.3,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5794600.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401348840421",
+        "nome": "Sébium Hydra",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 50,
+        "min": 10.69,
+        "max": 23.4,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797462.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337871324001",
+        "nome": "Desodorizante Roll-On Stress Resist 72H",
+        "marca": "Vichy",
+        "cat": "body",
+        "lojas": 50,
+        "min": 7.2,
+        "max": 15,
+        "promo": true,
+        "img": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw063c45b6/images/wells/551/5510122-ROTINA-DESODORIZANTE-ROLL-ON-STRESS-RESIST-72H-VICHY-P-01.jpg"
+      },
+      {
+        "ean": "3337875579919",
+        "nome": "Neovadiol Rose Platinum",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 24.99,
+        "max": 56.51,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5014286.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282770388954",
+        "nome": "Hydrance Intense",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 18.18,
+        "max": 39.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5012932.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337871330286",
+        "nome": "Shampoo Anticaspa Oleosa",
+        "marca": "Dercos",
+        "cat": "hair",
+        "lojas": 49,
+        "min": 7.1,
+        "max": 26.5,
+        "promo": true,
+        "img": "https://static.sweetcare.pt/img/prd/max/v-638291801393544862/dercos-001505de_01.jpg"
+      },
+      {
+        "ean": "3701129809280",
+        "nome": "Sébium Sérum",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 21.3,
+        "max": 39.95,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5800280.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282770140453",
+        "nome": "Kelual Ds",
+        "marca": "Ducray",
+        "cat": "hair",
+        "lojas": 49,
+        "min": 9.35,
+        "max": 27.5,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5013005.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3701129800096",
+        "nome": "Bioderma Pigmentbio Sensitive Areas 75ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 17.99,
+        "max": 35,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/6893854-TRATAMENTO-CREME-AREAS-SENSITIVE-PIGMENTBIO-BIODERMA-P-01.jpg?v=1747820295"
+      },
+      {
+        "ean": "3337871320379",
+        "nome": "Vichy Homme Deo Roll-On Pele Sensível 48H - 50 mL",
+        "marca": "Vichy",
+        "cat": "body",
+        "lojas": 49,
+        "min": 7.3,
+        "max": 21.5,
+        "promo": true,
+        "img": "https://www.farmaciabarreiros.com/36286/vichy-homme-deo-roll-on-pele-sensivel-48h-50-ml-6946954.jpg"
+      },
+      {
+        "ean": "3337875757669",
+        "nome": "La Roche-Posay Toleriane Dermallergo Fluido 40ml",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 18.15,
+        "max": 31,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/3337875757669.jpg?v=1727965960"
+      },
+      {
+        "ean": "3401360106994",
+        "nome": "Bioderma Sebium Sensitive Creme 30ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 12.92,
+        "max": 22.95,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/e/sensitive_1.jpg"
+      },
+      {
+        "ean": "3661434000072",
+        "nome": "Uriage DS Emulsão Apaziguante Reguladora Dermatite Seborreica - 40",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 10.39,
+        "max": 19.98,
+        "promo": true,
+        "img": "https://www.farmaciabarreiros.com/32123/uriage-ds-emulsao-40-ml.jpg"
+      },
+      {
+        "ean": "3661434002663",
+        "nome": "Uriage Hyseac Creme Limpeza - 150ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 8.83,
+        "max": 17.99,
+        "promo": true,
+        "img": "https://static.lojadafarmacia.com/28820/uriage-hyseac-creme-limpeza-150ml.jpeg"
+      },
+      {
+        "ean": "3337875597333",
+        "nome": "CeraVe Limpador Hidratante 473 ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 9.22,
+        "max": 18,
+        "promo": true,
+        "img": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/cerave-cleanser-limpeza-hidratante-473ml-AzCi7.webp"
+      },
+      {
+        "ean": "3282779392181",
+        "nome": "Ducray Diaseptyl Spray 125ml",
+        "marca": "Ducray",
+        "cat": "skincare",
+        "lojas": 49,
+        "min": 5.46,
+        "max": 12.92,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/u5wa3z31qn5sjneybuqckye9qrfr1p93eocgqro.webp?v=1747404606"
+      },
+      {
+        "ean": "3401360167872",
+        "nome": "SVR Sensifine AR Creme Hidratante Anti Vermelhidão 40 ml",
+        "marca": "Laboratorios SVR",
+        "cat": "skincare",
+        "lojas": 48,
+        "min": 11.49,
+        "max": 31.05,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/v/svr_sensifinearcreme.jpg"
+      },
+      {
+        "ean": "3337875777797",
+        "nome": "Effaclar H Iso-Biome",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 48,
+        "min": 11.29,
+        "max": 24.99,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/6/8/6803.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875814652",
+        "nome": "Loção Hidratante Rosto Spf50",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 48,
+        "min": 11.94,
+        "max": 22.14,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5798194.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434006548",
+        "nome": "Uriage Bariederm Creme Reparador Cica com Cu-Zn FPS50+ 40 ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 48,
+        "min": 6.87,
+        "max": 16.1,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/u/r/uriagebariedermcicacremespf50_.jpg"
+      },
+      {
+        "ean": "8470001527950",
+        "nome": "Woman Hidratante Vulvar",
+        "marca": "Isdin",
+        "cat": "skincare",
+        "lojas": 48,
+        "min": 10.85,
+        "max": 18.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5006043.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3540550009476",
+        "nome": "Filorga Soro Intensivo Global-Repair 30 ml",
+        "marca": "Filorga",
+        "cat": "skincare",
+        "lojas": 47,
+        "min": 57.5,
+        "max": 114.9,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/3/6359943-filorga_global_repair_intensive_serum_30ml.jpg"
+      },
+      {
+        "ean": "3337875694469",
+        "nome": "Retinol B3",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 47,
+        "min": 33.21,
+        "max": 59.15,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5795348.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434011931",
+        "nome": "Serum Diario",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 47,
+        "min": 19.42,
+        "max": 40.38,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5799634.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282770138801",
+        "nome": "Avène Creme Reparador Calmante Tolerance Control 40 ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 47,
+        "min": 13.17,
+        "max": 28.9,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/3/2/3282770138801-avene-tolerance-control-pele-intoletante-sensivel-reativa.jpg"
+      },
+      {
+        "ean": "3662361002382",
+        "nome": "SVR Sebiaclear Creme FPS50+ 40 ml",
+        "marca": "Laboratorios SVR",
+        "cat": "skincare",
+        "lojas": 47,
+        "min": 9.24,
+        "max": 22.95,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/v/svrsebiaclearcremespf50_40ml.jpeg"
+      },
+      {
+        "ean": "3701129804469",
+        "nome": "Sensibio Defensive Rich",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 47,
+        "min": 13.36,
+        "max": 26.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797439.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337871322656",
+        "nome": "Vichy Dercos Mineral Champô Fortificante Suave - 400 mL",
+        "marca": "Dercos",
+        "cat": "hair",
+        "lojas": 47,
+        "min": 8.52,
+        "max": 20.42,
+        "promo": true,
+        "img": "https://www.farmaciabarreiros.com/36282/vichy-dercos-mineral-champo-fortificante-suave-400-ml.jpg"
+      },
+      {
+        "ean": "3337875486736",
+        "nome": "Vichy Dercos Shampoo Ultra-Calmante para Cabelos Secos 200 ml",
+        "marca": "Vichy",
+        "cat": "hair",
+        "lojas": 47,
+        "min": 7.97,
+        "max": 19.41,
+        "promo": true,
+        "img": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6974121.webp"
+      },
+      {
+        "ean": "3401347869546",
+        "nome": "Bioderma Cicabio Creme 100ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 47,
+        "min": 9.18,
+        "max": 20.6,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/bioderma-cicabio-creme-40mlcreme-de-rostobioderma-33074708.jpg?v=1747822850"
+      },
+      {
+        "ean": "8470001930156",
+        "nome": "360º Water Gel Spf50",
+        "marca": "Heliocare",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 13.5,
+        "max": 34.42,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797691.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875607254",
+        "nome": "Liftactive Collagen Specialist",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 26.49,
+        "max": 46.34,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5794583.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3701129803523",
+        "nome": "Photoderm Crème",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 8.9,
+        "max": 27.95,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797401.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875549530",
+        "nome": "Anthelios",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 8.35,
+        "max": 23.65,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5014211.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875549493",
+        "nome": "Effaclar Duo+ SPF30",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 11.66,
+        "max": 25.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5803198.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401528546341",
+        "nome": "Bioderma Atoderm SOS Spray 200ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 12.15,
+        "max": 25.75,
+        "promo": true,
+        "img": "https://cdn.notinoimg.com/detail_main_mq/bioderma/3401528546341_01-o/atoderm-sos-spray___251120.jpg"
+      },
+      {
+        "ean": "3337871310455",
+        "nome": "Vichy Desodorizante Creme 7 Dias 30 ml",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 8.69,
+        "max": 22.13,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/d9158be1-e1a4-4721-88a0-8ed73b6505da/Vichy-Desodorante-Crema-7-Dias-30-ml"
+      },
+      {
+        "ean": "3337875597210",
+        "nome": "Cerave Moisturising Loção Hidratante 236mL",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 7.56,
+        "max": 20.9,
+        "promo": true,
+        "img": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/cerave-moisturising-locao-hidratante-diaria-236ml-r2RBG.webp"
+      },
+      {
+        "ean": "3433422408159",
+        "nome": "Effaclar Lotion Astringente Micro Exfoliante",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 11.19,
+        "max": 24.4,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5012560.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875840620",
+        "nome": "Creme Hidratante Facial Spf 30",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 10.69,
+        "max": 23.61,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5799318.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875537315",
+        "nome": "La Roche Posay Lipikar Syndet AP+ Creme Lavante - 400 mL",
+        "marca": "La Roche-Posay",
+        "cat": "body",
+        "lojas": 46,
+        "min": 11.07,
+        "max": 23.6,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/17766928-72f8-42ac-898a-882d93791e35/La-Roche-Posay-Lipikar-Syndet-AP-Anti-irritaciones-400-ml"
+      },
+      {
+        "ean": "3337875578486",
+        "nome": "La Roche-Posay Toleriane Sensitive Creme 40ml",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 16.3,
+        "max": 27.1,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/3337875578486.jpg?v=1749125669"
+      },
+      {
+        "ean": "3337875743563",
+        "nome": "Creme-Espuma de Limpeza Hidratante",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 6.95,
+        "max": 16.1,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/9/1/9100.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "8470001939456",
+        "nome": "Champô Fortificante",
+        "marca": "Iraltone",
+        "cat": "hair",
+        "lojas": 46,
+        "min": 7.18,
+        "max": 16.15,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5798825.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875782357",
+        "nome": "Cerave Gel Controlo de Imperfeições 40ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 46,
+        "min": 10.25,
+        "max": 18.7,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/3337875782357.jpg?v=1749121085"
+      },
+      {
+        "ean": "3337871324599",
+        "nome": "Vichy Desodorizante Roll-On Antitranspirante 48H Antimanchas Branca",
+        "marca": "Vichy",
+        "cat": "body",
+        "lojas": 46,
+        "min": 7.05,
+        "max": 14.5,
+        "promo": true,
+        "img": "https://www.farmaciabarreiros.com/36279/vichy-desodorizante-roll-on-antitranspirante-48h-antimanchas-brancas-amarelas-50-ml.jpg"
+      },
+      {
+        "ean": "3282770153200",
+        "nome": "Avène Hyaluron Activ B3 Creme Noturno Multiintensivo 40 ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 25.54,
+        "max": 51.4,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/85a118a0-4741-4cf8-8c07-f7e168beb460/Avene-Hyaluron-Activa-B3-Crema-Multiintensiva-Noche-40-ml"
+      },
+      {
+        "ean": "5600000051726",
+        "nome": "Atl Creme Corporal Hidratante 1kg",
+        "marca": "Atl",
+        "cat": "body",
+        "lojas": 45,
+        "min": 9.3,
+        "max": 31.9,
+        "promo": true,
+        "img": "https://media.appsfarma.com/afarmacatesi/2026/01/20260120113626_64491.webp"
+      },
+      {
+        "ean": "3661434009181",
+        "nome": "Uriage Age Absolu Creme Antienvelhecimento Retinol, Ácido Hialurônico 50 ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 24.7,
+        "max": 46.95,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/8300fff6-2c77-4430-829c-11d2725f0f00/Uriage-Age-Absolu-Crema-Antiedad-Retinol-Acido-Hialuronico-50-ml"
+      },
+      {
+        "ean": "3337871311292",
+        "nome": "Dercos Champô Estimulante 400ml",
+        "marca": "Dercos",
+        "cat": "hair",
+        "lojas": 45,
+        "min": 8.57,
+        "max": 26.9,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/d/e/dercosenergy1.jpg"
+      },
+      {
+        "ean": "3661434011924",
+        "nome": "Cica Daily Gel Creme",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 12.59,
+        "max": 27.49,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5799635.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875863377",
+        "nome": "Effaclar Duo +M",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 11.38,
+        "max": 25.5,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5012557.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875757614",
+        "nome": "Toleriane Dermallergo Crème",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 17.36,
+        "max": 30.95,
+        "promo": true,
+        "img": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwb455dd23/images/wells/745/7452972-TRATAMENTO-CREME-HIDRATANTE-APAZIGUANTE-TOLERIANE-DERMALLERGO-LA-ROCHE-POSAY-P-01.jpg"
+      },
+      {
+        "ean": "3661434003400",
+        "nome": "Uriage Roséliane Creme Rico 50ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 12.24,
+        "max": 25.56,
+        "promo": true,
+        "img": "https://www.mycosmetics.pt/cdn/shop/products/Roseliane_Creme_Rico_CNP7480376_grande.png?v=1604949332"
+      },
+      {
+        "ean": "3282770100891",
+        "nome": "Avène Cleanance Hydra Creme Hidratante e Suavizante 40 ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 9.81,
+        "max": 22.75,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6931782-avene_cleanance_hydra_cream_40ml.jpg"
+      },
+      {
+        "ean": "3282770388299",
+        "nome": "Avène Tolerance Hydra-10 Fluído Hidratante",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 13.2,
+        "max": 25.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5798427.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401397240470",
+        "nome": "Bioderma Sensibio DS+ Creme 40 ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 13.41,
+        "max": 25.47,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/13a39a7d-5373-4d66-abb4-dcae14735629/Bioderma-Sensibio-DS-Crema-40-ml"
+      },
+      {
+        "ean": "3282770205633",
+        "nome": "Avène Cicalfate+ spray asséchant réparateur",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 7.43,
+        "max": 17.29,
+        "promo": true,
+        "img": "https://static.lojadafarmacia.com/12216/avene-cicalfate-spray-100-ml.jpg"
+      },
+      {
+        "ean": "3337871320362",
+        "nome": "Vichy Homme Deosodorizante Antitranspirante 72h - 50ml",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 7.3,
+        "max": 16.99,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/h/o/homme_deo_roll_72h.jpg"
+      },
+      {
+        "ean": "3662361001026",
+        "nome": "SVR Cicavit+ Creme FPS50+ 40 ml",
+        "marca": "Laboratorios SVR",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 7.29,
+        "max": 16.5,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/s/v/svr_cicavit_cremespf50_-2.jpg"
+      },
+      {
+        "ean": "3661434000508",
+        "nome": "Uriage Bariederm Creme Isolante Reparador Anti-Atrito 75 ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 8.99,
+        "max": 17.65,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/c/r/cremeisolanteuriage.jpg"
+      },
+      {
+        "ean": "3661434000539",
+        "nome": "Uriage Água Termal 300ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 45,
+        "min": 5.43,
+        "max": 13.17,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Designsemnome_4_188555bb-ed2b-4aed-a5b1-60bdab6502c2.jpg?v=1749130854"
+      },
+      {
+        "ean": "3282771000534",
+        "nome": "Ultra Sérum Solar Hidratante SPF50+",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 14.28,
+        "max": 43.5,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5810849.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282770153170",
+        "nome": "Avène Hyaluron Activ B3 Creme de Dia 50ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 19.53,
+        "max": 47.75,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/3/2/3282770400700.jpg"
+      },
+      {
+        "ean": "3337875734905",
+        "nome": "Liftactiv Specialist B3 Serum",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 26.86,
+        "max": 54.2,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797537.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875890113",
+        "nome": "Mela B3 SPF30",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 25.9,
+        "max": 50.8,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5801816.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "8470001653499",
+        "nome": "Neoretin Gelcreme Despigmentante FPS 50 40 ml",
+        "marca": "Cantabria Labs",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 23.11,
+        "max": 45.23,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/686de1fa-df51-4606-ac11-299a89b95379/Neoretin-Gelcream-Despigmentante-SPF-50-40-ml"
+      },
+      {
+        "ean": "3337875832724",
+        "nome": "Liftactiv B3 Anti-Dark Spots SPF50",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 25.51,
+        "max": 46.85,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5799195.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401395566091",
+        "nome": "SVR Xérial 40 Unhas Gel 10ML",
+        "marca": "SVR",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 7.58,
+        "max": 27.55,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Designsemnome_25_db52e945-4038-425e-a14e-8323fe6a2446.jpg?v=1747235410"
+      },
+      {
+        "ean": "8470002100657",
+        "nome": "Heliocare 360 Brilho Corporal 100 ml",
+        "marca": "Cantabria Labs",
+        "cat": "body",
+        "lojas": 44,
+        "min": 14,
+        "max": 33.5,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/2/7266148-heliocare_360_body_glow_spf50_100ml.jpg"
+      },
+      {
+        "ean": "3662361002542",
+        "nome": "Sensifine Ar Creme Spf50",
+        "marca": "LABORATOIRES SVR",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 10.89,
+        "max": 28.8,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797912.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434009525",
+        "nome": "Sérum Booster",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 14.1,
+        "max": 31.3,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5799613.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875596763",
+        "nome": "Minéral 89 Yeux",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 14.57,
+        "max": 30.66,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5795069.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875492799",
+        "nome": "Vichy Dercos Technique Shampoo Anticaspa para Cabelos Secos 390 ml",
+        "marca": "Vichy",
+        "cat": "hair",
+        "lojas": 44,
+        "min": 12.89,
+        "max": 28,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/d6202791-ea5b-453e-88aa-a273ee8ae5c1/Vichy-Dercos-Technique-Champu-Anticaspa-Cabello-Seco-390-ml"
+      },
+      {
+        "ean": "3282779390132",
+        "nome": "Avène Hydrance Rico Creme Hidratante 40ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 13.04,
+        "max": 26.7,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/5/6572875.jpg"
+      },
+      {
+        "ean": "3337875757515",
+        "nome": "La Roche Posay Toleriane Dermallergo Contorno de Olhos e Pálpebras 20 ml",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 17.49,
+        "max": 29.45,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/c3a4290a-2425-4aed-b5fc-a075ac5d74bd/La-Roche-Posay-Toleriane-Dermallergo-Contorno-de-Ojos-y-Parpados-20-ml"
+      },
+      {
+        "ean": "3661434005008",
+        "nome": "Creme de Água",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 12.32,
+        "max": 23.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5799678.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434002502",
+        "nome": "Uriage Bebé 1º Creme Crosta Láctea 40ml",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 5.9,
+        "max": 12.99,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/c/r/cremecrostalacteauriage.jpg"
+      },
+      {
+        "ean": "3282770100273",
+        "nome": "Avene Stick Labial Cold Cream 4g",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 3.84,
+        "max": 10.5,
+        "promo": true,
+        "img": "https://byfarma.pt/assets/avene-cold-cream-stick-labial-4g.jpg"
+      },
+      {
+        "ean": "3337875597180",
+        "nome": "Cerave Hydrating Creme Hidratante de Limpeza 236mL",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 44,
+        "min": 6.45,
+        "max": 12.7,
+        "promo": true,
+        "img": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6031807.webp"
+      },
+      {
+        "ean": "3337875722520",
+        "nome": "Liftactiv Collagen Specialist 16 Creme de Noite",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 27.11,
+        "max": 60.33,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5796049.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282770400861",
+        "nome": "Sérum Hyaluron Procedure",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 34.43,
+        "max": 63.99,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5809731.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875920742",
+        "nome": "La Roche Posay Effaclar AZ Gel-Creme 40 ml",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 21.99,
+        "max": 48.54,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/l/a/larocheposay_azgelcreme30ml.jpg"
+      },
+      {
+        "ean": "8470001930163",
+        "nome": "Heliocare 360 Pediatria Mineral FPS50+ 50 ml",
+        "marca": "Cantabria Labs",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 12.5,
+        "max": 34.84,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/3/6318170-heliocare_360__pediatrics_mineral_sunscreen_spf50__50ml.jpg"
+      },
+      {
+        "ean": "8470001724137",
+        "nome": "360º Gel Oil-Free Spf50",
+        "marca": "Heliocare",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 14,
+        "max": 36.18,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5798487.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282770146394",
+        "nome": "Avène Cleanance Aqua-Gel Creme 50 mL",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 11.28,
+        "max": 31.9,
+        "promo": true,
+        "img": "https://byfarma.pt/assets/capturar__810.jpg"
+      },
+      {
+        "ean": "3282770396300",
+        "nome": "Avène Fluido Antienvelhecimento FPS50 40 ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 13.92,
+        "max": 33.95,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/7/4/7438689-avene_anti-age_spf50_40ml.jpg"
+      },
+      {
+        "ean": "3282770393620",
+        "nome": "Cicalfate",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 20.1,
+        "max": 39.5,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5800934.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3701129800546",
+        "nome": "Bioderma Pigmentbio Creme Esfoliante 200ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 10.67,
+        "max": 29.9,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/p/i/pigmentbio_500ml_1.jpg"
+      },
+      {
+        "ean": "3337875837804",
+        "nome": "Cicaplast B5",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 24.21,
+        "max": 43.4,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5800733.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434009778",
+        "nome": "Dépiderm SPF50+",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 16.95,
+        "max": 35.55,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5800701.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3701129803721",
+        "nome": "Photoderm Mineral Fluide SPF 50+",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 11.99,
+        "max": 29.95,
+        "promo": true,
+        "img": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwee157bde/images/wells/879/8795688-SOLARES-ROSTO-PHOTODERM-MINERAL-FLUIDE-SPF-50-BIODERMA-P-01.png"
+      },
+      {
+        "ean": "3337875597395",
+        "nome": "Cerave Loção Hidratante Corpo Rosto 1000ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 16.3,
+        "max": 33.61,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Designsemnome_19_ea22678d-be62-4bb7-b508-f0fb51e32117.jpg?v=1749122833"
+      },
+      {
+        "ean": "3401351366789",
+        "nome": "Sensibio H2O Ar",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 7.99,
+        "max": 24.25,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797443.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3606000560833",
+        "nome": "Sérum Com Ácido Hialurónico",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 13.86,
+        "max": 29.3,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337872411083",
+        "nome": "La Roche-Posay Effaclar Gel Purificante +M 400ml",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 11.93,
+        "max": 27.3,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/4417115-TRATAMENTO-GEL-DE-LIMPEZA-PURIFICANTE-EFFACLAR-LA-ROCHE-POSAY-P-01.webp?v=1749123418"
+      },
+      {
+        "ean": "3337875804431",
+        "nome": "Vichy Desodorante de Controle Clínico 50 ml",
+        "marca": "Vichy",
+        "cat": "body",
+        "lojas": 43,
+        "min": 7.3,
+        "max": 21.62,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/07e80336-62c1-4d1a-a05f-47d1fbcf5b25/Vichy-Desodorante-Clinical-Control-Roll-on-50-ml"
+      },
+      {
+        "ean": "3337875903196",
+        "nome": "Sérum Vitamina C Skin Renewing",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 19.38,
+        "max": 31.55,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5810800.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875684101",
+        "nome": "Cerave SA Smoothing Creme Hidratante 340gr",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 13.02,
+        "max": 24.05,
+        "promo": true,
+        "img": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/cerave-sa-creme-alisador-anti-rugosidades-340g-PtjWj.webp"
+      },
+      {
+        "ean": "3282770394580",
+        "nome": "Higo De Barbaria",
+        "marca": "Klorane",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 8.19,
+        "max": 17.65,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5802384.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401381381523",
+        "nome": "SVR Topialyse Creme Barreira 50 ml",
+        "marca": "Laboratorios SVR",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 5.49,
+        "max": 14.9,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/15a90fe4-d802-464c-8b05-4e93ed0ca5a3/SVR-Topialyse-Crema-Barrera-50-ml"
+      },
+      {
+        "ean": "3662361001682",
+        "nome": "SVR Cicavit+ Creme de Mãos 75g",
+        "marca": "SVR",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 5.57,
+        "max": 14.9,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Designsemnome_16_d63cd865-491c-4513-a4bb-ddfe6e08db8d.jpg?v=1747232582"
+      },
+      {
+        "ean": "3282770202274",
+        "nome": "Kelual Emulsión Costra Leche",
+        "marca": "Ducray",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 8.27,
+        "max": 17.5,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5006067.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3282779003124",
+        "nome": "Avène Água Termal 150ml",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 5.04,
+        "max": 13.05,
+        "promo": true,
+        "img": "https://cdn.notinoimg.com/detail_main_mq/avene/3282779003131_01-o/eau-thermale-thermal-spring-water___241206.jpg"
+      },
+      {
+        "ean": "3337875597388",
+        "nome": "CeraVe Creme Hidratante Diário Pele Seca - 454 g",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 10.91,
+        "max": 18.55,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/3db522c4-3360-4238-8c0d-d10df66bc214/CeraVe-Crema-Hidratante-454-gr"
+      },
+      {
+        "ean": "3337875585750",
+        "nome": "Desodorizante Roll-On Antimanchas 48H",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 7.2,
+        "max": 14.5,
+        "promo": true,
+        "img": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dwd330a6db/images/wells/506/5061241-ROTINA-DESODORIZANTE-ROLL-ON-ANTI-MANCHAS-INTENSO-VICHY-P-01.jpg"
+      },
+      {
+        "ean": "3337875597296",
+        "nome": "CeraVe Creme Renovador para Pés 88 ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 6.79,
+        "max": 13.76,
+        "promo": true,
+        "img": "https://assets.atida.com/transform/e64e5d86-182f-440b-8804-e829dd124e57/CeraVe-Crema-Renovadora-de-Pies-88-ml"
+      },
+      {
+        "ean": "3337875849326",
+        "nome": "Cerave Bálsamo Reparador Avançado 50ml",
+        "marca": "CeraVe",
+        "cat": "skincare",
+        "lojas": 43,
+        "min": 7.22,
+        "max": 13.1,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/1_7c23abef-1f77-4e86-b14e-3bfab33d5e1e.png?v=1763723927"
+      },
+      {
+        "ean": "3337875773980",
+        "nome": "Neovadiol Serum",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 26.8,
+        "max": 62.53,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5796855.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875912600",
+        "nome": "Collagen Specialist 16 30ML",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 29.58,
+        "max": 64.85,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5803412.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "8470001529688",
+        "nome": "Sérum Tensage",
+        "marca": "Endocare",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 25.9,
+        "max": 59.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797681.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875873086",
+        "nome": "Vichy LiftActiv Creme B3 Anti-Manchas Noite 50 ml",
+        "marca": "Vichy",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 26.25,
+        "max": 58.06,
+        "promo": true,
+        "img": "https://cdn1.costatic.com/img/product/400/68e526e47107b/vichy-liftactiv-creme-p89882.jpg"
+      },
+      {
+        "ean": "3282771000572",
+        "nome": "Ultra Sérum Solar Luminosidad SPF50+",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 14.28,
+        "max": 41.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5810848.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3337875722827",
+        "nome": "Effaclar Serum",
+        "marca": "La Roche-Posay",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 23.89,
+        "max": 48.9,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/0/5013433.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434009976",
+        "nome": "Sérum Age Absolu",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 25.29,
+        "max": 48,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/8/5802832.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "8470001977793",
+        "nome": "Heliocare 360º Solução Fluida Pigmentada FPS50+ 50 ml",
+        "marca": "Cantabria Labs",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 14,
+        "max": 34.18,
+        "promo": true,
+        "img": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/3/6396952-heliocare_360__pigment_solution_fluid_sunscreen_spf50__50ml.jpg"
+      },
+      {
+        "ean": "3701129800089",
+        "nome": "Pigmentbio Night Renewer",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 22.04,
+        "max": 40,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5797482.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401395376935",
+        "nome": "Bioderma Sébium H2O Água Micelar 500ml",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 11.3,
+        "max": 27.5,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/e890e371631d1b7825b966921263578c-_7b157267_7d__7b_7d__7b28642x_7d.jpg?v=1770373294"
+      },
+      {
+        "ean": "3282770138856",
+        "nome": "Avéne Tolérance Control Bálsamo – Pele Hipersensível",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 13.68,
+        "max": 29.26,
+        "promo": true,
+        "img": "https://static.lojadafarmacia.com/13680/avene-tolerance-control-balsamo-40ml.jpg"
+      },
+      {
+        "ean": "3282770207576",
+        "nome": "Sunsistick Ka Spf50+",
+        "marca": "Avène",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 7.08,
+        "max": 22.35,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/5/7/5796309.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3401381507565",
+        "nome": "Sensibio Gel Moussant",
+        "marca": "Bioderma",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 9.49,
+        "max": 20.97,
+        "promo": true,
+        "img": "https://www.druni.pt/media/catalog/product/6/2/6224.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265"
+      },
+      {
+        "ean": "3661434006227",
+        "nome": "Uriage Hyseac Mascara Exfoliante Suave 100mL",
+        "marca": "Uriage",
+        "cat": "skincare",
+        "lojas": 42,
+        "min": 9.86,
+        "max": 20.4,
+        "promo": true,
+        "img": "https://www.farmaciabarreiros.com/28214/uriage-hyseac-mascara-esfoliante-100-ml.jpg"
+      },
+      {
+        "ean": "8470001915528",
+        "nome": "ISDIN Si-Nails Fortalecedor de Unhas 2,5ml",
+        "marca": "Isdin",
+        "cat": "body",
+        "lojas": 42,
+        "min": 17.95,
+        "max": 28.5,
+        "promo": true,
+        "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/8470001915528.jpg?v=1746444258"
+      }
+    ]
+  }
 }
