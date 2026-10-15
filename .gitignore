@@ -75,3 +75,6 @@ data/seed-bundle.json
 
 # Estado do sync incremental para a BD (vive na cache do Actions, nunca no git).
 .db-sync-estado/
+
+# Metadados gerados só no protótipo SEO edge
+/seo-meta/

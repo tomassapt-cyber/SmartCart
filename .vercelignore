@@ -1,0 +1,4 @@
+# Igual ao #77: o protótipo não publica o servidor local nem documentos internos.
+/api/products.js
+/docs/
+/*.md

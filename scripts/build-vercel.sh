@@ -51,6 +51,9 @@ node $MEM scripts/build-sitemap.js
 #    deploy falhar do que publicar uma página vazia.
 COSMATH_DEPLOY_BUILD=1 node $MEM scripts/inject-seed-into-demo.js
 
+# Protótipo SEO: metadados pequenos, sem catálogo dentro da função.
+node scripts/build-seo-prototype.cjs
+
 # 4. Tirar do que fica PUBLICADO o que o site nunca lê (2026-10-02). O
 #    `outputDirectory` é a raiz do repositório, logo tudo o que está aqui era
 #    servido como ficheiro público: o catálogo inteiro (data/seed-bundle.json,
