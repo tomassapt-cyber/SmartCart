@@ -1,2 +1,5 @@
 # Servidor HTTP de desenvolvimento; não é uma Vercel Function.
 /api/products.js
+# Documentação interna: fica no Git e no desenvolvimento local.
+/docs/
+/*.md
