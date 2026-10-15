@@ -1,9 +1,11 @@
 {
  "bairro-saude": {
-  "gratis": 15,
-  "casa": 4.99,
+  "gratis": 39,
+  "casa": 4.5,
   "ponto": 3.45,
-  "ponto_txt": "3,45 € (farma2go)"
+  "ponto_txt": "Ponto Nacex 3,45 €",
+  "ilhas": 23.5,
+  "gratis_ilhas": null
  },
  "easyfarma": {
   "gratis": 69,
@@ -66,10 +68,11 @@
   "ponto_txt": "Depende da morada (Farmácia Virtual)"
  },
  "sweetcare": {
-  "gratis": 49,
-  "casa": 3.99,
-  "ponto": null,
-  "ponto_txt": "Locker/Pickup disponível em algumas zonas"
+  "gratis": 65,
+  "casa": 3.42,
+  "ponto": 3.25,
+  "ponto_txt": "Pickup DPD 3,25 € (grátis ≥45 €)",
+  "ilhas": null
  },
  "farmacia365": {
   "gratis": 49.9,
@@ -85,15 +88,19 @@
  },
  "wells": {
   "gratis": 39,
-  "casa": 3.99,
-  "ponto": 0,
-  "ponto_txt": "Grátis (levantamento em loja)"
+  "casa": 2.99,
+  "ponto": 1.99,
+  "ponto_txt": "Click&Collect 1,99 € · Ponto CTT 2,50 € (grátis ≥39 €)",
+  "ilhas": 6.99,
+  "gratis_ilhas": 39
  },
  "aveirofarma": {
-  "gratis": 39,
-  "casa": 3.95,
+  "gratis": 55,
+  "casa": 4.5,
   "ponto": 3.5,
-  "ponto_txt": "Pickup DPD 3,50 €"
+  "ponto_txt": "Pickup DPD 3,50 € (grátis ≥45 €); levantamento nas lojas grátis",
+  "ilhas": 6.9,
+  "gratis_ilhas": 75
  },
  "mycosmetics": {
   "gratis": 50,
@@ -114,28 +121,33 @@
   "ponto_txt": "Grátis (levantamento em loja)"
  },
  "pharmascalabis": {
-  "gratis": 39,
+  "gratis": 40,
   "casa": 3.95,
   "ponto": 0,
-  "ponto_txt": "Grátis (levantamento em loja)"
+  "ponto_txt": "Grátis (levantamento em loja)",
+  "ilhas": 4.5,
+  "gratis_ilhas": 50
  },
  "atida": {
   "gratis": 49,
-  "casa": 3.95,
-  "ponto": null,
-  "ponto_txt": "n/d (Atida)"
+  "casa": 3.99,
+  "ponto": 3.99,
+  "ponto_txt": "Inpost 3,99 € (grátis ≥39 €)",
+  "ilhas": null
  },
  "druni": {
-  "gratis": 29.95,
+  "gratis": 20,
   "casa": 3.95,
   "ponto": 0,
   "ponto_txt": "Grátis em loja Druni"
  },
  "primor": {
   "gratis": 25,
-  "casa": 3.95,
-  "ponto": 0,
-  "ponto_txt": "Grátis em loja Primor"
+  "casa": 2.95,
+  "ponto": 1.95,
+  "ponto_txt": "Levantamento em loja 1,95 € (grátis ≥15 €)",
+  "ilhas": 4.95,
+  "gratis_ilhas": 50
  },
  "care2me": {
   "gratis": 50,
@@ -294,9 +306,11 @@
  },
  "notino": {
   "gratis": 45,
-  "casa": 3.95,
-  "ponto": null,
-  "ponto_txt": "Pickup disponível (preço varia consoante o ponto) (Notino)"
+  "casa": 5.95,
+  "ponto": 5.95,
+  "ponto_txt": "InPost 5,95 €",
+  "ilhas": 29.99,
+  "gratis_ilhas": null
  },
  "pluricosmetica": {
   "gratis": 39,
@@ -419,11 +433,13 @@
   "gratis": null,
   "casa": 5.99,
   "ponto": 0,
-  "ponto_txt": "Recolha Drive grátis; My Auchan 2,90 €"
+  "ponto_txt": "Recolha Drive grátis; My Auchan 2,90 €",
+  "ilhas": null
  },
  "farmaciabarata": {
   "gratis": 65,
-  "casa": 3.95
+  "casa": 3.95,
+  "ilhas": null
  },
  "farmaciadaliga": {
   "gratis": 45,
