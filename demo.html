@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -2045,7 +2045,7 @@
   .forum-topbar-title { font: 700 16px "Playfair Display", Georgia, serif; color: var(--text); }
   .forum-topbar-title em { font-style: italic; color: var(--accent, #0f766e); }
   .forum-shell { max-width: 760px; margin: 0 auto; padding: 28px 24px 60px; }
-  .forum-head h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .forum-head h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
   .forum-head p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
   /* ===== Comunidade (Reedit) ===== */
   .cm-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
@@ -7184,7 +7184,7 @@
     <p>Comparamos <span id="tagline-stores">17</span> lojas de cosmética portuguesas e europeias. Tu escolhes, nós fazemos as contas e mostramos-te a combinação que custa menos — preço + portes incluídos.</p>
     <div class="hero-search-bar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="search" autocomplete="off" placeholder="Procura marca, produto ou ingrediente — ex: niacinamida, La Roche-Posay…" onkeydown="if(event.key==='Enter') heroSearch(); else if(event.key==='Escape') hideHeroSuggest()" />
+      <input id="search" aria-label="Pesquisar produtos" autocomplete="off" placeholder="Procura marca, produto ou ingrediente — ex: niacinamida, La Roche-Posay…" onkeydown="if(event.key==='Enter') heroSearch(); else if(event.key==='Escape') hideHeroSuggest()" />
       <button onclick="heroSearch()">Pesquisar</button>
       <div id="hero-suggest" class="hero-suggest" hidden></div>
     </div>
@@ -7327,7 +7327,7 @@
           <span>Marca</span>
         </div>
         <div class="filter-brand-search">
-          <input type="text" id="filter-brand-search" placeholder="Procurar marca…" />
+          <input type="text" id="filter-brand-search" aria-label="Procurar marca" placeholder="Procurar marca…" />
         </div>
         <div id="filter-brands" class="filter-checkboxes filter-checkboxes-scroll"></div>
       </div>
@@ -7336,7 +7336,7 @@
       <div class="filter-group">
         <div class="filter-group-label"><span>Preço</span></div>
         <div class="price-range-wrap">
-          <input type="range" id="filter-price-max" min="0" max="200" step="5" value="200" />
+          <input type="range" id="filter-price-max" aria-label="Preço máximo em euros" min="0" max="200" step="5" value="200" />
           <div class="price-range-labels">
             <span>€0</span>
             <span id="filter-price-max-label">€200+</span>
@@ -7367,7 +7367,7 @@
       </div>
       <div class="catalog-search">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="catalog-search-input" type="search" autocomplete="off" placeholder="Procurar no catálogo — marca, produto ou ingrediente…" />
+        <input id="catalog-search-input" aria-label="Pesquisar no catálogo" type="search" autocomplete="off" placeholder="Procurar no catálogo — marca, produto ou ingrediente…" />
         <button type="button" id="catalog-search-clear" aria-label="Limpar pesquisa">✕</button>
       </div>
       <div class="catalog-sort-tabs" id="catalog-sort-tabs">
@@ -7445,7 +7445,7 @@
     </div>
     <div class="forum-shell">
       <div class="forum-head">
-        <h1>Comunidade — perguntas &amp; histórias</h1>
+        <h2>Comunidade — perguntas &amp; histórias</h2>
         <p>Partilha dúvidas e experiências com produtos. Os membros respondem e comentam.</p>
       </div>
       <div class="cm-tabs" id="cm-tabs">
@@ -7733,7 +7733,7 @@
   </div>
   <div class="ai-body" id="ai-body"></div>
   <form class="ai-input-wrap" id="ai-form" autocomplete="off">
-    <input class="ai-input" id="ai-input" placeholder="Pergunta-me sobre skincare, acne, manchas…" />
+    <input class="ai-input" id="ai-input" aria-label="Mensagem para a assistente Sofia" placeholder="Pergunta-me sobre skincare, acne, manchas…" />
     <button class="ai-send" id="ai-send" type="submit" aria-label="Enviar">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
