@@ -9,9 +9,11 @@
  },
  "easyfarma": {
   "gratis": 69,
-  "casa": 3.95,
+  "casa": 3.7,
   "ponto": 2.95,
-  "ponto_txt": "2.95"
+  "ponto_txt": "2.95",
+  "ilhas": 8.9,
+  "gratis_ilhas": null
  },
  "cocooncenter": {
   "gratis": null,
@@ -31,13 +33,16 @@
   "gratis": 59.99,
   "casa": 4.95,
   "ponto": null,
-  "ponto_txt": "sem ponto"
+  "ponto_txt": "sem ponto",
+  "ilhas": null
  },
  "asuafarmaciaonline": {
   "gratis": 49,
-  "casa": 4.95,
+  "casa": 3.7,
   "ponto": 3.95,
-  "ponto_txt": "3.95"
+  "ponto_txt": "3.95",
+  "ilhas": 6.8,
+  "gratis_ilhas": null
  },
  "farmaciasportuguesas": {
   "gratis": 39,
@@ -52,16 +57,20 @@
   "ponto_txt": null
  },
  "afarmaciaonline": {
-  "gratis": 49,
-  "casa": 4.95,
-  "ponto": 3.95,
-  "ponto_txt": "3.95"
+  "gratis": 25,
+  "casa": 4.99,
+  "ponto": 4.99,
+  "ponto_txt": "Chronopost pick-up 4,99 €",
+  "ilhas": 6.69,
+  "gratis_ilhas": null
  },
  "haemiskin": {
-  "gratis": 50,
-  "casa": 4.99,
+  "gratis": 60,
+  "casa": 4,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "ilhas": 7.25,
+  "gratis_ilhas": 70
  },
  "farmaciavirtual": {
   "gratis": 100,
@@ -78,9 +87,11 @@
  },
  "farmacia365": {
   "gratis": 49.9,
-  "casa": 4.95,
+  "casa": 3.3,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "ilhas": 6.8,
+  "gratis_ilhas": null
  },
  "loja-farmacia": {
   "gratis": 60,
@@ -106,21 +117,24 @@
  },
  "mycosmetics": {
   "gratis": 50,
-  "casa": 4.5,
+  "casa": 3.8,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "ilhas": 3.8,
+  "gratis_ilhas": 100
  },
  "saudemayor": {
   "gratis": 44.5,
   "casa": 4.95,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "gratis_ilhas": 44.5
  },
  "barreiros": {
   "gratis": 39,
-  "casa": 3.95,
   "ponto": 0,
-  "ponto_txt": "Grátis (levantamento em loja)"
+  "ponto_txt": "Grátis (levantamento em loja)",
+  "ilhas": null
  },
  "pharmascalabis": {
   "gratis": 40,
@@ -210,10 +224,11 @@
   "ponto_txt": null
  },
  "wowfarma": {
-  "gratis": 60,
+  "gratis": null,
   "casa": 3.75,
   "ponto": 3,
-  "ponto_txt": "DHL Ponto de Recolha (até 3 kg)"
+  "ponto_txt": "DHL Ponto de Recolha 3 € (grátis >60 €, até 3 kg)",
+  "ilhas": null
  },
  "pharmavida": {
   "gratis": 39,
@@ -284,9 +299,9 @@
  },
  "farmaciadocostume": {
   "gratis": 50,
-  "casa": 3,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "ilhas": null
  },
  "bemecare": {
   "gratis": 49.9,
@@ -298,7 +313,9 @@
   "gratis": 40,
   "casa": 3.99,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "ilhas": 13,
+  "gratis_ilhas": 200
  },
  "lovemypharma": {
   "gratis": 49,
@@ -319,7 +336,8 @@
   "gratis": 39,
   "casa": 3.95,
   "ponto": null,
-  "ponto_txt": "n/d (pluricosmetica.com)"
+  "ponto_txt": "n/d (pluricosmetica.com)",
+  "gratis_ilhas": 59
  },
  "continente": {
   "gratis": null,
@@ -349,7 +367,8 @@
   "gratis": 49,
   "casa": 4.95,
   "ponto": null,
-  "ponto_txt": null
+  "ponto_txt": null,
+  "ilhas": null
  },
  "manuelaserra": {
   "gratis": 50,
@@ -464,7 +483,9 @@
   "gratis": 39,
   "casa": 4.5,
   "ponto": 4,
-  "ponto_txt": "4,00 € (ponto de recolha)"
+  "ponto_txt": "4,00 € (ponto de recolha)",
+  "ilhas": 12.9,
+  "gratis_ilhas": 89
  },
  "pharma24": {
   "gratis": null,
@@ -495,7 +516,9 @@
  },
  "dermis": {
   "gratis": 59,
-  "casa": 3.7
+  "casa": 3.7,
+  "ilhas": null,
+  "gratis_ilhas": null
  },
  "farmacia24": {
   "gratis": 40,
