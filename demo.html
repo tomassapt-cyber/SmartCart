@@ -9065,6 +9065,24 @@ function limiarGratis(store, zone) {
   const v = ilhas && z && Object.prototype.hasOwnProperty.call(z, 'gratis_ilhas') ? z.gratis_ilhas : store.free_shipping_threshold;
   return v == null || !Number.isFinite(Number(v)) ? Infinity : Number(v);
 }
+/**
+ * Fase 5 do plano dos portes (2026-10-15): o carrinho só usa portes
+ * VERIFICADOS. Uma loja entra nas combinações desta zona se tiver a tarifa
+ * verificada OU, pelo menos, o limiar de portes grátis verificado — nesse caso
+ * só conta quando o cabaz chega ao limiar (portes 0 €, sabidos). Sem nenhum
+ * dos dois: «Portes calculados no checkout».
+ */
+function portesCalculaveis(slug, zone) {
+  return shippingForStore(slug, zone) != null || Number.isFinite(limiarGratis(STORE_BY_SLUG[slug], zone));
+}
+/** Nota curta para listas de ofertas quando a tarifa não é conhecida. */
+function notaPortesDesconhecidos(slug, zone) {
+  if (shippingForStore(slug, zone) != null) return '';
+  const th = limiarGratis(STORE_BY_SLUG[slug], zone);
+  return Number.isFinite(th)
+    ? ` · Portes grátis a partir de ${th.toFixed(2)}€ (abaixo, no checkout)`
+    : ' · Portes calculados no checkout';
+}
 
 // ============================================================
 // STATE
@@ -13539,6 +13557,10 @@ async function bundleLiveNow() {
     .filter(x => x && x.falta > 0 && x.falta <= 8)
     .sort((a, b) => a.falta - b.falta)[0];
   if (perto) nudge = `<div class="bundle-live-nudge">💡 Faltam <strong>${perto.falta.toFixed(2)}€</strong> para portes grátis na ${perto.nome} (pouparias ${perto.poupa.toFixed(2)}€)</div>`;
+  // fase 5 dos portes: produtos só à venda em lojas com portes no checkout ficam fora do total
+  const fora = shippingUnknown.length
+    ? `<div class="bundle-live-warn">⚠️ ${shippingUnknown.length} produto${shippingUnknown.length === 1 ? '' : 's'} fora do total: portes calculados no checkout.</div>`
+    : '';
   box.innerHTML = `
     <div class="bundle-live-card">
       <div class="bundle-live-left">
@@ -13549,7 +13571,7 @@ async function bundleLiveNow() {
       <button type="button" class="bundle-live-receipt" id="bundle-live-receipt" title="Partilhar a fatura da tua poupança">
         <span class="blr-ico" aria-hidden="true">🧾</span><span>Fatura</span>
       </button>
-    </div>${nudge}`;
+    </div>${nudge}${fora}`;
   const rb = document.getElementById('bundle-live-receipt');
   if (rb) rb.onclick = () => gmReceiptOpen(window.RECEIPT_LAST_BUNDLE);
 }
@@ -13699,42 +13721,62 @@ function optimizeBundle(items, zone = 'nacional') {
       .filter(Boolean);
   }
 
+  // Fase 5 (2026-10-15): fica de fora só a oferta de loja sem tarifa NEM limiar
+  // verificados. Um produto que só exista nessas lojas vai para shippingUnknown
+  // e o RESTO do cabaz continua a ser otimizado — antes, um único produto destes
+  // anulava o cabaz inteiro (com os portes reais, nas ilhas eram 35% dos produtos).
   const shippingUnknown = items.filter(it => offersByEan[it.ean].length &&
-    !offersByEan[it.ean].some(o => shippingForStore(o.slug, zone) != null)).map(it => it.ean);
+    !offersByEan[it.ean].some(o => portesCalculaveis(o.slug, zone))).map(it => it.ean);
   for (const { ean } of items) {
-    offersByEan[ean] = offersByEan[ean].filter(o => shippingForStore(o.slug, zone) != null);
+    offersByEan[ean] = offersByEan[ean].filter(o => portesCalculaveis(o.slug, zone));
   }
   const uncovered = items.filter(it => !offersByEan[it.ean].length && !shippingUnknown.includes(it.ean)).map(it => it.ean);
-  const coverable = items.filter(it => offersByEan[it.ean].length);
-  if (!coverable.length || shippingUnknown.length) return { solutions: [], uncovered, shippingUnknown };
+  let coverable = items.filter(it => offersByEan[it.ean].length);
+  if (!coverable.length) return { solutions: [], uncovered, shippingUnknown };
 
-  // candidate stores
-  const candidates = [...new Set(coverable.flatMap(it => offersByEan[it.ean].map(o => o.slug)))];
-  // Com >12 candidatas, cortar por ordem de inserção descartava lojas boas.
-  // Pontuamos cada loja por cobertura (nº de itens que tem) e proximidade ao
-  // melhor preço por item; só as 12 mais úteis entram na enumeração 2^N.
-  const bestPriceByEan = {};
-  for (const it of coverable) bestPriceByEan[it.ean] = Math.min(...offersByEan[it.ean].map(o => o.price));
-  const scored = candidates.map(slug => {
-    let cov = 0, pen = 0;
-    for (const it of coverable) {
-      const own = offersByEan[it.ean].find(o => o.slug === slug);
-      if (!own) continue;
-      cov++;
-      pen += (own.price - bestPriceByEan[it.ean]) * (it.qty || 1);
+  function enumerar(cobertos) {
+    // candidate stores
+    const candidates = [...new Set(cobertos.flatMap(it => offersByEan[it.ean].map(o => o.slug)))];
+    // Com >12 candidatas, cortar por ordem de inserção descartava lojas boas.
+    // Pontuamos cada loja por cobertura (nº de itens que tem) e proximidade ao
+    // melhor preço por item; só as 12 mais úteis entram na enumeração 2^N.
+    const bestPriceByEan = {};
+    for (const it of cobertos) bestPriceByEan[it.ean] = Math.min(...offersByEan[it.ean].map(o => o.price));
+    const scored = candidates.map(slug => {
+      let cov = 0, pen = 0;
+      for (const it of cobertos) {
+        const own = offersByEan[it.ean].find(o => o.slug === slug);
+        if (!own) continue;
+        cov++;
+        pen += (own.price - bestPriceByEan[it.ean]) * (it.qty || 1);
+      }
+      return { slug, cov, pen };
+    });
+    scored.sort((a, b) => b.cov - a.cov || a.pen - b.pen);
+    const N = Math.min(candidates.length, 12);  // safety cap (2^12 = 4096)
+    const usable = scored.slice(0, N).map(s => s.slug);
+
+    const lista = [];
+    for (let mask = 1; mask < (1 << N); mask++) {
+      const subset = [];
+      for (let i = 0; i < N; i++) if (mask & (1 << i)) subset.push(usable[i]);
+      const sub = buildSubsetSolution(subset, cobertos, offersByEan, zone);
+      if (sub) lista.push(sub);
     }
-    return { slug, cov, pen };
-  });
-  scored.sort((a, b) => b.cov - a.cov || a.pen - b.pen);
-  const N = Math.min(candidates.length, 12);  // safety cap (2^12 = 4096)
-  const usable = scored.slice(0, N).map(s => s.slug);
+    return lista;
+  }
 
-  const all = [];
-  for (let mask = 1; mask < (1 << N); mask++) {
-    const subset = [];
-    for (let i = 0; i < N; i++) if (mask & (1 << i)) subset.push(usable[i]);
-    const sub = buildSubsetSolution(subset, coverable, offersByEan, zone);
-    if (sub) all.push(sub);
+  let all = enumerar(coverable);
+  // Nenhuma combinação válida: há produtos que só existem em lojas de tarifa por
+  // verificar cujo limiar de grátis o cabaz não atinge. Esses vão para
+  // shippingUnknown e otimiza-se o resto.
+  if (!all.length) {
+    const soLimiar = coverable.filter(it => offersByEan[it.ean].every(o => shippingForStore(o.slug, zone) == null)).map(it => it.ean);
+    if (soLimiar.length) {
+      shippingUnknown.push(...soLimiar);
+      coverable = coverable.filter(it => !soLimiar.includes(it.ean));
+      all = coverable.length ? enumerar(coverable) : [];
+    }
   }
   if (!all.length) return { solutions: [], uncovered, shippingUnknown };
 
@@ -13788,9 +13830,11 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
     const store = STORE_BY_SLUG[slug] || { slug, name: slug };
     const subtotal = lines.reduce((s, l) => s + l.line, 0);
     const ship = shippingForStore(slug, zone);
-    if (ship == null) return null;
     // uma loja desconhecida nunca oferece portes: sem limiar conhecido, cobra-se
     const free = subtotal >= limiarGratis(store, zone);
+    // tarifa por verificar (fase 5): a loja só entra quando o limiar VERIFICADO
+    // é atingido — abaixo dele o custo só se sabe no checkout
+    if (ship == null && !free) return null;
     const shipping = free ? 0 : ship;
     breakdown.push({
       store_slug: slug,
@@ -13798,7 +13842,7 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
       lines,
       subtotal: +subtotal.toFixed(2),
       shipping: +shipping.toFixed(2),
-      shipping_base: +ship.toFixed(2),
+      shipping_base: ship == null ? null : +ship.toFixed(2),
       free_shipping: free,
       total: +(subtotal + shipping).toFixed(2),
     });
@@ -13879,7 +13923,9 @@ function renderResults(solutions, uncovered, shippingUnknown, items) {
   }
   if (shippingUnknown.length) {
     const names = shippingUnknown.map(ean => PRODUCT_BY_EAN[ean]?.name || ean).join(', ');
-    html += `<div class="results-uncovered">⚠️ Há ofertas para <strong>${escapeHtml(names)}</strong>, mas os portes são calculados no checkout. Não é possível calcular um total entregue para este cabaz.</div>`;
+    html += solutions.length
+      ? `<div class="results-uncovered">⚠️ <strong>${escapeHtml(names)}</strong>: as lojas que ${shippingUnknown.length === 1 ? 'o vendem' : 'os vendem'} só mostram os portes no checkout, por isso ${shippingUnknown.length === 1 ? 'fica' : 'ficam'} fora do total abaixo. Vê os preços em «Análise individual por produto».</div>`
+      : `<div class="results-uncovered">⚠️ Há ofertas para <strong>${escapeHtml(names)}</strong>, mas os portes são calculados no checkout. Não é possível calcular um total entregue para este cabaz.</div>`;
   }
   if (!solutions.length) {
     html += `<div class="bundle-empty"><div class="bundle-empty-icon">😔</div><p>${shippingUnknown.length ? 'Não conseguimos calcular uma combinação completa com portes conhecidos.' : 'Não conseguimos formar nenhuma combinação completa com stock.'}</p></div>`;
@@ -13993,7 +14039,7 @@ function productPodiumMiniHTML(ean) {
       <div class="mini-best-offer">
         <div class="mini-best-info">
           <div class="mini-best-label">Melhor preço</div>
-            <div class="mini-best-store">${best.store.name}${shippingForStore(best.slug, bundleState.zone) == null ? ' · Portes calculados no checkout' : ''}</div>
+            <div class="mini-best-store">${best.store.name}${notaPortesDesconhecidos(best.slug, bundleState.zone)}</div>
         </div>
         <div class="mini-best-price-block">
           <span class="mini-best-price">${best.price.toFixed(2)}€</span>
@@ -14004,7 +14050,7 @@ function productPodiumMiniHTML(ean) {
       <div class="mini-others">
         ${others.map(r => `
           <div class="mini-other-row">
-            <span class="mini-other-store">${r.store.name}${shippingForStore(r.slug, bundleState.zone) == null ? ' · Portes calculados no checkout' : ''}</span>
+            <span class="mini-other-store">${r.store.name}${notaPortesDesconhecidos(r.slug, bundleState.zone)}</span>
             <span class="mini-other-price">${r.price.toFixed(2)}€ <span class="mini-other-delta">+${(r.price - minP).toFixed(2)}€</span></span>
             <a class="mini-other-link" href="${r.url}" target="_blank" rel="noopener">Abrir ↗</a>
           </div>

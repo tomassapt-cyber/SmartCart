@@ -59,30 +59,42 @@ function aplicar(entradas, lojas) {
 }
 const adivinhada = slug => ({ slug, free_shipping_threshold: 49, shipping_zones: { mainland: 3.95, madeira: 8.9, acores: 8.9 } });
 
-caso('ilhas ausente → Madeira e Açores com a tarifa de casa', () => {
+caso('fase 5: ilhas ausente → desconhecido nas ilhas (já não copia a tarifa de casa)', () => {
   const r = aplicar({ a: { gratis: 40, casa: 3.7 } }, [adivinhada('a')]);
-  assert.deepEqual(r.a.shipping_zones, { mainland: 3.7, madeira: 3.7, acores: 3.7 });
+  assert.deepEqual(r.a.shipping_zones, { mainland: 3.7, madeira: null, acores: null, gratis_ilhas: null });
   assert.equal(r.a.free_shipping_threshold, 40);
+});
+
+caso('fase 5: loja sem entrada → tudo desconhecido, nada do que o integrador adivinhou', () => {
+  const r = aplicar({}, [adivinhada('x')]);
+  assert.equal(r.x.free_shipping_threshold, null);
+  assert.deepEqual(r.x.shipping_zones, { mainland: null, madeira: null, acores: null, gratis_ilhas: null });
+});
+
+caso('fase 5: casa ausente → desconhecida; ilhas verificadas valem mesmo sem casa', () => {
+  const r = aplicar({ p: { gratis: 39, ilhas: 11.55, gratis_ilhas: null } }, [adivinhada('p')]);
+  assert.deepEqual(r.p.shipping_zones, { mainland: null, madeira: 11.55, acores: 11.55, gratis_ilhas: null });
+  assert.equal(r.p.free_shipping_threshold, 39);
 });
 
 caso('ilhas: null → desconhecido nas ilhas (não fica o valor adivinhado nem o de casa)', () => {
   const r = aplicar({ a: { gratis: 45, casa: 4, ilhas: null } }, [adivinhada('a')]);
-  assert.deepEqual(r.a.shipping_zones, { mainland: 4, madeira: null, acores: null });
+  assert.deepEqual(r.a.shipping_zones, { mainland: 4, madeira: null, acores: null, gratis_ilhas: null });
 });
 
 caso('ilhas com valor → esse valor', () => {
   const r = aplicar({ a: { gratis: 38.6, casa: 3.94, ilhas: 15 } }, [adivinhada('a')]);
-  assert.deepEqual(r.a.shipping_zones, { mainland: 3.94, madeira: 15, acores: 15 });
+  assert.deepEqual(r.a.shipping_zones, { mainland: 3.94, madeira: 15, acores: 15, gratis_ilhas: null });
 });
 
-caso('gratis: null → nunca grátis; gratis ausente → limiar não mexe', () => {
+caso('gratis: null → nunca grátis; fase 5: gratis ausente → null (não fica o 49 adivinhado)', () => {
   const r = aplicar({ a: { gratis: null, casa: 7.95 }, b: { casa: 5 } }, [adivinhada('a'), adivinhada('b')]);
   assert.equal(r.a.free_shipping_threshold, null);
-  assert.equal(r.b.free_shipping_threshold, 49);
+  assert.equal(r.b.free_shipping_threshold, null);
 });
 
 caso('Cocooncenter verificada: casa 7,95 € e nunca grátis em casa', () => {
-  assert.deepEqual(ship.cocooncenter, { gratis: null, casa: 7.95, ponto: 6.95, ponto_txt: '6,95 € (grátis ≥79 €)' });
+  assert.deepEqual(ship.cocooncenter, { gratis: null, casa: 7.95, ponto: 6.95, ponto_txt: '6,95 € (grátis ≥79 €)', ilhas: 7.95, gratis_ilhas: null });
 });
 
 caso('as 5 lojas que não enviam às ilhas, ou cobram por peso, ficam com ilhas: null', () => {
@@ -123,12 +135,12 @@ caso('carrinho: loja com ilhas desconhecidas entra no continente e sai das combi
 });
 
 
-caso('gratis_ilhas: número, null (nunca grátis nas ilhas) e ausente (= o geral)', () => {
+caso('gratis_ilhas: número, null (nunca grátis nas ilhas) e, fase 5, ausente = null explícito', () => {
   const r = aplicar({ a: { gratis: 99, casa: 4.95, ilhas: 5.95, gratis_ilhas: 249 }, b: { gratis: 39, casa: 2.99, ilhas: 13, gratis_ilhas: null }, c: { gratis: 25, casa: 3.49, ilhas: 5.99 } },
     [adivinhada('a'), adivinhada('b'), adivinhada('c')]);
   assert.equal(r.a.shipping_zones.gratis_ilhas, 249);
   assert.equal(r.b.shipping_zones.gratis_ilhas, null);
-  assert.ok(!('gratis_ilhas' in r.c.shipping_zones));
+  assert.ok('gratis_ilhas' in r.c.shipping_zones && r.c.shipping_zones.gratis_ilhas === null);
 });
 
 caso('carrinho: limiar próprio das ilhas — grátis no continente não promete grátis nas ilhas', () => {
@@ -151,6 +163,56 @@ caso('carrinho: limiar próprio das ilhas — grátis no continente não promete
   // 120 € na Nou: continente grátis (≥99); Madeira paga 5,95 € (só grátis ≥249)
   assert.equal(ctx.optimizeBundle([{ ean: 'b', qty: 1 }], 'nacional').solutions[0].total, 120);
   assert.equal(ctx.optimizeBundle([{ ean: 'b', qty: 1 }], 'Madeira').solutions[0].total, 125.95);
+});
+
+caso('fase 5, carrinho: loja só com limiar verificado entra acima do limiar (portes 0 €) e sai abaixo', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8');
+  const extrair = (ini, fim) => { const a = html.indexOf(ini), b = html.indexOf(fim, a); assert.ok(a >= 0 && b > a, ini); return html.slice(a, b); };
+  const code = extrair('function shippingForStore(', '// STATE') + extrair('function optimizeBundle(', 'function renderResults(');
+  const r = aplicar({ lim: { gratis: 40 }, fixa: { gratis: null, casa: 5 } }, [adivinhada('lim'), adivinhada('fixa')]);
+  const ctx = {
+    STORE_BY_SLUG: { lim: { ...r.lim, name: 'Lim' }, fixa: { ...r.fixa, name: 'Fixa' } },
+    OFFERS_BY_PRODUCT: {
+      a: { lim: { in_stock: true, price: 30, url: 'u' }, fixa: { in_stock: true, price: 33, url: 'u' } },
+      b: { lim: { in_stock: true, price: 45, url: 'u' }, fixa: { in_stock: true, price: 46, url: 'u' } },
+    },
+    PRODUCT_BY_EAN: { a: { name: 'A', brand: 'M' }, b: { name: 'B', brand: 'M' } },
+    bundleState: { volumes: new Map() }, ofertasProntasComVariantes: () => true,
+    Set, Map, Object, Array, Math, Number, Infinity,
+  };
+  vm.createContext(ctx); vm.runInContext(code, ctx);
+  assert.equal(ctx.portesCalculaveis('lim', 'nacional'), true);
+  // 30 € na Lim (tarifa por saber, abaixo de 40) → não entra; Fixa 33 + 5
+  let res = ctx.optimizeBundle([{ ean: 'a', qty: 1 }], 'nacional');
+  assert.deepEqual([res.solutions[0].stores_used[0], res.solutions[0].total], ['fixa', 38]);
+  assert.ok(res.solutions.every(s => !s.stores_used.includes('lim')));
+  // 45 € na Lim (≥40) → portes 0 €, sabidos → é a melhor
+  res = ctx.optimizeBundle([{ ean: 'b', qty: 1 }], 'nacional');
+  assert.deepEqual([res.solutions[0].stores_used[0], res.solutions[0].total, res.solutions[0].breakdown[0].free_shipping], ['lim', 45, true]);
+  assert.equal(res.solutions[0].breakdown[0].shipping_base, null);
+});
+
+caso('fase 5, carrinho: um produto sem portes conhecidos não anula o resto do cabaz', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8');
+  const extrair = (ini, fim) => { const a = html.indexOf(ini), b = html.indexOf(fim, a); assert.ok(a >= 0 && b > a, ini); return html.slice(a, b); };
+  const code = extrair('function shippingForStore(', '// STATE') + extrair('function optimizeBundle(', 'function renderResults(');
+  const r = aplicar({ nada: {}, lim: { gratis: 100 }, fixa: { gratis: null, casa: 5 } }, [adivinhada('nada'), adivinhada('lim'), adivinhada('fixa')]);
+  const ctx = {
+    STORE_BY_SLUG: { nada: { ...r.nada, name: 'Nada' }, lim: { ...r.lim, name: 'Lim' }, fixa: { ...r.fixa, name: 'Fixa' } },
+    OFFERS_BY_PRODUCT: {
+      a: { nada: { in_stock: true, price: 10, url: 'u' } },           // só numa loja sem nada verificado
+      c: { lim: { in_stock: true, price: 20, url: 'u' } },            // só numa loja só-limiar, abaixo dele
+      b: { fixa: { in_stock: true, price: 12, url: 'u' } },
+    },
+    PRODUCT_BY_EAN: { a: { name: 'A', brand: 'M' }, b: { name: 'B', brand: 'M' }, c: { name: 'C', brand: 'M' } },
+    bundleState: { volumes: new Map() }, ofertasProntasComVariantes: () => true,
+    Set, Map, Object, Array, Math, Number, Infinity,
+  };
+  vm.createContext(ctx); vm.runInContext(code, ctx);
+  const res = ctx.optimizeBundle([{ ean: 'a', qty: 1 }, { ean: 'b', qty: 1 }, { ean: 'c', qty: 1 }], 'nacional');
+  assert.deepEqual(Array.from(res.shippingUnknown).sort(), ['a', 'c']);
+  assert.deepEqual([res.solutions[0].stores_used.join(), res.solutions[0].total], ['fixa', 17]);
+  assert.equal(res.uncovered.length, 0);
 });
 
 console.log(`\n${n}/${n} casos passaram`);

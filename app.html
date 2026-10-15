@@ -146,8 +146,10 @@ async function loadStores() {
 }
 function shipFor(slug, price) {
   const st = STORES[slug];
-  if (!st || st.ship == null) return { ship: null, total: price, label: 'portes n/d' };
-  const gratis = st.free != null && price >= st.free;
+  const gratis = !!st && st.free != null && price >= st.free;
+  // tarifa por verificar (fase 5 dos portes, 2026-10-15): acima do limiar
+  // verificado os portes são 0 €, sabidos; abaixo só se sabem no checkout
+  if (!st || (st.ship == null && !gratis)) return { ship: null, total: price, label: st && st.free != null ? 'portes no checkout · grátis ≥ ' + fmt(st.free) : 'portes n/d' };
   const ship = gratis ? 0 : Number(st.ship);
   const label = gratis ? 'portes grátis ✓' : ('+ portes ' + fmt(ship) + (st.free != null ? ' · grátis ≥ ' + fmt(st.free) : ''));
   return { ship, total: price + ship, label };
