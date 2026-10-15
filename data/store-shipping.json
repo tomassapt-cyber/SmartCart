@@ -223,7 +223,7 @@
   "ponto_txt": null
  },
  "gofarma": {
-  "gratis": 44,
+  "gratis": 44.9,
   "casa": null,
   "ponto": null,
   "ponto_txt": null
@@ -249,10 +249,12 @@
   "ponto_txt": "2,40 € (InPost; 1,15 € entre 25 € e 39,99 €)"
  },
  "pharmee": {
-  "gratis": null,
-  "casa": null,
+  "gratis": 40,
+  "casa": 3.5,
   "ponto": 3.5,
-  "ponto_txt": "3,50 € (grátis ≥40€)"
+  "ponto_txt": "Pickup DPD 3,50 € (grátis ≥40 €)",
+  "ilhas": 8,
+  "gratis_ilhas": 100
  },
  "powerbeauty": {
   "gratis": 49,
@@ -286,7 +288,7 @@
   "ponto_txt": null
  },
  "bemecare": {
-  "gratis": 50,
+  "gratis": 49.9,
   "casa": null,
   "ponto": null,
   "ponto_txt": null
@@ -574,7 +576,9 @@
   "ilhas": 12.8
  },
  "farmacia2u": {
-  "gratis": 60
+  "gratis": 60,
+  "casa": 3.9,
+  "ilhas": null
  },
  "ilhadoscosmeticos": {
   "gratis": 60,
