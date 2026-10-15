@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-14T22:22:37.514085+00:00",
-  "completed_at": "2026-10-15T00:05:52.812083+00:00",
+  "scraped_at": "2026-10-15T15:38:49.860644+00:00",
+  "completed_at": "2026-10-15T17:34:03.109321+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -1108,19 +1108,6 @@
       "url": "https://presencadeluxo.pt/ondulacao-loreal/1024-dulcia-advanced-0-75ml-loreal-profissional-3474630355217.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/107033-thickbox_default/dulcia-advanced-0-75ml-loreal-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637061937",
-      "name": "Shampoo Inoa Post 1500ml - L'Oreal Profissional",
-      "price": 33.11,
-      "net_price": 26.92,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/cabeleireiro/1028-shampoo-inoa-post-1500ml-loreal-profissional-3474637061937.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/107002-thickbox_default/shampoo-inoa-post-1500ml-loreal-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2798,19 +2785,6 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/6853-verniz-gel-andreia-239-5600462909511.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108516-thickbox_default/verniz-gel-andreia-239.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600482304198",
-      "name": "Lâminas de Depilação Descartáveis Ricki Parodi 100un – Corte Preciso e Seguro",
-      "price": 12.69,
-      "net_price": 10.32,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/depilacao-a-laser/6858-100uni-laminas-de-depilacao-descartavel-5600482304198.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/95016-thickbox_default/100uni-laminas-de-depilacao-descartavel.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -16179,6 +16153,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600355748463",
+      "name": "Verniz Gel Inocos Acertar Em Cheio NL5 15ml",
+      "price": 8.85,
+      "net_price": 7.2,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/inocos-verniz-gel/86833-verniz-gel-inocos-acertar-em-cheio-nl5-15ml-5600355748463.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/144942-thickbox_default/verniz-gel-inocos-acertar-em-cheio-nl5-15ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927890881",
       "name": "Fiber Base Gel Andreia 01 Clear 10,5ml",
       "price": 6.89,
@@ -20388,6 +20375,14 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/cabeleireiro/1028-shampoo-inoa-post-1500ml-loreal-profissional-3474637061937.html",
+      "ean": "3474637061937",
+      "canonical": "3474637061937",
+      "existing_name": "L'Oréal iNOA Shampoo 1500ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
       "url": "https://presencadeluxo.pt/natural-styling/1468-neutralizante-1000ml-schwarzkopf-4045787131048.html",
       "ean": "4045787131048",
       "canonical": "4045787131048",
@@ -20482,6 +20477,14 @@
       "existing_name": "Alicate Cutículas 722 Aço Inox 12cm - Mundial",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/depilacao-a-laser/6858-100uni-laminas-de-depilacao-descartavel-5600482304198.html",
+      "ean": "5600482304198",
+      "canonical": "5600482304198",
+      "existing_name": "100 Lâminas Descartáveis com Dispensador Azul",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
     },
     {
       "url": "https://presencadeluxo.pt/revlon-equave/7491-shampoo-kids-300ml-equave-revlon-8432225113302.html",
@@ -21090,14 +21093,6 @@
       "existing_name": "Secador de Cabelo PENTA",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/inocos-verniz-gel/86833-verniz-gel-inocos-acertar-em-cheio-nl5-15ml-5600355748463.html",
-      "ean": "5600355748463",
-      "canonical": "5600355748463",
-      "existing_name": "INOCOS Nailed It Verniz Gel NL5 Bull's Eye 15ml",
-      "method": "GTIN",
-      "reason": "stock/order contradiction"
     },
     {
       "url": "https://presencadeluxo.pt/pranchas-de-cabelo/87091-prancha-de-cabelo-techshen-epic-l-230c-5600482307045.html",
