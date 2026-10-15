@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T13:25:13.023Z",
+  "generated_at": "2026-10-15T10:12:01.369Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -7,12 +7,12 @@
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
       "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 20.56,
-      "best_store": "Farmacentral",
-      "best_store_slug": "farmacentral",
-      "best_url": "https://farmacentral.pt/pt/artigo/fotoprotector-isdin-fusion-water-spf50-50ml",
+      "best_price": 19.25,
+      "best_store": "Farmácia.pt",
+      "best_store_slug": "farmaciapt",
+      "best_url": "https://farmacia.pt/isdin-fotoprotector-fluido-fusion-water-fps50-50ml",
       "search_term": "isdin protetor solar",
-      "pop_score": 52
+      "pop_score": 53
     },
     {
       "ean": "3606000560833",
@@ -24,18 +24,18 @@
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 41
+      "pop_score": 43
     },
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 15.28,
+      "best_price": 15.3,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c",
-      "search_term": "vitamina c rosto melhores",
+      "search_term": "vitamina c rosto para que serve",
       "pop_score": 41
     },
     {
