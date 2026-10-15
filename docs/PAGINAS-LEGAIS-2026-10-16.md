@@ -12,7 +12,7 @@ Base: `e529aa75a7c91f285ec581129a19f458ed12f63c` (main obtido em 16/10/2026). To
 
 ## Por preencher/confirmar pelo Tomás antes de publicar
 
-Há **22 ocorrências de `class="falta"`**, incluindo repetições entre páginas (os rascunhos fornecidos não tinham as 17 indicadas no pedido).
+Há **25 ocorrências de `class="falta"`**, incluindo repetições entre páginas (os rascunhos fornecidos não tinham as 17 indicadas no pedido).
 
 - Nome/denominação, NIF/NIPC, morada e email público: por definir, sem urgir resposta nesta sessão.
 - Datas de publicação nas três políticas.
@@ -34,3 +34,7 @@ Fontes consultadas em 16/10/2026: [CNPD — cookies](https://www.cnpd.pt/media/x
 - Resultados finais Chromium registados na descrição do PR.
 
 Impacto: zero alterações a lojas, produtos, ofertas, imagens do catálogo ou dimensão da BD; só páginas estáticas e navegação. Os artefactos gerados, a BD local e capturas não entram no commit.
+
+## Revisão após análise do Claude
+
+Corrigidas a frequência de recolha (varia por loja) e as perguntas obrigatórias do questionário. Os 180 dias constam das migrações 007/008, mas o trigger de purga é probabilístico e executado com novos inserts: não prova eliminação ao segundo nem que esteja aplicado remotamente. O prazo previsto está agora no rascunho, com confirmação obrigatória antes de publicar. A migração 015 de apagar conta também carece de confirmação remota; não se consultou o Supabase bloqueado. O fundamento/consentimento de respostas que possam revelar saúde fica expressamente pendente de validação. As quatro novas canonicals usam caminhos relativos, sem introduzir cópias do domínio; a origem configurável será tratada no PR SEO. O #77 exclui docs/ e Markdown internos do deploy Vercel.
