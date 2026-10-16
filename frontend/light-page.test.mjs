@@ -1,5 +1,5 @@
 import {test,before,after} from 'node:test';import assert from 'node:assert/strict';import {createServer} from 'node:http';import {readFileSync,readdirSync} from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {chromium} from 'playwright';import {render,indexMinimum} from './product-page.mjs';import {gzipSync} from 'node:zlib';
-const root=fileURLToPath(new URL('../',import.meta.url)),html=readFileSync(path.join(root,'index.html'),'utf8');
+const root=fileURLToPath(new URL('../',import.meta.url)),html=readFileSync(path.join(root,'seo-shell.html'),'utf8');
 const idx=JSON.parse(readFileSync(path.join(root,'data/idx',readdirSync(path.join(root,'data/idx')).find(f=>f.startsWith('search-')))));
 const sample=idx.e.findIndex((e,i)=>idx.mn[i]>0&&idx.ab[i]>idx.mn[i]);const at=sample<0?0:sample;const p={e:idx.e[at],n:idx.nm[at],b:idx.brands[idx.b[at]],s:idx.s[at],lo:indexMinimum(idx,at)};
 const ssr=render(html,p,'https://cosmath.example');let srv,browser,base;
