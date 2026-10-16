@@ -11,7 +11,7 @@
      Os valores por produto sao reescritos em JS (ver seoAbrirProduto) e
      repostos ao fechar a ficha. -->
 <meta name="description" content="Compara o preco do mesmo produto de cosmetica em 74 lojas portuguesas. Precos verificados todos os dias." />
-<link rel="canonical" id="seo-canonical" href="https://smart-cart-zx55.vercel.app/" />
+<!-- O HTML é partilhado com /produto/: o canonical é criado quando o endereço é conhecido. -->
 <meta property="og:site_name" content="CosMath" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:type" content="website" id="seo-og-type" />
@@ -10822,9 +10822,19 @@ function seoCaminhoDoProduto(ean, nome) {
 }
 
 function seoDefinir(id, attr, valor) {
-  const el = document.getElementById(id);
+  let el = document.getElementById(id);
+  if (!el && id === 'seo-canonical' && valor != null) {
+    el = document.createElement('link');
+    el.id = id;
+    el.rel = 'canonical';
+    document.head.appendChild(el);
+  }
   if (el && valor != null) el.setAttribute(attr, valor);
 }
+
+// Não atribuir / a uma ficha que ainda está a carregar. Na homepage e no
+// catálogo mantém-se o canonical de base; a ficha cria o seu no #60.
+if (!/^\/produto(?:\/|$)/.test(location.pathname)) seoDefinir('seo-canonical', 'href', SEO_BASE.url);
 
 /** injecta (ou substitui) o bloco de dados estruturados */
 function seoJsonLd(obj) {
