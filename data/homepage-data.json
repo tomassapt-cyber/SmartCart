@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-13T10:25:59.325Z",
-  "seed_total_products": 85178,
+  "generated_at": "2026-10-16T00:24:17.914Z",
+  "seed_total_products": 93346,
   "hero_sponsored": [
     {
       "ean": "8429420158399",
       "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
       "brand": "Isdin",
       "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 18.79,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/isdin-fotoprotetor-fusion-water-spf50-50ml"
+      "best_price": 19.25,
+      "best_store": "Farmácia.pt",
+      "best_store_slug": "farmaciapt",
+      "best_url": "https://farmacia.pt/isdin-fotoprotector-fluido-fusion-water-fps50-50ml"
     },
     {
       "ean": "3606000560833",
@@ -27,7 +27,7 @@
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 15.29,
+      "best_price": 15.3,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
@@ -111,20 +111,10 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 3.96,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-creme-maos-concentrado-+-stick-labial_p13679.html"
-    },
-    {
-      "ean": "3574661874951",
-      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 16.58,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
+      "best_price": 3.65,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/neutrogena-pack-creme-concentrado-maos-stick-labial"
     },
     {
       "ean": "3574661540887",
@@ -137,6 +127,16 @@
       "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
     },
     {
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 16.58,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
+    },
+    {
       "ean": "3574661879185",
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
@@ -147,44 +147,44 @@
       "best_url": "https://www.farmacia365.pt/neutrogena-corpo-deep-moisture-duo-locao-corporal-750ml-400ml-com-desconto-de-25"
     },
     {
-      "ean": "8431567752002",
-      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
-      "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 37.25,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-suractivated-serum-coffret-natal-2026"
+      "ean": "3522930006343",
+      "name": "Caudalie Vinoperfect Sérum + Espuma Micro-Peeling Pack",
+      "brand": "Caudalie",
+      "image_url": "https://1630763059.rsc.cdn77.org/temp/1787652226_307f07976e1711a5b65506faaeaa7296.jpg",
+      "best_price": 41.18,
+      "best_store": "Farmacentral",
+      "best_store_slug": "farmacentral",
+      "best_url": "https://farmacentral.pt/pt/artigo/caudalie-vinoperf-ser-eclat30ofmouss50"
     }
   ],
   "em_alta": [
     {
-      "ean": "8436589051133",
-      "name": "Mineral D Fluid Sun Care SPF50",
-      "brand": "Martiderm",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw11fe261b/images/wells/850/8508581-SOLARES-ROSTO-MINERAL-D-FLUID-SUN-CARE-SPF50-MARTIDERM-P-01.jpg",
-      "best_price": 9.12,
-      "best_store": "Farmácia Barata",
-      "best_store_slug": "farmaciabarata",
-      "best_url": "https://www.farmaciabarata.pt/protetor-solar-mineral/martiderm-spf50-mineral-d-fluido.html",
-      "previous_price": 18.25,
-      "discount_pct": 50,
-      "dropped_day": 20732,
+      "ean": "4005800204982",
+      "name": "Hansaplast Pomada Cicatrizante",
+      "brand": "Hansaplast",
+      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/OYmeQF_59bfab44-388d-4807-b40d-31e9c3849554.png?v=1783781449",
+      "best_price": 2.38,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/diversos/hansaplast-pomada-para-cicatrizacao-de-feridas-50g_p3283.html",
+      "previous_price": 4.28,
+      "discount_pct": 44,
+      "dropped_day": 20740,
       "verified_live": true
     },
     {
-      "ean": "3522930003649",
-      "name": "Caudalie Vinoterapeuta Tratamento Corporal Nutritivo",
-      "brand": "Caudalie",
-      "image_url": "https://aminhafarmaciaonline.pt/wp-content/uploads/2024/12/7088369.jpg",
-      "best_price": 9.3,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/caudalie-vinotherapist-cuidado-corporal-nutritivo-hialuronico-200ml",
-      "volume_ml": 200,
-      "previous_price": 15.5,
-      "discount_pct": 40,
-      "dropped_day": 20729,
+      "ean": "4005900868619",
+      "name": "Nivea Body Milk Leite Corporal Nutritivo",
+      "brand": "Nivea",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/i/niveabodymilk1_1.jpg",
+      "best_price": 3.57,
+      "best_store": "Auchan",
+      "best_store_slug": "auchan",
+      "best_url": "https://www.auchan.pt/pt/beleza-e-higiene/cremes-de-corpo-e-rosto/cremes-e-oleos/leite-corporal-body-milk-nutritivo-nivea-250-ml/2137.html",
+      "volume_ml": 250,
+      "previous_price": 5.49,
+      "discount_pct": 35,
+      "dropped_day": 20740,
       "verified_live": true
     },
     {
@@ -202,66 +202,67 @@
       "verified_live": true
     },
     {
-      "ean": "3282770391053",
-      "name": "Klorane bébé Huile multi usages au Calendula bio",
-      "brand": "Klorane",
-      "image_url": "https://static.lojadafarmacia.com/22340/klorane-bebe-oleo-multi-usos-bio-200ml.jpeg",
-      "best_price": 7.63,
-      "best_store": "Farmácia Gaia Jardim",
-      "best_store_slug": "farmaciagaiajardim",
-      "best_url": "https://www.farmaciagaiajardim.com/products/klorane-bebe-ol-multi-usos-bio-200ml",
-      "previous_price": 10.9,
-      "discount_pct": 30,
-      "dropped_day": 20729,
+      "ean": "5901761967869",
+      "name": "Eveline Cosmetics Magic Skin CC Cream 8 em 1",
+      "brand": "Eveline Cosmetics",
+      "image_url": "https://assets.atida.com/transform/e28a0b1b-869d-4680-9120-54af4eb7188d/Eveline-Cosmetics-Magic-Skin-Cc-Crema-8en1-50-ml",
+      "best_price": 5.99,
+      "best_store": "Auchan",
+      "best_store_slug": "auchan",
+      "best_url": "https://www.auchan.pt/pt/beleza-e-higiene/cremes-de-corpo-e-rosto/cremes-de-rosto/hidratacao/creme-rosto-eveline-magic-skin-hidratante-8em1-50ml/3664784.html",
+      "previous_price": 8.99,
+      "discount_pct": 33,
+      "dropped_day": 20740,
       "verified_live": true
     },
     {
-      "ean": "3252550620161",
-      "name": "Roger & Gallet Bois Orange Sabonete 3 x",
-      "brand": "Roger Gallet",
-      "image_url": "https://assets.farmaciaideal.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciaideal.pt/images/originals/6861468_2.webp",
-      "best_price": 12.74,
-      "best_store": "Farmácia Gaia Jardim",
-      "best_store_slug": "farmaciagaiajardim",
-      "best_url": "https://www.farmaciagaiajardim.com/products/sabonetes-bois-dorange-3-x-100g",
-      "previous_price": 16.99,
-      "discount_pct": 25,
-      "dropped_day": 20729,
+      "ean": "3337875905480",
+      "name": "La Roche Posay Lipikar Gel de Banho 1 Litro",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/l/a/larocheposay_lipikargellavante1l.jpg",
+      "best_price": 10.5,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/la-roche-posay-lipikar-gel-lavante-750ml",
+      "volume_ml": 750,
+      "previous_price": 14.54,
+      "discount_pct": 28,
+      "dropped_day": 20740,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
+      "name": "Clarins",
+      "products": 870
+    },
+    {
       "name": "Avène",
-      "products": 865
+      "products": 854
     },
     {
       "name": "Isdin",
-      "products": 836
-    },
-    {
-      "name": "Clarins",
-      "products": 826
-    },
-    {
-      "name": "Nivea",
-      "products": 791
-    },
-    {
-      "name": "La Roche-Posay",
-      "products": 785
-    },
-    {
-      "name": "Eucerin",
-      "products": 753
+      "products": 832
     },
     {
       "name": "L'Oréal Paris",
-      "products": 730
+      "products": 806
     },
     {
-      "name": "Bioderma",
-      "products": 684
+      "name": "Nivea",
+      "products": 802
+    },
+    {
+      "name": "La Roche-Posay",
+      "products": 790
+    },
+    {
+      "name": "Eucerin",
+      "products": 760
+    },
+    {
+      "name": "Chicco",
+      "products": 721
     }
   ],
   "telegram_alerts": [
