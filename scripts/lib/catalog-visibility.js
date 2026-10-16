@@ -68,7 +68,49 @@ function dropRottenOffers(seedJson, agora = Date.now()) {
     if (absLoja) { hiddenAbs += absLoja; perStoreAbs.push(`${sp.store_slug}:${absLoja}`); }
     if (pcLoja) { mantidasPc += pcLoja; perStorePc.push(`${sp.store_slug}:${pcLoja}`); }
   }
-  return { hidden, hiddenAbs, perStore, perStoreAbs, mantidasPc, perStorePc, MAX_LAG_DAYS, MAX_ABS_DAYS };
+  // Corre aqui porque este filtro já está em todos os sítios onde o catálogo é
+  // publicado (índice, página, BD, histórico, verificadores).
+  const mini = dropMiniOffers(seedJson);
+  return { hidden, hiddenAbs, perStore, perStoreAbs, mantidasPc, perStorePc, MAX_LAG_DAYS, MAX_ABS_DAYS, mini };
+}
+
+/**
+ * Minis, tamanhos de viagem e amostras ligados à ficha do tamanho normal
+ * (2026-10-16). Várias lojas (a Druni sobretudo) dão à versão mini o código do
+ * produto normal; a oferta entra na ficha e o «desde» passa a ser o preço do
+ * mini (ex.: Tresemmé Keratin Smooth a 1,75€ contra 14,30€ nas outras lojas).
+ * Esconde a oferta quando, ao mesmo tempo:
+ *   · o endereço diz mini / viagem / travel / amostra / sample;
+ *   · o nome da ficha NÃO o diz (a ficha que É o mini fica com as suas ofertas);
+ *   · há ofertas do tamanho normal na ficha, e o mini custa menos de 60% da
+ *     mediana delas (um mini ao preço do normal não engana ninguém).
+ * Só ofertas em stock e com preço; as outras não mexem no «desde».
+ */
+const MINI = /(^|[^a-z])(mini|minis|travel|viagem|amostra|amostras|sample|samples|deluxe-sample)([^a-z]|$)/i;
+function dropMiniOffers(seedJson) {
+  const caminho = u => { try { return decodeURIComponent(new URL(u).pathname); } catch { return ''; } };
+  const nome = new Map((seedJson.products || []).map(p => [String(p.ean), p.name || '']));
+  const porEan = new Map();
+  for (const sp of seedJson.store_products) for (const it of sp.items) {
+    if (!it.in_stock || !(it.price > 0)) continue;
+    const e = String(it.ean);
+    (porEan.get(e) || porEan.set(e, []).get(e)).push({ it, mini: MINI.test(caminho(it.url)) });
+  }
+  const tirar = new Set();
+  for (const [e, ofertas] of porEan) {
+    if (MINI.test(nome.get(e) || '')) continue;
+    const normais = ofertas.filter(o => !o.mini).map(o => o.it.price).sort((a, b) => a - b);
+    if (!normais.length) continue;
+    const mediana = normais[normais.length >> 1];
+    for (const o of ofertas) if (o.mini && o.it.price < 0.6 * mediana) tirar.add(o.it);
+  }
+  let hidden = 0; const perStore = [];
+  if (tirar.size) for (const sp of seedJson.store_products) {
+    const antes = sp.items.length;
+    sp.items = sp.items.filter(it => !tirar.has(it));
+    if (antes - sp.items.length) { hidden += antes - sp.items.length; perStore.push(`${sp.store_slug}:${antes - sp.items.length}`); }
+  }
+  return { hidden, perStore };
 }
 
 /**
@@ -130,4 +172,4 @@ function applyVisibilityFilter(seedJson, isNonCosmetic) {
   };
 }
 
-module.exports = { dropRottenOffers, applyVisibilityFilter, lojasSoPc };
+module.exports = { dropRottenOffers, dropMiniOffers, applyVisibilityFilter, lojasSoPc };
