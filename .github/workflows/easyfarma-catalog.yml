@@ -8,7 +8,7 @@
 #   1. scrape-easyfarma-catalog.js  → data/catalog/easyfarma-full.json
 #   2. integrate-easyfarma-catalog.js → merge no seed (fuzzy + dedup-audit)
 #   3. inject-seed-into-demo.js → regenera demo.html / index.html / catalogo.html
-#   4. commit + push para main (Netlify redeploya automaticamente)
+#   4. commit + push para main (a Vercel publica a partir do branch deploy)
 
 name: Easyfarma daily refresh
 
