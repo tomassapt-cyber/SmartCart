@@ -124,17 +124,37 @@ async function apagarPorChave(url, key, tabela, chaves) {
     if (!grupos.has(id)) grupos.set(id, { fixo, valores: [] });
     grupos.get(id).valores.push(partes[partes.length - 1]);
   }
-  let pedidos = 0;
+  const urls = [];
   for (const { fixo, valores } of grupos.values()) {
     for (let i = 0; i < valores.length; i += 150) {
       const filtros = fixo.map((v, j) => `${pk[j]}=eq.${encodeURIComponent(v)}`);
       filtros.push(`${pk[pk.length - 1]}=in.(${encodeURIComponent(valores.slice(i, i + 150).map(q).join(','))})`);
-      const r = await fetch(`${url}/rest/v1/${tabela}?${filtros.join('&')}`, { method: 'DELETE', headers: H, signal: AbortSignal.timeout(60000) });
-      if (r.status >= 400) throw new Error(`apagar ${tabela}: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`);
-      pedidos++;
+      urls.push(`${url}/rest/v1/${tabela}?${filtros.join('&')}`);
     }
   }
-  return pedidos;
+  // Em paralelo, com tecto (2026-10-16). Um a um, as variantes (um pedido por
+  // loja+EAN) levavam mais do que os 25 min do job depois de dias sem sync, e o
+  // log ficava mudo até ao fim. O primeiro erro pára tudo, como antes.
+  let feitos = 0, proximo = 0, erro = null;
+  const passo = Math.max(200, Math.ceil(urls.length / 10));
+  async function trabalhador() {
+    while (!erro && proximo < urls.length) {
+      const u = urls[proximo++];
+      const r = await fetch(u, { method: 'DELETE', headers: H, signal: AbortSignal.timeout(60000) });
+      if (r.status >= 400) { erro = erro || new Error(`apagar ${tabela}: HTTP ${r.status} ${(await r.text()).slice(0, 120)}`); return; }
+      if (++feitos % passo === 0) console.log(`    a apagar de ${tabela}: ${feitos}/${urls.length} pedidos`);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(6, urls.length) }, trabalhador));
+  if (erro) throw erro;
+  return feitos;
 }
 
-module.exports = { TABELAS, chave, impressao, carregar, guardar, lerDaBD, diferencas, apagarPorChave, FICHEIRO };
+// Variantes a apagar que NÃO vão com a oferta (as outras saem em cascata: FK
+// offer_variants → offers ON DELETE CASCADE, migração 006).
+const variantesSemCascata = (variantes, ofertasQueSaem) => {
+  const saem = new Set(ofertasQueSaem || []);
+  return (variantes || []).filter(k => !saem.has(k.split('\u0001').slice(0, 2).join('\u0001')));
+};
+
+module.exports = { TABELAS, chave, impressao, carregar, guardar, lerDaBD, diferencas, apagarPorChave, variantesSemCascata, FICHEIRO };
