@@ -93,11 +93,20 @@ try {
   const BL = path.join(__dirname, '..', 'data', 'offer-ean-blocklist.json');
   bloqueadas = new Set((JSON.parse(fs.readFileSync(BL, 'utf8')).blocked || []).map(b => `${b.store_slug}|${b.ean}`));
 } catch { /* sem blocklist */ }
+// O inverso (2026-10-16): ofertas cujo endereço tem o nome de outra marca mas
+// que foram abertas e são o produto certo (a loja copiou a página de outro
+// produto e ficou com o endereço antigo). O endereço delas não conta.
+let verificadas = new Set();
+try {
+  const VF = path.join(__dirname, '..', 'data', 'imanes-verificados.json');
+  verificadas = new Set((JSON.parse(fs.readFileSync(VF, 'utf8')).certas || []).map(b => `${b.store_slug}|${b.ean}`));
+} catch { /* sem lista */ }
 // índice ean -> [offers]
 const offersByEan = {};
 for (const g of seed.store_products) for (const it of g.items) {
   if (bloqueadas.has(`${g.store_slug}|${it.ean}`)) continue;
-  (offersByEan[it.ean] ||= []).push({ store: g.store_slug, url: it.url || '', price: it.price });
+  (offersByEan[it.ean] ||= []).push({ store: g.store_slug, url: it.url || '', price: it.price,
+    certa: verificadas.has(`${g.store_slug}|${it.ean}`) });
 }
 
 const corrupt = [];
@@ -108,7 +117,7 @@ for (const p of seed.products) {
   const nameBrands = brandsIn(p.name || '');
   const offers = offersByEan[p.ean] || [];
   const offerBrands = new Set();
-  for (const o of offers) for (const b of brandsIn(o.url)) offerBrands.add(b);
+  for (const o of offers) if (!o.certa) for (const b of brandsIn(o.url)) offerBrands.add(b);
   const disjoint = [...offerBrands].some(b => !nameBrands.has(b)) && [...nameBrands].some(b => !offerBrands.has(b));
   // CORRUPTO se: (a) os URLs das ofertas revelam ≥2 marcas distintas, OU
   //             (b) as ofertas apontam p/ marca diferente da do NOME do produto.
