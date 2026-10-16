@@ -25,7 +25,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const { productFingerprint, displayBrand } = require('./lib/product-fingerprint');
+const { productFingerprint, displayBrand, sinalDeProdutoDiferente } = require('./lib/product-fingerprint');
 const { criarProdutoPorUrl } = require('./lib/produto-por-url');
 const { criarJaNoSeed } = require('./lib/ja-no-seed');
 const { upsertStoreItem } = require('./lib/store-item-merge');
@@ -98,7 +98,7 @@ function isRealEan(ean) {
     if (CATEGORIES_FILTER.includes(p.category) && CATEGORY_MAP[p.category] != null) return true;
     // só ofertas vivas: uma esgotada não acrescenta nada à comparação e ocupa
     // espaço na BD; se voltar a stock, entra na corrida seguinte
-    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { jaExistentes++; return true; }  // só junta oferta, nunca cria
+    if (p.in_stock !== false && p.price > 0 && jaNoSeed(p)) { jaExistentes++; p._soJuntar = true; return true; }  // só junta oferta, nunca cria
     return false;
   });
   if (jaExistentes) console.log(`   ＋ ${jaExistentes} fora do filtro mas JÁ no site (EAN/fingerprint) — oferta juntada, nenhum produto criado`);
@@ -133,6 +133,10 @@ function isRealEan(ean) {
   let storeProductsAdded = 0;
   let storeProductsUpdated = 0;
   let upgradedFromWellsEan = 0;
+  const naoJuntadosPeloNome = {};   // razão → nº (ver o passo 2)
+  let saltadosSoJuntar = 0;
+  const reatribuidos = [];          // [endereço, EAN antigo] que o guarda tirou da ficha errada
+  const tocados = new Set();        // ofertas atualizadas nesta corrida
   const productsBefore = seed.products.length;
 
   const produtoPorUrl = criarProdutoPorUrl(seed, 'druni');
@@ -148,10 +152,21 @@ function isRealEan(ean) {
       matchSource = 'ean';
     }
 
-    // 2) Match by fingerprint
+    // 2) Match by fingerprint — salvo quando a Druni e a ficha têm EANs
+    //    verdadeiros DIFERENTES e há sinal de produto diferente (mini/viagem,
+    //    ou números diferentes no nome: «3 Step» ≠ «1 Step», 50ML ≠ 100ML).
+    //    2026-10-16: a Druni publica o código certo do mini (Tresemmé Keratin
+    //    Smooth mini 8710908694745), mas com o mesmo nome curto do normal; o
+    //    fingerprint juntava-o à ficha 8710908694813 e o «desde» caía para
+    //    1,75€. Sem junção, o mini fica com ficha própria e o código dele.
     if (!targetProduct) {
       const fp = productFingerprint(dp);
-      if (fp && fpIndex[fp]) {
+      const cand = fp ? fpIndex[fp] : null;
+      const doisEans = cand && isRealEan(dp.ean) && isRealEan(cand.ean)
+        && String(dp.ean).replace(/^0+/, '') !== String(cand.ean).replace(/^0+/, '');
+      const sinal = doisEans ? sinalDeProdutoDiferente(dp, cand) : null;
+      if (sinal) naoJuntadosPeloNome[sinal] = (naoJuntadosPeloNome[sinal] || 0) + 1;
+      if (cand && !sinal) {
         targetProduct = fpIndex[fp];
         matchedByFp++;
         matchSource = 'fp';
@@ -176,9 +191,22 @@ function isRealEan(ean) {
 
     // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
     //      ver scripts/lib/produto-por-url.js) ──
-    if (!targetProduct) { const viaUrl = produtoPorUrl(dp.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
+    //      Com o mesmo guarda do passo 2: senão o endereço da oferta antiga, que
+    //      já estava na ficha errada, voltava a pô-la lá.
+    if (!targetProduct) {
+      const viaUrl = produtoPorUrl(dp.url);
+      const outroEan = viaUrl && isRealEan(dp.ean) && isRealEan(viaUrl.ean)
+        && String(dp.ean).replace(/^0+/, '') !== String(viaUrl.ean).replace(/^0+/, '');
+      const recusado = viaUrl && outroEan && sinalDeProdutoDiferente(dp, viaUrl);
+      if (viaUrl && !recusado) { targetProduct = viaUrl; matchedByUrl++; }
+      // a oferta antiga deste endereço está na ficha errada: sai no fim do ciclo,
+      // senão o dedup-store-url via o mesmo endereço em duas fichas e voltava a juntá-las
+      if (recusado) reatribuidos.push([dp.url, viaUrl.ean]);
+    }
 
-    // 3) Não existe → criar
+    // 3) Não existe → criar. Menos os que entraram só para juntar oferta (fora
+    //    do filtro): se o guarda do passo 2 recusou a junção, saltam — nunca criam.
+    if (!targetProduct && dp._soJuntar) { saltadosSoJuntar++; continue; }
     if (!targetProduct) {
       const newEan = isRealEan(dp.ean) ? dp.ean : `druni-${dp.url.split('/').pop().slice(0,40)}`;
       targetProduct = {
@@ -215,6 +243,24 @@ function isRealEan(ean) {
     );
     if (result.action === 'added') storeProductsAdded++;
     else storeProductsUpdated++;
+    if (druniItemByEan[targetEan]) tocados.add(druniItemByEan[targetEan]);
+  }
+
+  // Tirar das fichas erradas as ofertas que o guarda reatribuiu. Se a oferta
+  // antiga não foi atualizada nesta corrida, sai inteira; se foi (outra página da
+  // Druni também pertence àquela ficha), sai só a variante com este endereço.
+  let ofertasTiradas = 0;
+  for (const [url, eanAntigo] of reatribuidos) {
+    const it = druniItemByEan[eanAntigo];
+    if (!it) continue;
+    if (it.url === url && !tocados.has(it)) {
+      druniSp.items = druniSp.items.filter(x => x !== it);
+      delete druniItemByEan[eanAntigo];
+      ofertasTiradas++;
+    } else if ((it.variants || []).some(v => v.url === url)) {
+      it.variants = it.variants.filter(v => v.url !== url);
+      ofertasTiradas++;
+    }
   }
 
   console.log('\n══════ Resumo da integração ══════');
@@ -223,6 +269,8 @@ function isRealEan(ean) {
   console.log(`  Match pelo URL da oferta existente: ${matchedByUrl}`);
   console.log(`  Produtos novos criados:                 ${createdNew}`);
   console.log(`  Wells EANs upgraded → real GTIN:        ${upgradedFromWellsEan}`);
+  const nj = Object.entries(naoJuntadosPeloNome);
+  if (nj.length) console.log(`  Não juntados pelo nome (outro EAN + ${nj.map(([r, n]) => `${r}: ${n}`).join(', ')}) — ficha própria (${saltadosSoJuntar} fora do filtro saltados, não criam; ${ofertasTiradas} ofertas antigas tiradas da ficha errada)`);
   console.log(`  Druni store_products: ${storeProductsAdded} adicionados, ${storeProductsUpdated} actualizados`);
   console.log('');
   console.log(`  Produtos antes: ${productsBefore}`);
