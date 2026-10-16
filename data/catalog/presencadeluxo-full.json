@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-10-16T15:24:39.315721+00:00",
-  "completed_at": "2026-10-16T17:14:20.531954+00:00",
+  "scraped_at": "2026-10-16T22:08:31.162852+00:00",
+  "completed_at": "2026-10-16T23:45:10.019835+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1739,
+  "targets": 1740,
   "products": [
     {
       "ean": "5601411434146",
@@ -18164,6 +18164,19 @@
       "url": "https://presencadeluxo.pt/uniq-one/90438-leave-in-green-tea-scent-revlon-uniq-one-150ml-8432225129853.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/152823-thickbox_default/leave-in-green-tea-scent-revlon-uniq-one-150ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8432225129839",
+      "name": "Shampoo All In One Revlon Uniq One 100ml",
+      "price": 6.48,
+      "net_price": 5.27,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/uniq-one/90440-shampoo-all-in-one-revlon-uniq-one-100ml-8432225129839.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152827-thickbox_default/shampoo-all-in-one-revlon-uniq-one-100ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
