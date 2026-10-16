@@ -29,21 +29,31 @@
 
 const { productFingerprint } = require('./product-fingerprint');
 
+// O «+» de uma oferta («+ 100ml», «400ml+75ml», «+25%») e NÃO o «+» que faz
+// parte do nome do produto (2026-10-16): «Cicaplast Baume B5+ 15 ml»,
+// «Cicabio Creme+ 40 mL», «SPF50+ 200ml», «AP+M», «DS+». Sem esta distinção o
+// «+ 15 ml» do B5+ lia-se como «15 ml de oferta» e a ficha do 15 ml era fundida
+// no Cicaplast 40 ml (outra fórmula, outro tamanho); 818 fichas eram tratadas
+// como promoção e excluídas de servir de base. Conta como oferta só o «+»
+// depois de espaço/início/parêntese, ou colado a um volume («400ml+75ml»).
+const MAIS = String.raw`(?:(?<![A-Za-z0-9])|(?<=\d\s?(?:ml|g|gr)))\+`;
+const MAIS_RE = (resto, flags = 'i') => new RegExp(MAIS + resto, flags);
+
 // Tem marcador de promoção/oferta no nome?
-const PROMO = /\b(oferta|gr[aá]tis|brinde|presente|pre[cç]o especial|promo[cç][aã]o|promo|edi[cç][aã]o\s+(especial|limitada)|2[ªa]\s*unidade)\b|\+\s*\d+\s*(ml|%|unid|un\b)|\d+\s*x\s*\d|-\s*\d+\s*%/i;
+const PROMO = new RegExp(String.raw`\b(oferta|gr[aá]tis|brinde|presente|pre[cç]o especial|promo[cç][aã]o|promo|edi[cç][aã]o\s+(especial|limitada)|2[ªa]\s*unidade)\b|` + MAIS + String.raw`\s*\d+\s*(ml|%|unid|un\b)|\d+\s*x\s*\d|-\s*\d+\s*%`, 'i');
 
 // Bundle REAL de produtos diferentes (não é o mesmo produto — não fundir).
 const BUNDLE = /\b(pack|kit|coffret|duo|trio|conjunto|estojo|set|coffrets)\b/i;
 
 // Promo multi-unidade (preço de pack — não usar como preço de referência).
-const MULTIUNIT = /(\d+)\s*x\s*\d|\d+\s*ml\s*x\s*(\d+)|2[ªa]\s*unidade|\+\s*\d+\s*unid/i;
+const MULTIUNIT = new RegExp(String.raw`(\d+)\s*x\s*\d|\d+\s*ml\s*x\s*(\d+)|2[ªa]\s*unidade|` + MAIS + String.raw`\s*\d+\s*unid`, 'i');
 
 // Remove a cauda promocional para obter o nome-base (que faz fingerprint igual
 // ao do produto-base já existente).
 function stripPromo(nm) {
   let n = ' ' + nm + ' ';
-  n = n.replace(/\+\s*(oferta\s+)?\d+\s*ml\b/gi, ' ')         // + Oferta 100ml / +100ml
-       .replace(/\+\s*\d+\s*%(\s*de\s*oferta)?/gi, ' ')        // + 25% de Oferta
+  n = n.replace(MAIS_RE(String.raw`\s*(oferta\s+)?\d+\s*ml\b`, 'gi'), ' ')   // + Oferta 100ml / +100ml
+       .replace(MAIS_RE(String.raw`\s*\d+\s*%(\s*de\s*oferta)?`, 'gi'), ' ')  // + 25% de Oferta
        .replace(/\+\s*(presente|brinde|oferta)\b.*$/gi, ' ')   // + Presente ...
        .replace(/\b(com\s+)?oferta\b.*$/gi, ' ')
        .replace(/\b\d+\s*x\s*\d+\s*ml\b/gi, ' ')               // 2x400ml
@@ -59,8 +69,8 @@ function stripPromo(nm) {
 function classifyPromo(nm) {
   const n = nm;
   let m;
-  if ((m = n.match(/\+\s*(?:oferta\s+)?(\d+)\s*ml\b/i))) return { note: `+${m[1]}ml grátis`, pack: false, gift: true };
-  if ((m = n.match(/\+\s*(\d+)\s*%(?:\s*de\s*oferta)?/i))) return { note: `+${m[1]}% grátis`, pack: false, gift: true };
+  if ((m = n.match(MAIS_RE(String.raw`\s*(?:oferta\s+)?(\d+)\s*ml\b`)))) return { note: `+${m[1]}ml grátis`, pack: false, gift: true };
+  if ((m = n.match(MAIS_RE(String.raw`\s*(\d+)\s*%(?:\s*de\s*oferta)?`)))) return { note: `+${m[1]}% grátis`, pack: false, gift: true };
   if (/\b(gr[aá]tis|brinde)\b/i.test(n)) return { note: 'oferta incluída', pack: false, gift: true };
   if (/\b(presente|de oferta)\b/i.test(n)) return { note: 'com presente', pack: false, gift: true };
   if (/edi[cç][aã]o\s+(especial|limitada)/i.test(n)) return { note: 'edição limitada', pack: false, gift: false };
