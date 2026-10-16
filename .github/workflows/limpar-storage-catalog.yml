@@ -7,12 +7,9 @@
 name: Limpar Storage (bucket catalog)
 
 on:
-  # De 30 em 30 min: enquanto o projeto estiver restringido dá 402 e sai sem
-  # erro; no momento em que o bloqueio sair (suporte ou 15/10) apaga o bucket,
-  # antes que o Supabase volte a medir. Depois de limpo, cada corrida é um no-op
-  # (bucket inexistente) — desligar este schedule quando o log disser "já está limpo".
-  schedule:
-    - cron: '*/30 * * * *'
+  # O agendamento de 30 em 30 min cumpriu: a 2026-10-16 às 06:17 UTC apagou o
+  # bucket (1 703 ficheiros, 1 952 MB; corrida 38860308061) e o Storage ficou
+  # vazio. Sai o schedule; fica só a corrida manual (vazio = só contar).
   workflow_dispatch:
     inputs:
       apagar:
