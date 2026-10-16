@@ -101,3 +101,30 @@ que **rejeita propriedades desconhecidas** — mesmo com nome começado por `_` 
 build e sem dizer porquê; custou 9h46 de site parado a 5 de Agosto de 2026. Ao
 escrever o rewrite acima quase repeti o erro, com um `"//"` dentro do objecto.
 **Nada que não esteja no esquema entra no `vercel.json`.**
+
+## API de desenvolvimento fora do deploy (16/10/2026)
+
+`api/products.js` é um servidor HTTP local, documentado em `README.md`, com
+`createApp()` e arranque em porta 3001. A Vercel detetava-o em `api/` como função,
+embora o formato exportado não seja um handler Vercel. O inventário #31 registou
+HTTP 500 em produção.
+
+A regra `/api/products.js` em `.vercelignore` exclui apenas este ficheiro do
+deploy. O caminho e o comando `node api/products.js` continuam disponíveis no
+checkout local. Não há alterações a `vercel.json` ou ao buildCommand.
+
+Não foram encontradas chamadas a `/api/products` ou `/api/catalog` nos clientes
+atuais: `demo.html` carrega o índice estático e as ofertas via Supabase. O ramo
+de desenvolvimento usa outro endpoint, `http://localhost:3000/api/live-catalog`,
+e só em localhost/127.0.0.1. Os comentários do servidor sobre o consumo de
+`/api/catalog` pela demo estão desatualizados; não constituem uma dependência.
+
+Validação: pesquisa de referências e smoke test do servidor local em modo seed
+(health, listagem, detalhe e catalog). Não se fez deploy; depois de o Tomás
+aprovar o PR e publicar, confirmar que `/api/products` devolve 404 e que não
+existe esta Function no deployment, mantendo o catálogo normal operacional.
+
+Referência: https://vercel.com/docs/deployments/vercel-ignore
+## Documentação interna fora do deploy (revisão de 16/10/2026)
+
+A mesma .vercelignore exclui agora /docs/ e os *.md da raiz. Não são recursos do cliente: as referências encontradas são documentação. README.md, BACKLOG.md, SCRAPING.md e docs/BUILD-VERCEL.md deixam de ser servidos na Vercel, mas ficam no repositório público e no desenvolvimento local. Esta exclusão não remove o histórico Git nem desliga a cópia antiga da Netlify; o painel Netlify continua a exigir ação do Tomás.
