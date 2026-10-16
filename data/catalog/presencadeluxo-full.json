@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-10-15T15:38:49.860644+00:00",
-  "completed_at": "2026-10-15T17:34:03.109321+00:00",
+  "scraped_at": "2026-10-16T15:24:39.315721+00:00",
+  "completed_at": "2026-10-16T17:14:20.531954+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1734,
+  "targets": 1739,
   "products": [
     {
       "ean": "5601411434146",
@@ -9146,19 +9146,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927871767",
-      "name": "Verniz Andreia Hybrid Gel H88 Cuidadosa Nude",
-      "price": 2.83,
-      "net_price": 2.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/manicure-e-pedicure/16998-verniz-andreia-hybrid-gel-h88-cuidadosa-nude-5603927871767.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/34388-thickbox_default/verniz-andreia-hybrid-gel-h88-cuidadosa-nude.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927872269",
       "name": "Cleanser Prep + Clean 100ML - All In One Andreia",
       "price": 2.71,
@@ -9168,6 +9155,19 @@
       "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/17022-cleanser-prep-clean-100ml-all-in-one-andreia-5603927872269.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108768-thickbox_default/cleanser-prep-clean-100ml-all-in-one-andreia.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872276",
+      "name": "Cleanser Prep + Clean 250ML - All In One Andreia",
+      "price": 4.66,
+      "net_price": 3.8,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/17023-cleanser-prep-clean-250ml-all-in-one-andreia-5603927872276.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108769-thickbox_default/cleanser-prep-clean-250ml-all-in-one-andreia.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -15646,6 +15646,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8411061995754",
+      "name": "Eau de Parfum Carolina Herrera Very Good Girl 80ml",
+      "price": 105.72,
+      "net_price": 85.95,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/perfumes-mulher/85659-eau-de-parfum-carolina-herrera-very-good-girl-80ml-8411061995754.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/141534-thickbox_default/eau-de-parfum-carolina-herrera-very-good-girl-80ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3386460078306",
       "name": "Eau de Parfum Coach New York Coach 90ml",
       "price": 51.57,
@@ -16283,6 +16296,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600355748869",
+      "name": "Top Coat Inocos Glaze Effect 15ml",
+      "price": 11.8,
+      "net_price": 9.59,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/inocos-complementos/87144-top-coat-inocos-glaze-effect-15ml-5600355748869.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/160440-thickbox_default/top-coat-inocos-glaze-effect-15ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4064666599533",
       "name": "Máscara Wella Ultimate Repair 150ml Acção Reparadora",
       "price": 27.55,
@@ -16383,6 +16409,19 @@
       "url": "https://presencadeluxo.pt/prancha-de-cabelo-a-vapor/87685-prancha-de-cabelo-ricki-parodi-irsteam2-vapor-infravermelhos-5600482307083.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/146911-thickbox_default/prancha-de-cabelo-ricki-parodi-irsteam2-vapor-infravermelhos.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927873181",
+      "name": "Óleo de Cutículas Andreia Professional Lab Pineapple 10,5ml",
+      "price": 3.62,
+      "net_price": 2.95,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/cuidados-com-unhas-andreia-lab/88455-oleo-de-cuticulas-andreia-professional-lab-pineapple-105ml-5603927873181.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/148093-thickbox_default/oleo-de-cuticulas-andreia-professional-lab-pineapple-105ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -19559,19 +19598,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927899242",
-      "name": "Andreia Professional Hybrid Gel Charmed Collection H94",
-      "price": 2.83,
-      "net_price": 2.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/verniz-andreia-hybrid-gel/91764-andreia-hybrid-gel-h94-5603927899242.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156211-thickbox_default/andreia-hybrid-gel-h94.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927899259",
       "name": "Andreia Professional Hybrid Gel Charmed Collection H95",
       "price": 2.83,
@@ -20687,6 +20713,14 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/manicure-e-pedicure/16998-verniz-andreia-hybrid-gel-h88-cuidadosa-nude-5603927871767.html",
+      "ean": "5603927871767",
+      "canonical": "5603927871767",
+      "existing_name": "Andreia Hybrid Gel Fusion Color Verniz Efeito Gel 10,5ml - H88 Nude Natural",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
+    },
+    {
       "url": "https://presencadeluxo.pt/inocos-acessorios/38712-empurra-cuticulas-inocos-5600355740269.html",
       "ean": "5600355740269",
       "canonical": "5600355740269",
@@ -21319,6 +21353,14 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/dia-color-l-oreal/90279-coloracao-demi-permanente-dia-color-l-oreal-63-sem-amoniaco-3474637208233.html",
+      "ean": "3474637208233",
+      "canonical": "3474637208233",
+      "existing_name": "L&#039;Oréal Professionnel Paris Dia Color Coloração Capilar demi-permanente sem Amoníaco 6.3 60 ml",
+      "method": "GTIN",
+      "reason": "visible product data disagree with schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/-serioxyl-advanced/90340-shampoo-l-oreal-serioxyl-advanced-densifying-300ml-3474637106393.html",
       "ean": "3474637106393",
       "canonical": "3474637106393",
@@ -21511,6 +21553,14 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/verniz-andreia-hybrid-gel/91764-andreia-hybrid-gel-h94-5603927899242.html",
+      "ean": "5603927899242",
+      "canonical": "5603927899242",
+      "existing_name": "Andreia Hybrid Gel Fusion Color Verniz Efeito Gel 10,5ml - H94 Branco Gelo Leitoso",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
+    },
+    {
       "url": "https://presencadeluxo.pt/verniz-gel-andreia/91774-andreia-professional-verniz-gel-best-of-hc1-5603927877264.html",
       "ean": "5603927877264",
       "canonical": "5603927877264",
@@ -21596,7 +21646,7 @@
       "canonical": "5603927901990",
       "existing_name": "Andreia The Gel Polish Verniz Gel Vegan LED UV 10,5ml - SR1 Vermelho Cereja",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "unverified price/currency/URL"
     },
     {
       "reason": "conflicting duplicate GTIN",
