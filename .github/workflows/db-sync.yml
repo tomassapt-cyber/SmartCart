@@ -45,7 +45,11 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    # 40 (era 25) desde 2026-10-16: depois de dias sem sync (402), a corrida de
+    # recuperação lê o estado da BD, reenvia ~260 mil ofertas e apaga milhares
+    # de linhas; morreu aos 25 min a meio das limpezas. Numa corrida normal leva
+    # ~3–4 min, por isso o tecto só conta nos dias de recuperação.
+    timeout-minutes: 40
     env:
       NODE_OPTIONS: '--max-old-space-size=4096'
 

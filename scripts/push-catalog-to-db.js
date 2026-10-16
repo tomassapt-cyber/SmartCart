@@ -396,10 +396,15 @@ async function upsert(table, rows, onConflict) {
       console.log('  ⛔ limpezas saltadas pelo guardrail — ficam no estado para a próxima corrida.');
       for (const t of ['offer_variants', 'offers', 'products']) if (dif[t] && anterior[t]) manter(t, dif[t].apagar);
     } else {
+      // As variantes de uma oferta que também sai apagam-se sozinhas (FK com
+      // ON DELETE CASCADE para offers, migração 006): pedi-las uma a uma só
+      // gastava tempo (2026-10-16: 8 122 depois de dias de 402, e o sync morria
+      // por tempo antes de apagar as ofertas — as erradas ficavam no site).
       for (const t of ['offer_variants', 'offers', 'products']) {
         if (!dif[t] || !dif[t].apagar.length) continue;
-        const n = await E.apagarPorChave(URL_, KEY, t, dif[t].apagar);
-        console.log(`  ✓ apagadas de ${t}: ${dif[t].apagar.length} linhas que saíram (${n} pedidos)`);
+        const lista = t === 'offer_variants' ? E.variantesSemCascata(dif[t].apagar, dif.offers && dif.offers.apagar) : dif[t].apagar;
+        const n = await E.apagarPorChave(URL_, KEY, t, lista);
+        console.log(`  ✓ apagadas de ${t}: ${dif[t].apagar.length} linhas que saíram (${n} pedidos${lista.length < dif[t].apagar.length ? `; ${dif[t].apagar.length - lista.length} vão com a oferta, em cascata` : ''})`);
       }
     }
   } else {
