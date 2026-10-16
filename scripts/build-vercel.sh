@@ -51,6 +51,21 @@ node $MEM scripts/build-sitemap.js
 #    deploy falhar do que publicar uma página vazia.
 COSMATH_DEPLOY_BUILD=1 node $MEM scripts/inject-seed-into-demo.js
 
+# 3b. Fichas com HTML próprio (2026-10-16, contrato em docs/SEO-FRONTEND-CONTRATO.md).
+#     Os três sem guarda `||`: sem metadados, sem shell preparada ou com a origem
+#     errada, a função /api/seo-product responde 503 em todas as fichas —
+#     melhor o deploy ficar vermelho e o site anterior continuar no ar.
+#   - metadados de cada ficha (seo-meta/), do índice deste build. Lê o seed
+#     (imagens), por isso fica antes da limpeza do passo 4;
+node $MEM scripts/build-seo-meta.js
+#   - o adaptador do Codex: tira o CSS/JS inline para assets/cm-<hash>.* e
+#     escreve o seo-shell.html (cópia leve do index.html, base de cada ficha);
+node frontend/prepare-pages.cjs
+#   - a origem pública (config/site.json ou COSMATH_SITE) no cm-site, og,
+#     robots.txt e canonical das páginas legais. Depois do prepare-pages, para
+#     o seo-shell.html não levar um cm-site que a função também põe.
+node scripts/aplicar-origem.js
+
 # 4. Tirar do que fica PUBLICADO o que o site nunca lê (2026-10-02). O
 #    `outputDirectory` é a raiz do repositório, logo tudo o que está aqui era
 #    servido como ficheiro público: o catálogo inteiro (data/seed-bundle.json,
