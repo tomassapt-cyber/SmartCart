@@ -23,7 +23,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { productFingerprint } = require('./lib/product-fingerprint');
+const { productFingerprint, sinalDeProdutoDiferente } = require('./lib/product-fingerprint');
 
 const ROOT = path.resolve(__dirname, '..');
 const SEED_BUNDLE = path.join(ROOT, 'data', 'seed-bundle.json');
@@ -238,12 +238,30 @@ console.log(APPLY && DRY_RUN ? '🔍 DRY-RUN: a calcular changes mas NÃO escrev
 
 const eanRemap = {}; // ean duplicado → ean canónico
 const productsToKeep = new Set();
+// Dois EANs verdadeiros DIFERENTES com sinal de produto diferente não se fundem
+// (2026-10-16). O fingerprint não tem volume nem números, e lojas como a Druni
+// dão ao mini e ao normal o mesmo nome curto («Keratin Smooth»): o mini que o
+// integrador criava com o código certo era fundido aqui no tamanho normal, e o
+// «desde» da ficha passava a ser o do mini. O «mini» de uma ficha vem dos
+// endereços das ofertas (todas com mini/viagem/amostra), porque o nome não o diz.
+const MINI_URL = /(^|[^a-z])(mini|minis|travel|viagem|amostra|amostras|sample|samples)([^a-z]|$)/i;
+const urlsPorEan = new Map();
+for (const sp of seed.store_products) for (const it of sp.items) if (it.url) (urlsPorEan.get(it.ean) || urlsPorEan.set(it.ean, []).get(it.ean)).push(it.url);
+const lerUrl = u => { try { return decodeURIComponent(u); } catch { return u; } };
+const comoProduto = p => {
+  const us = urlsPorEan.get(p.ean) || [];
+  return { name: p.name, brand: p.brand, url: us.length && us.every(u => MINI_URL.test(lerUrl(u))) ? 'mini' : '' };
+};
+const mesmoCodigo = (a, b) => String(a).replace(/^0+/, '') === String(b).replace(/^0+/, '');
+let separadosPorSinal = 0;
 for (const [fp, group] of dupGroups) {
   const canonical = pickCanonical(group);
   productsToKeep.add(canonical.ean);
   // Enriquecer canonical: se canonical não tem image, copiar de duplicate
   for (const p of group) {
     if (p === canonical) continue;
+    if (isRealEan(p.ean) && isRealEan(canonical.ean) && !mesmoCodigo(p.ean, canonical.ean)
+        && sinalDeProdutoDiferente(comoProduto(p), comoProduto(canonical))) { separadosPorSinal++; continue; }
     eanRemap[p.ean] = canonical.ean;
     if (!canonical.image_url && p.image_url) canonical.image_url = p.image_url;
     // EANs antigos (scripts/lib/ean-renovado.js) passam para o que fica
@@ -284,6 +302,7 @@ const afterCount = seed.products.length;
 console.log(`\n═══════ Resultado merge ═══════`);
 console.log(`Products removidos: ${beforeCount - afterCount}`);
 console.log(`Store_products merged: ${storeProductMerges}`);
+if (separadosPorSinal) console.log(`Não fundidos (EAN diferente + mini ou números diferentes no nome): ${separadosPorSinal}`);
 console.log(`Catálogo final: ${afterCount} produtos`);
 
 if (DRY_RUN) {

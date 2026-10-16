@@ -803,7 +803,36 @@ function isNonCosmetic(name) {
   return AMBIGUO_COSMETICO.test(n) && !AINDA_E_COSMETICO.test(n);
 }
 
+/**
+ * Sinal de que dois produtos que o fingerprint junta são produtos DIFERENTES
+ * (2026-10-16). O fingerprint é marca + nome sem volume nem números, por isso
+ * «3 Step The Feet Set» = «1 Step The Feet Set», «5% Glycolic» = «2,5% Glycolic»
+ * e o mini da Druni = o tamanho normal (a Druni dá-lhes o mesmo nome curto).
+ * Usar só quando os dois têm EANs verdadeiros diferentes: aí o fingerprint
+ * juntava dois códigos distintos sem prova. Devolve a razão, ou null.
+ *   · mini/viagem/amostra num lado e não no outro;
+ *   · os dois nomes têm números e não são os mesmos (sem a marca). Se um dos
+ *     lados não tem números nenhuns é ambíguo (o nome da loja só não traz o
+ *     volume), e não conta.
+ */
+const MINI_RE = /(^|[^a-z])(mini|minis|travel|viagem|amostra|amostras|sample|samples)([^a-z]|$)/i;
+function numerosDoNome(nome, marca) {
+  let n = stripAccents(String(nome || '')).toLowerCase();
+  const m = stripAccents(String(marca || '')).toLowerCase().trim();
+  if (m) n = n.split(m).join(' ');
+  return (n.replace(/(\d),(\d)/g, '$1.$2').match(/\d+(?:\.\d+)?/g) || []).map(Number).sort((a, b) => a - b).join(',');
+}
+function sinalDeProdutoDiferente(a, b) {
+  const miniA = MINI_RE.test(a.url || '') || MINI_RE.test(a.name || '');
+  const miniB = MINI_RE.test(b.url || '') || MINI_RE.test(b.name || '');
+  if (miniA !== miniB) return 'mini';
+  const na = numerosDoNome(a.name, a.brand), nb = numerosDoNome(b.name, b.brand);
+  if (na && nb && na !== nb) return 'números';
+  return null;
+}
+
 module.exports = {
+  sinalDeProdutoDiferente,
   parsePriceEU,
   NON_COSMETIC,
   NON_COSMETIC_EXTRA,
