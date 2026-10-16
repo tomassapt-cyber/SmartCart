@@ -24,7 +24,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const FICH = path.join(ROOT, 'data', 'portes-fontes.json');
-const UA = 'CosMath-Portes-Vigia/1.0 (+https://smart-cart-zx55.vercel.app; 1 pedido/semana por loja)';
+const UA = `CosMath-Portes-Vigia/1.0 (+${require('./lib/site-origin').siteOrigin()}; 1 pedido/semana por loja)`;
 const DIA = 864e5;
 
 const PORTES = /portes|envio|entrega|transporte|expedi|shipping/i;
