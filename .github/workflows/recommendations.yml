@@ -79,13 +79,21 @@ jobs:
           git commit -m "chore: rebuild content indexes ($DATE)" \
             -m "Auto-update via GitHub Actions. Índices derivados do seed (similares + descrições); preços intactos."
 
-      - name: Push (resilient — regenera sobre origin em conflito)
+      - name: Push (resilient — reaproveita os índices em conflito)
         # Se não houve commit (sem alterações), o push é um no-op "up-to-date".
-        # Em conflito com uma cron de preço, regenera AMBOS os índices sobre o
-        # seed mais recente de origin e volta a tentar.
+        # Em conflito com uma cron de preço, o resilient-push adopta o origin
+        # mais recente e repõe os TRÊS ficheiros que acabámos de gerar (são os
+        # "raw" da lista). Não os volta a gerar (2026-10-16): só este workflow
+        # escreve as recomendações e as descrições, a curadoria reposta tem
+        # minutos, e uma hora de diferença no seed não muda nada num índice
+        # diário. Regenerar custava
+        # ~4 min por tentativa e, com ~240 pushes de bots por dia, a corrida
+        # perdia-se sempre -- 8 de 8 canceladas entre 08 e 15/10. (Os campos
+        # que o inject acrescenta ao homepage-data -- stats, versões, arranque
+        # -- são recalculados no build da Vercel; o que vem daqui não conta.)
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
-            "node scripts/build-recommendations.js && node scripts/build-descriptions-file.js && node scripts/build-homepage-data.js" \
+            "true" \
             "chore: rebuild content indexes ($(date -u +%Y-%m-%d))" \
             data/recommendations.json data/descriptions.json data/homepage-data.json

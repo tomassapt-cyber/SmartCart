@@ -23,10 +23,18 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 45 como as lojas (2026-10-16): com 30, a criação + o inject gastavam
+    # ~15 min e o primeiro push rejeitado repetia tudo -- 7 de 8 corridas
+    # canceladas entre 08 e 15/10.
+    timeout-minutes: 45
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       NODE_OPTIONS: '--max-old-space-size=4096'
+      # O mesmo que nas lojas: o inject salta a curadoria da homepage, que
+      # aterra uma vez por dia no recommendations.yml. Medido a 2026-10-16:
+      # criar + inject passa de ~15 min no CI para ~1,5 min, e cada
+      # re-integração do resilient-push fica ao mesmo preço.
+      COSMATH_SKIP_HP: '1'
 
     steps:
       - name: Checkout
