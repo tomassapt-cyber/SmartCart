@@ -454,6 +454,118 @@
       "reason": "La Roche-Posay Mela B3 creme de olhos iluminador anti-olheiras (61.50€) ligado ao Mela B3 Sérum 30ml. Prova pelo endereço: a Notino mostra o desafio da Cloudflare também ao PC.",
       "url": "https://www.notino.pt/la-roche-posay/mela-b3-creme-de-olhos-iluminador-anti-olheiras/",
       "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atuafarmacia",
+      "ean": "3372290001454",
+      "reason": "Lazartigue Repair champô em tamanho de viagem (4.15€; o endereço diz 50ml) ligado ao Repair Shampoo (mediana 14.86€). A loja publica outro código para esta oferta: 3372293128127 (Shopify .js em 2026-10-16).",
+      "url": "https://www.atuafarmacia.pt/products/lazartigue-champo-reparacao-intensa-50ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "wells",
+      "ean": "8809891184583",
+      "reason": "Biodance Bio-Collagen Real Deep Mask (16.91€) ligada à Biodance Radiant Vita Niacinamide Real Deep Mask (mediana 4.99€). Prova pelo endereço: a página respondeu 400 ao pedido automático.",
+      "url": "https://wells.pt/bio-collagen-real-deep-mask-8660104.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "pharmascalabis",
+      "ean": "5600360018070",
+      "reason": "Sudocrem My Little Creme 22g ligado ao Barral DermaProtect Creme de Banho 100ml; título da página da loja em 2026-10-16: «Sudocrem My Little Creme 22gr».",
+      "url": "https://www.pharmascalabis.com/store/sudocrem-my-little-creme-22gr/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "4059729359537",
+      "reason": "Intercomunicador digital Philips Avent com câmara (261.54€) ligado à máscara de pestanas Catrice Pure Volume Waterproof 010 (mediana 4.99€). Prova pelo endereço.",
+      "url": "https://www.saudemayor.pt/philips-avent-intercomunicador-digital-com-camara.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "notino",
+      "ean": "8432225114545",
+      "reason": "Revlon Professional Pro You The Twister condicionador (35.50€) ligado ao Revlon Restart Hydration Melting Conditioner (mediana 10.40€). Prova pelo endereço: a Notino mostra o desafio da Cloudflare também ao PC.",
+      "url": "https://www.notino.pt/revlon-professional/pro-you-the-twister-condicionador-hidratante-para-cabelo-seco-e-normal/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "8470003740746",
+      "reason": "Silipack Ioox creme 30ml (26.64€) ligado aos pensos Tiritas Plastic 19x72mm (mediana 3.50€); título da página da loja em 2026-10-16: «Silipack Ioox Creme Silipack Pele 30 Ml».",
+      "url": "https://www.afarmaciaonline.pt/silipack-ioox-cr-sil-pele-30-ml.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "7640104953432",
+      "reason": "Conjunto de brinquedos Bebeconfort Safari em madeira (26.98€) ligado à papa Holle Bio de espelta 250g (mediana 3.99€). Prova pelo endereço.",
+      "url": "https://www.saudemayor.pt/bebeconfort-set-safari-madeira-3-meses.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "perfumesclub",
+      "ean": "8007376058262",
+      "reason": "Revlonissimo High Performance tom 5 Light Brown (4.19€) ligado a outro tom do Revlonissimo Colorsmetique (mediana 13.17€). Prova pelo endereço (regra: a Perfumes Club não é consultada).",
+      "url": "https://www.perfumesclub.pt/pt/revlon/revlonissimo-high-performance-5-light-brown/p_99118/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "perfumesclub",
+      "ean": "8007376058279",
+      "reason": "A mesma página Revlonissimo High Performance 5 Light Brown (4.19€) ligada a um segundo tom do Revlonissimo Colorsmetique (mediana 13.17€). Prova pelo endereço (regra: a Perfumes Club não é consultada).",
+      "url": "https://www.perfumesclub.pt/pt/revlon/revlonissimo-high-performance-5-light-brown/p_99118/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "8437010381584",
+      "reason": "Gestacare Lactação cápsulas x60 (13.30€) ligado ao Carticure Plus saquetas x30 (mediana 46.90€); título da página da loja em 2026-10-16: «Gestacare Lactação Cápsulas X60».",
+      "url": "https://www.afarmaciaonline.pt/gestacare-lactacao-caps-x60.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "4059729466297",
+      "reason": "Brinquedo Petit Monkey arco-íris em silicone (17.34€) ligado ao batom Essence The Slim Stick 102 (mediana 3€); título da página da loja em 2026-10-16: «Petit Monkey Arco Iris Rosa Silicone 3m+».",
+      "url": "https://www.saudemayor.pt/petit-monkey-arco-iris-rosa-silicone-3m.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "perfumesclub",
+      "ean": "7290113142862",
+      "reason": "Moroccanoil Color Depositing Mask tom Platinum (6.62€) ligada à mesma máscara no tom cobre (52.30€). Prova pelo endereço (regra: a Perfumes Club não é consultada).",
+      "url": "https://www.perfumesclub.pt/pt/moroccanoil/color-depositing-mask-platinum/p_40622/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "notino",
+      "ean": "4045787702576",
+      "reason": "Indola PCC coloração permanente (3€) ligada à Indola Xpress Color 8.1 (19.95€), outra linha. Prova pelo endereço: a Notino mostra o desafio da Cloudflare também ao PC.",
+      "url": "https://www.notino.pt/indola/pcc-cor-para-cabelo-permanente/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "perfumesclub",
+      "ean": "8007376058033",
+      "reason": "Revlonissimo Intense Blonde 1217MN (4.43€) ligado a outro produto Revlonissimo Colorsmetique (mediana 25.54€). Prova pelo endereço (regra: a Perfumes Club não é consultada).",
+      "url": "https://www.perfumesclub.pt/pt/revlon/revlonissimo-intense-blonde-1217mn-bronze-grey/p_98081/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "megafarma",
+      "ean": "8058664138852",
+      "reason": "Toalhitas Chicco Baby Moments Limpeza e Proteção (5.53€) ligadas ao conjunto Chicco Baby Moments Clean&Protect Set (26€); título da página da loja em 2026-10-16: «Chicco Baby Moments Lenços Limpeza E Proteção».",
+      "url": "https://megafarma.pt/pt-pt/product/chicco-baby-moments-lencos-limpeza-e-protecao",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmaciacuida",
+      "ean": "5054563016157",
+      "reason": "Produto certo, mas a loja publica o preço de marcador 9999.99€ (Shopify .js em 2026-10-16), que mostrava uma «poupança» absurda. Retirar quando a loja puser o preço real.",
+      "url": "https://farmaciacuida.com/products/corega-acao-total-max-pst-efev-limp-x36",
+      "added_at": "2026-10-16"
     }
   ]
 }
