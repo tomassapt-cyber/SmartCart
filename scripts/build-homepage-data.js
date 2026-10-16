@@ -480,6 +480,8 @@ async function computeEmAlta(seed) {
       sp.items = sp.items.filter(it => { const t = ageOf(it); if (!t) return true; return (freshest - t) <= 7 * DAY; });
     }
   })();
+  // os minis/viagem que o resto da publicação já esconde (2026-10-16)
+  require('./lib/catalog-visibility').dropMiniOffers(seed);
   console.log(`📦 Seed: ${seed.products.length} produtos`);
 
   // 1) Hero = TOP MAIS PROCURADOS (pedido do user 2026-07-21). Semeado por

@@ -142,6 +142,7 @@ async function upsert(table, rows, onConflict) {
     const { dropRottenOffers, applyVisibilityFilter } = require('./lib/catalog-visibility');
     const rp = dropRottenOffers(seed);
     if (rp.hidden) console.log(`  ofertas podres removidas: ${rp.hidden} (>${rp.MAX_LAG_DAYS}d atrás do refresh da loja)`);
+    if (rp.mini && rp.mini.hidden) console.log(`  minis/viagem removidos de fichas do tamanho normal: ${rp.mini.hidden}`);
     const rv = applyVisibilityFilter(seed, isNonCosmetic);
     console.log(`  filtro de visibilidade: ${rv.hidden} produtos ocultos (${rv.visiveis} publicáveis) · ${rv.hiddenOffers} ofertas`);
   }
