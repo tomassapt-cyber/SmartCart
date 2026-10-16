@@ -321,6 +321,139 @@
       "reason": "Ficha de Oculos Nordic Vision Alingsas +3.00 ligada ao perfume capilar Olistic Hair Mist Presence 30mL. Ambas as lojas usam a referencia interna 1000964 para produtos diferentes; identidade confirmada em H1 e JSON-LD das duas fichas em 2026-10-09.",
       "url": "https://farmaciarodrigues.pt/pt-pt/product/oculos-nordic-vision-alingsas-3-00",
       "added_at": "2026-10-09"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "3661434000539",
+      "reason": "Avène Água Termal 50ml ligada à Uriage Água Termal 300ml; título da página da loja em 2026-10-16: «Avène Água Água Termal 50ml».",
+      "url": "https://www.afarmaciaonline.pt/avene-agua-ag-termal-50ml.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "3574661525686",
+      "reason": "Avène Mousse de Limpeza Matificante 150ml ligada às toalhitas Neutrogena Hydro Boost; título da página da loja em 2026-10-16: «Avène Limpeza Mousse Limpeza Matificante 150 Ml».",
+      "url": "https://www.afarmaciaonline.pt/avene-limpeza-mousse-limp-matif-150-ml.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "quickfarma",
+      "ean": "3701436928032",
+      "reason": "Pack SVR Sebiaclear ligado ao Lierac Protocolo Anti-Imperfeições Stop Borbulhas 15ml (o EAN é do Lierac: 25 lojas, e a Pharmavida tem-no no endereço); título da página da loja em 2026-10-16: «SVR Sebiaclear Rotina Anti-Acne».",
+      "url": "https://quickfarma.pt/product/svr-sebiaclear-rotina-anti-acne/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "hiperfarma",
+      "ean": "3701436928032",
+      "reason": "Pack SVR Sebiaclear ligado ao Lierac Protocolo Anti-Imperfeições Stop Borbulhas 15ml (o EAN é do Lierac: 25 lojas, e a Pharmavida tem-no no endereço); título da página da loja em 2026-10-16: «SVR Sebiaclear StopAcne Gel+MicPeel+Amp».",
+      "url": "https://www.hiperfarma.pt/products/svr-sebiaclear-stopacne-gel-micpeel-amp",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "nossafarmacia",
+      "ean": "3701436928032",
+      "reason": "Pack SVR Sebiaclear ligado ao Lierac Protocolo Anti-Imperfeições Stop Borbulhas 15ml (o EAN é do Lierac: 25 lojas, e a Pharmavida tem-no no endereço); título da página da loja em 2026-10-16: «Svr Sebiaclear Gel Mousse+ Micro+amp Az+necessaire».",
+      "url": "https://www.nossafarmacia.pt/svr-sebiaclear-gel-mousse-micro-amp-az-necessaire/p",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmatogo",
+      "ean": "3701436928032",
+      "reason": "Pack SVR Sebiaclear ligado ao Lierac Protocolo Anti-Imperfeições Stop Borbulhas 15ml (o EAN é do Lierac: 25 lojas, e a Pharmavida tem-no no endereço); título da página da loja em 2026-10-16: «SVR Sebiaclear Pack Rotina Acne».",
+      "url": "https://nouxis.com/products/svr-sebiaclear-pack-rotina-acne",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "bemecare",
+      "ean": "3701436928032",
+      "reason": "Pack SVR Sebiaclear ligado ao Lierac Protocolo Anti-Imperfeições Stop Borbulhas 15ml (o EAN é do Lierac: 25 lojas, e a Pharmavida tem-no no endereço); título da página da loja em 2026-10-16: «Svr Sebiaclear Rotina Stop Acne Gel + Micro peel + Ampoule AZ».",
+      "url": "https://bemecare.com/pt/artigo/svr-sebiaclear-stopacne-gelmicpeelamp",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmaciagarcia",
+      "ean": "3701436928032",
+      "reason": "Pack SVR Sebiaclear ligado ao Lierac Protocolo Anti-Imperfeições Stop Borbulhas 15ml (o EAN é do Lierac: 25 lojas, e a Pharmavida tem-no no endereço); título da página da loja em 2026-10-16: «SVR Sebiaclear Stop Acne Coffret».",
+      "url": "https://loja.farmaciagarcia.net/products/svr-sebiaclear-stop-acne-pack",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "barreiros",
+      "ean": "3337875909792",
+      "reason": "ISDIN Nutratopic Pro-AMP gel de banho 750ml (5.90€) ligado a um produto La Roche-Posay (mediana 12.45€). Prova pelo endereço: a loja recusa pedidos automáticos, também do PC.",
+      "url": "https://www.farmaciabarreiros.com/beleza/corpo/peles-atopicas/isdin-nutratopic-pro-amp-gel-de-banho-emoliente-750-ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "3661434006227",
+      "reason": "Ducray Keracnyl creme matificante 30ml ligado à Uriage Hyseac Máscara Exfoliante 100ml; título da página da loja em 2026-10-16: «Ducray Keracnyl Cr Matif 30 Ml». A mesma página está também ligada ao SVR Sebiaclear Gel 400ml.",
+      "url": "https://www.afarmaciaonline.pt/ducray-keracnyl-cr-matif-30-ml.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "3401381332785",
+      "reason": "Ducray Keracnyl creme matificante 30ml ligado ao SVR Sebiaclear Gel de Limpeza 400ml; título da página da loja em 2026-10-16: «Ducray Keracnyl Cr Matif 30 Ml».",
+      "url": "https://www.afarmaciaonline.pt/ducray-keracnyl-cr-matif-30-ml.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "primor",
+      "ean": "3337875943932",
+      "reason": "Creme de noite («Skin Renewing Night Cream», endereço cerave-creme-de-noite) ligado ao Vichy LiftActiv Collagen Specialist 16 Sérum de Olhos 15ml; título da página da loja em 2026-10-16: «Vichy Skin Renewing Night Cream».",
+      "url": "https://pt.primor.eu/pt_pt/cerave-creme-de-noite-renovador-da-pele-138950.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "barreiros",
+      "ean": "3701436928759",
+      "reason": "Phyto Plage champô pós-solar 250ml ligado à loção autobronzeadora Lierac Sunissime. Prova pelo endereço: a loja recusa pedidos automáticos, também do PC.",
+      "url": "https://www.farmaciabarreiros.com/beleza/cabelo/produtos-especificos-e-finalizadores/phyto-plage-champo-pos-solar-reidratante-250-ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "easyfarma",
+      "ean": "easyfarma-avene-cleanance-gel-limp-200ml",
+      "reason": "René Furterer Volumea espuma 200ml ligada ao Avène Cleanance Gel de Limpeza 200ml; título da página da loja em 2026-10-16 (Shopify .js): «René Furterer Volumea Espuma 200ml».",
+      "url": "https://easyfarma.pt/products/rene-furterer-volumea-esp-200ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "primor",
+      "ean": "8431567692698",
+      "reason": "Coffret La Roche-Posay Effaclar Duo+M ligado ao Vichy Liftactiv Specialist B3 Gel Peeling 125ml; título da página da loja em 2026-10-16: «La Roche-Posay Coffret Effaclar Duo +M Tratamento Corretor Facial Antiacne + Effaclar Gel Mousse».",
+      "url": "https://pt.primor.eu/pt_pt/la-roche-posay-coffret-effaclar-duo-m-tratamento-corretor-facial-antiacne-effaclar-gel-mousse-149130.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "05600757718347",
+      "reason": "Avène Body Bálsamo Fondant 250ml ligado à loção corporal Neutrogena Fórmula Norueguesa; título da página da loja em 2026-10-16: «Avene Body Bals Fondant 250ml».",
+      "url": "https://www.afarmaciaonline.pt/avene-body-bals-fondant-250ml.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "pharma24",
+      "ean": "05600757718347",
+      "reason": "Bioderma Atoderm Crème Ultra 2x500ml ligado à loção corporal Neutrogena Fórmula Norueguesa; título da página da loja em 2026-10-16: «BIODERMA Atoderm Crème Ultra 2x500 ml».",
+      "url": "https://www.pharma24.pt/bioderma-atoderm-creme-ultra-2x500-ml.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "pharma-gdd",
+      "ean": "3337875890021",
+      "reason": "La Roche-Posay Mela B3 Yeux (corretor de olhos, 25.99€) ligado ao Mela B3 Sérum 30ml, onde era a oferta mais barata e dava o «desde». Página da loja em 2026-10-16: título «La Roche Posay MEla B3 Yeux correcteur intensif - Anti cernes», gtin13 3337875941433.",
+      "url": "https://www.pharma-gdd.com/fr/la-roche-posay-mela-b3-correcteur-intensif-yeux",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "notino",
+      "ean": "3337875890021",
+      "reason": "La Roche-Posay Mela B3 creme de olhos iluminador anti-olheiras (61.50€) ligado ao Mela B3 Sérum 30ml. Prova pelo endereço: a Notino mostra o desafio da Cloudflare também ao PC.",
+      "url": "https://www.notino.pt/la-roche-posay/mela-b3-creme-de-olhos-iluminador-anti-olheiras/",
+      "added_at": "2026-10-16"
     }
   ]
 }
