@@ -1,0 +1,54 @@
+{
+  "_comment": "Ofertas que o detector de ímanes (scripts/purge-corrupt-merges.js) marca por terem o nome de OUTRA marca no endereço, mas que foram abertas e são o produto certo: a loja copiou a página de outro produto e ficou com o endereço antigo («-copiar», «copia-de-»), ou escreveu mal o endereço. O endereço delas deixa de contar para o detector. Remover a entrada se a loja mudar o produto da página. O contrário (oferta de outro produto) vai para data/offer-ean-blocklist.json.",
+  "certas": [
+    {
+      "store_slug": "farmaciaemcasa",
+      "ean": "3337875890021",
+      "reason": "Endereço «caudalie-vinoperfect-…-copiar», mas a página (Shopify .js em 2026-10-16) é «La Roche Posay Mela B3 Serum 30ml».",
+      "url": "https://farmaciaemcasa.pt/products/caudalie-vinoperfect-serum-eclat-manchas-30ml-copiar",
+      "verified_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmaciaemcasa",
+      "ean": "3337875782357",
+      "reason": "Endereço «copia-de-caudalie-vinopure-…», mas a página (Shopify .js em 2026-10-16) é «Cerave Blemish Gel Anti-Imperf 40Ml».",
+      "url": "https://farmaciaemcasa.pt/products/copia-de-caudalie-vinopure-fluido-hidratante-matificante-40ml",
+      "verified_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmaciaemcasa",
+      "ean": "3337875773430",
+      "reason": "Endereço «copia-de-uriage-xemose-…», mas a página (Shopify .js em 2026-10-16) é «Cerave Cleanser Oleo Limpeza Hidratante 236Ml».",
+      "url": "https://farmaciaemcasa.pt/products/copia-de-uriage-xemose-oleo-de-limpeza-1l",
+      "verified_at": "2026-10-16"
+    },
+    {
+      "store_slug": "mypharmaspot",
+      "ean": "4005808584185",
+      "reason": "Endereço «bioderma-sensibio-…-copiar», mas a página (Shopify .js em 2026-10-16) é «Eucerin Dermatoclean Desmaquilhante olhos 125 mL».",
+      "url": "https://www.mypharmaspot.com/products/bioderma-sensibio-h2o-solucao-micelar-pump-reverse-500-ml-copiar",
+      "verified_at": "2026-10-16"
+    },
+    {
+      "store_slug": "lovemypharma",
+      "ean": "3337875762298",
+      "reason": "Endereço «uriage-capital-soleil-…», mas a página é «Capital Soleil UV-Age Daily SPF50+» e publica o código 3337875762298 (2026-10-16).",
+      "url": "https://lovemypharma.com/products/uriage-capital-soleil-uv-age-daily-spf50",
+      "verified_at": "2026-10-16"
+    },
+    {
+      "store_slug": "lovemypharma",
+      "ean": "3337875892308",
+      "reason": "Endereço «svr-capital-soleil-…», mas a página é «Capital Soleil Óleo Invisível Cell Protect SPF50+» e publica o código 3337875892308 (2026-10-16).",
+      "url": "https://lovemypharma.com/products/svr-capital-soleil-oleo-invisivel-cell-protect-spf50",
+      "verified_at": "2026-10-16"
+    },
+    {
+      "store_slug": "pharmascalabis",
+      "ean": "8470001658531",
+      "reason": "Endereço «eucerin-eryfotona-…», mas a página é «Isdin Eryfotona AK-NMSC Fluido FPS 100+ 50 ml» e publica o código 8470001658531 (2026-10-16).",
+      "url": "https://www.pharmascalabis.com/store/eucerin-eryfotona-ak-nmsc-fluido-fps-100-50-ml/",
+      "verified_at": "2026-10-16"
+    }
+  ]
+}
