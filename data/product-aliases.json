@@ -114,5 +114,40 @@
     "aliases": ["vidamais-klorane-klorane-capilar-champo-roma"],
     "reason": "Klorane Champô Romã 400ml (a ficha com EAN é a de 400ml); página da Farmácia Vida Mais em 2026-10-16: «Klorane Champô Romã 400mL».",
     "added_at": "2026-10-16"
+  },
+  "3596200069031": {
+    "aliases": ["3506200069031"],
+    "reason": "Weleda Stick Desodorizante Eucalipto 50g. O código 3506200069031 tem o dígito de controlo inválido: é o 3596200069031 com um dígito mal escrito (3596… → 3506…). Verificado a 2026-10-16.",
+    "added_at": "2026-10-16"
+  },
+  "5600880000050": {
+    "aliases": ["2545142171549"],
+    "reason": "Cistiless Pó Sticks x20. O 2545142171549 começa por 2, a gama de códigos internos das lojas (não é um GTIN de produto); o EAN do produto é o 5600880000050. Verificado a 2026-10-16.",
+    "added_at": "2026-10-16"
+  },
+  "8761200028172": {
+    "aliases": ["876120002817"],
+    "reason": "Novex Meus Cachos Soltos Creme de Pentear 500g. O 876120002817 são os 12 primeiros dígitos do 8761200028172. As 9 ofertas são o mesmo creme de pentear de 500g (a Notino e a Care to Beauty chamam-lhe leave-in / condicionador sem enxaguar) e nenhuma loja vende os dois. Verificado a 2026-10-16.",
+    "added_at": "2026-10-16"
+  },
+  "3701436910006": {
+    "aliases": ["3337875201100"],
+    "reason": "Código renovado pela marca: o mesmo nome e tamanho (Sabonete Fleur de Figuier 100g) nas duas fichas, preços parecidos (6,70€ e 7,03€) e nenhuma loja vende as duas. Verificado a 2026-10-16.",
+    "added_at": "2026-10-16"
+  },
+  "3701436916565": {
+    "aliases": ["3337875201353"],
+    "reason": "Código renovado pela marca: o mesmo nome e tamanho (Creme de mãos Fleur d’Osmanthus 30ml) nas duas fichas, preços parecidos (5,40€ e 5,75€) e nenhuma loja vende as duas. Verificado a 2026-10-16.",
+    "added_at": "2026-10-16"
+  },
+  "3701436908034": {
+    "aliases": ["3337875200974"],
+    "reason": "Código renovado pela marca: o mesmo nome e tamanho (Gel de duche Bois d’Orange 200ml) nas duas fichas, preços parecidos (8,00€ e 6,23€) e nenhuma loja vende as duas. Verificado a 2026-10-16.",
+    "added_at": "2026-10-16"
+  },
+  "3282770152371": {
+    "aliases": ["3282779350655"],
+    "reason": "Código renovado pela marca: o mesmo nome e tamanho (Avène Mousse de Limpeza Matificante 150ml; 23 e 14 ofertas com 150ml) nas duas fichas, preços parecidos (15,95€ e 15,19€) e nenhuma loja vende as duas. Verificado a 2026-10-16.",
+    "added_at": "2026-10-16"
   }
 }
