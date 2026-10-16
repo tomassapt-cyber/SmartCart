@@ -87,7 +87,7 @@ const seedJson = JSON.parse(seed);
 (function applyEanVariantMerge() {
   const { mergeEanVariants } = require('./dedup-ean-variants');
   const r = mergeEanVariants(seedJson, ROOT);
-  if (r.merged) console.log(`🔗 Variantes de GTIN fundidas (UPC-A↔EAN-13): ${r.merged} produtos · ${r.remapped} ofertas`);
+  if (r.merged) console.log(`🔗 Variantes de GTIN fundidas (UPC-A↔EAN-13): ${r.merged - (r.aliases || 0)} produtos · aliases manuais (data/product-aliases.json): ${r.aliases || 0} · ${r.remapped} ofertas com loja repetida juntas`);
 })();
 
 // ── Overlay: FUNDIR variantes promocionais no produto-base (NÃO-destrutivo) ─

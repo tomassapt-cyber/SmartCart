@@ -1,8 +1,118 @@
 {
-  "_comment": "Aliases manuais para casos onde fingerprint/imagem falham. Cada entry é canonical_ean -> [aliases]. Aplicado por scripts/apply-product-aliases.js.",
+  "_comment": "Aliases manuais para casos onde fingerprint/imagem falham. Cada entry é canonical_ean -> [aliases]. Desde 2026-10-16 aplicados na PUBLICAÇÃO por scripts/dedup-ean-variants.js (mergeEanVariants, em memória: índice, página, homepage, BD e histórico), porque o integrador de cada loja volta a criar a ficha com o código dela; scripts/apply-product-aliases.js continua a poder gravá-los no seed. Só pares verificados, com a prova no reason.",
   "_format": "{ canonical_ean: { aliases: [ean1, ean2, ...], reason: 'human-readable explanation' } }",
   "3614271326072": {
     "aliases": ["wells-8109513"],
     "reason": "Lancome renomeou 'Advanced Genifique Serum' (EAN 3614271326072) para 'Genifique Ultimate Serum' (Wells listing wells-8109513) em 2023. Mesmo produto, marketing rebrand."
+  },
+  "3337875863377": {
+    "aliases": ["sweetcare-la-roche-posay-effaclar-m-p-018812rp"],
+    "reason": "Effaclar Duo+M 40ml. A ficha da Sweetcare (sem EAN) tinha também a oferta da Farmácias Direct, cuja página da Farmácias Direct em 2026-10-16: «La Roche Posay Effaclar Duo + M, 40 ml» publica o código 3337875863377.",
+    "added_at": "2026-10-16"
+  },
+  "6001159125334": {
+    "aliases": ["sweetcare-bio-oil-oleo-hidratante-natural-p-015249"],
+    "reason": "Bio-Oil Óleo Hidratante Natural 60ml (a ficha com EAN é a de 60ml); página da Loja Shampoo em 2026-10-16: «Bio-Oil Óleo Hidratante Natural 60ml». A Sweetcare mostra o desafio da Cloudflare.",
+    "added_at": "2026-10-16"
+  },
+  "3661434008306": {
+    "aliases": ["camelo-uriage-hyseac-tonico-purificante-250-ml"],
+    "reason": "Uriage Hyseac Tónico Purificante 250ml; página da Farmácia Camelo em 2026-10-16: «Uriage Hyseac – Tónico Purificante 250 mL».",
+    "added_at": "2026-10-16"
+  },
+  "8424730030281": {
+    "aliases": ["vidamais-iap-pharma-hair-mist-no15-75ml"],
+    "reason": "IAP Pharma Hair Mist nº15 75ml; página da Farmácia Vida Mais em 2026-10-16: «IAP Pharma Hair Mist nº15 75mL».",
+    "added_at": "2026-10-16"
+  },
+  "4260285373015": {
+    "aliases": ["bemecare-invisibobble-elas-cab-preto-x3"],
+    "reason": "Invisibobble Original preto x3; página da Bemecare em 2026-10-16: «Invisibobble Elas Cab Preto X3».",
+    "added_at": "2026-10-16"
+  },
+  "3525801685845": {
+    "aliases": ["manuelaserra-huile-gelifiee-demaquillante"],
+    "reason": "Thalgo Éveil à la Mer óleo-gel desmaquilhante 125ml; página da Manuela Serra em 2026-10-16: «THALGO ÉVEIL À LA MER ÓLEO-GEL DESMAQUILHANTE 125ML», que publica o código 3525801685845.",
+    "added_at": "2026-10-16"
+  },
+  "3401562326459": {
+    "aliases": ["dermis-noreva-sensidiane-ar-intensivo-cr-30ml"],
+    "reason": "Noreva Sensidiane AR+ Intensivo Creme 30ml; página da Dermis em 2026-10-16: «Noreva Sensidiane Ar+ Intensivo Creme 30ml».",
+    "added_at": "2026-10-16"
+  },
+  "3508240003470": {
+    "aliases": ["farmacentral-lierac-body-nutri-leite-relipidante-400ml"],
+    "reason": "Lierac Body Nutri+ Leite Relipidante 400ml; página da Farmacentral em 2026-10-16: «Lierac Body Nutri + Leite Relipidante - 400ml».",
+    "added_at": "2026-10-16"
+  },
+  "5600714563638": {
+    "aliases": ["bemecare-sensibio-bioderma-ds-crof-gel-mouss100"],
+    "reason": "Pack Bioderma Sensibio DS+ Creme 40ml + Gel Moussant 100ml; página da Bemecare em 2026-10-16: «Bioderma Sensibio Ds Creme 40ml + Gel Moussant 100 ml».",
+    "added_at": "2026-10-16"
+  },
+  "4260285370687": {
+    "aliases": ["farmaciagarcia-elastico-cabelo-castanho-x3"],
+    "reason": "Invisibobble elástico castanho x3; página da aSuaFarmáciaOnline em 2026-10-16: «Invisibobble Elástico Cabelo Castanho X3» e página da Farmácia Garcia em 2026-10-16: «Elástico Cabelo Castanho x3».",
+    "added_at": "2026-10-16"
+  },
+  "3264680010361": {
+    "aliases": ["bemecare-nuxe-reve-de-miel-duo-stick-labial-hidratante-2-x-"],
+    "reason": "Nuxe Rêve de Miel Duo Stick Labial 2×4g; página da Bemecare em 2026-10-16: «Nuxe Rêve De Miel Duo Stick Labial Hidratante 2 X 4 G».",
+    "added_at": "2026-10-16"
+  },
+  "0083078005658": {
+    "aliases": ["camelo-carmex-hidratante-labial-morango-em-stick-spf15-42"],
+    "reason": "Carmex stick labial morango SPF15 4,25g; página da Farmácia Camelo em 2026-10-16: «Carmex Hidratante Labial Morango em Stick SPF15 - 4,25gr».",
+    "added_at": "2026-10-16"
+  },
+  "5037156299601": {
+    "aliases": ["wells-8903020"],
+    "reason": "Wells sem EAN («Blonde+ Repair System Shampoo», 8.16€) e a ficha com EAN (2 lojas, mediana 8.99€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca John Frieda.",
+    "added_at": "2026-10-16"
+  },
+  "4005800378591": {
+    "aliases": ["wells-8799677"],
+    "reason": "Wells sem EAN («Hyaluron-Filler +Elasticity SPF 50», 36.06€) e a ficha com EAN (22 lojas, mediana 33.66€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Eucerin.",
+    "added_at": "2026-10-16"
+  },
+  "1210001218895": {
+    "aliases": ["wells-8760893"],
+    "reason": "Wells sem EAN («Cryo Rubber Firming Mask», 10.5€) e a ficha com EAN (5 lojas, mediana 11.81€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Dr. Jart+.",
+    "added_at": "2026-10-16"
+  },
+  "1210001220539": {
+    "aliases": ["wells-8855756"],
+    "reason": "Wells sem EAN («Power Derma Barrier Cream», 20.75€) e a ficha com EAN (3 lojas, mediana 18.9€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Dr. Jart+.",
+    "added_at": "2026-10-16"
+  },
+  "8809844996515": {
+    "aliases": ["wells-8174243"],
+    "reason": "Wells sem EAN («Cicapair Intensive Soothing Repair», 37.5€) e a ficha com EAN (5 lojas, mediana 39.52€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Dr. Jart+.",
+    "added_at": "2026-10-16"
+  },
+  "8809844992210": {
+    "aliases": ["wells-8174262"],
+    "reason": "Wells sem EAN («Pore Remedy Renewing Foam Cleanser», 19.98€) e a ficha com EAN (5 lojas, mediana 20.82€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Dr. Jart+.",
+    "added_at": "2026-10-16"
+  },
+  "1210001218901": {
+    "aliases": ["wells-8174266"],
+    "reason": "Wells sem EAN («Cryo Rubber Soothing Mask», 11.06€) e a ficha com EAN (4 lojas, mediana 11.47€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Dr. Jart+.",
+    "added_at": "2026-10-16"
+  },
+  "8809724477783": {
+    "aliases": ["wells-8174265"],
+    "reason": "Wells sem EAN («Pore Remedy Purifying Mud Mask», 5.53€) e a ficha com EAN (5 lojas, mediana 5.95€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Dr. Jart+.",
+    "added_at": "2026-10-16"
+  },
+  "1210001218918": {
+    "aliases": ["wells-8174268"],
+    "reason": "Wells sem EAN («Cryo Rubber Moisture Mask», 10.22€) e a ficha com EAN (5 lojas, mediana 9.99€): mesma marca, mesmo nome, preço a menos de 15%. A Wells recusa pedidos automáticos, por isso a prova é o nome, a marca e o preço. Marca Dr. Jart+.",
+    "added_at": "2026-10-16"
+  },
+  "3282779048897": {
+    "aliases": ["vidamais-klorane-klorane-capilar-champo-roma"],
+    "reason": "Klorane Champô Romã 400ml (a ficha com EAN é a de 400ml); página da Farmácia Vida Mais em 2026-10-16: «Klorane Champô Romã 400mL».",
+    "added_at": "2026-10-16"
   }
 }

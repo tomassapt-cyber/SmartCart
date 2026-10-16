@@ -55,6 +55,34 @@ function lerExclusoes(root) {
   catch { return new Set(); }
 }
 
+/**
+ * Aliases manuais (data/product-aliases.json — 2026-10-16): fichas que são o
+ * MESMO produto mas com códigos diferentes, quase sempre o código inventado de
+ * uma loja sem EAN (wells-8174243, sweetcare-…) ao lado da ficha com o EAN
+ * verdadeiro. Cada par foi verificado à mão, com a prova no `reason`.
+ * Aplicam-se aqui, em memória, em vez de mudar o seed: o integrador da loja
+ * volta a criar a ficha com o código dela em cada atualização, e esta fusão
+ * corre em todo o lado onde o catálogo é publicado (índice, página, homepage,
+ * BD, histórico). Devolve { alias: canónico } só para códigos que existem.
+ */
+function lerAliases(root, seed) {
+  if (!root) return {};
+  let def;
+  try { def = JSON.parse(fs.readFileSync(path.join(root, 'data', 'product-aliases.json'), 'utf8')); } catch { return {}; }
+  const existe = new Set(seed.products.map(p => String(p.ean)));
+  const canonicos = new Set(Object.keys(def).filter(k => !k.startsWith('_')));
+  const out = {};
+  for (const [canon, d] of Object.entries(def)) {
+    if (canon.startsWith('_') || !existe.has(canon) || !Array.isArray(d && d.aliases)) continue;
+    for (const a of d.aliases) {
+      const alias = String(a);
+      if (alias === canon || canonicos.has(alias) || out[alias]) continue;   // sem cadeias nem conflitos
+      out[alias] = canon;
+    }
+  }
+  return out;
+}
+
 function mergeEanVariants(seed, root) {
   const eanCount = {};
   for (const p of seed.products) eanCount[p.ean] = (eanCount[p.ean] || 0) + 1;
@@ -79,7 +107,9 @@ function mergeEanVariants(seed, root) {
 
   const eanRemap = {};
   for (const eans of groups) { const canon = pick(eans); for (const e of eans) if (e !== canon) eanRemap[e] = canon; }
-  if (!Object.keys(eanRemap).length) return { merged: 0, remapped: 0, groups, pick, productByEan, offersByEan };
+  const aliases = lerAliases(root, seed);
+  for (const [a, c] of Object.entries(aliases)) if (!eanRemap[a]) eanRemap[a] = eanRemap[c] || c;
+  if (!Object.keys(eanRemap).length) return { merged: 0, remapped: 0, aliases: 0, groups, pick, productByEan, offersByEan };
 
   let remapped = 0;
   const excluidas = lerExclusoes(root);
@@ -94,9 +124,15 @@ function mergeEanVariants(seed, root) {
     sp.items = out;
   }
   for (const eans of groups) { const canon = pick(eans); const cp = productByEan[canon]; for (const e of eans) { if (e === canon || !cp) continue; const dp = productByEan[e]; if (cp && !cp.image_url && dp?.image_url) cp.image_url = dp.image_url; } }
+  const primeiro = new Map();
+  for (const p of seed.products) if (!primeiro.has(String(p.ean))) primeiro.set(String(p.ean), p);
+  for (const [a, c] of Object.entries(aliases)) {
+    const cp = primeiro.get(eanRemap[a]), ap = primeiro.get(a);
+    if (cp && !cp.image_url && ap && ap.image_url) cp.image_url = ap.image_url;
+  }
   const drop = new Set(Object.keys(eanRemap));
   seed.products = seed.products.filter(p => !drop.has(p.ean));
-  return { merged: drop.size, remapped, groups, pick, productByEan, offersByEan };
+  return { merged: drop.size, remapped, aliases: Object.keys(aliases).length, groups, pick, productByEan, offersByEan };
 }
 
 module.exports = { mergeEanVariants, isGtin, canonCore };
