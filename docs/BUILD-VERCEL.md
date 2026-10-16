@@ -125,6 +125,3 @@ aprovar o PR e publicar, confirmar que `/api/products` devolve 404 e que não
 existe esta Function no deployment, mantendo o catálogo normal operacional.
 
 Referência: https://vercel.com/docs/deployments/vercel-ignore
-## Documentação interna fora do deploy (revisão de 16/10/2026)
-
-A mesma .vercelignore exclui agora /docs/ e os *.md da raiz. Não são recursos do cliente: as referências encontradas são documentação. README.md, BACKLOG.md, SCRAPING.md e docs/BUILD-VERCEL.md deixam de ser servidos na Vercel, mas ficam no repositório público e no desenvolvimento local. Esta exclusão não remove o histórico Git nem desliga a cópia antiga da Netlify; o painel Netlify continua a exigir ação do Tomás.
