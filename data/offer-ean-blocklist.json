@@ -566,6 +566,230 @@
       "reason": "Produto certo, mas a loja publica o preço de marcador 9999.99€ (Shopify .js em 2026-10-16), que mostrava uma «poupança» absurda. Retirar quando a loja puser o preço real.",
       "url": "https://farmaciacuida.com/products/corega-acao-total-max-pst-efev-limp-x36",
       "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "saudemayor",
+      "ean": "7427137157460",
+      "reason": "Pufe Doomoo Buddy Classic (88.90€) ligado à papa Papinhas da Xica. Prova pelo endereço (a página publica códigos de outros produtos).",
+      "url": "https://www.saudemayor.pt/doomoo-budy-classic-cinza.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "primor",
+      "ean": "3337875816779",
+      "reason": "Apivita Just Bee Clear creme anti-imperfeições ligado ao La Roche-Posay Cicaplast; título da página da loja em 2026-10-16: «Apivita Just Bee Clear Creme Anti-Imperfeições Matificante Hidratante».",
+      "url": "https://pt.primor.eu/pt_pt/apivita-just-bee-clear-anti-imperfeicoes-creme-hidratante-mat",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmaciadaliga",
+      "ean": "8058664144204",
+      "reason": "Brinquedo Chicco «Tablet Animais» ligado à bicicleta Olmitos Speed Up; título da página da loja em 2026-10-16: «Chicco Bri10601100000 Tablet Animais».",
+      "url": "https://www.farmaciadaliga.pt/ch.bri10601100000-tablet-animais.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "afarmaciaonline",
+      "ean": "4005800082139",
+      "reason": "Gel protetor de joanete WWO ligado à almofada protetora Hansaplast; título da página da loja em 2026-10-16: «Wwo Gel Protetor Joanete C/ Sep Dedo 234» (a página lista também códigos de produtos relacionados).",
+      "url": "https://www.afarmaciaonline.pt/wwo-gel-protetor-joanete-c-sep-dedo-234.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmaciavirtual",
+      "ean": "3666057272677",
+      "reason": "Suplemento Solgar Psyllium Husks 200 cápsulas ligado ao Clarins Extra Firming Jour; título da página da loja em 2026-10-16: «Solgar Psyllium Husks Fibre 500 mg 200 Cápsulas».",
+      "url": "https://farmaciavirtual.pt/produto/solgar-psyllium-husks-fibre-500-mg-200-capsulas/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "8710908694813",
+      "reason": "Tamanho mini/viagem («mini» no endereço, 1.75€) ligado à ficha do tamanho normal «Keratin Smooth» (mediana das outras 1 lojas: 14.3€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/keratin-smooth-tresemme-mini-shampoo-cabelo-normal",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "sofarma",
+      "ean": "3282770389968",
+      "reason": "Tamanho mini/viagem («travel» no endereço, 6.03€) ligado à ficha do tamanho normal «René Furterer Triphasic Shampoo Estimulante 50ml» (mediana das outras 19 lojas: 16.42€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.sofarma.com/pt/cabelo/rene-furterer-triphasic-champo-ed.-travel_p13780.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "0022796976710",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 2.99€) ligado à ficha do tamanho normal «Biotin & Collagen» (mediana das outras 3 lojas: 6.99€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/biotin-collagen-ogx-shampoo-para-cabelos-finos-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "5060743581216",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 4.99€) ligado à ficha do tamanho normal «For Longer Stronger Hair» (mediana das outras 1 lojas: 12.9€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/for-longer-stronger-hair-hairburst-shampoo-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "8435534413071",
+      "reason": "Tamanho mini/viagem («mini» no endereço, 3.25€) ligado à ficha do tamanho normal «5X Pure Hyaluronic» (mediana das outras 1 lojas: 10.95€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/5x-pure-hyaluronic-lacabine-mini-serum-preenchedor",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "8435534412470",
+      "reason": "Tamanho mini/viagem («mini» no endereço, 1.25€) ligado à ficha do tamanho normal «Pure Retinol» (mediana das outras 1 lojas: 7.25€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/pure-retinol-lacabine-mini-serum-unificador",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atida",
+      "ean": "5201279088453",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 5.99€) ligado à ficha do tamanho normal «Apivita Solares Gel Creme Pós-Solar - 200ml» (mediana das outras 10 lojas: 13.83€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.atida.com/pt-pt/apivita-cool-sooth-after-sun-gel-creme-de-viagem-formato-100-ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "8411047146118",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 0.99€) ligado à ficha do tamanho normal «Avena» (mediana das outras 1 lojas: 2.15€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/avena-instituto-espanol-locao-hidratante-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "5037156298468",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 2.99€) ligado à ficha do tamanho normal «Frizz Ease Dream Curls» (mediana das outras 2 lojas: 13.5€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/frizz-ease-dream-curls-john-frieda-shampoo-cabelo-cacheado-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "5037156298635",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 2.99€) ligado à ficha do tamanho normal «Frizz Ease Miraculous Recovery» (mediana das outras 2 lojas: 8.72€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/frizz-ease-miraculous-recovery-john-frieda-shampoo-cabelo-danificado-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmacia365",
+      "ean": "8431567734077",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 6.33€) ligado à ficha do tamanho normal «CeraVe Loção Protetora SPF30 + Loção Hidratante - 75 mL + 88» (mediana das outras 6 lojas: 12.5€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.farmacia365.pt/cerave-solar-kit-viagem-locao-protetora-spf30-75ml-com-oferta-de-locao-hidratante-88ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "5410076390830",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 1.99€) ligado à ficha do tamanho normal «Miracle Moist 300ML» (mediana das outras 1 lojas: 17.5€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/miracle-moist-100ml-aussie-shampoo-hidratante-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "7290011521691",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 18.99€) ligado à ficha do tamanho normal «HYDRATION intense hydrating mask» (mediana das outras 3 lojas: 65.5€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/hydration-moroccanoil-mascara-hidratante-intensiva-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "7290016494334",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 14.99€) ligado à ficha do tamanho normal «Condicionador para definir cachos» (mediana das outras 2 lojas: 24.99€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/curl-moroccanoil-condicionador-ativador-de-cachos-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "druni",
+      "ean": "8006530400640",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 1.99€) ligado à ficha do tamanho normal «Pantene Pro-V Active Nutri-Plex Repair & Protect Conditioner» (mediana das outras 2 lojas: 3.64€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.druni.pt/repara-protege-pantene-condicionador-fortificante-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "aveirofarma",
+      "ean": "8470001875815",
+      "reason": "Tamanho mini/viagem («travel» no endereço, 4.52€) ligado à ficha do tamanho normal «Isdin Germisdin Aloe Vera Gel Banho 500mL» (mediana das outras 15 lojas: 10.4€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://aveirofarma.pt/isdin-germisdin-aloe-vera-gel-de-banho-100ml-travel-size",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atuafarmacia",
+      "ean": "5600360018124",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 4.19€) ligado à ficha do tamanho normal «Barral Dermaprotect Creme Banho Dermatológico - 500ml» (mediana das outras 24 lojas: 12.2€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.atuafarmacia.pt/products/barral-dermaprotect-creme-banho-100-ml-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "farmaciapt",
+      "ean": "5600360018230",
+      "reason": "Tamanho mini/viagem («travel» no endereço, 5.24€) ligado à ficha do tamanho normal «Babyprotect Moisturizer Cream » (mediana das outras 21 lojas: 14.99€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://farmacia.pt/barral-babyprotect-creme-hidratante-travel-size-100ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atuafarmacia",
+      "ean": "5600360018230",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 4.79€) ligado à ficha do tamanho normal «Babyprotect Moisturizer Cream » (mediana das outras 21 lojas: 14.99€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.atuafarmacia.pt/products/barral-babyprotect-creme-hidratante-100-ml-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atuafarmacia",
+      "ean": "5600360018247",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 4.19€) ligado à ficha do tamanho normal «Barral Babyprotect Creme Banho - 100Ml» (mediana das outras 16 lojas: 13.6€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.atuafarmacia.pt/products/barral-babyprotect-creme-de-banho-100-ml-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atuafarmacia",
+      "ean": "8470001648198",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 8.5€) ligado à ficha do tamanho normal «ISDIN Lambdapil Antiqueda Shampoo 200ML- Champô Antiqueda» (mediana das outras 37 lojas: 14.99€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.atuafarmacia.pt/products/isdin-lambdapil-champo-antiqueda-100-ml-tamanho-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atuafarmacia",
+      "ean": "5609380303692",
+      "reason": "Tamanho mini/viagem («formato-viagem» no endereço, 2.25€) ligado à ficha do tamanho normal «Barral Íntima Neutro 200ml» (mediana das outras 27 lojas: 7.43€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.atuafarmacia.pt/products/barral-higiene-intima-neutro-100-ml-formato-viagem",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "atida",
+      "ean": "8437014761009",
+      "reason": "Tamanho mini/viagem («viagem» no endereço, 8.54€) ligado à ficha do tamanho normal «Nuggela &amp; Sulé Shampoo N1 Força e Volume 250 ml» (mediana das outras 1 lojas: 20.28€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.atida.com/pt-pt/nuggela-sule-champo-premium-cebola-viagem-100ml",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "notino",
+      "ean": "192333268162",
+      "reason": "Tamanho mini/viagem («mini» no endereço, 16.72€) ligado à ficha do tamanho normal «Coffret Clinique Anti-blemish Solutions Cleansing Foam» (mediana das outras 1 lojas: 29.25€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.notino.pt/clinique/mini-kit-clear-skin-routine-coffret-para-limpeza-facial-perfeita/",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "lojashampoo",
+      "ean": "3474637393106",
+      "reason": "Tamanho mini/viagem («mini» no endereço, 26.91€) ligado à ficha do tamanho normal «CASO DE CONCENTRADO DE LIGA&#199;&#195;O &#193;CIDA» (mediana das outras 2 lojas: 58.04€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.lojashampoo.pt/redken-acidic-bonding-concentrate-mini-set",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "auchan",
+      "ean": "8006530443807",
+      "reason": "Tamanho mini/viagem («mini» no endereço, 4.49€) ligado à ficha do tamanho normal «Pro-V Sunkiss Glow Protetor Solar Spray para o Cabelo» (mediana das outras 3 lojas: 8.57€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.auchan.pt/pt/beleza-e-higiene/produtos-para-cabelo/gel-cera-e-spray/spray-pantene-protecao-uv-mini-75-ml/4046317.html",
+      "added_at": "2026-10-16"
+    },
+    {
+      "store_slug": "lojashampoo",
+      "ean": "7391681036253",
+      "reason": "Tamanho mini/viagem («travel» no endereço, 13.05€) ligado à ficha do tamanho normal «Maria Nila Luminous Color Champô 100ml» (mediana das outras 2 lojas: 27.43€); puxava o «desde» para baixo. Prova pelo endereço e pelo preço (2026-10-16). Remover se a loja passar a usar o código do mini.",
+      "url": "https://www.lojashampoo.pt/maria-nila-luminous-colour-travel-size-shampoo-100ml",
+      "added_at": "2026-10-16"
     }
   ]
 }
