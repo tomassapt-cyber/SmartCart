@@ -1,37 +1,11 @@
 {
-  "scraped_at": "2026-10-17T14:16:14.864295+00:00",
-  "completed_at": "2026-10-17T16:00:56.430831+00:00",
+  "scraped_at": "2026-10-17T21:31:05.683981+00:00",
+  "completed_at": "2026-10-17T23:23:03.571453+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
   "targets": 1781,
   "products": [
-    {
-      "ean": "5601411434146",
-      "name": "Tacho de Cera Universal 400grs",
-      "price": 4.12,
-      "net_price": 3.35,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/acessorios-e-descartaveis-depilacao/198-tacho-de-cera-universal-400grs-5601411434146.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/95728-thickbox_default/tacho-de-cera-universal-400grs.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927872412",
-      "name": "Diluente de Verniz 100ml - Andreia",
-      "price": 4.86,
-      "net_price": 3.95,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/complementos-e-removedores/255-diluente-de-verniz-100ml-andreia-5603927872412.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108767-thickbox_default/diluente-de-verniz-100ml-andreia.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
     {
       "ean": "3474637284312",
       "name": "Oxidante L'Oreal 30V 1000ml",
@@ -1528,19 +1502,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462905728",
-      "name": "Verniz andreia 14ml nº 102",
-      "price": 2.38,
-      "net_price": 1.94,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1872-verniz-andreia-14ml-n-102-5600462905728.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/31908-thickbox_default/verniz-andreia-14ml-n-102.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462906206",
       "name": "Verniz andreia 14ml nº 47",
       "price": 2.38,
@@ -2425,19 +2386,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462908873",
-      "name": "Verniz Gel Andreia 201",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6684-verniz-gel-andreia-201-5600462908873.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108620-thickbox_default/verniz-gel-andreia-201.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462908897",
       "name": "Verniz Gel Andreia 202",
       "price": 6.38,
@@ -2464,19 +2412,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462908958",
-      "name": "Verniz Gel Andreia 205",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6692-verniz-gel-andreia-205-5600462908958.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108610-thickbox_default/verniz-gel-andreia-205.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462908972",
       "name": "Verniz Gel Andreia 206",
       "price": 6.38,
@@ -2499,32 +2434,6 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/6695-verniz-gel-andreia-208-5600462909016.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108603-thickbox_default/verniz-gel-andreia-208.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909030",
-      "name": "Verniz Gel Andreia 209",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6696-verniz-gel-andreia-209-5600462909030.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108600-thickbox_default/verniz-gel-andreia-209.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909054",
-      "name": "Verniz Gel Andreia 210",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6697-verniz-gel-andreia-210-5600462909054.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108593-thickbox_default/verniz-gel-andreia-210.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2646,19 +2555,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462909313",
-      "name": "Verniz Gel Andreia 221",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6835-verniz-gel-andreia-221-5600462909313.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108574-thickbox_default/verniz-gel-andreia-221.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462909559",
       "name": "Verniz Gel Andreia 223",
       "price": 6.38,
@@ -2698,97 +2594,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462909610",
-      "name": "Verniz Gel Andreia 227",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6841-verniz-gel-andreia-227-5600462909610.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108528-thickbox_default/verniz-gel-andreia-227.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909634",
-      "name": "Verniz Gel Andreia 228",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6842-verniz-gel-andreia-228-5600462909634.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108570-thickbox_default/verniz-gel-andreia-228.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909658",
-      "name": "Verniz Gel Andreia 229",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6843-verniz-gel-andreia-229-5600462909658.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108568-thickbox_default/verniz-gel-andreia-229.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909375",
-      "name": "Verniz Gel Andreia 230",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6844-verniz-gel-andreia-230-5600462909375.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108566-thickbox_default/verniz-gel-andreia-230.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909399",
-      "name": "Verniz Gel Andreia 231",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6845-verniz-gel-andreia-231-5600462909399.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108564-thickbox_default/verniz-gel-andreia-231.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909412",
-      "name": "Verniz Gel Andreia 232",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6846-verniz-gel-andreia-232-5600462909412.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108522-thickbox_default/verniz-gel-andreia-232.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462909535",
-      "name": "Verniz Gel Andreia 236",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6850-verniz-gel-andreia-236-5600462909535.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108520-thickbox_default/verniz-gel-andreia-236.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462909511",
       "name": "Verniz Gel Andreia 239",
       "price": 6.38,
@@ -2798,32 +2603,6 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/6853-verniz-gel-andreia-239-5600462909511.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108516-thickbox_default/verniz-gel-andreia-239.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462911316",
-      "name": "Verniz Gel Andreia 240 (Preto)",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6988-verniz-gel-andreia-240-preto-5600462911316.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108514-thickbox_default/verniz-gel-andreia-240-preto.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462911415",
-      "name": "Verniz Gel Andreia 244",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6992-verniz-gel-andreia-244-5600462911415.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108510-thickbox_default/verniz-gel-andreia-244.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2880,19 +2659,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462989803",
-      "name": "Verniz Gel Andreia 254",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/7710-verniz-gel-andreia-254-5600462989803.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108496-thickbox_default/verniz-gel-andreia-254.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462989841",
       "name": "Verniz Gel Andreia 255",
       "price": 6.38,
@@ -2902,19 +2668,6 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/8547-verniz-gel-andreia-255-5600462989841.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108495-thickbox_default/verniz-gel-andreia-255.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462990564",
-      "name": "Verniz Gel Andreia 257",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8549-verniz-gel-andreia-257-5600462990564.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108491-thickbox_default/verniz-gel-andreia-257.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2945,19 +2698,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462990700",
-      "name": "Verniz Gel Andreia 261",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8587-verniz-gel-andreia-261-5600462990700.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108485-thickbox_default/verniz-gel-andreia-261.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462991820",
       "name": "Verniz Gel Andreia 263 NEON",
       "price": 6.38,
@@ -2967,45 +2707,6 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/8779-verniz-gel-andreia-263-neon-5600462991820.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108481-thickbox_default/verniz-gel-andreia-263-neon.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462991844",
-      "name": "Verniz Gel Andreia 264 NEON",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8780-verniz-gel-andreia-264-neon-5600462991844.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108479-thickbox_default/verniz-gel-andreia-264-neon.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462991868",
-      "name": "Verniz Gel Andreia 265 NEON",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8781-verniz-gel-andreia-265-neon-5600462991868.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108477-thickbox_default/verniz-gel-andreia-265-neon.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462991882",
-      "name": "Verniz Gel Andreia 266",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8782-verniz-gel-andreia-266-5600462991882.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/108475-thickbox_default/verniz-gel-andreia-266.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -12292,19 +11993,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474637128302",
-      "name": "L'Oréal iNOA 9.13 Louro Muito Claro Cinza Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inoa-loreal/78969-inoa-913-louro-muito-claro-cinza-dourado-60g-l-oreal-profissional--3474637128302.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156389-thickbox_default/inoa-913-louro-muito-claro-cinza-dourado-60g-l-oreal-profissional-.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474637128913",
       "name": "L'Oréal iNOA 5.5 Castanho Claro Acajou Sem Amoníaco 60ml",
       "price": 13.91,
@@ -13540,19 +13228,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927883289",
-      "name": "Andreia Professional Developer Cream Power Blonde 30 VOL. 9% 1000ml",
-      "price": 5.9,
-      "net_price": 4.8,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82277-oxidante-cabelo-developer-power-blond-30vol-9-1l-andreia-profissional-5603927883289.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/129848-thickbox_default/oxidante-cabelo-developer-power-blond-30vol-9-1l-andreia-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927883296",
       "name": "Andreia Professional Developer Cream Power Blonde 40 VOL. 12% 1000ml",
       "price": 5.9,
@@ -13627,19 +13302,6 @@
       "url": "https://presencadeluxo.pt/descolorantes-andreia/82283-oxidante-cabelo-developer-cream-5volumes-15-150ml-andreia-profissional-5603927883913.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/129854-thickbox_default/oxidante-cabelo-developer-cream-5volumes-15-150ml-andreia-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927882312",
-      "name": "Andreia Developer Cream 10 Vol. 3% Oxidante Creme 1000ml",
-      "price": 4.43,
-      "net_price": 3.6,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/descolorantes-andreia/82284-oxidante-cabelo-developer-10-vol-3-1l-andreia-profissional-5603927882312.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/129855-thickbox_default/oxidante-cabelo-developer-10-vol-3-1l-andreia-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -15113,6 +14775,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927887386",
+      "name": "Batom Líquido Andreia  Profissional 17  KISS PROOF Surprising",
+      "price": 6.45,
+      "net_price": 5.25,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/batom-andreia/84852-batom-liquido-andreia-profissional-kiss-proof-17-surprising-5603927887386.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139132-thickbox_default/batom-liquido-andreia-profissional-kiss-proof-17-surprising.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927887676",
       "name": "Top Coat  All in One Cotton Candy 02 Andreia Profissional Milky Pink 10.5ml",
       "price": 8.12,
@@ -15135,6 +14810,19 @@
       "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/84868-top-coat-all-in-one-cotton-candy-01-andreia-profissional-milky-white-105ml-5603927887669.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/139117-thickbox_default/top-coat-all-in-one-cotton-candy-01-andreia-profissional-milky-white-105ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927887645",
+      "name": "Top Coat  All in One Galatic 01 Andreia Profissional Stardust Glitter 10.5ml",
+      "price": 7.68,
+      "net_price": 6.25,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/84869-top-coat-all-in-one-galatic-01-andreia-profissional-stardust-glitter-105ml-5603927887645.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139115-thickbox_default/top-coat-all-in-one-galatic-01-andreia-profissional-stardust-glitter-105ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -15243,6 +14931,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927886242",
+      "name": "True Pure Gel Polish Andreia 0% Plastic T01 10.5ml",
+      "price": 7.44,
+      "net_price": 6.05,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84992-true-pure-gel-polish-andreia-0-plastic-t01-5603927886242.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139454-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t01.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927886259",
       "name": "True Pure Gel Polish Andreia 0% Plastic T02 10.5ml",
       "price": 7.44,
@@ -15256,6 +14957,32 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927886266",
+      "name": "True Pure Gel Polish Andreia 0% Plastic T03 10.5ml",
+      "price": 7.44,
+      "net_price": 6.05,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84994-true-pure-gel-polish-andreia-0-plastic-t03-5603927886266.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139462-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t03.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927886280",
+      "name": "True Pure Gel Polish Andreia 0% Plastic T05 10.5ml",
+      "price": 7.44,
+      "net_price": 6.05,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84996-true-pure-gel-polish-andreia-0-plastic-t05-5603927886280.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139470-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t05.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927886297",
       "name": "True Pure Gel Polish Andreia 0% Plastic T06 10.5ml",
       "price": 7.44,
@@ -15265,6 +14992,19 @@
       "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84997-true-pure-gel-polish-andreia-0-plastic-t06-5603927886297.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/139474-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t06.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927886303",
+      "name": "True Pure Gel Polish Andreia 0% Plastic T07 10.5ml",
+      "price": 7.44,
+      "net_price": 6.05,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84998-true-pure-gel-polish-andreia-0-plastic-t07-5603927886303.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139478-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t07.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -15373,6 +15113,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927886525",
+      "name": "True Pure Gel Polish Andreia 0% Plastic T29 10.5ml",
+      "price": 7.44,
+      "net_price": 6.05,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85020-true-pure-gel-polish-andreia-0-plastic-t29-5603927886525.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139567-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t29.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927886532",
       "name": "True Pure Gel Polish Andreia 0% Plastic T30 10.5ml",
       "price": 7.44,
@@ -15408,6 +15161,19 @@
       "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85029-true-pure-gel-polish-andreia-0-plastic-t38-5603927886617.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/139603-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t38.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927886228",
+      "name": "True Pure Gel Polish Andreia 0% Plastic Base Coat 10.5ml",
+      "price": 8.71,
+      "net_price": 7.08,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85038-true-pure-gel-polish-andreia-0-plastic-base-coat-5603927886228.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139638-thickbox_default/true-pure-gel-polish-andreia-0-plastic-base-coat.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -20796,6 +20562,22 @@
   ],
   "rejected": [
     {
+      "url": "https://presencadeluxo.pt/acessorios-e-descartaveis-depilacao/198-tacho-de-cera-universal-400grs-5601411434146.html",
+      "ean": "5601411434146",
+      "canonical": "5601411434146",
+      "existing_name": "RickiParodi Tacho Universal Metal para Panela de Cera 400g",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/complementos-e-removedores/255-diluente-de-verniz-100ml-andreia-5603927872412.html",
+      "ean": "5603927872412",
+      "canonical": "5603927872412",
+      "existing_name": "Diluente de Verniz Andreia Essential 100ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/oxidante-e-descolorante-loreal/1017-oxidante-inoa-10v-1000ml-loreal-3474630417762.html",
       "ean": "3474630417762",
       "canonical": "3474630417762",
@@ -20826,6 +20608,14 @@
       "existing_name": "Revlon Equave Instant Detanglig Conditioner Hydro Nutritive 200ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1872-verniz-andreia-14ml-n-102-5600462905728.html",
+      "ean": "5600462905728",
+      "canonical": "5600462905728",
+      "existing_name": "Verniz Andreia n.102",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/acessorios-barbearia/2781-espanador-po-talco-8423029016821.html",
@@ -20908,12 +20698,124 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6684-verniz-gel-andreia-201-5600462908873.html",
+      "ean": "5600462908873",
+      "canonical": "5600462908873",
+      "existing_name": "AndreiaProfissional Verniz Gel 201 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6692-verniz-gel-andreia-205-5600462908958.html",
+      "ean": "5600462908958",
+      "canonical": "5600462908958",
+      "existing_name": "Andreia Verniz de Gel 205 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6696-verniz-gel-andreia-209-5600462909030.html",
+      "ean": "5600462909030",
+      "canonical": "5600462909030",
+      "existing_name": "Andreia Verniz de Gel 209 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6697-verniz-gel-andreia-210-5600462909054.html",
+      "ean": "5600462909054",
+      "canonical": "5600462909054",
+      "existing_name": "Andreia Verniz de Gel 210 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6835-verniz-gel-andreia-221-5600462909313.html",
+      "ean": "5600462909313",
+      "canonical": "5600462909313",
+      "existing_name": "AndreiaProfissional Verniz Gel 221 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6841-verniz-gel-andreia-227-5600462909610.html",
+      "ean": "5600462909610",
+      "canonical": "5600462909610",
+      "existing_name": "AndreiaProfissional Verniz Gel 227 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6842-verniz-gel-andreia-228-5600462909634.html",
+      "ean": "5600462909634",
+      "canonical": "5600462909634",
+      "existing_name": "AndreiaProfissional Verniz Gel 228 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6843-verniz-gel-andreia-229-5600462909658.html",
+      "ean": "5600462909658",
+      "canonical": "5600462909658",
+      "existing_name": "AndreiaProfissional Verniz Gel 229 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6844-verniz-gel-andreia-230-5600462909375.html",
+      "ean": "5600462909375",
+      "canonical": "5600462909375",
+      "existing_name": "AndreiaProfissional Verniz Gel 230 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6845-verniz-gel-andreia-231-5600462909399.html",
+      "ean": "5600462909399",
+      "canonical": "5600462909399",
+      "existing_name": "AndreiaProfissional Verniz Gel 231 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6846-verniz-gel-andreia-232-5600462909412.html",
+      "ean": "5600462909412",
+      "canonical": "5600462909412",
+      "existing_name": "AndreiaProfissional Verniz Gel 232 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6850-verniz-gel-andreia-236-5600462909535.html",
+      "ean": "5600462909535",
+      "canonical": "5600462909535",
+      "existing_name": "AndreiaProfissional Verniz de Gel 236 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/depilacao-a-laser/6858-100uni-laminas-de-depilacao-descartavel-5600482304198.html",
       "ean": "5600482304198",
       "canonical": "5600482304198",
       "existing_name": "100 Lâminas Descartáveis com Dispensador Azul",
       "method": "GTIN",
       "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6988-verniz-gel-andreia-240-preto-5600462911316.html",
+      "ean": "5600462911316",
+      "canonical": "5600462911316",
+      "existing_name": "AndreiaProfissional Verniz de Gel 240 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6992-verniz-gel-andreia-244-5600462911415.html",
+      "ean": "5600462911415",
+      "canonical": "5600462911415",
+      "existing_name": "AndreiaProfissional Verniz de Gel 244 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/revlon-equave/7491-shampoo-kids-300ml-equave-revlon-8432225113302.html",
@@ -20924,12 +20826,60 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/7710-verniz-gel-andreia-254-5600462989803.html",
+      "ean": "5600462989803",
+      "canonical": "5600462989803",
+      "existing_name": "AndreiaProfissional Verniz de Gel 254 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/gel-polish-andreia/8548-verniz-gel-andreia-256-5600462990625.html",
       "ean": "5600462990625",
       "canonical": "5600462990625",
       "existing_name": "AndreiaProfissional Verniz de Gel 256 - 10.5ml",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8549-verniz-gel-andreia-257-5600462990564.html",
+      "ean": "5600462990564",
+      "canonical": "5600462990564",
+      "existing_name": "AndreiaProfissional Verniz de Gel 257 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8587-verniz-gel-andreia-261-5600462990700.html",
+      "ean": "5600462990700",
+      "canonical": "5600462990700",
+      "existing_name": "AndreiaProfissional Verniz de Gel 261 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8780-verniz-gel-andreia-264-neon-5600462991844.html",
+      "ean": "5600462991844",
+      "canonical": "5600462991844",
+      "existing_name": "AndreiaProfissional Verniz de Gel 264 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8781-verniz-gel-andreia-265-neon-5600462991868.html",
+      "ean": "5600462991868",
+      "canonical": "5600462991868",
+      "existing_name": "AndreiaProfissional Verniz de Gel 265 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8782-verniz-gel-andreia-266-5600462991882.html",
+      "ean": "5600462991882",
+      "canonical": "5600462991882",
+      "existing_name": "AndreiaProfissional Verniz de Gel 266 - 10.5ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/kay-argan-oil-hidratacao/9298-mascara-argan-hidratante-1000ml-kaypro-8028483228393.html",
@@ -21212,6 +21162,14 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/inoa-loreal/78969-inoa-913-louro-muito-claro-cinza-dourado-60g-l-oreal-profissional--3474637128302.html",
+      "ean": "3474637128302",
+      "canonical": "3474637128302",
+      "existing_name": "L'Oréal Professionnel Inoa Coloração Permanente 9.13 Louro Muito Claro Cinza Dourado 60g",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/metal-detox-loreal/79019-shampoo-metal-detox-300ml-l-oreal-serie-expert-30158078.html",
       "ean": "30158078",
       "canonical": "30158078",
@@ -21290,6 +21248,22 @@
       "existing_name": "Condicionador Murumuru Haskell 300ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82277-oxidante-cabelo-developer-power-blond-30vol-9-1l-andreia-profissional-5603927883289.html",
+      "ean": "5603927883289",
+      "canonical": "5603927883289",
+      "existing_name": "Oxidante Cabelo Developer Power Blond 30Vol. 9% 1L - Andreia Profissional",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/descolorantes-andreia/82284-oxidante-cabelo-developer-10-vol-3-1l-andreia-profissional-5603927882312.html",
+      "ean": "5603927882312",
+      "canonical": "5603927882312",
+      "existing_name": "Oxidante Cabelo Developer 10 Vol. 3% 1L - Andreia Profissional",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/haskell-bendito-loiro/82365-bendito-loiro-mascara-300ml-haskell-7898610376232.html",
@@ -21458,70 +21432,6 @@
       "existing_name": "EVELINE D-PANTENOL AFTER SUN EEITO REFRESCANTE 200 ML",
       "method": "GTIN",
       "reason": "stock/order contradiction"
-    },
-    {
-      "url": "https://presencadeluxo.pt/batom-andreia/84852-batom-liquido-andreia-profissional-kiss-proof-17-surprising-5603927887386.html",
-      "ean": "5603927887386",
-      "canonical": "5603927887386",
-      "existing_name": "Batom Líquido Mate No Transfer Kiss Proof Andreia - 17 Surprising (Bronze)",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/84869-top-coat-all-in-one-galatic-01-andreia-profissional-stardust-glitter-105ml-5603927887645.html",
-      "ean": "5603927887645",
-      "canonical": "5603927887645",
-      "existing_name": "All In One Andreia Top Coat Galactic 01 - Stardust (pequenos brilhos holográficos)",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84992-true-pure-gel-polish-andreia-0-plastic-t01-5603927886242.html",
-      "ean": "5603927886242",
-      "canonical": "5603927886242",
-      "existing_name": "The Gel Polish Andreia True Pure T01 - White (Branco Puro)",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84994-true-pure-gel-polish-andreia-0-plastic-t03-5603927886266.html",
-      "ean": "5603927886266",
-      "canonical": "5603927886266",
-      "existing_name": "The Gel Polish Andreia True Pure T03 (Branco com Glitter)",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84996-true-pure-gel-polish-andreia-0-plastic-t05-5603927886280.html",
-      "ean": "5603927886280",
-      "canonical": "5603927886280",
-      "existing_name": "The Gel Polish Andreia True Pure T05 - Milky Nude (Nude Leitoso)",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84998-true-pure-gel-polish-andreia-0-plastic-t07-5603927886303.html",
-      "ean": "5603927886303",
-      "canonical": "5603927886303",
-      "existing_name": "The Gel Polish Andreia True Pure T07 (Rosa Bébe)",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85020-true-pure-gel-polish-andreia-0-plastic-t29-5603927886525.html",
-      "ean": "5603927886525",
-      "canonical": "5603927886525",
-      "existing_name": "The Gel Polish Andreia True Pure T29 (Nude Rosa)",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85038-true-pure-gel-polish-andreia-0-plastic-base-coat-5603927886228.html",
-      "ean": "5603927886228",
-      "canonical": "5603927886228",
-      "existing_name": "The Gel Polish Andreia True Pure - Base",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/shampoo-homem/85138-shampoo-iceberg-jhonnie-black-500ml-7898449221352.html",
