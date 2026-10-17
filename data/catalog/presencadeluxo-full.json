@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-10-16T22:08:31.162852+00:00",
-  "completed_at": "2026-10-16T23:45:10.019835+00:00",
+  "scraped_at": "2026-10-17T14:16:14.864295+00:00",
+  "completed_at": "2026-10-17T16:00:56.430831+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1740,
+  "targets": 1781,
   "products": [
     {
       "ean": "5601411434146",
@@ -1329,6 +1329,19 @@
       "url": "https://presencadeluxo.pt/osis/1358-laca-extrema-session-osis-500ml-schwarzkopf-4045787999464.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/153863-thickbox_default/laca-extrema-session-osis-500ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787464030",
+      "name": "Schwarzkopf Silhouette Laca Fix. Extra Forte 500ml – Fixação Forte e Brilho Duradouro",
+      "price": 17.88,
+      "net_price": 14.54,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/silhouette-super-hold-schwarzkopf/1364-laca-fixacao-extra-forte-silhouette-super-hold-500ml-schwarzkopf--4045787464030.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130650-thickbox_default/laca-fixacao-extra-forte-silhouette-super-hold-500ml-schwarzkopf-.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -3240,6 +3253,19 @@
       "url": "https://presencadeluxo.pt/kaycurl-ondulados/9284-shampoo-curl-1000ml-kaypro-8028483228201.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/94741-thickbox_default/shampoo-curl-1000ml-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483228232",
+      "name": "Condicionador Curl 350ml - KayPro",
+      "price": 7.09,
+      "net_price": 5.77,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaycurl-ondulados/9285-condicionador-curl-350ml-kaypro-8028483228232.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/136650-thickbox_default/condicionador-curl-350ml-kaypro.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10329,6 +10355,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927872634",
+      "name": "Andreia Builder Gel 3 IN 1 Clear - Baixa Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/67694-andreia-builder-gel-3-in-1-clear-baixa-viscosidade-22gr-5603927872634.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/127590-thickbox_default/andreia-builder-gel-3-in-1-clear-baixa-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927872641",
       "name": "Andreia Builder Gel 3 IN 1 Clear - Baixa Viscosidade 44gr",
       "price": 17.21,
@@ -10377,6 +10416,19 @@
       "url": "https://presencadeluxo.pt/gel-de-construcao/67698-one-bottle-builder-gel-3-in-1-cover-nude-14ml-andreia-5603927873709.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108746-thickbox_default/one-bottle-builder-gel-3-in-1-cover-nude-14ml-andreia.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872696",
+      "name": "Andreia Builder Gel 3 IN 1 Soft White - Média Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/67699-andreia-builder-gel-3-in-1-soft-white-media-viscosidade-22gr-5603927872696.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/126877-thickbox_default/andreia-builder-gel-3-in-1-soft-white-media-viscosidade-22gr.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10433,6 +10485,45 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927872818",
+      "name": "Acrylic Powder Clear 20gr - Andreia",
+      "price": 8.37,
+      "net_price": 6.81,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/unhas-acrilico/67815-acrylic-powder-clear-20gr-andreia-5603927872818.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/87208-thickbox_default/acrylic-powder-clear-20gr-andreia.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872825",
+      "name": "Acrylic Powder Clear 35gr - Andreia",
+      "price": 11.13,
+      "net_price": 9.06,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/unhas-acrilico/67816-acrylic-powder-clear-35gr-andreia-5603927872825.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/87218-thickbox_default/acrylic-powder-clear-35gr-andreia.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872917",
+      "name": "Líquido Acrílico Secagem Lenta 100ml Andreia Builder",
+      "price": 9.66,
+      "net_price": 7.86,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/andreia-acrilico/67817-liquido-acrilico-secagem-lenta-100ml-andreia-builder-5603927872917.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/137524-thickbox_default/liquido-acrilico-secagem-lenta-100ml-andreia-builder.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927872924",
       "name": "Líquido Acrílico Secagem Lenta 250ml Andreia Builder",
       "price": 16.23,
@@ -10481,6 +10572,32 @@
       "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/67821-all-in-one-top-coat-matte-andreia-105ml-5603927873679.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156907-thickbox_default/all-in-one-top-coat-matte-andreia-105ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872931",
+      "name": "Líquido Acrílico Secagem Rápida 100ml Andreia Builder",
+      "price": 9.66,
+      "net_price": 7.86,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/andreia-acrilico/67825-liquido-acrilico-secagem-rapida-100ml-andreia-builder-5603927872931.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/87240-thickbox_default/liquido-acrilico-secagem-rapida-100ml-andreia-builder.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872948",
+      "name": "Líquido Acrílico Secagem Rápida 250ml Andreia Builder",
+      "price": 16.3,
+      "net_price": 13.25,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/andreia-acrilico/67826-liquido-acrilico-secagem-rapida-250ml-andreia-builder-5603927872948.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/87242-thickbox_default/liquido-acrilico-secagem-rapida-250ml-andreia-builder.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10706,6 +10823,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "7898623959910",
+      "name": "Ativador de Cachos SOS Óleo de Manga 500ml - Salon Line",
+      "price": 10.48,
+      "net_price": 8.52,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/ativador-de-cachos-salon-line/72352-ativador-de-cachos-sos-oleo-de-manga-500ml-salon-line-7898623959910.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96713-thickbox_default/ativador-de-cachos-sos-oleo-de-manga-500ml-salon-line.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "7898623959927",
       "name": "Ativador de Cachos SOS Óleo de Manga 1KG - Salon Line",
       "price": 15.06,
@@ -10871,6 +11001,19 @@
       "url": "https://presencadeluxo.pt/meu-liso-salon-line/72390-mascara-meu-liso-muito-liso-300gr-salon-line-7898009430927.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/96796-thickbox_default/mascara-meu-liso-muito-liso-300gr-salon-line.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898009430682",
+      "name": "Creme de Pentear SOS Bomba Original 500ml - Salon Line",
+      "price": 10.7,
+      "net_price": 8.7,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/creme-de-pentear-salon-line/72405-creme-de-pentear-sos-bomba-original-500ml-salon-line-7898009430682.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96826-thickbox_default/creme-de-pentear-sos-bomba-original-500ml-salon-line.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -11538,6 +11681,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "7897158724857",
+      "name": "Matizador 3D Platinado 300ml - Gota Dourada",
+      "price": 9.69,
+      "net_price": 7.88,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gota-dourada/75755-matizador-3d-platinado-300ml-gota-dourada-7897158724857.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/101843-thickbox_default/matizador-3d-platinado-300ml-gota-dourada.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "7897158724963",
       "name": "Matizador 3D Grafite 300ml - Gota Dourada",
       "price": 9.69,
@@ -11772,6 +11928,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927872658",
+      "name": "Andreia Builder Gel 3 IN 1 Soft White - Baixa Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/78921-andreia-builder-gel-3-in-1-soft-white-baixa-viscosidade-22gr-5603927872658.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/127349-thickbox_default/andreia-builder-gel-3-in-1-soft-white-baixa-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927872665",
       "name": "Andreia Builder Gel 3 IN 1 Soft White - Baixa Viscosidade 44gr",
       "price": 17.21,
@@ -11794,6 +11963,19 @@
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78924-andreia-builder-gel-3-in-1-clear-media-viscosidade-22gr-5603927872672.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/127376-thickbox_default/andreia-builder-gel-3-in-1-clear-media-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872719",
+      "name": "Andreia Builder Gel 3 IN 1 Soft Pink - Média Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/78925-andreia-builder-gel-3-in-1-soft-pink-media-viscosidade-22gr-5603927872719.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/138736-thickbox_default/andreia-builder-gel-3-in-1-soft-pink-media-viscosidade-22gr.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -11837,6 +12019,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927872689",
+      "name": "Andreia Builder Gel 3 IN 1 Clear - Média Viscosidade 44gr",
+      "price": 17.21,
+      "net_price": 13.99,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/78930-andreia-builder-gel-3-in-1-clear-media-viscosidade-44gr-5603927872689.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/138734-thickbox_default/andreia-builder-gel-3-in-1-clear-media-viscosidade-44gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927872733",
       "name": "Andreia Hard Gel 2 IN 1 Clear - Alta Viscosidade 22gr",
       "price": 10.68,
@@ -11846,6 +12041,19 @@
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78931-andreia-hard-gel-2-in-1-clear-alta-viscosidade-22gr-5603927872733.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/126796-thickbox_default/andreia-hard-gel-2-in-1-clear-alta-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872771",
+      "name": "Andreia Hard Gel 2 IN 1 Soft Pink - Alta Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/78932-andreia-hard-gel-2-in-1-soft-pink-alta-viscosidade-22gr-5603927872771.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106335-thickbox_default/andreia-hard-gel-2-in-1-soft-pink-alta-viscosidade-22gr.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -11885,6 +12093,58 @@
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78935-andreia-french-builder-2-in-1-cover-pink-alta-viscosidade-22gr-5603927872801.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/138733-thickbox_default/andreia-french-builder-2-in-1-cover-pink-alta-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872870",
+      "name": "Acrylic Powder Cover Pink 20gr - Andreia",
+      "price": 8.37,
+      "net_price": 6.81,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/unhas-acrilico/78936-acrylic-powder-cover-pink-20gr-andreia-5603927872870.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106346-thickbox_default/acrylic-powder-cover-pink-20gr-andreia.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872832",
+      "name": "Acrylic Powder Soft White 20gr - Andreia",
+      "price": 8.37,
+      "net_price": 6.81,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/unhas-acrilico/78938-acrylic-powder-soft-white-20gr-andreia-5603927872832.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106354-thickbox_default/acrylic-powder-soft-white-20gr-andreia.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872856",
+      "name": "Acrylic Powder Soft Pink 20gr - Andreia",
+      "price": 8.37,
+      "net_price": 6.81,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/unhas-acrilico/78939-acrylic-powder-soft-pink-20gr-andreia-5603927872856.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106358-thickbox_default/acrylic-powder-soft-pink-20gr-andreia.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927872894",
+      "name": "Acrylic Powder White 20gr - Andreia",
+      "price": 8.37,
+      "net_price": 6.81,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/unhas-acrilico/78940-acrylic-powder-white-20gr-andreia-5603927872894.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106365-thickbox_default/acrylic-powder-white-20gr-andreia.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -12370,6 +12630,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "7908458307432",
+      "name": "Gelatina Super Definição 550G Todecacho - Salon Line",
+      "price": 10.48,
+      "net_price": 8.52,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gelatina-salon-line/80658-gelatina-super-definicao-550g-todecacho-salon-line-7908458307432.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/122577-thickbox_default/gelatina-super-definicao-550g-todecacho-salon-line.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "7908458308477",
       "name": "Gelatina Super Definição 1KG Todecacho - Salon Line",
       "price": 14.41,
@@ -12626,6 +12899,19 @@
       "url": "https://presencadeluxo.pt/loreal-blondifier/81312-condicionador-loreal-blondifier-500ml-serie-expert-3474636975495.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/125154-thickbox_default/condicionador-loreal-blondifier-500ml-serie-expert.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474637044886",
+      "name": "Shampoo CHROMA Green 500ml L'Oreal Serie Expert",
+      "price": 23.58,
+      "net_price": 19.17,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/chroma-loreal/81320-shampoo-chroma-green-500ml-loreal-serie-expert-3474637044886.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/125171-thickbox_default/shampoo-chroma-green-500ml-loreal-serie-expert.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13228,6 +13514,32 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927884439",
+      "name": "Andreia Professional Developer Cream Power Blonde 10 VOL. 3% 200ml",
+      "price": 3.07,
+      "net_price": 2.5,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82275-oxidante-cabelo-developer-power-blond-10vol-3-200ml-andreia-profissional-5603927884439.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129830-thickbox_default/oxidante-cabelo-developer-power-blond-10vol-3-200ml-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927883272",
+      "name": "Andreia Professional Developer Cream Power Blonde 20 VOL. 6% 1000ml",
+      "price": 5.9,
+      "net_price": 4.8,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82276-oxidante-cabelo-developer-power-blond-20vol-6-1l-andreia-profissional-5603927883272.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129847-thickbox_default/oxidante-cabelo-developer-power-blond-20vol-6-1l-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927883289",
       "name": "Andreia Professional Developer Cream Power Blonde 30 VOL. 9% 1000ml",
       "price": 5.9,
@@ -13263,6 +13575,19 @@
       "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82279-oxidante-cabelo-developer-power-blond-20vol-6-200ml-andreia-profissional-5603927884446.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/129849-thickbox_default/oxidante-cabelo-developer-power-blond-20vol-6-200ml-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927884453",
+      "name": "Andreia Professional Developer Cream Power Blonde 30 VOL. 9% 200ml",
+      "price": 3.07,
+      "net_price": 2.5,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82280-oxidante-cabelo-developer-power-blond-30vol-9-200ml-andreia-profissional-5603927884453.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129850-thickbox_default/oxidante-cabelo-developer-power-blond-30vol-9-200ml-andreia-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13371,6 +13696,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927883944",
+      "name": "Andreia Developer Cream 30 Vol. 9% Oxidante Creme 150ml",
+      "price": 2.45,
+      "net_price": 1.99,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/descolorantes-andreia/82289-oxidante-cabelo-developer-30-vol-9-150ml-andreia-profissional-5603927883944.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129860-thickbox_default/oxidante-cabelo-developer-30-vol-9-150ml-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927883951",
       "name": "Andreia Developer Cream 40 Vol. 12% Oxidante Creme 150ml",
       "price": 2.45,
@@ -13419,6 +13757,19 @@
       "url": "https://presencadeluxo.pt/cuidados-cabelo-pintado-andreia/82294-shampoo-neutralizante-300ml-andreia-profissional-5603927882282.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/129878-thickbox_default/shampoo-neutralizante-300ml-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927882299",
+      "name": "Andreia Professional Dual Neutralizer Champô 1000ml",
+      "price": 21.4,
+      "net_price": 17.41,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/cuidados-cabelo-pintado-andreia/82295-shampoo-neutralizante-1000ml-andreia-profissional-5603927882299.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129872-thickbox_default/shampoo-neutralizante-1000ml-andreia-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -14762,19 +15113,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927887386",
-      "name": "Batom Líquido Andreia  Profissional 17  KISS PROOF Surprising",
-      "price": 6.45,
-      "net_price": 5.25,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/batom-andreia/84852-batom-liquido-andreia-profissional-kiss-proof-17-surprising-5603927887386.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139132-thickbox_default/batom-liquido-andreia-profissional-kiss-proof-17-surprising.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927887676",
       "name": "Top Coat  All in One Cotton Candy 02 Andreia Profissional Milky Pink 10.5ml",
       "price": 8.12,
@@ -14797,19 +15135,6 @@
       "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/84868-top-coat-all-in-one-cotton-candy-01-andreia-profissional-milky-white-105ml-5603927887669.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/139117-thickbox_default/top-coat-all-in-one-cotton-candy-01-andreia-profissional-milky-white-105ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927887645",
-      "name": "Top Coat  All in One Galatic 01 Andreia Profissional Stardust Glitter 10.5ml",
-      "price": 7.68,
-      "net_price": 6.25,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/84869-top-coat-all-in-one-galatic-01-andreia-profissional-stardust-glitter-105ml-5603927887645.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139115-thickbox_default/top-coat-all-in-one-galatic-01-andreia-profissional-stardust-glitter-105ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -14918,19 +15243,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927886242",
-      "name": "True Pure Gel Polish Andreia 0% Plastic T01 10.5ml",
-      "price": 7.44,
-      "net_price": 6.05,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84992-true-pure-gel-polish-andreia-0-plastic-t01-5603927886242.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139454-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t01.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927886259",
       "name": "True Pure Gel Polish Andreia 0% Plastic T02 10.5ml",
       "price": 7.44,
@@ -14944,32 +15256,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927886266",
-      "name": "True Pure Gel Polish Andreia 0% Plastic T03 10.5ml",
-      "price": 7.44,
-      "net_price": 6.05,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84994-true-pure-gel-polish-andreia-0-plastic-t03-5603927886266.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139462-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t03.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927886280",
-      "name": "True Pure Gel Polish Andreia 0% Plastic T05 10.5ml",
-      "price": 7.44,
-      "net_price": 6.05,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84996-true-pure-gel-polish-andreia-0-plastic-t05-5603927886280.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139470-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t05.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927886297",
       "name": "True Pure Gel Polish Andreia 0% Plastic T06 10.5ml",
       "price": 7.44,
@@ -14979,19 +15265,6 @@
       "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84997-true-pure-gel-polish-andreia-0-plastic-t06-5603927886297.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/139474-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t06.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927886303",
-      "name": "True Pure Gel Polish Andreia 0% Plastic T07 10.5ml",
-      "price": 7.44,
-      "net_price": 6.05,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84998-true-pure-gel-polish-andreia-0-plastic-t07-5603927886303.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139478-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t07.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -15100,19 +15373,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927886525",
-      "name": "True Pure Gel Polish Andreia 0% Plastic T29 10.5ml",
-      "price": 7.44,
-      "net_price": 6.05,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85020-true-pure-gel-polish-andreia-0-plastic-t29-5603927886525.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139567-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t29.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927886532",
       "name": "True Pure Gel Polish Andreia 0% Plastic T30 10.5ml",
       "price": 7.44,
@@ -15148,19 +15408,6 @@
       "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85029-true-pure-gel-polish-andreia-0-plastic-t38-5603927886617.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/139603-thickbox_default/true-pure-gel-polish-andreia-0-plastic-t38.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927886228",
-      "name": "True Pure Gel Polish Andreia 0% Plastic Base Coat 10.5ml",
-      "price": 8.71,
-      "net_price": 7.08,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85038-true-pure-gel-polish-andreia-0-plastic-base-coat-5603927886228.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139638-thickbox_default/true-pure-gel-polish-andreia-0-plastic-base-coat.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -15477,6 +15724,45 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927888871",
+      "name": "Andreia Hard Gel 2 IN 1 Pink Alta Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/85503-andreia-hard-gel-2-in-1-pink-alta-viscosidade-22gr-5603927888871.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/141082-thickbox_default/andreia-hard-gel-2-in-1-pink-alta-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927888857",
+      "name": "Andreia Hard Gel 2 IN 1 Nude Alta Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/85504-andreia-hard-gel-2-in-1-nude-alta-viscosidade-22gr-5603927888857.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/141084-thickbox_default/andreia-hard-gel-2-in-1-nude-alta-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927888925",
+      "name": "Andreia Hard Gel 2 IN 1 Peach Alta Viscosidade 22gr",
+      "price": 10.68,
+      "net_price": 8.69,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-construcao-andreia/85505-andreia-hard-gel-2-in-1-peach-alta-viscosidade-22gr-5603927888925.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/141086-thickbox_default/andreia-hard-gel-2-in-1-peach-alta-viscosidade-22gr.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927888932",
       "name": "Andreia Hard Gel 2 IN 1 Peach Alta Viscosidade 44gr",
       "price": 17.21,
@@ -15672,6 +15958,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "027131043294",
+      "name": "Eau de Parfum Estée Lauder Pleasures 50ml",
+      "price": 32.18,
+      "net_price": 26.17,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/perfumes-mulher/85670-eau-de-parfum-estee-lauder-pleasures-50ml-027131043294.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/141573-thickbox_default/eau-de-parfum-estee-lauder-pleasures-50ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3137370207016",
       "name": "Eau de Toilette Nina Ricci L'AIR du TEMPS 100ml",
       "price": 54.02,
@@ -15707,6 +16006,19 @@
       "url": "https://presencadeluxo.pt/perfumes/85681-eau-de-toilette-azzaro-wanted-girl-tonic-80ml-3351500017485.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/141644-thickbox_default/eau-de-toilette-azzaro-wanted-girl-tonic-80ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3423222080952",
+      "name": "Eau de Parfum Narciso Rodriguez All of Me 50ml",
+      "price": 78.54,
+      "net_price": 63.86,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/perfumes-mulher/85689-eau-de-parfum-narciso-rodriguez-all-of-me-50ml-3423222080952.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/141673-thickbox_default/eau-de-parfum-narciso-rodriguez-all-of-me-50ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -15915,6 +16227,19 @@
       "url": "https://presencadeluxo.pt/creme-de-olhos/86506-creme-contorno-de-olhos-babaria-aloe-15ml-8410412026253.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/143846-thickbox_default/creme-contorno-de-olhos-babaria-aloe-15ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483266364",
+      "name": "Shampoo Kaypro Kayproxil Tratamento Anti-Queda 1000ml",
+      "price": 14.47,
+      "net_price": 11.77,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kayproxil/86540-shampoo-kaypro-kayproxil-tratamento-anti-queda-1000ml-8028483266364.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/143936-thickbox_default/shampoo-kaypro-kayproxil-tratamento-anti-queda-1000ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -16569,6 +16894,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474637217907",
+      "name": "Máscara L'Oreal Absolut Repair Molecular 500ml",
+      "price": 33.32,
+      "net_price": 27.09,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/l-oreal-absolut-repair-molecular/89048-mascara-l-oreal-absolut-repair-molecular-500ml-3474637217907.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/149283-thickbox_default/mascara-l-oreal-absolut-repair-molecular-500ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474637332440",
       "name": "Shampoo Revitalizante Kerastase Chronologiste 250 ml",
       "price": 34.92,
@@ -16894,6 +17232,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474637090715",
+      "name": "Shampoo Hidratante Kerastase Chroma Absolu Bain Respect 500ml",
+      "price": 54.9,
+      "net_price": 44.64,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/chroma-absolu/89581-shampoo-hidratante-kerastase-chroma-absolu-bain-respect-500ml-3474637090715.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152672-thickbox_default/shampoo-hidratante-kerastase-chroma-absolu-bain-respect-500ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474637077525",
       "name": "Shampoo Fortificante Diário Kerastase Genesis Homem 250 ml",
       "price": 30.57,
@@ -17193,6 +17544,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474636612666",
+      "name": "Shampoo Kérastase Resistance Extentioniste 250 ml",
+      "price": 30.57,
+      "net_price": 24.85,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/resistance/89649-shampoo-kerastase-resistance-extentioniste-250-ml-3474636612666.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152625-thickbox_default/shampoo-kerastase-resistance-extentioniste-250-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474636612680",
       "name": "Shampoo Fortalecedor Kérastase Résistance Extentioniste 500 ml",
       "price": 54.9,
@@ -17475,6 +17839,19 @@
       "url": "https://presencadeluxo.pt/kerastase/89708-shampoo-kerastase-densifique-bain-densite-250-ml-3474636403912.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/152658-thickbox_default/shampoo-kerastase-densifique-bain-densite-250-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474636612475",
+      "name": "Shampoo Kérastase Densifique Densidade 500 ml",
+      "price": 54.9,
+      "net_price": 44.64,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kerastase/89709-shampoo-kerastase-densifique-densidade-500-ml-3474636612475.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152656-thickbox_default/shampoo-kerastase-densifique-densidade-500-ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -19338,6 +19715,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "7898449221307",
+      "name": "Gel de Barbear Johnnie Black 180ml",
+      "price": 15.87,
+      "net_price": 12.9,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91279-gel-de-barbear-johnnie-black-180ml-7898449221307.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/155104-thickbox_default/gel-de-barbear-johnnie-black-180ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "7898449221314",
       "name": "Gel de Barbear Johnnie Black 500ml",
       "price": 21.83,
@@ -21070,6 +21460,70 @@
       "reason": "stock/order contradiction"
     },
     {
+      "url": "https://presencadeluxo.pt/batom-andreia/84852-batom-liquido-andreia-profissional-kiss-proof-17-surprising-5603927887386.html",
+      "ean": "5603927887386",
+      "canonical": "5603927887386",
+      "existing_name": "Batom Líquido Mate No Transfer Kiss Proof Andreia - 17 Surprising (Bronze)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/complementos-para-unhas-andreia/84869-top-coat-all-in-one-galatic-01-andreia-profissional-stardust-glitter-105ml-5603927887645.html",
+      "ean": "5603927887645",
+      "canonical": "5603927887645",
+      "existing_name": "All In One Andreia Top Coat Galactic 01 - Stardust (pequenos brilhos holográficos)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84992-true-pure-gel-polish-andreia-0-plastic-t01-5603927886242.html",
+      "ean": "5603927886242",
+      "canonical": "5603927886242",
+      "existing_name": "The Gel Polish Andreia True Pure T01 - White (Branco Puro)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84994-true-pure-gel-polish-andreia-0-plastic-t03-5603927886266.html",
+      "ean": "5603927886266",
+      "canonical": "5603927886266",
+      "existing_name": "The Gel Polish Andreia True Pure T03 (Branco com Glitter)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84996-true-pure-gel-polish-andreia-0-plastic-t05-5603927886280.html",
+      "ean": "5603927886280",
+      "canonical": "5603927886280",
+      "existing_name": "The Gel Polish Andreia True Pure T05 - Milky Nude (Nude Leitoso)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/84998-true-pure-gel-polish-andreia-0-plastic-t07-5603927886303.html",
+      "ean": "5603927886303",
+      "canonical": "5603927886303",
+      "existing_name": "The Gel Polish Andreia True Pure T07 (Rosa Bébe)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85020-true-pure-gel-polish-andreia-0-plastic-t29-5603927886525.html",
+      "ean": "5603927886525",
+      "canonical": "5603927886525",
+      "existing_name": "The Gel Polish Andreia True Pure T29 (Nude Rosa)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85038-true-pure-gel-polish-andreia-0-plastic-base-coat-5603927886228.html",
+      "ean": "5603927886228",
+      "canonical": "5603927886228",
+      "existing_name": "The Gel Polish Andreia True Pure - Base",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/shampoo-homem/85138-shampoo-iceberg-jhonnie-black-500ml-7898449221352.html",
       "ean": "7898449221352",
       "canonical": "7898449221352",
@@ -21104,9 +21558,9 @@
     {
       "url": "https://presencadeluxo.pt/perfumes-mulher/85651-eau-de-parfum-clinique-happy-100ml-020714156893.html",
       "ean": "020714156893",
-      "canonical": "0020714156893",
-      "existing_name": "HAPPY eau de parfum vaporisateur 100 ml",
-      "method": "documented alias/UPC",
+      "canonical": "020714156893",
+      "existing_name": "CLINIQUE HAPPY PARFUME SPRAY 100ml - Perfumes4You - O mundo dos perfumes à sua porta",
+      "method": "GTIN",
       "reason": "visible product data disagree with schema"
     },
     {
@@ -21274,6 +21728,14 @@
       "ean": "3474636636341",
       "canonical": "3474636636341",
       "existing_name": "Resistance Sérum Extentioniste",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/blond-absolu/89663-shampoo-kerastase-blond-absolu-bain-lumiere-250ml-3474636692170.html",
+      "ean": "3474636692170",
+      "canonical": "3474636692170",
+      "existing_name": "Kérastase Blond Absolu Bain Lumière 250 ml",
       "method": "GTIN",
       "reason": "stock/order contradiction"
     },
@@ -21880,6 +22342,38 @@
           "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85040-true-pure-gel-polish-andreia-0-plastic-colors-collection-5603927886235.html",
           "status": "ok",
           "image_url": "https://presencadeluxo.pt/139689-thickbox_default/true-pure-gel-polish-andreia-0-plastic-colors-collection.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        }
+      ]
+    },
+    {
+      "reason": "conflicting duplicate GTIN",
+      "ean": "7898449220850",
+      "rows": [
+        {
+          "ean": "7898449220850",
+          "name": "Espátula de Cera 130mm - Madeira",
+          "price": 1.25,
+          "net_price": 1.02,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/descartaveis-depilacao-mascaras-espatulas-rolos/8441-espatula-de-cera-130mm-madeira-7898449220850.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/137595-thickbox_default/espatula-de-cera-130mm-madeira.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        },
+        {
+          "ean": "7898449220850",
+          "name": "Creme de Barbear Jhonnie Black 180ml",
+          "price": 11.91,
+          "net_price": 9.69,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91274-copia-de-creme-de-barbear-jhonnie-black-180ml-7898449220850.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/155097-thickbox_default/copia-de-creme-de-barbear-jhonnie-black-180ml.jpg",
           "source": "explicit-visible-price-with-VAT-and-product-schema",
           "additional_shipping_cost": 0.0
         }
