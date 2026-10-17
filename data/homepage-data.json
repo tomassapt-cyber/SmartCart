@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-16T09:39:15.796Z",
-  "seed_total_products": 93654,
+  "generated_at": "2026-10-17T07:42:47.552Z",
+  "seed_total_products": 94644,
   "hero_sponsored": [
     {
       "ean": "8429420158399",
@@ -27,7 +27,7 @@
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 15.3,
+      "best_price": 17.93,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
@@ -37,7 +37,7 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 8.86,
+      "best_price": 10.25,
       "best_store": "Pharma24",
       "best_store_slug": "pharma24",
       "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
@@ -147,14 +147,14 @@
       "best_url": "https://www.farmacia365.pt/neutrogena-corpo-deep-moisture-duo-locao-corporal-750ml-400ml-com-desconto-de-25"
     },
     {
-      "ean": "3522930006343",
-      "name": "Caudalie Vinoperfect Sérum + Espuma Micro-Peeling Pack",
-      "brand": "Caudalie",
-      "image_url": "https://1630763059.rsc.cdn77.org/temp/1787652226_307f07976e1711a5b65506faaeaa7296.jpg",
-      "best_price": 41.18,
-      "best_store": "Farmacentral",
-      "best_store_slug": "farmacentral",
-      "best_url": "https://farmacentral.pt/pt/artigo/caudalie-vinoperf-ser-eclat30ofmouss50"
+      "ean": "8431567752002",
+      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
+      "best_price": 37.25,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-suractivated-serum-coffret-natal-2026"
     }
   ],
   "em_alta": [
@@ -170,21 +170,6 @@
       "previous_price": 4.28,
       "discount_pct": 44,
       "dropped_day": 20740,
-      "verified_live": true
-    },
-    {
-      "ean": "8436616950187",
-      "name": "Rose Quartz Facial Cleanser",
-      "brand": "Freshly Cosmetics",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw98da7664/images/wells/820/8207032-ROSTO-ROSE-QUARTZ-FACIAL-CLEANSER-FRESHLY-COSMETICS-P-01.jpg",
-      "best_price": 13.96,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/rose-quartz-facial-cleanser-352576.html",
-      "volume_ml": 200,
-      "previous_price": 24.46,
-      "discount_pct": 43,
-      "dropped_day": 20742,
       "verified_live": true
     },
     {
@@ -229,6 +214,21 @@
       "discount_pct": 33,
       "dropped_day": 20740,
       "verified_live": true
+    },
+    {
+      "ean": "3337875905480",
+      "name": "La Roche Posay Lipikar Gel de Banho 1 Litro",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/l/a/larocheposay_lipikargellavante1l.jpg",
+      "best_price": 10.5,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/la-roche-posay-lipikar-gel-lavante-750ml",
+      "volume_ml": 750,
+      "previous_price": 14.54,
+      "discount_pct": 28,
+      "dropped_day": 20740,
+      "verified_live": true
     }
   ],
   "top_brands": [
@@ -238,11 +238,11 @@
     },
     {
       "name": "Avène",
-      "products": 853
+      "products": 856
     },
     {
       "name": "Isdin",
-      "products": 832
+      "products": 835
     },
     {
       "name": "L'Oréal Paris",
@@ -250,19 +250,19 @@
     },
     {
       "name": "Nivea",
-      "products": 802
+      "products": 805
     },
     {
       "name": "La Roche-Posay",
-      "products": 791
+      "products": 798
     },
     {
       "name": "Eucerin",
-      "products": 757
+      "products": 760
     },
     {
       "name": "Chicco",
-      "products": 728
+      "products": 734
     }
   ],
   "telegram_alerts": [
@@ -296,8 +296,8 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 76283,
-    "avg_savings_pct": 29
+    "products": 77164,
+    "avg_savings_pct": 28
   },
   "shard_version": "",
   "idx_version": "",
