@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-18T14:39:59.471331+00:00",
-  "completed_at": "2026-10-18T16:19:27.711242+00:00",
+  "scraped_at": "2026-10-18T21:34:55.617937+00:00",
+  "completed_at": "2026-10-18T23:26:14.998897+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -293,19 +293,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474637281786",
-      "name": "L'Oréal Majirel 5.3 Castanho Claro Dourado - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/majirel-loreal/746-majirel-53-castanho-claro-dourado-50ml-loreal-profissional-lim-3474637281786.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156522-thickbox_default/majirel-53-castanho-claro-dourado-50ml-loreal-profissional-lim.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474637280406",
       "name": "L'Oréal Majirel 5.32 Castanho Claro Dourado Irisado 60ml",
       "price": 12.08,
@@ -328,19 +315,6 @@
       "url": "https://presencadeluxo.pt/majirel-loreal/754-majirel-54-castanho-claro-acobreado-50ml-loreal-profissional-lim-3474637281298.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156523-thickbox_default/majirel-54-castanho-claro-acobreado-50ml-loreal-profissional-lim.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637284572",
-      "name": "L'Oréal Majirel 5.5 Castanho Claro Mogno - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/majirel-loreal/756-majirel-55-castanho-claro-acajou-50ml-loreal-profissional-3474637284572.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156524-thickbox_default/majirel-55-castanho-claro-acajou-50ml-loreal-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -436,32 +410,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474637280383",
-      "name": "L'Oréal Majirel 7.31 Louro Dourado Cinza 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/majirel-loreal/779-majirel-731-louro-beige-dourado-50ml-loreal-profissional-3474637280383.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156546-thickbox_default/majirel-731-louro-beige-dourado-50ml-loreal-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637281823",
-      "name": "L'Oréal Majirel 7.35 Louro Dourado Mogno 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/majirel-loreal/781-majirel-735-louro-dourado-acajou-50ml-loreal-profissional-3474637281823.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156547-thickbox_default/majirel-735-louro-dourado-acajou-50ml-loreal-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474637281328",
       "name": "L'Oréal Majirel 7.43 Louro Acobreado Dourado 60ml",
       "price": 12.08,
@@ -549,19 +497,6 @@
       "url": "https://presencadeluxo.pt/majirel-loreal/840-majirouge-666-vermelhos-acajous-50ml-loreal-profissional-lim-3474637284626.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156583-thickbox_default/majirouge-666-vermelhos-acajous-50ml-loreal-profissional-lim.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637281304",
-      "name": "L'Oréal Majirel 7.40 Louro Cobre Intenso - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/majirel-loreal/844-majirouge-740-acobreados-50ml-loreal-profissional--3474637281304.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156587-thickbox_default/majirouge-740-acobreados-50ml-loreal-profissional-.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -722,19 +657,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474637129507",
-      "name": "L'Oréal iNOA 7.34 Louro Dourado Acobreado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inoa-loreal/901-inoa-734-louro-dourado-acobreado-60g-loreal-professional-lim-3474637129507.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156436-thickbox_default/inoa-734-louro-dourado-acobreado-60g-loreal-professional-lim.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474637129200",
       "name": "L'Oréal iNOA 6.34 Louro Escuro Dourado Acobreado Sem Amoníaco 60ml",
       "price": 13.91,
@@ -757,32 +679,6 @@
       "url": "https://presencadeluxo.pt/inoa-loreal/903-inoa-735-louro-dourado-acajou-60g-loreal-profissional-lim-3474637129651.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156434-thickbox_default/inoa-735-louro-dourado-acajou-60g-loreal-profissional-lim.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637129309",
-      "name": "L'Oréal iNOA 5.35 Castanho Claro Dourado Acaju Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inoa-loreal/904-inoa-535-marrons-beiges-quentes-60g-loreal-profissional-lim-3474637129309.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156433-thickbox_default/inoa-535-marrons-beiges-quentes-60g-loreal-profissional-lim.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637131296",
-      "name": "L'Oréal iNOA 1 Preto Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inoa-loreal/907-inoa-1-fundamentais-preto-60g-l-oreal-profissional--3474637131296.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156431-thickbox_default/inoa-1-fundamentais-preto-60g-l-oreal-profissional-.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -839,19 +735,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474637134365",
-      "name": "L'Oréal iNOA 7 Louro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inoa-loreal/913-inoa-7-fundamentais-louro-60g-loreal-profissional-3474637134365.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156425-thickbox_default/inoa-7-fundamentais-louro-60g-loreal-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474637134464",
       "name": "L'Oréal iNOA 8 Louro Claro Natural Sem Amoníaco 60ml",
       "price": 13.91,
@@ -874,19 +757,6 @@
       "url": "https://presencadeluxo.pt/inoa-loreal/915-inoa-9-fundamentais-louro-claro-60g-l-oreal-profissional-3474637134563.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156423-thickbox_default/inoa-9-fundamentais-louro-claro-60g-l-oreal-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637130435",
-      "name": "L'Oréal iNOA 5.12 Castanho Claro Cinza Irisado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inoa-loreal/917-inoa-512-marronsbeiges-frios-60ml-3474637130435.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156421-thickbox_default/inoa-512-marronsbeiges-frios-60ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -1017,19 +887,6 @@
       "url": "https://presencadeluxo.pt/inoa-loreal/943-inoa-91-cendree-60g-loreal-profissional-lim-3474637130282.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156408-thickbox_default/inoa-91-cendree-60g-loreal-profissional-lim.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637130183",
-      "name": "L'Oréal iNOA 8.1 Louro Claro Cinza Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inoa-loreal/944-inoa-81-cendree-60g-loreal-profissional-lim-3474637130183.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/156407-thickbox_default/inoa-81-cendree-60g-loreal-profissional-lim.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -1212,19 +1069,6 @@
       "url": "https://presencadeluxo.pt/bc-volume-boost-schwarzkopf/1174-shampoo-cabelo-fino-volume-boost-bonacure-1000ml-schwarzkopf-4045787724851.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/130297-thickbox_default/shampoo-cabelo-fino-volume-boost-bonacure-1000ml-schwarzkopf.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "4045787999570",
-      "name": "Schwarzkopf OSIS+ Flatliner Serum para Ferro 200ml - Proteção Térmica e Controle do Frizz",
-      "price": 17.94,
-      "net_price": 14.59,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/osis/1331-spray-serum-termoprotetor-flatliner-osis-200ml-schwarzkopf-4045787999570.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/143004-thickbox_default/spray-serum-termoprotetor-flatliner-osis-200ml-schwarzkopf.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -1450,19 +1294,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "8432225137001",
-      "name": "Condicionador Hydro Nutritivo 500ml Equave Revlon",
-      "price": 26.03,
-      "net_price": 21.16,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/revlon-equave/1510-condicionador-hydro-nutritivo-500ml-equave-revlon-8432225137001.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/130072-thickbox_default/condicionador-hydro-nutritivo-500ml-equave-revlon.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "8432225113319",
       "name": "Condicionador Kids 200ml Equave Revlon",
       "price": 17.66,
@@ -1515,19 +1346,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600462906190",
-      "name": "Verniz andreia 14ml nº 46",
-      "price": 2.38,
-      "net_price": 1.94,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1928-verniz-andreia-14ml-n-46-5600462906190.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/31848-thickbox_default/verniz-andreia-14ml-n-46.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600462905971",
       "name": "Verniz andreia 14ml nº 23",
       "price": 2.38,
@@ -1576,19 +1394,6 @@
       "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1966-verniz-andreia-14ml-n-8-5600462905650.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/31801-thickbox_default/verniz-andreia-14ml-n-8.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5600462905612",
-      "name": "Verniz andreia 14ml nº 2",
-      "price": 2.38,
-      "net_price": 1.94,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1972-verniz-andreia-14ml-n-2-5600462905612.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/31795-thickbox_default/verniz-andreia-14ml-n-2.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -1658,19 +1463,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "8436007230300",
-      "name": "Escova 28mm Termix",
-      "price": 13.28,
-      "net_price": 10.8,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/escovas-termix/3222-escova-28mm-termix-8436007230300.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/96319-thickbox_default/escova-28mm-termix.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "8436007230249",
       "name": "Escova 32mm - Termix",
       "price": 13.78,
@@ -1706,19 +1498,6 @@
       "url": "https://presencadeluxo.pt/escovas-termix/3225-escova-43mm-termix-8436007230270.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/96316-thickbox_default/escova-43mm-termix.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "4064666585260",
-      "name": "Shampoo Couro Cabeludo Sensível Invigo Balance 1000ml - Wella",
-      "price": 29.32,
-      "net_price": 23.84,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/wella-balance/3592-shampoo-couro-cabeludo-sensivel-invigo-balance-1000ml-wella-4064666585260.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/145890-thickbox_default/shampoo-couro-cabeludo-sensivel-invigo-balance-1000ml-wella.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -1788,19 +1567,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "4064666585550",
-      "name": "Condicionador Nutritivo Invigo Nutri Enrich 200ml - Wella",
-      "price": 17.02,
-      "net_price": 13.84,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/wella-nutri-enrich/3615-condicionador-nutritivo-invigo-nutri-enrich-200ml-wella-4064666585550.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/126507-thickbox_default/condicionador-nutritivo-invigo-nutri-enrich-200ml-wella.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "4064666585673",
       "name": "Máscara Nutritiva Invigo Nutri Enrich 500ml - Wella",
       "price": 33.46,
@@ -1849,19 +1615,6 @@
       "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/4472-verniz-andreia-14ml-n-119-5600462905803.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/31924-thickbox_default/verniz-andreia-14ml-n-119.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7702018007257",
-      "name": "Lâminas de Barbear 100 unid. - Astra",
-      "price": 10.44,
-      "net_price": 8.49,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/lamina-para-navalha/4493-laminas-de-barbear-100-unid-astra-7702018007257.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/122783-thickbox_default/laminas-de-barbear-100-unid-astra.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -1957,19 +1710,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "4045787723595",
-      "name": "Condicionador Tratamento de Cor Color Freeze Bonacure 200ml - Schwarzkopf",
-      "price": 17.12,
-      "net_price": 13.92,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/bc-color-freeze-schwarzkopf/4759-condicionador-tratamento-de-cor-color-freeze-bonacure-200ml-schwarzkopf-4045787723595.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/130447-thickbox_default/condicionador-tratamento-de-cor-color-freeze-bonacure-200ml-schwarzkopf.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "4045787723052",
       "name": "Schwarzkopf Bonacure Repair Rescue Spray Condicionador 200ml – Desembaraço Instantâneo e Reparação",
       "price": 17.12,
@@ -2035,45 +1775,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "8432225127866",
-      "name": "Orofluido Shampoo 240ml Revlon",
-      "price": 20.65,
-      "net_price": 16.79,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/orofluido/4980-orofluido-shampoo-240ml-revlon-8432225127866.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/151926-thickbox_default/orofluido-shampoo-240ml-revlon.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "8432225127897",
-      "name": "Orofluido Condicionador 1000ml Revlon",
-      "price": 38.77,
-      "net_price": 31.52,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/orofluido/4982-orofluido-condicionador-1000ml-revlon-8432225127897.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/130066-thickbox_default/orofluido-condicionador-1000ml-revlon.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "8432225127910",
-      "name": "Orofluido Máscara 500ml Revlon",
-      "price": 41.08,
-      "net_price": 33.4,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/orofluido/4983-orofluido-mascara-500ml-revlon-8432225127910.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/130079-thickbox_default/orofluido-mascara-500ml-revlon.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "8432225127903",
       "name": "Orofluido Máscara 250ml Revlon",
       "price": 20.15,
@@ -2109,97 +1810,6 @@
       "url": "https://presencadeluxo.pt/ondulacao-loreal/5002-dulcia-advanced-2-75ml-loreal-profissional-3474630355323.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/107035-thickbox_default/dulcia-advanced-2-75ml-loreal-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "9003877057109",
-      "name": "Colorante 15ml - Preto nº1 - Refecto Cil",
-      "price": 12.04,
-      "net_price": 9.79,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5113-colorante-15ml-preto-n1-refecto-cil-9003877057109.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/126889-thickbox_default/colorante-15ml-preto-n1-refecto-cil.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "9003877057307",
-      "name": "Colorante 15ml - Castanho Natural nº3 - Refecto Cil",
-      "price": 12.04,
-      "net_price": 9.79,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5115-colorante-15ml-castanho-natural-n3-refecto-cil-9003877057307.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/138295-thickbox_default/colorante-15ml-castanho-natural-n3-refecto-cil.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "9003877057116",
-      "name": "Colorante 15ml - Grafite nº1.1 - Refecto Cil",
-      "price": 12.04,
-      "net_price": 9.79,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5117-colorante-15ml-grafite-n11-refecto-cil-9003877057116.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/138293-thickbox_default/colorante-15ml-grafite-n11-refecto-cil.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "9003877057208",
-      "name": "Colorante 15ml - Preto Azul nº2 - Refecto Cil",
-      "price": 12.04,
-      "net_price": 9.79,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5118-colorante-15ml-preto-azul-n2-refecto-cil-9003877057208.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/127573-thickbox_default/colorante-15ml-preto-azul-n2-refecto-cil.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "9003877057314",
-      "name": "Colorante 15ml - Castanho Claro nº3.1 - Refecto Cil",
-      "price": 12.04,
-      "net_price": 9.79,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5119-colorante-15ml-castanho-claro-n31-refecto-cil--9003877057314.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/138291-thickbox_default/colorante-15ml-castanho-claro-n31-refecto-cil-.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "9003877901181",
-      "name": "Oxidante Creme 100ml - 10vol - Refecto Cil",
-      "price": 12.25,
-      "net_price": 9.96,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5122-oxidante-creme-100ml-10vol-refecto-cil-9003877901181.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/138288-thickbox_default/oxidante-creme-100ml-10vol-refecto-cil.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "9003877901143",
-      "name": "Tira Resíduos Coloração 100ml - Refecto Cil",
-      "price": 23.64,
-      "net_price": 19.22,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5133-tira-residuos-coloracao-100ml-refecto-cil-9003877901143.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/138730-thickbox_default/tira-residuos-coloracao-100ml-refecto-cil.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2386,6 +1996,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600462908873",
+      "name": "Verniz Gel Andreia 201",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6684-verniz-gel-andreia-201-5600462908873.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108620-thickbox_default/verniz-gel-andreia-201.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600462908897",
       "name": "Verniz Gel Andreia 202",
       "price": 6.38,
@@ -2412,6 +2035,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600462908958",
+      "name": "Verniz Gel Andreia 205",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6692-verniz-gel-andreia-205-5600462908958.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108610-thickbox_default/verniz-gel-andreia-205.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600462908972",
       "name": "Verniz Gel Andreia 206",
       "price": 6.38,
@@ -2434,6 +2070,32 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/6695-verniz-gel-andreia-208-5600462909016.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108603-thickbox_default/verniz-gel-andreia-208.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909030",
+      "name": "Verniz Gel Andreia 209",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6696-verniz-gel-andreia-209-5600462909030.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108600-thickbox_default/verniz-gel-andreia-209.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909054",
+      "name": "Verniz Gel Andreia 210",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6697-verniz-gel-andreia-210-5600462909054.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108593-thickbox_default/verniz-gel-andreia-210.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2555,6 +2217,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600462909313",
+      "name": "Verniz Gel Andreia 221",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6835-verniz-gel-andreia-221-5600462909313.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108574-thickbox_default/verniz-gel-andreia-221.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600462909559",
       "name": "Verniz Gel Andreia 223",
       "price": 6.38,
@@ -2594,6 +2269,97 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600462909610",
+      "name": "Verniz Gel Andreia 227",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6841-verniz-gel-andreia-227-5600462909610.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108528-thickbox_default/verniz-gel-andreia-227.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909634",
+      "name": "Verniz Gel Andreia 228",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6842-verniz-gel-andreia-228-5600462909634.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108570-thickbox_default/verniz-gel-andreia-228.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909658",
+      "name": "Verniz Gel Andreia 229",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6843-verniz-gel-andreia-229-5600462909658.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108568-thickbox_default/verniz-gel-andreia-229.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909375",
+      "name": "Verniz Gel Andreia 230",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6844-verniz-gel-andreia-230-5600462909375.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108566-thickbox_default/verniz-gel-andreia-230.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909399",
+      "name": "Verniz Gel Andreia 231",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6845-verniz-gel-andreia-231-5600462909399.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108564-thickbox_default/verniz-gel-andreia-231.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909412",
+      "name": "Verniz Gel Andreia 232",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6846-verniz-gel-andreia-232-5600462909412.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108522-thickbox_default/verniz-gel-andreia-232.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462909535",
+      "name": "Verniz Gel Andreia 236",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6850-verniz-gel-andreia-236-5600462909535.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108520-thickbox_default/verniz-gel-andreia-236.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600462909511",
       "name": "Verniz Gel Andreia 239",
       "price": 6.38,
@@ -2603,6 +2369,32 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/6853-verniz-gel-andreia-239-5600462909511.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108516-thickbox_default/verniz-gel-andreia-239.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462911316",
+      "name": "Verniz Gel Andreia 240 (Preto)",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6988-verniz-gel-andreia-240-preto-5600462911316.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108514-thickbox_default/verniz-gel-andreia-240-preto.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462911415",
+      "name": "Verniz Gel Andreia 244",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/6992-verniz-gel-andreia-244-5600462911415.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108510-thickbox_default/verniz-gel-andreia-244.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2659,6 +2451,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600462989803",
+      "name": "Verniz Gel Andreia 254",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/7710-verniz-gel-andreia-254-5600462989803.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108496-thickbox_default/verniz-gel-andreia-254.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600462989841",
       "name": "Verniz Gel Andreia 255",
       "price": 6.38,
@@ -2668,6 +2473,19 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/8547-verniz-gel-andreia-255-5600462989841.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108495-thickbox_default/verniz-gel-andreia-255.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462990564",
+      "name": "Verniz Gel Andreia 257",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8549-verniz-gel-andreia-257-5600462990564.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108491-thickbox_default/verniz-gel-andreia-257.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2698,6 +2516,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600462990700",
+      "name": "Verniz Gel Andreia 261",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8587-verniz-gel-andreia-261-5600462990700.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108485-thickbox_default/verniz-gel-andreia-261.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600462991820",
       "name": "Verniz Gel Andreia 263 NEON",
       "price": 6.38,
@@ -2707,6 +2538,45 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/8779-verniz-gel-andreia-263-neon-5600462991820.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108481-thickbox_default/verniz-gel-andreia-263-neon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462991844",
+      "name": "Verniz Gel Andreia 264 NEON",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8780-verniz-gel-andreia-264-neon-5600462991844.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108479-thickbox_default/verniz-gel-andreia-264-neon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462991868",
+      "name": "Verniz Gel Andreia 265 NEON",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8781-verniz-gel-andreia-265-neon-5600462991868.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108477-thickbox_default/verniz-gel-andreia-265-neon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600462991882",
+      "name": "Verniz Gel Andreia 266",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/8782-verniz-gel-andreia-266-5600462991882.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/108475-thickbox_default/verniz-gel-andreia-266.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10355,6 +10225,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8423029011185",
+      "name": "Borrachas Reviradoras de Pestanas Titania",
+      "price": 0.45,
+      "net_price": 0.37,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/maquilhagem-titania-outlet/71808-borrachas-reviradoras-de-pestanas-titania-desc-8423029011185.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/92972-thickbox_default/borrachas-reviradoras-de-pestanas-titania-desc.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474636975426",
       "name": "Máscara Reparação e Brilho - Blondifier 500ml L'Oreal Serie Expert",
       "price": 28.17,
@@ -11993,6 +11876,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474637128302",
+      "name": "L'Oréal iNOA 9.13 Louro Muito Claro Cinza Dourado Sem Amoníaco 60ml",
+      "price": 13.91,
+      "net_price": 11.31,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/inoa-loreal/78969-inoa-913-louro-muito-claro-cinza-dourado-60g-l-oreal-profissional--3474637128302.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/156389-thickbox_default/inoa-913-louro-muito-claro-cinza-dourado-60g-l-oreal-profissional-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474637128913",
       "name": "L'Oréal iNOA 5.5 Castanho Claro Acajou Sem Amoníaco 60ml",
       "price": 13.91,
@@ -13228,6 +13124,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927883289",
+      "name": "Andreia Professional Developer Cream Power Blonde 30 VOL. 9% 1000ml",
+      "price": 5.9,
+      "net_price": 4.8,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82277-oxidante-cabelo-developer-power-blond-30vol-9-1l-andreia-profissional-5603927883289.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129848-thickbox_default/oxidante-cabelo-developer-power-blond-30vol-9-1l-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927883296",
       "name": "Andreia Professional Developer Cream Power Blonde 40 VOL. 12% 1000ml",
       "price": 5.9,
@@ -13302,6 +13211,19 @@
       "url": "https://presencadeluxo.pt/descolorantes-andreia/82283-oxidante-cabelo-developer-cream-5volumes-15-150ml-andreia-profissional-5603927883913.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/129854-thickbox_default/oxidante-cabelo-developer-cream-5volumes-15-150ml-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927882312",
+      "name": "Andreia Developer Cream 10 Vol. 3% Oxidante Creme 1000ml",
+      "price": 4.43,
+      "net_price": 3.6,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/descolorantes-andreia/82284-oxidante-cabelo-developer-10-vol-3-1l-andreia-profissional-5603927882312.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129855-thickbox_default/oxidante-cabelo-developer-10-vol-3-1l-andreia-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -20578,6 +20500,94 @@
       "reason": "ambiguous/missing Product schema"
     },
     {
+      "url": "https://presencadeluxo.pt/majirel-loreal/746-majirel-53-castanho-claro-dourado-50ml-loreal-profissional-lim-3474637281786.html",
+      "ean": "3474637281786",
+      "canonical": "3474637281786",
+      "existing_name": "L'Oréal Professionnel Majirel Coloração Permanente 5.3 Castanho Claro Dourado 60ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/majirel-loreal/756-majirel-55-castanho-claro-acajou-50ml-loreal-profissional-3474637284572.html",
+      "ean": "3474637284572",
+      "canonical": "3474637284572",
+      "existing_name": "L'Oréal Professionnel Majirel Coloração Permanente 5.5 Mahogany Light Brown 60ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/majirel-loreal/779-majirel-731-louro-beige-dourado-50ml-loreal-profissional-3474637280383.html",
+      "ean": "3474637280383",
+      "canonical": "3474637280383",
+      "existing_name": "L'Oréal Professionnel Majirel Coloração Permanente 7.31 Louro Dourado Acinzentado 60ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/majirel-loreal/781-majirel-735-louro-dourado-acajou-50ml-loreal-profissional-3474637281823.html",
+      "ean": "3474637281823",
+      "canonical": "3474637281823",
+      "existing_name": "L'Oréal Professionnel Majirel Coloração Permanente 7.35 Louro Dourado Mogno 60ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/majirel-loreal/844-majirouge-740-acobreados-50ml-loreal-profissional--3474637281304.html",
+      "ean": "3474637281304",
+      "canonical": "3474637281304",
+      "existing_name": "L'Oréal Professionnel Majirel Coloração Permanente Rubilane 7.40 Intense Copper Blonde 60ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/inoa-loreal/901-inoa-734-louro-dourado-acobreado-60g-loreal-professional-lim-3474637129507.html",
+      "ean": "3474637129507",
+      "canonical": "3474637129507",
+      "existing_name": "L'Oréal Professionnel Inoa Coloração Permanente 7.34 Louro Cobre Dourado 60g",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/inoa-loreal/904-inoa-535-marrons-beiges-quentes-60g-loreal-profissional-lim-3474637129309.html",
+      "ean": "3474637129309",
+      "canonical": "3474637129309",
+      "existing_name": "L'Oréal Professionnel Inoa Coloração Permanente 5.35 Castanho Claro Dourado Mogno 60g",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/inoa-loreal/907-inoa-1-fundamentais-preto-60g-l-oreal-profissional--3474637131296.html",
+      "ean": "3474637131296",
+      "canonical": "3474637131296",
+      "existing_name": "L'Oréal Professionnel iNOA Coloração Permanente Sem Amoníaco 60ml - 1",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/inoa-loreal/913-inoa-7-fundamentais-louro-60g-loreal-profissional-3474637134365.html",
+      "ean": "3474637134365",
+      "canonical": "3474637134365",
+      "existing_name": "INOA coloration d&#039;oxydation sans ammoniaque 7 60 gr",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/inoa-loreal/917-inoa-512-marronsbeiges-frios-60ml-3474637130435.html",
+      "ean": "3474637130435",
+      "canonical": "3474637130435",
+      "existing_name": "L'Oréal Professionnel Inoa Coloração Permanente 5.12 Castanho Claro Cinza Irisado 60g",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/inoa-loreal/944-inoa-81-cendree-60g-loreal-profissional-lim-3474637130183.html",
+      "ean": "3474637130183",
+      "canonical": "3474637130183",
+      "existing_name": "L'Oréal Professionnel Inoa Coloração Permanente 8.1 Louro Claro Acinzentado 60g",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/oxidante-e-descolorante-loreal/1017-oxidante-inoa-10v-1000ml-loreal-3474630417762.html",
       "ean": "3474630417762",
       "canonical": "3474630417762",
@@ -20594,6 +20604,14 @@
       "reason": "unverified price/currency/URL"
     },
     {
+      "url": "https://presencadeluxo.pt/osis/1331-spray-serum-termoprotetor-flatliner-osis-200ml-schwarzkopf-4045787999570.html",
+      "ean": "4045787999570",
+      "canonical": "4045787999570",
+      "existing_name": "Schwarzkopf Osis Flatliner Protetor Térmico 200 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/natural-styling/1468-neutralizante-1000ml-schwarzkopf-4045787131048.html",
       "ean": "4045787131048",
       "canonical": "4045787131048",
@@ -20602,18 +20620,42 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/revlon-equave/1510-condicionador-hydro-nutritivo-500ml-equave-revlon-8432225137001.html",
+      "ean": "8432225137001",
+      "canonical": "8432225137001",
+      "existing_name": "Revlon Condicionador Equave Ib Hydro Detangling 500 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/revlon-equave/1513-condicionador-hydro-nutritive-200ml-equave-revlon-8432225137018.html",
       "ean": "8432225137018",
       "canonical": "8432225137018",
       "existing_name": "Revlon Equave Instant Detanglig Conditioner Hydro Nutritive 200ml",
       "method": "GTIN",
-      "reason": "visible product data disagree with schema"
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1872-verniz-andreia-14ml-n-102-5600462905728.html",
       "ean": "5600462905728",
       "canonical": "5600462905728",
       "existing_name": "Verniz Andreia n.102",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1928-verniz-andreia-14ml-n-46-5600462906190.html",
+      "ean": "5600462906190",
+      "canonical": "5600462906190",
+      "existing_name": "Andreia Verniz 46 Rosa Leitoso",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/verniz-andreia-hipoalergenico-14ml/1972-verniz-andreia-14ml-n-2-5600462905612.html",
+      "ean": "5600462905612",
+      "canonical": "5600462905612",
+      "existing_name": "Andreia Verniz 2 Nude Rosado",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
@@ -20634,6 +20676,14 @@
       "reason": "unverified price/currency/URL"
     },
     {
+      "url": "https://presencadeluxo.pt/escovas-termix/3222-escova-28mm-termix-8436007230300.html",
+      "ean": "8436007230300",
+      "canonical": "8436007230300",
+      "existing_name": "TERMIX Escovas redondas Escova redonda profissional Ø28/ 4,6 x 4,4 x 29 cm / 1 un.",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/wella-balance/3590-shampoo-purificante-cabelos-oleosos-invigo-balance-250ml-wella-invigo-aqua-pure--4064666585246.html",
       "ean": "4064666585246",
       "canonical": "4064666585246",
@@ -20650,12 +20700,44 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/wella-balance/3592-shampoo-couro-cabeludo-sensivel-invigo-balance-1000ml-wella-4064666585260.html",
+      "ean": "4064666585260",
+      "canonical": "4064666585260",
+      "existing_name": "Shampoo Wella Invigo Balance Senso Calm 1 Litro",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/wella-nutri-enrich/3615-condicionador-nutritivo-invigo-nutri-enrich-200ml-wella-4064666585550.html",
+      "ean": "4064666585550",
+      "canonical": "4064666585550",
+      "existing_name": "Wella Condicionador Invigo Nutri-Enrich 200 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/lamina-para-navalha/4493-laminas-de-barbear-100-unid-astra-7702018007257.html",
+      "ean": "7702018007257",
+      "canonical": "7702018007257",
+      "existing_name": "Astra Superior Platinum Lâminas Double Edge 100 unidades (20 × 5)",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/kay-color/4663-coloracao-210-preto-azulado-100ml-kaycolor-8028483055197.html",
       "ean": "8028483055197",
       "canonical": "8028483055197",
       "existing_name": "Kaycolor Coloração 2.10 Preto Azulado 100ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/bc-color-freeze-schwarzkopf/4759-condicionador-tratamento-de-cor-color-freeze-bonacure-200ml-schwarzkopf-4045787723595.html",
+      "ean": "4045787723595",
+      "canonical": "4045787723595",
+      "existing_name": "Color Freeze",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/kay-color/4769-coloracao-70-louro-intenso-100ml-kaycolor-8028483055159.html",
@@ -20682,12 +20764,100 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/orofluido/4980-orofluido-shampoo-240ml-revlon-8432225127866.html",
+      "ean": "8432225127866",
+      "canonical": "8432225127866",
+      "existing_name": "Orofluido",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/orofluido/4982-orofluido-condicionador-1000ml-revlon-8432225127897.html",
+      "ean": "8432225127897",
+      "canonical": "8432225127897",
+      "existing_name": "Revlon Condicionador Orofluido 1000 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/orofluido/4983-orofluido-mascara-500ml-revlon-8432225127910.html",
+      "ean": "8432225127910",
+      "canonical": "8432225127910",
+      "existing_name": "Revlon Máscara Fluida Gold 500 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5113-colorante-15ml-preto-n1-refecto-cil-9003877057109.html",
+      "ean": "9003877057109",
+      "canonical": "9003877057109",
+      "existing_name": "RefectoCil Gel Henna para Sobrancelhas e Pestanas - Black 1",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5115-colorante-15ml-castanho-natural-n3-refecto-cil-9003877057307.html",
+      "ean": "9003877057307",
+      "canonical": "9003877057307",
+      "existing_name": "EYELASH AND EYEBROW TINT 3-brown 15 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5116-colorante-15ml-castanho-n4-refecto-cil-9003877057413.html",
       "ean": "9003877057413",
       "canonical": "9003877057413",
       "existing_name": "RefectoCil Gel Henna para Sobrancelhas e Pestanas - Chestnut 4",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5117-colorante-15ml-grafite-n11-refecto-cil-9003877057116.html",
+      "ean": "9003877057116",
+      "canonical": "9003877057116",
+      "existing_name": "EYELASH AND EYEBROW TINT 1.1-graphite 15 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5118-colorante-15ml-preto-azul-n2-refecto-cil-9003877057208.html",
+      "ean": "9003877057208",
+      "canonical": "9003877057208",
+      "existing_name": "RefectoCil Gel Henna para Sobrancelhas e Pestanas - Blue Black 2",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5119-colorante-15ml-castanho-claro-n31-refecto-cil--9003877057314.html",
+      "ean": "9003877057314",
+      "canonical": "9003877057314",
+      "existing_name": "RefectoCil Gel Henna para Sobrancelhas e Pestanas - Light Brown 3.1",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5122-oxidante-creme-100ml-10vol-refecto-cil-9003877901181.html",
+      "ean": "9003877901181",
+      "canonical": "9003877901181",
+      "existing_name": "RefectoCil Creme Oxidante 3% 10 Vol. Revelador 100ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5133-tira-residuos-coloracao-100ml-refecto-cil-9003877901143.html",
+      "ean": "9003877901143",
+      "canonical": "9003877901143",
+      "existing_name": "REFECTO CIL PAINT REMOVER 150 ML",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/acessorios-de-maquilhagem/5148-revirador-de-pestanas--8423029011185.html",
+      "ean": "8423029011185",
+      "canonical": "8423029011185",
+      "existing_name": "Eurostil - Revirador De Pestanas",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/alicate-mundial/5821-alicate-mundial-722-em-aco-inox-12cm-alicate-de-cuticula-7891060800401.html",
@@ -20698,124 +20868,12 @@
       "reason": "visible product data disagree with schema"
     },
     {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6684-verniz-gel-andreia-201-5600462908873.html",
-      "ean": "5600462908873",
-      "canonical": "5600462908873",
-      "existing_name": "AndreiaProfissional Verniz Gel 201 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6692-verniz-gel-andreia-205-5600462908958.html",
-      "ean": "5600462908958",
-      "canonical": "5600462908958",
-      "existing_name": "Andreia Verniz de Gel 205 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6696-verniz-gel-andreia-209-5600462909030.html",
-      "ean": "5600462909030",
-      "canonical": "5600462909030",
-      "existing_name": "Andreia Verniz de Gel 209 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6697-verniz-gel-andreia-210-5600462909054.html",
-      "ean": "5600462909054",
-      "canonical": "5600462909054",
-      "existing_name": "Andreia Verniz de Gel 210 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6835-verniz-gel-andreia-221-5600462909313.html",
-      "ean": "5600462909313",
-      "canonical": "5600462909313",
-      "existing_name": "AndreiaProfissional Verniz Gel 221 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6841-verniz-gel-andreia-227-5600462909610.html",
-      "ean": "5600462909610",
-      "canonical": "5600462909610",
-      "existing_name": "AndreiaProfissional Verniz Gel 227 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6842-verniz-gel-andreia-228-5600462909634.html",
-      "ean": "5600462909634",
-      "canonical": "5600462909634",
-      "existing_name": "AndreiaProfissional Verniz Gel 228 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6843-verniz-gel-andreia-229-5600462909658.html",
-      "ean": "5600462909658",
-      "canonical": "5600462909658",
-      "existing_name": "AndreiaProfissional Verniz Gel 229 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6844-verniz-gel-andreia-230-5600462909375.html",
-      "ean": "5600462909375",
-      "canonical": "5600462909375",
-      "existing_name": "AndreiaProfissional Verniz Gel 230 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6845-verniz-gel-andreia-231-5600462909399.html",
-      "ean": "5600462909399",
-      "canonical": "5600462909399",
-      "existing_name": "AndreiaProfissional Verniz Gel 231 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6846-verniz-gel-andreia-232-5600462909412.html",
-      "ean": "5600462909412",
-      "canonical": "5600462909412",
-      "existing_name": "AndreiaProfissional Verniz Gel 232 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6850-verniz-gel-andreia-236-5600462909535.html",
-      "ean": "5600462909535",
-      "canonical": "5600462909535",
-      "existing_name": "AndreiaProfissional Verniz de Gel 236 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/depilacao-a-laser/6858-100uni-laminas-de-depilacao-descartavel-5600482304198.html",
       "ean": "5600482304198",
       "canonical": "5600482304198",
       "existing_name": "100 Lâminas Descartáveis com Dispensador Azul",
       "method": "GTIN",
       "reason": "stock/order contradiction"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6988-verniz-gel-andreia-240-preto-5600462911316.html",
-      "ean": "5600462911316",
-      "canonical": "5600462911316",
-      "existing_name": "AndreiaProfissional Verniz de Gel 240 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/6992-verniz-gel-andreia-244-5600462911415.html",
-      "ean": "5600462911415",
-      "canonical": "5600462911415",
-      "existing_name": "AndreiaProfissional Verniz de Gel 244 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/revlon-equave/7491-shampoo-kids-300ml-equave-revlon-8432225113302.html",
@@ -20826,60 +20884,12 @@
       "reason": "visible product data disagree with schema"
     },
     {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/7710-verniz-gel-andreia-254-5600462989803.html",
-      "ean": "5600462989803",
-      "canonical": "5600462989803",
-      "existing_name": "AndreiaProfissional Verniz de Gel 254 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/gel-polish-andreia/8548-verniz-gel-andreia-256-5600462990625.html",
       "ean": "5600462990625",
       "canonical": "5600462990625",
       "existing_name": "AndreiaProfissional Verniz de Gel 256 - 10.5ml",
       "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8549-verniz-gel-andreia-257-5600462990564.html",
-      "ean": "5600462990564",
-      "canonical": "5600462990564",
-      "existing_name": "AndreiaProfissional Verniz de Gel 257 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8587-verniz-gel-andreia-261-5600462990700.html",
-      "ean": "5600462990700",
-      "canonical": "5600462990700",
-      "existing_name": "AndreiaProfissional Verniz de Gel 261 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8780-verniz-gel-andreia-264-neon-5600462991844.html",
-      "ean": "5600462991844",
-      "canonical": "5600462991844",
-      "existing_name": "AndreiaProfissional Verniz de Gel 264 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8781-verniz-gel-andreia-265-neon-5600462991868.html",
-      "ean": "5600462991868",
-      "canonical": "5600462991868",
-      "existing_name": "AndreiaProfissional Verniz de Gel 265 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/8782-verniz-gel-andreia-266-5600462991882.html",
-      "ean": "5600462991882",
-      "canonical": "5600462991882",
-      "existing_name": "AndreiaProfissional Verniz de Gel 266 - 10.5ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
+      "reason": "stock/order contradiction"
     },
     {
       "url": "https://presencadeluxo.pt/kay-argan-oil-hidratacao/9298-mascara-argan-hidratante-1000ml-kaypro-8028483228393.html",
@@ -21162,14 +21172,6 @@
       "reason": "visible product data disagree with schema"
     },
     {
-      "url": "https://presencadeluxo.pt/inoa-loreal/78969-inoa-913-louro-muito-claro-cinza-dourado-60g-l-oreal-profissional--3474637128302.html",
-      "ean": "3474637128302",
-      "canonical": "3474637128302",
-      "existing_name": "L'Oréal Professionnel Inoa Coloração Permanente 9.13 Louro Muito Claro Cinza Dourado 60g",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/metal-detox-loreal/79019-shampoo-metal-detox-300ml-l-oreal-serie-expert-30158078.html",
       "ean": "30158078",
       "canonical": "30158078",
@@ -21248,22 +21250,6 @@
       "existing_name": "Condicionador Murumuru Haskell 300ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/power-blonde-coloracao-aclarante-andreia/82277-oxidante-cabelo-developer-power-blond-30vol-9-1l-andreia-profissional-5603927883289.html",
-      "ean": "5603927883289",
-      "canonical": "5603927883289",
-      "existing_name": "Oxidante Cabelo Developer Power Blond 30Vol. 9% 1L - Andreia Profissional",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/descolorantes-andreia/82284-oxidante-cabelo-developer-10-vol-3-1l-andreia-profissional-5603927882312.html",
-      "ean": "5603927882312",
-      "canonical": "5603927882312",
-      "existing_name": "Oxidante Cabelo Developer 10 Vol. 3% 1L - Andreia Profissional",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/haskell-bendito-loiro/82365-bendito-loiro-mascara-300ml-haskell-7898610376232.html",
@@ -22060,38 +22046,6 @@
           "url": "https://presencadeluxo.pt/bc-repair-rescue-schwarzkopf/12134-shampoo-reparacao-repair-rescue-bonacure-1000ml-schwarzkopf-4045787724073.html",
           "status": "ok",
           "image_url": "https://presencadeluxo.pt/130433-thickbox_default/shampoo-reparacao-repair-rescue-bonacure-1000ml-schwarzkopf.jpg",
-          "source": "explicit-visible-price-with-VAT-and-product-schema",
-          "additional_shipping_cost": 0.0
-        }
-      ]
-    },
-    {
-      "reason": "conflicting duplicate GTIN",
-      "ean": "8423029011185",
-      "rows": [
-        {
-          "ean": "8423029011185",
-          "name": "Revirador de Pestanas – Curvatura Instantânea e Natural",
-          "price": 2.34,
-          "net_price": 1.9,
-          "tax_included": true,
-          "in_stock": true,
-          "url": "https://presencadeluxo.pt/acessorios-de-maquilhagem/5148-revirador-de-pestanas--8423029011185.html",
-          "status": "ok",
-          "image_url": "https://presencadeluxo.pt/85912-thickbox_default/revirador-de-pestanas-.jpg",
-          "source": "explicit-visible-price-with-VAT-and-product-schema",
-          "additional_shipping_cost": 0.0
-        },
-        {
-          "ean": "8423029011185",
-          "name": "Borrachas Reviradoras de Pestanas Titania",
-          "price": 0.45,
-          "net_price": 0.37,
-          "tax_included": true,
-          "in_stock": true,
-          "url": "https://presencadeluxo.pt/maquilhagem-titania-outlet/71808-borrachas-reviradoras-de-pestanas-titania-desc-8423029011185.html",
-          "status": "ok",
-          "image_url": "https://presencadeluxo.pt/92972-thickbox_default/borrachas-reviradoras-de-pestanas-titania-desc.jpg",
           "source": "explicit-visible-price-with-VAT-and-product-schema",
           "additional_shipping_cost": 0.0
         }
