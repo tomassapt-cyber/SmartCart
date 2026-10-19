@@ -1,0 +1,114 @@
+{
+ "_nota": "Lojas onde o carrinho do CosMath abre JÁ CHEIO na loja (um só link com todos os produtos e quantidades). Só Shopify com o carrinho clássico: o site lê /products/<handle>.js (CORS aberto) para achar a variante pelo EAN e abre <origem>/cart/add?items[0][id]=…&items[0][quantity]=…. Fora desta lista, o botão abre cada produto. Verificado por scripts/carrinho-automatico.js (workflow semanal carrinho-automatico.yml). Ver DesktopduoCARRINHO-AUTOMATICO.md.",
+ "verificado": "2026-10-19",
+ "lojas": {
+  "atcosmetics": {
+   "plataforma": "shopify",
+   "origem": "https://www.atcosmetics.pt"
+  },
+  "atuafarmacia": {
+   "plataforma": "shopify",
+   "origem": "https://www.atuafarmacia.pt"
+  },
+  "bairro-saude": {
+   "plataforma": "shopify",
+   "origem": "https://bairrodasaude.pt"
+  },
+  "easyfarma": {
+   "plataforma": "shopify",
+   "origem": "https://easyfarma.pt"
+  },
+  "farma2go": {
+   "plataforma": "shopify",
+   "origem": "https://farma2go.com"
+  },
+  "farmacia24": {
+   "plataforma": "shopify",
+   "origem": "https://farmacia24.com"
+  },
+  "farmaciacuida": {
+   "plataforma": "shopify",
+   "origem": "https://farmaciacuida.com"
+  },
+  "farmaciaemcasa": {
+   "plataforma": "shopify",
+   "origem": "https://farmaciaemcasa.pt"
+  },
+  "farmaciagaiajardim": {
+   "plataforma": "shopify",
+   "origem": "https://www.farmaciagaiajardim.com"
+  },
+  "farmaciagarcia": {
+   "plataforma": "shopify",
+   "origem": "https://loja.farmaciagarcia.net"
+  },
+  "farmatogo": {
+   "plataforma": "shopify",
+   "origem": "https://www.farmatogo.com"
+  },
+  "glowthie": {
+   "plataforma": "shopify",
+   "origem": "https://glowthie.com"
+  },
+  "haemiskin": {
+   "plataforma": "shopify",
+   "origem": "https://www.haemiskin.pt"
+  },
+  "hiperfarma": {
+   "plataforma": "shopify",
+   "origem": "https://www.hiperfarma.pt"
+  },
+  "ilhadoscosmeticos": {
+   "plataforma": "shopify",
+   "origem": "https://ilhadoscosmeticos.pt"
+  },
+  "koreanbeauty": {
+   "plataforma": "shopify",
+   "origem": "https://www.koreanbeauty.pt"
+  },
+  "lisbonglam": {
+   "plataforma": "shopify",
+   "origem": "https://lisbonglam.com"
+  },
+  "lovemypharma": {
+   "plataforma": "shopify",
+   "origem": "https://lovemypharma.com"
+  },
+  "manuelaserra": {
+   "plataforma": "shopify",
+   "origem": "https://www.manuelaserra.com"
+  },
+  "mitso": {
+   "plataforma": "shopify",
+   "origem": "https://occasion2smile.com"
+  },
+  "mycosmetics": {
+   "plataforma": "shopify",
+   "origem": "https://www.mycosmetics.pt"
+  },
+  "mypharmaspot": {
+   "plataforma": "shopify",
+   "origem": "https://www.mypharmaspot.com"
+  },
+  "orientperfumes": {
+   "plataforma": "shopify",
+   "origem": "https://orientperfumes.pt"
+  },
+  "pharmaciadocabelo": {
+   "plataforma": "shopify",
+   "origem": "https://pharmaciadocabelo.com"
+  },
+  "skinlovers": {
+   "plataforma": "shopify",
+   "origem": "https://www.skinlovers.com"
+  },
+  "storekbeauty": {
+   "plataforma": "shopify",
+   "origem": "https://www.storekbeauty.com"
+  },
+  "unifarma": {
+   "plataforma": "shopify",
+   "origem": "https://www.unifarma.pt"
+  }
+ }
+}

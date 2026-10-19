@@ -1,19 +1,7 @@
 {
-  "generated_at": "2026-10-15T10:12:01.369Z",
+  "generated_at": "2026-10-19T11:05:31.716Z",
   "source": "google-suggest-pt",
   "products": [
-    {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.25,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/isdin-fotoprotector-fluido-fusion-water-fps50-50ml",
-      "search_term": "isdin protetor solar",
-      "pop_score": 53
-    },
     {
       "ean": "3606000560833",
       "name": "Sérum Con Ácido Hialurónico",
@@ -31,11 +19,11 @@
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 15.3,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c",
-      "search_term": "vitamina c rosto para que serve",
+      "best_price": 17.94,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html",
+      "search_term": "vitamina c rosto melhores",
       "pop_score": 41
     },
     {
@@ -43,11 +31,23 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 8.86,
+      "best_price": 10.25,
       "best_store": "Pharma24",
       "best_store_slug": "pharma24",
       "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml",
       "search_term": "shampoo anticaspa",
+      "pop_score": 34
+    },
+    {
+      "ean": "3522930005797",
+      "name": "Sérum Vinoperfect da Caudalie + Protetor Solar Facial Vinosun Ocean Protect FPS 50+ de oferta",
+      "brand": "Caudalie",
+      "image_url": "https://assets.atida.com/transform/0f6e16b7-302d-4339-8289-a1ef763cb2ce/Caudalie-Vinoperfect-Serum-30-ml-Regalo-Vinosun-Ocean-Protect-Fluido-SPF50-20-ml",
+      "best_price": 37.45,
+      "best_store": "My Cosmetics",
+      "best_store_slug": "mycosmetics",
+      "best_url": "https://www.mycosmetics.pt/products/caudalie-vinoperf-ser-of-vinosun-fl20ml-1",
+      "search_term": "protetor solar facial",
       "pop_score": 34
     },
     {

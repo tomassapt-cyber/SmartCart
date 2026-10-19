@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-18T21:34:55.617937+00:00",
-  "completed_at": "2026-10-18T23:26:14.998897+00:00",
+  "scraped_at": "2026-10-19T09:03:58.957376+00:00",
+  "completed_at": "2026-10-19T10:57:35.723727+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -14809,7 +14809,7 @@
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/84900-verniz-gel-reinforce-inocos-diamonds-15ml-reforcante-de-unhas-5600355746292.html",
       "status": "ok",
-      "image_url": "https://presencadeluxo.pt/139198-thickbox_default/verniz-gel-reinforce-inocos-diamonds-15ml-reforcante-de-unhas.jpg",
+      "image_url": "https://presencadeluxo.pt/160933-thickbox_default/verniz-gel-reinforce-inocos-diamonds-15ml-reforcante-de-unhas.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },

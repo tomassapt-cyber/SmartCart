@@ -10,13 +10,13 @@
      no Google, e partilhar um link sem og: nao mostra nem titulo nem imagem.
      Os valores por produto sao reescritos em JS (ver seoAbrirProduto) e
      repostos ao fechar a ficha. -->
-<meta name="description" content="Compara preços de cosmética em lojas portuguesas. A frequência de atualização varia por loja." />
+<meta name="description" content="Compara o preço do mesmo produto de cosmética em 74 lojas portuguesas. Preços atualizados regularmente." />
 <!-- O HTML é partilhado com /produto/: o canonical é criado quando o endereço é conhecido. -->
 <meta property="og:site_name" content="CosMath" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:type" content="website" id="seo-og-type" />
 <meta property="og:title" content="CosMath — Compara, combina e poupa em cosmética" id="seo-og-title" />
-<meta property="og:description" content="Compara preços de cosmética em lojas portuguesas." id="seo-og-desc" />
+<meta property="og:description" content="Compara o preço do mesmo produto de cosmética em 74 lojas portuguesas." id="seo-og-desc" />
 <meta property="og:url" content="/" id="seo-og-url" />
 <meta property="og:image" content="/apple-touch-icon-v4.png" id="seo-og-image" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -814,6 +814,19 @@
     background: var(--surface);
   }
   /* resumo VIVO: a melhor combinação sem cliques + fatura sempre à vista */
+  .offers-unavailable {
+    margin: 12px 0; padding: 14px 16px; border: 1px solid #edc4b9; border-radius: 12px;
+    background: #fff8f5; color: #6e3327; font-size: 13px; line-height: 1.5;
+  }
+  .offers-unavailable p { margin: 0 0 8px; }
+  .offers-unavailable ul { margin: 0 0 10px; padding-left: 19px; }
+  .offers-unavailable li + li { margin-top: 4px; }
+  .offers-unavailable-retry {
+    border: 0; border-radius: 8px; padding: 8px 12px; background: #6e3327; color: #fff;
+    font: inherit; font-weight: 700; cursor: pointer;
+  }
+  #pa-body .offers-unavailable { margin: 8px 14px 16px; }
+
   .bundle-live-card {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     background: linear-gradient(120deg, #eef7f0 0%, #f7f2ff 100%);
@@ -7139,7 +7152,7 @@
 <!-- CosMath top announce strip -->
 <div class="gm-announce">
   <span>Comparação de preços em <span id="announce-stores">17</span> lojas PT + europeias</span><em>·</em>
-  <span>Compara preços e condições por loja</span>
+  <span>Preços atualizados regularmente</span>
   <a href="#newsletter" class="gm-announce-link cm-oculto">↗ Alertas de preço por email</a>
 </div>
 
@@ -7209,7 +7222,7 @@
   </div>
   <div class="hero-right">
     <div class="sponsored-carousel" id="sponsored-carousel">
-      <div class="sponsored-badge">🔍 Mais procurados</div>
+      <div class="sponsored-badge">🔍 Em destaque</div>
       <button class="sponsored-arrow sponsored-arrow-prev" id="sponsored-prev" aria-label="Slide anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
       <div class="sponsored-slides" id="sponsored-slides"></div>
       <button class="sponsored-arrow sponsored-arrow-next" id="sponsored-next" aria-label="Slide seguinte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
@@ -7582,7 +7595,7 @@
     <div class="gm-footer-grid">
       <div>
         <div class="gm-logo gm-footer-logo">Cos<em>Math</em></div>
-        <p class="gm-footer-tagline">Comparador de cosmética para o mercado português. <span id="footer-tag-stores">17</span> lojas, com atualização variável por loja.</p>
+        <p class="gm-footer-tagline">Comparador de cosmética para o mercado português. <span id="footer-tag-stores">17</span> lojas, com preços atualizados regularmente.</p>
         <p class="gm-footer-loc">LISBOA · PT</p>
       </div>
       <div>
@@ -7618,7 +7631,7 @@
     </div>
     <div class="gm-footer-bottom">
       <span>© 2026 CosMath · Todos os direitos reservados.</span>
-      <span class="gm-footer-mini">Compara preços e condições por loja · <span id="footer-mini-products">—</span> produtos · <span id="footer-mini-stores">17</span> lojas</span>
+      <span class="gm-footer-mini">Preços atualizados regularmente · <span id="footer-mini-products">—</span> produtos · <span id="footer-mini-stores">17</span> lojas</span>
     </div>
   </div>
 </footer>
@@ -8196,7 +8209,10 @@ async function carregarOfertas(eans, opcoes) {
   // initSupabase e o SDK ainda vem de um CDN. Sem isto, o primeiro desenho
   // pedia ofertas, recebia zero e nunca mais tentava.
   const sb = window.SUPABASE || (await aguardarSupabase() ? window.SUPABASE : null);
-  if (!sb) return 0;
+  if (!sb) {
+    porFazer.forEach(e => OFERTAS_FALHADAS.add(e));
+    return 0;
+  }
 
   // uma promessa por (EAN, modo), para que dois pedidos simultâneos do mesmo
   // produto não disparem dois fetches
@@ -10006,7 +10022,32 @@ async function openPriceAnalyzer(ean) {
   // outra: sem esta guarda, o pódio do produto antigo aterrava por cima
   if (!PA_STATE || PA_STATE.ean !== ean) return;
   pintarImagemDaFicha();   // a imagem veio com as ofertas
+  if (OFERTAS_FALHADAS.has(ean)) {
+    renderOfertaIndisponivel(document.getElementById('pa-body'), [ean], () => openPriceAnalyzer(ean));
+    return;
+  }
   renderPodiumBody();
+}
+
+function precoDesdeDoIndice(ean) {
+  const st = typeof statsByEanMap === 'function' ? statsByEanMap()[ean] : null;
+  const price = st ? (st.absBest ?? st.bestPrice) : null;
+  return Number.isFinite(price) && price > 0 ? price : null;
+}
+
+function renderOfertaIndisponivel(host, eans, retry) {
+  if (!host) return;
+  const rows = [...new Set(eans)].map(ean => {
+    const p = PRODUCT_BY_EAN[ean];
+    const price = precoDesdeDoIndice(ean);
+    return `<li><strong>${escapeHtml(p ? displayName(p.name, p.brand) : ean)}</strong> · ${price == null ? 'preço «desde» indisponível neste momento' : `desde ${price.toFixed(2).replace('.', ',')} €`}</li>`;
+  }).join('');
+  host.innerHTML = `<div class="offers-unavailable" role="alert" aria-live="polite">
+    <p>As ofertas de cada loja não estão disponíveis neste momento.</p>
+    ${rows ? `<ul>${rows}</ul>` : ''}
+    <button type="button" class="offers-unavailable-retry">Tentar novamente</button>
+  </div>`;
+  host.querySelector('.offers-unavailable-retry')?.addEventListener('click', retry, { once: true });
 }
 
 /** abre a moldura da ficha (sem miolo) — usado enquanto as ofertas não chegam */
@@ -13061,6 +13102,18 @@ const SPONSORED_EANS_FALLBACK = [
 ];
 
 let GERACAO_CARROSSEL = 0;
+function tituloCarrosselPopularidade(origem, usaFallback) {
+  if (usaFallback || !origem || typeof origem !== 'object'
+      || !Object.prototype.hasOwnProperty.call(origem, 'fonte')
+      || !Object.prototype.hasOwnProperty.call(origem, 'populares')
+      || !Object.prototype.hasOwnProperty.call(origem, 'total')
+      || typeof origem.populares !== 'number'
+      || typeof origem.total !== 'number'
+      || origem.populares !== origem.total) return 'Em destaque';
+  if (origem.fonte === 'google-suggest-pt') return 'Populares nas pesquisas Google';
+  if (origem.fonte === 'site-search') return 'Mais procurados no CosMath';
+  return 'Em destaque';
+}
 async function renderSponsoredCarousel() {
   const slidesEl = document.getElementById('sponsored-slides');
   const dotsEl = document.getElementById('sponsored-dots');
@@ -13074,16 +13127,21 @@ async function renderSponsoredCarousel() {
   // Preferir hp.hero_sponsored (curado em build-homepage-data.js); fallback
   // à lista hardcoded se hp-data falhar a carregar ou estiver vazio.
   let items = [];
+  let hp = null;
+  let usaFallback = false;
   try {
     const hpScript = document.getElementById('hp-data');
-    const hp = hpScript ? JSON.parse(hpScript.textContent) : null;
+    hp = hpScript ? JSON.parse(hpScript.textContent) : null;
     if (hp?.hero_sponsored?.length) {
       items = hp.hero_sponsored.map(p => PRODUCT_BY_EAN[p.ean]).filter(Boolean);
     }
   } catch (e) { console.warn('hp-data parse failed, fallback', e); }
   if (items.length === 0) {
+    usaFallback = true;
     items = SPONSORED_EANS_FALLBACK.map(ean => PRODUCT_BY_EAN[ean]).filter(Boolean);
   }
+  const badge = document.querySelector('.sponsored-badge');
+  if (badge) badge.textContent = '🔍 ' + tituloCarrosselPopularidade(hp?.hero_origem, usaFallback);
   if (items.length === 0) return;
 
   // O carrossel é a primeira coisa que se vê. Sem ofertas, o bestOfferFor
@@ -13473,9 +13531,12 @@ function bundleRefresh() {
     const palette = brandPalette(p.brand);
     const initial = brandInitial(p.brand);
     const volBadge = chosenVol ? `<span class="bundle-row-vol-badge">${chosenVol} ml</span>` : '';
+    const priceFromIndex = precoDesdeDoIndice(ean);
     const priceLabel = best
       ? `desde <strong>${best.price.toFixed(2)}€</strong> · ${best.store.name}`
-      : (chosenVol ? `sem ${chosenVol} ml disponível` : 'sem stock');
+      : (OFERTAS_FALHADAS.has(ean) && priceFromIndex != null
+        ? `desde <strong>${priceFromIndex.toFixed(2).replace('.', ',')} €</strong>`
+        : (chosenVol ? `sem ${chosenVol} ml disponível` : 'sem stock'));
     return `<div class="bundle-row">
       <div class="bundle-row-img">
         ${p.image_url
@@ -13528,6 +13589,12 @@ async function bundleLiveNow() {
     await carregarOfertas(faltam, { variantes: true });
     // o utilizador pode ter esvaziado o carrinho enquanto esperava
     if (!bundleState.items.size) { box.innerHTML = ''; return; }
+    const falharam = items.map(i => i.ean).filter(e => OFERTAS_FALHADAS.has(e));
+    if (falharam.length) {
+      window.RECEIPT_LAST_BUNDLE = null;
+      renderOfertaIndisponivel(box, falharam, bundleLiveUpdate);
+      return;
+    }
     // As linhas do carrinho foram desenhadas ANTES de as ofertas chegarem (ex.:
     // «Adicionar tudo» do quiz) e ficavam em «sem stock» / «sem 500 ml
     // disponível» até à mudança seguinte (2026-10-14). Se chegou alguma coisa,
@@ -13897,6 +13964,17 @@ async function runAnalysis() {
   const faltam = items.map(i => i.ean).filter(e => !ofertasProntasComVariantes(e));
   if (faltam.length) await carregarOfertas(faltam, { variantes: true });
   if (!bundleState.items.size) return;
+  const falharam = items.map(i => i.ean).filter(e => OFERTAS_FALHADAS.has(e));
+  if (falharam.length) {
+    const body = document.getElementById('results-body');
+    const summary = document.getElementById('results-summary');
+    if (summary) summary.textContent = 'Não foi possível carregar as ofertas por loja';
+    renderOfertaIndisponivel(body, falharam, () => runAnalysis());
+    window.RECEIPT_LAST_BUNDLE = null;
+    bundleClose();
+    document.getElementById('results-backdrop').classList.add('open');
+    return;
+  }
   // ⚠️ try/catch obrigatório: não tinha nenhum, e com os slugs a virem da base
   // de dados basta uma loja que o bloco de arranque não conheça para rebentar
   // aqui dentro. Sem isto, o botão passa a não fazer NADA e o utilizador não

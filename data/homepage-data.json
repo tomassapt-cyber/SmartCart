@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-18T09:28:19.995Z",
-  "seed_total_products": 94696,
+  "generated_at": "2026-10-19T10:40:51.186Z",
+  "seed_total_products": 94720,
   "hero_sponsored": [
     {
       "ean": "8429420158399",
@@ -27,10 +27,10 @@
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.93,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
+      "best_price": 17.94,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
     },
     {
       "ean": "3372290001805",
@@ -173,6 +173,21 @@
       "verified_live": true
     },
     {
+      "ean": "3600542571982",
+      "name": "Garnier Ultra Suave Infusão de Água de Arroz Shampoo",
+      "brand": "Garnier",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/garnier/3600542571982-800x800.jpg",
+      "best_price": 3.82,
+      "best_store": "Auchan",
+      "best_store_slug": "auchan",
+      "best_url": "https://www.auchan.pt/pt/beleza-e-higiene/champo-e-coloracao/cabelos-normais/champo-ultra-suave-agua-de-arroz-400ml/3719873.html",
+      "volume_ml": 400,
+      "previous_price": 5.89,
+      "discount_pct": 35,
+      "dropped_day": 20740,
+      "verified_live": true
+    },
+    {
       "ean": "4005900868619",
       "name": "Nivea Body Milk Leite Corporal Nutritivo",
       "brand": "Nivea",
@@ -214,20 +229,6 @@
       "discount_pct": 33,
       "dropped_day": 20740,
       "verified_live": true
-    },
-    {
-      "ean": "4006000066158",
-      "name": "Nivea Creme Tubo",
-      "brand": "Nivea",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/nivea/4006000066158-800x800.jpg",
-      "best_price": 2.04,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/nivea-creme-tubo-151006.html",
-      "previous_price": 2.98,
-      "discount_pct": 32,
-      "dropped_day": 20744,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -253,7 +254,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 800
+      "products": 798
     },
     {
       "name": "Eucerin",
@@ -261,7 +262,7 @@
     },
     {
       "name": "Chicco",
-      "products": 734
+      "products": 737
     }
   ],
   "telegram_alerts": [
@@ -295,7 +296,7 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 77138,
+    "products": 77046,
     "avg_savings_pct": 28
   },
   "shard_version": "",
@@ -3344,5 +3345,10 @@
         "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/8470001915528.jpg?v=1746444258"
       }
     ]
+  },
+  "hero_origem": {
+    "fonte": "google-suggest-pt",
+    "populares": 5,
+    "total": 5
   }
 }

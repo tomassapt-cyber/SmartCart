@@ -1,0 +1,64 @@
+# CosMath — vigia do carrinho automático (2026-10-19)
+# ============================================================
+# Nas lojas de data/carrinho-automatico.json, o botão do cabaz abre a loja com
+# o carrinho JÁ CHEIO (link /cart/add da Shopify, variante lida no clique do
+# /products/<handle>.js). Se uma loja mudar de plataforma ou fechar o acesso,
+# o link abre um carrinho vazio sem ninguém dar por isso. Uma vez por semana
+# este workflow confirma, em cada loja, o carrinho clássico (/cart.js), o CORS
+# do produto e a variante pelo EAN em 3 ofertas — e mantém UMA issue:
+#   alguma loja falha → ABRE/atualiza «Carrinho automático: rever lojas» (com @dono)
+#   todas passam      → FECHA com comentário
+name: Carrinho automático — vigia semanal
+
+on:
+  schedule:
+    - cron: '30 6 * * 1'   # segunda-feira, 06:30 UTC (depois da vigia dos portes)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  vigia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Teste do carrinho automático
+        run: node scripts/test-carrinho-automatico.cjs
+
+      - name: Verificar as lojas
+        run: node scripts/carrinho-automatico.js --md=/tmp/carrinho.md --estado=/tmp/carrinho.env
+
+      - name: Avisar por issue (abre, atualiza ou fecha)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          TITULO='Carrinho automático: rever lojas'
+          . /tmp/carrinho.env
+          gh issue list --state open --limit 100 --json number,title \
+            --template '{{range .}}{{.number}}|{{.title}}{{"\n"}}{{end}}' > /tmp/issues-carrinho.txt || true
+          NUM=$(grep -F "|$TITULO" /tmp/issues-carrinho.txt | head -1 | cut -d"|" -f1 || true)
+          if [ "$FALHAM" = '0' ]; then
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --body "Nenhuma das ${TOTAL} lojas falhou na verificação de $(date -u '+%F %H:%M') UTC (${INCONCLUSIVAS:-0} sem conclusão a partir da nuvem, por pedidos bloqueados — não é falha). A fechar."
+              gh issue close "$NUM"
+            fi
+            exit 0
+          fi
+          if [ -z "$NUM" ]; then
+            gh issue create --title "$TITULO" --body-file /tmp/carrinho.md && echo 'Issue aberta.'
+          else
+            gh issue edit "$NUM" --body-file /tmp/carrinho.md
+            gh issue comment "$NUM" --body "@${{ github.repository_owner }} verificação de $(date -u '+%F'): ${FALHAM} de ${TOTAL} loja(s) com o carrinho automático a falhar — ver a descrição."
+          fi
