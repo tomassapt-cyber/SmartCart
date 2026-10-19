@@ -101,23 +101,50 @@ function amostraDeOfertas(slug, n = 3) {
   return [ls[Math.floor(ls.length * 0.1)], ls[Math.floor(ls.length / 2)], ls[Math.floor(ls.length * 0.9)]].slice(0, n);
 }
 
+// Respostas de quem limita ou bloqueia os servidores da nuvem (a 1.ª corrida
+// no GitHub, 19/10, deu 1/3 na A Tua Farmácia, que do PC dá 3/3). O site lê
+// do telemóvel do cliente, não da nuvem: isto não é a loja a deixar de
+// funcionar, é a vigia que não consegue ver daqui.
+const BLOQUEIO = new Set([403, 429, 503]);
+
+async function pedirProduto(url) {
+  let p = await pedir(url, { origin: ORIGEM_SITE });
+  if (BLOQUEIO.has(p.status)) {   // uma segunda tentativa, com calma
+    await new Promise(z => setTimeout(z, 4000));
+    p = await pedir(url, { origin: ORIGEM_SITE });
+  }
+  return p;
+}
+
 async function verificarLoja(slug, loja) {
-  const r = { slug, origem: loja.origem, carrinho: false, cors: null, variantes: 0, amostra: 0, erro: null };
+  const r = { slug, origem: loja.origem, carrinho: false, cors: null, variantes: 0, amostra: 0, bloqueados: 0, estados: [], erro: null };
   try {
     const c = await pedir(loja.origem + '/cart.js');
     r.carrinho = c.status === 200 && /"items"\s*:/.test(c.corpo);
     for (const o of amostraDeOfertas(slug)) {
       const origem = new URL(o.url).origin;
-      const p = await pedir(`${origem}/products/${encodeURIComponent(handleDoUrl(o.url))}.js`, { origin: ORIGEM_SITE });
+      const p = await pedirProduto(`${origem}/products/${encodeURIComponent(handleDoUrl(o.url))}.js`);
       r.amostra++;
       r.cors = r.cors || p.cors;
       let j = null; try { j = JSON.parse(p.corpo); } catch { /* 404/HTML */ }
-      if (j && varianteDoEan(j, o.ean, o.url)) r.variantes++;
+      const achou = !!(j && varianteDoEan(j, o.ean, o.url));
+      if (achou) r.variantes++;
+      else if (BLOQUEIO.has(p.status)) r.bloqueados++;
+      r.estados.push(achou ? 'ok' : (j ? 'sem variante' : String(p.status) + (p.status === 200 ? ' sem JSON' : '')));
       await new Promise(z => setTimeout(z, 700));
     }
   } catch (e) { r.erro = e.message; }
-  // passa: carrinho clássico, CORS aberto e pelo menos 2 de 3 variantes achadas
-  r.ok = r.carrinho && r.cors === '*' && r.variantes >= Math.min(2, r.amostra) && r.amostra > 0;
+  // Passa: carrinho clássico, CORS aberto e pelo menos UMA variante achada.
+  // A vigia é da LOJA (mudou de plataforma? fechou o acesso?), não de cada
+  // produto: um produto que falhe abre-se à parte no site. E da nuvem há
+  // falsos 404 — o GitHub corre nos EUA e a A Tua Farmácia (Shopify Markets)
+  // esconde lá produtos que só vende em Portugal (fórmula infantil, brinquedo):
+  // 404 da nuvem, 200 de cá, a 19/10. Exigir 2 de 3 dava alarmes falsos.
+  const precisa = r.amostra ? 1 : 0;
+  r.ok = r.carrinho && r.cors === '*' && r.variantes >= precisa && r.amostra > 0;
+  // não se sabe daqui: o carrinho responde, e o que falta são pedidos bloqueados
+  r.inconclusiva = !r.ok && r.carrinho && r.bloqueados > 0 && r.variantes + r.bloqueados >= precisa
+    && (r.cors === '*' || r.variantes === 0);
   return r;
 }
 
@@ -128,19 +155,23 @@ async function main() {
   for (const [slug, loja] of Object.entries(fich.lojas)) {
     const r = await verificarLoja(slug, loja);
     res.push(r);
-    console.log(`${r.ok ? '✓' : '✗'} ${slug.padEnd(20)} carrinho:${r.carrinho ? 'sim' : 'NÃO'} CORS:${r.cors || '—'} variantes:${r.variantes}/${r.amostra}${r.erro ? ' erro: ' + r.erro : ''}`);
+    console.log(`${r.ok ? '✓' : (r.inconclusiva ? '?' : '✗')} ${slug.padEnd(20)} carrinho:${r.carrinho ? 'sim' : 'NÃO'} CORS:${r.cors || '—'} variantes:${r.variantes}/${r.amostra} [${r.estados.join(', ')}]${r.erro ? ' erro: ' + r.erro : ''}`);
   }
-  const falham = res.filter(r => !r.ok);
-  console.log(`\n${res.length - falham.length}/${res.length} lojas com o carrinho automático a funcionar`);
+  const falham = res.filter(r => !r.ok && !r.inconclusiva);
+  const inconclusivas = res.filter(r => r.inconclusiva);
+  console.log(`\n${res.filter(r => r.ok).length}/${res.length} lojas com o carrinho automático a funcionar` +
+    (inconclusivas.length ? ` · ${inconclusivas.length} sem conclusão daqui (pedidos bloqueados): ${inconclusivas.map(r => r.slug).join(', ')}` : ''));
   if (args.md) {
+    const linha = r => `| ${r.slug} (${r.origem}) | ${r.carrinho ? 'sim' : '**não**'} | ${r.cors || '—'} | ${r.variantes}/${r.amostra} (${r.estados.join(', ')})${r.erro ? ' · ' + r.erro : ''} |`;
     const ln = ['O carrinho automático (um link que abre a loja com o cabaz já no carrinho) deixou de funcionar nestas lojas:', '',
-      '| loja | carrinho clássico (/cart.js) | CORS do produto | variante pelo EAN |', '|---|---|---|---|',
-      ...falham.map(r => `| ${r.slug} (${r.origem}) | ${r.carrinho ? 'sim' : '**não**'} | ${r.cors || '—'} | ${r.variantes}/${r.amostra}${r.erro ? ' · ' + r.erro : ''} |`), '',
-      'Enquanto estiverem em `data/carrinho-automatico.json`, o botão do cabaz tenta o link e pode abrir um carrinho vazio ou incompleto. **A fazer:** confirmar à mão; se a loja mudou de plataforma, tirá-la do ficheiro (o botão volta a abrir cada produto). Uma falha isolada de rede resolve-se sozinha na semana seguinte.', '',
-      `Verificação de ${new Date().toISOString().slice(0, 10)} pelo \`scripts/carrinho-automatico.js\`.`];
+      '| loja | carrinho clássico (/cart.js) | CORS do produto | variante pelo EAN (resposta de cada amostra) |', '|---|---|---|---|',
+      ...falham.map(linha), '',
+      'Enquanto estiverem em `data/carrinho-automatico.json`, o botão do cabaz tenta o link e pode abrir um carrinho vazio ou incompleto. **A fazer:** confirmar à mão; se a loja mudou de plataforma, tirá-la do ficheiro (o botão volta a abrir cada produto). «sem variante» = o produto existe mas nenhum tamanho tem o EAN da oferta; «404» = o produto não existe com esse endereço, ou não está à venda no país de onde a vigia corre (EUA).', ''];
+    if (inconclusivas.length) ln.push(`Sem conclusão a partir da nuvem (a loja limitou ou bloqueou os pedidos, ${[...BLOQUEIO].join('/')}): ${inconclusivas.map(r => r.slug).join(', ')}. Não é falha — o site lê do telemóvel de quem compra.`, '');
+    ln.push(`Verificação de ${new Date().toISOString().slice(0, 10)} pelo \`scripts/carrinho-automatico.js\`.`);
     fs.writeFileSync(args.md, ln.join('\n') + '\n');
   }
-  if (args.estado) fs.writeFileSync(args.estado, `FALHAM=${falham.length}\nTOTAL=${res.length}\n`);
+  if (args.estado) fs.writeFileSync(args.estado, `FALHAM=${falham.length}\nTOTAL=${res.length}\nINCONCLUSIVAS=${inconclusivas.length}\n`);
   if (args.gravar && !falham.length) {
     fich.verificado = new Date().toISOString().slice(0, 10);
     fs.writeFileSync(FICH, JSON.stringify(fich, null, 1) + '\n');
