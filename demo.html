@@ -10,13 +10,13 @@
      no Google, e partilhar um link sem og: nao mostra nem titulo nem imagem.
      Os valores por produto sao reescritos em JS (ver seoAbrirProduto) e
      repostos ao fechar a ficha. -->
-<meta name="description" content="Compara o preco do mesmo produto de cosmetica em 74 lojas portuguesas. Precos verificados todos os dias." />
+<meta name="description" content="Compara o preço do mesmo produto de cosmética em 74 lojas portuguesas. Preços atualizados regularmente." />
 <!-- O HTML é partilhado com /produto/: o canonical é criado quando o endereço é conhecido. -->
 <meta property="og:site_name" content="CosMath" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:type" content="website" id="seo-og-type" />
 <meta property="og:title" content="CosMath — Compara, combina e poupa em cosmética" id="seo-og-title" />
-<meta property="og:description" content="Compara o preco do mesmo produto de cosmetica em 74 lojas portuguesas." id="seo-og-desc" />
+<meta property="og:description" content="Compara o preço do mesmo produto de cosmética em 74 lojas portuguesas." id="seo-og-desc" />
 <meta property="og:url" content="https://smart-cart-zx55.vercel.app/" id="seo-og-url" />
 <meta property="og:image" content="https://smart-cart-zx55.vercel.app/apple-touch-icon-v4.png" id="seo-og-image" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -7139,7 +7139,7 @@
 <!-- CosMath top announce strip -->
 <div class="gm-announce">
   <span>Comparação de preços em <span id="announce-stores">17</span> lojas PT + europeias</span><em>·</em>
-  <span>Preços atualizados todos os dias</span>
+  <span>Preços atualizados regularmente</span>
   <a href="#newsletter" class="gm-announce-link cm-oculto">↗ Alertas de preço por email</a>
 </div>
 
@@ -7582,7 +7582,7 @@
     <div class="gm-footer-grid">
       <div>
         <div class="gm-logo gm-footer-logo">Cos<em>Math</em></div>
-        <p class="gm-footer-tagline">Comparador de cosmética para o mercado português. <span id="footer-tag-stores">17</span> lojas, com preços atualizados todos os dias.</p>
+        <p class="gm-footer-tagline">Comparador de cosmética para o mercado português. <span id="footer-tag-stores">17</span> lojas, com preços atualizados regularmente.</p>
         <p class="gm-footer-loc">LISBOA · PT</p>
       </div>
       <div>
@@ -7618,7 +7618,7 @@
     </div>
     <div class="gm-footer-bottom">
       <span>© 2026 CosMath · Todos os direitos reservados.</span>
-      <span class="gm-footer-mini">Preços atualizados todos os dias · <span id="footer-mini-products">—</span> produtos · <span id="footer-mini-stores">17</span> lojas</span>
+      <span class="gm-footer-mini">Preços atualizados regularmente · <span id="footer-mini-products">—</span> produtos · <span id="footer-mini-stores">17</span> lojas</span>
     </div>
   </div>
 </footer>
@@ -10930,7 +10930,7 @@ function seoFecharProduto(mexerNoHistorico) {
   seoDefinir('seo-og-type', 'content', 'website');
   seoDefinir('seo-og-title', 'content', SEO_BASE.titulo);
   const nLojasPag = (typeof STORES !== 'undefined' && STORES.length) || 0;
-  seoDefinir('seo-og-desc', 'content', 'Compara o preco do mesmo produto de cosmetica em ' + (nLojasPag ? nLojasPag + ' ' : '') + 'lojas portuguesas.');
+  seoDefinir('seo-og-desc', 'content', 'Compara o preço do mesmo produto de cosmética em ' + (nLojasPag ? nLojasPag + ' ' : '') + 'lojas portuguesas.');
   seoDefinir('seo-og-url', 'content', SEO_BASE.url);
   seoJsonLd(null);
   if (mexerNoHistorico !== false && /^\/produto\//.test(location.pathname)) {
