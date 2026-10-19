@@ -10040,7 +10040,7 @@ function renderOfertaIndisponivel(host, eans, retry) {
   const rows = [...new Set(eans)].map(ean => {
     const p = PRODUCT_BY_EAN[ean];
     const price = precoDesdeDoIndice(ean);
-    return `<li><strong>${escapeHtml(p ? displayName(p.name, p.brand) : ean)}</strong> · ${price == null ? 'preço «desde» indisponível no índice' : `desde ${price.toFixed(2)} € (índice)`}</li>`;
+    return `<li><strong>${escapeHtml(p ? displayName(p.name, p.brand) : ean)}</strong> · ${price == null ? 'preço «desde» indisponível neste momento' : `desde ${price.toFixed(2).replace('.', ',')} €`}</li>`;
   }).join('');
   host.innerHTML = `<div class="offers-unavailable" role="alert" aria-live="polite">
     <p>As ofertas de cada loja não estão disponíveis neste momento.</p>
@@ -13505,7 +13505,7 @@ function bundleRefresh() {
     const priceLabel = best
       ? `desde <strong>${best.price.toFixed(2)}€</strong> · ${best.store.name}`
       : (OFERTAS_FALHADAS.has(ean) && priceFromIndex != null
-        ? `desde <strong>${priceFromIndex.toFixed(2)}€</strong> · índice`
+        ? `desde <strong>${priceFromIndex.toFixed(2).replace('.', ',')} €</strong>`
         : (chosenVol ? `sem ${chosenVol} ml disponível` : 'sem stock'));
     return `<div class="bundle-row">
       <div class="bundle-row-img">
