@@ -51,7 +51,7 @@ jobs:
           NUM=$(grep -F "|$TITULO" /tmp/issues-carrinho.txt | head -1 | cut -d"|" -f1 || true)
           if [ "$FALHAM" = '0' ]; then
             if [ -n "$NUM" ]; then
-              gh issue comment "$NUM" --body "As ${TOTAL} lojas passaram na verificação de $(date -u '+%F %H:%M') UTC. A fechar."
+              gh issue comment "$NUM" --body "Nenhuma das ${TOTAL} lojas falhou na verificação de $(date -u '+%F %H:%M') UTC (${INCONCLUSIVAS:-0} sem conclusão a partir da nuvem, por pedidos bloqueados — não é falha). A fechar."
               gh issue close "$NUM"
             fi
             exit 0
