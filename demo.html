@@ -14212,25 +14212,23 @@ function cartAutoLinks(itens) {
 async function abrirCarrinhoAutomatico(botao, data) {
   if (!data || !Array.isArray(data.lines) || !data.lines.length) return;
   const linhas = data.lines;
-  // Reservar um separador por linha de forma síncrona para o Safari. Em sucesso,
-  // fecham-se os extras; se todos falharem, cada um abre a oferta como antes.
   // Reservar um único separador por origem, ainda durante o toque, para o Safari.
   const tabPorOrigem = new Map();
   for (const linha of linhas) {
     let origem; try { origem = new URL(linha.url).origin; } catch { continue; }
     if (tabPorOrigem.has(origem)) continue;
     let tab = null;
-    try {
-      tab = window.open('about:blank', '_blank');
-      if (tab) {
+    try { tab = window.open('about:blank', '_blank'); } catch {}
+    if (tab) {
+      try {
         tab.opener = null;
         tab.document.title = 'A preparar o carrinho na ' + data.name + '…';
         if (tab.document.body) {
           tab.document.body.textContent = 'A preparar o carrinho na ' + data.name + '…';
           tab.document.body.style.cssText = 'font:16px system-ui,sans-serif;padding:32px;color:#334155';
         }
-      }
-    } catch { tab = null; }
+      } catch {}
+    }
     tabPorOrigem.set(origem, tab);
   }
   const textoOriginal = botao.textContent;
