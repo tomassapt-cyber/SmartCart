@@ -113,7 +113,10 @@ async function upsert(table, rows, onConflict) {
     // servia os preços errados que o site já corrigia — 43 variantes com o
     // preço de OUTRO produto e variantes truncadas (29 € em vez de 29,74 €).
     // Correm ANTES do merge de GTIN, como no site.
-    const { fixTruncatedVariantPrices, dropWrongProductVariants } = require('./lib/variant-fixes');
+    // Tamanhos mal lidos (2026-10-19) primeiro: o modal lê as variantes daqui.
+    const { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants } = require('./lib/variant-fixes');
+    const z = fixVariantSizes(seed);
+    if (z.litros + z.kgNoUrl + z.brindes + z.removidas) console.log(`  tamanhos de variante corrigidos: ${z.litros} L/kg · ${z.kgNoUrl} «1 kg» lido como 1 · ${z.brindes} brindes · ${z.removidas} removidos`);
     const t = fixTruncatedVariantPrices(seed);
     if (t.fixed) console.log(`  preços de variante truncados corrigidos: ${t.fixed}`);
     const w = dropWrongProductVariants(seed);

@@ -91,6 +91,7 @@ if (require.main === module) {
   // snapshot deixa de bater certo com a BD.
   require('./lib/verified-shipping').applyVerifiedShipping(seed, ROOT);
   const vf = require('./lib/variant-fixes');
+  vf.fixVariantSizes(seed);
   vf.fixTruncatedVariantPrices(seed);
   vf.dropWrongProductVariants(seed);
   require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);

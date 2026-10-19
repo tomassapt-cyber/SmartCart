@@ -75,6 +75,11 @@ jobs:
       - name: Teste da fusão de GTIN
         run: node scripts/test-dedup-ean-variants.cjs
 
+      # Os tamanhos das variantes (scripts/lib/variant-fixes.js, fixVariantSizes)
+      # são a chave de offer_variants e o que o modal compara. Mesmo critério.
+      - name: Teste dos tamanhos de variante
+        run: node scripts/test-variant-sizes.cjs
+
       # Sync INCREMENTAL (2026-10-02): o estado do último sync bem-sucedido
       # (impressão digital de cada linha que ficou na BD, ~5 MB) passa de corrida
       # em corrida pela cache do Actions. Com ele o sync envia só o que mudou

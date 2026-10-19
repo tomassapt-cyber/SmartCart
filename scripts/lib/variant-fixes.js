@@ -78,4 +78,85 @@ function dropWrongProductVariants(seedJson) {
   return { dropped };
 }
 
-module.exports = { fixTruncatedVariantPrices, dropWrongProductVariants };
+/**
+ * Tamanhos de variante mal lidos (2026-10-19). O site compara as lojas ao
+ * tamanho da ficha e só aceita a variante com o MESMO volume_ml — que tem de
+ * estar sempre em ml ou g. Três erros de scraper partiam essa comparação
+ * (apanhados pelo Codex a validar o SEO: o modal e o «desde» discordavam):
+ *   1. LITROS/QUILOS sem converter: {volume_ml: 1, unit: 'kg'} é 1000 g. De 20
+ *      para cima o número já vem em ml/g («1000 l» = 1000 ml) e só a unidade
+ *      está errada. Acima de 10 000 não é um tamanho — escovas a «90000 l»,
+ *      tons de sombra a «101000 l» — e a variante sai.
+ *   2. «1 KG» LIDO COMO 1: a máscara Novex de 1 kg da Smart Beauty ficava
+ *      {volume_ml: 1, unit: 'ml'}. Prova: o URL da PRÓPRIA variante diz «-1kg»,
+ *      «-1-kg» ou «-1-5-kg». Intervalos («fraldas 7-11kg», «cão 2-10kg»),
+ *      «até 8kg» e «+8kg» são o peso do bebé ou do animal e não contam.
+ *   3. PACKS COM BRINDE: «SVR Sebiaclear 40ml + Oferta Gel 55ml» ficava com a
+ *      variante de 55 ml, o tamanho do brinde. Numa oferta de UMA variante, se
+ *      ela tem o tamanho que vem depois do «+ oferta» e não o primeiro tamanho
+ *      do nome (o volume de referência do site), passa a ter o primeiro.
+ * Nunca cria duas variantes do mesmo tamanho na mesma oferta: se o tamanho
+ * certo já lá está, a variante fica como estava.
+ */
+const UNIDADE_GRANDE = /^(l|lt|litro|litros|kg)$/i;
+// «1kg», «1-kg», «1-5-kg», «1,5l» no URL — sem ser intervalo, «até», «+» ou «>»
+const TAMANHO_GRANDE_NO_URL = /(?<![a-z0-9])(?<!\d[-_.,])(?<!\d-a-)(?<!(?:ate|até|mais|max|min|de)[-_])(?<![>+])(\d+(?:[.,_-]\d)?)[-_]?(kg|l|lt|litro|litros)(?![a-z0-9])/g;
+const BRINDE = /\+\s*(?:uma\s+|1\s+)?(?:oferta|gr[aá]tis|brinde|offer|gift|free)\b(.*)$/i;
+const VOLUME = /(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i;
+
+/** o primeiro tamanho de um texto, em ml/g — o mesmo cálculo do _volFromName do site */
+function volumeDoTexto(texto) {
+  const m = String(texto || '').normalize('NFD').replace(/[̀-ͯ]/g, '').match(VOLUME);
+  if (!m) return null;
+  const n = parseFloat(m[1].replace(',', '.')), u = m[2].toLowerCase();
+  return { ml: (u === 'l' || u === 'kg') ? n * 1000 : n, unit: (u === 'kg' || u === 'g' || u === 'gr') ? 'g' : 'ml' };
+}
+
+function fixVariantSizes(seedJson) {
+  const nomes = new Map((seedJson.products || []).map(p => [String(p.ean), p.name || '']));
+  let litros = 0, kgNoUrl = 0, brindes = 0, removidas = 0;
+  for (const sp of seedJson.store_products) {
+    for (const it of sp.items) {
+      if (!Array.isArray(it.variants) || !it.variants.length) continue;
+      const ocupado = ml => it.variants.some(w => w.volume_ml === ml);
+
+      // 1. litros/quilos
+      const fora = new Set();
+      for (const v of it.variants) {
+        if (!UNIDADE_GRANDE.test(String(v.unit || '')) || !(v.volume_ml > 0)) continue;
+        const pequena = /^kg$/i.test(v.unit) ? 'g' : 'ml';
+        if (v.volume_ml > 10000) { fora.add(v); continue; }
+        if (v.volume_ml >= 20) { v.unit = pequena; litros++; continue; }
+        const certo = Math.round(v.volume_ml * 1000);
+        if (ocupado(certo)) continue;
+        v.volume_ml = certo; v.unit = pequena; litros++;
+      }
+      if (fora.size) { it.variants = it.variants.filter(v => !fora.has(v)); removidas += fora.size; }
+
+      // 2. «1 kg» lido como 1 — prova no URL da própria variante
+      for (const v of it.variants) {
+        if (UNIDADE_GRANDE.test(String(v.unit || '')) || !(v.volume_ml >= 1 && v.volume_ml <= 5) || !v.url) continue;
+        const url = String(v.url).toLowerCase().split(/[?#]/)[0];
+        const m = [...url.matchAll(TAMANHO_GRANDE_NO_URL)]
+          .find(x => parseFloat(x[1].replace(/[_-]/, '.').replace(',', '.')) === v.volume_ml);
+        if (!m) continue;
+        const certo = Math.round(v.volume_ml * 1000);
+        if (ocupado(certo)) continue;
+        v.volume_ml = certo; v.unit = m[2] === 'kg' ? 'g' : 'ml'; kgNoUrl++;
+      }
+
+      // 3. packs com brinde
+      if (it.variants.length !== 1) continue;
+      const nome = nomes.get(String(it.ean)) || '';
+      const b = nome.match(BRINDE);
+      if (!b) continue;
+      const ref = volumeDoTexto(nome), doBrinde = volumeDoTexto(b[1]);
+      const v = it.variants[0];
+      if (!ref || !doBrinde || ref.ml === doBrinde.ml || v.volume_ml !== doBrinde.ml) continue;
+      v.volume_ml = ref.ml; v.unit = ref.unit; brindes++;
+    }
+  }
+  return { litros, kgNoUrl, brindes, removidas };
+}
+
+module.exports = { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants };
