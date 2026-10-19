@@ -814,6 +814,19 @@
     background: var(--surface);
   }
   /* resumo VIVO: a melhor combinação sem cliques + fatura sempre à vista */
+  .offers-unavailable {
+    margin: 12px 0; padding: 14px 16px; border: 1px solid #edc4b9; border-radius: 12px;
+    background: #fff8f5; color: #6e3327; font-size: 13px; line-height: 1.5;
+  }
+  .offers-unavailable p { margin: 0 0 8px; }
+  .offers-unavailable ul { margin: 0 0 10px; padding-left: 19px; }
+  .offers-unavailable li + li { margin-top: 4px; }
+  .offers-unavailable-retry {
+    border: 0; border-radius: 8px; padding: 8px 12px; background: #6e3327; color: #fff;
+    font: inherit; font-weight: 700; cursor: pointer;
+  }
+  #pa-body .offers-unavailable { margin: 8px 14px 16px; }
+
   .bundle-live-card {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     background: linear-gradient(120deg, #eef7f0 0%, #f7f2ff 100%);
@@ -8196,7 +8209,10 @@ async function carregarOfertas(eans, opcoes) {
   // initSupabase e o SDK ainda vem de um CDN. Sem isto, o primeiro desenho
   // pedia ofertas, recebia zero e nunca mais tentava.
   const sb = window.SUPABASE || (await aguardarSupabase() ? window.SUPABASE : null);
-  if (!sb) return 0;
+  if (!sb) {
+    porFazer.forEach(e => OFERTAS_FALHADAS.add(e));
+    return 0;
+  }
 
   // uma promessa por (EAN, modo), para que dois pedidos simultâneos do mesmo
   // produto não disparem dois fetches
@@ -10006,7 +10022,32 @@ async function openPriceAnalyzer(ean) {
   // outra: sem esta guarda, o pódio do produto antigo aterrava por cima
   if (!PA_STATE || PA_STATE.ean !== ean) return;
   pintarImagemDaFicha();   // a imagem veio com as ofertas
+  if (OFERTAS_FALHADAS.has(ean)) {
+    renderOfertaIndisponivel(document.getElementById('pa-body'), [ean], () => openPriceAnalyzer(ean));
+    return;
+  }
   renderPodiumBody();
+}
+
+function precoDesdeDoIndice(ean) {
+  const st = typeof statsByEanMap === 'function' ? statsByEanMap()[ean] : null;
+  const price = st ? (st.absBest ?? st.bestPrice) : null;
+  return Number.isFinite(price) && price > 0 ? price : null;
+}
+
+function renderOfertaIndisponivel(host, eans, retry) {
+  if (!host) return;
+  const rows = [...new Set(eans)].map(ean => {
+    const p = PRODUCT_BY_EAN[ean];
+    const price = precoDesdeDoIndice(ean);
+    return `<li><strong>${escapeHtml(p ? displayName(p.name, p.brand) : ean)}</strong> · ${price == null ? 'preço «desde» indisponível neste momento' : `desde ${price.toFixed(2).replace('.', ',')} €`}</li>`;
+  }).join('');
+  host.innerHTML = `<div class="offers-unavailable" role="alert" aria-live="polite">
+    <p>As ofertas de cada loja não estão disponíveis neste momento.</p>
+    ${rows ? `<ul>${rows}</ul>` : ''}
+    <button type="button" class="offers-unavailable-retry">Tentar novamente</button>
+  </div>`;
+  host.querySelector('.offers-unavailable-retry')?.addEventListener('click', retry, { once: true });
 }
 
 /** abre a moldura da ficha (sem miolo) — usado enquanto as ofertas não chegam */
@@ -13460,9 +13501,12 @@ function bundleRefresh() {
     const palette = brandPalette(p.brand);
     const initial = brandInitial(p.brand);
     const volBadge = chosenVol ? `<span class="bundle-row-vol-badge">${chosenVol} ml</span>` : '';
+    const priceFromIndex = precoDesdeDoIndice(ean);
     const priceLabel = best
       ? `desde <strong>${best.price.toFixed(2)}€</strong> · ${best.store.name}`
-      : (chosenVol ? `sem ${chosenVol} ml disponível` : 'sem stock');
+      : (OFERTAS_FALHADAS.has(ean) && priceFromIndex != null
+        ? `desde <strong>${priceFromIndex.toFixed(2).replace('.', ',')} €</strong>`
+        : (chosenVol ? `sem ${chosenVol} ml disponível` : 'sem stock'));
     return `<div class="bundle-row">
       <div class="bundle-row-img">
         ${p.image_url
@@ -13515,6 +13559,12 @@ async function bundleLiveNow() {
     await carregarOfertas(faltam, { variantes: true });
     // o utilizador pode ter esvaziado o carrinho enquanto esperava
     if (!bundleState.items.size) { box.innerHTML = ''; return; }
+    const falharam = items.map(i => i.ean).filter(e => OFERTAS_FALHADAS.has(e));
+    if (falharam.length) {
+      window.RECEIPT_LAST_BUNDLE = null;
+      renderOfertaIndisponivel(box, falharam, bundleLiveUpdate);
+      return;
+    }
     // As linhas do carrinho foram desenhadas ANTES de as ofertas chegarem (ex.:
     // «Adicionar tudo» do quiz) e ficavam em «sem stock» / «sem 500 ml
     // disponível» até à mudança seguinte (2026-10-14). Se chegou alguma coisa,
@@ -13884,6 +13934,17 @@ async function runAnalysis() {
   const faltam = items.map(i => i.ean).filter(e => !ofertasProntasComVariantes(e));
   if (faltam.length) await carregarOfertas(faltam, { variantes: true });
   if (!bundleState.items.size) return;
+  const falharam = items.map(i => i.ean).filter(e => OFERTAS_FALHADAS.has(e));
+  if (falharam.length) {
+    const body = document.getElementById('results-body');
+    const summary = document.getElementById('results-summary');
+    if (summary) summary.textContent = 'Não foi possível carregar as ofertas por loja';
+    renderOfertaIndisponivel(body, falharam, () => runAnalysis());
+    window.RECEIPT_LAST_BUNDLE = null;
+    bundleClose();
+    document.getElementById('results-backdrop').classList.add('open');
+    return;
+  }
   // ⚠️ try/catch obrigatório: não tinha nenhum, e com os slugs a virem da base
   // de dados basta uma loja que o bloco de arranque não conheça para rebentar
   // aqui dentro. Sem isto, o botão passa a não fazer NADA e o utilizador não
