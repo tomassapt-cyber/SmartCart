@@ -52,13 +52,23 @@ function handleDoUrl(url) {
  * 2) a variante com o EAN da oferta no barcode (sem zeros à esquerda);
  * 3) a única variante, se o produto só tiver uma.
  * null = não se sabe qual → esse produto abre-se à parte, como hoje.
+ *
+ * TAMANHO ESCOLHIDO NO CABAZ (2026-10-19, revisão do #106): a linha do cabaz
+ * leva o preço do tamanho escolhido mas o EAN da FICHA. Na maioria das lojas
+ * cada tamanho é um produto Shopify à parte, com endereço próprio (2 991 de
+ * 3 177 variantes nas 27 lojas): o endereço da linha já é o do tamanho certo
+ * e o produto tem uma só variante. Mas em 89 ofertas vários tamanhos vivem no
+ * MESMO produto, sem ?variant= — aí o EAN apanharia o tamanho da ficha e a
+ * loja receberia outro tamanho. Com `tamanhoEscolhido` e um produto de várias
+ * variantes sem ?variant=, não se adivinha: null (abre-se à parte).
  */
-function varianteDoEan(produtoJs, ean, urlOferta) {
+function varianteDoEan(produtoJs, ean, urlOferta, tamanhoEscolhido) {
   const vs = (produtoJs && produtoJs.variants) || [];
   try {
     const id = new URL(urlOferta).searchParams.get('variant');
     if (id && vs.some(v => String(v.id) === id)) return Number(id);
   } catch { /* endereço inválido → segue */ }
+  if (tamanhoEscolhido && vs.length > 1) return null;
   const alvo = semZeros(ean);
   const porEan = alvo ? vs.find(v => semZeros(v.barcode) === alvo) : null;
   if (porEan) return porEan.id;

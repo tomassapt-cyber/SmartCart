@@ -22,6 +22,14 @@ assert.equal(varianteDoEan(prod, '5000000000000', 'https://x.pt/products/a'), nu
 assert.equal(varianteDoEan({ variants: [{ id: 7, barcode: '' }] }, '5000000000000', 'https://x.pt/products/a'), 7, 'uma só variante');
 assert.equal(varianteDoEan(null, '5000000000000', 'https://x.pt/products/a'), null);
 
+// tamanho escolhido no cabaz (a linha leva o EAN da ficha, não o do tamanho)
+assert.equal(varianteDoEan(prod, '3600523000017', 'https://x.pt/products/a', 50), null,
+  'vários tamanhos no mesmo produto, sem ?variant= → não se adivinha');
+assert.equal(varianteDoEan(prod, '3600523000017', 'https://x.pt/products/a?variant=11', 50), 11,
+  'com ?variant= o tamanho é o do endereço');
+assert.equal(varianteDoEan({ variants: [{ id: 7, barcode: '' }] }, '5000000000000', 'https://x.pt/products/tamanho-50ml', 50), 7,
+  'cada tamanho é um produto à parte (o endereço já é o do tamanho) → a única variante');
+
 // links: um por origem, quantidades inteiras ≥ 1, sem variante → fica de fora
 const links = linksDeCarrinho([
   { url: 'https://www.farmatogo.com/products/a', variante: 101, quantidade: 2 },
