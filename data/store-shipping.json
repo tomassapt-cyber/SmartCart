@@ -617,5 +617,11 @@
   "gratis_ilhas": null,
   "ponto": 3.79,
   "ponto_txt": "3,79 € (CTT Pickup; DPD Pickup 3,99 €)"
+ },
+ "presencadeluxo": {
+  "gratis": 39,
+  "casa": 3.75,
+  "ilhas": null,
+  "gratis_ilhas": null
  }
 }
