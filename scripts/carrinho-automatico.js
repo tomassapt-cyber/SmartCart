@@ -22,6 +22,14 @@
  *   /products/<handle>.js com CORS «*» e a variante do EAN → o site consegue
  * Uma loja que falhe sai da lista à mão (o botão volta a abrir cada produto).
  *
+ * VTEX (Nossa Farmácia, 19/10): /checkout/cart/add?sku=<id>&qty=2&seller=1&…
+ * &redirect=true&sc=1 — provado também (só carrinho anónimo, esvaziado no fim):
+ * os dois produtos entram com as quantidades e a loja abre /checkout/#/cart.
+ * Aqui o site NÃO consulta a loja no clique (a API dela não tem CORS e o EAN
+ * vem vazio): o SKU vem no próprio endereço da oferta, …/p?skuId=<id>, que o
+ * leitor da loja grava. A vigia confirma o carrinho (/api/checkout/pub/
+ * orderForm) e que os SKUs das ofertas existem no catálogo da loja.
+ *
  * Uso:
  *   node scripts/carrinho-automatico.js                       verifica todas
  *   node scripts/carrinho-automatico.js --md=f.md --estado=f.env   (workflow)
@@ -37,6 +45,11 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 const ORIGEM_SITE = 'https://smart-cart-zx55.vercel.app';
 
 const semZeros = e => String(e || '').trim().replace(/^0+/, '');
+
+/** o SKU VTEX de um endereço de oferta (…/p?skuId=<n>), ou null */
+function skuVtexDoUrl(url) {
+  try { const s = new URL(url).searchParams.get('skuId'); return /^\d+$/.test(s || '') ? Number(s) : null; } catch { return null; }
+}
 
 /** o handle Shopify de um endereço de oferta (/products/<handle>), ou null */
 function handleDoUrl(url) {
@@ -78,9 +91,10 @@ function varianteDoEan(produtoJs, ean, urlOferta, tamanhoEscolhido) {
 /**
  * Os links de carrinho de um cabaz: um por ORIGEM (a mesma loja pode ter
  * ofertas noutro domínio — a Farmatogo tem algumas em nouxis.com — e o
- * carrinho é por domínio). itens: [{ url, variante, quantidade }].
+ * carrinho é por domínio). itens: [{ url, variante, quantidade, vendedor? }].
+ * plataforma 'shopify' (por omissão) ou 'vtex' (variante = SKU; vendedor = 1).
  */
-function linksDeCarrinho(itens) {
+function linksDeCarrinho(itens, plataforma = 'shopify') {
   const porOrigem = new Map();
   for (const it of itens) {
     if (!it || !it.variante) continue;
@@ -89,10 +103,14 @@ function linksDeCarrinho(itens) {
     if (!porOrigem.has(origem)) porOrigem.set(origem, []);
     porOrigem.get(origem).push(it);
   }
+  const qtd = it => Math.max(1, Math.round(Number(it.quantidade) || 1));
   return [...porOrigem].map(([origem, lista]) => ({
     origem,
-    link: `${origem}/cart/add?` + lista.map((it, i) =>
-      `items[${i}][id]=${encodeURIComponent(it.variante)}&items[${i}][quantity]=${Math.max(1, Math.round(Number(it.quantidade) || 1))}`).join('&'),
+    link: plataforma === 'vtex'
+      ? `${origem}/checkout/cart/add?` + lista.map(it =>
+        `sku=${encodeURIComponent(it.variante)}&qty=${qtd(it)}&seller=${encodeURIComponent(it.vendedor || 1)}`).join('&') + '&redirect=true&sc=1'
+      : `${origem}/cart/add?` + lista.map((it, i) =>
+        `items[${i}][id]=${encodeURIComponent(it.variante)}&items[${i}][quantity]=${qtd(it)}`).join('&'),
   }));
 }
 
@@ -102,11 +120,12 @@ async function pedir(url, extra = {}) {
   return { status: r.status, cors: r.headers.get('access-control-allow-origin'), corpo: await r.text() };
 }
 
-function amostraDeOfertas(slug, n = 3) {
+function amostraDeOfertas(slug, n = 3, plataforma = 'shopify') {
   const f = path.join(ROOT, 'data', 'seed-bundle.json.gz', 'ofertas', slug + '.jsonl');
   if (!fs.existsSync(f)) return [];
   const ls = fs.readFileSync(f, 'utf8').trim().split('\n').filter(Boolean).map(l => JSON.parse(l))
-    .filter(o => o.in_stock !== false && /^\d{8,14}$/.test(String(o.ean)) && handleDoUrl(o.url));
+    .filter(o => o.in_stock !== false && /^\d{8,14}$/.test(String(o.ean))
+      && (plataforma === 'vtex' ? /\/p$/.test(new URL(o.url).pathname) : handleDoUrl(o.url)));
   if (ls.length <= n) return ls;
   return [ls[Math.floor(ls.length * 0.1)], ls[Math.floor(ls.length / 2)], ls[Math.floor(ls.length * 0.9)]].slice(0, n);
 }
@@ -126,7 +145,32 @@ async function pedirProduto(url) {
   return p;
 }
 
+async function verificarLojaVtex(slug, loja) {
+  const r = { slug, origem: loja.origem, carrinho: false, cors: 'n/a', variantes: 0, amostra: 0, bloqueados: 0, estados: [], erro: null };
+  try {
+    const c = await pedir(loja.origem + '/api/checkout/pub/orderForm');
+    r.carrinho = c.status === 200 && /"orderFormId"\s*:/.test(c.corpo);
+    for (const o of amostraDeOfertas(slug, 3, 'vtex')) {
+      r.amostra++;
+      const sku = skuVtexDoUrl(o.url);
+      if (!sku) { r.estados.push('sem skuId'); continue; }
+      const p = await pedirProduto(`${new URL(o.url).origin}/api/catalog_system/pub/products/search?fq=skuId:${sku}`);
+      let j = null; try { j = JSON.parse(p.corpo); } catch { /* HTML */ }
+      const achou = Array.isArray(j) && j.some(prod => (prod.items || []).some(i => String(i.itemId) === String(sku)));
+      if (achou) r.variantes++;
+      else if (BLOQUEIO.has(p.status)) r.bloqueados++;
+      r.estados.push(achou ? 'ok' : (Array.isArray(j) ? 'SKU não existe' : String(p.status)));
+      await new Promise(z => setTimeout(z, 700));
+    }
+  } catch (e) { r.erro = e.message; }
+  // passa: o carrinho responde e pelo menos um SKU das ofertas existe na loja
+  r.ok = r.carrinho && r.amostra > 0 && r.variantes >= 1;
+  r.inconclusiva = !r.ok && r.carrinho && r.bloqueados > 0 && r.variantes + r.bloqueados >= 1;
+  return r;
+}
+
 async function verificarLoja(slug, loja) {
+  if (loja.plataforma === 'vtex') return verificarLojaVtex(slug, loja);
   const r = { slug, origem: loja.origem, carrinho: false, cors: null, variantes: 0, amostra: 0, bloqueados: 0, estados: [], erro: null };
   try {
     const c = await pedir(loja.origem + '/cart.js');
@@ -191,4 +235,4 @@ async function main() {
 
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1); });
 
-module.exports = { handleDoUrl, varianteDoEan, linksDeCarrinho, verificarLoja };
+module.exports = { handleDoUrl, skuVtexDoUrl, varianteDoEan, linksDeCarrinho, verificarLoja };

@@ -1,5 +1,5 @@
 {
- "_nota": "Lojas onde o carrinho do CosMath abre JÁ CHEIO na loja (um só link com todos os produtos e quantidades). Só Shopify com o carrinho clássico: o site lê /products/<handle>.js (CORS aberto) para achar a variante pelo EAN e abre <origem>/cart/add?items[0][id]=…&items[0][quantity]=…. Fora desta lista, o botão abre cada produto. Verificado por scripts/carrinho-automatico.js (workflow semanal carrinho-automatico.yml). Ver DesktopduoCARRINHO-AUTOMATICO.md.",
+ "_nota": "Lojas onde o carrinho do CosMath abre JÁ CHEIO na loja (um só link com todos os produtos e quantidades). shopify (carrinho clássico): o site lê /products/<handle>.js (CORS aberto) para achar a variante pelo EAN e abre <origem>/cart/add?items[0][id]=…&items[0][quantity]=…. vtex: o SKU vem no endereço da oferta (…/p?skuId=<id>) e o site abre <origem>/checkout/cart/add?sku=…&qty=…&seller=1&…&redirect=true&sc=1, sem consultar a loja. Fora desta lista, o botão abre cada produto. Verificado por scripts/carrinho-automatico.js (workflow semanal carrinho-automatico.yml). Ver Desktop\\duo\\CARRINHO-AUTOMATICO.md.",
  "verificado": "2026-10-19",
  "lojas": {
   "atcosmetics": {
@@ -89,6 +89,10 @@
   "mypharmaspot": {
    "plataforma": "shopify",
    "origem": "https://www.mypharmaspot.com"
+  },
+  "nossafarmacia": {
+   "plataforma": "vtex",
+   "origem": "https://www.nossafarmacia.pt"
   },
   "orientperfumes": {
    "plataforma": "shopify",

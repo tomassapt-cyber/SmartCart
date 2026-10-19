@@ -5,7 +5,7 @@
 const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
-const { handleDoUrl, varianteDoEan, linksDeCarrinho } = require('./carrinho-automatico');
+const { handleDoUrl, skuVtexDoUrl, varianteDoEan, linksDeCarrinho } = require('./carrinho-automatico');
 
 // handle
 assert.equal(handleDoUrl('https://loja.farmaciagarcia.net/products/creme-x?variant=1'), 'creme-x');
@@ -43,6 +43,17 @@ assert.deepEqual(links, [
 ]);
 assert.deepEqual(linksDeCarrinho([]), []);
 
+// VTEX (Nossa Farmácia): SKU no endereço, link /checkout/cart/add com seller=1
+assert.equal(skuVtexDoUrl('https://www.nossafarmacia.pt/cerave-serum/p?skuId=7127498'), 7127498);
+assert.equal(skuVtexDoUrl('https://www.nossafarmacia.pt/cerave-serum/p'), null);
+assert.equal(skuVtexDoUrl('https://www.nossafarmacia.pt/cerave-serum/p?skuId=abc'), null);
+assert.deepEqual(linksDeCarrinho([
+  { url: 'https://www.nossafarmacia.pt/a/p?skuId=7478107', variante: 7478107, quantidade: 2 },
+  { url: 'https://www.nossafarmacia.pt/b/p?skuId=7127498', variante: 7127498, quantidade: 1 },
+  { url: 'https://www.nossafarmacia.pt/c/p', variante: null, quantidade: 1 },
+], 'vtex'), [{ origem: 'https://www.nossafarmacia.pt',
+  link: 'https://www.nossafarmacia.pt/checkout/cart/add?sku=7478107&qty=2&seller=1&sku=7127498&qty=1&seller=1&redirect=true&sc=1' }]);
+
 // a lista de lojas: slugs que existem, origem https, só shopify
 const ROOT = path.resolve(__dirname, '..');
 const fich = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'carrinho-automatico.json'), 'utf8'));
@@ -52,8 +63,8 @@ assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(fich.verificado), 'data de verificação');
 assert.ok(Object.keys(fich.lojas).length > 0);
 for (const [slug, l] of Object.entries(fich.lojas)) {
   assert.ok(slugs.has(slug), `loja desconhecida: ${slug}`);
-  assert.equal(l.plataforma, 'shopify', slug);
+  assert.ok(['shopify', 'vtex'].includes(l.plataforma), slug);
   assert.ok(/^https:\/\/[^/]+$/.test(l.origem), `${slug}: origem sem caminho nem barra final`);
 }
 
-console.log(`carrinho-automatico: handle, variante (?variant=, EAN sem zeros, única), um link por origem, lista de ${Object.keys(fich.lojas).length} lojas coerente — tudo passou`);
+console.log(`carrinho-automatico: handle, variante (?variant=, EAN sem zeros, única, tamanho escolhido), VTEX (skuId, link), um link por origem, lista de ${Object.keys(fich.lojas).length} lojas coerente — tudo passou`);
