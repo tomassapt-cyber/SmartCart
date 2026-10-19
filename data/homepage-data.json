@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-19T08:38:16.282Z",
-  "seed_total_products": 94712,
+  "generated_at": "2026-10-19T10:40:51.186Z",
+  "seed_total_products": 94720,
   "hero_sponsored": [
     {
       "ean": "8429420158399",
@@ -258,7 +258,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 760
+      "products": 763
     },
     {
       "name": "Chicco",
@@ -3345,5 +3345,10 @@
         "img": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/8470001915528.jpg?v=1746444258"
       }
     ]
+  },
+  "hero_origem": {
+    "fonte": "google-suggest-pt",
+    "populares": 5,
+    "total": 5
   }
 }
