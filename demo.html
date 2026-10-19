@@ -7209,7 +7209,7 @@
   </div>
   <div class="hero-right">
     <div class="sponsored-carousel" id="sponsored-carousel">
-      <div class="sponsored-badge">🔍 Mais pesquisados no Google</div>
+      <div class="sponsored-badge">🔍 Em destaque</div>
       <button class="sponsored-arrow sponsored-arrow-prev" id="sponsored-prev" aria-label="Slide anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
       <div class="sponsored-slides" id="sponsored-slides"></div>
       <button class="sponsored-arrow sponsored-arrow-next" id="sponsored-next" aria-label="Slide seguinte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
@@ -13048,6 +13048,18 @@ const SPONSORED_EANS_FALLBACK = [
 ];
 
 let GERACAO_CARROSSEL = 0;
+function tituloCarrosselPopularidade(origem, usaFallback) {
+  if (usaFallback || !origem || typeof origem !== 'object'
+      || !Object.prototype.hasOwnProperty.call(origem, 'fonte')
+      || !Object.prototype.hasOwnProperty.call(origem, 'populares')
+      || !Object.prototype.hasOwnProperty.call(origem, 'total')
+      || typeof origem.populares !== 'number'
+      || typeof origem.total !== 'number'
+      || origem.populares !== origem.total) return 'Em destaque';
+  if (origem.fonte === 'google-suggest-pt') return 'Populares nas pesquisas Google';
+  if (origem.fonte === 'site-search') return 'Mais procurados no CosMath';
+  return 'Em destaque';
+}
 async function renderSponsoredCarousel() {
   const slidesEl = document.getElementById('sponsored-slides');
   const dotsEl = document.getElementById('sponsored-dots');
@@ -13061,16 +13073,21 @@ async function renderSponsoredCarousel() {
   // Preferir hp.hero_sponsored (curado em build-homepage-data.js); fallback
   // à lista hardcoded se hp-data falhar a carregar ou estiver vazio.
   let items = [];
+  let hp = null;
+  let usaFallback = false;
   try {
     const hpScript = document.getElementById('hp-data');
-    const hp = hpScript ? JSON.parse(hpScript.textContent) : null;
+    hp = hpScript ? JSON.parse(hpScript.textContent) : null;
     if (hp?.hero_sponsored?.length) {
       items = hp.hero_sponsored.map(p => PRODUCT_BY_EAN[p.ean]).filter(Boolean);
     }
   } catch (e) { console.warn('hp-data parse failed, fallback', e); }
   if (items.length === 0) {
+    usaFallback = true;
     items = SPONSORED_EANS_FALLBACK.map(ean => PRODUCT_BY_EAN[ean]).filter(Boolean);
   }
+  const badge = document.querySelector('.sponsored-badge');
+  if (badge) badge.textContent = '🔍 ' + tituloCarrosselPopularidade(hp?.hero_origem, usaFallback);
   if (items.length === 0) return;
 
   // O carrossel é a primeira coisa que se vê. Sem ofertas, o bestOfferFor
