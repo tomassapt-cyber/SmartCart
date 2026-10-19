@@ -307,6 +307,7 @@ if (require.main === module) {
   // que não é o que a página mostra.
   require('./lib/verified-shipping').applyVerifiedShipping(seed, ROOT);
   const vf = require('./lib/variant-fixes');
+  vf.fixVariantSizes(seed);
   vf.fixTruncatedVariantPrices(seed);
   vf.dropWrongProductVariants(seed);
   require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);

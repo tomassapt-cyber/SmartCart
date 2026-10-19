@@ -68,6 +68,7 @@ const seed = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.jso
 const { isNonCosmetic } = require('./lib/product-fingerprint');
 require('./lib/verified-shipping').applyVerifiedShipping(seed, ROOT);
 const vf = require('./lib/variant-fixes');
+vf.fixVariantSizes(seed);
 vf.fixTruncatedVariantPrices(seed); vf.dropWrongProductVariants(seed);
 require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
 require('./lib/promo-fold').foldPromoVariants(seed);

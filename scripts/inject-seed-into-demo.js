@@ -50,6 +50,18 @@ const seedJson = JSON.parse(seed);
   if (aplicadas) console.log(`🚚 Portes verificados aplicados a ${aplicadas} lojas (store-shipping.json).`);
 })();
 
+// ── Overlay: CORRIGIR tamanhos de variante mal lidos (NÃO-destrutivo) ─────────
+// L/kg sem converter (1 kg → 1000 g), «1 kg» lido como 1 (prova no URL da
+// variante) e o tamanho do BRINDE em packs «40ml + Oferta 55ml». Corre ANTES
+// da remoção de produto-trocado, que olha para a ordem dos tamanhos e podia
+// apagar a variante de 1 kg guardada como 1. Ver scripts/lib/variant-fixes.js.
+(function corrigirTamanhosDeVariante() {
+  const { fixVariantSizes } = require('./lib/variant-fixes');
+  const r = fixVariantSizes(seedJson);
+  const n = r.litros + r.kgNoUrl + r.brindes + r.removidas;
+  if (n) console.log(`📏 Tamanhos de variante corrigidos: ${r.litros} L/kg · ${r.kgNoUrl} «1 kg» lido como 1 · ${r.brindes} brindes · ${r.removidas} impossíveis removidos`);
+})();
+
 // ── Overlay: CORRIGIR preços de variante truncados ao inteiro (NÃO-destrutivo) ─
 // Bug do scraper da Wells (e afins): a extração de variantes por DOM apanha às
 // vezes o preço sem decimais (7,98 € → 7). Como o card usa o preço da VARIANTE
