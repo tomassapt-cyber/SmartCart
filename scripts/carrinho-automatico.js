@@ -134,8 +134,13 @@ async function verificarLoja(slug, loja) {
       await new Promise(z => setTimeout(z, 700));
     }
   } catch (e) { r.erro = e.message; }
-  const precisa = Math.min(2, r.amostra);
-  // passa: carrinho clássico, CORS aberto e pelo menos 2 de 3 variantes achadas
+  // Passa: carrinho clássico, CORS aberto e pelo menos UMA variante achada.
+  // A vigia é da LOJA (mudou de plataforma? fechou o acesso?), não de cada
+  // produto: um produto que falhe abre-se à parte no site. E da nuvem há
+  // falsos 404 — o GitHub corre nos EUA e a A Tua Farmácia (Shopify Markets)
+  // esconde lá produtos que só vende em Portugal (fórmula infantil, brinquedo):
+  // 404 da nuvem, 200 de cá, a 19/10. Exigir 2 de 3 dava alarmes falsos.
+  const precisa = r.amostra ? 1 : 0;
   r.ok = r.carrinho && r.cors === '*' && r.variantes >= precisa && r.amostra > 0;
   // não se sabe daqui: o carrinho responde, e o que falta são pedidos bloqueados
   r.inconclusiva = !r.ok && r.carrinho && r.bloqueados > 0 && r.variantes + r.bloqueados >= precisa
@@ -161,7 +166,7 @@ async function main() {
     const ln = ['O carrinho automático (um link que abre a loja com o cabaz já no carrinho) deixou de funcionar nestas lojas:', '',
       '| loja | carrinho clássico (/cart.js) | CORS do produto | variante pelo EAN (resposta de cada amostra) |', '|---|---|---|---|',
       ...falham.map(linha), '',
-      'Enquanto estiverem em `data/carrinho-automatico.json`, o botão do cabaz tenta o link e pode abrir um carrinho vazio ou incompleto. **A fazer:** confirmar à mão; se a loja mudou de plataforma, tirá-la do ficheiro (o botão volta a abrir cada produto). «sem variante» = o produto existe mas nenhum tamanho tem o EAN da oferta; «404» = o produto já não existe com esse endereço.', ''];
+      'Enquanto estiverem em `data/carrinho-automatico.json`, o botão do cabaz tenta o link e pode abrir um carrinho vazio ou incompleto. **A fazer:** confirmar à mão; se a loja mudou de plataforma, tirá-la do ficheiro (o botão volta a abrir cada produto). «sem variante» = o produto existe mas nenhum tamanho tem o EAN da oferta; «404» = o produto não existe com esse endereço, ou não está à venda no país de onde a vigia corre (EUA).', ''];
     if (inconclusivas.length) ln.push(`Sem conclusão a partir da nuvem (a loja limitou ou bloqueou os pedidos, ${[...BLOQUEIO].join('/')}): ${inconclusivas.map(r => r.slug).join(', ')}. Não é falha — o site lê do telemóvel de quem compra.`, '');
     ln.push(`Verificação de ${new Date().toISOString().slice(0, 10)} pelo \`scripts/carrinho-automatico.js\`.`);
     fs.writeFileSync(args.md, ln.join('\n') + '\n');
