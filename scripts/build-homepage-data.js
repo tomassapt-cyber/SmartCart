@@ -8,6 +8,7 @@
  * Estrutura:
  * {
  *   hero_sponsored: [Product × 5],     // EANs curados
+ *   hero_origem:    { fonte, populares, total }, // de onde vem o carrossel
  *   bestsellers:    [Product × 5],     // Top 5 por nº de lojas
  *   skincare_kits:  [Product × 5],     // Filtrar kit/cofre/set/pack
  *   em_alta:        [Product × 5],     // 1 featured + 4 patrocinados
@@ -489,9 +490,11 @@ async function computeEmAlta(seed) {
   // 2×/semana; substituído pelo tracking real quando o site tiver tráfego).
   // Re-condensado contra o seed atual p/ preços frescos. Fallback aos curados.
   let popularEans = null;
+  let popularFonte = null;   // o `source` do ficheiro — vai para hero_origem
   try {
     const pj = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'popular-searches.json'), 'utf8'));
     popularEans = (pj.products || []).map(p => p.ean).filter(Boolean);
+    popularFonte = pj.source || null;
   } catch { /* sem ficheiro → fallback */ }
   const heroSponsored = popularEans && popularEans.length ? condenseByEan(seed, popularEans).slice(0, 5) : [];
   const nPopular = heroSponsored.length;
@@ -559,6 +562,17 @@ async function computeEmAlta(seed) {
     // de correcção e o filtro de visibilidade: este ficheiro lê o seed em
     // BRUTO e daria ~8.000 produtos a mais do que a página mostra.
     hero_sponsored: heroSponsored,
+    // De onde vêm os produtos do carrossel (2026-10-19). O título do site
+    // depende disto: «Google» só é verdade quando os 5 saem das pesquisas
+    // Google. `fonte` é o `source` do data/popular-searches.json:
+    //   'google-suggest-pt'           → todos das sugestões de pesquisa Google
+    //   'google-suggest-pt+fallback'  → Google + os produtos com mais lojas
+    //   'fallback-mais-lojas'         → só os produtos com mais lojas
+    //   'site-search'                 → pesquisas feitas no CosMath
+    //   null                          → sem ficheiro
+    // `populares` = quantos dos `total` vêm dessa lista; os restantes são os
+    // curados (SPONSORED_EANS) que tapam o carrossel até 5.
+    hero_origem: { fonte: popularFonte, populares: nPopular, total: heroSponsored.length },
     // [2026-07-30] `bestsellers` e `telegram_alerts` DEIXARAM de ser enviados:
     // a secção de bestsellers foi removida do site e o elemento do feed de
     // alertas nunca existiu no HTML. Eram 2,2 KB por visita a não mostrar
