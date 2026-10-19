@@ -75,3 +75,7 @@ data/seed-bundle.json
 
 # Estado do sync incremental para a BD (vive na cache do Actions, nunca no git).
 .db-sync-estado/
+
+# Saídas do adaptador frontend
+/assets/cm-*
+/seo-shell.html
