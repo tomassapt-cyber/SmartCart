@@ -13896,6 +13896,7 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
       qty: it.qty,
       unitPrice: best.price,
       line: +(best.price * it.qty).toFixed(2),
+      volume_ml: best.volume_ml,
       url: best.url,
     });
   }
@@ -14183,7 +14184,7 @@ let CARRINHO_AUTO_PROMISE = null;
 async function carregarLojasCarrinhoAutomatico() {
   if (CARRINHO_AUTO_LOJAS) return CARRINHO_AUTO_LOJAS;
   if (!CARRINHO_AUTO_PROMISE) {
-    CARRINHO_AUTO_PROMISE = fetch('/data/carrinho-automatico.json', { cache: 'force-cache' })
+    CARRINHO_AUTO_PROMISE = fetch('/data/carrinho-automatico.json')
       .then(r => { if (!r.ok) throw new Error('lista indisponível'); return r.json(); })
       .then(data => { CARRINHO_AUTO_LOJAS = new Set(Object.keys(data && data.lojas || {})); return CARRINHO_AUTO_LOJAS; })
       .catch(() => { CARRINHO_AUTO_LOJAS = new Set(); return CARRINHO_AUTO_LOJAS; });
@@ -14193,9 +14194,10 @@ async function carregarLojasCarrinhoAutomatico() {
 function cartAutoHandle(url) {
   try { const m = new URL(url).pathname.match(/\/products\/([^/?#]+)/); return m ? decodeURIComponent(m[1]) : null; } catch { return null; }
 }
-function cartAutoVariant(produto, ean, url) {
+function cartAutoVariant(produto, ean, url, tamanhoEscolhido) {
   const vs = (produto && produto.variants) || [];
   try { const id = new URL(url).searchParams.get('variant'); if (id && vs.some(v => String(v.id) === id)) return Number(id); } catch {}
+  if (tamanhoEscolhido && vs.length > 1) return null;
   const semZeros = v => String(v || '').trim().replace(/^0+/, '');
   const alvo = semZeros(ean);
   const porEan = alvo ? vs.find(v => semZeros(v.barcode) === alvo) : null;
@@ -14212,13 +14214,25 @@ async function abrirCarrinhoAutomatico(botao, data) {
   const linhas = data.lines;
   // Reservar um separador por linha de forma síncrona para o Safari. Em sucesso,
   // fecham-se os extras; se todos falharem, cada um abre a oferta como antes.
-  const tabs = linhas.map(() => {
+  // Reservar um único separador por origem, ainda durante o toque, para o Safari.
+  const tabPorOrigem = new Map();
+  for (const linha of linhas) {
+    let origem; try { origem = new URL(linha.url).origin; } catch { continue; }
+    if (tabPorOrigem.has(origem)) continue;
+    let tab = null;
     try {
-      const tab = window.open('about:blank', '_blank');
-      if (tab) tab.opener = null;
-      return tab;
-    } catch { return null; }
-  });
+      tab = window.open('about:blank', '_blank');
+      if (tab) {
+        tab.opener = null;
+        tab.document.title = 'A preparar o carrinho na ' + data.name + '…';
+        if (tab.document.body) {
+          tab.document.body.textContent = 'A preparar o carrinho na ' + data.name + '…';
+          tab.document.body.style.cssText = 'font:16px system-ui,sans-serif;padding:32px;color:#334155';
+        }
+      }
+    } catch { tab = null; }
+    tabPorOrigem.set(origem, tab);
+  }
   const textoOriginal = botao.textContent;
   botao.disabled = true; botao.textContent = 'A preparar o carrinho…';
   const respostas = await Promise.all(linhas.map(async linha => {
@@ -14229,24 +14243,28 @@ async function abrirCarrinhoAutomatico(botao, data) {
       const r = await fetch(origem + '/products/' + encodeURIComponent(handle) + '.js', { method: 'GET', mode: 'cors', credentials: 'omit', headers: { accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
       if (!r.ok) return { linha, fetchOk: false, variante: null };
       const produto = await r.json();
-      return { linha, fetchOk: true, variante: cartAutoVariant(produto, linha.ean, linha.url) };
+      return { linha, fetchOk: true, variante: cartAutoVariant(produto, linha.ean, linha.url, linha.volume_ml) };
     } catch { return { linha, fetchOk: false, variante: null }; }
   }));
   botao.disabled = false; botao.textContent = textoOriginal;
   if (!respostas.some(x => x.fetchOk)) {
-    respostas.forEach((x, i) => { if (tabs[i]) { try { tabs[i].location.href = x.linha.url; } catch {} } });
-    const abertos = tabs.filter(Boolean).length;
-    if (abertos < linhas.length) toast('A loja não respondeu. Abri ' + abertos + ' de ' + linhas.length + ' produtos; os restantes estão na lista.');
-    else toast('A loja não respondeu. Abri os produtos como antes.');
+    let abertos = 0;
+    for (const [origem, tab] of tabPorOrigem) {
+      if (!tab) continue;
+      const primeira = linhas.find(l => { try { return new URL(l.url).origin === origem; } catch { return false; } });
+      if (!primeira) continue;
+      try { tab.location.href = primeira.url; abertos++; } catch {}
+    }
+    if (abertos < tabPorOrigem.size) toast('A loja não respondeu. Abri ' + abertos + ' de ' + tabPorOrigem.size + ' lojas; os produtos continuam na lista.');
+    else toast('A loja não respondeu. Abri uma oferta por loja; os restantes produtos estão na lista.');
     return;
   }
   const comVariante = respostas.filter(x => x.fetchOk && x.variante);
   const links = cartAutoLinks(comVariante.map(x => ({ url: x.linha.url, variante: x.variante, quantidade: x.linha.qty })));
-  const tabPorOrigem = new Map();
-  respostas.forEach((x, i) => { try { const o = new URL(x.linha.url).origin; if (!tabPorOrigem.has(o) && tabs[i]) tabPorOrigem.set(o, tabs[i]); } catch {} });
+
   for (const item of links) { const tab = tabPorOrigem.get(item.origem); if (tab) { try { tab.location.href = item.link; } catch {} } }
   const usados = new Set(links.map(x => tabPorOrigem.get(x.origem)).filter(Boolean));
-  tabs.forEach(tab => { if (tab && !usados.has(tab)) tab.close(); });
+  for (const tab of tabPorOrigem.values()) { if (tab && !usados.has(tab)) tab.close(); }
   const omitidas = respostas.filter(x => !x.fetchOk || !x.variante);
   const aviso = botao.parentElement.querySelector('[data-auto-cart-skipped]');
   if (aviso) aviso.innerHTML = omitidas.length
@@ -14270,7 +14288,7 @@ function storeLineHTML(b) {
     </a>`;
   }).join('');
   const carrinhoAuto = CARRINHO_AUTO_LOJAS && CARRINHO_AUTO_LOJAS.has(b.store_slug);
-  const autoCartData = JSON.stringify({ name: b.store_name, lines: b.lines.map(l => ({ ean: l.ean, name: displayName(l.name, l.brand) || l.name || l.ean, qty: l.qty, url: l.url })) }).replace(/'/g, "&apos;");
+  const autoCartData = JSON.stringify({ name: b.store_name, lines: b.lines.map(l => ({ ean: l.ean, name: displayName(l.name, l.brand) || l.name || l.ean, qty: l.qty, volume_ml: l.volume_ml, url: l.url })) }).replace(/'/g, "&apos;");
   const buyButton = carrinhoAuto
     ? `<button class="buy-btn" data-auto-cart='${autoCartData}'>Abrir o carrinho na ${b.store_name} →</button>`
     : b.lines.length === 1
