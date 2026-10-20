@@ -1,17 +1,7 @@
 {
-  "generated_at": "2026-10-19T10:40:51.186Z",
-  "seed_total_products": 94720,
+  "generated_at": "2026-10-20T08:20:26.736Z",
+  "seed_total_products": 94749,
   "hero_sponsored": [
-    {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.25,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/isdin-fotoprotector-fluido-fusion-water-fps50-50ml"
-    },
     {
       "ean": "3606000560833",
       "name": "Sérum Con Ácido Hialurónico",
@@ -41,6 +31,16 @@
       "best_store": "Pharma24",
       "best_store_slug": "pharma24",
       "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
+    },
+    {
+      "ean": "3522930005797",
+      "name": "Sérum Vinoperfect da Caudalie + Protetor Solar Facial Vinosun Ocean Protect FPS 50+ de oferta",
+      "brand": "Caudalie",
+      "image_url": "https://assets.atida.com/transform/0f6e16b7-302d-4339-8289-a1ef763cb2ce/Caudalie-Vinoperfect-Serum-30-ml-Regalo-Vinosun-Ocean-Protect-Fluido-SPF50-20-ml",
+      "best_price": 40.2,
+      "best_store": "A Farmácia Online",
+      "best_store_slug": "afarmaciaonline",
+      "best_url": "https://www.afarmaciaonline.pt/caudalie-vinoperf-ser-of-vinosun-fl20ml-1.html"
     },
     {
       "ean": "5201279072193",
@@ -121,10 +121,10 @@
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 14.5,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
+      "best_price": 15.33,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
     },
     {
       "ean": "3574661874951",
@@ -173,6 +173,21 @@
       "verified_live": true
     },
     {
+      "ean": "8436616950187",
+      "name": "Rose Quartz Facial Cleanser",
+      "brand": "Freshly Cosmetics",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw98da7664/images/wells/820/8207032-ROSTO-ROSE-QUARTZ-FACIAL-CLEANSER-FRESHLY-COSMETICS-P-01.jpg",
+      "best_price": 13.96,
+      "best_store": "Wells",
+      "best_store_slug": "wells",
+      "best_url": "https://wells.pt/rose-quartz-facial-cleanser-352576.html",
+      "volume_ml": 200,
+      "previous_price": 24.46,
+      "discount_pct": 43,
+      "dropped_day": 20746,
+      "verified_live": true
+    },
+    {
       "ean": "3600542571982",
       "name": "Garnier Ultra Suave Infusão de Água de Arroz Shampoo",
       "brand": "Garnier",
@@ -215,30 +230,16 @@
       "discount_pct": 34,
       "dropped_day": 20739,
       "verified_live": true
-    },
-    {
-      "ean": "5901761967869",
-      "name": "Eveline Cosmetics Magic Skin CC Cream 8 em 1",
-      "brand": "Eveline Cosmetics",
-      "image_url": "https://assets.atida.com/transform/e28a0b1b-869d-4680-9120-54af4eb7188d/Eveline-Cosmetics-Magic-Skin-Cc-Crema-8en1-50-ml",
-      "best_price": 5.99,
-      "best_store": "Auchan",
-      "best_store_slug": "auchan",
-      "best_url": "https://www.auchan.pt/pt/beleza-e-higiene/cremes-de-corpo-e-rosto/cremes-de-rosto/hidratacao/creme-rosto-eveline-magic-skin-hidratante-8em1-50ml/3664784.html",
-      "previous_price": 8.99,
-      "discount_pct": 33,
-      "dropped_day": 20740,
-      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 870
+      "products": 876
     },
     {
       "name": "Avène",
-      "products": 858
+      "products": 857
     },
     {
       "name": "Isdin",
@@ -250,7 +251,7 @@
     },
     {
       "name": "Nivea",
-      "products": 806
+      "products": 808
     },
     {
       "name": "La Roche-Posay",
@@ -258,7 +259,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 763
+      "products": 760
     },
     {
       "name": "Chicco",
@@ -296,8 +297,8 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 77046,
-    "avg_savings_pct": 28
+    "products": 76981,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": "",
