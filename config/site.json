@@ -1,0 +1,4 @@
+{
+  "_comment": "Origem pública do site: o ÚNICO sítio onde está escrita. O build lê-a daqui (ou de COSMATH_SITE, se definida) para o manifesto das fichas, o meta cm-site da página, o robots.txt, o sitemap, os og:url/og:image e os canonical das páginas legais. Quando houver domínio próprio, muda-se só esta linha. Ver scripts/lib/site-origin.js.",
+  "origin": "https://smart-cart-zx55.vercel.app"
+}

@@ -31,7 +31,9 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const SITE = (process.env.COSMATH_SITE || 'https://smart-cart-zx55.vercel.app').replace(/\/$/, '');
+// A origem vem de um só sítio (config/site.json ou COSMATH_SITE), a mesma do
+// manifesto das fichas e do robots.txt — 2026-10-16.
+const SITE = require('./lib/site-origin').siteOrigin();
 const POR_FICHEIRO = 20000;   // o limite do protocolo são 50.000; 20.000 dá folga
 
 /**
