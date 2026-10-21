@@ -88,7 +88,11 @@ function mapProduct(p) {
   const img = ((it.images || [])[0] || {}).imageUrl || null;
   return {
     status: 'ok',
-    url: `${BASE}/${p.linkText}/p`,
+    // ?skuId= (2026-10-19): o carrinho automático do CosMath abre a loja com o
+    // cabaz já no carrinho (/checkout/cart/add?sku=…) e precisa do SKU — que só
+    // vem daqui: a API da loja não tem CORS e o items[].ean vem vazio. É o
+    // formato normal da VTEX; a página abre igual, já nesse SKU.
+    url: `${BASE}/${p.linkText}/p${/^\d+$/.test(String(it.itemId || '')) ? `?skuId=${it.itemId}` : ''}`,
     name,
     brand: (p.brand || '').trim() || null,
     ean, cnp,

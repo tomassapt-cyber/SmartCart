@@ -49,6 +49,24 @@ const DRY_RUN = !!args['dry-run'];
 const NO_INJECT = !!args['no-inject'];
 
 function loadJSON(f) { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return null; } }
+
+// ?skuId= (2026-10-19): o carrinho automático precisa do SKU no endereço da
+// oferta (ver scrape-nossafarmacia-catalog.js). O merge partilhado
+// (store-item-merge) mantém o URL antigo das ofertas e variantes que já
+// existiam — de propósito, para todas as lojas —, por isso o endereço novo
+// nunca chegava. Aqui, e só quando é o MESMO caminho com o ?skuId= a mais,
+// passa a valer o endereço fresco. Devolve quantos endereços mudaram.
+const semQuery = u => String(u || '').split('?')[0];
+function acrescentarSku(item, urlFresco) {
+  if (!/[?&]skuId=\d+/.test(urlFresco || '')) return 0;
+  const base = semQuery(urlFresco);
+  let n = 0;
+  if (item.url !== urlFresco && semQuery(item.url) === base) { item.url = urlFresco; n++; }
+  for (const v of (item.variants || [])) {
+    if (v.url !== urlFresco && semQuery(v.url) === base) { v.url = urlFresco; n++; }
+  }
+  return n;
+}
 const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
 
 (function main() {
@@ -155,7 +173,7 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     console.log(`🏬 Loja "Nossa Farmácia" registada em seed.stores[].`);
   }
 
-  let eanMatched = 0, cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, priceSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0;
+  let eanMatched = 0, cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, priceSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0, comSku = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
 
   for (const ep of items) {
@@ -207,9 +225,11 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     );
     if (r.action === 'added') added++;
     else if (r.action === 'merged') updated++;
+    if (r.item) comSku += acrescentarSku(r.item, ep.url);
   }
 
   const totalMatched = eanMatched + cnpMatched + matched + looseMatched + fuzzyMatched;
+  console.log(`  Endereços com ?skuId= acrescentado (carrinho automático): ${comSku}`);
   console.log('══════ Resumo (Nossa Farmácia · fonte de preço, enrich-only) ══════');
   console.log(`  Casados por EAN directo:    ${eanMatched}`);
   console.log(`  Casados por CNP directo:    ${cnpMatched}`);
