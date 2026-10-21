@@ -8600,6 +8600,8 @@ async function rebuildCatalogIndexesFromSources(arranque, indice) {
   const top50RotEpochNow = top50Epoch();
   for (let i = 0; i < productStats.length; i++) {
     const s = productStats[i];
+    // Keep this score identical to search-index-worker.js; the Worker orders
+    // the full index with this same formula before publishing POPULARITY_ORDER.
     popularityScore[s.ean] = s.storeCount * 1000 + Math.min(s.savings, 50) * 5 - (s.bestPrice ?? 9999) * 0.01;
     statsMap[s.ean] = s;
     if (top50Rot) {
@@ -8841,7 +8843,18 @@ function garantirIndice() {
     let ultimoErro = null;
     for (let tentativa = 1; tentativa <= 3; tentativa++) {
       try {
-        const indice = await carregarIndiceEmWorker('/data/idx/search-' + versao + '.json', top50Epoch());
+        const urlIndice = '/data/idx/search-' + versao + '.json';
+        let indice;
+        try {
+          indice = await carregarIndiceEmWorker(urlIndice, top50Epoch());
+        } catch (erroWorker) {
+          // Worker indisponível (incluindo script 404/CSP): mantém o caminho
+          // funcional antigo, lendo e analisando o JSON no fio principal.
+          console.warn('Worker do índice falhou; a usar leitura no fio principal:', erroWorker && erroWorker.message);
+          const resposta = await fetch(urlIndice);
+          if (!resposta.ok) throw new Error('HTTP ' + resposta.status + ' ao ler índice');
+          indice = await resposta.json();
+        }
         if (!indice || !indice.n || !Array.isArray(indice.e)) throw new Error('índice vazio');
         await rebuildCatalogIndexesFromSources(hp.arranque, indice);
         INDICE_CARREGADO = true;

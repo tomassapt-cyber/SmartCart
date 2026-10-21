@@ -15,6 +15,8 @@ self.onmessage = async event => {
         const best = indice.mn[i] < 0 ? null : indice.mn[i] / 100;
         const worst = indice.mx[i] < 0 ? null : indice.mx[i] / 100;
         const savings = (best !== null && worst !== null) ? +(worst - best).toFixed(2) : 0;
+        // Must stay identical to demo.html's popularityScore formula in
+        // rebuildCatalogIndexesFromSources(); it builds the fallback score map.
         scores[i] = indice.s[i] * 1000 + Math.min(savings, 50) * 5 - (best ?? 9999) * 0.01;
         order[i] = i;
       }
