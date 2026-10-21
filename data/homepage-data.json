@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-20T09:57:25.342Z",
-  "seed_total_products": 94765,
+  "generated_at": "2026-10-21T08:26:56.500Z",
+  "seed_total_products": 94809,
   "hero_sponsored": [
     {
       "ean": "3606000560833",
@@ -17,10 +17,10 @@
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.94,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
+      "best_price": 17.93,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
     },
     {
       "ean": "3372290001805",
@@ -173,21 +173,6 @@
       "verified_live": true
     },
     {
-      "ean": "8436616950187",
-      "name": "Rose Quartz Facial Cleanser",
-      "brand": "Freshly Cosmetics",
-      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw98da7664/images/wells/820/8207032-ROSTO-ROSE-QUARTZ-FACIAL-CLEANSER-FRESHLY-COSMETICS-P-01.jpg",
-      "best_price": 13.96,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/rose-quartz-facial-cleanser-352576.html",
-      "volume_ml": 200,
-      "previous_price": 24.46,
-      "discount_pct": 43,
-      "dropped_day": 20746,
-      "verified_live": true
-    },
-    {
       "ean": "3600542571982",
       "name": "Garnier Ultra Suave Infusão de Água de Arroz Shampoo",
       "brand": "Garnier",
@@ -230,40 +215,54 @@
       "discount_pct": 34,
       "dropped_day": 20739,
       "verified_live": true
+    },
+    {
+      "ean": "5901761967869",
+      "name": "Eveline Cosmetics Magic Skin CC Cream 8 em 1",
+      "brand": "Eveline Cosmetics",
+      "image_url": "https://assets.atida.com/transform/e28a0b1b-869d-4680-9120-54af4eb7188d/Eveline-Cosmetics-Magic-Skin-Cc-Crema-8en1-50-ml",
+      "best_price": 5.99,
+      "best_store": "Auchan",
+      "best_store_slug": "auchan",
+      "best_url": "https://www.auchan.pt/pt/beleza-e-higiene/cremes-de-corpo-e-rosto/cremes-de-rosto/hidratacao/creme-rosto-eveline-magic-skin-hidratante-8em1-50ml/3664784.html",
+      "previous_price": 8.99,
+      "discount_pct": 33,
+      "dropped_day": 20740,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 876
+      "products": 882
     },
     {
       "name": "Avène",
-      "products": 858
+      "products": 857
     },
     {
       "name": "Isdin",
       "products": 835
     },
     {
+      "name": "Nivea",
+      "products": 809
+    },
+    {
       "name": "L'Oréal Paris",
       "products": 808
     },
     {
-      "name": "Nivea",
-      "products": 808
-    },
-    {
       "name": "La Roche-Posay",
-      "products": 799
+      "products": 801
     },
     {
       "name": "Eucerin",
-      "products": 763
+      "products": 761
     },
     {
       "name": "Chicco",
-      "products": 737
+      "products": 739
     }
   ],
   "telegram_alerts": [
@@ -297,7 +296,7 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 76981,
+    "products": 76991,
     "avg_savings_pct": 29
   },
   "shard_version": "",
