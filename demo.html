@@ -8291,14 +8291,28 @@ async function carregarOfertas(eans, opcoes) {
   const falharam = new Set();   // EANs de lotes que rebentaram
   const trabalho = (async () => {
     for (const lote of lotes) {
-      let sel = 'ean,image_url,offers!offers_ean_fkey(store_slug,price,previous_price,discount_pct,in_stock,url,verified_at,promo_note,promo_pack)';
+      let sel = 'ean,name,brand,category,image_url,offers!offers_ean_fkey(store_slug,price,previous_price,discount_pct,in_stock,url,verified_at,promo_note,promo_pack)';
       if (comVariantes) sel += ',offer_variants(store_slug,volume_ml,price,url,in_stock,previous_price)';
       try {
         const { data, error } = await sb.from('products').select(sel).in('ean', lote);
         if (error) throw error;
         for (const p of (data || [])) {
           // imagem: o índice não a traz (custava +947 KB); vem aqui
-          const alvo = PRODUCT_BY_EAN[p.ean];
+          let alvo = PRODUCT_BY_EAN[p.ean];
+          // A ficha pode chegar por link ou scanner antes do índice completo.
+          // Os metadados já vêm neste pedido de ofertas; publicamos um registo
+          // mínimo para a ficha abrir e o índice substitui-o quando terminar.
+          if (!alvo && p.name) {
+            alvo = {
+              ean: p.ean,
+              name: p.name,
+              brand: p.brand || null,
+              category: p.category || null,
+              image_url: p.image_url || null,
+              id: null,
+            };
+            PRODUCT_BY_EAN[p.ean] = alvo;
+          }
           if (p.image_url) {
             if (alvo && !alvo.image_url) alvo.image_url = p.image_url;
             else if (!alvo) OFFER_IMAGES_BY_EAN[p.ean] = p.image_url;
@@ -10190,6 +10204,9 @@ async function openPriceAnalyzer(ean) {
   // partilhado ou de uma rotina guardada não estão lá. Sem isto, clicar
   // devolvia silêncio — sem ficha, sem aviso, sem nada a acontecer.
   if (!PRODUCT_BY_EAN[ean] && typeof garantirIndice === 'function') {
+    // O índice segue em paralelo, mas a resposta de products inclui nome,
+    // marca e categoria. Se chegar primeiro, a ficha pode renderizar já.
+    const promessaIndice = garantirIndice();
     PA_STATE = { ean, volume: null, seedVolume: null };
     abrirModalDaFicha();
     const corpoInicial = document.getElementById('pa-body');
@@ -10198,7 +10215,10 @@ async function openPriceAnalyzer(ean) {
         '<span class="ph-title">⚖️ Comparar preços</span></div>' +
         '<div class="ph-empty">a comparar as lojas…</div></div>';
     }
-    const ok = await garantirIndice();
+    if (pedidoOfertas) await pedidoOfertas;
+    if (geracaoFicha !== PA_OPEN_GERACAO) return;
+    let ok = true;
+    if (!PRODUCT_BY_EAN[ean]) ok = await promessaIndice;
     if (geracaoFicha !== PA_OPEN_GERACAO) return;
     if (!ok || !PRODUCT_BY_EAN[ean]) {
       closePriceAnalyzer();
