@@ -105,9 +105,9 @@ test('BD em baixo (402): não entra em ciclo de pedidos e o carrinho continua a 
   const { page, ctx, erros } = await pagina({ bdEmBaixo: true });
   await page.evaluate(([a, b]) => { bundleToggle(a); bundleToggle(b); bundleOpen(); }, [A, B]);
   await page.waitForTimeout(2500);
-  // sem ofertas, a linha diz «sem stock» e o resumo não promete total — como antes
+  // sem ofertas, a linha diz «sem stock» e o resumo mostra o estado de falha da BD.
   assert.match(await linhas(page), /sem stock/);
-  assert.match(await page.evaluate(() => document.getElementById('bundle-live').innerText), /sem stock|não é possível/i);
+  assert.match(await page.evaluate(() => document.getElementById('bundle-live').innerText), /sem stock|não é possível|não estão disponíveis/i);
   // nenhum ciclo: depois de assentar, não continua a pedir
   const n1 = await page.evaluate(() => window.__chamadas || 0);
   assert.ok(n1 >= 1 && n1 <= 3, `pedidos: ${n1}`);

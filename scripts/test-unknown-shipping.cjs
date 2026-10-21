@@ -18,6 +18,7 @@ function extract(start, end) {
   return html.slice(from, to);
 }
 const code = extract('function shippingForStore(', '// STATE')
+  + extract('function precoDaOfertaParaVolume(', 'function bundleRefresh(')
   + extract('function optimizeBundle(', 'function renderResults(');
 const normalizeCode = extract('function normalizeSeedFromLive(', 'function rebuildCatalogIndexes(');
 const normalized = vm.runInNewContext(normalizeCode + '\nnormalizeSeedFromLive({ stores: [{ slug: "maia" }, { slug: "gratis", free_shipping_threshold: 0, shipping_zones: { mainland: 0 } }] });');
