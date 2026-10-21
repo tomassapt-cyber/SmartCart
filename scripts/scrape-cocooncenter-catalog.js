@@ -27,6 +27,10 @@ const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'cocooncenter-full.json');
 const BASE = 'https://www.cocooncenter.pt';
 const SITEMAP_URL = BASE + '/sitemap-pt-products.xml';
+// O JSON-LD de 2/3 das fichas traz a miniatura /240/ (a foto fica minúscula no
+// site). O mesmo endereço com /400/ é a mesma foto, maior: 1 080 de 1 119
+// verificadas ao vivo a 21/10/2026 (docs/catalog-quality-images-cocooncenter-2026-10-21.json).
+const fotoMaior = u => u.replace(/^(https:\/\/cdn1\.costatic\.com\/img\/product\/)240\//, '$1' + '400/');
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
@@ -72,7 +76,7 @@ function extractProductData(html) {
       const in_stock = offer ? /InStock/i.test(offer.availability || '') : true;
       const brand = n.brand ? (typeof n.brand === 'string' ? n.brand : (n.brand.name || null)) : null;
       const image_url = imagemDoJsonLd(n.image);
-      return { name, brand, ean, sku: n.sku ? String(n.sku) : null, image_url: image_url ? String(image_url).replace(/\\\//g, '/') : null, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
+      return { name, brand, ean, sku: n.sku ? String(n.sku) : null, image_url: image_url ? fotoMaior(String(image_url).replace(/\\\//g, '/')) : null, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
     }
   }
   return null;
