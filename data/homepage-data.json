@@ -1,17 +1,7 @@
 {
-  "generated_at": "2026-10-19T10:40:51.186Z",
-  "seed_total_products": 94720,
+  "generated_at": "2026-10-21T10:01:36.358Z",
+  "seed_total_products": 94827,
   "hero_sponsored": [
-    {
-      "ean": "8429420158399",
-      "name": "ISDIN Fotoprotector FusionWater Magic SPF50 - Protetor solar facial ultraligeiro",
-      "brand": "Isdin",
-      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388652.webp",
-      "best_price": 19.25,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/isdin-fotoprotector-fluido-fusion-water-fps50-50ml"
-    },
     {
       "ean": "3606000560833",
       "name": "Sérum Con Ácido Hialurónico",
@@ -27,10 +17,10 @@
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.94,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html"
+      "best_price": 17.93,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/creme-de-rosto-vitamina-c"
     },
     {
       "ean": "3372290001805",
@@ -41,6 +31,16 @@
       "best_store": "Pharma24",
       "best_store_slug": "pharma24",
       "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
+    },
+    {
+      "ean": "3522930005797",
+      "name": "Sérum Vinoperfect da Caudalie + Protetor Solar Facial Vinosun Ocean Protect FPS 50+ de oferta",
+      "brand": "Caudalie",
+      "image_url": "https://assets.atida.com/transform/0f6e16b7-302d-4339-8289-a1ef763cb2ce/Caudalie-Vinoperfect-Serum-30-ml-Regalo-Vinosun-Ocean-Protect-Fluido-SPF50-20-ml",
+      "best_price": 40.2,
+      "best_store": "A Farmácia Online",
+      "best_store_slug": "afarmaciaonline",
+      "best_url": "https://www.afarmaciaonline.pt/caudalie-vinoperf-ser-of-vinosun-fl20ml-1.html"
     },
     {
       "ean": "5201279072193",
@@ -121,10 +121,10 @@
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 14.5,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/aveeno-dermexa-creme-emoliente-diario-200ml-oferta-gel-de-banho"
+      "best_price": 15.33,
+      "best_store": "ShopCosmetics",
+      "best_store_slug": "shopcosmetics",
+      "best_url": "https://shopcosmetics.pt/pele-atopica/632-aveeno-dermexa-creme-emoliente-200ml-oferta-gel-banho-300ml.html"
     },
     {
       "ean": "3574661874951",
@@ -234,7 +234,7 @@
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 870
+      "products": 882
     },
     {
       "name": "Avène",
@@ -245,16 +245,16 @@
       "products": 835
     },
     {
+      "name": "Nivea",
+      "products": 809
+    },
+    {
       "name": "L'Oréal Paris",
       "products": 808
     },
     {
-      "name": "Nivea",
-      "products": 806
-    },
-    {
       "name": "La Roche-Posay",
-      "products": 798
+      "products": 802
     },
     {
       "name": "Eucerin",
@@ -262,7 +262,7 @@
     },
     {
       "name": "Chicco",
-      "products": 737
+      "products": 739
     }
   ],
   "telegram_alerts": [
@@ -296,8 +296,8 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 77046,
-    "avg_savings_pct": 28
+    "products": 76991,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": "",
