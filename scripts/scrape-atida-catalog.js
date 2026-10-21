@@ -283,7 +283,10 @@ async function fetchPage(url, attempt = 1) {
           }
         }
         if (data) {
-          products.push({ url, status: 'ok', scraped_at, ...data });
+          // Cópia JSON de propósito (2026-10-21): os campos tirados por regex são «fatias»
+          // que mantêm viva a página HTML inteira; sem a cópia, 4 700 páginas da Farmácia.pt
+          // enchiam os 4 GB do heap no fim da recolha (OOM). Os outros scrapers já faziam isto.
+          products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...data })));
           stats.ok++;
         } else {
           products.push({ url, status: 'no_jsonld', scraped_at });

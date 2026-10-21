@@ -260,7 +260,10 @@ async function main() {
       const scraped_at = new Date().toISOString();
       if (r.status === 'ok') {
         const data = extractProductData(r.html, url);
-        if (data) { products.push({ url, status: 'ok', scraped_at, ...data }); stats.ok++; }
+        // Cópia JSON de propósito (2026-10-21): os campos tirados por regex são «fatias»
+        // que mantêm viva a página HTML inteira; sem a cópia, 4 700 páginas da Farmácia.pt
+        // enchiam os 4 GB do heap no fim da recolha (OOM). Os outros scrapers já faziam isto.
+        if (data) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...data }))); stats.ok++; }
         else { stats.skipped++; }      // sem data-layer/EAN/preço → não guardamos (lixo med/supl)
       } else if (r.status === 'not_found') { stats.not_found++; }
       else if (r.status === 'blocked') {
