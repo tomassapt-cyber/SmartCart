@@ -13471,42 +13471,9 @@ function precoDaOfertaParaVolume(slug, oferta, volumeEscolhido = null) {
   return { slug, store, price, url: oferta.url, volume_ml: null };
 }
 
-function bundleRefresh() {
-  const count = bundleState.items.size;
-  bundleGuardar();
-  const badge = document.getElementById('bundle-badge');
-  badge.textContent = count;
-  badge.classList.toggle('hidden', count === 0);
-  document.getElementById('bundle-analyze').disabled = count === 0;
-  // Re-render product cards' "+" state — handle both the floating circle (textContent only)
-  // and the new pill-shaped .btn-cart-add (icon + label spans).
-  document.querySelectorAll('[data-action="bundle"]').forEach(btn => {
-    const has = bundleHas(btn.dataset.ean);
-    btn.classList.toggle('in-bundle', has);
-    if (btn.classList.contains('btn-cart-add')) {
-      btn.innerHTML =
-        `<span class="btn-cart-icon" aria-hidden="true">${has ? '✓' : '+'}</span>` +
-        `<span class="btn-cart-label">${has ? 'Adicionado' : 'Carrinho'}</span>`;
-      btn.setAttribute('aria-label', has ? 'Remover do carrinho' : 'Adicionar ao carrinho');
-    } else if (btn.classList.contains('quiz-result-add')) {
-      btn.textContent = has ? '✓ Adicionado' : '+ Carrinho';
-    } else {
-      btn.textContent = has ? '✓' : '+';
-    }
-    btn.title = has ? 'No carrinho — clica para remover' : 'Adicionar ao carrinho';
-  });
-  // Render drawer body
+function bundleRenderRows() {
   const body = document.getElementById('bundle-body');
-  if (count === 0) {
-    body.innerHTML = `
-      <div class="bundle-empty">
-        <div class="bundle-empty-icon">🛒</div>
-        <p>Ainda não adicionaste nada à tua selecção.</p>
-        <p style="font-size:12px">Carrega no <strong>+</strong> dos produtos do catálogo para começar.</p>
-      </div>`;
-    bundleLiveUpdate(); // limpa o resumo vivo (senão fica o cartão do carrinho anterior)
-    return;
-  }
+  if (!body) return;
   body.innerHTML = [...bundleState.items.entries()].map(([ean, qty]) => {
     const p = PRODUCT_BY_EAN[ean];
     if (!p) return '';
@@ -13554,6 +13521,45 @@ function bundleRefresh() {
       </div>
     </div>`;
   }).join('');
+}
+
+function bundleRefresh() {
+  const count = bundleState.items.size;
+  bundleGuardar();
+  const badge = document.getElementById('bundle-badge');
+  badge.textContent = count;
+  badge.classList.toggle('hidden', count === 0);
+  document.getElementById('bundle-analyze').disabled = count === 0;
+  // Re-render product cards' "+" state — handle both the floating circle (textContent only)
+  // and the new pill-shaped .btn-cart-add (icon + label spans).
+  document.querySelectorAll('[data-action="bundle"]').forEach(btn => {
+    const has = bundleHas(btn.dataset.ean);
+    btn.classList.toggle('in-bundle', has);
+    if (btn.classList.contains('btn-cart-add')) {
+      btn.innerHTML =
+        `<span class="btn-cart-icon" aria-hidden="true">${has ? '✓' : '+'}</span>` +
+        `<span class="btn-cart-label">${has ? 'Adicionado' : 'Carrinho'}</span>`;
+      btn.setAttribute('aria-label', has ? 'Remover do carrinho' : 'Adicionar ao carrinho');
+    } else if (btn.classList.contains('quiz-result-add')) {
+      btn.textContent = has ? '✓ Adicionado' : '+ Carrinho';
+    } else {
+      btn.textContent = has ? '✓' : '+';
+    }
+    btn.title = has ? 'No carrinho — clica para remover' : 'Adicionar ao carrinho';
+  });
+  // Render drawer body
+  const body = document.getElementById('bundle-body');
+  if (count === 0) {
+    body.innerHTML = `
+      <div class="bundle-empty">
+        <div class="bundle-empty-icon">🛒</div>
+        <p>Ainda não adicionaste nada à tua selecção.</p>
+        <p style="font-size:12px">Carrega no <strong>+</strong> dos produtos do catálogo para começar.</p>
+      </div>`;
+    bundleLiveUpdate(); // limpa o resumo vivo (senão fica o cartão do carrinho anterior)
+    return;
+  }
+  bundleRenderRows();
   bundleLiveUpdate(); // resumo vivo: melhor combinação calculada SEM cliques
 }
 
@@ -13589,6 +13595,7 @@ async function bundleLiveNow() {
     if (falharam.length) {
       window.RECEIPT_LAST_BUNDLE = null;
       renderOfertaIndisponivel(box, falharam, bundleLiveUpdate);
+      bundleRenderRows();   // atualiza as linhas sem voltar a agendar o resumo
       return;
     }
     // As linhas do carrinho foram desenhadas ANTES de as ofertas chegarem (ex.:

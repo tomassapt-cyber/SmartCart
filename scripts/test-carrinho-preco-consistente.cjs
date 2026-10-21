@@ -30,7 +30,8 @@ const server = http.createServer((req, res) => {
     });
     const pageErrors = [];
     page.on('pageerror', error => pageErrors.push(error.message));
-    await page.goto(`http://127.0.0.1:${server.address().port}/demo.html`, { waitUntil: 'domcontentloaded' });
+    const previewUrl = `http://127.0.0.1:${server.address().port}/demo.html`;
+    await page.goto(previewUrl, { waitUntil: 'domcontentloaded' });
     assert.equal(await page.evaluate(() => typeof bundleRefresh), 'function', 'bundleRefresh disponível no Chromium');
 
     const check = await page.evaluate(() => {
@@ -122,6 +123,48 @@ const server = http.createServer((req, res) => {
     assert.match(check.rowWithoutChosenVolume, /desde 11\.23€ · Sofarma/, 'sem volume escolhido, a linha usa o preço que o total conta');
     assert.equal(check.totalWithoutChosenVolume, 15.73, 'o total também usa o preço headline e os portes');
     assert.deepEqual(pageErrors, [], `sem erros JavaScript: ${pageErrors.join('; ')}`);
+
+    // Fluxo real: o resumo chama carregarOfertas e a falha é natural, sem marcar OFERTAS_FALHADAS à mão.
+    const failurePage = await browser.newPage();
+    await failurePage.route('**/*', route => {
+      const url = new URL(route.request().url());
+      if (url.hostname === '127.0.0.1') return route.continue();
+      return route.abort();
+    });
+    await failurePage.goto(previewUrl, { waitUntil: 'domcontentloaded' });
+    const beforeFailure = await failurePage.evaluate(() => {
+      const ean = '3701129801369';
+      const originalLoad = carregarOfertas;
+      window.__bundleOfferLoads = 0;
+      carregarOfertas = (...args) => {
+        window.__bundleOfferLoads++;
+        return originalLoad(...args);
+      };
+      STORE_BY_SLUG = { sofarma: { name: 'Sofarma', shipping_zones: { mainland: 4.50 } } };
+      PRODUCT_BY_EAN[ean] = { ean, name: 'Teste', brand: 'Bioderma', image_url: null };
+      delete OFFERS_BY_PRODUCT[ean];
+      OFERTAS_COM_VARIANTES.delete(ean);
+      OFERTAS_FALHADAS.delete(ean);
+      OFERTAS_PEDIDAS.delete(ean);
+      bundleState.items = new Map([[ean, 1]]);
+      bundleState.volumes = new Map([[ean, 40]]);
+      bundleState.zone = 'nacional';
+      bundleRefresh();
+      return document.querySelector('#bundle-body .bundle-row-price').innerText;
+    });
+    await failurePage.waitForTimeout(12000);
+    const afterFailure = await failurePage.evaluate(() => ({
+      line: document.querySelector('#bundle-body .bundle-row-price').innerText,
+      failed: OFERTAS_FALHADAS.has('3701129801369'),
+      offerLoads: window.__bundleOfferLoads,
+    }));
+    assert.equal(beforeFailure, 'a carregar', 'linha começa pendente antes de a BD falhar');
+    assert.equal(afterFailure.failed, true, 'a falha veio do pedido real do resumo');
+    assert.match(afterFailure.line, /indisponível/i, 'o ramo de falha redesenha a linha');
+    assert.doesNotMatch(afterFailure.line, /desde|\d+\.\d{2}/, 'a linha indisponível não mostra preço');
+    assert.equal(afterFailure.offerLoads, 1, 'redesenhar as linhas não volta a pedir ofertas nem reinicia o resumo');
+    await failurePage.close();
+    console.log('PASS Chromium: falha real no resumo redesenha a linha sem repetir pedidos.');
     console.log('PASS Chromium: oferta sem variantes, variantes pendentes, falha de BD, volume indisponível e sem volume escolhido.');
   } finally {
     await browser.close();
