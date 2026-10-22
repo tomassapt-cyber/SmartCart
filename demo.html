@@ -13456,6 +13456,73 @@ function bundleSetQty(ean, qty) {
 }
 function bundleClear() { bundleState.items.clear(); bundleRefresh(); }
 
+/** Regra única de elegibilidade/preço: igual para linha, optimizer e lista por loja. */
+function precoDaOfertaParaVolume(slug, oferta, volumeEscolhido = null) {
+  const store = STORE_BY_SLUG[slug];
+  if (!store || !oferta || !oferta.in_stock) return null;
+  const volume = Number(volumeEscolhido) || null;
+  if (volume && Array.isArray(oferta.variants) && oferta.variants.length) {
+    const variante = oferta.variants.find(v => Number(v.volume_ml) === volume && v.in_stock !== false);
+    if (!variante || !(Number(variante.price) > 0)) return null;
+    return { slug, store, price: Number(variante.price), url: variante.url || oferta.url, volume_ml: volume };
+  }
+  const price = Number(oferta.price);
+  if (!(price > 0)) return null;
+  return { slug, store, price, url: oferta.url, volume_ml: null };
+}
+
+function bundleRenderRows() {
+  const body = document.getElementById('bundle-body');
+  if (!body) return;
+  body.innerHTML = [...bundleState.items.entries()].map(([ean, qty]) => {
+    const p = PRODUCT_BY_EAN[ean];
+    if (!p) return '';
+    const chosenVol = bundleState.volumes?.get?.(ean) || null;
+    // Durante a carga das variantes, o optimizer também não inclui preços de montra.
+    const variantesPendentes = !!(chosenVol && !ofertasProntasComVariantes(ean));
+    let best = null;
+    if (!variantesPendentes) {
+      const offers = OFFERS_BY_PRODUCT[ean] || {};
+      const elegiveis = Object.entries(offers)
+        .map(([slug, o]) => precoDaOfertaParaVolume(slug, o, chosenVol))
+        .filter(Boolean)
+        .sort((a, b) => a.price - b.price);
+      best = elegiveis[0] || null;
+    }
+    const palette = brandPalette(p.brand);
+    const initial = brandInitial(p.brand);
+    const volBadge = chosenVol ? `<span class="bundle-row-vol-badge">${chosenVol} ml</span>` : '';
+    const priceFromIndex = precoDesdeDoIndice(ean);
+    const priceLabel = best
+      ? `desde <strong>${best.price.toFixed(2)}€</strong> · ${best.store.name}`
+      : (chosenVol
+        ? (OFERTAS_FALHADAS.has(ean) ? 'indisponível' : (variantesPendentes ? 'a carregar' : `sem ${chosenVol} ml disponível`))
+        : (OFERTAS_FALHADAS.has(ean) && priceFromIndex != null
+          ? `desde <strong>${priceFromIndex.toFixed(2).replace('.', ',')} €</strong>`
+          : 'sem stock'));
+    return `<div class="bundle-row">
+      <div class="bundle-row-img">
+        ${p.image_url
+          ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{innerHTML:'<span style=\\'font-family:serif;font-weight:700;font-size:24px;color:${palette.fg}\\'>${initial}</span>',style:'background:${palette.bg};display:flex;align-items:center;justify-content:center;width:100%;height:100%'}))" />`
+          : `<span style="font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg};background:${palette.bg};width:100%;height:100%;display:flex;align-items:center;justify-content:center">${initial}</span>`}
+      </div>
+      <div class="bundle-row-info">
+        <div class="bundle-row-brand">${escapeHtml(p.brand)} ${volBadge}</div>
+        <div class="bundle-row-name">${escapeHtml(displayName(p.name, p.brand))}</div>
+        <div class="bundle-row-bottom">
+          <div class="bundle-row-qty">
+            <button data-bundle-qty data-ean="${ean}" data-delta="-1">−</button>
+            <span>${qty}</span>
+            <button data-bundle-qty data-ean="${ean}" data-delta="1">+</button>
+          </div>
+          <div class="bundle-row-price">${priceLabel}</div>
+          <button class="bundle-row-remove" data-bundle-remove data-ean="${ean}" title="Remover">×</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
 function bundleRefresh() {
   const count = bundleState.items.size;
   bundleGuardar();
@@ -13492,59 +13559,7 @@ function bundleRefresh() {
     bundleLiveUpdate(); // limpa o resumo vivo (senão fica o cartão do carrinho anterior)
     return;
   }
-  body.innerHTML = [...bundleState.items.entries()].map(([ean, qty]) => {
-    const p = PRODUCT_BY_EAN[ean];
-    if (!p) return '';
-    const chosenVol = bundleState.volumes?.get?.(ean) || null;
-    // Procurar a melhor oferta para o volume escolhido (se houver)
-    let best = null;
-    if (chosenVol) {
-      const offers = OFFERS_BY_PRODUCT[ean] || {};
-      let cheapest = null;
-      for (const [slug, o] of Object.entries(offers)) {
-        if (!o.in_stock) continue;
-        if (!Array.isArray(o.variants) || !o.variants.length) continue;
-        const v = o.variants.find(vv => Number(vv.volume_ml) === chosenVol && vv.in_stock !== false);
-        if (!v) continue;
-        if (!cheapest || v.price < cheapest.price) {
-          // mesma razão do bestOfferFor: a loja pode vir das ofertas e não
-          // existir no bloco de arranque, e quem lê isto faz store.name
-          cheapest = { price: v.price, store: STORE_BY_SLUG[slug] || { slug, name: slug } };
-        }
-      }
-      best = cheapest ? { offer: { price: cheapest.price }, store: cheapest.store, price: cheapest.price } : null;
-    }
-    if (!best) best = bestOfferFor(ean);
-    const palette = brandPalette(p.brand);
-    const initial = brandInitial(p.brand);
-    const volBadge = chosenVol ? `<span class="bundle-row-vol-badge">${chosenVol} ml</span>` : '';
-    const priceFromIndex = precoDesdeDoIndice(ean);
-    const priceLabel = best
-      ? `desde <strong>${best.price.toFixed(2)}€</strong> · ${best.store.name}`
-      : (OFERTAS_FALHADAS.has(ean) && priceFromIndex != null
-        ? `desde <strong>${priceFromIndex.toFixed(2).replace('.', ',')} €</strong>`
-        : (chosenVol ? `sem ${chosenVol} ml disponível` : 'sem stock'));
-    return `<div class="bundle-row">
-      <div class="bundle-row-img">
-        ${p.image_url
-          ? `<img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.name)}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{innerHTML:'<span style=\\'font-family:serif;font-weight:700;font-size:24px;color:${palette.fg}\\'>${initial}</span>',style:'background:${palette.bg};display:flex;align-items:center;justify-content:center;width:100%;height:100%'}))" />`
-          : `<span style="font-family:Georgia,serif;font-weight:700;font-size:24px;color:${palette.fg};background:${palette.bg};width:100%;height:100%;display:flex;align-items:center;justify-content:center">${initial}</span>`}
-      </div>
-      <div class="bundle-row-info">
-        <div class="bundle-row-brand">${escapeHtml(p.brand)} ${volBadge}</div>
-        <div class="bundle-row-name">${escapeHtml(displayName(p.name, p.brand))}</div>
-        <div class="bundle-row-bottom">
-          <div class="bundle-row-qty">
-            <button data-bundle-qty data-ean="${ean}" data-delta="-1">−</button>
-            <span>${qty}</span>
-            <button data-bundle-qty data-ean="${ean}" data-delta="1">+</button>
-          </div>
-          <div class="bundle-row-price">${priceLabel}</div>
-          <button class="bundle-row-remove" data-bundle-remove data-ean="${ean}" title="Remover">×</button>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+  bundleRenderRows();
   bundleLiveUpdate(); // resumo vivo: melhor combinação calculada SEM cliques
 }
 
@@ -13580,6 +13595,7 @@ async function bundleLiveNow() {
     if (falharam.length) {
       window.RECEIPT_LAST_BUNDLE = null;
       renderOfertaIndisponivel(box, falharam, bundleLiveUpdate);
+      bundleRenderRows();   // atualiza as linhas sem voltar a agendar o resumo
       return;
     }
     // As linhas do carrinho foram desenhadas ANTES de as ofertas chegarem (ex.:
@@ -13781,21 +13797,9 @@ function optimizeBundle(items, zone = 'nacional') {
     // do que responder mal — o produto sai para `uncovered`, que é visível.
     const semVariantes = chosenVolume && !ofertasProntasComVariantes(ean);
     offersByEan[ean] = semVariantes ? [] : Object.entries(offers)
-      .filter(([, o]) => o.in_stock)
-      // loja que existe nas ofertas mas não no bloco de arranque (integrada
-      // depois do último build): sem isto rebentava mais à frente, ao ler
-      // free_shipping_threshold e shipping_zones
-      .filter(([slug]) => STORE_BY_SLUG[slug])
-      .map(([slug, o]) => {
-        if (chosenVolume && Array.isArray(o.variants) && o.variants.length > 0) {
-          const v = o.variants.find(vv => Number(vv.volume_ml) === chosenVolume && vv.in_stock !== false);
-          if (!v) return null; // esta loja não vende o volume escolhido
-          return { slug, price: v.price, url: v.url || o.url, volume_ml: chosenVolume };
-        }
-        // Sem volume escolhido OU loja sem variantes → headline price
-        return { slug, price: o.price, url: o.url };
-      })
-      .filter(Boolean);
+      .map(([slug, o]) => precoDaOfertaParaVolume(slug, o, chosenVolume))
+      .filter(Boolean)
+      .map(({ slug, price, url, volume_ml }) => ({ slug, price, url, volume_ml }));
   }
 
   // Fase 5 (2026-10-15): fica de fora só a oferta de loja sem tarifa NEM limiar
@@ -14082,17 +14086,10 @@ function productPodiumMiniHTML(ean) {
   const offers = OFFERS_BY_PRODUCT[ean] || {};
   const chosenVol = bundleState.volumes?.get?.(ean) || null;
 
-  // Calcular preço efectivo por loja para o volume escolhido (se houver)
-  const rows = Object.entries(offers).map(([slug, o]) => {
-    const store = STORE_BY_SLUG[slug];
-    if (!store || !o.in_stock) return null;
-    if (chosenVol && Array.isArray(o.variants) && o.variants.length > 0) {
-      const v = o.variants.find(vv => Number(vv.volume_ml) === chosenVol && vv.in_stock !== false);
-      if (!v) return null; // loja não vende este volume
-      return { slug, store, price: v.price, url: v.url || o.url };
-    }
-    return { slug, store, price: o.price, url: o.url };
-  }).filter(Boolean);
+  // Usa a mesma regra do optimizer e da linha do carrinho.
+  const rows = Object.entries(offers)
+    .map(([slug, o]) => precoDaOfertaParaVolume(slug, o, chosenVol))
+    .filter(Boolean);
 
   if (rows.length === 0) {
     return `

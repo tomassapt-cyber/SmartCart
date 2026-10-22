@@ -107,7 +107,7 @@ caso('as 5 lojas que não enviam às ilhas, ou cobram por peso, ficam com ilhas:
 caso('carrinho: loja com ilhas desconhecidas entra no continente e sai das combinações nas ilhas', () => {
   const html = fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8');
   const extrair = (ini, fim) => { const a = html.indexOf(ini), b = html.indexOf(fim, a); assert.ok(a >= 0 && b > a, ini); return html.slice(a, b); };
-  const code = extrair('function shippingForStore(', '// STATE') + extrair('function optimizeBundle(', 'function renderResults(');
+  const code = extrair('function shippingForStore(', '// STATE') + extrair('function precoDaOfertaParaVolume(', 'function bundleRefresh(') + extrair('function optimizeBundle(', 'function renderResults(');
   const r = aplicar({ liga: { gratis: 45, casa: 4, ilhas: null }, outra: { gratis: null, casa: 5, ilhas: 9 } },
     [adivinhada('liga'), adivinhada('outra')]);
   const ctx = {
@@ -146,7 +146,7 @@ caso('gratis_ilhas: número, null (nunca grátis nas ilhas) e, fase 5, ausente =
 caso('carrinho: limiar próprio das ilhas — grátis no continente não promete grátis nas ilhas', () => {
   const html = fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8');
   const extrair = (ini, fim) => { const a = html.indexOf(ini), b = html.indexOf(fim, a); assert.ok(a >= 0 && b > a, ini); return html.slice(a, b); };
-  const code = extrair('function shippingForStore(', '// STATE') + extrair('function optimizeBundle(', 'function renderResults(');
+  const code = extrair('function shippingForStore(', '// STATE') + extrair('function precoDaOfertaParaVolume(', 'function bundleRefresh(') + extrair('function optimizeBundle(', 'function renderResults(');
   const r = aplicar({ uni: { gratis: 39, casa: 2.99, ilhas: 13, gratis_ilhas: null }, nou: { gratis: 99, casa: 4.95, ilhas: 5.95, gratis_ilhas: 249 } },
     [adivinhada('uni'), adivinhada('nou')]);
   const ctx = {
@@ -168,7 +168,7 @@ caso('carrinho: limiar próprio das ilhas — grátis no continente não promete
 caso('fase 5, carrinho: loja só com limiar verificado entra acima do limiar (portes 0 €) e sai abaixo', () => {
   const html = fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8');
   const extrair = (ini, fim) => { const a = html.indexOf(ini), b = html.indexOf(fim, a); assert.ok(a >= 0 && b > a, ini); return html.slice(a, b); };
-  const code = extrair('function shippingForStore(', '// STATE') + extrair('function optimizeBundle(', 'function renderResults(');
+  const code = extrair('function shippingForStore(', '// STATE') + extrair('function precoDaOfertaParaVolume(', 'function bundleRefresh(') + extrair('function optimizeBundle(', 'function renderResults(');
   const r = aplicar({ lim: { gratis: 40 }, fixa: { gratis: null, casa: 5 } }, [adivinhada('lim'), adivinhada('fixa')]);
   const ctx = {
     STORE_BY_SLUG: { lim: { ...r.lim, name: 'Lim' }, fixa: { ...r.fixa, name: 'Fixa' } },
@@ -195,7 +195,7 @@ caso('fase 5, carrinho: loja só com limiar verificado entra acima do limiar (po
 caso('fase 5, carrinho: um produto sem portes conhecidos não anula o resto do cabaz', () => {
   const html = fs.readFileSync(path.join(ROOT, 'demo.html'), 'utf8');
   const extrair = (ini, fim) => { const a = html.indexOf(ini), b = html.indexOf(fim, a); assert.ok(a >= 0 && b > a, ini); return html.slice(a, b); };
-  const code = extrair('function shippingForStore(', '// STATE') + extrair('function optimizeBundle(', 'function renderResults(');
+  const code = extrair('function shippingForStore(', '// STATE') + extrair('function precoDaOfertaParaVolume(', 'function bundleRefresh(') + extrair('function optimizeBundle(', 'function renderResults(');
   const r = aplicar({ nada: {}, lim: { gratis: 100 }, fixa: { gratis: null, casa: 5 } }, [adivinhada('nada'), adivinhada('lim'), adivinhada('fixa')]);
   const ctx = {
     STORE_BY_SLUG: { nada: { ...r.nada, name: 'Nada' }, lim: { ...r.lim, name: 'Lim' }, fixa: { ...r.fixa, name: 'Fixa' } },
