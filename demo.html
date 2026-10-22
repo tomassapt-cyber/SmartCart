@@ -13900,6 +13900,7 @@ function buildSubsetSolution(subsetSlugs, items, offersByEan, zone) {
       qty: it.qty,
       unitPrice: best.price,
       line: +(best.price * it.qty).toFixed(2),
+      volume_ml: best.volume_ml,
       url: best.url,
     });
   }
@@ -13989,6 +13990,7 @@ async function runAnalysis() {
       }
     }
     if (pedidos.length) await carregarCandidatosUpsell(pedidos);
+    await carregarLojasCarrinhoAutomatico();
     renderResults(solutions, uncovered, shippingUnknown, items);
   } catch (e) {
     console.error('[carrinho] análise falhou:', e);
@@ -14173,6 +14175,127 @@ function solutionHTML(s) {
   </div>`;
 }
 
+// Shopify cart: a lista é servida pelo mesmo site; nenhuma loja é consultada até ao clique.
+let CARRINHO_AUTO_LOJAS = null;
+let CARRINHO_AUTO_PROMISE = null;
+async function carregarLojasCarrinhoAutomatico() {
+  if (CARRINHO_AUTO_LOJAS) return CARRINHO_AUTO_LOJAS;
+  if (!CARRINHO_AUTO_PROMISE) {
+    CARRINHO_AUTO_PROMISE = fetch('/data/carrinho-automatico.json')
+      .then(r => { if (!r.ok) throw new Error('lista indisponível'); return r.json(); })
+      .then(data => { CARRINHO_AUTO_LOJAS = new Map(Object.entries(data && data.lojas || {})); return CARRINHO_AUTO_LOJAS; })
+      .catch(() => { CARRINHO_AUTO_LOJAS = new Map(); return CARRINHO_AUTO_LOJAS; });
+  }
+  return CARRINHO_AUTO_PROMISE;
+}
+function cartAutoHandle(url) {
+  try { const m = new URL(url).pathname.match(/\/products\/([^/?#]+)/); return m ? decodeURIComponent(m[1]) : null; } catch { return null; }
+}
+function cartAutoVariant(produto, ean, url, tamanhoEscolhido) {
+  const vs = (produto && produto.variants) || [];
+  try { const id = new URL(url).searchParams.get('variant'); if (id && vs.some(v => String(v.id) === id)) return Number(id); } catch {}
+  if (tamanhoEscolhido && vs.length > 1) return null;
+  const semZeros = v => String(v || '').trim().replace(/^0+/, '');
+  const alvo = semZeros(ean);
+  const porEan = alvo ? vs.find(v => semZeros(v.barcode) === alvo) : null;
+  if (porEan) return porEan.id;
+  return vs.length === 1 ? vs[0].id : null;
+}
+function cartAutoSku(url) {
+  try {
+    const sku = new URL(url).searchParams.get('skuId');
+    return sku && /^\d+$/.test(sku) ? sku : null;
+  } catch { return null; }
+}
+function cartAutoOrigin(linha, data) {
+  try { return new URL(data.platform === 'vtex' ? data.origin : linha.url).origin; } catch { return null; }
+}
+function cartAutoLinks(itens) {
+  const porOrigem = new Map();
+  for (const it of itens) { if (!it || !it.variante) continue; try { const origem = new URL(it.url).origin; if (!porOrigem.has(origem)) porOrigem.set(origem, []); porOrigem.get(origem).push(it); } catch {} }
+  return [...porOrigem].map(([origem, lista]) => ({ origem, link: origem + '/cart/add?' + lista.map((it, i) => 'items[' + i + '][id]=' + encodeURIComponent(it.variante) + '&items[' + i + '][quantity]=' + Math.max(1, Math.round(Number(it.quantidade) || 1))).join('&') }));
+}
+function cartAutoLinksVtex(itens, origem) {
+  let base; try { base = new URL(origem).origin; } catch { return []; }
+  const produtos = itens.filter(it => it && it.sku).map(it =>
+    'sku=' + encodeURIComponent(it.sku) + '&qty=' + Math.max(1, Math.round(Number(it.quantidade) || 1)) + '&seller=1'
+  );
+  return produtos.length ? [{ origem: base, link: base + '/checkout/cart/add?' + produtos.join('&') + '&redirect=true&sc=1' }] : [];
+}
+async function abrirCarrinhoAutomatico(botao, data) {
+  if (!data || !Array.isArray(data.lines) || !data.lines.length) return;
+  const linhas = data.lines;
+  // Reservar um único separador por origem, ainda durante o toque, para o Safari.
+  const tabPorOrigem = new Map();
+  for (const linha of linhas) {
+    const origem = cartAutoOrigin(linha, data);
+    if (!origem || tabPorOrigem.has(origem)) continue;
+    let tab = null;
+    try { tab = window.open('about:blank', '_blank'); } catch {}
+    if (tab) {
+      try {
+        tab.opener = null;
+        tab.document.title = 'A preparar o carrinho na ' + data.name + '…';
+        if (tab.document.body) {
+          tab.document.body.textContent = 'A preparar o carrinho na ' + data.name + '…';
+          tab.document.body.style.cssText = 'font:16px system-ui,sans-serif;padding:32px;color:#334155';
+        }
+      } catch {}
+    }
+    tabPorOrigem.set(origem, tab);
+  }
+  const textoOriginal = botao.textContent;
+  botao.disabled = true; botao.textContent = 'A preparar o carrinho…';
+  const respostas = await Promise.all(linhas.map(async linha => {
+    if (data.platform === 'vtex') return { linha, plataforma: 'vtex', fetchOk: true, variante: cartAutoSku(linha.url) };
+    const handle = cartAutoHandle(linha.url);
+    if (!handle) return { linha, plataforma: data.platform || 'shopify', fetchOk: false, variante: null };
+    let origem; try { origem = new URL(linha.url).origin; } catch { return { linha, plataforma: data.platform || 'shopify', fetchOk: false, variante: null }; }
+    try {
+      const r = await fetch(origem + '/products/' + encodeURIComponent(handle) + '.js', { method: 'GET', mode: 'cors', credentials: 'omit', headers: { accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
+      if (!r.ok) return { linha, plataforma: data.platform || 'shopify', fetchOk: false, variante: null };
+      const produto = await r.json();
+      return { linha, plataforma: data.platform || 'shopify', fetchOk: true, variante: cartAutoVariant(produto, linha.ean, linha.url, linha.volume_ml) };
+    } catch { return { linha, plataforma: data.platform || 'shopify', fetchOk: false, variante: null }; }
+  }));
+  botao.disabled = false; botao.textContent = textoOriginal;
+
+  const pedidosShopify = respostas.filter(x => x.plataforma !== 'vtex');
+  const fallbackAlvos = new Set();
+  const fallbackAbertos = new Set();
+  if (pedidosShopify.length && !pedidosShopify.some(x => x.fetchOk)) {
+    for (const origem of new Set(pedidosShopify.map(x => cartAutoOrigin(x.linha, data)).filter(Boolean))) {
+      fallbackAlvos.add(origem);
+      const tab = tabPorOrigem.get(origem);
+      const primeira = linhas.find(l => data.platform !== 'vtex' && cartAutoOrigin(l, data) === origem);
+      if (!tab || !primeira) continue;
+      try { tab.location.href = primeira.url; fallbackAbertos.add(origem); } catch {}
+    }
+  }
+
+  const comVariante = respostas.filter(x => x.plataforma !== 'vtex' && x.fetchOk && x.variante);
+  const linksShopify = cartAutoLinks(comVariante.map(x => ({ url: x.linha.url, variante: x.variante, quantidade: x.linha.qty })));
+  const comSku = respostas.filter(x => x.plataforma === 'vtex' && x.variante);
+  const linksVtex = data.platform === 'vtex'
+    ? cartAutoLinksVtex(comSku.map(x => ({ sku: x.variante, quantidade: x.linha.qty })), data.origin)
+    : [];
+  const links = [...linksShopify, ...linksVtex];
+
+  for (const item of links) { const tab = tabPorOrigem.get(item.origem); if (tab) { try { tab.location.href = item.link; } catch {} } }
+  const usados = new Set([...links.map(x => x.origem), ...fallbackAbertos]);
+  for (const [origem, tab] of tabPorOrigem) { if (tab && !usados.has(origem)) tab.close(); }
+  const omitidas = respostas.filter(x => !x.fetchOk || !x.variante);
+  const aviso = botao.parentElement.querySelector('[data-auto-cart-skipped]');
+  if (aviso) aviso.innerHTML = omitidas.length
+    ? omitidas.length + ' produto' + (omitidas.length === 1 ? '' : 's') + ' não entr' + (omitidas.length === 1 ? 'ou' : 'aram') + ' no carrinho: ' + omitidas.map(x => '<a href="' + escapeHtml(x.linha.url) + '" target="_blank" rel="noopener">' + escapeHtml(x.linha.name || x.linha.ean) + '</a>').join(', ')
+    : '';
+  const bloqueados = [...new Set([...links.map(x => x.origem), ...fallbackAlvos])].filter(origem => !tabPorOrigem.get(origem)).length;
+  if (bloqueados) toast('O browser bloqueou ' + bloqueados + ' separador(es). Abre os produtos na lista.');
+  else if (fallbackAbertos.size) toast('A loja não respondeu. Abri uma oferta por loja; ' + (links.length ? 'o restante carrinho está preparado.' : 'os restantes produtos estão na lista.'));
+  else if (!links.length) toast('Nenhuma variante compatível foi encontrada. Abre os produtos na lista.');
+  else toast('Carrinho preparado na ' + data.name + ' ✓');
+}
+
 function storeLineHTML(b) {
   // Items CLICÁVEIS — cada produto abre direto na loja (sem depender de abrir
   // vários separadores de uma vez, que os browsers bloqueiam).
@@ -14184,9 +14307,14 @@ function storeLineHTML(b) {
       <span class="sl-prod-price">${l.unitPrice.toFixed(2)}€</span>
     </a>`;
   }).join('');
-  const buyButton = b.lines.length === 1
-    ? `<a class="buy-btn" href="${b.lines[0].url}" target="_blank" rel="noopener">Comprar na ${b.store_name} →</a>`
-    : `<button class="buy-btn" data-store-buy='${JSON.stringify({name:b.store_name,urls:b.lines.map(l=>l.url)}).replace(/'/g,"&apos;")}'>Abrir os ${b.lines.length} na ${b.store_name} →</button>`;
+  const carrinhoConfig = CARRINHO_AUTO_LOJAS && CARRINHO_AUTO_LOJAS.get(b.store_slug);
+  const carrinhoAuto = Boolean(carrinhoConfig);
+  const autoCartData = JSON.stringify({ name: b.store_name, platform: carrinhoConfig && carrinhoConfig.plataforma, origin: carrinhoConfig && carrinhoConfig.origem, lines: b.lines.map(l => ({ ean: l.ean, name: displayName(l.name, l.brand) || l.name || l.ean, qty: l.qty, volume_ml: l.volume_ml, url: l.url })) }).replace(/'/g, "&apos;");
+  const buyButton = carrinhoAuto
+    ? `<button class="buy-btn" data-auto-cart='${autoCartData}'>Abrir o carrinho na ${b.store_name} →</button>`
+    : b.lines.length === 1
+      ? `<a class="buy-btn" href="${b.lines[0].url}" target="_blank" rel="noopener">Comprar na ${b.store_name} →</a>`
+      : `<button class="buy-btn" data-store-buy='${JSON.stringify({name:b.store_name,urls:b.lines.map(l=>l.url)}).replace(/'/g,"&apos;")}'>Abrir os ${b.lines.length} na ${b.store_name} →</button>`;
 
   const storeThr = limiarGratis(STORE_BY_SLUG[b.store_slug], bundleState.zone);
   const neverFree = storeThr >= 9999;   // sentinela: loja sem portes grátis
@@ -14209,6 +14337,7 @@ function storeLineHTML(b) {
         Subtotal: <strong>${b.subtotal.toFixed(2)}€</strong> · ${shippingLabel}
       </div>
       ${buyButton}
+      ${carrinhoAuto ? '<div class="auto-cart-skipped" data-auto-cart-skipped aria-live="polite" style="font-size:12px;color:#92400e;margin-top:6px"></div>' : ''}
     </div>
   </div>`;
 }
@@ -14350,6 +14479,12 @@ document.getElementById('results-backdrop').addEventListener('click', (e) => {
   if (buyAll) {
     const data = JSON.parse(buyAll.dataset.buyAll.replace(/&apos;/g, "'"));
     openManyUrls(data.flatMap(store => store.urls));
+    return;
+  }
+  const autoCart = e.target.closest('[data-auto-cart]');
+  if (autoCart) {
+    const data = JSON.parse(autoCart.dataset.autoCart.replace(/&apos;/g, "'"));
+    abrirCarrinhoAutomatico(autoCart, data);
     return;
   }
   const storeBuy = e.target.closest('[data-store-buy]');
