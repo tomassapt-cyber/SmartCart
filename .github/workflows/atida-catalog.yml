@@ -15,6 +15,11 @@ on:
   schedule:
     # 15h UTC — depois de Wells (14h), antes do ciclo recomeçar
     - cron: '0 15 * * *'
+    # 3h UTC (2026-10-22): segunda volta. A Atida ficou lenta para a nuvem
+    # (~0,9 páginas/s) e uma corrida só lê ~8 mil das 13 mil páginas no
+    # orçamento de 150 min; esta continua pelas que ficaram (o --resume
+    # salta as lidas nas últimas 20 h e a fila começa pelas mais antigas).
+    - cron: '0 3 * * *'
   workflow_dispatch:
     inputs:
       limit:
@@ -75,7 +80,9 @@ jobs:
 
       - name: Scrape Atida catalog
         run: |
-          ARGS="--resume"
+          # orçamento de 150 min: sobra meia hora para integrar e gravar dentro
+          # das 3 h; sem ele a corrida era cortada e perdia tudo (2026-10-22)
+          ARGS="--resume --orcamento-min=150"
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
