@@ -149,5 +149,75 @@
     "aliases": ["3282779350655"],
     "reason": "Código renovado pela marca: o mesmo nome e tamanho (Avène Mousse de Limpeza Matificante 150ml; 23 e 14 ofertas com 150ml) nas duas fichas, preços parecidos (15,95€ e 15,19€) e nenhuma loja vende as duas. Verificado a 2026-10-16.",
     "added_at": "2026-10-16"
+  },
+  "3614274772043": {
+    "aliases": ["wells-8085459"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Lancôme Rénergie H.C.F. Triple Serum 20 ml: a página da Wells diz 20 ml; o código real é o de 20 ml (Aveiro Farma e Loja do Shampoo, «-20ml»); preços 49,56 € e 54,38 €. Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "5061076240481": {
+    "aliases": ["wells-8920335"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Revuele Double Hyaluron B5 Toner 200 ml: Wells e Care to Beauty com 200 ml; mesmo nome. Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "3474636858033": {
+    "aliases": ["druni-k-genesis-bain-nutri-fortifiant-kerastas"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Kérastase Genesis Bain Nutri-Fortifiant 250 ml: o preço principal da Druni (22,99 €) é o de 250 ml, o tamanho do código real (Loja do Shampoo e Pharmácia do Cabelo, «-250ml»). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "3474636857814": {
+    "aliases": ["druni-k-genesis-bain-hydra-fortifiant-kerastas"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Kérastase Genesis Bain Hydra-Fortifiant 80 ml: o preço principal da Druni (12,99 €) é o de 80 ml, o tamanho do código real (Loja do Shampoo e Pharmácia do Cabelo, «-80ml»). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "3474636857883": {
+    "aliases": ["druni-k-genesis-fondant-renforcateur-kerastase"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Kérastase Genesis Fondant Renforçateur 75 ml: o preço principal da Druni (12,99 €) é o de 75 ml, o tamanho do código real (Loja do Shampoo, «-75ml»). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "3574661714271": {
+    "aliases": ["bairro-saude-neutrogena-pack-bright-boost-gel-creme-50ml-creme-"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Neutrogena Bright Boost Pack Gel-Creme 50 ml + Esfoliante 75 ml: o mesmo pack nos dois nomes completos. Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "8032274192145": {
+    "aliases": ["manuelaserra-milk-shake-haircare-moisture-plus-conditioner-1000"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Milk_Shake Moisture Plus Condicionador 1000 ml: a Manuela Serra tem a variante de 1000 ml a 35,88 € (Pharmácia do Cabelo 39,21 €). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "8032274061960": {
+    "aliases": ["manuelaserra-milk-shake-haircare-silver-shine-whipped-cream"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Milk_Shake Silver Shine Whipped Cream 200 ml: o mesmo nome e tamanho; 17,80 € e 21,46 €. Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "3282770203493": {
+    "aliases": ["wells-8517796"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Avène Hydrance Aqua-Gel 50 ml: a página da Wells diz 50 ml; o código real é o de 50 ml (Aveiro Farma e Loja do Shampoo, «-50ml»). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "8809844996553": {
+    "aliases": ["wells-8174240"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Dr. Jart+ Cicapair Intensive Soothing Repair Gel Cream 50 ml: o mesmo nome; 37,50 € e 37,99 € (a Atida diz 50 ml). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "3574661560649": {
+    "aliases": ["farmacentral-piz-buin-after-sun-locao-intensificadora-bronzeado"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Piz Buin After Sun Loção Intensificadora Bronzeado 200 ml (Duo): o mesmo nome completo. Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "8809844996645": {
+    "aliases": ["wells-8174246"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Dr. Jart+ Cicapair Sleepair Intensive Soothing Repair Mask 75 ml: o mesmo nome; 33,44 € e 34,19 € (Atida e DocMorris dizem 75 ml). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "1210001221222": {
+    "aliases": ["wells-470069"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Dr. Jart+ Dermaclear Hydrating pH Gel Cleanser 150 ml: a Wells e a Farmácias Direct dizem 150 ml; o mesmo preço (21,25 €). Nenhuma loja tem oferta nas duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
+  },
+  "4005800354625": {
+    "aliases": ["4005800331985"],
+    "reason": "Eucerin Aquaphor Pomada Reparadora 80 g: código renovado pela marca (os dois da Beiersdorf, 4005800…). O mesmo nome e tamanho, «-80g» nos endereços dos dois lados, preços 10,17–18,49 € e 12,20–16,95 €, e nenhuma loja vende as duas fichas. Verificado a 2026-10-22.",
+    "added_at": "2026-10-22"
   }
 }
