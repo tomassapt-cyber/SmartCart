@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-10-22T08:45:00.266765+00:00",
-  "completed_at": "2026-10-22T10:32:13.723252+00:00",
+  "scraped_at": "2026-10-22T15:55:43.212505+00:00",
+  "completed_at": "2026-10-22T17:43:31.867871+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1782,
+  "targets": 1785,
   "products": [
     {
       "ean": "5601411434146",
@@ -16682,6 +16682,45 @@
       "url": "https://presencadeluxo.pt/osis/87044-balsamo-de-caracois-schwarzkopf-osis-bounty-balm-150ml--4045787936339.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/145433-thickbox_default/balsamo-de-caracois-schwarzkopf-osis-bounty-balm-150ml-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8032947868209",
+      "name": "Máscara de Cor Fanola OroTherapy 24K Anti-Amarelos 250ml",
+      "price": 10.98,
+      "net_price": 8.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/cabelos-loiros/87070-mascara-de-cor-fanola-orotherapy-24k-anti-amarelos-250ml-8032947868209.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/145492-thickbox_default/mascara-de-cor-fanola-orotherapy-24k-anti-amarelos-250ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8032947868971",
+      "name": "Máscara de Cor Fanola OroTherapy 24K Dourado 250ml",
+      "price": 10.99,
+      "net_price": 8.94,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/cabelos-loiros/87071-mascara-de-cor-fanola-orotherapy-24k-dourado-250ml-8032947868971.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/145494-thickbox_default/mascara-de-cor-fanola-orotherapy-24k-dourado-250ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8032947868162",
+      "name": "Máscara de Cor Fanola OroTherapy 24K Chocolate 250ml",
+      "price": 10.99,
+      "net_price": 8.94,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/cabelos-pintados/87072-mascara-de-cor-fanola-orotherapy-24k-chocolate-250ml-8032947868162.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/145496-thickbox_default/mascara-de-cor-fanola-orotherapy-24k-chocolate-250ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
