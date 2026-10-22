@@ -8017,10 +8017,26 @@ let STORES = [];
 let STORE_BY_SLUG = {};
 let PRODUCTS = [];
 let PRODUCT_BY_EAN = {};
+let OFFER_IMAGES_BY_EAN = {};
+let PRODUCT_FACET_COUNTS = { categories: {}, brands: {}, brandsByCategory: {} };
+let POPULARITY_ORDER = null;
 let OFFERS_BY_PRODUCT = {};       // visíveis na UI (só ofertas com dados reais)
 let OFFERS_BY_PRODUCT_ALL = {};   // tudo, preservado para debug/admin/contagens
 let PRODUCT_STATS = [];
 let POPULARITY_SCORE = {};
+
+function contarFacetasProdutos(produtos) {
+  const counts = { categories: {}, brands: {}, brandsByCategory: {} };
+  for (const p of produtos || []) {
+    const category = p.category || '';
+    counts.categories[category] = (counts.categories[category] || 0) + 1;
+    if (!p.brand) continue;
+    counts.brands[p.brand] = (counts.brands[p.brand] || 0) + 1;
+    const brands = counts.brandsByCategory[category] || (counts.brandsByCategory[category] = {});
+    brands[p.brand] = (brands[p.brand] || 0) + 1;
+  }
+  return counts;
+}
 
 // ── Top 50 ROTATIVO (pedido do user: "muda 3x/semana senão torna repetitivo") ──
 // A ordem 'popular' ganha um baralhamento DETERMINÍSTICO por época: a época
@@ -8043,6 +8059,7 @@ function _rotHash(str) {
   return h >>> 0;
 }
 let TOP50_ROT = null, TOP50_ROT_EPOCH = null;
+let _promessaTop50Rot = null;
 function top50RotRank(ean) {
   const ep = top50Epoch();
   if (!TOP50_ROT || TOP50_ROT_EPOCH !== ep) {
@@ -8057,6 +8074,47 @@ function top50RotRank(ean) {
     TOP50_ROT_EPOCH = ep;
   }
   return TOP50_ROT[ean] ?? 1e9;
+}
+async function garantirTop50Rotativo() {
+  const epoch = top50Epoch();
+  if (TOP50_ROT && TOP50_ROT_EPOCH === epoch) return;
+  if (_promessaTop50Rot) return _promessaTop50Rot;
+  _promessaTop50Rot = (async () => {
+    let origem = Object.keys(POPULARITY_SCORE);
+    let destino = new Array(origem.length);
+    let operacoes = 0;
+    for (let largura = 1; largura < origem.length; largura *= 2) {
+      for (let inicio = 0; inicio < origem.length; inicio += largura * 2) {
+        const meio = Math.min(inicio + largura, origem.length);
+        const fim = Math.min(inicio + largura * 2, origem.length);
+        let a = inicio, b = meio, out = inicio;
+        while (a < meio && b < fim) {
+          const scoreA = POPULARITY_SCORE[origem[a]] ?? 0;
+          const scoreB = POPULARITY_SCORE[origem[b]] ?? 0;
+          destino[out++] = scoreA >= scoreB ? origem[a++] : origem[b++];
+          if (++operacoes % 2000 === 0) await new Promise(resolve => setTimeout(resolve, 0));
+        }
+        while (a < meio) {
+          destino[out++] = origem[a++];
+          if (++operacoes % 2000 === 0) await new Promise(resolve => setTimeout(resolve, 0));
+        }
+        while (b < fim) {
+          destino[out++] = origem[b++];
+          if (++operacoes % 2000 === 0) await new Promise(resolve => setTimeout(resolve, 0));
+        }
+      }
+      [origem, destino] = [destino, origem];
+    }
+    const rotativo = {};
+    for (let i = 0; i < origem.length; i++) {
+      const jitter = (_rotHash(origem[i] + '|' + epoch) % 1000) / 1000;
+      rotativo[origem[i]] = i + 1 + jitter * 24;
+      if (i && i % 1000 === 0) await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    TOP50_ROT = rotativo;
+    TOP50_ROT_EPOCH = epoch;
+  })().finally(() => { _promessaTop50Rot = null; });
+  return _promessaTop50Rot;
 }
 let HIGHLIGHTS = { newReleases: [], bestSellers: [], tiktok: [] };
 
@@ -8233,15 +8291,32 @@ async function carregarOfertas(eans, opcoes) {
   const falharam = new Set();   // EANs de lotes que rebentaram
   const trabalho = (async () => {
     for (const lote of lotes) {
-      let sel = 'ean,image_url,offers!offers_ean_fkey(store_slug,price,previous_price,discount_pct,in_stock,url,verified_at,promo_note,promo_pack)';
+      let sel = 'ean,name,brand,category,image_url,offers!offers_ean_fkey(store_slug,price,previous_price,discount_pct,in_stock,url,verified_at,promo_note,promo_pack)';
       if (comVariantes) sel += ',offer_variants(store_slug,volume_ml,price,url,in_stock,previous_price)';
       try {
         const { data, error } = await sb.from('products').select(sel).in('ean', lote);
         if (error) throw error;
         for (const p of (data || [])) {
           // imagem: o índice não a traz (custava +947 KB); vem aqui
-          const alvo = PRODUCT_BY_EAN[p.ean];
-          if (alvo && !alvo.image_url && p.image_url) alvo.image_url = p.image_url;
+          let alvo = PRODUCT_BY_EAN[p.ean];
+          // A ficha pode chegar por link ou scanner antes do índice completo.
+          // Os metadados já vêm neste pedido de ofertas; publicamos um registo
+          // mínimo para a ficha abrir e o índice substitui-o quando terminar.
+          if (!alvo && p.name) {
+            alvo = {
+              ean: p.ean,
+              name: p.name,
+              brand: p.brand || null,
+              category: p.category || null,
+              image_url: p.image_url || null,
+              id: null,
+            };
+            PRODUCT_BY_EAN[p.ean] = alvo;
+          }
+          if (p.image_url) {
+            if (alvo && !alvo.image_url) alvo.image_url = p.image_url;
+            else if (!alvo) OFFER_IMAGES_BY_EAN[p.ean] = p.image_url;
+          }
           // o volume de referência memoizado no produto foi calculado sem
           // variantes; com elas pode mudar. Um Set vazio é truthy, por isso
           // ficaria congelado para o resto da sessão.
@@ -8418,6 +8493,8 @@ function construirDoArranque(arranque) {
     category: p.cat || null, image_url: p.img || null, id: i + 1,
   }));
   PRODUCT_BY_EAN = Object.fromEntries(PRODUCTS.map(p => [p.ean, p]));
+  PRODUCT_FACET_COUNTS = contarFacetasProdutos(PRODUCTS);
+  POPULARITY_ORDER = null;
 
   PRODUCT_STATS = primeiros.map(p => {
     const bestPrice = p.min != null ? p.min : null;
@@ -8440,9 +8517,9 @@ function construirDoArranque(arranque) {
   return true;
 }
 
-function rebuildCatalogIndexesFromSources(arranque, indice) {
+async function rebuildCatalogIndexesFromSources(arranque, indice) {
   // ── lojas ────────────────────────────────────────────────────────────────
-  STORES = (arranque.lojas || []).map(l => ({
+  const stores = (arranque.lojas || []).map(l => ({
     slug: l.slug,
     name: l.nome,
     base_url: l.url,
@@ -8450,15 +8527,16 @@ function rebuildCatalogIndexesFromSources(arranque, indice) {
     free_shipping_threshold: l.gratis,
     shipping_zones: l.portes,
   }));
-  STORE_BY_SLUG = Object.fromEntries(STORES.map(s => [s.slug, s]));
+  const storeBySlug = Object.fromEntries(stores.map(s => [s.slug, s]));
 
   // ── produtos ─────────────────────────────────────────────────────────────
   // imagem: a dos 150 do arranque; as outras chegam com as ofertas
   const imgs = {};
   for (const p of (arranque.primeiros || [])) if (p.img) imgs[p.ean] = p.img;
 
-  PRODUCTS = new Array(indice.n);
-  PRODUCT_BY_EAN = {};
+  const products = new Array(indice.n);
+  const productByEan = {};
+  const facetCounts = { categories: {}, brands: {}, brandsByCategory: {} };
   for (let i = 0; i < indice.n; i++) {
     const ean = indice.e[i];
     const p = {
@@ -8466,11 +8544,19 @@ function rebuildCatalogIndexesFromSources(arranque, indice) {
       name: indice.nm[i],
       brand: indice.brands[indice.b[i]] || null,
       category: indice.cats[indice.c[i]] || null,
-      image_url: IMAGE_OVERRIDES[ean] || imgs[ean] || null,
+      image_url: IMAGE_OVERRIDES[ean] || imgs[ean] || OFFER_IMAGES_BY_EAN[ean] || null,
       id: i + 1,
     };
-    PRODUCTS[i] = p;
-    PRODUCT_BY_EAN[ean] = p;
+    products[i] = p;
+    productByEan[ean] = p;
+    facetCounts.categories[p.category || ''] = (facetCounts.categories[p.category || ''] || 0) + 1;
+    if (p.brand) {
+      facetCounts.brands[p.brand] = (facetCounts.brands[p.brand] || 0) + 1;
+      const categoryBrands = facetCounts.brandsByCategory[p.category || '']
+        || (facetCounts.brandsByCategory[p.category || ''] = {});
+      categoryBrands[p.brand] = (categoryBrands[p.brand] || 0) + 1;
+    }
+    if (i && i % 1000 === 0) await new Promise(resolve => setTimeout(resolve, 0));
   }
 
   // ── ofertas: PRESERVAM-SE ────────────────────────────────────────────────
@@ -8494,11 +8580,11 @@ function rebuildCatalogIndexesFromSources(arranque, indice) {
   // ── estatísticas: vêm prontas do índice ──────────────────────────────────
   // (o verificador provou que batem certo com as que o site calcula: 50.160
   //  de 50.160 iguais em nº de lojas, preço mínimo e preço máximo)
-  PRODUCT_STATS = new Array(indice.n);
+  const productStats = new Array(indice.n);
   for (let i = 0; i < indice.n; i++) {
     const bestPrice = indice.mn[i] < 0 ? null : indice.mn[i] / 100;
     const worstPrice = indice.mx[i] < 0 ? null : indice.mx[i] / 100;
-    PRODUCT_STATS[i] = {
+    productStats[i] = {
       ean: indice.e[i],
       storeCount: indice.s[i],
       bestPrice,
@@ -8518,15 +8604,40 @@ function rebuildCatalogIndexesFromSources(arranque, indice) {
       // filtro esvaziaria o catálogo inteiro em vez de o filtrar.
       hasPromo: (indice.pr && indice.pr[i] === 1) || false,
     };
+    if (i && i % 1000 === 0) await new Promise(resolve => setTimeout(resolve, 0));
   }
 
   // ── derivadas: exactamente as mesmas fórmulas de rebuildCatalogIndexes ────
-  POPULARITY_SCORE = {};
-  for (const s of PRODUCT_STATS) {
-    POPULARITY_SCORE[s.ean] = s.storeCount * 1000 + Math.min(s.savings, 50) * 5 - (s.bestPrice ?? 9999) * 0.01;
+  const popularityScore = {};
+  const statsMap = {};
+  const top50Rot = indice.rnk ? {} : null;
+  const top50RotEpochNow = top50Epoch();
+  for (let i = 0; i < productStats.length; i++) {
+    const s = productStats[i];
+    // Keep this score identical to search-index-worker.js; the Worker orders
+    // the full index with this same formula before publishing POPULARITY_ORDER.
+    popularityScore[s.ean] = s.storeCount * 1000 + Math.min(s.savings, 50) * 5 - (s.bestPrice ?? 9999) * 0.01;
+    statsMap[s.ean] = s;
+    if (top50Rot) {
+      const jitter = (_rotHash(s.ean + '|' + top50RotEpochNow) % 1000) / 1000;
+      top50Rot[s.ean] = indice.rnk[i] + jitter * 24;
+    }
+    if (i && i % 1000 === 0) await new Promise(resolve => setTimeout(resolve, 0));
   }
-  TOP50_ROT = null;
-  statsByEanMap._m = null;
+  // Só publicar os índices completos: enquanto as partes são preparadas, a
+  // montra continua a usar o bloco de arranque, sem expor mapas incompletos.
+  STORES = stores;
+  STORE_BY_SLUG = storeBySlug;
+  PRODUCTS = products;
+  PRODUCT_BY_EAN = productByEan;
+  PRODUCT_FACET_COUNTS = facetCounts;
+  POPULARITY_ORDER = Array.isArray(indice.pop) ? indice.pop : null;
+  PRODUCT_STATS = productStats;
+  POPULARITY_SCORE = popularityScore;
+  TOP50_ROT = top50Rot;
+  TOP50_ROT_EPOCH = top50Rot ? top50RotEpochNow : null;
+  _promessaTop50Rot = null;
+  statsByEanMap._m = statsMap;
 
   // as etiquetas vêm calculadas no build (verificadas: idênticas às do site)
   HIGHLIGHTS = arranque.highlights || { newReleases: [], bestSellers: [], tiktok: [] };
@@ -8535,6 +8646,8 @@ function rebuildCatalogIndexesFromSources(arranque, indice) {
   // toque, mas o toggle de estimativas — o único que precisava do seed CRU —
   // morre nesta fase, por decisão tomada a 2026-08-04.
   SEED = { stores: STORES, products: PRODUCTS, store_products: [] };
+  delete indice.rnk;
+  delete indice.pop;
 }
 
 function rebuildCatalogIndexes(seed) {
@@ -8547,6 +8660,8 @@ function rebuildCatalogIndexes(seed) {
     id: i + 1
   }));
   PRODUCT_BY_EAN = Object.fromEntries(PRODUCTS.map((p) => [p.ean, p]));
+  PRODUCT_FACET_COUNTS = contarFacetasProdutos(PRODUCTS);
+  POPULARITY_ORDER = null;
 
   // Reconstrói os dois índices: ALL preserva tudo, OFFERS_BY_PRODUCT é o visível
   OFFERS_BY_PRODUCT = {};
@@ -8687,6 +8802,38 @@ function rebuildCatalogIndexes(seed) {
 let _promessaIndice = null;
 let INDICE_CARREGADO = false;
 
+function carregarIndiceEmWorker(url, epoch) {
+  if (typeof Worker === 'undefined') return Promise.reject(new Error('Web Worker indisponível'));
+  return new Promise((resolve, reject) => {
+    const worker = new Worker('/search-index-worker.js');
+    worker.onmessage = event => {
+      const msg = event.data || {};
+      if (msg.type === 'start') {
+        const indice = { ...msg.meta };
+        for (const key of msg.fields) indice[key] = new Array(msg.size);
+        worker.__indice = indice;
+        return;
+      }
+      if (msg.type === 'chunk' && worker.__indice) {
+        for (const key of Object.keys(msg.arrays)) {
+          const source = msg.arrays[key];
+          const target = worker.__indice[key];
+          for (let i = 0; i < source.length; i++) target[msg.from + i] = source[i];
+        }
+        return;
+      }
+      worker.terminate();
+      if (msg.type === 'done' && worker.__indice) resolve(worker.__indice);
+      else reject(new Error(msg.error || 'falha ao ler índice'));
+    };
+    worker.onerror = event => {
+      worker.terminate();
+      reject(new Error(event.message || 'falha no Web Worker do índice'));
+    };
+    worker.postMessage({ url, epoch });
+  });
+}
+
 function _dadosDaPagina() {
   try { return JSON.parse(document.getElementById('hp-data')?.textContent || '{}'); }
   catch { return {}; }
@@ -8710,11 +8857,20 @@ function garantirIndice() {
     let ultimoErro = null;
     for (let tentativa = 1; tentativa <= 3; tentativa++) {
       try {
-        const r = await fetch('/data/idx/search-' + versao + '.json');
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        const indice = await r.json();
+        const urlIndice = '/data/idx/search-' + versao + '.json';
+        let indice;
+        try {
+          indice = await carregarIndiceEmWorker(urlIndice, top50Epoch());
+        } catch (erroWorker) {
+          // Worker indisponível (incluindo script 404/CSP): mantém o caminho
+          // funcional antigo, lendo e analisando o JSON no fio principal.
+          console.warn('Worker do índice falhou; a usar leitura no fio principal:', erroWorker && erroWorker.message);
+          const resposta = await fetch(urlIndice);
+          if (!resposta.ok) throw new Error('HTTP ' + resposta.status + ' ao ler índice');
+          indice = await resposta.json();
+        }
         if (!indice || !indice.n || !Array.isArray(indice.e)) throw new Error('índice vazio');
-        rebuildCatalogIndexesFromSources(hp.arranque, indice);
+        await rebuildCatalogIndexesFromSources(hp.arranque, indice);
         INDICE_CARREGADO = true;
         return true;
       } catch (e) {
@@ -8912,8 +9068,8 @@ async function loadLiveCatalog() {
       garantirIndiceQuandoPreciso(ok => {
         if (!ok) { console.error('Fase 4b: o índice não carregou; fica só o bloco de arranque.'); return; }
         try {
-          renderCatalog();
           if (typeof renderDynamicSections === 'function') renderDynamicSections();
+          else renderCatalog();
         } catch (e) { console.warn('re-desenho depois do índice:', e && e.message); }
       });
       return false;
@@ -9201,7 +9357,9 @@ function productTag(ean) {
   return null;
 }
 function coverageLabel(ean) {
-  const stat = PRODUCT_STATS.find((s) => s.ean === ean);
+  const stat = typeof statsByEanMap === 'function'
+    ? statsByEanMap()[ean]
+    : PRODUCT_STATS.find((s) => s.ean === ean);
   const n = stat?.storeCount ?? 0;
   return `${n} loja${n === 1 ? "" : "s"} em stock`;
 }
@@ -9213,18 +9371,82 @@ const CATALOG_PAGE_SIZE = 8;
 // shown = nº de produtos visíveis (modelo "Ver mais/Ver menos"); lastSig invalida ao mudar filtros
 const catalogPaging = { shown: 8, lastSig: null };
 
-function renderCatalog() {
+// A grelha mostra uma fatia pequena. Manter só os primeiros N evita ordenar
+// as 77 mil fichas sempre que o índice chega ou um filtro muda.
+async function primeirosOrdenados(itens, limite, comparar, geracao) {
+  if (limite >= itens.length) {
+    let origem = itens.slice();
+    let destino = new Array(origem.length);
+    let operacoes = 0;
+    for (let largura = 1; largura < origem.length; largura *= 2) {
+      for (let inicio = 0; inicio < origem.length; inicio += largura * 2) {
+        const meio = Math.min(inicio + largura, origem.length);
+        const fim = Math.min(inicio + largura * 2, origem.length);
+        let a = inicio, b = meio, out = inicio;
+        while (a < meio && b < fim) {
+          destino[out++] = comparar(origem[a], origem[b]) <= 0 ? origem[a++] : origem[b++];
+          if (++operacoes % 1000 === 0) {
+            await new Promise(resolve => setTimeout(resolve, 0));
+            if (geracao !== GERACAO_CATALOGO) return [];
+          }
+        }
+        while (a < meio) {
+          destino[out++] = origem[a++];
+          if (++operacoes % 1000 === 0) {
+            await new Promise(resolve => setTimeout(resolve, 0));
+            if (geracao !== GERACAO_CATALOGO) return [];
+          }
+        }
+        while (b < fim) {
+          destino[out++] = origem[b++];
+          if (++operacoes % 1000 === 0) {
+            await new Promise(resolve => setTimeout(resolve, 0));
+            if (geracao !== GERACAO_CATALOGO) return [];
+          }
+        }
+      }
+      [origem, destino] = [destino, origem];
+    }
+    return origem;
+  }
+  const primeiros = [];
+  for (let i = 0; i < itens.length; i++) {
+    const item = itens[i];
+    let baixo = 0, alto = primeiros.length;
+    while (baixo < alto) {
+      const meio = (baixo + alto) >> 1;
+      if (comparar(item, primeiros[meio]) < 0) alto = meio;
+      else baixo = meio + 1;
+    }
+    if (baixo < limite) {
+      primeiros.splice(baixo, 0, item);
+      if (primeiros.length > limite) primeiros.pop();
+    }
+    if (i && i % 500 === 0) {
+      await new Promise(resolve => setTimeout(resolve, 0));
+      if (geracao !== GERACAO_CATALOGO) return [];
+    }
+  }
+  return primeiros;
+}
+
+async function renderCatalog() {
   const grid = document.getElementById('product-grid');
   if (!grid) return; // catálogo removido do layout
   // Cada render é uma geração. As ofertas chegam depois, e sem isto a resposta
   // de uma pesquisa antiga aterrava por cima dos resultados da nova.
   const geracao = ++GERACAO_CATALOGO;
+  if (state.sort === 'popular') await garantirTop50Rotativo();
+  if (geracao !== GERACAO_CATALOGO) return;
   const q = (document.getElementById('search').value || '').toLowerCase().trim();
   state.search = q;
   // Pesquisa tokenizada e SEM acentos: cada palavra tem de bater algures no
   // nome/marca/categoria (AND). Resolve "la roche toleriane", "agua micelar",
   // ordem de palavras e acentos. (antes era um .includes ingénuo da query toda)
   const qTokens = q ? q.normalize('NFD').replace(/[\u0300-\u036f]/g, '').split(/\s+/).filter(Boolean) : [];
+  const semFiltros = !qTokens.length && !state.category && state.brands.size === 0
+    && state.priceMax >= 200 && !state.promoOnly && !state.verifiedOnly
+    && !state.fastShipping && !state.productType && !state.gender && state.attrs.size === 0;
   // Update título conforme estado (search/categoria/default)
   const titleEl = document.getElementById('catalog-title');
   if (titleEl) {
@@ -9232,7 +9454,7 @@ function renderCatalog() {
     else if (state.category) titleEl.textContent = `Catálogo · ${categoryLabel(state.category)}`;
     else titleEl.textContent = 'Catálogo completo';
   }
-  const filtered = PRODUCTS.filter(p => {
+  const passaFiltro = p => {
     if (state.category && p.category !== state.category) return false;
     if (qTokens.length) {
       let hay = p._snorm;
@@ -9272,10 +9494,20 @@ function renderCatalog() {
       }
     }
     return true;
-  });
+  };
+  const filtered = semFiltros ? PRODUCTS : [];
+  if (!semFiltros) {
+    for (let i = 0; i < PRODUCTS.length; i++) {
+      if (passaFiltro(PRODUCTS[i])) filtered.push(PRODUCTS[i]);
+      if (i && i % 500 === 0) {
+        await new Promise(resolve => setTimeout(resolve, 0));
+        if (geracao !== GERACAO_CATALOGO) return;
+      }
+    }
+  }
 
   // ── Sort ──
-  filtered.sort((a, b) => {
+  const compararProdutos = (a, b) => {
     // ── Ordenação: do ÍNDICE ───────────────────────────────────────────────
     // A versão anterior lia as ofertas e caía em Infinity quando não as tinha.
     // Duas consequências, ambas silenciosas:
@@ -9308,7 +9540,7 @@ function renderCatalog() {
         return top50RotRank(a.ean) - top50RotRank(b.ean);
       }
     }
-  });
+  };
 
   // Reset pagination quando filtros mudam (assinatura completa do estado)
   const sig = `${state.category}|${q}|${state.sort}|${[...state.brands].sort().join(',')}|${state.priceMax}|${state.promoOnly}|${state.verifiedOnly}|${state.productType}|${state.gender}|${[...state.attrs].sort().join(',')}`;
@@ -9318,14 +9550,18 @@ function renderCatalog() {
   }
 
   // Modelo "Ver mais / Ver menos": mostramos os primeiros `shown` produtos.
-  const shown = Math.min(catalogPaging.shown, filtered.length);
-  const slice = filtered.slice(0, shown);
+  const totalFiltered = filtered.length;
+  const shown = Math.min(catalogPaging.shown, totalFiltered);
+  const slice = semFiltros && Array.isArray(POPULARITY_ORDER)
+    ? POPULARITY_ORDER.slice(0, shown).map(e => PRODUCT_BY_EAN[e]).filter(Boolean)
+    : await primeirosOrdenados(filtered, shown, compararProdutos, geracao);
+  if (geracao !== GERACAO_CATALOGO) return;
 
   const countEl = document.getElementById('count-label');
   if (countEl) countEl.textContent =
-    filtered.length === 0
+    totalFiltered === 0
       ? 'sem resultados'
-      : `A mostrar ${shown} de ${filtered.length} produto${filtered.length === 1 ? '' : 's'}`;
+      : `A mostrar ${shown} de ${totalFiltered} produto${totalFiltered === 1 ? '' : 's'}`;
 
   // Clear chip (categoria activa)
   const clearBtn = document.getElementById('catalog-clear');
@@ -9371,7 +9607,7 @@ function renderCatalog() {
   ligarHandlersDeCards(grid);
 
   // Controlos "Ver mais / Ver menos"
-  renderCatalogPagination(shown, filtered.length);
+  renderCatalogPagination(shown, totalFiltered);
 
   animateReveal('.product-card');
 
@@ -9926,8 +10162,7 @@ function renderCategoryCards() {
   // Renomeado conceptualmente: agora renderiza um SLICER de chips (sem imagens)
   const slicer = document.getElementById('category-slicer');
   if (!slicer) return;
-  const counts = {};
-  PRODUCTS.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
+  const counts = PRODUCT_FACET_COUNTS.categories;
   // Chip "Todas" primeiro + uma chip por categoria (sem emojis, tipografia serif)
   const chips = [
     { cat: '', name: 'Todas', count: PRODUCTS.length },
@@ -9954,15 +10189,42 @@ function renderCategoryCards() {
 // ============================================================
 // Estado actual do pódio (ean a ser visto, volume seleccionado)
 let PA_STATE = { ean: null, volume: null };
+let PA_OPEN_GERACAO = 0;
 
 async function openPriceAnalyzer(ean) {
+  const geracaoFicha = ++PA_OPEN_GERACAO;
+  // Iniciar a leitura das ofertas antes de esperar pelo catálogo. Em EANs
+  // fora do bloco de arranque, garantirIndice pode levar alguns segundos;
+  // a consulta da ficha à Supabase não precisa do índice para começar.
+  const pedidoOfertas = ofertasProntasComVariantes(ean)
+    ? null
+    : carregarOfertas([ean], { variantes: true });
   // O produto pode não estar em memória: a montra e os destaques são pintados
   // com os 150 do bloco de arranque, mas os EANs vindos do scanner, de um link
   // partilhado ou de uma rotina guardada não estão lá. Sem isto, clicar
   // devolvia silêncio — sem ficha, sem aviso, sem nada a acontecer.
   if (!PRODUCT_BY_EAN[ean] && typeof garantirIndice === 'function') {
-    const ok = await garantirIndice();
-    if (!ok || !PRODUCT_BY_EAN[ean]) { toast('Não consegui abrir este produto. Tenta outra vez.'); return; }
+    // O índice segue em paralelo, mas a resposta de products inclui nome,
+    // marca e categoria. Se chegar primeiro, a ficha pode renderizar já.
+    const promessaIndice = garantirIndice();
+    PA_STATE = { ean, volume: null, seedVolume: null };
+    abrirModalDaFicha();
+    const corpoInicial = document.getElementById('pa-body');
+    if (corpoInicial) {
+      corpoInicial.innerHTML = '<div class="ph-card"><div class="ph-head">' +
+        '<span class="ph-title">⚖️ Comparar preços</span></div>' +
+        '<div class="ph-empty">a comparar as lojas…</div></div>';
+    }
+    if (pedidoOfertas) await pedidoOfertas;
+    if (geracaoFicha !== PA_OPEN_GERACAO) return;
+    let ok = true;
+    if (!PRODUCT_BY_EAN[ean]) ok = await promessaIndice;
+    if (geracaoFicha !== PA_OPEN_GERACAO) return;
+    if (!ok || !PRODUCT_BY_EAN[ean]) {
+      closePriceAnalyzer();
+      toast('Não consegui abrir este produto. Tenta outra vez.');
+      return;
+    }
   }
   const p = PRODUCT_BY_EAN[ean];
   if (!p) return;
@@ -10017,10 +10279,10 @@ async function openPriceAnalyzer(ean) {
       '<span class="ph-title">⚖️ Comparar preços</span></div>' +
       '<div class="ph-empty">a comparar as lojas…</div></div>';
   }
-  await carregarOfertas([ean], { variantes: true });
+  await (pedidoOfertas || carregarOfertas([ean], { variantes: true }));
   // entre o pedido e a resposta o utilizador pode ter fechado a ficha ou aberto
   // outra: sem esta guarda, o pódio do produto antigo aterrava por cima
-  if (!PA_STATE || PA_STATE.ean !== ean) return;
+  if (geracaoFicha !== PA_OPEN_GERACAO || !PA_STATE || PA_STATE.ean !== ean) return;
   pintarImagemDaFicha();   // a imagem veio com as ofertas
   if (OFERTAS_FALHADAS.has(ean)) {
     renderOfertaIndisponivel(document.getElementById('pa-body'), [ean], () => openPriceAnalyzer(ean));
@@ -10812,6 +11074,7 @@ function bundleSetVolume(ean, volume_ml) {
 }
 
 function closePriceAnalyzer(mexerNoHistorico) {
+  PA_OPEN_GERACAO++;
   try { seoFecharProduto(mexerNoHistorico); } catch (e) { console.warn('SEO:', e && e.message); }
   document.getElementById('pa-backdrop').classList.remove('open');
   document.getElementById('pa-modal').classList.remove('open');
@@ -13266,11 +13529,9 @@ function renderBrandFilter() {
   if (!brandsEl) return;
   const q = (document.getElementById('filter-brand-search')?.value || '').toLowerCase().trim();
   // Filtrar por categoria activa: só mostra marcas relevantes
-  const relevant = state.category
-    ? PRODUCTS.filter(p => p.category === state.category)
-    : PRODUCTS;
-  const brandCount = {};
-  for (const p of relevant) brandCount[p.brand] = (brandCount[p.brand] || 0) + 1;
+  const brandCount = state.category
+    ? (PRODUCT_FACET_COUNTS.brandsByCategory[state.category] || {})
+    : PRODUCT_FACET_COUNTS.brands;
   let brands = Object.entries(brandCount).sort((a, b) => b[1] - a[1]);
   if (q) brands = brands.filter(([b]) => b.toLowerCase().includes(q));
   brandsEl.innerHTML = brands.map(([b, n]) => {
