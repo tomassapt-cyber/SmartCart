@@ -1,0 +1,237 @@
+{
+ "_nota": "Grupos de possíveis fichas duplicadas (scripts/lib/duplicados.js: mesma marca, tamanho e palavras do nome, sem loja nas duas fichas) que JÁ foram revistos e NÃO se juntam: produtos diferentes, ou por confirmar. O monitor de frescura (scripts/freshness-report.js) não os conta — o alarme só toca com um grupo novo. A chave é a lista de EANs por ordem; se uma das fichas mudar de código, o grupo volta a aparecer para ser revisto. Para juntar um grupo daqui: acrescentar o alias em data/product-aliases.json e apagar a entrada.",
+ "grupos": {
+  "8050444852620|8055510245146": {
+   "motivo": "diferentes: Acnestil Attiva ≠ Acnestil Attiva (+) (fórmula nova).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "8050444852620 «Acnestil Attiva»",
+    "8055510245146 «Rilastil Acnestil Attiva (+)»"
+   ]
+  },
+  "747930059561|sweetcare-creme-la-mer-serum-revitalizante-hidrata": {
+   "motivo": "por confirmar: a Sweetcare vende 30 ml; o tamanho do código real (189,95 €) não se sabe.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "747930059561 «Revitalizing Hydrating Serum»",
+    "sweetcare-creme-la-mer-serum-revitalizante-hidrata «The Revitalizing Hydrating Serum »"
+   ]
+  },
+  "5901887010401|5901887050674": {
+   "motivo": "por confirmar: dois códigos e preços diferentes (2,40 € e 1,99 €).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "5901887050674 «Tónico Facial De Caléndula»",
+    "5901887010401 «Tónico Facial Caléndula Calêndula»"
+   ]
+  },
+  "5055382314561|8430291002315": {
+   "motivo": "por confirmar: fabricantes com códigos diferentes, preços 1,6× diferentes.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "5055382314561 «Alvita Creme de Mãos Reparador 100ml»",
+    "8430291002315 «Alvita Creme Reparador para as Mãos, 100 ml»"
+   ]
+  },
+  "8435534416553|druni-serum-hydranad-lacabine-120-horas-de-hid": {
+   "motivo": "diferentes: preços 3,5× diferentes (ampola ≠ sérum).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "druni-serum-hydranad-lacabine-120-horas-de-hid «Sérum Hydranad+»",
+    "8435534416553 «Sérum Hydranad+»"
+   ]
+  },
+  "3605973101722|druni-ultra-facial-cream-kiehls-creme-facial-h": {
+   "motivo": "por confirmar: a Druni vende 28/50/125 ml; o tamanho do código real (60,50 €) não se sabe.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "druni-ultra-facial-cream-kiehls-creme-facial-h «Ultra Facial Cream»",
+    "3605973101722 «Kiehl's Ultra Facial Cream»"
+   ]
+  },
+  "3540550015323|3540550022659": {
+   "motivo": "diferentes: pack com brinde ≠ só o creme.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "3540550015323 «Filorga NCEF Revitalize Creme 50ml»",
+    "3540550022659 «Creme Filorga NCEF-Revitalize 50 ml + Creme 15 ml»"
+   ]
+  },
+  "0020714712013|sweetcare-clinique-beyond-perfecting-foundation-co": {
+   "motivo": "diferentes: base de maquilhagem com tons (cada tom tem o seu código).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "sweetcare-clinique-beyond-perfecting-foundation-co «Beyond Perfecting Foundation and Concealer »",
+    "0020714712013 «Beyond Perfecting Foundation + Concealer»"
+   ]
+  },
+  "farmaciapt-klorane-leite-de-aveia-shampoo-extra-suave|sweetcare-klorane-leite-aveia-shampoo-uso-frequent": {
+   "motivo": "por confirmar: a Farmácia.pt não diz o tamanho; a Sweetcare tem 100/200/400 ml.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "farmaciapt-klorane-leite-de-aveia-shampoo-extra-suave «Klorane Leite de Aveia Shampoo Extra Suave»",
+    "sweetcare-klorane-leite-aveia-shampoo-uso-frequent «Shampoo Extra-Suave com Leite de Aveia »"
+   ]
+  },
+  "5060630044046|sweetcare-tangle-teezer-scalp-exfoliator-massager-": {
+   "motivo": "diferentes: a escova tem várias cores, cada uma com o seu código.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "sweetcare-tangle-teezer-scalp-exfoliator-massager- «Scalp Exfoliator & Massager »",
+    "5060630044046 «Tangle Teezer The Scalp Exfoliator & Massager»"
+   ]
+  },
+  "8414002079025|8414002715121": {
+   "motivo": "por confirmar: dois códigos, preços 1,36× diferentes.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "8414002715121 «Champô Antiqueda Cabelos Oleosos»",
+    "8414002079025 «Champô Antiqueda Cabelos Oleosos»"
+   ]
+  },
+  "3666057297380|3666057327391": {
+   "motivo": "diferentes: coffrets de anos diferentes.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "3666057327391 «Coffret Double Serum Extra-Firming»",
+    "3666057297380 «Coffret Double Serum + Extra Firming»"
+   ]
+  },
+  "3614274800067|wells-8697832": {
+   "motivo": "diferentes: a ficha sem EAN mistura o creme com a recarga.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "wells-8697832 «Absolue Longevity MD Intercept The Cream»",
+    "3614274800067 «Lancôme Absolue Longevity MD Intercept Cream»"
+   ]
+  },
+  "5201279103750|bemecare-apivita-queen-bee-cr-lig-absof-serolh": {
+   "motivo": "diferentes: packs com brindes diferentes, preços 2× diferentes.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "5201279103750 «Apivita Queen Bee Creme Ligeiro - 50ml + Oferta Bee Serum - »",
+    "bemecare-apivita-queen-bee-cr-lig-absof-serolh «Apivita Queen Bee Creme Ligeiro 50ml OFERTA Serum 10 ml + Cr»"
+   ]
+  },
+  "8800307373140|8800307374628": {
+   "motivo": "diferentes: preços 2,6× diferentes (unidade ≠ pack).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "8800307373140 «Anua Retinol + Niacin Night Care Mask»",
+    "8800307374628 «ANUA Retinol Niacin Night Care Mask»"
+   ]
+  },
+  "0000080466468|8717644061367": {
+   "motivo": "diferentes: preços 2,4× diferentes, códigos de fabricantes diferentes.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "0000080466468 «Desodorizante Creme Original»",
+    "8717644061367 «Desodorizante em Creme Original»"
+   ]
+  },
+  "8806358553531|8806358558949": {
+   "motivo": "por confirmar: preços 1,47× diferentes, tamanho por confirmar.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "8806358553531 «Tonymoly Panda&#39;s Dream White Creme de Mãos 30g»",
+    "8806358558949 «TONYMOLY Panda's Dream White Creme de Mãos 30g»"
+   ]
+  },
+  "3401397240470|3401575814486": {
+   "motivo": "diferentes: Sensibio DS+ ≠ Sensibio DS.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "3401397240470 «Bioderma Sensibio DS+ Creme 40 ml»",
+    "3401575814486 «Sensibio Ds Creme 40ml»"
+   ]
+  },
+  "7322540079258|7322541407432": {
+   "motivo": "por confirmar: dois códigos para o mesmo pack de fraldas (não é cosmética).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "7322540079258 «Tena Flex Maxi Fralda_Tamanho M (x22 unidades)»",
+    "7322541407432 «Tena Flex Maxi Fralda Tamanho M X22 Unidades»"
+   ]
+  },
+  "7322540686562|7322541089591": {
+   "motivo": "diferentes: packs com número de fraldas diferente.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "7322541089591 «Libero Up&amp;Go Fraldas_ Tamanho 5_ 10/14 Kg (x20 unidades)»",
+    "7322540686562 «Libero Up&go Fraldas Tamanho 5 10/14kg X20 Unidades»"
+   ]
+  },
+  "3522930000990|3522930003915": {
+   "motivo": "diferentes: Eau des Vignes ≠ Thé des Vignes (fragrâncias diferentes).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "3522930003915 «Caudalie Eau Des Vignes Eau Fraiche 50ml»",
+    "3522930000990 «Caudalie Thé des Vignes Eau Fraîche 50ml»"
+   ]
+  },
+  "8809576261462|8809913831259": {
+   "motivo": "diferentes: tamanhos misturados (30 ml e 100 ml).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "8809576261462 «Madagascar Centella Poremizing Fresh Ampoule · SKIN1004»",
+    "8809913831259 «Madagascar Centella Poremizing Fresh Ampoule»"
+   ]
+  },
+  "bemecare-lierac-lift-integ-serum-coffret-natal25|farmaciapt-lierac-lift-integral-serum-oferta-creme-olhos-coff": {
+   "motivo": "por confirmar: coffrets com brindes por confirmar.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "bemecare-lierac-lift-integ-serum-coffret-natal25 «Lierac Lift Integral Serum Coffret com oferta Creme Olhos»",
+    "farmaciapt-lierac-lift-integral-serum-oferta-creme-olhos-coff «Lierac Lift Integral Sérum + Oferta Creme Olhos Coffret»"
+   ]
+  },
+  "8431567645571|easyfarma-la-roche-posay-lipikar-syndet-ap-recarga-400ml": {
+   "motivo": "diferentes: «recarga» ≠ «frasco + recarga».",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "easyfarma-la-roche-posay-lipikar-syndet-ap-recarga-400ml «La Roche-Posay Lipikar Syndet AP+ Recarga – 400ml»",
+    "8431567645571 «LA ROCHE POSAY Lipikar Syndet AP+ 400ml + Recarga 400ml»"
+   ]
+  },
+  "5060150185878|wells-8857508": {
+   "motivo": "por confirmar: a Wells vende 250 ml; o tamanho do código real não se sabe.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "5060150185878 «Color WOW Cult Favorite Firm + Flexible Hairspray»",
+    "wells-8857508 «Cult Favorite Firm Flexible Hairspray»"
+   ]
+  },
+  "8437000681182|8437000681199": {
+   "motivo": "diferentes: códigos seguidos da Lippen = aromas diferentes.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "8437000681199 «Lippen Creme para as Mãos 75 ml»",
+    "8437000681182 «Creme de Mãos Lippen Lippen 75Ml»"
+   ]
+  },
+  "2008648722610|5600797592099": {
+   "motivo": "diferentes: Topialyse Protect+ ≠ Protect.",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "5600797592099 «SVR Topialyse Baume Protect+ 400ml + OFERTA Óleo Lavante 200»",
+    "2008648722610 «SVR Topialyse Baume Protect 400ml + Oferta Óleo Lavante 200m»"
+   ]
+  },
+  "8032472016977|8032472019190": {
+   "motivo": "por confirmar: dois códigos do mesmo gel oral (não é cosmética).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "8032472016977 «Aboca Oroben gel oral, 15 ml»",
+    "8032472019190 «Oroben Gel Oral Gel 15Ml»"
+   ]
+  },
+  "4051895038032|4051895057811": {
+   "motivo": "por confirmar: dois códigos do mesmo suplemento (não é cosmética).",
+   "revisto": "2026-10-22",
+   "fichas": [
+    "4051895057811 «Fresubin 2Kcal Drink Cappuccino 200Ml (x4 unidades)»",
+    "4051895038032 «Fresubin 2kcal Drink Cappuccino 200ml X4»"
+   ]
+  }
+ }
+}

@@ -42,6 +42,11 @@ jobs:
         with:
           node-version: '22'
 
+      # A conta dos duplicados vem de scripts/lib/duplicados.js e da lista de
+      # grupos já revistos (data/duplicados-revistos.json), desde 2026-10-22.
+      - name: Teste dos duplicados
+        run: node scripts/test-duplicados.cjs
+
       - name: Freshness report (strict)
         id: cloud
         # continue-on-error para o passo do AVISO poder correr. O vermelho do job

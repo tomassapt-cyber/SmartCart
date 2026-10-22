@@ -216,8 +216,73 @@
     "added_at": "2026-10-22"
   },
   "4005800354625": {
-    "aliases": ["4005800331985"],
-    "reason": "Eucerin Aquaphor Pomada Reparadora 80 g: código renovado pela marca (os dois da Beiersdorf, 4005800…). O mesmo nome e tamanho, «-80g» nos endereços dos dois lados, preços 10,17–18,49 € e 12,20–16,95 €, e nenhuma loja vende as duas fichas. Verificado a 2026-10-22.",
+    "aliases": ["4005800331985", "4005800158650"],
+    "reason": "Eucerin Aquaphor Pomada Reparadora 80 g: código renovado pela marca (os dois da Beiersdorf, 4005800…). O mesmo nome e tamanho, «-80g» nos endereços dos dois lados, preços 10,17–18,49 € e 12,20–16,95 €, e nenhuma loja vende as duas fichas. Verificado a 2026-10-22. | Eucerin Aquaphor Pomada Reparadora 80 g: um terceiro código da Beiersdorf (4005800…), «80 g» nos dois lados. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "8436550779929": {
+    "aliases": ["wells-7629608"],
+    "reason": "laCabine Anti-Aging + (ampola de 2 ml): o mesmo produto, 2 ml dos dois lados. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "8429420135444": {
+    "aliases": ["wells-6876510"],
+    "reason": "ISDIN Protector Labial SPF 30, 4 g: Wells e Bairro da Saúde dizem 4 g. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "3461020012164": {
+    "aliases": ["farmaciasprogresso-lift-repair-creme-50ml"],
+    "reason": "Esthederm Lift & Repair Creme 50 ml: 50 ml dos dois lados. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "3282779425452": {
+    "aliases": ["easyfarma-a-derma-exomega-control-creme-emoliente-2x400ml"],
+    "reason": "A-Derma Exomega Control Creme Emoliente 2×400 ml: o mesmo pack nos dois nomes. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "8445290579140": {
+    "aliases": ["easyfarma-natures-bounty-beauty-complex-com-biotina-60-compr"],
+    "reason": "Nature's Bounty Beauty Complex com Biotina, 60 comprimidos: o mesmo nome completo. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "wells-367684": {
+    "aliases": ["druni-ultra-light-daily-uv-defense-spf50-pa-ki"],
+    "reason": "Kiehl's Ultra Light Daily UV Defense SPF 50: as duas páginas com 30/60 ml (ambas sem EAN). Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "8445290591166": {
+    "aliases": ["bairro-saude-natures-bounty-zinco-maxima-potencia-100-comprimid"],
+    "reason": "Nature's Bounty Zinco Máxima Potência, 100 comprimidos: o mesmo nome completo. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "wells-8899224": {
+    "aliases": ["sweetcare-celimax-vita-retinol-shot-serum-p-027487"],
+    "reason": "Celimax The Vita A Retinol Shot Serum: o mesmo produto (30 ml na Sweetcare), preços 15,13 € e 16,55 € (ambas sem EAN). Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "5600372741348": {
+    "aliases": ["3578836129242"],
+    "reason": "Arkopharma Forcapil Crescimento, 60 gomas: o mesmo produto com o código português (560…) e o francês (357…). Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "3760100683530": {
+    "aliases": ["wells-7731054"],
+    "reason": "Evoluderm Creme de Mãos Monoi 50 ml: 50 ml dos dois lados. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "3401043264546": {
+    "aliases": ["8470001840653"],
+    "reason": "Urgo Spray Penso 40 ml: 40 ml dos dois lados; o 847000… é o código espanhol de farmácia. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "3282779020374": {
+    "aliases": ["byfarma-ducray-extra-doux-champo-uso-frequente-400ml-ofert"],
+    "reason": "Ducray Extra-Doux Champô 400 ml + Oferta 200 ml: o mesmo pack nos dois nomes. Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
+    "added_at": "2026-10-22"
+  },
+  "byfarma-cerebrum-forte-30-ampolas": {
+    "aliases": ["farmaciasprogresso-cerebrum-forte-ampolas-x-30"],
+    "reason": "Cerebrum Forte, 30 ampolas: o mesmo nome (ambas sem EAN). Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
     "added_at": "2026-10-22"
   }
 }
