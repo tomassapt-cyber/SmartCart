@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-21T10:01:36.358Z",
-  "seed_total_products": 94827,
+  "generated_at": "2026-10-22T08:31:26.150Z",
+  "seed_total_products": 94907,
   "hero_sponsored": [
     {
       "ean": "3606000560833",
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.86,
+      "best_price": 13.74,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
@@ -36,7 +36,7 @@
       "ean": "3522930005797",
       "name": "Sérum Vinoperfect da Caudalie + Protetor Solar Facial Vinosun Ocean Protect FPS 50+ de oferta",
       "brand": "Caudalie",
-      "image_url": "https://assets.atida.com/transform/0f6e16b7-302d-4339-8289-a1ef763cb2ce/Caudalie-Vinoperfect-Serum-30-ml-Regalo-Vinosun-Ocean-Protect-Fluido-SPF50-20-ml",
+      "image_url": "https://assets.atida.com/transform/702deaf0-1a48-4440-bde9-54daf50c3812/Caudalie-Vinoperfect-Serum-30-ml-Regalo-Ocean-Protect-Fluido-SPF50-20-ml",
       "best_price": 40.2,
       "best_store": "A Farmácia Online",
       "best_store_slug": "afarmaciaonline",
@@ -137,6 +137,16 @@
       "best_url": "https://easyfarma.pt/products/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
     },
     {
+      "ean": "8431567751968",
+      "name": "La Roche-Posay Mela B3 Coffret Cuidado Anti-Manchas Sérum + Creme + Protetor Solar",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a87361f588e4_la-roche-posay-mela-b3-coffret-1_1.jpg",
+      "best_price": 37.25,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-mela-b3-serum-coffret-natal-2026"
+    },
+    {
       "ean": "3574661879185",
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
@@ -145,16 +155,6 @@
       "best_store": "Farmácia 365",
       "best_store_slug": "farmacia365",
       "best_url": "https://www.farmacia365.pt/neutrogena-corpo-deep-moisture-duo-locao-corporal-750ml-400ml-com-desconto-de-25"
-    },
-    {
-      "ean": "8431567752002",
-      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
-      "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 37.25,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-suractivated-serum-coffret-natal-2026"
     }
   ],
   "em_alta": [
@@ -162,7 +162,7 @@
       "ean": "4005800204982",
       "name": "Hansaplast Pomada Cicatrizante",
       "brand": "Hansaplast",
-      "image_url": "https://cdn.shopify.com/s/files/1/0542/5299/4747/files/OYmeQF_59bfab44-388d-4807-b40d-31e9c3849554.png?v=1783781449",
+      "image_url": "https://assets.farmaciadaliga.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciadaliga.pt/images/originals/6629444.webp",
       "best_price": 2.38,
       "best_store": "Sofarma",
       "best_store_slug": "sofarma",
@@ -234,11 +234,11 @@
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 882
+      "products": 881
     },
     {
       "name": "Avène",
-      "products": 858
+      "products": 857
     },
     {
       "name": "Isdin",
@@ -254,11 +254,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 802
+      "products": 800
     },
     {
       "name": "Eucerin",
-      "products": 763
+      "products": 762
     },
     {
       "name": "Chicco",
@@ -296,7 +296,7 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 76991,
+    "products": 77124,
     "avg_savings_pct": 29
   },
   "shard_version": "",
