@@ -20,6 +20,16 @@
  *   node scripts/scrape-atida-catalog.js --limit=100  # smoke test
  *   node scripts/scrape-atida-catalog.js --chunk=1/4  # 1ª fatia de 4
  *   node scripts/scrape-atida-catalog.js --resume     # retoma de checkpoint
+ *   node scripts/scrape-atida-catalog.js --resume --orcamento-min=150
+ *
+ * ORÇAMENTO DE TEMPO (2026-10-22): desde ~16/10 a Atida responde devagar aos
+ * servidores do GitHub (~0,9 páginas/s com 4 em paralelo, sem erros), e as
+ * 13 065 páginas levam ~4 h — a corrida era cortada às 3 h e perdia TUDO
+ * (a integração só corre no fim). Com --orcamento-min=N deixa de pegar em
+ * páginas novas ao fim de N minutos e entrega o que leu; a integração só
+ * mexe nas ofertas lidas (as outras ficam como estavam). Para nada ficar
+ * para trás, a fila começa pelas páginas lidas há MAIS tempo (pelo
+ * scraped_at da leitura anterior; as que lá não estão vão primeiro).
  */
 
 const fs = require('fs');
@@ -42,6 +52,16 @@ const RESUME = !!args.resume;
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 4;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 600;
 const CHECKPOINT_EVERY = 100;
+// minutos de leitura; depois disso entrega o que tem (0 = sem limite)
+const ORCAMENTO_MS = (parseFloat(args['orcamento-min'] || process.env.ORCAMENTO_MIN) || 0) * 60e3;
+
+/** url → instante da última leitura, a partir da leitura anterior (antes do resume a filtrar) */
+function ultimaLeituraPorUrl() {
+  try {
+    const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+    return new Map((d.products || []).filter(p => p.url && p.scraped_at).map(p => [p.url, Date.parse(p.scraped_at) || 0]));
+  } catch { return new Map(); }
+}
 
 // Keywords no URL slug que indicam produto beauty/dermo (não-medicação, não-suplemento)
 // Estes URLs são fortes candidatos a categorias relevantes
@@ -246,22 +266,28 @@ async function fetchPage(url, attempt = 1) {
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
 
   // 4. Resume
+  const leituraAnterior = ultimaLeituraPorUrl();   // antes de o checkpoint filtrar os velhos
   const cp = loadCheckpoint();
   const products = cp?.products || [];
   const done = cp?.done || new Set();
   if (cp) console.log(`  Resume: ${done.size} já scraped, ${urls.length - done.size} pendentes`);
 
-  // 5. Scrape com pool
-  const queue = urls.filter(u => !done.has(u));
+  // 5. Scrape com pool — as páginas lidas há MAIS tempo primeiro (as que não
+  // estão na leitura anterior contam como nunca lidas), para que um orçamento
+  // de tempo nunca deixe as mesmas sempre para trás.
+  const queue = urls.filter(u => !done.has(u))
+    .sort((a, b) => (leituraAnterior.get(a) || 0) - (leituraAnterior.get(b) || 0));
   console.log(`\n🚀 A scrapar ${queue.length} URLs (concurrency=${CONCURRENCY}, delay=${DELAY_MS}ms)…\n`);
 
   const start = Date.now();
+  let esgotado = false;   // orçamento de tempo atingido
   let idx = 0;
   const stats = { ok: 0, no_jsonld: 0, not_found: 0, error: 0, retried: 0, retry_ok: 0 };
   const RETRY_BUDGET = parseInt(process.env.RETRY_BUDGET || '0', 10); // 0 = off (o "soft-block" afinal era AggregateOffer; env reativa se preciso)
 
   async function worker() {
     while (idx < queue.length) {
+      if (ORCAMENTO_MS && Date.now() - start > ORCAMENTO_MS) { esgotado = true; break; }
       const i = idx++;
       const url = queue[i];
       const r = await fetchPage(url);
@@ -312,6 +338,10 @@ async function fetchPage(url, attempt = 1) {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  if (esgotado) {
+    const lidas = stats.ok + stats.no_jsonld + stats.not_found + stats.error;
+    console.log(`\n⏱ Orçamento de ${Math.round(ORCAMENTO_MS / 60e3)} min esgotado: ${lidas} páginas lidas, ${queue.length - lidas} ficam para a próxima corrida (as lidas há mais tempo vão primeiro).`);
+  }
 
   if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
