@@ -17,12 +17,14 @@
  *     se o cron diário está a integrar como devia)
  *
  * Também corre 2 checks de duplicados (colisão de capitalização de marca +
- * grupos de fingerprint repetidos) para apanhar regressões de dedup.
+ * possíveis fichas duplicadas NOVAS — ver scripts/lib/duplicados.js e
+ * data/duplicados-revistos.json) para apanhar regressões de dedup.
  *
  * SAÍDA / EXIT CODE
  *   - Sempre imprime a tabela.
  *   - Com --strict: exit 1 se alguma loja tiver "último refresh" mais velho
- *     que --stale-days (default 2), ou se houver colisões de marca/fingerprint.
+ *     que --stale-days (default 2), ou se houver colisões de marca ou
+ *     duplicados novos (ainda não revistos).
  *     Pensado para correr num workflow de monitorização e falhar visivelmente.
  *
  * USO
@@ -54,11 +56,6 @@ const IGNORE = new Set(String(args.ignore || '').split(',').map(s => s.trim()).f
 // às lojas SÓ-PC um limiar próprio (refrescam à mão, não podem usar o mesmo
 // prazo das cloud) sem perder a vigilância sobre elas.
 const ONLY = new Set(String(args.only || '').split(',').map(s => s.trim()).filter(Boolean));
-
-// Fingerprint partilhado (mesmo critério do dedup/integrate)
-let productFingerprint;
-try { ({ productFingerprint } = require('./lib/product-fingerprint')); }
-catch { productFingerprint = null; }
 
 const strip = x => String(x).normalize('NFD').replace(/[̀-ͯ]/g, '');
 const keyOf = x => strip(String(x).toLowerCase()).replace(/\s+/g, ' ').trim();
@@ -130,15 +127,27 @@ const brandKeyGroups = {};
 for (const b of Object.keys(brandCounts)) (brandKeyGroups[keyOf(b)] ||= []).push(b);
 const brandCollisions = Object.entries(brandKeyGroups).filter(([, v]) => v.length > 1);
 
-let fpDupGroups = 0;
-if (productFingerprint) {
-  const fpMap = {};
-  for (const p of seed.products || []) {
-    const fp = productFingerprint(p);
-    if (fp) (fpMap[fp] ||= []).push(p);
+// Possíveis duplicados (2026-10-22): mesma marca + tamanho + palavras do nome
+// (scripts/lib/duplicados.js), DEPOIS das junções que a publicação faz (GTIN e
+// data/product-aliases.json) e sem os grupos com a mesma loja nas duas fichas.
+// Os já revistos e confirmados como produtos diferentes, ou por confirmar
+// (data/duplicados-revistos.json), não contam: o alarme só toca com um NOVO.
+// A contagem antiga, pela impressão digital, ignorava tamanhos e números e
+// dava 760 «grupos» (Cicaplast 15 ml e 40 ml…) — um alarme sempre ligado.
+// ⚠️ Corre depois das contagens de frescura: a junção muda o seed em memória.
+const dupNovos = [];
+let dupRevistos = 0;
+try {
+  require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
+  const { gruposDuplicados } = require('./lib/duplicados');
+  let revistos = {};
+  try { revistos = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'duplicados-revistos.json'), 'utf8')).grupos || {}; } catch { /* sem lista → tudo novo */ }
+  for (const g of gruposDuplicados(seed)) {
+    if (revistos[g.grupo]) dupRevistos++;
+    else dupNovos.push(g);
   }
-  fpDupGroups = Object.values(fpMap).filter(g => g.length > 1).length;
-}
+} catch (e) { console.error('duplicados: não consegui medir —', e.message); }
+const nomeDe = new Map((seed.products || []).map(p => [String(p.ean), p.name]));
 
 // ── Saída ────────────────────────────────────────────────────────────────────
 const summary = {
@@ -147,7 +156,8 @@ const summary = {
   total_products: (seed.products || []).length,
   stores: rows,
   brand_case_collisions: brandCollisions.length,
-  fingerprint_dup_groups: fpDupGroups,
+  duplicados_novos: dupNovos.length,
+  duplicados_revistos: dupRevistos,
 };
 
 if (AS_JSON) {
@@ -175,7 +185,8 @@ if (AS_JSON) {
   if (brandCollisions.length) {
     brandCollisions.slice(0, 10).forEach(([k, v]) => console.log(`   • ${k}: ${v.map(x => JSON.stringify(x)).join(' / ')}`));
   }
-  console.log(`Grupos de fingerprint duplicados:   ${fpDupGroups}`);
+  console.log(`Possíveis duplicados novos:         ${dupNovos.length}  (${dupRevistos} já revistos em data/duplicados-revistos.json)`);
+  dupNovos.slice(0, 10).forEach(g => console.log(`   • ${g.eans.map(e => `${e} «${String(nomeDe.get(e) || '').slice(0, 45)}»`).join('  ⟷  ')}`));
 }
 
 // ── Exit code (modo --strict) ────────────────────────────────────────────────
@@ -187,10 +198,10 @@ if (STRICT) {
   if (staleIgnored.length) console.error(`\nℹ Stale mas IGNORADAS (--ignore): ${staleIgnored.map(s => `${s.slug} (${s.lastRefreshAgeDays}d)`).join(', ')}`);
   if (staleStores.length) problems.push(`${staleStores.length} loja(s) stale (>${STALE_DAYS}d): ${staleStores.map(s => s.slug).join(', ')}`);
   if (brandCollisions.length) problems.push(`${brandCollisions.length} colisões de marca`);
-  if (fpDupGroups) problems.push(`${fpDupGroups} grupos de fingerprint duplicados`);
+  if (dupNovos.length) problems.push(`${dupNovos.length} possível(eis) duplicado(s) novo(s) — juntar em data/product-aliases.json se for o mesmo produto, ou registar em data/duplicados-revistos.json se não for`);
   if (problems.length) {
     console.error('\n❌ FALHA (--strict):\n   - ' + problems.join('\n   - '));
     process.exit(1);
   }
-  console.error('\n✅ OK: todas as lojas frescas, sem duplicados.');
+  console.error('\n✅ OK: todas as lojas frescas, sem duplicados novos.');
 }
