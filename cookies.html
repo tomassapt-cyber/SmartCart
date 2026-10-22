@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookies e Armazenamento — CosMath</title>
+<meta name="description" content="Informação sobre o armazenamento no navegador, os favoritos, o carrinho e os serviços externos do CosMath.">
+<link rel="canonical" href="/cookies">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="stylesheet" href="/fonts/fontes.css">
+<link rel="stylesheet" href="/paginas-legais.css">
+</head>
+<body>
+<header class="topo"><a href="/">Cos<em>Math</em></a></header>
+<main>
+<h1>Cookies e Armazenamento</h1>
+<p class="data">Última atualização: <mark class="falta">DATA DE PUBLICAÇÃO</mark></p>
+
+<div class="resumo">
+<p>O CosMath guarda dados no navegador para as funções que escolhe usar. Favoritos podem sincronizar com a conta; o carrinho fica apenas neste dispositivo. Não existe atualmente um painel de consentimento para estatísticas de visitantes. O registo de popularidade das fichas e pesquisas está descrito na <a href="/privacidade">Política de Privacidade</a>.</p>
+</div>
+
+<h2>Necessários — sempre ativos</h2>
+<p>Algumas funções precisam de guardar informação no próprio navegador (no chamado <em>armazenamento local</em>). Essa informação fica no seu dispositivo; só é enviada para nós nos casos indicados, e apenas se tiver conta. Esta lista descreve o comportamento técnico atual; a classificação e a base legal de cada finalidade devem ser validadas antes da publicação.</p>
+<p>Fica guardado até o apagar nas definições do navegador, exceto onde se indica outra duração.</p>
+
+<div class="tabela"><table>
+<tr><th>Nome</th><th>Para quê</th><th>Vai para a sua conta?</th></tr>
+<tr><td><code>sb-…-auth-token</code></td><td>Manter a sessão iniciada</td><td>—</td></tr>
+<tr><td><code>cm.keepsession</code></td><td>A sua escolha de manter ou não a sessão iniciada</td><td>Não</td></tr>
+<tr><td><code>cm.last_uid</code>, <code>cm.pending_name</code>, <code>cm.us_ts</code>, <code>cm.us_dono</code>, <code>cm.sync_pendente.v1</code></td><td>Funcionamento interno da conta e da sincronização entre dispositivos</td><td>Não</td></tr>
+<tr><td><code>cm.cofre.v1</code></td><td>Cópia local de alterações da conta por sincronizar, separada por conta; até 60 dias</td><td>Recuperada para sincronizar quando a mesma conta voltar a entrar; sem medicação</td></tr>
+<tr><td><code>cm.cart.v1</code></td><td>Carrinho: produtos, quantidades e tamanhos; reposto durante 30 dias após a última alteração</td><td>Não; é deste navegador e pode continuar visível ao trocar de conta</td></tr>
+<tr><td><code>smartcart.profile.v1</code></td><td>O seu perfil e a sua prateleira de produtos</td><td>Sim, se tiver conta</td></tr>
+<tr><td><code>cm.routine.v1</code>, <code>cm.trackerlog.v1</code>, <code>cm.streak.v1</code>, <code>cm.shelftomb.v1</code></td><td>Rotina, registo diário, sequência de dias e produtos retirados da prateleira</td><td>Sim, se tiver conta</td></tr>
+<tr><td><code>cm.favoritos.v1</code></td><td>Os produtos que guardou nos favoritos</td><td>Sim, se tiver conta</td></tr>
+<tr><td><code>cm.feedback.v1</code></td><td>As opiniões que nos deixou</td><td>Sim, se tiver conta</td></tr>
+<tr><td><code>cm.meds.v1</code>, <code>cm.medslog.v1</code></td><td>A sua lista de medicação e o registo de tomas</td><td><strong>Nunca</strong></td></tr>
+<tr><td><code>gm:ratings:…</code></td><td>As avaliações que deu a produtos</td><td>Não</td></tr>
+<tr><td><code>cosmath.community.v1</code></td><td>Publicações da comunidade escritas neste dispositivo</td><td>Não</td></tr>
+<tr><td><code>gm_zone</code></td><td>A zona de entrega escolhida, para calcular portes</td><td>Não</td></tr>
+<tr><td><code>cosmath_newsletter</code></td><td>Registo local de subscrições antigas; formulário atualmente oculto</td><td>Não</td></tr>
+<tr><td><code>cosmath.indice</code></td><td>Preferência técnica para ativar o índice de pesquisa</td><td>Não</td></tr>
+<tr><td><code>cm_a2hs_off</code></td><td>Não voltar a sugerir adicionar o site ao ecrã inicial</td><td>Não</td></tr>
+<tr><td><code>gmq.banner.dismissed</code></td><td>Não voltar a mostrar o convite para o questionário. <em>Apaga-se ao fechar o separador.</em></td><td>Não</td></tr>
+</table></div>
+<h2>Estatísticas</h2>
+<p>A página principal não usa atualmente identificadores de visitante ou de sessão para contar visitas e não apresenta um painel de consentimento para esse fim. O registo de popularidade de produtos envia o código do produto e, quando existe, o termo pesquisado, sem criar estas chaves.</p>
+
+<p>O site regista também um <em>service worker</em>, que permite adicioná-lo ao ecrã inicial do telemóvel como uma aplicação. Na versão atual não interceta pedidos nem mantém uma cache própria; elimina caches antigas quando é ativado.</p>
+
+<h2>Servidores de terceiros</h2>
+<p>As fotografias dos produtos vêm dos servidores das lojas. O navegador transmite os dados técnicos necessários à ligação, incluindo o IP. Não controlamos o tratamento realizado por esses servidores ou CDN. Mais detalhes na <a href="/privacidade">Política de Privacidade</a>.</p>
+
+<h2>Como apagar</h2>
+<p>Pode apagar tudo isto nas definições do navegador (em «dados de sites» ou «limpar dados de navegação»). Atenção: a medicação registada fica apenas neste armazenamento, por isso perde-se ao apagá-lo.</p>
+
+<p><em>Se um dia passarmos a usar cookies, publicidade ou ferramentas de terceiros, esta página muda antes disso, e voltamos a pedir a sua escolha.</em></p>
+</main>
+<footer class="rodape">
+  <a href="/">Início</a><a href="/privacidade">Privacidade</a><a href="/termos">Termos</a><a href="/contacto">Contacto</a>
+</footer>
+</body>
+</html>
