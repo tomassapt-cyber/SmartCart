@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-22T15:55:43.212505+00:00",
-  "completed_at": "2026-10-22T17:43:31.867871+00:00",
+  "scraped_at": "2026-10-23T15:47:05.577824+00:00",
+  "completed_at": "2026-10-23T17:45:08.376981+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -18311,19 +18311,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600482307090",
-      "name": "Máquina Aparar Barba E Cabelo Ricki Parodi Muti Trimmer 14 em 1",
-      "price": 44.06,
-      "net_price": 35.83,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/modelador-de-cabelo-ricki-parodi/90325-maquina-aparar-barba-e-cabelo-ricki-parodi-muti-trimmer-14-em-1-5600482307090.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/152449-thickbox_default/maquina-aparar-barba-e-cabelo-ricki-parodi-muti-trimmer-14-em-1.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474637090500",
       "name": "Shampoo L'Oreal Serie Expert Scalp Advanced Anti-Desconforto 500ml",
       "price": 24.41,
@@ -21960,6 +21947,14 @@
       "existing_name": "L&#039;Oréal Professionnel Paris Dia Color Coloração Capilar demi-permanente sem Amoníaco 6.3 60 ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/modelador-de-cabelo-ricki-parodi/90325-maquina-aparar-barba-e-cabelo-ricki-parodi-muti-trimmer-14-em-1-5600482307090.html",
+      "ean": "5600482307090",
+      "canonical": "5600482307090",
+      "existing_name": "RickiParodi Multi Trimmer 14in1 Aparador Barba e Cabelo",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/-serioxyl-advanced/90340-shampoo-l-oreal-serioxyl-advanced-densifying-300ml-3474637106393.html",
