@@ -79,6 +79,29 @@ push_burst() {
   return 1
 }
 
+# Caminho rápido (2026-10-22): desde 02/10 o catálogo está em pedaços de texto
+# (uma loja por ficheiro de ofertas, uma ficha por linha — ver seed-shards.js),
+# por isso o rebase do git costuma pôr o nosso commit por cima do main novo SEM
+# conflitos, em segundos. A re-integração custa ~3 min (integrar, limpezas,
+# pack, commit) e à hora de ponta outro bot grava nesse intervalo: a 22/10,
+# 18:13–18:48, a Atida falhou 8 tentativas seguidas e foi cortada às 3 h com os
+# dados prontos. Só se o rebase der conflito, ou o catálogo juntado não se
+# montar ou tiver fichas repetidas, é que se segue para a re-integração.
+juntar_por_rebase() {
+  git fetch origin "${BRANCH}" || return 1
+  if ! git rebase "origin/${BRANCH}"; then
+    git rebase --abort >/dev/null 2>&1
+    echo "↷ rebase com conflito — re-integrar."
+    return 1
+  fi
+  # o catálogo juntado tem de se montar e não pode ter a mesma ficha duas vezes
+  bash scripts/ci/seed.sh unpack || { echo "↷ o catálogo juntado não se monta — re-integrar."; return 1; }
+  node -e "const s=JSON.parse(require('fs').readFileSync('data/seed-bundle.json','utf8'));const v=new Set();for(const p of s.products){if(v.has(p.ean))process.exit(3);v.add(p.ean)}" \
+    || { echo "↷ o catálogo juntado tem fichas repetidas — re-integrar."; return 1; }
+  echo "⇢ rebase limpo sobre origin/${BRANCH} — a empurrar já."
+  return 0
+}
+
 stage_all() {
   # o .json de trabalho vira .gz antes de entrar no commit
   bash scripts/ci/seed.sh pack || return 1
@@ -96,6 +119,7 @@ for i in "${!BACKOFFS[@]}"; do
   fi
 
   if push_burst 4; then exit 0; fi
+  if juntar_por_rebase && push_burst 3; then exit 0; fi
 
   echo "↻ Push rejeitado (tentativa ${attempt}) — re-integrar sobre origin/${BRANCH}…"
 
@@ -153,6 +177,9 @@ for i in "${!BACKOFFS[@]}"; do
   # esta é a janela em que temos mais hipóteses de fast-forward. Esperar aqui
   # pelo backoff do topo do loop era o que nos fazia perder a corrida.
   if push_burst 4; then exit 0; fi
+  # alguém gravou enquanto re-integrávamos: o nosso commit é fresco e o rebase
+  # quase sempre basta
+  if juntar_por_rebase && push_burst 3; then exit 0; fi
 done
 
 echo "❌ Push falhou após ${#BACKOFFS[@]} tentativas. Artifact contém os dados."
