@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-23T09:56:11.803Z",
-  "seed_total_products": 95112,
+  "generated_at": "2026-10-24T08:06:40.942Z",
+  "seed_total_products": 95193,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 15.27,
-      "best_store": "Pharmácia do Cabelo",
-      "best_store_slug": "pharmaciadocabelo",
-      "best_url": "https://pharmaciadocabelo.com/products/redken-frizz-dismiss-condicionador-300ml"
+      "best_price": 16.86,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
     },
     {
       "ean": "3282770391640",
@@ -147,14 +147,14 @@
       "best_url": "https://www.farmacia365.pt/neutrogena-corpo-deep-moisture-duo-locao-corporal-750ml-400ml-com-desconto-de-25"
     },
     {
-      "ean": "8431567751968",
-      "name": "La Roche-Posay Mela B3 Coffret Cuidado Anti-Manchas Sérum + Creme + Protetor Solar",
+      "ean": "8431567752002",
+      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a87361f588e4_la-roche-posay-mela-b3-coffret-1_1.jpg",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
       "best_price": 37.25,
       "best_store": "Farmácia 365",
       "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/la-roche-posay-mela-b3-serum-coffret-natal-2026"
+      "best_url": "https://www.farmacia365.pt/la-roche-posay-hyalu-b5-suractivated-serum-coffret-natal-2026"
     }
   ],
   "em_alta": [
@@ -203,20 +203,6 @@
       "verified_live": true
     },
     {
-      "ean": "8428749868200",
-      "name": "Sensilis AR Água Micelar para Pele Sensível e Reativa",
-      "brand": "Sensilis",
-      "image_url": "https://assets.atida.com/transform/4dea6fa9-d33b-4cdf-80f2-5633e42845d8/Sensilis-AR-Agua-Micelar-Pieles-Sensibles-y-Reactivas-400-ml",
-      "best_price": 7.45,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/sensilis-micellar-water-ar-agua-micelar-400ml",
-      "previous_price": 11.22,
-      "discount_pct": 34,
-      "dropped_day": 20739,
-      "verified_live": true
-    },
-    {
       "ean": "5901761967869",
       "name": "Eveline Cosmetics Magic Skin CC Cream 8 em 1",
       "brand": "Eveline Cosmetics",
@@ -229,6 +215,21 @@
       "discount_pct": 33,
       "dropped_day": 20740,
       "verified_live": true
+    },
+    {
+      "ean": "8800289473142",
+      "name": "Deep Vita A Retinol Sérum",
+      "brand": "Medicube",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638802456689797015/medicube-023737mw_01.jpg",
+      "best_price": 18.8,
+      "best_store": "Store K-Beauty",
+      "best_store_slug": "storekbeauty",
+      "best_url": "https://www.storekbeauty.com/products/medicube-deep-vita-a-retinol-serum",
+      "volume_ml": 53,
+      "previous_price": 26.9,
+      "discount_pct": 30,
+      "dropped_day": 20747,
+      "verified_live": true
     }
   ],
   "top_brands": [
@@ -238,15 +239,15 @@
     },
     {
       "name": "Avène",
-      "products": 857
+      "products": 856
     },
     {
       "name": "Isdin",
-      "products": 836
+      "products": 839
     },
     {
       "name": "Nivea",
-      "products": 809
+      "products": 810
     },
     {
       "name": "L'Oréal Paris",
@@ -296,7 +297,7 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 77381,
+    "products": 77557,
     "avg_savings_pct": 28
   },
   "shard_version": "",
