@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-25T08:17:11.763Z",
-  "seed_total_products": 95250,
+  "generated_at": "2026-10-25T09:44:42.271Z",
+  "seed_total_products": 95260,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -217,17 +217,17 @@
       "verified_live": true
     },
     {
-      "ean": "8803348030195",
-      "name": "Blueberry Sérum Hidratante",
-      "brand": "Frudia",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-637884880343986492/frudia-016186fu_01.jpg",
-      "best_price": 11.59,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/frudia-soro-hidratante-de-mirtilo-15797.html",
-      "previous_price": 14.49,
-      "discount_pct": 20,
-      "dropped_day": 20746,
+      "ean": "8428749007128",
+      "name": "Sensilis Peptide [Lip Color] 01 Red Chili",
+      "brand": "Sensilis",
+      "image_url": "https://static.beautytocare.com/cdn-cgi/image/f=auto/media/catalog/product//s/e/sensilis-peptide-lip-color-01-red-chili-10ml.jpg",
+      "best_price": 10.99,
+      "best_store": "DocMorris",
+      "best_store_slug": "docmorris",
+      "best_url": "https://www.docmorris.pt/pt/sensilis-peptide-lip-color-01-red-chili-10ml/p-788079",
+      "previous_price": 14.09,
+      "discount_pct": 22,
+      "dropped_day": 20748,
       "verified_live": true
     }
   ],
@@ -238,7 +238,7 @@
     },
     {
       "name": "Avène",
-      "products": 856
+      "products": 857
     },
     {
       "name": "Isdin",
@@ -258,7 +258,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 762
+      "products": 764
     },
     {
       "name": "Chicco",
