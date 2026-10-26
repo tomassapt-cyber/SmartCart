@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T09:44:42.271Z",
+  "generated_at": "2026-10-26T08:43:06.838Z",
   "seed_total_products": 95260,
   "hero_sponsored": [
     {
@@ -217,17 +217,17 @@
       "verified_live": true
     },
     {
-      "ean": "8428749007128",
-      "name": "Sensilis Peptide [Lip Color] 01 Red Chili",
-      "brand": "Sensilis",
-      "image_url": "https://static.beautytocare.com/cdn-cgi/image/f=auto/media/catalog/product//s/e/sensilis-peptide-lip-color-01-red-chili-10ml.jpg",
-      "best_price": 10.99,
-      "best_store": "DocMorris",
-      "best_store_slug": "docmorris",
-      "best_url": "https://www.docmorris.pt/pt/sensilis-peptide-lip-color-01-red-chili-10ml/p-788079",
-      "previous_price": 14.09,
+      "ean": "3282779425216",
+      "name": "Pack Champu Anaphase",
+      "brand": "Ducray",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5809718.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 21.1,
+      "best_store": "Farmaciasdirect",
+      "best_store_slug": "farmaciasdirect",
+      "best_url": "https://www.farmaciasdirect.pt/products/ducray-anaphase-reactive-shampoo-anticaida-e-crescimento-pack-duo-2x400ml",
+      "previous_price": 26.9,
       "discount_pct": 22,
-      "dropped_day": 20748,
+      "dropped_day": 20752,
       "verified_live": true
     }
   ],
@@ -238,7 +238,7 @@
     },
     {
       "name": "Avène",
-      "products": 857
+      "products": 856
     },
     {
       "name": "Isdin",
@@ -258,7 +258,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 764
+      "products": 762
     },
     {
       "name": "Chicco",
@@ -296,7 +296,7 @@
   ],
   "stats": {
     "stores": 99,
-    "products": 77644,
+    "products": 77527,
     "avg_savings_pct": 28
   },
   "shard_version": "",
