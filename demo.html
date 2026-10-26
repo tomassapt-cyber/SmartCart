@@ -17,8 +17,8 @@
 <meta property="og:type" content="website" id="seo-og-type" />
 <meta property="og:title" content="CosMath — Compara, combina e poupa em cosmética" id="seo-og-title" />
 <meta property="og:description" content="Compara o preço do mesmo produto de cosmética em 74 lojas portuguesas." id="seo-og-desc" />
-<meta property="og:url" content="https://smart-cart-zx55.vercel.app/" id="seo-og-url" />
-<meta property="og:image" content="https://smart-cart-zx55.vercel.app/apple-touch-icon-v4.png" id="seo-og-image" />
+<meta property="og:url" content="/" id="seo-og-url" />
+<meta property="og:image" content="/apple-touch-icon-v4.png" id="seo-og-image" />
 <meta name="twitter:card" content="summary_large_image" />
 <!-- PWA -->
 <link rel="manifest" href="/manifest.webmanifest" />
@@ -10453,7 +10453,7 @@ function renderPodiumBody() {
     </div>` : '';
 
   const footHint = `<div class="pa-foot-hint">
-    Preços verificados em scrapes diários. Portes calculados ao adicionar ao carrinho.
+    A frequência de atualização dos preços varia por loja. Portes calculados ao adicionar ao carrinho.
   </div>`;
 
   document.getElementById('pa-body').innerHTML =
@@ -10842,7 +10842,9 @@ document.getElementById('pa-backdrop').addEventListener('click', closePriceAnaly
 //  ⚠️ O rewrite de /produto/* para /index.html vive no vercel.json. Sem ele
 //  um link directo dava 404 e isto nao servia de nada.
 // ════════════════════════════════════════════════════════════════════════
-const SEO_BASE = { titulo: document.title, url: location.origin + '/' };
+const SEO_HOME = JSON.parse(document.getElementById('seo-home-meta')?.textContent || 'null');
+const SEO_ORIGIN = document.querySelector('meta[name="cm-site"]')?.content || location.origin;
+const SEO_BASE = { titulo: SEO_HOME?.title || document.title, url: SEO_ORIGIN + '/' };
 let SEO_URL_ANTERIOR = null;   // para onde o fechar volta
 
 /** 'Cicaplast Gel B5 40ml' -> 'cicaplast-gel-b5-40ml' (so para ser legivel) */
@@ -10898,7 +10900,7 @@ function seoAbrirProduto(ean) {
   const p = (typeof PRODUCT_BY_EAN !== 'undefined' && PRODUCT_BY_EAN) ? PRODUCT_BY_EAN[ean] : null;
   if (!p) return;
   const caminho = seoCaminhoDoProduto(ean, p.name);
-  const abs = location.origin + caminho;
+  const abs = SEO_ORIGIN + caminho;
 
   // guardar de onde vinhamos, para o fechar (e o botao Voltar) reporem
   if (SEO_URL_ANTERIOR === null) SEO_URL_ANTERIOR = location.pathname + location.search;
@@ -10915,7 +10917,7 @@ function seoAbrirProduto(ean) {
   const titulo = p.name + (p.brand ? ' — ' + p.brand : '') + ' | preço' + emLojas + ' | CosMath';
   const desc = 'Compara o preço de ' + p.name
     + (nLojas ? emLojas + (nLojas === 1 ? ' portuguesa' : ' portuguesas') : ' em lojas portuguesas')
-    + '. Preço verificado todos os dias.';
+    + '. A frequência de atualização varia por loja.';
   document.title = titulo;
   seoDefinir('seo-canonical', 'href', abs);
   seoDefinir('seo-og-type', 'content', 'product');
@@ -10934,6 +10936,11 @@ function seoAbrirProduto(ean) {
   if (p.brand) base.brand = { '@type': 'Brand', name: p.brand };
   if (/^\d{13}$/.test(String(ean))) base.gtin13 = String(ean);
   else if (/^\d{12,14}$/.test(String(ean))) base.gtin = String(ean);
+  // Conservar o preço público do SSR até chegarem ofertas, só na mesma ficha.
+  try {
+    const initial = JSON.parse(document.getElementById('seo-jsonld')?.textContent || 'null');
+    if (initial?.url === abs && initial.offers) base.offers = initial.offers;
+  } catch (e) {}
   seoJsonLd(base);
 
   // As ofertas chegam da base de dados depois. Sem elas o JSON-LD nao tem
@@ -10966,6 +10973,12 @@ function seoAbrirProduto(ean) {
 
 /** Chamado ao fechar a ficha. Repoe o endereco e as meta da pagina. */
 function seoFecharProduto(mexerNoHistorico) {
+  const heading = document.getElementById('seo-home-heading');
+  if (heading) {
+    heading.nextElementSibling.replaceWith(heading.content.cloneNode(true));
+    document.getElementById('seo-product-summary')?.remove();
+    heading.remove();
+  }
   document.title = SEO_BASE.titulo;
   seoDefinir('seo-canonical', 'href', SEO_BASE.url);
   seoDefinir('seo-og-type', 'content', 'website');
@@ -16407,7 +16420,7 @@ async function gmReceiptDraw(data) {
   y += 70;
   x.textAlign = 'center'; x.font = '10px "Courier New", monospace'; x.fillStyle = '#8b8f98';
   x.fillText('COSMATH · COMPARA ANTES DE COMPRAR', cx, y);
-  x.fillText('smart-cart-zx55.vercel.app', cx, y + 16);
+  x.fillText(new URL(SEO_ORIGIN).hostname, cx, y + 16);
   return cv;
 }
 
