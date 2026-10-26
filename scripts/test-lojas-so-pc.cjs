@@ -70,4 +70,22 @@ assert.equal(avaliar({ store_products: [] }, cfgT, agora).atrasadas.length, 2, '
     assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(b.desde || '') && b.motivo, `${slug}: falta «desde» ou «motivo»`);
   }
 }
-console.log('lojas-so-pc: lista igual no script e no monitor, PC fica no site, nuvem sai pelo tecto, aviso e lembrete semanal, lojas bloqueadas fora do PC — tudo passou');
+// 5. em espera (2026-10-26: Notino): fora do refresh e do aviso, ofertas ficam no site
+{
+  const espera = cfg.em_espera || {};
+  assert.ok(espera.notino, 'a Notino está em espera');
+  for (const [slug, e] of Object.entries(espera)) {
+    assert.ok(!(slug in cfg.lojas), `${slug}: em espera e na rotina ao mesmo tempo`);
+    assert.ok(!order.includes(slug), `${slug}: em espera mas ainda no ORDER do refresh-pc-only.sh`);
+    assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(e.desde || '') && e.motivo && e.retomar, `${slug}: falta «desde», «motivo» ou «retomar»`);
+    assert.ok(cv.lojasSoPc().has(slug), `${slug}: as ofertas em espera têm de ficar no site`);
+  }
+  assert.ok(/em_espera/.test(yml), 'o monitor também ignora as lojas em espera');
+  const cfgE = { avisar_dias: 7, lojas: cfgT.lojas, em_espera: { notino: { desde: '2026-10-26', motivo: 'x', retomar: 'feed de afiliados' } } };
+  const semNotino = { avisar_dias: 7, lojas: { farmacianovadamaia: cfgT.lojas.farmacianovadamaia }, em_espera: cfgE.em_espera };
+  const ae = avaliar(comIdade(30, 2), semNotino, agora);
+  assert.equal(ae.atrasadas.length, 0, 'loja em espera não conta como atrasada');
+  const mdE = textoIssue(avaliar(comIdade(30, 9), semNotino, agora), '');
+  assert.ok(mdE.includes('Em espera') && mdE.includes('feed de afiliados') && !mdE.includes('| notino |'), 'a issue lembra a loja em espera, sem a pôr na tabela');
+}
+console.log('lojas-so-pc: lista igual no script e no monitor, PC fica no site, nuvem sai pelo tecto, aviso e lembrete semanal, lojas bloqueadas fora do PC, Notino em espera — tudo passou');

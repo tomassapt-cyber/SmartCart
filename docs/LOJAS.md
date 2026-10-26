@@ -35,7 +35,7 @@ diários (regra de cadência de 2026-07-03: lojas rápidas correm 3×/dia).
 |---|------|--------:|-------|-------------------|--------|
 | 1 | Atida (Mifarma) | 11 038 | EAN | sitemap + JSON-LD | ✅ 15h |
 | 2 | Druni PT | 10 430 | EAN | sitemap + JSON-LD | ✅ 06h |
-| 3 | Notino | 9 977 | EAN | sitemap-categoria + JSON-LD; **via curl** | ❌ **só PC** |
+| 3 | Notino | 9 977 | EAN | sitemap-categoria + JSON-LD; **via curl** | ⏸ **em espera** desde 26/10 (bloqueia nuvem e PC; volta pelo feed de afiliados — data/lojas-so-pc.json) |
 | 4 | Primor | 9 912 | EAN | Magento + JSON-LD (mpn=EAN); --dermo de 37k | ✅ 3× 02h |
 | 5 | SweetCare | 8 282 | EAN | sitemap + JSON-LD | ✅ 10h+22h |
 | 6 | Loja da Farmácia | 6 947 | EAN | Magento + JSON-LD | ✅ 3× 19h |

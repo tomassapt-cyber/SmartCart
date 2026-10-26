@@ -82,7 +82,6 @@ declare -A SCRAPE=(
   [sobeauty]="node scripts/scrape-sobeauty-catalog.js"
   [smartbeauty]="node scripts/scrape-smartbeauty-catalog.js"
   [beleza37]="node scripts/scrape-beleza37-catalog.js"
-  [notino]="node scripts/scrape-notino-catalog.js --match-seed"
   [powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --known-only"
   [care2me]="node scripts/scrape-care2me-catalog.js"
   [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
@@ -97,7 +96,9 @@ declare -A SCRAPE=(
 # lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
 # e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
 # aterrou o mais barato de obter.
-ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me afarmaciaonline balvera farmaoli glammy)
+# 2026-10-26: a Notino saiu (data/lojas-so-pc.json → em_espera): bloqueia também
+# o PC desde 15/10 e só volta pelo feed de afiliados. As ofertas ficam no site.
+ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me afarmaciaonline balvera farmaoli glammy)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"

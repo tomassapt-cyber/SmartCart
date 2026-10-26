@@ -19,10 +19,12 @@ const path = require('path');
 // a 2026-10-14: NUNCA saem do site por idade — é só correr o refresh no PC, e
 // o freshness-monitor avisa-o quando passam dos 7 dias. Sem o ficheiro, ficam
 // sujeitas ao tecto como as outras; um ficheiro estragado rebenta o build.
+// As «em_espera» (2026-10-26: Notino) saíram da rotina, mas as ofertas ficam.
 function lojasSoPc() {
   const f = path.join(__dirname, '..', '..', 'data', 'lojas-so-pc.json');
   if (!fs.existsSync(f)) return new Set();
-  return new Set(Object.keys(JSON.parse(fs.readFileSync(f, 'utf8')).lojas || {}));
+  const j = JSON.parse(fs.readFileSync(f, 'utf8'));
+  return new Set([...Object.keys(j.lojas || {}), ...Object.keys(j.em_espera || {})]);
 }
 
 /**

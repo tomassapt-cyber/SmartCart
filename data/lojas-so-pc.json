@@ -1,11 +1,10 @@
 {
-  "_nota": "Lojas atualizadas a partir do PC do Tomás (bloqueiam a nuvem). Lista ÚNICA, decidida a 2026-10-14: (1) o site NUNCA as esconde por idade absoluta — scripts/lib/catalog-visibility.js; (2) o freshness-monitor abre uma issue própria quando alguma passa dos avisar_dias e deixa um lembrete a cada 7 dias a mais; fecha-se sozinha quando todas voltam a estar frescas. As que têm o comando do refresh-pc-only.sh têm de estar no ORDER desse script (scripts/test-lojas-so-pc.cjs confirma).",
+  "_nota": "Lojas atualizadas a partir do PC do Tomás (bloqueiam a nuvem). Lista ÚNICA, decidida a 2026-10-14: (1) o site NUNCA as esconde por idade absoluta — scripts/lib/catalog-visibility.js; (2) o freshness-monitor abre uma issue própria quando alguma passa dos avisar_dias e deixa um lembrete a cada 7 dias a mais; fecha-se sozinha quando todas voltam a estar frescas. As que têm o comando do refresh-pc-only.sh têm de estar no ORDER desse script (scripts/test-lojas-so-pc.cjs confirma). «em_espera» (2026-10-26): lojas do PC que saíram da rotina até haver outra via — as ofertas ficam no site como as do PC, mas não entram no aviso nem no refresh; cada uma diz como retomar.",
   "avisar_dias": 7,
   "lojas": {
     "sobeauty": "bash scripts/refresh-pc-only.sh",
     "smartbeauty": "bash scripts/refresh-pc-only.sh",
     "beleza37": "bash scripts/refresh-pc-only.sh",
-    "notino": "bash scripts/refresh-pc-only.sh",
     "powerbeauty": "bash scripts/refresh-pc-only.sh",
     "care2me": "bash scripts/refresh-pc-only.sh",
     "afarmaciaonline": "bash scripts/refresh-pc-only.sh",
@@ -13,5 +12,12 @@
     "farmaoli": "bash scripts/refresh-pc-only.sh",
     "farmacianovadamaia": "python scripts/refresh-farmacianovadamaia-pc.py",
     "glammy": "bash scripts/refresh-pc-only.sh"
+  },
+  "em_espera": {
+    "notino": {
+      "desde": "2026-10-26",
+      "motivo": "A Cloudflare bloqueia a nuvem e o PC desde 2026-10-15, e o leitor (scripts/scrape-notino-catalog.js) só passava fingindo ser um browser — contra a regra do projeto. Última leitura: 2026-09-28.",
+      "retomar": "Pelo programa de afiliados (feed com EAN, preço e stock) quando o site estiver pronto: Vercel Pro, páginas legais (#75), domínio e NIF. Passos e e-mail em Desktop\\duo\\PEDIDO-NOTINO.md. Quando houver feed: integrador novo, tirar daqui e pôr em «lojas» (ou na nuvem)."
+    }
   }
 }

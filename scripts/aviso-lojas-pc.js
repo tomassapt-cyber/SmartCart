@@ -39,7 +39,9 @@ function avaliar(seed, cfg, agora = Date.now()) {
   const atrasadas = lojas.filter(l => l.dias > avisar);
   const maxDias = atrasadas.length ? Math.floor(Math.min(atrasadas[0].dias, 9999)) : 0;
   const lembrete = maxDias > avisar && (maxDias - avisar) % 7 === 0;
-  return { avisar, lojas, atrasadas, maxDias, lembrete };
+  // em_espera (2026-10-26): fora da rotina e do aviso; só ficam lembradas no texto
+  const emEspera = Object.entries(cfg.em_espera || {}).map(([slug, e]) => ({ slug, ...e }));
+  return { avisar, lojas, atrasadas, maxDias, lembrete, emEspera };
 }
 
 function textoIssue(r, dono) {
@@ -64,6 +66,7 @@ function textoIssue(r, dono) {
   ];
   const frescas = r.lojas.filter(l => l.dias <= r.avisar);
   if (frescas.length) linhas.push(`Em dia: ${frescas.map(l => `${l.slug} (${diasTxt(l.dias)} d)`).join(', ')}.`, '');
+  for (const e of r.emEspera || []) linhas.push(`Em espera, fora da rotina desde ${e.desde}: **${e.slug}** — ${e.retomar}`, '');
   linhas.push(
     `Esta issue é mantida pelo \`freshness-monitor.yml\` a partir de \`data/lojas-so-pc.json\`: deixa um lembrete a cada 7 dias a mais e fecha-se sozinha quando todas as lojas do PC voltarem a ter menos de ${r.avisar} dias — não a feches à mão.`,
   );
