@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T10:27:57.836Z",
+  "generated_at": "2026-10-26T11:24:38.989Z",
   "source": "site-search",
   "window_days": 30,
   "products": [
@@ -8,10 +8,10 @@
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 15.27,
-      "best_store": "Pharmácia do Cabelo",
-      "best_store_slug": "pharmaciadocabelo",
-      "best_url": "https://pharmaciadocabelo.com/products/redken-frizz-dismiss-condicionador-300ml",
+      "best_price": 16.86,
+      "best_store": "Perfume's Club",
+      "best_store_slug": "perfumesclub",
+      "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/",
       "search_term": "redken frizz dismiss conditioner",
       "pop_score": 44
     },
@@ -92,10 +92,10 @@
       "name": "Mela B3",
       "brand": "La Roche-Posay",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801652.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 31.27,
-      "best_store": "byFarma",
-      "best_store_slug": "byfarma",
-      "best_url": "https://byfarma.pt/products/la-roche-posay-mela-b3-serum-30-ml",
+      "best_price": 30,
+      "best_store": "WOWFARMA",
+      "best_store_slug": "wowfarma",
+      "best_url": "https://www.wowfarma.pt/la-roche-posay-mela-b3-serum-30ml.html",
       "search_term": "mela b3",
       "pop_score": 6
     }
