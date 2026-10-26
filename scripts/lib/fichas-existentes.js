@@ -51,7 +51,14 @@ async function pedir(url, regras, { tentativas = 2 } = {}) {
       await dorme(5000); continue;
     }
     if (r.status === 403 || r.status === 429) throw new Paragem(`HTTP ${r.status} em ${url} — parar sem gravar`);
-    const bytes = new Uint8Array(await r.arrayBuffer());
+    // o tempo-limite também corta a LEITURA do corpo — e isso rebentava fora do
+    // try de cima e deitava a corrida inteira abaixo (Glammy, 25/10). Conta como
+    // falha desta ficha, como um fetch que não respondeu.
+    let bytes;
+    try { bytes = new Uint8Array(await r.arrayBuffer()); } catch (e) {
+      if (t >= tentativas) return { estado: 0, erro: String(e && e.message || e) };
+      await dorme(5000); continue;
+    }
     let corpo;
     try { corpo = new TextDecoder(charsetDe(r.headers.get('content-type'))).decode(bytes); } catch { corpo = new TextDecoder('utf-8').decode(bytes); }
     if (DESAFIO.test(corpo.slice(0, 20000))) throw new Paragem(`página de desafio em ${url} — parar sem gravar`);

@@ -7,8 +7,10 @@
 name: Glammy daily refresh
 
 on:
-  schedule:
-    - cron: '11 3 * * *'
+  # 2026-10-26: SEM agendamento. A Glammy trava os servidores da nuvem (~14 s por
+  # ficha; do PC 0,15 s): de 19 a 25/10 todas as corridas falharam ou foram
+  # cortadas e a loja nunca chegou ao site. Passou a loja do PC
+  # (scripts/refresh-pc-only.sh, data/lojas-so-pc.json). Fica só o arranque à mão.
   workflow_dispatch:
     inputs:
       limite:

@@ -88,6 +88,8 @@ declare -A SCRAPE=(
   [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
   [balvera]="node scripts/scrape-balvera-catalog.js"
   [farmaoli]="node scripts/scrape-farmaoli-catalog.js"
+  # 2026-10-26: a Glammy trava a nuvem (~14 s por ficha; do PC 0,15 s) — passa ao PC
+  [glammy]="node scripts/scrape-glammy-catalog.js"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 
@@ -95,7 +97,7 @@ declare -A SCRAPE=(
 # lib/shopkit-granel.js): 20 a 163 paginas, minutos e megabytes em vez de horas
 # e gigabytes. Vao a' frente de proposito — se a corrida for interrompida, ja'
 # aterrou o mais barato de obter.
-ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me afarmaciaonline balvera farmaoli)
+ORDER=(sobeauty smartbeauty beleza37 notino powerbeauty care2me afarmaciaonline balvera farmaoli glammy)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"
