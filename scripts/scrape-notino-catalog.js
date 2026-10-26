@@ -38,6 +38,17 @@ const SITEMAP = c => `${BASE}/export/sitemap/sitemap_detail_${c}_pt.xml`;
 const DEFAULT_CATS = ['plet', 'telo', 'vlasy'];   // rosto, corpo, cabelo
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
+
+// 2026-10-26: a Notino está EM ESPERA (data/lojas-so-pc.json → em_espera). Este
+// leitor finge ser um browser para passar a Cloudflare, o que vai contra a regra
+// do projeto; a loja volta pelo feed de afiliados. Não correr enquanto lá estiver.
+{
+  const espera = (JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lojas-so-pc.json'), 'utf8')).em_espera || {}).notino;
+  if (espera) {
+    console.error(`✗ Notino em espera desde ${espera.desde}: ${espera.motivo}\n  Para retomar: ${espera.retomar}`);
+    process.exit(1);
+  }
+}
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const CATS = args.cats ? String(args.cats).split(',') : DEFAULT_CATS;
 const RESUME = !!args.resume;

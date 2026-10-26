@@ -78,7 +78,8 @@ jobs:
           #
           # Desde 2026-10-14 a lista vive SÓ em data/lojas-so-pc.json (inclui a
           # Maia, recolhida no PC); antes estava copiada à mão em 3 sítios.
-          PC_ONLY=$(node -p "Object.keys(require('./data/lojas-so-pc.json').lojas).join(',')")
+          # 2026-10-26: as «em_espera» (Notino) também — saíram da rotina do PC.
+          PC_ONLY=$(node -p "const j = require('./data/lojas-so-pc.json'); Object.keys({ ...j.lojas, ...j.em_espera }).join(',')")
           # 2026-10-26: as lojas que bloqueiam também o PC (data/lojas-bloqueadas.json:
           # Barreiros e Care to Beauty, pedido de acesso pendente) também ficam
           # fora — não há nada a fazer do nosso lado até a loja responder.
