@@ -1018,6 +1018,16 @@
    "outros": {
     "store_slug": "farmaciacuida"
    }
+  },
+  {
+   "ficheiro": "ofertas/glammy.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "glammy"
+   }
   }
  ],
  "outros": {}
