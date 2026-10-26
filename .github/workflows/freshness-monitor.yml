@@ -79,7 +79,11 @@ jobs:
           # Desde 2026-10-14 a lista vive SÓ em data/lojas-so-pc.json (inclui a
           # Maia, recolhida no PC); antes estava copiada à mão em 3 sítios.
           PC_ONLY=$(node -p "Object.keys(require('./data/lojas-so-pc.json').lojas).join(',')")
-          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY" 2>&1 | tee /tmp/rel-cloud.txt
+          # 2026-10-26: as lojas que bloqueiam também o PC (data/lojas-bloqueadas.json:
+          # Barreiros e Care to Beauty, pedido de acesso pendente) também ficam
+          # fora — não há nada a fazer do nosso lado até a loja responder.
+          BLOQUEADAS=$(node -p "Object.keys(require('./data/lojas-bloqueadas.json').lojas).join(',')")
+          node scripts/freshness-report.js --strict --stale-days="$STALE" --ignore="$PC_ONLY,$BLOQUEADAS" 2>&1 | tee /tmp/rel-cloud.txt
 
       # ══════════════════════════════════════════════════════════════════════
       # LOJAS DO PC — aviso PRÓPRIO (2026-10-14). Decisão do Tomás: as lojas do

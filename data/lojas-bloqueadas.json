@@ -1,0 +1,15 @@
+{
+ "_nota": "Lojas que recusam a leitura automática tanto na nuvem como no PC (Cloudflare/WAF), e que NÃO se contornam. Não são lojas do PC — não há refresh possível —, por isso as ofertas saem do site sozinhas ao fim de 14 dias (scripts/lib/catalog-visibility.js) e voltam na primeira leitura que a loja deixe fazer. Decisão do Tomás (2026-10-26): enquanto o pedido de acesso ou de ficheiro de produtos estiver pendente, o freshness-monitor não as conta no alarme da nuvem — senão fica vermelho todos os dias por uma coisa sabida. Quando a loja voltar a deixar ler (ou mandar o ficheiro), apagar a entrada daqui.",
+ "lojas": {
+  "barreiros": {
+   "desde": "2026-10-09",
+   "motivo": "403 a pedidos automáticos também a partir do PC; um browser abre a loja",
+   "pedido": "Desktop\\duo\\PEDIDOS-LOJAS-2026-10-21.md (por enviar a 2026-10-26)"
+  },
+  "caretobeauty": {
+   "desde": "2026-10-14",
+   "motivo": "Cloudflare responde «Just a moment…» a todos os pedidos automáticos",
+   "pedido": "Desktop\\duo\\PEDIDOS-LOJAS-2026-10-21.md (por enviar a 2026-10-26)"
+  }
+ }
+}

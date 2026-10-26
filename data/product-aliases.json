@@ -284,5 +284,10 @@
     "aliases": ["farmaciasprogresso-cerebrum-forte-ampolas-x-30"],
     "reason": "Cerebrum Forte, 30 ampolas: o mesmo nome (ambas sem EAN). Nenhuma loja vende as duas fichas. Verificado a 2026-10-22 (monitor de duplicados).",
     "added_at": "2026-10-22"
+  },
+  "4005800193378": {
+    "aliases": ["vidamais-eucerin-hyaluron-filler-volume-lift-creme-contorno"],
+    "reason": "Código inventado pela loja (sem EAN na página) para o mesmo produto: Eucerin Hyaluron-Filler + Volume-Lift Creme Contorno de Olhos 15 ml, 15 ml dos dois lados (27,10 € e 35 €). Nenhuma loja vende as duas fichas. Verificado a 2026-10-26 (monitor de duplicados).",
+    "added_at": "2026-10-26"
   }
 }
