@@ -11,6 +11,7 @@
     "afarmaciaonline": "bash scripts/refresh-pc-only.sh",
     "balvera": "bash scripts/refresh-pc-only.sh",
     "farmaoli": "bash scripts/refresh-pc-only.sh",
-    "farmacianovadamaia": "python scripts/refresh-farmacianovadamaia-pc.py"
+    "farmacianovadamaia": "python scripts/refresh-farmacianovadamaia-pc.py",
+    "glammy": "bash scripts/refresh-pc-only.sh"
   }
 }
