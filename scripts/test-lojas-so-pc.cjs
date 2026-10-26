@@ -56,4 +56,18 @@ assert.equal(avaliar(comIdade(15.2, 2), cfgT, agora).lembrete, false);
 assert.equal(avaliar(comIdade(21.9, 30), cfgT, agora).lembrete, false, 'conta a mais atrasada (30 d), não a primeira');
 assert.equal(avaliar(comIdade(21.9, 28.1), cfgT, agora).lembrete, true);
 assert.equal(avaliar({ store_products: [] }, cfgT, agora).atrasadas.length, 2, 'loja sem ofertas conta como atrasada');
-console.log('lojas-so-pc: lista igual no script e no monitor, PC fica no site, nuvem sai pelo tecto, aviso e lembrete semanal — tudo passou');
+// 4. lojas bloqueadas (2026-10-26): fora do alarme da nuvem, mas NÃO são do PC
+// (essas nunca saem do site por idade; as bloqueadas saem aos 14 dias)
+{
+  const fs = require('fs'), path = require('path');
+  const raiz = path.join(__dirname, '..');
+  const bloq = JSON.parse(fs.readFileSync(path.join(raiz, 'data', 'lojas-bloqueadas.json'), 'utf8')).lojas;
+  const doPc = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(raiz, 'data', 'lojas-so-pc.json'), 'utf8')).lojas));
+  const slugs = new Set(fs.readFileSync(path.join(raiz, 'data', 'seed-bundle.json.gz', 'lojas.jsonl'), 'utf8').trim().split('\n').map(l => JSON.parse(l).slug));
+  for (const [slug, b] of Object.entries(bloq)) {
+    assert.ok(!doPc.has(slug), `${slug}: bloqueada e do PC ao mesmo tempo`);
+    assert.ok(slugs.has(slug), `${slug}: loja desconhecida`);
+    assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(b.desde || '') && b.motivo, `${slug}: falta «desde» ou «motivo»`);
+  }
+}
+console.log('lojas-so-pc: lista igual no script e no monitor, PC fica no site, nuvem sai pelo tecto, aviso e lembrete semanal, lojas bloqueadas fora do PC — tudo passou');
