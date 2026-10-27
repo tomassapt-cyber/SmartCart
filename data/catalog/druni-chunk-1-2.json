@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-27T14:15:07.683Z",
+  "scraped_at": "2026-10-27T19:17:27.011Z",
   "source": "/home/runner/work/SmartCart/SmartCart/data/catalog/druni-urls.json",
   "in_progress": false,
   "stats": {
@@ -7234,15 +7234,6 @@
       "latency_ms": 3538
     },
     {
-      "url": "https://www.druni.pt/acondicionador-angel-rinse-kevin-murphy-tratamento-cabelo-tingido",
-      "lastmod": "2026-10-26T04:40:00+00:00",
-      "priority": 1,
-      "slug": "acondicionador-angel-rinse-kevin-murphy-tratamento-cabelo-tingido",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3249
-    },
-    {
       "url": "https://www.druni.pt/acondicionador-anti-amarillo-alfaparf-tratamento-neutralizador-cabelo-loiro",
       "lastmod": "2026-10-26T04:40:13+00:00",
       "priority": 1,
@@ -7806,15 +7797,6 @@
       "latency_ms": 3845
     },
     {
-      "url": "https://www.druni.pt/acondicionador-hydrate-me-rinse-kevin-murphy-suavizante-para-cabelo-seco",
-      "lastmod": "2026-10-26T04:39:59+00:00",
-      "priority": 1,
-      "slug": "acondicionador-hydrate-me-rinse-kevin-murphy-suavizante-para-cabelo-seco",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3096
-    },
-    {
       "url": "https://www.druni.pt/acondicionador-iluminador-alfaparf-tratamento-cabelo-normal",
       "lastmod": "2026-10-26T04:40:13+00:00",
       "priority": 1,
@@ -7982,15 +7964,6 @@
       "latency_ms": 3221
     },
     {
-      "url": "https://www.druni.pt/acondicionador-killer-curls-rinse-kevin-murphy-nutritivo-cabelo-encaracolado",
-      "lastmod": "2026-10-26T04:40:00+00:00",
-      "priority": 1,
-      "slug": "acondicionador-killer-curls-rinse-kevin-murphy-nutritivo-cabelo-encaracolado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2735
-    },
-    {
       "url": "https://www.druni.pt/acondicionador-leave-in-nutritivo-alfaparf-tratamento-cabelo-seco",
       "lastmod": "2026-10-26T04:40:13+00:00",
       "priority": 1,
@@ -8145,15 +8118,6 @@
       "latency_ms": 3048
     },
     {
-      "url": "https://www.druni.pt/acondicionador-plumping-rinse-kevin-murphy-densificante-cabelo-fino-ou-enfraquecido",
-      "lastmod": "2026-10-26T04:40:00+00:00",
-      "priority": 1,
-      "slug": "acondicionador-plumping-rinse-kevin-murphy-densificante-cabelo-fino-ou-enfraquecido",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2837
-    },
-    {
       "url": "https://www.druni.pt/acondicionador-power-c-natura-estonica-condicionador-reparador",
       "lastmod": "2026-10-26T04:37:36+00:00",
       "priority": 1,
@@ -8240,15 +8204,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3376
-    },
-    {
-      "url": "https://www.druni.pt/acondicionador-repair-me-rinse-kevin-murphy-repara-e-reconstroi-o-cabelo",
-      "lastmod": "2026-10-26T04:39:59+00:00",
-      "priority": 1,
-      "slug": "acondicionador-repair-me-rinse-kevin-murphy-repara-e-reconstroi-o-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2938
     },
     {
       "url": "https://www.druni.pt/acondicionador-reparador-aceite-argan-herbal-essences-hidratacao-intensa-cabelo-danificado",
@@ -25713,15 +25668,6 @@
       "latency_ms": 3338
     },
     {
-      "url": "https://www.druni.pt/balancing-wash-kevin-murphy-shampoo-capilar",
-      "lastmod": "2026-10-26T04:37:46+00:00",
-      "priority": 1,
-      "slug": "balancing-wash-kevin-murphy-shampoo-capilar",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2990
-    },
-    {
       "url": "https://www.druni.pt/bali-paradise-escada-eau-de-toilette-para-mulher",
       "lastmod": "2026-10-26T04:40:30+00:00",
       "priority": 1,
@@ -32565,24 +32511,6 @@
       "latency_ms": 3885
     },
     {
-      "url": "https://www.druni.pt/blonde-angel-kevin-murphy-tratamento-capilar-potencializador-cor",
-      "lastmod": "2026-10-26T04:37:46+00:00",
-      "priority": 1,
-      "slug": "blonde-angel-kevin-murphy-tratamento-capilar-potencializador-cor",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2945
-    },
-    {
-      "url": "https://www.druni.pt/blonde-angel-wash-kevin-murphy-shampoo-nutritivo-cabelos-loiros",
-      "lastmod": "2026-10-26T04:37:46+00:00",
-      "priority": 1,
-      "slug": "blonde-angel-wash-kevin-murphy-shampoo-nutritivo-cabelos-loiros",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2941
-    },
-    {
       "url": "https://www.druni.pt/blonde-perfecting-purple-shampoo-moroccanoil-shampoo-neutralizante-loiros",
       "lastmod": "2026-10-26T04:36:15+00:00",
       "priority": 1,
@@ -39064,114 +38992,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3887
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/modeladores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/modeladores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3536
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/alisadores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/alisadores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4714
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/secadores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/secadores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4546
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/mascaras/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/mascaras/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3560
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/condicionadores/sem-sulfatos-ou-silicones",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/condicionadores/sem-sulfatos-ou-silicones",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4353
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-danificado",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-danificado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2731
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/shampoos/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/shampoos/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4086
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-cacheado",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-cacheado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4129
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3379
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-seco",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-seco",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4136
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-tingido",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-tingido",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3985
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/pelo-normal",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/pelo-normal",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4093
     },
     {
       "url": "https://www.druni.pt/cactus-hyaluronic-acid-gskin-creme-facial-hidratante",
@@ -47541,15 +47361,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3311
-    },
-    {
-      "url": "https://www.druni.pt/champu-killer-curls-wash-kevin-murphy-nutritivo-cabelo-cacheado",
-      "lastmod": "2026-10-26T04:40:00+00:00",
-      "priority": 1,
-      "slug": "champu-killer-curls-wash-kevin-murphy-nutritivo-cabelo-cacheado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2954
     },
     {
       "url": "https://www.druni.pt/champu-lamellar-shine-tresemme-cabelo-opaco-brilho-ultra-gloss",
@@ -59984,15 +59795,6 @@
       "latency_ms": 3416
     },
     {
-      "url": "https://www.druni.pt/color-care-moroccanoil-condicionador-matificante",
-      "lastmod": "2026-10-26T04:36:32+00:00",
-      "priority": 1,
-      "slug": "color-care-moroccanoil-condicionador-matificante",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2968
-    },
-    {
       "url": "https://www.druni.pt/color-care-moroccanoil-condicionador-cuidado-da-cor-tamanho-viagem",
       "lastmod": "2026-10-26T04:42:42+00:00",
       "priority": 1,
@@ -63553,15 +63355,6 @@
       "latency_ms": 3624
     },
     {
-      "url": "https://www.druni.pt/crema-alisar-smooth-again-kevin-murphy-tratamento-capilar-sem-enxague",
-      "lastmod": "2026-10-26T04:40:00+00:00",
-      "priority": 1,
-      "slug": "crema-alisar-smooth-again-kevin-murphy-tratamento-capilar-sem-enxague",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2997
-    },
-    {
       "url": "https://www.druni.pt/crema-aloe-vera-idc-institute-creme-facial",
       "lastmod": "2026-10-26T04:34:08+00:00",
       "priority": 1,
@@ -63670,15 +63463,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3249
-    },
-    {
-      "url": "https://www.druni.pt/crema-anti-frizz-rizos-definido-kevin-murphy-tratamento-cabelo-cacheado",
-      "lastmod": "2026-10-26T04:40:19+00:00",
-      "priority": 1,
-      "slug": "crema-anti-frizz-rizos-definido-kevin-murphy-tratamento-cabelo-cacheado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2980
     },
     {
       "url": "https://www.druni.pt/crema-anti-manchas-spf-50-bella-aurora-tom-claro-presente-sacola-maio",
@@ -69183,15 +68967,6 @@
       "latency_ms": 3822
     },
     {
-      "url": "https://www.druni.pt/crema-refinadora-killer-curls-kevin-murphy-cabelo-encaracolado-nutritivo",
-      "lastmod": "2026-10-26T04:40:00+00:00",
-      "priority": 1,
-      "slug": "crema-refinadora-killer-curls-kevin-murphy-cabelo-encaracolado-nutritivo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3046
-    },
-    {
       "url": "https://www.druni.pt/crema-refrescante-muldream-creme-hidratante",
       "lastmod": "2026-10-26T04:34:00+00:00",
       "priority": 1,
@@ -69256,15 +69031,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3052
-    },
-    {
-      "url": "https://www.druni.pt/crema-restauradora-y-nutritiva-sin-aclarado-kevin-murphy-leave-in-repair",
-      "lastmod": "2026-10-26T04:40:19+00:00",
-      "priority": 1,
-      "slug": "crema-restauradora-y-nutritiva-sin-aclarado-kevin-murphy-leave-in-repair",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2784
     },
     {
       "url": "https://www.druni.pt/crema-retinol-babaria-creme-facial-anti-rugas-acido-hialuronico",
@@ -82611,24 +82377,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3124
-    },
-    {
-      "url": "https://www.druni.pt/ecologico/protetor-solar/after-sun",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "ecologico/protetor-solar/after-sun",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3347
-    },
-    {
-      "url": "https://www.druni.pt/ecologico/cabelo-natural/pentes-y-escovas",
-      "lastmod": "2026-07-15T14:21:29+00:00",
-      "priority": 1,
-      "slug": "ecologico/cabelo-natural/pentes-y-escovas",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4515
     },
     {
       "url": "https://www.druni.pt/ecran-aftersun-leche-hidratante-reparadora-ecran-leite-hidratante-reparador",
@@ -99245,15 +98993,6 @@
       "latency_ms": 3500
     },
     {
-      "url": "https://www.druni.pt/formato-viagem/mini-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "formato-viagem/mini-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3771
-    },
-    {
       "url": "https://www.druni.pt/fortalecedor-raices-pantene-tratamento-capilar",
       "lastmod": "2026-10-26T04:38:02+00:00",
       "priority": 1,
@@ -111614,24 +111353,6 @@
       "latency_ms": 3714
     },
     {
-      "url": "https://www.druni.pt/heart-of-glass-davines-condicionador-fortalecedor-cabelos-loiros",
-      "lastmod": "2026-10-26T04:38:20+00:00",
-      "priority": 1,
-      "slug": "heart-of-glass-davines-condicionador-fortalecedor-cabelos-loiros",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3075
-    },
-    {
-      "url": "https://www.druni.pt/heart-of-glass-davines-shampoo-revitalizante-cabelos-loiros",
-      "lastmod": "2026-10-26T04:38:20+00:00",
-      "priority": 1,
-      "slug": "heart-of-glass-davines-shampoo-revitalizante-cabelos-loiros",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3032
-    },
-    {
       "url": "https://www.druni.pt/heartleaf-77-anua-discos-de-tonico-faciais",
       "lastmod": "2026-10-26T04:41:27+00:00",
       "priority": 1,
@@ -118622,15 +118343,6 @@
       "latency_ms": 3906
     },
     {
-      "url": "https://www.druni.pt/hydrate-me-wash-kevin-murphy-shampoo-capilar-nutritivo",
-      "lastmod": "2026-10-26T04:37:46+00:00",
-      "priority": 1,
-      "slug": "hydrate-me-wash-kevin-murphy-shampoo-capilar-nutritivo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2876
-    },
-    {
       "url": "https://www.druni.pt/hydrate-primer-revolution-primer-hidratante-maquiagem",
       "lastmod": "2026-10-26T04:34:35+00:00",
       "priority": 1,
@@ -125078,6 +124790,294 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3509
+    },
+    {
+      "url": "https://www.druni.pt/acondicionador-angel-rinse-kevin-murphy-tratamento-cabelo-tingido",
+      "lastmod": "2026-10-26T04:40:00+00:00",
+      "priority": 1,
+      "slug": "acondicionador-angel-rinse-kevin-murphy-tratamento-cabelo-tingido",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3259
+    },
+    {
+      "url": "https://www.druni.pt/acondicionador-hydrate-me-rinse-kevin-murphy-suavizante-para-cabelo-seco",
+      "lastmod": "2026-10-26T04:39:59+00:00",
+      "priority": 1,
+      "slug": "acondicionador-hydrate-me-rinse-kevin-murphy-suavizante-para-cabelo-seco",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3338
+    },
+    {
+      "url": "https://www.druni.pt/acondicionador-killer-curls-rinse-kevin-murphy-nutritivo-cabelo-encaracolado",
+      "lastmod": "2026-10-26T04:40:00+00:00",
+      "priority": 1,
+      "slug": "acondicionador-killer-curls-rinse-kevin-murphy-nutritivo-cabelo-encaracolado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3379
+    },
+    {
+      "url": "https://www.druni.pt/acondicionador-repair-me-rinse-kevin-murphy-repara-e-reconstroi-o-cabelo",
+      "lastmod": "2026-10-26T04:39:59+00:00",
+      "priority": 1,
+      "slug": "acondicionador-repair-me-rinse-kevin-murphy-repara-e-reconstroi-o-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2800
+    },
+    {
+      "url": "https://www.druni.pt/acondicionador-plumping-rinse-kevin-murphy-densificante-cabelo-fino-ou-enfraquecido",
+      "lastmod": "2026-10-26T04:40:00+00:00",
+      "priority": 1,
+      "slug": "acondicionador-plumping-rinse-kevin-murphy-densificante-cabelo-fino-ou-enfraquecido",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2965
+    },
+    {
+      "url": "https://www.druni.pt/balancing-wash-kevin-murphy-shampoo-capilar",
+      "lastmod": "2026-10-26T04:37:46+00:00",
+      "priority": 1,
+      "slug": "balancing-wash-kevin-murphy-shampoo-capilar",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2982
+    },
+    {
+      "url": "https://www.druni.pt/blonde-angel-kevin-murphy-tratamento-capilar-potencializador-cor",
+      "lastmod": "2026-10-26T04:37:46+00:00",
+      "priority": 1,
+      "slug": "blonde-angel-kevin-murphy-tratamento-capilar-potencializador-cor",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2757
+    },
+    {
+      "url": "https://www.druni.pt/blonde-angel-wash-kevin-murphy-shampoo-nutritivo-cabelos-loiros",
+      "lastmod": "2026-10-26T04:37:46+00:00",
+      "priority": 1,
+      "slug": "blonde-angel-wash-kevin-murphy-shampoo-nutritivo-cabelos-loiros",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2691
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/alisadores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/alisadores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3600
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/secadores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/secadores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3543
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/modeladores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/modeladores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3878
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/condicionadores/sem-sulfatos-ou-silicones",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/condicionadores/sem-sulfatos-ou-silicones",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3297
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/mascaras/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/mascaras/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2970
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/shampoos/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/shampoos/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3798
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-cacheado",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-cacheado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3405
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-danificado",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-danificado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3706
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-seco",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-seco",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3542
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3804
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-tingido",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-tingido",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3064
+    },
+    {
+      "url": "https://www.druni.pt/champu-killer-curls-wash-kevin-murphy-nutritivo-cabelo-cacheado",
+      "lastmod": "2026-10-26T04:40:00+00:00",
+      "priority": 1,
+      "slug": "champu-killer-curls-wash-kevin-murphy-nutritivo-cabelo-cacheado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2676
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/pelo-normal",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/pelo-normal",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3348
+    },
+    {
+      "url": "https://www.druni.pt/color-care-moroccanoil-condicionador-matificante",
+      "lastmod": "2026-10-26T04:36:32+00:00",
+      "priority": 1,
+      "slug": "color-care-moroccanoil-condicionador-matificante",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2614
+    },
+    {
+      "url": "https://www.druni.pt/crema-alisar-smooth-again-kevin-murphy-tratamento-capilar-sem-enxague",
+      "lastmod": "2026-10-26T04:40:00+00:00",
+      "priority": 1,
+      "slug": "crema-alisar-smooth-again-kevin-murphy-tratamento-capilar-sem-enxague",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2816
+    },
+    {
+      "url": "https://www.druni.pt/crema-anti-frizz-rizos-definido-kevin-murphy-tratamento-cabelo-cacheado",
+      "lastmod": "2026-10-26T04:40:19+00:00",
+      "priority": 1,
+      "slug": "crema-anti-frizz-rizos-definido-kevin-murphy-tratamento-cabelo-cacheado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2851
+    },
+    {
+      "url": "https://www.druni.pt/crema-refinadora-killer-curls-kevin-murphy-cabelo-encaracolado-nutritivo",
+      "lastmod": "2026-10-26T04:40:00+00:00",
+      "priority": 1,
+      "slug": "crema-refinadora-killer-curls-kevin-murphy-cabelo-encaracolado-nutritivo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2817
+    },
+    {
+      "url": "https://www.druni.pt/crema-restauradora-y-nutritiva-sin-aclarado-kevin-murphy-leave-in-repair",
+      "lastmod": "2026-10-26T04:40:19+00:00",
+      "priority": 1,
+      "slug": "crema-restauradora-y-nutritiva-sin-aclarado-kevin-murphy-leave-in-repair",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2898
+    },
+    {
+      "url": "https://www.druni.pt/ecologico/cabelo-natural/pentes-y-escovas",
+      "lastmod": "2026-07-15T14:21:29+00:00",
+      "priority": 1,
+      "slug": "ecologico/cabelo-natural/pentes-y-escovas",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4096
+    },
+    {
+      "url": "https://www.druni.pt/ecologico/protetor-solar/after-sun",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "ecologico/protetor-solar/after-sun",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3696
+    },
+    {
+      "url": "https://www.druni.pt/formato-viagem/mini-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "formato-viagem/mini-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4311
+    },
+    {
+      "url": "https://www.druni.pt/heart-of-glass-davines-condicionador-fortalecedor-cabelos-loiros",
+      "lastmod": "2026-10-26T04:38:20+00:00",
+      "priority": 1,
+      "slug": "heart-of-glass-davines-condicionador-fortalecedor-cabelos-loiros",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3048
+    },
+    {
+      "url": "https://www.druni.pt/heart-of-glass-davines-shampoo-revitalizante-cabelos-loiros",
+      "lastmod": "2026-10-26T04:38:20+00:00",
+      "priority": 1,
+      "slug": "heart-of-glass-davines-shampoo-revitalizante-cabelos-loiros",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3254
+    },
+    {
+      "url": "https://www.druni.pt/hydrate-me-wash-kevin-murphy-shampoo-capilar-nutritivo",
+      "lastmod": "2026-10-26T04:37:46+00:00",
+      "priority": 1,
+      "slug": "hydrate-me-wash-kevin-murphy-shampoo-capilar-nutritivo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 2724
     }
   ]
 }
