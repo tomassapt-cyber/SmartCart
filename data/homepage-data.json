@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-26T10:58:25.203Z",
-  "seed_total_products": 95283,
+  "generated_at": "2026-10-27T08:50:22.992Z",
+  "seed_total_products": 95406,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -174,6 +174,20 @@
       "verified_live": true
     },
     {
+      "ean": "8428749007142",
+      "name": "Sensilis Peptide [Lip Color] 03 Pink Sweet Heat",
+      "brand": "Sensilis",
+      "image_url": "https://static.beautytocare.com/cdn-cgi/image/f=auto/media/catalog/product//s/e/sensilis-peptide-lip-color-03-pink-sweet-heat-10ml.jpg",
+      "best_price": 10.89,
+      "best_store": "DocMorris",
+      "best_store_slug": "docmorris",
+      "best_url": "https://www.docmorris.pt/pt/sensilis-peptide-lip-color-03-pink-sweet-heat-10ml/p-788081",
+      "previous_price": 14.79,
+      "discount_pct": 26,
+      "dropped_day": 20748,
+      "verified_live": true
+    },
+    {
       "ean": "8700216890106",
       "name": "Aussie Deep Hydration Hair Mask",
       "brand": "Aussie",
@@ -215,20 +229,6 @@
       "discount_pct": 23,
       "dropped_day": 20747,
       "verified_live": true
-    },
-    {
-      "ean": "8428749007128",
-      "name": "Sensilis Peptide [Lip Color] 01 Red Chili",
-      "brand": "Sensilis",
-      "image_url": "https://static.beautytocare.com/cdn-cgi/image/f=auto/media/catalog/product//s/e/sensilis-peptide-lip-color-01-red-chili-10ml.jpg",
-      "best_price": 10.99,
-      "best_store": "DocMorris",
-      "best_store_slug": "docmorris",
-      "best_url": "https://www.docmorris.pt/pt/sensilis-peptide-lip-color-01-red-chili-10ml/p-788079",
-      "previous_price": 14.09,
-      "discount_pct": 22,
-      "dropped_day": 20748,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -254,15 +254,15 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 803
+      "products": 804
     },
     {
       "name": "Eucerin",
-      "products": 764
+      "products": 762
     },
     {
       "name": "Chicco",
-      "products": 739
+      "products": 741
     }
   ],
   "telegram_alerts": [
@@ -295,9 +295,9 @@
     }
   ],
   "stats": {
-    "stores": 99,
-    "products": 77527,
-    "avg_savings_pct": 28
+    "stores": 100,
+    "products": 77484,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": "",
