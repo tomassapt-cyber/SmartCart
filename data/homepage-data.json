@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T08:50:22.992Z",
-  "seed_total_products": 95406,
+  "generated_at": "2026-10-27T10:23:06.349Z",
+  "seed_total_products": 95420,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -174,6 +174,20 @@
       "verified_live": true
     },
     {
+      "ean": "8428749013662",
+      "name": "Sensilis Photocorrection Pure Age Perfection SPF50",
+      "brand": "Sensilis",
+      "image_url": "https://byfarma.pt/assets/capturar__237.jpg",
+      "best_price": 12.09,
+      "best_store": "DocMorris",
+      "best_store_slug": "docmorris",
+      "best_url": "https://www.docmorris.pt/pt/sensilis-photocorrection-pure-age-perfection-fps50-40ml/p-725915",
+      "previous_price": 16.59,
+      "discount_pct": 27,
+      "dropped_day": 20748,
+      "verified_live": true
+    },
+    {
       "ean": "8428749007142",
       "name": "Sensilis Peptide [Lip Color] 03 Pink Sweet Heat",
       "brand": "Sensilis",
@@ -215,20 +229,6 @@
       "discount_pct": 24,
       "dropped_day": 20751,
       "verified_live": true
-    },
-    {
-      "ean": "3264680039652",
-      "name": "Nuxe Sun Delicioso Spray Solar FPS50 Formato Viagem",
-      "brand": "Nuxe",
-      "image_url": "https://www.farmaciabarreiros.com/37056/nuxe-spray-solar-delicious-spf50-50-ml.jpg",
-      "best_price": 7.5,
-      "best_store": "Farmácia Cuida",
-      "best_store_slug": "farmaciacuida",
-      "best_url": "https://farmaciacuida.com/products/nuxe-sun-leite-spray-rosto-e-corpo-50ml",
-      "previous_price": 9.75,
-      "discount_pct": 23,
-      "dropped_day": 20747,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -238,7 +238,7 @@
     },
     {
       "name": "Avène",
-      "products": 857
+      "products": 858
     },
     {
       "name": "Isdin",
@@ -258,7 +258,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 762
+      "products": 764
     },
     {
       "name": "Chicco",
