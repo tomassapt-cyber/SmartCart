@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-26T23:10:57.978656+00:00",
-  "completed_at": "2026-10-27T00:48:55.403234+00:00",
+  "scraped_at": "2026-10-27T23:00:03.957883+00:00",
+  "completed_at": "2026-10-28T00:50:38.669458+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -2889,6 +2889,19 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/7710-verniz-gel-andreia-254-5600462989803.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108496-thickbox_default/verniz-gel-andreia-254.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449220850",
+      "name": "Espátula de Cera 130mm - Madeira",
+      "price": 1.25,
+      "net_price": 1.02,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/descartaveis-depilacao-mascaras-espatulas-rolos/8441-espatula-de-cera-130mm-madeira-7898449220850.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/137595-thickbox_default/espatula-de-cera-130mm-madeira.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -6873,8 +6886,8 @@
     {
       "ean": "4045787817881",
       "name": "Igora Royal Highlifts 12.0 Loiro Especial Natural 60ml - Schwarzkopf",
-      "price": 8.56,
-      "net_price": 6.96,
+      "price": 13.55,
+      "net_price": 11.02,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/igora-royal-highlifts/12637-igora-royal-highlights-120-loiro-especial-natural-60ml-schwarzkopf-4045787817881.html",
@@ -15503,32 +15516,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "7898449220829",
-      "name": "Shampoo 3 em 1 Jhonnie Black 240ml",
-      "price": 12.18,
-      "net_price": 9.9,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/shampoo-homem/85137-shampoo-3-em-1-jhonnie-black-240ml-7898449220829.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/140001-thickbox_default/shampoo-3-em-1-jhonnie-black-240ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898449221086",
-      "name": "Creme Hidratante de Barba  Johnnie Black 500ml",
-      "price": 15.87,
-      "net_price": 12.9,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/finalizador-de-barba-pos-barba/85141-creme-hidratante-de-barba-johnnie-black-500ml--7898449221086.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/140009-thickbox_default/creme-hidratante-de-barba-johnnie-black-500ml-.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474637153601",
       "name": "L'Oreal Absolut Repair Molecular Spray Pré Tratamento",
       "price": 49.1,
@@ -19793,88 +19780,10 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "7898449220843",
-      "name": "Condicionador 2 em 1 Johnnie Black 180ml",
-      "price": 12.92,
-      "net_price": 10.5,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/cabelo-produtos-barbeiro/91272-condicionador-2-em-1-johnnie-black-180ml-7898449220843.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/155094-thickbox_default/condicionador-2-em-1-johnnie-black-180ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898449220966",
-      "name": "Óleo para Barba Johnnie Black 30ml",
-      "price": 10.95,
-      "net_price": 8.9,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/finalizador-de-barba-pos-barba/91273-oleo-para-barba-johnnie-black-30ml-7898449220966.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/155095-thickbox_default/oleo-para-barba-johnnie-black-30ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898449221291",
-      "name": "Cera Mate Johnnie Black 150g",
-      "price": 18.33,
-      "net_price": 14.9,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/finalizador-de-cabelo-barbershop/91276-cera-mate-johnnie-black-150g-7898449221291.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/155100-thickbox_default/cera-mate-johnnie-black-150g.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898449221284",
-      "name": "Cera Modeladora Shake It Up Johnnie Black 150g",
-      "price": 18.33,
-      "net_price": 14.9,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/finalizador-de-cabelo-barbershop/91277-cera-modeladora-shake-it-up-johnnie-black-150g--7898449221284.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/155101-thickbox_default/cera-modeladora-shake-it-up-johnnie-black-150g-.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898449221307",
-      "name": "Gel de Barbear Johnnie Black 180ml",
-      "price": 15.87,
-      "net_price": 12.9,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91279-gel-de-barbear-johnnie-black-180ml-7898449221307.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/155104-thickbox_default/gel-de-barbear-johnnie-black-180ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898449221314",
-      "name": "Gel de Barbear Johnnie Black 500ml",
-      "price": 21.83,
-      "net_price": 17.75,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/produtos-para-barba/91280-gel-de-barbear-johnnie-black-500ml-7898449221314.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/155106-thickbox_default/gel-de-barbear-johnnie-black-500ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "7898449221154",
       "name": "Pó Modelador Snow Flakes Johnnie Black 4.5g",
-      "price": 12.24,
-      "net_price": 9.95,
+      "price": 11.01,
+      "net_price": 8.96,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/finalizador-de-cabelo-barbershop/91282-po-modelador-snow-flakes-johnnie-black-45g-7898449221154.html",
@@ -21637,12 +21546,28 @@
       "reason": "stock/order contradiction"
     },
     {
+      "url": "https://presencadeluxo.pt/shampoo-homem/85137-shampoo-3-em-1-jhonnie-black-240ml-7898449220829.html",
+      "ean": "7898449220829",
+      "canonical": "7898449220829",
+      "existing_name": "Johnnie Black Champô 3 Em 1 Para Cabelo/Barba/Corpo 240ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
       "url": "https://presencadeluxo.pt/shampoo-homem/85138-shampoo-iceberg-jhonnie-black-500ml-7898449221352.html",
       "ean": "7898449221352",
       "canonical": "7898449221352",
       "existing_name": "Johnnie Black Iceberg Shampoo 500ml",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/finalizador-de-barba-pos-barba/85141-creme-hidratante-de-barba-johnnie-black-500ml--7898449221086.html",
+      "ean": "7898449221086",
+      "canonical": "7898449221086",
+      "existing_name": "Johnnie Black Creme Hidratante de Barba 500ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/l-oreal-absolut-repair-molecular/85272-shampoo-l-oreal-absolut-repair-molecular-300ml-3474637153526.html",
@@ -22141,6 +22066,62 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/cabelo-produtos-barbeiro/91272-condicionador-2-em-1-johnnie-black-180ml-7898449220843.html",
+      "ean": "7898449220843",
+      "canonical": "7898449220843",
+      "existing_name": "Johnnie Black Condicionador 2 em 1 180ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/finalizador-de-barba-pos-barba/91273-oleo-para-barba-johnnie-black-30ml-7898449220966.html",
+      "ean": "7898449220966",
+      "canonical": "7898449220966",
+      "existing_name": "Johnnie Black Óleo Para A Barba 30ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91274-copia-de-creme-de-barbear-jhonnie-black-180ml-7898449220850.html",
+      "ean": "7898449220850",
+      "canonical": "7898449220850",
+      "existing_name": "Johnnie Black Creme De Barbear  180ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/finalizador-de-cabelo-barbershop/91276-cera-mate-johnnie-black-150g-7898449221291.html",
+      "ean": "7898449221291",
+      "canonical": "7898449221291",
+      "existing_name": "Johnnie Black Pomada/Cera Matte  150g",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/finalizador-de-cabelo-barbershop/91277-cera-modeladora-shake-it-up-johnnie-black-150g--7898449221284.html",
+      "ean": "7898449221284",
+      "canonical": "7898449221284",
+      "existing_name": "Johnnie Black Pomada Modeladora Shake It Up  150g",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91279-gel-de-barbear-johnnie-black-180ml-7898449221307.html",
+      "ean": "7898449221307",
+      "canonical": "7898449221307",
+      "existing_name": "Johnie Black Shave Gel - Gel De Barbear  180ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/produtos-para-barba/91280-gel-de-barbear-johnnie-black-500ml-7898449221314.html",
+      "ean": "7898449221314",
+      "canonical": "7898449221314",
+      "existing_name": "Johnie Black Shave Gel - Gel De Barbear 500ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
       "url": "https://presencadeluxo.pt/aparador-de-barba/91424-maquina-shaver-techshen-sharpcut-verde-5600482307533.html",
       "ean": "5600482307533",
       "canonical": "5600482307533",
@@ -22439,38 +22420,6 @@
           "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85040-true-pure-gel-polish-andreia-0-plastic-colors-collection-5603927886235.html",
           "status": "ok",
           "image_url": "https://presencadeluxo.pt/139689-thickbox_default/true-pure-gel-polish-andreia-0-plastic-colors-collection.jpg",
-          "source": "explicit-visible-price-with-VAT-and-product-schema",
-          "additional_shipping_cost": 0.0
-        }
-      ]
-    },
-    {
-      "reason": "conflicting duplicate GTIN",
-      "ean": "7898449220850",
-      "rows": [
-        {
-          "ean": "7898449220850",
-          "name": "Espátula de Cera 130mm - Madeira",
-          "price": 1.25,
-          "net_price": 1.02,
-          "tax_included": true,
-          "in_stock": true,
-          "url": "https://presencadeluxo.pt/descartaveis-depilacao-mascaras-espatulas-rolos/8441-espatula-de-cera-130mm-madeira-7898449220850.html",
-          "status": "ok",
-          "image_url": "https://presencadeluxo.pt/137595-thickbox_default/espatula-de-cera-130mm-madeira.jpg",
-          "source": "explicit-visible-price-with-VAT-and-product-schema",
-          "additional_shipping_cost": 0.0
-        },
-        {
-          "ean": "7898449220850",
-          "name": "Creme de Barbear Jhonnie Black 180ml",
-          "price": 11.91,
-          "net_price": 9.69,
-          "tax_included": true,
-          "in_stock": true,
-          "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91274-copia-de-creme-de-barbear-jhonnie-black-180ml-7898449220850.html",
-          "status": "ok",
-          "image_url": "https://presencadeluxo.pt/155097-thickbox_default/copia-de-creme-de-barbear-jhonnie-black-180ml.jpg",
           "source": "explicit-visible-price-with-VAT-and-product-schema",
           "additional_shipping_cost": 0.0
         }
