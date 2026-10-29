@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-29T09:34:55.674Z",
-  "seed_total_products": 95505,
+  "generated_at": "2026-10-29T11:26:57.681Z",
+  "seed_total_products": 95531,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -217,17 +217,17 @@
       "verified_live": true
     },
     {
-      "ean": "8809913830481",
-      "name": "Skin1004 Madagascar Centella Light Clean Oil",
-      "brand": "K-Beauty",
-      "image_url": "https://www.farmatogo.com/cdn/shop/files/6_cdbe2938-0cab-401c-a335-a902a8410592.png?v=1781261119&width=900",
-      "best_price": 10.37,
-      "best_store": "Farma2Go",
-      "best_store_slug": "farma2go",
-      "best_url": "https://farma2go.com/pt/products/skin1004-madagascar-centella-oleo-limpeza-facial-200ml",
-      "previous_price": 13.76,
-      "discount_pct": 25,
-      "dropped_day": 20755,
+      "ean": "8809567925205",
+      "name": "Centella Calming Barrier Cream",
+      "brand": "Barr",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1461188.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 17.9,
+      "best_store": "Farmaciasdirect",
+      "best_store_slug": "farmaciasdirect",
+      "best_url": "https://www.farmaciasdirect.pt/products/barr-centella-calming-barrier-creme-80-ml",
+      "previous_price": 23.7,
+      "discount_pct": 24,
+      "dropped_day": 20751,
       "verified_live": true
     }
   ],
@@ -238,7 +238,7 @@
     },
     {
       "name": "Avène",
-      "products": 857
+      "products": 859
     },
     {
       "name": "Isdin",
@@ -258,7 +258,7 @@
     },
     {
       "name": "Eucerin",
-      "products": 762
+      "products": 764
     },
     {
       "name": "Chicco",
