@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-10-27T23:00:03.957883+00:00",
-  "completed_at": "2026-10-28T00:50:38.669458+00:00",
+  "scraped_at": "2026-10-29T10:10:35.643934+00:00",
+  "completed_at": "2026-10-29T11:53:16.115495+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1785,
+  "targets": 1786,
   "products": [
     {
       "ean": "5601411434146",
@@ -61,8 +61,8 @@
     {
       "ean": "3474637283032",
       "name": "L'Oréal Majirel 10 Louro Claríssimo - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/692-majirel-10-louro-clarissimo-50ml-loreal-profissional-3474637283032.html",
@@ -74,8 +74,8 @@
     {
       "ean": "3474637283117",
       "name": "L'Oréal Majirel 1 Preto - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/694-majirel-1-preto-50ml-loreal-profissional--3474637283117.html",
@@ -87,8 +87,8 @@
     {
       "ean": "3474637283100",
       "name": "L'Oréal Majirel 3 Castanho Escuro - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/697-majirel-3-castanho-escuro-50ml-loreal-profissional-3474637283100.html",
@@ -100,8 +100,8 @@
     {
       "ean": "3474637283179",
       "name": "L'Oréal Majirel 4.0 Castanho Natural Profundo 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/699-l-oreal-majirel-40-castanho-natural-profundo-60ml-3474637283179.html",
@@ -113,8 +113,8 @@
     {
       "ean": "3474637283087",
       "name": "L'Oréal Majirel 5 Castanho Claro - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/700-majirel-5-castanho-claro-50ml-loreal-profissional-3474637283087.html",
@@ -126,8 +126,8 @@
     {
       "ean": "3474637283070",
       "name": "L'Oréal Majirel 6 Louro Escuro - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/701-majirel-6-louro-escuro-50ml-loreal-profissional-3474637283070.html",
@@ -139,8 +139,8 @@
     {
       "ean": "3474637282493",
       "name": "L'Oréal Majirel 6.1 Louro Escuro Cinza - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/704-majirel-61-louro-escuro-cendre-50ml-loreal-profissional-3474637282493.html",
@@ -152,8 +152,8 @@
     {
       "ean": "3474637283155",
       "name": "L'Oréal Majirel 6.0 Louro Escuro Intenso - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/706-majirel-60-louro-escuro-profundo-50ml-loreal-profissional-3474637283155.html",
@@ -165,8 +165,8 @@
     {
       "ean": "3474637283063",
       "name": "L'Oréal Majirel 7 Louro - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/707-majirel-7-louro-50ml-loreal-profissional-3474637283063.html",
@@ -178,8 +178,8 @@
     {
       "ean": "3474637282486",
       "name": "L'Oréal Majirel 7.1 Louro Cinza - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/708-majirel-71-louro-cendre-loreal-profissional-3474637282486.html",
@@ -191,8 +191,8 @@
     {
       "ean": "3474637280932",
       "name": "L'Oréal Majirel 7.23 Louro Irisado Dourado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/709-majirel-723-louro-irisado-dourado-50ml-3474637280932.html",
@@ -204,8 +204,8 @@
     {
       "ean": "3474637283056",
       "name": "L'Oréal Majirel 8 Louro Claro - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/710-majirel-8-louro-claro-50ml-loreal-profissional--3474637283056.html",
@@ -217,8 +217,8 @@
     {
       "ean": "3474637282479",
       "name": "L'Oréal Majirel 8.1 Louro Claro Cinza - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/711-majirel-81-louro-claro-cendre-50ml-loreal-profissional-lim-3474637282479.html",
@@ -230,8 +230,8 @@
     {
       "ean": "3474637283131",
       "name": "L'Oréal Majirel 8.0 Louro Claro Intenso - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/713-majirel-80-louro-claro-profundo-50ml-loreal-profissional-3474637283131.html",
@@ -243,8 +243,8 @@
     {
       "ean": "3474637283049",
       "name": "L'Oréal Majirel 9 Louro Muito Claro - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/714-majirel-9-louro-muito-claro-50ml-loreal-profissional-3474637283049.html",
@@ -256,8 +256,8 @@
     {
       "ean": "3474637282462",
       "name": "L'Oréal Majirel 9.1 Louro Muito Claro Cinza - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/716-majirel-91-louro-muito-claro-cendre-50ml-loreal-profissional-3474637282462.html",
@@ -269,8 +269,8 @@
     {
       "ean": "3474637280925",
       "name": "L'Oréal Majirel 4.15 Castanho Chocolate - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/721-majirel-415-castanho-cendre-acajou-50ml-loreal-profissional-lim-3474637280925.html",
@@ -282,8 +282,8 @@
     {
       "ean": "3474637281793",
       "name": "L'Oréal Majirel 4.3 Castanho Dourado - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/722-majirel-43-castanho-dourado-50ml-loreal-profissional-3474637281793.html",
@@ -295,8 +295,8 @@
     {
       "ean": "3474637281847",
       "name": "L'Oréal Majirel 4.35 Castanho Chocolate Dourado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/723-majirel-435-castanho-dourado-acajou-50ml-loreal-profissional-lim-3474637281847.html",
@@ -308,8 +308,8 @@
     {
       "ean": "3474637281366",
       "name": "L'Oréal Majirel 4.45 Castanho Acobreado Mogno 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/739-majirel-445-castanho-acobreado-acajou-50ml-loreal-profissional-3474637281366.html",
@@ -321,8 +321,8 @@
     {
       "ean": "3474637281786",
       "name": "L'Oréal Majirel 5.3 Castanho Claro Dourado - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/746-majirel-53-castanho-claro-dourado-50ml-loreal-profissional-lim-3474637281786.html",
@@ -334,8 +334,8 @@
     {
       "ean": "3474637280406",
       "name": "L'Oréal Majirel 5.32 Castanho Claro Dourado Irisado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/750-majirel-532-castanho-claro-dourado-irisado-50ml-loreal-profissional-3474637280406.html",
@@ -347,8 +347,8 @@
     {
       "ean": "3474637281298",
       "name": "L'Oréal Majirel 5.4 Castanho Claro Acobreado - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/754-majirel-54-castanho-claro-acobreado-50ml-loreal-profissional-lim-3474637281298.html",
@@ -360,8 +360,8 @@
     {
       "ean": "3474637284572",
       "name": "L'Oréal Majirel 5.5 Castanho Claro Mogno - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/756-majirel-55-castanho-claro-acajou-50ml-loreal-profissional-3474637284572.html",
@@ -373,8 +373,8 @@
     {
       "ean": "3474637280888",
       "name": "L'Oréal Majirel 6.13 Louro Escuro Cinza Dourado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/763-majirel-613-louro-escuro-cendre-dourado-50ml-loreal-profissional-lim-3474637280888.html",
@@ -386,8 +386,8 @@
     {
       "ean": "3474637281779",
       "name": "L'Oréal Majirel 6.3 Louro Escuro Dourado - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/765-majirel-63-50ml-loreal-profissional-3474637281779.html",
@@ -399,8 +399,8 @@
     {
       "ean": "3474637280390",
       "name": "L'Oréal Majirel 6.32 Louro Escuro Dourado Irisado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/767-majirel-632-louro-escuro-dourado-irisado-50ml-loreal-profissional-lim-3474637280390.html",
@@ -412,8 +412,8 @@
     {
       "ean": "3474637281816",
       "name": "L'Oréal Majirel 6.34 Louro Escuro Dourado Acobreado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/768-majirel-634-louro-escuro-dourado-acobreado-50ml-loreal-profissional-lim-3474637281816.html",
@@ -425,8 +425,8 @@
     {
       "ean": "3474637281359",
       "name": "L'Oréal Majirel 6.45 Louro Escuro Acobreado Mogno 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/771-majirel-645-louro-escuro-acobreado-irisado-50ml-loreal-profissional-lim-3474637281359.html",
@@ -438,8 +438,8 @@
     {
       "ean": "3474637281373",
       "name": "L'Oréal Majirel 6.46 Louro Escuro Acobreado Vermelho 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/772-majirel-646-louro-escuro-acobreado-vermelho-50ml-loreal-profissional-3474637281373.html",
@@ -451,8 +451,8 @@
     {
       "ean": "3474637281762",
       "name": "L'Oréal Majirel 7.3 Louro Dourado - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/778-majirel-73-louro-dourado-50ml-loreal-profissional-lim-3474637281762.html",
@@ -464,8 +464,8 @@
     {
       "ean": "3474637280383",
       "name": "L'Oréal Majirel 7.31 Louro Dourado Cinza 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/779-majirel-731-louro-beige-dourado-50ml-loreal-profissional-3474637280383.html",
@@ -477,8 +477,8 @@
     {
       "ean": "3474637281823",
       "name": "L'Oréal Majirel 7.35 Louro Dourado Mogno 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/781-majirel-735-louro-dourado-acajou-50ml-loreal-profissional-3474637281823.html",
@@ -490,8 +490,8 @@
     {
       "ean": "3474637281328",
       "name": "L'Oréal Majirel 7.43 Louro Acobreado Dourado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/783-majirel-743-louro-acobreado-dourado-50ml-loreal-profissional--3474637281328.html",
@@ -503,8 +503,8 @@
     {
       "ean": "3474637281335",
       "name": "L'Oréal Majirel 7.44 Louro Acobreado Profundo 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/784-majirel-744-louro-acobreado-profundo-50ml-loreal-profissional-3474637281335.html",
@@ -516,8 +516,8 @@
     {
       "ean": "3474637281755",
       "name": "L'Oréal Majirel 8.3 Louro Claro Dourado - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/787-majirel-83-louro-claro-dourado-50ml-loreal-profissional-3474637281755.html",
@@ -529,8 +529,8 @@
     {
       "ean": "3474637280376",
       "name": "L'Oréal Majirel 8.31 Louro Claro Dourado Cinza 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/788-majirel-831-louro-claro-beige-dourado-50ml-loreal-profissional-3474637280376.html",
@@ -542,8 +542,8 @@
     {
       "ean": "3474637281809",
       "name": "L'Oréal Majirel 8.34 Louro Claro Dourado Acobreado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/789-majirel-834-louro-claro-dourado-50ml-loreal-profissional--3474637281809.html",
@@ -555,8 +555,8 @@
     {
       "ean": "3474637281748",
       "name": "L'Oréal Majirel 9.3 Louro Muito Claro Dourado - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/794-majirel-93-louro-muito-claro-dourado-50ml-loreal-profissional-3474637281748.html",
@@ -568,8 +568,8 @@
     {
       "ean": "3474637284626",
       "name": "L'Oréal Majirel 6.66 Louro Escuro Vermelho Profundo 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/840-majirouge-666-vermelhos-acajous-50ml-loreal-profissional-lim-3474637284626.html",
@@ -581,8 +581,8 @@
     {
       "ean": "3474637281304",
       "name": "L'Oréal Majirel 7.40 Louro Cobre Intenso - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/844-majirouge-740-acobreados-50ml-loreal-profissional--3474637281304.html",
@@ -594,8 +594,8 @@
     {
       "ean": "3474637133207",
       "name": "L'Oréal iNOA 7.43 Louro Cobre Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/875-inoa-743-acobreados-60g-loreal-profissional-3474637133207.html",
@@ -607,8 +607,8 @@
     {
       "ean": "3474637133252",
       "name": "L'Oréal iNOA 7.44 Louro Cobre Intenso Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/876-inoa-744-louro-acobreado-extra-profundo-60g-loreal-profissional-3474637133252.html",
@@ -646,8 +646,8 @@
     {
       "ean": "3474637133498",
       "name": "L'Oréal iNOA 6.46 Louro Escuro Cobre Vermelho Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/881-inoa-646-louro-escuro-acobreado-vermelho-60g-loreal-3474637133498.html",
@@ -659,8 +659,8 @@
     {
       "ean": "3474637129552",
       "name": "L'Oréal iNOA 9.3 Louro Muito Claro Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/884-inoa-93-dourados-60g-loreal-profissional-3474637129552.html",
@@ -672,8 +672,8 @@
     {
       "ean": "3474637129408",
       "name": "L'Oréal iNOA 8.3 Louro Claro Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/885-inoa-83-dourados-60g-loreal-profissional-3474637129408.html",
@@ -685,8 +685,8 @@
     {
       "ean": "3474637128685",
       "name": "L'Oréal iNOA 8.31 Louro Claro Bege Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/894-inoa-831-marrons-beiges-quentes-60g-loreal-profissional-3474637128685.html",
@@ -698,8 +698,8 @@
     {
       "ean": "3474637128630",
       "name": "L'Oréal iNOA 7.31 Louro Bege Dourado Sem Amoníaco 60ml",
-      "price": 13.59,
-      "net_price": 11.05,
+      "price": 14.39,
+      "net_price": 11.7,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/895-inoa-731-louro-dourado-cinza-60g-loreal-profissional--3474637128630.html",
@@ -711,8 +711,8 @@
     {
       "ean": "3474637128579",
       "name": "L'Oréal iNOA 6.32 Louro Escuro Dourado Irisado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/898-inoa-632-louro-escuro-dourado-irisado-60g-l-oreal-professional--3474637128579.html",
@@ -724,8 +724,8 @@
     {
       "ean": "3474637128746",
       "name": "L'Oréal iNOA 5.32 Castanho Claro Dourado Irisado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/899-inoa-532-marronsbeges-quentes-60g-l-oreal-profissional--3474637128746.html",
@@ -737,8 +737,8 @@
     {
       "ean": "3474637129453",
       "name": "L'Oréal iNOA 8.34 Louro Claro Dourado Acobreado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/900-inoa-834-marronsbeiges-quentes-60g-l-oreal-profissional-LIM-3474637129453.html",
@@ -750,8 +750,8 @@
     {
       "ean": "3474637129507",
       "name": "L'Oréal iNOA 7.34 Louro Dourado Acobreado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/901-inoa-734-louro-dourado-acobreado-60g-loreal-professional-lim-3474637129507.html",
@@ -763,8 +763,8 @@
     {
       "ean": "3474637129200",
       "name": "L'Oréal iNOA 6.34 Louro Escuro Dourado Acobreado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/902-inoa-634-louro-escuro-dourado-acobreado-60g-loreal-profissional-lim-3474637129200.html",
@@ -789,8 +789,8 @@
     {
       "ean": "3474637129309",
       "name": "L'Oréal iNOA 5.35 Castanho Claro Dourado Acaju Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/904-inoa-535-marrons-beiges-quentes-60g-loreal-profissional-lim-3474637129309.html",
@@ -802,8 +802,8 @@
     {
       "ean": "3474637131296",
       "name": "L'Oréal iNOA 1 Preto Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/907-inoa-1-fundamentais-preto-60g-l-oreal-profissional--3474637131296.html",
@@ -815,8 +815,8 @@
     {
       "ean": "3474637131593",
       "name": "L'Oréal iNOA 2 Castanho Muito Escuro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/908-inoa-2-fundamentais-castanho-muito-escuro-60g-l-oreal-professional-3474637131593.html",
@@ -828,8 +828,8 @@
     {
       "ean": "3474637134518",
       "name": "L'Oréal iNOA 4 Castanho Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/910-inoa-4-fundamentais-castanho-60g-l-oreal-profissional--3474637134518.html",
@@ -841,8 +841,8 @@
     {
       "ean": "3474637134419",
       "name": "L'Oréal iNOA 5 Castanho Claro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/911-inoa-5-fundamentais-castanho-claro-60g-l-oreal-profissional-3474637134419.html",
@@ -854,8 +854,8 @@
     {
       "ean": "3474637134310",
       "name": "L'Oréal iNOA 6 Louro Escuro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/912-inoa-6-fundamentais-louro-escuro-60g-loreal-profissional-3474637134310.html",
@@ -867,8 +867,8 @@
     {
       "ean": "3474637134365",
       "name": "L'Oréal iNOA 7 Louro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/913-inoa-7-fundamentais-louro-60g-loreal-profissional-3474637134365.html",
@@ -880,8 +880,8 @@
     {
       "ean": "3474637134464",
       "name": "L'Oréal iNOA 8 Louro Claro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/914-inoa-8-louro-claro-60g-loreal-profissional-3474637134464.html",
@@ -893,8 +893,8 @@
     {
       "ean": "3474637134563",
       "name": "L'Oréal iNOA 9 Louro Muito Claro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/915-inoa-9-fundamentais-louro-claro-60g-l-oreal-profissional-3474637134563.html",
@@ -906,8 +906,8 @@
     {
       "ean": "3474637130435",
       "name": "L'Oréal iNOA 5.12 Castanho Claro Cinza Irisado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/917-inoa-512-marronsbeiges-frios-60ml-3474637130435.html",
@@ -919,8 +919,8 @@
     {
       "ean": "3474637130497",
       "name": "L'Oréal iNOA 9.12 Louro Muito Claro Cinza Irisado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/918-inoa-912-marronsbeiges-frios-60ml-3474637130497.html",
@@ -945,8 +945,8 @@
     {
       "ean": "3474637127930",
       "name": "L'Oréal iNOA 7.13 Louro Cinza Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/922-inoa-713-louro-cinza-dourado-60g-loreal-profissional-lim-3474637127930.html",
@@ -958,8 +958,8 @@
     {
       "ean": "3474637128203",
       "name": "L'Oréal iNOA 6.13 Louro Escuro Cinza Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/923-inoa-613-marrons-beiges-frios-60g-loreal-profissional-lim-3474637128203.html",
@@ -984,8 +984,8 @@
     {
       "ean": "3474637129927",
       "name": "L'Oréal iNOA 8.21 Louro Claro Irisado Cinza Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/927-inoa-821-inoa-louro-claro-irisado-60ml-l-oreal-profissional--3474637129927.html",
@@ -997,8 +997,8 @@
     {
       "ean": "3474637128043",
       "name": "L'Oréal iNOA 7.23 Louro Irisado Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/929-inoa-723-louro-irisado-dourado-60g-loreal-professional-3474637128043.html",
@@ -1010,8 +1010,8 @@
     {
       "ean": "3474637130039",
       "name": "L'Oréal iNOA 9.2 Louro Muito Claro Irisado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/936-inoa-92-violetas-irisados-60g-l-oreal-professional--3474637130039.html",
@@ -1036,8 +1036,8 @@
     {
       "ean": "3474637130282",
       "name": "L'Oréal iNOA 9.1 Louro Muito Claro Cinza Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/943-inoa-91-cendree-60g-loreal-profissional-lim-3474637130282.html",
@@ -1049,8 +1049,8 @@
     {
       "ean": "3474637130183",
       "name": "L'Oréal iNOA 8.1 Louro Claro Cinza Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/944-inoa-81-cendree-60g-loreal-profissional-lim-3474637130183.html",
@@ -1062,8 +1062,8 @@
     {
       "ean": "3474637130084",
       "name": "L'Oréal iNOA 6.1 Louro Escuro Cinza Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/946-inoa-61-cendree-60g-loreal-profissional-lim-3474637130084.html",
@@ -1478,8 +1478,8 @@
     {
       "ean": "8432225137001",
       "name": "Condicionador Hydro Nutritivo 500ml Equave Revlon",
-      "price": 26.03,
-      "net_price": 21.16,
+      "price": 29.28,
+      "net_price": 23.81,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/revlon-equave/1510-condicionador-hydro-nutritivo-500ml-equave-revlon-8432225137001.html",
@@ -1489,10 +1489,23 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8432225137018",
+      "name": "Condicionador Hydro Nutritive 200ml Equave Revlon",
+      "price": 20.15,
+      "net_price": 16.38,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/revlon-equave/1513-condicionador-hydro-nutritive-200ml-equave-revlon-8432225137018.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130076-thickbox_default/condicionador-hydro-nutritive-200ml-equave-revlon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8432225113319",
       "name": "Condicionador Kids 200ml Equave Revlon",
-      "price": 17.66,
-      "net_price": 14.36,
+      "price": 19.87,
+      "net_price": 16.16,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/revlon-equave/1516-condicionador-kids-200ml-equave-revlon-8432225113319.html",
@@ -2889,19 +2902,6 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/7710-verniz-gel-andreia-254-5600462989803.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108496-thickbox_default/verniz-gel-andreia-254.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898449220850",
-      "name": "Espátula de Cera 130mm - Madeira",
-      "price": 1.25,
-      "net_price": 1.02,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/descartaveis-depilacao-mascaras-espatulas-rolos/8441-espatula-de-cera-130mm-madeira-7898449220850.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/137595-thickbox_default/espatula-de-cera-130mm-madeira.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -5495,8 +5495,8 @@
     {
       "ean": "3474637131449",
       "name": "L'Oréal iNOA 4.0 Castanho Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/loreal/11565-inoa-40-castanho-profundo-60g-loreal-profissional-3474637131449.html",
@@ -5508,8 +5508,8 @@
     {
       "ean": "3474637131043",
       "name": "L'Oréal iNOA 5.0 Castanho Claro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/11566-inoa-50-castanho-claro-profundo-60g-loreal-profissional-3474637131043.html",
@@ -5521,8 +5521,8 @@
     {
       "ean": "3474637130947",
       "name": "L'Oréal iNOA 6.0 Louro Escuro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/loreal/11569-inoa-60-louro-escuro-profundo-60g-loreal-profissional-3474637130947.html",
@@ -5547,8 +5547,8 @@
     {
       "ean": "3474637131692",
       "name": "L'Oréal iNOA 6.8 Louro Escuro Moca Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/11572-inoa-68-louro-escuro-moca-60g-loreal-profissional-lim-3474637131692.html",
@@ -5560,8 +5560,8 @@
     {
       "ean": "3474637130893",
       "name": "L'Oréal iNOA 7.0 Louro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/11573-inoa-70-louro-profundo-60g-loreal-profissional-3474637130893.html",
@@ -7235,6 +7235,45 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8432225129778",
+      "name": "Unique One 150ml Revlon",
+      "price": 22.03,
+      "net_price": 17.91,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/uniq-one/12786-unique-one-150ml-revlon-8432225129778.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130041-thickbox_default/unique-one-150ml-revlon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8432225129907",
+      "name": "Uniq One Coconut 150ml Revlon",
+      "price": 22.03,
+      "net_price": 17.91,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/uniq-one/12787-uniq-one-coconut-150ml-revlon-8432225129907.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130042-thickbox_default/uniq-one-coconut-150ml-revlon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8432225129877",
+      "name": "Uniq One Flor de Lótus 150ml Revlon",
+      "price": 22.03,
+      "net_price": 17.91,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/uniq-one/12788-uniq-one-flor-de-lotus-150ml-revlon-8432225129877.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152493-thickbox_default/uniq-one-flor-de-lotus-150ml-revlon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787200621",
       "name": "Schwarzkopf Igora Royal 9.7 Loiro Extra Claro Cobre 60ml",
       "price": 13.2,
@@ -7257,6 +7296,19 @@
       "url": "https://presencadeluxo.pt/revlonissimo/12858-colorsmetique-10-50ml-revlonissimo-revlon-8007376058378.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156817-thickbox_default/colorsmetique-10-50ml-revlonissimo-revlon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8007376058255",
+      "name": "Revlonissimo Colorsmetique™ NATURALS – 6 Louro Escuro – 60ml",
+      "price": 13.17,
+      "net_price": 10.71,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/revlonissimo/12880-revlonissimo-colorsmetique-naturals-6-louro-escuro-60ml-8007376058255.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/156821-thickbox_default/revlonissimo-colorsmetique-naturals-6-louro-escuro-60ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10019,8 +10071,8 @@
     {
       "ean": "3474637283162",
       "name": "L'Oréal Majirel 5.0 Castanho Claro Intenso - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67414-majirel-50-castanho-claro-profundo-50ml-loreal-profissional-3474637283162.html",
@@ -10032,8 +10084,8 @@
     {
       "ean": "3474637282509",
       "name": "L'Oréal Majirel 5.1 Castanho Claro Cinza - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67423-majirel-51-castanho-claro-cinza-50ml-loreal-profissional-3474637282509.html",
@@ -10045,8 +10097,8 @@
     {
       "ean": "3474637282073",
       "name": "L'Oréal Majirel 4.20 Castanho Irisado Intenso - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67425-majirel-420-castanho-medio-violino-intenso-50ml-loreal-profissional-3474637282073.html",
@@ -10058,8 +10110,8 @@
     {
       "ean": "3474637281274",
       "name": "L'Oréal Majirel 8.04 Louro Claro Natural Cobreado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67427-l-oreal-majirel-804-louro-claro-natural-cobreado-60ml-3474637281274.html",
@@ -10071,8 +10123,8 @@
     {
       "ean": "3474637281281",
       "name": "L'Oréal Majirel 7.4 Louro Acobreado - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67428-majirel-74-louro-acobreado-50ml-loreal-profissional--3474637281281.html",
@@ -10084,8 +10136,8 @@
     {
       "ean": "3474637281311",
       "name": "L'Oréal Majirel 8.43 Louro Claro Cobre Dourado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67429-l-oreal-majirel-843-louro-claro-cobre-dourado-60ml-3474637281311.html",
@@ -10097,8 +10149,8 @@
     {
       "ean": "3474637281342",
       "name": "L'Oréal Majirel 7.45 Louro Cobre Mogno - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67431-l-oreal-majirel-745-louro-cobre-mogno-coloracao-60ml-3474637281342.html",
@@ -10110,8 +10162,8 @@
     {
       "ean": "3474637280574",
       "name": "L'Oréal Majirel 7.8 Louro Moca - Coloração Permanente 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67445-majirel-78-louro-marrom-50ml-loreal-profissional-3474637280574.html",
@@ -10123,8 +10175,8 @@
     {
       "ean": "3474637280598",
       "name": "L'Oréal Majirel 5.8 Castanho Claro Moca - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67447-majirel-58-castanho-claro-marrom-50ml-loreal-profissional-lim-3474637280598.html",
@@ -10136,8 +10188,8 @@
     {
       "ean": "3474637280604",
       "name": "L'Oréal Majirel 4.8 Castanho Mocha - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/coloracao-outlet/67448-majirel-48-castanho-marrom-50ml-loreal-profissional-lim-3474637280604.html",
@@ -10149,8 +10201,8 @@
     {
       "ean": "3474637282578",
       "name": "L'Oréal Majirel 7.12 Louro Cinza Irisado - Coloração 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67452-l-oreal-majirel-712-louro-cinza-irisado-coloracao-60ml-3474637282578.html",
@@ -10162,8 +10214,8 @@
     {
       "ean": "3474637280871",
       "name": "L'Oréal Majirel 7.13 Louro Cinza Dourado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67453-majirel-713-louro-cinza-dourado-50ml-loreal-profissional-3474637280871.html",
@@ -10175,8 +10227,8 @@
     {
       "ean": "3474637282585",
       "name": "L'Oréal Majirel 5.12 Castanho Claro Cinza Irisado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67456-l-oreal-majirel-512-castanho-claro-cinza-irisado-60ml-3474637282585.html",
@@ -10188,8 +10240,8 @@
     {
       "ean": "3474637280918",
       "name": "L'Oréal Majirel 5.15 Castanho Claro Cinza Mogno 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67457-l-oreal-majirel-515-castanho-claro-cinza-mogno-60ml-3474637280918.html",
@@ -10201,8 +10253,8 @@
     {
       "ean": "3474637282523",
       "name": "L'Oréal Majirel 9.11 Louro Muito Claro Cinza Profundo 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67517-l-oreal-majirel-911-louro-muito-claro-cinza-profundo-60ml-3474637282523.html",
@@ -10214,8 +10266,8 @@
     {
       "ean": "3474637280895",
       "name": "L'Oréal Majirel 7.18 Louro Cinza Moca 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67532-majirel-cool-cover-718-moca-50ml-loreal-profissional-3474637280895.html",
@@ -10227,8 +10279,8 @@
     {
       "ean": "3474637282561",
       "name": "L'Oréal Majirel 9.12 Louro Muito Claro Cinza Irisado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/67548-l-oreal-majirel-912-louro-muito-claro-cinza-irisado-60ml-3474637282561.html",
@@ -10318,8 +10370,8 @@
     {
       "ean": "3474637280109",
       "name": "Majirel High Lift Ash Violet 50ml Loreal Profissional",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-high-lift/67567-majirel-high-lift-violet-ash-50ml-loreal-profissional-3474637280109.html",
@@ -11486,19 +11538,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "7897158717668",
-      "name": "Condicionador Antiqueda Queratrix 430ml - Gota Dourada",
-      "price": 6.57,
-      "net_price": 5.34,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gota-dourada/74935-condicionador-antiqueda-queratrix-430ml-gota-dourada--7897158717668.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/100594-thickbox_default/condicionador-antiqueda-queratrix-430ml-gota-dourada-.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "7897158722013",
       "name": "Shampoo Fortalecimento Desamarelador 430ml - Gota Dourada",
       "price": 7.66,
@@ -12255,8 +12294,8 @@
     {
       "ean": "3474637130541",
       "name": "L'Oréal iNOA 8.11 Louro Claro Cinza Intenso Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/78964-inoa-811-louro-claro-cendre-profundo-60g-loreal-profissional-3474637130541.html",
@@ -12268,8 +12307,8 @@
     {
       "ean": "3474637130695",
       "name": "L'Oréal iNOA 8.12 Louro Claro Cinza Irisado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/78965-inoa-812-smoky-hair-60g-loreal-profissional-3474637130695.html",
@@ -12281,8 +12320,8 @@
     {
       "ean": "3474637128470",
       "name": "L'Oréal iNOA 8.23 Louro Claro Irisado Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/78966-inoa-823-louro-claro-iridescente-dourado-60g-loreal-profissional-lim-3474637128470.html",
@@ -12294,8 +12333,8 @@
     {
       "ean": "3474637130596",
       "name": "L'Oréal iNOA 9.11 Louro Muito Claro Cinza Intenso Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/78968-inoa-911-louro-muito-claro-cinza-profundo-60g-l-oreal-profissional--3474637130596.html",
@@ -12307,8 +12346,8 @@
     {
       "ean": "3474637128302",
       "name": "L'Oréal iNOA 9.13 Louro Muito Claro Cinza Dourado Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/78969-inoa-913-louro-muito-claro-cinza-dourado-60g-l-oreal-profissional--3474637128302.html",
@@ -12320,8 +12359,8 @@
     {
       "ean": "3474637128913",
       "name": "L'Oréal iNOA 5.5 Castanho Claro Acajou Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/78987-inoa-55-marron-resist-60g-l-oreal-profissional-lim-3474637128913.html",
@@ -12918,8 +12957,8 @@
     {
       "ean": "3474637321574",
       "name": "L'Oréal Dia Light 8.43 Louro Claro Acobreado Coloração Gloss Sem Amoníaco 60ml",
-      "price": 11.71,
-      "net_price": 9.52,
+      "price": 12.4,
+      "net_price": 10.08,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/dialight-loreal/81404-dialight-843-louro-claro-acobreado-loreal-professional-3474637321574.html",
@@ -12931,8 +12970,8 @@
     {
       "ean": "3474637130336",
       "name": "L'Oréal iNOA 5.1 Castanho Claro Cinza Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/81422-inoa-51-castanho-claro-cinza-60g-loreal-profissional-3474637130336.html",
@@ -12996,8 +13035,8 @@
     {
       "ean": "3474637280949",
       "name": "L'Oréal Majirel 6.23 Louro Escuro Irisado Dourado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/81527-majirel-623-louro-escuro-irisado-50ml-loreal-profissional-3474637280949.html",
@@ -15516,6 +15555,45 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "7898449220829",
+      "name": "Shampoo 3 em 1 Jhonnie Black 240ml",
+      "price": 10.96,
+      "net_price": 8.91,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/85137-shampoo-3-em-1-jhonnie-black-240ml-7898449220829.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/140001-thickbox_default/shampoo-3-em-1-jhonnie-black-240ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449221352",
+      "name": "Shampoo Iceberg Jhonnie Black 500ml",
+      "price": 17.6,
+      "net_price": 14.31,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/85138-shampoo-iceberg-jhonnie-black-500ml-7898449221352.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/140003-thickbox_default/shampoo-iceberg-jhonnie-black-500ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449221086",
+      "name": "Creme Hidratante de Barba  Johnnie Black 500ml",
+      "price": 14.28,
+      "net_price": 11.61,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/85141-creme-hidratante-de-barba-johnnie-black-500ml--7898449221086.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/140009-thickbox_default/creme-hidratante-de-barba-johnnie-black-500ml-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474637153601",
       "name": "L'Oreal Absolut Repair Molecular Spray Pré Tratamento",
       "price": 49.1,
@@ -16803,6 +16881,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8432225111445",
+      "name": "Shampoo Revlon Equave Princess Kids 300ml Crianças",
+      "price": 21.14,
+      "net_price": 17.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/revlon-equave/87534-shampoo-revlon-equave-princess-kids-300ml-criancas-8432225111445.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/146548-thickbox_default/shampoo-revlon-equave-princess-kids-300ml-criancas.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8432225137506",
       "name": "Tratamento Revlon Uniq One Curls 230ml All in One",
       "price": 27.68,
@@ -17843,19 +17934,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474636909292",
-      "name": "Sérum Noturno Kérastase Blond Absolut Cicanuit 90ml",
-      "price": 53.06,
-      "net_price": 43.15,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/blond-absolu/89688-serum-noturno-kerastase-blond-absolut-cicanuit-90ml-3474636909292.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/152692-thickbox_default/serum-noturno-kerastase-blond-absolut-cicanuit-90ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474636954681",
       "name": "Máscara de Argila Purificante Kérastase Spécifique 200ml",
       "price": 54.24,
@@ -18207,10 +18285,36 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474637207076",
+      "name": "L'Oréal Dia Color 6 Louro Escuro Sem Amoníaco 60ml",
+      "price": 13.73,
+      "net_price": 11.16,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/dia-color-l-oreal/90277-coloracao-demi-permanente-dia-color-l-oreal-6-sem-amoniaco-3474637207076.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/156258-thickbox_default/coloracao-demi-permanente-dia-color-l-oreal-6-sem-amoniaco.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474637208233",
+      "name": "L'Oréal Dia Color 6.3 Louro Escuro Dourado Sem Amoníaco 60ml",
+      "price": 13.73,
+      "net_price": 11.16,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/dia-color-l-oreal/90279-coloracao-demi-permanente-dia-color-l-oreal-63-sem-amoniaco-3474637208233.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/156256-thickbox_default/coloracao-demi-permanente-dia-color-l-oreal-63-sem-amoniaco.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474630440395",
       "name": "Activador L'Oreal Dia 6 Vol. 1000ML",
-      "price": 15.47,
-      "net_price": 12.58,
+      "price": 16.38,
+      "net_price": 13.32,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/dia-color-l-oreal/90299-activador-l-oreal-dia-6-vol-1000ml-3474630440395.html",
@@ -18222,8 +18326,8 @@
     {
       "ean": "3474630440432",
       "name": "Activador L'Oreal Dia 9 Vol. 1000ML",
-      "price": 15.16,
-      "net_price": 12.33,
+      "price": 16.05,
+      "net_price": 13.05,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/dia-color-l-oreal/90306-activador-l-oreal-dia-9-vol-1000ml-3474630440432.html",
@@ -18235,8 +18339,8 @@
     {
       "ean": "3474630440470",
       "name": "Activador L'Oreal Dia 15 Vol. 1000ML",
-      "price": 15.16,
-      "net_price": 12.33,
+      "price": 16.05,
+      "net_price": 13.05,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/dia-color-l-oreal/90310-activador-l-oreal-dia-15-vol-1000ml-3474630440470.html",
@@ -18352,8 +18456,8 @@
     {
       "ean": "3474637130640",
       "name": "L'Oréal iNOA 6.11 Louro Escuro Cendré Intenso Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/90351-coloracao-inoa-l-oreal-611-louro-escuro-cendre-intenso-60ml-3474637130640.html",
@@ -18365,8 +18469,8 @@
     {
       "ean": "3474637130237",
       "name": "L'Oréal iNOA 7.11 Louro Cinza Profundo Coloração Permanente Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/90353-coloracao-inoa-l-oreal-711-louro-cendre-intenso-60ml-3474637130237.html",
@@ -18378,8 +18482,8 @@
     {
       "ean": "3474637131340",
       "name": "L'Oréal iNOA 8.0 Louro Claro Coloração Permanente Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/90354-coloracao-inoa-l-oreal-80-base-coloracao-60ml-3474637131340.html",
@@ -18391,8 +18495,8 @@
     {
       "ean": "3474637131548",
       "name": "L'Oréal iNOA 9.0 Louro Muito Claro Natural Sem Amoníaco 60ml",
-      "price": 13.91,
-      "net_price": 11.31,
+      "price": 14.72,
+      "net_price": 11.97,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inoa-loreal/90355-coloracao-inoa-l-oreal-90-base-coloracao-60ml-3474637131548.html",
@@ -18404,8 +18508,8 @@
     {
       "ean": "3474637282097",
       "name": "L'Oréal Majirel 8.21 Louro Claro Irisado Cinza 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/90356-l-oreal-majirel-821-louro-claro-irisado-cinza-60ml-3474637282097.html",
@@ -18584,10 +18688,36 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8432225137025",
+      "name": "Condicionador Bifásico Anti-Amarelos Revlon Equave 200ml",
+      "price": 20.15,
+      "net_price": 16.38,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/revlon-equave/90392-condicionador-bifasico-anti-amarelos-revlon-equave-200ml-8432225137025.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152559-thickbox_default/condicionador-bifasico-anti-amarelos-revlon-equave-200ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8432225137056",
+      "name": "Condicionador Bifásico Proteção da Cor Revlon Equave 200ml",
+      "price": 20.15,
+      "net_price": 16.38,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/revlon-equave/90393-condicionador-bifasico-protecao-da-cor-revlon-equave-200ml-8432225137056.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152561-thickbox_default/condicionador-bifasico-protecao-da-cor-revlon-equave-200ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8432225137087",
       "name": "Condicionador Trifásico Hydro Fusio-Oil Revlon Equave Cabelo e Corpo 200ml",
-      "price": 18.89,
-      "net_price": 15.36,
+      "price": 21.25,
+      "net_price": 17.28,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/revlon-equave/90395-condicionador-trifasico-hydro-fusio-oil-revlon-equave-cabelo-e-corpo-200ml-8432225137087.html",
@@ -19780,6 +19910,84 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "7898449220843",
+      "name": "Condicionador 2 em 1 Johnnie Black 180ml",
+      "price": 11.62,
+      "net_price": 9.45,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/91272-condicionador-2-em-1-johnnie-black-180ml-7898449220843.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/155094-thickbox_default/condicionador-2-em-1-johnnie-black-180ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449220966",
+      "name": "Óleo para Barba Johnnie Black 30ml",
+      "price": 9.85,
+      "net_price": 8.01,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/91273-oleo-para-barba-johnnie-black-30ml-7898449220966.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/155095-thickbox_default/oleo-para-barba-johnnie-black-30ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449221291",
+      "name": "Cera Mate Johnnie Black 150g",
+      "price": 16.49,
+      "net_price": 13.41,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/91276-cera-mate-johnnie-black-150g-7898449221291.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/155100-thickbox_default/cera-mate-johnnie-black-150g.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449221284",
+      "name": "Cera Modeladora Shake It Up Johnnie Black 150g",
+      "price": 16.49,
+      "net_price": 13.41,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/91277-cera-modeladora-shake-it-up-johnnie-black-150g--7898449221284.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/155101-thickbox_default/cera-modeladora-shake-it-up-johnnie-black-150g-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449221307",
+      "name": "Gel de Barbear Johnnie Black 180ml",
+      "price": 14.28,
+      "net_price": 11.61,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/91279-gel-de-barbear-johnnie-black-180ml-7898449221307.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/155104-thickbox_default/gel-de-barbear-johnnie-black-180ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898449221314",
+      "name": "Gel de Barbear Johnnie Black 500ml",
+      "price": 19.65,
+      "net_price": 15.98,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/johnnie-black/91280-gel-de-barbear-johnnie-black-500ml-7898449221314.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/155106-thickbox_default/gel-de-barbear-johnnie-black-500ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "7898449221154",
       "name": "Pó Modelador Snow Flakes Johnnie Black 4.5g",
       "price": 11.01,
@@ -20198,8 +20406,8 @@
     {
       "ean": "3474637282554",
       "name": "L'Oréal Majirel 10.12 Louro Claríssimo Cinza Irisado 60ml",
-      "price": 12.08,
-      "net_price": 9.82,
+      "price": 12.79,
+      "net_price": 10.4,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/majirel-loreal/91808-l-oreal-majirel-1012-louro-clarissimo-cinza-irisado-60ml-3474637282554.html",
@@ -20898,14 +21106,6 @@
       "reason": "visible product data disagree with schema"
     },
     {
-      "url": "https://presencadeluxo.pt/revlon-equave/1513-condicionador-hydro-nutritive-200ml-equave-revlon-8432225137018.html",
-      "ean": "8432225137018",
-      "canonical": "8432225137018",
-      "existing_name": "Revlon Equave Instant Detanglig Conditioner Hydro Nutritive 200ml",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/acessorios-barbearia/2781-espanador-po-talco-8423029016821.html",
       "ean": "8423029016821",
       "canonical": "8423029016821",
@@ -21114,30 +21314,6 @@
       "reason": "unverified price/currency/URL"
     },
     {
-      "url": "https://presencadeluxo.pt/uniq-one/12786-unique-one-150ml-revlon-8432225129778.html",
-      "ean": "8432225129778",
-      "canonical": "8432225129778",
-      "existing_name": "Uniq One All In One Hair Treatment",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/uniq-one/12787-uniq-one-coconut-150ml-revlon-8432225129907.html",
-      "ean": "8432225129907",
-      "canonical": "8432225129907",
-      "existing_name": "UNIQ ONE COCONUT all in one hair treatment",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/uniq-one/12788-uniq-one-flor-de-lotus-150ml-revlon-8432225129877.html",
-      "ean": "8432225129877",
-      "canonical": "8432225129877",
-      "existing_name": "Revlon Professional UniqOne All In One Lotus Flower Hair Treatment",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/uniq-one/12790-uniq-one-super10r-hair-mascara-300ml-revlon-8432225129822.html",
       "ean": "8432225129822",
       "canonical": "8432225129822",
@@ -21270,6 +21446,14 @@
       "ean": "7897158710058",
       "canonical": "7897158710058",
       "existing_name": "Gota Dourada Fortalecimento Recarga De Queratina Condicionador 430ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gota-dourada/74935-condicionador-antiqueda-queratrix-430ml-gota-dourada--7897158717668.html",
+      "ean": "7897158717668",
+      "canonical": "7897158717668",
+      "existing_name": "Gota Dourada Fortalecimento Anti-Queda Queratrix Condicionador 430ml",
       "method": "GTIN",
       "reason": "unverified price/currency/URL"
     },
@@ -21546,30 +21730,6 @@
       "reason": "stock/order contradiction"
     },
     {
-      "url": "https://presencadeluxo.pt/shampoo-homem/85137-shampoo-3-em-1-jhonnie-black-240ml-7898449220829.html",
-      "ean": "7898449220829",
-      "canonical": "7898449220829",
-      "existing_name": "Johnnie Black Champô 3 Em 1 Para Cabelo/Barba/Corpo 240ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/shampoo-homem/85138-shampoo-iceberg-jhonnie-black-500ml-7898449221352.html",
-      "ean": "7898449221352",
-      "canonical": "7898449221352",
-      "existing_name": "Johnnie Black Iceberg Shampoo 500ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/finalizador-de-barba-pos-barba/85141-creme-hidratante-de-barba-johnnie-black-500ml--7898449221086.html",
-      "ean": "7898449221086",
-      "canonical": "7898449221086",
-      "existing_name": "Johnnie Black Creme Hidratante de Barba 500ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
       "url": "https://presencadeluxo.pt/l-oreal-absolut-repair-molecular/85272-shampoo-l-oreal-absolut-repair-molecular-300ml-3474637153526.html",
       "ean": "3474637153526",
       "canonical": "3474637153526",
@@ -21646,14 +21806,6 @@
       "ean": "5600482307045",
       "canonical": "5600482307045",
       "existing_name": "Techshen Epic Prancha de Cabelo L 230ºC",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/revlon-equave/87534-shampoo-revlon-equave-princess-kids-300ml-criancas-8432225111445.html",
-      "ean": "8432225111445",
-      "canonical": "8432225111445",
-      "existing_name": "Revlon Shampoo Condicionador Equave Kids Princess 300 ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
     },
@@ -21794,6 +21946,14 @@
       "reason": "stock/order contradiction"
     },
     {
+      "url": "https://presencadeluxo.pt/blond-absolu/89688-serum-noturno-kerastase-blond-absolut-cicanuit-90ml-3474636909292.html",
+      "ean": "3474636909292",
+      "canonical": "3474636909292",
+      "existing_name": "Blond Absolu Sérum Cicanuit",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
+    },
+    {
       "url": "https://presencadeluxo.pt/blond-absolu/89690-mascara-capilar-kerastase-blond-absolu-cicaextreme-200ml-3474636948529.html",
       "ean": "3474636948529",
       "canonical": "3474636948529",
@@ -21866,22 +22026,6 @@
       "reason": "visible product data disagree with schema"
     },
     {
-      "url": "https://presencadeluxo.pt/dia-color-l-oreal/90277-coloracao-demi-permanente-dia-color-l-oreal-6-sem-amoniaco-3474637207076.html",
-      "ean": "3474637207076",
-      "canonical": "3474637207076",
-      "existing_name": "DIA COLOR coloration demi-permanente sans ammoniaque 6 60 ml",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/dia-color-l-oreal/90279-coloracao-demi-permanente-dia-color-l-oreal-63-sem-amoniaco-3474637208233.html",
-      "ean": "3474637208233",
-      "canonical": "3474637208233",
-      "existing_name": "L&#039;Oréal Professionnel Paris Dia Color Coloração Capilar demi-permanente sem Amoníaco 6.3 60 ml",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/-serioxyl-advanced/90340-shampoo-l-oreal-serioxyl-advanced-densifying-300ml-3474637106393.html",
       "ean": "3474637106393",
       "canonical": "3474637106393",
@@ -21910,22 +22054,6 @@
       "ean": "8007376065307",
       "canonical": "8007376065307",
       "existing_name": "Revlon Professional Magnet Blondes Ultimate Oil Developer",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/revlon-equave/90392-condicionador-bifasico-anti-amarelos-revlon-equave-200ml-8432225137025.html",
-      "ean": "8432225137025",
-      "canonical": "8432225137025",
-      "existing_name": "Revlon Condicionador Desembaraçador Loiro Equave Ib 200 ml",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/revlon-equave/90393-condicionador-bifasico-protecao-da-cor-revlon-equave-200ml-8432225137056.html",
-      "ean": "8432225137056",
-      "canonical": "8432225137056",
-      "existing_name": "Equave Color Vibrancy Professional Condicionador Desembaraçante Bifacial",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
     },
@@ -22064,62 +22192,6 @@
       "existing_name": "Serioxyl Advanced X",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/cabelo-produtos-barbeiro/91272-condicionador-2-em-1-johnnie-black-180ml-7898449220843.html",
-      "ean": "7898449220843",
-      "canonical": "7898449220843",
-      "existing_name": "Johnnie Black Condicionador 2 em 1 180ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/finalizador-de-barba-pos-barba/91273-oleo-para-barba-johnnie-black-30ml-7898449220966.html",
-      "ean": "7898449220966",
-      "canonical": "7898449220966",
-      "existing_name": "Johnnie Black Óleo Para A Barba 30ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91274-copia-de-creme-de-barbear-jhonnie-black-180ml-7898449220850.html",
-      "ean": "7898449220850",
-      "canonical": "7898449220850",
-      "existing_name": "Johnnie Black Creme De Barbear  180ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/finalizador-de-cabelo-barbershop/91276-cera-mate-johnnie-black-150g-7898449221291.html",
-      "ean": "7898449221291",
-      "canonical": "7898449221291",
-      "existing_name": "Johnnie Black Pomada/Cera Matte  150g",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/finalizador-de-cabelo-barbershop/91277-cera-modeladora-shake-it-up-johnnie-black-150g--7898449221284.html",
-      "ean": "7898449221284",
-      "canonical": "7898449221284",
-      "existing_name": "Johnnie Black Pomada Modeladora Shake It Up  150g",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/espuma-de-barbear-creme-de-barbear/91279-gel-de-barbear-johnnie-black-180ml-7898449221307.html",
-      "ean": "7898449221307",
-      "canonical": "7898449221307",
-      "existing_name": "Johnie Black Shave Gel - Gel De Barbear  180ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
-    },
-    {
-      "url": "https://presencadeluxo.pt/produtos-para-barba/91280-gel-de-barbear-johnnie-black-500ml-7898449221314.html",
-      "ean": "7898449221314",
-      "canonical": "7898449221314",
-      "existing_name": "Johnie Black Shave Gel - Gel De Barbear 500ml",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/aparador-de-barba/91424-maquina-shaver-techshen-sharpcut-verde-5600482307533.html",
@@ -22272,8 +22344,8 @@
         {
           "ean": "3474637128975",
           "name": "L'Oréal iNOA 5.62 Castanho Claro Vermelho Irisado Sem Amoníaco 60ml",
-          "price": 13.91,
-          "net_price": 11.31,
+          "price": 14.72,
+          "net_price": 11.97,
           "tax_included": true,
           "in_stock": true,
           "url": "https://presencadeluxo.pt/inoa-loreal/867-inoa-562-vermelhos-acajous-60ml-3474637128975.html",
@@ -22285,8 +22357,8 @@
         {
           "ean": "3474637128975",
           "name": "L'Oréal iNOA Carmilane 5.62 Castanho Claro Vermelho Irisado Sem Amoníaco 60ml",
-          "price": 13.91,
-          "net_price": 11.31,
+          "price": 14.72,
+          "net_price": 11.97,
           "tax_included": true,
           "in_stock": true,
           "url": "https://presencadeluxo.pt/inoa-loreal/78982-inoa-carmilane-c562-castanho-claro-vermelho-irisado-60g-l-oreal-profissional-3474637128975.html",
@@ -22304,8 +22376,8 @@
         {
           "ean": "3474637129606",
           "name": "L'Oréal iNOA 5.3 Castanho Claro Dourado Sem Amoníaco 60ml",
-          "price": 13.91,
-          "net_price": 11.31,
+          "price": 14.72,
+          "net_price": 11.97,
           "tax_included": true,
           "in_stock": true,
           "url": "https://presencadeluxo.pt/inoa-loreal/888-inoa-53-dourados-60g-loreal-profissional-lim-3474637129606.html",
@@ -22317,8 +22389,8 @@
         {
           "ean": "3474637129606",
           "name": "L'Oréal iNOA 5.3 Castanho Claro Dourado Sem Amoníaco 60ml",
-          "price": 13.59,
-          "net_price": 11.05,
+          "price": 14.39,
+          "net_price": 11.7,
           "tax_included": true,
           "in_stock": true,
           "url": "https://presencadeluxo.pt/inoa-loreal/81423-inoa-53-fundamentais-dourado-60g-loreal-profissional-3474637129606.html",
@@ -22336,8 +22408,8 @@
         {
           "ean": "3474637129354",
           "name": "L'Oréal iNOA 6.3 Louro Escuro Dourado Sem Amoníaco 60ml",
-          "price": 13.91,
-          "net_price": 11.31,
+          "price": 14.72,
+          "net_price": 11.97,
           "tax_included": true,
           "in_stock": true,
           "url": "https://presencadeluxo.pt/inoa-loreal/887-inoa-63-dourados-60g-loreal-profissional-lim-3474637129354.html",
@@ -22349,8 +22421,8 @@
         {
           "ean": "3474637129354",
           "name": "L'Oréal iNOA 6.3 Louro Escuro Dourado Sem Amoníaco 60ml",
-          "price": 13.91,
-          "net_price": 11.31,
+          "price": 14.72,
+          "net_price": 11.97,
           "tax_included": true,
           "in_stock": true,
           "url": "https://presencadeluxo.pt/inoa-loreal/81424-inoa-63-fundamentais-louro-escuro-dourado-60g-l-oreal-profissional--3474637129354.html",
@@ -22420,6 +22492,38 @@
           "url": "https://presencadeluxo.pt/true-pure-verniz-gel-vegan/85040-true-pure-gel-polish-andreia-0-plastic-colors-collection-5603927886235.html",
           "status": "ok",
           "image_url": "https://presencadeluxo.pt/139689-thickbox_default/true-pure-gel-polish-andreia-0-plastic-colors-collection.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        }
+      ]
+    },
+    {
+      "reason": "conflicting duplicate GTIN",
+      "ean": "7898449220850",
+      "rows": [
+        {
+          "ean": "7898449220850",
+          "name": "Espátula de Cera 130mm - Madeira",
+          "price": 1.25,
+          "net_price": 1.02,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/descartaveis-depilacao-mascaras-espatulas-rolos/8441-espatula-de-cera-130mm-madeira-7898449220850.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/137595-thickbox_default/espatula-de-cera-130mm-madeira.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        },
+        {
+          "ean": "7898449220850",
+          "name": "Creme de Barbear Jhonnie Black 180ml",
+          "price": 16.49,
+          "net_price": 13.41,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/johnnie-black/91274-copia-de-creme-de-barbear-jhonnie-black-180ml-7898449220850.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/155097-thickbox_default/copia-de-creme-de-barbear-jhonnie-black-180ml.jpg",
           "source": "explicit-visible-price-with-VAT-and-product-schema",
           "additional_shipping_cost": 0.0
         }
