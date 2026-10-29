@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-29T10:10:35.643934+00:00",
-  "completed_at": "2026-10-29T11:53:16.115495+00:00",
+  "scraped_at": "2026-10-29T17:28:16.197896+00:00",
+  "completed_at": "2026-10-29T19:19:32.782063+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -16049,19 +16049,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3386460109567",
-      "name": "Eau de Parfum Coach New York Coach Dreams 90ml",
-      "price": 49.76,
-      "net_price": 40.46,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/perfumes-mulher/85650-eau-de-parfum-coach-new-york-coach-dreams-90ml-3386460109567.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/141496-thickbox_default/eau-de-parfum-coach-new-york-coach-dreams-90ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "020714052959",
       "name": "Eau de Parfum Clinique Happy 50ml",
       "price": 26.75,
@@ -16604,19 +16591,6 @@
       "url": "https://presencadeluxo.pt/desinfetante/86719-spray-de-desinfeccao-novicide-1l--4260638462625.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/144538-thickbox_default/spray-de-desinfeccao-novicide-1l-.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "4260638465350",
-      "name": "Blade Care NOVICIDE 500ml – Solução Profissional para Manutenção de Lâminas",
-      "price": 16.61,
-      "net_price": 13.5,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/desinfetante/86721-blade-care-novicide-500ml-4260638465350.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/144542-thickbox_default/blade-care-novicide-500ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -21762,6 +21736,14 @@
       "reason": "unverified price/currency/URL"
     },
     {
+      "url": "https://presencadeluxo.pt/perfumes-mulher/85650-eau-de-parfum-coach-new-york-coach-dreams-90ml-3386460109567.html",
+      "ean": "3386460109567",
+      "canonical": "3386460109567",
+      "existing_name": "Coach Dreams Eau De Perfume Spray 90ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
       "url": "https://presencadeluxo.pt/perfumes-mulher/85651-eau-de-parfum-clinique-happy-100ml-020714156893.html",
       "ean": "020714156893",
       "canonical": "020714156893",
@@ -21800,6 +21782,14 @@
       "existing_name": "Secador de Cabelo PENTA",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/desinfetante/86721-blade-care-novicide-500ml-4260638465350.html",
+      "ean": "4260638465350",
+      "canonical": "4260638465350",
+      "existing_name": "Novicide Blade Care Desinfeção 500 ml",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
     },
     {
       "url": "https://presencadeluxo.pt/pranchas-de-cabelo/87091-prancha-de-cabelo-techshen-epic-l-230c-5600482307045.html",
