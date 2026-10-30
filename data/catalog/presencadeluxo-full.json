@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-10-30T10:12:54.145794+00:00",
-  "completed_at": "2026-10-30T12:11:33.201892+00:00",
+  "scraped_at": "2026-10-30T17:03:29.927840+00:00",
+  "completed_at": "2026-10-30T18:47:51.492814+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -16348,19 +16348,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "8410412026253",
-      "name": "Creme Contorno de Olhos Babaria Aloe 15ml",
-      "price": 5.04,
-      "net_price": 4.1,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/creme-de-olhos/86506-creme-contorno-de-olhos-babaria-aloe-15ml-8410412026253.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/143846-thickbox_default/creme-contorno-de-olhos-babaria-aloe-15ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "8028483266364",
       "name": "Shampoo Kaypro Kayproxil Tratamento Anti-Queda 1000ml",
       "price": 14.47,
@@ -16734,19 +16721,6 @@
       "url": "https://presencadeluxo.pt/cabelos-loiros/87071-mascara-de-cor-fanola-orotherapy-24k-dourado-250ml-8032947868971.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/145494-thickbox_default/mascara-de-cor-fanola-orotherapy-24k-dourado-250ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "8032947868162",
-      "name": "Máscara de Cor Fanola OroTherapy 24K Chocolate 250ml",
-      "price": 10.99,
-      "net_price": 8.94,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/cabelos-pintados/87072-mascara-de-cor-fanola-orotherapy-24k-chocolate-250ml-8032947868162.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/145496-thickbox_default/mascara-de-cor-fanola-orotherapy-24k-chocolate-250ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -21784,12 +21758,28 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/creme-de-olhos/86506-creme-contorno-de-olhos-babaria-aloe-15ml-8410412026253.html",
+      "ean": "8410412026253",
+      "canonical": "8410412026253",
+      "existing_name": "Contorno de olhos Aloé Vera",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
       "url": "https://presencadeluxo.pt/desinfetante/86721-blade-care-novicide-500ml-4260638465350.html",
       "ean": "4260638465350",
       "canonical": "4260638465350",
       "existing_name": "Novicide Blade Care Desinfeção 500 ml",
       "method": "GTIN",
       "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/cabelos-pintados/87072-mascara-de-cor-fanola-orotherapy-24k-chocolate-250ml-8032947868162.html",
+      "ean": "8032947868162",
+      "canonical": "8032947868162",
+      "existing_name": "Fanola Oro Puro Therapy Oro Therapy Color Mask Chocolate / 250 ml",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/pranchas-de-cabelo/87091-prancha-de-cabelo-techshen-epic-l-230c-5600482307045.html",
