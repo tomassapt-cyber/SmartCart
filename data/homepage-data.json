@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-29T11:26:57.681Z",
-  "seed_total_products": 95531,
+  "generated_at": "2026-10-30T09:46:32.934Z",
+  "seed_total_products": 95564,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.46,
+      "best_price": 16.45,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -141,10 +141,10 @@
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 14.28,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/neutrogena-corpo-deep-moisture-duo-locao-corporal-750ml-400ml-com-desconto-de-25"
+      "best_price": 14.15,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/neutrogena-pack-duo-hidratacao-profunda-locao-corporal-pele-seca-750ml-400ml"
     },
     {
       "ean": "8431567752002",
@@ -188,6 +188,34 @@
       "verified_live": true
     },
     {
+      "ean": "5600797592075",
+      "name": "SVR Rotina Anti-Idade Global Coffret",
+      "brand": "SVR",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/svr/5600797592075_main-800x800.jpg",
+      "best_price": 34.93,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/svr-rotina-anti-idade-global-coffret",
+      "previous_price": 49.9,
+      "discount_pct": 30,
+      "dropped_day": 20755,
+      "verified_live": true
+    },
+    {
+      "ean": "3461020013178",
+      "name": "Esthederm Osmoclean Mousse Purificante -",
+      "brand": "Esthederm",
+      "image_url": "https://farmacianovadamaia.pt/50350-large_default/esthederm-osmoclean-espuma-purete-limpeza-150ml.jpg",
+      "best_price": 16.98,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/esthederm-osmoclean-espuma-de-limpeza-purificante-150ml",
+      "previous_price": 23.77,
+      "discount_pct": 29,
+      "dropped_day": 20756,
+      "verified_live": true
+    },
+    {
       "ean": "8428749007142",
       "name": "Sensilis Peptide [Lip Color] 03 Pink Sweet Heat",
       "brand": "Sensilis",
@@ -200,35 +228,6 @@
       "discount_pct": 26,
       "dropped_day": 20748,
       "verified_live": true
-    },
-    {
-      "ean": "8700216890106",
-      "name": "Aussie Deep Hydration Hair Mask",
-      "brand": "Aussie",
-      "image_url": "https://cdn.notinoimg.com/detail_main_mq/aussie/8700216890106_01-o/deep-hydration-hair-mask___250926.jpg",
-      "best_price": 9.97,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/deep-hydration-hair-mask-8712319.html",
-      "volume_ml": 500,
-      "previous_price": 13.29,
-      "discount_pct": 25,
-      "dropped_day": 20748,
-      "verified_live": true
-    },
-    {
-      "ean": "8809567925205",
-      "name": "Centella Calming Barrier Cream",
-      "brand": "Barr",
-      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1461188.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 17.9,
-      "best_store": "Farmaciasdirect",
-      "best_store_slug": "farmaciasdirect",
-      "best_url": "https://www.farmaciasdirect.pt/products/barr-centella-calming-barrier-creme-80-ml",
-      "previous_price": 23.7,
-      "discount_pct": 24,
-      "dropped_day": 20751,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -238,7 +237,7 @@
     },
     {
       "name": "Avène",
-      "products": 859
+      "products": 858
     },
     {
       "name": "Isdin",
@@ -254,15 +253,15 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 803
+      "products": 802
     },
     {
       "name": "Eucerin",
-      "products": 764
+      "products": 763
     },
     {
       "name": "Chicco",
-      "products": 741
+      "products": 746
     }
   ],
   "telegram_alerts": [
@@ -296,7 +295,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 75615,
+    "products": 75683,
     "avg_savings_pct": 28
   },
   "shard_version": "",
