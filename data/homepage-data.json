@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-30T11:19:02.177Z",
-  "seed_total_products": 95566,
+  "generated_at": "2026-10-31T09:24:01.863Z",
+  "seed_total_products": 95595,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.45,
+      "best_price": 16.46,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -173,6 +173,20 @@
       "verified_live": true
     },
     {
+      "ean": "8716900569463",
+      "name": "Fortimel Compact Protein Pêssego/Manga - (x4 unidades)",
+      "brand": "Fortimel",
+      "image_url": "https://assets.farmaciaideal.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciaideal.pt/images/originals/7397364.webp",
+      "best_price": 7.09,
+      "best_store": "MegaFarma",
+      "best_store_slug": "megafarma",
+      "best_url": "https://megafarma.pt/pt-pt/product/fortimel-compact-protein-pessego-manga-125ml-x4",
+      "previous_price": 10.17,
+      "discount_pct": 30,
+      "dropped_day": 20757,
+      "verified_live": true
+    },
+    {
       "ean": "8800289473142",
       "name": "Deep Vita A Retinol Sérum",
       "brand": "Medicube",
@@ -202,31 +216,17 @@
       "verified_live": true
     },
     {
-      "ean": "3461020013178",
-      "name": "Esthederm Osmoclean Mousse Purificante -",
-      "brand": "Esthederm",
-      "image_url": "https://farmacianovadamaia.pt/50350-large_default/esthederm-osmoclean-espuma-purete-limpeza-150ml.jpg",
-      "best_price": 16.98,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/esthederm-osmoclean-espuma-de-limpeza-purificante-150ml",
-      "previous_price": 23.77,
+      "ean": "4005800325465",
+      "name": "Pansements HP SENSITIVE 2 tailles 20 u",
+      "brand": "Hansaplast",
+      "image_url": "https://powerbeauty.pt/20474-home_default/pansements-hp-sensitive-2-tailles-20-u.jpg",
+      "best_price": 1.7,
+      "best_store": "Loja do Shampoo",
+      "best_store_slug": "lojashampoo",
+      "best_url": "https://www.lojashampoo.pt/hansaplast-sensitive-20-unidades-2-tamanhos",
+      "previous_price": 2.4,
       "discount_pct": 29,
-      "dropped_day": 20756,
-      "verified_live": true
-    },
-    {
-      "ean": "8428749007142",
-      "name": "Sensilis Peptide [Lip Color] 03 Pink Sweet Heat",
-      "brand": "Sensilis",
-      "image_url": "https://static.beautytocare.com/cdn-cgi/image/f=auto/media/catalog/product//s/e/sensilis-peptide-lip-color-03-pink-sweet-heat-10ml.jpg",
-      "best_price": 10.89,
-      "best_store": "DocMorris",
-      "best_store_slug": "docmorris",
-      "best_url": "https://www.docmorris.pt/pt/sensilis-peptide-lip-color-03-pink-sweet-heat-10ml/p-788081",
-      "previous_price": 14.79,
-      "discount_pct": 26,
-      "dropped_day": 20748,
+      "dropped_day": 20757,
       "verified_live": true
     }
   ],
@@ -237,11 +237,11 @@
     },
     {
       "name": "Avène",
-      "products": 859
+      "products": 857
     },
     {
       "name": "Isdin",
-      "products": 842
+      "products": 841
     },
     {
       "name": "Nivea",
@@ -253,11 +253,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 802
+      "products": 801
     },
     {
       "name": "Eucerin",
-      "products": 763
+      "products": 762
     },
     {
       "name": "Chicco",
@@ -295,7 +295,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 75683,
+    "products": 75732,
     "avg_savings_pct": 28
   },
   "shard_version": "",
