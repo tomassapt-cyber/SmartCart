@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-31T10:51:13.499Z",
-  "seed_total_products": 95610,
+  "generated_at": "2026-11-01T10:13:42.182Z",
+  "seed_total_products": 95791,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.46,
+      "best_price": 16.45,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -17,7 +17,7 @@
       "name": "René Furterer Sublime Karité Máscara Nutritiva",
       "brand": "René Furterer",
       "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/1734961488_a325e45081527067b0e715ed711b5cce.jpg?v=1737042299",
-      "best_price": 19.92,
+      "best_price": 19.94,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/sublime-karite-mascara-nutritiva"
@@ -137,6 +137,16 @@
       "best_url": "https://www.farmacia365.pt/neutrogena-collagen-bank-coffret-creme-spf30-50ml-com-oferta-de-gel-creme-olhos-15g"
     },
     {
+      "ean": "8431567752002",
+      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
+      "best_price": 31.43,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/la-roche-posay-hyalu-suractivated-serum-coffret-natal26_p87253.html"
+    },
+    {
       "ean": "3574661879185",
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
@@ -145,19 +155,23 @@
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
       "best_url": "https://easyfarma.pt/products/neutrogena-corpo-hidratacao-profunda-750ml-400ml-25"
-    },
-    {
-      "ean": "8431567752002",
-      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
-      "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 35.63,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-hyalu-b5-suractivated-serum-coffret-xmas26"
     }
   ],
   "em_alta": [
+    {
+      "ean": "3574661911175",
+      "name": "Loção Corporal Visibly Renew - Pack Promocional",
+      "brand": "Neutrogena",
+      "image_url": "https://cdn.shopify.com/s/files/1/0601/5123/4757/files/7602813.jpg?v=1779812668",
+      "best_price": 11.8,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-corpo-visibly-firming-locao-pack-duo_p87292.html",
+      "previous_price": 21.24,
+      "discount_pct": 44,
+      "dropped_day": 20758,
+      "verified_live": true
+    },
     {
       "ean": "8410412100595",
       "name": "Crema Ácido Glicólico",
@@ -184,21 +198,6 @@
       "previous_price": 10.17,
       "discount_pct": 30,
       "dropped_day": 20757,
-      "verified_live": true
-    },
-    {
-      "ean": "8800289473142",
-      "name": "Deep Vita A Retinol Sérum",
-      "brand": "Medicube",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-638802456689797015/medicube-023737mw_01.jpg",
-      "best_price": 18.8,
-      "best_store": "Store K-Beauty",
-      "best_store_slug": "storekbeauty",
-      "best_url": "https://www.storekbeauty.com/products/medicube-deep-vita-a-retinol-serum",
-      "volume_ml": 53,
-      "previous_price": 26.9,
-      "discount_pct": 30,
-      "dropped_day": 20747,
       "verified_live": true
     },
     {
@@ -237,7 +236,7 @@
     },
     {
       "name": "Avène",
-      "products": 857
+      "products": 853
     },
     {
       "name": "Isdin",
@@ -245,23 +244,23 @@
     },
     {
       "name": "Nivea",
-      "products": 811
+      "products": 814
     },
     {
       "name": "L'Oréal Paris",
-      "products": 808
+      "products": 812
     },
     {
       "name": "La Roche-Posay",
-      "products": 800
+      "products": 801
     },
     {
       "name": "Eucerin",
-      "products": 764
+      "products": 763
     },
     {
       "name": "Chicco",
-      "products": 746
+      "products": 747
     }
   ],
   "telegram_alerts": [
@@ -295,7 +294,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 75732,
+    "products": 75837,
     "avg_savings_pct": 28
   },
   "shard_version": "",
