@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-02T10:43:39.808Z",
-  "seed_total_products": 95809,
+  "generated_at": "2026-11-02T13:20:33.875Z",
+  "seed_total_products": 95826,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -159,20 +159,6 @@
   ],
   "em_alta": [
     {
-      "ean": "3574661911175",
-      "name": "Loção Corporal Visibly Renew - Pack Promocional",
-      "brand": "Neutrogena",
-      "image_url": "https://cdn.shopify.com/s/files/1/0601/5123/4757/files/7602813.jpg?v=1779812668",
-      "best_price": 11.8,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-corpo-visibly-firming-locao-pack-duo_p87292.html",
-      "previous_price": 21.24,
-      "discount_pct": 44,
-      "dropped_day": 20758,
-      "verified_live": true
-    },
-    {
       "ean": "5600264649014",
       "name": "Bioscalin Nutricolor+ Condicionador Protetor da Cor",
       "brand": "Bioscalin",
@@ -216,17 +202,31 @@
       "verified_live": true
     },
     {
-      "ean": "3372290000860",
-      "name": "Colour Protect Conditioner",
-      "brand": "Lazartigue",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5803594.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.25,
-      "best_store": "Farmácia do Costume",
-      "best_store_slug": "farmaciadocostume",
-      "best_url": "https://www.farmaciadocostume.pt/lazartigue-condicionador-protecao-de-cor-luminosidade-150ml.html",
-      "previous_price": 18.45,
-      "discount_pct": 28,
-      "dropped_day": 20758,
+      "ean": "5600797592075",
+      "name": "SVR Rotina Anti-Idade Global Coffret",
+      "brand": "SVR",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/svr/5600797592075_main-800x800.jpg",
+      "best_price": 34.93,
+      "best_store": "Aveiro Farma",
+      "best_store_slug": "aveirofarma",
+      "best_url": "https://aveirofarma.pt/svr-rotina-anti-idade-global-coffret",
+      "previous_price": 49.9,
+      "discount_pct": 30,
+      "dropped_day": 20755,
+      "verified_live": true
+    },
+    {
+      "ean": "4005800325465",
+      "name": "Pansements HP SENSITIVE 2 tailles 20 u",
+      "brand": "Hansaplast",
+      "image_url": "https://powerbeauty.pt/20474-home_default/pansements-hp-sensitive-2-tailles-20-u.jpg",
+      "best_price": 1.7,
+      "best_store": "Loja do Shampoo",
+      "best_store_slug": "lojashampoo",
+      "best_url": "https://www.lojashampoo.pt/hansaplast-sensitive-20-unidades-2-tamanhos",
+      "previous_price": 2.4,
+      "discount_pct": 29,
+      "dropped_day": 20757,
       "verified_live": true
     }
   ],
@@ -237,7 +237,7 @@
     },
     {
       "name": "Avène",
-      "products": 854
+      "products": 855
     },
     {
       "name": "Isdin",
@@ -253,11 +253,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 798
+      "products": 797
     },
     {
       "name": "Eucerin",
-      "products": 764
+      "products": 766
     },
     {
       "name": "Chicco",
