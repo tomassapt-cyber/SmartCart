@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T11:40:48.850Z",
+  "generated_at": "2026-11-02T13:45:26.173Z",
   "source": "site-search",
   "window_days": 30,
   "products": [
@@ -8,7 +8,7 @@
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.46,
+      "best_price": 16.45,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/",
@@ -20,10 +20,10 @@
       "name": "René Furterer Sublime Karité Máscara Nutritiva",
       "brand": "René Furterer",
       "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/1734961488_a325e45081527067b0e715ed711b5cce.jpg?v=1737042299",
-      "best_price": 19.92,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/sublime-karite-mascara-nutritiva",
+      "best_price": 19.96,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/rene-furterer-sub-karite-masc-nutri-200",
       "search_term": "rené furterer sublime karité máscara nutritiva 100ml",
       "pop_score": 8
     },
