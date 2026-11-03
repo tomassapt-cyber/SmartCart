@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-02T13:20:33.875Z",
-  "seed_total_products": 95826,
+  "generated_at": "2026-11-03T10:34:51.743Z",
+  "seed_total_products": 95844,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -47,10 +47,10 @@
       "name": "La Roche-Posay Cicaplast Baume B5",
       "brand": "La Roche-Posay",
       "image_url": "https://media.appsfarma.com/wemakeit/pt/688011211961.jpg",
-      "best_price": 10.11,
-      "best_store": "Farmácia Barata",
-      "best_store_slug": "farmaciabarata",
-      "best_url": "https://www.farmaciabarata.pt/cicatrizes/la-roche-posay-cicaplast-balsamo-balsamo-b5-balsamo.html"
+      "best_price": 8.94,
+      "best_store": "GO-farma",
+      "best_store_slug": "gofarma",
+      "best_url": "https://www.go-farma.com/pt/corpo/la-roche-posay/la-roche-posay-cicaplast-baume-b5-40ml_p299.html"
     }
   ],
   "bestsellers": [
@@ -111,20 +111,20 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 3.6,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-creme-maos-concentrado-+-stick-labial_p13679.html"
+      "best_price": 3.33,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/neutrogena-pack-creme-concentrado-maos-stick-labial"
     },
     {
       "ean": "3574661540887",
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 14.89,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/aveeno-pack-dermexa-creme-emoliente-200-ml-gel-de-banho-emoliente-300-ml"
+      "best_price": 9.18,
+      "best_store": "MegaFarma",
+      "best_store_slug": "megafarma",
+      "best_url": "https://megafarma.pt/pt-pt/product/aveeno-dermexa-creme-emoliente-200ml-gel-banho-300ml"
     },
     {
       "ean": "8431567752002",
@@ -188,6 +188,35 @@
       "verified_live": true
     },
     {
+      "ean": "0560088000090",
+      "name": "Iraltone Dupla Ação Antiqueda Pack",
+      "brand": "Iraltone",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/iraltone/0560088000090_main-800x800.jpg",
+      "best_price": 30.47,
+      "best_store": "Farmácia.pt",
+      "best_store_slug": "farmaciapt",
+      "best_url": "https://farmacia.pt/iraltone-pack-shampoo-fortificante-200ml-locao-anti-queda-100ml",
+      "volume_ml": 100,
+      "previous_price": 47.2,
+      "discount_pct": 35,
+      "dropped_day": 20760,
+      "verified_live": true
+    },
+    {
+      "ean": "3661434004803",
+      "name": "URIAGE EAU THERM LEITE HIDRANTE CORPO + OFERTA CREME LAVANTE",
+      "brand": "Uriage",
+      "image_url": "https://assets.farmaciaideal.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciaideal.pt/images/originals/6222182.webp",
+      "best_price": 13.43,
+      "best_store": "MegaFarma",
+      "best_store_slug": "megafarma",
+      "best_url": "https://megafarma.pt/pt-pt/product/uriage-eau-thermale-leite-hidratante-corporal-500ml",
+      "previous_price": 20.66,
+      "discount_pct": 35,
+      "dropped_day": 20759,
+      "verified_live": true
+    },
+    {
       "ean": "8716900569463",
       "name": "Fortimel Compact Protein Pêssego/Manga - (x4 unidades)",
       "brand": "Fortimel",
@@ -200,34 +229,6 @@
       "discount_pct": 30,
       "dropped_day": 20757,
       "verified_live": true
-    },
-    {
-      "ean": "5600797592075",
-      "name": "SVR Rotina Anti-Idade Global Coffret",
-      "brand": "SVR",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/svr/5600797592075_main-800x800.jpg",
-      "best_price": 34.93,
-      "best_store": "Aveiro Farma",
-      "best_store_slug": "aveirofarma",
-      "best_url": "https://aveirofarma.pt/svr-rotina-anti-idade-global-coffret",
-      "previous_price": 49.9,
-      "discount_pct": 30,
-      "dropped_day": 20755,
-      "verified_live": true
-    },
-    {
-      "ean": "4005800325465",
-      "name": "Pansements HP SENSITIVE 2 tailles 20 u",
-      "brand": "Hansaplast",
-      "image_url": "https://powerbeauty.pt/20474-home_default/pansements-hp-sensitive-2-tailles-20-u.jpg",
-      "best_price": 1.7,
-      "best_store": "Loja do Shampoo",
-      "best_store_slug": "lojashampoo",
-      "best_url": "https://www.lojashampoo.pt/hansaplast-sensitive-20-unidades-2-tamanhos",
-      "previous_price": 2.4,
-      "discount_pct": 29,
-      "dropped_day": 20757,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -237,7 +238,7 @@
     },
     {
       "name": "Avène",
-      "products": 855
+      "products": 854
     },
     {
       "name": "Isdin",
@@ -253,15 +254,15 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 797
+      "products": 796
     },
     {
       "name": "Eucerin",
-      "products": 766
+      "products": 767
     },
     {
       "name": "Chicco",
-      "products": 747
+      "products": 750
     }
   ],
   "telegram_alerts": [
@@ -295,7 +296,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 75703,
+    "products": 75644,
     "avg_savings_pct": 28
   },
   "shard_version": "",
