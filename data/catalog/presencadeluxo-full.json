@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-02T11:25:00.061956+00:00",
-  "completed_at": "2026-11-02T13:04:17.455942+00:00",
+  "scraped_at": "2026-11-03T01:40:29.343739+00:00",
+  "completed_at": "2026-11-03T03:28:06.283992+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1786,
+  "targets": 1787,
   "products": [
     {
       "ean": "5601411434146",
@@ -16695,6 +16695,19 @@
       "url": "https://presencadeluxo.pt/osis/87044-balsamo-de-caracois-schwarzkopf-osis-bounty-balm-150ml--4045787936339.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/145433-thickbox_default/balsamo-de-caracois-schwarzkopf-osis-bounty-balm-150ml-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8032947861712",
+      "name": "Oxidante 12% Fanola 40vol 300ml",
+      "price": 1.3,
+      "net_price": 1.06,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/oxidante-cabelo/87063-oxidante-12-fanola-40vol-300ml-8032947861712.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/145478-thickbox_default/oxidante-12-fanola-40vol-300ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
