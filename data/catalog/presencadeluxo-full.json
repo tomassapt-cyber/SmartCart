@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-03T01:40:29.343739+00:00",
-  "completed_at": "2026-11-03T03:28:06.283992+00:00",
+  "scraped_at": "2026-11-03T18:30:03.072724+00:00",
+  "completed_at": "2026-11-03T20:14:08.146201+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1787,
+  "targets": 1812,
   "products": [
     {
       "ean": "5601411434146",
@@ -3129,8 +3129,8 @@
     {
       "ean": "5600355732813",
       "name": "Maria Creme Verniz Gel 15ml Inocos",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/8956-maria-creme-verniz-gel-15ml-inocos-5600355732813.html",
@@ -5805,6 +5805,84 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8005610585734",
+      "name": "Magma /17 Cinza Marron 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12260-magma-17-cinza-marron-120gr-wella-professionals-8005610585734.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/132997-thickbox_default/magma-17-cinza-marron-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610586090",
+      "name": "Magma /36 Dourado Violeta 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12261-magma-36-dourado-violeta-120gr-wella-professionals-8005610586090.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133001-thickbox_default/magma-36-dourado-violeta-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610585970",
+      "name": "Magma /39 Dourado Cendré 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12262-magma-39-dourado-cendre-120gr-wella-professionals-8005610585970.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133003-thickbox_default/magma-39-dourado-cendre-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610586397",
+      "name": "Magma /44 Cobre Intenso 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12263-magma-44-cobre-intenso-120gr-wella-professionals-8005610586397.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133009-thickbox_default/magma-44-cobre-intenso-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610585857",
+      "name": "Magma /65 Pastel Mix Violeta Acaju 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12265-magma-65-pastel-mix-violeta-acaju-120gr-wella-professionals-8005610585857.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133010-thickbox_default/magma-65-pastel-mix-violeta-acaju-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610585673",
+      "name": "Magma /73 Marron Dourado 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12266-magma-73-marron-dourado-120gr-wella-professionals-8005610585673.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133012-thickbox_default/magma-73-marron-dourado-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787675405",
       "name": "Schwarzkopf Silhouette Laca Extra Forte Sem Gás 200ml – Fixação Forte e Duradoura",
       "price": 13.32,
@@ -6338,6 +6416,32 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787199888",
+      "name": "Schwarzkopf Igora Royal 6.4 Loiro Escuro Bege 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12526-igora-royal-64-loiro-escuro-bege-60ml-schwarzkopf-4045787199888.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131142-thickbox_default/igora-royal-64-loiro-escuro-bege-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787199901",
+      "name": "Schwarzkopf Igora Royal 6.5 Loiro Escuro Dourado 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12527-igora-royal-65-loiro-escuro-dourado-60ml-schwarzkopf-4045787199901.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131146-thickbox_default/igora-royal-65-loiro-escuro-dourado-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787199925",
       "name": "Schwarzkopf Igora Royal 6.6 Loiro Escuro Chocolate 60ml",
       "price": 13.2,
@@ -6481,6 +6585,45 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787200140",
+      "name": "Schwarzkopf Igora Royal 7.4 Loiro Médio Bege 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12540-igora-royal-74-loiro-medio-bege-60ml-schwarzkopf-4045787200140.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131165-thickbox_default/igora-royal-74-loiro-medio-bege-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787363500",
+      "name": "Schwarzkopf Igora Royal 7.48 Loiro Médio Vermelho Bege 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12541-igora-royal-748-loiro-medio-vermelho-bege-60ml-schwarzkopf-4045787363500.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131167-thickbox_default/igora-royal-748-loiro-medio-vermelho-bege-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787210620",
+      "name": "Schwarzkopf Igora Royal 7.55 Loiro Médio Extra Dourado 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12542-igora-royal-755-loiro-medio-extra-dourado-60ml-schwarzkopf-4045787210620.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131169-thickbox_default/igora-royal-755-loiro-medio-extra-dourado-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787200188",
       "name": "Schwarzkopf Igora Royal 7.65 Loiro Médio Chocolate Dourado 60ml",
       "price": 13.2,
@@ -6546,6 +6689,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787200300",
+      "name": "Schwarzkopf Igora Royal 8.4 Loiro Claro Bege 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12549-igora-royal-84-loiro-claro-bege-60ml-schwarzkopf-4045787200300.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131224-thickbox_default/igora-royal-84-loiro-claro-bege-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787200287",
       "name": "Schwarzkopf Igora Royal 8.11 Loiro Claro Extra Cendré 60ml",
       "price": 13.2,
@@ -6581,6 +6737,58 @@
       "url": "https://presencadeluxo.pt/igora-royal/12553-igora-royal-877-loiro-claro-extra-cobre-60ml-schwarzkopf-4045787200362.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/137499-thickbox_default/igora-royal-877-loiro-claro-extra-cobre-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787200461",
+      "name": "Schwarzkopf Igora Royal 9.5-4 Bege Pastel 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12554-igora-royal-95-4-bege-pastel-60ml-schwarzkopf-4045787200461.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131275-thickbox_default/igora-royal-95-4-bege-pastel-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787200386",
+      "name": "Schwarzkopf Igora Royal 9.5-1 Pérola Pastel 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12555-igora-royal-95-1-perola-pastel-60ml-schwarzkopf-4045787200386.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131237-thickbox_default/igora-royal-95-1-perola-pastel-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787200447",
+      "name": "Schwarzkopf Igora Royal 9.5-22 Azul Pastel 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12556-igora-royal-95-22-azul-pastel-60ml-schwarzkopf-4045787200447.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131271-thickbox_default/igora-royal-95-22-azul-pastel-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787200485",
+      "name": "Schwarzkopf Igora Royal 9.5-49 Nude Pastel 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12557-igora-royal-95-49-nude-pastel-60ml-schwarzkopf-4045787200485.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131277-thickbox_default/igora-royal-95-49-nude-pastel-60ml-schwarzkopf.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -6633,6 +6841,19 @@
       "url": "https://presencadeluxo.pt/igora-royal/12561-igora-royal-94-loiro-extra-claro-bege-60ml-schwarzkopf-4045787200560.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/131305-thickbox_default/igora-royal-94-loiro-extra-claro-bege-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787200584",
+      "name": "Schwarzkopf Igora Royal 9.55 Loiro Extra Claro Extra Dourado 60ml",
+      "price": 13.2,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12562-igora-royal-955-loiro-extra-claro-extra-dourado-60ml-schwarzkopf-4045787200584.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131317-thickbox_default/igora-royal-955-loiro-extra-claro-extra-dourado-60ml-schwarzkopf.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -6832,6 +7053,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787389562",
+      "name": "Igora Fashion Lights L-00 Extra Natural 60ml - Schwarzkopf",
+      "price": 14.96,
+      "net_price": 12.16,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal-fashion-lights/12621-igora-fashion-lights-l-00-extra-natural-60ml-schwarzkopf-4045787389562.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131327-thickbox_default/igora-fashion-lights-l-00-extra-natural-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787389661",
       "name": "Igora Fashion Lights L-77 Extra Cobre 60ml - Schwarzkopf",
       "price": 14.96,
@@ -6841,6 +7075,19 @@
       "url": "https://presencadeluxo.pt/igora-royal-fashion-lights/12622-igora-fashion-lights-l-77-extra-cobre-60ml-schwarzkopf-4045787389661.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/131329-thickbox_default/igora-fashion-lights-l-77-extra-cobre-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787389609",
+      "name": "Igora Fashion Lights L-44 Extra Bege 60ml - Schwarzkopf",
+      "price": 14.96,
+      "net_price": 12.16,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal-fashion-lights/12623-igora-fashion-lights-l-44-extra-bege-60ml-schwarzkopf-4045787389609.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131328-thickbox_default/igora-fashion-lights-l-44-extra-bege-60ml-schwarzkopf.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -7270,6 +7517,58 @@
       "url": "https://presencadeluxo.pt/uniq-one/12788-uniq-one-flor-de-lotus-150ml-revlon-8432225129877.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/152493-thickbox_default/uniq-one-flor-de-lotus-150ml-revlon.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610586212",
+      "name": "Magma /89+ Pérola Cendré Plus 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12814-magma-89-perola-cendre-plus-120gr-wella-professionals-8005610586212.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133020-thickbox_default/magma-89-perola-cendre-plus-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610586335",
+      "name": "Magma /74 Marron Cobre 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12815-magma-74-marron-cobre-120gr-wella-professionals-8005610586335.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133014-thickbox_default/magma-74-marron-cobre-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610586038",
+      "name": "Magma /39+ Dourado Cendré Plus 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella/12816-magma-39-dourado-cendre-plus-120gr-wella-professionals-8005610586038.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/133006-thickbox_default/magma-39-dourado-cendre-plus-120gr-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610585161",
+      "name": "Magma /00 Neutro 120gr - Wella Professionals",
+      "price": 52.8,
+      "net_price": 42.93,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-magma/12819-magma-00-neutro-120gr-wella-professionals-8005610585161.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/132989-thickbox_default/magma-00-neutro-120gr-wella-professionals.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -7913,8 +8212,8 @@
     {
       "ean": "5600355736446",
       "name": "Maria Estrela Rosa Ouro Verniz Gel 15ml Inocos",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/14056-maria-estrela-rosa-ouro-verniz-gel-15ml-inocos-5600355736446.html",
@@ -7952,8 +8251,8 @@
     {
       "ean": "5600355736590",
       "name": "Mini Bomboca Verniz Gel 15ml Inocos",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/14582-mini-bomboca-verniz-gel-15ml-inocos-5600355736590.html",
@@ -15256,19 +15555,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600355746292",
-      "name": "Verniz Gel Reinforce INOCOS Diamonds 15ml Reforçante de Unhas",
-      "price": 11.9,
-      "net_price": 9.68,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/inocos-verniz-gel/84900-verniz-gel-reinforce-inocos-diamonds-15ml-reforcante-de-unhas-5600355746292.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/160933-thickbox_default/verniz-gel-reinforce-inocos-diamonds-15ml-reforcante-de-unhas.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600482306352",
       "name": "Verniz Gel A79 Ricki Parodi Cloudy Day 10ml",
       "price": 4.07,
@@ -16597,8 +16883,8 @@
     {
       "ean": "5600355748463",
       "name": "Verniz Gel Inocos Acertar Em Cheio NL5 15ml",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/86833-verniz-gel-inocos-acertar-em-cheio-nl5-15ml-5600355748463.html",
@@ -16935,8 +17221,8 @@
     {
       "ean": "5600355749125",
       "name": "Verniz Gel Inocos QH1 Dama de Copas 15ml Vermelho Copas",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88680-verniz-gel-inocos-qh1-dama-de-copas-15ml-vermelho-copas-5600355749125.html",
@@ -16948,8 +17234,8 @@
     {
       "ean": "5600355749132",
       "name": "Verniz Gel Inocos QH2 Rei de Paus 15ml Vermelho Brilhos Metalizado",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88681-verniz-gel-inocos-qh2-rei-de-paus-15ml-vermelho-brilhos-metalizado-5600355749132.html",
@@ -16961,8 +17247,8 @@
     {
       "ean": "5600355749149",
       "name": "Verniz Gel Inocos QH3 Valete de Espadas 15ml Vermelho Imperial",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88682-verniz-gel-inocos-qh3-valete-de-espadas-15ml-vermelho-imperial-5600355749149.html",
@@ -16974,8 +17260,8 @@
     {
       "ean": "5600355749156",
       "name": "Verniz Gel Inocos QH4 Duque de Ouros 15ml Vermelho Cristalizado",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88683-verniz-gel-inocos-qh4-duque-de-ouros-15ml-vermelho-cristalizado-5600355749156.html",
@@ -16987,8 +17273,8 @@
     {
       "ean": "5600355749163",
       "name": "Verniz Gel Inocos QH5 Ás de Ouros 15ml Vermelho Borgonha",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88684-verniz-gel-inocos-qh5-as-de-ouros-15ml-vermelho-borgonha-5600355749163.html",
@@ -17000,8 +17286,8 @@
     {
       "ean": "5600355749170",
       "name": "Verniz Gel Inocos QH6 Bisca de Copas 15ml Vermelho Grená",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88685-verniz-gel-inocos-qh6-bisca-de-copas-15ml-vermelho-grena-5600355749170.html",
@@ -17013,8 +17299,8 @@
     {
       "ean": "5600355749187",
       "name": "Verniz Gel Inocos QH7 Joker 15ml Bordeaux Foil Prata",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88686-verniz-gel-inocos-qh7-joker-15ml-bordeaux-foil-prata-5600355749187.html",
@@ -17026,8 +17312,8 @@
     {
       "ean": "5600355749194",
       "name": "Verniz Gel Inocos QH8 Poker 15ml Vermelho Foil Prata",
-      "price": 8.85,
-      "net_price": 7.2,
+      "price": 8.26,
+      "net_price": 6.72,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/inocos-verniz-gel/88687-verniz-gel-inocos-qh8-poker-15ml-vermelho-foil-prata-5600355749194.html",
@@ -21691,6 +21977,14 @@
       "reason": "stock/order contradiction"
     },
     {
+      "url": "https://presencadeluxo.pt/inocos-verniz-gel/84900-verniz-gel-reinforce-inocos-diamonds-15ml-reforcante-de-unhas-5600355746292.html",
+      "ean": "5600355746292",
+      "canonical": "5600355746292",
+      "existing_name": "Verniz Gel Reinforce INOCOS Diamonds 15ml Reforçante de Unhas",
+      "method": "GTIN",
+      "reason": "visible product data disagree with schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/l-oreal-absolut-repair-molecular/85272-shampoo-l-oreal-absolut-repair-molecular-300ml-3474637153526.html",
       "ean": "3474637153526",
       "canonical": "3474637153526",
@@ -22453,6 +22747,38 @@
           "url": "https://presencadeluxo.pt/igora-color10/82611-igora-color10-811-loiro-claro-extra-cendre-60ml-schwarzkopf-4045787237672.html",
           "status": "ok",
           "image_url": "https://presencadeluxo.pt/131436-thickbox_default/igora-color10-811-loiro-claro-extra-cendre-60ml-schwarzkopf.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        }
+      ]
+    },
+    {
+      "reason": "conflicting duplicate GTIN",
+      "ean": "8005610585611",
+      "rows": [
+        {
+          "ean": "8005610585611",
+          "name": "Magma /03+ Natural Dourado Plus 120gr - Wella Professionals",
+          "price": 52.8,
+          "net_price": 42.93,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/wella-magma/12818-magma-03-natural-dourado-plus-120gr-wella-professionals-8005610585611.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/132994-thickbox_default/magma-03-natural-dourado-plus-120gr-wella-professionals.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        },
+        {
+          "ean": "8005610585611",
+          "name": "Magma /07+ Natural Marron Plus 120gr - Wella Professionals",
+          "price": 52.8,
+          "net_price": 42.93,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/wella-magma/82969-magma-07-natural-marron-plus-120gr-wella-professionals-8005610585611.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/132995-thickbox_default/magma-07-natural-marron-plus-120gr-wella-professionals.jpg",
           "source": "explicit-visible-price-with-VAT-and-product-schema",
           "additional_shipping_cost": 0.0
         }
