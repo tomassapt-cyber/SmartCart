@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-04T00:01:18.916656+00:00",
-  "completed_at": "2026-11-04T01:37:37.688528+00:00",
+  "scraped_at": "2026-11-04T11:09:30.809566+00:00",
+  "completed_at": "2026-11-04T13:06:35.980970+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1812,
+  "targets": 1814,
   "products": [
     {
       "ean": "5601411434146",
@@ -1875,6 +1875,19 @@
       "url": "https://presencadeluxo.pt/wella-oxidantes-descolorantes/3664-oxidante-welloxon-20vol-1000ml-wella-lim-4064666212210.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/126651-thickbox_default/oxidante-welloxon-20vol-1000ml-wella-lim.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4064666212081",
+      "name": "Wella Welloxon Perfect 9% 30 Vol. Oxidante Creme 1000ml",
+      "price": 15.01,
+      "net_price": 12.21,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-oxidantes-descolorantes/3665-oxidante-welloxon-30vol-1000ml-wella-4064666212081.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/156658-thickbox_default/oxidante-welloxon-30vol-1000ml-wella.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13254,6 +13267,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474636434145",
+      "name": "L'Oréal Professionnel Hair Touch Up – Louro Escuro – 75ml",
+      "price": 14.27,
+      "net_price": 11.61,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/hair-touch-up-loreal/81322-spray-touch-up-louro-quente-75ml-loreal-profissional-3474636434145.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/125175-thickbox_default/spray-touch-up-louro-quente-75ml-loreal-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474637321574",
       "name": "L'Oréal Dia Light 8.43 Louro Claro Acobreado Coloração Gloss Sem Amoníaco 60ml",
       "price": 12.4,
@@ -16097,19 +16123,6 @@
       "url": "https://presencadeluxo.pt/gota-dourada/85445-creme-de-pentear-gota-dourada-meu-cacho-perfeito-ora-pro-nobis-e-calendula-1kg-7897158727056.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/140920-thickbox_default/creme-de-pentear-gota-dourada-meu-cacho-perfeito-ora-pro-nobis-e-calendula-1kg.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7908458316908",
-      "name": "Restauração Intensa Salon Line Meu Liso Recarga Queratina 80g",
-      "price": 6.9,
-      "net_price": 5.61,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/meu-liso-salon-line/85452-restauracao-intensa-salon-line-meu-liso-recarga-queratina-80g-7908458316908.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/140937-thickbox_default/restauracao-intensa-salon-line-meu-liso-recarga-queratina-80g.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -22007,6 +22020,14 @@
       "existing_name": "Wella Professionals Ultimate Repair Miracle Hair Rescue spray para cabelos danificados 30 ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/meu-liso-salon-line/85452-restauracao-intensa-salon-line-meu-liso-recarga-queratina-80g-7908458316908.html",
+      "ean": "7908458316908",
+      "canonical": "7908458316908",
+      "existing_name": "Salon Line Meu Liso Recarga de Queratina Vegetal 2x40g",
+      "method": "GTIN",
+      "reason": "GTIN schema and URL disagree"
     },
     {
       "url": "https://presencadeluxo.pt/perfumes-homem/85616-eau-de-toilette-herrera-for-men-by-carolina-herrera-100ml-8411061081600.html",
