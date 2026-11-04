@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-03T12:44:56.478Z",
-  "seed_total_products": 95863,
+  "generated_at": "2026-11-04T10:38:28.956Z",
+  "seed_total_products": 97298,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.45,
+      "best_price": 16.42,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -188,6 +188,21 @@
       "verified_live": true
     },
     {
+      "ean": "5600360018261",
+      "name": "Barral Creme de Óleo de Amêndoa MotherProtect",
+      "brand": "Barral",
+      "image_url": "https://assets.atida.com/transform/89456288-9c9e-456a-b78d-23040f8f06b7/Barral-MotherProtect-Crema-Aceite-de-Almendras-200-ml",
+      "best_price": 10.86,
+      "best_store": "Pharma Scalabis",
+      "best_store_slug": "pharmascalabis",
+      "best_url": "https://www.pharmascalabis.com/store/barral-motherprotect-creme-gordo-oleo-de-amendoas-100ml/",
+      "volume_ml": 100,
+      "previous_price": 16.81,
+      "discount_pct": 35,
+      "dropped_day": 20760,
+      "verified_live": true
+    },
+    {
       "ean": "0560088000090",
       "name": "Iraltone Dupla Ação Antiqueda Pack",
       "brand": "Iraltone",
@@ -215,20 +230,6 @@
       "discount_pct": 35,
       "dropped_day": 20759,
       "verified_live": true
-    },
-    {
-      "ean": "8716900569463",
-      "name": "Fortimel Compact Protein Pêssego/Manga - (x4 unidades)",
-      "brand": "Fortimel",
-      "image_url": "https://assets.farmaciaideal.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciaideal.pt/images/originals/7397364.webp",
-      "best_price": 7.09,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/fortimel-compact-protein-pessego-manga-125ml-x4",
-      "previous_price": 10.17,
-      "discount_pct": 30,
-      "dropped_day": 20757,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -238,7 +239,7 @@
     },
     {
       "name": "Avène",
-      "products": 855
+      "products": 854
     },
     {
       "name": "Isdin",
@@ -246,7 +247,7 @@
     },
     {
       "name": "Nivea",
-      "products": 814
+      "products": 816
     },
     {
       "name": "L'Oréal Paris",
@@ -254,11 +255,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 796
+      "products": 797
     },
     {
       "name": "Eucerin",
-      "products": 766
+      "products": 764
     },
     {
       "name": "Chicco",
@@ -296,7 +297,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 75644,
+    "products": 76759,
     "avg_savings_pct": 28
   },
   "shard_version": "",
