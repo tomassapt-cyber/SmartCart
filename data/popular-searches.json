@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T13:45:26.173Z",
+  "generated_at": "2026-11-05T13:25:59.780Z",
   "source": "site-search",
   "window_days": 30,
   "products": [
@@ -8,7 +8,7 @@
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.45,
+      "best_price": 16.47,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/",
@@ -56,10 +56,10 @@
       "name": "La Roche-Posay Cicaplast Baume B5",
       "brand": "La Roche-Posay",
       "image_url": "https://media.appsfarma.com/wemakeit/pt/688011211961.jpg",
-      "best_price": 10.11,
-      "best_store": "Farmácia Barata",
-      "best_store_slug": "farmaciabarata",
-      "best_url": "https://www.farmaciabarata.pt/cicatrizes/la-roche-posay-cicaplast-balsamo-balsamo-b5-balsamo.html",
+      "best_price": 8.94,
+      "best_store": "GO-farma",
+      "best_store_slug": "gofarma",
+      "best_url": "https://www.go-farma.com/pt/corpo/la-roche-posay/la-roche-posay-cicaplast-baume-b5-40ml_p299.html",
       "search_term": "la roche-posay cicaplast baume b5 40ml",
       "pop_score": 6
     },
