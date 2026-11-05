@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-05T10:33:40.978Z",
-  "seed_total_products": 97350,
+  "generated_at": "2026-11-05T13:03:33.419Z",
+  "seed_total_products": 97368,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -240,7 +240,7 @@
     },
     {
       "name": "Avène",
-      "products": 854
+      "products": 855
     },
     {
       "name": "Isdin",
@@ -256,15 +256,15 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 798
+      "products": 797
     },
     {
       "name": "Eucerin",
-      "products": 765
+      "products": 767
     },
     {
       "name": "Chicco",
-      "products": 750
+      "products": 751
     }
   ],
   "telegram_alerts": [
