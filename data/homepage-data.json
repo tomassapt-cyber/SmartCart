@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-04T12:55:09.452Z",
-  "seed_total_products": 97314,
+  "generated_at": "2026-11-05T10:33:40.978Z",
+  "seed_total_products": 97350,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.42,
+      "best_price": 16.47,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -111,10 +111,10 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 3.33,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/neutrogena-pack-creme-concentrado-maos-stick-labial"
+      "best_price": 3.6,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-creme-maos-concentrado-+-stick-labial_p13679.html"
     },
     {
       "ean": "3574661540887",
@@ -147,14 +147,14 @@
       "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
     },
     {
-      "ean": "3574661879185",
-      "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 10.74,
+      "ean": "8431567752088",
+      "name": "La Roche-Posay Retinol B3 Coffret Cuidado Anti-Idade Sérum + Creme + Protetor Solar",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a8747b3a879d_la-roche-posay-retinol-b3-coff-1_1.jpg",
+      "best_price": 31.16,
       "best_store": "MegaFarma",
       "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/neutrogena-hidratante-corporal-profundo-750-400-ml"
+      "best_url": "https://megafarma.pt/pt-pt/product/la-roche-posay-retinol-b3-serum-coffret-natal"
     }
   ],
   "em_alta": [
@@ -188,6 +188,21 @@
       "verified_live": true
     },
     {
+      "ean": "3504105035518",
+      "name": "Hydra Bebé Body Lotion",
+      "brand": "Mustela",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802475.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.51,
+      "best_store": "Wells",
+      "best_store_slug": "wells",
+      "best_url": "https://wells.pt/body-lotion-hydra-bebe-3000775.html",
+      "volume_ml": 750,
+      "previous_price": 16.57,
+      "discount_pct": 37,
+      "dropped_day": 20762,
+      "verified_live": true
+    },
+    {
       "ean": "5600360018261",
       "name": "Barral Creme de Óleo de Amêndoa MotherProtect",
       "brand": "Barral",
@@ -216,30 +231,16 @@
       "discount_pct": 35,
       "dropped_day": 20760,
       "verified_live": true
-    },
-    {
-      "ean": "3661434004803",
-      "name": "URIAGE EAU THERM LEITE HIDRANTE CORPO + OFERTA CREME LAVANTE",
-      "brand": "Uriage",
-      "image_url": "https://assets.farmaciaideal.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmaciaideal.pt/images/originals/6222182.webp",
-      "best_price": 13.43,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/uriage-eau-thermale-leite-hidratante-corporal-500ml",
-      "previous_price": 20.66,
-      "discount_pct": 35,
-      "dropped_day": 20759,
-      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 882
+      "products": 885
     },
     {
       "name": "Avène",
-      "products": 855
+      "products": 854
     },
     {
       "name": "Isdin",
@@ -251,15 +252,15 @@
     },
     {
       "name": "L'Oréal Paris",
-      "products": 812
+      "products": 813
     },
     {
       "name": "La Roche-Posay",
-      "products": 796
+      "products": 798
     },
     {
       "name": "Eucerin",
-      "products": 766
+      "products": 765
     },
     {
       "name": "Chicco",
@@ -297,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 76759,
+    "products": 76840,
     "avg_savings_pct": 28
   },
   "shard_version": "",
