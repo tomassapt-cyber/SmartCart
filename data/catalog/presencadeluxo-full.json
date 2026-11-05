@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-04T11:09:30.809566+00:00",
-  "completed_at": "2026-11-04T13:06:35.980970+00:00",
+  "scraped_at": "2026-11-05T18:50:00.079874+00:00",
+  "completed_at": "2026-11-05T20:41:34.544595+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1814,
+  "targets": 1813,
   "products": [
     {
       "ean": "5601411434146",
@@ -22020,14 +22020,6 @@
       "existing_name": "Wella Professionals Ultimate Repair Miracle Hair Rescue spray para cabelos danificados 30 ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/meu-liso-salon-line/85452-restauracao-intensa-salon-line-meu-liso-recarga-queratina-80g-7908458316908.html",
-      "ean": "7908458316908",
-      "canonical": "7908458316908",
-      "existing_name": "Salon Line Meu Liso Recarga de Queratina Vegetal 2x40g",
-      "method": "GTIN",
-      "reason": "GTIN schema and URL disagree"
     },
     {
       "url": "https://presencadeluxo.pt/perfumes-homem/85616-eau-de-toilette-herrera-for-men-by-carolina-herrera-100ml-8411061081600.html",
