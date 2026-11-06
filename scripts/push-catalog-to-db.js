@@ -230,7 +230,7 @@ async function upsert(table, rows, onConflict) {
     const nomeLimpo = limparNome(p.name);
     const nomePT = nomesPT[p.ean] && nomesPT[p.ean] !== nomeLimpo ? (traduzidos++, nomesPT[p.ean]) : nomeLimpo;
     const base = {
-      ean: p.ean, name: nomePT, brand: p.brand || null, category: fixCategory(p.name, p.category),
+      ean: p.ean, name: nomePT, brand: p.brand || null, category: fixCategory(p.name, p.category, p.brand),
       image_url: safeUrl(p.image_url), updated_at: runTs,
     };
     if (hasPopCols) {
