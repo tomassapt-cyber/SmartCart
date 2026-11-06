@@ -310,6 +310,7 @@ if (require.main === module) {
   vf.fixVariantSizes(seed);
   vf.fixTruncatedVariantPrices(seed);
   vf.dropWrongProductVariants(seed);
+  vf.dropImplausibleSizes(seed);   // tamanhos que o preço desmente (2026-11-06)
   require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
   require('./lib/promo-fold').foldPromoVariants(seed);
   // blocklist de EAN errado — faltava aqui (2026-10-02): o inject esconde-as,
