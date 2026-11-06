@@ -69,6 +69,10 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      # 2026-11-06: EAN por tamanho pelo .js (cache data/catalog/atuafarmacia-gtin.json)
+      - name: Teste do EAN por tamanho
+        run: node scripts/test-atuafarmacia-gtin.cjs
+
       - name: Scrape A Tua Farmácia
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
@@ -102,11 +106,14 @@ jobs:
           # graças ao `gzip -n` (sem -n, o cabeçalho leva a data e o teste dava
           # sempre alteração — 13,4 MB de commit por dia e por loja, sem dados novos).
           bash scripts/ci/seed.sh pack
-          if git diff --quiet -- data/seed-bundle.json.gz demo.html; then
+          # A cache dos EAN (2026-11-06) entra mesmo sem mudanças no catálogo:
+          # cada corrida lê até 400 .js e esse trabalho não se pode perder.
+          if git diff --quiet -- data/seed-bundle.json.gz demo.html && [ -z "$(git status --porcelain -- data/catalog/atuafarmacia-gtin.json)" ]; then
             echo "Nenhuma alteração — nada a fazer."
             exit 0
           fi
           git add data/seed-bundle.json.gz demo.html
+          git add data/catalog/atuafarmacia-gtin.json 2>/dev/null || true
           git add -f data/catalog/atuafarmacia-full.json 2>/dev/null || true
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "chore: A Tua Farmácia daily refresh ($DATE)" \
@@ -118,4 +125,4 @@ jobs:
           bash scripts/ci/resilient-push.sh \
             "node scripts/integrate-atuafarmacia-catalog.js" \
             "chore: A Tua Farmácia daily refresh ($(date -u +%Y-%m-%d))" \
-            data/catalog/atuafarmacia-full.json
+            data/catalog/atuafarmacia-full.json data/catalog/atuafarmacia-gtin.json

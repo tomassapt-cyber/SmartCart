@@ -19,6 +19,15 @@
  * MODO COMPARAÇÃO (enrich-only no integrador): esta loja entra só como fonte
  * de preço sobre produtos que já temos — não cria produtos novos.
  *
+ * EAN POR TAMANHO (2026-11-06, auditoria aos catálogos): o `/products/<handle>.js`
+ * dá o `barcode` (EAN) de cada variante — em 34 de 40 fichas amostradas. Sem ele,
+ * as ofertas só casavam pelo CNP e muitas ficavam de fora. O código lê-se UMA vez
+ * e fica na cache data/catalog/atuafarmacia-gtin.json (id da variante → código),
+ * no máximo --max-gtin leituras por corrida (omissão 400), com bot declarado e
+ * robots.txt (scripts/lib/shopify-existentes.js). Ao primeiro 403/429 o passo
+ * pára e a corrida continua com o que já tem. Um produto com vários tamanhos com
+ * EAN próprio sai um por tamanho, com o URL «?variant=<id>» (como na Primor).
+ *
  * ⚠️ RATE-LIMIT: a loja limita o /products.json de forma agressiva (429 após
  * ~12 pedidos rápidos). Por isso: delay generoso entre páginas + backoff longo
  * no 429 + CHECKPOINT por página (--resume continua onde parou; o workflow
@@ -33,16 +42,21 @@
 const fs = require('fs');
 const path = require('path');
 const { isNonCosmetic } = require('./lib/product-fingerprint');
+const { pedir, gtinValido, regrasRobots, Paragem } = require('./lib/shopify-existentes');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'atuafarmacia-full.json');
+const CACHE_GTIN = path.join(CATALOG_DIR, 'atuafarmacia-gtin.json');
 const BASE = 'https://www.atuafarmacia.pt';
+// a loja redireciona www → sem www, e a lib pára quando o domínio muda: o .js lê-se já no domínio final
+const ORIGEM_JS = BASE.replace('://www.', '://');
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const RESUME = !!args.resume;
 const PAGE_DELAY = args.delay ? parseInt(args.delay, 10) : 1500;   // gentil com o rate-limit
+const MAX_GTIN = args['max-gtin'] != null ? parseInt(args['max-gtin'], 10) : 400;   // leituras do .js por corrida
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 
@@ -96,7 +110,52 @@ function variantToOffer(v, defVol) {
     discount_pct: prev && prev > price ? Math.round((1 - price / prev) * 100) : null,
     in_stock: !!v.available,
     sku: v.sku || null,
+    id: v.id != null ? String(v.id) : null,
   };
+}
+
+// ── EAN por tamanho, pela cache (ver o cabeçalho) ──
+function lerCache() { try { return JSON.parse(fs.readFileSync(CACHE_GTIN, 'utf8')); } catch { return {}; } }
+function gravarCache(cache) {
+  const ordenada = Object.fromEntries(Object.keys(cache).sort().map(k => [k, cache[k]]));
+  fs.writeFileSync(CACHE_GTIN, JSON.stringify(ordenada, null, 0) + '\n', 'utf8');
+}
+async function enriquecerGtin(products, cache) {
+  const porLer = products.filter(p => (p.variants || []).some(v => v.id && !(v.id in cache)));
+  const st = { lidos: 0, retirados: 0, falhas: 0, parado: null, pendentes: Math.max(0, porLer.length - MAX_GTIN) };
+  if (!porLer.length || MAX_GTIN <= 0) return st;
+  let regras = [];
+  try { const rb = await pedir(`${ORIGEM_JS}/robots.txt`, null); if (rb.estado === 200) regras = regrasRobots(rb.corpo); } catch (e) { st.parado = e.message; return st; }
+  for (const p of porLer.slice(0, MAX_GTIN)) {
+    await new Promise(s => setTimeout(s, 2000));
+    let r;
+    try { r = await pedir(`${ORIGEM_JS}/products/${encodeURIComponent(p.handle)}.js`, regras); }
+    catch (e) { if (e instanceof Paragem) { st.parado = e.message; break; } st.falhas++; continue; }
+    st.lidos++;
+    if (r.estado === 404 || r.estado === 410) { st.retirados++; continue; }
+    if (r.estado !== 200) { st.falhas++; continue; }
+    let j; try { j = JSON.parse(r.corpo); } catch { st.falhas++; continue; }
+    for (const v of j.variants || []) cache[String(v.id)] = String(v.barcode == null ? '' : v.barcode).trim();
+    if (st.lidos % 100 === 0) console.log(`  …EAN pelo .js: ${st.lidos}/${Math.min(porLer.length, MAX_GTIN)}`);
+  }
+  return st;
+}
+// Aplica a cache: EAN em cada variante; produto com 2+ tamanhos de EAN diferente → um por tamanho.
+function aplicarGtin(products, cache) {
+  const saida = [];
+  for (const p of products) {
+    for (const v of p.variants || []) { const bc = v.id && cache[v.id]; if (gtinValido(bc)) v.ean = bc; }
+    const comEan = (p.variants || []).filter(v => v.ean);
+    if (comEan.length >= 2 && new Set(comEan.map(v => v.ean)).size === comEan.length) {
+      for (const v of comEan) saida.push({ ...p, url: `${p.url}?variant=${v.id}`, ean: v.ean, cnp: keyFromSku(v.sku).cnp || p.cnp,
+        price: v.price, previous_price: v.previous_price, discount_pct: v.discount_pct, in_stock: v.in_stock, volume_ml: v.volume_ml, variants: [v] });
+      continue;
+    }
+    // um só tamanho com EAN (ou todos o mesmo): o EAN do produto passa a ser esse
+    if (!p.ean && comEan.length) p.ean = (comEan.find(v => v.price === p.price && v.in_stock === p.in_stock) || comEan[0]).ean;
+    saida.push(p);
+  }
+  return saida;
 }
 function mapProduct(p, category) {
   const defVol = normVolume(p.title) || normVolume(p.body_html);
@@ -163,7 +222,8 @@ function loadExisting() {
   try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return d; } catch { return null; }
 }
 
-(async function main() {
+module.exports = { aplicarGtin, keyFromSku, mapProduct };
+if (require.main === module) (async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   console.log('📦 A buscar catálogo A Tua Farmácia (Shopify /products.json)…\n');
 
@@ -173,7 +233,13 @@ function loadExisting() {
   // (next_page), continua daí; se está COMPLETO, recomeça na 1 (refresh de preço).
   const prev = RESUME ? loadExisting() : null;
   const byHandle = new Map();
-  if (prev) for (const p of prev.products) byHandle.set(p.handle, p);
+  // (2026-11-06) entradas desdobradas por tamanho («?variant=») voltam a um produto por handle
+  if (prev) for (const p of prev.products) {
+    const cur = byHandle.get(p.handle);
+    if (!cur) { byHandle.set(p.handle, { ...p, url: String(p.url).split('?')[0], variants: [...(p.variants || [])] }); continue; }
+    const ids = new Set(cur.variants.map(v => v.id));
+    for (const v of p.variants || []) if (!v.id || !ids.has(v.id)) cur.variants.push(v);
+  }
   const startPage = (prev && prev.next_page) ? prev.next_page : 1;
   if (prev) console.log(`  ↻ ${byHandle.size} produtos no catálogo · ${prev.next_page ? `continuar na página ${startPage}` : `refresh desde a página 1`}\n`);
 
@@ -191,7 +257,16 @@ function loadExisting() {
     await new Promise(s => setTimeout(s, PAGE_DELAY + Math.random() * PAGE_DELAY * 0.3));
   }
 
-  const combined = [...byHandle.values()];
+  // EAN por tamanho: lê os .js em falta (até MAX_GTIN) e aplica a cache.
+  // Os produtos do catálogo anterior (resume) podem vir já desdobrados por
+  // tamanho: junta-se pela forma base (handle) antes de reaplicar.
+  const cache = lerCache();
+  const base = [...new Map([...byHandle.values()].map(p => [p.handle, { ...p, url: String(p.url).split('?')[0] }])).values()];
+  const gt = await enriquecerGtin(base, cache);
+  if (LIMIT === Infinity) gravarCache(cache);
+  console.log(`  EAN pelo .js: ${gt.lidos} lidos · ${gt.retirados} retirados · ${gt.falhas} falhas · ${gt.pendentes} produtos por ler na próxima corrida${gt.parado ? ` · parado: ${gt.parado}` : ''}`);
+  const combined = aplicarGtin(base, cache);
+  byHandle.clear(); for (const p of combined) byHandle.set(p.handle + '|' + p.url, p);
   const done = exhausted;
   const withCnp = combined.filter(p => p.cnp).length, withEan = combined.filter(p => p.ean).length;
   const byCat = {}; for (const p of combined) byCat[p.category] = (byCat[p.category] || 0) + 1;
