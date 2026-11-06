@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-05T13:03:33.419Z",
-  "seed_total_products": 97368,
+  "generated_at": "2026-11-06T10:33:00.978Z",
+  "seed_total_products": 97438,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.47,
+      "best_price": 16.45,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -111,20 +111,10 @@
       "name": "Neutrogena Pack Creme Mãos Concentrado + Stick Labial",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/6932178.jpg",
-      "best_price": 3.6,
+      "best_price": 3.24,
       "best_store": "Sofarma",
       "best_store_slug": "sofarma",
       "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-creme-maos-concentrado-+-stick-labial_p13679.html"
-    },
-    {
-      "ean": "3574661540887",
-      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
-      "brand": "Aveeno",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 9.18,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/aveeno-dermexa-creme-emoliente-200ml-gel-banho-300ml"
     },
     {
       "ean": "8431567752002",
@@ -137,14 +127,14 @@
       "best_url": "https://bemecare.com/pt/artigo/lrposay-hyalu-b5-suract-ser-coff-xmas26"
     },
     {
-      "ean": "3574661874951",
-      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.54,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
+      "ean": "3574661540887",
+      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
+      "brand": "Aveeno",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
+      "best_price": 9.18,
+      "best_store": "MegaFarma",
+      "best_store_slug": "megafarma",
+      "best_url": "https://megafarma.pt/pt-pt/product/aveeno-dermexa-creme-emoliente-200ml-gel-banho-300ml"
     },
     {
       "ean": "8431567752088",
@@ -155,6 +145,16 @@
       "best_store": "MegaFarma",
       "best_store_slug": "megafarma",
       "best_url": "https://megafarma.pt/pt-pt/product/la-roche-posay-retinol-b3-serum-coffret-natal"
+    },
+    {
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 15.27,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
     }
   ],
   "em_alta": [
@@ -240,7 +240,7 @@
     },
     {
       "name": "Avène",
-      "products": 855
+      "products": 854
     },
     {
       "name": "Isdin",
@@ -252,15 +252,15 @@
     },
     {
       "name": "L'Oréal Paris",
-      "products": 813
+      "products": 814
     },
     {
       "name": "La Roche-Posay",
-      "products": 797
+      "products": 798
     },
     {
       "name": "Eucerin",
-      "products": 767
+      "products": 765
     },
     {
       "name": "Chicco",
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 76840,
+    "products": 77008,
     "avg_savings_pct": 28
   },
   "shard_version": "",
