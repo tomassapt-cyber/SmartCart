@@ -89,7 +89,10 @@ push_burst() {
 # montar ou tiver fichas repetidas, é que se segue para a re-integração.
 juntar_por_rebase() {
   git fetch origin "${BRANCH}" || return 1
-  if ! git rebase "origin/${BRANCH}"; then
+  # --autostash (2026-11-06): no PC o rebase recusava sempre («You have unstaged
+  # changes») por causa de ficheiros gerados pela integração que não entram no
+  # commit; seguia para a re-integração lenta. O stash guarda-os e repõe-nos.
+  if ! git rebase --autostash "origin/${BRANCH}"; then
     git rebase --abort >/dev/null 2>&1
     echo "↷ rebase com conflito — re-integrar."
     return 1
