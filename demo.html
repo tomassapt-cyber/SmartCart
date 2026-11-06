@@ -3733,6 +3733,7 @@
   }
   .pa-vol-chips {
     display: inline-flex; gap: 4px; flex: 1;
+    flex-wrap: wrap;
     background: var(--surface-2);
     border-radius: 999px;
     padding: 3px;
@@ -3744,14 +3745,18 @@
     font-size: 12.5px; font-weight: 600; color: var(--text-soft);
     cursor: pointer; transition: background .15s, color .15s;
     font-family: inherit;
-    flex: 1;
+    flex: 1 1 92px; min-width: 86px;
     text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    line-height: 1.15;
   }
   .pa-vol-chip:hover { color: var(--text); background: rgba(255,255,255,0.7); }
   .pa-vol-chip.active {
     background: var(--text); color: #fff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.18);
   }
+  .pa-vol-chip-unit { font-size: 10px; font-weight: 600; opacity: .82; }
+  .pa-vol-chip-best { font-size: 8px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
   /* Variante "único volume" — só um chip, com nota subtil ao lado */
   .pa-vol-bar-single .pa-vol-chips {
     background: transparent; padding: 0; flex: 0 0 auto;
@@ -10191,8 +10196,21 @@ function renderCategoryCards() {
 let PA_STATE = { ean: null, volume: null };
 let PA_OPEN_GERACAO = 0;
 
-async function openPriceAnalyzer(ean) {
+async function openPriceAnalyzer(ean, volumeEscolhido = null) {
   const geracaoFicha = ++PA_OPEN_GERACAO;
+  const normalizarVolume = valor => {
+    const volume = Number(valor);
+    return Number.isFinite(volume) && volume > 0 ? volume : null;
+  };
+  // Um tamanho passado explicitamente, escolhido antes nesta ficha ou já
+  // guardado no carrinho tem prioridade sobre a recomendação €/100 ml.
+  const volumeDoCarrinho = bundleState.items.has(ean)
+    ? normalizarVolume(bundleState.volumes?.get?.(ean))
+    : null;
+  const volumeJaEscolhido = PA_STATE?.ean === ean && PA_STATE.userSelectedVolume
+    ? normalizarVolume(PA_STATE.volume)
+    : null;
+  const volumePreferido = normalizarVolume(volumeEscolhido) || volumeJaEscolhido || volumeDoCarrinho || null;
   // Iniciar a leitura das ofertas antes de esperar pelo catálogo. Em EANs
   // fora do bloco de arranque, garantirIndice pode levar alguns segundos;
   // a consulta da ficha à Supabase não precisa do índice para começar.
@@ -10207,7 +10225,7 @@ async function openPriceAnalyzer(ean) {
     // O índice segue em paralelo, mas a resposta de products inclui nome,
     // marca e categoria. Se chegar primeiro, a ficha pode renderizar já.
     const promessaIndice = garantirIndice();
-    PA_STATE = { ean, volume: null, seedVolume: null };
+    PA_STATE = { ean, volume: volumePreferido, seedVolume: null, userSelectedVolume: Boolean(volumePreferido) };
     abrirModalDaFicha();
     const corpoInicial = document.getElementById('pa-body');
     if (corpoInicial) {
@@ -10254,7 +10272,12 @@ async function openPriceAnalyzer(ean) {
   const seedVolume = m ? parseFloat(m[1].replace(',', '.')) : null;
   // seedVolume = volume "original" deste EAN, fixo durante a sessão do modal
   // volume = volume actualmente seleccionado (muda com chips)
-  PA_STATE = { ean, volume: seedVolume, seedVolume };
+  PA_STATE = {
+    ean,
+    volume: volumePreferido || seedVolume,
+    seedVolume,
+    userSelectedVolume: Boolean(volumePreferido),
+  };
   try { favPintarBotao(); } catch (e) {}
   // endereco proprio + meta + dados estruturados desta ficha
   try { seoAbrirProduto(ean); } catch (e) { console.warn("SEO:", e && e.message); }
@@ -10542,10 +10565,41 @@ function renderPodiumBody() {
   if (volumesSet.size === 0 && selectedVolume) volumesSet.add(selectedVolume);
   const volumes = Array.from(volumesSet).sort((a, b) => a - b);
   const hasVolumeOptions = volumes.length > 1;
-  // Default seleccionado: volume "do EAN" se existir nas variants; senão o mais pequeno
-  let activeVolume = selectedVolume && volumes.includes(selectedVolume)
+  // Menor €/100 ml entre as ofertas em stock de cada tamanho. O mínimo absoluto
+  // dos cartões continua em bestOfferFor; este cálculo só escolhe o tamanho da ficha.
+  const volumeUnitPrices = new Map(volumes.map(volume => {
+    const prices = [];
+    rowsAll.forEach(({ offer }) => {
+      const variants = Array.isArray(offer.variants) ? offer.variants : [];
+      if (variants.length) {
+        variants.forEach(v => {
+          const price = Number(v.price);
+          if (offer.in_stock && Number(v.volume_ml) === volume && v.in_stock !== false && price > 0) prices.push(price);
+        });
+      } else if (volumes.length === 1 && offer.in_stock && Number(offer.price) > 0) {
+        prices.push(Number(offer.price));
+      }
+    });
+    return [volume, prices.length ? Math.min(...prices) : null];
+  }));
+  const unitVolumes = volumes.filter(volume => volumeUnitPrices.get(volume) != null);
+  let bestUnitVolume = null;
+  if (unitVolumes.length) {
+    const bestRate = Math.min(...unitVolumes.map(volume => volumeUnitPrices.get(volume) / volume));
+    const tiedVolumes = unitVolumes.filter(volume =>
+      Math.abs(volumeUnitPrices.get(volume) / volume - bestRate) < 1e-10
+    );
+    bestUnitVolume = seedVolume && tiedVolumes.includes(seedVolume)
+      ? seedVolume
+      : Math.max(...tiedVolumes);
+  }
+  // Se ninguém tiver stock, preserva o comportamento anterior (tamanho do nome
+  // ou o mais pequeno). Um tamanho já escolhido deliberadamente continua fixo.
+  const fallbackVolume = seedVolume && volumes.includes(seedVolume) ? seedVolume : (volumes[0] || null);
+  const volumeIntencional = PA_STATE.userSelectedVolume && selectedVolume && volumes.includes(selectedVolume)
     ? selectedVolume
-    : (volumes[0] || null);
+    : null;
+  const activeVolume = volumeIntencional || bestUnitVolume || fallbackVolume;
   PA_STATE.volume = activeVolume;
 
   // ─── Calcular o preço efectivo de cada loja para o volume activo ───
@@ -10564,7 +10618,7 @@ function renderPodiumBody() {
       const v = o.variants.find(x => Number(x.volume_ml) === activeVolume);
       if (v) {
         resolvedPrice = Number(v.price);
-        resolvedInStock = v.in_stock !== false;
+        resolvedInStock = o.in_stock !== false && v.in_stock !== false;
         resolvedUrl = v.url || o.url;
         resolvedPrev = v.previous_price || null;
       }
@@ -10604,7 +10658,7 @@ function renderPodiumBody() {
 
   if (rowsWithPrice.length === 0) {
     document.getElementById('pa-body').innerHTML = `
-      ${renderVolumeChips(volumes, activeVolume, hasVolumeOptions)}
+      ${renderVolumeChips(volumes, activeVolume, hasVolumeOptions, volumeUnitPrices, bestUnitVolume)}
       <p style="color:#8a827a;text-align:center;padding:30px 0">Nenhuma loja vende a versão de ${activeVolume} ml deste produto.</p>`;
     bindVolumeChips();
     return;
@@ -10720,7 +10774,7 @@ function renderPodiumBody() {
 
   document.getElementById('pa-body').innerHTML =
     renderRatingWidget(ean) +
-    renderVolumeChips(volumes, activeVolume, hasVolumeOptions) +
+    renderVolumeChips(volumes, activeVolume, hasVolumeOptions, volumeUnitPrices, bestUnitVolume) +
     savingsCard + bestOfferCard + otherStoresList +
     '<div id="pa-history"></div>' +
     notSold + footHint +
@@ -10751,7 +10805,7 @@ function renderPodiumBody() {
   document.body.style.overflow = 'hidden';
 }
 
-function renderVolumeChips(volumes, activeVolume, hasOptions) {
+function renderVolumeChips(volumes, activeVolume, hasOptions, unitPrices = new Map(), bestUnitVolume = null) {
   // Caso único: mostra um chip estático para o utilizador perceber qual
   // é o volume (sem botão clicável, com sufixo "(único disponível)").
   if (!hasOptions) {
@@ -10767,7 +10821,16 @@ function renderVolumeChips(volumes, activeVolume, hasOptions) {
   return `<div class="pa-vol-bar">
     <div class="pa-vol-label">Volume</div>
     <div class="pa-vol-chips">
-      ${volumes.map(v => `<button class="pa-vol-chip ${v===activeVolume?'active':''}" data-vol="${v}">${v} ml</button>`).join('')}
+      ${volumes.map(v => {
+        const unitPrice = unitPrices.get(v);
+        const unitLabel = unitPrice == null ? '— €/100 ml' : `${(unitPrice / v * 100).toFixed(2).replace('.', ',')} €/100 ml`;
+        const best = v === bestUnitVolume;
+        return `<button class="pa-vol-chip ${v===activeVolume?'active':''} ${best?'best-value':''}" data-vol="${v}" aria-pressed="${v===activeVolume}">
+          <span class="pa-vol-chip-size">${v} ml</span>
+          <span class="pa-vol-chip-unit">${unitLabel}</span>
+          ${best ? '<span class="pa-vol-chip-best">melhor compra</span>' : ''}
+        </button>`;
+      }).join('')}
     </div>
   </div>`;
 }
@@ -10775,6 +10838,7 @@ function bindVolumeChips() {
   document.querySelectorAll('.pa-vol-chip').forEach(b => {
     b.onclick = () => {
       PA_STATE.volume = Number(b.dataset.vol);
+      PA_STATE.userSelectedVolume = true;
       renderPodiumBody();
     };
   });
