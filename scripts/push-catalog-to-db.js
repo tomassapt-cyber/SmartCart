@@ -332,6 +332,7 @@ async function upsert(table, rows, onConflict) {
   const projeto = URL_ || 'sem-projeto';
   const payloads = { stores: stores2, products: products2, offers: offers2, offer_variants: hasVariants ? variants2 : null };
   const PK = { stores: 'slug', products: 'ean', offers: 'store_slug,ean', offer_variants: 'store_slug,ean,volume_ml' };
+  const colunas = () => Object.fromEntries(Object.entries(payloads).map(([t, rows]) => [t, rows && rows.length ? Object.keys(rows[0]) : null]));
   let anterior = null, criadoEm = null, modo = 'COMPLETO';
   if (!args.completo) {
     const { estado, motivo } = E.carregar(projeto);
@@ -340,14 +341,13 @@ async function upsert(table, rows, onConflict) {
       console.log(`  estado: ${motivo}`);
       if (!DRY && URL_ && KEY) {
         try {
-          const colunas = Object.fromEntries(Object.entries(payloads).map(([t, rows]) => [t, rows && rows.length ? Object.keys(rows[0]) : null]));
-          anterior = await E.lerDaBD(URL_, KEY, colunas);
+          anterior = await E.lerDaBD(URL_, KEY, colunas());
           criadoEm = new Date().toISOString(); modo = 'incremental (estado lido da BD)';
         } catch (e) { console.warn(`  ⚠ não consegui ler o estado da BD (${e.message}) — sync COMPLETO desta vez.`); anterior = null; }
       }
     }
   }
-  const dif = {};
+  let dif = {};
   for (const [t, rows] of Object.entries(payloads)) if (rows) dif[t] = E.diferencas(t, rows, anterior && anterior[t] ? anterior[t] : null);
   console.log(`🔁 sync ${modo}: ` + Object.entries(dif).map(([t, d]) => `${t} ${d.enviar.length}/${payloads[t].length} a enviar · ${d.apagar.length} a apagar`).join(' | '));
 
@@ -383,10 +383,14 @@ async function upsert(table, rows, onConflict) {
     console.warn(`  ⛔ GUARDRAIL: falha a contar as ofertas na BD (${e.message}) — limpezas SALTADAS por precaução.`);
   }
 
-  for (const t of ['stores', 'products', 'offers', 'offer_variants']) {
-    if (dif[t] && dif[t].enviar.length) await upsert(t, dif[t].enviar, PK[t]);
-    else if (dif[t]) console.log(`  = ${t}: nada mudou`);
-  }
+  // Se a BD recusar uma oferta por FK (o estado diz que um produto lá está e
+  // não está), relê-se a BD e repete-se — ver enviarComRecuperacao (2026-11-06).
+  const env = await E.enviarComRecuperacao({
+    payloads, dif, anterior,
+    enviarTabela: async (t, linhas) => { if (linhas.length) await upsert(t, linhas, PK[t]); else console.log(`  = ${t}: nada mudou`); },
+    lerBD: () => E.lerDaBD(URL_, KEY, colunas()),
+  });
+  if (env.relida) { dif = env.dif; anterior = env.anterior; criadoEm = new Date().toISOString(); }
 
   // o estado a guardar no fim: o que ficou na BD
   const novo = Object.fromEntries(Object.entries(dif).map(([t, d]) => [t, d.atual]));
