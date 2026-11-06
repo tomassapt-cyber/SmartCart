@@ -12,6 +12,11 @@
  *     itemprop="price" da microdata é SEM IVA, ~19% mais baixo — NÃO usar).
  *   • marca: <div itemprop="brand"><meta itemprop="name" content>.
  *
+ * 2026-10-26: a loja trocou a microdata por JSON-LD (Product com gtin13, brand
+ * e offers.availability) e o leitor passou a dar 0 produtos (tudo «skip»). O
+ * EAN, a marca e o stock vêm agora do JSON-LD quando a microdata falta; o
+ * preço continua no meta product:price:amount (= offers.price do JSON-LD, com IVA).
+ *
  * Uso: node scripts/scrape-miin-catalog.js [--limit=N] [--resume]
  */
 const fs = require('fs');
@@ -45,11 +50,26 @@ function decodeEntities(s) {
     .replace(/&acirc;/g, 'â').replace(/&ecirc;/g, 'ê').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;/g, "'");
 }
 
+// o nó Product do JSON-LD (desde 2026-10-26 é ali que vivem o EAN, a marca e o stock)
+function produtoJsonLd(html) {
+  for (const m of html.matchAll(/<script[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)) {
+    let j; try { j = JSON.parse(m[1]); } catch { continue; }
+    for (const n of (j['@graph'] || (Array.isArray(j) ? j : [j]))) {
+      const t = n && n['@type'];
+      if (t === 'Product' || (Array.isArray(t) && t.includes('Product'))) return n;
+    }
+  }
+  return null;
+}
+
 function extractProductData(html) {
-  // EAN-13 real da microdata (única chave)
+  const ld = produtoJsonLd(html);
+  const ldOferta = ld ? (Array.isArray(ld.offers) ? ld.offers[0] : ld.offers) : null;
+  // EAN-13 real (única chave): microdata, ou o gtin13 do JSON-LD
   const gm = html.match(/itemprop=["']gtin13["'][^>]*content=["'](\d{12,14})/i)
     || html.match(/content=["'](\d{12,14})["'][^>]*itemprop=["']gtin13["']/i);
-  const ean = gm && /^\d{12,14}$/.test(gm[1]) && !/0{6,}/.test(gm[1]) ? gm[1] : null;
+  const cand = gm ? gm[1] : (ld && ld.gtin13 != null ? String(ld.gtin13).trim() : '');
+  const ean = /^\d{12,14}$/.test(cand) && !/0{6,}/.test(cand) ? cand : null;
   if (!ean) return null;
   // nome: og:title
   let name = ((html.match(/property=["']og:title["'][^>]*content=["']([^"']+)/i) || [])[1] || '').trim();
@@ -59,13 +79,18 @@ function extractProductData(html) {
   // preço COM IVA: meta product:price:amount (o itemprop=price é sem IVA)
   const pm = html.match(/property=["']product:price:amount["'][^>]*content=["']([\d.,]+)/i)
     || html.match(/content=["']([\d.,]+)["'][^>]*property=["']product:price:amount["']/i);
-  const price = pm ? parseFloat(String(pm[1]).replace(',', '.')) : null;
+  const precoTexto = pm ? pm[1] : (ldOferta && ldOferta.price != null ? String(ldOferta.price) : null);
+  const price = precoTexto ? parseFloat(precoTexto.replace(',', '.')) : null;
   if (price == null || !isFinite(price) || price <= 0) return null;
-  // marca da microdata
+  // marca da microdata, ou do JSON-LD
   const bm = html.match(/itemprop=["']brand["'][\s\S]{0,160}?itemprop=["']name["'][^>]*content=["']([^"']+)/i);
-  const brand = bm ? decodeEntities(bm[1]).trim() : null;
+  const ldMarca = ld && ld.brand ? (typeof ld.brand === 'string' ? ld.brand : ld.brand.name) : null;
+  const brand = bm ? decodeEntities(bm[1]).trim() : (ldMarca ? decodeEntities(String(ldMarca)).trim() : null);
   const og = (html.match(/property=["']og:image["'][^>]*content=["']([^"']+)/i) || [])[1] || null;
-  const in_stock = /itemprop=["']availability["'][^>]*content=["'][^"']*InStock/i.test(html) || /add-to-cart|Adicionar ao carrinho/i.test(html);
+  // stock: o availability do JSON-LD quando existe (é explícito); senão, como antes
+  const in_stock = ldOferta && ldOferta.availability
+    ? /InStock/i.test(ldOferta.availability)
+    : /itemprop=["']availability["'][^>]*content=["'][^"']*InStock/i.test(html) || /add-to-cart|Adicionar ao carrinho/i.test(html);
   return { name, brand, ean, cnp: null, image_url: og, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
 }
 
