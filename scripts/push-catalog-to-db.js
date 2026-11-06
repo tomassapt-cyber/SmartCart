@@ -114,13 +114,15 @@ async function upsert(table, rows, onConflict) {
     // preço de OUTRO produto e variantes truncadas (29 € em vez de 29,74 €).
     // Correm ANTES do merge de GTIN, como no site.
     // Tamanhos mal lidos (2026-10-19) primeiro: o modal lê as variantes daqui.
-    const { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants } = require('./lib/variant-fixes');
+    const { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants, dropImplausibleSizes } = require('./lib/variant-fixes');
     const z = fixVariantSizes(seed);
     if (z.litros + z.kgNoUrl + z.brindes + z.removidas) console.log(`  tamanhos de variante corrigidos: ${z.litros} L/kg · ${z.kgNoUrl} «1 kg» lido como 1 · ${z.brindes} brindes · ${z.removidas} removidos`);
     const t = fixTruncatedVariantPrices(seed);
     if (t.fixed) console.log(`  preços de variante truncados corrigidos: ${t.fixed}`);
     const w = dropWrongProductVariants(seed);
     if (w.dropped) console.log(`  variantes de produto-trocado removidas: ${w.dropped}`);
+    const ti = dropImplausibleSizes(seed);   // 2026-11-06: o modal abre no melhor €/L
+    if (ti.virgula + ti.mesmoPreco + ti.corrigidos) console.log(`  tamanhos implausíveis: ${ti.virgula} vírgula perdida · ${ti.mesmoPreco} mesmo preço · ${ti.corrigidos} passados ao tamanho do nome`);
   }
   {
     const { mergeEanVariants } = require('./dedup-ean-variants');
@@ -230,7 +232,7 @@ async function upsert(table, rows, onConflict) {
     const nomeLimpo = limparNome(p.name);
     const nomePT = nomesPT[p.ean] && nomesPT[p.ean] !== nomeLimpo ? (traduzidos++, nomesPT[p.ean]) : nomeLimpo;
     const base = {
-      ean: p.ean, name: nomePT, brand: p.brand || null, category: fixCategory(p.name, p.category),
+      ean: p.ean, name: nomePT, brand: p.brand || null, category: fixCategory(p.name, p.category, p.brand),
       image_url: safeUrl(p.image_url), updated_at: runTs,
     };
     if (hasPopCols) {

@@ -3,7 +3,7 @@
 // converter, «1 kg» lido como 1 e o tamanho do brinde em packs.
 // Sem rede. Uso: node scripts/test-variant-sizes.cjs
 const assert = require('node:assert/strict');
-const { fixVariantSizes } = require('./lib/variant-fixes');
+const { fixVariantSizes, dropImplausibleSizes } = require('./lib/variant-fixes');
 
 const oferta = (ean, variants) => ({ ean, price: 10, in_stock: true, variants });
 const seed = (nomes, items) => ({
@@ -85,4 +85,36 @@ const tam = it => it.variants.map(v => `${v.volume_ml}${v.unit}`);
   assert.equal(JSON.stringify(s), antes);
 }
 
-console.log('variant-sizes: L/kg, «1 kg» lido como 1 (sem intervalos nem pesos), brindes, sem duplicados, idempotente — tudo passou');
+// dropImplausibleSizes (2026-11-06): tamanhos que o preço desmente, antes de a ficha abrir no melhor €/L
+{
+  const s = {
+    products: [
+      { ean: '1', name: 'La Roche Posay Cicaplast Lábios 7,5ml' },
+      { ean: '2', name: 'Volume Lift Lightweight Shampoo' },
+      { ean: '3', name: 'Bioderma Sensibio H2O 250ml' },
+      { ean: '4', name: 'ISDIN Si-Nails Micoexpert 4,5ml' },
+      { ean: '5', name: 'Better Screen UV Serum SPF50 15ml' },
+    ],
+    store_products: [
+      { store_slug: 'a', items: [{ ean: '1', price: 5.87, variants: [{ volume_ml: 7.5, price: 5.87 }, { volume_ml: 75, price: 8.49 }] }] },
+      { store_slug: 'w', items: [{ ean: '2', price: 2.4, variants: [{ volume_ml: 75, price: 2.4 }, { volume_ml: 250, price: 2.4 }] }] },
+      { store_slug: 'b', items: [{ ean: '3', price: 9, variants: [{ volume_ml: 100, price: 5 }, { volume_ml: 250, price: 9 }, { volume_ml: 500, price: 13 }] }] },
+      { store_slug: 'c', items: [{ ean: '4', price: 28.94, variants: [{ volume_ml: 45, price: 28.94 }] }, { ean: '5', price: 19.12, variants: [{ volume_ml: 50, price: 19.12 }] }] },
+      { store_slug: 'd', items: [{ ean: '4', price: 20.61, variants: [{ volume_ml: 4.5, price: 20.61 }] }, { ean: '5', price: 18.5, variants: [{ volume_ml: 15, price: 18.5 }] }] },
+    ],
+  };
+  const r = dropImplausibleSizes(s);
+  const vs = (loja, ean) => s.store_products.find(g => g.store_slug === loja).items.find(i => i.ean === ean).variants.map(v => v.volume_ml);
+  assert.deepEqual(vs('a', '1'), [7.5], 'vírgula perdida: «75 ml» do Cicaplast 7,5 ml sai');
+  assert.deepEqual(vs('w', '2'), [75], 'mesmo preço em 75 e 250 ml: fica o mais pequeno');
+  assert.deepEqual(vs('b', '3'), [100, 250, 500], 'tamanhos verdadeiros ficam');
+  assert.deepEqual(vs('c', '4'), [4.5], 'oferta só com «45 ml» (vírgula perdida): passa ao tamanho do nome');
+  assert.deepEqual(vs('c', '5'), [15], 'oferta só com 50 ml ao preço dos 15 ml do nome: passa a 15 ml');
+  assert.deepEqual(vs('d', '4'), [4.5]);
+  assert.deepEqual(r, { virgula: 1, mesmoPreco: 1, corrigidos: 2 });
+  const antes = JSON.stringify(s);
+  assert.deepEqual(dropImplausibleSizes(s), { virgula: 0, mesmoPreco: 0, corrigidos: 0 }, 'idempotente');
+  assert.equal(JSON.stringify(s), antes);
+}
+
+console.log('variant-sizes: L/kg, «1 kg» lido como 1 (sem intervalos nem pesos), brindes, sem duplicados, idempotente, tamanhos que o preço desmente — tudo passou');

@@ -89,6 +89,9 @@ const seedJson = JSON.parse(seed);
   const { dropWrongProductVariants } = require('./lib/variant-fixes');
   const { dropped } = dropWrongProductVariants(seedJson);
   if (dropped) console.log(`🧹 Variantes de produto-trocado removidas: ${dropped} (ex.: BB cream 40ml numa água micelar)`);
+  // tamanhos que o preço desmente (2026-11-06): a ficha abre no melhor €/L e um erro parecia pechincha
+  const t = require('./lib/variant-fixes').dropImplausibleSizes(seedJson);
+  if (t.virgula + t.mesmoPreco + t.corrigidos) console.log(`📏 Tamanhos implausíveis: ${t.virgula} vírgula perdida · ${t.mesmoPreco} mesmo preço noutro tamanho · ${t.corrigidos} passados ao tamanho do nome`);
 })();
 
 // ── Overlay: FUNDIR variantes de GTIN (UPC-A ↔ EAN-13 com zero) ────────────
@@ -224,7 +227,7 @@ const seedJson = JSON.parse(seed);
   const { fixCategory } = require('./lib/classify-category');
   let n = 0;
   for (const p of seedJson.products) {
-    const nova = fixCategory(p.name, p.category);
+    const nova = fixCategory(p.name, p.category, p.brand);
     if (nova !== (p.category ?? null)) { p.category = nova; n++; }
   }
   if (n) console.log(`🏷️  Categorias corrigidas no render: ${n} (mesma regra da BD)`);

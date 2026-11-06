@@ -11,6 +11,8 @@
 //   • sem sinal forte → devolve a categoria da loja intacta.
 // Auditada sobre o seed vivo: ~2 mil correções, todas validadas por amostragem.
 
+const { linhaDoPerfume } = require('./perfumes-selecao');
+
 const sa = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 // "blush" NÃO entra sozinho: é nome de flanker de perfume ("Good Girl Blush"),
@@ -25,10 +27,14 @@ const BODY = /\b(gel de banho|gel de duche|gel duche|sabonete|leite corporal|loc
 const FACE = /\bfacial|rosto|face\b/i;
 
 // Devolve a categoria corrigida (ou a atual, se não houver sinal forte).
-function fixCategory(name, current) {
+// brand (opcional, 2026-11-06): um perfume da seleção (data/perfumes-selecao.json:
+// marca + linha + palavra de fragrância) é perfume mesmo sem «Eau de…» no nome —
+// «Terre d'Hermès Parfum Recarga», «Happy Heart parfum spray» ficavam em skincare.
+function fixCategory(name, current, brand) {
   const t = sa(name);
   if (MAKEUP.test(t)) return 'makeup';
   if (PERFUME.test(t) && !SEM_PERF.test(t)) return 'perfume';
+  if (linhaDoPerfume({ name, brand })) return 'perfume';
   if (HAIR.test(t)) return 'hair';
   if (BODY.test(t) && !FACE.test(t)) return 'body';
   return current || null;

@@ -159,4 +159,78 @@ function fixVariantSizes(seedJson) {
   return { litros, kgNoUrl, brindes, removidas };
 }
 
-module.exports = { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants };
+/**
+ * Tamanhos que não batem com o preço (2026-11-06). A ficha passa a abrir no
+ * tamanho de melhor €/L (#126), e um tamanho mal lido parece uma pechincha:
+ *   1. VÍRGULA PERDIDA — «7,5 ml» lido como 75 (×10) ou 750 (×100). A variante
+ *      10×/100× maior do que outro tamanho do MESMO produto (noutra variante,
+ *      em qualquer loja, ou no nome) e que custa menos de 3× esse tamanho sai.
+ *      Ex.: Cicaplast Lábios 7,5 ml com «75 ml» a 8,49 €; Si-Nails 4,5 → «45 ml».
+ *   2. MESMO PREÇO, TAMANHOS DIFERENTES na mesma oferta — a loja (ou o leitor)
+ *      não mudou o preço com o tamanho: fica o tamanho do nome, se lá estiver,
+ *      ou o mais pequeno; saem os maiores com esse mesmo preço.
+ *      Ex.: Wells, Volume Lift Shampoo 75 ml e 250 ml ambos a 2,40 €.
+ *   3. OFERTA SÓ COM O TAMANHO ERRADO (apagá-lo deixava-a vazia): passa ao tamanho
+ *      do nome quando o preço o confirma — vírgula perdida, ou um tamanho 3× maior
+ *      do que o do nome ao preço do tamanho do nome (noutra loja).
+ * Uma oferta nunca fica sem variantes por causa disto.
+ */
+function dropImplausibleSizes(seedJson) {
+  const volNome = new Map();
+  for (const p of seedJson.products || []) { const v = volumeDoTexto(p.name); if (v) volNome.set(String(p.ean), v.ml); }
+  // preço mais baixo por produto e tamanho, em todas as lojas
+  const minPor = new Map();
+  for (const sp of seedJson.store_products) for (const it of sp.items) for (const v of it.variants || []) {
+    if (!(v.volume_ml > 0) || !(v.price > 0)) continue;
+    const k = it.ean + '|' + v.volume_ml;
+    if (!(minPor.get(k) <= v.price)) minPor.set(k, v.price);
+  }
+  const tamanhosDe = new Map();
+  for (const k of minPor.keys()) { const [e, ml] = k.split('|'); (tamanhosDe.get(e) || tamanhosDe.set(e, new Set()).get(e)).add(+ml); }
+  const fator = (a, b) => [10, 100].some(f => Math.abs(a / b - f) / f < 0.02);
+  let virgula = 0, mesmoPreco = 0, corrigidos = 0;
+  for (const sp of seedJson.store_products) {
+    for (const it of sp.items) {
+      const vs = (it.variants || []).filter(v => v.volume_ml > 0 && v.price > 0);
+      if (!vs.length) continue;
+      const ref = volNome.get(String(it.ean));
+      const outros = tamanhosDe.get(String(it.ean)) || new Set();
+      // 1. vírgula perdida
+      const daVirgula = new Set();
+      for (const v of vs) {
+        const base = [...outros, ...(ref ? [ref] : [])].find(b => b < v.volume_ml && fator(v.volume_ml, b));
+        if (base == null) continue;
+        const pBase = minPor.get(it.ean + '|' + base) ?? (ref === base ? it.price : null);
+        if (pBase > 0 && v.price < 3 * pBase) daVirgula.add(v);
+      }
+      // 2. mesmo preço em tamanhos diferentes
+      const doPreco = new Set();
+      const porPreco = new Map();
+      for (const v of vs) if (!daVirgula.has(v)) { const k = Math.round(v.price * 100); (porPreco.get(k) || porPreco.set(k, []).get(k)).push(v); }
+      for (const grupo of porPreco.values()) {
+        const tams = [...new Set(grupo.map(v => v.volume_ml))];
+        if (tams.length < 2 || Math.max(...tams) < 1.5 * Math.min(...tams)) continue;
+        const fica = tams.includes(ref) ? ref : Math.min(...tams);
+        for (const v of grupo) if (v.volume_ml !== fica) doPreco.add(v);
+      }
+      const fora = new Set([...daVirgula, ...doPreco]);
+      if (fora.size && fora.size < it.variants.length) {
+        it.variants = it.variants.filter(v => !fora.has(v));
+        virgula += daVirgula.size; mesmoPreco += doPreco.size;
+        continue;
+      }
+      // 3. a oferta só tem tamanhos errados (apagá-los deixava-a vazia): o tamanho do
+      //    NOME manda, quando o preço o confirma — vírgula perdida (×10/×100), ou um
+      //    tamanho 3× maior do que o do nome ao preço do tamanho do nome.
+      if (!ref || it.variants.length !== 1) continue;
+      const v = it.variants[0];
+      if (!(v.volume_ml > 0) || v.volume_ml === ref) continue;
+      const pRef = minPor.get(it.ean + '|' + ref);
+      const confirma = daVirgula.has(v) || (v.volume_ml >= 3 * ref && pRef > 0 && v.price < 1.5 * pRef);
+      if (confirma) { v.volume_ml = ref; corrigidos++; }
+    }
+  }
+  return { virgula, mesmoPreco, corrigidos };
+}
+
+module.exports = { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants, dropImplausibleSizes };

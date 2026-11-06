@@ -94,6 +94,7 @@ if (require.main === module) {
   vf.fixVariantSizes(seed);
   vf.fixTruncatedVariantPrices(seed);
   vf.dropWrongProductVariants(seed);
+  vf.dropImplausibleSizes(seed);
   require('./dedup-ean-variants').mergeEanVariants(seed, ROOT);
   require('./lib/promo-fold').foldPromoVariants(seed);
   require('./lib/ghost-offers').dropGhostOffers(seed);
