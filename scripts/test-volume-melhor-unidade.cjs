@@ -97,6 +97,32 @@ const server = http.createServer((req, res) => {
     });
     assert.deepEqual(ties, { named: 450, largest: 500 }, 'empate prefere o tamanho do nome; sem ele, o maior');
 
+    const safetyCap = await page.evaluate(async () => {
+      await window.__fixture('cap-80', 'Máscara 450 ml', [
+        ['cap-80-ref', 'Referência', [window.__offer(450, 45)]],
+        ['cap-80-best', 'Mais barato por unidade', [window.__offer(500, 10)]],
+      ]);
+      const overLimit = {
+        volume: PA_STATE.volume,
+        badges: document.querySelectorAll('.pa-vol-chip-best').length,
+        labels: [...document.querySelectorAll('.pa-vol-chip-unit')].map(x => x.innerText),
+      };
+      await window.__fixture('cap-60', 'Máscara 450 ml', [
+        ['cap-60-ref', 'Referência', [window.__offer(450, 45)]],
+        ['cap-60-best', 'Mais barato por unidade', [window.__offer(500, 20)]],
+      ]);
+      return { overLimit, atLimit: {
+        volume: PA_STATE.volume,
+        badge: document.querySelector('.pa-vol-chip.best-value')?.dataset.vol,
+      } };
+    });
+    assert.deepEqual(safetyCap.overLimit, {
+      volume: 450,
+      badges: 0,
+      labels: ['10,00 €/100 ml', '2,00 €/100 ml'],
+    }, 'ganho de 80% não muda o tamanho nem mostra o selo, mas conserva os preços unitários');
+    assert.deepEqual(safetyCap.atLimit, { volume: 500, badge: '500' }, 'ganho exatamente de 60% continua elegível');
+
     const oneSize = await page.evaluate(async () => {
       await window.__fixture('one-size', 'Máscara 100 ml', [
         ['one-size-store', 'Loja única', [window.__offer(100, 4)]],

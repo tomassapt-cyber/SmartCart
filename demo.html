@@ -10584,22 +10584,31 @@ function renderPodiumBody() {
   }));
   const unitVolumes = volumes.filter(volume => volumeUnitPrices.get(volume) != null);
   let bestUnitVolume = null;
+  let bestUnitRate = null;
   if (unitVolumes.length) {
-    const bestRate = Math.min(...unitVolumes.map(volume => volumeUnitPrices.get(volume) / volume));
+    bestUnitRate = Math.min(...unitVolumes.map(volume => volumeUnitPrices.get(volume) / volume));
     const tiedVolumes = unitVolumes.filter(volume =>
-      Math.abs(volumeUnitPrices.get(volume) / volume - bestRate) < 1e-10
+      Math.abs(volumeUnitPrices.get(volume) / volume - bestUnitRate) < 1e-10
     );
     bestUnitVolume = seedVolume && tiedVolumes.includes(seedVolume)
       ? seedVolume
       : Math.max(...tiedVolumes);
   }
-  // Se ninguém tiver stock, preserva o comportamento anterior (tamanho do nome
-  // ou o mais pequeno). Um tamanho já escolhido deliberadamente continua fixo.
+  // Limite de segurança: a unidade vencedora só pode substituir o tamanho de
+  // referência se o ganho não ultrapassar 60% (razão máxima de 2,5×).
   const fallbackVolume = seedVolume && volumes.includes(seedVolume) ? seedVolume : (volumes[0] || null);
+  const referenceRate = fallbackVolume && volumeUnitPrices.get(fallbackVolume) != null
+    ? volumeUnitPrices.get(fallbackVolume) / fallbackVolume
+    : null;
+  const bestUnitAllowed = bestUnitRate != null && referenceRate != null &&
+    referenceRate / bestUnitRate <= 2.5 + 1e-10;
+  const bestUnitBadgeVolume = bestUnitAllowed ? bestUnitVolume : null;
+  // Se não houver comparação segura (ou o ganho exceder o limite), conserva o
+  // tamanho de referência anterior. Um tamanho escolhido deliberadamente fixa-o.
   const volumeIntencional = PA_STATE.userSelectedVolume && selectedVolume && volumes.includes(selectedVolume)
     ? selectedVolume
     : null;
-  const activeVolume = volumeIntencional || bestUnitVolume || fallbackVolume;
+  const activeVolume = volumeIntencional || (bestUnitAllowed ? bestUnitVolume : fallbackVolume);
   PA_STATE.volume = activeVolume;
 
   // ─── Calcular o preço efectivo de cada loja para o volume activo ───
@@ -10658,7 +10667,7 @@ function renderPodiumBody() {
 
   if (rowsWithPrice.length === 0) {
     document.getElementById('pa-body').innerHTML = `
-      ${renderVolumeChips(volumes, activeVolume, hasVolumeOptions, volumeUnitPrices, bestUnitVolume)}
+      ${renderVolumeChips(volumes, activeVolume, hasVolumeOptions, volumeUnitPrices, bestUnitBadgeVolume)}
       <p style="color:#8a827a;text-align:center;padding:30px 0">Nenhuma loja vende a versão de ${activeVolume} ml deste produto.</p>`;
     bindVolumeChips();
     return;
@@ -10774,7 +10783,7 @@ function renderPodiumBody() {
 
   document.getElementById('pa-body').innerHTML =
     renderRatingWidget(ean) +
-    renderVolumeChips(volumes, activeVolume, hasVolumeOptions, volumeUnitPrices, bestUnitVolume) +
+    renderVolumeChips(volumes, activeVolume, hasVolumeOptions, volumeUnitPrices, bestUnitBadgeVolume) +
     savingsCard + bestOfferCard + otherStoresList +
     '<div id="pa-history"></div>' +
     notSold + footHint +
