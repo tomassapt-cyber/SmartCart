@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-06T10:33:00.978Z",
-  "seed_total_products": 97438,
+  "generated_at": "2026-11-06T12:48:46.718Z",
+  "seed_total_products": 98774,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -174,6 +174,21 @@
       "verified_live": true
     },
     {
+      "ean": "3661434009396",
+      "name": "Uriage Água Micelar Pele Normal a Seca",
+      "brand": "Uriage",
+      "image_url": "https://cdn.notinoimg.com/detail_main_mq/uriage/3661434009396_01-o/hygiene-thermal-micellar-water-normal-to-dry-skin___241213.jpg",
+      "best_price": 7.62,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/uriage-agua-termal-micelar-p-normall-250-ml",
+      "volume_ml": 250,
+      "previous_price": 12.7,
+      "discount_pct": 40,
+      "dropped_day": 20758,
+      "verified_live": true
+    },
+    {
       "ean": "8410412100595",
       "name": "Crema Ácido Glicólico",
       "brand": "Babaria",
@@ -216,55 +231,40 @@
       "discount_pct": 35,
       "dropped_day": 20760,
       "verified_live": true
-    },
-    {
-      "ean": "0560088000090",
-      "name": "Iraltone Dupla Ação Antiqueda Pack",
-      "brand": "Iraltone",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/iraltone/0560088000090_main-800x800.jpg",
-      "best_price": 30.47,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/iraltone-pack-shampoo-fortificante-200ml-locao-anti-queda-100ml",
-      "volume_ml": 100,
-      "previous_price": 47.2,
-      "discount_pct": 35,
-      "dropped_day": 20760,
-      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 885
+      "products": 897
     },
     {
       "name": "Avène",
-      "products": 854
+      "products": 856
     },
     {
       "name": "Isdin",
-      "products": 841
-    },
-    {
-      "name": "Nivea",
-      "products": 816
+      "products": 844
     },
     {
       "name": "L'Oréal Paris",
-      "products": 814
+      "products": 842
+    },
+    {
+      "name": "Nivea",
+      "products": 825
     },
     {
       "name": "La Roche-Posay",
-      "products": 798
+      "products": 801
     },
     {
       "name": "Eucerin",
-      "products": 765
+      "products": 767
     },
     {
       "name": "Chicco",
-      "products": 751
+      "products": 754
     }
   ],
   "telegram_alerts": [
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 77008,
+    "products": 77941,
     "avg_savings_pct": 28
   },
   "shard_version": "",
