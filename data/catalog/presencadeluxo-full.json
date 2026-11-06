@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-06T11:07:08.790112+00:00",
-  "completed_at": "2026-11-06T12:35:45.084269+00:00",
+  "scraped_at": "2026-11-06T18:05:42.573422+00:00",
+  "completed_at": "2026-11-06T19:43:52.617275+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1814,
+  "targets": 1820,
   "products": [
     {
       "ean": "5601411434146",
@@ -1082,6 +1082,19 @@
       "url": "https://presencadeluxo.pt/inoa-loreal/950-inoa-517-metalizados-60g-loreal-profissional-lim-3474637131890.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156403-thickbox_default/inoa-517-metalizados-60g-loreal-profissional-lim.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474630417762",
+      "name": "L'Oréal Professionnel Inoa Oxidante 10 Vol. 1000ml",
+      "price": 16.38,
+      "net_price": 13.32,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/oxidante-e-descolorante-loreal/1017-oxidante-inoa-10v-1000ml-loreal-3474630417762.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/125056-thickbox_default/oxidante-inoa-10v-1000ml-loreal.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -2824,6 +2837,19 @@
       "url": "https://presencadeluxo.pt/gel-polish-andreia/6853-verniz-gel-andreia-239-5600462909511.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/108516-thickbox_default/verniz-gel-andreia-239.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600482304198",
+      "name": "Lâminas de Depilação Descartáveis Ricki Parodi 100un – Corte Preciso e Seguro",
+      "price": 12.69,
+      "net_price": 10.32,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/depilacao-a-laser/6858-100uni-laminas-de-depilacao-descartavel-5600482304198.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/95016-thickbox_default/100uni-laminas-de-depilacao-descartavel.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -16439,19 +16465,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3351500017485",
-      "name": "Eau de Toilette Azzaro WANTED Girl Tonic 80ml",
-      "price": 36.08,
-      "net_price": 29.34,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/perfumes/85681-eau-de-toilette-azzaro-wanted-girl-tonic-80ml-3351500017485.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/141644-thickbox_default/eau-de-toilette-azzaro-wanted-girl-tonic-80ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3423222080952",
       "name": "Eau de Parfum Narciso Rodriguez All of Me 50ml",
       "price": 78.54,
@@ -17661,6 +17674,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474637059248",
+      "name": "Shampoo Hidratante Kérastase Chroma Absolu Protector 250ml",
+      "price": 30.57,
+      "net_price": 24.85,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/chroma-absolu/89568-shampoo-hidratante-kerastase-chroma-absolu-protector-250ml-3474637059248.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152670-thickbox_default/shampoo-hidratante-kerastase-chroma-absolu-protector-250ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474637059101",
       "name": "Alisador de Brilho Kerastase Chroma Absolu Gloss 210 ml",
       "price": 53.23,
@@ -17670,6 +17696,19 @@
       "url": "https://presencadeluxo.pt/chroma-absolu/89574-alisador-de-brilho-kerastase-chroma-absolu-gloss-210-ml-3474637059101.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/150231-thickbox_default/alisador-de-brilho-kerastase-chroma-absolu-gloss-210-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474636980284",
+      "name": "Shampoo Kerastase Genesis Nutritivo Fortificante 500 ml",
+      "price": 54.9,
+      "net_price": 44.64,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/genesis/89576-shampoo-kerastase-genesis-nutritivo-fortificante-500-ml-3474636980284.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152641-thickbox_default/shampoo-kerastase-genesis-nutritivo-fortificante-500-ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -17986,6 +18025,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474636954766",
+      "name": "Shampoo Equilibrante Kerastase Spécifique Bain Divalent 250 ml",
+      "price": 30.57,
+      "net_price": 24.85,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/specifique-anti-oleosidade/89643-shampoo-equilibrante-kerastase-specifique-bain-divalent-250-ml-3474636954766.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152677-thickbox_default/shampoo-equilibrante-kerastase-specifique-bain-divalent-250-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474636397495",
       "name": "Máscara Gel Kérastase Spécifique Reestruturante 200ml",
       "price": 53.23,
@@ -18281,6 +18333,19 @@
       "url": "https://presencadeluxo.pt/curl-manifesto/89705-mascara-nutritiva-kerastase-curl-manifesto-200-ml-3474636968817.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/152691-thickbox_default/mascara-nutritiva-kerastase-curl-manifesto-200-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474636980291",
+      "name": "Shampoo Kerastase Genesis Hydra Fortificante 500 ml",
+      "price": 54.9,
+      "net_price": 44.64,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kerastase/89707-shampoo-kerastase-genesis-fortificante-500-ml-3474636980291.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/152645-thickbox_default/shampoo-kerastase-genesis-fortificante-500-ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -21355,14 +21420,6 @@
   ],
   "rejected": [
     {
-      "url": "https://presencadeluxo.pt/oxidante-e-descolorante-loreal/1017-oxidante-inoa-10v-1000ml-loreal-3474630417762.html",
-      "ean": "3474630417762",
-      "canonical": "3474630417762",
-      "existing_name": "L’Oréal Professionnel Oxidante Inoa - 10Vol 1000ml",
-      "method": "GTIN",
-      "reason": "visible product data disagree with schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/cabeleireiro/1028-shampoo-inoa-post-1500ml-loreal-profissional-3474637061937.html",
       "ean": "3474637061937",
       "canonical": "3474637061937",
@@ -21407,6 +21464,14 @@
       "ean": "4064666585253",
       "canonical": "4064666585253",
       "existing_name": "Wella Champô Invigo Balance Senso Calm 250 ml",
+      "method": "GTIN",
+      "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/wella-color-brilliance/3602-shampoo-cabelo-fino-pintado-invigo-color-brilliance-250ml-wella-8005610633039.html",
+      "ean": "8005610633039",
+      "canonical": "8005610633039",
+      "existing_name": "Champô para Cabelos Finos Invigo Color Brilliance - 250ML",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
     },
@@ -21457,14 +21522,6 @@
       "existing_name": "Alicate Cutículas 722 Aço Inox 12cm - Mundial",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/depilacao-a-laser/6858-100uni-laminas-de-depilacao-descartavel-5600482304198.html",
-      "ean": "5600482304198",
-      "canonical": "5600482304198",
-      "existing_name": "100 Lâminas Descartáveis com Dispensador Azul",
-      "method": "GTIN",
-      "reason": "stock/order contradiction"
     },
     {
       "url": "https://presencadeluxo.pt/revlon-equave/7491-shampoo-kids-300ml-equave-revlon-8432225113302.html",
@@ -21736,7 +21793,7 @@
       "canonical": "7897158725816",
       "existing_name": "Gota Dourada Condicionador Matizador 3D - Cobre 300ml",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/creme-de-rosto/78508-eveline-magic-skin-creme-corretor-de-cor-8em1-50ml-eveline-cosmetics-5901761967869.html",
@@ -22064,7 +22121,15 @@
       "canonical": "027131043287",
       "existing_name": "ESTEE LAUDER PLEASURES WOMAN EDP VAP 30ml - Perfumes4You - O mundo dos perfumes à sua porta",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/perfumes/85681-eau-de-toilette-azzaro-wanted-girl-tonic-80ml-3351500017485.html",
+      "ean": "3351500017485",
+      "canonical": "3351500017485",
+      "existing_name": "AZZARO WANTED GIRL TONIC WOMAN EDT VAP 80ml - Perfumes4You - O mundo dos perfumes à sua porta",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/escovas-ricki-parodi/86023-escova-circular-termica-ricki-parodi-golden-ceramic-15mm--5600482306703.html",
@@ -22191,6 +22256,14 @@
       "ean": "3474637077495",
       "canonical": "3474637077495",
       "existing_name": "Genesis Sérum Anti-Chute Fortifiant",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/symbiose/89594-shampoo-anticaspa-kerastase-symbiose-pureza-250-ml-3474637135713.html",
+      "ean": "3474637135713",
+      "canonical": "3474637135713",
+      "existing_name": "Symbiose Bain Purete Shampoo Anticaspa - 250ML",
       "method": "GTIN",
       "reason": "stock/order contradiction"
     },
