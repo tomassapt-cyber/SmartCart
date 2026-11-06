@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-11-06T16:14:46.956Z",
+  "scraped_at": "2026-11-06T20:26:29.501Z",
   "source": "/home/runner/work/SmartCart/SmartCart/data/catalog/druni-urls.json",
   "in_progress": false,
   "stats": {
@@ -39063,15 +39063,6 @@
       "latency_ms": 2591
     },
     {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/alisadores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/alisadores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 2488
-    },
-    {
       "url": "https://www.druni.pt/cabello-unas-kneipp-gomas-cabelo-e-unhas-fortes",
       "lastmod": "2026-10-29T04:36:26+00:00",
       "priority": 1,
@@ -39092,105 +39083,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3514
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/modeladores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/modeladores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3266
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/secadores-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "cabelo/cabeleireiro-profissional/secadores-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3147
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/condicionadores/sem-sulfatos-ou-silicones",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/condicionadores/sem-sulfatos-ou-silicones",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3382
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/mascaras/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/mascaras/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3289
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/shampoos/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/shampoos/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4043
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-cacheado",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-cacheado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3527
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-danificado",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-danificado",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3450
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-fino-volume",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-fino-volume",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3498
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-seco",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-seco",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3211
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-tingido",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/cabelo-tingido",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3056
-    },
-    {
-      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/pelo-normal",
-      "lastmod": "2026-03-10T13:53:33+00:00",
-      "priority": 1,
-      "slug": "cabelo/tratamentos-especificos/pelo-normal",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3093
     },
     {
       "url": "https://www.druni.pt/cacao-sense-elifexir-gel-esfoliante-redutor",
@@ -83057,15 +82949,6 @@
       "latency_ms": 3192
     },
     {
-      "url": "https://www.druni.pt/ecologico/cabelo-natural/pentes-y-escovas",
-      "lastmod": "2026-07-15T14:21:29+00:00",
-      "priority": 1,
-      "slug": "ecologico/cabelo-natural/pentes-y-escovas",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 4264
-    },
-    {
       "url": "https://www.druni.pt/ecran-aftersun-leche-hidratante-reparadora-ecran-leite-hidratante-reparador",
       "lastmod": "2026-10-29T04:35:54+00:00",
       "priority": 1,
@@ -83086,15 +82969,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 2703
-    },
-    {
-      "url": "https://www.druni.pt/ecologico/protetor-solar/after-sun",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "ecologico/protetor-solar/after-sun",
-      "category": "skincare",
-      "status": "no_jsonld",
-      "latency_ms": 3406
     },
     {
       "url": "https://www.druni.pt/efecto-hidratante-nivea-creme-corporal-nutritivo",
@@ -99687,15 +99561,6 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 2975
-    },
-    {
-      "url": "https://www.druni.pt/formato-viagem/mini-cabelo",
-      "lastmod": "2026-03-10T13:53:32+00:00",
-      "priority": 1,
-      "slug": "formato-viagem/mini-cabelo",
-      "category": "haircare",
-      "status": "no_jsonld",
-      "latency_ms": 3700
     },
     {
       "url": "https://www.druni.pt/fortalecedor-raices-pantene-tratamento-capilar",
@@ -125463,6 +125328,141 @@
       "in_stock": true,
       "variants": [],
       "latency_ms": 3301
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/modeladores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/modeladores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3822
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/secadores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/secadores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4115
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/cabeleireiro-profissional/alisadores-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "cabelo/cabeleireiro-profissional/alisadores-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 4488
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/condicionadores/sem-sulfatos-ou-silicones",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/condicionadores/sem-sulfatos-ou-silicones",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3021
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/mascaras/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/mascaras/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3589
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/shampoos/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/shampoos/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3829
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-cacheado",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-cacheado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3212
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-danificado",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-danificado",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3323
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-fino-volume",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-fino-volume",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3147
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-seco",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-seco",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3126
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/cabelo-tingido",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/cabelo-tingido",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3066
+    },
+    {
+      "url": "https://www.druni.pt/cabelo/tratamentos-especificos/pelo-normal",
+      "lastmod": "2026-03-10T13:53:33+00:00",
+      "priority": 1,
+      "slug": "cabelo/tratamentos-especificos/pelo-normal",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3517
+    },
+    {
+      "url": "https://www.druni.pt/ecologico/cabelo-natural/pentes-y-escovas",
+      "lastmod": "2026-07-15T14:21:29+00:00",
+      "priority": 1,
+      "slug": "ecologico/cabelo-natural/pentes-y-escovas",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3717
+    },
+    {
+      "url": "https://www.druni.pt/ecologico/protetor-solar/after-sun",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "ecologico/protetor-solar/after-sun",
+      "category": "skincare",
+      "status": "no_jsonld",
+      "latency_ms": 3474
+    },
+    {
+      "url": "https://www.druni.pt/formato-viagem/mini-cabelo",
+      "lastmod": "2026-03-10T13:53:32+00:00",
+      "priority": 1,
+      "slug": "formato-viagem/mini-cabelo",
+      "category": "haircare",
+      "status": "no_jsonld",
+      "latency_ms": 3706
     }
   ]
 }
