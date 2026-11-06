@@ -59,6 +59,11 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      # 2026-11-06: o --dermo deixa entrar os perfumes da seleção e as fichas com
+      # vários tamanhos dão um produto por tamanho (gs1:hasVariant).
+      - name: Teste dos perfumes e dos tamanhos
+        run: node scripts/test-perfumes-selecao.cjs
+
       - name: Scrape Primor (dermo)
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then

@@ -224,7 +224,7 @@ const seedJson = JSON.parse(seed);
   const { fixCategory } = require('./lib/classify-category');
   let n = 0;
   for (const p of seedJson.products) {
-    const nova = fixCategory(p.name, p.category);
+    const nova = fixCategory(p.name, p.category, p.brand);
     if (nova !== (p.category ?? null)) { p.category = nova; n++; }
   }
   if (n) console.log(`🏷️  Categorias corrigidas no render: ${n} (mesma regra da BD)`);

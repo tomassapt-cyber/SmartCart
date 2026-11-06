@@ -1,0 +1,746 @@
+{
+  "_nota": "Seleção de perfumes a comparar (decisão do Tomás, 2026-11-06): as linhas mais conhecidas e mais vendidas em Portugal, escolhidas pelo Claude. Cada linha apanha todas as variações (EDT, EDP, Parfum, Elixir, Intense…) e todos os tamanhos, porque cada um tem o seu EAN. Ficam de fora desodorizantes, géis de banho, cremes de corpo, brumas e estojos (ver excluir). «marca» lista os nomes por que a marca aparece nas lojas; «linha» são as palavras que têm de estar todas no nome (sem acentos, minúsculas).",
+  "excluir": [
+    "desodoriz",
+    "deodorant",
+    "deo stick",
+    "deo spray",
+    "gel de banho",
+    "gel duche",
+    "gel de ducha",
+    "shower",
+    "locao corporal",
+    "body lotion",
+    "leite corporal",
+    "creme corporal",
+    "body cream",
+    "body milk",
+    "bruma",
+    "body mist",
+    "hair mist",
+    "mist cabelo",
+    "coffret",
+    "estojo",
+    "set ",
+    "gift",
+    "pack ",
+    "conjunto",
+    "after shave balm",
+    "balsamo after",
+    "sabonete",
+    "soap",
+    "recarga vazia",
+    "cofre",
+    "kit ",
+    "miniaturas"
+  ],
+  "fragrancia": [
+    "eau de parfum",
+    "eau de toilette",
+    "eau de cologne",
+    "edp",
+    "edt",
+    "parfum",
+    "perfume",
+    "cologne",
+    "elixir",
+    "extrait",
+    "le parfum",
+    "intense"
+  ],
+  "linhas": [
+    {
+      "marca": [
+        "chanel"
+      ],
+      "linha": "n 5",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "chanel"
+      ],
+      "linha": "coco mademoiselle",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "chanel"
+      ],
+      "linha": "chance",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "chanel"
+      ],
+      "linha": "gabrielle",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "chanel"
+      ],
+      "linha": "bleu de chanel",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "chanel"
+      ],
+      "linha": "allure homme",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "dior",
+        "christian dior"
+      ],
+      "linha": "sauvage",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "dior",
+        "christian dior"
+      ],
+      "linha": "fahrenheit",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "dior",
+        "christian dior"
+      ],
+      "linha": "j adore",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "dior",
+        "christian dior"
+      ],
+      "linha": "miss dior",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "dior",
+        "christian dior"
+      ],
+      "linha": "hypnotic poison",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "yves saint laurent",
+        "ysl",
+        "saint laurent"
+      ],
+      "linha": "libre",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "yves saint laurent",
+        "ysl",
+        "saint laurent"
+      ],
+      "linha": "black opium",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "yves saint laurent",
+        "ysl",
+        "saint laurent"
+      ],
+      "linha": "mon paris",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "yves saint laurent",
+        "ysl",
+        "saint laurent"
+      ],
+      "linha": "y",
+      "genero": "m",
+      "palavra_inteira": true
+    },
+    {
+      "marca": [
+        "yves saint laurent",
+        "ysl",
+        "saint laurent"
+      ],
+      "linha": "la nuit de l homme",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "lancome"
+      ],
+      "linha": "la vie est belle",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "lancome"
+      ],
+      "linha": "idole",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "lancome"
+      ],
+      "linha": "tresor",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "carolina herrera"
+      ],
+      "linha": "good girl",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "carolina herrera"
+      ],
+      "linha": "212",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "carolina herrera"
+      ],
+      "linha": "bad boy",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "paco rabanne",
+        "rabanne"
+      ],
+      "linha": "1 million",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "paco rabanne",
+        "rabanne"
+      ],
+      "linha": "lady million",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "paco rabanne",
+        "rabanne"
+      ],
+      "linha": "invictus",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "paco rabanne",
+        "rabanne"
+      ],
+      "linha": "olympea",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "paco rabanne",
+        "rabanne"
+      ],
+      "linha": "phantom",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "paco rabanne",
+        "rabanne"
+      ],
+      "linha": "fame",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "giorgio armani",
+        "armani",
+        "emporio armani"
+      ],
+      "linha": "acqua di gio",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "giorgio armani",
+        "armani",
+        "emporio armani"
+      ],
+      "linha": "si",
+      "genero": "f",
+      "palavra_inteira": true
+    },
+    {
+      "marca": [
+        "giorgio armani",
+        "armani",
+        "emporio armani"
+      ],
+      "linha": "my way",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "giorgio armani",
+        "armani",
+        "emporio armani"
+      ],
+      "linha": "code",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "giorgio armani",
+        "armani",
+        "emporio armani"
+      ],
+      "linha": "stronger with you",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "jean paul gaultier",
+        "gaultier"
+      ],
+      "linha": "le male",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "jean paul gaultier",
+        "gaultier"
+      ],
+      "linha": "le beau",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "jean paul gaultier",
+        "gaultier"
+      ],
+      "linha": "scandal",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "jean paul gaultier",
+        "gaultier"
+      ],
+      "linha": "la belle",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "jean paul gaultier",
+        "gaultier"
+      ],
+      "linha": "classique",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "mugler",
+        "thierry mugler"
+      ],
+      "linha": "alien",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "mugler",
+        "thierry mugler"
+      ],
+      "linha": "angel",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "mugler",
+        "thierry mugler"
+      ],
+      "linha": "a men",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "viktor rolf",
+        "viktor and rolf"
+      ],
+      "linha": "flowerbomb",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "viktor rolf",
+        "viktor and rolf"
+      ],
+      "linha": "spicebomb",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "gucci"
+      ],
+      "linha": "bloom",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "gucci"
+      ],
+      "linha": "guilty",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "gucci"
+      ],
+      "linha": "flora",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "dolce gabbana",
+        "dolce and gabbana",
+        "d g"
+      ],
+      "linha": "light blue",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "dolce gabbana",
+        "dolce and gabbana",
+        "d g"
+      ],
+      "linha": "the one",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "versace"
+      ],
+      "linha": "eros",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "versace"
+      ],
+      "linha": "bright crystal",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "versace"
+      ],
+      "linha": "dylan blue",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "versace"
+      ],
+      "linha": "pour homme",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "prada"
+      ],
+      "linha": "paradoxe",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "prada"
+      ],
+      "linha": "luna rossa",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "valentino"
+      ],
+      "linha": "born in roma",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "burberry"
+      ],
+      "linha": "her",
+      "genero": "f",
+      "palavra_inteira": true
+    },
+    {
+      "marca": [
+        "burberry"
+      ],
+      "linha": "hero",
+      "genero": "m",
+      "palavra_inteira": true
+    },
+    {
+      "marca": [
+        "givenchy"
+      ],
+      "linha": "l interdit",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "givenchy"
+      ],
+      "linha": "gentleman",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "narciso rodriguez"
+      ],
+      "linha": "for her",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "marc jacobs"
+      ],
+      "linha": "daisy",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "kenzo"
+      ],
+      "linha": "flower by kenzo",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "chloe"
+      ],
+      "linha": "chloe",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "hugo boss",
+        "boss",
+        "hugo"
+      ],
+      "linha": "bottled",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "hugo boss",
+        "boss",
+        "hugo"
+      ],
+      "linha": "alive",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "hugo boss",
+        "boss",
+        "hugo"
+      ],
+      "linha": "hugo man",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "calvin klein",
+        "ck"
+      ],
+      "linha": "ck one",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "calvin klein",
+        "ck"
+      ],
+      "linha": "eternity",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "issey miyake"
+      ],
+      "linha": "l eau d issey",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "elie saab"
+      ],
+      "linha": "le parfum",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "nina ricci"
+      ],
+      "linha": "nina",
+      "genero": "f",
+      "palavra_inteira": true
+    },
+    {
+      "marca": [
+        "tous"
+      ],
+      "linha": "tous",
+      "genero": "f",
+      "palavra_inteira": true
+    },
+    {
+      "marca": [
+        "hermes"
+      ],
+      "linha": "terre d hermes",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "hermes"
+      ],
+      "linha": "twilly",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "guerlain"
+      ],
+      "linha": "la petite robe noire",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "guerlain"
+      ],
+      "linha": "mon guerlain",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "clinique"
+      ],
+      "linha": "happy",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "ariana grande"
+      ],
+      "linha": "cloud",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "jimmy choo"
+      ],
+      "linha": "jimmy choo",
+      "genero": "f"
+    },
+    {
+      "marca": [
+        "azzaro"
+      ],
+      "linha": "wanted",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "azzaro"
+      ],
+      "linha": "chrome",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "davidoff"
+      ],
+      "linha": "cool water",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "lacoste"
+      ],
+      "linha": "l 12 12",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "montblanc",
+        "mont blanc"
+      ],
+      "linha": "legend",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "montblanc",
+        "mont blanc"
+      ],
+      "linha": "explorer",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "tom ford"
+      ],
+      "linha": "black orchid",
+      "genero": "u"
+    },
+    {
+      "marca": [
+        "bvlgari",
+        "bulgari"
+      ],
+      "linha": "man in black",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "ralph lauren"
+      ],
+      "linha": "polo",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "diesel"
+      ],
+      "linha": "only the brave",
+      "genero": "m"
+    },
+    {
+      "marca": [
+        "antonio banderas",
+        "banderas"
+      ],
+      "linha": "blue seduction",
+      "genero": "m"
+    }
+  ]
+}

@@ -34,6 +34,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { linhaDoPerfume } = require('./lib/perfumes-selecao');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -251,8 +252,10 @@ async function fetchPage(url, attempt = 1) {
     .filter(u => u.startsWith('https://www.atida.com/pt-pt/'));
   console.log(`  ${allUrls.length} URLs no sitemap`);
 
-  // 2. Filtrar por beauty hints
-  let urls = allUrls.filter(isBeautyUrl);
+  // 2. Filtrar por beauty hints. Os perfumes da seleção (data/perfumes-selecao.json,
+  // 2026-11-06) entram também: o filtro de palavras deixava-os de fora (~15 fichas).
+  const perfumeDaSelecao = u => !!linhaDoPerfume({ name: decodeURIComponent(u.split('/').pop()).replace(/[-_]/g, ' '), brand: '' });
+  let urls = allUrls.filter(u => isBeautyUrl(u) || perfumeDaSelecao(u));
   console.log(`  ${urls.length} URLs beauty/dermo (após filtro keywords)`);
 
   // 3. Chunking
