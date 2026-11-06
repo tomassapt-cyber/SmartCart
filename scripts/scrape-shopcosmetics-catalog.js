@@ -95,7 +95,18 @@ function extractProductData(html) {
 }
 
 async function fetchText(url, attempt = 1) {
-  try { const r = await fetch(url, { headers: { 'User-Agent': UA } }); return await r.text(); }
+  try {
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
+    const t = await r.text();
+    // 2026-11-06: desde 01/11, na nuvem, o índice deixou de vir (0 sub-sitemaps) e
+    // o log só dizia «feed vazio/bloqueio de IP?»; do PC vem inteiro. Dizer o que
+    // chegou: estado HTTP e se é o desafio da Cloudflare (a loja está atrás dela).
+    if (!r.ok || !/<(urlset|sitemapindex)\b/i.test(t)) {
+      const desafio = r.headers.get('cf-mitigated') === 'challenge' || /just a moment|challenge-platform|cf-chl/i.test(t);
+      console.warn(`  ⚠ ${url.split('/').pop()}: HTTP ${r.status}${desafio ? ' · desafio da Cloudflare (bloqueio a este IP)' : ''} · ${t.length} bytes · «${t.slice(0, 100).replace(/\s+/g, ' ')}»`);
+    }
+    return t;
+  }
   catch (e) { if (attempt < 3) { await new Promise(s => setTimeout(s, 2000 * attempt)); return fetchText(url, attempt + 1); } throw e; }
 }
 

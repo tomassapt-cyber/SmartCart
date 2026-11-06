@@ -48,6 +48,9 @@ function slugLooksCosmetic(u) {
 function decodeUnicode(s) { return (s || '').replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16))); }
 const CONTROL_CHARS_RE = new RegExp('[\\x00-\\x1F]+', 'g');
 function stripJsonControlChars(s) { return s.replace(CONTROL_CHARS_RE, ' '); }
+// 2026-11-03: o tema passou a deixar um comentário /* "image": … */ dentro do
+// Offer do JSON-LD — JSON inválido, e o leitor dava 0 produtos (tudo «skip»).
+function stripJsonComments(s) { return s.replace(/\/\*[\s\S]*?\*\//g, ' '); }
 function volumeFromName(name) {
   const m = (name || '').match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
   if (!m) return null; const v = parseFloat(m[1].replace(',', '.')); const u = m[2].toLowerCase();
@@ -59,7 +62,10 @@ function extractProductData(html, url) {
   for (const b of blocks) {
     let j;
     try { j = JSON.parse(b[1]); }
-    catch { try { j = JSON.parse(stripJsonControlChars(b[1])); } catch { continue; } }
+    catch {
+      try { j = JSON.parse(stripJsonControlChars(b[1])); }
+      catch { try { j = JSON.parse(stripJsonControlChars(stripJsonComments(b[1]))); } catch { continue; } }
+    }
     const nodes = j['@graph'] ? j['@graph'] : (Array.isArray(j) ? j : [j]);
     for (const n of nodes) {
       const t = n && n['@type'];
