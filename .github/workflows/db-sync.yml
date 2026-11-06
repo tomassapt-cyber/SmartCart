@@ -80,6 +80,13 @@ jobs:
       - name: Teste dos tamanhos de variante
         run: node scripts/test-variant-sizes.cjs
 
+      # O envio incremental cura-se sozinho quando a BD e o estado divergem
+      # (2026-11-06: 6 dias vermelho por uma FK) e as limpezas param no 1.º erro.
+      - name: Teste da recuperação e das limpezas do sync
+        run: |
+          node scripts/test-db-sync-recuperacao.cjs
+          node scripts/test-db-sync-apagar.cjs
+
       # Sync INCREMENTAL (2026-10-02): o estado do último sync bem-sucedido
       # (impressão digital de cada linha que ficou na BD, ~5 MB) passa de corrida
       # em corrida pela cache do Actions. Com ele o sync envia só o que mudou

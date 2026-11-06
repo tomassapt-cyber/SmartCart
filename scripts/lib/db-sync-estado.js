@@ -157,4 +157,43 @@ const variantesSemCascata = (variantes, ofertasQueSaem) => {
   return (variantes || []).filter(k => !saem.has(k.split('\u0001').slice(0, 2).join('\u0001')));
 };
 
-module.exports = { TABELAS, chave, impressao, carregar, guardar, lerDaBD, diferencas, apagarPorChave, variantesSemCascata, FICHEIRO };
+// A BD recusou uma linha por chave estrangeira: uma oferta aponta para um
+// produto (ou uma variante para uma oferta) que a BD não tem.
+const ERRO_FK = /"code"\s*:\s*"23503"/;
+
+/**
+ * Envia as diferenças pela ordem das chaves estrangeiras. Se a BD recusar uma
+ * linha por FK, o estado guardado já não descreve a BD: relê-se a BD UMA vez e
+ * repete-se com as diferenças reais.
+ *
+ * Porquê (2026-11-06): a 01/11 uma corrida apagou produtos e morreu a verificar
+ * as contagens (HTTP 500), sem guardar o estado — como deve. As seguintes
+ * usaram o estado de 31/10, que dava esses produtos como já enviados: nunca os
+ * reenviavam, as ofertas deles eram recusadas (23503, «Key (ean)=(…) is not
+ * present in table products») e o sync ficou vermelho 6 dias, com os preços do
+ * site parados em 31/10. Qualquer divergência destas passa a curar-se sozinha.
+ *
+ * enviarTabela(tabela, linhas) e lerBD() vêm de quem chama (aqui não há rede).
+ * Se a leitura da BD falhar, segue sem estado: reenvia-se tudo (sync completo).
+ * Devolve { dif, anterior, relida }.
+ */
+async function enviarComRecuperacao({ payloads, dif, anterior, enviarTabela, lerBD, log = console.log }) {
+  const ORDEM = ['stores', 'products', 'offers', 'offer_variants'];
+  const enviarTudo = async d => { for (const t of ORDEM) if (d[t]) await enviarTabela(t, d[t].enviar); };
+  try {
+    await enviarTudo(dif);
+    return { dif, anterior, relida: false };
+  } catch (e) {
+    if (!anterior || !ERRO_FK.test(e.message)) throw e;
+    log(`  ⚠ a BD não bate com o estado guardado (${e.message.slice(0, 160)}) — a reler a BD e a repetir.`);
+    let lida = null;
+    try { lida = await lerBD(); } catch (err) { log(`  ⚠ não consegui ler a BD (${err.message}) — a reenviar tudo.`); }
+    const novo = {};
+    for (const [t, linhas] of Object.entries(payloads)) if (linhas) novo[t] = diferencas(t, linhas, lida && lida[t] ? lida[t] : null);
+    log('🔁 sync repetido: ' + Object.entries(novo).map(([t, d]) => `${t} ${d.enviar.length} a enviar · ${d.apagar.length} a apagar`).join(' | '));
+    await enviarTudo(novo);
+    return { dif: novo, anterior: lida, relida: true };
+  }
+}
+
+module.exports = { TABELAS, chave, impressao, carregar, guardar, lerDaBD, diferencas, apagarPorChave, variantesSemCascata, enviarComRecuperacao, ERRO_FK, FICHEIRO };
