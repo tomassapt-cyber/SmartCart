@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-07T10:25:53.037282+00:00",
-  "completed_at": "2026-11-07T12:01:56.190010+00:00",
+  "scraped_at": "2026-11-07T16:54:28.238438+00:00",
+  "completed_at": "2026-11-07T18:30:29.840833+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -14164,6 +14164,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927882299",
+      "name": "Andreia Professional Dual Neutralizer Champô 1000ml",
+      "price": 21.4,
+      "net_price": 17.41,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/cuidados-cabelo-pintado-andreia/82295-shampoo-neutralizante-1000ml-andreia-profissional-5603927882299.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/129872-thickbox_default/shampoo-neutralizante-1000ml-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927882237",
       "name": "Andreia Professional Color Coat Champô 1000ml",
       "price": 20.3,
@@ -21953,14 +21966,6 @@
       "existing_name": "Condicionador Murumuru Haskell 300ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/cuidados-cabelo-pintado-andreia/82295-shampoo-neutralizante-1000ml-andreia-profissional-5603927882299.html",
-      "ean": "5603927882299",
-      "canonical": "5603927882299",
-      "existing_name": "Andreia Vegan Dual Neutralizer champô 1000ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/haskell-bendito-loiro/82365-bendito-loiro-mascara-300ml-haskell-7898610376232.html",
