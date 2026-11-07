@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-06T12:51:34.551Z",
-  "seed_total_products": 98774,
+  "generated_at": "2026-11-07T09:44:05.565Z",
+  "seed_total_products": 99927,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.45,
+      "best_price": 16.37,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -151,7 +151,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.27,
+      "best_price": 15.28,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -235,20 +235,24 @@
   ],
   "top_brands": [
     {
+      "name": "L'Oréal Paris",
+      "products": 905
+    },
+    {
       "name": "Clarins",
       "products": 897
     },
     {
       "name": "Avène",
-      "products": 856
+      "products": 855
+    },
+    {
+      "name": "Essence",
+      "products": 853
     },
     {
       "name": "Isdin",
-      "products": 844
-    },
-    {
-      "name": "L'Oréal Paris",
-      "products": 842
+      "products": 845
     },
     {
       "name": "Nivea",
@@ -256,15 +260,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 801
+      "products": 804
     },
     {
       "name": "Eucerin",
-      "products": 767
-    },
-    {
-      "name": "Chicco",
-      "products": 754
+      "products": 765
     }
   ],
   "telegram_alerts": [
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 77941,
+    "products": 78996,
     "avg_savings_pct": 28
   },
   "shard_version": "",

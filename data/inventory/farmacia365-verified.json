@@ -3,8 +3,8 @@
   "store_slug": "farmacia365",
   "store_name": "Farmácia 365",
   "store_url": "https://www.farmacia365.pt",
-  "verified_at": "2026-11-06T10:30:59.399Z",
-  "method": "playwright-headless (refresh 2026-11-06)",
+  "verified_at": "2026-11-07T09:42:19.042Z",
+  "method": "playwright-headless (refresh 2026-11-07)",
   "stats": {
     "total": 17,
     "verified": 6,
