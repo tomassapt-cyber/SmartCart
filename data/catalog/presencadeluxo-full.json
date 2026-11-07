@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-06T23:45:23.636378+00:00",
-  "completed_at": "2026-11-07T01:21:11.564455+00:00",
+  "scraped_at": "2026-11-07T10:25:53.037282+00:00",
+  "completed_at": "2026-11-07T12:01:56.190010+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1820,
+  "targets": 1830,
   "products": [
     {
       "ean": "5601411434146",
@@ -5753,6 +5753,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787723793",
+      "name": "Schwarzkopf Bonacure Repair Rescue Spray Condicionador 400ml – Desembaraço e Reparação Instantânea",
+      "price": 24.95,
+      "net_price": 20.29,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/bc-repair-rescue-schwarzkopf/12136-condicionador-bifasico-em-spray-repair-rescue-bonacure-400ml-schwarzkopf-4045787723793.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130440-thickbox_default/condicionador-bifasico-em-spray-repair-rescue-bonacure-400ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787723915",
       "name": "Schwarzkopf Bonacure Repair Rescue Condicionador 1000ml – Reparação e Nutrição Profunda para Cabelos Danificados",
       "price": 42.94,
@@ -8622,6 +8635,19 @@
       "url": "https://presencadeluxo.pt/cera-roll-on/16027-roll-on-rosa-110ml-ricki-parodi-5600482303726.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/138703-thickbox_default/roll-on-rosa-110ml-ricki-parodi.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600482303795",
+      "name": "Removedor de Cera Ricki Parodi 500ml – Limpeza de Equipamentos Profissional",
+      "price": 9.45,
+      "net_price": 7.68,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/pre-depilacao-e-pos-depilacao/16040-removedor-restos-de-cera-500ml-ricki-parodi-5600482303795.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/160293-thickbox_default/removedor-restos-de-cera-500ml-ricki-parodi.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13514,32 +13540,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5600482306086",
-      "name": "Verniz Gel A67 Charming Mermaid Tail - Summer Collection - Ricki Parodi",
-      "price": 4.07,
-      "net_price": 3.31,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/verniz-gel-ricki-parodi/81814-verniz-gel-a67-charming-mermaid-tail-summer-collection-ricki-parodi-5600482306086.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/128675-thickbox_default/verniz-gel-a67-charming-mermaid-tail-summer-collection-ricki-parodi.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "7898610372296",
-      "name": "Condicionador Ametista p/Cabelos Loiros 300ml - Haskell",
-      "price": 7.78,
-      "net_price": 6.33,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/haskell/81841-condicionador-ametista-pcabelos-loiros-300ml-haskell-7898610372296.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/128765-thickbox_default/condicionador-ametista-pcabelos-loiros-300ml-haskell.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927877042",
       "name": "The Gel Polish Andreia - Vibrant Summer Collection - VS3 - Edição Limitada",
       "price": 5.22,
@@ -14160,19 +14160,6 @@
       "url": "https://presencadeluxo.pt/cuidados-cabelo-pintado-andreia/82294-shampoo-neutralizante-300ml-andreia-profissional-5603927882282.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/129878-thickbox_default/shampoo-neutralizante-300ml-andreia-profissional.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927882299",
-      "name": "Andreia Professional Dual Neutralizer Champô 1000ml",
-      "price": 21.4,
-      "net_price": 17.41,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/cuidados-cabelo-pintado-andreia/82295-shampoo-neutralizante-1000ml-andreia-profissional-5603927882299.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/129872-thickbox_default/shampoo-neutralizante-1000ml-andreia-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -21405,6 +21392,58 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927902805",
+      "name": "Andreia Gel Polish Celebration Edit CE2 – Rosa com Glitter Dourado 10,5 ml",
+      "price": 4.89,
+      "net_price": 3.98,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92760-andreia-gel-polish-celebration-edit-ce2-rosa-com-glitter-dourado-105-ml-5603927902805.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/161150-thickbox_default/andreia-gel-polish-celebration-edit-ce2-rosa-com-glitter-dourado-105-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927902812",
+      "name": "Andreia Gel Polish Celebration Edit CE3 – Vermelho Rubi Cintilante 10,5 ml",
+      "price": 4.89,
+      "net_price": 3.98,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92761-andreia-gel-polish-celebration-edit-ce3-vermelho-rubi-cintilante-105-ml-5603927902812.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/161152-thickbox_default/andreia-gel-polish-celebration-edit-ce3-vermelho-rubi-cintilante-105-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927902829",
+      "name": "Andreia Gel Polish Celebration Edit CE4 – Vermelho Vibrante Cintilante 10,5 ml",
+      "price": 4.89,
+      "net_price": 3.98,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92762-andreia-gel-polish-celebration-edit-ce4-vermelho-vibrante-cintilante-105-ml-5603927902829.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/161153-thickbox_default/andreia-gel-polish-celebration-edit-ce4-vermelho-vibrante-cintilante-105-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927902843",
+      "name": "Andreia Gel Polish Celebration Edit CE6 – Cereja Negro Cintilante 10,5 ml",
+      "price": 4.89,
+      "net_price": 3.98,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92764-andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml-5603927902843.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/161155-thickbox_default/andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600482302897",
       "name": "Corta-Unhas RickiParodi Níquel Grande",
       "price": 2.25,
@@ -21624,6 +21663,14 @@
       "ean": "8005610576206",
       "canonical": "8005610576206",
       "existing_name": "EIMI bold move 150 ml",
+      "method": "GTIN",
+      "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/bc-repair-rescue-schwarzkopf/12132-shampoo-reparador-repair-rescue-bonacure-500ml-schwarzkopf-4045787724110.html",
+      "ean": "4045787724110",
+      "canonical": "4045787724110",
+      "existing_name": "SCHWARZKOPF BC REPAIR RESCUE SHAMPOO 500ML",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
     },
@@ -21865,7 +21912,7 @@
       "canonical": "7897158726714",
       "existing_name": "Máscara Preenchedor Hialurônico 250g - Gota Dourada",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/gota-dourada/81584-spray-uso-essencial-preenchedor-hialuronico-120ml-gota-dourada-7897158726707.html",
@@ -21876,12 +21923,28 @@
       "reason": "stock/order contradiction"
     },
     {
+      "url": "https://presencadeluxo.pt/verniz-gel-ricki-parodi/81814-verniz-gel-a67-charming-mermaid-tail-summer-collection-ricki-parodi-5600482306086.html",
+      "ean": "5600482306086",
+      "canonical": "5600482306086",
+      "existing_name": "Verniz Gel A67 Charming Mermaid Tail - Summer Collection - Ricki Parodi",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/haskell/81841-condicionador-ametista-pcabelos-loiros-300ml-haskell-7898610372296.html",
+      "ean": "7898610372296",
+      "canonical": "7898610372296",
+      "existing_name": "Condicionador Ametista Haskell 300ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/haskell/81909-condicionador-mandioca-pcabelos-ressecados-e-opacos-300ml-haskell-7898610372005.html",
       "ean": "7898610372005",
       "canonical": "7898610372005",
       "existing_name": "Condicionador Mandioca Haskell 300ml",
       "method": "GTIN",
-      "reason": "visible product data disagree with schema"
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/haskell/81919-condicionador-murumuru-haskell-300ml-para-hidratacao-cabelo-e-nutricao-capilar-7898610373262.html",
@@ -21890,6 +21953,14 @@
       "existing_name": "Condicionador Murumuru Haskell 300ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/cuidados-cabelo-pintado-andreia/82295-shampoo-neutralizante-1000ml-andreia-profissional-5603927882299.html",
+      "ean": "5603927882299",
+      "canonical": "5603927882299",
+      "existing_name": "Andreia Vegan Dual Neutralizer champô 1000ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/haskell-bendito-loiro/82365-bendito-loiro-mascara-300ml-haskell-7898610376232.html",
@@ -21972,7 +22043,7 @@
       "reason": "unverified price/currency/URL"
     },
     {
-      "url": "https://presencadeluxo.pt/haskell-hidranature/84053-shampoo-hidranutre-haskell-1l-hidratacao-e-nutricao-todo-o-tipo-de-cabelos-7898610376423.html",
+      "url": "https://presencadeluxo.pt/haskell/84053-shampoo-hidranutre-haskell-1l-hidratacao-e-nutricao-todo-o-tipo-de-cabelos-7898610376423.html",
       "ean": "7898610376423",
       "canonical": "7898610376423",
       "existing_name": "Haskell HidraNutre Shampoo 1000ml",
@@ -22652,10 +22723,34 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/wella-color-brilliance/92453-wella-invigo-color-brilliance-mascara-para-cabelos-finos-30ml-8005610633657.html",
+      "ean": "8005610633657",
+      "canonical": "8005610633657",
+      "existing_name": "Wella Invigo Color Brilliance Máscara para Cabelo Fino 30ml",
+      "method": "GTIN",
+      "reason": "visible product data disagree with schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/the-gel-polish-andreia/92557-andreia-professional-the-gel-polish-september-rhythm-sr1-105-ml-5603927901990.html",
       "ean": "5603927901990",
       "canonical": "5603927901990",
       "existing_name": "Andreia The Gel Polish Verniz Gel Vegan LED UV 10,5ml - SR1 Vermelho Cereja",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92759-andreia-gel-polish-celebration-edit-ce1-nude-perolado-105-ml-5603927902799.html",
+      "ean": "5603927902799",
+      "canonical": "5603927902799",
+      "existing_name": "Verniz Gel Andreia Gel Polish CE1 – Nude perolado translúcido com microbrilho",
+      "method": "GTIN",
+      "reason": "unverified price/currency/URL"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92763-andreia-gel-polish-celebration-edit-ce5-bordeaux-intenso-com-brilho-105-ml-5603927902836.html",
+      "ean": "5603927902836",
+      "canonical": "5603927902836",
+      "existing_name": "Verniz Gel Andreia Gel Polish CE5 – Bordeaux intenso com reflexos avermelhados e brilho multidimensional",
       "method": "GTIN",
       "reason": "unverified price/currency/URL"
     },
