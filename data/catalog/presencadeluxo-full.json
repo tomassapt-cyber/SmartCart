@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-07T22:49:35.479101+00:00",
-  "completed_at": "2026-11-08T00:34:55.135125+00:00",
+  "scraped_at": "2026-11-08T10:33:54.431698+00:00",
+  "completed_at": "2026-11-08T12:14:52.755741+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -13540,6 +13540,32 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600482306086",
+      "name": "Verniz Gel A67 Charming Mermaid Tail - Summer Collection - Ricki Parodi",
+      "price": 4.07,
+      "net_price": 3.31,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/verniz-gel-ricki-parodi/81814-verniz-gel-a67-charming-mermaid-tail-summer-collection-ricki-parodi-5600482306086.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/128675-thickbox_default/verniz-gel-a67-charming-mermaid-tail-summer-collection-ricki-parodi.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "7898610372296",
+      "name": "Condicionador Ametista p/Cabelos Loiros 300ml - Haskell",
+      "price": 7.78,
+      "net_price": 6.33,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/haskell/81841-condicionador-ametista-pcabelos-loiros-300ml-haskell-7898610372296.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/128765-thickbox_default/condicionador-ametista-pcabelos-loiros-300ml-haskell.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927877042",
       "name": "The Gel Polish Andreia - Vibrant Summer Collection - VS3 - Edição Limitada",
       "price": 5.22,
@@ -21925,7 +21951,7 @@
       "canonical": "7897158726714",
       "existing_name": "Máscara Preenchedor Hialurônico 250g - Gota Dourada",
       "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
+      "reason": "stock/order contradiction"
     },
     {
       "url": "https://presencadeluxo.pt/gota-dourada/81584-spray-uso-essencial-preenchedor-hialuronico-120ml-gota-dourada-7897158726707.html",
@@ -21936,28 +21962,12 @@
       "reason": "stock/order contradiction"
     },
     {
-      "url": "https://presencadeluxo.pt/verniz-gel-ricki-parodi/81814-verniz-gel-a67-charming-mermaid-tail-summer-collection-ricki-parodi-5600482306086.html",
-      "ean": "5600482306086",
-      "canonical": "5600482306086",
-      "existing_name": "Verniz Gel A67 Charming Mermaid Tail - Summer Collection - Ricki Parodi",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/haskell/81841-condicionador-ametista-pcabelos-loiros-300ml-haskell-7898610372296.html",
-      "ean": "7898610372296",
-      "canonical": "7898610372296",
-      "existing_name": "Condicionador Ametista Haskell 300ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/haskell/81909-condicionador-mandioca-pcabelos-ressecados-e-opacos-300ml-haskell-7898610372005.html",
       "ean": "7898610372005",
       "canonical": "7898610372005",
       "existing_name": "Condicionador Mandioca Haskell 300ml",
       "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
+      "reason": "visible product data disagree with schema"
     },
     {
       "url": "https://presencadeluxo.pt/haskell/81919-condicionador-murumuru-haskell-300ml-para-hidratacao-cabelo-e-nutricao-capilar-7898610373262.html",
