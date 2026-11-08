@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-08T10:00:29.150Z",
-  "seed_total_products": 100048,
+  "generated_at": "2026-11-08T11:51:45.468Z",
+  "seed_total_products": 100061,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -17,10 +17,10 @@
       "name": "René Furterer Sublime Karité Máscara Nutritiva",
       "brand": "René Furterer",
       "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/1734961488_a325e45081527067b0e715ed711b5cce.jpg?v=1737042299",
-      "best_price": 18.67,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/rene-furterer-sublime-karite-mascara-nutritiva-modeladora-200ml"
+      "best_price": 19.96,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/rene-furterer-sub-karite-masc-nutri-200"
     },
     {
       "ean": "8414002084555",
@@ -248,11 +248,11 @@
     },
     {
       "name": "Avène",
-      "products": 855
+      "products": 856
     },
     {
       "name": "Isdin",
-      "products": 845
+      "products": 846
     },
     {
       "name": "Nivea",
@@ -260,11 +260,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 803
+      "products": 802
     },
     {
       "name": "Eucerin",
-      "products": 765
+      "products": 767
     }
   ],
   "telegram_alerts": [
