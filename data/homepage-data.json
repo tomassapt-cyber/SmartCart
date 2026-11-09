@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-09T11:03:59.879Z",
-  "seed_total_products": 100059,
+  "generated_at": "2026-11-09T13:47:25.549Z",
+  "seed_total_products": 100068,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -248,11 +248,11 @@
     },
     {
       "name": "Avène",
-      "products": 854
+      "products": 851
     },
     {
       "name": "Isdin",
-      "products": 845
+      "products": 846
     },
     {
       "name": "Nivea",
@@ -260,11 +260,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 804
+      "products": 803
     },
     {
       "name": "Eucerin",
-      "products": 765
+      "products": 766
     }
   ],
   "telegram_alerts": [
