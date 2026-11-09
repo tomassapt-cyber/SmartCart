@@ -53,7 +53,7 @@ for (const [nome, rebaseFalha] of [['rebase-limpo', false], ['rebase-conflito', 
     echo "git:$1" >&2
     case "$1" in
       push) [ "$rebased" -eq 1 ] || [ "$committed" -eq 1 ]; return $?;;
-      rebase) [ "$2" = --abort ] && return 0; ${rebaseFalha ? 'return 1' : 'rebased=1; return 0'};;
+      rebase) [ "$2" = --abort ] && return 0; echo "rebase-args:$*" >&2; ${rebaseFalha ? 'return 1' : 'rebased=1; return 0'};;
       diff) return 1;;
     esac
     [ "$1" != commit ] || committed=1
@@ -69,6 +69,7 @@ for (const [nome, rebaseFalha] of [['rebase-limpo', false], ['rebase-conflito', 
     if(!rebaseFalha){
       assert.ok(!result.stderr.includes('integrate'),'rebase-limpo: não devia re-integrar');
       assert.ok(result.stderr.includes('git:rebase'),'rebase-limpo: não tentou o rebase');
+      assert.ok(result.stderr.includes('rebase-args:rebase --autostash'),'rebase-limpo: o rebase tem de usar --autostash');
     } else {
       assert.ok(result.stderr.includes('git:rebase')&&result.stderr.includes('integrate'),'rebase-conflito: devia re-integrar depois do conflito');
     }
