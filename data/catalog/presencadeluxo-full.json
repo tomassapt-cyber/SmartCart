@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-08T22:57:15.139273+00:00",
-  "completed_at": "2026-11-09T00:39:47.820828+00:00",
+  "scraped_at": "2026-11-09T11:47:37.359349+00:00",
+  "completed_at": "2026-11-09T13:38:39.628663+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -5220,19 +5220,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474636975686",
-      "name": "Máscara Vitamino Color 500ml L'Oreal Serie Expert",
-      "price": 28.17,
-      "net_price": 22.91,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/125108-thickbox_default/mascara-vitamino-color-500ml-l-oreal-serie-expert.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474636975976",
       "name": "Shampoo Vitamino Color 1500ml L'Oreal Serie Expert",
       "price": 38.19,
@@ -7907,19 +7894,6 @@
       "url": "https://presencadeluxo.pt/oxidantes-descolorantes-da-kay-line/13499-po-descolorante-anti-amarelos-500grs-kaypro-8028483243280.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/94643-thickbox_default/po-descolorante-anti-amarelos-500grs-kaypro.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "8028483241026",
-      "name": "Shampoo Anti-Amarelos No Yellow Gigs 350ml - KAYPRO",
-      "price": 7.54,
-      "net_price": 6.13,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/kaypro-anti-yellow-anti-amarelos/13514-shampoo-anti-amarelos-no-yellow-gigs-350ml-kaypro-8028483241026.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/94846-thickbox_default/shampoo-anti-amarelos-no-yellow-gigs-350ml-kaypro.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -21650,6 +21624,14 @@
       "reason": "visible product data disagree with schema"
     },
     {
+      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
+      "ean": "3474636975686",
+      "canonical": "3474636975686",
+      "existing_name": "L'ORÉAL SÉRIE EXPERT VITAMINO COLOR MÁSCARA CABELO PINTADO 500ml - Perfumes4You - O mundo dos perfumes à sua porta",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
       "url": "https://presencadeluxo.pt/scalp-loreal/11418-ampolas-aminexil-advanced-10x6ml-loreal-serie-expert-3474637265007.html",
       "ean": "3474637265007",
       "canonical": "3474637265007",
@@ -21736,6 +21718,14 @@
       "existing_name": "Uniq One Super10r Hair Mask",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/kaypro-anti-yellow-anti-amarelos/13514-shampoo-anti-amarelos-no-yellow-gigs-350ml-kaypro-8028483241026.html",
+      "ean": "8028483241026",
+      "canonical": "8028483241026",
+      "existing_name": "Kaypro Anti Yellow Gigs Shampoo",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/kay-color/14592-coloracao-100ml-aluminio-kaycolor-8028483244669.html",
