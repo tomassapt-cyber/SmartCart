@@ -155,8 +155,11 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     console.log(`🏬 Loja "A Tua Farmácia" registada em seed.stores[].`);
   }
 
-  let cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, priceSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0;
+  let eanMatched = 0, cnpMatched = 0, matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, priceSkip = 0, cnpBrandSkip = 0, added = 0, updated = 0, imgFilled = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
+  // EAN com e sem o zero do UPC-A (12 ↔ 13 dígitos), como em lib/integrar-farmacia.js
+  const eanGemeo = e => /^\d{12}$/.test(e) ? '0' + e : /^0\d{12}$/.test(e) ? e.slice(1) : null;
+  const porEan = e => productByEan[e] || (eanGemeo(e) && productByEan[eanGemeo(e)]) || null;
 
   for (const ep of items) {
     const brand = resolveBrand(ep);
@@ -164,8 +167,11 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     const nb = normalizeBrand(brand);
     let target = null;
 
+    // ── 0. EAN real (2026-11-06): desde que o leitor lê o barcode pelo .js da loja ──
+    if (isRealEan(ep.ean) && porEan(String(ep.ean).trim())) { target = porEan(String(ep.ean).trim()); eanMatched++; }
+
     // ── 1. CNP directo (sinal forte) + guarda de marca ──
-    if (isCnp(ep.cnp) && cnpToProducts[ep.cnp]) {
+    if (!target && isCnp(ep.cnp) && cnpToProducts[ep.cnp]) {
       const cands = [...cnpToProducts[ep.cnp]];
       // guarda de marca: só aceita se a marca do alvo coincide (ou é
       // genérica/desconhecida) — evita colisões de CNP=código-de-linha entre
@@ -204,8 +210,9 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     else if (r.action === 'merged') updated++;
   }
 
-  const totalMatched = cnpMatched + matched + looseMatched + fuzzyMatched;
+  const totalMatched = eanMatched + cnpMatched + matched + looseMatched + fuzzyMatched;
   console.log('══════ Resumo (A Tua Farmácia · fonte de preço, enrich-only) ══════');
+  console.log(`  Casados por EAN (barcode):  ${eanMatched}`);
   console.log(`  Casados por CNP directo:    ${cnpMatched}`);
   console.log(`  Casados por fingerprint:    ${matched}`);
   console.log(`  Casados por nome-sem-ruído: ${looseMatched}`);

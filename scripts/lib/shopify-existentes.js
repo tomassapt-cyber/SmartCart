@@ -192,4 +192,5 @@ async function recolher(o) {
   };
 }
 
-module.exports = { recolher, linhas, gtinValido, regrasRobots, permitido, Paragem, UA };
+// pedir: também usado pelo leitor da A Tua Farmácia (EAN pelo .js, 2026-11-06)
+module.exports = { recolher, linhas, gtinValido, regrasRobots, permitido, pedir, Paragem, UA };
