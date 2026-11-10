@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T10:55:49.268Z",
-  "seed_total_products": 100072,
+  "generated_at": "2026-11-10T13:26:03.548Z",
+  "seed_total_products": 100100,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -248,11 +248,11 @@
     },
     {
       "name": "Avène",
-      "products": 849
+      "products": 851
     },
     {
       "name": "Isdin",
-      "products": 843
+      "products": 842
     },
     {
       "name": "Nivea",
