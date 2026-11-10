@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-10T02:15:16.200157+00:00",
-  "completed_at": "2026-11-10T03:50:39.566457+00:00",
+  "scraped_at": "2026-11-10T11:24:19.312935+00:00",
+  "completed_at": "2026-11-10T12:57:41.649512+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -1671,6 +1671,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8423029016821",
+      "name": "Espanador de Pescoço com Depósito para Pó de Talco",
+      "price": 8.32,
+      "net_price": 6.77,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/acessorios-barbearia/2782-espanador-po-talco-eurostil-8423029016821.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/122673-thickbox_default/espanador-po-talco-eurostil.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8436007230157",
       "name": "Escova 12mm Termix",
       "price": 11.86,
@@ -1919,7 +1932,7 @@
     },
     {
       "ean": "7702018007257",
-      "name": "Lâminas de Barbear 100 unid. - Astra",
+      "name": "Lâminas de Barbear Astra Superior Platinum Double Edge – 100 Unidades",
       "price": 10.44,
       "net_price": 8.49,
       "tax_included": true,
@@ -10773,8 +10786,8 @@
     {
       "ean": "5603927872641",
       "name": "Andreia Builder Gel 3 IN 1 Clear - Baixa Viscosidade 44gr",
-      "price": 18.02,
-      "net_price": 14.65,
+      "price": 17.21,
+      "net_price": 13.99,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/67695-andreia-builder-gel-3-in-1-clear-baixa-viscosidade-44gr-5603927872641.html",
@@ -12398,8 +12411,8 @@
     {
       "ean": "5603927872726",
       "name": "Andreia Builder Gel 3 IN 1 Soft Pink - Média Viscosidade 44gr",
-      "price": 18.02,
-      "net_price": 14.65,
+      "price": 17.21,
+      "net_price": 13.99,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78929-andreia-builder-gel-3-in-1-soft-pink-media-viscosidade-44gr-5603927872726.html",
@@ -12476,8 +12489,8 @@
     {
       "ean": "5603927872801",
       "name": "Andreia French Builder 2 IN 1 Cover Pink - Alta Viscosidade 22gr",
-      "price": 11.07,
-      "net_price": 9.0,
+      "price": 10.68,
+      "net_price": 8.69,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78935-andreia-french-builder-2-in-1-cover-pink-alta-viscosidade-22gr-5603927872801.html",
@@ -16194,8 +16207,8 @@
     {
       "ean": "5603927888871",
       "name": "Andreia Hard Gel 2 IN 1 Pink Alta Viscosidade 22gr",
-      "price": 11.07,
-      "net_price": 9.0,
+      "price": 10.68,
+      "net_price": 8.69,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/85503-andreia-hard-gel-2-in-1-pink-alta-viscosidade-22gr-5603927888871.html",
@@ -17117,8 +17130,8 @@
     {
       "ean": "5603927892359",
       "name": "Gel de Construção Andreia - Hard Gel 2in1 200ml Soft Pink",
-      "price": 57.75,
-      "net_price": 46.95,
+      "price": 52.76,
+      "net_price": 42.9,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/87268-gel-de-construcao-andreia-hard-gel-2in1-200ml-soft-pink--5603927892359.html",
@@ -19769,8 +19782,8 @@
     {
       "ean": "5603927894025",
       "name": "Andreia Builder Gel 3 IN 1 Soft White Média Viscosidade 200G",
-      "price": 57.75,
-      "net_price": 46.95,
+      "price": 52.76,
+      "net_price": 42.9,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/90957-andreia-builder-gel-3-in-1-soft-white-media-viscosidade-200g-5603927894025.html",
@@ -21489,14 +21502,6 @@
       "existing_name": "Espanador Pó Talco",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/acessorios-barbearia/2782-espanador-po-talco-eurostil-8423029016821.html",
-      "ean": "8423029016821",
-      "canonical": "8423029016821",
-      "existing_name": "Espanador Pó Talco",
-      "method": "GTIN",
-      "reason": "unverified price/currency/URL"
     },
     {
       "url": "https://presencadeluxo.pt/wella-balance/3590-shampoo-purificante-cabelos-oleosos-invigo-balance-250ml-wella-invigo-aqua-pure--4064666585246.html",
