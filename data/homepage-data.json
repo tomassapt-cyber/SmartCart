@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-11T10:31:06.637Z",
-  "seed_total_products": 100175,
+  "generated_at": "2026-11-11T12:36:35.885Z",
+  "seed_total_products": 100198,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -127,16 +127,6 @@
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
     },
     {
-      "ean": "8431567752002",
-      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
-      "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 30.3,
-      "best_store": "BeMeCare",
-      "best_store_slug": "bemecare",
-      "best_url": "https://bemecare.com/pt/artigo/lrposay-hyalu-b5-suract-ser-coff-xmas26"
-    },
-    {
       "ean": "3574661540887",
       "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
       "brand": "Aveeno",
@@ -145,6 +135,16 @@
       "best_store": "MegaFarma",
       "best_store_slug": "megafarma",
       "best_url": "https://megafarma.pt/pt-pt/product/aveeno-dermexa-creme-emoliente-200ml-gel-banho-300ml"
+    },
+    {
+      "ean": "8431567752002",
+      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
+      "best_price": 31.43,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/la-roche-posay-hyalu-suractivated-serum-coffret-natal26_p87253.html"
     },
     {
       "ean": "8431567752088",
@@ -248,7 +248,7 @@
     },
     {
       "name": "Avène",
-      "products": 850
+      "products": 851
     },
     {
       "name": "Isdin",
@@ -260,7 +260,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 804
+      "products": 803
     },
     {
       "name": "Chicco",
