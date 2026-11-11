@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-10T11:24:19.312935+00:00",
-  "completed_at": "2026-11-10T12:57:41.649512+00:00",
+  "scraped_at": "2026-11-11T00:05:59.858192+00:00",
+  "completed_at": "2026-11-11T01:38:53.259610+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -1108,6 +1108,19 @@
       "url": "https://presencadeluxo.pt/oxidante-e-descolorante-loreal/1018-oxidante-inoa-20v-1000ml-loreal-3474630417830.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/156874-thickbox_default/oxidante-inoa-20v-1000ml-loreal.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474630355217",
+      "name": "Dulcia Advanced 0 75ml Loreal Profissional",
+      "price": 9.41,
+      "net_price": 7.65,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/ondulacao-loreal/1024-dulcia-advanced-0-75ml-loreal-profissional-3474630355217.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/107033-thickbox_default/dulcia-advanced-0-75ml-loreal-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -5220,6 +5233,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474636975686",
+      "name": "Máscara Vitamino Color 500ml L'Oreal Serie Expert",
+      "price": 28.17,
+      "net_price": 22.91,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/125108-thickbox_default/mascara-vitamino-color-500ml-l-oreal-serie-expert.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474636975976",
       "name": "Shampoo Vitamino Color 1500ml L'Oreal Serie Expert",
       "price": 38.19,
@@ -7898,6 +7924,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8028483241026",
+      "name": "Shampoo Anti-Amarelos No Yellow Gigs 350ml - KAYPRO",
+      "price": 7.54,
+      "net_price": 6.13,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-anti-yellow-anti-amarelos/13514-shampoo-anti-amarelos-no-yellow-gigs-350ml-kaypro-8028483241026.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/94846-thickbox_default/shampoo-anti-amarelos-no-yellow-gigs-350ml-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8028483241224",
       "name": "Shampoo Anti-Amarelos No Yellow Gigs 1000ml - KAYPRO",
       "price": 13.0,
@@ -9588,6 +9627,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927871767",
+      "name": "Verniz Andreia Hybrid Gel H88 Cuidadosa Nude",
+      "price": 2.83,
+      "net_price": 2.31,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/manicure-e-pedicure/16998-verniz-andreia-hybrid-gel-h88-cuidadosa-nude-5603927871767.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/34388-thickbox_default/verniz-andreia-hybrid-gel-h88-cuidadosa-nude.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927872269",
       "name": "Cleanser Prep + Clean 100ML - All In One Andreia",
       "price": 2.71,
@@ -10851,8 +10903,8 @@
     {
       "ean": "5603927872702",
       "name": "Andreia Builder Gel 3 IN 1 Soft White - Média Viscosidade 44gr",
-      "price": 18.02,
-      "net_price": 14.65,
+      "price": 17.21,
+      "net_price": 13.99,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/67700-andreia-builder-gel-3-in-1-soft-white-media-viscosidade-44gr-5603927872702.html",
@@ -10864,8 +10916,8 @@
     {
       "ean": "5603927872757",
       "name": "Andreia Hard Gel 2 IN 1 Soft White - Alta Viscosidade 22gr",
-      "price": 11.07,
-      "net_price": 9.0,
+      "price": 10.68,
+      "net_price": 8.69,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/67701-andreia-hard-gel-2-in-1-soft-white-alta-viscosidade-22gr-5603927872757.html",
@@ -12372,8 +12424,8 @@
     {
       "ean": "5603927872719",
       "name": "Andreia Builder Gel 3 IN 1 Soft Pink - Média Viscosidade 22gr",
-      "price": 11.07,
-      "net_price": 9.0,
+      "price": 10.68,
+      "net_price": 8.69,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78925-andreia-builder-gel-3-in-1-soft-pink-media-viscosidade-22gr-5603927872719.html",
@@ -12424,8 +12476,8 @@
     {
       "ean": "5603927872689",
       "name": "Andreia Builder Gel 3 IN 1 Clear - Média Viscosidade 44gr",
-      "price": 18.02,
-      "net_price": 14.65,
+      "price": 17.21,
+      "net_price": 13.99,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78930-andreia-builder-gel-3-in-1-clear-media-viscosidade-44gr-5603927872689.html",
@@ -12463,8 +12515,8 @@
     {
       "ean": "5603927872788",
       "name": "Andreia Hard Gel 2 IN 1 Soft Pink - Alta Viscosidade 44gr",
-      "price": 18.02,
-      "net_price": 14.65,
+      "price": 17.21,
+      "net_price": 13.99,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/78933-andreia-hard-gel-2-in-1-soft-pink-alta-viscosidade-44gr-5603927872788.html",
@@ -16233,8 +16285,8 @@
     {
       "ean": "5603927888925",
       "name": "Andreia Hard Gel 2 IN 1 Peach Alta Viscosidade 22gr",
-      "price": 11.07,
-      "net_price": 9.0,
+      "price": 10.68,
+      "net_price": 8.69,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/85505-andreia-hard-gel-2-in-1-peach-alta-viscosidade-22gr-5603927888925.html",
@@ -17143,8 +17195,8 @@
     {
       "ean": "5603927892366",
       "name": "Gel de Construção Andreia - Hard Gel 2in1 200ml Soft White",
-      "price": 57.75,
-      "net_price": 46.95,
+      "price": 52.76,
+      "net_price": 42.9,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/87269-gel-de-construcao-andreia-hard-gel-2in1-200ml-soft-white-5603927892366.html",
@@ -19769,8 +19821,8 @@
     {
       "ean": "5603927894001",
       "name": "Andreia Builder Gel 3 IN 1 Clear Média Viscosidade 200G",
-      "price": 57.75,
-      "net_price": 46.95,
+      "price": 52.76,
+      "net_price": 42.9,
       "tax_included": true,
       "in_stock": true,
       "url": "https://presencadeluxo.pt/gel-construcao-andreia/90956-andreia-builder-gel-3-in-1-clear-media-viscosidade-200g-5603927894001.html",
@@ -21472,14 +21524,6 @@
   ],
   "rejected": [
     {
-      "url": "https://presencadeluxo.pt/ondulacao-loreal/1024-dulcia-advanced-0-75ml-loreal-profissional-3474630355217.html",
-      "ean": "3474630355217",
-      "canonical": "3474630355217",
-      "existing_name": "L’Oréal Professionnel Paris Transformação Dulcia Advanced 0 para cabelos ondulados / 12 x 75 ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/cabeleireiro/1028-shampoo-inoa-post-1500ml-loreal-profissional-3474637061937.html",
       "ean": "3474637061937",
       "canonical": "3474637061937",
@@ -21624,14 +21668,6 @@
       "reason": "visible product data disagree with schema"
     },
     {
-      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
-      "ean": "3474636975686",
-      "canonical": "3474636975686",
-      "existing_name": "L'ORÉAL SÉRIE EXPERT VITAMINO COLOR MÁSCARA CABELO PINTADO 500ml - Perfumes4You - O mundo dos perfumes à sua porta",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/scalp-loreal/11418-ampolas-aminexil-advanced-10x6ml-loreal-serie-expert-3474637265007.html",
       "ean": "3474637265007",
       "canonical": "3474637265007",
@@ -21720,14 +21756,6 @@
       "reason": "visible product data disagree with schema"
     },
     {
-      "url": "https://presencadeluxo.pt/kaypro-anti-yellow-anti-amarelos/13514-shampoo-anti-amarelos-no-yellow-gigs-350ml-kaypro-8028483241026.html",
-      "ean": "8028483241026",
-      "canonical": "8028483241026",
-      "existing_name": "Kaypro Anti Yellow Gigs Shampoo",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/kay-color/14592-coloracao-100ml-aluminio-kaycolor-8028483244669.html",
       "ean": "8028483244669",
       "canonical": "8028483244669",
@@ -21774,14 +21802,6 @@
       "existing_name": "Kaycolor - Coloração 12.01 Louro Ultra-Claro Cinza Gelo 100ml",
       "method": "GTIN",
       "reason": "visible product data disagree with schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/manicure-e-pedicure/16998-verniz-andreia-hybrid-gel-h88-cuidadosa-nude-5603927871767.html",
-      "ean": "5603927871767",
-      "canonical": "5603927871767",
-      "existing_name": "Andreia Hybrid Gel Fusion Color Verniz Efeito Gel 10,5ml - H88 Nude Natural",
-      "method": "GTIN",
-      "reason": "stock/order contradiction"
     },
     {
       "url": "https://presencadeluxo.pt/inocos-acessorios/38712-empurra-cuticulas-inocos-5600355740269.html",
