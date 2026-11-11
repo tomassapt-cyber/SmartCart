@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T13:26:03.548Z",
-  "seed_total_products": 100100,
+  "generated_at": "2026-11-11T10:31:06.637Z",
+  "seed_total_products": 100175,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -117,6 +117,16 @@
       "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-creme-maos-concentrado-+-stick-labial_p13679.html"
     },
     {
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 15.34,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
+    },
+    {
       "ean": "8431567752002",
       "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
@@ -145,16 +155,6 @@
       "best_store": "MegaFarma",
       "best_store_slug": "megafarma",
       "best_url": "https://megafarma.pt/pt-pt/product/la-roche-posay-retinol-b3-serum-coffret-natal"
-    },
-    {
-      "ean": "3574661874951",
-      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.32,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
     }
   ],
   "em_alta": [
@@ -235,24 +235,24 @@
   ],
   "top_brands": [
     {
+      "name": "L'Oréal Paris",
+      "products": 906
+    },
+    {
       "name": "Clarins",
       "products": 906
     },
     {
-      "name": "L'Oréal Paris",
-      "products": 905
-    },
-    {
       "name": "Essence",
-      "products": 872
+      "products": 884
     },
     {
       "name": "Avène",
-      "products": 851
+      "products": 850
     },
     {
       "name": "Isdin",
-      "products": 842
+      "products": 843
     },
     {
       "name": "Nivea",
@@ -260,11 +260,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 802
+      "products": 804
     },
     {
       "name": "Chicco",
-      "products": 775
+      "products": 777
     }
   ],
   "telegram_alerts": [
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 78743,
+    "products": 78807,
     "avg_savings_pct": 28
   },
   "shard_version": "",
