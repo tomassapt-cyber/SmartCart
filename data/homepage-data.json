@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-11T12:36:35.885Z",
-  "seed_total_products": 100198,
+  "generated_at": "2026-11-12T10:48:17.862Z",
+  "seed_total_products": 100231,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.37,
+      "best_price": 16.52,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -121,20 +121,10 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.34,
+      "best_price": 15.35,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
-    },
-    {
-      "ean": "3574661540887",
-      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
-      "brand": "Aveeno",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
-      "best_price": 9.18,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/aveeno-dermexa-creme-emoliente-200ml-gel-banho-300ml"
     },
     {
       "ean": "8431567752002",
@@ -145,6 +135,16 @@
       "best_store": "Sofarma",
       "best_store_slug": "sofarma",
       "best_url": "https://www.sofarma.com/pt/beleza/la-roche-posay-hyalu-suractivated-serum-coffret-natal26_p87253.html"
+    },
+    {
+      "ean": "3574661540887",
+      "name": "Aveeno Dermexa Kit Creme + Gel de Banho",
+      "brand": "Aveeno",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/aveeno_dermexageldebanho_creme.jpg",
+      "best_price": 14.89,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/aveeno-pack-dermexa-creme-emoliente-200-ml-gel-de-banho-emoliente-300-ml"
     },
     {
       "ean": "8431567752088",
@@ -204,6 +204,21 @@
       "verified_live": true
     },
     {
+      "ean": "0560088000090",
+      "name": "Iraltone Dupla Ação Antiqueda Pack",
+      "brand": "Iraltone",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/iraltone/0560088000090_main-800x800.jpg",
+      "best_price": 30.68,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/iraltone-locao-antiqueda-100ml-champo-fortificante-200ml-com-desconto-de-20",
+      "volume_ml": 100,
+      "previous_price": 47.2,
+      "discount_pct": 35,
+      "dropped_day": 20760,
+      "verified_live": true
+    },
+    {
       "ean": "8058664070053",
       "name": "Chicco Copo De Refei��o 12 Meses +",
       "brand": "Chicco",
@@ -216,21 +231,6 @@
       "discount_pct": 33,
       "dropped_day": 20761,
       "verified_live": true
-    },
-    {
-      "ean": "3337872414060",
-      "name": "La Roche Posay Cicaplast Lábios",
-      "brand": "La Roche-Posay",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-637272298962737748/la-roche-posay-001958rp_01.jpg",
-      "best_price": 5.87,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/la-roche-posay-cicaplast-labios-7-5-ml",
-      "volume_ml": 75,
-      "previous_price": 8.49,
-      "discount_pct": 30,
-      "dropped_day": 20764,
-      "verified_live": true
     }
   ],
   "top_brands": [
@@ -240,7 +240,7 @@
     },
     {
       "name": "Clarins",
-      "products": 906
+      "products": 904
     },
     {
       "name": "Essence",
@@ -248,11 +248,11 @@
     },
     {
       "name": "Avène",
-      "products": 851
+      "products": 850
     },
     {
       "name": "Isdin",
-      "products": 843
+      "products": 845
     },
     {
       "name": "Nivea",
@@ -260,11 +260,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 803
+      "products": 802
     },
     {
       "name": "Chicco",
-      "products": 777
+      "products": 780
     }
   ],
   "telegram_alerts": [
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 78807,
+    "products": 78763,
     "avg_savings_pct": 28
   },
   "shard_version": "",
