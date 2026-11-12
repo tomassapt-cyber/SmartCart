@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-12T10:48:17.862Z",
-  "seed_total_products": 100231,
+  "generated_at": "2026-11-12T13:40:47.800Z",
+  "seed_total_products": 100244,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -248,11 +248,11 @@
     },
     {
       "name": "Avène",
-      "products": 850
+      "products": 852
     },
     {
       "name": "Isdin",
-      "products": 845
+      "products": 846
     },
     {
       "name": "Nivea",
@@ -260,7 +260,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 802
+      "products": 801
     },
     {
       "name": "Chicco",
