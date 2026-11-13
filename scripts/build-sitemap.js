@@ -120,7 +120,7 @@ function acharIndice() {
   const escritos = [];
 
   // páginas fixas
-  fs.writeFileSync(path.join(ROOT, 'sitemap-paginas.xml'), urlset(['/', '/catalogo']), 'utf8');
+  fs.writeFileSync(path.join(ROOT, 'sitemap-paginas.xml'), urlset(['/', '/catalogo', '/privacidade', '/termos', '/cookies', '/contacto']), 'utf8');
   escritos.push('sitemap-paginas.xml');
 
   for (let i = 0, n = 1; i < produtos.length; i += POR_FICHEIRO, n++) {
