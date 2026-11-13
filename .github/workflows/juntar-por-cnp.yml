@@ -1,0 +1,70 @@
+# CosMath — juntar ofertas pelo CNP «seguro» (2026-11-13)
+# ============================================================
+# Muitas farmácias só publicam o CNP. Este passo junta essas ofertas ao produto do
+# EAN certo quando o par CNP→EAN é confirmado por 2+ lojas e nenhuma o contradiz,
+# com guardas de marca, nome, tamanho, preço e URL (scripts/juntar-por-cnp.js).
+# Só acrescenta/atualiza ofertas; não cria nem renomeia produtos. Corre 2×/dia,
+# depois das vagas de lojas, para as ofertas juntas não ficarem atrás das outras.
+name: Juntar ofertas pelo CNP
+
+on:
+  schedule:
+    - cron: '20 5 * * *'
+    - cron: '20 17 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  juntar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+      # o inject salta a curadoria da homepage, como nas lojas
+      COSMATH_SKIP_HP: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Teste da junção pelo CNP
+        run: node scripts/test-juntar-por-cnp.cjs
+
+      - name: Juntar pelo CNP + injectar
+        run: node scripts/juntar-por-cnp.js --inject
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          bash scripts/ci/seed.sh pack
+          if git diff --quiet -- data/seed-bundle.json.gz demo.html; then
+            echo "Nada a juntar — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json.gz demo.html
+          git commit -m "chore: ofertas juntas pelo CNP ($(date -u +%Y-%m-%d))" \
+            -m "Ofertas CNP-only no produto do EAN certo (scripts/juntar-por-cnp.js). Auto via GitHub Actions."
+
+      - name: Push to main (resilient)
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/juntar-por-cnp.js --inject" \
+            "chore: ofertas juntas pelo CNP ($(date -u +%Y-%m-%d))"
