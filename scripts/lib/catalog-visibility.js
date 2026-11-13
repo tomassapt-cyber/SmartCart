@@ -150,10 +150,14 @@ function applyVisibilityFilter(seedJson, isNonCosmetic) {
       if (it.price > 0) (storesWithPrice[it.ean] ||= new Set()).add(sp.store_slug);
   const comparable = (ean) => (storesWithPrice[ean] ? storesWithPrice[ean].size : 0) >= 2;
 
+  const { eMaquilhagem } = require('./classify-category');
+  let maquilhagem = 0;
   const visibleEans = new Set();
   for (const p of seedJson.products) {
     const offs = offersByEan[p.ean] || [];
     if (isNonCosmetic(p.name)) continue;                      // 0. não é cosmética
+    // 0b. maquilhagem fora (decisão do Tomás, 2026-11-13): só cosmética e perfumes
+    if (eMaquilhagem(p.name, p.category, p.brand)) { maquilhagem++; continue; }
     if (offs.length === 0) continue;                          // 1. órfão
     if (offs.every(o => o.in_stock === false)) continue;      // 2. esgotado → SEMPRE esconde
     if (!comparable(p.ean) && offs.every(o => !ofertaPc.has(o) && ageDays(o) > STALE_DAYS)) continue;  // 3. fora-de-site
@@ -171,6 +175,7 @@ function applyVisibilityFilter(seedJson, isNonCosmetic) {
     hidden: totalProducts - seedJson.products.length,
     visiveis: seedJson.products.length,
     hiddenOffers: totalOffers - seedJson.store_products.reduce((s, sp) => s + sp.items.length, 0),
+    maquilhagem,
   };
 }
 

@@ -37,7 +37,30 @@ function fixCategory(name, current, brand) {
   if (linhaDoPerfume({ name, brand })) return 'perfume';
   if (HAIR.test(t)) return 'hair';
   if (BODY.test(t) && !FACE.test(t)) return 'body';
+  // «makeup» da loja só fica se o nome o confirmar (2026-11-13): suplementos, sprays
+  // nasais e óleos capilares vinham com essa categoria
+  if (current === 'makeup' && !(MAQ_NOME.test(t) && !CABELO_PRO.test(sa(brand)))) return null;
   return current || null;
 }
 
-module.exports = { fixCategory };
+// Maquilhagem FORA do site (decisão do Tomás, 2026-11-13): «não quero nada de
+// maquilhagem, apenas produtos de cosmética e perfumes» — tons e acabamentos
+// comparam mal e enchem o catálogo de fichas com uma só loja.
+// É maquilhagem: sinal forte no nome (MAKEUP, o mesmo do fixCategory), ou a
+// categoria «makeup» da loja CONFIRMADA por uma palavra de maquilhagem no nome
+// (a categoria sozinha erra: «Bêlisina Forte Ampolas» vinha como makeup).
+// O cuidado dos lábios e das unhas é cosmética, não maquilhagem.
+const MAQ_NOME = /\b(rouge|blush|bronzer|primer|pincel|pinceis|esponjas?|puff|sobrancelhas?|brow|lip ?gloss|gloss|tint|liptint|lapis|sombras?|eyeshadow|paleta|palette|iluminador|highlighter|corretor|corrector|concealer|base|bases|foundation|teint|po compacto|po solto|powder|delineador|eyeliner|mascara|rimel|lash|verniz|batom|lipstick|labios|maquilhagem|make-?up)\b/i;
+// marcas de cabelo profissional: «gloss», «color» e afins são produtos capilares
+const CABELO_PRO = /\b(redken|kerastase|l'?oreal professionnel|wella|schwarzkopf|matrix|joico|davines|olaplex)\b/i;
+// sinais fortes que o MAKEUP do fixCategory não tem (só usados aqui)
+const MAQ_FORTE = /\b(base (?:compacta|fluida|liquida|em po)|fond de teint|couvrance)\b/i;
+const CUIDADO = /cieiro|protetor labial|hidratante labial|reparador labial|balsamo labial|cuidado labial|lip balm|fortalecedor de unhas|tratamento de unhas|cuticulas|unhas e cuticulas/i;
+function eMaquilhagem(name, category, brand) {
+  const t = sa(name);
+  if (CUIDADO.test(t)) return false;
+  if (fixCategory(name, null, brand) === 'makeup' || MAQ_FORTE.test(t)) return true;
+  return category === 'makeup' && MAQ_NOME.test(t) && !CABELO_PRO.test(sa(brand)) && fixCategory(name, null, brand) !== 'hair';
+}
+
+module.exports = { fixCategory, eMaquilhagem };
