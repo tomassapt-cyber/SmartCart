@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-12T13:40:47.800Z",
-  "seed_total_products": 100244,
+  "generated_at": "2026-11-13T10:41:53.948Z",
+  "seed_total_products": 100287,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.35,
+      "best_price": 15.36,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -147,32 +147,17 @@
       "best_url": "https://bairrodasaude.pt/products/aveeno-pack-dermexa-creme-emoliente-200-ml-gel-de-banho-emoliente-300-ml"
     },
     {
-      "ean": "8431567752088",
-      "name": "La Roche-Posay Retinol B3 Coffret Cuidado Anti-Idade Sérum + Creme + Protetor Solar",
-      "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a8747b3a879d_la-roche-posay-retinol-b3-coff-1_1.jpg",
-      "best_price": 31.16,
+      "ean": "3574661879185",
+      "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
+      "best_price": 10.74,
       "best_store": "MegaFarma",
       "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/la-roche-posay-retinol-b3-serum-coffret-natal"
+      "best_url": "https://megafarma.pt/pt-pt/product/neutrogena-hidratante-corporal-profundo-750-400-ml"
     }
   ],
   "em_alta": [
-    {
-      "ean": "5600264649014",
-      "name": "Bioscalin Nutricolor+ Condicionador Protetor da Cor",
-      "brand": "Bioscalin",
-      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/Shopify-PRODUTOS_eb5deeb1-578e-47b9-9068-420230fc2276.webp?v=1742810145",
-      "best_price": 5.65,
-      "best_store": "Farmácia.pt",
-      "best_store_slug": "farmaciapt",
-      "best_url": "https://farmacia.pt/bioscalin-nutricolor-condicionador-protetor-da-cor-150ml",
-      "volume_ml": 150,
-      "previous_price": 9.53,
-      "discount_pct": 41,
-      "dropped_day": 20759,
-      "verified_live": true
-    },
     {
       "ean": "3504105035518",
       "name": "Hydra Bebé Body Lotion",
@@ -231,12 +216,27 @@
       "discount_pct": 33,
       "dropped_day": 20761,
       "verified_live": true
+    },
+    {
+      "ean": "8803348035107",
+      "name": "Frudia Citrus Creme Iluminador",
+      "brand": "Frudia",
+      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/frudia/8803348035107_0-800x800.jpg",
+      "best_price": 2.79,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/frudia-creme-iluminador-de-extrato-citrico-106261.html#variant-0TF16660",
+      "volume_ml": 10,
+      "previous_price": 3.99,
+      "discount_pct": 30,
+      "dropped_day": 20770,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "L'Oréal Paris",
-      "products": 906
+      "products": 907
     },
     {
       "name": "Clarins",
@@ -248,11 +248,11 @@
     },
     {
       "name": "Avène",
-      "products": 852
+      "products": 846
     },
     {
       "name": "Isdin",
-      "products": 846
+      "products": 845
     },
     {
       "name": "Nivea",
@@ -260,11 +260,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 801
+      "products": 802
     },
     {
       "name": "Chicco",
-      "products": 780
+      "products": 786
     }
   ],
   "telegram_alerts": [
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 78763,
+    "products": 78871,
     "avg_savings_pct": 28
   },
   "shard_version": "",
