@@ -152,12 +152,12 @@
   "ilhas": null
  },
  "druni": {
-  "gratis": 20,
+  "gratis": 25,
   "casa": 3.95,
   "ponto": 0,
   "ponto_txt": "Grátis em loja Druni",
   "ilhas": 3.95,
-  "gratis_ilhas": 20
+  "gratis_ilhas": 25
  },
  "primor": {
   "gratis": 25,
