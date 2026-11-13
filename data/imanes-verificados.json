@@ -49,6 +49,34 @@
       "reason": "Endereço «eucerin-eryfotona-…», mas a página é «Isdin Eryfotona AK-NMSC Fluido FPS 100+ 50 ml» e publica o código 8470001658531 (2026-10-16).",
       "url": "https://www.pharmascalabis.com/store/eucerin-eryfotona-ak-nmsc-fluido-fps-100-50-ml/",
       "verified_at": "2026-10-16"
+    },
+    {
+      "store_slug": "primor",
+      "ean": "3282779306645",
+      "reason": "Endereço «…-de-avene-…» (tradução automática de «aveia»), mas a marca na página é Klorane e o gs1:gtin do tamanho é este EAN (Champô Aveia - 400ML). Não é Avène.",
+      "url": "https://pt.primor.eu/pt_pt/klorane-champo-de-avene-105886.html#variant-6XS14077",
+      "verified_at": "2026-11-09"
+    },
+    {
+      "store_slug": "primor",
+      "ean": "3282770145373",
+      "reason": "Endereço «…-de-avene-…» (tradução automática de «aveia»), mas a marca na página é Klorane e o gs1:gtin do tamanho é este EAN (Champô Aveia - 400ML). Não é Avène.",
+      "url": "https://pt.primor.eu/pt_pt/klorane-champo-de-avene-105886.html#variant-6XS00044",
+      "verified_at": "2026-11-09"
+    },
+    {
+      "store_slug": "primor",
+      "ean": "3282770200898",
+      "reason": "Endereço «…-de-avene-…» (tradução automática de «aveia»), mas a marca na página é Klorane e o gs1:gtin do tamanho é este EAN (Champô Seco com Leite de Aveia - 150ML). Não é Avène.",
+      "url": "https://pt.primor.eu/pt_pt/klorane-champo-seco-com-leite-de-avene-105888.html#variant-6XS00608",
+      "verified_at": "2026-11-09"
+    },
+    {
+      "store_slug": "primor",
+      "ean": "3282770200850",
+      "reason": "Endereço «…-de-avene-…» (tradução automática de «aveia»), mas a marca na página é Klorane e o gs1:gtin do tamanho é este EAN (Champô Seco com Leite de Aveia para Cabelo Escuro - 150ML). Não é Avène.",
+      "url": "https://pt.primor.eu/pt_pt/klorane-champo-seco-com-leite-de-avene-para-cabelos-escuros-105903.html#variant-6XS06073",
+      "verified_at": "2026-11-09"
     }
   ]
 }
