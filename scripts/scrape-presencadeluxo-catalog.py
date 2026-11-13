@@ -25,7 +25,11 @@ def extract(src,url):
  if not raw:raise ValueError('missing detailed product data')
  details=json.loads(html.unescape(raw[1]))
  visible_gtins=set(re.findall(r'<label[^>]*>\s*ean13\s*</label>\s*<span[^>]*>\s*(\d{8,14})\s*</span>',src,re.I))
- if visible_gtins!={ean} or float(details.get('price_amount',-1))!=price:raise ValueError('visible product data disagree with schema')
+ # 2026-11-11: o Offer.price do schema passou de sem IVA para COM IVA (16,06 € com price_amount 13,05 € e rate 23).
+ # Aceita os dois: igual ao price_amount (sem IVA) ou igual a price_amount × (1 + rate) com 2 cêntimos de folga.
+ net=float(details.get('price_amount',-1));rate=float(details.get('rate') or 0)
+ schema_net=net==price;schema_gross=rate>0 and abs(net*(1+rate/100)-price)<=0.02
+ if visible_gtins!={ean} or not (schema_net or schema_gross):raise ValueError('visible product data disagree with schema')
  if int(details.get('id_product_attribute',-1))!=0:raise ValueError('unverified attribute variant')
  surcharge=float(details.get('additional_shipping_cost',-1))
  if surcharge<0:raise ValueError('unknown additional shipping')
@@ -36,8 +40,9 @@ def extract(src,url):
  if len(gross)!=1:raise ValueError('missing or ambiguous price including VAT')
  text=html.unescape(re.sub('<[^>]*>','',gross[0]));amount=re.fullmatch(r'\s*(\d+(?:[ .]\d{3})*,\d{2})\s*€\s*',text)
  if not amount:raise ValueError('ambiguous gross EUR price')
- net_price=price;price=float(amount[1].replace(' ','').replace('.','').replace(',','.'))
+ schema_price=price;net_price=net;price=float(amount[1].replace(' ','').replace('.','').replace(',','.'))
  if not 0<price<5000 or price<net_price:raise ValueError('invalid gross price')
+ if schema_gross and not schema_net and abs(price-schema_price)>0.02:raise ValueError('visible gross price disagrees with schema')
  image=details.get('cover',{}).get('large',{}).get('url') or p.get('image');image=image[0] if isinstance(image,list) and image else image
  row={'ean':ean,'name':details['name'],'price':price,'net_price':net_price,'tax_included':True,'in_stock':stock=='InStock','url':url,'status':'ok','image_url':image,'source':'explicit-visible-price-with-VAT-and-product-schema','additional_shipping_cost':surcharge}
  return row
