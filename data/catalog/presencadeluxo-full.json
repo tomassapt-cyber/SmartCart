@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-14T00:22:44.782092+00:00",
-  "completed_at": "2026-11-14T01:52:33.822582+00:00",
+  "scraped_at": "2026-11-14T10:39:00.253181+00:00",
+  "completed_at": "2026-11-14T12:07:09.482935+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1830,
+  "targets": 1831,
   "products": [
     {
       "ean": "5601411434146",
@@ -14355,6 +14355,19 @@
       "url": "https://presencadeluxo.pt/coloracao-permanente-da-andreia-profissional/82101-coloracao-permanente-70-vegan-100ml-andreia-profissional-5603927881339.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/157049-thickbox_default/coloracao-permanente-70-vegan-100ml-andreia-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5603927881346",
+      "name": "Andreia Permanent Color 8.0 Louro Claro Natural 100ml",
+      "price": 3.82,
+      "net_price": 3.1,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/coloracao-permanente-da-andreia-profissional/82102-coloracao-permanente-80-vegan-100ml-andreia-profissional-5603927881346.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/157083-thickbox_default/coloracao-permanente-80-vegan-100ml-andreia-profissional.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
