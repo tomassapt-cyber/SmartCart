@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-14T09:57:17.239Z",
-  "seed_total_products": 100313,
+  "generated_at": "2026-11-14T12:02:07.211Z",
+  "seed_total_products": 100330,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -47,10 +47,10 @@
       "name": "La Roche-Posay Cicaplast Baume B5",
       "brand": "La Roche-Posay",
       "image_url": "https://media.appsfarma.com/wemakeit/pt/688011211961.jpg",
-      "best_price": 8.99,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/la-roche-posay-balsamo-reparador-cicaplast-b5-baume-106565.html#variant-6XS02361"
+      "best_price": 8.94,
+      "best_store": "GO-farma",
+      "best_store_slug": "gofarma",
+      "best_url": "https://www.go-farma.com/pt/corpo/la-roche-posay/la-roche-posay-cicaplast-baume-b5-40ml_p299.html"
     }
   ],
   "bestsellers": [
@@ -247,12 +247,12 @@
       "products": 884
     },
     {
-      "name": "Isdin",
-      "products": 845
+      "name": "Avène",
+      "products": 847
     },
     {
-      "name": "Avène",
-      "products": 845
+      "name": "Isdin",
+      "products": 846
     },
     {
       "name": "Nivea",
@@ -260,7 +260,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 802
+      "products": 801
     },
     {
       "name": "Chicco",
