@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-13T12:59:12.950Z",
-  "seed_total_products": 100301,
+  "generated_at": "2026-11-14T09:57:17.239Z",
+  "seed_total_products": 100313,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
       "name": "Frizz Dismiss Conditioner",
       "brand": "Redken",
       "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.52,
+      "best_price": 16.65,
       "best_store": "Perfume's Club",
       "best_store_slug": "perfumesclub",
       "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
@@ -47,10 +47,10 @@
       "name": "La Roche-Posay Cicaplast Baume B5",
       "brand": "La Roche-Posay",
       "image_url": "https://media.appsfarma.com/wemakeit/pt/688011211961.jpg",
-      "best_price": 8.94,
-      "best_store": "GO-farma",
-      "best_store_slug": "gofarma",
-      "best_url": "https://www.go-farma.com/pt/corpo/la-roche-posay/la-roche-posay-cicaplast-baume-b5-40ml_p299.html"
+      "best_price": 8.99,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/la-roche-posay-balsamo-reparador-cicaplast-b5-baume-106565.html#variant-6XS02361"
     }
   ],
   "bestsellers": [
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.36,
+      "best_price": 15.38,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -151,10 +151,10 @@
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 10.74,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/neutrogena-hidratante-corporal-profundo-750-400-ml"
+      "best_price": 9.16,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
     }
   ],
   "em_alta": [
@@ -171,36 +171,6 @@
       "previous_price": 16.57,
       "discount_pct": 37,
       "dropped_day": 20762,
-      "verified_live": true
-    },
-    {
-      "ean": "5600360018261",
-      "name": "Barral Creme de Óleo de Amêndoa MotherProtect",
-      "brand": "Barral",
-      "image_url": "https://assets.atida.com/transform/89456288-9c9e-456a-b78d-23040f8f06b7/Barral-MotherProtect-Crema-Aceite-de-Almendras-200-ml",
-      "best_price": 10.86,
-      "best_store": "Pharma Scalabis",
-      "best_store_slug": "pharmascalabis",
-      "best_url": "https://www.pharmascalabis.com/store/barral-motherprotect-creme-gordo-oleo-de-amendoas-100ml/",
-      "volume_ml": 100,
-      "previous_price": 16.81,
-      "discount_pct": 35,
-      "dropped_day": 20760,
-      "verified_live": true
-    },
-    {
-      "ean": "0560088000090",
-      "name": "Iraltone Dupla Ação Antiqueda Pack",
-      "brand": "Iraltone",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/iraltone/0560088000090_main-800x800.jpg",
-      "best_price": 30.68,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/iraltone-locao-antiqueda-100ml-champo-fortificante-200ml-com-desconto-de-20",
-      "volume_ml": 100,
-      "previous_price": 47.2,
-      "discount_pct": 35,
-      "dropped_day": 20760,
       "verified_live": true
     },
     {
@@ -231,6 +201,36 @@
       "discount_pct": 30,
       "dropped_day": 20770,
       "verified_live": true
+    },
+    {
+      "ean": "3337872414060",
+      "name": "La Roche Posay Cicaplast Lábios",
+      "brand": "La Roche-Posay",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-637272298962737748/la-roche-posay-001958rp_01.jpg",
+      "best_price": 5.87,
+      "best_store": "Bairro da Saúde",
+      "best_store_slug": "bairro-saude",
+      "best_url": "https://bairrodasaude.pt/products/la-roche-posay-cicaplast-labios-7-5-ml",
+      "volume_ml": 75,
+      "previous_price": 8.49,
+      "discount_pct": 30,
+      "dropped_day": 20764,
+      "verified_live": true
+    },
+    {
+      "ean": "3401399277092",
+      "name": "Bioderma Sébium Gel Moussant - Refill",
+      "brand": "Bioderma",
+      "image_url": "https://static.lojadafarmacia.com/19601/sebium-bioderma-moussant-500ml.webp",
+      "best_price": 12.6,
+      "best_store": "Farmácia Rodrigues",
+      "best_store_slug": "farmaciarodrigues",
+      "best_url": "https://farmaciarodrigues.pt/pt-pt/product/bioderma-sebium-promo-gel-moussant-500ml",
+      "volume_ml": 500,
+      "previous_price": 18,
+      "discount_pct": 30,
+      "dropped_day": 20769,
+      "verified_live": true
     }
   ],
   "top_brands": [
@@ -247,11 +247,11 @@
       "products": 884
     },
     {
-      "name": "Avène",
-      "products": 847
+      "name": "Isdin",
+      "products": 845
     },
     {
-      "name": "Isdin",
+      "name": "Avène",
       "products": 845
     },
     {
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 78871,
+    "products": 76876,
     "avg_savings_pct": 28
   },
   "shard_version": "",
