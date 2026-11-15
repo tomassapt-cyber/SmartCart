@@ -2342,7 +2342,6 @@
 {"ean":"5420024612518","name":"Tilman Spray Nasal Eucalipto 20ml","brand":"Tilman","category":"skincare","image_url":"https://media.appsfarma.com/wemakeit/pt/7048173.jpg"}
 {"ean":"7322541407104","name":"TENA ProSkin Flex Plus - Medio 30 Unidades","brand":"TENA","category":"skincare","image_url":"https://media.appsfarma.com/mendonca/2026/07/20260707171421_8354.webp"}
 {"ean":"0070942121583","name":"Gum Brosse à dents Souple Compacte Technique plus 491","brand":"GUM","category":"skincare","image_url":"https://media.appsfarma.com/mendonca/2025/12/20251209175222_35095.webp"}
-{"ean":"0070942502016","name":"Gum Escova Para Próteses Dentárias 201","brand":"GUM","category":"skincare","image_url":"https://media.appsfarma.com/wemakeit/pt/67206496739.jpg"}
 {"ean":"7333350943004","name":"Mepore Banda Adesiva 2m X 7cm","brand":"Mepore","category":"skincare","image_url":"https://media.appsfarma.com/wemakeit/pt/663992255420.jpg"}
 {"ean":"3282779059893","name":"Avène Sun 100% Invisible Sun Care Lotion SPF50 100ml","brand":"Avène","category":"skincare","image_url":"https://media.appsfarma.com/mendonca/2025/07/20250722115352_18281.webp"}
 {"ean":"7610715000818","name":"Anima Strath Elixir Suplemento Cão Gato 250ml","brand":"Anima Strath","category":"skincare","image_url":"https://media.appsfarma.com/mendonca/2024/07/20240725150054_50950.webp"}
@@ -3971,7 +3970,7 @@
 {"ean":"8410225597797","name":"Jean Paul Gaultier As mulheres Eau de Parfum Spray La Favorite 50 ml","brand":"Jean Paul Gaultier","category":"skincare","image_url":"https://www.lojashampoo.pt/image/cache/catalog/products/jean_paul_gaultier/8410225597797_0-800x800.jpg"}
 {"ean":"3614274972436","name":"Yves Saint Laurent Black Opium Eau de Parfum Spray Eau de Parfum Spray 30 ml + Travel Spray 10 ml / 1 un.","brand":"Yves Saint Laurent","category":"skincare","image_url":"https://www.lojashampoo.pt/image/cache/catalog/products/yves_saint_laurent/3614274972436_main-800x800.jpg"}
 {"ean":"8011003845118","name":"Moschino Toy Boy Eau de Parfum Spray 30 ml","brand":"Moschino","category":"skincare","image_url":"https://www.lojashampoo.pt/image/cache/catalog/products/moschino/19973_main-800x800.jpg","eans_antigos":["8011003906321"]}
-{"ean":"896364002756","name":"Olaplex Cuidados com o cabelo N.º 4 Champô para Manutenção da Ligação 250 ml","brand":"Olaplex","category":"hair","image_url":"https://www.lojashampoo.pt/image/cache/catalog/products/olaplex/850018802598_0-800x800.jpg"}
+{"ean":"896364002756","name":"Olaplex Cuidados com o cabelo N.º 4 Champô para Manutenção da Ligação 250 ml","brand":"Olaplex","category":"hair","image_url":"https://www.lojashampoo.pt/image/cache/catalog/products/olaplex/850018802598_0-800x800.jpg","eans_antigos":["810177860303"]}
 {"ean":"5600060515169","name":"Mustela Mala de Maternidade - Rosa","brand":"Mustela","category":"skincare","image_url":"https://media.appsfarma.com/mendonca/2024/07/20240719151829_45507.webp"}
 {"ean":"8032947869947","name":"Fanola No Yellow InCredible Foam 250 ml","brand":"Fanola","category":"skincare","image_url":"https://cdn.notinoimg.com/detail_main_mq/fanola/8032947869947_01-o/no-yellow-incredible-foam___220314.jpg"}
 {"ean":"4013474113059","name":"GEHWOL WARMING BALM 75 ML","brand":"Gehwol","category":"skincare","image_url":"https://cdn.notinoimg.com/detail_main_mq/gehwol/gehclaw_klcr20-1/classic___160330.jpg"}
@@ -4998,3 +4997,4 @@
 {"ean":"4064666002033","name":"System Professional Lipid Code Balance Champô B1 500 ml","brand":"System Professional Lipid Code","category":"hair","image_url":"https://cdn2.parfumdreams.de/image/product/67505-135789-5-12.webp"}
 {"ean":"4064666002996","name":"System Professional Lipid Code Hydrate Champô H1 500 ml","brand":"System Professional Lipid Code","category":"hair","image_url":"https://cdn2.parfumdreams.de/image/product/67532-135786-2-16.webp"}
 {"ean":"4064666004839","name":"System Professional Lipid Code Repair Champô R1 500 ml","brand":"System Professional Lipid Code","category":"hair","image_url":"https://cdn2.parfumdreams.de/image/product/67566-135784-2-16.webp"}
+{"ean":"4064666005713","name":"System Professional Lipid Code Volumize Champô V1 500 ml","brand":"System Professional Lipid Code","category":"hair","image_url":"https://cdn2.parfumdreams.de/image/product/67582-135816-5-12.webp"}
