@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-14T12:02:07.211Z",
-  "seed_total_products": 100330,
+  "generated_at": "2026-11-15T10:33:05.807Z",
+  "seed_total_products": 100353,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.38,
+      "best_price": 15.4,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -131,10 +131,10 @@
       "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 31.43,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/la-roche-posay-hyalu-suractivated-serum-coffret-natal26_p87253.html"
+      "best_price": 30.79,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/la-roche-posay-coffret-xmas26-hyalu-b5-suractivated-serum-30ml"
     },
     {
       "ean": "3574661540887",
@@ -151,10 +151,10 @@
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 9.16,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
+      "best_price": 10.74,
+      "best_store": "MegaFarma",
+      "best_store_slug": "megafarma",
+      "best_url": "https://megafarma.pt/pt-pt/product/neutrogena-hidratante-corporal-profundo-750-400-ml"
     }
   ],
   "em_alta": [
@@ -171,20 +171,6 @@
       "previous_price": 16.57,
       "discount_pct": 37,
       "dropped_day": 20762,
-      "verified_live": true
-    },
-    {
-      "ean": "8058664070053",
-      "name": "Chicco Copo De Refei��o 12 Meses +",
-      "brand": "Chicco",
-      "image_url": "https://static.lojadafarmacia.com/17898/chali6951100000-copo-360-girl-12m.webp",
-      "best_price": 6.49,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/ch.ali6951100000-copo-360-girl-12m.html",
-      "previous_price": 9.66,
-      "discount_pct": 33,
-      "dropped_day": 20761,
       "verified_live": true
     },
     {
@@ -231,12 +217,26 @@
       "discount_pct": 30,
       "dropped_day": 20769,
       "verified_live": true
+    },
+    {
+      "ean": "3666057161575",
+      "name": "Clarins Tinted Oleo Serum _ 06 -",
+      "brand": "Clarins",
+      "image_url": "https://static.lojadafarmacia.com/22862/clarins-tinted-oleo-serum-06-30ml.jpeg",
+      "best_price": 22.72,
+      "best_store": "Farma2Go",
+      "best_store_slug": "farma2go",
+      "best_url": "https://farma2go.com/pt/products/clarins-tinted-oleo-serum-06-maquilhagem-30ml",
+      "previous_price": 31.64,
+      "discount_pct": 28,
+      "dropped_day": 20772,
+      "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "L'Oréal Paris",
-      "products": 907
+      "products": 908
     },
     {
       "name": "Clarins",
@@ -248,11 +248,11 @@
     },
     {
       "name": "Avène",
-      "products": 847
+      "products": 845
     },
     {
       "name": "Isdin",
-      "products": 846
+      "products": 842
     },
     {
       "name": "Nivea",
@@ -260,11 +260,11 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 801
+      "products": 800
     },
     {
       "name": "Chicco",
-      "products": 786
+      "products": 788
     }
   ],
   "telegram_alerts": [
@@ -298,7 +298,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 76876,
+    "products": 76952,
     "avg_savings_pct": 28
   },
   "shard_version": "",
