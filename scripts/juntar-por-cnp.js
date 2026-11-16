@@ -140,7 +140,7 @@ function juntar(seed, catalogos, { ignorar = new Set() } = {}) {
   return { contas, dicionario: dic.size };
 }
 
-module.exports = { dicionarioSeguro, juntar, FONTE };
+module.exports = { dicionarioSeguro, juntar, FONTE, marcaBate, marcasEmConflito, variantesOpostas, nomesBatem, tamanhoBate };
 
 if (require.main === module) {
   const args = new Set(process.argv.slice(2));

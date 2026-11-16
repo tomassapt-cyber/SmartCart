@@ -1,0 +1,101 @@
+# CosMath — reabrir as ofertas escondidas por idade (2026-11-16, ponto 4 da auditoria)
+# ======================================================================================
+# Duas vezes por semana reabre as páginas das ofertas que o site esconde por estarem
+# >7 dias atrás da loja (o leitor deixou de as visitar) e refresca as que ainda são
+# o mesmo produto (GTIN, CNP ou nome com as guardas do juntar-por-cnp; preço entre
+# metade e o dobro). As que dão 404 ficam registadas em data/ghost-check.json.
+# Duas vezes e não uma: uma oferta refrescada volta a esconder-se 7 dias depois se o
+# leitor da loja continuar sem a visitar. Ver scripts/reabrir-escondidas.js.
+name: Reabrir ofertas escondidas
+
+on:
+  schedule:
+    - cron: '35 2 * * 1'   # segunda
+    - cron: '35 2 * * 4'   # quinta
+  workflow_dispatch:
+    inputs:
+      lojas:
+        description: 'Só estas lojas (separadas por vírgula; vazio = todas)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reabrir-escondidas
+  cancel-in-progress: false
+
+jobs:
+  reabrir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+      COSMATH_SKIP_HP: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Teste
+        run: node scripts/test-reabrir-escondidas.cjs
+
+      # memória url → [resultado, dia]: o que não se refrescou só volta a abrir-se
+      # 25 dias depois (cache do Actions, não o git)
+      - name: Memória das páginas já reabertas (cache)
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache-lojas
+          key: reabrir-escondidas-${{ github.run_id }}
+          restore-keys: reabrir-escondidas-
+
+      - name: Reabrir + injectar
+        run: |
+          LOJAS="${{ github.event.inputs.lojas }}"
+          node scripts/reabrir-escondidas.js --inject --orcamento-min=150 ${LOJAS:+--lojas=$LOJAS}
+
+      - name: Guardar a memória
+        if: always() && hashFiles('.cache-lojas/reabrir-escondidas.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .cache-lojas
+          key: reabrir-escondidas-${{ github.run_id }}
+
+      - name: Commit changes
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -e
+          bash scripts/ci/seed.sh pack
+          if git diff --quiet -- data/seed-bundle.json.gz demo.html data/ghost-check.json; then
+            echo "Nada refrescado nem registado — nada a fazer."
+            exit 0
+          fi
+          git add data/seed-bundle.json.gz demo.html data/ghost-check.json
+          git commit -m "chore: ofertas escondidas reabertas ($(date -u +%Y-%m-%d))" \
+            -m "Páginas reabertas e refrescadas por GTIN/CNP/nome (scripts/reabrir-escondidas.js). Auto via GitHub Actions."
+
+      # Na rejeição do push, o resilient-push adota o main mais recente e reaplica os
+      # resultados guardados (sem voltar a pedir nada às lojas).
+      - name: Push to main (resilient)
+        env:
+          EXTRA_FILES: data/ghost-check.json
+        run: |
+          set -e
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/reabrir-escondidas.js --aplicar=.cache-lojas/reabertas-resultado.json --inject" \
+            "chore: ofertas escondidas reabertas ($(date -u +%Y-%m-%d))"

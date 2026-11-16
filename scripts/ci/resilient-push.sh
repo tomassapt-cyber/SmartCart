@@ -110,6 +110,10 @@ stage_all() {
   bash scripts/ci/seed.sh pack || return 1
   git add "${SEED_AND_HTML[@]}" || return 1
   for f in "${RAW_FILES[@]}"; do git add -f "$f" || return 1; done
+  # ficheiros que o re-integrate também reescreve por cima do main (ex.: o
+  # reabrir-escondidas reaplica as páginas mortas em data/ghost-check.json)
+  for f in ${EXTRA_FILES:-}; do [ -f "$f" ] && { git add "$f" || return 1; }; done
+  return 0
 }
 
 for i in "${!BACKOFFS[@]}"; do
