@@ -111,10 +111,60 @@ const tam = it => it.variants.map(v => `${v.volume_ml}${v.unit}`);
   assert.deepEqual(vs('c', '4'), [4.5], 'oferta só com «45 ml» (vírgula perdida): passa ao tamanho do nome');
   assert.deepEqual(vs('c', '5'), [15], 'oferta só com 50 ml ao preço dos 15 ml do nome: passa a 15 ml');
   assert.deepEqual(vs('d', '4'), [4.5]);
-  assert.deepEqual(r, { virgula: 1, mesmoPreco: 1, corrigidos: 2 });
+  assert.deepEqual(r, { virgula: 1, mesmoPreco: 1, corrigidos: 2, familiaVariantes: 0, familiaOfertas: 0 });
   const antes = JSON.stringify(s);
-  assert.deepEqual(dropImplausibleSizes(s), { virgula: 0, mesmoPreco: 0, corrigidos: 0 }, 'idempotente');
+  assert.deepEqual(dropImplausibleSizes(s), { virgula: 0, mesmoPreco: 0, corrigidos: 0, familiaVariantes: 0, familiaOfertas: 0 }, 'idempotente');
   assert.equal(JSON.stringify(s), antes);
 }
 
-console.log('variant-sizes: L/kg, «1 kg» lido como 1 (sem intervalos nem pesos), brindes, sem duplicados, idempotente, tamanhos que o preço desmente — tudo passou');
+// Fichas-família (2026-11-16): outro produto da mesma gama como «tamanho» ou como oferta
+{
+  const { dropFamilyVariants } = require('./lib/variant-fixes');
+  const loja = n => 'https://loja' + n + '.pt/';
+  const um = (ml, p, url) => ({ price: p, url, variants: [{ volume_ml: ml, unit: 'ml', price: p, url }] });
+  const s = {
+    products: [
+      { ean: '1', name: 'Bioderma Sensibio DS+ Creme 40 ml', brand: 'Bioderma' },
+      { ean: '2', name: 'Effaclar H Iso-Biome', brand: 'La Roche-Posay' },
+      { ean: '3', name: 'Bioderma Sébium Gel Espumante de Limpeza 200ml', brand: 'Bioderma' },
+      { ean: '4', name: 'Bio-Oil Loção Corporal Hidratante 250ml', brand: 'Bio-Oil' },
+      { ean: '5', name: 'Vinoclean Tonico Hidratante 100ml', brand: 'Caudalie' },
+    ],
+    store_products: [
+      // 1. o «200 ml» é o DS+ Gel Moussant, de outra página: sai; o preço da oferta era o dele
+      { store_slug: 'fpt', items: [{ ean: '1', price: 13.9, url: loja(1) + 'sensibio-ds-creme-40ml', variants: [
+        { volume_ml: 40, price: 14.4, url: loja(1) + 'sensibio-ds-creme-40ml' },
+        { volume_ml: 200, price: 13.9, url: loja(1) + 'bioderma-sensibio-ds-gel-moussant-200ml' }] }] },
+      // 2. a Druni pôs o creme de LIMPEZA (200/390) na ficha do creme de 40 ml: sai a oferta
+      { store_slug: 'druni', items: [{ ean: '2', price: 13.95, url: loja(2) + 'effaclar-h-iso-biome-roche-posay-creme-limpeza-rosto-e-corpo', variants: [
+        { volume_ml: 200, price: 13.95, url: loja(2) + 'effaclar-h-iso-biome-roche-posay-creme-limpeza-rosto-e-corpo' },
+        { volume_ml: 390, price: 18.95, url: loja(2) + 'effaclar-h-iso-biome-roche-posay-creme-limpeza-rosto-e-corpo' }] }] },
+      // ficam: o mesmo gel de limpeza noutro frasco (o endereço curto não diz «limpeza»)
+      { store_slug: 'atf', items: [{ ean: '3', price: 9, url: loja(3) + 'sebium-gel-moussant-200-ml', variants: [
+        { volume_ml: 200, price: 9, url: loja(3) + 'sebium-gel-moussant-200-ml' },
+        { volume_ml: 500, price: 16, url: loja(3) + 'bioderma-sebium-gel-moussant-500-ml' }] }] },
+      // ficam: «Bio-Oil» é a marca, não um óleo; «loção tónica» = tónico
+      { store_slug: 'primor', items: [{ ean: '4', price: 12, url: loja(4) + 'bio-oil-locao-corporal-hidratante-250', variants: [
+        { volume_ml: 250, price: 12, url: loja(4) + 'bio-oil-locao-corporal-hidratante-250' },
+        { volume_ml: 175, price: 9, url: loja(4) + 'bio-oil-locao-corporal-hidratante-175' }] }] },
+      { store_slug: 'atida', items: [{ ean: '5', price: 22, url: loja(5) + 'caudalie-vinoclean-locao-tonica-hidratante-400-ml', variants: [
+        { volume_ml: 400, price: 22, url: loja(5) + 'caudalie-vinoclean-locao-tonica-hidratante-400-ml' }] }] },
+      // o tamanho em que as lojas concordam para a ficha 2 (40 ml) e para a 5 (100 ml)
+      ...[6, 7, 8, 9, 10].map(n => ({ store_slug: 'l' + n, items: [
+        { ean: '2', ...um(40, 15, loja(n) + 'la-roche-posay-effaclar-h-iso-biome-creme-hidratante-40ml') },
+        { ean: '5', ...um(100, 12, loja(n) + 'caudalie-vinoclean-tonico-hidratante-100ml') }] })),
+    ],
+  };
+  const r = dropFamilyVariants(s);
+  const it = (l, e) => s.store_products.find(g => g.store_slug === l).items.find(i => i.ean === e) || null;
+  assert.deepEqual(it('fpt', '1').variants.map(v => v.volume_ml), [40], 'o gel de 200 ml sai da ficha do creme');
+  assert.equal(it('fpt', '1').price, 14.4, 'o preço da oferta deixa de ser o do gel');
+  assert.equal(it('druni', '2'), null, 'o creme de limpeza sai da ficha do creme hidratante');
+  assert.deepEqual(it('atf', '3').variants.map(v => v.volume_ml), [200, 500], 'o mesmo gel noutro frasco fica');
+  assert.equal(it('primor', '4').variants.length, 2, 'Bio-Oil é a marca');
+  assert.ok(it('atida', '5'), 'loção tónica = tónico');
+  assert.deepEqual(r, { variantes: 1, ofertas: 1 });
+  assert.deepEqual(dropFamilyVariants(s), { variantes: 0, ofertas: 0 }, 'idempotente');
+}
+
+console.log('variant-sizes: L/kg, «1 kg» lido como 1 (sem intervalos nem pesos), brindes, sem duplicados, idempotente, tamanhos que o preço desmente, fichas-família — tudo passou');
