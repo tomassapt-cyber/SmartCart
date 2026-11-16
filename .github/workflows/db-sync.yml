@@ -80,6 +80,11 @@ jobs:
       - name: Teste dos tamanhos de variante
         run: node scripts/test-variant-sizes.cjs
 
+      # As fichas sem EAN juntas às com EAN (data/product-aliases-auto.json, 2026-11-16)
+      # decidem que fichas e ofertas chegam à BD.
+      - name: Teste dos aliases das fichas sem EAN
+        run: node scripts/test-aliases-sinteticos.cjs
+
       # O envio incremental cura-se sozinho quando a BD e o estado divergem
       # (2026-11-06: 6 dias vermelho por uma FK) e as limpezas param no 1.º erro.
       - name: Teste da recuperação e das limpezas do sync
