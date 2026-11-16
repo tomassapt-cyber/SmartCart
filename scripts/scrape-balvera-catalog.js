@@ -27,6 +27,7 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.mat
     sitemap: `${BASE}/sitemap.xml`,
     filtroUrl: /\/produtos\/[^/]+$/i,
     concorrencia: 2, pausaMs: 400,
+    ua: require('./lib/leitura-alargada').UA_COSMATH,   // 2026-11-16: honesta (antes um Chrome)
     limite: args.limite ? Number(args.limite) : undefined,
     aoProgresso: (f, t, n) => console.log(`  ${f}/${t} fichas · ${n} produtos`),
   });

@@ -27,7 +27,8 @@ const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'sobeauty-full.json');
 const BASE = 'https://sobeauty.pt';
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+// Identificação honesta desde 2026-11-16 (antes fingia ser um Chrome); do PC a loja aceita-a.
+const { UA_COSMATH: UA } = require('./lib/leitura-alargada');
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => {
   const m = a.match(/^--([^=]+)(?:=(.*))?$/);
