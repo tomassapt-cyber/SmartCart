@@ -32,6 +32,7 @@
 const fs = require('fs');
 const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
+const { UA_COSMATH, opcoes, prepararLeitura } = require('./lib/leitura-alargada');
 const { linhaDoPerfume } = require('./lib/perfumes-selecao');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -47,7 +48,9 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 200;
 const CHECKPOINT_EVERY = 100;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+// Identificação honesta desde 2026-11-16 (antes fingia ser um Chrome).
+const UA = UA_COSMATH;
+const ALARGADA = opcoes(args, { descobrir: 2000 });
 
 function locs(xml) { return (xml.match(/<loc>([^<]+)<\/loc>/g) || []).map(m => m.replace(/<\/?loc>/g, '').trim().replace(/&amp;/g, '&')); }
 const isProductUrl = u => /\/pt_pt\/[^/]+-\d+\.html$/.test(u);
@@ -170,18 +173,13 @@ async function main() {
   const smXml = await fetchText(SITEMAP_URL);
   let urls = [...new Set(locs(smXml).filter(isProductUrl))];
   console.log(`  ${urls.length} produtos no sitemap`);
+  const todas = urls;
   if (args.dermo) { const b = urls.length; const perf = urls.filter(u => !DERMO_RE.test(u) && perfumeDaSelecao(u)).length; urls = urls.filter(u => DERMO_RE.test(u) || perfumeDaSelecao(u)); console.log(`  🧴 --dermo: ${urls.length} de ${b} (saltados ${b - urls.length} não-dermo; ${perf} perfumes da seleção)`); }
-  // Ofertas EXISTENTES nunca ficam presas ao filtro --dermo (auditoria
-  // 2026-07-03): URLs com oferta no seed re-entram SEMPRE na fila — sem isto
-  // o preço delas apodrecia (a loja raspa todos os dias mas nunca as visita).
-  try {
-    const seedNow = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
-    const spSeed = (seedNow.store_products || []).find(g => g.store_slug === 'primor');
-    const known = (spSeed?.items || []).map(it => String(it.url || '').split('#')[0]).filter(u => u && isProductUrl(u));
-    const b2 = urls.length;
-    urls = [...new Set([...urls, ...known])];
-    if (urls.length > b2) console.log(`  ↻ +${urls.length - b2} URLs de ofertas existentes (fora do filtro dermo)`);
-  } catch { /* sem seed local (CI antes do checkout completo?) — segue */ }
+  // Leitura alargada (2026-11-16): ofertas existentes (antes um bloco só desta loja),
+  // fichas já descobertas com EAN do catálogo e um lote de fichas novas (sem as de
+  // maquilhagem pelo endereço). Ver scripts/lib/leitura-alargada.js.
+  const leitura = await prepararLeitura({ loja: 'primor', base: 'https://pt.primor.eu', todas, filtradas: urls, maxNovas: LIMIT === Infinity && !CHUNK ? ALARGADA.maxNovas : 0, orcamentoMs: ALARGADA.orcamentoMs, concorrencia: CONCURRENCY, atrasoMs: DELAY_MS });
+  urls = leitura.fila;
   if (urls.length === 0) { console.error('✗ Sitemap vazio (bloqueio de IP?) — abortar sem tocar no catálogo.'); process.exit(1); }
   if (CHUNK) { const [n, mm] = CHUNK.split('/').map(Number); const sorted = [...urls].sort(); const size = Math.ceil(sorted.length / mm); urls = sorted.slice((n - 1) * size, n * size); console.log(`  Chunk ${CHUNK}: ${urls.length}`); }
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
@@ -191,30 +189,36 @@ async function main() {
   const done = cp ? cp.done : new Set();
   if (cp) console.log(`  Resume: ${done.size} frescos mantidos`);
   const queue = urls.filter(u => !done.has(u));
-  console.log(`\n🚀 A scrapar ${queue.length} URLs (concurrency=${CONCURRENCY}, delay=${DELAY_MS}ms)…\n`);
+  console.log(`\n🚀 A scrapar ${queue.length} URLs (concurrency=${leitura.concorrencia}, delay=${leitura.atrasoMs}ms)…\n`);
 
   const start = Date.now(); let idx = 0;
   const stats = { ok: 0, skipped: 0, not_found: 0, error: 0 };
   async function worker() {
     while (idx < queue.length) {
+      if (leitura.fimDoTempo()) { stats.adiadas = queue.length - idx; idx = queue.length; break; }
       const url = queue[idx++];
       const r = await fetchPage(url); const scraped_at = new Date().toISOString();
       if (r.status === 'ok') {
         const d = extractProductData(r.html);
-        if (d) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; }
+        const desc = leitura.eDescoberta(url) ? { descoberta: true } : {};
+        if (d) { leitura.registar(url, d.ean); products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d, ...desc }))); stats.ok++; }
         else {
           const vs = extractVariantes(r.html);
-          for (const { sufixo, ...v } of vs) products.push(JSON.parse(JSON.stringify({ url: url + sufixo, status: 'ok', scraped_at, ...v })));
+          // na memória fica o EAN de um tamanho que o catálogo tenha (se houver)
+          leitura.registar(url, (vs.find(v => v.ean && leitura.temEanNoCatalogo(v.ean)) || vs[0] || {}).ean || '');
+          for (const { sufixo, ...v } of vs) products.push(JSON.parse(JSON.stringify({ url: url + sufixo, status: 'ok', scraped_at, ...v, ...desc })));
           if (vs.length) { stats.ok++; stats.tamanhos = (stats.tamanhos || 0) + vs.length; } else stats.skipped++;
         }
       }
-      else if (r.status === 'not_found') stats.not_found++; else stats.error++;
+      else if (r.status === 'not_found') { leitura.registar(url, ''); stats.not_found++; } else stats.error++;
       const total = stats.ok + stats.skipped + stats.not_found + stats.error;
       if (total % CHECKPOINT_EVERY === 0) { saveCheckpoint(products); const rate = total / ((Date.now() - start) / 1000); console.log(`  [${total}/${queue.length}] ok:${stats.ok} skip:${stats.skipped} 404:${stats.not_found} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round((queue.length - total) / rate / 60)}m`); }
-      await new Promise(s => setTimeout(s, DELAY_MS + Math.random() * DELAY_MS * 0.3));
+      await leitura.pausa();
     }
   }
-  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  await Promise.all(Array.from({ length: leitura.concorrencia }, worker));
+  if (LIMIT === Infinity) leitura.gravar();
+  if (stats.adiadas) console.log(`  ⏱ orçamento de tempo esgotado: ${stats.adiadas} fichas ficam para a próxima corrida (as mais recentes)`);
   if (products.length === 0) { console.error('✗ 0 produtos (bloqueio/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);

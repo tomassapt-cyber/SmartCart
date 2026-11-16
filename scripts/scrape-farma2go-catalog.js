@@ -35,14 +35,21 @@ const BASE = 'https://farma2go.com';
 // ⚠️ As coleções-MÃE ('cosmeticos', 'higiene-cuidado-pessoal') devolvem
 // {"products":[]} no products.json — são agregadoras. Os produtos estão nas
 // subcoleções (repetidos entre elas; o Map por handle tira os duplicados).
+// 2026-11-16 (ponto 3 da auditoria): +perfumes, higiene, solares e sérums. Medido nas
+// coleções públicas: 2 950 produtos de beleza que as 10 coleções antigas não tinham
+// (1 381 perfumes, 469 de higiene, 242 solares…). A «cosmeticos» (13,6 mil) continua
+// vazia no products.json; o resto das subcoleções repete estas.
 const COLECOES = ['facial', 'corporalmente', 'capilar', 'bebe', 'homem', 'desodorantes',
-  'cuidado-de-pes-e-maos', 'cosmetica-coreana-k-beauty', 'contornos-de-olhos-e-labios', 'acne'];
+  'cuidado-de-pes-e-maos', 'cosmetica-coreana-k-beauty', 'contornos-de-olhos-e-labios', 'acne',
+  'perfumes-colonias', 'carrusel-perfumeria', 'higiene-cuidado', 'solares-por-formato', 'spf-proteccion-solar',
+  'outlet-solar', 'serums', 'hidratante-intimo'];
 const OUT = path.join(__dirname, '..', 'data', 'catalog', 'farma2go-full.json');
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
+// Identificação honesta desde 2026-11-16 (antes fingia ser um Chrome); a loja aceita-a.
+const { UA_COSMATH: UA } = require('./lib/leitura-alargada');
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const MAX_EAN = args['so-precos'] ? 0 : Number(args['max-ean'] ?? 4000);
 const dorme = ms => new Promise(r => setTimeout(r, ms));
-const get = (url, expect) => fetchTextResilient(url, { expect, headers: { 'user-agent': UA, 'accept-language': 'pt-PT,pt;q=0.9' } });
+const get = (url, expect) => fetchTextResilient(url, { expect, headers: { 'User-Agent': UA, 'Accept-Language': 'pt-PT,pt;q=0.9' } });
 const semAcentos = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
 const eanOk = s => /^\d{12,14}$/.test(String(s || '').trim());
 

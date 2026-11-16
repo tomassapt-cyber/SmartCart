@@ -75,6 +75,20 @@ jobs:
       - name: Marcar o inicio da recolha
         run: echo "INICIO_RECOLHA=$(date -u +%s)" >> $GITHUB_ENV
 
+      # Leitura alargada (2026-11-16): a memória das fichas já vistas fora do filtro
+      # (url → EAN) passa de corrida em corrida pela cache do Actions, não pelo git.
+      # Se a cache se perder, a descoberta recomeça; nada se estraga. Ver
+      # scripts/lib/leitura-alargada.js.
+      - name: Teste da leitura alargada
+        run: node scripts/test-leitura-alargada.cjs
+
+      - name: Memória da leitura alargada (cache)
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache-lojas
+          key: leitura-sofarma-${{ github.run_id }}
+          restore-keys: leitura-sofarma-
+
       - name: Scrape Sofarma
         # TIMEOUT PROPRIO, MAIS CURTO QUE O DO JOB (120 min).
         #
@@ -114,7 +128,8 @@ jobs:
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-sofarma-catalog.js --limit=${{ github.event.inputs.limit }} $RESUME
           else
-            node scripts/scrape-sofarma-catalog.js $RESUME
+            # 85 min de recolha: o passo morre aos 100 e o robots pede 1 s entre pedidos
+            node scripts/scrape-sofarma-catalog.js $RESUME --orcamento-min=85
           fi
 
       # SEPARA TIMEOUT DE AVARIA. O continue-on-error acima existe para o
@@ -129,6 +144,13 @@ jobs:
       # no topo do ficheiro. Se esse carimbo e desta corrida, houve recolha --
       # tenha ela acabado ou sido cortada a meio -- e vale a pena integrar. Se
       # nao e, nao houve nada, e o job TEM de ficar vermelho.
+      - name: Guardar a memória da leitura alargada
+        if: always() && hashFiles('.cache-lojas/sofarma-descoberta.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .cache-lojas
+          key: leitura-sofarma-${{ github.run_id }}
+
       - name: A recolha produziu algo nesta corrida?
         if: always()
         run: |

@@ -42,6 +42,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { UA_COSMATH, opcoes, prepararLeitura } = require('./lib/leitura-alargada');
 const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -230,7 +231,7 @@ async function fetchPage(url, attempt = 1) {
   try {
     const r = await fetch(url, {
       headers: {
-        'User-Agent': 'GirlMath-Catalog-Bot/1.0 (+https://girlmath.pt; price comparison)',
+        'User-Agent': UA_COSMATH,   // 2026-11-16: o domínio girlmath.pt já não existe
         'Accept': 'text/html',
         'Accept-Language': 'pt-PT,pt;q=0.9',
       },
@@ -254,7 +255,7 @@ async function fetchPage(url, attempt = 1) {
   }
 }
 
-(async function main() {
+async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
 
   // 1. Sitemap
@@ -263,7 +264,7 @@ async function fetchPage(url, attempt = 1) {
   // fetchTextResilient em vez de fetch: valida o status e o tipo de corpo. Sem
   // isso, um 404 ou um challenge da WAF chegava como texto, dava 0 <loc> e o log
   // dizia "0 URLs no sitemap" -- indistinguivel de a loja nao ter produtos.
-  const idxXml = await fetchTextResilient(SITEMAP_INDEX, { expect: 'xml', minLocs: 1, headers: { 'User-Agent': 'GirlMath-Catalog-Bot/1.0' } });
+  const idxXml = await fetchTextResilient(SITEMAP_INDEX, { expect: 'xml', minLocs: 1, headers: { 'User-Agent': UA_COSMATH } });
   const filhos = (idxXml.match(/<loc>([^<]+)<\/loc>/g) || [])
     .map(m => m.replace(/<\/?loc>/g, '').trim())
     .filter(isProductSitemap);
@@ -271,7 +272,7 @@ async function fetchPage(url, attempt = 1) {
   console.log(`  ${filhos.length} sitemap(s) de produtos: ${filhos.map(u => u.split('/').pop()).join(', ')}`);
   const allUrls = [];
   for (const sm of filhos) {
-    const xml = await fetchTextResilient(sm, { expect: 'xml', minLocs: 1, headers: { 'User-Agent': 'GirlMath-Catalog-Bot/1.0' } });
+    const xml = await fetchTextResilient(sm, { expect: 'xml', minLocs: 1, headers: { 'User-Agent': UA_COSMATH } });
     const n = allUrls.length;
     allUrls.push(...(xml.match(/<loc>([^<]+)<\/loc>/g) || [])
       .map(m => m.replace(/<\/?loc>/g, ''))
@@ -284,6 +285,13 @@ async function fetchPage(url, attempt = 1) {
   // 2. Filtrar por beauty hints
   let urls = allUrls.filter(isBeautyUrl);
   console.log(`  ${urls.length} URLs beauty/dermo (após filtro keywords)`);
+  // Leitura alargada (2026-11-16): ofertas existentes, fichas já descobertas com EAN
+  // do catálogo e um lote de fichas novas. O robots.txt pede Crawl-delay: 1 — passa
+  // a respeitar-se (antes 4 em paralelo); com o orçamento de tempo lê-se primeiro o
+  // que está há mais tempo sem leitura. Ver scripts/lib/leitura-alargada.js.
+  const ALARGADA = opcoes(args, { descobrir: 1500 });
+  const leitura = await prepararLeitura({ loja: 'sofarma', base: 'https://www.sofarma.com', todas: allUrls, filtradas: urls, maxNovas: LIMIT === Infinity && !CHUNK ? ALARGADA.maxNovas : 0, orcamentoMs: ALARGADA.orcamentoMs, concorrencia: CONCURRENCY, atrasoMs: DELAY_MS });
+  urls = leitura.fila;
 
   // 3. Chunking
   if (CHUNK) {
@@ -303,7 +311,7 @@ async function fetchPage(url, attempt = 1) {
 
   // 5. Scrape com pool
   const queue = urls.filter(u => !done.has(u));
-  console.log(`\n🚀 A scrapar ${queue.length} URLs (concurrency=${CONCURRENCY}, delay=${DELAY_MS}ms)…\n`);
+  console.log(`\n🚀 A scrapar ${queue.length} URLs (concurrency=${leitura.concorrencia}, delay=${leitura.atrasoMs}ms)…\n`);
 
   const start = Date.now();
   let idx = 0;
@@ -313,6 +321,7 @@ async function fetchPage(url, attempt = 1) {
 
   async function worker() {
     while (idx < queue.length) {
+      if (leitura.fimDoTempo()) { stats.adiadas = queue.length - idx; idx = queue.length; break; }
       const i = idx++;
       const url = queue[i];
       const r = await fetchPage(url);
@@ -333,17 +342,21 @@ async function fetchPage(url, attempt = 1) {
             if (d2 && (d2.price > 0 || !data)) { data = d2; if (d2.price > 0) stats.retry_ok++; }
           }
         }
+        // na memória só o que é certo: o EAN, ou «sem EAN» numa ficha com dados (uma
+        // página sem JSON-LD pode ser o bloqueio suave da nuvem: volta a tentar-se)
+        if (data) leitura.registar(url, data.ean || '');
         if (data) {
           // Cópia JSON de propósito (2026-10-21): os campos tirados por regex são «fatias»
           // que mantêm viva a página HTML inteira; sem a cópia, 4 700 páginas da Farmácia.pt
           // enchiam os 4 GB do heap no fim da recolha (OOM). Os outros scrapers já faziam isto.
-          products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...data })));
+          products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...data, ...(leitura.eDescoberta(url) ? { descoberta: true } : {}) })));
           stats.ok++;
         } else {
           products.push({ url, status: 'no_jsonld', scraped_at });
           stats.no_jsonld++;
         }
       } else if (r.status === 'not_found') {
+        leitura.registar(url, '');
         products.push({ url, status: 'not_found', scraped_at });
         stats.not_found++;
       } else {
@@ -366,11 +379,13 @@ async function fetchPage(url, attempt = 1) {
         const eta = (queue.length - done) / rate;
         console.log(`  [${done}/${queue.length}] ok:${stats.ok} no_ld:${stats.no_jsonld} 404:${stats.not_found} err:${stats.error} · retry:${stats.retried}(+${stats.retry_ok}) · ${rate.toFixed(1)}/s · ETA ${Math.round(eta / 60)}m`);
       }
-      await new Promise(s => setTimeout(s, DELAY_MS + Math.random() * DELAY_MS * 0.3));
+      await leitura.pausa();
     }
   }
 
-  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  await Promise.all(Array.from({ length: leitura.concorrencia }, worker));
+  if (LIMIT === Infinity) leitura.gravar();
+  if (stats.adiadas) console.log(`  ⏱ orçamento de tempo esgotado: ${stats.adiadas} fichas ficam para a próxima corrida (as mais recentes)`);
 
   if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
@@ -400,4 +415,9 @@ async function fetchPage(url, attempt = 1) {
   } else {
     console.log(String.fromCharCode(10) + "[ensaio] catalogo de producao NAO escrito.");
   }
-})();
+}
+
+// Só corre quando chamado diretamente (2026-11-16): carregar o módulo para usar o
+// extractProductData (testes, ensaios) já não arranca uma recolha inteira.
+module.exports = { extractProductData };
+if (require.main === module) main();
