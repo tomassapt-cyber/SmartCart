@@ -37,7 +37,8 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 250;
 const CHECKPOINT_EVERY = 100;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+// Identificação honesta desde 2026-11-16 (antes fingia ser um Chrome); do PC a loja aceita-a.
+const { UA_COSMATH: UA } = require('./lib/leitura-alargada');
 
 // locs CDATA-aware (All in One SEO envolve os <loc> em <![CDATA[...]]>).
 function locs(xml) {
