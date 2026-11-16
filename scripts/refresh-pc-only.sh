@@ -107,7 +107,11 @@ ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me afarmaciaonline balvera
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"
-  if ! ${SCRAPE[$loja]}; then
+  ${SCRAPE[$loja]}; rc=$?
+  # 2026-11-16: as três lojas Shopkit partilham o limite de pedidos da plataforma
+  # (429 «demasiados pedidos» seguidas, a 16/11) — um minuto entre elas
+  case "$loja" in sobeauty|smartbeauty|beleza37) echo "⏳ pausa de 60 s (limite partilhado da Shopkit)"; sleep 60;; esac
+  if [ $rc -ne 0 ]; then
     FAIL+=("${loja} (scrape)")
     continue
   fi
