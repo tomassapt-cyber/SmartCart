@@ -46,7 +46,8 @@ assert.equal(L.crawlDelayDe('User-agent: *\nCrawl-delay: 10\n\nUser-agent: CosMa
   const todas = ['https://l/dermo', 'https://l/velha', 'https://l/recente', 'https://l/descoberta-com-ean', 'https://l/vista-sem-ean',
     'https://l/vista-ha-muito', 'https://l/batom-rouge-matte', 'https://l/nova-1', 'https://l/nova-2', 'https://l/nova-3'];
   const plano = L.planear({ todas, filtradas: ['https://l/dermo'], estado, memoria, maxNovas: 2, saltar: L.pareceMaquilhagem });
-  assert.deepEqual(plano.fila.slice(0, 4).sort(), ['https://l/descoberta-com-ean', 'https://l/dermo', 'https://l/recente', 'https://l/velha'].sort());
+  assert.deepEqual(plano.fila.slice(0, 2), ['https://l/vista-ha-muito', 'https://l/nova-1'], 'a descoberta à frente');
+  assert.deepEqual(plano.fila.slice(2, 6).sort(), ['https://l/descoberta-com-ean', 'https://l/dermo', 'https://l/recente', 'https://l/velha'].sort());
   assert.ok(plano.fila.indexOf('https://l/velha') < plano.fila.indexOf('https://l/recente'), 'o mais antigo primeiro');
   assert.deepEqual([...plano.descobrir], ['https://l/vista-ha-muito', 'https://l/nova-1'], 'maquilhagem saltada, vista há pouco saltada, máximo 2');
   assert.equal(plano.fila[plano.fila.length - 1], 'https://l/saiu-do-mapa', 'ofertas fora do mapa no fim');
