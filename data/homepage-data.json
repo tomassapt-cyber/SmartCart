@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-15T12:38:59.034Z",
-  "seed_total_products": 100365,
+  "generated_at": "2026-11-16T10:48:25.233Z",
+  "seed_total_products": 100366,
   "hero_sponsored": [
     {
       "ean": "3474636920297",
@@ -121,10 +121,10 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.4,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
+      "best_price": 15.54,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
     },
     {
       "ean": "8431567752002",
@@ -159,33 +159,18 @@
   ],
   "em_alta": [
     {
-      "ean": "3504105035518",
-      "name": "Hydra Bebé Body Lotion",
-      "brand": "Mustela",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5802475.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 10.51,
-      "best_store": "Wells",
-      "best_store_slug": "wells",
-      "best_url": "https://wells.pt/body-lotion-hydra-bebe-3000775.html",
-      "volume_ml": 750,
-      "previous_price": 16.57,
-      "discount_pct": 37,
-      "dropped_day": 20762,
-      "verified_live": true
-    },
-    {
-      "ean": "8803348035107",
-      "name": "Frudia Citrus Creme Iluminador",
-      "brand": "Frudia",
-      "image_url": "https://aveirofarma.pt/image/cache/catalog/products/frudia/8803348035107_0-800x800.jpg",
-      "best_price": 2.79,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/frudia-creme-iluminador-de-extrato-citrico-106261.html#variant-0TF16660",
-      "volume_ml": 10,
-      "previous_price": 3.99,
-      "discount_pct": 30,
-      "dropped_day": 20770,
+      "ean": "3401573670282",
+      "name": "Sensibio Forte",
+      "brand": "Bioderma",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797440.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.88,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/sensibio-bioderma-forte-cr-40-ml.html",
+      "volume_ml": 40,
+      "previous_price": 15.96,
+      "discount_pct": 32,
+      "dropped_day": 20773,
       "verified_live": true
     },
     {
@@ -219,6 +204,20 @@
       "verified_live": true
     },
     {
+      "ean": "3282770392852",
+      "name": "Avène Couvrance mascara haute tolérance",
+      "brand": "Avène",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/a/v/avene_mascara_pestans_1.jpg",
+      "best_price": 6.21,
+      "best_store": "MegaFarma",
+      "best_store_slug": "megafarma",
+      "best_url": "https://megafarma.pt/pt-pt/product/avene-couvrance-mascara-de-pestanas-preto-7-ml",
+      "previous_price": 8.87,
+      "discount_pct": 30,
+      "dropped_day": 20773,
+      "verified_live": true
+    },
+    {
       "ean": "3666057161575",
       "name": "Clarins Tinted Oleo Serum _ 06 -",
       "brand": "Clarins",
@@ -248,19 +247,19 @@
     },
     {
       "name": "Avène",
-      "products": 847
+      "products": 845
     },
     {
       "name": "Isdin",
-      "products": 843
+      "products": 842
     },
     {
       "name": "Nivea",
-      "products": 827
+      "products": 828
     },
     {
       "name": "La Roche-Posay",
-      "products": 799
+      "products": 800
     },
     {
       "name": "Chicco",
@@ -298,7 +297,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 76952,
+    "products": 76746,
     "avg_savings_pct": 28
   },
   "shard_version": "",
