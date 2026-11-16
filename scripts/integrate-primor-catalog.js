@@ -70,7 +70,8 @@ const isRealEan = e => /^\d{12,14}$/.test(e || '');
     if (eanIndex[ep.ean]) { target = eanIndex[ep.ean]; matchedByEan++; }
     if (!target) {
       const fp = productFingerprint(ep);
-      if (fp && fpIndex[fp]) {
+      // fichas descobertas: pelo nome só a produtos sem EAN real (o nome não tem o tamanho)
+      if (fp && fpIndex[fp] && !(ep.descoberta && isRealEan(fpIndex[fp].ean))) {
         target = fpIndex[fp]; matchedByFp++;
         if (isRealEan(ep.ean) && !isRealEan(target.ean)) {
           const oldEan = target.ean; target.ean = ep.ean; eanIndex[ep.ean] = target; delete eanIndex[oldEan];
@@ -81,7 +82,8 @@ const isRealEan = e => /^\d{12,14}$/.test(e || '');
     }
     if (!target) {
       const dermo = classifyDermo(ep.name);
-      if (!dermo) { unmatched++; continue; }
+      // fichas da leitura alargada (descoberta) só se juntam a produtos que já existem
+      if (!dermo || ep.descoberta) { unmatched++; continue; }
       target = { ean: ep.ean, name: ep.name, brand: displayBrand(ep.brand) || ep.brand || null, category: dermo, image_url: ep.image_url || null, _source: 'cocooncenter-catalog' };
       seed.products.push(target); eanIndex[ep.ean] = target;
       const fp = productFingerprint(ep); if (fp && !fpIndex[fp]) fpIndex[fp] = target;

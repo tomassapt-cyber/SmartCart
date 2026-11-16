@@ -66,6 +66,20 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      # Leitura alargada (2026-11-16): a memória das fichas já vistas fora do filtro
+      # (url → EAN) passa de corrida em corrida pela cache do Actions, não pelo git.
+      # Se a cache se perder, a descoberta recomeça; nada se estraga. Ver
+      # scripts/lib/leitura-alargada.js.
+      - name: Teste da leitura alargada
+        run: node scripts/test-leitura-alargada.cjs
+
+      - name: Memória da leitura alargada (cache)
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache-lojas
+          key: leitura-cocooncenter-${{ github.run_id }}
+          restore-keys: leitura-cocooncenter-
+
       - name: Scrape Cocooncenter (dermo)
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
@@ -73,6 +87,13 @@ jobs:
           else
             node scripts/scrape-cocooncenter-catalog.js --dermo --concurrency=5 --delay=200
           fi
+
+      - name: Guardar a memória da leitura alargada
+        if: always() && hashFiles('.cache-lojas/cocooncenter-descoberta.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .cache-lojas
+          key: leitura-cocooncenter-${{ github.run_id }}
 
       - name: Upload scrape artifact (safety-net)
         if: always()

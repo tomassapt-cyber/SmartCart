@@ -184,7 +184,8 @@ function syntheticEan(p) {
     // ── 1. Match por fingerprint exacto (fallback se EAN não bater) ──
     if (!targetProduct) {
       const fp = productFingerprint(ep);
-      if (fp && fpIndex[fp]) {
+      // fichas descobertas: pelo nome só a produtos sem EAN real (o nome não tem o tamanho)
+      if (fp && fpIndex[fp] && !(ep.descoberta && isRealEan(fpIndex[fp].ean))) {
         targetProduct = fpIndex[fp];
         matchedByFp++;
         // Side-effect: se target tem EAN sintético e Atida tem EAN real,
@@ -223,6 +224,9 @@ function syntheticEan(p) {
     // ── 2b. O URL já é oferta desta loja → é esse o produto (não criar outra vez;
     //      ver scripts/lib/produto-por-url.js) ──
     if (!targetProduct) { const viaUrl = produtoPorUrl(ep.url); if (viaUrl) { targetProduct = viaUrl; matchedByUrl++; } }
+
+    // fichas da leitura alargada (descoberta) só se juntam a produtos que já existem
+    if (!targetProduct && ep.descoberta) continue;
 
     // ── 3. Não match → criar como novo (preferir EAN real Atida) ──
     if (!targetProduct) {

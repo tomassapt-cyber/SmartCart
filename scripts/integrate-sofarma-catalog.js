@@ -88,7 +88,8 @@ const isRealEan = e => /^\d{12,14}$/.test(e || '');
     if (eanIndex[ep.ean]) { target = eanIndex[ep.ean]; matchedByEan++; }
     if (!target) {
       const fp = productFingerprint(ep);
-      if (fp && fpIndex[fp]) {
+      // fichas descobertas: pelo nome só a produtos sem EAN real (o nome não tem o tamanho)
+      if (fp && fpIndex[fp] && !(ep.descoberta && isRealEan(fpIndex[fp].ean))) {
         target = fpIndex[fp]; matchedByFp++;
         if (isRealEan(ep.ean) && !isRealEan(target.ean)) {
           const oldEan = target.ean; target.ean = ep.ean; eanIndex[ep.ean] = target; delete eanIndex[oldEan];
@@ -99,7 +100,8 @@ const isRealEan = e => /^\d{12,14}$/.test(e || '');
     }
     if (!target) {
       const dermo = classifyDermo(ep.name);
-      if (!dermo) { unmatched++; continue; }
+      // fichas da leitura alargada (descoberta) só se juntam a produtos que já existem
+      if (!dermo || ep.descoberta) { unmatched++; continue; }
       // CNP-only → EAN sintético; o apply-cnp-merge (pós-processo) resgata-o
       // para o EAN real quando outra loja partilha o mesmo CNP.
       const newEan = isRealEan(ep.ean) ? ep.ean : ('sofarma-' + (ep.url || '').split('/').pop().replace(/\.html$/, '').slice(0, 50).replace(/[^a-z0-9-]/gi, ''));
