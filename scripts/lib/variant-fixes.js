@@ -202,8 +202,11 @@ const TIPOS = {
   condic: /\b(condicionador|conditioner|amaciador|acondicionador)\b/, sabonete: /\b(sabonete|soap|savon)\b/, stick: /\b(stick|barra)\b/,
 };
 const SINONIMOS = [['balsamo', 'condic'], ['balsamo', 'stick'], ['agua', 'spray'], ['fluido', 'leite'], ['gel', 'espuma'], ['creme', 'balsamo']];
-const semAcento = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-function tiposDe(texto) { const t = semAcento(texto); const s = new Set(); for (const [k, r] of Object.entries(TIPOS)) if (r.test(t)) s.add(k); return s; }
+// (a normalização só quando há acentos: os endereços são quase sempre ASCII)
+const semAcento = s => { const t = String(s || ''); return (/[^ -]/.test(t) ? t.normalize('NFD').replace(/[̀-ͯ]/g, '') : t).toLowerCase(); };
+const TIPOS_LISTA = Object.entries(TIPOS);
+function tiposDeNormalizado(t) { const s = new Set(); for (const [k, r] of TIPOS_LISTA) if (r.test(t)) s.add(k); return s; }
+function tiposDe(texto) { return tiposDeNormalizado(semAcento(texto)); }
 function tiposEmConflito(daFicha, doUrl) {
   if (!daFicha.size || !doUrl.size) return false;
   for (const a of daFicha) for (const b of doUrl) if (a === b || SINONIMOS.some(([x, y]) => (a === x && b === y) || (a === y && b === x))) return false;
@@ -216,7 +219,17 @@ const LIMPEZA = /\b(limp\w*|lavant\w*|lavagem|cleans\w*|nettoy\w*|wash|duche|dou
 // Só o pedaço do endereço que é o produto (o com mais letras): as categorias do
 // caminho («/beleza-e-higiene/desodorizantes/…») não dizem o que o produto é.
 // Sem as palavras da marca: «Bio-Oil Loção Corporal» não é um óleo.
+const regexMarca = new Map();
+const marcasCache = new Map();
 function marcasDoUrl(url, marca) {
+  const chave = url + '|' + (marca || '');
+  if (marcasCache.has(chave)) return marcasCache.get(chave);
+  const r = lerMarcasDoUrl(url, marca);
+  if (marcasCache.size > 400000) marcasCache.clear();
+  marcasCache.set(chave, r);
+  return r;
+}
+function lerMarcasDoUrl(url, marca) {
   try {
     const partes = semAcento(decodeURIComponent(new URL(url).pathname)).split('/').filter(Boolean);
     // o último pedaço com letras a sério (o que vem depois é o id: «/…-100-ml/124404.html»)
@@ -224,8 +237,14 @@ function marcasDoUrl(url, marca) {
     t = ' ' + t.replace(/\.html?$/, '').replace(/[-_.+]+/g, ' ') + ' ';
     t = t.split(/ (?:oferta|offer|gift|brinde|gratis|free) /)[0] + ' ';          // o brinde não é o produto
     t = t.replace(/ (?:eau therm\w*|agua termal) /g, ' ');                          // nome de gama, não água
-    for (const w of semAcento(marca).split(/[^a-z0-9]+/).filter(x => x.length > 1)) t = t.replace(new RegExp(' ' + w + ' ', 'g'), ' ');
-    return { tipos: tiposDe(t), limpeza: LIMPEZA.test(t) };
+    let rm = regexMarca.get(marca || '');
+    if (!rm) {
+      const ws = semAcento(marca).split(/[^a-z0-9]+/).filter(x => x.length > 1);
+      rm = ws.length ? new RegExp(' (?:' + ws.join('|') + ')(?= )', 'g') : null;
+      regexMarca.set(marca || '', rm);
+    }
+    if (rm) t = t.replace(rm, ' ');
+    return { tipos: tiposDeNormalizado(t), limpeza: LIMPEZA.test(t) };
   } catch { return { tipos: new Set(), limpeza: false }; }
 }
 // limpeza num só sentido: a página é de limpeza e a ficha não (o creme de limpeza na
@@ -255,24 +274,34 @@ function dropFamilyVariants(seedJson) {
   };
   // o que a ficha é: o tipo do NOME; se o nome não o diz («Effaclar H Iso-Biome»), o
   // tipo em que concordam os endereços das ofertas (≥5 com tipo, ≥60% de acordo)
-  const doUrlDe = new Map();
-  for (const sp of seedJson.store_products) for (const it of sp.items) if (it.url) (doUrlDe.get(it.ean) || doUrlDe.set(it.ean, []).get(it.ean)).push(marcasDoUrl(it.url, marcas.get(String(it.ean))));
+  // (os endereços só se leem quando fazem falta: o catálogo tem ~270 mil ofertas)
+  const urlsDe = new Map();
+  for (const sp of seedJson.store_products) for (const it of sp.items) if (it.url) (urlsDe.get(it.ean) || urlsDe.set(it.ean, []).get(it.ean)).push(it.url);
+  const marcasDasOfertas = ean => (urlsDe.get(ean) || []).map(u => marcasDoUrl(u, marcas.get(String(ean)))).filter(m => m.tipos.size);
   const perfis = new Map();
   const perfilDe = ean => {
     if (perfis.has(ean)) return perfis.get(ean);
     const nome = ' ' + semAcento(nomes.get(String(ean))).replace(/[^a-z0-9]+/g, ' ') + ' ';
-    const nomeLimpo = nome.replace(/ (?:eau therm\w*|agua termal) /g, ' ');
-    const tipos = tiposDe(nomeLimpo);
-    const urls = (doUrlDe.get(ean) || []).filter(m => m.tipos.size);
-    let limpeza = LIMPEZA.test(nome);
-    if (urls.length >= 5) {
-      if (!tipos.size) {
+    const tipos = tiposDeNormalizado(nome.replace(/ (?:eau therm\w*|agua termal) /g, ' '));
+    if (!tipos.size && (urlsDe.get(ean) || []).length >= 5) {
+      const urls = marcasDasOfertas(ean);
+      if (urls.length >= 5) {
         const n = {}; for (const m of urls) for (const k of m.tipos) n[k] = (n[k] || 0) + 1;
         for (const [k, c] of Object.entries(n)) if (c / urls.length >= 0.6) tipos.add(k);
       }
-      if (!limpeza) limpeza = urls.filter(m => m.limpeza).length / urls.length >= 0.5;
     }
-    const perfil = { tipos, limpeza };
+    let limpezaCache;
+    const perfil = {
+      tipos,
+      // limpeza: no nome, ou em metade dos endereços (só se calcula quando a regra 2 a pede)
+      get limpeza() {
+        if (limpezaCache === undefined) {
+          limpezaCache = LIMPEZA.test(nome);
+          if (!limpezaCache) { const urls = marcasDasOfertas(ean); limpezaCache = urls.length >= 5 && urls.filter(m => m.limpeza).length / urls.length >= 0.5; }
+        }
+        return limpezaCache;
+      },
+    };
     perfis.set(ean, perfil);
     return perfil;
   };
