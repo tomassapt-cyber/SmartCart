@@ -26,7 +26,8 @@ const RESUME = !!args.resume;
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 4;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 300;
 const CHECKPOINT_EVERY = 100;
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+// Identificação honesta desde 2026-11-16 (antes fingia ser um Chrome); do PC a loja aceita-a.
+const { UA_COSMATH: UA } = require('./lib/leitura-alargada');
 
 // locs CDATA-aware (mesmo padrão do shopcosmetics)
 function locs(xml) {

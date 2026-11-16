@@ -23,20 +23,20 @@ const dorme = ms => new Promise(r => setTimeout(r, ms));
 const eanOk = s => /^\d{8}$|^\d{12,14}$/.test(String(s || '').trim());
 const headers = { 'user-agent': UA, 'accept-language': 'pt-PT,pt;q=0.9' };
 
-async function texto(url, expect) {
+async function texto(url, expect, cab = headers) {
   if (/\.gz(\?|$)/i.test(url)) {   // sitemap comprimido: o fetch não o descomprime
-    const r = await fetch(url, { headers });
+    const r = await fetch(url, { headers: cab });
     if (!r.ok) throw new Error(`HTTP ${r.status} · ${url}`);
     return zlib.gunzipSync(Buffer.from(await r.arrayBuffer())).toString('utf8');
   }
-  return fetchTextResilient(url, { expect, headers });
+  return fetchTextResilient(url, { expect, headers: cab });
 }
 
-async function urlsDoSitemap(raiz, filtroUrl, filtroFilho) {
+async function urlsDoSitemap(raiz, filtroUrl, filtroFilho, cab = headers) {
   const fila = [raiz], urls = new Set(), vistos = new Set();
   while (fila.length) {
     const sm = fila.shift(); if (vistos.has(sm)) continue; vistos.add(sm);
-    const x = await texto(sm, 'xml');
+    const x = await texto(sm, 'xml', cab);
     const locs = [...String(x || '').matchAll(/<loc>\s*(?:<!\[CDATA\[)?\s*([^<\]\s]+)\s*(?:\]\]>)?\s*<\/loc>/g)].map(m => m[1].replace(/&amp;/g, '&'));
     if (/<sitemapindex/i.test(x)) fila.push(...locs.filter(u => !filtroFilho || filtroFilho.test(u)));
     else for (const u of locs) if (!filtroUrl || filtroUrl.test(u)) urls.add(u);
@@ -82,8 +82,11 @@ function normalizar(url, p) {
  * @param {{sitemap:string, filtroUrl?:RegExp, filtroFilho?:RegExp, concorrencia?:number, pausaMs?:number,
  *          limite?:number, extrair?:(url:string, html:string)=>object|object[]|null, aoProgresso?:(feitos:number,total:number,n:number)=>void}} o
  */
+// o.ua (2026-11-16): identificação própria da loja (as do PC usam a honesta, UA_COSMATH);
+// sem ele fica a de sempre.
 async function recolherFichas(o) {
-  let urls = await urlsDoSitemap(o.sitemap, o.filtroUrl, o.filtroFilho);
+  const cab = o.ua ? { 'User-Agent': o.ua, 'Accept-Language': 'pt-PT,pt;q=0.9' } : headers;
+  let urls = await urlsDoSitemap(o.sitemap, o.filtroUrl, o.filtroFilho, cab);
   const total = urls.length;
   if (o.limite) urls = urls.slice(0, o.limite);
   const extrair = o.extrair || ((url, html) => { const p = produtoDoJsonLd(html); return p ? normalizar(url, p) : null; });
@@ -95,7 +98,7 @@ async function recolherFichas(o) {
       try {
         // `extrair` pode devolver uma lista (uma entrada por variante com EAN
         // próprio — ver scrape-parfumdreams-catalog.js)
-        const p = extrair(u, await texto(u));
+        const p = extrair(u, await texto(u, undefined, cab));
         if (Array.isArray(p) ? p.length : p) { if (Array.isArray(p)) for (const x of p) produtos.push(x); else produtos.push(p); }
         else semProduto++;
       }
