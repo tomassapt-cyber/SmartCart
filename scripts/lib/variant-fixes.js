@@ -257,7 +257,9 @@ function dropFamilyVariants(seedJson) {
   // tipo em que concordam os endereços das ofertas (≥5 com tipo, ≥60% de acordo)
   const doUrlDe = new Map();
   for (const sp of seedJson.store_products) for (const it of sp.items) if (it.url) (doUrlDe.get(it.ean) || doUrlDe.set(it.ean, []).get(it.ean)).push(marcasDoUrl(it.url, marcas.get(String(it.ean))));
+  const perfis = new Map();
   const perfilDe = ean => {
+    if (perfis.has(ean)) return perfis.get(ean);
     const nome = ' ' + semAcento(nomes.get(String(ean))).replace(/[^a-z0-9]+/g, ' ') + ' ';
     const nomeLimpo = nome.replace(/ (?:eau therm\w*|agua termal) /g, ' ');
     const tipos = tiposDe(nomeLimpo);
@@ -270,7 +272,9 @@ function dropFamilyVariants(seedJson) {
       }
       if (!limpeza) limpeza = urls.filter(m => m.limpeza).length / urls.length >= 0.5;
     }
-    return { tipos, limpeza };
+    const perfil = { tipos, limpeza };
+    perfis.set(ean, perfil);
+    return perfil;
   };
   let variantes = 0, ofertas = 0;
   for (const sp of seedJson.store_products) {
