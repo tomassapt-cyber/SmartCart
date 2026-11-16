@@ -175,7 +175,143 @@ function fixVariantSizes(seedJson) {
  *      do que o do nome ao preço do tamanho do nome (noutra loja).
  * Uma oferta nunca fica sem variantes por causa disto.
  */
+/**
+ * Fichas-família (2026-11-16, ponto 5 da auditoria): produtos DIFERENTES da mesma
+ * gama entram na ficha como se fossem «tamanhos». Ex.: o Sensibio DS+ Creme 40 ml
+ * com um «200 ml» que é o DS+ Gel Moussant; o Oleoban Bebé Creme com um champô e um
+ * gel de limpeza; o Effaclar H Iso-Biome creme (40 ml) com a oferta do gel (200/390).
+ * Vêm de páginas da loja casadas pelo nome (sem o tamanho) e o dropWrongProductVariants
+ * não as apanha quando o preço não desmente o tamanho.
+ *
+ * O sinal é o TIPO de produto (creme, gel, espuma, óleo, sérum, fluido, leite/loção,
+ * água/tónico, spray, bálsamo, máscara, champô, condicionador, sabonete, stick):
+ *   1. VARIANTE de OUTRA página (url ≠ o da oferta) cujo endereço diz um tipo que o
+ *      nome da ficha não tem → sai. Se o preço da oferta era o dela, passa ao mais
+ *      barato das que ficam; se não fica nenhuma, a oferta sai.
+ *   2. OFERTA INTEIRA, só com duas provas: o endereço diz outro tipo E nenhum dos
+ *      seus tamanhos é o tamanho em que as outras lojas concordam (≥5 lojas, ≥80%).
+ * Sinónimos que as lojas trocam entre si não contam como conflito: bálsamo =
+ * condicionador (cabelo) = stick (lábios), água = spray (eau solaire), fluido =
+ * leite/emulsão, gel = espuma, creme = bálsamo.
+ */
+const TIPOS = {
+  creme: /\b(creme|cream|crema|cremoso|cr)\b/, gel: /\b(gel|gelee|geleia|jelly)\b/, espuma: /\b(espuma|mousse|moussant|foam|foaming|espumoso)\b/,
+  oleo: /\b(oleo|oil|huile|aceite)\b/, serum: /\b(serum|soro)\b/, fluido: /\b(fluido|fluid|fluide|emulsao|emulsion)\b/,
+  leite: /\b(leite|lait|milk|locao|lotion)\b/, agua: /\b(agua|water|eau|micelar|micellar|tonico|tonica|tonic|toner)\b/, spray: /\b(spray|bruma|mist)\b/,
+  balsamo: /\b(balsamo|balm|baume|unguento)\b/, mascara: /\b(mascara|mask|masque)\b/, champo: /\b(champo|shampoo|champu)\b/,
+  condic: /\b(condicionador|conditioner|amaciador|acondicionador)\b/, sabonete: /\b(sabonete|soap|savon)\b/, stick: /\b(stick|barra)\b/,
+};
+const SINONIMOS = [['balsamo', 'condic'], ['balsamo', 'stick'], ['agua', 'spray'], ['fluido', 'leite'], ['gel', 'espuma'], ['creme', 'balsamo']];
+const semAcento = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+function tiposDe(texto) { const t = semAcento(texto); const s = new Set(); for (const [k, r] of Object.entries(TIPOS)) if (r.test(t)) s.add(k); return s; }
+function tiposEmConflito(daFicha, doUrl) {
+  if (!daFicha.size || !doUrl.size) return false;
+  for (const a of daFicha) for (const b of doUrl) if (a === b || SINONIMOS.some(([x, y]) => (a === x && b === y) || (a === y && b === x))) return false;
+  return true;
+}
+// «limpeza» é uma marca à parte: o creme de limpeza não é o creme hidratante da gama
+// (com as abreviaturas e traduções dos endereços: «limp», «lavant», «limpiadora»,
+// «douche», «desmaq»; a água micelar e a higiene íntima também são limpeza)
+const LIMPEZA = /\b(limp\w*|lavant\w*|lavagem|cleans\w*|nettoy\w*|wash|duche|douche|banho|desmaq\w*|demaq\w*|micelar|micellar|higiene)\b/;
+// Só o pedaço do endereço que é o produto (o com mais letras): as categorias do
+// caminho («/beleza-e-higiene/desodorizantes/…») não dizem o que o produto é.
+// Sem as palavras da marca: «Bio-Oil Loção Corporal» não é um óleo.
+function marcasDoUrl(url, marca) {
+  try {
+    const partes = semAcento(decodeURIComponent(new URL(url).pathname)).split('/').filter(Boolean);
+    // o último pedaço com letras a sério (o que vem depois é o id: «/…-100-ml/124404.html»)
+    let t = [...partes].reverse().find(x => x.replace(/[^a-z]/g, '').length >= 8) || partes[partes.length - 1] || '';
+    t = ' ' + t.replace(/\.html?$/, '').replace(/[-_.+]+/g, ' ') + ' ';
+    t = t.split(/ (?:oferta|offer|gift|brinde|gratis|free) /)[0] + ' ';          // o brinde não é o produto
+    t = t.replace(/ (?:eau therm\w*|agua termal) /g, ' ');                          // nome de gama, não água
+    for (const w of semAcento(marca).split(/[^a-z0-9]+/).filter(x => x.length > 1)) t = t.replace(new RegExp(' ' + w + ' ', 'g'), ' ');
+    return { tipos: tiposDe(t), limpeza: LIMPEZA.test(t) };
+  } catch { return { tipos: new Set(), limpeza: false }; }
+}
+// limpeza num só sentido: a página é de limpeza e a ficha não (o creme de limpeza na
+// ficha do creme hidratante); o contrário é só o nome curto da loja («gel moussant»)
+// Devolve 'tipo' (tipos que não batem), 'limpeza' (só a marca de limpeza) ou null.
+function emConflito(perfil, doUrl) {
+  if (tiposEmConflito(perfil.tipos, doUrl.tipos)) return 'tipo';
+  return perfil.tipos.size > 0 && doUrl.tipos.size > 0 && doUrl.limpeza && !perfil.limpeza ? 'limpeza' : null;
+}
+
+function dropFamilyVariants(seedJson) {
+  const nomes = new Map((seedJson.products || []).map(p => [String(p.ean), p.name || '']));
+  const marcas = new Map((seedJson.products || []).map(p => [String(p.ean), p.brand || '']));
+  // o tamanho em que as lojas concordam (ofertas de UM só tamanho)
+  const contagem = new Map();
+  for (const sp of seedJson.store_products) for (const it of sp.items) {
+    const vs = (it.variants || []).filter(v => v.volume_ml > 0);
+    if (vs.length !== 1) continue;
+    const m = contagem.get(it.ean) || contagem.set(it.ean, new Map()).get(it.ean);
+    m.set(vs[0].volume_ml, (m.get(vs[0].volume_ml) || 0) + 1);
+  }
+  const consenso = ean => {
+    const m = contagem.get(ean); if (!m) return null;
+    let total = 0, melhor = null, n = 0;
+    for (const [v, c] of m) { total += c; if (c > n) { n = c; melhor = v; } }
+    return total >= 5 && n / total >= 0.8 ? melhor : null;
+  };
+  // o que a ficha é: o tipo do NOME; se o nome não o diz («Effaclar H Iso-Biome»), o
+  // tipo em que concordam os endereços das ofertas (≥5 com tipo, ≥60% de acordo)
+  const doUrlDe = new Map();
+  for (const sp of seedJson.store_products) for (const it of sp.items) if (it.url) (doUrlDe.get(it.ean) || doUrlDe.set(it.ean, []).get(it.ean)).push(marcasDoUrl(it.url, marcas.get(String(it.ean))));
+  const perfilDe = ean => {
+    const nome = ' ' + semAcento(nomes.get(String(ean))).replace(/[^a-z0-9]+/g, ' ') + ' ';
+    const nomeLimpo = nome.replace(/ (?:eau therm\w*|agua termal) /g, ' ');
+    const tipos = tiposDe(nomeLimpo);
+    const urls = (doUrlDe.get(ean) || []).filter(m => m.tipos.size);
+    let limpeza = LIMPEZA.test(nome);
+    if (urls.length >= 5) {
+      if (!tipos.size) {
+        const n = {}; for (const m of urls) for (const k of m.tipos) n[k] = (n[k] || 0) + 1;
+        for (const [k, c] of Object.entries(n)) if (c / urls.length >= 0.6) tipos.add(k);
+      }
+      if (!limpeza) limpeza = urls.filter(m => m.limpeza).length / urls.length >= 0.5;
+    }
+    return { tipos, limpeza };
+  };
+  let variantes = 0, ofertas = 0;
+  for (const sp of seedJson.store_products) {
+    const fora = new Set();
+    for (const it of sp.items) {
+      const perfil = perfilDe(it.ean);
+      if (!perfil.tipos.size) continue;
+      // 1. variantes de outra página com outro tipo
+      const vs = it.variants || [];
+      // (só o tipo: a marca «limpeza» é fraca de mais sem a prova do tamanho)
+      const intrusas = vs.filter(v => v.url && v.url !== it.url && tiposEmConflito(perfil.tipos, marcasDoUrl(v.url, marcas.get(String(it.ean))).tipos));
+      if (intrusas.length) {
+        const ficam = vs.filter(v => !intrusas.includes(v));
+        variantes += intrusas.length;
+        if (!ficam.length) { fora.add(it); continue; }
+        it.variants = ficam;
+        if (intrusas.some(v => Math.abs(v.price - it.price) < 0.005)) {
+          const precos = ficam.filter(v => v.price > 0 && v.in_stock !== false).map(v => v.price);
+          const todos = ficam.filter(v => v.price > 0).map(v => v.price);
+          const novo = precos.length ? Math.min(...precos) : todos.length ? Math.min(...todos) : null;
+          if (novo) it.price = novo; else fora.add(it);
+        }
+      }
+      // 2. a oferta inteira é outro produto da gama
+      const c = consenso(it.ean);
+      const tams = (it.variants || []).filter(v => v.volume_ml > 0).map(v => v.volume_ml);
+      if (c && tams.length && !tams.some(t => Math.abs(t - c) / c <= 0.06)) {
+        const k = emConflito(perfil, marcasDoUrl(it.url, marcas.get(String(it.ean))));
+        // só a marca de limpeza: precisa de um tamanho bem longe (o creme de limpeza de
+        // 200/390 ml na ficha do creme de 40 ml), não o mesmo produto noutro frasco
+        if (k === 'tipo' || (k === 'limpeza' && tams.every(t => t >= 3 * c || t <= c / 3))) fora.add(it);
+      }
+    }
+    if (fora.size) { sp.items = sp.items.filter(it => !fora.has(it)); ofertas += fora.size; }
+  }
+  return { variantes, ofertas };
+}
+
 function dropImplausibleSizes(seedJson) {
+  // fichas-família primeiro: um tamanho de outro produto também desmentiria os outros
+  const familia = dropFamilyVariants(seedJson);
   const volNome = new Map();
   for (const p of seedJson.products || []) { const v = volumeDoTexto(p.name); if (v) volNome.set(String(p.ean), v.ml); }
   // preço mais baixo por produto e tamanho, em todas as lojas
@@ -230,7 +366,7 @@ function dropImplausibleSizes(seedJson) {
       if (confirma) { v.volume_ml = ref; corrigidos++; }
     }
   }
-  return { virgula, mesmoPreco, corrigidos };
+  return { virgula, mesmoPreco, corrigidos, familiaVariantes: familia.variantes, familiaOfertas: familia.ofertas };
 }
 
-module.exports = { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants, dropImplausibleSizes };
+module.exports = { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants, dropImplausibleSizes, dropFamilyVariants, tiposDe, tiposEmConflito };

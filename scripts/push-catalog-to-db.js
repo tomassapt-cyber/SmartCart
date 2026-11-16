@@ -123,6 +123,7 @@ async function upsert(table, rows, onConflict) {
     if (w.dropped) console.log(`  variantes de produto-trocado removidas: ${w.dropped}`);
     const ti = dropImplausibleSizes(seed);   // 2026-11-06: o modal abre no melhor €/L
     if (ti.virgula + ti.mesmoPreco + ti.corrigidos) console.log(`  tamanhos implausíveis: ${ti.virgula} vírgula perdida · ${ti.mesmoPreco} mesmo preço · ${ti.corrigidos} passados ao tamanho do nome`);
+    if (ti.familiaVariantes + ti.familiaOfertas) console.log(`  fichas-família: ${ti.familiaVariantes} tamanhos de outro produto · ${ti.familiaOfertas} ofertas de outro produto`);
   }
   {
     const { mergeEanVariants } = require('./dedup-ean-variants');
