@@ -48,6 +48,7 @@ const VERSAO = [
   [/\bforte\b/, 'forte'], [/\bextra\b/, 'extra'], [/\b(rich|riche|ric[oa])\b/, 'rico'], [/\bmax\b/, 'max'], [/\bpro\b/, 'pro'],
   [/\b(men|homme|homem|for men)\b/, 'homem'], [/\b(kids?|bebe|baby|infantil|crianc\w*|pediatric\w*)\b/, 'bebe'], [/\bteen\b/, 'teen'],
   [/\b(noite|night|nuit|noturn\w*|nocturn\w*|midnight)\b/, 'noite'], [/\b(dia|day|jour|diurn\w*)\b/, 'dia'],
+  [/\b(tecido|sheet|tissu)\b/, 'tecido'],   // máscara em tecido ≠ máscara em creme
   [/\b(mini|travel|viagem)\b/, 'mini'], [/\b(recarga|refill|recharge)\b/, 'recarga'], [/\b(trio|pack|coffret|kit|set|conjunto|duo pack|\d+ ?x ?\d+ ?ml)\b/, 'pack'],   // («Effaclar Duo» é o nome do produto)
   [/\b(claro|clair|light shade|fair|porcelan\w*)\b/, 'tom-claro'], [/\b(medio|medium|moyen)\b/, 'tom-medio'], [/\b(escuro|dark|fonce|deep)\b/, 'tom-escuro'],
   [/\b(bronze|dourado|dore|golden|tan)\b/, 'tom-bronze'], [/\b(nude|natural|beige|bege|sand|areia)\b/, 'tom-natural'],
@@ -77,7 +78,31 @@ function versoes(nome) {
   return s;
 }
 const mesmas = (a, b) => a.size === b.size && [...a].every(x => b.has(x));
-const palavras = (nome, marca) => new Set(canonicalName(nome || '', marca).split('-').filter(x => x.length > 1 && !/^\d+$/.test(x)));
+// Nomes traduzidos (2026-11-16): a SweetCare e a Wells escrevem muitas vezes em inglês
+// ou espanhol o que as outras lojas escrevem em português. O canonicalName já traduz
+// algumas palavras (cream → creme, moisturizing → hidratante); estas vêm dos pares de
+// palavras mais frequentes entre fichas da mesma marca e tamanho que quase batiam.
+const VOCAB = {};
+for (const [canon, lista] of Object.entries({
+  corpo: 'body corporal corps cuerpo', olhos: 'eye eyes yeux ojos olho contorno contour', cabelo: 'hair capilar cabelos cheveux cabello',
+  solar: 'sun solaire fotoprotector fotoprotetor sunscreen', rosto: 'face facial visage cara', intens: 'intensive intensivo intensiva intense intenso',
+  vitamina: 'vitamin vitamine', banho: 'shower duche douche bath bano', leite: 'locao lotion lait milk leche', hidratante: 'moisture moisturizing moisturising moisturizer moisturiser hydrating hydra hydratant hydratante hidratacao hidratacion hydration',
+  limpeza: 'desmaquilhante limpiador limpador cleanser cleansing nettoyant demaquillant', maos: 'hand hands mains manos', pes: 'foot feet pieds pies', labios: 'lip lips levres',
+  ampola: 'ampoule ampolla ampoules ampolas', argao: 'argan', desodorizante: 'antitranspirante antiperspirant deo desodorante deodorant', protecao: 'protection proteccion protetor protector protect',
+  purificante: 'purifying purifiant', antirrugas: 'rugas wrinkle wrinkles antiwrinkle antiarrugas rides', antiqueda: 'queda loss caida chute hairloss',
+  antimanchas: 'manchas spots taches antitaches', anticaspa: 'caspa dandruff antipelliculaire', calmante: 'apaziguante soothing calming apaisant',
+  refirmante: 'firming reafirmante raffermissant firmeza', dia: 'day jour diurno daily diario', noite: 'night noche nuit noturno nocturno',
+  nutritivo: 'nourishing nutritiva nourrissant nutrition nutri', recarga: 'refill recharge', reparador: 'repair reparadora reparacao reparation repairing',
+  concentrado: 'concentrate concentre', hialuronico: 'hyaluron hyaluronic hyaluronique hialuronica', niacinamida: 'niacinamide', controlo: 'control controle',
+  emulsao: 'emulsion', micelar: 'micellar micellaire', rico: 'rica rich riche', shampoo: 'shampooing champu', condicionador: 'amaciador conditioner acondicionador',
+  esfoliante: 'exfoliante exfoliating scrub peeling gommage', mascara: 'mask masque mascarilla', oleo: 'oil huile aceite', serum: 'soro',
+}) ) for (const w of lista.split(' ')) VOCAB[w] = canon;
+// palavras que não distinguem produtos
+const VAZIAS = new Set('anti em com con with the and for para de du des la le el pele skin peau piel cuidado cuidados care soin'.split(' '));
+const palavras = (nome, marca) => new Set(canonicalName(nome || '', marca).split('-')
+  .filter(x => x.length > 1 && !/^\d+$/.test(x))
+  .map(x => VOCAB[x] || x)
+  .filter(x => !VAZIAS.has(x)));
 
 function gerar(seed) {
   const ofertas = new Map();

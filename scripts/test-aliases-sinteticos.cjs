@@ -14,6 +14,7 @@ assert.ok(!versoes('Effaclar Duo +M').has('pack'), '«Duo» é nome de produto')
 assert.ok(versoes('Desodorizante Roll-on Citrus').has('aroma-citrus'));
 assert.ok(versoes('Weleda Desodorizante de Romã').has('aroma-roma'));
 assert.ok(versoes('Creme Noite').has('noite') && versoes('Night Cream').has('noite'));
+assert.ok(versoes('Máscara Tecido Hidratante').has('tecido') && !versoes('Máscara Facial Hidratante').has('tecido'));
 
 // 2. o gerador
 const of = (ean, ml, url) => ({ ean, price: 10, url, variants: [{ volume_ml: ml, price: 10, url }] });
@@ -28,11 +29,14 @@ const seed = {
     { ean: '3600000000024', name: 'Elvive Shampoo Hidra Hialurónico 250ml', brand: 'Elvive', category: 'hair' },
     { ean: 'wells-333', name: 'Elvive Máscara Hidra Hialurónico', brand: 'Elvive', category: 'hair' },
     { ean: '3600000000031', name: 'Avène Cicalfate Creme Reparador 40ml', brand: 'Avène', category: 'skincare' },
+    // nome traduzido: «Body Milk» = «Leite Corporal»
+    { ean: '8429420100015', name: 'Sesderma Atopises Leite Corporal 400ml', brand: 'Sesderma', category: 'body' },
+    { ean: 'sweetcare-atopises', name: 'Atopises Body Milk', brand: 'Sesderma', category: 'body' },
     { ean: 'sweetcare-xemose', name: 'Avène Cicalfate Creme Reparador Protetor', brand: 'Avène', category: 'skincare' },
   ],
   store_products: [
-    { store_slug: 'a', items: [of('3401397240470', 40, 'https://a/ds'), of('4001638095436', 50, 'https://a/roma'), of('3600000000017', 50, 'https://a/ceta'), of('3600000000024', 250, 'https://a/elv'), of('3600000000031', 40, 'https://a/xem')] },
-    { store_slug: 'sweetcare', items: [of('sweetcare-sensibio-ds', 40, 'https://sc/ds'), of('sweetcare-xemose', 40, 'https://sc/xem')] },
+    { store_slug: 'a', items: [of('3401397240470', 40, 'https://a/ds'), of('4001638095436', 50, 'https://a/roma'), of('3600000000017', 50, 'https://a/ceta'), of('3600000000024', 250, 'https://a/elv'), of('3600000000031', 40, 'https://a/xem'), of('8429420100015', 400, 'https://a/ato')] },
+    { store_slug: 'sweetcare', items: [of('sweetcare-sensibio-ds', 40, 'https://sc/ds'), of('sweetcare-xemose', 40, 'https://sc/xem'), of('sweetcare-atopises', 400, 'https://sc/ato')] },
     { store_slug: 'wells', items: [of('wells-111', 50, 'https://w/citrus'), of('wells-222', 50, 'https://w/ceta'), of('wells-333', 250, 'https://w/elv')] },
   ],
 };
@@ -40,6 +44,7 @@ const { finais } = gerar(seed);
 const par = Object.fromEntries(finais.map(x => [x.s.ean, x.p.ean]));
 assert.equal(par['sweetcare-sensibio-ds'], '3401397240470', 'o mesmo creme junta-se');
 assert.equal(par['sweetcare-xemose'], '3600000000031', 'uma palavra a mais de um lado só não impede');
+assert.equal(par['sweetcare-atopises'], '8429420100015', 'nome traduzido: Body Milk = Leite Corporal');
 assert.equal(par['wells-111'], undefined, 'Citrus ≠ Romã');
 assert.equal(par['wells-222'], undefined, 'sem FPS ≠ com FPS 30');
 assert.equal(par['wells-333'], undefined, 'máscara ≠ shampoo');
@@ -56,4 +61,4 @@ const eans = new Set(s2.products.map(p => p.ean));
 assert.ok(!eans.has('sweetcare-sensibio-ds'), 'a ficha sem EAN sai');
 assert.ok(s2.store_products.find(g => g.store_slug === 'sweetcare').items.some(i => i.ean === '3401397240470'), 'a oferta passa para a ficha com EAN');
 assert.ok(s2.store_products.find(g => g.store_slug === 'sweetcare').items.some(i => i.ean === '3600000000024'), 'o par manual manda sobre o gerado');
-console.log('aliases sintéticos: versões/tons/aromas/FPS, junta o mesmo produto e recusa variantes, publicação com os manuais a mandar — tudo passou');
+console.log('aliases sintéticos: versões/tons/aromas/FPS/tecido, nomes traduzidos, junta o mesmo produto e recusa variantes, publicação com os manuais a mandar — tudo passou');
