@@ -32,6 +32,50 @@ const nao = [
 ];
 for (const [n, c, b] of nao) assert.equal(eMaquilhagem(n, c, b), false, 'não é maquilhagem: ' + n);
 assert.equal(fixCategory('Nasomar Infantil Solução Nasal', 'makeup', 'Nasomar'), null, '«makeup» da loja sem confirmação no nome cai');
+
+// 2026-11-16: maquilhagem com a categoria da loja errada («skincare»), pelo tipo de
+// produto, pela secção da Notino («Marca Olhos/Lábios …») e pelas marcas só de maquilhagem
+const simContexto = [
+  ["Lancôme Lábios L'Absolu Rouge Drama Matte 274", 'skincare', 'Lancôme'],
+  ['Base de maquilhagem Isdin Coverage FPS50+ Tom 3 Areia 30 ml', 'skincare', 'Isdin'],
+  ['Estée Lauder Maquilhagem para o rosto Double Wear Stay-In-Place Makeup 1W1', 'skincare', 'Estée Lauder'],
+  ['SISLEY Olhos Phyto Khol Star Waterproof No. 07 Mystic Blue / 0,3 g', 'skincare', 'Sisley'],
+  ['SENSAI Mascara 38°C Collection Lash Lengthener Mascara 10 ml', 'skincare', 'Sensai'],
+  ['La Roche Posay Toleriane Teint Pó Fixador Matificante 12gr', 'skincare', 'La Roche-Posay'],
+  ['Lápis de Olhos La Roche Posay Respectissime Preto 1 pc', 'skincare', 'La Roche-Posay'],
+  ['Andreia Hybrid Gel Fusion Cor H13 Nude', 'skincare', 'Andreia'],
+  ['Clarins Joli Rouge 711 Papaya', 'skincare', 'Clarins'],
+  ['TIRTIR Mask Fit Aura Cushion 21W NATURAL IVORY', 'skincare', 'TirTir'],
+  ['Beter Elite 45 Pincel Maquilhagem de Pós', 'skincare', 'Beter'],
+  ['Maybelline New York Instant Perfector Glow 4 em 1', 'skincare', 'Maybelline'],
+];
+for (const [n, c, b] of simContexto) assert.equal(eMaquilhagem(n, c, b), true, 'é maquilhagem (contexto): ' + n);
+const naoContexto = [
+  ['Uriage Batom Hidratante Eau Thermale 4 gr', 'skincare', 'Uriage'],
+  ['Care Protective Lipstick Almond Oil SPF50', 'makeup', 'Lirene'],
+  ['Lierac Diopti Fluido Corretor de Olheiras 15 ml', 'skincare', 'Lierac'],
+  ['Martiderm Platinum Corretor de Olhos Diurnos 10ml', 'skincare', 'Martiderm'],
+  ['Roc Creme Noturno Corretor de Rugas 30 ml', 'skincare', 'RoC'],
+  ['Caudalie Vinoperfect Tratamento Iluminador de Olhos 15 ml', 'skincare', 'Caudalie'],
+  ['Filorga OPTIM-EYES Contorno dos Olhos 3em1 15 ml', 'skincare', 'Filorga'],
+  ['Klorane Pensos para Olhos Lisos Hidro-Gel 2 Pensos', 'skincare', 'Klorane'],
+  ['Colírio iVision para Olhos Secos 10 ml', 'skincare', 'iVision'],
+  ['Neutrogena Lábios Stick Hidratante 2 x 3g', 'skincare', 'Neutrogena'],
+  ['Schwarzkopf Palette Coloração Permanente 5-68', 'skincare', 'Schwarzkopf'],
+  ['Máscara Facial Revitalizante Argile Rouge', 'skincare', 'Gamarde'],
+  ['Ecrinal Unhas Verniz Amargo 10ml', 'skincare', 'Ecrinal'],
+  ['Excilor Forte Verniz Fungos Unhas - 30ml', 'body', 'Excilor'],
+  ['Sensodyne Expert Protect Creme Dental Reforço Esmalte 75 ml', 'skincare', 'Sensodyne'],
+  ['Pixi Olhos Ultra-Conditioning Lash & Brow Serum 2 ml', 'skincare', 'Pixi'],
+  ['Essence Hello, Good Stuff! Sérum de Óleo Bifásico 30ml', 'skincare', 'Essence'],
+  ['Pincel Mineral Trópico Havaiano FPS30 1ud', 'skincare', 'Hawaiian Tropic'],
+  ['URGO Glitter 2 Tamanhos - 18 Pensos', 'skincare', 'Urgo'],
+  ['Versace Dylan Blush Pink Eau De Parfum Spray 30ml', 'perfume', 'Versace'],
+  // «cuidado com cor» fica por agora (ESCONDER_CUIDADO_COM_COR = false; decisão do Tomás)
+  ['Bioderma Sensibio AR BB Creme 40ml', 'skincare', 'Bioderma'],
+  ['Avène Protetor Solar SPF50 Creme com Cor 50 ml', 'skincare', 'Avène'],
+];
+for (const [n, c, b] of naoContexto) assert.equal(eMaquilhagem(n, c, b), false, 'não é maquilhagem (contexto): ' + n);
 assert.equal(fixCategory('Rouge Allure', 'makeup', 'Chanel'), 'makeup');
 
 // o filtro de visibilidade esconde a maquilhagem e conta-a
@@ -51,4 +95,4 @@ const r = cv.applyVisibilityFilter(seed, () => false);
 assert.deepEqual(seed.products.map(p => p.ean), ['2', '3'], 'o batom sai; o creme e o perfume ficam');
 assert.equal(r.maquilhagem, 1);
 assert.ok(seed.store_products.every(g => g.items.every(i => i.ean !== '1')), 'as ofertas do batom saem também');
-console.log('sem maquilhagem: reconhecimento (nome e categoria confirmada), cuidado dos lábios e unhas e cabelo protegidos, filtro de visibilidade — tudo passou');
+console.log('sem maquilhagem: reconhecimento (nome, categoria confirmada e contexto), cuidado dos lábios, olhos, unhas e cabelo protegidos, filtro de visibilidade — tudo passou');
