@@ -80,6 +80,20 @@ function lerAliases(root, seed) {
       out[alias] = canon;
     }
   }
+  // Aliases GERADOS (2026-11-16, scripts/aliases-sinteticos.js): fichas sem EAN da
+  // SweetCare/Wells/… que são o mesmo produto que uma ficha com EAN, com regras
+  // estritas. Os manuais mandam: um código que já lá esteja (como alias ou como
+  // canónico) não entra daqui.
+  let auto = {};
+  try { auto = JSON.parse(fs.readFileSync(path.join(root, 'data', 'product-aliases-auto.json'), 'utf8')); } catch { /* sem gerados */ }
+  for (const [canon, d] of Object.entries(auto)) {
+    if (canon.startsWith('_') || !existe.has(canon) || out[canon] || !Array.isArray(d && d.aliases)) continue;
+    for (const a of d.aliases) {
+      const alias = String(a);
+      if (alias === canon || canonicos.has(alias) || out[alias] || !existe.has(alias)) continue;
+      out[alias] = canon;
+    }
+  }
   return out;
 }
 
