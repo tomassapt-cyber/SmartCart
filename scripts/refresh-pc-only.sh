@@ -30,6 +30,9 @@
 # (desafio no mapa do site, PC e nuvem). A skin.pt também saiu (nunca teve
 # scraper). Ver docs/LOJAS.md.
 #
+# E a 2026-11-16 entrou a shopcosmetics: 403 (Cloudflare) aos runners nas corridas
+# de novembro; do PC, com a identificação honesta, responde 200 em ~0,6 s.
+#
 # E voltou a 9 a 2026-10-14:
 #   403 (WAF) aos runners    farmaoli  (todas as corridas na nuvem desde
 #                                       10/10; do PC: 200 e o scraper corre)
@@ -89,6 +92,8 @@ declare -A SCRAPE=(
   [farmaoli]="node scripts/scrape-farmaoli-catalog.js"
   # 2026-10-26: a Glammy trava a nuvem (~14 s por ficha; do PC 0,15 s) — passa ao PC
   [glammy]="node scripts/scrape-glammy-catalog.js"
+  # 2026-11-16: a Shop Cosmetics dá 403 aos runners (Cloudflare); do PC responde normal
+  [shopcosmetics]="node scripts/scrape-shopcosmetics-catalog.js"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 
@@ -98,7 +103,7 @@ declare -A SCRAPE=(
 # aterrou o mais barato de obter.
 # 2026-10-26: a Notino saiu (data/lojas-so-pc.json → em_espera): bloqueia também
 # o PC desde 15/10 e só volta pelo feed de afiliados. As ofertas ficam no site.
-ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me afarmaciaonline balvera farmaoli glammy)
+ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me afarmaciaonline balvera farmaoli glammy shopcosmetics)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"

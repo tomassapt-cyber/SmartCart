@@ -16,10 +16,9 @@
 name: ShopCosmetics daily refresh
 
 on:
-  schedule:
-    - cron: '30 2 * * *'
-    - cron: '30 10 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '30 18 * * *'
+  # 2026-11-16: SEM agendamento. A Shop Cosmetics responde 403 (Cloudflare) aos
+  # servidores da nuvem; do PC responde normal. Passou a loja do PC
+  # (scripts/refresh-pc-only.sh, data/lojas-so-pc.json). Fica só o arranque à mão.
   workflow_dispatch:
     inputs:
       limit:
