@@ -103,14 +103,46 @@ function mapear(p, agora) {
   };
 }
 
+// Ritmo (2026-11-16): a Shopkit (Sobeauty, Smart Beauty e Beleza37 estão na mesma
+// plataforma) limita os pedidos por endereço e responde 429 «demasiados pedidos». Com
+// 250 ms entre páginas e as 4 tentativas do fetchTextResilient quase seguidas, as
+// três lojas pararam a meio na recolha do PC de 16/11 (páginas 5, 34 e 3). O 429 é
+// um «abranda», não um bloqueio: um minuto depois a loja responde outra vez.
+const PAUSA_PAGINAS_MS = 2000;
+const ESPERAS_429_S = [60, 120, 240, 300];   // depois disto desiste (a loja não quer mesmo)
+const dorme = ms => new Promise(s => setTimeout(s, ms));
+
+/** Uma página do /products.json; num 429 espera o que a loja pede (Retry-After) e tenta de novo. */
+async function pedirPagina(url, cab, { esperas = ESPERAS_429_S, dormir = dorme, pedir = fetch } = {}) {
+  for (let i = 0; ; i++) {
+    const r = await pedir(url, { headers: { Accept: 'application/json', ...cab }, redirect: 'follow', signal: AbortSignal.timeout(30000) });
+    if (r.status === 429 && i < esperas.length) {
+      const pede = Number(r.headers.get('retry-after'));
+      const s = pede > 0 && pede <= 600 ? pede : esperas[i];
+      try { await r.body?.cancel(); } catch { /* nada */ }
+      console.log(`  ⏳ 429 «demasiados pedidos» — espera ${s} s e continua (${i + 1}/${esperas.length})`);
+      await dormir(s * 1000);
+      continue;
+    }
+    if (r.ok) {
+      const corpo = await r.text();
+      if (/^\s*[{[]/.test(corpo)) return corpo;   // a página que se queria
+    } else {
+      try { await r.body?.cancel(); } catch { /* nada */ }
+    }
+    // outro estado ou corpo que não é JSON: o caminho de sempre, com o diagnóstico do helper
+    return fetchTextResilient(url, { expect: 'json', attempts: 4, timeoutMs: 30000, headers: { Accept: 'application/json', ...cab } });
+  }
+}
+
 /**
  * Recolhe o catálogo inteiro de uma loja Shopkit.
  * @param {string} base  ex. 'https://www.smartbeauty.pt'
- * @param {object} opts  { limite, ua, aoProgresso }
+ * @param {object} opts  { limite, ua, aoProgresso, pausaMs }
  * @returns {Promise<{produtos: Array, total: number, paginas: number, bytes: number}>}
  */
 async function recolherCatalogo(base, opts = {}) {
-  const { limite = Infinity, ua, aoProgresso } = opts;
+  const { limite = Infinity, ua, aoProgresso, pausaMs = PAUSA_PAGINAS_MS } = opts;
   const cab = ua ? { 'User-Agent': ua } : {};
   const agora = new Date().toISOString();
 
@@ -120,9 +152,7 @@ async function recolherCatalogo(base, opts = {}) {
   const vistos = new Set();
 
   while (url) {
-    const corpo = await fetchTextResilient(url, {
-      expect: 'json', attempts: 4, timeoutMs: 30000, headers: { Accept: 'application/json', ...cab },
-    });
+    const corpo = await pedirPagina(url, cab);
     bytes += corpo.length;
     paginas++;
 
@@ -153,7 +183,7 @@ async function recolherCatalogo(base, opts = {}) {
     const prox = d.paging && d.paging.next;
     if (!prox || prox === url) break;
     url = prox;
-    await new Promise(s => setTimeout(s, 250));
+    await dorme(pausaMs);
   }
 
   // Aviso de catalogo cortado. Sem isto, um corte de paginacao (foi o que o
@@ -164,4 +194,4 @@ async function recolherCatalogo(base, opts = {}) {
   return { produtos, total, paginas, bytes, brutos, semChave };
 }
 
-module.exports = { recolherCatalogo, mapear, volumeDoNome, eanValido };
+module.exports = { recolherCatalogo, mapear, volumeDoNome, eanValido, pedirPagina };
