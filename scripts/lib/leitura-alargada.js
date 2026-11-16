@@ -109,8 +109,8 @@ const diasDesde = d => (Date.now() - Date.parse(d + 'T00:00:00Z')) / 86400000;
  *   memoria    — lerMemoria()
  *   maxNovas   — fichas nunca vistas a abrir nesta corrida
  *   saltar     — url → true para não descobrir (maquilhagem pelo endereço, etc.)
- * Devolve { fila, descobrir }: a fila começa pelo que está há mais tempo sem ser
- * lido (nunca lido primeiro) e acaba nas fichas a descobrir.
+ * Devolve { fila, descobrir }: primeiro as fichas a descobrir (um lote limitado), depois
+ * o que está há mais tempo sem ser lido, e no fim as ofertas que saíram do mapa.
  */
 function planear({ todas, filtradas, estado, memoria, maxNovas = 0, saltar = () => false }) {
   // o fragmento (#variant-… da Primor) não vai ao servidor: uma ficha = um pedido
@@ -143,7 +143,10 @@ function planear({ todas, filtradas, estado, memoria, maxNovas = 0, saltar = () 
   const porIdade = (a, b) => (idadeDe(a) < idadeDe(b) ? -1 : idadeDe(a) > idadeDe(b) ? 1 : 0);
   const fila = [...base].sort(porIdade);
   const fora = foraDoMapa.filter(u => !vistos.has(u)).sort(porIdade);
-  return { fila: [...fila, ...descobrir, ...fora], descobrir: new Set(descobrir), dasOfertas, foraDoMapa: fora.length, daMemoria, vistas: Object.keys(memoria.urls).length };
+  // a descoberta vai À FRENTE (16/11): com o orçamento de tempo, o que fica para a
+  // corrida seguinte são as fichas lidas há menos tempo, não as fichas novas — na 1.ª
+  // corrida da Aveirofarma, com a descoberta no fim, as 2 000 ficaram todas por abrir
+  return { fila: [...descobrir, ...fila, ...fora], descobrir: new Set(descobrir), dasOfertas, foraDoMapa: fora.length, daMemoria, vistas: Object.keys(memoria.urls).length };
 }
 
 /** Endereço com cara de maquilhagem (não vale a pena descobrir: o site não a mostra). */

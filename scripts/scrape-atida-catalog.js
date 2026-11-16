@@ -259,8 +259,8 @@ async function main() {
   let urls = allUrls.filter(u => isBeautyUrl(u) || perfumeDaSelecao(u));
   console.log(`  ${urls.length} URLs beauty/dermo (após filtro keywords)`);
   // Leitura alargada (2026-11-16): ofertas existentes, fichas já descobertas com EAN
-  // do catálogo e um lote de fichas novas, no FIM da fila (o orçamento de tempo
-  // desta loja corta primeiro a descoberta). Ver scripts/lib/leitura-alargada.js.
+  // do catálogo e um lote de fichas novas, À FRENTE da fila (o orçamento de tempo
+  // desta loja corta as fichas lidas há menos tempo). Ver scripts/lib/leitura-alargada.js.
   const ALARGADA = opcoes(args, { descobrir: 2000 });
   const leitura = await prepararLeitura({ loja: 'atida', base: 'https://www.atida.com', todas: allUrls, filtradas: urls, maxNovas: LIMIT === Infinity && !CHUNK ? ALARGADA.maxNovas : 0, concorrencia: CONCURRENCY, atrasoMs: DELAY_MS });
   urls = leitura.fila;
@@ -285,9 +285,9 @@ async function main() {
   // 5. Scrape com pool — as páginas lidas há MAIS tempo primeiro (as que não
   // estão na leitura anterior contam como nunca lidas), para que um orçamento
   // de tempo nunca deixe as mesmas sempre para trás.
-  const queue = urls.filter(u => !done.has(u) && !leitura.eDescoberta(u))
-    .sort((a, b) => (leituraAnterior.get(a) || 0) - (leituraAnterior.get(b) || 0))
-    .concat(urls.filter(u => !done.has(u) && leitura.eDescoberta(u)));
+  const queue = urls.filter(u => !done.has(u) && leitura.eDescoberta(u))
+    .concat(urls.filter(u => !done.has(u) && !leitura.eDescoberta(u))
+      .sort((a, b) => (leituraAnterior.get(a) || 0) - (leituraAnterior.get(b) || 0)));
   console.log(`\n🚀 A scrapar ${queue.length} URLs (concurrency=${leitura.concorrencia}, delay=${leitura.atrasoMs}ms)…\n`);
 
   const start = Date.now();
