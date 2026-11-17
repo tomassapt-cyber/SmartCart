@@ -33,9 +33,9 @@ const { LOJA: LGLAM } = require('./integrate-lisbonglam-catalog');
 
   // ---------- recolha com fetch simulado: bloco + GTIN só das variantes por ler
   const fetchOriginal = globalThis.fetch;
-  const pedidos = [];
-  const loja = (rotas) => async (url) => {
-    const u = new URL(url); pedidos.push(u.pathname + u.search);
+  const pedidos = [], uas = [];
+  const loja = (rotas) => async (url, init) => {
+    const u = new URL(url); pedidos.push(u.pathname + u.search); uas.push(init && init.headers && init.headers['user-agent']);
     const r = rotas[u.pathname + u.search] ?? rotas[u.pathname];
     const [estado, corpo] = typeof r === 'function' ? r() : (r || [404, '']);
     return { status: estado, url, text: async () => corpo };
@@ -66,6 +66,9 @@ const { LOJA: LGLAM } = require('./integrate-lisbonglam-catalog');
     // limite de leituras de GTIN por corrida
     r = await recolher(opcoes({ cache: {}, maxJs: 1 }));
     assert.equal(r.gtin_lookups, 1); assert.equal(r.gtin_pending, 2);
+    // o identificador da loja nova (o do CosMath, 2026-11-17) vai em todos os pedidos
+    uas.length = 0; await recolher(opcoes({ cache: {}, ua: 'CosMath-Teste/1.0' }));
+    assert.ok(uas.length > 3 && uas.every(x => x === 'CosMath-Teste/1.0'), 'o.ua em todos os pedidos');
     // ensaio parcial, mínimo, cobertura do bloco
     assert.equal((await recolher(opcoes({ cache: {}, limite: 1 }))).in_progress, true, 'um ensaio com --limite tem de sair marcado como parcial');
     await assert.rejects(recolher(opcoes({ cache: {}, minimo: 5 })), /mínimo/);
