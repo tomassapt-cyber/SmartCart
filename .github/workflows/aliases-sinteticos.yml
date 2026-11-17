@@ -45,11 +45,13 @@ jobs:
         run: |
           node scripts/test-aliases-sinteticos.cjs
           node scripts/test-aliases-cnp.cjs
+          node scripts/test-aliases-nome.cjs
 
       - name: Gerar os aliases
         run: |
           node scripts/aliases-sinteticos.js
           node scripts/aliases-cnp.js
+          node scripts/aliases-nome.js
 
       - name: Commit + push
         env:
@@ -60,13 +62,13 @@ jobs:
         run: |
           set -e
           # a data de geração muda sempre: só conta se os pares mudaram
-          if git diff --quiet -I '"_gerado"' -- data/product-aliases-auto.json data/product-aliases-cnp.json; then
+          if git diff --quiet -I '"_gerado"' -- data/product-aliases-auto.json data/product-aliases-cnp.json data/product-aliases-nome.json; then
             echo "Pares iguais — nada a fazer."
             exit 0
           fi
-          git add data/product-aliases-auto.json data/product-aliases-cnp.json
+          git add data/product-aliases-auto.json data/product-aliases-cnp.json data/product-aliases-nome.json
           git commit -m "chore: aliases das fichas sem EAN e pelo CNP ($(date -u +%Y-%m-%d))" \
-            -m "Gerado por scripts/aliases-sinteticos.js e scripts/aliases-cnp.js. Auto via GitHub Actions."
+            -m "Gerado por scripts/aliases-sinteticos.js, aliases-cnp.js e aliases-nome.js. Auto via GitHub Actions."
           for i in 1 2 3 4 5; do
             git pull --rebase --autostash origin main && git push origin HEAD:main && exit 0
             sleep $((i * 15))

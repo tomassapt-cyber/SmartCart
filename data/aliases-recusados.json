@@ -1,0 +1,4 @@
+{
+ "_comment": "Pares de fichas que o Tomás marcou como errados ao rever as listas (PARES-*.md). O scripts/aliases-nome.js não os volta a gerar. Formato: { \"sai\": EAN que saía, \"fica\": EAN que ficava, \"porque\": \"…\" }.",
+ "pares": []
+}
