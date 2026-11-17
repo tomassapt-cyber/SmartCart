@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-16T11:42:01.121380+00:00",
-  "completed_at": "2026-11-16T13:33:58.903248+00:00",
+  "scraped_at": "2026-11-17T02:30:40.978533+00:00",
+  "completed_at": "2026-11-17T04:11:32.599196+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1831,
+  "targets": 1830,
   "products": [
     {
       "ean": "5601411434146",
@@ -6000,19 +6000,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "8005610589671",
-      "name": "Laca Sem Gás Flexible Finish Eimi 250ml - Wella",
-      "price": 16.73,
-      "net_price": 13.6,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/wella-eimi-sprays/11896-laca-sem-gas-flexible-finish-eimi-250ml-wella-8005610589671.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/126570-thickbox_default/laca-sem-gas-flexible-finish-eimi-250ml-wella.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "4045787724110",
       "name": "Schwarzkopf Bonacure Repair Rescue Shampoo 500ml – Reparação e Hidratação para Cabelos Danificados",
       "price": 19.17,
@@ -6152,19 +6139,6 @@
       "url": "https://presencadeluxo.pt/illumina-wella/12237-tinta-illumina-color-1038-louro-super-claro-dourado-perola-60ml-wella-professionals-8005610543536.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/131806-thickbox_default/tinta-illumina-color-1038-louro-super-claro-dourado-perola-60ml-wella-professionals.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "8005610541884",
-      "name": "Tinta Illumina Color 9/43 Louro Muito Claro Cobre Dourado 60ml - Wella Professionals",
-      "price": 16.17,
-      "net_price": 13.14,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/illumina-wella/12257-tinta-illumina-color-943-louro-muito-claro-cobre-dourado-60ml-wella-professionals-8005610541884.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/131799-thickbox_default/tinta-illumina-color-943-louro-muito-claro-cobre-dourado-60ml-wella-professionals.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -16673,19 +16647,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474637153489",
-      "name": "Máscara Leave-In L'Oreal Absolut Repair Molecular 100ml",
-      "price": 25.08,
-      "net_price": 20.39,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/l-oreal-absolut-repair-molecular/85275-mascara-leave-in-l-oreal-absolut-repair-molecular-100ml-3474637153489.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/140444-thickbox_default/mascara-leave-in-l-oreal-absolut-repair-molecular-100ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5603927885801",
       "name": "Tips Unhas PRO Extend Medium Coffin Andreia",
       "price": 14.76,
@@ -16747,19 +16708,6 @@
       "url": "https://presencadeluxo.pt/tips-unhas/85280-tips-unhas-pro-extend-long-coffin-andreia-5603927885849.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/140438-thickbox_default/tips-unhas-pro-extend-long-coffin-andreia.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "5603927886716",
-      "name": "Catalisador Tips Unhas Andreia PRO Extend Lamp",
-      "price": 33.83,
-      "net_price": 27.5,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/catalisador-unhas/85281-catalisador-tips-unhas-andreia-pro-extend-lamp-5603927886716.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/140446-thickbox_default/catalisador-tips-unhas-andreia-pro-extend-lamp.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -22549,19 +22497,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927902843",
-      "name": "Andreia Gel Polish Celebration Edit CE6 – Cereja Negro Cintilante 10,5 ml",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/92764-andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml-5603927902843.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/161155-thickbox_default/andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600482302897",
       "name": "Corta-Unhas RickiParodi Níquel Grande",
       "price": 2.25,
@@ -22599,6 +22534,22 @@
       "existing_name": "AndreiaProfissional Verniz de Gel 256 - 10.5ml",
       "method": "GTIN",
       "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/wella-eimi-sprays/11896-laca-sem-gas-flexible-finish-eimi-250ml-wella-8005610589671.html",
+      "ean": "8005610589671",
+      "canonical": "8005610589671",
+      "existing_name": "EIMI flexible finish 250 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/illumina-wella/12257-tinta-illumina-color-943-louro-muito-claro-cobre-dourado-60ml-wella-professionals-8005610541884.html",
+      "ean": "8005610541884",
+      "canonical": "8005610541884",
+      "existing_name": "Wella Coloração capilar Illumina Color No. 9/43 / 60 ml",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/cuidados-cabelos-loiros-blond-me/12340-shampoo-todos-os-loiros-enriquecido-blond-me-300ml-schwarzkopf-4045787639834.html",
@@ -22823,6 +22774,14 @@
       "existing_name": "EVELINE D-PANTENOL AFTER SUN EEITO REFRESCANTE 200 ML",
       "method": "GTIN",
       "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/catalisador-unhas/85281-catalisador-tips-unhas-andreia-pro-extend-lamp-5603927886716.html",
+      "ean": "5603927886716",
+      "canonical": "5603927886716",
+      "existing_name": "Catalisador Tips Unhas Andreia PRO Extend Lamp",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/pinceis-e-esponjas/85353-pincel-expert-facial-realtechniques-by-sam-nic-chapman-079625014112.html",
@@ -23173,6 +23132,14 @@
       "ean": "5603927902836",
       "canonical": "5603927902836",
       "existing_name": "Verniz Gel Andreia Gel Polish CE5 – Bordeaux intenso com reflexos avermelhados e brilho multidimensional",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92764-andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml-5603927902843.html",
+      "ean": "5603927902843",
+      "canonical": "5603927902843",
+      "existing_name": "Verniz Gel Andreia Gel Polish CE6 – Tom cereja negra intenso iluminado por reflexos vermelhos cintilantes",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
