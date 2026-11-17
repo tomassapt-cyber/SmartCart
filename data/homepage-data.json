@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-11-16T13:30:42.124Z",
-  "seed_total_products": 100379,
+  "generated_at": "2026-11-17T11:40:39.310Z",
+  "seed_total_products": 100802,
   "hero_sponsored": [
     {
-      "ean": "3474636920297",
-      "name": "Frizz Dismiss Conditioner",
-      "brand": "Redken",
-      "image_url": "https://www.druni.pt/media/catalog/product/7/0/7001626.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 16.65,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/redken/frizz-dismiss-conditioner/p_09580/"
+      "ean": "8429420230859",
+      "name": "ISDIN Fotoprotector Pediatrics Fusion Water Magic SPF50 - Protetor solar facial ultraligeiro, para crianças",
+      "brand": "Isdin",
+      "image_url": "https://assets.farmacia365.pt/cdn-cgi/image/width%3D600%2Cheight%3D600%2Cbackground%3Dwhite%2Cfit%3Dpad,format=webp/https://assets.farmacia365.pt/images/originals/6388660.webp",
+      "best_price": 18.1,
+      "best_store": "My Cosmetics",
+      "best_store_slug": "mycosmetics",
+      "best_url": "https://www.mycosmetics.pt/products/isdin-fotoprot-ped-f-water-spf50-50ml"
     },
     {
-      "ean": "3282770391640",
-      "name": "René Furterer Sublime Karité Máscara Nutritiva",
-      "brand": "René Furterer",
-      "image_url": "https://cdn.shopify.com/s/files/1/0513/4260/6524/files/1734961488_a325e45081527067b0e715ed711b5cce.jpg?v=1737042299",
-      "best_price": 19.96,
+      "ean": "3606000560833",
+      "name": "Sérum Con Ácido Hialurónico",
+      "brand": "CeraVe",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 13.52,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
+    },
+    {
+      "ean": "7427244506335",
+      "name": "Papillon Creme de Rosto Vitamina C",
+      "brand": "Papillon",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
+      "best_price": 18.17,
+      "best_store": "Farmácia Barreiros",
+      "best_store_slug": "barreiros",
+      "best_url": "https://www.farmaciabarreiros.com/beleza/rosto/hidratacao-rosto/papillon-creme-de-rosto-vitamina-c-50-ml"
+    },
+    {
+      "ean": "3372290001805",
+      "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
+      "brand": "Lazartigue",
+      "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
+      "best_price": 10.54,
       "best_store": "Pharma24",
       "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/rene-furterer-sub-karite-masc-nutri-200"
+      "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
     },
     {
-      "ean": "8414002084555",
-      "name": "Corpore Sano Oral Elixir Mirra Própolis e Funcho",
-      "brand": "Corpore Sano",
-      "image_url": "https://assets.atida.com/transform/144c7ce7-319e-4a5b-a833-b23284c5ef5f/Corpore-Sano-Elixir-Bucal-Mirra-Propolis-e-Hinojo-30ml",
-      "best_price": 9.25,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/corpore-sano-elixir-bocal-mirra-propolis-e-funcho-250ml"
-    },
-    {
-      "ean": "8432225220031",
-      "name": "Revlon Nutricolor Nº 1003 Creme",
-      "brand": "Revlon",
-      "image_url": "https://assets.atida.com/transform/4dde8c50-d657-45f3-a9ef-1a18edb00819/Revlon-Nutricolor-N-1003-Crema-270-ml",
-      "best_price": 17.45,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/revlon-nutricolor-no-1003-creme-100-ml"
-    },
-    {
-      "ean": "3337872412998",
-      "name": "La Roche-Posay Cicaplast Baume B5",
-      "brand": "La Roche-Posay",
-      "image_url": "https://media.appsfarma.com/wemakeit/pt/688011211961.jpg",
-      "best_price": 8.94,
-      "best_store": "GO-farma",
-      "best_store_slug": "gofarma",
-      "best_url": "https://www.go-farma.com/pt/corpo/la-roche-posay/la-roche-posay-cicaplast-baume-b5-40ml_p299.html"
+      "ean": "3282770098938",
+      "name": "Avène Protetor Solar Creme FPS50+",
+      "brand": "Avène",
+      "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
+      "best_price": 8.8,
+      "best_store": "VallisPharma",
+      "best_store_slug": "vallispharma",
+      "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml"
     }
   ],
   "bestsellers": [
@@ -121,10 +121,10 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.54,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-collagen-bank-creme-+-collagen-bank-olhos-coffret_p85891.html"
+      "best_price": 15.49,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
     },
     {
       "ean": "8431567752002",
@@ -174,6 +174,34 @@
       "verified_live": true
     },
     {
+      "ean": "8809562191032",
+      "name": "Esfoliante Corporal Fresh Cloud Body & Scalp",
+      "brand": "Arencia",
+      "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/_/0/_0008_8809562191032_b692.jpg",
+      "best_price": 10.89,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/arencia-esfoliante-corporal-fresh-cloud-para-o-corpo-e-o-scalp-148894.html",
+      "previous_price": 15.95,
+      "discount_pct": 32,
+      "dropped_day": 20774,
+      "verified_live": true
+    },
+    {
+      "ean": "5901887042242",
+      "name": "Antioxidation Micellar Cleaning",
+      "brand": "Ziaja",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1452822.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 2.51,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/ziaja-gel-esfoliante-de-acai-berry-esfoliante-facial-micelar-de-limpeza-27830.html",
+      "previous_price": 3.59,
+      "discount_pct": 30,
+      "dropped_day": 20774,
+      "verified_live": true
+    },
+    {
       "ean": "3337872414060",
       "name": "La Roche Posay Cicaplast Lábios",
       "brand": "La Roche-Posay",
@@ -202,67 +230,40 @@
       "discount_pct": 30,
       "dropped_day": 20769,
       "verified_live": true
-    },
-    {
-      "ean": "3666057161575",
-      "name": "Clarins Tinted Oleo Serum _ 06 -",
-      "brand": "Clarins",
-      "image_url": "https://static.lojadafarmacia.com/22862/clarins-tinted-oleo-serum-06-30ml.jpeg",
-      "best_price": 22.72,
-      "best_store": "Farma2Go",
-      "best_store_slug": "farma2go",
-      "best_url": "https://farma2go.com/pt/products/clarins-tinted-oleo-serum-06-maquilhagem-30ml",
-      "previous_price": 31.64,
-      "discount_pct": 28,
-      "dropped_day": 20772,
-      "verified_live": true
-    },
-    {
-      "ean": "3282779435086",
-      "name": "Champô Trifásico Ativo René Furterer",
-      "brand": "René Furterer",
-      "image_url": "https://assets.atida.com/transform/07107bf5-ac76-4b91-96b0-384d727cff6e/Rene-Furterer-Triphasic-Active-Grow-Champu-500-ml",
-      "best_price": 13.39,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/rene-furterer/shampoo-ativador-de-crescimento-triphasic-active-grow/p_99728/",
-      "previous_price": 22.5,
-      "discount_pct": 40,
-      "dropped_day": 20764
     }
   ],
   "top_brands": [
     {
-      "name": "L'Oréal Paris",
-      "products": 908
-    },
-    {
       "name": "Clarins",
-      "products": 904
+      "products": 896
     },
     {
       "name": "Essence",
+      "products": 896
+    },
+    {
+      "name": "L'Oréal Paris",
       "products": 884
     },
     {
-      "name": "Avène",
-      "products": 847
+      "name": "Isdin",
+      "products": 827
     },
     {
-      "name": "Isdin",
-      "products": 844
+      "name": "Avène",
+      "products": 827
     },
     {
       "name": "Nivea",
-      "products": 828
+      "products": 822
     },
     {
       "name": "La Roche-Posay",
-      "products": 799
+      "products": 791
     },
     {
       "name": "Chicco",
-      "products": 788
+      "products": 790
     }
   ],
   "telegram_alerts": [
@@ -296,7 +297,7 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 73256,
+    "products": 73243,
     "avg_savings_pct": 29
   },
   "shard_version": "",
@@ -3347,7 +3348,7 @@
     ]
   },
   "hero_origem": {
-    "fonte": "site-search",
+    "fonte": "google-suggest-pt",
     "populares": 5,
     "total": 5
   }
