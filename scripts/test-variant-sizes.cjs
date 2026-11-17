@@ -111,9 +111,9 @@ const tam = it => it.variants.map(v => `${v.volume_ml}${v.unit}`);
   assert.deepEqual(vs('c', '4'), [4.5], 'oferta só com «45 ml» (vírgula perdida): passa ao tamanho do nome');
   assert.deepEqual(vs('c', '5'), [15], 'oferta só com 50 ml ao preço dos 15 ml do nome: passa a 15 ml');
   assert.deepEqual(vs('d', '4'), [4.5]);
-  assert.deepEqual(r, { virgula: 1, mesmoPreco: 1, corrigidos: 2, familiaVariantes: 0, familiaOfertas: 0 });
+  assert.deepEqual(r, { virgula: 1, mesmoPreco: 1, corrigidos: 2, familiaVariantes: 0, familiaOfertas: 0, alinhadas: 0, movidas: 0, escondidas: 0, duvidosas: 0 });
   const antes = JSON.stringify(s);
-  assert.deepEqual(dropImplausibleSizes(s), { virgula: 0, mesmoPreco: 0, corrigidos: 0, familiaVariantes: 0, familiaOfertas: 0 }, 'idempotente');
+  assert.deepEqual(dropImplausibleSizes(s), { virgula: 0, mesmoPreco: 0, corrigidos: 0, familiaVariantes: 0, familiaOfertas: 0, alinhadas: 0, movidas: 0, escondidas: 0, duvidosas: 0 }, 'idempotente');
   assert.equal(JSON.stringify(s), antes);
 }
 

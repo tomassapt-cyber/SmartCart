@@ -399,7 +399,11 @@ function dropImplausibleSizes(seedJson) {
       if (confirma) { v.volume_ml = ref; corrigidos++; }
     }
   }
-  return { virgula, mesmoPreco, corrigidos, familiaVariantes: familia.variantes, familiaOfertas: familia.ofertas };
+  // 2026-11-17: no fim, as ofertas ficam no tamanho que a ficha diz (preço do tamanho certo,
+  // ou mudam para a ficha do tamanho delas, ou saem) — scripts/lib/tamanho-da-ficha.js
+  const tam = require('./tamanho-da-ficha').alinharTamanhoDaFicha(seedJson);
+  return { virgula, mesmoPreco, corrigidos, familiaVariantes: familia.variantes, familiaOfertas: familia.ofertas,
+    alinhadas: tam.alinhadas, movidas: tam.movidas, escondidas: tam.escondidas, duvidosas: tam.duvidosas };
 }
 
 module.exports = { fixVariantSizes, fixTruncatedVariantPrices, dropWrongProductVariants, dropImplausibleSizes, dropFamilyVariants, tiposDe, tiposEmConflito };

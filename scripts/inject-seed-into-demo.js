@@ -93,6 +93,7 @@ const seedJson = JSON.parse(seed);
   const t = require('./lib/variant-fixes').dropImplausibleSizes(seedJson);
   if (t.virgula + t.mesmoPreco + t.corrigidos) console.log(`📏 Tamanhos implausíveis: ${t.virgula} vírgula perdida · ${t.mesmoPreco} mesmo preço noutro tamanho · ${t.corrigidos} passados ao tamanho do nome`);
   if (t.familiaVariantes + t.familiaOfertas) console.log(`👪 Fichas-família: ${t.familiaVariantes} «tamanhos» que eram outro produto da gama · ${t.familiaOfertas} ofertas de outro produto`);
+  if (t.alinhadas + t.movidas + t.escondidas) console.log(`📐 Tamanho da ficha: ${t.alinhadas} ofertas com o preço do tamanho certo · ${t.movidas} mudadas para a ficha do tamanho delas · ${t.escondidas} de outro tamanho fora · ${t.duvidosas} fichas com o nome em dúvida`);
 })();
 
 // ── Overlay: FUNDIR variantes de GTIN (UPC-A ↔ EAN-13 com zero) ────────────

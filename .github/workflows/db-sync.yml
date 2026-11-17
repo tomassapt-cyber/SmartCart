@@ -78,7 +78,7 @@ jobs:
       # Os tamanhos das variantes (scripts/lib/variant-fixes.js, fixVariantSizes)
       # são a chave de offer_variants e o que o modal compara. Mesmo critério.
       - name: Teste dos tamanhos de variante
-        run: node scripts/test-variant-sizes.cjs
+        run: node scripts/test-variant-sizes.cjs && node scripts/test-tamanho-da-ficha.cjs
 
       # As fichas sem EAN juntas às com EAN (data/product-aliases-auto.json, 2026-11-16)
       # decidem que fichas e ofertas chegam à BD.
