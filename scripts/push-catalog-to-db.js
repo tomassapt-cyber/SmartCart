@@ -124,6 +124,7 @@ async function upsert(table, rows, onConflict) {
     const ti = dropImplausibleSizes(seed);   // 2026-11-06: o modal abre no melhor €/L
     if (ti.virgula + ti.mesmoPreco + ti.corrigidos) console.log(`  tamanhos implausíveis: ${ti.virgula} vírgula perdida · ${ti.mesmoPreco} mesmo preço · ${ti.corrigidos} passados ao tamanho do nome`);
     if (ti.familiaVariantes + ti.familiaOfertas) console.log(`  fichas-família: ${ti.familiaVariantes} tamanhos de outro produto · ${ti.familiaOfertas} ofertas de outro produto`);
+    if (ti.alinhadas + ti.movidas + ti.escondidas) console.log(`  tamanho da ficha: ${ti.alinhadas} com o preço do tamanho certo · ${ti.movidas} mudadas de ficha · ${ti.escondidas} de outro tamanho fora`);
   }
   {
     const { mergeEanVariants } = require('./dedup-ean-variants');
