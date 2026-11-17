@@ -87,7 +87,7 @@ jobs:
 
       # As fichas do mesmo produto juntas pelo CNP (data/product-aliases-cnp.json, 2026-11-17)
       - name: Teste dos aliases pelo CNP
-        run: node scripts/test-aliases-cnp.cjs
+        run: node scripts/test-aliases-cnp.cjs && node scripts/test-aliases-nome.cjs
 
       # O envio incremental cura-se sozinho quando a BD e o estado divergem
       # (2026-11-06: 6 dias vermelho por uma FK) e as limpezas param no 1.º erro.

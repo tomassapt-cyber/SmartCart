@@ -203,5 +203,5 @@ function main() {
   fs.writeFileSync(SAIDA, JSON.stringify(out, null, 1) + '\n');
 }
 
-module.exports = { gerar, lerCatalogos };
+module.exports = { gerar, lerCatalogos, palavrasCnp, parecenca, COR, LIMPEZA_CNP };
 if (require.main === module) main();

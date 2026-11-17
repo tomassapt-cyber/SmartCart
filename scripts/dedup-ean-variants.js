@@ -90,7 +90,8 @@ function lerAliases(root, seed) {
   // e confirmadas pela marca, tamanho, nome e versão. Vêm depois dos sintéticos, pela
   // mesma regra: um código que já esteja num par anterior (como alias ou como canónico)
   // não entra daqui — assim nunca há cadeias entre ficheiros.
-  for (const f of ['product-aliases-auto.json', 'product-aliases-cnp.json']) {
+  // (2026-11-17, scripts/aliases-nome.js: fichas pequenas juntas pelo nome, sem CNP — por último)
+  for (const f of ['product-aliases-auto.json', 'product-aliases-cnp.json', 'product-aliases-nome.json']) {
     let auto = {};
     try { auto = JSON.parse(fs.readFileSync(path.join(root, 'data', f), 'utf8')); } catch { /* sem gerados */ }
     const novos = new Set();
