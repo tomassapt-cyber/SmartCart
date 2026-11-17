@@ -797,9 +797,45 @@ const NON_COSMETIC_EXTRA = /\b(gummies|preservativo(s)?|bomba(s)? (de |tira[- ]?
 const AMBIGUO_COSMETICO = /\b(adesivos?|pensos?)\b/i;
 const AINDA_E_COSMETICO = /\b(olhos|olheiras|contorno|hidrogel|antiborbulhas?|borbulhas?|acne|espinhas?|pestanas?|l[aá]bios|pimple|hidrocol[oó]ide|hydrocolloid|power patch)\b/i;
 
+// Alargamento de 17/11/2026 (auditoria aos produtos com poucas lojas,
+// Desktop\duo\AUDITORIA-PRODUTOS-2026-11-17.md): ~1 100 produtos visíveis que não
+// são cosmética. Testado no nome SEM acentos e em minúsculas, para não depender de
+// como a loja escreve os acentos. Cada grupo foi visto com amostras; os falsos
+// positivos encontrados ficaram de fora de propósito:
+//   · «multivitamínico», «melatonina», «magnésio» só com a forma de toma (o «Creme
+//     Facial Multivitamínico» da Ziaja e as ampolas Flavo-C Melatonina são cosmética);
+//   · «lubrificante» só no gel/fluido íntimo (o Creme Gordo Lubrificante da Barral fica);
+//   · «aerossol» e «boião» não entram (protetores solares e cremes em boião).
+// O «\bc[áa]psula» de cima falhava em «Arkocápsulas» e «60cápsulas» (sem início de palavra).
+const FORA_DE_AMBITO = new RegExp([
+  // olhos: medicamentos e dispositivos
+  'colirios?', 'oftalmic\\w*', 'lagrimas artificiais', 'gotas oculares', 'lubrificante ocular',
+  // higiene oral (a pasta de dentes já estava fora; faltavam o feminino e as próteses)
+  'dentifric\\w*', 'dentifrice', 'pasta dentaria', 'creme dental', 'gel dental', 'irrigador oral',
+  'fixacao (de )?proteses?', 'fixador (de )?proteses?', 'creme fixador', 'corega', 'escovilh\\w*', 'escovas? interdenta\\w*',
+  // suplementos e formas de toma
+  'creatina', 'whey', 'proteina isolada', 'colagenio (bebivel|em po|liquido)', 'gotas orais', 'solucao oral', 'sol oral',
+  'suspensao oral', 'susp oral', 'arkocapsulas', 'pure encapsulations',
+  '(multivitaminico|vitamina [a-z0-9]+|omega ?3|probioticos?|melatonina|magnesio) (em )?(comprimidos|capsulas|saquetas|gomas|efervescentes|gotas)',
+  // nutrição clínica e infantil
+  'fresubin', 'ensure plus', 'meritene', 'oralsuero', 'bi.?oralsuero', 'resource protein', 'nutridrink', 'fortimel', 'cerelac',
+  'papa (bebe|infantil|nao lactea|lactea|de cereais)', 'cereais infantis',
+  // aparelhos e acessórios
+  'palmilhas?', 'tensiometro', 'medidor de tensao', 'oximetro', 'glucometro', 'tiras de (glicemia|teste)', 'lancetas', 'nebulizador',
+  'balanca', 'monitor de composicao', 'massajador', 'pulseiras? (perfumadas|repelentes|anti.?mosquito)',
+  'laminas? (de barbear|para maquina)', 'maquina de (cortar|barbear)', 'aparador( corporal| de pelos| de barba)?', 'depiladora', 'epilador',
+  // íntimo, sexual e menstrual
+  'gel lubrificante', 'fluido lubrificante', 'lubrificante intimo', 'sensilube', 'durex play', 'anel vibratorio', 'vibrador',
+  'copo menstrual', 'tampoes', 'pensos higienicos', 'disco menstrual',
+  // bebé: acessórios
+  'rede porta', 'porta.?frutinha', 'mordedor', 'tetinas?', 'biberoes', 'biberao', 'copo de aprendizagem', 'babetes?',
+].map(t => `\\b(?:${t})\\b`).join('|') + '|\\d\\s*capsulas\\b');
+const semAcentoMin = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
 function isNonCosmetic(name) {
   const n = String(name || '');
   if (NON_COSMETIC.test(n) || NON_COSMETIC_EXTRA.test(n)) return true;
+  if (FORA_DE_AMBITO.test(semAcentoMin(n))) return true;
   return AMBIGUO_COSMETICO.test(n) && !AINDA_E_COSMETICO.test(n);
 }
 
