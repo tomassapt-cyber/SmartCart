@@ -8,7 +8,7 @@
   ]
  },
  "_comment": "Gerado por scripts/aliases-sinteticos.js — fichas sem EAN (código de loja) que são o mesmo produto que uma ficha com EAN. Aplicado na publicação por scripts/dedup-ean-variants.js, depois dos aliases manuais (data/product-aliases.json), que mandam. Não editar à mão: corrigir as regras ou acrescentar um par manual.",
- "_gerado": "2026-11-16",
+ "_gerado": "2026-11-17",
  "0020714382742": {
   "aliases": [
    "sweetcare-clinique-men-age-defense-contorno-olhos-"
@@ -183,16 +183,6 @@
   ],
   "reason": [
    "Champô Protetor Queratina Brasileira  ⇄ Queratina Brasileira Shampoo (0.75)"
-  ]
- },
- "0876120002718": {
-  "aliases": [
-   "sweetcare-novex-meus-cachos-shampoo-cabelo-p-02539",
-   "farmaciagarcia-meus-cachos-champo-300ml"
-  ],
-  "reason": [
-   "Meus Cachos Shampoo Hidratante ⇄ Novex Meus Cachos Champô Cachos 300 ml (0.75)",
-   "Meus Cachos Champo 300ml ⇄ Novex Meus Cachos Champô Cachos 300 ml (1.00)"
   ]
  },
  "0876120003746": {
@@ -589,14 +579,6 @@
    "Bruma Corpo e Cabelo Sensual Era ⇄ Nuxe Bruma Perfumada Corpo e Cabelo Sensual Era (0.83)"
   ]
  },
- "3264680048951": {
-  "aliases": [
-   "byfarma-nuxe-sun-stick-serum-fps50-25g"
-  ],
-  "reason": [
-   "Nuxe Sun Stick Sérum FPS50+ 25g ⇄ Nuxe Sun Sérum Stick Solar SPF50+ 25g (1.00)"
-  ]
- },
  "3274872451605": {
   "aliases": [
    "sweetcare-givenchy-irresistible-leite-corporal-fra"
@@ -677,14 +659,6 @@
    "Avène Bálsamo Labial Hidratante 4g ⇄ Avène Bálsamo Lábios Hidratante Stick 4G (0.75)"
   ]
  },
- "3282770073348": {
-  "aliases": [
-   "camelo-ducray-dexyane-med-cr-reparador-30ml"
-  ],
-  "reason": [
-   "DUCRAY DEXYANE MED CR REPARADOR 30ML ⇄ Ducray Dexyane MeD Creme Reparador (0.75)"
-  ]
- },
  "3282770074420": {
   "aliases": [
    "farmaciagarcia-klorane-capilar-balsamo-apos-champo-roma-200ml"
@@ -707,14 +681,6 @@
   ],
   "reason": [
    "René Furterer Initia Gel Duche 200ml ⇄ Rene Furterer Initia Gel de banho refrescante, 200ml. (0.75)"
-  ]
- },
- "3282770100891": {
-  "aliases": [
-   "byfarma-avene-cleanance-hydra-creme-suavizante-40ml"
-  ],
-  "reason": [
-   "Avène Cleanance Hydra Creme Suavizante 40 mL ⇄ Avène Cleanance Hydra Creme Hidratante e Suavizante 40 ml (1.00)"
   ]
  },
  "3282770105131": {
@@ -1095,6 +1061,14 @@
    "Galanga Anti-Dandruff Shampoo ⇄ Klorane Champô Anticaspa Galanga 400 ml (1.00)"
   ]
  },
+ "3282779450836": {
+  "aliases": [
+   "dermis-avene-cleanan-comed-peel-gel-limp-400ml"
+  ],
+  "reason": [
+   "Avène Cleanance Comedomed Gel de Limpeza Esfoliante 400ml ⇄ Avene Cleanance Comedomed Peeling Gel limpeza - 400ml (Preço Especial) (1.00)"
+  ]
+ },
  "3283950924634": {
   "aliases": [
    "wells-5974397"
@@ -1201,14 +1175,6 @@
    "Gel-Creme de Limpeza Syndet AP+ Lipikar ⇄ La Roche Posay Lipikar Syndet AP+ Creme Lavante - 400 mL - Farmácia... (0.83)"
   ]
  },
- "33378755816809": {
-  "aliases": [
-   "camelo-la-roche-posay-cicaplast-b5-balsamo-ultra-reparado"
-  ],
-  "reason": [
-   "La Roche Posay Cicaplast B5+ Bálsamo Ultra Reparador - 40ml ⇄ La Roche-Posay Cicaplast B5+ Bálsamo Reparador 40ml (0.80)"
-  ]
- },
  "3337875589239": {
   "aliases": [
    "farmaciaemcasa-6050211"
@@ -1239,14 +1205,6 @@
   ],
   "reason": [
    "Creme Mãos Pele Seca Reparador ⇄ Cerave Creme Reparador Mãos 50ml (0.75)"
-  ]
- },
- "3337875663083": {
-  "aliases": [
-   "sweetcare-vichy-normaderm-phytosolution-gel-limpez"
-  ],
-  "reason": [
-   "Normaderm Phytosolution Gel de Limpeza Purificante  ⇄ Vichy Normaderm Phytosolution Gel de Limpeza Purificante Intensivo ... (0.83)"
   ]
  },
  "3337875706841": {
@@ -1327,6 +1285,22 @@
   ],
   "reason": [
    "Twilly DHermès Desodorizante em Spray ⇄ Hermès Twilly d'Hermès Desodorizante Spray 150ml (0.75)"
+  ]
+ },
+ "3346132003548": {
+  "aliases": [
+   "sweetcare-hermes-eau-neroli-dore-eau-cologne-uniss"
+  ],
+  "reason": [
+   "Eau de Néroli Doré Eau de Cologne ⇄ Hermes Eau De Neroli Dore Eau De Cologne Spray 100ml (0.80)"
+  ]
+ },
+ "3346132004934": {
+  "aliases": [
+   "druni-eau-citron-noir-hermes-eau-cologne-uniss"
+  ],
+  "reason": [
+   "Eau De Citron Noir ⇄ Eau de Citron Noir Eau de Cologne (0.75)"
   ]
  },
  "3346470615434": {
@@ -1581,14 +1555,6 @@
    "Nutri-Filler Lips Bálsamo Nutritivo Repulpante de Lábios  ⇄ Filorga Nutri-Filler Lips Bálsamo Labial Antienvelhecimento 4 gr (0.71)"
   ]
  },
- "3401360215801": {
-  "aliases": [
-   "skin-svr-topialyse-creme-ultra-nutritivo-400ml"
-  ],
-  "reason": [
-   "SVR Topialyse Creme Ultra-Nutritivo 400ml ⇄ SVR Topialyse Creme Nutritivo Preço Especial 400ml (0.75)"
-  ]
- },
  "3401360215825": {
   "aliases": [
    "wells-6604625"
@@ -1667,14 +1633,6 @@
   ],
   "reason": [
    "Sébium Hydra Creme Hidratante Pele Oleosa  ⇄ Creme Bioderma Sebium Hydra 40ml (0.75)"
-  ]
- },
- "3433422407268": {
-  "aliases": [
-   "santamarta-6598052"
-  ],
-  "reason": [
-   "La Roche-Posay Kerium DS champô anticaspa intensivo, 125ml ⇄ La Roche-Posay Kerium DS Shampoo Anticaspa, 125ml (0.80)"
   ]
  },
  "3461020002387": {
@@ -2913,14 +2871,6 @@
    "Fructis Hair Food Máscara de Cabelo Melancia ⇄ Garnier Fructis Hair Food Máscara 3 em 1 Melancia 390 ml (1.00)"
   ]
  },
- "3600542439350": {
-  "aliases": [
-   "sweetcare-garnier-fructis-mascara-cabelo-manteiga-"
-  ],
-  "reason": [
-   "Fructis Máscara de Cabelo Manteiga Cacau  ⇄ Garnier Fructis Hair Food Máscara Intensiva de Manteiga de Cacau 390 ml (0.71)"
-  ]
- },
  "3600542444040": {
   "aliases": [
    "sweetcare-garnier-skin-active-agua-micelar-vitamin"
@@ -3429,14 +3379,6 @@
    "Uriage Bariéderm Cica-Gel Gel de Limpeza 200ml ⇄ Uriage Bariéderm Cica-Gel Limpeza 200 ml (1.00)"
   ]
  },
- "3661434009495": {
-  "aliases": [
-   "cosmeticfan-uriage-bariesun-fluido-ultra-spf50-30-ml"
-  ],
-  "reason": [
-   "Uriage Bariesun Fluido Ultra Spf50+ 30 mL ⇄ Uriage Bariésun Fluido Ultra-Ligeiro SPF50+ 30ml (0.75)"
-  ]
- },
  "3661434010040": {
   "aliases": [
    "skin-uriage-hyseac-emuls-o-restruturante-40ml"
@@ -3873,20 +3815,20 @@
    "Sensibio AR+ Micellar Gel ⇄ Gel Micelar Sensibio AR+ (1.00)"
   ]
  },
- "3701129813614": {
-  "aliases": [
-   "wells-396991"
-  ],
-  "reason": [
-   "Photoderm XDefense SPF50+ ⇄ Ultra-Fluido Xdefense SPF50+ Photoderm (0.75)"
-  ]
- },
  "3701129814710": {
   "aliases": [
    "wells-344676"
   ],
   "reason": [
    "Gel de Limpeza Purificante Sébium Gel Moussant ⇄ Bioderma Sébium Gel Moussant Limpeza Purificante 500 ml (1.00)"
+  ]
+ },
+ "3701129814727": {
+  "aliases": [
+   "bemecare-sebium-bioderma-gel-esfoliante-75ml"
+  ],
+  "reason": [
+   "Bioderma - Sébium Gel Esfoliante 75ml ⇄ Bioderma Sébium - Gel Gommant (exfoliante) 75ml (0.75)"
   ]
  },
  "3701436907921": {
@@ -4441,14 +4383,6 @@
    "Alessandro Spa One Minute Pedicure Esfoliante de Pés - 75ml ⇄ Alessandro Cuidado com os pés Spa One Minute Pedicure Foot Scrub 75 ml (0.86)"
   ]
  },
- "4045787936377": {
-  "aliases": [
-   "sweetcare-schwarzkopf-osis-velvet-spray-efeito-cer"
-  ],
-  "reason": [
-   "OSiS+ Velvet Lightweight Spray Efeito de Cera ⇄ Schwarzkopf OSiS+ Velvet Spray com Efeito de Cera Ligeira 200ml (0.71)"
-  ]
- },
  "4045787999754": {
   "aliases": [
    "sweetcare-schwarzkopf-osis-glow-serum-controlo-fri"
@@ -4497,14 +4431,6 @@
    "SP Color Save Shampoo Protetor da Cor ⇄ Wella Color Save Champô protetor de cor 250 ml (0.83)"
   ]
  },
- "4064666945248": {
-  "aliases": [
-   "wells-385922"
-  ],
-  "reason": [
-   "Ultimate Smooth Intense Mask ⇄ Wella Professionals Ultimate Smooth Mask (0.75)"
-  ]
- },
  "4067971110332": {
   "aliases": [
    "sweetcare-schwarzkopf-bonacure-moisture-kick-serum"
@@ -4535,14 +4461,6 @@
   ],
   "reason": [
    "Drynamic Shampoo Seco ⇄ Sebastian Professional Styling Drynamic Shampoo Seco 180ml (0.75)"
-  ]
- },
- "4068359196597": {
-  "aliases": [
-   "wells-447924"
-  ],
-  "reason": [
-   "Ultimate Color Intense Miracle Leave-In Mask ⇄ Wella Professionals Ultimate Color Leave-in Mask (0.71)"
   ]
  },
  "4099702003934": {
@@ -5057,14 +4975,6 @@
    "Bee Radiant Creme de Olhos Sinais de Idade  ⇄ Apivita Bee Radiant Contorno de Olhos Sinais de Idade 15 ml (0.83)"
   ]
  },
- "5201279086244": {
-  "aliases": [
-   "bairro-saude-apivita-champo-nutritivo-e-reparador-250-ml"
-  ],
-  "reason": [
-   "Apivita Champô Nutritivo e Reparador 250ml ⇄ Intense Repair Champú Nutritivo (0.75)"
-  ]
- },
  "5201279086466": {
   "aliases": [
    "vallispharma-apivita-deo-desodorizante-fresh-roll-on-50ml"
@@ -5365,14 +5275,6 @@
    "Bioderma Sensibio DS+ Creme 40ml Com Oferta De Sensibio Gel Moussant 100ml ⇄ Bioderma Sensibio DS+ Creme 40 ml + Bioderma Gel Moussant 100 ml (0.83)"
   ]
  },
- "5600747236790": {
-  "aliases": [
-   "wells-7619458"
-  ],
-  "reason": [
-   "Sérum Ultra Hidratação Glow ⇄ Soft & Co GLOW Sérum Hidratante 30ml (0.75)"
-  ]
- },
  "5601135099584": {
   "aliases": [
    "sweetcare-ach-brito-sabonete-esfoliante-algas-sal-"
@@ -5501,14 +5403,6 @@
    "Jasmine Anti-Wrinkle Eye Cream ⇄ Ziaja Jasmine Creme Antirrugas para Contorno de Olhos 15 ml (1.00)"
   ]
  },
- "5901887051411": {
-  "aliases": [
-   "wells-7725287"
-  ],
-  "reason": [
-   "Baltic Home Spa Wellness Face Cream Light ⇄ Ziaja Baltic Home Spa Wellness Creme de Rosto 50ml (0.86)"
-  ]
- },
  "5901887051428": {
   "aliases": [
    "wells-7725288"
@@ -5547,6 +5441,14 @@
   ],
   "reason": [
    "Hareem Al Sultan Blue Óleo de Perfume Concentrado ⇄ Khadlaj Hareem Al Sultan Blue Concentrated Perfume Oil 35ml (0.75)"
+  ]
+ },
+ "6291107977089": {
+  "aliases": [
+   "sweetcare-khadlaj-malika-red-oleo-perfume-concentr"
+  ],
+  "reason": [
+   "Malika Red Óleo de Perfume Concentrado ⇄ Khadlaj Malika Red Perfume Concentrado 20ml (0.80)"
   ]
  },
  "635494314205": {
@@ -6113,6 +6015,14 @@
    "Creme Desodorizante Para Pés Extra Fresh ⇄ Podovis Deo Creme Extra Fresh 100ml (0.75)"
   ]
  },
+ "8004608230656": {
+  "aliases": [
+   "sweetcare-davines-naturaltech-rebalancing-shampoo-"
+  ],
+  "reason": [
+   "Naturaltech Rebalancing Shampoo Equilibrante ⇄ Davines Naturaltech Rebalancing Shampoo (0.75)"
+  ]
+ },
  "8004608236597": {
   "aliases": [
    "sweetcare-davines-naturaltech-purifying-shampoo-pu"
@@ -6153,12 +6063,36 @@
    "Naturaltech Calming Shampoo Calmante ⇄ Davines Naturaltech Calming Shampoo (1.00)"
   ]
  },
+ "8004608256533": {
+  "aliases": [
+   "sweetcare-davines-naturaltech-detoxifying-shampoo-"
+  ],
+  "reason": [
+   "Naturaltech Detoxifying Shampoo Esfoliante ⇄ Davines Naturaltech Detoxifying Scrub Shampoo 250ml (1.00)"
+  ]
+ },
  "8004608256557": {
   "aliases": [
    "sweetcare-davines-naturaltech-replumping-shampoo-h"
   ],
   "reason": [
    "Naturaltech Replumping Shampoo Hidratante ⇄ Davines Naturaltech Replumping Shampoo (0.75)"
+  ]
+ },
+ "8004608264170": {
+  "aliases": [
+   "sweetcare-davines-circle-chronicles-let-it-go-circ"
+  ],
+  "reason": [
+   "The Circle Chronicles The Let It Go Circle Máscara de Cabelo ⇄ Davines The Circle Chronicles The Let It Go Circle 50ml (0.71)"
+  ]
+ },
+ "8004608289036": {
+  "aliases": [
+   "sweetcare-davines-essential-haircare-volu-shampoo-"
+  ],
+  "reason": [
+   "Essential Haircare Volu Shampoo Volumizador ⇄ Davines Essential Haircare VOLU Shampoo (0.80)"
   ]
  },
  "8005610532745": {
@@ -7011,14 +6945,6 @@
    "Retisil Creme para olhos e lábios ⇄ Sesderma Retisil Contorno de Olhos e Lábios 30 ml (0.75)"
   ]
  },
- "8429979482020": {
-  "aliases": [
-   "skin-sesderma-repaskin-fotorreparador-corporal-fps50-20"
-  ],
-  "reason": [
-   "Sesderma Repaskin Fotoprotetor Fluido Ligeiro SPF50 200ml ⇄ Sesderma Repaskin Fluido Leve FPS50 200 ml (0.75)"
-  ]
- },
  "8429979483423": {
   "aliases": [
    "sweetcare-sesderma-ferulac-creme-facial-antioxidan"
@@ -7611,14 +7537,6 @@
   ],
   "reason": [
    "Refresh & Restore Hydrating Face Moisturizer ⇄ Reuzel Refresh & Restore Creme Hidratante Facial 100ml (0.80)"
-  ]
- },
- "850013332793": {
-  "aliases": [
-   "sweetcare-reuzel-refresh-restore-creme-olhos-cuida"
-  ],
-  "reason": [
-   "Refresh & Restore Intensive Care Eye Cream ⇄ Reuzel Refresh & Restore Creme de Olhos 30ml (0.80)"
   ]
  },
  "850018802291": {
