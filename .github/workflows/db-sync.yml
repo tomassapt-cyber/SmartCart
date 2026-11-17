@@ -102,7 +102,7 @@ jobs:
 
       # Sem maquilhagem (2026-11-13): o filtro de visibilidade decide o que chega à BD.
       - name: Teste sem maquilhagem
-        run: node scripts/test-sem-maquilhagem.cjs
+        run: node scripts/test-sem-maquilhagem.cjs && node scripts/test-fora-de-ambito.cjs
 
       # Sync INCREMENTAL (2026-10-02): o estado do último sync bem-sucedido
       # (impressão digital de cada linha que ficou na BD, ~5 MB) passa de corrida
