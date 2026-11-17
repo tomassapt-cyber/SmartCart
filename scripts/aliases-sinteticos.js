@@ -44,7 +44,9 @@ const sa = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLower
 const LIMPEZA = /\b(limp\w*|lavant\w*|cleans\w*|wash|duche|douche|banho|desmaq\w*|micelar|micellar)\b/;
 // palavras que fazem de um produto OUTRO produto da mesma linha, já com os sinónimos juntos
 const VERSAO = [
-  [/\bplus\b|(?<!\d)\+(?=\s|$)/, 'plus'],   // «SPF 50+» não é a versão Plus [/\b(light|lite|leger|ligeir[oa])\b/, 'light'], [/\bultra\b/, 'ultra'], [/\b(intens\w*)\b/, 'intens'],
+  [/\bplus\b|(?<!\d)\+(?=\s|$)/, 'plus'],   // «SPF 50+» não é a versão Plus
+  // 2026-11-17: estas três estavam por engano dentro do comentário acima e nunca contavam
+  [/\b(light|lite|leger|ligeir[oa])\b/, 'light'], [/\bultra\b/, 'ultra'], [/\b(intens\w*)\b/, 'intens'],
   [/\bforte\b/, 'forte'], [/\bextra\b/, 'extra'], [/\b(rich|riche|ric[oa])\b/, 'rico'], [/\bmax\b/, 'max'], [/\bpro\b/, 'pro'],
   [/\b(men|homme|homem|for men)\b/, 'homem'], [/\b(kids?|bebe|baby|infantil|crianc\w*|pediatric\w*)\b/, 'bebe'], [/\bteen\b/, 'teen'],
   [/\b(noite|night|nuit|noturn\w*|nocturn\w*|midnight)\b/, 'noite'], [/\b(dia|day|jour|diurn\w*)\b/, 'dia'],
@@ -179,5 +181,5 @@ function main() {
   fs.writeFileSync(SAIDA, JSON.stringify(out, null, 1) + '\n');
 }
 
-module.exports = { gerar, versoes };
+module.exports = { gerar, versoes, palavras, mesmas, LIMPEZA, sa };
 if (require.main === module) main();

@@ -84,15 +84,25 @@ function lerAliases(root, seed) {
   // SweetCare/Wells/… que são o mesmo produto que uma ficha com EAN, com regras
   // estritas. Os manuais mandam: um código que já lá esteja (como alias ou como
   // canónico) não entra daqui.
-  let auto = {};
-  try { auto = JSON.parse(fs.readFileSync(path.join(root, 'data', 'product-aliases-auto.json'), 'utf8')); } catch { /* sem gerados */ }
-  for (const [canon, d] of Object.entries(auto)) {
-    if (canon.startsWith('_') || !existe.has(canon) || out[canon] || !Array.isArray(d && d.aliases)) continue;
-    for (const a of d.aliases) {
-      const alias = String(a);
-      if (alias === canon || canonicos.has(alias) || out[alias] || !existe.has(alias)) continue;
-      out[alias] = canon;
+  //
+  // Aliases pelo CNP (2026-11-17, scripts/aliases-cnp.js): fichas do mesmo produto com
+  // códigos de barras diferentes (embalagem nova), ligadas pelo mesmo CNP nas farmácias
+  // e confirmadas pela marca, tamanho, nome e versão. Vêm depois dos sintéticos, pela
+  // mesma regra: um código que já esteja num par anterior (como alias ou como canónico)
+  // não entra daqui — assim nunca há cadeias entre ficheiros.
+  for (const f of ['product-aliases-auto.json', 'product-aliases-cnp.json']) {
+    let auto = {};
+    try { auto = JSON.parse(fs.readFileSync(path.join(root, 'data', f), 'utf8')); } catch { /* sem gerados */ }
+    const novos = new Set();
+    for (const [canon, d] of Object.entries(auto)) {
+      if (canon.startsWith('_') || !existe.has(canon) || out[canon] || !Array.isArray(d && d.aliases)) continue;
+      for (const a of d.aliases) {
+        const alias = String(a);
+        if (alias === canon || canonicos.has(alias) || out[alias] || !existe.has(alias)) continue;
+        out[alias] = canon; novos.add(canon);
+      }
     }
+    for (const c of novos) canonicos.add(c);
   }
   return out;
 }
