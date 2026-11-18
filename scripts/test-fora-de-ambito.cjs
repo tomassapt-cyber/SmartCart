@@ -28,6 +28,12 @@ const sai = [
   'Actimove Arthritis Care Suporte de Joelho Tam.XL', 'Termômetro de banho infantil Suavinex',
   'Chicco Brinquedo Coelhinho Doudou', 'Chicco Camaleão Doudou 0+ meses', 'CH.BRI11119000000 Roca Tartaruga Eco',
   'Doomoo Peluche Anti-cólicas Snoogy Cerejas', 'Saro Peluche Patudo "Jungle Party"',
+  // 18/11, decisão do Tomás: os acessórios saem
+  'Tangle Teezer Compact Escova de Cabelo Verde Azulado', 'Wells Escova de Cabelo Redonda Cerdas Mistas 42 mm', 'Denman D25 Pente de Cabelo Homem Fantail',
+  'Invisibobble Everclaw Mola Cabelo (x1 unidade)', 'Mola para Cabelo Verde', 'slip Hair Care Elásticos para cabelo magro 4 x Skinny Navy / 1 un.',
+  'Beter Tesoura de Unhas Ponta Arredondada Azul', 'Maf Pinça Depilatória Dourada', 'RickiParodi Corta-Unhas Médio em Níquel x1',
+  'Beter Elite Lima de Unhas Cristal', 'Esponjas de Maquilhagem Doll Face Dozen', 'Beautyblender Original + Mini Solid Cleanser Kit',
+  'Gift Set Acessório de Limpeza de Pincéis-Mermaid', 'Zoë Ayla Jade Facial Roller And Gua Sha Tool', 'Rolo facial Jade', 'Depilador facial',
 ];
 const fica = [
   'Ziaja Creme Facial Hidratante Multivitamínico 50 ml', 'Flavo-c Melatonina Ampolas Reparadoras de Noite',
@@ -43,7 +49,12 @@ const fica = [
   'La Roche Posay Lipikar AP+ Creme Duche 400 ml + Bálsamo 400 ml + Doudou', 'Mustela Love Welcome Baby Musti Eau De Soin Perfumee 50ml + Peluche',
   'Roger & Gallet Mandarine Doudou Água Perfumada Roll-On 15ml', 'Shampoo Antiparasitário Filvit-P, 100ml.',
   'Patches Imperfeições Facefacts Micro Agulhas 6un', 'Lierac Sunissime Leite Protetor SPF50',
+  // acessórios que vêm com cosmética, e cosmética com nome parecido
+  'Nuxe Super Sérum 10 30 ml + Contorno de Olhos 15 ml + Gua Sha', 'Lisse Crème Lissante Rides 30mL + Creme para Dormir 30mL + Gua Sha 1 Un.',
+  'Soro Redensificante Atashi 50 ml + Contorno de Olhos Antirrugas 15 ml + Colher Gua Sha', 'Medicube PDRN Collagen Creme para Pescoço Anti-Rugas Gua Sha 90g',
+  'Sebastian Professional Microweb Fiber Texturizador Elástico para Cabelo 45ml', 'Kérastase Elixir Ultime Óleo Original 100ml',
+  'Tangle Teezer Champô Desembaraçante 250ml', 'Serpente Óleo de Cabelo',
 ];
 for (const n of sai) assert.equal(isNonCosmetic(n), true, `devia sair: ${n}`);
 for (const n of fica) assert.equal(isNonCosmetic(n), false, `devia ficar: ${n}`);
-console.log('fora de âmbito: colírios, higiene oral, suplementos (também «Arkocápsulas» e «60cápsulas»), nutrição, aparelhos, íntimo, acessórios de bebé, animais, leite de bebé, bebíveis, ortopedia e brinquedos saem; a cosmética parecida fica — tudo passou');
+console.log('fora de âmbito: colírios, higiene oral, suplementos (também «Arkocápsulas» e «60cápsulas»), nutrição, aparelhos, íntimo, acessórios de bebé, animais, leite de bebé, bebíveis, ortopedia, brinquedos e acessórios (escovas, pentes, molas, pinças, gua sha…) saem; a cosmética parecida e os conjuntos com cosmética ficam — tudo passou');
