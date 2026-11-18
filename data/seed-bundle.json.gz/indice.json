@@ -1040,6 +1040,16 @@
    "outros": {
     "store_slug": "farmaciass"
    }
+  },
+  {
+   "ficheiro": "ofertas/perfumespt.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "perfumespt"
+   }
   }
  ],
  "outros": {}
