@@ -1,0 +1,93 @@
+# CosMath — Farmácia Santos Salvador (farmaciass.pt) · 2x/dia, só ofertas em produtos existentes
+# ============================================================
+# Um pedido por corrida: o ficheiro de produtos que a loja publica no mapa do site para o
+# KuantoKusta (/kkfeedfarmaciass.xml). EAN quando há; CNP só quando aponta para UM produto nosso
+# — ver scripts/scrape-farmaciass-catalog.js. Preparada a 2026-11-18 (ronda 10 de lojas).
+
+name: Farmácia Santos Salvador refresh
+
+on:
+  schedule:
+    - cron: '41 6,18 * * *'
+  # ensaio na nuvem no próprio PR (lê o ficheiro, não publica): mostra se os servidores do GitHub têm acesso
+  pull_request:
+    paths:
+      - 'scripts/scrape-farmaciass-catalog.js'
+      - '.github/workflows/farmaciass-catalog.yml'
+  workflow_dispatch:
+    inputs:
+      ensaio:
+        description: 'Ensaio (lê, não publica): escrever «sim»'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: farmaciass-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+      - name: Testes offline (ficheiro, CNP e integração só-existentes)
+        run: node scripts/test-farmaciass.cjs && node scripts/test-integrar-existentes.js
+      - name: Recolher Farmácia Santos Salvador
+        env:
+          ENSAIO: ${{ (github.event_name == 'pull_request' || github.event.inputs.ensaio != '') && '--ensaio' || '' }}
+        run: node scripts/scrape-farmaciass-catalog.js $ENSAIO
+      - name: Guardar a recolha (artefacto)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: farmaciass-${{ github.run_id }}
+          path: data/catalog/farmaciass-full.json
+          retention-days: 14
+      # Um ensaio NÃO publica (e o integrador recusa feeds marcados como ensaio).
+      - name: Validar e integrar em produtos existentes
+        if: github.event_name != 'pull_request' && github.event.inputs.ensaio == ''
+        run: |
+          node scripts/integrate-farmaciass-catalog.js --dry-run
+          node scripts/integrate-farmaciass-catalog.js
+      - name: Commit
+        if: github.event_name != 'pull_request' && github.event.inputs.ensaio == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -euo pipefail
+          bash scripts/ci/seed.sh pack
+          git add data/seed-bundle.json.gz
+          git add -f data/catalog/farmaciass-full.json
+          if git diff --cached --quiet; then echo "Nenhuma alteração."; exit 0; fi
+          git commit -m "chore: Farmácia Santos Salvador refresh ($(date -u +%Y-%m-%d))"
+      - name: Push (resiliente — re-integra sobre origin em conflito)
+        if: github.event_name != 'pull_request' && github.event.inputs.ensaio == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -euo pipefail
+          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ]; then echo "Nada para publicar."; exit 0; fi
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-farmaciass-catalog.js" \
+            "chore: Farmácia Santos Salvador refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/farmaciass-full.json
