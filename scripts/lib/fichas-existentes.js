@@ -39,13 +39,13 @@ function charsetDe(tipo) {
   return c === 'iso-8859-1' || c === 'latin1' ? 'windows-1252' : c; // os browsers tratam latin-1 como windows-1252
 }
 
-async function pedir(url, regras, { tentativas = 2 } = {}) {
+async function pedir(url, regras, { tentativas = 2, ua = UA } = {}) {
   const u = new URL(url);
   if (regras && !permitido(regras, u.pathname + u.search)) throw new Paragem(`robots.txt não permite ${u.pathname}`);
   for (let t = 1; ; t++) {
     let r;
     try {
-      r = await fetch(url, { headers: { 'user-agent': UA, 'accept-language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(40000) });
+      r = await fetch(url, { headers: { 'user-agent': ua, 'accept-language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(40000) });
     } catch (e) {
       if (t >= tentativas) return { estado: 0, erro: String(e && e.message || e) };
       await dorme(5000); continue;
@@ -151,4 +151,4 @@ async function recolher(o) {
   };
 }
 
-module.exports = { recolher, linhaDaFicha, produtoDoJsonLd, crawlDelay, charsetDe };
+module.exports = { recolher, linhaDaFicha, produtoDoJsonLd, crawlDelay, charsetDe, pedir, locs };

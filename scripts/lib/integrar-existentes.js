@@ -88,6 +88,9 @@ function integrar(seed, feed, loja, aliases = {}) {
     if (!baldes.has(p.ean)) baldes.set(p.ean, new Map());
     const vs = baldes.get(p.ean);
     const variante = { volume_ml: volNovo || null, unit: uniNova || 'ml', price: linha.price, previous_price: linha.previous_price > linha.price ? linha.previous_price : null, in_stock: linha.in_stock, url: linha.url };
+    // leitura em rotação (2026-11-17, Loja Glamourosa): cada linha diz quando foi lida, e é
+    // essa a data que conta para as ofertas podres — não a do feed
+    if (linha.verified_at) variante.verified_at = linha.verified_at;
     if (vs.has(chave)) {
       if (JSON.stringify(vs.get(chave)) !== JSON.stringify(variante)) { bloqueados.add(chave); conflitos.push({ ean: linha.ean, canonico: p.ean, motivo: 'duas ofertas diferentes para o mesmo volume', anterior: vs.get(chave), nova: variante }); vs.delete(chave); }
       continue;
@@ -100,7 +103,7 @@ function integrar(seed, feed, loja, aliases = {}) {
     if (!vs.length) continue;
     const emStock = vs.filter(v => v.in_stock);
     const melhor = (emStock.length ? emStock : vs).reduce((a, b) => a.price <= b.price ? a : b);
-    const item = { ean, price: melhor.price, in_stock: !!emStock.length, url: melhor.url, verified: true, verified_url: true, verified_at: feed.completed_at, source: 'scraped' };
+    const item = { ean, price: melhor.price, in_stock: !!emStock.length, url: melhor.url, verified: true, verified_url: true, verified_at: melhor.verified_at || feed.completed_at, source: 'scraped' };
     if (melhor.previous_price > melhor.price) item.previous_price = melhor.previous_price;
     const comVolume = vs.filter(v => v.volume_ml > 0);
     if (comVolume.length) item.variants = comVolume;

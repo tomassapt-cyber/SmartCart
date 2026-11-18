@@ -68,10 +68,20 @@ function vigiados(naPagina, entrada) {
 }
 const desaparecidos = (antes, naPagina) => (antes || []).filter(v => !naPagina.some(p => perto(p, v) || perto(Number(p) + 0.01, v)));
 
+// A página no charset dela (2026-11-18): lida sempre como UTF-8, uma página em windows-1252
+// (perfumes.pt) perdia o «€» (byte 0x80) e a assinatura saía vazia.
+function descodificar(bytes, tipo) {
+  const doCabecalho = (String(tipo || '').match(/charset=["']?([\w-]+)/i) || [])[1];
+  const daPagina = (new TextDecoder('latin1').decode(bytes.slice(0, 4096)).match(/<meta[^>]+charset=["']?([\w-]+)/i) || [])[1];
+  let c = String(doCabecalho || daPagina || 'utf-8').toLowerCase();
+  if (c === 'iso-8859-1' || c === 'latin1') c = 'windows-1252';   // os browsers tratam latin-1 como windows-1252
+  try { return new TextDecoder(c).decode(bytes); } catch { return new TextDecoder('utf-8').decode(bytes); }
+}
+
 async function ler(url) {
   try {
     const r = await fetch(url, { headers: { 'user-agent': UA, 'accept-language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(25000) });
-    const html = await r.text();
+    const html = descodificar(new Uint8Array(await r.arrayBuffer()), r.headers.get('content-type'));
     if (r.status !== 200) return { erro: 'HTTP ' + r.status };
     if (/cf-chl-|<title>\s*(Just a moment|Um momento|Attention Required)/i.test(html)) return { erro: 'desafio anti-robôs' };
     return { html };
