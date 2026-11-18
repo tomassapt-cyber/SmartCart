@@ -12,7 +12,8 @@
     "farmaoli": "bash scripts/refresh-pc-only.sh",
     "farmacianovadamaia": "python scripts/refresh-farmacianovadamaia-pc.py",
     "glammy": "bash scripts/refresh-pc-only.sh",
-    "shopcosmetics": "bash scripts/refresh-pc-only.sh"
+    "shopcosmetics": "bash scripts/refresh-pc-only.sh",
+    "perfumespt": "bash scripts/refresh-pc-only.sh"
   },
   "em_espera": {
     "notino": {

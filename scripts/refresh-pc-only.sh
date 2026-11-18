@@ -94,6 +94,10 @@ declare -A SCRAPE=(
   [glammy]="node scripts/scrape-glammy-catalog.js"
   # 2026-11-16: a Shop Cosmetics dá 403 aos runners (Cloudflare); do PC responde normal
   [shopcosmetics]="node scripts/scrape-shopcosmetics-catalog.js"
+  # 2026-11-18: a Perfumes.pt trava os runners (~12 s por ficha e tempos esgotados a partir
+  # da ~30.ª; do PC 0,3 s). Rotação com memória em .cache-lojas/ (fica entre resets):
+  # 4 h chegam para reler todas as fichas com produtos nossos (~4 600) e descobrir as novas.
+  [perfumespt]="node scripts/scrape-perfumespt-catalog.js --orcamento-min=240"
 )
 [ "$FULL" = "1" ] && SCRAPE[powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --full --resume"
 
@@ -103,7 +107,8 @@ declare -A SCRAPE=(
 # aterrou o mais barato de obter.
 # 2026-10-26: a Notino saiu (data/lojas-so-pc.json → em_espera): bloqueia também
 # o PC desde 15/10 e só volta pelo feed de afiliados. As ofertas ficam no site.
-ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me afarmaciaonline balvera farmaoli glammy shopcosmetics)
+# A Perfumes.pt vai em último: é a mais demorada (até 4 h) e as outras já aterraram antes.
+ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me afarmaciaonline balvera farmaoli glammy shopcosmetics perfumespt)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"

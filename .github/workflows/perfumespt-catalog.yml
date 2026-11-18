@@ -1,15 +1,17 @@
-# CosMath — Perfumes.pt (Iperfumes) · 2x/dia, só ofertas em produtos existentes
+# CosMath — Perfumes.pt (Iperfumes) · SÓ PC desde 2026-11-18, só ofertas em produtos existentes
 # ============================================================
 # Magento; cada ficha tem um Product por tamanho com o EAN no sku. ~7 750 fichas sem EAN no
-# endereço: lê-se em ROTAÇÃO até 100 min por corrida, com memória na cache do Actions
-# (.cache-lojas/perfumespt-memoria.json) — ver scripts/scrape-perfumespt-catalog.js.
-# Preparada a 2026-11-18 (ronda 10 de lojas), com o identificador do CosMath.
+# endereço: lê-se em ROTAÇÃO, com memória (.cache-lojas/perfumespt-memoria.json) — ver
+# scripts/scrape-perfumespt-catalog.js. Preparada a 2026-11-18 (ronda 10 de lojas).
+#
+# A loja trava os servidores do GitHub: a 1.ª corrida (18/11) leu 250 fichas em 49 min e
+# 187 de 496 pedidos esgotaram o tempo (do PC: 0,3 s por ficha). Saiu o agendamento: o
+# refresh é do PC (scripts/refresh-pc-only.sh, data/lojas-so-pc.json). Fica só o ensaio
+# manual / no PR, para se ver um dia se a nuvem voltou a ter acesso.
 
 name: Perfumes.pt refresh
 
 on:
-  schedule:
-    - cron: '17 5,17 * * *'
   # ensaio na nuvem no próprio PR (30 fichas, sem publicar): mostra se os servidores do GitHub têm acesso
   pull_request:
     paths:
