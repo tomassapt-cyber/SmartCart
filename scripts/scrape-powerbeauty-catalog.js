@@ -13,7 +13,12 @@
  * Fichas: /<categoria>/<id>-<slug> (SEM .html). Domínio SEM www.
  *
  * ⚠️ Catálogo GRANDE (22k fichas ≈ 45-75 min) → padrão DocMorris:
- *   • diário: --known-only (refresca só os URLs das ofertas que já temos no seed)
+ *   • diário: --known-only (refresca os URLs das ofertas que já temos no seed
+ *     + as fichas do mapa que vendem um produto que já temos e ainda não eram lidas:
+ *     o EAN vem no fim do endereço, «…-3600542117623.html», igual ao gtin13 da ficha.
+ *     Desde 2026-11-18: a loja passou para o PC e o --full semanal deixou de correr;
+ *     a 18/11 havia 4 701 produtos nossos à venda na Power Beauty sem a oferta dela.
+ *     --sem-novos volta ao comportamento antigo)
  *   • semanal: --full --resume (scan completo p/ descobrir novos matches)
  *
  * Uso:
@@ -38,17 +43,31 @@ const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const CHUNK = args.chunk || null;
 const RESUME = !!args.resume;
 const KNOWN_ONLY = !!args['known-only'];          // diário: só URLs das ofertas do seed
+const NOVOS = KNOWN_ONLY && !args['sem-novos'];   // + fichas do mapa com um EAN que já temos
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 5;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 250;
 const CHECKPOINT_EVERY = 100;
 const SEED_BUNDLE = path.join(ROOT, 'data', 'seed-bundle.json');
 
-function knownUrlsFromSeed() {
-  try {
-    const seed = JSON.parse(fs.readFileSync(SEED_BUNDLE, 'utf8'));
-    const g = (seed.store_products || []).find(x => x.store_slug === 'powerbeauty');
-    return [...new Set((g ? g.items : []).map(it => it.url).filter(Boolean))];
-  } catch { return []; }
+function lerSeed() { try { return JSON.parse(fs.readFileSync(SEED_BUNDLE, 'utf8')); } catch { return null; } }
+function knownUrlsFromSeed(seed = lerSeed()) {
+  const g = ((seed && seed.store_products) || []).find(x => x.store_slug === 'powerbeauty');
+  return [...new Set((g ? g.items : []).map(it => it.url).filter(Boolean))];
+}
+const eansDoSeed = seed => new Set(((seed && seed.products) || []).map(p => String(p.ean)));
+
+// EAN do fim do endereço da ficha («…-3600542117623.html»); é o gtin13 da ficha (3 607 de 3 607 a 18/11/2026).
+function eanDoUrl(u) { const m = String(u || '').match(/-(\d{8,14})(?:\.html)?$/); return m ? m[1] : null; }
+// Das fichas do mapa, as que vendem um produto que já temos e que ainda não lemos.
+// UPC: a loja pode escrever 12 dígitos onde nós temos 13 com um 0 à frente, ou o contrário.
+function escolherNovos(urlsMapa, eansNossos, conhecidos) {
+  const out = [];
+  for (const u of new Set(urlsMapa)) {
+    if (conhecidos.has(u) || !isProductUrl(u)) continue;
+    const e = eanDoUrl(u); if (!e) continue;
+    if (eansNossos.has(e) || eansNossos.has(e.padStart(13, '0')) || (e.length === 13 && e[0] === '0' && eansNossos.has(e.slice(1)))) out.push(u);
+  }
+  return out;
 }
 
 // Identificação honesta desde 2026-11-16 (antes fingia ser um Chrome); do PC a loja aceita-a.
@@ -132,9 +151,21 @@ async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   let urls = [];
   if (KNOWN_ONLY) {
-    urls = knownUrlsFromSeed();
+    let seed = lerSeed();
+    urls = knownUrlsFromSeed(seed);
     console.log(`📋 --known-only: ${urls.length} URLs das ofertas powerbeauty no seed`);
     if (!urls.length) { console.error('✗ 0 URLs conhecidas (loja ainda não integrada?) — corre --full primeiro.'); process.exit(1); }
+    if (NOVOS) {
+      try {
+        const subs = locs(await fetchText(SITEMAP_INDEX)).filter(isProductSitemap);
+        const mapa = [];
+        for (const sm of (subs.length ? subs : [SITEMAP_INDEX])) mapa.push(...locs(await fetchText(sm)));
+        const novos = escolherNovos(mapa, eansDoSeed(seed), new Set(urls));
+        console.log(`📋 mapa do site: ${mapa.length} fichas · ${novos.length} vendem produtos que já temos e ainda não eram lidas`);
+        urls.push(...novos);
+      } catch (e) { console.warn(`⚠ mapa do site indisponível (${e.message}) — fico só com as ${urls.length} conhecidas`); }
+    }
+    seed = null;
   } else {
     console.log('📋 A descarregar 1_index_sitemap.xml powerbeauty…');
     const idxXml = await fetchText(SITEMAP_INDEX);
@@ -178,7 +209,7 @@ async function main() {
   if (LIMIT === Infinity) console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
 }
 
-module.exports = { extractProductData, isProductUrl };
+module.exports = { extractProductData, isProductUrl, eanDoUrl, escolherNovos };
 if (require.main === module) {
   process.on('unhandledRejection', (e) => console.warn('⚠ unhandledRejection (ignorado):', e && e.code || e));
   main().catch(e => { console.error('FATAL', e); process.exit(1); });
