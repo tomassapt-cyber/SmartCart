@@ -16,9 +16,9 @@ const seed = {
     P('3701129812068', 'Água Micelar Bioderma Sensibio H2O 250 ml', 'Bioderma'),
     P('3401398335694', 'Sensibio Bioderma A Sol Limpeza H20 250 Ml', 'Bioderma'),
     P('3401574767110', 'Bioderma Sensibio H2O Solução Micelar 250ml', 'Bioderma'),
-    // abreviaturas de farmácia
-    P('5000000000017', 'Systane Ultra Solução Oftálmica Lubrificante 10ml', 'Systane'),
-    P('5000000000024', 'Systane Ultra Sol Oft Lubrif 10 Ml', 'Systane'),
+    // abreviaturas de farmácia (até 18/11 era um colírio, que o #152 tirou do site: o teste parou o db-sync)
+    P('5000000000017', 'La Roche-Posay Effaclar Solução Micelar Purificante 400ml', 'La Roche-Posay'),
+    P('5000000000024', 'La Roche-Posay Effaclar Sol Micel Purif 400 Ml', 'La Roche-Posay'),
     // CNP errado numa loja: marcas diferentes não se juntam
     P('4009077072527', 'Em-eukal Limão Rebuçados Sem Açúcar 50g', 'Em-Eukal'),
     P('7896222720863', 'Strepsils Limão Sem Açúcar 50g', 'Strepsils'),
@@ -43,9 +43,9 @@ const seed = {
     ...[1, 2, 3, 4, 5, 6, 7].map(i => P('84000000000' + (10 + i), `Isdin Fotoprotector Fusion Water 50ml`, 'Isdin')),
   ],
   store_products: [
-    { store_slug: 'a', items: [of('3401575390447', 250, 'https://a/sens'), of('5000000000017', 10, 'https://a/sys'), of('4009077072527', 50, 'https://a/em'), of('8470001000011', 50, 'https://a/pro'), of('3600000000017', 200, 'https://a/cle'), of('5201279072889', 200, 'https://a/api'), of('4001638095436', 50, 'https://a/rom'), of('3337875000013', 50, 'https://a/m89'), of('3337875000020', 50, 'https://a/m89-fort')] },
+    { store_slug: 'a', items: [of('3401575390447', 250, 'https://a/sens'), of('5000000000017', 400, 'https://a/eff'), of('4009077072527', 50, 'https://a/em'), of('8470001000011', 50, 'https://a/pro'), of('3600000000017', 200, 'https://a/cle'), of('5201279072889', 200, 'https://a/api'), of('4001638095436', 50, 'https://a/rom'), of('3337875000013', 50, 'https://a/m89'), of('3337875000020', 50, 'https://a/m89-fort')] },
     { store_slug: 'b', items: [of('3401575390447', 250, 'https://b/sens'), of('3701129812068', 250, 'https://b/sens-novo'.replace('b/sens-novo', 'b/sens'))] },
-    { store_slug: 'c', items: [of('3701129812068', 250, 'https://c/sens'), of('5000000000024', 10, 'https://c/sys'), of('7896222720863', 50, 'https://c/str'), of('8470001000028', 50, 'https://c/pro'), of('3600000000024', 400, 'https://c/cle'), of('5201279036249', 200, 'https://c/api'), of('4001638095443', 50, 'https://c/cit')] },
+    { store_slug: 'c', items: [of('3701129812068', 250, 'https://c/sens'), of('5000000000024', 400, 'https://c/eff'), of('7896222720863', 50, 'https://c/str'), of('8470001000028', 50, 'https://c/pro'), of('3600000000024', 400, 'https://c/cle'), of('5201279036249', 200, 'https://c/api'), of('4001638095443', 50, 'https://c/cit')] },
     { store_slug: 'd', items: [of('3401398335694', 250, 'https://d/sens'), of('3401575390447', 250, 'https://d/sens2'.replace('sens2', 'sens'))] },
     { store_slug: 'e', items: [of('3401574767110', 250, 'https://e/sens'), of('3282770000017', 400, 'https://e/ker')] },
     { store_slug: 'f', items: [of('3282770000024', 400, 'https://f/ker')] },
@@ -70,7 +70,7 @@ const par = new Map(finais.map(x => [x.sai, x.fica]));
 // 1. junta o que é o mesmo produto, sempre na ficha de mais lojas
 for (const e of ['3701129812068', '3401398335694', '3401574767110']) assert.equal(par.get(e), '3401575390447', `Sensibio ${e}`);
 assert.ok(!par.has('3401575390447'), 'a ficha de mais lojas fica');
-assert.ok(par.has('5000000000024') || par.has('5000000000017'), 'abreviaturas: «Sol Oft Lubrif» = «Solução Oftálmica Lubrificante»');
+assert.ok(par.has('5000000000024') || par.has('5000000000017'), 'abreviaturas: «Sol Micel Purif» = «Solução Micelar Purificante»');
 assert.ok(par.has('5201279036249') || par.has('5201279072889'), 'aroma só de um lado (com o CNP a provar) junta');
 assert.ok(par.has('3282770000017') || par.has('3282770000024'), '«Gel Espuma» = «Gel Limpeza»');
 
