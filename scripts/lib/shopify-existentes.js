@@ -68,13 +68,13 @@ function permitido(regras, caminho) {
 
 class Paragem extends Error {}
 
-async function pedir(url, regras, { tentativas = 2 } = {}) {
+async function pedir(url, regras, { tentativas = 2, ua = UA } = {}) {
   const u = new URL(url);
   if (regras && !permitido(regras, u.pathname + u.search)) throw new Paragem(`robots.txt não permite ${u.pathname}`);
   for (let t = 1; ; t++) {
     let r;
     try {
-      r = await fetch(url, { headers: { 'user-agent': UA, 'accept-language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(40000) });
+      r = await fetch(url, { headers: { 'user-agent': ua, 'accept-language': 'pt-PT,pt;q=0.9' }, redirect: 'follow', signal: AbortSignal.timeout(40000) });
     } catch (e) {
       if (t >= tentativas) return { estado: 0, erro: String(e && e.message || e) };
       await dorme(5000); continue;
@@ -129,18 +129,20 @@ async function recolher(o) {
   const cache = o.cache || {};
   const pausa = o.pausaMs ?? 2500, pausaJs = o.pausaJsMs ?? 2000, maxJs = o.maxJs ?? 600;
   const inicio = new Date().toISOString();
-  const rob = await pedir(`${origem}/robots.txt`, null);
+  // o.ua: identificador da loja nova (o do CosMath); as antigas ficam com o de sempre
+  const ua = o.ua || UA;
+  const rob = await pedir(`${origem}/robots.txt`, null, { ua });
   const regras = rob.estado === 200 ? regrasRobots(rob.corpo) : [];
 
   // 1) mapa do site: a lista completa, para medir a cobertura do bloco
-  const raiz = await pedir(`${origem}/sitemap.xml`, regras);
+  const raiz = await pedir(`${origem}/sitemap.xml`, regras, { ua });
   if (raiz.estado !== 200) throw new Error(`mapa do site devolveu ${raiz.estado}`);
   const mapas = locs(raiz.corpo).filter(u => new URL(u).pathname.startsWith('/sitemap_products_'));
   if (!mapas.length) throw new Error('sem sitemap_products_* no mapa do site');
   const doMapa = new Set();
   for (const m of mapas) {
     await dorme(pausa);
-    const x = await pedir(m, regras);
+    const x = await pedir(m, regras, { ua });
     if (x.estado !== 200) throw new Error(`${m} devolveu ${x.estado}`);
     for (const u of locs(x.corpo)) { const h = (u.match(/\/products\/([^/?#]+)/) || [])[1]; if (h) doMapa.add(decodeURIComponent(h)); }
   }
@@ -149,7 +151,7 @@ async function recolher(o) {
   const produtos = [], vistos = new Set();
   for (let pagina = 1; pagina <= 200; pagina++) {
     await dorme(pausa);
-    const r = await pedir(`${prefixo}/products.json?limit=250&page=${pagina}`, regras);
+    const r = await pedir(`${prefixo}/products.json?limit=250&page=${pagina}`, regras, { ua });
     if (r.estado !== 200) throw new Error(`products.json página ${pagina} devolveu ${r.estado}`);
     let lote;
     try { lote = JSON.parse(r.corpo).products; } catch { throw new Error(`products.json página ${pagina} não é JSON`); }
@@ -168,7 +170,7 @@ async function recolher(o) {
   let lidosJs = 0, retirados = 0, falhasJs = 0;
   for (const p of porLer.slice(0, maxJs)) {
     await dorme(pausaJs);
-    const r = await pedir(`${prefixo}/products/${encodeURIComponent(p.handle)}.js`, regras);
+    const r = await pedir(`${prefixo}/products/${encodeURIComponent(p.handle)}.js`, regras, { ua });
     lidosJs++;
     if (r.estado === 404 || r.estado === 410) { retirados++; continue; }
     if (r.estado !== 200) { falhasJs++; continue; }
