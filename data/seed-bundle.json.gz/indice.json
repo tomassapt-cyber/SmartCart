@@ -1030,6 +1030,16 @@
    "outros": {
     "store_slug": "glammy"
    }
+  },
+  {
+   "ficheiro": "ofertas/farmaciass.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "farmaciass"
+   }
   }
  ],
  "outros": {}
