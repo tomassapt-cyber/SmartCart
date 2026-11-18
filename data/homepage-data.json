@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-17T14:15:58.999Z",
-  "seed_total_products": 100815,
+  "generated_at": "2026-11-18T11:21:05.179Z",
+  "seed_total_products": 102387,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -37,7 +37,7 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 10.54,
+      "best_price": 9.81,
       "best_store": "Pharma24",
       "best_store_slug": "pharma24",
       "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
@@ -117,16 +117,6 @@
       "best_url": "https://www.sofarma.com/pt/beleza/neutrogena-creme-maos-concentrado-+-stick-labial_p13679.html"
     },
     {
-      "ean": "3574661874951",
-      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.49,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
-    },
-    {
       "ean": "8431567752002",
       "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
@@ -135,6 +125,16 @@
       "best_store": "A Tua Farmácia",
       "best_store_slug": "atuafarmacia",
       "best_url": "https://www.atuafarmacia.pt/products/la-roche-posay-coffret-xmas26-hyalu-b5-suractivated-serum-30ml"
+    },
+    {
+      "ean": "3574661874951",
+      "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
+      "brand": "Neutrogena",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
+      "best_price": 14.98,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
     },
     {
       "ean": "3574661540887",
@@ -147,14 +147,14 @@
       "best_url": "https://bairrodasaude.pt/products/aveeno-pack-dermexa-creme-emoliente-200-ml-gel-de-banho-emoliente-300-ml"
     },
     {
-      "ean": "3574661879185",
-      "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 10.74,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/neutrogena-hidratante-corporal-profundo-750-400-ml"
+      "ean": "8431567752088",
+      "name": "La Roche-Posay Retinol B3 Coffret Cuidado Anti-Idade Sérum + Creme + Protetor Solar",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a8747b3a879d_la-roche-posay-retinol-b3-coff-1_1.jpg",
+      "best_price": 30.79,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/la-roche-posay-coffret-xmas26-retinol-b3-serum-30ml-corrige-rugas-e-manchas"
     }
   ],
   "em_alta": [
@@ -202,18 +202,17 @@
       "verified_live": true
     },
     {
-      "ean": "3337872414060",
-      "name": "La Roche Posay Cicaplast Lábios",
-      "brand": "La Roche-Posay",
-      "image_url": "https://static.sweetcare.pt/img/prd/max/v-637272298962737748/la-roche-posay-001958rp_01.jpg",
-      "best_price": 5.87,
-      "best_store": "Bairro da Saúde",
-      "best_store_slug": "bairro-saude",
-      "best_url": "https://bairrodasaude.pt/products/la-roche-posay-cicaplast-labios-7-5-ml",
-      "volume_ml": 75,
-      "previous_price": 8.49,
+      "ean": "8809784600824",
+      "name": "Torriden Balanceful Cica Gel de Limpeza",
+      "brand": "Torriden",
+      "image_url": "https://static.beautytocare.com/cdn-cgi/image/f=auto/media/catalog/product//t/o/torriden-balanceful-cica-cleansing-gel-200ml.jpg",
+      "best_price": 12.59,
+      "best_store": "MiiN Cosmetics",
+      "best_store_slug": "miin",
+      "best_url": "https://miin-cosmetics.pt/1875-balanceful-cica-cleansing-gel.html",
+      "previous_price": 17.99,
       "discount_pct": 30,
-      "dropped_day": 20764,
+      "dropped_day": 20773,
       "verified_live": true
     },
     {
@@ -234,36 +233,36 @@
   ],
   "top_brands": [
     {
-      "name": "Clarins",
-      "products": 896
+      "name": "Essence",
+      "products": 902
     },
     {
-      "name": "Essence",
-      "products": 896
+      "name": "Clarins",
+      "products": 900
     },
     {
       "name": "L'Oréal Paris",
-      "products": 884
-    },
-    {
-      "name": "Avène",
-      "products": 828
+      "products": 879
     },
     {
       "name": "Isdin",
-      "products": 827
+      "products": 809
+    },
+    {
+      "name": "Avène",
+      "products": 809
     },
     {
       "name": "Nivea",
-      "products": 822
-    },
-    {
-      "name": "La Roche-Posay",
-      "products": 790
+      "products": 804
     },
     {
       "name": "Chicco",
-      "products": 790
+      "products": 802
+    },
+    {
+      "name": "La Roche-Posay",
+      "products": 788
     }
   ],
   "telegram_alerts": [
@@ -297,8 +296,8 @@
   ],
   "stats": {
     "stores": 100,
-    "products": 73277,
-    "avg_savings_pct": 29
+    "products": 72770,
+    "avg_savings_pct": 28
   },
   "shard_version": "",
   "idx_version": "",
