@@ -847,12 +847,25 @@ const FORA_DE_AMBITO = new RegExp([
   // brinquedos («+ Doudou» e «+ Peluche» nos coffrets de cosmética ficam; a água Roger & Gallet «Mandarine Doudou» também)
   'brinquedos?', '(?<!\\+ )peluches?', '(coelhinho|coelhinho fofinho|camaleao|ursinho|bola coelhinho) doudou', 'roca (coelhinho|panda|tartaruga)\\w*', 'chupetas?',
 ].map(t => `\\b(?:${t})\\b`).join('|') + '|\\d\\s*capsulas\\b');
+// Acessórios (decisão do Tomás a 18/11/2026: saem — não são cosmética, embora o KuantoKusta os
+// tenha em Beleza): escovas e pentes, molas e elásticos, tesouras, pinças, limas, corta-unhas,
+// pincéis, esponjas, gua sha. Ficam os conjuntos que trazem cosmética (sérum + gua sha da Nuxe,
+// creme + gua sha da Payot, o texturizador «Elástico» da Sebastian, 45 ml).
+const ACESSORIOS = new RegExp([
+  'corta.?unhas', 'escovas? de cabelo', 'escova (cerdas|desembaracar|raquete|redonda|termica|pneumatica|oval|plana)', 'escova desembaracadora',
+  'pentes?', 'molas? (de|para) cabelo', 'invisibobble', 'elasticos? (de|para) cabelo', 'ganchos? (de|para) cabelo', 'bandoletes?',
+  'esponjas? (de |para )?maquilhagem', 'esponja aplicadora', 'beautyblender', 'pinceis?', 'pincas?', 'tesouras?', 'limas? (de|para) unhas',
+  'depilador facial', 'rolo (facial|de jade|de quartzo)', 'gua sha',
+].map(t => `\\b(?:${t})\\b`).join('|'));
+const ACESSORIO_COM_COSMETICA = /\b(\d+([.,]\d+)? ?(ml|g)|serum|soro|creme|cream|contorno|texturizador|champo|shampoo|condicionador|oleo|balsamo|locao)\b/;
 const semAcentoMin = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 function isNonCosmetic(name) {
   const n = String(name || '');
   if (NON_COSMETIC.test(n) || NON_COSMETIC_EXTRA.test(n)) return true;
-  if (FORA_DE_AMBITO.test(semAcentoMin(n))) return true;
+  const s = semAcentoMin(n);
+  if (FORA_DE_AMBITO.test(s)) return true;
+  if (ACESSORIOS.test(s) && !ACESSORIO_COM_COSMETICA.test(s)) return true;
   return AMBIGUO_COSMETICO.test(n) && !AINDA_E_COSMETICO.test(n);
 }
 
