@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-17T02:30:40.978533+00:00",
-  "completed_at": "2026-11-17T04:11:32.599196+00:00",
+  "scraped_at": "2026-11-18T01:40:29.487467+00:00",
+  "completed_at": "2026-11-18T03:21:54.168802+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1830,
+  "targets": 1841,
   "products": [
     {
       "ean": "5601411434146",
@@ -1307,6 +1307,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787935998",
+      "name": "Schwarzkopf OSIS+ Thrill Cera Fibrosa 100ml - Fixação Média e Brilho",
+      "price": 17.65,
+      "net_price": 14.35,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/cabeleireiro/1344-goma-fibrosa-thrill-osis-100ml-schwarzkopf-4045787935998.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/153871-thickbox_default/goma-fibrosa-thrill-osis-100ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787999730",
       "name": "Schwarzkopf OSIS+ Sparkler Spray Brilho 300ml - Brilho Glamouroso e Controle do Frizz",
       "price": 17.65,
@@ -1693,6 +1706,97 @@
       "url": "https://presencadeluxo.pt/secadores-parlux/2355-secador-parlux-2800-secador-de-cabelo-profissional-8021233044014.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/95938-thickbox_default/secador-parlux-2800-secador-de-cabelo-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8008230012154",
+      "name": "Escova 38mm 821 High Density - Acca Kappa",
+      "price": 10.75,
+      "net_price": 8.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/high-density/2790-escova-38mm-821-high-density-acca-kappa-8008230012154.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96409-thickbox_default/escova-38mm-821-high-density-acca-kappa.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8008230012161",
+      "name": "Escova 44mm 822 High Density - Acca Kappa",
+      "price": 11.72,
+      "net_price": 9.53,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/high-density/2791-escova-44mm-822-high-density-acca-kappa-8008230012161.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96407-thickbox_default/escova-44mm-822-high-density-acca-kappa.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8008230012239",
+      "name": "Escova 53mm 820 High Density - Acca Kappa",
+      "price": 13.9,
+      "net_price": 11.3,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/high-density/2792-escova-53mm-820-high-density-acca-kappa-8008230012239.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96406-thickbox_default/escova-53mm-820-high-density-acca-kappa.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8008230010983",
+      "name": "Escova 69mm 824 High Density - Acca Kappa",
+      "price": 16.41,
+      "net_price": 13.34,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/high-density/2794-escova-69mm-824-high-density-acca-kappa-8008230010983.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96402-thickbox_default/escova-69mm-824-high-density-acca-kappa.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8008230010440",
+      "name": "Escova 38mm 730 Circular - Acca Kappa",
+      "price": 9.99,
+      "net_price": 8.120000000000001,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/circulares-nylon/2816-escova-38mm-730-circular-acca-kappa-8008230010440.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96388-thickbox_default/escova-38mm-730-circular-acca-kappa.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8008230010518",
+      "name": "Escova 45mm 732 Circular - Acca Kappa",
+      "price": 10.37,
+      "net_price": 8.43,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/circulares-nylon/2821-escova-45mm-732-circular-acca-kappa-8008230010518.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96385-thickbox_default/escova-45mm-732-circular-acca-kappa.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8008230010105",
+      "name": "Escova 318 Oval - Acca Kappa",
+      "price": 18.18,
+      "net_price": 14.78,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/outras/3095-escova-318-oval-acca-kappa-8008230010105.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96374-thickbox_default/escova-318-oval-acca-kappa.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -5402,19 +5506,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "3474636975686",
-      "name": "Máscara Vitamino Color 500ml L'Oreal Serie Expert",
-      "price": 28.18,
-      "net_price": 22.91,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/125108-thickbox_default/mascara-vitamino-color-500ml-l-oreal-serie-expert.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "3474636975976",
       "name": "Shampoo Vitamino Color 1500ml L'Oreal Serie Expert",
       "price": 38.2,
@@ -5515,19 +5606,6 @@
       "url": "https://presencadeluxo.pt/loreal-liss-unlimited/11426-shampoo-liss-unlimited-300ml-serie-expert-loreal-3474636974399.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/106644-thickbox_default/shampoo-liss-unlimited-300ml-serie-expert-loreal.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474636975860",
-      "name": "Shampoo Liss Unlimited 500ml L'Oreal Serie Expert",
-      "price": 21.04,
-      "net_price": 17.1,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/loreal/11427-shampoo-liss-unlimited-500ml-loreal-serie-expert-3474636975860.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/106645-thickbox_default/shampoo-liss-unlimited-500ml-loreal-serie-expert.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -6000,6 +6078,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8005610589671",
+      "name": "Laca Sem Gás Flexible Finish Eimi 250ml - Wella",
+      "price": 16.73,
+      "net_price": 13.6,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/wella-eimi-sprays/11896-laca-sem-gas-flexible-finish-eimi-250ml-wella-8005610589671.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/126570-thickbox_default/laca-sem-gas-flexible-finish-eimi-250ml-wella.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787724110",
       "name": "Schwarzkopf Bonacure Repair Rescue Shampoo 500ml – Reparação e Hidratação para Cabelos Danificados",
       "price": 19.17,
@@ -6139,6 +6230,19 @@
       "url": "https://presencadeluxo.pt/illumina-wella/12237-tinta-illumina-color-1038-louro-super-claro-dourado-perola-60ml-wella-professionals-8005610543536.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/131806-thickbox_default/tinta-illumina-color-1038-louro-super-claro-dourado-perola-60ml-wella-professionals.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8005610541884",
+      "name": "Tinta Illumina Color 9/43 Louro Muito Claro Cobre Dourado 60ml - Wella Professionals",
+      "price": 16.17,
+      "net_price": 13.14,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/illumina-wella/12257-tinta-illumina-color-943-louro-muito-claro-cobre-dourado-60ml-wella-professionals-8005610541884.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131799-thickbox_default/tinta-illumina-color-943-louro-muito-claro-cobre-dourado-60ml-wella-professionals.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -8600,6 +8704,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8435090854165",
+      "name": "Escova Térmica Cerâmica 43mm Steinhart",
+      "price": 15.75,
+      "net_price": 12.8,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/termic-ceramic/14366-escova-termica-ceramica-43mm-steinhart-8435090854165.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96323-thickbox_default/escova-termica-ceramica-43mm-steinhart.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600355736590",
       "name": "Mini Bomboca Verniz Gel 15ml Inocos",
       "price": 8.26,
@@ -10286,19 +10403,6 @@
       "url": "https://presencadeluxo.pt/loreal-pro-longer/44381-shampoo-pro-longer-500ml-loreal-serie-expert-3474636975846.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/125148-thickbox_default/shampoo-pro-longer-500ml-loreal-serie-expert.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474636975402",
-      "name": "Máscara Pro Longer 500ml L'Oreal Serie Expert",
-      "price": 28.18,
-      "net_price": 22.91,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/loreal-pro-longer/44382-mascara-pro-longer-500ml-loreal-serie-expert-3474636975402.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/106675-thickbox_default/mascara-pro-longer-500ml-loreal-serie-expert.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13172,6 +13276,19 @@
       "url": "https://presencadeluxo.pt/kit-limpeza-de-pele/78988-agua-micelar-desmaquilhante-400ml-c-sensation-eveline-cosmetics-5903416026037.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/106574-thickbox_default/agua-micelar-desmaquilhante-400ml-c-sensation-eveline-cosmetics.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5903416016168",
+      "name": "Gel de Lavagem C Sensation 150ml - Eveline Cosmetics",
+      "price": 7.38,
+      "net_price": 6.0,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kit-limpeza-de-pele/78994-gel-de-lavagem-c-sensation-150ml-eveline-cosmetics-5903416016168.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106588-thickbox_default/gel-de-lavagem-c-sensation-150ml-eveline-cosmetics.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -16734,19 +16851,6 @@
       "url": "https://presencadeluxo.pt/pinceis-e-esponjas/85354-pincel-blush-brush-realtechniques-by-sam-nic-chapman-079625014075.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/140672-thickbox_default/pincel-blush-brush-realtechniques-by-sam-nic-chapman.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "079625014716",
-      "name": "Paleta Limpeza de Pincéis RealTechniques by Sam & Nic",
-      "price": 7.69,
-      "net_price": 6.25,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/acessorios-de-maquilhagem/85378-paleta-limpeza-de-pinceis-realtechniques-by-sam-nic-079625014716.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/140742-thickbox_default/paleta-limpeza-de-pinceis-realtechniques-by-sam-nic.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -22497,6 +22601,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927902843",
+      "name": "Andreia Gel Polish Celebration Edit CE6 – Cereja Negro Cintilante 10,5 ml",
+      "price": 6.38,
+      "net_price": 5.19,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92764-andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml-5603927902843.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/161155-thickbox_default/andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600482302897",
       "name": "Corta-Unhas RickiParodi Níquel Grande",
       "price": 2.25,
@@ -22520,6 +22637,14 @@
       "reason": "ambiguous/missing Product schema"
     },
     {
+      "url": "https://presencadeluxo.pt/high-density/2793-escova-59mm-823-high-density-acca-kappa-8008230012178.html",
+      "ean": "8008230012178",
+      "canonical": "8008230012178",
+      "existing_name": "Acca Kappa Escova Circular de Madeira 823 59mm",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
+    },
+    {
       "url": "https://presencadeluxo.pt/coloracao-de-pestanas/5116-colorante-15ml-castanho-n4-refecto-cil-9003877057413.html",
       "ean": "9003877057413",
       "canonical": "9003877057413",
@@ -22536,18 +22661,18 @@
       "reason": "stock/order contradiction"
     },
     {
-      "url": "https://presencadeluxo.pt/wella-eimi-sprays/11896-laca-sem-gas-flexible-finish-eimi-250ml-wella-8005610589671.html",
-      "ean": "8005610589671",
-      "canonical": "8005610589671",
-      "existing_name": "EIMI flexible finish 250 ml",
+      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
+      "ean": "3474636975686",
+      "canonical": "3474636975686",
+      "existing_name": "L'ORÉAL SÉRIE EXPERT VITAMINO COLOR MÁSCARA CABELO PINTADO 500ml - Perfumes4You - O mundo dos perfumes à sua porta",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
     {
-      "url": "https://presencadeluxo.pt/illumina-wella/12257-tinta-illumina-color-943-louro-muito-claro-cobre-dourado-60ml-wella-professionals-8005610541884.html",
-      "ean": "8005610541884",
-      "canonical": "8005610541884",
-      "existing_name": "Wella Coloração capilar Illumina Color No. 9/43 / 60 ml",
+      "url": "https://presencadeluxo.pt/loreal/11427-shampoo-liss-unlimited-500ml-loreal-serie-expert-3474636975860.html",
+      "ean": "3474636975860",
+      "canonical": "3474636975860",
+      "existing_name": "L'OREAL SERIE EXPERT PROKERATIN LISS UNLIMITED SHAMPOO 500ml - Perfumes4You - O mundo dos perfumes à sua porta",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
@@ -22564,6 +22689,14 @@
       "ean": "5600355740269",
       "canonical": "5600355740269",
       "existing_name": "INOCOS EMPURRA CUTÍCULAS MULTIUSOS UNIVERSAL",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/loreal-pro-longer/44382-mascara-pro-longer-500ml-loreal-serie-expert-3474636975402.html",
+      "ean": "3474636975402",
+      "canonical": "3474636975402",
+      "existing_name": "Loreal Pro Longer máscara fortificante 500ml",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
@@ -22776,18 +22909,26 @@
       "reason": "stock/order contradiction"
     },
     {
-      "url": "https://presencadeluxo.pt/catalisador-unhas/85281-catalisador-tips-unhas-andreia-pro-extend-lamp-5603927886716.html",
-      "ean": "5603927886716",
-      "canonical": "5603927886716",
-      "existing_name": "Catalisador Tips Unhas Andreia PRO Extend Lamp",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/pinceis-e-esponjas/85353-pincel-expert-facial-realtechniques-by-sam-nic-chapman-079625014112.html",
       "ean": "079625014112",
       "canonical": "079625014112",
       "existing_name": "Escova facial expert",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/acessorios-de-maquilhagem/85378-paleta-limpeza-de-pinceis-realtechniques-by-sam-nic-079625014716.html",
+      "ean": "079625014716",
+      "canonical": "0079625014716",
+      "existing_name": "Paleta de Limpeza de Pincéis",
+      "method": "documented alias/UPC",
+      "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/perfumes-homem/85611-eau-de-toilette-dolce-gabbana-homme-125ml-3423473020776.html",
+      "ean": "3423473020776",
+      "canonical": "3423473020776",
+      "existing_name": "Dolce & Gabbana Pour Homme Eau De Toilette Vaporizador 125 ml",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
@@ -23132,14 +23273,6 @@
       "ean": "5603927902836",
       "canonical": "5603927902836",
       "existing_name": "Verniz Gel Andreia Gel Polish CE5 – Bordeaux intenso com reflexos avermelhados e brilho multidimensional",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/92764-andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml-5603927902843.html",
-      "ean": "5603927902843",
-      "canonical": "5603927902843",
-      "existing_name": "Verniz Gel Andreia Gel Polish CE6 – Tom cereja negra intenso iluminado por reflexos vermelhos cintilantes",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
