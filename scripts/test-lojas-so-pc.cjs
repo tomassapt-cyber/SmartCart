@@ -29,7 +29,7 @@ const seed = () => ({
     { ean: '3433422404397', name: 'Avène Água Termal 300ml' },
   ],
   store_products: [
-    { store_slug: 'notino', items: [{ ean: '3337875598767', price: 15, in_stock: true, verified_at: em(30) }, { ean: '3433422404397', price: 9, in_stock: true, verified_at: em(40) }] },
+    { store_slug: 'powerbeauty', items: [{ ean: '3337875598767', price: 15, in_stock: true, verified_at: em(30) }, { ean: '3433422404397', price: 9, in_stock: true, verified_at: em(40) }] },
     { store_slug: 'druni', items: [{ ean: '3337875597197', price: 12, in_stock: true, verified_at: em(30) }] },
   ],
 });
@@ -41,6 +41,25 @@ assert.equal(r.mantidasPc, 1); assert.equal(r.hiddenAbs, 1);
 const v = cv.applyVisibilityFilter(s, () => false);
 assert.deepEqual(s.products.map(p => p.ean), ['3337875598767'], 'produto só com a oferta velha do PC continua visível');
 assert.equal(v.visiveis, 1);
+
+// 2b. lojas em espera (2026-11-18): a oferta fica, mas um produto que SÓ uma loja em espera vende
+//     (preço sem leitura há mais de 14 dias) deixa de aparecer
+assert.ok(cv.lojasSoPc().has('notino') && !cv.lojasSoPc({ soAtivas: true }).has('notino') && cv.lojasSoPc({ soAtivas: true }).has('powerbeauty'));
+const sE = {
+  products: [
+    { ean: '3337875598767', name: 'CeraVe Creme Hidratante 340g' },   // só a Notino → sai
+    { ean: '3337875597197', name: 'CeraVe Gel de Limpeza 236ml' },    // Notino + Druni → fica, com as duas ofertas
+  ],
+  store_products: [
+    { store_slug: 'notino', items: [{ ean: '3337875598767', price: 15, in_stock: true, verified_at: em(51) }, { ean: '3337875597197', price: 11, in_stock: true, verified_at: em(51) }] },
+    { store_slug: 'druni', items: [{ ean: '3337875597197', price: 12, in_stock: true, verified_at: em(1) }] },
+  ],
+};
+cv.dropRottenOffers(sE, agora);
+assert.equal(sE.store_products[0].items.length, 2, 'as ofertas da loja em espera não apodrecem pelo tecto');
+cv.applyVisibilityFilter(sE, () => false);
+assert.deepEqual(sE.products.map(p => p.ean), ['3337875597197'], 'só a Notino, com preço de há 51 dias: sai; com outra loja: fica');
+assert.deepEqual(sE.store_products[0].items.map(i => i.ean), ['3337875597197'], 'a oferta da Notino fica no produto comparável');
 
 // 3. o aviso
 const cfgT = { avisar_dias: 7, lojas: { notino: 'bash scripts/refresh-pc-only.sh', farmacianovadamaia: 'python scripts/refresh-farmacianovadamaia-pc.py' } };

@@ -20,11 +20,11 @@ const path = require('path');
 // o freshness-monitor avisa-o quando passam dos 7 dias. Sem o ficheiro, ficam
 // sujeitas ao tecto como as outras; um ficheiro estragado rebenta o build.
 // As «em_espera» (2026-10-26: Notino) saíram da rotina, mas as ofertas ficam.
-function lojasSoPc() {
+function lojasSoPc({ soAtivas = false } = {}) {
   const f = path.join(__dirname, '..', '..', 'data', 'lojas-so-pc.json');
   if (!fs.existsSync(f)) return new Set();
   const j = JSON.parse(fs.readFileSync(f, 'utf8'));
-  return new Set([...Object.keys(j.lojas || {}), ...Object.keys(j.em_espera || {})]);
+  return new Set([...Object.keys(j.lojas || {}), ...(soAtivas ? [] : Object.keys(j.em_espera || {}))]);
 }
 
 /**
@@ -121,13 +121,17 @@ function dropMiniOffers(seedJson) {
  * out-of-stock) · fora-de-site (todas as ofertas stale >14d) — este último só
  * para os NÃO-comparáveis: um produto com >=2 lojas com preço e em stock
  * mantém-se visível mesmo que stale. Ofertas de lojas do PC
- * (data/lojas-so-pc.json) nunca contam como stale (2026-10-14).
+ * (data/lojas-so-pc.json) nunca contam como stale (2026-10-14) — mas as das
+ * lojas «em_espera» sim (decisão do Tomás, 2026-11-18): um produto que SÓ a
+ * Notino vende, com o preço de 28/09, deixa de aparecer; quando a Notino é
+ * uma de várias lojas, a oferta dela fica (dropRottenOffers continua a usar a
+ * lista completa).
  * @param {function} isNonCosmetic  injectada para a lib não depender do
  *        product-fingerprint (evita ciclos e mantém-na testável).
  */
 function applyVisibilityFilter(seedJson, isNonCosmetic) {
   const STALE_DAYS = 14;
-  const soPc = lojasSoPc();
+  const soPc = lojasSoPc({ soAtivas: true });
   const offersByEan = {};
   const ofertaPc = new Set();   // ofertas de lojas do PC: nunca contam como «fora-de-site»
   for (const sp of seedJson.store_products)
