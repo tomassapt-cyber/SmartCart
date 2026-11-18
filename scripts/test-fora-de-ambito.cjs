@@ -17,6 +17,17 @@ const sai = [
   'Philips Avent Tetinas Natural Response T2', 'Chicco Babete Silicone Cinza 6M+', 'Suavinex Mordedor de Silicone',
   // o acento escrito como carácter à parte (NFD) não pode escapar
   'Optrex Colírio Hidratante'.normalize('NFD'),
+  // 18/11 (comparação com o KuantoKusta): animais, leite de bebé, bebíveis, saúde, brinquedos
+  'Amflee Combo 268/241,2 Pipetas Cão 20-40kg X3 Fipronil', 'Anima Strath Elixir 100 ml', 'Seresto Coleira Gato 1,25g+0,56g 38cm',
+  'Wilda Siberica Oil-Plex Champô para animais de estimação 400 ml', 'Effitix Pipetas Antiparasitárias 10-20kg 4 Unidades',
+  'Nestlé Nan Optipro Leite Casa 1 800 gr', 'NAN Optipro 1 Leite Lactentes - 800g', 'Nan Total 2 Leite Transicao 800g', 'Creme de arroz Almirón 225 g',
+  'Arkoreal Geleia Real Vitaminas Laranja sem Açúcar - 20 Ampolas', 'Forte Pharma Geleia Real Bio 2500 mg, 20 ampolas',
+  'Apisérum Geléia Real Vitalidade 18 Frascos', 'Diviten Infantil Geleia Real 300ml', 'Cerebrum Forte Ampolas Bebíveis (x30 unidades)',
+  'Iraltone Hair Efflu Booster 30 doses únicas bebíveis', 'Win Fit Glucosamina Comp X 30 comps',
+  'Lastotel Lidagura 6cm x 4m', 'Pic Irrigador Fullwash Enteroclisma 2L', 'Futuro Pulso Suporte Reversivel S',
+  'Actimove Arthritis Care Suporte de Joelho Tam.XL', 'Termômetro de banho infantil Suavinex',
+  'Chicco Brinquedo Coelhinho Doudou', 'Chicco Camaleão Doudou 0+ meses', 'CH.BRI11119000000 Roca Tartaruga Eco',
+  'Doomoo Peluche Anti-cólicas Snoogy Cerejas', 'Saro Peluche Patudo "Jungle Party"',
 ];
 const fica = [
   'Ziaja Creme Facial Hidratante Multivitamínico 50 ml', 'Flavo-c Melatonina Ampolas Reparadoras de Noite',
@@ -25,7 +36,14 @@ const fica = [
   'Sérum Retinal Puro Multi-Encapsulado 0,1%', 'Bioderma Sensibio H2O 250ml', 'Avène Cicalfate Creme Reparador 40ml',
   'Klorane Bálsamo Após-Champô Leite de Aveia 200ml', 'La Roche-Posay Toleriane Dermallergo Olhos 20ml',
   'Uriage Eau Thermale Stick Labial 4g', 'Elmex Gel', // marca de higiene oral sem o termo: não se adivinha
+  // 18/11: geleia real em cosmética, leite de limpeza/corporal, coffrets com peluche, piolhos de pessoas
+  'Apivita Face Mask Máscara reafirmante com geleia real 50 ml', 'Fleurance Nature Creme Antirrugas Regenerador com Geleia Real Biológica 50ml',
+  'Sabonete Líquido Mel E Geleia Real Feno De Portugal 300 ml', 'Th Pharma Champô de Leite de Aveia e Geleia Real - 1L',
+  'Mizon Joyful Time Essência de Geleia Real, 23 g', 'Bioderma Atoderm Leite Corporal 500ml', 'Avène Leite de Limpeza 200ml',
+  'La Roche Posay Lipikar AP+ Creme Duche 400 ml + Bálsamo 400 ml + Doudou', 'Mustela Love Welcome Baby Musti Eau De Soin Perfumee 50ml + Peluche',
+  'Roger & Gallet Mandarine Doudou Água Perfumada Roll-On 15ml', 'Shampoo Antiparasitário Filvit-P, 100ml.',
+  'Patches Imperfeições Facefacts Micro Agulhas 6un', 'Lierac Sunissime Leite Protetor SPF50',
 ];
 for (const n of sai) assert.equal(isNonCosmetic(n), true, `devia sair: ${n}`);
 for (const n of fica) assert.equal(isNonCosmetic(n), false, `devia ficar: ${n}`);
-console.log('fora de âmbito: colírios, higiene oral, suplementos (também «Arkocápsulas» e «60cápsulas»), nutrição, aparelhos, íntimo, acessórios de bebé saem; a cosmética parecida fica — tudo passou');
+console.log('fora de âmbito: colírios, higiene oral, suplementos (também «Arkocápsulas» e «60cápsulas»), nutrição, aparelhos, íntimo, acessórios de bebé, animais, leite de bebé, bebíveis, ortopedia e brinquedos saem; a cosmética parecida fica — tudo passou');
