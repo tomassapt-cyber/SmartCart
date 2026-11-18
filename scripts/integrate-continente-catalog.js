@@ -5,11 +5,14 @@
  *
  * Lê data/catalog/continente-full.json (PDPs JSON-LD sem gtin; MODO COMPARAÇÃO) e funde no seed.
  *
- * Continente Online NÃO expõe EAN. Por isso, ao contrário das outras integrações
- * (match por gtin13 real), esta loja entra SÓ como fonte de preço sobre
- * produtos que JÁ EXISTEM, casados por FINGERPRINT (marca+nome+volume):
+ * 2026-11-18: o Continente passou a publicar o gtin13 (EAN). Com EAN, o produto é
+ * o que esse EAN resolve no catálogo (o mesmo resolvedor das lojas novas: EAN
+ * exato, EAN antigo, alias documentado, UPC↔EAN-13 — scripts/lib/integrar-existentes.js);
+ * um EAN que não temos fica de fora (não se adivinha pelo nome). Sem EAN, segue a
+ * política antiga: esta loja entra SÓ como fonte de preço sobre produtos que JÁ
+ * EXISTEM, casados por FINGERPRINT (marca+nome+volume):
  *
- *   POLÍTICA (conservadora):
+ *   POLÍTICA (conservadora, fichas sem EAN):
  *     • Resolve a marca:  feed "Marcas > X > <Marca>"  OU  prefixo do título
  *       contra as marcas conhecidas do seed (mais comprida primeiro).
  *     • fingerprint(marca+nome) bate num produto existente → adiciona oferta
@@ -31,6 +34,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { productFingerprint, normalizeBrand, displayBrand, stripAccents, extractVolumeMl, safeFuzzyMatch, looseMatchKey } = require('./lib/product-fingerprint');
 const { upsertStoreItem } = require('./lib/store-item-merge');
+const { indiceIdentidade, gtinValido } = require('./lib/integrar-existentes');
 
 const ROOT = path.resolve(__dirname, '..');
 const FEED_FULL = path.join(ROOT, 'data', 'catalog', 'continente-full.json');
@@ -127,13 +131,24 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
   }
 
   let matched = 0, looseMatched = 0, fuzzyMatched = 0, noBrand = 0, noMatch = 0, volSkip = 0, added = 0, updated = 0, imgFilled = 0;
+  let porEan = 0, eanSemPar = 0;
   const addedC = { value: 0 }, updatedC = { value: 0 };
+  // EAN → produto do catálogo (exato, EAN antigo, alias documentado, UPC↔EAN-13; null se for ambíguo)
+  const identidade = indiceIdentidade(seed, loadJSON(path.join(ROOT, 'data', 'product-aliases.json')) || {});
 
   for (const ep of items) {
-    const brand = resolveBrand(ep);
-    if (!brand) { noBrand++; continue; }
-    const fp = productFingerprint({ name: ep.name, brand });
-    let target = fp ? fpIndex[fp] : null;
+    let target = null, brand = null;
+    if (gtinValido(ep.ean)) {
+      const r = identidade.resolver(ep.ean);
+      if (!r) { eanSemPar++; continue; }        // EAN que não temos: não se adivinha pelo nome
+      target = r.produto; porEan++;
+      brand = target.brand || resolveBrand(ep);
+    } else {
+      brand = resolveBrand(ep);
+      if (!brand) { noBrand++; continue; }
+      const fp = productFingerprint({ name: ep.name, brand });
+      target = fp ? fpIndex[fp] : null;
+    }
     if (!target) {
       // Match SOLTO determinístico: mesmo nome sem palavras-ruído (cabelo/capilar,
       // conectores) + volume compatível. Seguro (discriminadores ficam).
@@ -162,8 +177,10 @@ const norm = s => stripAccents(String(s || '').toLowerCase()).replace(/[^a-z0-9 
     else if (r.action === 'merged') updated++;
   }
 
-  console.log('══════ Resumo (pharma2you · fonte de preço por fingerprint) ══════');
-  console.log(`  Casados por fingerprint:   ${matched}`);
+  console.log('══════ Resumo (continente · EAN primeiro, fingerprint só sem EAN) ══════');
+  console.log(`  Casados pelo EAN:          ${porEan}`);
+  console.log(`  EAN que não temos (fora):  ${eanSemPar}`);
+  console.log(`  Casados no total:          ${matched}`);
   console.log(`  Casados por nome-sem-ruido: ${looseMatched}`);
   console.log(`  Casados por fuzzy seguro:   ${fuzzyMatched}`);
   console.log(`  Sem marca resolúvel:       ${noBrand}`);

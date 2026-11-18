@@ -4,9 +4,15 @@
  * ============================================================
  *
  * DECISÃO (user 2026-07-03): o Continente NÃO cria produtos — só aumenta a
- * comparação dos que JÁ temos. O site não expõe gtin (JSON-LD só tem sku
- * interno de 7 díg + preço), por isso o match é por FINGERPRINT exato com
- * guarda de volume (padrão pharma2you), enrich-only no integrador.
+ * comparação dos que JÁ temos.
+ *
+ * 2026-11-18: o JSON-LD passou a trazer o gtin13 (EAN real; até aqui só tinha o
+ * sku interno de 7 dígitos). O leitor lê-o e o integrador casa primeiro pelo EAN;
+ * o FINGERPRINT com guarda de volume fica só para as fichas sem EAN. Até esta data
+ * havia 220 ofertas do Continente no site (casadas só pelo nome).
+ * Também desde 18/11: identificação honesta (UA do CosMath; antes fingia ser um
+ * Chrome) e leitura completa garantida — se a última tiver mais de FULL_DIAS dias,
+ * a corrida diária faz uma (o cron semanal nem sempre corre).
  *
  * Catálogo ~100k dominado por mercearia → filtramos o sitemap por um
  * WHITELIST de marcas de beleza/higiene que vendemos (slug contém a marca).
@@ -38,7 +44,16 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 400;
 const CHECKPOINT_EVERY = 100;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+// Identificação honesta desde 2026-11-18 (antes fingia ser um Chrome); o Continente aceita-a.
+const { UA_COSMATH: UA } = require('./lib/leitura-alargada');
+const { gtinValido } = require('./lib/integrar-existentes');
+const FULL_DIAS = 7;
+/** A última leitura completa (full_at no catálogo) tem mais de FULL_DIAS dias, ou não há? */
+function precisaFull(catalogo, agora = Date.now()) {
+  const t = Date.parse((catalogo && catalogo.full_at) || '');
+  return !Number.isFinite(t) || agora - t > FULL_DIAS * 864e5;
+}
+function lerCatalogoAnterior() { try { return JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); } catch { return null; } }
 
 // Marcas beleza/higiene/dermo que JÁ vendemos noutras lojas — só estas
 // interessam (comparação; o integrador nunca cria). Slug do produto contém
@@ -54,6 +69,10 @@ const BRAND_SLUGS = [
   'sanex', 'palmolive', 'lactovit', 'linic', 'wells-', 'vasenol', 'nuxe',
   'revuele', 'moist', 'deliplus', 'axe-', 'rexona', 'vaseline', 'johnson',
   'listerine', 'oral-b', 'colgate', 'elgydium', 'corega',
+  // 2026-11-18: marcas de beleza do Continente que o catálogo tem e faltavam (com o EAN,
+  // uma marca a mais só custa fichas lidas — nunca uma oferta errada)
+  'body-natur', 'old-spice', 'gillette', 'natural-honey', 'veet', 'skala', 'beauty-of-joseon', 'of-joseon',
+  'bioten', 'denim', 'bulldog', 'petit-marseillais', '7th-heaven', 'tocobo', 'the-saem',
 ];
 const BRAND_RE = new RegExp('-(' + BRAND_SLUGS.map(b => b.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')', 'i');
 
@@ -84,9 +103,9 @@ function extractProductData(html) {
       const in_stock = offer ? /InStock/i.test(offer.availability || '') : true;
       const brand = n.brand ? (typeof n.brand === 'string' ? n.brand : (n.brand.name || null)) : null;
       const image_url = imagemDoJsonLd(n.image);
-      // SEM gtin no Continente — ean fica null; o integrador casa por
-      // fingerprint exato (enrich-only, nunca cria).
-      return { name, brand, ean: null, sku: n.sku ? String(n.sku) : null, image_url, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
+      // gtin13 = EAN real desde 2026-11 (sem ele, o integrador casa por fingerprint exato; nunca cria)
+      const ean = [n.gtin13, n.gtin, n.gtin14, n.gtin12].map(x => (x != null ? String(x).trim() : '')).find(x => gtinValido(x)) || null;
+      return { name, brand, ean, sku: n.sku ? String(n.sku) : null, image_url, price, previous_price: null, in_stock, volume_ml: volumeFromName(name), category: null, variants: [] };
     }
   }
   return null;
@@ -120,13 +139,22 @@ function loadCheckpoint() {
     return { products: fresh, done: new Set(fresh.map(p => p.url)) };
   } catch { return null; }
 }
+let FULL = !!args.full, FULL_AT_ANTERIOR = null;
 function saveCheckpoint(products, inProgress = true) {
   if (LIMIT !== Infinity) return;  // smoke-test (--limit) NÃO sobrescreve o catálogo de produção
-  fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'continente.pt (JSON-LD sem gtin; MODO COMPARAÇÃO por fingerprint — nunca cria)', in_progress: inProgress, products }), 'utf8');
+  // full_at: data da última leitura COMPLETA terminada (as corridas known-only guardam a anterior)
+  const full_at = (!inProgress && FULL) ? new Date().toISOString() : FULL_AT_ANTERIOR;
+  fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'continente.pt (JSON-LD gtin13 = EAN; MODO COMPARAÇÃO: EAN e, sem EAN, fingerprint — nunca cria)', in_progress: inProgress, full_at, products }), 'utf8');
 }
 
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
+  const anterior = lerCatalogoAnterior();
+  FULL_AT_ANTERIOR = (anterior && anterior.full_at) || null;
+  if (!FULL && LIMIT === Infinity && precisaFull(anterior)) {
+    FULL = true;
+    console.log(`📅 última leitura completa: ${FULL_AT_ANTERIOR || 'nunca registada'} — mais de ${FULL_DIAS} dias: esta corrida lê tudo`);
+  }
   console.log('📋 A descarregar sitemap índice continente…');
   const idxXml = await fetchText(SITEMAP_INDEX);
   const subs = locs(idxXml).filter(u => /-product\.xml$/i.test(u));
@@ -145,7 +173,7 @@ async function main() {
   // 3×/dia para refrescar dezenas de ofertas rebentava o timeout. Por omissão
   // refrescamos SÓ os URLs das ofertas que já existem no seed (rápido); a
   // descoberta de novos matches faz-se com --full (cron semanal / run manual).
-  if (!args.full) {
+  if (!FULL) {
     try {
       const seedNow = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'seed-bundle.json'), 'utf8'));
       const sp = (seedNow.store_products || []).find(g => g.store_slug === 'continente');
@@ -185,12 +213,12 @@ async function main() {
   saveCheckpoint(products, false);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);
   console.log(`\n══════ continente scrape ══════`);
-  console.log(`  Produtos (nome+preço): ${products.length} · in_stock: ${products.filter(p => p.in_stock).length}`);
+  console.log(`  Produtos (nome+preço): ${products.length} · com EAN: ${products.filter(p => p.ean).length} · in_stock: ${products.filter(p => p.in_stock).length}${FULL ? ' · leitura COMPLETA' : ' · known-only'}`);
   console.log(`  skipped/404/403/erro: ${stats.skipped}/${stats.not_found}/${stats.blocked}/${stats.error}`);
   if (LIMIT === Infinity) console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
 }
 
-module.exports = { extractProductData, isProductUrl };
+module.exports = { extractProductData, isProductUrl, precisaFull, FULL_DIAS };
 if (require.main === module) {
   process.on('unhandledRejection', (e) => console.warn('⚠ unhandledRejection (ignorado):', e && e.code || e));
   main().catch(e => { console.error('FATAL', e); process.exit(1); });
