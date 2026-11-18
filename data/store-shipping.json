@@ -631,5 +631,13 @@
   "ponto_txt": null,
   "ilhas": 17.99,
   "gratis_ilhas": 250
+ },
+ "farmaciass": {
+  "gratis": 60,
+  "casa": 3.99,
+  "ponto": null,
+  "ponto_txt": null,
+  "ilhas": null,
+  "gratis_ilhas": null
  }
 }
