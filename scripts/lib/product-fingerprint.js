@@ -829,6 +829,23 @@ const FORA_DE_AMBITO = new RegExp([
   'copo menstrual', 'tampoes', 'pensos higienicos', 'disco menstrual',
   // bebé: acessórios
   'rede porta', 'porta.?frutinha', 'mordedor', 'tetinas?', 'biberoes', 'biberao', 'copo de aprendizagem', 'babetes?',
+  // ── 18/11/2026 (comparação com o KuantoKusta, Desktop\duo\COMPARACAO-KK-2026-11-18.md) ──
+  // animais: antiparasitários e higiene de animais de estimação («antiparasitário» sozinho não:
+  // o champô Filvit-P é para piolhos de pessoas)
+  'pipetas? (para )?(cao|caes|gatos?)', 'para (caes|gatos|animais)', 'animais de estimacao', 'fipronil', 'coleira',
+  'anima strath', 'amflee', 'frontline', 'advantix', 'advantage cao', 'seresto', 'scalibor', 'effitix', 'prevendog',
+  'bravecto', 'nexgard', 'veterinari\\w*',
+  // leite e papas de bebé (o «leite» de limpeza e o corporal ficam)
+  'leite (para )?lactentes?', 'leite (inicial|de transicao|de crescimento|de seguimento|de continuacao)', 'leite casa \\d',
+  'nan (optipro|supreme\\w*|expert|sensitive|total|sem lactose|\\d)', 'aptamil', 'nidina', 'almiron', 'novalac', 'blemil', 'enfamil', 'nutriben',
+  // suplementos bebíveis; a geleia real só com sinais de toma (há cremes, champôs e sabonetes com geleia real)
+  'arkoreal', 'bebiveis', 'glucosamina', 'condroitina',
+  'geleia real\\b.*\\b(\\d+ ?mg|ampolas?|frascos|unidoses|doses)', '(ampolas?|infantil)\\b.*\\bgeleia real',
+  // saúde: ortopedia, pensos, irrigadores (o oral já estava), termómetros
+  'irrigador', 'enteroclisma', 'ligaduras?', 'lidaguras?', 'ortotese', 'joelheira', 'tornozeleira', 'termometro',
+  'suporte (reversivel|de pulso|de joelho|de tornozelo|lombar|de polegar|para (o )?(pulso|joelho|tornozelo))', 'meias de (compressao|descanso)',
+  // brinquedos («+ Doudou» e «+ Peluche» nos coffrets de cosmética ficam; a água Roger & Gallet «Mandarine Doudou» também)
+  'brinquedos?', '(?<!\\+ )peluches?', '(coelhinho|coelhinho fofinho|camaleao|ursinho|bola coelhinho) doudou', 'roca (coelhinho|panda|tartaruga)\\w*', 'chupetas?',
 ].map(t => `\\b(?:${t})\\b`).join('|') + '|\\d\\s*capsulas\\b');
 const semAcentoMin = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
