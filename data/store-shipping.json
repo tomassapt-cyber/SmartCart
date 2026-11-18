@@ -623,5 +623,13 @@
   "casa": 3.75,
   "ilhas": null,
   "gratis_ilhas": null
+ },
+ "perfumespt": {
+  "gratis": 89,
+  "casa": 4.59,
+  "ponto": null,
+  "ponto_txt": null,
+  "ilhas": 17.99,
+  "gratis_ilhas": 250
  }
 }

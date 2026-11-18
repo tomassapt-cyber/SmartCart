@@ -1,0 +1,112 @@
+# CosMath — Perfumes.pt (Iperfumes) · 2x/dia, só ofertas em produtos existentes
+# ============================================================
+# Magento; cada ficha tem um Product por tamanho com o EAN no sku. ~7 750 fichas sem EAN no
+# endereço: lê-se em ROTAÇÃO até 100 min por corrida, com memória na cache do Actions
+# (.cache-lojas/perfumespt-memoria.json) — ver scripts/scrape-perfumespt-catalog.js.
+# Preparada a 2026-11-18 (ronda 10 de lojas), com o identificador do CosMath.
+
+name: Perfumes.pt refresh
+
+on:
+  schedule:
+    - cron: '17 5,17 * * *'
+  # ensaio na nuvem no próprio PR (30 fichas, sem publicar): mostra se os servidores do GitHub têm acesso
+  pull_request:
+    paths:
+      - 'scripts/scrape-perfumespt-catalog.js'
+      - '.github/workflows/perfumespt-catalog.yml'
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: 'Limite de fichas (vazio = rotação normal) — ensaio que não publica'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: perfumespt-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 130
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      NODE_OPTIONS: '--max-old-space-size=4096'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+      - name: Testes offline (leitura, rotação e integração só-existentes)
+        run: node scripts/test-perfumespt.cjs && node scripts/test-fichas-existentes.js && node scripts/test-integrar-existentes.js
+      - name: Repor a memória da rotação
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache-lojas/perfumespt-memoria.json
+          key: perfumespt-memoria-${{ github.run_id }}
+          restore-keys: perfumespt-memoria-
+      - name: Recolher Perfumes.pt
+        env:
+          LIMITE: ${{ github.event_name == 'pull_request' && '30' || github.event.inputs.limite }}
+        run: |
+          if [ -n "$LIMITE" ]; then
+            node scripts/scrape-perfumespt-catalog.js --limite="$LIMITE"
+          else
+            node scripts/scrape-perfumespt-catalog.js --orcamento-min=100
+          fi
+      # a memória guarda-se mesmo que a recolha pare a meio (o que já se leu vale)
+      - name: Guardar a memória da rotação
+        if: always() && hashFiles('.cache-lojas/perfumespt-memoria.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .cache-lojas/perfumespt-memoria.json
+          key: perfumespt-memoria-${{ github.run_id }}
+      - name: Guardar a recolha (artefacto)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perfumespt-${{ github.run_id }}
+          path: data/catalog/perfumespt-full.json
+          retention-days: 14
+      # Um ensaio com limite NÃO publica (e o integrador recusa feeds parciais).
+      - name: Validar e integrar em produtos existentes
+        if: github.event_name != 'pull_request' && github.event.inputs.limite == ''
+        run: |
+          node scripts/integrate-perfumespt-catalog.js --dry-run
+          node scripts/integrate-perfumespt-catalog.js
+      - name: Commit
+        if: github.event_name != 'pull_request' && github.event.inputs.limite == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -euo pipefail
+          bash scripts/ci/seed.sh pack
+          git add data/seed-bundle.json.gz
+          git add -f data/catalog/perfumespt-full.json
+          if git diff --cached --quiet; then echo "Nenhuma alteração."; exit 0; fi
+          git commit -m "chore: Perfumes.pt refresh ($(date -u +%Y-%m-%d))"
+      - name: Push (resiliente — re-integra sobre origin em conflito)
+        if: github.event_name != 'pull_request' && github.event.inputs.limite == ''
+        env:
+          GIT_AUTHOR_NAME: CosMath Bot
+          GIT_AUTHOR_EMAIL: bot@cosmath.pt
+          GIT_COMMITTER_NAME: CosMath Bot
+          GIT_COMMITTER_EMAIL: bot@cosmath.pt
+        run: |
+          set -euo pipefail
+          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ]; then echo "Nada para publicar."; exit 0; fi
+          bash scripts/ci/resilient-push.sh \
+            "node scripts/integrate-perfumespt-catalog.js" \
+            "chore: Perfumes.pt refresh ($(date -u +%Y-%m-%d))" \
+            data/catalog/perfumespt-full.json
