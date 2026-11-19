@@ -1050,6 +1050,16 @@
    "outros": {
     "store_slug": "perfumespt"
    }
+  },
+  {
+   "ficheiro": "ofertas/coserty.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "coserty"
+   }
   }
  ],
  "outros": {}
