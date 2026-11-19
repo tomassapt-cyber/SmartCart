@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-18T13:48:19.364Z",
-  "seed_total_products": 102400,
+  "generated_at": "2026-11-19T11:28:03.654Z",
+  "seed_total_products": 104136,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -37,7 +37,7 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 9.81,
+      "best_price": 10.54,
       "best_store": "Pharma24",
       "best_store_slug": "pharma24",
       "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 14.98,
+      "best_price": 15,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -141,10 +141,10 @@
       "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 30.79,
-      "best_store": "A Tua Farmácia",
-      "best_store_slug": "atuafarmacia",
-      "best_url": "https://www.atuafarmacia.pt/products/la-roche-posay-coffret-xmas26-hyalu-b5-suractivated-serum-30ml"
+      "best_price": 31.43,
+      "best_store": "Sofarma",
+      "best_store_slug": "sofarma",
+      "best_url": "https://www.sofarma.com/pt/beleza/la-roche-posay-hyalu-suractivated-serum-coffret-natal26_p87253.html"
     },
     {
       "ean": "3574661879185",
@@ -188,6 +188,20 @@
       "verified_live": true
     },
     {
+      "ean": "5901887010173",
+      "name": "Creme facial de pepino e pepino",
+      "brand": "Ziaja",
+      "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/P/E/PEPINO_Crema_facial___5901887010173_3d7d.jpg",
+      "best_price": 1.6,
+      "best_store": "Primor",
+      "best_store_slug": "primor",
+      "best_url": "https://pt.primor.eu/pt_pt/ziaja-creme-facial-de-pepino-e-pepino-14554.html",
+      "previous_price": 2.29,
+      "discount_pct": 30,
+      "dropped_day": 20776,
+      "verified_live": true
+    },
+    {
       "ean": "5901887042242",
       "name": "Antioxidation Micellar Cleaning",
       "brand": "Ziaja",
@@ -214,55 +228,40 @@
       "discount_pct": 30,
       "dropped_day": 20773,
       "verified_live": true
-    },
-    {
-      "ean": "3401399277092",
-      "name": "Bioderma Sébium Gel Moussant - Refill",
-      "brand": "Bioderma",
-      "image_url": "https://static.lojadafarmacia.com/19601/sebium-bioderma-moussant-500ml.webp",
-      "best_price": 12.6,
-      "best_store": "Farmácia Rodrigues",
-      "best_store_slug": "farmaciarodrigues",
-      "best_url": "https://farmaciarodrigues.pt/pt-pt/product/bioderma-sebium-promo-gel-moussant-500ml",
-      "volume_ml": 500,
-      "previous_price": 18,
-      "discount_pct": 30,
-      "dropped_day": 20769,
-      "verified_live": true
     }
   ],
   "top_brands": [
     {
-      "name": "Essence",
-      "products": 902
+      "name": "Clarins",
+      "products": 904
     },
     {
-      "name": "Clarins",
-      "products": 900
+      "name": "Essence",
+      "products": 903
     },
     {
       "name": "L'Oréal Paris",
-      "products": 879
+      "products": 880
     },
     {
-      "name": "Avène",
-      "products": 811
+      "name": "Chicco",
+      "products": 818
     },
     {
       "name": "Isdin",
+      "products": 815
+    },
+    {
+      "name": "Avène",
       "products": 810
     },
     {
       "name": "Nivea",
-      "products": 804
-    },
-    {
-      "name": "Chicco",
-      "products": 802
+      "products": 808
     },
     {
       "name": "La Roche-Posay",
-      "products": 787
+      "products": 789
     }
   ],
   "telegram_alerts": [
@@ -295,8 +294,8 @@
     }
   ],
   "stats": {
-    "stores": 100,
-    "products": 72770,
+    "stores": 103,
+    "products": 71522,
     "avg_savings_pct": 28
   },
   "shard_version": "",
