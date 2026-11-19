@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-18T01:40:29.487467+00:00",
-  "completed_at": "2026-11-18T03:21:54.168802+00:00",
+  "scraped_at": "2026-11-19T01:17:16.391778+00:00",
+  "completed_at": "2026-11-19T02:54:19.138762+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1841,
+  "targets": 1861,
   "products": [
     {
       "ean": "5601411434146",
@@ -5506,6 +5506,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474636975686",
+      "name": "Máscara Vitamino Color 500ml L'Oreal Serie Expert",
+      "price": 28.18,
+      "net_price": 22.91,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/125108-thickbox_default/mascara-vitamino-color-500ml-l-oreal-serie-expert.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474636975976",
       "name": "Shampoo Vitamino Color 1500ml L'Oreal Serie Expert",
       "price": 38.2,
@@ -5606,6 +5619,19 @@
       "url": "https://presencadeluxo.pt/loreal-liss-unlimited/11426-shampoo-liss-unlimited-300ml-serie-expert-loreal-3474636974399.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/106644-thickbox_default/shampoo-liss-unlimited-300ml-serie-expert-loreal.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474636975860",
+      "name": "Shampoo Liss Unlimited 500ml L'Oreal Serie Expert",
+      "price": 21.04,
+      "net_price": 17.1,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/loreal/11427-shampoo-liss-unlimited-500ml-loreal-serie-expert-3474636975860.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106645-thickbox_default/shampoo-liss-unlimited-500ml-loreal-serie-expert.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10264,6 +10290,84 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8028483251094",
+      "name": "Espuma de cabelo Extra Forte 250ml - Precious Style - KayPro",
+      "price": 10.35,
+      "net_price": 8.41,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44290-espuma-de-cabelo-extra-forte-250ml-precious-style-kaypro-8028483251094.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60490-thickbox_default/espuma-de-cabelo-extra-forte-250ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483251100",
+      "name": "Espuma para cabelo No Rinse 250ml - Precious Style - KayPro",
+      "price": 8.58,
+      "net_price": 6.97,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44292-espuma-para-cabelo-no-rinse-250ml-precious-style-kaypro-8028483251100.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60492-thickbox_default/espuma-para-cabelo-no-rinse-250ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483251124",
+      "name": "Cera Modeladora Forte 100ml - Precious Style - KayPro",
+      "price": 11.23,
+      "net_price": 9.13,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44295-cera-modeladora-forte-100ml-precious-style-kaypro-8028483251124.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60498-thickbox_default/cera-modeladora-forte-100ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483251131",
+      "name": "Cera Cabelo Efeito Brilhante 100ml - Precious Style - KayPro",
+      "price": 8.1,
+      "net_price": 6.59,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44296-cera-cabelo-efeito-brilhante-100ml-precious-style-kaypro-8028483251131.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60500-thickbox_default/cera-cabelo-efeito-brilhante-100ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483251148",
+      "name": "Cera Cabelo Fibrosa 100ml - Precious Style - KayPro",
+      "price": 9.02,
+      "net_price": 7.33,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44297-cera-cabelo-fibrosa-100ml-precious-style-kaypro-8028483251148.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60502-thickbox_default/cera-cabelo-fibrosa-100ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483251155",
+      "name": "Cera Modeladora Opaca 100ml - Precious Style - KayPro",
+      "price": 10.05,
+      "net_price": 8.17,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44298-cera-modeladora-opaca-100ml-precious-style-kaypro-8028483251155.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60504-thickbox_default/cera-modeladora-opaca-100ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8028483251162",
       "name": "Gel Fixação Forte 150ml - Precious Style - KayPro",
       "price": 8.99,
@@ -10273,6 +10377,19 @@
       "url": "https://presencadeluxo.pt/kaypro-precious-style/44299-gel-fixacao-forte-150ml-precious-style-kaypro-8028483251162.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/60506-thickbox_default/gel-fixacao-forte-150ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483251193",
+      "name": "Spray de Brilho para Cabelo 200ml - Precious Style - KayPro",
+      "price": 15.38,
+      "net_price": 12.5,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44301-spray-de-brilho-para-cabelo-200ml-precious-style-kaypro-8028483251193.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60510-thickbox_default/spray-de-brilho-para-cabelo-200ml-precious-style-kaypro.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10312,6 +10429,19 @@
       "url": "https://presencadeluxo.pt/kaypro-precious-style/44306-po-volumizador-para-cabelos-60ml-precious-style-kaypro-8028483251230.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/60518-thickbox_default/po-volumizador-para-cabelos-60ml-precious-style-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483254200",
+      "name": "Spray Desembaraçante 200ml - Precious Style - KayPro",
+      "price": 8.72,
+      "net_price": 7.09,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-precious-style/44307-spray-desembaracante-200ml-precious-style-kaypro-8028483254200.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/60520-thickbox_default/spray-desembaracante-200ml-precious-style-kaypro.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -10403,6 +10533,19 @@
       "url": "https://presencadeluxo.pt/loreal-pro-longer/44381-shampoo-pro-longer-500ml-loreal-serie-expert-3474636975846.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/125148-thickbox_default/shampoo-pro-longer-500ml-loreal-serie-expert.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474636975402",
+      "name": "Máscara Pro Longer 500ml L'Oreal Serie Expert",
+      "price": 28.18,
+      "net_price": 22.91,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/loreal-pro-longer/44382-mascara-pro-longer-500ml-loreal-serie-expert-3474636975402.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106675-thickbox_default/mascara-pro-longer-500ml-loreal-serie-expert.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -13683,6 +13826,32 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8028483253104",
+      "name": "Máscara Revitalizante Alho 1000ml - KayPro",
+      "price": 9.9,
+      "net_price": 8.05,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kay-pro-garlic-revitalizante/80801-mascara-revitalizante-alho-1000ml-kaypro-8028483253104.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/122935-thickbox_default/mascara-revitalizante-alho-1000ml-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483253302",
+      "name": "Máscara Revitalizante Alho 500ml - KayPro",
+      "price": 7.69,
+      "net_price": 6.25,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kay-pro-garlic-revitalizante/80803-mascara-revitalizante-alho-500ml-kaypro-8028483253302.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/122940-thickbox_default/mascara-revitalizante-alho-500ml-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600482305874",
       "name": "Tesoura de Desbaste Design Inox 13cm - Ricki Parodi",
       "price": 29.43,
@@ -16387,6 +16556,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5600482306611",
+      "name": "Escova Térmica RickiParodi Thermal 19 mm em Cerâmica e Tourmalina",
+      "price": 5.58,
+      "net_price": 4.54,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/escovas-ricki-parodi/84937-escova-termica-ricki-parodi-19mm-o-royal-secret-5600482306611.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/158239-thickbox_default/escova-termica-ricki-parodi-19mm-o-royal-secret.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600482306352",
       "name": "Verniz Gel A79 Ricki Parodi Cloudy Day 10ml",
       "price": 4.07,
@@ -16409,6 +16591,45 @@
       "url": "https://presencadeluxo.pt/verniz-gel-ricki-parodi/84946-verniz-gel-a83-ricki-parodi-feminine-peony-105ml-5600482306390.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/139360-thickbox_default/verniz-gel-a83-ricki-parodi-feminine-peony-105ml.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600482306635",
+      "name": "Escova Térmica Ricki Parodi 16mm Ø ECOPRO",
+      "price": 3.9,
+      "net_price": 3.17,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/escovas-ricki-parodi/84954-escova-termica-ricki-parodi-16mm-o-ecopro-5600482306635.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139415-thickbox_default/escova-termica-ricki-parodi-16mm-o-ecopro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600482306642",
+      "name": "Escova Térmica Ricki Parodi 19mm Ø ECOPRO",
+      "price": 4.3,
+      "net_price": 3.49,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/escovas-ricki-parodi/84955-escova-termica-ricki-parodi-19mm-o-ecopro-5600482306642.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139419-thickbox_default/escova-termica-ricki-parodi-19mm-o-ecopro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5600482306666",
+      "name": "Escova Térmica Ricki Parodi 32mm Ø ECOPRO",
+      "price": 5.03,
+      "net_price": 4.09,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/escovas-ricki-parodi/84957-escova-termica-ricki-parodi-32mm-o-ecopro-5600482306666.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/139417-thickbox_default/escova-termica-ricki-parodi-32mm-o-ecopro.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -17310,6 +17531,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8028483257591",
+      "name": "Kit Mini Size Kaypro Macadâmia Cabelos Frágeis e Sensíveis",
+      "price": 7.54,
+      "net_price": 6.13,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-macadamia-cabelos-frageis-e-sensiveis-nutricao/85997-kit-mini-size-kaypro-macadamia-cabelos-frageis-e-sensiveis-8028483257591.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/142402-thickbox_default/kit-mini-size-kaypro-macadamia-cabelos-frageis-e-sensiveis.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8028483257577",
       "name": "Kit Mini Size Kaypro Curl Ondulados",
       "price": 7.54,
@@ -17349,6 +17583,32 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8028483257560",
+      "name": "Kit Mini Size Kaypro Caviar Supreme Cabelos Colorados",
+      "price": 7.54,
+      "net_price": 6.13,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-caviar-supreme-cabelos-colorados-ou-tratados/86003-kit-mini-size-kaypro-caviar-supreme-cabelos-colorados-8028483257560.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/142413-thickbox_default/kit-mini-size-kaypro-caviar-supreme-cabelos-colorados.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483257553",
+      "name": "Kit Mini Size Kaypro Argan Hidratação",
+      "price": 7.54,
+      "net_price": 6.13,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kay-argan-oil-hidratacao/86004-kit-mini-size-kaypro-argan-hidratacao-8028483257553.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/142416-thickbox_default/kit-mini-size-kaypro-argan-hidratacao.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5600482306703",
       "name": "Escova Circular Térmica Ricki Parodi Golden Ceramic 15mm",
       "price": 5.27,
@@ -17358,6 +17618,19 @@
       "url": "https://presencadeluxo.pt/escovas-ricki-parodi/86023-escova-circular-termica-ricki-parodi-golden-ceramic-15mm--5600482306703.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/142482-thickbox_default/escova-circular-termica-ricki-parodi-golden-ceramic-15mm-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8028483263370",
+      "name": "Kit Reconstrução Kaypro Botu Cure Tratamento 4 Semanas",
+      "price": 37.99,
+      "net_price": 30.880000000000003,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-botucure-reconstrucao-botulino/86032-kit-reconstrucao-kaypro-botu-cure-tratamento-4-semanas-8028483263370.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/142481-thickbox_default/kit-reconstrucao-kaypro-botu-cure-tratamento-4-semanas.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -17826,6 +18099,19 @@
       "url": "https://presencadeluxo.pt/osis/87044-balsamo-de-caracois-schwarzkopf-osis-bounty-balm-150ml--4045787936339.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/145433-thickbox_default/balsamo-de-caracois-schwarzkopf-osis-bounty-balm-150ml-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "8032947866243",
+      "name": "Creme Descolorante Anti-Amarelos Fanola No Yellow 500g",
+      "price": 20.3,
+      "net_price": 16.5,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/descolorante-cabelo/87053-creme-descolorante-anti-amarelos-fanola-no-yellow-500g-8032947866243.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/145458-thickbox_default/creme-descolorante-anti-amarelos-fanola-no-yellow-500g.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -21652,6 +21938,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "5603927899242",
+      "name": "Andreia Professional Hybrid Gel Charmed Collection H94",
+      "price": 2.83,
+      "net_price": 2.31,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/verniz-andreia-hybrid-gel/91764-andreia-hybrid-gel-h94-5603927899242.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/156211-thickbox_default/andreia-hybrid-gel-h94.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "5603927899259",
       "name": "Andreia Professional Hybrid Gel Charmed Collection H95",
       "price": 2.83,
@@ -22601,19 +22900,6 @@
       "additional_shipping_cost": 0.0
     },
     {
-      "ean": "5603927902843",
-      "name": "Andreia Gel Polish Celebration Edit CE6 – Cereja Negro Cintilante 10,5 ml",
-      "price": 6.38,
-      "net_price": 5.19,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/gel-polish-andreia/92764-andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml-5603927902843.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/161155-thickbox_default/andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
       "ean": "5600482302897",
       "name": "Corta-Unhas RickiParodi Níquel Grande",
       "price": 2.25,
@@ -22661,22 +22947,6 @@
       "reason": "stock/order contradiction"
     },
     {
-      "url": "https://presencadeluxo.pt/loreal/11390-mascara-vitamino-color-500ml-l-oreal-serie-expert-3474636975686.html",
-      "ean": "3474636975686",
-      "canonical": "3474636975686",
-      "existing_name": "L'ORÉAL SÉRIE EXPERT VITAMINO COLOR MÁSCARA CABELO PINTADO 500ml - Perfumes4You - O mundo dos perfumes à sua porta",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/loreal/11427-shampoo-liss-unlimited-500ml-loreal-serie-expert-3474636975860.html",
-      "ean": "3474636975860",
-      "canonical": "3474636975860",
-      "existing_name": "L'OREAL SERIE EXPERT PROKERATIN LISS UNLIMITED SHAMPOO 500ml - Perfumes4You - O mundo dos perfumes à sua porta",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
       "url": "https://presencadeluxo.pt/cuidados-cabelos-loiros-blond-me/12340-shampoo-todos-os-loiros-enriquecido-blond-me-300ml-schwarzkopf-4045787639834.html",
       "ean": "4045787639834",
       "canonical": "4045787639834",
@@ -22689,14 +22959,6 @@
       "ean": "5600355740269",
       "canonical": "5600355740269",
       "existing_name": "INOCOS EMPURRA CUTÍCULAS MULTIUSOS UNIVERSAL",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
-    },
-    {
-      "url": "https://presencadeluxo.pt/loreal-pro-longer/44382-mascara-pro-longer-500ml-loreal-serie-expert-3474636975402.html",
-      "ean": "3474636975402",
-      "canonical": "3474636975402",
-      "existing_name": "Loreal Pro Longer máscara fortificante 500ml",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
@@ -22907,6 +23169,14 @@
       "existing_name": "EVELINE D-PANTENOL AFTER SUN EEITO REFRESCANTE 200 ML",
       "method": "GTIN",
       "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/catalisador-unhas/85281-catalisador-tips-unhas-andreia-pro-extend-lamp-5603927886716.html",
+      "ean": "5603927886716",
+      "canonical": "5603927886716",
+      "existing_name": "Catalisador Tips Unhas Andreia PRO Extend Lamp",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/pinceis-e-esponjas/85353-pincel-expert-facial-realtechniques-by-sam-nic-chapman-079625014112.html",
@@ -23237,14 +23507,6 @@
       "reason": "stock/order contradiction"
     },
     {
-      "url": "https://presencadeluxo.pt/verniz-andreia-hybrid-gel/91764-andreia-hybrid-gel-h94-5603927899242.html",
-      "ean": "5603927899242",
-      "canonical": "5603927899242",
-      "existing_name": "Andreia Hybrid Gel Fusion Color Verniz Efeito Gel 10,5ml - H94 Branco Gelo Leitoso",
-      "method": "GTIN",
-      "reason": "stock/order contradiction"
-    },
-    {
       "url": "https://presencadeluxo.pt/the-gel-polish-andreia/92557-andreia-professional-the-gel-polish-september-rhythm-sr1-105-ml-5603927901990.html",
       "ean": "5603927901990",
       "canonical": "5603927901990",
@@ -23275,6 +23537,14 @@
       "existing_name": "Verniz Gel Andreia Gel Polish CE5 – Bordeaux intenso com reflexos avermelhados e brilho multidimensional",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
+    },
+    {
+      "url": "https://presencadeluxo.pt/gel-polish-andreia/92764-andreia-gel-polish-celebration-edit-ce6-cereja-negro-cintilante-105-ml-5603927902843.html",
+      "ean": "5603927902843",
+      "canonical": "5603927902843",
+      "existing_name": "Verniz Gel Andreia Gel Polish CE6 – Tom cereja negra intenso iluminado por reflexos vermelhos cintilantes",
+      "method": "GTIN",
+      "reason": "stock/order contradiction"
     },
     {
       "reason": "conflicting duplicate GTIN",
