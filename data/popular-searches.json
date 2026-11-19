@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T13:55:24.384Z",
+  "generated_at": "2026-11-19T14:38:27.823Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -24,18 +24,18 @@
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 42
+      "pop_score": 44
     },
     {
       "ean": "7427244506335",
       "name": "Papillon Creme de Rosto Vitamina C",
       "brand": "Papillon",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/9/695e911d69a4e_PapillonCremedeRostoVitaminaC50ml1_1.jpg",
-      "best_price": 17.94,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/hidratacao-e-higiene/3491-papillon-creme-facial-com-vitamina-c-50ml.html",
-      "search_term": "vitamina c rosto melhores",
+      "best_price": 18.17,
+      "best_store": "Farmácia Barreiros",
+      "best_store_slug": "barreiros",
+      "best_url": "https://www.farmaciabarreiros.com/beleza/rosto/hidratacao-rosto/papillon-creme-de-rosto-vitamina-c-50-ml",
+      "search_term": "vitamina c rosto para que serve",
       "pop_score": 41
     },
     {
@@ -43,10 +43,10 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 9.81,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml",
+      "best_price": 10.43,
+      "best_store": "Farmácia 365",
+      "best_store_slug": "farmacia365",
+      "best_url": "https://www.farmacia365.pt/lazartigue-clear-champo-caspa-oleosa-250ml",
       "search_term": "shampoo anticaspa",
       "pop_score": 39
     },
@@ -55,12 +55,12 @@
       "name": "Avène Protetor Solar Creme FPS50+",
       "brand": "Avène",
       "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
-      "best_price": 8.19,
-      "best_store": "ShopCosmetics",
-      "best_store_slug": "shopcosmetics",
-      "best_url": "https://shopcosmetics.pt/rosto/586-avene-solar-creme-spf50-50ml.html",
+      "best_price": 8.8,
+      "best_store": "VallisPharma",
+      "best_store_slug": "vallispharma",
+      "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml",
       "search_term": "la roche posay protetor solar",
-      "pop_score": 33
+      "pop_score": 32
     },
     {
       "ean": "5201279072193",
@@ -79,10 +79,10 @@
       "name": "Esfoliante Esfoliante facial",
       "brand": "Clinique",
       "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/0/T/0TF00097_1_eb5d.jpg",
-      "best_price": 22.86,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/clinique-esfoliante-esfoliante-facial-14204.html",
+      "best_price": 22.28,
+      "best_store": "Balvera",
+      "best_store_slug": "balvera",
+      "best_url": "https://balvera.pt/produtos/clinique-exfoliating-scrub-1",
       "search_term": "esfoliante facial caseiro",
       "pop_score": 29
     },
