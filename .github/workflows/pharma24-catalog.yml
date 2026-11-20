@@ -58,6 +58,9 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      - name: Teste offline (EAN no gtin13/mpn, CNP no sku)
+        run: node scripts/test-pharma24.cjs
+
       - name: Scrape Pharma24
         run: |
           if [ -n "${{ github.event.inputs.limite }}" ]; then
