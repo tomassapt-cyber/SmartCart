@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-20T11:08:25.705Z",
-  "seed_total_products": 104632,
+  "generated_at": "2026-11-20T13:58:00.893Z",
+  "seed_total_products": 104649,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -173,6 +173,21 @@
       "verified_live": true
     },
     {
+      "ean": "3401573670282",
+      "name": "Sensibio Forte",
+      "brand": "Bioderma",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797440.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 10.88,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/sensibio-bioderma-forte-cr-40-ml.html",
+      "volume_ml": 40,
+      "previous_price": 15.96,
+      "discount_pct": 32,
+      "dropped_day": 20773,
+      "verified_live": true
+    },
+    {
       "ean": "8809562191032",
       "name": "Esfoliante Corporal Fresh Cloud Body & Scalp",
       "brand": "Arencia",
@@ -184,20 +199,6 @@
       "previous_price": 15.95,
       "discount_pct": 32,
       "dropped_day": 20774,
-      "verified_live": true
-    },
-    {
-      "ean": "5901887010173",
-      "name": "Creme facial de pepino e pepino",
-      "brand": "Ziaja",
-      "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/P/E/PEPINO_Crema_facial___5901887010173_3d7d.jpg",
-      "best_price": 1.6,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/ziaja-creme-facial-de-pepino-e-pepino-14554.html",
-      "previous_price": 2.29,
-      "discount_pct": 30,
-      "dropped_day": 20776,
       "verified_live": true
     },
     {
@@ -248,11 +249,11 @@
     },
     {
       "name": "Isdin",
-      "products": 817
+      "products": 818
     },
     {
       "name": "Avène",
-      "products": 810
+      "products": 812
     },
     {
       "name": "Nivea",
@@ -260,7 +261,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 789
+      "products": 788
     }
   ],
   "telegram_alerts": [
