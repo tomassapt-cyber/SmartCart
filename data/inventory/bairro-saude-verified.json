@@ -3,8 +3,8 @@
   "store_slug": "bairro-saude",
   "store_name": "Bairro da Saúde",
   "store_url": "https://bairrodasaude.pt",
-  "verified_at": "2026-11-19T11:23:58.399Z",
-  "method": "playwright-headless (refresh 2026-11-19)",
+  "verified_at": "2026-11-20T11:05:25.538Z",
+  "method": "playwright-headless (refresh 2026-11-20)",
   "stats": {
     "total": 17,
     "verified": 7,

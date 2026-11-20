@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-19T14:18:11.818Z",
-  "seed_total_products": 104149,
+  "generated_at": "2026-11-20T11:08:25.705Z",
+  "seed_total_products": 104632,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15,
+      "best_price": 15.02,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -159,18 +159,17 @@
   ],
   "em_alta": [
     {
-      "ean": "3401573670282",
-      "name": "Sensibio Forte",
-      "brand": "Bioderma",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797440.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 10.88,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/sensibio-bioderma-forte-cr-40-ml.html",
-      "volume_ml": 40,
-      "previous_price": 15.96,
-      "discount_pct": 32,
-      "dropped_day": 20773,
+      "ean": "3522930003823",
+      "name": "Caudalie Thé des Vignes Gel de Banho",
+      "brand": "Caudalie",
+      "image_url": "https://cdn1.costatic.com/img/product/400/55d4cf92587be/caudalie-the-des-p74801.jpg",
+      "best_price": 2.52,
+      "best_store": "Farmácia Barata",
+      "best_store_slug": "farmaciabarata",
+      "best_url": "https://www.farmaciabarata.pt/banheira-e-chuveiro/caudalie-gel-de-ducha-the-des-vignes.html",
+      "previous_price": 5.03,
+      "discount_pct": 50,
+      "dropped_day": 20777,
       "verified_live": true
     },
     {
@@ -233,7 +232,7 @@
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 904
+      "products": 906
     },
     {
       "name": "Essence",
@@ -241,27 +240,27 @@
     },
     {
       "name": "L'Oréal Paris",
-      "products": 880
+      "products": 879
     },
     {
       "name": "Chicco",
-      "products": 818
+      "products": 824
     },
     {
       "name": "Isdin",
-      "products": 816
+      "products": 817
     },
     {
       "name": "Avène",
-      "products": 813
+      "products": 810
     },
     {
       "name": "Nivea",
-      "products": 808
+      "products": 806
     },
     {
       "name": "La Roche-Posay",
-      "products": 788
+      "products": 789
     }
   ],
   "telegram_alerts": [
@@ -295,8 +294,8 @@
   ],
   "stats": {
     "stores": 103,
-    "products": 71522,
-    "avg_savings_pct": 28
+    "products": 71894,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": "",
