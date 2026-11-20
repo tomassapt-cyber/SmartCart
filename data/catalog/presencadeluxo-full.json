@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-11-19T01:17:16.391778+00:00",
-  "completed_at": "2026-11-19T02:54:19.138762+00:00",
+  "scraped_at": "2026-11-20T11:53:31.796293+00:00",
+  "completed_at": "2026-11-20T13:44:03.028728+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
-  "targets": 1861,
+  "targets": 1878,
   "products": [
     {
       "ean": "5601411434146",
@@ -1359,6 +1359,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787300062",
+      "name": "Schwarzkopf Silhouette Laca Fix. Extra Forte 300ml – Fixação Forte e Brilho Duradouro",
+      "price": 13.33,
+      "net_price": 10.83,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/silhouette-super-hold-schwarzkopf/1363-laca-extra-forte-silhouette-super-hold-300ml-schwarzkopf--4045787300062.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130646-thickbox_default/laca-extra-forte-silhouette-super-hold-300ml-schwarzkopf-.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787464030",
       "name": "Schwarzkopf Silhouette Laca Fix. Extra Forte 500ml – Fixação Forte e Brilho Duradouro",
       "price": 17.88,
@@ -1706,6 +1719,19 @@
       "url": "https://presencadeluxo.pt/secadores-parlux/2355-secador-parlux-2800-secador-de-cabelo-profissional-8021233044014.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/95938-thickbox_default/secador-parlux-2800-secador-de-cabelo-profissional.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "5996415032376",
+      "name": "Wahl Balding Clipper - Máquina de Corte (Com Fio)",
+      "price": 98.06,
+      "net_price": 79.73,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/maquina-de-cortar-cabelo/2559-wahl-balding-clipper-maquina-de-corte-com-fio-5996415032376.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/96125-thickbox_default/wahl-balding-clipper-maquina-de-corte-com-fio.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -3881,6 +3907,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8028483228447",
+      "name": "Shampoo Macadâmia 1000ml - KayPro",
+      "price": 9.61,
+      "net_price": 7.81,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kaypro-macadamia-cabelos-frageis-e-sensiveis-nutricao/9316-shampoo-macadamia-1000ml-kaypro-8028483228447.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/94815-thickbox_default/shampoo-macadamia-1000ml-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8028483228478",
       "name": "Condicionador Macadâmia 350ml - KayPro",
       "price": 7.1,
@@ -5701,6 +5740,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474636979172",
+      "name": "L'Oréal Blond Studio Creme Oxidante 30 Vol. 1000ml – À Base de Óleo",
+      "price": 16.39,
+      "net_price": 13.32,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/oxidante-e-descolorante-loreal/11464-creme-oxidante-aclarador-30-vol-blond-studio-9-1000ml-loreal-3474636979172.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/125077-thickbox_default/creme-oxidante-aclarador-30-vol-blond-studio-9-1000ml-loreal.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474630698000",
       "name": "L'Oréal Professionnel Hair Touch Up – Preto – 75ml",
       "price": 14.27,
@@ -6165,6 +6217,19 @@
       "url": "https://presencadeluxo.pt/bc-repair-rescue-schwarzkopf/12143-condicionador-intenso-repair-rescue-bonacure-1000ml-schwarzkopf-4045787723915.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/130435-thickbox_default/condicionador-intenso-repair-rescue-bonacure-1000ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787723830",
+      "name": "Schwarzkopf Bonacure Repair Rescue Máscara 500ml – Reparo e Nutrição Intensiva",
+      "price": 32.61,
+      "net_price": 26.51,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/bc-repair-rescue-schwarzkopf/12144-mascara-intensiva-reparadora-repair-rescue-bonacure-500ml-schwarzkopf-4045787723830.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130437-thickbox_default/mascara-intensiva-reparadora-repair-rescue-bonacure-500ml-schwarzkopf.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -6806,6 +6871,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787199642",
+      "name": "Schwarzkopf Igora Royal 5.57 Castanho Claro Cobre Dourado 60ml",
+      "price": 13.21,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12516-igora-royal-557-castanho-claro-cobre-dourado-60ml-schwarzkopf-4045787199642.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131126-thickbox_default/igora-royal-557-castanho-claro-cobre-dourado-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787199703",
       "name": "Schwarzkopf Igora Royal 5.65 Castanho Claro Chocolate Dourado 60ml",
       "price": 13.21,
@@ -7088,6 +7166,19 @@
       "url": "https://presencadeluxo.pt/igora-royal/12542-igora-royal-755-loiro-medio-extra-dourado-60ml-schwarzkopf-4045787210620.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/131169-thickbox_default/igora-royal-755-loiro-medio-extra-dourado-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787200164",
+      "name": "Schwarzkopf Igora Royal 7.57 Loiro Médio Cobre Dourado 60ml",
+      "price": 13.21,
+      "net_price": 10.74,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/igora-royal/12543-igora-royal-757-loiro-medio-cobre-dourado-60ml-schwarzkopf-4045787200164.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131191-thickbox_default/igora-royal-757-loiro-medio-cobre-dourado-60ml-schwarzkopf.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -7664,6 +7755,32 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4067971012148",
+      "name": "Schwarzkopf Igora Vibrance Loção Activadora 1.9% 1000ml",
+      "price": 14.49,
+      "net_price": 11.780000000000001,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/descolorante-e-oxidante-igora/12646-locao-ativadora-19-6vol-igora-vibrance-1000ml-schwarzkopf-4067971012148.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131074-thickbox_default/locao-ativadora-19-6vol-igora-vibrance-1000ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787183078",
+      "name": "Schwarzkopf Igora Royal Loção Activadora 10 Vol. 3% 1000ml",
+      "price": 15.2,
+      "net_price": 12.35,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/descolorante-e-oxidante-igora/12647-locao-ativadora-3-10vol-igora-royal-1000ml-schwarzkopf-4045787183078.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131063-thickbox_default/locao-ativadora-3-10vol-igora-royal-1000ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787278729",
       "name": "Igora Royal Absolutes 5.50 Castanho Claro Dourado Natural 60ml - Schwarzkopf",
       "price": 13.56,
@@ -7738,6 +7855,19 @@
       "url": "https://presencadeluxo.pt/igora-royal-absolutes/12654-igora-royal-absolutes-670-loiro-escuro-cobre-natural-60ml-schwarzkopf-4045787279320.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/131357-thickbox_default/igora-royal-absolutes-670-loiro-escuro-cobre-natural-60ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787183092",
+      "name": "Schwarzkopf Igora Royal Loção Activadora 30 Vol. 9% 1000ml",
+      "price": 15.2,
+      "net_price": 12.35,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/descolorante-e-oxidante-igora/12655-locao-ativadora-9-30vol-igora-royal-1000ml-schwarzkopf-4045787183092.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/131071-thickbox_default/locao-ativadora-9-30vol-igora-royal-1000ml-schwarzkopf.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -12812,6 +12942,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "8028483257720",
+      "name": "Shampoo Vegan Toning Carbon 1000ml - KayPro",
+      "price": 13.0,
+      "net_price": 10.57,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/kay-pro-toning-carbon-vegan/78367-shampoo-vegan-toning-carbon-1000ml-kaypro-8028483257720.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/104788-thickbox_default/shampoo-vegan-toning-carbon-1000ml-kaypro.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "8028483256211",
       "name": "Creme Descolorante Vegan Toning Carbon 250gr - KayPro",
       "price": 12.56,
@@ -15113,6 +15256,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4045787723755",
+      "name": "Condicionador Hidratante Moisture Kick Bonacure 200ml - Schwarzkopf",
+      "price": 17.12,
+      "net_price": 13.92,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/bc-moisture-kick-schwarzkopf/82376-condicionador-hidratante-moisture-kick-bonacure-200ml-schwarzkopf-4045787723755.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/130410-thickbox_default/condicionador-hidratante-moisture-kick-bonacure-200ml-schwarzkopf.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "4045787725759",
       "name": "Condicionador de Hidratação Moisture Kick Bonacure 1000ml - Schwarzkopf",
       "price": 42.95,
@@ -16032,6 +16188,19 @@
       "url": "https://presencadeluxo.pt/bc-frizz-away-schwarzkopf/84467-shampoo-schwarzkopf-bonacure-frizz-away-250ml-anti-frizz-4045787725353.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/137124-thickbox_default/shampoo-schwarzkopf-bonacure-frizz-away-250ml-anti-frizz.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787725575",
+      "name": "Condicionador Schwarzkopf Bonacure Frizz Away 200ml Anti Frizz",
+      "price": 17.12,
+      "net_price": 13.92,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/bc-frizz-away-schwarzkopf/84468-condicionador-schwarzkopf-bonacure-frizz-away-200ml-anti-frizz-4045787725575.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/137126-thickbox_default/condicionador-schwarzkopf-bonacure-frizz-away-200ml-anti-frizz.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -17514,6 +17683,19 @@
       "url": "https://presencadeluxo.pt/andreia-maquilhagem-olhos/85704-mascara-de-sobrancelhas-forever-brownscara-03-dark-brown-andreia-makeup-by-bru-5603927885665.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/141722-thickbox_default/mascara-de-sobrancelhas-forever-brownscara-03-dark-brown-andreia-makeup-by-bru.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "4045787936537",
+      "name": "Schwarzkopf OSIS+ Curl Jam 300ml - Definição e Fixação Ligeira para Caracóis",
+      "price": 17.94,
+      "net_price": 14.59,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/osis/85835-curl-jam-schwarzkopf-osis-gel-definicao-de-caracois-300ml-4045787936537.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/142048-thickbox_default/curl-jam-schwarzkopf-osis-gel-definicao-de-caracois-300ml.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -20846,6 +21028,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "4067971154404",
+      "name": "Schwarzkopf BlondMe Descolorante Premium Lightener 9+ 450g – Clareamento até 9 níveis com proteção avançada",
+      "price": 56.97,
+      "net_price": 46.32,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/blond-me-descolorante/90909-schwarzkopf-blondme-descolorante-premium-lightener-9-450g-clareamento-ate-9-niveis-com-protecao-avancada-4067971154404.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/153915-thickbox_default/schwarzkopf-blondme-descolorante-premium-lightener-9-450g-clareamento-ate-9-niveis-com-protecao-avancada.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474637283445",
       "name": "Spray Antifrizz Kerastase Gloss Absolu Milk 190ml",
       "price": 47.36,
@@ -23544,7 +23739,7 @@
       "canonical": "5603927902843",
       "existing_name": "Verniz Gel Andreia Gel Polish CE6 – Tom cereja negra intenso iluminado por reflexos vermelhos cintilantes",
       "method": "GTIN",
-      "reason": "stock/order contradiction"
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "reason": "conflicting duplicate GTIN",
@@ -23605,6 +23800,38 @@
           "url": "https://presencadeluxo.pt/bc-repair-rescue-schwarzkopf/12134-shampoo-reparacao-repair-rescue-bonacure-1000ml-schwarzkopf-4045787724073.html",
           "status": "ok",
           "image_url": "https://presencadeluxo.pt/130433-thickbox_default/shampoo-reparacao-repair-rescue-bonacure-1000ml-schwarzkopf.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        }
+      ]
+    },
+    {
+      "reason": "conflicting duplicate GTIN",
+      "ean": "4045787724233",
+      "rows": [
+        {
+          "ean": "4045787724233",
+          "name": "Máscara Color Freeze Silver Bonacure 500ml - Schwarzkopf",
+          "price": 32.61,
+          "net_price": 26.51,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/bc-color-freeze-schwarzkopf/4747-mascara-color-freeze-silver-bonacure-500ml-schwarzkopf-4045787724233.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/130454-thickbox_default/mascara-color-freeze-silver-bonacure-500ml-schwarzkopf.jpg",
+          "source": "explicit-visible-price-with-VAT-and-product-schema",
+          "additional_shipping_cost": 0.0
+        },
+        {
+          "ean": "4045787724233",
+          "name": "Máscara Tratamento Cor Color Freeze Bonacure 500ml - Schwarzkopf",
+          "price": 32.61,
+          "net_price": 26.51,
+          "tax_included": true,
+          "in_stock": true,
+          "url": "https://presencadeluxo.pt/bc-color-freeze-schwarzkopf/12155-mascara-tratamento-cor-color-freeze-bonacure-500ml-schwarzkopf-4045787724233.html",
+          "status": "ok",
+          "image_url": "https://presencadeluxo.pt/130452-thickbox_default/mascara-tratamento-cor-color-freeze-bonacure-500ml-schwarzkopf.jpg",
           "source": "explicit-visible-price-with-VAT-and-product-schema",
           "additional_shipping_cost": 0.0
         }
