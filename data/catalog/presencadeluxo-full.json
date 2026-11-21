@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-21T00:51:30.909063+00:00",
-  "completed_at": "2026-11-21T02:28:38.704475+00:00",
+  "scraped_at": "2026-11-21T11:22:43.790524+00:00",
+  "completed_at": "2026-11-21T13:06:05.450211+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -5506,6 +5506,19 @@
       "additional_shipping_cost": 0.0
     },
     {
+      "ean": "3474636975471",
+      "name": "L'Oréal Professionnel Série Expert Absolut Repair Condicionador 750ml – Reparação e Nutrição para Cabelos Danificados",
+      "price": 29.73,
+      "net_price": 24.17,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/loreal-absolut-repair/11385-condicionador-absolut-repair-750ml-serie-expert-loreal-3474636975471.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/106642-thickbox_default/condicionador-absolut-repair-750ml-serie-expert-loreal.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
       "ean": "3474636975938",
       "name": "L'Oréal Professionnel Série Expert Absolut Repair Shampoo 1500ml – Reparação Profunda para Cabelos Danificados",
       "price": 38.2,
@@ -5593,19 +5606,6 @@
       "url": "https://presencadeluxo.pt/scalp-loreal/11418-ampolas-aminexil-advanced-10x6ml-loreal-serie-expert-3474637265007.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/138090-thickbox_default/ampolas-aminexil-advanced-10x6ml-loreal-serie-expert.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474637265014",
-      "name": "Ampolas Aminexil Adavanced 42x6ml L'Oreal Serie Expert",
-      "price": 98.47,
-      "net_price": 80.06,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/scalp-loreal/11419-ampolas-aminexil-adavanced-42x6ml-l-oreal-serie-expert-3474637265014.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/138091-thickbox_default/ampolas-aminexil-adavanced-42x6ml-l-oreal-serie-expert.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -23129,10 +23129,10 @@
       "reason": "stock/order contradiction"
     },
     {
-      "url": "https://presencadeluxo.pt/loreal-absolut-repair/11385-condicionador-absolut-repair-750ml-serie-expert-loreal-3474636975471.html",
-      "ean": "3474636975471",
-      "canonical": "3474636975471",
-      "existing_name": "L'ORÉAL ABSOLUT REPAIR CONDICIONADOR 750ml - Perfumes4You - O mundo dos perfumes à sua porta",
+      "url": "https://presencadeluxo.pt/scalp-loreal/11419-ampolas-aminexil-adavanced-42x6ml-l-oreal-serie-expert-3474637265014.html",
+      "ean": "3474637265014",
+      "canonical": "3474637265014",
+      "existing_name": "L&#39;Oréal Professionnel Serie Expert Aminexil Antiqueda 42x6 ml",
       "method": "GTIN",
       "reason": "ambiguous/missing Product schema"
     },
