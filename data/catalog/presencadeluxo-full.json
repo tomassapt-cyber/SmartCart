@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-20T11:53:31.796293+00:00",
-  "completed_at": "2026-11-20T13:44:03.028728+00:00",
+  "scraped_at": "2026-11-21T00:51:30.909063+00:00",
+  "completed_at": "2026-11-21T02:28:38.704475+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -5502,19 +5502,6 @@
       "url": "https://presencadeluxo.pt/loreal-absolut-repair/11384-mascara-absolut-repair-500ml-loreal-serie-expert-3474636975440.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/125097-thickbox_default/mascara-absolut-repair-500ml-loreal-serie-expert.jpg",
-      "source": "explicit-visible-price-with-VAT-and-product-schema",
-      "additional_shipping_cost": 0.0
-    },
-    {
-      "ean": "3474636975471",
-      "name": "L'Oréal Professionnel Série Expert Absolut Repair Condicionador 750ml – Reparação e Nutrição para Cabelos Danificados",
-      "price": 29.73,
-      "net_price": 24.17,
-      "tax_included": true,
-      "in_stock": true,
-      "url": "https://presencadeluxo.pt/loreal-absolut-repair/11385-condicionador-absolut-repair-750ml-serie-expert-loreal-3474636975471.html",
-      "status": "ok",
-      "image_url": "https://presencadeluxo.pt/106642-thickbox_default/condicionador-absolut-repair-750ml-serie-expert-loreal.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -23140,6 +23127,14 @@
       "existing_name": "AndreiaProfissional Verniz de Gel 256 - 10.5ml",
       "method": "GTIN",
       "reason": "stock/order contradiction"
+    },
+    {
+      "url": "https://presencadeluxo.pt/loreal-absolut-repair/11385-condicionador-absolut-repair-750ml-serie-expert-loreal-3474636975471.html",
+      "ean": "3474636975471",
+      "canonical": "3474636975471",
+      "existing_name": "L'ORÉAL ABSOLUT REPAIR CONDICIONADOR 750ml - Perfumes4You - O mundo dos perfumes à sua porta",
+      "method": "GTIN",
+      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/cuidados-cabelos-loiros-blond-me/12340-shampoo-todos-os-loiros-enriquecido-blond-me-300ml-schwarzkopf-4045787639834.html",
