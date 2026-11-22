@@ -1,12 +1,12 @@
 {
  "_comment": "Gerado por scripts/aliases-cnp.js — fichas do mesmo produto com códigos de barras diferentes, ligadas pelo mesmo CNP nas farmácias e confirmadas pela marca, tamanho, nome e versão. Aplicado na publicação por scripts/dedup-ean-variants.js, depois dos aliases manuais e dos sintéticos, que mandam. Não editar à mão: corrigir as regras ou acrescentar um par manual.",
- "_gerado": "2026-11-17",
+ "_gerado": "2026-11-22",
  "0083078511173": {
   "aliases": [
    "083078511173"
   ],
   "reason": [
-   "CNP 6883934 · Carmex Stick Bálsamo Labial Hidratante SPF15 (11) ⇄ Bálsamo Labial Hidratante Clássico Carmex FPS15 (20)"
+   "CNP 6883934 · Carmex Stick Bálsamo Labial Hidratante SPF15 (11) ⇄ Bálsamo Labial Hidratante Clássico Carmex FPS15 (21)"
   ]
  },
  "0634438329787": {
@@ -22,7 +22,7 @@
    "635494363210"
   ],
   "reason": [
-   "CNP 6823807 · Skinceuticals C E Ferulic Sérum Antioxidante 30ml (11) ⇄ SkinCeuticals Prevent CE Ferulic Sérum Antioxidante 30ml (14)"
+   "CNP 6823807 · Skinceuticals C E Ferulic Sérum Antioxidante 30ml (12) ⇄ SkinCeuticals Prevent CE Ferulic Sérum Antioxidante 30ml (15)"
   ]
  },
  "072239314876": {
@@ -38,7 +38,7 @@
    "3574660004601"
   ],
   "reason": [
-   "CNP 6407163 · Roc Higiene Deo Keops Roll On 30 Ml (6) ⇄ RoC Keops Desodorizante Roll-On 30ml (22)"
+   "CNP 6407163 · Roc Higiene Deo Keops Roll On 30 Ml (7) ⇄ RoC Keops Desodorizante Roll-On 30ml (22)"
   ]
  },
  "1220000230040": {
@@ -46,7 +46,7 @@
    "3574660004571"
   ],
   "reason": [
-   "CNP 6426460 · Roc Higiene Deo Keops Vaporizador Fresco - 100ml (6) ⇄ RoC Keops Desodorizante Spray Fresco 100ml (11)"
+   "CNP 6426460 · Roc Higiene Deo Keops Vaporizador Fresco - 100ml (7) ⇄ RoC Keops Desodorizante Spray Fresco 100ml (11)"
   ]
  },
  "1220000230200": {
@@ -54,23 +54,7 @@
    "1220000230026"
   ],
   "reason": [
-   "CNP 6407155 · Roc Higiene Deo Keops Stick 40 Ml (4) ⇄ RoC Keops Desodorizante Stick 40ml (16)"
-  ]
- },
- "2007579916839": {
-  "aliases": [
-   "8470001669087"
-  ],
-  "reason": [
-   "CNP 6045575 · Vita-pos Pomada Oftálmica Vitamina A 5g (9) ⇄ Vita-Pos Pomada Oft Vit A 5g (10)"
-  ]
- },
- "3094907248952": {
-  "aliases": [
-   "8016825970642"
-  ],
-  "reason": [
-   "CNP 6347179 · Parodontax Origin Geng Pasta Dent 75ml (2) ⇄ Parodontax Original Gengivas Pasta Dentífrica - 75ml (27)"
+   "CNP 6407155 · Roc Higiene Deo Keops Stick 40 Ml (5) ⇄ RoC Keops Desodorizante Stick 40ml (16)"
   ]
  },
  "3264680009761": {
@@ -78,7 +62,7 @@
    "3264680002014"
   ],
   "reason": [
-   "CNP 6853002 · Nuxe Prodigieuse Oleo Seco Multif 50ml (3) ⇄ Nuxe Prodigieuse Óleo Seco Multifunções 50ml (22)"
+   "CNP 6853002 · Nuxe Prodigieuse Oleo Seco Multif 50ml (3) ⇄ Nuxe Prodigieuse Óleo Seco Multifunções 50ml (24)"
   ]
  },
  "3264680009785": {
@@ -86,7 +70,7 @@
    "3264680002021"
   ],
   "reason": [
-   "CNP 6853010 · Nuxe Prodigieuse Or óleo Multifuncional Com Brilho 50ml (3) ⇄ Nuxe Prodigieuse Or Óleo Multifunções Efeito Luz 50ml (24)"
+   "CNP 6853010 · Nuxe Prodigieuse Or óleo Multifuncional Com Brilho 50ml (3) ⇄ Nuxe Prodigieuse Or Óleo Multifunções Efeito Luz 50ml (27)"
   ]
  },
  "3264680025341": {
@@ -94,7 +78,7 @@
    "3264680008115"
   ],
   "reason": [
-   "CNP 6988048 · Nuxe Sun Óleo Lácteo Capilar - 100 mL (5) ⇄ Nuxe Sun Óleo-Leite Hidratante Protetor Capilar 100 ml (26)"
+   "CNP 6988048 · Nuxe Sun Óleo Lácteo Capilar - 100 mL (5) ⇄ Nuxe Sun Óleo-Leite Hidratante Protetor Capilar 100 ml (27)"
   ]
  },
  "3282770038521": {
@@ -110,7 +94,7 @@
    "3282770398267"
   ],
   "reason": [
-   "CNP 6966606 · A-Derma Protect Kids Spray Solar Corpo Criança SPF50+ pele frágil ao sol 200ml (11) ⇄ A-Derma Protect Kids Spray Solar Infantil FPS50+ 200 ml (22)"
+   "CNP 6966606 · A-Derma Protect Kids Spray Solar Corpo Criança SPF50+ pele frágil ao sol 200ml (11) ⇄ A-Derma Protect Kids Spray Solar Infantil FPS50+ 200 ml (24)"
   ]
  },
  "3282770073072": {
@@ -118,7 +102,7 @@
    "3282770149678"
   ],
   "reason": [
-   "CNP 7478057 · A-DERMA Exomega Control Creme Emoliente Anti-Comichão Tubo Eco-Slim 200 ml (16) ⇄ A-DERMA EXOMEGA CONTROL CR EMOL 200ML (22)"
+   "CNP 7478057 · A-DERMA Exomega Control Creme Emoliente Anti-Comichão Tubo Eco-Slim 200 ml (16) ⇄ A-DERMA EXOMEGA CONTROL CR EMOL 200ML (23)"
   ]
  },
  "3282770073348": {
@@ -126,7 +110,7 @@
    "3282770394184"
   ],
   "reason": [
-   "CNP 6980136 · DEXYANE MED creme (10) ⇄ Ducray Dexyane MeD Creme Reparador (34)"
+   "CNP 6980136 · DEXYANE MED creme (10) ⇄ Ducray Dexyane MeD Creme Reparador (35)"
   ]
  },
  "3282770073355": {
@@ -134,7 +118,7 @@
    "3282770394245"
   ],
   "reason": [
-   "CNP 6980144 · Ducray Dexyane Eczema Creme Reparador 100ml (7) ⇄ Ducray Dexyane Eczema Cream 100ml (15)"
+   "CNP 6980144 · Ducray Dexyane Eczema Creme Reparador 100ml (7) ⇄ Ducray Dexyane Eczema Cream 100ml (16)"
   ]
  },
  "3282770100242": {
@@ -142,7 +126,7 @@
    "3282779241519"
   ],
   "reason": [
-   "CNP 6576199 · Avène Solar Compacto Cor Dourado SPF 50+ 10g (4) ⇄ Avène Solar Compact Color FPS50 Dourado 10 Gramas (47)"
+   "CNP 6576199 · Avène Solar Compacto Cor Dourado SPF 50+ 10g (4) ⇄ Avène Solar Compact Color FPS50 Dourado 10 Gramas (50)"
   ]
  },
  "3282770104783": {
@@ -166,7 +150,7 @@
    "3282770075106"
   ],
   "reason": [
-   "CNP 6895151 · KLORANE CAPILAR BÁLSAMO LEITE DE AVEIA 200 ml (5) ⇄ Klorane Bálsamo Após-Champô de Leite de Aveia - 200 mL - Farmácia B... (27)"
+   "CNP 6895151 · KLORANE CAPILAR BÁLSAMO LEITE DE AVEIA 200 ml (5) ⇄ Klorane Bálsamo Após-Champô de Leite de Aveia - 200 mL - Farmácia B... (28)"
   ]
  },
  "3282770106275": {
@@ -174,7 +158,7 @@
    "3282779007566"
   ],
   "reason": [
-   "CNP 6656199 · Klorane Capilar Champô com Aveia 200ml (6) ⇄ Klorane Champô Ultrasuave Diário Aveia 200ml (30)"
+   "CNP 6656199 · Klorane Capilar Champô com Aveia 200ml (7) ⇄ Klorane Champô Ultrasuave Diário Aveia 200ml (30)"
   ]
  },
  "3282770106282": {
@@ -184,7 +168,7 @@
   ],
   "reason": [
    "CNP 6559278 · Klorane Aveia BIO Champô Extras suave cabelo normal 400ml (20) ⇄ KLORANE CAPILAR CHAMPÔ LEITE DE AVEIA 400 ml (20)",
-   "CNP 6559278 · Klorane Champô Leite de Aveia 400ml (5) ⇄ KLORANE CAPILAR CHAMPÔ LEITE DE AVEIA 400 ml (20)"
+   "CNP 6559278 · Klorane Champô Leite de Aveia 400ml (6) ⇄ KLORANE CAPILAR CHAMPÔ LEITE DE AVEIA 400 ml (20)"
   ]
  },
  "3282770108453": {
@@ -192,7 +176,7 @@
    "3282770389456"
   ],
   "reason": [
-   "CNP 6043943 · Roll-On Antitranspirante Hidrosis Control (17) ⇄ Ducray Hidrosis Control Roll-on Axilas 40ml (21)"
+   "CNP 6043943 · Roll-On Antitranspirante Hidrosis Control (18) ⇄ Ducray Hidrosis Control Roll-on Axilas 40ml (22)"
   ]
  },
  "3282770109351": {
@@ -203,14 +187,30 @@
    "CNP 7471904 · René Furterer Triphasic Champô Estimulante Antiqueda Modelo Económico 250ml (10) ⇄ Rene Furterer Triphasic Champô Estimulante 250mL Edição Limitada (10)"
   ]
  },
+ "3282770109610": {
+  "aliases": [
+   "3282770390032"
+  ],
+  "reason": [
+   "CNP 6980128 · Ducray Kelual Elution Shampoo Anti-Caspa Uso Diário 400ml (14) ⇄ Ducray Elution Champô Anticaspa Uso Diário 400ml (14)"
+  ]
+ },
+ "3282770113358": {
+  "aliases": [
+   "3282770143799"
+  ],
+  "reason": [
+   "CNP 7519348 · Klorane Creme de Banho Nutritivo com Cupuaçu Orgânico Flor de Frangipani 200 ml (2) ⇄ KLORANE CREME DUCHE FLOR FRANGIPANI 200 ml (6)"
+  ]
+ },
  "3282770140453": {
   "aliases": [
    "3282779051231",
    "3282770203622"
   ],
   "reason": [
-   "CNP 6588947 · Ducray Kélual DS Champô Anticaspa Anti-Recidiva 100ml (4) ⇄ Kelual Ds (52)",
-   "CNP 6588947 · Ducray Kelual DS Champô Tratamento Anticaspa 100ml (2) ⇄ Kelual Ds (52)"
+   "CNP 6588947 · Ducray Kélual DS Champô Anticaspa Anti-Recidiva 100ml (4) ⇄ Kelual Ds (54)",
+   "CNP 6588947 · Ducray Kelual DS Champô Tratamento Anticaspa 100ml (2) ⇄ Kelual Ds (54)"
   ]
  },
  "3282770140996": {
@@ -229,12 +229,20 @@
    "CNP 6463885 · Klorane Capilar Sérum Quininina E Edelvaisse Bio 100ml (4) ⇄ Klorane Capilar Sérum com Quinina &amp; Edelvaisse Bio 100ml (7)"
   ]
  },
+ "3282770143423": {
+  "aliases": [
+   "3282770394856"
+  ],
+  "reason": [
+   "CNP 6056739 · A-DERMA Exomega Control Óleo Lavante Emoliente Anti-Comichão Pack de 2 x 500 ml (5) ⇄ A-Derma Exomega Control Óleo Duche Emoliente 2x500ml (9)"
+  ]
+ },
  "3282770143560": {
   "aliases": [
    "3282770106954"
   ],
   "reason": [
-   "CNP 6570473 · Klorane Champô de Romã - 200 mL (10) ⇄ Klorane Shampoo Romã para Cabelos Tingidos 200 ml (12)"
+   "CNP 6570473 · Klorane Champô de Romã - 200 mL (11) ⇄ Klorane Shampoo Romã para Cabelos Tingidos 200 ml (13)"
   ]
  },
  "3282770143737": {
@@ -242,7 +250,7 @@
    "3282770110210"
   ],
   "reason": [
-   "CNP 7478107 · A-derma Exomega Control Gel Lavagem 200ml (2) ⇄ A-Derma Exomega Control Gel Moussant Emoliente  -  200ml (16)"
+   "CNP 7478107 · A-derma Exomega Control Gel Lavagem 200ml (3) ⇄ A-Derma Exomega Control Gel Moussant Emoliente  -  200ml (16)"
   ]
  },
  "3282770144659": {
@@ -250,7 +258,7 @@
    "3282770204551"
   ],
   "reason": [
-   "CNP 6333310 · Klorane Capilar Bálsamo Manteiga Cupuaçu 200ml (3) ⇄ Klorane Condicionador Manteiga de Cupuaçu 200 ml (13)"
+   "CNP 6333310 · Klorane Capilar Bálsamo Manteiga Cupuaçu 200ml (4) ⇄ Klorane Condicionador Manteiga de Cupuaçu 200 ml (13)"
   ]
  },
  "3282770145236": {
@@ -258,7 +266,7 @@
    "3282779007528"
   ],
   "reason": [
-   "CNP 6654715 · KLORANE CAPILAR CHAMPÔ CENTÁUREAS 200 ml (7) ⇄ Klorane Shampoo Centáurea Orgânico 200 ml (25)"
+   "CNP 6654715 · KLORANE CAPILAR CHAMPÔ CENTÁUREAS 200 ml (8) ⇄ Klorane Shampoo Centáurea Orgânico 200 ml (26)"
   ]
  },
  "3282770146998": {
@@ -266,7 +274,7 @@
    "3282770202489"
   ],
   "reason": [
-   "CNP 6254284 · René Furterer Absolue Keratina Champô Reparador - 200 mL - Farmácia... (10) ⇄ Absolue Kératine Champú (33)"
+   "CNP 6254284 · René Furterer Absolue Keratina Champô Reparador - 200 mL - Farmácia... (10) ⇄ Absolue Kératine Champú (34)"
   ]
  },
  "3282770147117": {
@@ -282,7 +290,7 @@
    "3282770074116"
   ],
   "reason": [
-   "CNP 6963561 · Klorane Bálsamo Após-Champô com Fibras de Linho - 200 mL - Farmácia... (4) ⇄ Klorane Capilar Balsamo Fibra Linho - 200ml (28)"
+   "CNP 6963561 · Klorane Bálsamo Após-Champô com Fibras de Linho - 200 mL - Farmácia... (5) ⇄ Klorane Capilar Balsamo Fibra Linho - 200ml (29)"
   ]
  },
  "3282770148039": {
@@ -290,7 +298,7 @@
    "3282770202830"
   ],
   "reason": [
-   "CNP 6276170 · Creme de pálpebras Palpebral Dexyane Med (14) ⇄ Ducray Dexyane MeD Creme Palpebral 15ml (34)"
+   "CNP 6276170 · Creme de pálpebras Palpebral Dexyane Med (15) ⇄ Ducray Dexyane MeD Creme Palpebral 15ml (35)"
   ]
  },
  "3282770148299": {
@@ -298,7 +306,7 @@
    "3282779352369"
   ],
   "reason": [
-   "CNP 6955815 · Ducray Extra-Suave Champô Dermoprotetor 200ml (5) ⇄ Ducray Champô Dermoprotetor EXTRA-DOUX, ideal para toda a família 200 ml (13)"
+   "CNP 6955815 · Ducray Extra-Suave Champô Dermoprotetor 200ml (5) ⇄ Ducray Champô Dermoprotetor EXTRA-DOUX, ideal para toda a família 200 ml (14)"
   ]
  },
  "3282770148473": {
@@ -306,7 +314,7 @@
    "3282779293440"
   ],
   "reason": [
-   "CNP 6559104 · Ducray Kertyol PSO Champô 200ml (3) ⇄ Kertyol PSO (37)"
+   "CNP 6559104 · Ducray Kertyol PSO Champô 200ml (3) ⇄ Kertyol PSO (39)"
   ]
  },
  "3282770149388": {
@@ -322,7 +330,7 @@
    "3282770100037"
   ],
   "reason": [
-   "CNP 6560599 · Avene Solar Spf50+ Creme Cor 50mL (17) ⇄ Avène Protetor Solar SPF50 Creme com Cor 50 ml (35)"
+   "CNP 6560599 · Avene Solar Spf50+ Creme Cor 50mL (17) ⇄ Avène Protetor Solar SPF50 Creme com Cor 50 ml (37)"
   ]
  },
  "3282770149548": {
@@ -330,7 +338,7 @@
    "3282770112634"
   ],
   "reason": [
-   "CNP 6941245 · Avène Solar Cleanance Solar SPF50+ - 50ml (4) ⇄ Avène Cleanance SPF50+ 50 ml (13)"
+   "CNP 6941245 · Avène Solar Cleanance Solar SPF50+ - 50ml (4) ⇄ Avène Cleanance SPF50+ 50 ml (14)"
   ]
  },
  "3282770149661": {
@@ -338,7 +346,7 @@
    "3282770073560"
   ],
   "reason": [
-   "CNP 7478073 · A-Derma Exomega Control Creme Emoliente - 50 mL - Farmácia Barreiro... (10) ⇄ A-Derma Exomega Control Creme Emoliente pele seca 50ml (15)"
+   "CNP 7478073 · A-Derma Exomega Control Creme Emoliente - 50 mL - Farmácia Barreiro... (11) ⇄ A-Derma Exomega Control Creme Emoliente pele seca 50ml (16)"
   ]
  },
  "3282770152906": {
@@ -346,7 +354,7 @@
    "3282770105155"
   ],
   "reason": [
-   "CNP 6968511 · René Furterer Sublime Curl Champô Ativador de Caracóis - 200 mL - F... (8) ⇄ Sublime Curl (19)"
+   "CNP 6968511 · René Furterer Sublime Curl Champô Ativador de Caracóis - 200 mL - F... (8) ⇄ Sublime Curl (20)"
   ]
  },
  "3282770153187": {
@@ -354,7 +362,7 @@
    "3282770400717"
   ],
   "reason": [
-   "CNP 7134254 · Avène Hyaluron Activ B3 Creme Regeneração Celular Eco-Recarga 50 ml (18) ⇄ Avène Hyaluron Activ B3 Creme Refill 50mL (33)"
+   "CNP 7134254 · Avène Hyaluron Activ B3 Creme Regeneração Celular Eco-Recarga 50 ml (18) ⇄ Avène Hyaluron Activ B3 Creme Refill 50mL (34)"
   ]
  },
  "3282770153231": {
@@ -362,7 +370,7 @@
    "3282770105179"
   ],
   "reason": [
-   "CNP 6968545 · RENÉ FURTERER SUBLIME CURL SPRAY REACTIVADOR DE CARACÓIS 150ML (6) ⇄ Sublime Curl Spray Activador (26)"
+   "CNP 6968545 · RENÉ FURTERER SUBLIME CURL SPRAY REACTIVADOR DE CARACÓIS 150ML (6) ⇄ Sublime Curl Spray Activador (27)"
   ]
  },
  "3282770154238": {
@@ -370,15 +378,7 @@
    "3282770072907"
   ],
   "reason": [
-   "CNP 6959619 · Gel Creme Reparador After Sun (5) ⇄ Gel After-Sun (40)"
-  ]
- },
- "3282770206739": {
-  "aliases": [
-   "3282770111545"
-  ],
-  "reason": [
-   "CNP 6599373 · Klorane Petit Junior Champô Desembaraçador Pêssego 500ml (14) ⇄ Klorane Petit Junior Champô Desembaraçador 500 ml (19)"
+   "CNP 6959619 · Gel Creme Reparador After Sun (5) ⇄ Gel After-Sun (41)"
   ]
  },
  "3282770206746": {
@@ -386,7 +386,15 @@
    "3282770111538"
   ],
   "reason": [
-   "CNP 6828608 · Klorane Petit Junior Champ� Desembara�ador P�ssego (3) ⇄ Klorane Champô Petit Junior Pêssego 200 ml (17)"
+   "CNP 6828608 · Klorane Petit Junior Champ� Desembara�ador P�ssego (5) ⇄ Klorane Champô Petit Junior Pêssego 200 ml (17)"
+  ]
+ },
+ "3282770207446": {
+  "aliases": [
+   "3282779366625"
+  ],
+  "reason": [
+   "CNP 6932277 · Rene Furterer Astera Sensitive Champô Elevada Tolerância 200ml (7) ⇄ Astera Sensitive Champú (27)"
   ]
  },
  "3282770207774": {
@@ -394,7 +402,7 @@
    "3282770100259"
   ],
   "reason": [
-   "CNP 6977363 · Av�ne Cleanance Gel de Limpeza 400ml (7) ⇄ Avène Cleanance Gel de Limpeza Sem Sabão com Dispensador 400 ml (37)"
+   "CNP 6977363 · Av�ne Cleanance Gel de Limpeza 400ml (8) ⇄ Avène Cleanance Gel de Limpeza Sem Sabão com Dispensador 400 ml (38)"
   ]
  },
  "3282770208795": {
@@ -431,20 +439,12 @@
    "CNP 6915728 · Avene Corpo XeraCalm A.D Óleo Limpeza Relipidante - 400 ml (8) ⇄ Avène XeraCalm AD Óleo de Limpeza Relipidador 400 ml (15)"
   ]
  },
- "3282770390032": {
-  "aliases": [
-   "3282770109610"
-  ],
-  "reason": [
-   "CNP 6980128 · Ducray Elution Champô Anticaspa Uso Diário 400ml (13) ⇄ Ducray Kelual Elution Shampoo Anti-Caspa Uso Diário 400ml (14)"
-  ]
- },
  "3282770390315": {
   "aliases": [
    "3282770037319"
   ],
   "reason": [
-   "CNP 6931766 · Avène Cleanance Água Micelar Pele Oleosa - 400 mL - Farmácia Barrei... (4) ⇄ Avène Cleanance Água Micelar 400 ml (46)"
+   "CNP 6931766 · Avène Cleanance Água Micelar Pele Oleosa - 400 mL - Farmácia Barrei... (5) ⇄ Avène Cleanance Água Micelar 400 ml (47)"
   ]
  },
  "3282770390322": {
@@ -468,7 +468,7 @@
    "3282770400748"
   ],
   "reason": [
-   "CNP 7275016 · Avène Hyaluron Activ B3 Aqua Gel-Creme Regeneração Celular Eco-Recarga 50 ml (12) ⇄ Avène Hyaluron Activ B3 Aqua-Gel Refill - 50ml (27)"
+   "CNP 7275016 · Avène Hyaluron Activ B3 Aqua Gel-Creme Regeneração Celular Eco-Recarga 50 ml (13) ⇄ Avène Hyaluron Activ B3 Aqua-Gel Refill - 50ml (29)"
   ]
  },
  "3282770393859": {
@@ -476,7 +476,7 @@
    "3282770106206"
   ],
   "reason": [
-   "CNP 7478156 · A-Derma Exomega Control Óleo Duche Emoliente - 500 mL - Farmácia Ba... (8) ⇄ A-Derma Exomega Control Óleo Duche Emoliente antiprurido pele atópica 500ml (19)"
+   "CNP 7478156 · A-Derma Exomega Control Óleo Duche Emoliente - 500 mL - Farmácia Ba... (9) ⇄ A-Derma Exomega Control Óleo Duche Emoliente antiprurido pele atópica 500ml (19)"
   ]
  },
  "3282770393866": {
@@ -486,7 +486,7 @@
   ],
   "reason": [
    "CNP 6063388 · A-Derma Exomega Control Óleo Lavante 750ml (6) ⇄ A-Derma Exomega Control Óleo de Duche Hidratante 750ml (7)",
-   "CNP 6063388 · A-Derma Exomega Control Óleo de Limpeza Emoliente Antiprurido 750ml (4) ⇄ A-Derma Exomega Control Óleo de Duche Hidratante 750ml (7)"
+   "CNP 6063388 · A-Derma Exomega Control Óleo de Limpeza Emoliente Antiprurido 750ml (5) ⇄ A-Derma Exomega Control Óleo de Duche Hidratante 750ml (7)"
   ]
  },
  "3282770395235": {
@@ -510,7 +510,7 @@
    "3282770114195"
   ],
   "reason": [
-   "CNP 6041657 · Avene Xeracalm Ad Creme Relipidante 400mL (15) ⇄ Avène Xeracalm AD Creme Relipidizante 400 ml (18)"
+   "CNP 6041657 · Avene Xeracalm Ad Creme Relipidante 400mL (16) ⇄ Avène Xeracalm AD Creme Relipidizante 400 ml (18)"
   ]
  },
  "3282779001335": {
@@ -542,7 +542,7 @@
    "3282779000901"
   ],
   "reason": [
-   "CNP 6459289 · Ducray Diaseptyl Solução Limpeza Purificante 125ml (1) ⇄ Ducray Diaseptyl Solução Aquosa 125ml (31)"
+   "CNP 6459289 · Ducray Diaseptyl Solução Limpeza Purificante 125ml (1) ⇄ Ducray Diaseptyl Solução Aquosa 125ml (34)"
   ]
  },
  "3323030000206": {
@@ -550,7 +550,7 @@
    "3323030001173"
   ],
   "reason": [
-   "CNP 6269696 · Máscara de Noite Revitalizante (9) ⇄ Akileine Secura Masc Noite Revit 100Ml (13)"
+   "CNP 6269696 · Máscara de Noite Revitalizante (9) ⇄ Akileine Secura Masc Noite Revit 100Ml (14)"
   ]
  },
  "3323030001210": {
@@ -558,7 +558,7 @@
    "3323034408671"
   ],
   "reason": [
-   "CNP 6780205 · Akileine Pó Absorvente Antitranspirante 75g (15) ⇄ Akileine Pó Absorvente Mico Preventivo - 75g (25)"
+   "CNP 6780205 · Akileine Pó Absorvente Antitranspirante 75g (16) ⇄ Akileine Pó Absorvente Mico Preventivo - 75g (26)"
   ]
  },
  "3325034408732": {
@@ -574,7 +574,15 @@
    "3337871319137"
   ],
   "reason": [
-   "CNP 6815258 · Vichy Pureté Thermale Desmaquilhante Integral 3 em 1 Pele Sensível (300ml) (3) ⇄ Vichy Pureté Thermal Desmaquilhante Integral 3 em 1 Pele Sensivel  - 300ml (21)"
+   "CNP 6815258 · Vichy Pureté Thermale Desmaquilhante Integral 3 em 1 Pele Sensível (300ml) (3) ⇄ Vichy Pureté Thermal Desmaquilhante Integral 3 em 1 Pele Sensivel  - 300ml (24)"
+  ]
+ },
+ "3337872414282": {
+  "aliases": [
+   "3433422408982"
+  ],
+  "reason": [
+   "CNP 6934604 · La Roche-Posay Kerium Shampoo Gel Suavidade Extrema 400ml (7) ⇄ Kerium Doux Extreme (46)"
   ]
  },
  "3337875204903": {
@@ -582,7 +590,7 @@
    "3701436907785"
   ],
   "reason": [
-   "CNP 6874032 · Roger&Gallet Fleur d'Osmanthus Água Perfumada Bem-Estar Damasco 30ml (10) ⇄ Roger & Gallet Flor Osmanthus Água Perfumada - 30ml (17)"
+   "CNP 6874032 · Roger&Gallet Fleur d'Osmanthus Água Perfumada Bem-Estar Damasco 30ml (12) ⇄ Roger & Gallet Flor Osmanthus Água Perfumada - 30ml (17)"
   ]
  },
  "3337875677967": {
@@ -615,8 +623,8 @@
    "3372290124528"
   ],
   "reason": [
-   "CNP 6342212 · Lazartigue Purify Champo Purificicante 250mL (10) ⇄ Purify Shampoo (18)",
-   "CNP 6342212 · Lazartigue Purify Champ� Purificante para Cabelo Oleoso 250ml (3) ⇄ Purify Shampoo (18)"
+   "CNP 6342212 · Lazartigue Purify Champo Purificicante 250mL (10) ⇄ Purify Shampoo (19)",
+   "CNP 6342212 · Lazartigue Purify Champ� Purificante para Cabelo Oleoso 250ml (3) ⇄ Purify Shampoo (19)"
   ]
  },
  "3372290111924": {
@@ -632,7 +640,7 @@
    "8715345003785"
   ],
   "reason": [
-   "CNP 7269985 · Arkoflex Chondro-Aid Ice3 Gel 100Ml, (4) ⇄ Arkoflex Ice3Gel Gel Frio Relaxante 100ml (17)"
+   "CNP 7269985 · Arkoflex Chondro-Aid Ice3 Gel 100Ml, (4) ⇄ Arkoflex Ice3Gel Gel Frio Relaxante 100ml (19)"
   ]
  },
  "3401346673335": {
@@ -640,7 +648,7 @@
    "3701129811467"
   ],
   "reason": [
-   "CNP 6595520 · Sensibio Eye (14) ⇄ Bioderma Sensibio Gel Contorno de Olhos 15 ml (35)"
+   "CNP 6595520 · Sensibio Eye (14) ⇄ Bioderma Sensibio Gel Contorno de Olhos 15 ml (37)"
   ]
  },
  "3401353806399": {
@@ -656,7 +664,7 @@
    "3540550008462"
   ],
   "reason": [
-   "CNP 6848523 · Filorga Optim-Eyes Creme Contorno Olhos 15mL (3) ⇄ Filorga Optim-Eyes Contorno de Olhos 15ml (47)"
+   "CNP 6848523 · Filorga Optim-Eyes Creme Contorno Olhos 15mL (3) ⇄ Filorga Optim-Eyes Contorno de Olhos 15ml (49)"
   ]
  },
  "3401381332785": {
@@ -664,15 +672,7 @@
    "3662361003402"
   ],
   "reason": [
-   "CNP 6967927 · SVR Sebiaclear Gel Moussant Anti-Imperfeições 400 ml (19) ⇄ SVR Sebiaclear Gel Limpeza - 400ml (28)"
-  ]
- },
- "3401381463298": {
-  "aliases": [
-   "3401341329688"
-  ],
-  "reason": [
-   "CNP 7479378 · Bioderma Atoderm Intensive Creme Facial 75ml (3) ⇄ Bioderma Atoderm Intensive Baume - 75 mL (44)"
+   "CNP 6967927 · SVR Sebiaclear Gel Moussant Anti-Imperfeições 400 ml (20) ⇄ SVR Sebiaclear Gel Limpeza - 400ml (29)"
   ]
  },
  "3401397240470": {
@@ -680,7 +680,7 @@
    "3401397240241"
   ],
   "reason": [
-   "CNP 6569954 · Bioderma Créaline DS+ Creme 40 ml (3) ⇄ Bioderma Sensibio DS+ Creme 40 ml (56)"
+   "CNP 6569954 · Bioderma Créaline DS+ Creme 40 ml (3) ⇄ Bioderma Sensibio DS+ Creme 40 ml (57)"
   ]
  },
  "3401397240531": {
@@ -688,7 +688,7 @@
    "3701129807729"
   ],
   "reason": [
-   "CNP 6569962 · Bioderma Sensibio DS Gel Nettoyant de Limpeza 200ml (15) ⇄ Sensibio Bioderma DS Gel Moussant - 200ml (33)"
+   "CNP 6569962 · Bioderma Sensibio DS Gel Nettoyant de Limpeza 200ml (15) ⇄ Sensibio Bioderma DS Gel Moussant - 200ml (34)"
   ]
  },
  "3401399372407": {
@@ -696,7 +696,7 @@
    "3701129811573"
   ],
   "reason": [
-   "CNP 6869784 · Bioderma Atoderm Gel de Douche 500ml (7) ⇄ Bioderma Atoderm Gel de Duche 500ml (13)"
+   "CNP 6869784 · Bioderma Atoderm Gel de Douche 500ml (8) ⇄ Bioderma Atoderm Gel de Duche 500ml (13)"
   ]
  },
  "3401575390447": {
@@ -706,9 +706,9 @@
    "3401574767110"
   ],
   "reason": [
-   "CNP 6576678 · Água Micelar Bioderma Sensibio H2O 250 ml (5) ⇄ Bioderma Sensibio Sol Micelar H2O 250mL (24)",
-   "CNP 6576678 · Sensibio Bioderma A Sol Limpeza H20 250 Ml (4) ⇄ Bioderma Sensibio Sol Micelar H2O 250mL (24)",
-   "CNP 6576678 · Bioderma Sensibio H2O Solução Micelar 250ml (2) ⇄ Bioderma Sensibio Sol Micelar H2O 250mL (24)"
+   "CNP 6576678 · Água Micelar Bioderma Sensibio H2O 250 ml (5) ⇄ Bioderma Sensibio Sol Micelar H2O 250mL (25)",
+   "CNP 6576678 · Sensibio Bioderma A Sol Limpeza H20 250 Ml (4) ⇄ Bioderma Sensibio Sol Micelar H2O 250mL (25)",
+   "CNP 6576678 · Bioderma Sensibio H2O Solução Micelar 250ml (2) ⇄ Bioderma Sensibio Sol Micelar H2O 250mL (25)"
   ]
  },
  "3461020003384": {
@@ -716,7 +716,7 @@
    "3461020013384"
   ],
   "reason": [
-   "CNP 7406785 · Esthederm Solaire Bronz Impulse Bruma Ativadora de Bronzeado 150ml (3) ⇄ Institut Esthederm Bronz Impulse Bruma bronzeadora prolongada para rosto e corpo 150 ml (15)"
+   "CNP 7406785 · Esthederm Solaire Bronz Impulse Bruma Ativadora de Bronzeado 150ml (4) ⇄ Institut Esthederm Bronz Impulse Bruma bronzeadora prolongada para rosto e corpo 150 ml (15)"
   ]
  },
  "3461020012188": {
@@ -724,7 +724,7 @@
    "3461020003575"
   ],
   "reason": [
-   "CNP 7477646 · Institut Esthederm Lift&amp;Repair Sérum Tensor Absoluto 30 ml (10) ⇄ Esthederm Lift Repair Sérum 30mL (24)"
+   "CNP 7477646 · Institut Esthederm Lift&amp;Repair Sérum Tensor Absoluto 30 ml (11) ⇄ Esthederm Lift Repair Sérum 30mL (24)"
   ]
  },
  "3461020013574": {
@@ -740,7 +740,7 @@
    "3461020004947"
   ],
   "reason": [
-   "CNP 6284737 · Institut Esthederm Excellage Contorno de Olhos 15 ml (12) ⇄ Esthederm Excellage Contorno Olhos - 15ml (22)"
+   "CNP 6284737 · Institut Esthederm Excellage Contorno de Olhos 15 ml (12) ⇄ Esthederm Excellage Contorno Olhos - 15ml (23)"
   ]
  },
  "3499320013901": {
@@ -748,7 +748,7 @@
    "3499320005302"
   ],
   "reason": [
-   "CNP 6952168 · Cetaphil Creme Hidratante Pele Sensíve, Normal a Seca 453g (8) ⇄ Cetaphil Creme Hidratante Pele Seca - 453g (18)"
+   "CNP 6952168 · Cetaphil Creme Hidratante Pele Sensíve, Normal a Seca 453g (9) ⇄ Cetaphil Creme Hidratante Pele Seca - 453g (18)"
   ]
  },
  "3499320014045": {
@@ -756,7 +756,7 @@
    "3499320005319"
   ],
   "reason": [
-   "CNP 6952143 · Cetaphil Daily Advance Loção Ultra Hidratante Pele Seca e Sensível 473ml (4) ⇄ Loción Ultra Hidratante (28)"
+   "CNP 6952143 · Cetaphil Daily Advance Loção Ultra Hidratante Pele Seca e Sensível 473ml (4) ⇄ Loción Ultra Hidratante (29)"
   ]
  },
  "3504105028510": {
@@ -764,7 +764,7 @@
    "3504108053298"
   ],
   "reason": [
-   "CNP 6555193 · Mustela Bebé Hidratante Leite Corporal  (6) ⇄ MUSTELA Hydra-Bebé Corpo 300ml (37)"
+   "CNP 6555193 · Mustela Bebé Hidratante Leite Corporal  (6) ⇄ MUSTELA Hydra-Bebé Corpo 300ml (38)"
   ]
  },
  "3504105035631": {
@@ -772,7 +772,7 @@
    "3504108012936"
   ],
   "reason": [
-   "CNP 6555201 · Mustela Bebe Pn Creme Hydra Rosto 40ml (4) ⇄ Mustela Hydra Bebé Creme de Rosto 40ml (43)"
+   "CNP 6555201 · Mustela Bebe Pn Creme Hydra Rosto 40ml (4) ⇄ Mustela Hydra Bebé Creme de Rosto 40ml (46)"
   ]
  },
  "3504105037970": {
@@ -780,7 +780,7 @@
    "3504105034344"
   ],
   "reason": [
-   "CNP 6621417 · Mustela Bio Creme Hidratante Sem Perfume - 150ml (9) ⇄ Crema Hidratante Bio (18)"
+   "CNP 6621417 · Mustela Bio Creme Hidratante Sem Perfume - 150ml (10) ⇄ Crema Hidratante Bio (18)"
   ]
  },
  "3508240212902": {
@@ -796,7 +796,7 @@
    "3522930002031"
   ],
   "reason": [
-   "CNP 6991059 · Caudalie Esfoliante de Rosto Suave (9) ⇄ Caudalie Creme Esfoliante Suave 75 ml (35)"
+   "CNP 6991059 · Caudalie Esfoliante de Rosto Suave (9) ⇄ Caudalie Creme Esfoliante Suave 75 ml (36)"
   ]
  },
  "3522930003182": {
@@ -804,7 +804,7 @@
    "3522930000143"
   ],
   "reason": [
-   "CNP 6564641 · Caudalie Água De Beleza Vaporizador Eau De Beauté Vaporisateur 30ml (10) ⇄ Caudalie Desvital Agua Beaute Vaporiz. 30 ml (15)"
+   "CNP 6564641 · Caudalie Água De Beleza Vaporizador Eau De Beauté Vaporisateur 30ml (10) ⇄ Caudalie Desvital Agua Beaute Vaporiz. 30 ml (16)"
   ]
  },
  "3522930003700": {
@@ -812,7 +812,7 @@
    "3522930002536"
   ],
   "reason": [
-   "CNP 6085092 · Caudalie Th� Des Vignes Cuidado Corporal Nutritivo (10) ⇄ Caudalie Thé Des Vignes Tratamento Corporal Nutritivo 400 ml (18)"
+   "CNP 6085092 · Caudalie Th� Des Vignes Cuidado Corporal Nutritivo (10) ⇄ Caudalie Thé Des Vignes Tratamento Corporal Nutritivo 400 ml (19)"
   ]
  },
  "3522930003977": {
@@ -878,7 +878,7 @@
    "3522930002611"
   ],
   "reason": [
-   "CNP 6365130 · Caudalie Vinosculpt Bálsamo Lifting e Firmeza - 250mL - Farmácia Ba... (13) ⇄ Caudalie Vinosculpt Bálsamo Corporal Elevador e Reafirmante 250 ml (27)"
+   "CNP 6365130 · Caudalie Vinosculpt Bálsamo Lifting e Firmeza - 250mL - Farmácia Ba... (13) ⇄ Caudalie Vinosculpt Bálsamo Corporal Elevador e Reafirmante 250 ml (28)"
   ]
  },
  "3540550015019": {
@@ -886,15 +886,7 @@
    "354055015019"
   ],
   "reason": [
-   "CNP 7488320 · Skin-Prep Gel de limpeza com AHA (2) ⇄ Filorga Skin-Prep AHA Gel de Limpeza 150ml (32)"
-  ]
- },
- "3573994006299": {
-  "aliases": [
-   "3592610001357"
-  ],
-  "reason": [
-   "CNP 6125187 · Dexeryl Ducray Creme Emoliente 50 g (3) ⇄ Dexeryl Creme de Rosto Emoliente 50ml (4)"
+   "CNP 7488320 · Skin-Prep Gel de limpeza com AHA (2) ⇄ Filorga Skin-Prep AHA Gel de Limpeza 150ml (34)"
   ]
  },
  "3574660004588": {
@@ -902,7 +894,7 @@
    "1220000230033"
   ],
   "reason": [
-   "CNP 6525717 · RoC Keops Desodorizante Spray Seco 150ml (5) ⇄ Roc Higiene Deo Keops Vaporizador Seco - 150ml (16)"
+   "CNP 6525717 · RoC Keops Desodorizante Spray Seco 150ml (5) ⇄ Roc Higiene Deo Keops Vaporizador Seco - 150ml (17)"
   ]
  },
  "3574660316889": {
@@ -910,7 +902,7 @@
    "3574661099156"
   ],
   "reason": [
-   "CNP 6875203 · Neutrogena Bálsamo Reparação Imediata Nariz e Lábios - 15 mL - Farm... (6) ⇄ Neutrogena Lábios Bálsamo Nariz/Lábios Reparador Imediato - 15ml (27)"
+   "CNP 6875203 · Neutrogena Bálsamo Reparação Imediata Nariz e Lábios - 15 mL - Farm... (6) ⇄ Neutrogena Lábios Bálsamo Nariz/Lábios Reparador Imediato - 15ml (28)"
   ]
  },
  "3574660527452": {
@@ -921,12 +913,20 @@
    "CNP 6855940 · Neutrogena Corpo Hid Prof Locao Psens400Ml (1) ⇄ Neutrogena Loção Corporal Hidratação Profunda Pele Seca Sem Perfume 400ml (6)"
   ]
  },
+ "3574661061689": {
+  "aliases": [
+   "1220000230170"
+  ],
+  "reason": [
+   "CNP 6921064 · Desodorizante Stick Keops Peles Normais (4) ⇄ RoC Keops Duo Desodorizante Stick (20)"
+  ]
+ },
  "3574661117621": {
   "aliases": [
    "5600069314282"
   ],
   "reason": [
-   "CNP 6931428 · PIZ BUIN ALLERGY FPS50+ CREME FACIAL PELE SENSÍVEL AO SOL 50 ml (2) ⇄ Piz Buin Creme Facial Alergia FPS50 50 ml (41)"
+   "CNP 6931428 · PIZ BUIN ALLERGY FPS50+ CREME FACIAL PELE SENSÍVEL AO SOL 50 ml (2) ⇄ Piz Buin Creme Facial Alergia FPS50 50 ml (43)"
   ]
  },
  "3574661192833": {
@@ -935,8 +935,16 @@
    "3574661192840"
   ],
   "reason": [
-   "CNP 6890319 · Piz Buin Tan Protect Oil Spray Accel SPF15 - 150ml (7) ⇄ Piz Buin Óleo em spray acelerador de bronzeamento Tan &amp; Protect FPS15 150 ml (33)",
-   "CNP 6890319 · Piz Buin Tan & Protect SPF15 Óleo Spray Acelerador de Bronzeado 150ml (3) ⇄ Piz Buin Óleo em spray acelerador de bronzeamento Tan &amp; Protect FPS15 150 ml (33)"
+   "CNP 6890319 · Piz Buin Tan Protect Oil Spray Accel SPF15 - 150ml (8) ⇄ Piz Buin Óleo em spray acelerador de bronzeamento Tan &amp; Protect FPS15 150 ml (34)",
+   "CNP 6890319 · Piz Buin Tan & Protect SPF15 Óleo Spray Acelerador de Bronzeado 150ml (3) ⇄ Piz Buin Óleo em spray acelerador de bronzeamento Tan &amp; Protect FPS15 150 ml (34)"
+  ]
+ },
+ "3574661200019": {
+  "aliases": [
+   "3574661199269"
+  ],
+  "reason": [
+   "CNP 6953448 · Neutrogena Visibl Renew Loc Corp Elast400ml (2) ⇄ Loção Corporal Elasticidade Visibly Renew (13)"
   ]
  },
  "3574661469270": {
@@ -945,7 +953,7 @@
    "5600069087728"
   ],
   "reason": [
-   "CNP 6908772 · Loção Hidratante After Sun Soothing & Cooling (6) ⇄ Piz Buin Aft Sun Loção Suav Refres 200ml (24)",
+   "CNP 6908772 · Loção Hidratante After Sun Soothing & Cooling (7) ⇄ Piz Buin Aft Sun Loção Suav Refres 200ml (24)",
    "CNP 6908772 · Piz Buin After Sun Loção Suavizante e Refrescante 200ml (4) ⇄ Piz Buin Aft Sun Loção Suav Refres 200ml (24)"
   ]
  },
@@ -954,7 +962,7 @@
    "3574661394602"
   ],
   "reason": [
-   "CNP 7475442 · Aveeno Daily Moisturising Loção Corporal Hidratante Lavanda 300ml (2) ⇄ Aveeno Daily Moisturising Loção Corporal Lavanda 300ml (20)"
+   "CNP 7475442 · Aveeno Daily Moisturising Loção Corporal Hidratante Lavanda 300ml (2) ⇄ Aveeno Daily Moisturising Loção Corporal Lavanda 300ml (21)"
   ]
  },
  "3574661501116": {
@@ -962,7 +970,15 @@
    "3574661321523"
   ],
   "reason": [
-   "CNP 7477232 · Daily Moisturising Gel de Banho Iogurte Damasco e Mel  (3) ⇄ Aveeno Daily Moisturising Gel de Banho Hidratante de Iogurte Damasco e Mel 300ml (16)"
+   "CNP 7477232 · Daily Moisturising Gel de Banho Iogurte Damasco e Mel  (3) ⇄ Aveeno Daily Moisturising Gel de Banho Hidratante de Iogurte Damasco e Mel 300ml (17)"
+  ]
+ },
+ "3574661501130": {
+  "aliases": [
+   "3574661394619"
+  ],
+  "reason": [
+   "CNP 6976423 · Creme Aveeno Daily Óleo Cremoso 300ml (2) ⇄ Aveeno Daily Moisturising Óleo Cremoso 300ml (22)"
   ]
  },
  "3574661540894": {
@@ -970,7 +986,7 @@
    "3574661309118"
   ],
   "reason": [
-   "CNP 7463828 · Aveeno Dermexa Gel de Banho Emoliente 2x300ml (8) ⇄ Aveeno Dermexa Gel de Banho Emoliente Diário 2x300ml (24)"
+   "CNP 7463828 · Aveeno Dermexa Gel de Banho Emoliente 2x300ml (9) ⇄ Aveeno Dermexa Gel de Banho Emoliente Diário 2x300ml (25)"
   ]
  },
  "3574661565224": {
@@ -978,7 +994,7 @@
    "3574660484830"
   ],
   "reason": [
-   "CNP 6846576 · Aveeno Baby Daily Care Loção Hidratante 150ml (8) ⇄ Aveeno Baby Loção Hidratante Rosto e Corpo 150ml (18)"
+   "CNP 6846576 · Aveeno Baby Daily Care Loção Hidratante 150ml (9) ⇄ Aveeno Baby Loção Hidratante Rosto e Corpo 150ml (18)"
   ]
  },
  "3574661699523": {
@@ -986,7 +1002,7 @@
    "3574661651675"
   ],
   "reason": [
-   "CNP 7248781 · Neutrogena Retinol Boost Creme de Olhos Anti-Rugas 15ml (2) ⇄ Neutrogena Retinol Boost Contorno de Olhos Antienvelhecimento 15 ml (35)"
+   "CNP 7248781 · Neutrogena Retinol Boost Creme de Olhos Anti-Rugas 15ml (2) ⇄ Neutrogena Retinol Boost Contorno de Olhos Antienvelhecimento 15 ml (36)"
   ]
  },
  "3574661699530": {
@@ -1002,47 +1018,7 @@
    "8470001897732"
   ],
   "reason": [
-   "CNP 6241703 · Neostrata Skin Active Tri-Therapy Sérum Lifting - 30mL - Farmácia B... (17) ⇄ Firming Skin Active Tritherapy Lifting Serum (22)"
-  ]
- },
- "3577056012969": {
-  "aliases": [
-   "3577056001253"
-  ],
-  "reason": [
-   "CNP 6784116 · Elgydium Pasta Dentífrica Branqueadora 75 ml (3) ⇄ Elgydium Branqueamento Pasta dentífrica, Bisnaga 75ml (38)"
-  ]
- },
- "3577056013898": {
-  "aliases": [
-   "3577056023668"
-  ],
-  "reason": [
-   "CNP 6784108 · Elgydium Gel Dentifríco Dentes Sensíveis 75ml (5) ⇄ Elgydium Gel Dentes Sensíveis 75ml (19)"
-  ]
- },
- "3577056023491": {
-  "aliases": [
-   "3577056023576"
-  ],
-  "reason": [
-   "CNP 6405878 · Pasta Elgydium Anti-Placa Gengivas 75ml (3) ⇄ Elgydium Pasta Dentífrica Proteção Gengivas 75ml (39)"
-  ]
- },
- "3578830116491": {
-  "aliases": [
-   "3578836116143"
-  ],
-  "reason": [
-   "CNP 6029553 · Arkoflex Colágeno SPORT Pó Suspensão oral_sabor laranja - 390g (6) ⇄ ARKOFLEX COLAGENIO SPORT LARANJA PO 390G SUSP ORAL (18)"
-  ]
- },
- "3578836119137": {
-  "aliases": [
-   "3578835319149"
-  ],
-  "reason": [
-   "CNP 7757435 · Arkofluido Alcachofra Forte (x20 ampolas bebíveis) (5) ⇄ Arkofluido Alcachofra Forte Ampolas 20un. (10)"
+   "CNP 6241703 · Neostrata Skin Active Tri-Therapy Sérum Lifting - 30mL - Farmácia B... (18) ⇄ Firming Skin Active Tritherapy Lifting Serum (22)"
   ]
  },
  "3606000495395": {
@@ -1050,7 +1026,7 @@
    "883140020493"
   ],
   "reason": [
-   "CNP 6909168 · Skinceuticals Redness Neutralizer Fluido Antivermelhidão 50ml (3) ⇄ Skinceuticals Redness Neutralizer Fluido Anti-Vermelhidão 50ml (18)"
+   "CNP 6909168 · Skinceuticals Redness Neutralizer Fluido Antivermelhidão 50ml (4) ⇄ Skinceuticals Redness Neutralizer Fluido Anti-Vermelhidão 50ml (18)"
   ]
  },
  "3661434001475": {
@@ -1058,7 +1034,7 @@
    "3661434028168"
   ],
   "reason": [
-   "CNP 6880799 · Bariésun Refreshing Thermal Mist After Sun (6) ⇄ Uriage Bariésun Bruma Pós Solar Apaziguante 150ml (25)"
+   "CNP 6880799 · Bariésun Refreshing Thermal Mist After Sun (6) ⇄ Uriage Bariésun Bruma Pós Solar Apaziguante 150ml (26)"
   ]
  },
  "3661434005756": {
@@ -1066,7 +1042,7 @@
    "3661434008610"
   ],
   "reason": [
-   "CNP 7770883 · Uriage Baby 1º Leite Hidratante Suave 500 ml (28) ⇄ URIAGE BEBE 1º LEITE HIDRATANTE 500ML (37)"
+   "CNP 7770883 · Uriage Baby 1º Leite Hidratante Suave 500 ml (29) ⇄ URIAGE BEBE 1º LEITE HIDRATANTE 500ML (38)"
   ]
  },
  "3661434005862": {
@@ -1074,7 +1050,7 @@
    "3661434034817"
   ],
   "reason": [
-   "CNP 7508960 · Uriage Derm-Phy Gel de Limpeza Dermatológico 500ml (6) ⇄ Uriage Hygiène Gel de Limpeza Dermatológico 500ml (21)"
+   "CNP 7508960 · Uriage Derm-Phy Gel de Limpeza Dermatológico 500ml (7) ⇄ Uriage Hygiène Gel de Limpeza Dermatológico 500ml (21)"
   ]
  },
  "3661434006289": {
@@ -1082,7 +1058,7 @@
    "3661434003523"
   ],
   "reason": [
-   "CNP 7003665 · Uriage Gyn-Phy Bruma de Limpeza 50ml (5) ⇄ Uriage Gyn-Phy brume nettoyante hygiène intime (27)"
+   "CNP 7003665 · Uriage Gyn-Phy Bruma de Limpeza 50ml (5) ⇄ Uriage Gyn-Phy brume nettoyante hygiène intime (29)"
   ]
  },
  "3661434006500": {
@@ -1090,7 +1066,7 @@
    "3661434028205"
   ],
   "reason": [
-   "CNP 6037747 · Uriage Bariesun Bruma Seca SPF50+ 200ml (12) ⇄ Uriage Bariésun Bruma Solar Toque Seco SPF50+  200ml (27)"
+   "CNP 6037747 · Uriage Bariesun Bruma Seca SPF50+ 200ml (12) ⇄ Uriage Bariésun Bruma Solar Toque Seco SPF50+  200ml (28)"
   ]
  },
  "3661434008382": {
@@ -1098,7 +1074,7 @@
    "3661434028038"
   ],
   "reason": [
-   "CNP 7092189 · Uriage Bariésun Spray Solar Rosto e Corpo FPS50+ 200 ml (13) ⇄ Uriage Bariésun Spray Invisível SPF50+ 200mL (32)"
+   "CNP 7092189 · Uriage Bariésun Spray Solar Rosto e Corpo FPS50+ 200 ml (13) ⇄ Uriage Bariésun Spray Invisível SPF50+ 200mL (33)"
   ]
  },
  "3661434008399": {
@@ -1106,7 +1082,7 @@
    "3661434028014"
   ],
   "reason": [
-   "CNP 7092197 · Uriage Bariésun Protetor Solar Infantil FPS50+ Spray 200 ml (10) ⇄ Uriage Bariésun Spray Hidratante Crianças SPF50+ 200ml (31)"
+   "CNP 7092197 · Uriage Bariésun Protetor Solar Infantil FPS50+ Spray 200 ml (10) ⇄ Uriage Bariésun Spray Hidratante Crianças SPF50+ 200ml (32)"
   ]
  },
  "3661434008498": {
@@ -1114,7 +1090,7 @@
    "3661434023514"
   ],
   "reason": [
-   "CNP 6867010 · Uriage Toléderm Creme Rico Calmante para Pele Intolerante 40 ml (12) ⇄ Uriage Tolederm Control Cuidado Rico Apaziguante 40ml (33)"
+   "CNP 6867010 · Uriage Toléderm Creme Rico Calmante para Pele Intolerante 40 ml (12) ⇄ Uriage Tolederm Control Cuidado Rico Apaziguante 40ml (34)"
   ]
  },
  "3661434008634": {
@@ -1122,7 +1098,7 @@
    "3661434002304"
   ],
   "reason": [
-   "CNP 6934463 · URIAGE BEBE 1º CUIDADO PERI ORAL 30ML (10) ⇄ Uriage Baby 1º Cuidado Peri-Oral 30 ml (32)"
+   "CNP 6934463 · URIAGE BEBE 1º CUIDADO PERI ORAL 30ML (11) ⇄ Uriage Baby 1º Cuidado Peri-Oral 30 ml (32)"
   ]
  },
  "3661434008795": {
@@ -1131,7 +1107,7 @@
    "3661434000263"
   ],
   "reason": [
-   "CNP 6561373 · Uriage Crema limpador, 200ml. (4) ⇄ Uriage Creme Lavante Pele Sensível 200ml (16)",
+   "CNP 6561373 · Uriage Crema limpador, 200ml. (5) ⇄ Uriage Creme Lavante Pele Sensível 200ml (16)",
    "CNP 6561373 · Uriage Creme Lavante 200 (3) ⇄ Uriage Creme Lavante Pele Sensível 200ml (16)"
   ]
  },
@@ -1140,7 +1116,15 @@
    "3661434034794"
   ],
   "reason": [
-   "CNP 7080317 · Uriage DERM-PHY Dermatological Solid Cleansing Cream (6) ⇄ Creme Lavante Sólido (32)"
+   "CNP 7080317 · Uriage DERM-PHY Dermatological Solid Cleansing Cream (6) ⇄ Creme Lavante Sólido (33)"
+  ]
+ },
+ "3661434009204": {
+  "aliases": [
+   "3661434003622"
+  ],
+  "reason": [
+   "CNP 6961607 · Uriage água Micelar Pele Sensível 100ml (2) ⇄ Uriage Água Micelar Termal para Pele com Vermelhidão 100 ml (22)"
   ]
  },
  "3661434009341": {
@@ -1148,7 +1132,7 @@
    "3661434003653"
   ],
   "reason": [
-   "CNP 6961615 · Uriage Água Termal Micelar Pele mista a oleosa 100 (2) ⇄ Uriage Agua Micelar Pele Mista/Oleosa - 100ml (19)"
+   "CNP 6961615 · Uriage Água Termal Micelar Pele mista a oleosa 100 (3) ⇄ Uriage Agua Micelar Pele Mista/Oleosa - 100ml (19)"
   ]
  },
  "3661434009358": {
@@ -1156,7 +1140,7 @@
    "3661434003660"
   ],
   "reason": [
-   "CNP 6961003 · Uriage Água Termal Micelar Pele Mista e Oleosa - 250 mL - Farmácia ... (5) ⇄ Uriage Água Micelar Termal Pele Oleosa 250ml (24)"
+   "CNP 6961003 · Uriage Água Termal Micelar Pele Mista e Oleosa - 250 mL - Farmácia ... (6) ⇄ Uriage Água Micelar Termal Pele Oleosa 250ml (24)"
   ]
  },
  "3661434009389": {
@@ -1164,7 +1148,7 @@
    "3661434003608"
   ],
   "reason": [
-   "CNP 6961011 · Uriage �gua Termal Micelar Pele Normal a Seca 250ml (4) ⇄ Uriage Termal Micelar Pele Normal/Seca - 250ml (22)"
+   "CNP 6961011 · Uriage �gua Termal Micelar Pele Normal a Seca 250ml (5) ⇄ Uriage Termal Micelar Pele Normal/Seca - 250ml (22)"
   ]
  },
  "3661434009679": {
@@ -1183,12 +1167,20 @@
    "CNP 7308866 · Uriage Bariésun Bruma Solar Fresca Água Termal SPF50+ 200ml (1) ⇄ Uriage Bariésun Água Solar Fresca Termal SPF50+ 200ml (25)"
   ]
  },
+ "3661434024481": {
+  "aliases": [
+   "3661434010194"
+  ],
+  "reason": [
+   "CNP 7549428 · Uriage Bebé a Minha 1º Mochila de Maternidade – 2025 (4) ⇄ Uriage Bebé Mochila de Maternidade (10)"
+  ]
+ },
  "3662361000043": {
   "aliases": [
    "3662361000036"
   ],
   "reason": [
-   "CNP 6050930 · SVR AK Secure DM Protect 50ml (6) ⇄ AK Secure (35)"
+   "CNP 6050930 · SVR AK Secure DM Protect 50ml (7) ⇄ AK Secure (35)"
   ]
  },
  "3662361001705": {
@@ -1196,7 +1188,7 @@
    "3401360167803"
   ],
   "reason": [
-   "CNP 7477372 · SVR Sun Secure Creme Confort SPF 50+ - 50 mL (14) ⇄ SVR Sun Secure Creme Conforto com Acabamento Invisível FPS50+ 50 ml (28)"
+   "CNP 7477372 · SVR Sun Secure Creme Confort SPF 50+ - 50 mL (15) ⇄ SVR Sun Secure Creme Conforto com Acabamento Invisível FPS50+ 50 ml (28)"
   ]
  },
  "3662361001842": {
@@ -1212,7 +1204,7 @@
    "3662361004713"
   ],
   "reason": [
-   "CNP 7092866 · SVR Densitium Creme de Noite Recarregável 50ml (10) ⇄ Baume Nuit Densitium (34)"
+   "CNP 7092866 · SVR Densitium Creme de Noite Recarregável 50ml (11) ⇄ Baume Nuit Densitium (34)"
   ]
  },
  "3662361001958": {
@@ -1220,7 +1212,7 @@
    "3662361000623"
   ],
   "reason": [
-   "CNP 6287854 · SVR Densitium Creme Rose - 50ml (14) ⇄ SVR Densitium Creme Rosa Iluminador 50ml (33)"
+   "CNP 6287854 · SVR Densitium Creme Rose - 50ml (15) ⇄ SVR Densitium Creme Rosa Iluminador 50ml (34)"
   ]
  },
  "3662361003419": {
@@ -1229,8 +1221,8 @@
    "366236100112"
   ],
   "reason": [
-   "CNP 7245258 · SVR Sebiaclear Gel de Limpeza Recarga - 400 mL (14) ⇄ SVR Sebiaclear Gel Espumoso Anti-Imperfeições Eco-Recarga 400 ml (23)",
-   "CNP 7245258 · Svr Sebiaclear Gel Moussant Eco Refill 400 mL (2) ⇄ SVR Sebiaclear Gel Espumoso Anti-Imperfeições Eco-Recarga 400 ml (23)"
+   "CNP 7245258 · SVR Sebiaclear Gel de Limpeza Recarga - 400 mL (14) ⇄ SVR Sebiaclear Gel Espumoso Anti-Imperfeições Eco-Recarga 400 ml (25)",
+   "CNP 7245258 · Svr Sebiaclear Gel Moussant Eco Refill 400 mL (2) ⇄ SVR Sebiaclear Gel Espumoso Anti-Imperfeições Eco-Recarga 400 ml (25)"
   ]
  },
  "3701129801628": {
@@ -1238,7 +1230,7 @@
    "3401577538663"
   ],
   "reason": [
-   "CNP 6936567 · Bioderma ABCDerm Creme P�ri-Oral 40ml (6) ⇄ ABCDerm Bioderma Peri Oral Creme - 40ml (dermatite perioral) (24)"
+   "CNP 6936567 · Bioderma ABCDerm Creme P�ri-Oral 40ml (7) ⇄ ABCDerm Bioderma Peri Oral Creme - 40ml (dermatite perioral) (24)"
   ]
  },
  "3701129802069": {
@@ -1246,7 +1238,7 @@
    "3401381463359"
   ],
   "reason": [
-   "CNP 6936310 · Bioderma Atoderm Intensive Baume - 200 mL (9) ⇄ Bioderma Atoderm Intensive Baume Tubo 200ml (21)"
+   "CNP 6936310 · Bioderma Atoderm Intensive Baume - 200 mL (9) ⇄ Bioderma Atoderm Intensive Baume Tubo 200ml (22)"
   ]
  },
  "3701436908041": {
@@ -1254,7 +1246,7 @@
    "3337875200943"
   ],
   "reason": [
-   "CNP 6899740 · ROGER &amp; GALLET CEDRAT GEL DUCHE 200ML (9) ⇄ Roger et Gallet gel douche bienfaisant Cédrat (14)"
+   "CNP 6899740 · ROGER &amp; GALLET CEDRAT GEL DUCHE 200ML (9) ⇄ Roger et Gallet gel douche bienfaisant Cédrat (17)"
   ]
  },
  "3701436908973": {
@@ -1262,7 +1254,7 @@
    "3508240002251"
   ],
   "reason": [
-   "CNP 6033159 · LIERAC LIFT INTEGRAL NUIT CREME TENSOR RESTRUTURANTE 50 ML (13) ⇄ Lierac Lift Integral Creme Noturno Regenerador 50 ml (30)"
+   "CNP 6033159 · LIERAC LIFT INTEGRAL NUIT CREME TENSOR RESTRUTURANTE 50 ML (14) ⇄ Lierac Lift Integral Creme Noturno Regenerador 50 ml (31)"
   ]
  },
  "3701436910013": {
@@ -1271,14 +1263,6 @@
   ],
   "reason": [
    "CNP 6046128 · Roger & Gallet Sabonete Gingembre Rouge 100g (9) ⇄ Roger & Gallet Gingembre Rouge Sabonete Perfumado 100gr (19)"
-  ]
- },
- "3701436912321": {
-  "aliases": [
-   "3337875200950"
-  ],
-  "reason": [
-   "CNP 6899773 · Roger &amp; Gallet Jean Marie Farina Gel Duche - 200ml (6) ⇄ Jean Marie Farina (10)"
   ]
  },
  "3701436913151": {
@@ -1310,7 +1294,7 @@
    "8748436925468"
   ],
   "reason": [
-   "CNP 7407270 · Roger &amp; Gallet  Cologne Twist Edc - 100Ml (2) ⇄ Roger & Gallet - Twist Água de Colónia 100ml (13)"
+   "CNP 7407270 · Roger &amp; Gallet  Cologne Twist Edc - 100Ml (2) ⇄ Roger & Gallet - Twist Água de Colónia 100ml (14)"
   ]
  },
  "3701436928131": {
@@ -1328,7 +1312,7 @@
    "3508240215569"
   ],
   "reason": [
-   "CNP 6875476 · Lierac Sérum Potenciador Antienvelhecimento Absoluto - 30ml (14) ⇄ Sérum Absoluto Premium (22)",
+   "CNP 6875476 · Lierac Sérum Potenciador Antienvelhecimento Absoluto - 30ml (15) ⇄ Sérum Absoluto Premium (22)",
    "CNP 6875476 · LIERAC PREMIUM SÉRUM POTENCIADOR ANTIENVELHECIMENTO ABSOLUTO 30 ML (5) ⇄ Sérum Absoluto Premium (22)",
    "CNP 6875476 · Lierac Envelhecimento Premium Sérum Absoluto - 30ml (3) ⇄ Sérum Absoluto Premium (22)"
   ]
@@ -1338,15 +1322,7 @@
    "3504105026806"
   ],
   "reason": [
-   "CNP 6884510 · Noviderm Boreade Stick Reparador - 11ml (1) ⇄ Boréade R Stick lèvres réparateur apaisant (5)"
-  ]
- },
- "3760289220267": {
-  "aliases": [
-   "3401560047608"
-  ],
-  "reason": [
-   "CNP 6289439 · Keratine Max Capilar Po 240g Po Sol Oral Medida Proteinas Do Leite (2) ⇄ Keratine Max Capilar pó solução oral - 240g (16)"
+   "CNP 6884510 · Noviderm Boreade Stick Reparador - 11ml (2) ⇄ Boréade R Stick lèvres réparateur apaisant (5)"
   ]
  },
  "4005800036798": {
@@ -1354,7 +1330,7 @@
    "4005800036804"
   ],
   "reason": [
-   "CNP 6620609 · EUCERIN DERMOCAPILLAIRE SHAMPOO CALMANTE PH 5pH 250ML (4) ⇄ Eucerin Dermo Capillaire Champô Apaziguante 5% Ureia 250ml (19)"
+   "CNP 6620609 · EUCERIN DERMOCAPILLAIRE SHAMPOO CALMANTE PH 5pH 250ML (5) ⇄ Eucerin Dermo Capillaire Champô Apaziguante 5% Ureia 250ml (20)"
   ]
  },
  "4005800182372": {
@@ -1362,7 +1338,7 @@
    "4005900436993"
   ],
   "reason": [
-   "CNP 6007013 · DermoPure Oil Control Esfoliante (11) ⇄ Eucerin Pele Oleosa DermoPure Exfoliante 100ml (28)"
+   "CNP 6007013 · DermoPure Oil Control Esfoliante (12) ⇄ Eucerin Pele Oleosa DermoPure Exfoliante 100ml (29)"
   ]
  },
  "4005800191084": {
@@ -1402,7 +1378,7 @@
    "4005808583416"
   ],
   "reason": [
-   "CNP 6878272 · Gel Eucerin Limpeza Dermatoclean 200ml (6) ⇄ Eucerin DermatoClean Gel de Limpeza Refrescante 200ml (28)"
+   "CNP 6878272 · Gel Eucerin Limpeza Dermatoclean 200ml (7) ⇄ Eucerin DermatoClean Gel de Limpeza Refrescante 200ml (30)"
   ]
  },
  "4006000075716": {
@@ -1410,15 +1386,7 @@
    "4005800364716"
   ],
   "reason": [
-   "CNP 7406983 · Eucerin Dermopure Triplo Efeito Gel Limpeza 400ml (8) ⇄ Eucerin DermoPure Gel de Limpeza 400ml (13)"
-  ]
- },
- "4008600386735": {
-  "aliases": [
-   "4008600442813"
-  ],
-  "reason": [
-   "CNP 7127555 · Detergente Nuk Biberoes E Tetinas 500ml (2) ⇄ Nuk Detergente Limpeza Biberões - 500ml (14)"
+   "CNP 7406983 · Eucerin Dermopure Triplo Efeito Gel Limpeza 400ml (10) ⇄ Eucerin DermoPure Gel de Limpeza 400ml (13)"
   ]
  },
  "4011396415398": {
@@ -1434,39 +1402,7 @@
    "3574660600094"
   ],
   "reason": [
-   "CNP 6009886 · Neutrogena Creme de M�os Concentrado com Perfume 50ml (3) ⇄ Neutrogena Creme para Mãos com Perfume 50 ml (35)"
-  ]
- },
- "4051895003870": {
-  "aliases": [
-   "4051895040301"
-  ],
-  "reason": [
-   "CNP 7394866 · Fresubin 2kcal Creme Baunilha 4x125g (6) ⇄ Fresubin 2kcal_ Creme BAUNILHA - 125g  (x4 unidades) (11)"
-  ]
- },
- "4051895014579": {
-  "aliases": [
-   "4051895049755"
-  ],
-  "reason": [
-   "CNP 7353110 · Fresubin Protein Energy Dr Baun 4X200Ml (5) ⇄ Fresubin Protein Energy Drink Baunilha 4x200ml (8)"
-  ]
- },
- "4051895034133": {
-  "aliases": [
-   "4051895011677"
-  ],
-  "reason": [
-   "CNP 7370577 · Fresubin 2kcal Sol Baunilha 4 X 200 Ml (3) ⇄ Fresubin 2kcal Drink Baunilha 4x200ml (10)"
-  ]
- },
- "4051895034379": {
-  "aliases": [
-   "4051895049724"
-  ],
-  "reason": [
-   "CNP 7249292 · Fresubin Protein Energy Frutos Tropicais 200ml X4 (2) ⇄ Fresubin Drink_ Protein Energy_ Frutos tropicais - 200ml (x4unidades) (5)"
+   "CNP 6009886 · Neutrogena Creme de M�os Concentrado com Perfume 50ml (3) ⇄ Neutrogena Creme para Mãos com Perfume 50 ml (36)"
   ]
  },
  "4063528009746": {
@@ -1485,28 +1421,12 @@
    "CNP 6457812 · Foamie Champô Sólido óleo De Coco Cabelo Normal 80g (4) ⇄ Shampoo de coco sólido Foamie para cabelos normais (17)"
   ]
  },
- "4086000015745": {
-  "aliases": [
-   "4051895016771"
-  ],
-  "reason": [
-   "CNP 7375360 · Fresubin DB Creme Morango Silvestre 4x125g (4) ⇄ FRESUBIN DB CREME CR MORANGO SIL 4 X 125G (13)"
-  ]
- },
  "5020465201496": {
   "aliases": [
    "7613036966382"
   ],
   "reason": [
-   "CNP 6289033 · Produto de limpeza esfoliante suave (3) ⇄ Gentle Exfoliating Cleanser (23)"
-  ]
- },
- "5052197040364": {
-  "aliases": [
-   "5605480002763"
-  ],
-  "reason": [
-   "CNP 6411967 · Durex Play Origin Pleasure Gel Lubrif 50ml (6) ⇄ Durex Play Original Pleasure Gel Lubrificante - 50ml (25)"
+   "CNP 6289033 · Produto de limpeza esfoliante suave (3) ⇄ Gentle Exfoliating Cleanser (25)"
   ]
  },
  "5201279070342": {
@@ -1547,14 +1467,6 @@
   ],
   "reason": [
    "CNP 6236851 · Apivita Lip Care Mel Bio-eco 4,4 G (3) ⇄ Apivita Cuidado Labial Bio-Eco de Mel 4,4g (4)"
-  ]
- },
- "5201279077839": {
-  "aliases": [
-   "5201279049645"
-  ],
-  "reason": [
-   "CNP 6236539 · Apivita Capilar Ch Tonific Mulher 250ml (3) ⇄ Apivita Shampoo Tonificante para Mulheres Cabelos Finos 250 ml (23)"
   ]
  },
  "5201279078874": {
@@ -1604,7 +1516,7 @@
    "5201279071103"
   ],
   "reason": [
-   "CNP 6236893 · Apivita Intimate Gel de Limpeza Suave Uso Diário 300ml (9) ⇄ Intimate Gel de Limpeza Diária  (17)"
+   "CNP 6236893 · Apivita Intimate Gel de Limpeza Suave Uso Diário 300ml (9) ⇄ Intimate Gel de Limpeza Diária  (18)"
   ]
  },
  "5201279094614": {
@@ -1615,14 +1527,6 @@
    "CNP 6236695 · Apivita Condicionador Nutritivo e Reparador 150ml (7) ⇄ Apivita Keratin Repair Condicionador Nutritivo e Reparador 150 ml (24)"
   ]
  },
- "5201279102395": {
-  "aliases": [
-   "5201279049706"
-  ],
-  "reason": [
-   "CNP 7523837 · Apivita Condicionador Hyaluronic Hydra 150ml (3) ⇄ Hydration Acondicionador Hidratante (24)"
-  ]
- },
  "5201279103217": {
   "aliases": [
    "5201279108076"
@@ -1631,12 +1535,20 @@
    "CNP 7536011 · Apivita Aqua Beelicious Rotina Hidratante e Refrescante Coffret (6) ⇄ Apivita Aqua Beelicious Coffret Gel-Creme (10)"
   ]
  },
+ "5600069475235": {
+  "aliases": [
+   "8019561432313"
+  ],
+  "reason": [
+   "CNP 6947523 · Saugella Poligyn Emulsão Com Doseador 250 ml (2) ⇄ Saugella Poligyn Emulsao C/Dosead 250ml (20)"
+  ]
+ },
  "5600254210912": {
   "aliases": [
    "5600254219712"
   ],
   "reason": [
-   "CNP 7520346 · Absolute Repair Creme Pele Reactiva (4) ⇄ D&#x27; Aveia Ceutics Absolute Repair Reactive Creme -  50ml (8)"
+   "CNP 7520346 · Absolute Repair Creme Pele Reactiva (5) ⇄ D&#x27; Aveia Ceutics Absolute Repair Reactive Creme -  50ml (8)"
   ]
  },
  "5600254219699": {
@@ -1652,7 +1564,7 @@
    "5609380821165"
   ],
   "reason": [
-   "CNP 6326603 · Barral MotherProtect Loção Óleo Amêndoas Doces 200ml (5) ⇄ Barral Motherprotect Loção Óleo Amêndoa Doce - 200ml (21)"
+   "CNP 6326603 · Barral MotherProtect Loção Óleo Amêndoas Doces 200ml (6) ⇄ Barral Motherprotect Loção Óleo Amêndoa Doce - 200ml (22)"
   ]
  },
  "5600360018049": {
@@ -1660,7 +1572,7 @@
    "5609380022135"
   ],
   "reason": [
-   "CNP 6837591 · Barral DermaProtect Creme Emoliente Reparador Corpo 200ml (11) ⇄ Barral DermaProtect Creme Emoliente Reparador 200ml (24)"
+   "CNP 6837591 · Barral DermaProtect Creme Emoliente Reparador Corpo 200ml (12) ⇄ Barral DermaProtect Creme Emoliente Reparador 200ml (24)"
   ]
  },
  "5600360018100": {
@@ -1668,7 +1580,7 @@
    "5609380022128"
   ],
   "reason": [
-   "CNP 6837575 · Barral Dermaprote Cr Hidrat 400ml (7) ⇄ Barral Dermaprotect Creme Hidratante - 400ml (28)"
+   "CNP 6837575 · Barral Dermaprote Cr Hidrat 400ml (8) ⇄ Barral Dermaprotect Creme Hidratante - 400ml (28)"
   ]
  },
  "5600360018223": {
@@ -1676,7 +1588,15 @@
    "5609380803307"
   ],
   "reason": [
-   "CNP 6907907 · Barral Babyprotect Champô Crosta Láctea 200ml (4) ⇄ Barral BabyProtect Champô 200ml (25)"
+   "CNP 6907907 · Barral Babyprotect Champô Crosta Láctea 200ml (5) ⇄ Barral BabyProtect Champô 200ml (25)"
+  ]
+ },
+ "5600360018230": {
+  "aliases": [
+   "5609380803345"
+  ],
+  "reason": [
+   "CNP 6907931 · Barral Babyprotec Cr Hidrat 400ml (2) ⇄ Babyprotect Moisturizer Cream  (25)"
   ]
  },
  "5600360018261": {
@@ -1684,7 +1604,7 @@
    "5609380800887"
   ],
   "reason": [
-   "CNP 6326587 · Barral Motherprotect Creme Gordo Óleo Amêndoas Doces 200 mL (13) ⇄ Barral Creme de Óleo de Amêndoa MotherProtect 200 ml (14)"
+   "CNP 6326587 · Barral Motherprotect Creme Gordo Óleo Amêndoas Doces 200 mL (14) ⇄ Barral Creme de Óleo de Amêndoa MotherProtect 200 ml (14)"
   ]
  },
  "5600360018529": {
@@ -1692,23 +1612,15 @@
    "5600360018629"
   ],
   "reason": [
-   "CNP 7267500 · Barral Coffret Creme Gordo 100ml + Creme Banho 100ml + Creme Hidradatante 100ml (4) ⇄ Barral Coffret: Creme gordo 100ml + Creme banho 100ml + Creme hidratante 100ml (6)"
+   "CNP 7267500 · Barral Coffret Creme Gordo 100ml + Creme Banho 100ml + Creme Hidradatante 100ml (5) ⇄ Barral Coffret: Creme gordo 100ml + Creme banho 100ml + Creme hidratante 100ml (6)"
   ]
  },
- "5601182501405": {
+ "5600757718026": {
   "aliases": [
-   "5609238103054"
+   "5600069221610"
   ],
   "reason": [
-   "CNP 7065540 · Vitace Infantil Sol Oral 150 Ml (4) ⇄ Vitace Infantil Solução Oral 150 Ml (10)"
-  ]
- },
- "5601436105861": {
-  "aliases": [
-   "3286011105010"
-  ],
-  "reason": [
-   "CNP 7368142 · Cerebrum Forte Shot (8 Ampolas Bebíveis) (2) ⇄ Cerebrum Forte Shot  (x8 ampolas bebíveis) (16)"
+   "CNP 6922161 · Bioderma Isokit Sébium Hydra Creme 40ml + Atoderm Bálsamo Labial 15ml (3) ⇄ Bioderma Sébium Isokit 40ml + Atoderm Bálsamo Labial 15ml (36)"
   ]
  },
  "5601653005951": {
@@ -1724,15 +1636,7 @@
    "5601653002936"
   ],
   "reason": [
-   "CNP 6269308 · Absorvit Infantil �leo de F�gado de Bacalhau + Vitaminas 300ml (5) ⇄ Absorvit Infantil Óleo Figado Bacalhau + Vitaminas 300mL (18)"
-  ]
- },
- "5601653018234": {
-  "aliases": [
-   "5601653003130"
-  ],
-  "reason": [
-   "CNP 7287151 · ABSORVIT MAIS ALIMENTO SUSP ORAL 480ML (2) ⇄ Absorvit Mais Alimento Susp 480ml Ascorbico (acido) (vitamina C) (13)"
+   "CNP 6269308 · Absorvit Infantil �leo de F�gado de Bacalhau + Vitaminas 300ml (5) ⇄ Absorvit Infantil Óleo Figado Bacalhau + Vitaminas 300mL (19)"
   ]
  },
  "5606890973292": {
@@ -1740,7 +1644,7 @@
    "5606890001544"
   ],
   "reason": [
-   "CNP 6097329 · Aquilea Stagutt Detox Gotas 30ml (7) ⇄ Aquilea Stagutt Detox Solução 30ml (22)"
+   "CNP 6097329 · Aquilea Stagutt Detox Gotas 30ml (8) ⇄ Aquilea Stagutt Detox Solução 30ml (23)"
   ]
  },
  "5606891267000": {
@@ -1756,7 +1660,7 @@
    "5600360018148"
   ],
   "reason": [
-   "CNP 6565192 · Barral Creme Gordo Original Boião 200ml (5) ⇄ Barral Creme Gordo 200ml (34)"
+   "CNP 6565192 · Barral Creme Gordo Original Boião 200ml (5) ⇄ Barral Creme Gordo 200ml (35)"
   ]
  },
  "6001159111351": {
@@ -1764,7 +1668,7 @@
    "5609238304437"
   ],
   "reason": [
-   "CNP 6966093 · BIO-OIL Óleo de Corpo Regenerador da Pele | 125ml (5) ⇄ Bio-Oil Corporal 125ml (9)"
+   "CNP 6966093 · BIO-OIL Óleo de Corpo Regenerador da Pele | 125ml (6) ⇄ Bio-Oil Corporal 125ml (10)"
   ]
  },
  "634438475293": {
@@ -1772,7 +1676,7 @@
    "0634438475293"
   ],
   "reason": [
-   "CNP 7483206 · Papillon Styling Cera Fixadora Forte Com Brilho 75g (1) ⇄ Papillon Styling Cera Fixação Forte Com Brilho - 75g (17)"
+   "CNP 7483206 · Papillon Styling Cera Fixadora Forte Com Brilho 75g (1) ⇄ Papillon Styling Cera Fixação Forte Com Brilho - 75g (19)"
   ]
  },
  "6344387636730": {
@@ -1788,7 +1692,7 @@
    "6354943272050"
   ],
   "reason": [
-   "CNP 6892349 · Skinceuticals Retexturing Activator S�rum Hidratante e Renovador Di�rio 30ml (2) ⇄ SkinCeuticals Retexturing Activator Sérum Hidratante 30ml (18)"
+   "CNP 6892349 · Skinceuticals Retexturing Activator S�rum Hidratante e Renovador Di�rio 30ml (2) ⇄ SkinCeuticals Retexturing Activator Sérum Hidratante 30ml (19)"
   ]
  },
  "7311620014531": {
@@ -1805,8 +1709,8 @@
    "7427244505818"
   ],
   "reason": [
-   "CNP 7134957 · Papillon Ch AC/DC Caspa 300ml (6) ⇄ Papillon Champo AC/DC Caspa 300mL (18)",
-   "CNP 7134957 · Papillon Champô AC/DC 300ml (1) ⇄ Papillon Champo AC/DC Caspa 300mL (18)"
+   "CNP 7134957 · Papillon Ch AC/DC Caspa 300ml (6) ⇄ Papillon Champo AC/DC Caspa 300mL (19)",
+   "CNP 7134957 · Papillon Champô AC/DC 300ml (1) ⇄ Papillon Champo AC/DC Caspa 300mL (19)"
   ]
  },
  "7610700004210": {
@@ -1814,15 +1718,7 @@
    "7610700614679"
   ],
   "reason": [
-   "CNP 7352872 · Rebuçados Ricola Sem Açúcar Flor Sabugueiro 50g (4) ⇄ Ricola Rebucados Sem Acucar Sabugueiro 50 g (7)"
-  ]
- },
- "7613036835251": {
-  "aliases": [
-   "7613035474895"
-  ],
-  "reason": [
-   "CNP 7069831 · Nan Sem Lactose Leite Lactentes Desde O Nascimento Lata 400 Gr (3) ⇄ NAN Sem Lactose Leite Lactente Pó - 400g (15)"
+   "CNP 7352872 · Rebuçados Ricola Sem Açúcar Flor Sabugueiro 50g (4) ⇄ Ricola Rebucados Sem Acucar Sabugueiro 50 g (10)"
   ]
  },
  "7613037029512": {
@@ -1830,7 +1726,7 @@
    "7613032384562"
   ],
   "reason": [
-   "CNP 7373142 · Nestle Expert Farinh Sinlac S/Glut 250g (4) ⇄ Nestle Expert Farinha Sinlac s/ Gluten -  250g (15)"
+   "CNP 7373142 · Nestle Expert Farinh Sinlac S/Glut 250g (4) ⇄ Nestle Expert Farinha Sinlac s/ Gluten -  250g (17)"
   ]
  },
  "7613287356185": {
@@ -1838,7 +1734,7 @@
    "8445291281707"
   ],
   "reason": [
-   "CNP 7087767 · Nestlé Resource Crema 2.0 Caramelo 4x125g - Sem Fibra | Isento de Lactose e Glúten (3) ⇄ Nestlé Resource Crema 2.0 Caramelo 4x125g (16)"
+   "CNP 7087767 · Nestlé Resource Crema 2.0 Caramelo 4x125g - Sem Fibra | Isento de Lactose e Glúten (3) ⇄ Nestlé Resource Crema 2.0 Caramelo 4x125g (17)"
   ]
  },
  "8000300417524": {
@@ -1846,7 +1742,7 @@
    "8000300404883"
   ],
   "reason": [
-   "CNP 6629931 · Nestlé Nancare FLORA PRO L. rhamnosus 5mL (3) ⇄ Nancare Flora Pro - 5ml (10)"
+   "CNP 6629931 · Nestlé Nancare FLORA PRO L. rhamnosus 5mL (4) ⇄ Nancare Flora Pro - 5ml (11)"
   ]
  },
  "8019629000317": {
@@ -1862,7 +1758,7 @@
    "8032472019190"
   ],
   "reason": [
-   "CNP 7061077 · Oroben Gel Oral Gel 15Ml (2) ⇄ Aboca Oroben gel oral, 15 ml (5)"
+   "CNP 7061077 · Oroben Gel Oral Gel 15Ml (2) ⇄ Aboca Oroben gel oral, 15 ml (6)"
   ]
  },
  "8050444856116": {
@@ -1886,15 +1782,7 @@
    "8050444857885"
   ],
   "reason": [
-   "CNP 7061580 · Rilastil Aqua Intense 72h Gel-Creme Hidratante Intensivo 40ml (3) ⇄ Rilastil Aqua Intense 72H Gel-Creme Hidratante 40 ml (19)"
-  ]
- },
- "8058664099825": {
-  "aliases": [
-   "8058664168262"
-  ],
-  "reason": [
-   "CNP 7062547 · Control Infinity Gel Lubrificante 75 ml (8) ⇄ Controle Lubrificante Gel Infinity, 75ml. (9)"
+   "CNP 7061580 · Rilastil Aqua Intense 72h Gel-Creme Hidratante Intensivo 40ml (3) ⇄ Rilastil Aqua Intense 72H Gel-Creme Hidratante 40 ml (20)"
   ]
  },
  "818625024444": {
@@ -1903,14 +1791,6 @@
   ],
   "reason": [
    "CNP 7524272 · Medik8 Advanced Night Restore Cream 50mL (6) ⇄ Medik8 Advanced Night Restore Creme de Noite Reparador 50ml (6)"
-  ]
- },
- "8427324883812": {
-  "aliases": [
-   "8470001615855"
-  ],
-  "reason": [
-   "CNP 6201426 · Systane Balance Solução Oftálmica Lubrificante 10 ml (5) ⇄ Systane Balance Sol Oft Lubrif 10 Ml (14)"
   ]
  },
  "8428749818908": {
@@ -1942,7 +1822,7 @@
    "8428749989905"
   ],
   "reason": [
-   "CNP 7063099 · Sensilis Upgrade Makeup Creme Efeito Lifting 01 Bege 30 ml (2) ⇄ Sensilis Upgrade [Make-Up] Creme Efeito Lifting 01 Beige 30ml (10)"
+   "CNP 7063099 · Sensilis Upgrade Makeup Creme Efeito Lifting 01 Bege 30 ml (3) ⇄ Sensilis Upgrade [Make-Up] Creme Efeito Lifting 01 Beige 30ml (10)"
   ]
  },
  "8428749844402": {
@@ -1969,12 +1849,20 @@
    "CNP 7063123 · Sensilis Upgrade [Make-Up] Creme Efeito Lifting 03 Miel Doré 30ml (5) ⇄ Sensilis Upgrade Makeup Creme Efeito Lifting 03 Mel Doré 30 ml (9)"
   ]
  },
+ "8429420118713": {
+  "aliases": [
+   "8429420033344"
+  ],
+  "reason": [
+   "CNP 6555326 · Isdin Bexident Gengivas Pasta Dent�frica 75ml (2) ⇄ Bexident Gengivas Uso di&aacute;rio Pasta dent&iacute;frica (8)"
+  ]
+ },
  "8429420121270": {
   "aliases": [
    "8470001685254"
   ],
   "reason": [
-   "CNP 7469460 · Isdin Ureadin Podos DB Creme Repara e Protege 100 ml (7) ⇄ ISDIN Ureadin Creme Reparador Podos Db - 100ml (38)"
+   "CNP 7469460 · Isdin Ureadin Podos DB Creme Repara e Protege 100 ml (7) ⇄ ISDIN Ureadin Creme Reparador Podos Db - 100ml (39)"
   ]
  },
  "8429420154353": {
@@ -1982,7 +1870,7 @@
    "8470001785473"
   ],
   "reason": [
-   "CNP 6808758 · Isdin Loção para pele irradiada Ureadin RxRd 250 ml (9) ⇄ Ureadin RxRd Loção Hidratante Pele Irradiada - 250ml (29)"
+   "CNP 6808758 · Isdin Loção para pele irradiada Ureadin RxRd 250 ml (9) ⇄ Ureadin RxRd Loção Hidratante Pele Irradiada - 250ml (30)"
   ]
  },
  "8429420158399": {
@@ -1990,7 +1878,7 @@
    "8429420107526"
   ],
   "reason": [
-   "CNP 6388652 · ISDIN Fotoprotetor Fusion Water Magic SPF50 50ml (6) ⇄ ISDIN Fotoprotector FusionWater Magic SPF50 50mL - Protetor solar facial ultraligeiro (28)"
+   "CNP 6388652 · ISDIN Fotoprotetor Fusion Water Magic SPF50 50ml (6) ⇄ ISDIN Fotoprotector FusionWater Magic SPF50 50mL - Protetor solar facial ultraligeiro (29)"
   ]
  },
  "8429420160514": {
@@ -2006,7 +1894,7 @@
    "8429420150317"
   ],
   "reason": [
-   "CNP 6329904 · Isdin Mulher Creme Anti-Estrias 2x250 ml (4) ⇄ Isdin Woman Duo Creme Anti-Estrias 2x250ml (32)"
+   "CNP 6329904 · Isdin Mulher Creme Anti-Estrias 2x250 ml (4) ⇄ Isdin Woman Duo Creme Anti-Estrias 2x250ml (33)"
   ]
  },
  "8429420166547": {
@@ -2014,7 +1902,7 @@
    "8470001503572"
   ],
   "reason": [
-   "CNP 6945907 · Nutratopic Pro-Amp Loção 400mL (4) ⇄ Isdin Nutratopic PRO-AMP Loção Emoliente 400 ml (40)"
+   "CNP 6945907 · Nutratopic Pro-Amp Loção 400mL (4) ⇄ Isdin Nutratopic PRO-AMP Loção Emoliente 400 ml (42)"
   ]
  },
  "8429420171435": {
@@ -2022,7 +1910,7 @@
    "8470001548887"
   ],
   "reason": [
-   "CNP 6864983 · Nutradeica Gel Crema Facial (14) ⇄ ISDIN Nutradeica Facial 50ML- Gel Creme Facial para pele com tendência seborreica (36)"
+   "CNP 6864983 · Nutradeica Gel Crema Facial (16) ⇄ ISDIN Nutradeica Facial 50ML- Gel Creme Facial para pele com tendência seborreica (36)"
   ]
  },
  "8429420181137": {
@@ -2030,7 +1918,7 @@
    "8470001839718"
   ],
   "reason": [
-   "CNP 7509042 · ISDIN Baby Naturals Água Suave Perfumada - 200 mL - Farmácia Barrei... (8) ⇄ ISDIN BabyNaturals Mist 200ml-Água de bebé perfumada (24)"
+   "CNP 7509042 · ISDIN Baby Naturals Água Suave Perfumada - 200 mL - Farmácia Barrei... (8) ⇄ ISDIN BabyNaturals Mist 200ml-Água de bebé perfumada (27)"
   ]
  },
  "8429420184985": {
@@ -2038,7 +1926,7 @@
    "8470001572882"
   ],
   "reason": [
-   "CNP 6802322 · Bexident Gel Gengival Sensibilidade Dentária 50ml (4) ⇄ ISDIN Bexident Dentes Sensíveis 50ML - Gel tópico para aliviar a sensibilidade dentária e com ação antiplaca (21)"
+   "CNP 6802322 · Bexident Gel Gengival Sensibilidade Dentária 50ml (6) ⇄ ISDIN Bexident Dentes Sensíveis 50ML - Gel tópico para aliviar a sensibilidade dentária e com ação antiplaca (22)"
   ]
  },
  "8429420189430": {
@@ -2046,7 +1934,7 @@
    "8429420143982"
   ],
   "reason": [
-   "CNP 6082263 · ISDIN Fotoprotector Transparent Spray Wet Skin SPF 30 - 250 mL - Fa... (6) ⇄ Isdin Fotoprotector Spray Transparente Wet Skin FPS30 250ml (28)"
+   "CNP 6082263 · ISDIN Fotoprotector Transparent Spray Wet Skin SPF 30 - 250 mL - Fa... (7) ⇄ Isdin Fotoprotector Spray Transparente Wet Skin FPS30 250ml (28)"
   ]
  },
  "8429420198371": {
@@ -2054,7 +1942,7 @@
    "8429420188532"
   ],
   "reason": [
-   "CNP 6395186 · Isdin Extrem Fotoprotetor 90 FPS50+ Creme 50 ml (7) ⇄ Isdin Fotoprotetor Extrem 90 Creme Solar FPS50+ 50ml (26)"
+   "CNP 6395186 · Isdin Extrem Fotoprotetor 90 FPS50+ Creme 50 ml (7) ⇄ Isdin Fotoprotetor Extrem 90 Creme Solar FPS50+ 50ml (27)"
   ]
  },
  "8429420231511": {
@@ -2062,7 +1950,7 @@
    "8429420231504"
   ],
   "reason": [
-   "CNP 7114827 · Isdin Fusion Water Magic Color Light FPS50 50 ml (16) ⇄ ISDIN Fotoprotector Fusion Water Magic Color LIGHT SPF50 50mL - Protetor solar facial ultraligeiro com cor (28)"
+   "CNP 7114827 · Isdin Fusion Water Magic Color Light FPS50 50 ml (17) ⇄ ISDIN Fotoprotector Fusion Water Magic Color LIGHT SPF50 50mL - Protetor solar facial ultraligeiro com cor (29)"
   ]
  },
  "8429420231559": {
@@ -2070,7 +1958,7 @@
    "8429420231542"
   ],
   "reason": [
-   "CNP 7114835 · Isdin Fusion Water Magic Color Bronze FPS50 50 ml (18) ⇄ ISDIN Fotoprotector Fusion Water Magic Color BRONZE SPF50 50mL - Protetor solar facial ultraligeiro com cor (29)"
+   "CNP 7114835 · Isdin Fusion Water Magic Color Bronze FPS50 50 ml (19) ⇄ ISDIN Fotoprotector Fusion Water Magic Color BRONZE SPF50 50mL - Protetor solar facial ultraligeiro com cor (30)"
   ]
  },
  "8429420274730": {
@@ -2078,7 +1966,7 @@
    "2008434737330"
   ],
   "reason": [
-   "CNP 7266189 · ISDINceutics Melaclear Sérum | 30ml (4) ⇄ Melaclear Antimanchas (40)"
+   "CNP 7266189 · ISDINceutics Melaclear Sérum | 30ml (4) ⇄ Melaclear Antimanchas (41)"
   ]
  },
  "8429420281110": {
@@ -2105,20 +1993,12 @@
    "CNP 7467407 · Repaskin Toque Seco SPF 50 facial de Sesderma. 50ml (4) ⇄ Sesderma Repaskin Toque Seco FPS50+ 50 ml (21)"
   ]
  },
- "8430134000058": {
-  "aliases": [
-   "2009177991713"
-  ],
-  "reason": [
-   "CNP 7083964 · Bi Oralsuero Morango Solução Oral 330ml X 2 (2) ⇄ Bi-Oralsuero Solução Oral_Morango -  330ml (x2 unidades) (14)"
-  ]
- },
  "8431567768508": {
   "aliases": [
    "3612625139613"
   ],
   "reason": [
-   "CNP 7620427 · Cerave Cleanser Hydrating Limpeza 976ml Desc25% (1) ⇄ Cerave Creme de Limpeza Hidratante Promocional (11)"
+   "CNP 7620427 · Cerave Cleanser Hydrating Limpeza 976ml Desc25% (1) ⇄ Cerave Creme de Limpeza Hidratante Promocional (12)"
   ]
  },
  "8437015942285": {
@@ -2134,15 +2014,7 @@
    "8429979466976"
   ],
   "reason": [
-   "CNP 6805242 · Celulex Gel Anticelulite  (6) ⇄ Sesderma Celulex Gel AntiCelulítico 200ml (7)"
-  ]
- },
- "8470001542342": {
-  "aliases": [
-   "8427324864224"
-  ],
-  "reason": [
-   "CNP 6157362 · Systane Ultra Sol Oft Lubrif 10 Ml (4) ⇄ Systane Ultra Solução Oftálmica Lubrificante 10ml (19)"
+   "CNP 6805242 · Celulex Gel Anticelulite  (6) ⇄ Sesderma Celulex Gel AntiCelulítico 200ml (8)"
   ]
  },
  "8470001638304": {
@@ -2158,7 +2030,7 @@
    "5609238444072"
   ],
   "reason": [
-   "CNP 6932210 · Lactacyd Sensitiv Higiene Intima 250ml (7) ⇄ Higiene Íntima Delicado (32)"
+   "CNP 6932210 · Lactacyd Sensitiv Higiene Intima 250ml (8) ⇄ Higiene Íntima Delicado (34)"
   ]
  },
  "8470001694492": {
@@ -2174,7 +2046,7 @@
    "3282770107395"
   ],
   "reason": [
-   "CNP 7010850 · Elancyl Slim Design Noite Cuidado Anticelulite Rebelde 200ml (9) ⇄ Elancyl Adelgaçante Slim Design Noite - 200ml (14)"
+   "CNP 7010850 · Elancyl Slim Design Noite Cuidado Anticelulite Rebelde 200ml (10) ⇄ Elancyl Adelgaçante Slim Design Noite - 200ml (15)"
   ]
  },
  "8470001895752": {
@@ -2182,7 +2054,7 @@
    "3282770208740"
   ],
   "reason": [
-   "CNP 6099465 · Elancyl Slim Design Adelgaçante Reafirmante - 150ml (8) ⇄ Slim Design Adelgaçante Refirmante  (15)"
+   "CNP 6099465 · Elancyl Slim Design Adelgaçante Reafirmante - 150ml (8) ⇄ Slim Design Adelgaçante Refirmante  (17)"
   ]
  },
  "8470001915429": {
