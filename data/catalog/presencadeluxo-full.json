@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-11-21T23:50:58.978952+00:00",
-  "completed_at": "2026-11-22T01:40:09.685313+00:00",
+  "scraped_at": "2026-11-22T11:39:16.815902+00:00",
+  "completed_at": "2026-11-22T13:29:51.296538+00:00",
   "source": "https://presencadeluxo.pt/1_pt_0_sitemap.xml",
   "scope": "existing-products-only",
   "in_progress": false,
@@ -5606,6 +5606,19 @@
       "url": "https://presencadeluxo.pt/scalp-loreal/11418-ampolas-aminexil-advanced-10x6ml-loreal-serie-expert-3474637265007.html",
       "status": "ok",
       "image_url": "https://presencadeluxo.pt/138090-thickbox_default/ampolas-aminexil-advanced-10x6ml-loreal-serie-expert.jpg",
+      "source": "explicit-visible-price-with-VAT-and-product-schema",
+      "additional_shipping_cost": 0.0
+    },
+    {
+      "ean": "3474637265014",
+      "name": "Ampolas Aminexil Adavanced 42x6ml L'Oreal Serie Expert",
+      "price": 98.47,
+      "net_price": 80.06,
+      "tax_included": true,
+      "in_stock": true,
+      "url": "https://presencadeluxo.pt/scalp-loreal/11419-ampolas-aminexil-adavanced-42x6ml-l-oreal-serie-expert-3474637265014.html",
+      "status": "ok",
+      "image_url": "https://presencadeluxo.pt/138091-thickbox_default/ampolas-aminexil-adavanced-42x6ml-l-oreal-serie-expert.jpg",
       "source": "explicit-visible-price-with-VAT-and-product-schema",
       "additional_shipping_cost": 0.0
     },
@@ -23127,14 +23140,6 @@
       "existing_name": "AndreiaProfissional Verniz de Gel 256 - 10.5ml",
       "method": "GTIN",
       "reason": "stock/order contradiction"
-    },
-    {
-      "url": "https://presencadeluxo.pt/scalp-loreal/11419-ampolas-aminexil-adavanced-42x6ml-l-oreal-serie-expert-3474637265014.html",
-      "ean": "3474637265014",
-      "canonical": "3474637265014",
-      "existing_name": "L&#39;Oréal Professionnel Serie Expert Aminexil Antiqueda 42x6 ml",
-      "method": "GTIN",
-      "reason": "ambiguous/missing Product schema"
     },
     {
       "url": "https://presencadeluxo.pt/cuidados-cabelos-loiros-blond-me/12340-shampoo-todos-os-loiros-enriquecido-blond-me-300ml-schwarzkopf-4045787639834.html",
