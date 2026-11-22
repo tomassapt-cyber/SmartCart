@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-22T10:53:02.301Z",
-  "seed_total_products": 105421,
+  "generated_at": "2026-11-22T13:13:56.652Z",
+  "seed_total_products": 105434,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -141,10 +141,10 @@
       "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 31.43,
-      "best_store": "Sofarma",
-      "best_store_slug": "sofarma",
-      "best_url": "https://www.sofarma.com/pt/beleza/la-roche-posay-hyalu-suractivated-serum-coffret-natal26_p87253.html"
+      "best_price": 28,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-hyalu-b5-suractivated-serum-coffret-xmas26"
     },
     {
       "ean": "3574661879185",
@@ -241,7 +241,7 @@
     },
     {
       "name": "L'Oréal Paris",
-      "products": 879
+      "products": 878
     },
     {
       "name": "Chicco",
@@ -249,11 +249,11 @@
     },
     {
       "name": "Isdin",
-      "products": 818
+      "products": 819
     },
     {
       "name": "Avène",
-      "products": 812
+      "products": 813
     },
     {
       "name": "Nivea",
@@ -261,7 +261,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 789
+      "products": 787
     }
   ],
   "telegram_alerts": [
