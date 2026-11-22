@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-21T13:22:29.281Z",
-  "seed_total_products": 105139,
+  "generated_at": "2026-11-22T10:53:02.301Z",
+  "seed_total_products": 105421,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -37,20 +37,20 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 10.54,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
+      "best_price": 10.37,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/lazartigue-champo-clear-caspa-seca"
     },
     {
       "ean": "3282770098938",
       "name": "Avène Protetor Solar Creme FPS50+",
       "brand": "Avène",
       "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
-      "best_price": 13.39,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/avene-solares-creme-50-incolor-50-ml.html"
+      "best_price": 8.8,
+      "best_store": "VallisPharma",
+      "best_store_slug": "vallispharma",
+      "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml"
     }
   ],
   "bestsellers": [
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.04,
+      "best_price": 15.06,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -245,7 +245,7 @@
     },
     {
       "name": "Chicco",
-      "products": 834
+      "products": 838
     },
     {
       "name": "Isdin",
@@ -253,15 +253,15 @@
     },
     {
       "name": "Avène",
-      "products": 814
+      "products": 812
     },
     {
       "name": "Nivea",
-      "products": 807
+      "products": 808
     },
     {
       "name": "La Roche-Posay",
-      "products": 788
+      "products": 789
     }
   ],
   "telegram_alerts": [
@@ -295,8 +295,8 @@
   ],
   "stats": {
     "stores": 103,
-    "products": 72178,
-    "avg_savings_pct": 29
+    "products": 63487,
+    "avg_savings_pct": 28
   },
   "shard_version": "",
   "idx_version": "",
