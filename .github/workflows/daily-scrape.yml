@@ -25,7 +25,7 @@ permissions:
 jobs:
   scrape:
     name: Scrape stale prices & rebuild demo
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # 24/11: o Playwright ainda não tem Chromium para o Ubuntu 26.04 (ubuntu-latest desde 16/11)
     timeout-minutes: 90
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
