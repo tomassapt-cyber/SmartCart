@@ -37,10 +37,17 @@
  *   node scripts/scrape-wells-catalog.js --limit=50            # teste rápido
  *   node scripts/scrape-wells-catalog.js --resume              # retoma do checkpoint
  *   node scripts/scrape-wells-catalog.js --concurrency=3 --delay=1500
+ *   node scripts/scrape-wells-catalog.js --orcamento-min=255   # rotação (o workflow)
+ *
+ * 25/11/2026: a leitura do mapa inteiro levava 297 min num job de 300 e o GitHub
+ * cortava-o a meio da integração (perdia-se a corrida). Com --orcamento-min=N lê
+ * primeiro o que está há mais tempo sem ser lido e pára a tempo de integrar; o
+ * resto fica para a corrida seguinte (scripts/lib/rotacao-leitura.js).
  */
 
 const fs = require('fs');
 const path = require('path');
+const { prepararRotacao, orcamentoDosArgs } = require('./lib/rotacao-leitura');
 
 let chromium;
 try { ({ chromium } = require('playwright')); }
@@ -68,6 +75,7 @@ const HEADED = !!args.headed;
 const RESUME = !!args.resume;
 const CHECKPOINT_EVERY = 50;
 const TIMEOUT_MS = 25000;
+const ORCAMENTO_MIN = orcamentoDosArgs(args);
 
 if (!fs.existsSync(URL_LIST)) {
   console.error(`✗ ${URL_LIST} não existe. Corre primeiro:`);
@@ -82,7 +90,12 @@ if (CATEGORY) {
   targets = targets.filter(t => t.category === CATEGORY);
   console.log(`🔍 Filtro categoria=${CATEGORY}: ${targets.length} URLs`);
 }
+// primeiro o que está há mais tempo sem ser lido (ofertas do catálogo + memória da cache)
+const rot = prepararRotacao({ loja: 'wells', itens: targets, url: t => t.url, orcamentoMin: ORCAMENTO_MIN });
+console.log(rot.resumo);
+targets = rot.fila;
 if (LIMIT !== Infinity) targets = targets.slice(0, LIMIT);
+const gravarMemoria = () => { if (LIMIT === Infinity) rot.gravar(); };   // o teste com --limit não publica: não conta como lido
 
 // Resume: skip URLs já scrapadas
 let existing = { products: [], stats: { total: 0, ok: 0, blocked: 0, no_jsonld: 0, error: 0 } };
@@ -283,8 +296,10 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
   const startTime = Date.now();
 
   const queue = [...targets];
+  let parouPorTempo = false;
   async function worker(id) {
     while (queue.length) {
+      if (rot.fimDoTempo()) { parouPorTempo = true; break; }
       const t = queue.shift();
       if (!t) break;
       const page = await context.newPage();
@@ -307,6 +322,7 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
         if (!data.name && data.variants.length === 0 && data.offers.length === 0) {
           stats.no_jsonld = (stats.no_jsonld || 0) + 1;
           allProducts.push({ ...t, status: 'no_jsonld', latency_ms: Date.now() - startedAt });
+          rot.lida(t.url);
           console.log(`  ⚠  ${t.productId} sem dados`);
           await page.close();
           continue;
@@ -348,6 +364,7 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
           variants: data.variants,
           latency_ms: Date.now() - startedAt,
         });
+        rot.lida(t.url);
         processed++;
         if (processed % 20 === 0) {
           const rate = processed / ((Date.now() - startTime) / 1000);
@@ -357,6 +374,7 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
         }
         if (processed % CHECKPOINT_EVERY === 0) {
           saveCheckpoint(allProducts, stats, false);
+          gravarMemoria();
         }
       } catch (e) {
         stats.error = (stats.error || 0) + 1;
@@ -373,6 +391,7 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
   await Promise.all(workers);
   await browser.close();
 
+  gravarMemoria();
   saveCheckpoint(allProducts, stats, true);
 
   const totalSec = (Date.now() - startTime) / 1000;
@@ -384,6 +403,7 @@ function saveCheckpoint(allProducts, stats, finalSave = false) {
   console.log(` Erros:             ${stats.error || 0}`);
   console.log(` Tempo total:       ${(totalSec/60).toFixed(1)} min`);
   console.log(` Taxa:              ${(processed/totalSec).toFixed(2)} produtos/s`);
+  if (parouPorTempo) console.log(` ⏱ Orçamento de ${ORCAMENTO_MIN} min esgotado: ${queue.length} fichas ficam para a próxima corrida (as lidas há menos tempo)`);
   console.log(`\n💾 Output: ${OUT_FILE.replace(ROOT, '.')}`);
 })().catch(err => {
   console.error('Fatal:', err);
