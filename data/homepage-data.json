@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T12:18:57.521Z",
-  "seed_total_products": 105522,
+  "generated_at": "2026-11-25T15:27:41.357Z",
+  "seed_total_products": 105572,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -47,10 +47,10 @@
       "name": "Avène Protetor Solar Creme FPS50+",
       "brand": "Avène",
       "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
-      "best_price": 13.39,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/avene-solares-creme-50-incolor-50-ml.html"
+      "best_price": 8.8,
+      "best_store": "VallisPharma",
+      "best_store_slug": "vallispharma",
+      "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml"
     }
   ],
   "bestsellers": [
@@ -250,11 +250,11 @@
     },
     {
       "name": "Isdin",
-      "products": 820
+      "products": 821
     },
     {
       "name": "Avène",
-      "products": 811
+      "products": 813
     },
     {
       "name": "Nivea",
@@ -262,7 +262,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 788
+      "products": 787
     }
   ],
   "telegram_alerts": [
