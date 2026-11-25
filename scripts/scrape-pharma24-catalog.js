@@ -12,9 +12,14 @@
  * dentro do <script type="application/ld+json"> (a chave "@context" aparece
  * como "<?php $__contextArgs = [] ... ?>"), por isso JSON.parse falha sempre.
  * Os campos lêem-se com expressões regulares dentro desse bloco:
- *   sku  = CNP (7 dígitos)       mpn  = EAN-13
+ *   sku  = CNP (7 dígitos)       mpn  = EAN-13 (até 2026-11) · gtin13 = EAN-13 (desde então)
  *   name, brand.name, offers.price, offers.availability, image[0]
  * Se um dia corrigirem o bloco, isto continua a funcionar.
+ *
+ * 2026-11-18 (auditoria de cobertura): a loja tirou o EAN do «mpn» e pô-lo no «gtin13»;
+ * o leitor só procurava o «mpn», por isso o catálogo tinha 0 EAN em 3 586 produtos e casava
+ * só pelo CNP. Agora lê o EAN de mpn/gtin13/gtin/gtin14 (com dígito de controlo). Também desde
+ * 18/11: identificação honesta (UA do CosMath; antes fingia ser um Chrome).
  *
  * O mapa do site mistura produtos (com e sem ".html"), páginas institucionais
  * e 36 endereços /es/ — ficam só as fichas com sku de 7 dígitos e preço.
@@ -29,7 +34,8 @@ const { decodeEntities } = require('./lib/name-cleanup');
 
 const BASE = 'https://www.pharma24.pt';
 const OUT = path.join(__dirname, '..', 'data', 'catalog', 'pharma24-full.json');
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/leitura-alargada');   // identificação honesta desde 2026-11-18
+const { gtinValido } = require('./lib/integrar-existentes');
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const LIMITE = args.limite ? Number(args.limite) : Infinity;
 const CONC = Math.max(1, Math.min(4, Number(args.concorrencia || 3)));
@@ -45,7 +51,8 @@ function ficha(url, h) {
   const cnp = campo(/"sku"\s*:\s*"(\d{7})"/);
   const preco = Number(campo(/"price"\s*:\s*"?(\d+(?:\.\d+)?)/));
   if (!cnp || !(preco > 0)) return null;
-  const ean = campo(/"mpn"\s*:\s*"(\d{12,14})"/) || null;
+  // EAN: «mpn» até 2026-11, «gtin13» desde então; só um GTIN com dígito de controlo certo
+  const ean = ['mpn', 'gtin13', 'gtin', 'gtin14'].map(k => campo(new RegExp(`"${k}"\\s*:\\s*"(\\d{12,14})"`))).find(e => gtinValido(e)) || null;
   const marca = campo(/"brand"\s*:\s*\{[^}]*"name"\s*:\s*"([^"]+)"/);
   const img = campo(/"image"\s*:\s*\[\s*"([^"]+)"/);
   return {
@@ -61,7 +68,8 @@ function ficha(url, h) {
   };
 }
 
-(async () => {
+module.exports = { ficha };
+if (require.main === module) (async () => {
   const t0 = Date.now();
   const sm = await get(`${BASE}/sitemap.xml`, 'xml');
   let urls = [...new Set([...sm.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map(m => m[1]))]
