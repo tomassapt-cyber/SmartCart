@@ -27,7 +27,7 @@ const { decodeEntities } = require('./lib/name-cleanup');
 
 const FEED = 'https://www.farmaciadaliga.pt/feed/kk-liga';
 const OUT = path.join(__dirname, '..', 'data', 'catalog', 'farmaciadaliga-full.json');
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 const num = s => Number(String(s || '').replace(/\./g, '').replace(',', '.'));
 
 // <tag>valor</tag> ou <tag><![CDATA[valor]]></tag>

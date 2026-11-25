@@ -1,0 +1,62 @@
+# CosMath — ensaio do UA honesto (25/11/2026)
+# ============================================================
+# Em cada PR que mexe em leitores ou nas bibliotecas que fazem pedidos às lojas,
+# abre até 3 fichas de cada loja tocada, com o UA do CosMath, uma loja de cada vez
+# e com pausa (scripts/ensaio-ua.js). Fica vermelho se alguma loja bloquear.
+# As lojas do PC ensaiam-se no PC: node scripts/ensaio-ua.js --desde=origin/main...HEAD --so-pc
+name: Ensaio do UA honesto
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/scrape-*-catalog.js'
+      - 'scripts/lib/identidade.js'
+      - 'scripts/lib/resilient-fetch.js'
+      - 'scripts/lib/fichas-jsonld.js'
+      - 'scripts/lib/shopify-loja.js'
+      - 'scripts/lib/woo-loja.js'
+      - 'scripts/lib/leitura-alargada.js'
+      - 'scripts/lib/fichas-existentes.js'
+      - 'scripts/ensaio-ua.js'
+      - 'scripts/test-ua-honesto.cjs'
+      - '.github/workflows/ensaio-ua.yml'
+  workflow_dispatch:
+    inputs:
+      lojas:
+        description: 'Lojas a ensaiar (slugs separados por vírgulas)'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  ensaio:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # o commit de merge do PR e os dois pais: o que o PR muda é HEAD^1..HEAD
+          fetch-depth: 2
+
+      - name: Descomprimir o catalogo
+        run: bash scripts/ci/seed.sh unpack
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Testes offline (UA central, um só User-Agent, nenhum UA de browser novo)
+        run: node scripts/test-ua-honesto.cjs
+
+      - name: Ensaio nas lojas tocadas
+        env:
+          LOJAS: ${{ github.event.inputs.lojas }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/ensaio-ua.js --lojas="$LOJAS"
+          else
+            node scripts/ensaio-ua.js --desde="HEAD^1 HEAD"
+          fi

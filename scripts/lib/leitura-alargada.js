@@ -30,7 +30,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const UA_COSMATH = 'CosMath-Catalog-Bot/1.0 (+https://smart-cart-zx55.vercel.app; price comparison)';
+const { UA_COSMATH } = require('./identidade');
 const ROOT = path.resolve(__dirname, '..', '..');
 const DIAS_VALIDADE = 45;
 const semZeros = e => String(e || '').replace(/^0+/, '');
