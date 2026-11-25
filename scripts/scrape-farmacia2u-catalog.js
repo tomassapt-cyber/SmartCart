@@ -29,7 +29,7 @@ const RESUME = !!args.resume;
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 4;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 300;
 const CHECKPOINT_EVERY = 100;
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 // O openresty deste site devolve 415 ao runner do GitHub (de casa responde 200
 // a QUALQUER combinação de headers) — WAF a disfarçar bloqueio de datacenter.
 // Mandamos um fingerprint completo de browser: se o filtro for por headers,

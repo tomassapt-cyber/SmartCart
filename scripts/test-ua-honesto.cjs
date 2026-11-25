@@ -22,27 +22,29 @@ assert.deepEqual(Object.keys(h).filter(k => k.toLowerCase() === 'user-agent'), [
 assert.deepEqual(Object.keys(h).filter(k => k.toLowerCase() === 'accept-language'), ['accept-language']);
 assert.equal(new Headers(h).get('user-agent'), UA_COSMATH, 'o pedido leva o UA uma vez');
 
-// ainda por migrar (lotes 2–5); tirar daqui cada ficheiro migrado
+// a sonda do ensaio nunca abre as lojas proibidas, e só essas (pelo nome exato ou pelo domínio)
+const { NUNCA } = require('./ensaio-ua');
+for (const s of ['afarmaciaonline', 'afarmaciaonline.pt', 'notino', 'www.notino.pt', 'perfumesclub.pt', 'caretobeauty', 'barreiros.pt']) assert.equal(NUNCA.test(s), true, s);
+for (const s of ['asuafarmaciaonline', 'asuafarmaciaonline.pt', 'farmaciabarreirosx.pt', 'glowthie.com']) assert.equal(NUNCA.test(s), false, s);
+
+// ainda por migrar (lotes 3–5); tirar daqui cada ficheiro migrado
 const PENDENTES = new Set([
-  'audit-product-images.js', 'build-homepage-data.js', 'build-popular-searches.js',
-  'carrinho-automatico.js', 'discover-inventory.js', 'fetch-notino-images.js', 'fix-bad-images.py', 'inspect-page.js',
-  'probe-deep.js', 'probe-find-products.js', 'probe-pharmacies.js', 'probe-shipping.js', 'probe-store-candidates.js',
-  'refresh-seed-images.js', 'scrape-afarmaciaonline-catalog.js', 'scrape-asuafarmaciaonline-catalog.js',
-  'scrape-atcosmetics-catalog.js', 'scrape-atuafarmacia-catalog.js', 'scrape-barreiros-catalog.js',
-  'scrape-bemecare-catalog.js', 'scrape-camelo-catalog.js', 'scrape-cosmeticfan-catalog.js', 'scrape-dermis-catalog.js',
-  'scrape-druni-catalog.js', 'scrape-farmacentral-catalog.js', 'scrape-farmacia2u-catalog.js',
-  'scrape-farmaciadocostume-catalog.js', 'scrape-farmaciagarcia-catalog.js', 'scrape-farmaciaideal-catalog.js',
-  'scrape-farmaciasportuguesas-catalog.js', 'scrape-farmaciasprogresso-catalog.js', 'scrape-farmaciavirtual-catalog.js',
-  'scrape-farmatogo-catalog.js', 'scrape-gofarma-catalog.js', 'scrape-hiperfarma-catalog.js',
-  'scrape-lovemypharma-catalog.js', 'scrape-lowcost-catalog.js', 'scrape-manuelaserra-catalog.js',
-  'scrape-miin-catalog.js', 'scrape-mycosmetics-catalog.js', 'scrape-nossafarmacia-catalog.js',
-  'scrape-notino-catalog.js', 'scrape-perfumesclub-catalog.js', 'scrape-pharma2you-catalog.js',
-  'scrape-pharmagdd-catalog.js', 'scrape-pharmascalabis-catalog.js', 'scrape-pluricosmetica-catalog.js',
-  'scrape-poupafarma-catalog.js', 'scrape-prices.js', 'scrape-quickfarma-catalog.js', 'scrape-saudemayor-catalog.js',
-  'scrape-skpro-catalog.js', 'scrape-storekbeauty-catalog.js', 'scrape-sweetcare-catalog.js',
-  'scrape-unifarma-catalog.js', 'scrape-vallispharma-catalog.js', 'scrape-vidamais-catalog.js',
-  'scrape-wells-catalog.js', 'scrape-wowfarma-catalog.js', 'verify-ghost-offers.js', 'verify-live-prices.js',
-  'verify-store.js',
+  'audit-product-images.js', 'build-homepage-data.js', 'build-popular-searches.js', 'carrinho-automatico.js',
+  'discover-inventory.js', 'fetch-notino-images.js', 'fix-bad-images.py', 'inspect-page.js', 'probe-deep.js',
+  'probe-find-products.js', 'probe-pharmacies.js', 'probe-shipping.js', 'probe-store-candidates.js',
+  'refresh-seed-images.js', 'scrape-afarmaciaonline-catalog.js', 'scrape-barreiros-catalog.js',
+  'scrape-druni-catalog.js', 'scrape-manuelaserra-catalog.js', 'scrape-miin-catalog.js',
+  'scrape-mycosmetics-catalog.js', 'scrape-nossafarmacia-catalog.js', 'scrape-notino-catalog.js',
+  'scrape-perfumesclub-catalog.js', 'scrape-pharma2you-catalog.js', 'scrape-pharmagdd-catalog.js',
+  'scrape-pharmascalabis-catalog.js', 'scrape-pluricosmetica-catalog.js', 'scrape-poupafarma-catalog.js',
+  'scrape-prices.js', 'scrape-quickfarma-catalog.js', 'scrape-saudemayor-catalog.js', 'scrape-skpro-catalog.js',
+  'scrape-storekbeauty-catalog.js', 'scrape-sweetcare-catalog.js', 'scrape-unifarma-catalog.js',
+  'scrape-vallispharma-catalog.js', 'scrape-vidamais-catalog.js', 'scrape-wells-catalog.js',
+  'scrape-wowfarma-catalog.js', 'verify-ghost-offers.js', 'verify-live-prices.js', 'verify-store.js',
+  // à espera de decisão do Tomás (ensaio de 25/11): com o UA do CosMath, a GoFarma manda as fichas
+  // para a página inicial (307), e o robots.txt da Farmácia Virtual proíbe todos os robôs menos
+  // os motores de busca. Caminho honesto: pedir acesso à loja, ou deixar a loja
+  'scrape-gofarma-catalog.js', 'scrape-farmaciavirtual-catalog.js',
 ]);
 
 const BROWSER = /Mozilla\/5\.0|AutomationControlled|navigator\s*,\s*['"]webdriver|navigator\.webdriver\s*=/;

@@ -40,7 +40,7 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 400;
 const CHECKPOINT_EVERY = 100;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 const URL_EXCLUDE = /\/(login|logout|register|retrive-password|alterar-password|password|a-minha-conta|cart|checkout|spin|dismiss-language-popup|newsletter|blog|calendario|lojas|marcas|reminders)\b/i;
 
