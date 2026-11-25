@@ -20,6 +20,12 @@ name: Wells catalog refresh
 on:
   schedule:
     - cron: '0 14 * * *'    # Diário às 14h UTC (queues após Sweetcare das 10h)
+  # ensaio na nuvem no próprio PR (3 min de leitura, sem publicar)
+  pull_request:
+    paths:
+      - 'scripts/scrape-wells-catalog.js'
+      - 'scripts/lib/rotacao-leitura.js'
+      - '.github/workflows/wells-catalog.yml'
   workflow_dispatch:
     inputs:
       category:
@@ -46,7 +52,7 @@ jobs:
   catalog:
     name: Discover & scrape Wells catalog
     runs-on: ubuntu-24.04   # 24/11: o Playwright ainda não tem Chromium para o Ubuntu 26.04 (ubuntu-latest desde 16/11)
-    timeout-minutes: 300    # 5h max
+    timeout-minutes: 300    # 5h max — a leitura tem orçamento de 255 min (25/11: levava 297 e o job era cortado a integrar)
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
       # Medido a 2026-09-24: sem isto, cada integracao gasta 4m40s a
@@ -78,20 +84,42 @@ jobs:
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
 
+      - name: Testes offline (rotação e orçamento de tempo)
+        run: node scripts/test-rotacao-leitura.cjs
+
       - name: Step 1 — Discover URLs from sitemap
         run: node scripts/discover-wells-catalog.js
 
+      - name: Memória da rotação (cache)
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache-lojas
+          key: rotacao-wells-${{ github.run_id }}
+          restore-keys: rotacao-wells-
+
       - name: Step 2 — Scrape products
         run: |
-          ARGS=""
+          # orçamento de 255 min: primeiro o que está há mais tempo sem ser lido; sobram
+          # ~40 min dos 300 do job para integrar e gravar (o resto fica para amanhã)
+          ARGS="--orcamento-min=255"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            ARGS="--orcamento-min=3"
+          fi
           if [ -n "${{ github.event.inputs.category }}" ] && [ "${{ github.event.inputs.category }}" != "all" ]; then
-            ARGS="--category=${{ github.event.inputs.category }}"
+            ARGS="$ARGS --category=${{ github.event.inputs.category }}"
           fi
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
           fi
           echo "Running: node scripts/scrape-wells-catalog.js $ARGS"
           node scripts/scrape-wells-catalog.js $ARGS --concurrency=3 --delay=1500
+
+      - name: Guardar a memória da rotação
+        if: always() && github.event_name != 'pull_request' && hashFiles('.cache-lojas/wells-lidas.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .cache-lojas
+          key: rotacao-wells-${{ github.run_id }}
 
       - name: Upload scraped catalog as artifact (safety-net)
         if: always()
@@ -109,10 +137,17 @@ jobs:
             node -e "const d=require('./data/catalog/wells-full.json'); console.log('=== Wells catalog refresh ==='); console.log('Total products:', d.products.length); console.log('Stats:', JSON.stringify(d.stats, null, 2));"
           fi
 
+      # o ensaio do PR integra a seco (mostra que o ficheiro parcial integra) e não publica
       - name: Integrate into seed (atualiza verified_at + regenera HTML)
-        run: node scripts/integrate-wells-catalog.js
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            node scripts/integrate-wells-catalog.js --dry-run
+          else
+            node scripts/integrate-wells-catalog.js
+          fi
 
       - name: Commit catalog data
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name "smartcart-bot"
           git config user.email "bot@smartcart.local"

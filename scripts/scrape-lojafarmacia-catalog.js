@@ -20,8 +20,15 @@
  *  2. Para cada URL: fetch + extrair JSON-LD (EAN/nome/marca/preço/stock/img)
  *  3. Checkpoint a cada 100 (resume seguro)
  *
+ * 25/11/2026: a loja passou a responder a ~1 ficha/s e o mapa inteiro levava ~3 h
+ * num job de 150 min (cortado antes de gravar). Com --orcamento-min=N lê primeiro
+ * o que está há mais tempo sem ser lido e pára a tempo de integrar; o resto fica
+ * para a corrida seguinte (scripts/lib/rotacao-leitura.js). Identifica-se como o
+ * robô do CosMath, em vez de fingir ser um Chrome.
+ *
  * Uso:
  *   node scripts/scrape-lojafarmacia-catalog.js              # full
+ *   node scripts/scrape-lojafarmacia-catalog.js --orcamento-min=120  # rotação (o workflow)
  *   node scripts/scrape-lojafarmacia-catalog.js --limit=100  # smoke test
  *   node scripts/scrape-lojafarmacia-catalog.js --chunk=1/4  # 1ª fatia
  *   node scripts/scrape-lojafarmacia-catalog.js --resume     # retoma
@@ -29,6 +36,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const { UA_COSMATH } = require('./lib/leitura-alargada');
+const { prepararRotacao, orcamentoDosArgs } = require('./lib/rotacao-leitura');
 
 const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
@@ -48,8 +57,9 @@ const RESUME = !!args.resume;
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 4;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 500;
 const CHECKPOINT_EVERY = 100;
+const ORCAMENTO_MIN = orcamentoDosArgs(args);
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const UA = UA_COSMATH;
 
 function isProductUrl(u) {
   return /\/artigo\//.test(u);
@@ -173,7 +183,12 @@ async function main() {
     urls = sorted.slice((n - 1) * size, n * size);
     console.log(`  Chunk ${CHUNK}: ${urls.length} URLs`);
   }
+  // primeiro o que está há mais tempo sem ser lido (ofertas do catálogo + memória da cache)
+  const rot = prepararRotacao({ loja: 'loja-farmacia', itens: urls, orcamentoMin: ORCAMENTO_MIN });
+  console.log('  ' + rot.resumo);
+  urls = rot.fila;
   if (LIMIT !== Infinity) urls = urls.slice(0, LIMIT);
+  const gravarMemoria = () => { if (LIMIT === Infinity) rot.gravar(); };   // o teste com --limit não publica: não conta como lido
 
   const cp = loadCheckpoint();
   const products = cp ? cp.products : [];
@@ -186,9 +201,12 @@ async function main() {
   const start = Date.now();
   let idx = 0;
   const stats = { ok: 0, skipped: 0, not_found: 0, error: 0 };
+  const erros = {};   // tipo de falha → quantas (25/11: ~700 falhas por corrida, sem se saber de quê)
+  let parouPorTempo = false;
 
   async function worker() {
     while (idx < queue.length) {
+      if (rot.fimDoTempo()) { parouPorTempo = true; break; }
       const url = queue[idx++];
       const r = await fetchPage(url);
       const scraped_at = new Date().toISOString();
@@ -196,12 +214,18 @@ async function main() {
         const data = extractProductData(r.html, url);
         if (data) { products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...data }))); stats.ok++; } // flat-copy: evita retenção de sliced-strings (OOM)
         else { stats.skipped++; }
-      } else if (r.status === 'not_found') { stats.not_found++; }
-      else { stats.error++; }
+        rot.lida(url);
+      } else if (r.status === 'not_found') { stats.not_found++; rot.lida(url); }
+      else {
+        stats.error++;
+        const tipo = r.http ? `HTTP ${r.http}` : String(r.error || 'falha').slice(0, 60);
+        erros[tipo] = (erros[tipo] || 0) + 1;
+      }
 
       const total = stats.ok + stats.skipped + stats.not_found + stats.error;
       if (total % CHECKPOINT_EVERY === 0) {
         saveCheckpoint(products);
+        gravarMemoria();
         const elapsed = (Date.now() - start) / 1000;
         const rate = total / elapsed;
         const eta = (queue.length - total) / rate;
@@ -212,6 +236,7 @@ async function main() {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  gravarMemoria();
   if (products.length === 0) { console.error('✗ 0 produtos (sitemap vazio/bloqueio de IP/site mudou?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
 
@@ -220,11 +245,12 @@ async function main() {
   console.log(`  Produtos guardados (com EAN): ${products.length}`);
   console.log(`  in_stock: ${inStock}`);
   console.log(`  skipped (med/sem-EAN): ${stats.skipped}`);
-  console.log(`  404: ${stats.not_found} · erro: ${stats.error}`);
+  console.log(`  404: ${stats.not_found} · erro: ${stats.error}${stats.error ? ' (' + Object.entries(erros).sort((a, b) => b[1] - a[1]).map(([t, n]) => `${t}: ${n}`).join(' · ') + ')' : ''}`);
+  if (parouPorTempo) console.log(`  ⏱ orçamento de ${ORCAMENTO_MIN} min esgotado: ${queue.length - idx} fichas ficam para a próxima corrida (as lidas há menos tempo)`);
   console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
 }
 
-module.exports = { extractProductData, fetchPage, slugFromUrl, isProductUrl };
+module.exports = { extractProductData, fetchPage, slugFromUrl, isProductUrl, UA };
 
 if (require.main === module) {
   main().catch(e => { console.error('FATAL', e); process.exit(1); });
