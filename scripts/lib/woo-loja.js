@@ -16,7 +16,7 @@
 const { fetchTextResilient } = require('./resilient-fetch');
 const { decodeEntities } = require('./name-cleanup');
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./identidade');   // robô do CosMath, não um browser
 const dorme = ms => new Promise(r => setTimeout(r, ms));
 const ehEan = s => /^\d{8}$|^\d{12,14}$/.test(s);
 const ehCnp = s => /^\d{7}$/.test(s);

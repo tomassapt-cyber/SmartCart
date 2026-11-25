@@ -21,19 +21,23 @@
  *   const xml = await fetchTextResilient(url, { expect: 'xml', minBytes: 1000 });
  */
 
-const DEFAULT_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: DEFAULT_UA } = require('./identidade');   // robô do CosMath, não um browser
 
-// Headers de browser completos: vários WAFs decidem por fingerprint de
-// cabeçalhos, não só por IP (ver farmacia2u, que devolve 415 a pedidos "nus").
+// Cabeçalhos completos (Accept, língua, compressão): há WAFs que recusam pedidos
+// "nus" (a farmacia2u devolvia 415). O UA é sempre o do robô do CosMath (25/11/2026).
+// Os cabeçalhos que o leitor passar substituem os daqui sem olhar a maiúsculas: antes,
+// um 'user-agent' do leitor juntava-se ao 'User-Agent' daqui e o pedido levava os dois.
 function browserHeaders(extra = {}) {
-  return {
+  const base = {
     'User-Agent': DEFAULT_UA,
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'pt-PT,pt;q=0.9,en;q=0.8',
     'Accept-Encoding': 'gzip, deflate, br',
     'Upgrade-Insecure-Requests': '1',
-    ...extra,
   };
+  const doLeitor = new Set(Object.keys(extra).map(k => k.toLowerCase()));
+  for (const k of Object.keys(base)) if (doLeitor.has(k.toLowerCase())) delete base[k];
+  return { ...base, ...extra };
 }
 
 // Assinaturas típicas de página de bloqueio/challenge servida com HTTP 200.

@@ -36,7 +36,7 @@ const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 300;
 const CHECKPOINT_EVERY = 100;
 const MAX_PAGES_PER_CAT = 30;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 // slug da ficha inclui o nome → corta medicamentos/suplementos/puericultura
 // ANTES de gastar o pedido (o nome do JSON-LD volta a filtrar depois).

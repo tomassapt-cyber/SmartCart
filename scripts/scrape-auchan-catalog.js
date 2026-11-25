@@ -38,7 +38,7 @@ const GRID = `${BASE}/on/demandware.store/Sites-AuchanPT-Site/pt_PT/Search-Updat
 const CATEGORIAS = ['beleza-higiene-e-bebe', 'saude-e-bem-estar'];
 const SZ = 200;
 const OUT = path.join(__dirname, '..', 'data', 'catalog', 'auchan-full.json');
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const MAX_FICHAS = args['so-precos'] ? 0 : Number(args['max-fichas'] ?? 3000);
 const dorme = ms => new Promise(r => setTimeout(r, ms));

@@ -18,7 +18,7 @@ const { fetchTextResilient } = require('./resilient-fetch');
 const { decodeEntities } = require('./name-cleanup');
 const { imagemValida } = require('./imagem-valida');
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./identidade');   // robô do CosMath, não um browser
 const dorme = ms => new Promise(r => setTimeout(r, ms));
 const eanOk = s => /^\d{8}$|^\d{12,14}$/.test(String(s || '').trim());
 const headers = { 'user-agent': UA, 'accept-language': 'pt-PT,pt;q=0.9' };
