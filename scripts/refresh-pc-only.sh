@@ -87,7 +87,6 @@ declare -A SCRAPE=(
   [beleza37]="node scripts/scrape-beleza37-catalog.js"
   [powerbeauty]="node scripts/scrape-powerbeauty-catalog.js --known-only"
   [care2me]="node scripts/scrape-care2me-catalog.js"
-  [afarmaciaonline]="node scripts/scrape-afarmaciaonline-catalog.js"
   [balvera]="node scripts/scrape-balvera-catalog.js"
   [farmaoli]="node scripts/scrape-farmaoli-catalog.js"
   # 2026-10-26: a Glammy trava a nuvem (~14 s por ficha; do PC 0,15 s) — passa ao PC
@@ -107,8 +106,10 @@ declare -A SCRAPE=(
 # aterrou o mais barato de obter.
 # 2026-10-26: a Notino saiu (data/lojas-so-pc.json → em_espera): bloqueia também
 # o PC desde 15/10 e só volta pelo feed de afiliados. As ofertas ficam no site.
+# 2026-11-25: a A Farmácia Online também saiu (em_espera): bloqueia o robô também no PC
+# desde 15/10; o pedido à loja segue quando o site estiver apresentável.
 # A Perfumes.pt vai em último: é a mais demorada (até 4 h) e as outras já aterraram antes.
-ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me afarmaciaonline balvera farmaoli glammy shopcosmetics perfumespt)
+ORDER=(sobeauty smartbeauty beleza37 powerbeauty care2me balvera farmaoli glammy shopcosmetics perfumespt)
 OK=(); FAIL=()
 for loja in "${ORDER[@]}"; do
   echo; echo "════════ ${loja} — scrape ════════"

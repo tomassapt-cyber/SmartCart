@@ -16,10 +16,14 @@
 name: GO-farma daily refresh
 
 on:
-  schedule:
-    - cron: '55 3 * * *'
-    - cron: '55 11 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '55 19 * * *'
+  # ⏸ EM ESPERA desde 2026-11-25 (data/lojas-so-pc.json → em_espera): com o UA do CosMath as
+  # fichas redirecionam para a página inicial, e o robô não finge ser um browser. As ofertas
+  # ficam no site; o pedido à loja (Desktop\duo\PEDIDO-GOFARMA.md) segue quando o site estiver
+  # apresentável. Quando houver acesso: voltar a ligar os crons e tirar a loja do em_espera.
+  # schedule:
+  #   - cron: '55 3 * * *'
+  #   - cron: '55 11 * * *'   # 3x/dia (regra do user 2026-07-03)
+  #   - cron: '55 19 * * *'
   workflow_dispatch:
     inputs:
       limit:

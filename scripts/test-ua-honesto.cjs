@@ -40,11 +40,9 @@ const PENDENTES = new Set([
   'scrape-sweetcare-catalog.js',
   'scrape-wells-catalog.js',
   'verify-ghost-offers.js', 'verify-live-prices.js', 'verify-store.js',
-  // à espera de decisão do Tomás (ensaio de 25/11): com o UA do CosMath, a GoFarma manda as fichas
-  // para a página inicial (307), e o robots.txt da Farmácia Virtual proíbe todos os robôs menos
-  // os motores de busca. Caminho honesto: pedir acesso à loja, ou deixar a loja
-  'scrape-gofarma-catalog.js', 'scrape-farmaciavirtual-catalog.js',
 ]);
+// GoFarma e Farmácia Virtual (25/11): UA do CosMath e, como não o aceitam, na caixa «em espera»
+// (data/lojas-so-pc.json); os leitores recusam-se a correr enquanto lá estiverem.
 
 const BROWSER = /Mozilla\/5\.0|AutomationControlled|navigator\s*,\s*['"]webdriver|navigator\.webdriver\s*=/;
 const ficheiros = [];

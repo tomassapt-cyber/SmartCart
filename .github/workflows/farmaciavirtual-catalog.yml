@@ -18,11 +18,15 @@
 name: Farmácia Virtual daily refresh
 
 on:
-  schedule:
-    # 13h UTC — antes de Pharma2you (17h) e A Farmácia Online (18h)
-    - cron: '0 13 * * *'
-    - cron: '0 21 * * *'   # 3x/dia (regra do user 2026-07-03)
-    - cron: '0 5 * * *'   # 3x/dia
+  # ⏸ EM ESPERA desde 2026-11-25 (data/lojas-so-pc.json → em_espera): o robots.txt da loja
+  # proíbe todos os robôs menos os motores de busca, e o robô do CosMath cumpre-o. As ofertas
+  # ficam no site; o pedido à loja (Desktop\duo\PEDIDO-FARMACIA-VIRTUAL.md) segue quando o site
+  # estiver apresentável. Quando houver autorização: voltar a ligar os crons e tirar do em_espera.
+  # schedule:
+  #   # 13h UTC — antes de Pharma2you (17h) e A Farmácia Online (18h)
+  #   - cron: '0 13 * * *'
+  #   - cron: '0 21 * * *'   # 3x/dia (regra do user 2026-07-03)
+  #   - cron: '0 5 * * *'   # 3x/dia
   workflow_dispatch:
     inputs:
       limit:
