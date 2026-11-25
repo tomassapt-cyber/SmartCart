@@ -49,7 +49,7 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.mat
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const TAKE = args.take ? Math.min(250, parseInt(args.take, 10)) : 250;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 600;
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 const pt = v => (v && typeof v === 'object') ? (v.pt || v.es || Object.values(v)[0] || null) : (v || null);
 function volumeFromName(name) {

@@ -34,7 +34,10 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => {
   return m ? [m[1], m[2] ?? true] : [a, true];
 }));
 
-const NUNCA = /perfumesclub|notino|barreiros|caretobeauty|afarmaciaonline/i;
+// nome exato da loja, ou o domínio (com ou sem subdomínio): «afarmaciaonline» não pode apanhar
+// a «asuafarmaciaonline», que é outra loja (25/11)
+const NUNCA_NOMES = ['perfumesclub', 'notino', 'barreiros', 'caretobeauty', 'afarmaciaonline'];
+const NUNCA = { test: s => { const x = String(s || '').toLowerCase(); return NUNCA_NOMES.some(n => x === n || new RegExp(`(^|\\.)${n}\\.`).test(x)); } };
 // bibliotecas que fazem pedidos às lojas: mudá-las toca em todos os leitores que as usam
 const REDE = new Set(['identidade', 'resilient-fetch', 'fichas-jsonld', 'shopify-loja', 'woo-loja', 'leitura-alargada', 'fichas-existentes']);
 const FICHAS = 3;
@@ -207,7 +210,7 @@ async function main() {
   return bloqueadas.length ? 1 : 0;
 }
 
-module.exports = { regrasRobots, permitido, leitoresTocados };
+module.exports = { regrasRobots, permitido, leitoresTocados, NUNCA };
 
 if (require.main === module) {
   main().then(c => process.exit(c)).catch(e => { console.error('FATAL', e); process.exit(2); });
