@@ -639,5 +639,13 @@
   "ponto_txt": null,
   "ilhas": null,
   "gratis_ilhas": null
+ },
+ "koreanskincare": {
+  "gratis": 40,
+  "casa": 3.95,
+  "ponto": null,
+  "ponto_txt": null,
+  "ilhas": null,
+  "gratis_ilhas": null
  }
 }
