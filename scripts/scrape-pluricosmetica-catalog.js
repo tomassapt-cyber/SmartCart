@@ -31,7 +31,7 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 400;
 const CHECKPOINT_EVERY = 100;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 // Marcas beleza/higiene/dermo que JÁ vendemos noutras lojas — só estas
 // interessam (comparação; o integrador nunca cria). Slug do produto contém

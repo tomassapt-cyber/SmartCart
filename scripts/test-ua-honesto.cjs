@@ -27,20 +27,19 @@ const { NUNCA } = require('./ensaio-ua');
 for (const s of ['afarmaciaonline', 'afarmaciaonline.pt', 'notino', 'www.notino.pt', 'perfumesclub.pt', 'caretobeauty', 'barreiros.pt']) assert.equal(NUNCA.test(s), true, s);
 for (const s of ['asuafarmaciaonline', 'asuafarmaciaonline.pt', 'farmaciabarreirosx.pt', 'glowthie.com']) assert.equal(NUNCA.test(s), false, s);
 
-// ainda por migrar (lotes 3–5); tirar daqui cada ficheiro migrado
+// ainda por migrar (lotes 4–5); tirar daqui cada ficheiro migrado
 const PENDENTES = new Set([
   'audit-product-images.js', 'build-homepage-data.js', 'build-popular-searches.js', 'carrinho-automatico.js',
   'discover-inventory.js', 'fetch-notino-images.js', 'fix-bad-images.py', 'inspect-page.js', 'probe-deep.js',
   'probe-find-products.js', 'probe-pharmacies.js', 'probe-shipping.js', 'probe-store-candidates.js',
   'refresh-seed-images.js', 'scrape-afarmaciaonline-catalog.js', 'scrape-barreiros-catalog.js',
-  'scrape-druni-catalog.js', 'scrape-manuelaserra-catalog.js', 'scrape-miin-catalog.js',
-  'scrape-mycosmetics-catalog.js', 'scrape-nossafarmacia-catalog.js', 'scrape-notino-catalog.js',
-  'scrape-perfumesclub-catalog.js', 'scrape-pharma2you-catalog.js', 'scrape-pharmagdd-catalog.js',
-  'scrape-pharmascalabis-catalog.js', 'scrape-pluricosmetica-catalog.js', 'scrape-poupafarma-catalog.js',
-  'scrape-prices.js', 'scrape-quickfarma-catalog.js', 'scrape-saudemayor-catalog.js', 'scrape-skpro-catalog.js',
-  'scrape-storekbeauty-catalog.js', 'scrape-sweetcare-catalog.js', 'scrape-unifarma-catalog.js',
-  'scrape-vallispharma-catalog.js', 'scrape-vidamais-catalog.js', 'scrape-wells-catalog.js',
-  'scrape-wowfarma-catalog.js', 'verify-ghost-offers.js', 'verify-live-prices.js', 'verify-store.js',
+  'scrape-druni-catalog.js',
+  'scrape-notino-catalog.js',
+  'scrape-perfumesclub-catalog.js',
+  'scrape-prices.js',
+  'scrape-sweetcare-catalog.js',
+  'scrape-wells-catalog.js',
+  'verify-ghost-offers.js', 'verify-live-prices.js', 'verify-store.js',
   // à espera de decisão do Tomás (ensaio de 25/11): com o UA do CosMath, a GoFarma manda as fichas
   // para a página inicial (307), e o robots.txt da Farmácia Virtual proíbe todos os robôs menos
   // os motores de busca. Caminho honesto: pedir acesso à loja, ou deixar a loja

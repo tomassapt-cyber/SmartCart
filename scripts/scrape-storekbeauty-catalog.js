@@ -43,7 +43,7 @@ const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const RESUME = !!args.resume;
 const PAGE_DELAY = args.delay ? parseInt(args.delay, 10) : 1500;   // gentil com o rate-limit
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 // ── Filtro: excluir claramente-não-cosmética (medicamentos/suplementos/bebé) ──
 // Enrich-only → o que passar mas não casar é simplesmente ignorado; por isso

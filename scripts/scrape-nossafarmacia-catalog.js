@@ -39,7 +39,7 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.mat
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 450;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 // fq de categoria → varremos cada uma paginada (todas <2500 por segmentação).
 const CATEGORY_FQS = [
