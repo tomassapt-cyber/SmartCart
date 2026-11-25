@@ -39,7 +39,7 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 200;
 const CHECKPOINT_EVERY = 100;
 
-const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 
 function locs(xml) { return (xml.match(/<loc>([^<]+)<\/loc>/g) || []).map(m => m.replace(/<\/?loc>/g, '').trim().replace(/&amp;/g, '&')); }
 const isCnp = s => /^\d{7}$/.test(String(s || '').trim());
