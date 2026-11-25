@@ -29,7 +29,7 @@ const args = Object.fromEntries(process.argv.slice(2).map(a => {
   const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true];
 }));
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 // Categoria heurística pelo nome (loja é maioritariamente cabelo → default hair)
 const CAT_PATTERNS = [

@@ -28,7 +28,7 @@ const FEED_URL = 'https://www.wowfarma.pt/kkfeedwowfarma.xml';
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 const tag = (x, n) => { const m = x.match(new RegExp('<' + n + '>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?</' + n + '>')); return m ? m[1].trim() : ''; };
 function decodeEntities(s) {

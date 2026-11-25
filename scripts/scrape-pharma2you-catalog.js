@@ -32,7 +32,7 @@ const ROOT = path.resolve(__dirname, '..');
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'pharma2you-full.json');
 const FEED_URL = 'https://pharma2you.pt/feeds/google_export.xml';
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
