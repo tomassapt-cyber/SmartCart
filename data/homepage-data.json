@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-24T15:43:20.237Z",
-  "seed_total_products": 105436,
+  "generated_at": "2026-11-25T12:18:57.521Z",
+  "seed_total_products": 105522,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -37,20 +37,20 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 10.37,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/lazartigue-champo-clear-caspa-seca"
+      "best_price": 9.81,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
     },
     {
       "ean": "3282770098938",
       "name": "Avène Protetor Solar Creme FPS50+",
       "brand": "Avène",
       "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
-      "best_price": 8.8,
-      "best_store": "VallisPharma",
-      "best_store_slug": "vallispharma",
-      "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml"
+      "best_price": 13.39,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/avene-solares-creme-50-incolor-50-ml.html"
     }
   ],
   "bestsellers": [
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 15.07,
+      "best_price": 13.74,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -201,32 +201,33 @@
       "verified_live": true
     },
     {
-      "ean": "3401573670282",
-      "name": "Sensibio Forte",
-      "brand": "Bioderma",
-      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5797440.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 10.88,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/sensibio-bioderma-forte-cr-40-ml.html",
-      "volume_ml": 40,
-      "previous_price": 15.96,
-      "discount_pct": 32,
-      "dropped_day": 20773,
+      "ean": "7897042012473",
+      "name": "Crespo Divino",
+      "brand": "Skala",
+      "image_url": "https://www.druni.pt/media/catalog/product/1/3/1308735.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 3.99,
+      "best_store": "Ilha dos Cosméticos",
+      "best_store_slug": "ilhadoscosmeticos",
+      "best_url": "https://ilhadoscosmeticos.pt/products/skala-expert-divino-potao-mascara-1kg",
+      "volume_ml": 1,
+      "previous_price": 5.95,
+      "discount_pct": 33,
+      "dropped_day": 20782,
       "verified_live": true
     },
     {
-      "ean": "5901887042242",
-      "name": "Antioxidation Micellar Cleaning",
-      "brand": "Ziaja",
-      "image_url": "https://www.druni.pt/media/catalog/product/1/4/1452822.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 2.51,
-      "best_store": "Primor",
-      "best_store_slug": "primor",
-      "best_url": "https://pt.primor.eu/pt_pt/ziaja-gel-esfoliante-de-acai-berry-esfoliante-facial-micelar-de-limpeza-27830.html",
-      "previous_price": 3.59,
-      "discount_pct": 30,
-      "dropped_day": 20774,
+      "ean": "7897042005048",
+      "name": "Creme para Pentear Bomba de Vitaminas Abacate",
+      "brand": "Skala",
+      "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/7/8/7897042005048_c090.png",
+      "best_price": 3.99,
+      "best_store": "Ilha dos Cosméticos",
+      "best_store_slug": "ilhadoscosmeticos",
+      "best_url": "https://ilhadoscosmeticos.pt/products/skala-expert-abacate-mascara-1kg",
+      "volume_ml": 1,
+      "previous_price": 5.95,
+      "discount_pct": 33,
+      "dropped_day": 20782,
       "verified_live": true
     }
   ],
@@ -245,15 +246,15 @@
     },
     {
       "name": "Chicco",
-      "products": 838
+      "products": 839
     },
     {
       "name": "Isdin",
-      "products": 818
+      "products": 820
     },
     {
       "name": "Avène",
-      "products": 812
+      "products": 811
     },
     {
       "name": "Nivea",
@@ -261,7 +262,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 787
+      "products": 788
     }
   ],
   "telegram_alerts": [
@@ -295,8 +296,8 @@
   ],
   "stats": {
     "stores": 103,
-    "products": 63487,
-    "avg_savings_pct": 28
+    "products": 63520,
+    "avg_savings_pct": 29
   },
   "shard_version": "",
   "idx_version": "",
