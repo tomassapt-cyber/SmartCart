@@ -96,7 +96,11 @@ function gravarMemoria(ficheiro, memoria) {
   fs.mkdirSync(path.dirname(ficheiro), { recursive: true });
   fs.writeFileSync(ficheiro, JSON.stringify(memoria));
 }
-/** Regista o que uma ficha descoberta deu: o EAN, ou '' (sem EAN, 404, não é produto). */
+/**
+ * Regista o que uma ficha lida deu: o EAN, ou '' (sem EAN, 404, não é produto), e o dia.
+ * Desde 25/11 regista TODAS as fichas lidas, não só as descobertas: o dia da última leitura
+ * é o que põe as fichas do filtro sem oferta no seu lugar da rotação (ver planear).
+ */
 function registar(memoria, url, ean) { memoria.urls[String(url).split('#')[0]] = [ean ? String(ean) : '', hoje()]; }
 
 const diasDesde = d => (Date.now() - Date.parse(d + 'T00:00:00Z')) / 86400000;
@@ -139,9 +143,30 @@ function planear({ todas, filtradas, estado, memoria, maxNovas = 0, saltar = () 
     if (m && diasDesde(m[1]) < DIAS_VALIDADE) continue;
     descobrir.push(k); vistos.add(k);
   }
-  const idadeDe = u => estado.idade.get(u) || '';
+  // Idade = a leitura mais recente que se conhece: a verificação da oferta no catálogo ou o
+  // dia guardado na memória. 25/11 (Cocooncenter): antes só contava a oferta, e as ~700 fichas
+  // do filtro que nunca dão oferta ficavam SEMPRE à frente — a 10 s por pedido, cada corrida
+  // gastava o orçamento nelas e as ofertas pararam a 16/11 (3 297 escondidas pela regra das
+  // ofertas velhas). As nunca lidas não passam todas à frente: na 1.ª corrida (ou com a cache
+  // perdida) vão para o fim, depois das ofertas; depois entram intercaladas, 1 por cada 2 das
+  // lidas há mais tempo — o filtro vai sendo conhecido sem as ofertas pararem.
+  const lidaEm = u => (memoria.urls[u] && memoria.urls[u][1]) || '';
+  const conheceBase = [...base].some(u => memoria.urls[u]);
+  const idades = new Map();
+  for (const u of [...base, ...foraDoMapa]) {
+    const a = estado.idade.get(u) || '', b = lidaEm(u);
+    idades.set(u, a > b ? a : b);
+  }
+  const idadeDe = u => idades.get(u) || '';
   const porIdade = (a, b) => (idadeDe(a) < idadeDe(b) ? -1 : idadeDe(a) > idadeDe(b) ? 1 : 0);
-  const fila = [...base].sort(porIdade);
+  const conhecidas = [...base].filter(u => idadeDe(u)).sort(porIdade);
+  const nuncaLidas = [...base].filter(u => !idadeDe(u));
+  let fila = [];
+  if (!conheceBase) fila = [...conhecidas, ...nuncaLidas];
+  else for (let i = 0, j = 0; i < conhecidas.length || j < nuncaLidas.length;) {
+    for (let k = 0; k < 2 && i < conhecidas.length; k++) fila.push(conhecidas[i++]);
+    if (j < nuncaLidas.length) fila.push(nuncaLidas[j++]);
+  }
   const fora = foraDoMapa.filter(u => !vistos.has(u)).sort(porIdade);
   // a descoberta vai À FRENTE (16/11): com o orçamento de tempo, o que fica para a
   // corrida seguinte são as fichas lidas há menos tempo, não as fichas novas — na 1.ª
@@ -192,7 +217,8 @@ async function prepararLeitura({ loja, base, todas, filtradas, maxNovas = 0, orc
   return {
     fila: plano.fila, descobrir: plano.descobrir,
     concorrencia: ritmo.concorrencia, atrasoMs: ritmo.atrasoMs,
-    registar: (url, ean) => { if (plano.descobrir.has(String(url).split('#')[0])) registar(memoria, url, ean); },
+    // todas as fichas lidas (25/11): o dia da leitura conta para a rotação
+    registar: (url, ean) => registar(memoria, url, ean),
     eDescoberta: url => plano.descobrir.has(String(url).split('#')[0]),
     gravar: () => gravarMemoria(memFile, memoria),
     pausa,
