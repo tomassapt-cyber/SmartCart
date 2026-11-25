@@ -1060,6 +1060,16 @@
    "outros": {
     "store_slug": "coserty"
    }
+  },
+  {
+   "ficheiro": "ofertas/koreanskincare.jsonl",
+   "campos": [
+    "store_slug",
+    "items"
+   ],
+   "outros": {
+    "store_slug": "koreanskincare"
+   }
   }
  ],
  "outros": {}
