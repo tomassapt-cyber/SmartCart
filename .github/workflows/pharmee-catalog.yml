@@ -73,9 +73,9 @@ jobs:
       - name: Scrape Pharmee
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
-            node scripts/scrape-pharmee-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=5 --delay=250
+            node scripts/scrape-pharmee-catalog.js --limit=${{ github.event.inputs.limit }} --concurrency=1 --delay=1000
           else
-            node scripts/scrape-pharmee-catalog.js --concurrency=5 --delay=250
+            node scripts/scrape-pharmee-catalog.js --concurrency=1 --delay=1000
           fi
 
       - name: Upload scrape artifact (safety-net)

@@ -25,6 +25,7 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 300;
 const CHECKPOINT_EVERY = 100;
 const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
+const { ritmoDaLoja } = require('./lib/leitura-alargada');
 
 function locs(xml) { return (xml.match(/<loc>([^<]+)<\/loc>/g) || []).map(m => m.replace(/<\/?loc>/g, '').trim().replace(/&amp;/g, '&')); }
 function slugLooksCosmetic(u) { const slug = ((u.split('/').pop() || '').replace(/_p\d+\.html$/, '') || '').replace(/-/g, ' '); return slug && !isNonCosmetic(slug); }
@@ -113,22 +114,29 @@ async function main() {
   const done = cp ? cp.done : new Set();
   if (cp) console.log(`  Resume: ${done.size} já scraped`);
   const queue = urls.filter(u => !done.has(u));
-  console.log(`\n🚀 A scrapar ${queue.length} fichas (concurrency=${CONCURRENCY}, delay=${DELAY_MS}ms)…\n`);
+  // Crawl-delay (26/11/2026): o robots.txt pede 1 s e íamos 5 em paralelo a 250 ms
+  // (~6 fichas/s). Desde 24/11 a loja trava ao fim de ~500 fichas, a corrida
+  // arrasta-se a 0,3/s e o GitHub corta-a às 2h30. Um pedido de cada vez, à espera pedida.
+  const ritmo = await ritmoDaLoja(BASE, { concorrencia: CONCURRENCY, atrasoMs: DELAY_MS });
+  console.log(`\n🚀 A scrapar ${queue.length} fichas (${ritmo.concorrencia} em paralelo, ${ritmo.atrasoMs} ms entre pedidos${ritmo.crawlDelay ? `, Crawl-delay ${ritmo.crawlDelay} s do robots.txt` : ''})…\n`);
   const start = Date.now(); let i = 0;
   const stats = { ok: 0, skipped: 0, not_found: 0, error: 0 };
+  const motivos = new Map();   // porque falhou: sem isto o log só dizia «err:697»
   async function worker() {
     while (i < queue.length) {
       const url = queue[i++];
       const r = await fetchPage(url); const scraped_at = new Date().toISOString();
       // a imagem vem relativa ("/api/api.php/getImage/…") → absoluta pelo URL da ficha
       if (r.status === 'ok') { const d = extractProductData(r.html); if (d) { d.image_url = imagemValida(d.image_url, url); products.push(JSON.parse(JSON.stringify({ url, status: 'ok', scraped_at, ...d }))); stats.ok++; } else stats.skipped++; }
-      else if (r.status === 'not_found') stats.not_found++; else stats.error++;
+      else if (r.status === 'not_found') stats.not_found++;
+      else { stats.error++; const m = r.http ? `HTTP ${r.http}` : `rede: ${String(r.error || '').slice(0, 50)}`; motivos.set(m, (motivos.get(m) || 0) + 1); }
       const total = stats.ok + stats.skipped + stats.not_found + stats.error;
       if (total % CHECKPOINT_EVERY === 0) { saveCheckpoint(products); const rate = total / ((Date.now() - start) / 1000); console.log(`  [${total}/${queue.length}] ok:${stats.ok} skip:${stats.skipped} 404:${stats.not_found} err:${stats.error} · ${rate.toFixed(1)}/s · ETA ${Math.round((queue.length - total) / rate / 60)}m`); }
-      await new Promise(s => setTimeout(s, DELAY_MS + Math.random() * DELAY_MS * 0.3));
+      await new Promise(s => setTimeout(s, ritmo.crawlDelay ? ritmo.atrasoMs : ritmo.atrasoMs + Math.random() * ritmo.atrasoMs * 0.3));
     }
   }
-  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  await Promise.all(Array.from({ length: ritmo.concorrencia }, worker));
+  if (motivos.size) console.log(`  erros por motivo: ${[...motivos].sort((a, b) => b[1] - a[1]).map(([m, n]) => `${n}× ${m}`).join(' · ')}`);
   if (products.length === 0) { console.error('✗ 0 produtos — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
   saveCheckpoint(products, false);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);

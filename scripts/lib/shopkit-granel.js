@@ -49,6 +49,7 @@
 
 const { fetchTextResilient } = require('./resilient-fetch');
 const { isNonCosmetic } = require('./product-fingerprint');
+const { ritmoDaLoja } = require('./leitura-alargada');
 
 function volumeDoNome(nome) {
   const m = (nome || '').match(/(\d+(?:[.,]\d+)?)\s*(ml|gr|g|kg|l)\b/i);
@@ -108,7 +109,11 @@ function mapear(p, agora) {
 // 250 ms entre páginas e as 4 tentativas do fetchTextResilient quase seguidas, as
 // três lojas pararam a meio na recolha do PC de 16/11 (páginas 5, 34 e 3). O 429 é
 // um «abranda», não um bloqueio: um minuto depois a loja responde outra vez.
-const PAUSA_PAGINAS_MS = 2000;
+// Crawl-delay (2026-11-26): o robots.txt das três (em www.) pede 10 s e íamos a 2 s. Não
+// basta lê-lo em cada corrida: a Shopkit responde 429 até ao próprio robots.txt quando os
+// pedidos se juntam, e a So Beauty só o publica em www. (sobeauty.pt não tem). Por isso
+// 10 s é o mínimo nesta plataforma, e mais se o robots.txt da loja pedir mais.
+const PAUSA_PAGINAS_MS = 10000;
 const ESPERAS_429_S = [60, 120, 240, 300];   // depois disto desiste (a loja não quer mesmo)
 const dorme = ms => new Promise(s => setTimeout(s, ms));
 
@@ -138,11 +143,16 @@ async function pedirPagina(url, cab, { esperas = ESPERAS_429_S, dormir = dorme, 
 /**
  * Recolhe o catálogo inteiro de uma loja Shopkit.
  * @param {string} base  ex. 'https://www.smartbeauty.pt'
- * @param {object} opts  { limite, ua, aoProgresso, pausaMs }
+ * @param {object} opts  { limite, ua, aoProgresso, pausaMs (fixa; sem ela lê-se o Crawl-delay), ritmo }
  * @returns {Promise<{produtos: Array, total: number, paginas: number, bytes: number}>}
  */
 async function recolherCatalogo(base, opts = {}) {
-  const { limite = Infinity, ua, aoProgresso, pausaMs = PAUSA_PAGINAS_MS } = opts;
+  const { limite = Infinity, ua, aoProgresso, ritmo = ritmoDaLoja } = opts;
+  // Crawl-delay (26/11/2026): ver PAUSA_PAGINAS_MS — a pausa é o maior dos dois.
+  const { atrasoMs: pausaMs, crawlDelay } = opts.pausaMs != null
+    ? { atrasoMs: opts.pausaMs, crawlDelay: null }
+    : await ritmo(base, { concorrencia: 1, atrasoMs: PAUSA_PAGINAS_MS });
+  console.log(`  🐢 ${pausaMs / 1000} s entre páginas${crawlDelay ? ` (Crawl-delay ${crawlDelay} s do robots.txt)` : ''}`);
   const cab = ua ? { 'User-Agent': ua } : {};
   const agora = new Date().toISOString();
 
