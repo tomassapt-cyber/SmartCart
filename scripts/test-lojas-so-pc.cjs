@@ -93,6 +93,18 @@ assert.equal(avaliar({ store_products: [] }, cfgT, agora).atrasadas.length, 2, '
 {
   const espera = cfg.em_espera || {};
   assert.ok(espera.notino, 'a Notino está em espera');
+  // 2026-11-25: a caixa de todas as lojas sem acesso honesto aos preços (pedido quando o site estiver apresentável)
+  for (const s of ['afarmaciaonline', 'gofarma', 'farmaciavirtual']) assert.ok(espera[s], `${s} está em espera`);
+  {
+    const fs = require('fs'), path = require('path');
+    const raiz = path.join(__dirname, '..');
+    for (const s of Object.keys(espera)) {
+      const leitor = path.join(raiz, 'scripts', `scrape-${s}-catalog.js`);
+      if (fs.existsSync(leitor)) assert.ok(fs.readFileSync(leitor, 'utf8').includes('em_espera'), `${s}: o leitor tem de se recusar a correr enquanto estiver em espera`);
+      const wf = path.join(raiz, '.github', 'workflows', `${s}-catalog.yml`);
+      if (fs.existsSync(wf)) assert.ok(!/^\s*schedule:/m.test(fs.readFileSync(wf, 'utf8')), `${s}: em espera mas o workflow ainda tem horário`);
+    }
+  }
   for (const [slug, e] of Object.entries(espera)) {
     assert.ok(!(slug in cfg.lojas), `${slug}: em espera e na rotina ao mesmo tempo`);
     assert.ok(!order.includes(slug), `${slug}: em espera mas ainda no ORDER do refresh-pc-only.sh`);

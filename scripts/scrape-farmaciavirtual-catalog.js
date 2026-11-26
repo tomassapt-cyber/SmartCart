@@ -25,6 +25,16 @@ const { imagemDoJsonLd } = require('./lib/imagem-valida');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
+// 2026-11-25: loja EM ESPERA (data/lojas-so-pc.json → em_espera) — o robô honesto do CosMath
+// não tem acesso aos preços; o pedido à loja segue quando o site estiver apresentável.
+// Não correr enquanto lá estiver (também não se finge ser um browser para passar).
+if (require.main === module) {
+  const espera = (JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lojas-so-pc.json'), 'utf8')).em_espera || {})['farmaciavirtual'];
+  if (espera) {
+    console.error(`✗ farmaciavirtual em espera desde ${espera.desde}: ${espera.motivo}\n  Para retomar: ${espera.retomar}`);
+    process.exit(1);
+  }
+}
 const CATALOG_DIR = path.join(ROOT, 'data', 'catalog');
 const OUT_FILE = path.join(CATALOG_DIR, 'farmaciavirtual-full.json');
 const CHECKPOINT_FILE = OUT_FILE + '.checkpoint';
@@ -39,7 +49,7 @@ const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.con
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 200;
 const CHECKPOINT_EVERY = 100;
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
 function locs(xml) { return (xml.match(/<loc>([^<]+)<\/loc>/g) || []).map(m => m.replace(/<\/?loc>/g, '').trim().replace(/&amp;/g, '&')); }
 const isCnp = s => /^\d{7}$/.test(String(s || '').trim());
