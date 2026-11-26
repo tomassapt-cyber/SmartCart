@@ -19,7 +19,7 @@ on:
     - cron: '45 4 * * *'
     - cron: '45 12 * * *'   # 3x/dia (regra do user 2026-07-03)
     - cron: '45 20 * * *'   # 3x/dia
-  # ensaio na nuvem no próprio PR (150 fichas a 2 s, sem publicar nem guardar nada): mostra se
+  # ensaio na nuvem no próprio PR (150 fichas a 5 s, sem publicar nem guardar nada): mostra se
   # o ritmo novo passa sem o bloqueio de ~11 min que a loja dá a 1 pedido/s
   pull_request:
     paths:
@@ -140,7 +140,7 @@ jobs:
           elif [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-sofarma-catalog.js --limit=${{ github.event.inputs.limit }} $RESUME
           else
-            # 85 min de recolha: o passo morre aos 100; 2 s entre pedidos (o robots pede 1 s; a 1 s a loja bloqueia)
+            # 85 min de recolha: o passo morre aos 100; 5 s entre pedidos (o robots pede 1 s; mais depressa a loja corta ~11 min)
             node scripts/scrape-sofarma-catalog.js $RESUME --orcamento-min=85
           fi
 

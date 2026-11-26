@@ -67,10 +67,12 @@ const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const CHUNK = args.chunk || null; // ex: "1/4"
 const RESUME = !!args.resume;
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 4;
-// 2 s de início a início (26/11/2026). O robots.txt pede 1 s, mas a esse ritmo a loja aceita
+// 5 s de início a início (26/11/2026). O robots.txt pede 1 s, mas a esse ritmo a loja aceita
 // ~30 pedidos e depois recusa ligações durante ~11 min — ciclos de 12 min medidos nas
-// corridas de 19–26/11, ~365 fichas por corrida de 85 min. A 2 s (30/min) fica abaixo do corte.
-const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 2000;
+// corridas de 19–26/11, ~365 fichas por corrida de 85 min. Ensaio na nuvem (PR #175): a 2 s
+// cortou ao fim de ~50 pedidos, a 3 s ao fim de 18; a 4,5 s fez 85 seguidos sem corte.
+// A 5 s: ~1 000 fichas por corrida. Se mesmo assim cortar, esperarDesbloqueio + abrandar.
+const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 5000;
 const CHECKPOINT_EVERY = 100;
 
 // Keywords no URL slug que indicam produto beauty/dermo (não-medicação, não-suplemento)

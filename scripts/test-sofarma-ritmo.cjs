@@ -31,13 +31,13 @@ const relogio = () => { const r = { t: 0, sonos: [] }; r.agora = () => r.t; r.do
   d = await esperarDesbloqueio(async () => ({ status: 'fetch_error' }), { agora: r.agora, dormir: r.dormir, fimDoTempo: () => r.t >= 3 * 60000 });
   assert.equal(d.r, null); assert.equal(d.tentativas, 3);
 
-  // o leitor: 2 s por defeito, sem as 3 tentativas seguidas nas falhas de ligação, e usa a espera
+  // o leitor: 5 s por defeito, sem as 3 tentativas seguidas nas falhas de ligação, e usa a espera
   const leitor = fs.readFileSync(path.join(__dirname, 'scrape-sofarma-catalog.js'), 'utf8');
-  assert.match(leitor, /const DELAY_MS = args\.delay \? parseInt\(args\.delay, 10\) : 2000;/);
+  assert.match(leitor, /const DELAY_MS = args\.delay \? parseInt\(args\.delay, 10\) : 5000;/);
   const catchDoFetch = leitor.slice(leitor.indexOf('async function fetchPage'), leitor.indexOf('async function fetchPage') + 1600).split('} catch (e) {')[1].split('\n}')[0];
   assert.ok(!/fetchPage\(url, attempt \+ 1\)/.test(catchDoFetch), 'falha de ligação não se repete logo');
   assert.match(leitor, /esperarDesbloqueio\(\(\) => fetchPage\(url\)/);
   assert.match(leitor, /leitura\.abrandar\(/);
 
-  console.log('sofarma ritmo: 2 s entre pedidos; bloqueio → mesma ficha de minuto a minuto, desiste aos 15 min ou no fim do orçamento — tudo passou');
+  console.log('sofarma ritmo: 5 s entre pedidos; bloqueio → mesma ficha de minuto a minuto, desiste aos 15 min ou no fim do orçamento — tudo passou');
 })().catch(e => { console.error(e); process.exit(1); });
