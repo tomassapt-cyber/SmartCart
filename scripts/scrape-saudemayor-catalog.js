@@ -4,8 +4,9 @@
  * ============================================================
  *
  * Saúde Mayor é uma farmácia/parafarmácia PT (preços EUR, envia PT). Cada
- * ficha expõe um bloco JSON-LD Product com `mpn` = EAN real (13 díg) E
+ * ficha expõe um bloco JSON-LD Product com o EAN real (13 díg) E
  * `sku` = CNP (7 díg) — chave DUPLA, melhor que a maioria das lojas.
+ * O EAN vinha em `mpn` até 20/11/2026; desde então vem em `gtin13` (lêem-se os dois).
  *
  * ARMADILHA: o JSON-LD do site tem um bug de template (contexto Blade/PHP
  * mal resolvido) que injecta código-fonte cru com quebras de linha DENTRO da
@@ -57,8 +58,17 @@ function volumeFromName(name) {
   return (u === 'l' && v < 10) ? v * 1000 : (u === 'kg' ? v * 1000 : v);
 }
 
-// Extracção por REGEX (não JSON.parse — o JSON-LD do site vem partido, ver
-// nota no topo do ficheiro).
+/** primeiro campo da lista com um EAN real (12–14 dígitos, sem 000000 de enchimento) */
+function codigoEan(blob, campos) {
+  for (const c of campos) {
+    const m = blob.match(new RegExp(`"${c}":\\s*"(\\d+)"`));
+    if (m && /^\d{12,14}$/.test(m[1]) && !/0{6,}/.test(m[1])) return m[1];
+  }
+  return null;
+}
+
+// Extracção por REGEX (não JSON.parse — o JSON-LD do site vinha partido, ver nota
+// no topo do ficheiro; a 26/11/2026 já vem válido, e a regex serve aos dois).
 function extractProductData(html) {
   const block = html.match(/<script type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/);
   if (!block) return null;
@@ -69,13 +79,16 @@ function extractProductData(html) {
   if (!name) return null;
 
   const skuM = blob.match(/"sku":\s*"(\d+)"/);
-  const mpnM = blob.match(/"mpn":\s*"(\d+)"/);
   const brandM = blob.match(/"brand":\s*\{[^}]*?"name":\s*"([^"]+)"/);
   const priceM = blob.match(/"price":\s*([\d.]+)/);
-  const availM = blob.match(/"availability":\s*"?\s*([a-z:/.A-Z]+)/);
+  // o JSON válido escreve "https:\/\/schema.org\/InStock" — a barra invertida tem de caber
+  const availM = blob.match(/"availability":\s*"?\s*([a-z:/.A-Z\\]+)/);
   const imgM = blob.match(/"image":\s*\[\s*"([^"]+)"/);
 
-  const ean = mpnM && /^\d{12,14}$/.test(mpnM[1]) && !/0{6,}/.test(mpnM[1]) ? mpnM[1] : null;
+  // EAN: até 20/11/2026 vinha em `mpn`; desde então a loja publica-o em `gtin13`
+  // (o mesmo número) e o leitor passou a ignorar TODAS as fichas. Aceitam-se os
+  // dois, com o gtin primeiro.
+  const ean = codigoEan(blob, ['gtin13', 'gtin', 'gtin14', 'gtin12', 'mpn']);
   const cnp = skuM && /^\d{7}$/.test(skuM[1]) ? skuM[1] : null;
   if (!ean) return null;                 // sem EAN real → ignora (foco EAN forte)
   const price = priceM ? parseFloat(priceM[1]) : null;
@@ -85,7 +98,7 @@ function extractProductData(html) {
   return {
     name, brand: brandM ? decodeEntities(brandM[1]) : null,
     ean, cnp, sku: cnp,
-    image_url: imgM ? imgM[1] : null,
+    image_url: imgM ? imgM[1].replace(/\\\//g, '/') : null,   // o JSON válido escreve "https:\/\/…"
     price, previous_price: null, in_stock,
     volume_ml: volumeFromName(name), category: null, variants: [],
   };
@@ -110,7 +123,7 @@ async function fetchPage(url, attempt = 1) {
 }
 
 function loadCheckpoint() { if (!RESUME || !fs.existsSync(OUT_FILE)) return null; try { const d = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); if (!Array.isArray(d.products)) return null; return { products: d.products, done: new Set(d.products.map(p => p.url)) }; } catch { return null; } }
-function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) return; /* smoke-test (--limit) NÃO sobrescreve o catálogo de produção */ fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'saudemayor.pt (HTML + regex sobre JSON-LD partido: mpn=EAN, sku=CNP)', in_progress: inProgress, products }), 'utf8'); }
+function saveCheckpoint(products, inProgress = true) { if (LIMIT !== Infinity) return; /* smoke-test (--limit) NÃO sobrescreve o catálogo de produção */ fs.writeFileSync(OUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), source: 'saudemayor.pt (HTML + regex sobre JSON-LD: gtin13/mpn=EAN, sku=CNP)', in_progress: inProgress, products }), 'utf8'); }
 
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
@@ -142,7 +155,15 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  if (products.length === 0) { console.error('✗ 0 produtos (feed vazio/bloqueio de IP?) — NÃO sobrescrevo o catálogo existente.'); process.exit(1); }
+  if (products.length === 0) {
+    // 20–26/11/2026: 2 662 fichas abertas com HTTP 200 e todas «skip» — não era bloqueio,
+    // era a ficha que tinha mudado. Dizer qual dos dois para não se procurar no sítio errado.
+    const porque = stats.skipped > 0 && stats.error === 0
+      ? `${stats.skipped} fichas abertas sem EAN/preço no JSON-LD — a página da loja mudou?`
+      : 'feed vazio/bloqueio de IP?';
+    console.error(`✗ 0 produtos (${porque}) — NÃO sobrescrevo o catálogo existente.`);
+    process.exit(1);
+  }
   saveCheckpoint(products, false);
   if (LIMIT !== Infinity) console.log(`[--limit=${LIMIT}] smoke-test: catálogo de produção NÃO escrito.`);
   console.log(`\n══════ saudemayor scrape ══════`);
