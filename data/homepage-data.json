@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T15:27:41.357Z",
-  "seed_total_products": 105572,
+  "generated_at": "2026-11-26T12:01:58.075Z",
+  "seed_total_products": 105698,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -17,10 +17,10 @@
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.52,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico"
+      "best_price": 13.14,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/cerave-serum-hidratante-acido-hialuronico-30ml"
     },
     {
       "ean": "7427244506335",
@@ -47,10 +47,10 @@
       "name": "Avène Protetor Solar Creme FPS50+",
       "brand": "Avène",
       "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
-      "best_price": 8.8,
-      "best_store": "VallisPharma",
-      "best_store_slug": "vallispharma",
-      "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml"
+      "best_price": 13.39,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/avene-solares-creme-50-incolor-50-ml.html"
     }
   ],
   "bestsellers": [
@@ -121,7 +121,7 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 13.74,
+      "best_price": 13.76,
       "best_store": "Love My Pharma",
       "best_store_slug": "lovemypharma",
       "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
@@ -137,16 +137,6 @@
       "best_url": "https://megafarma.pt/pt-pt/product/aveeno-dermexa-creme-emoliente-200ml-gel-banho-300ml"
     },
     {
-      "ean": "8431567752002",
-      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
-      "brand": "La Roche-Posay",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
-      "best_price": 28,
-      "best_store": "Easyfarma",
-      "best_store_slug": "easyfarma",
-      "best_url": "https://easyfarma.pt/products/la-roche-posay-hyalu-b5-suractivated-serum-coffret-xmas26"
-    },
-    {
       "ean": "3574661879185",
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
@@ -155,6 +145,16 @@
       "best_store": "MegaFarma",
       "best_store_slug": "megafarma",
       "best_url": "https://megafarma.pt/pt-pt/product/neutrogena-hidratante-corporal-profundo-750-400-ml"
+    },
+    {
+      "ean": "8431567752002",
+      "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
+      "brand": "La Roche-Posay",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a872f16564f8_la-roche-posay-hyalu-b5-coffret-1_1.jpg",
+      "best_price": 28,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/la-roche-posay-hyalu-b5-suractivated-serum-coffret-xmas26"
     }
   ],
   "em_alta": [
@@ -187,54 +187,55 @@
       "verified_live": true
     },
     {
-      "ean": "8428749834205",
-      "name": "Sensilis Velvet Blush _Cor 02 (Sweet Coral) -",
-      "brand": "Sensilis",
-      "image_url": "https://static.lojadafarmacia.com/13153/sensilis-velvet-blush-cor-02-sweet-coral-10g.jpg",
-      "best_price": 13.27,
-      "best_store": "Pharma24",
-      "best_store_slug": "pharma24",
-      "best_url": "https://www.pharma24.pt/sensilis-velvet-blush-02-sweet-coral-10g.html",
-      "previous_price": 20.43,
+      "ean": "8436616950187",
+      "name": "Rose Quartz Facial Cleanser",
+      "brand": "Freshly Cosmetics",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw98da7664/images/wells/820/8207032-ROSTO-ROSE-QUARTZ-FACIAL-CLEANSER-FRESHLY-COSMETICS-P-01.jpg",
+      "best_price": 11.97,
+      "best_store": "Wells",
+      "best_store_slug": "wells",
+      "best_url": "https://wells.pt/rose-quartz-facial-cleanser-352576.html",
+      "volume_ml": 100,
+      "previous_price": 19.95,
+      "discount_pct": 40,
+      "dropped_day": 20783,
+      "verified_live": true
+    },
+    {
+      "ean": "4005900868619",
+      "name": "Nivea Body Milk Leite Corporal Nutritivo",
+      "brand": "Nivea",
+      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/n/i/niveabodymilk1_1.jpg",
+      "best_price": 3.56,
+      "best_store": "Auchan",
+      "best_store_slug": "auchan",
+      "best_url": "https://www.auchan.pt/pt/beleza-e-higiene/cremes-de-corpo-e-rosto/cremes-e-oleos/leite-corporal-body-milk-nutritivo-nivea-250-ml/2137.html",
+      "volume_ml": 250,
+      "previous_price": 5.49,
       "discount_pct": 35,
-      "dropped_day": 20778,
+      "dropped_day": 20783,
       "verified_live": true
     },
     {
-      "ean": "7897042012473",
-      "name": "Crespo Divino",
-      "brand": "Skala",
-      "image_url": "https://www.druni.pt/media/catalog/product/1/3/1308735.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 3.99,
-      "best_store": "Ilha dos Cosméticos",
-      "best_store_slug": "ilhadoscosmeticos",
-      "best_url": "https://ilhadoscosmeticos.pt/products/skala-expert-divino-potao-mascara-1kg",
-      "volume_ml": 1,
-      "previous_price": 5.95,
-      "discount_pct": 33,
-      "dropped_day": 20782,
-      "verified_live": true
-    },
-    {
-      "ean": "7897042005048",
-      "name": "Creme para Pentear Bomba de Vitaminas Abacate",
-      "brand": "Skala",
-      "image_url": "https://cdnpt2.primor.eu/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/7/8/7897042005048_c090.png",
-      "best_price": 3.99,
-      "best_store": "Ilha dos Cosméticos",
-      "best_store_slug": "ilhadoscosmeticos",
-      "best_url": "https://ilhadoscosmeticos.pt/products/skala-expert-abacate-mascara-1kg",
-      "volume_ml": 1,
-      "previous_price": 5.95,
-      "discount_pct": 33,
-      "dropped_day": 20782,
+      "ean": "3372290002116",
+      "name": "Extra-Gentle Family Shampoo",
+      "brand": "Lazartigue",
+      "image_url": "https://wells.pt/on/demandware.static/-/Sites-wells-master-catalog/default/dw74f9bc21/images/wells/850/8503453-CHAMPOS-EXTRA-GENTLE-FAMILY-SHAMPOO-LAZARTIGUE-P-01.png",
+      "best_price": 3.25,
+      "best_store": "Wells",
+      "best_store_slug": "wells",
+      "best_url": "https://wells.pt/extra-gentle-family-shampoo-415625.html",
+      "volume_ml": 500,
+      "previous_price": 5.01,
+      "discount_pct": 35,
+      "dropped_day": 20783,
       "verified_live": true
     }
   ],
   "top_brands": [
     {
       "name": "Clarins",
-      "products": 906
+      "products": 908
     },
     {
       "name": "Essence",
@@ -246,7 +247,7 @@
     },
     {
       "name": "Chicco",
-      "products": 839
+      "products": 840
     },
     {
       "name": "Isdin",
@@ -254,7 +255,7 @@
     },
     {
       "name": "Avène",
-      "products": 813
+      "products": 811
     },
     {
       "name": "Nivea",
@@ -262,7 +263,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 787
+      "products": 790
     }
   ],
   "telegram_alerts": [
@@ -295,8 +296,8 @@
     }
   ],
   "stats": {
-    "stores": 103,
-    "products": 63520,
+    "stores": 104,
+    "products": 71596,
     "avg_savings_pct": 29
   },
   "shard_version": "",
