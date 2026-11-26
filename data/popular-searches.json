@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T14:38:27.823Z",
+  "generated_at": "2026-11-26T15:37:11.224Z",
   "source": "google-suggest-pt",
   "products": [
     {
@@ -19,12 +19,12 @@
       "name": "Sérum Con Ácido Hialurónico",
       "brand": "CeraVe",
       "image_url": "https://www.druni.pt/media/catalog/product/5/8/5801651.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
-      "best_price": 13.52,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/serum-acido-hialuronico",
+      "best_price": 13.14,
+      "best_store": "Easyfarma",
+      "best_store_slug": "easyfarma",
+      "best_url": "https://easyfarma.pt/products/cerave-serum-hidratante-acido-hialuronico-30ml",
       "search_term": "acido hialuronico gluteos",
-      "pop_score": 44
+      "pop_score": 45
     },
     {
       "ean": "7427244506335",
@@ -35,7 +35,7 @@
       "best_store": "Farmácia Barreiros",
       "best_store_slug": "barreiros",
       "best_url": "https://www.farmaciabarreiros.com/beleza/rosto/hidratacao-rosto/papillon-creme-de-rosto-vitamina-c-50-ml",
-      "search_term": "vitamina c rosto para que serve",
+      "search_term": "vitamina c rosto melhores",
       "pop_score": 41
     },
     {
@@ -43,12 +43,24 @@
       "name": "Clear Shampoo Anticaspa Couro Cabeludo Seco",
       "brand": "Lazartigue",
       "image_url": "https://static.sweetcare.pt/img/prd/max/v-639040894911242383/lazartigue-027113lz_01.jpg",
-      "best_price": 10.43,
-      "best_store": "Farmácia 365",
-      "best_store_slug": "farmacia365",
-      "best_url": "https://www.farmacia365.pt/lazartigue-clear-champo-caspa-oleosa-250ml",
+      "best_price": 9.81,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml",
       "search_term": "shampoo anticaspa",
-      "pop_score": 39
+      "pop_score": 40
+    },
+    {
+      "ean": "3701129804193",
+      "name": "Bioderma Atoderm Creme de Mãos",
+      "brand": "Bioderma",
+      "image_url": "https://assets.atida.com/transform/915a1e61-d5e3-4d09-86a9-7b438830bb19/Bioderma-Atoderm-Crema-de-Manos-50-ml",
+      "best_price": 3.49,
+      "best_store": "Atida | Mifarma PT",
+      "best_store_slug": "atida",
+      "best_url": "https://www.atida.com/pt-pt/bioderma-atoderm-creme-de-maos-50ml",
+      "search_term": "creme de maos loccitane",
+      "pop_score": 36
     },
     {
       "ean": "3282770098938",
@@ -60,19 +72,7 @@
       "best_store_slug": "vallispharma",
       "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml",
       "search_term": "la roche posay protetor solar",
-      "pop_score": 32
-    },
-    {
-      "ean": "5201279072193",
-      "name": "Apivita Express Beauty Máscara Facial de Limpeza Profunda com Argila Verde 2x",
-      "brand": "Apivita",
-      "image_url": "https://assets.atida.com/transform/409c59de-e1be-40e8-9201-1724cf83efd9/Apivita-Express-Beauty-Mascarilla-Facial-Limpieza-Profunda-con-Arcilla-Verde-2x8-ml",
-      "best_price": 2.39,
-      "best_store": "Perfume's Club",
-      "best_store_slug": "perfumesclub",
-      "best_url": "https://www.perfumesclub.pt/pt/apivita/express-beauty-mascarilla-de-limpieza-profunda-con-arcilla-verde/p_72193/",
-      "search_term": "mascara facial coreana",
-      "pop_score": 30
+      "pop_score": 31
     },
     {
       "ean": "020714002527",
@@ -83,20 +83,20 @@
       "best_store": "Balvera",
       "best_store_slug": "balvera",
       "best_url": "https://balvera.pt/produtos/clinique-exfoliating-scrub-1",
-      "search_term": "esfoliante facial caseiro",
-      "pop_score": 29
+      "search_term": "esfoliante facial mercadona",
+      "pop_score": 30
     },
     {
-      "ean": "3701129804193",
-      "name": "Bioderma Atoderm Creme de Mãos",
-      "brand": "Bioderma",
-      "image_url": "https://assets.atida.com/transform/915a1e61-d5e3-4d09-86a9-7b438830bb19/Bioderma-Atoderm-Crema-de-Manos-50-ml",
-      "best_price": 3.79,
-      "best_store": "Atida | Mifarma PT",
-      "best_store_slug": "atida",
-      "best_url": "https://www.atida.com/pt-pt/bioderma-atoderm-creme-de-maos-50ml",
-      "search_term": "creme de maos loccitane",
-      "pop_score": 27
+      "ean": "4005900550583",
+      "name": "Anti-Pigment Dual Serum",
+      "brand": "Eucerin",
+      "image_url": "https://www.druni.pt/media/catalog/product/5/7/5795032.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "best_price": 26.03,
+      "best_store": "Pharma24",
+      "best_store_slug": "pharma24",
+      "best_url": "https://www.pharma24.pt/eucerin-anti-pigment-serum-duplo-30ml",
+      "search_term": "eucerin anti-pigment dual sérum",
+      "pop_score": 26
     }
   ]
 }
