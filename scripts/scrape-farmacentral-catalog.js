@@ -32,7 +32,7 @@
  *   · ficha em farmacentral.pt/pt/artigo/<slug> devolve 200 (as outras formas
  *     dão 301).
  *
- * Uso: node scripts/scrape-farmacentral-catalog.js [--limit=N] [--take=250]
+ * Uso: node scripts/scrape-farmacentral-catalog.js [--limit=N] [--take=50]
  */
 const fs = require('fs');
 const path = require('path');
@@ -47,7 +47,11 @@ const IMG_BASE = 'https://api.farmacentral.pt';   // o domínio sem "api." dá 3
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
-const TAKE = args.take ? Math.min(250, parseInt(args.take, 10)) : 250;
+// 50 por página (era 250): a API corta aos ~30 s e cada produto custa ~0,25 s —
+// com 250 todas as corridas falhavam desde 15/11 com HTTP 500. Ver fetchRange().
+const TAKE = args.take ? Math.min(250, parseInt(args.take, 10)) : 50;
+const TAKE_MIN = 10;
+const PEDIDO_MS = 60000;   // um pedido pendurado não prende a corrida
 const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 600;
 const { UA_COSMATH: UA } = require('./lib/identidade');   // robô do CosMath, não um browser
 
@@ -140,24 +144,43 @@ function mapProduct(p) {
   };
 }
 
-async function fetchPage(skip, attempt = 1) {
-  const url = `${API}?take=${TAKE}&skip=${skip}`;
+async function fetchPage(skip, take = TAKE, attempt = 1) {
+  const url = `${API}?take=${take}&skip=${skip}`;
   try {
-    const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept': 'application/json', 'Accept-Language': 'pt-PT,pt;q=0.9' } });
+    const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept': 'application/json', 'Accept-Language': 'pt-PT,pt;q=0.9' }, signal: AbortSignal.timeout(PEDIDO_MS) });
     if (r.status === 429 || r.status >= 500) throw new Error('HTTP ' + r.status);
     if (!r.ok) return { error: 'HTTP ' + r.status };
     return await r.json();
   } catch (e) {
-    if (attempt < 4) { await new Promise(s => setTimeout(s, 2500 * attempt)); return fetchPage(skip, attempt + 1); }
+    if (attempt < 3) { await new Promise(s => setTimeout(s, 2500 * attempt)); return fetchPage(skip, take, attempt + 1); }
     return { error: e.message };
   }
+}
+
+/**
+ * Uma página que falha lê-se em duas metades, até TAKE_MIN. A API demora ~0,25 s
+ * por produto e corta aos ~30 s com HTTP 500 (26/11/2026: take=250 falhava sempre,
+ * desde 15/11; take=100 levava 25 s) — se a loja ficar mais lenta, a página
+ * encolhe sozinha em vez de se perder.
+ */
+async function fetchRange(skip, take, ler = fetchPage) {
+  const page = await ler(skip, take);
+  if (!page.error && Array.isArray(page.list)) return page;
+  if (take <= TAKE_MIN) return page;
+  const meio = Math.ceil(take / 2);
+  console.warn(`  ↘ skip=${skip} take=${take} falhou (${page.error || 'shape'}) — leio em duas metades`);
+  const a = await fetchRange(skip, meio, ler);
+  await new Promise(s => setTimeout(s, DELAY_MS));
+  const b = await fetchRange(skip + meio, take - meio, ler);
+  if (a.error && b.error) return a;
+  return { list: [...(a.list || []), ...(b.list || [])], total: a.total ?? b.total, parcial: !!(a.error || b.error || a.parcial || b.parcial) };
 }
 
 async function main() {
   if (!fs.existsSync(CATALOG_DIR)) fs.mkdirSync(CATALOG_DIR, { recursive: true });
   console.log(`📦 FARMACENTRAL — API pública (take=${TAKE})…`);
   await carregarMarcas();
-  const first = await fetchPage(0);
+  const first = await fetchRange(0, TAKE);
   if (first.error || !Array.isArray(first.list)) { console.error('✗ API não respondeu como esperado:', first.error || Object.keys(first)); process.exit(1); }
   const total = Number(first.total) || first.list.length;
   console.log(`  total anunciado: ${total}`);
@@ -175,9 +198,10 @@ async function main() {
   const alvo = LIMIT === Infinity ? total : Math.min(total, LIMIT);
   for (let skip = TAKE; skip < alvo; skip += TAKE) {
     await new Promise(s => setTimeout(s, DELAY_MS));
-    const page = await fetchPage(skip);
+    const page = await fetchRange(skip, TAKE);
     if (page.error || !Array.isArray(page.list)) { console.warn(`  ⚠ skip=${skip} falhou (${page.error || 'shape'}) — continuo`); continue; }
     push(page.list);
+    if (page.parcial) console.warn(`  ⚠ skip=${skip}: parte da página não veio (${page.list.length}/${TAKE}) — continuo`);
     if (page.list.length === 0) break;
     console.log(`  [${Math.min(skip + TAKE, alvo)}/${alvo}] ${products.length} cosméticos válidos`);
   }
@@ -211,7 +235,7 @@ async function main() {
   else console.log(`\n✓ ${OUT_FILE} (${Math.round(fs.statSync(OUT_FILE).size / 1024)} KB)`);
 }
 
-module.exports = { mapProduct };
+module.exports = { mapProduct, fetchRange, TAKE, TAKE_MIN };
 if (require.main === module) {
   process.on('unhandledRejection', (e) => console.warn('⚠ unhandledRejection (ignorado):', e && e.code || e));
   main().catch(e => { console.error('FATAL', e); process.exit(1); });
