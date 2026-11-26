@@ -222,9 +222,31 @@ async function prepararLeitura({ loja, base, todas, filtradas, maxNovas = 0, orc
     eDescoberta: url => plano.descobrir.has(String(url).split('#')[0]),
     gravar: () => gravarMemoria(memFile, memoria),
     pausa,
+    // depois de um bloqueio por excesso de pedidos: mais espaço entre pedidos até ao fim da corrida
+    abrandar: (fator = 1.5, maxMs = 10000) => { ritmo.atrasoMs = Math.min(maxMs, Math.round(ritmo.atrasoMs * fator)); return ritmo.atrasoMs; },
     fimDoTempo: () => Date.now() - inicio > orcamentoMs,
     temEanNoCatalogo: ean => estado.eans.has(semZeros(ean)),
   };
 }
 
-module.exports = { UA_COSMATH, DIAS_VALIDADE, crawlDelayDe, ritmoDaLoja, estadoDoSeed, lerMemoria, gravarMemoria, registar, planear, pareceMaquilhagem, opcoes, prepararLeitura };
+/**
+ * Bloqueio temporário por excesso de pedidos (26/11/2026, Sofarma): ao fim de ~30 pedidos
+ * a 1/s a loja deixa de aceitar ligações durante ~11 min, e o leitor gastava 3 tentativas
+ * (~36 s) em cada ficha até o bloqueio passar — 16 fichas perdidas por bloqueio. Em vez
+ * disso: pára, tenta a MESMA ficha de `passoMs` em `passoMs` e devolve a resposta quando a
+ * loja voltar. Desiste ao fim de `maxMs` ou do orçamento (devolve r: null).
+ * `tentar()` devolve { status }; só 'fetch_error' (sem ligação) conta como bloqueio.
+ */
+async function esperarDesbloqueio(tentar, { passoMs = 60000, maxMs = 15 * 60000, fimDoTempo = () => false, dormir = (ms) => new Promise((r) => setTimeout(r, ms)), agora = () => Date.now() } = {}) {
+  const t0 = agora();
+  let tentativas = 0;
+  while (agora() - t0 < maxMs && !fimDoTempo()) {
+    await dormir(passoMs);
+    tentativas++;
+    const r = await tentar();
+    if (r && r.status !== 'fetch_error') return { r, esperouMs: agora() - t0, tentativas };
+  }
+  return { r: null, esperouMs: agora() - t0, tentativas };
+}
+
+module.exports = { UA_COSMATH, DIAS_VALIDADE, crawlDelayDe, ritmoDaLoja, estadoDoSeed, lerMemoria, gravarMemoria, registar, planear, pareceMaquilhagem, opcoes, prepararLeitura, esperarDesbloqueio };
