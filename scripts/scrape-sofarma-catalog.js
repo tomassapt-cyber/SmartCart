@@ -42,7 +42,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { UA_COSMATH, opcoes, prepararLeitura } = require('./lib/leitura-alargada');
+const { UA_COSMATH, opcoes, prepararLeitura, esperarDesbloqueio } = require('./lib/leitura-alargada');
 const { fetchTextResilient } = require('./lib/resilient-fetch');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -67,7 +67,12 @@ const LIMIT = args.limit ? parseInt(args.limit, 10) : Infinity;
 const CHUNK = args.chunk || null; // ex: "1/4"
 const RESUME = !!args.resume;
 const CONCURRENCY = args.concurrency ? Math.max(1, Math.min(6, parseInt(args.concurrency, 10))) : 4;
-const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 600;
+// 5 s de início a início (26/11/2026). O robots.txt pede 1 s, mas a esse ritmo a loja aceita
+// ~30 pedidos e depois recusa ligações durante ~11 min — ciclos de 12 min medidos nas
+// corridas de 19–26/11, ~365 fichas por corrida de 85 min. Ensaio na nuvem (PR #175): a 2 s
+// cortou ao fim de ~50 pedidos, a 3 s ao fim de 18; a 4,5 s fez 85 seguidos sem corte.
+// A 5 s: ~1 000 fichas por corrida. Se mesmo assim cortar, esperarDesbloqueio + abrandar.
+const DELAY_MS = args.delay ? parseInt(args.delay, 10) : 5000;
 const CHECKPOINT_EVERY = 100;
 
 // Keywords no URL slug que indicam produto beauty/dermo (não-medicação, não-suplemento)
@@ -235,6 +240,7 @@ async function fetchPage(url, attempt = 1) {
         'Accept': 'text/html',
         'Accept-Language': 'pt-PT,pt;q=0.9',
       },
+      signal: AbortSignal.timeout(30000),   // ligação pendurada conta como sem ligação
     });
     if (r.status === 404) return { status: 'not_found' };
     if (r.status === 429 || r.status >= 500) {
@@ -247,10 +253,8 @@ async function fetchPage(url, attempt = 1) {
     const html = Buffer.from(await r.arrayBuffer()).toString('latin1');   // ISO-8859-1
     return { status: 'ok', html };
   } catch (e) {
-    if (attempt < 3) {
-      await new Promise(s => setTimeout(s, 2000 * attempt));
-      return fetchPage(url, attempt + 1);
-    }
+    // sem ligação: não se repete aqui (eram 3 tentativas, ~36 s por ficha durante um
+    // bloqueio) — quem chama espera que a loja volte (esperarDesbloqueio) e abranda.
     return { status: 'fetch_error', error: e.message };
   }
 }
@@ -324,7 +328,21 @@ async function main() {
       if (leitura.fimDoTempo()) { stats.adiadas = queue.length - idx; idx = queue.length; break; }
       const i = idx++;
       const url = queue[i];
-      const r = await fetchPage(url);
+      let r = await fetchPage(url);
+      if (r.status === 'fetch_error') {
+        // bloqueio por excesso de pedidos: esperar que passe em vez de queimar fichas
+        stats.bloqueios = (stats.bloqueios || 0) + 1;
+        console.log(`  🚧 a loja deixou de aceitar ligações (${r.error}) — tento a mesma ficha de minuto a minuto`);
+        const d = await esperarDesbloqueio(() => fetchPage(url), { fimDoTempo: leitura.fimDoTempo });
+        stats.esperaBloqueioMs = (stats.esperaBloqueioMs || 0) + d.esperouMs;
+        if (!d.r) {
+          console.log(`  ✗ continua sem responder ao fim de ${Math.round(d.esperouMs / 60000)} min — paro; o resto fica para a próxima corrida`);
+          stats.adiadas = queue.length - i; idx = queue.length; break;
+        }
+        const novo = leitura.abrandar(1.5, 10000);
+        console.log(`  ✓ voltou ao fim de ${Math.round(d.esperouMs / 60000)} min — passo a ${novo} ms entre pedidos`);
+        r = d.r;
+      }
       const scraped_at = new Date().toISOString();
       if (r.status === 'ok') {
         let data = extractProductData(r.html, url);
@@ -402,6 +420,7 @@ async function main() {
   console.log(`  No JSON-LD: ${stats.no_jsonld}`);
   console.log(`  404:   ${stats.not_found}`);
   console.log(`  Erro:  ${stats.error}`);
+  if (stats.bloqueios) console.log(`  Bloqueios por excesso de pedidos: ${stats.bloqueios} (${Math.round((stats.esperaBloqueioMs || 0) / 60000)} min à espera)`);
   if (motivosErro.size) {
     console.log('  Erros por motivo:');
     for (const [m, n] of [...motivosErro.entries()].sort((a, b) => b[1] - a[1])) console.log(`    ${n}x  ${m}`);

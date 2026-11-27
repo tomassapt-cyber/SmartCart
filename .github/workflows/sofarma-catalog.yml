@@ -19,6 +19,14 @@ on:
     - cron: '45 4 * * *'
     - cron: '45 12 * * *'   # 3x/dia (regra do user 2026-07-03)
     - cron: '45 20 * * *'   # 3x/dia
+  # ensaio na nuvem no próprio PR (150 fichas a 5 s, sem publicar nem guardar nada): mostra se
+  # o ritmo novo passa sem o bloqueio de ~11 min que a loja dá a 1 pedido/s
+  pull_request:
+    paths:
+      - 'scripts/scrape-sofarma-catalog.js'
+      - 'scripts/lib/leitura-alargada.js'
+      - 'scripts/test-sofarma-ritmo.cjs'
+      - '.github/workflows/sofarma-catalog.yml'
   workflow_dispatch:
     inputs:
       limit:
@@ -80,7 +88,9 @@ jobs:
       # Se a cache se perder, a descoberta recomeça; nada se estraga. Ver
       # scripts/lib/leitura-alargada.js.
       - name: Teste da leitura alargada
-        run: node scripts/test-leitura-alargada.cjs
+        run: |
+          node scripts/test-leitura-alargada.cjs
+          node scripts/test-sofarma-ritmo.cjs
 
       - name: Memória da leitura alargada (cache)
         uses: actions/cache/restore@v4
@@ -125,10 +135,12 @@ jobs:
           # catalogo e nada congela. O checkpoint sobrevive porque o workflow faz
           # git add -f do sofarma-full.json.
           RESUME="--resume"
-          if [ -n "${{ github.event.inputs.limit }}" ]; then
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            node scripts/scrape-sofarma-catalog.js --limit=150
+          elif [ -n "${{ github.event.inputs.limit }}" ]; then
             node scripts/scrape-sofarma-catalog.js --limit=${{ github.event.inputs.limit }} $RESUME
           else
-            # 85 min de recolha: o passo morre aos 100 e o robots pede 1 s entre pedidos
+            # 85 min de recolha: o passo morre aos 100; 5 s entre pedidos (o robots pede 1 s; mais depressa a loja corta ~11 min)
             node scripts/scrape-sofarma-catalog.js $RESUME --orcamento-min=85
           fi
 
@@ -145,14 +157,14 @@ jobs:
       # tenha ela acabado ou sido cortada a meio -- e vale a pena integrar. Se
       # nao e, nao houve nada, e o job TEM de ficar vermelho.
       - name: Guardar a memória da leitura alargada
-        if: always() && hashFiles('.cache-lojas/sofarma-descoberta.json') != ''
+        if: always() && github.event_name != 'pull_request' && hashFiles('.cache-lojas/sofarma-descoberta.json') != ''
         uses: actions/cache/save@v4
         with:
           path: .cache-lojas
           key: leitura-sofarma-${{ github.run_id }}
 
       - name: A recolha produziu algo nesta corrida?
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         run: |
           F=data/catalog/sofarma-full.json
           if [ ! -f "$F" ]; then echo "sem ficheiro de catalogo"; exit 1; fi
@@ -178,6 +190,7 @@ jobs:
       # contra os ~140 pushes/dia dos outros bots (foi o que aconteceu a
       # Care to Beauty, run 30551673295: 62 min de recolha deitados fora).
       - name: Guardar o catalogo recolhido (antes de integrar)
+        if: github.event_name != 'pull_request'
         env:
           GIT_AUTHOR_NAME: CosMath Bot
           GIT_AUTHOR_EMAIL: bot@cosmath.pt
@@ -204,9 +217,11 @@ jobs:
           echo "AVISO: nao consegui guardar o catalogo; fica o artefacto"
 
       - name: Integrate into seed
+        if: github.event_name != 'pull_request'
         run: node scripts/integrate-sofarma-catalog.js
 
       - name: Commit changes
+        if: github.event_name != 'pull_request'
         env:
           GIT_AUTHOR_NAME: CosMath Bot
           GIT_AUTHOR_EMAIL: bot@cosmath.pt
@@ -231,6 +246,7 @@ jobs:
             -m "Auto-update via GitHub Actions. Sem mexer noutras lojas."
 
       - name: Push to main (resilient — re-integra sobre origin em conflito)
+        if: github.event_name != 'pull_request'
         run: |
           set -e
           bash scripts/ci/resilient-push.sh \
