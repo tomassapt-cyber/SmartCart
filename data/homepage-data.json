@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-27T11:56:44.531Z",
-  "seed_total_products": 105806,
+  "generated_at": "2026-11-27T14:54:57.166Z",
+  "seed_total_products": 105817,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -47,7 +47,7 @@
       "name": "Bioderma Atoderm Creme de Mãos",
       "brand": "Bioderma",
       "image_url": "https://assets.atida.com/transform/915a1e61-d5e3-4d09-86a9-7b438830bb19/Bioderma-Atoderm-Crema-de-Manos-50-ml",
-      "best_price": 3.49,
+      "best_price": 3.99,
       "best_store": "Atida | Mifarma PT",
       "best_store_slug": "atida",
       "best_url": "https://www.atida.com/pt-pt/bioderma-atoderm-creme-de-maos-50ml"
@@ -137,16 +137,6 @@
       "best_url": "https://megafarma.pt/pt-pt/product/aveeno-dermexa-creme-emoliente-200ml-gel-banho-300ml"
     },
     {
-      "ean": "3574661879185",
-      "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
-      "brand": "Neutrogena",
-      "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 10.5,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
-    },
-    {
       "ean": "8431567752002",
       "name": "La Roche-Posay Hyalu B5 Coffret Cuidado Anti-Rugas Hidratante Creme + Sérum + Protetor Solar",
       "brand": "La Roche-Posay",
@@ -155,6 +145,16 @@
       "best_store": "Easyfarma",
       "best_store_slug": "easyfarma",
       "best_url": "https://easyfarma.pt/products/la-roche-posay-hyalu-b5-suractivated-serum-coffret-xmas26"
+    },
+    {
+      "ean": "8431567746391",
+      "name": "Vichy Homme Structure Force Creme Protocolo Homem Coffret",
+      "brand": "Vichy",
+      "image_url": "https://static.lojadafarmacia.com/37160/vichy-homme-structure-force-creme-protocolo-homem-coffret_1790933760_6abf7b00c76a2.webp",
+      "best_price": 16.82,
+      "best_store": "BeMeCare",
+      "best_store_slug": "bemecare",
+      "best_url": "https://bemecare.com/pt/artigo/vichy-homme-strucf-cr50ofchestim-nat26"
     }
   ],
   "em_alta": [
@@ -251,11 +251,11 @@
     },
     {
       "name": "Isdin",
-      "products": 822
+      "products": 823
     },
     {
       "name": "Avène",
-      "products": 811
+      "products": 813
     },
     {
       "name": "Nivea",
@@ -263,7 +263,7 @@
     },
     {
       "name": "La Roche-Posay",
-      "products": 790
+      "products": 789
     }
   ],
   "telegram_alerts": [
