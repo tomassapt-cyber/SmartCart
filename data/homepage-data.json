@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-26T14:58:41.441Z",
-  "seed_total_products": 105718,
+  "generated_at": "2026-11-27T11:56:44.531Z",
+  "seed_total_products": 105806,
   "hero_sponsored": [
     {
       "ean": "8429420230859",
@@ -43,14 +43,14 @@
       "best_url": "https://www.pharma24.pt/lazartigue-clear-ch-caspa-seca-250ml"
     },
     {
-      "ean": "3282770098938",
-      "name": "Avène Protetor Solar Creme FPS50+",
-      "brand": "Avène",
-      "image_url": "https://byfarma.pt/assets/captura-de-ecra-2025-03-26-153317.jpg",
-      "best_price": 8.8,
-      "best_store": "VallisPharma",
-      "best_store_slug": "vallispharma",
-      "best_url": "https://www.vallispharma.pt/products/avene-solar-creme-spf-50-50ml"
+      "ean": "3701129804193",
+      "name": "Bioderma Atoderm Creme de Mãos",
+      "brand": "Bioderma",
+      "image_url": "https://assets.atida.com/transform/915a1e61-d5e3-4d09-86a9-7b438830bb19/Bioderma-Atoderm-Crema-de-Manos-50-ml",
+      "best_price": 3.49,
+      "best_store": "Atida | Mifarma PT",
+      "best_store_slug": "atida",
+      "best_url": "https://www.atida.com/pt-pt/bioderma-atoderm-creme-de-maos-50ml"
     }
   ],
   "bestsellers": [
@@ -121,10 +121,10 @@
       "name": "Neutrogena Collagen Bank Coffret Creme SPF + Oferta Creme de Olhos",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/8/68ec01e3918c0_Neutrogenacollagenbankcoffretcremeofertaolhos_1.png",
-      "best_price": 13.76,
-      "best_store": "Love My Pharma",
-      "best_store_slug": "lovemypharma",
-      "best_url": "https://lovemypharma.com/products/neutrogena-coffret-collagen-bank-creme-spf30-gel-creme-olhos"
+      "best_price": 12.4,
+      "best_store": "A Tua Farmácia",
+      "best_store_slug": "atuafarmacia",
+      "best_url": "https://www.atuafarmacia.pt/products/neutrogena-coffret-collagen-bank-hidratacao-firmeza-e-protecao"
     },
     {
       "ean": "3574661540887",
@@ -141,10 +141,10 @@
       "name": "Neutrogena Corpo Pack Loção Hidratante Profunda Hidratação Intensa +",
       "brand": "Neutrogena",
       "image_url": "https://farmacia.pt/media/catalog/product/cache/d48daf67b0acadf9e1a1252e0e138280/6/a/6a2f19e694f15_corpo15_1.jpg",
-      "best_price": 10.74,
-      "best_store": "MegaFarma",
-      "best_store_slug": "megafarma",
-      "best_url": "https://megafarma.pt/pt-pt/product/neutrogena-hidratante-corporal-profundo-750-400-ml"
+      "best_price": 10.5,
+      "best_store": "Love My Pharma",
+      "best_store_slug": "lovemypharma",
+      "best_url": "https://lovemypharma.com/products/ducray-locao-corpo-hidratacao-profunda-pack-promocional"
     },
     {
       "ean": "8431567752002",
@@ -239,7 +239,7 @@
     },
     {
       "name": "Essence",
-      "products": 903
+      "products": 904
     },
     {
       "name": "L'Oréal Paris",
@@ -255,11 +255,11 @@
     },
     {
       "name": "Avène",
-      "products": 813
+      "products": 811
     },
     {
       "name": "Nivea",
-      "products": 808
+      "products": 809
     },
     {
       "name": "La Roche-Posay",
@@ -297,7 +297,7 @@
   ],
   "stats": {
     "stores": 104,
-    "products": 71596,
+    "products": 71954,
     "avg_savings_pct": 29
   },
   "shard_version": "",
